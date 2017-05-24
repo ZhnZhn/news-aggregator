@@ -1,0 +1,20 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\flux\\actions\\ComponentActions.js",
+ "file": "D:\\_Dev\\_React\\_News\\js\\flux\\actions\\ComponentActions.js",
+ "sourceRoot": "",
+ "names": [
+  "TYPES",
+  "SHOW_NEWS_DIALOG",
+  "SHOW_MODAL_DIALOG",
+  "SHOW_NEWS_PANE",
+  "TOGGLE_NEWS_PANE",
+  "SHOW_ABOUT",
+  "SHOW_BROWSER",
+  "UPDATE_BROWSER",
+  "Actions",
+  "createActions"
+ ],
+ "mappings": ";;;;;;;;;;;;;AAAA;;;;;;AAEO,IAAMA,wBAAQ;AACnBC,oBAAkB,gBADC;AAEnBC,qBAAmB,iBAFA;;AAInBC,kBAAgB,cAJG;AAKnBC,oBAAkB,gBALC;;AAOnBC,cAAY,WAPO;AAQnBC,gBAAc,aARK;AASnBC,kBAAgB;AATG,CAAd;;AAYP,IAAMC,UAAU,iBAAOC,aAAP,mFACbT,MAAMC,gBADO,EACY,EADZ,wDAEbD,MAAME,iBAFO,EAEa,EAFb,wDAIbF,MAAMG,cAJO,EAIU,EAJV,wDAKbH,MAAMI,gBALO,EAKY,EALZ,wDAObJ,MAAMK,UAPO,EAOM,EAPN,wDAQbL,MAAMM,YARO,EAQQ,EARR,wDASbN,MAAMO,cATO,EASU,EATV,0BAAhB;;kBAYeC,O"
+}

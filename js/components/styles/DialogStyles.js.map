@@ -1,0 +1,30 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\styles\\DialogStyles.js",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\styles\\DialogStyles.js",
+ "sourceRoot": "",
+ "names": [
+  "DialogStyles",
+  "rowDiv",
+  "display",
+  "margin",
+  "labelSpan",
+  "color",
+  "textAlign",
+  "width",
+  "paddingRight",
+  "fontSize",
+  "fontWeight",
+  "userSelect",
+  "validationContainer",
+  "paddingLeft",
+  "paddingTop",
+  "validationMessageNumber",
+  "height",
+  "border",
+  "borderRadius",
+  "marginRight"
+ ],
+ "mappings": ";;;;;AAAA,IAAMA,eAAe;AACnB;AACAC,UAAQ;AACNC,aAAS,OADH;AAENC,YAAQ;AAFF,GAFW;AAMnBC,aAAY;AACV;AACA;AACAC,WAAO,OAHG;AAIVH,aAAS,cAJC;AAKV;AACAI,eAAW,OAND;AAOVC,WAAO,OAPG;AAQVC,kBAAc,KARJ;AASVC,cAAU,MATA;AAUVC,gBAAY,MAVF;AAWVC,gBAAY;AAXF,GANO;;AAoBnB;AACAC,uBAAqB;AACnBC,iBAAa,MADM;AAEnBC,gBAAY,KAFO;AAGnBT,WAAO;AAHY,GArBF;AA0BnBU,2BAA0B;AACxBb,aAAS,cADe;AAExBK,WAAO,MAFiB;AAGxBS,YAAQ,MAHgB;AAIxBC,YAAQ,mBAJgB;AAKxBC,kBAAc,KALU;AAMxBZ,eAAW,QANa;AAOxBa,iBAAa;AAPW;;AA1BP,CAArB;;kBAsCenB,Y"
+}

@@ -1,0 +1,13 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\zhn-atoms\\Link.js",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\zhn-atoms\\Link.js",
+ "sourceRoot": "",
+ "names": [
+  "Link",
+  "title",
+  "rest"
+ ],
+ "mappings": ";;;;;;;;;;;;;;AAAA;;;;;;AAEA,IAAMA,OAAO,SAAPA,IAAO;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,MAAaC,IAAb;AAAA,SACZ;AAAA;AAAA,6BAAG,QAAO,QAAV,EAAmB,WAAU,MAA7B,IAAwCA,IAAxC;AACKD;AADL,GADY;AAAA,CAAb;;kBAKeD,I"
+}

@@ -1,0 +1,36 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\source-browsers\\NewsBrowser.jsx",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\source-browsers\\NewsBrowser.js",
+ "sourceRoot": "",
+ "names": [
+  "S",
+  "BOTTOM",
+  "marginTop",
+  "marginLeft",
+  "TEXT",
+  "color",
+  "NewsBrowser",
+  "_onStore",
+  "actionType",
+  "option",
+  "props",
+  "updateAction",
+  "browserId",
+  "id",
+  "setState",
+  "itemData",
+  "data",
+  "state",
+  "unsubscribe",
+  "store",
+  "listen",
+  "rowClass",
+  "showAction",
+  "onClick",
+  "onError",
+  "onClickBadge"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,UAAQ;AACNC,eAAW,MADL;AAENC,gBAAY;AAFN,GADA;AAKRC,QAAM;AACJC,WAAO;AADH;AALE,CAAV;;IAUMC,W;;;AAEJ,yBAAa;AAAA;;AAAA;;AAAA,UAcbC,QAda,GAcF,UAACC,UAAD,EAAaC,MAAb,EAAwB;AAAA,wBACK,MAAKC,KADV;AAAA,UACvBC,YADuB,eACvBA,YADuB;AAAA,UACTC,SADS,eACTA,SADS;;AAE/B,UAAIJ,eAAeG,YAAf,IAA+BF,OAAOI,EAAP,KAAcD,SAAjD,EAA4D;AAC1D,cAAKE,QAAL,CAAc,EAAEC,UAAUN,OAAOO,IAAnB,EAAd;AACD;AACJ,KAnBY;;AAEX,UAAKC,KAAL,GAAa;AACXF,gBAAU;AADC,KAAb;AAFW;AAKZ;;;;wCAEkB;AACjB,WAAKG,WAAL,GAAmB,KAAKR,KAAL,CAAWS,KAAX,CAAiBC,MAAjB,CAAwB,KAAKb,QAA7B,CAAnB;AACD;;;2CACqB;AACpB,WAAKW,WAAL;AACD;;;6BASO;AAAA,mBAKI,KAAKR,KALT;AAAA,UAEEW,QAFF,UAEEA,QAFF;AAAA,UAEYF,KAFZ,UAEYA,KAFZ;AAAA,UAEmBG,UAFnB,UAEmBA,UAFnB;AAAA,UAE+BV,SAF/B,UAE+BA,SAF/B;AAAA,UAGEW,OAHF,UAGEA,OAHF;AAAA,UAGWC,OAHX,UAGWA,OAHX;AAAA,UAIEC,YAJF,UAIEA,YAJF;AAAA,UAMEV,QANF,GAMe,KAAKE,KANpB,CAMEF,QANF;;AAON,aACE;AAAA;AAAA;AACG,mBAAQ,cADX;AAEG,eAAI,4BAFP;AAGG,oBAAUM,QAHb;AAIG,iBAAOF,KAJV;AAKG,qBAAWP,SALd;AAMG,oBAAUG,QANb;AAOG,sBAAYO,UAPf;AAQG,mBAASC,OARZ;AASG,mBAASC,OATZ;AAUG,wBAAcC;AAVjB;AAYG;AAAA;AAAA,YAAK,OAAOzB,EAAEC,MAAd;AACE;AAAA;AAAA,cAAM,OAAOD,EAAEI,IAAf;AAAA;AAAA,WADF;AAEE;AAFF;AAZH,OADF;AAmBD;;;;;AAGH;;;;;;;;;;;;;;;;;;;;;;;;kBAwBeE,W"
+}

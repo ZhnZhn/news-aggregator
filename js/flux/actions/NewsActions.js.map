@@ -1,0 +1,27 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\flux\\actions\\NewsActions.js",
+ "file": "D:\\_Dev\\_React\\_News\\js\\flux\\actions\\NewsActions.js",
+ "sourceRoot": "",
+ "names": [
+  "TYPES",
+  "LOAD_NEWS",
+  "LOAD_NEWS_COMPLETED",
+  "LOAD_NEWS_FAILED",
+  "REMOVE_NEWS",
+  "NewsActions",
+  "createActions",
+  "children",
+  "listen",
+  "option",
+  "loadId",
+  "_apiNewsKey",
+  "getNewsKey",
+  "apiNewsKey",
+  "completed",
+  "failed",
+  "msg"
+ ],
+ "mappings": ";;;;;;;;;;;;;AAAA;;;;AAEA;;;;AACA;;;;;;AAEO,IAAMA,wBAAQ;AACnBC,aAAW,UADQ;AAEnBC,uBAAqB,mBAFF;AAGnBC,oBAAkB,gBAHC;;AAKnBC,eAAa;AALM,CAAd;;AAQP,IAAMC,cAAc,iBAAOC,aAAP,mFACjBN,MAAMC,SADW,EACE;AAClBM,YAAU,CAAC,WAAD,EAAc,QAAd;AADQ,CADF,wDAIjBP,MAAMI,WAJW,EAIG,EAJH,0BAApB;;AAOAC,YAAYL,MAAMC,SAAlB,EAA6BO,MAA7B,CAAoC,YAAmB;AAAA,MAAVC,MAAU,uEAAH,EAAG;;AAAA,uBAC9BA,MAD8B,CAC7CC,MAD6C;AAAA,MAC7CA,MAD6C,kCACtC,GADsC;AAAA,MAE/CC,WAF+C,GAEjC,gBAAMC,UAAN,EAFiC;;AAGrD,MAAID,WAAJ,EAAgB;AACdF,WAAOI,UAAP,GAAoBF,WAApB;AACA,yBAAWD,MAAX,EAAmBD,MAAnB,EAA2B,KAAKK,SAAhC,EAA2C,KAAKC,MAAhD;AACD,GAHD,MAGO;AACL,SAAKA,MAAL,CAAY,EAAEC,KAAK,sDAAP,EAAZ;AACD;AACF,CATD;;kBAWeX,W"
+}

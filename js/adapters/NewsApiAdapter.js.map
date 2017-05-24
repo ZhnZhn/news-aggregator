@@ -1,0 +1,29 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\adapters\\NewsApiAdapter.js",
+ "file": "D:\\_Dev\\_React\\_News\\js\\adapters\\NewsApiAdapter.js",
+ "sourceRoot": "",
+ "names": [
+  "_toFirstUpper",
+  "str",
+  "charAt",
+  "toUpperCase",
+  "slice",
+  "NewsApiAdapter",
+  "toArticles",
+  "articles",
+  "source",
+  "map",
+  "article",
+  "articleId",
+  "generate",
+  "toNews",
+  "json",
+  "option",
+  "sortBy",
+  "_sortBy",
+  "_articles"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,gBAAgB,SAAhBA,aAAgB,CAACC,GAAD,EAAS;AAC7B,MAAI,OAAOA,GAAP,KAAe,QAAnB,EAA4B;AAC1B,WAAO,EAAP;AACD;AACD,SAAOA,IAAIC,MAAJ,CAAW,CAAX,EAAcC,WAAd,KAA8BF,IAAIG,KAAJ,CAAU,CAAV,CAArC;AACD,CALD;;AAQA,IAAMC,iBAAiB;AACrBC,cAAY,sBAAyB;AAAA,QAAxBC,QAAwB,uEAAf,EAAe;AAAA,QAAXC,MAAW;;AACnC,WAAOD,SAASE,GAAT,CAAa,UAACC,OAAD,EAAa;AAC/BA,cAAQC,SAAR,GAAoB,kBAAQC,QAAR,EAApB;AACAF,cAAQF,MAAR,GAAiBA,MAAjB;AACA,aAAOE,OAAP;AACD,KAJM,CAAP;AAKD,GAPoB;;AASrBG,UAAQ,gBAACC,IAAD,EAAOC,MAAP,EAAkB;AAClB,QAAEP,MAAF,GAAaO,MAAb,CAAEP,MAAF;AAAA,yBAC4BM,IAD5B,CACEP,QADF;AAAA,QACEA,QADF,kCACW,EADX;AAAA,uBAC4BO,IAD5B,CACeE,MADf;AAAA,QACeA,MADf,gCACsB,EADtB;;;AAGN,QAAMC,UAAUjB,cAAcgB,MAAd,CAAhB;AAAA,QACME,YAAYb,eAAeC,UAAf,CAA0BC,QAA1B,EAAoCC,MAApC,CADlB;AAEA,WAAO;AACLA,cAAQA,MADH;AAELD,gBAAUW,SAFL;AAGLF,cAAQC;AAHH,KAAP;AAKD;AApBoB,CAAvB;;kBAuBeZ,c"
+}

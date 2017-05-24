@@ -1,0 +1,14 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\zhn-atoms\\SpinnerLoading.jsx",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\zhn-atoms\\SpinnerLoading.js",
+ "sourceRoot": "",
+ "names": [
+  "SpinnerLoading",
+  "style",
+  "isFailed",
+  "_dataLoader"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,iBAAiB,SAAjBA,cAAiB,OAAyB;AAAA,MAAtBC,KAAsB,QAAtBA,KAAsB;AAAA,MAAfC,QAAe,QAAfA,QAAe;;AAC9C,MAAMC,cAAeD,QAAD,GACR,eADQ,GAER,QAFZ;AAGA,SACE,wCAAM,OAAOD,KAAb,EAAoB,eAAaE,WAAjC,GADF;AAID,CARD;;kBAWeH,c"
+}

@@ -1,0 +1,24 @@
+ {
+    "only" : [
+                "*.js",
+                "*.jsx",
+                "*.es6"
+             ],    
+    "plugins" : [        
+      [ "transform-react-remove-prop-types", {
+         "mode": "wrap",
+         "ignoreFilenames":["node_modules"]
+      }],
+      [ "transform-runtime", {
+         "helpers": true,
+         "polyfill": false,
+         "regenerator": false,
+         "moduleName": "babel-runtime"
+      }]
+    ],
+    "presets" : [
+                   "es2015",
+                   "react",
+                   "stage-2" 
+                ]
+ }

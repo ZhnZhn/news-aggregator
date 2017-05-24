@@ -1,0 +1,12 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\links\\LinkNewsApi.jsx",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\links\\LinkNewsApi.js",
+ "sourceRoot": "",
+ "names": [
+  "LinkNewsApi",
+  "props"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,cAAc,SAAdA,WAAc,CAACC,KAAD;AAAA,UACjB;AACG,aAAM,aADT;AAEG,YAAK;AAFR,MAGOA,KAHP,EADiB;AAAA,CAApB;;kBAOeD,W"
+}

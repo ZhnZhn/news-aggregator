@@ -1,0 +1,12 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\index.jsx",
+ "file": "D:\\_Dev\\_React\\_News\\js\\index.js",
+ "sourceRoot": "",
+ "names": [
+  "document",
+  "getElementById"
+ ],
+ "mappings": ";;AAAA;;;;AACA;;AAEA;;;;;;AAEA,sBAAO,gEAAP,EAA8BA,SAASC,cAAT,CAAwB,KAAxB,CAA9B"
+}

@@ -1,0 +1,26 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\styles\\ContainerStyle.js",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\styles\\ContainerStyle.js",
+ "sourceRoot": "",
+ "names": [
+  "ContainerStyle",
+  "browserRootDiv",
+  "flexShrink",
+  "zIndex",
+  "backgroundColor",
+  "padding",
+  "position",
+  "height",
+  "minHeight",
+  "minWidth",
+  "maxWidth",
+  "marginLeft",
+  "boxShadow",
+  "borderRadius",
+  "aboutRootDiv",
+  "paddingBottom"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,iBAAiB;AACrBC,kBAAiB;AACfC,gBAAa,CADE;AAEfC,YAAQ,EAFO;AAGfC,qBAAiB,SAHF;AAIfC,aAAS,kBAJM;AAKfC,cAAU,UALK;AAMfC,YAAQ,oBANO;AAOfC,eAAW,OAPI;AAQfC,cAAU,OARK;AASfC,cAAU,OATK;AAUfC,gBAAY,MAVG;AAWfC,eAAW,iCAXI;AAYfC,kBAAc;AAZC,GADI;AAerBC,gBAAe;AACbX,YAAQ,EADK;AAEbC,qBAAiB,SAFJ;AAGbC,aAAS,KAHI;AAIbU,mBAAe,MAJF;AAKbT,cAAU,UALG;AAMbC,YAAQ,oBANK;AAObC,eAAW,OAPE;AAQbC,cAAU,OARG;AASbC,cAAU,OATG;AAUbC,gBAAY,MAVC;AAWbC,eAAW,iCAXE;AAYbC,kBAAc;AAZD;AAfM,CAAvB;;kBA+Beb,c"
+}

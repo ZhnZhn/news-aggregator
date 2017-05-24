@@ -1,0 +1,20 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\AppNewsAggregator.jsx",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\AppNewsAggregator.js",
+ "sourceRoot": "",
+ "names": [
+  "CL_COMP",
+  "AppNewsAggregator",
+  "showBrowser",
+  "bind",
+  "showModalDialog",
+  "exportSettingsFn",
+  "showAbout",
+  "SHOW_ABOUT",
+  "SHOW_NEWS_PANE",
+  "SHOW_MODAL_DIALOG"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AAEA;;;;AACA;;;;AACA;;AAEA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,UAAU,qBAAhB;;AAEA,IAAMC,oBAAoB,SAApBA,iBAAoB;AAAA,SACxB;AAAA;AAAA;AACE;AACE,4BADF;AAEE,oDAFF;AAGE,qBAAe,2BAAQC,WAAR,CAAoBC,IAApB,6BAAkC,cAAlC,CAHjB;AAIE,kBAAY,2BAAQC,eAAR,CAAwBD,IAAxB,6BAAsC,iBAAtC,EAAyD,gBAAME,gBAAN,EAAzD,CAJd;AAKE,eAAS,2BAAQC;AALnB,MADF;AAQE;AAAA;AAAA,QAAK,WAAWN,OAAhB;AACE;AACE;AADF,QADF;AAIE;AACE,oBAAY,IADd;AAEE,8BAFF;AAGE,oBAAY,wBAAMO,UAHpB;AAIE,oBAAY,wBAAMC;AAJpB,QAJF;AAUE;AACE,8BADF;AAEE,mBAAW,wBAAMA;AAFnB;AAVF,KARF;AAuBE;AACE,4BADF;AAEE,yCAFF;AAGE,kBAAY,wBAAMC;AAHpB;AAvBF,GADwB;AAAA,CAA1B;;kBAgCeR,iB"
+}

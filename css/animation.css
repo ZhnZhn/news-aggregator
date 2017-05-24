@@ -1,0 +1,62 @@
+
+.show-popup{
+  transform-origin: 50% 0;
+  animation: showing-popup 400ms ease-out;
+}
+@keyframes showing-popup{
+  from { opacity: 0; transform: scaleY(0);}
+  to   { opacity: 1; transform: scaleY(1);}
+}
+
+.show-modal {
+  animation: showing-modal 400ms linear;
+}
+.hide-modal {
+  animation: hiding-modal 400ms linear;
+}
+@keyframes showing-modal {
+  0%   { background-color: rgba(0,0,0, 0);}
+  100% { background-color: rgba(0,0,0, 0.35);}
+}
+@keyframes hiding-modal {
+  0%   { background-color: rgba(0,0,0, 0.35);}
+  100% { background-color: rgba(0,0,0, 0);}
+}
+
+
+[data-loader='circle'] {
+    width: 2.5em;
+    height: 2.5em;
+   -webkit-animation: circle infinite 1.25s linear;
+      -moz-animation: circle infinite 0.75s linear;
+        -o-animation: circle infinite 1.25s linear;
+           animation: circle infinite 1.25s linear;
+   border: 3px solid rgba(164, 135, 212, 1);
+   border-top-color: transparent;
+   border-radius: 100%;
+}
+@keyframes circle{
+  100% {transform: rotate(360deg);}
+}
+@-webkit-keyframes circle{
+   100% {
+     -webkit-transform: rotate(360deg);
+             transform: rotate(360deg);
+   }
+}
+@-moz-keyframes circle{
+  100% { transform: rotate(360deg);}
+}
+@-o-keyframes circle{
+  100% {
+  -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+[data-loader='circle-failed']{
+  width: 2.5em;
+  height: 2.5em;
+  border: 3px solid #f44336;
+  /*border-top-color: transparent;*/
+  border-radius: 100%;
+}

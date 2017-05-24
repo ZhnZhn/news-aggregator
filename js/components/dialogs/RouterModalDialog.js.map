@@ -1,0 +1,13 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\dialogs\\RouterModalDialog.js",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\dialogs\\RouterModalDialog.js",
+ "sourceRoot": "",
+ "names": [
+  "RouterModalDialog",
+  "SETTINGS_DIALOG",
+  "ALERT_DIALOG"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AACA;;;;;;AAEA,IAAMA,oBAAoB;AACxBC,2CADwB;AAExBC;AAFwB,CAA1B;;kBAKeF,iB"
+}

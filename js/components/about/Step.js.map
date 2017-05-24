@@ -1,0 +1,24 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\about\\Step.jsx",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\about\\Step.js",
+ "sourceRoot": "",
+ "names": [
+  "S",
+  "STEP",
+  "display",
+  "color",
+  "border",
+  "borderRadius",
+  "width",
+  "height",
+  "textAlign",
+  "DESCR",
+  "Step",
+  "styleRoot",
+  "step",
+  "description"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,IAAI;AACRC,QAAO;AACLC,aAAU,cADL;AAELC,WAAO,SAFF;AAGLC,YAAS,mBAHJ;AAILC,kBAAe,KAJV;AAKLC,WAAQ,MALH;AAMLC,YAAS,MANJ;AAOLC,eAAW;AAPN,GADC;AAURC,SAAO;AACLN,WAAO;AADF;AAVC,CAAV;;AAeA,IAAMO,OAAO,SAAPA,IAAO;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,uBAAcC,IAAd;AAAA,MAAcA,IAAd,6BAAmB,GAAnB;AAAA,MAAwBC,WAAxB,QAAwBA,WAAxB;AAAA,SACX;AAAA;AAAA,MAAG,OAAOF,SAAV;AACE;AAAA;AAAA,QAAM,OAAOX,EAAEC,IAAf;AACKW;AADL,KADF;AAIE;AAAA;AAAA,QAAM,OAAOZ,EAAES,KAAf;AAAA;AACSI;AADT;AAJF,GADW;AAAA,CAAb;;kBAUeH,I"
+}

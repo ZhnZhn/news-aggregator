@@ -1,0 +1,14 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\about\\IconGitHub.jsx",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\about\\IconGitHub.js",
+ "sourceRoot": "",
+ "names": [
+  "IconGitHub",
+  "className",
+  "title",
+  "uri"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,aAAa,SAAbA,UAAa;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,KAAd,QAAcA,KAAd;AAAA,MAAqBC,GAArB,QAAqBA,GAArB;AAAA,SACjB;AAAA;AAAA;AACE,iBAAWF,SADb;AAEE,aAAOC,KAFT;AAGE,YAAMC;AAHR;AAKE;AAAA;AAAA,QAAK,SAAQ,WAAb,EAAyB,OAAM,4BAA/B,EAA4D,aAAU,SAAtE,EAAgF,aAAU,SAA1F,EAAoG,mBAAgB,OAApH,EAA4H,qBAAkB,OAA9I;AACE;AAAA;AAAA;AAAA;AAAA,OADF;AAEE,8CAAM,GAAE,yqBAAR;AAFF;AALF,GADiB;AAAA,CAAnB;;kBAYeH,U"
+}

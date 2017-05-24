@@ -1,0 +1,19 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\flux\\stores\\SettingSlice.js",
+ "file": "D:\\_Dev\\_React\\_News\\js\\flux\\stores\\SettingSlice.js",
+ "sourceRoot": "",
+ "names": [
+  "SettingSlice",
+  "settings",
+  "newsKey",
+  "undefined",
+  "exportSettingsFn",
+  "setNewsKey",
+  "bind",
+  "value",
+  "getNewsKey"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,eAAe;AACnBC,YAAU;AACRC,aAASC;AADD,GADS;;AAKnBC,kBALmB,8BAKD;AAChB,WAAO;AACLC,kBAAY,KAAKA,UAAL,CAAgBC,IAAhB,CAAqB,IAArB;AADP,KAAP;AAGD,GATkB;AAWnBD,YAXmB,sBAWRE,KAXQ,EAWF;AACf,SAAKN,QAAL,CAAcC,OAAd,GAAwBK,KAAxB;AACD,GAbkB;AAcnBC,YAdmB,wBAcP;AACV,WAAO,KAAKP,QAAL,CAAcC,OAArB;AACD;AAhBkB,CAArB;;kBAmBeF,Y"
+}

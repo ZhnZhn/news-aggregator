@@ -1,0 +1,443 @@
+{"menu": [
+   {
+      "caption": "Sport",
+      "items": [
+        { "id": "NS_BBC_SPORT" },
+        { "id": "NS_ESPN" },
+        { "id": "NS_FOX_SPORTS" },
+        { "id": "NS_FOUR_FOUR_TWO" },
+        { "id": "NS_FOOTBALL_ITALIA" },
+        { "id": "NS_NFL_NEWS" }
+      ]
+    },{
+      "caption": "General",
+      "items": [
+        { "id": "NS_ABC_NEWS" },
+        { "id": "NS_ASSOCIATED_PRESS" },
+        { "id": "NS_BBC_NEWS" },
+        { "id": "NS_INDEPENDENT" },
+        { "id": "NS_GOOGLE_NEWS" },
+        { "id": "NS_METRO" },
+        { "id": "NS_NEW_YORK_MAGAZINE" },
+        { "id": "NS_NEWSWEEK" },
+        { "id": "NS_TIME" },
+        { "id": "NS_THE_ECONOMIST" },
+        { "id": "NS_THE_TELEGRAPH" },
+        { "id": "NS_REDDIT_R_ALL" },
+        { "id": "NS_REUTERS" }
+      ]
+    },{
+      "caption": "Business",
+      "items": [
+        { "id": "NS_BLOOMBERG" },
+        { "id": "NS_BUSINESS_INSIDER" },
+        { "id": "NS_CNBC" },
+        { "id": "NS_FINANCIAL_TIMES" }
+      ]
+    },{
+      "caption": "Technology",
+      "items": [
+        { "id": "NS_ARS_TECHNICA" },
+        { "id": "NS_ENGADGET" },
+        { "id": "NS_HACKER_NEWS" },
+        { "id": "NS_TECHCRUNCH" },
+        { "id": "NS_TECHRADAR" },
+        { "id": "NS_THE_NEXT_WEB" },
+        { "id": "NS_THE_VERGE" },
+        { "id": "NS_RECODE" }
+      ]
+    },{
+      "caption": "Science",
+      "items": [
+        { "id": "NS_NATIONAL_GEOGRAPHIC" },
+        { "id": "NS_NEW_SCIENTIST" }
+      ]
+    },{
+      "caption": "Music",
+      "items": [
+        { "id": "NS_MTV_NEWS" }
+      ]
+    }
+  ],
+  "items": {
+    "NS_BBC_SPORT": {
+      "type": "NS_BBC_SPORT",
+      "menuTitle": "BBC Sport",
+      "dialogType": "DialogType1",
+      "paneCaption": "BBC SPORT",
+      "paneId": "bbc-sport",
+      "dialogProps": {
+        "caption": "BBC Sport",
+        "source": "bbc-sport"
+      }
+    },
+    "NS_ESPN": {
+      "type": "NS_ESPN",
+      "menuTitle": "ESPN",
+      "dialogType": "DialogType1",
+      "paneCaption": "ESPN",
+      "paneId": "espn",
+      "dialogProps": {
+        "caption": "ESPN Sport",
+        "source": "espn"
+      }
+    },
+    "NS_FOX_SPORTS": {
+      "type": "NS_FOX_SPORTS",
+      "menuTitle": "Fox Sports",
+      "dialogType": "DialogType1",
+      "paneCaption": "FOX SPORTS",
+      "paneId": "fox-sports",
+      "dialogProps": {
+        "caption": "Fox Sports",
+        "source": "fox-sports"
+      }
+    },
+    "NS_FOUR_FOUR_TWO": {
+      "type": "NS_FOUR_FOUR_TWO",
+      "menuTitle": "FourFourTwo",
+      "dialogType": "DialogType1",
+      "paneCaption": "FOUR FOUR TWO",
+      "paneId": "four-four-two",
+      "dialogProps": {
+        "caption": "FourFourTwo",
+        "source": "four-four-two"
+      }
+    },
+    "NS_FOOTBALL_ITALIA": {
+      "type": "NS_FOOTBALL_ITALIA",
+      "menuTitle": "Football Italia",
+      "dialogType": "DialogType1",
+      "paneCaption": "FOOTBALL ITALIA",
+      "paneId": "football-italia",
+      "dialogProps": {
+        "caption": "Football Italia",
+        "source": "football-italia"
+      }
+    },
+    "NS_NFL_NEWS": {
+      "type": "NS_NFL_NEWS",
+      "menuTitle": "NFL News",
+      "dialogType": "DialogType1",
+      "paneCaption": "NFL NEWS",
+      "paneId": "nfl-news",
+      "dialogProps": {
+        "caption": "NFL New",
+        "source": "nfl-news"
+      }
+    },
+
+    "NS_ABC_NEWS": {
+      "type": "NS_ABC_NEWS",
+      "menuTitle": "ABC News (AU)",
+      "dialogType": "DialogType1",
+      "paneCaption":"ABC NEWS (AU)",
+      "paneId": "abc-news-au",
+      "dialogProps": {
+        "caption": "ABC News (AU)",
+        "source": "abc-news-au"
+      }
+    },
+    "NS_BBC_NEWS": {
+      "type": "NS_BBC_NEWS",
+      "menuTitle": "BBC News",
+      "dialogType": "DialogType1",
+      "paneCaption":"BBC NEWS",
+      "paneId": "bbc-news",
+      "dialogProps": {
+        "caption": "BBC News",
+        "source": "bbc-news"
+      }
+    },
+    "NS_GOOGLE_NEWS": {
+      "type": "NS_GOOGLE_NEWS",
+      "menuTitle": "Google News",
+      "dialogType": "DialogType1",
+      "paneCaption":"GOOGLE NEWS",
+      "paneId": "google-news",
+      "dialogProps": {
+        "caption": "Google News",
+        "source": "google-news"
+      }
+    },
+    "NS_NEWSWEEK": {
+      "type": "NS_NEWSWEEK",
+      "menuTitle": "Newsweek",
+      "dialogType": "DialogType1",
+      "paneCaption":"NEWSWEEK",
+      "paneId": "newsweek",
+      "dialogProps": {
+        "caption": "Newsweek",
+        "source": "newsweek"
+      }
+    },
+    "NS_NEW_YORK_MAGAZINE": {
+      "type": "NS_NEW_YORK_MAGAZINE",
+      "menuTitle": "New York Magazine",
+      "dialogType": "DialogType1",
+      "paneCaption":"NEW YORK MAGAZINE",
+      "paneId": "new-york-magazine",
+      "dialogProps": {
+        "caption": "New York Magazine",
+        "source": "new-york-magazine"
+      }
+    },
+    "NS_THE_ECONOMIST": {
+      "type": "NS_THE_ECONOMIST",
+      "menuTitle": "The Economist",
+      "dialogType": "DialogType1",
+      "paneCaption":"THE ECONOMIST",
+      "paneId": "the-economist",
+      "dialogProps": {
+        "caption": "The Economist",
+        "source": "the-economist"
+      }
+    },
+    "NS_TIME": {
+      "type": "NS_TIME",
+      "menuTitle": "Time",
+      "dialogType": "DialogType1",
+      "paneCaption":"TIME",
+      "paneId": "time",
+      "dialogProps": {
+        "caption": "Time",
+        "source": "time"
+      }
+    },
+    "NS_REUTERS": {
+      "type": "NS_REUTERS",
+      "menuTitle": "Reuters",
+      "dialogType": "DialogType1",
+      "paneCaption":"REUTERS",
+      "paneId": "reuters",
+      "dialogProps": {
+        "caption": "Reuters",
+        "source": "reuters"
+      }
+    },
+    "NS_REDDIT_R_ALL": {
+      "type": "NS_REDDIT_R_ALL",
+      "menuTitle": "Reddit /R/All",
+      "dialogType": "DialogType1",
+      "paneCaption":"REDDIT /R/ALL",
+      "paneId": "reddit-r-all",
+      "dialogProps": {
+        "caption": "Reddit /R/All",
+        "source": "reddit-r-all"
+      }
+    },
+    "NS_ASSOCIATED_PRESS": {
+      "type": "NS_ASSOCIATED_PRESS",
+      "menuTitle": "Associated Press",
+      "dialogType": "DialogType1",
+      "paneCaption":"ASSOCIATED PRESS",
+      "paneId": "associated-press",
+      "dialogProps": {
+        "caption": "Associated Press",
+        "source": "associated-press"
+      }
+    },
+    "NS_INDEPENDENT": {
+      "type": "NS_INDEPENDENT",
+      "menuTitle": "Independent",
+      "dialogType": "DialogType1",
+      "paneCaption":"INDEPENDENT",
+      "paneId": "independent",
+      "dialogProps": {
+        "caption": "Independent",
+        "source": "independent"
+      }
+    },
+    "NS_THE_TELEGRAPH": {
+      "type": "NS_THE_TELEGRAPH",
+      "menuTitle": "The Telegraph",
+      "dialogType": "DialogType1",
+      "paneCaption":"THE TELEGRAPH",
+      "paneId": "the-telegraph",
+      "dialogProps": {
+        "caption": "The Telegraph",
+        "source": "the-telegraph"
+      }
+    },
+    "NS_METRO": {
+      "type": "NS_METRO",
+      "menuTitle": "Metro",
+      "dialogType": "DialogType1",
+      "paneCaption":"METRO",
+      "paneId": "metro",
+      "dialogProps": {
+        "caption": "Metro",
+        "source": "metro"
+      }
+    },
+
+    "NS_BUSINESS_INSIDER": {
+      "type": "NS_BUSINESS_INSIDER",
+      "menuTitle": "Business Insider",
+      "dialogType": "DialogType1",
+      "paneCaption": "BUSINESS INSIDER",
+      "paneId": "business-insider",
+      "dialogProps": {
+        "caption": "Business Insider",
+        "source": "business-insider"
+      }
+    },
+    "NS_BLOOMBERG": {
+      "type": "NS_BLOOMBERG",
+      "menuTitle": "Bloomberg",
+      "dialogType": "DialogType1",
+      "paneCaption": "BLOOMBERG",
+      "paneId": "bloomberg",
+      "dialogProps": {
+        "caption": "Bloomberg",
+        "source": "bloomberg"
+      }
+    },
+    "NS_FINANCIAL_TIMES": {
+      "type": "NS_FINANCIAL_TIMES",
+      "menuTitle": "Financial Times",
+      "dialogType": "DialogType1",
+      "paneCaption": "FINANCIAL TIMES",
+      "paneId": "financial-times",
+      "dialogProps": {
+        "caption": "Financial Times",
+        "source": "financial-times"
+      }
+    },
+    "NS_CNBC": {
+      "type": "NS_CNBC",
+      "menuTitle": "CNBC",
+      "dialogType": "DialogType1",
+      "paneCaption": "CNBC",
+      "paneId": "cnbc",
+      "dialogProps": {
+        "caption": "CNBC",
+        "source": "cnbc"
+      }
+    },
+
+    "NS_ARS_TECHNICA": {
+      "type": "NS_ARS_TECHNICA",
+      "menuTitle": "Ars Technica",
+      "dialogType": "DialogType1",
+      "paneCaption": "ARS TECHNICA",
+      "paneId": "ars-technica",
+      "dialogProps": {
+        "caption": "Ars Technica",
+        "source": "ars-technica"
+      }
+    },
+    "NS_ENGADGET": {
+      "type": "NS_ENGADGET",
+      "menuTitle": "Engadget",
+      "dialogType": "DialogType1",
+      "paneCaption": "ENGADGET",
+      "paneId": "engadget",
+      "dialogProps": {
+        "caption": "Engadget",
+        "source": "engadget"
+      }
+    },
+    "NS_HACKER_NEWS": {
+      "type": "NS_HACKER_NEWS",
+      "menuTitle": "Hacker News",
+      "dialogType": "DialogType1",
+      "paneCaption": "HACKER NEWS",
+      "paneId": "hacker-news",
+      "dialogProps": {
+        "caption": "Hacker News",
+        "source": "hacker-news"
+      }
+    },
+    "NS_TECHCRUNCH": {
+      "type": "NS_TECHCRUNCH",
+      "menuTitle": "TechCrunch",
+      "dialogType": "DialogType1",
+      "paneCaption": "TECH CRUNCH",
+      "paneId": "techcrunch",
+      "dialogProps": {
+        "caption": "TechCrunch",
+        "source": "techcrunch"
+      }
+    },
+    "NS_TECHRADAR": {
+      "type": "NS_TECHRADAR",
+      "menuTitle": "TechRadar",
+      "dialogType": "DialogType1",
+      "paneCaption": "TECH RADAR",
+      "paneId": "techradar",
+      "dialogProps": {
+        "caption": "TechRadar",
+        "source": "techradar"
+      }
+    },
+    "NS_RECODE": {
+      "type": "NS_RECODE",
+      "menuTitle": "Recode",
+      "dialogType": "DialogType1",
+      "paneCaption": "RECODE",
+      "paneId": "recode",
+      "dialogProps": {
+        "caption": "Recode",
+        "source": "recode"
+      }
+    },
+    "NS_THE_NEXT_WEB": {
+      "type": "NS_THE_NEXT_WEB",
+      "menuTitle": "The Next Web",
+      "dialogType": "DialogType1",
+      "paneCaption": "THE NEXT WEB",
+      "paneId": "the-next-web",
+      "dialogProps": {
+        "caption": "The Next Web",
+        "source": "the-next-web"
+      }
+    },
+    "NS_THE_VERGE": {
+      "type": "NS_THE_VERGE",
+      "menuTitle": "The Verge",
+      "dialogType": "DialogType1",
+      "paneCaption": "THE VERGE",
+      "paneId": "the-verge",
+      "dialogProps": {
+        "caption": "The Verge",
+        "source": "the-verge"
+      }
+    },
+
+    "NS_NATIONAL_GEOGRAPHIC": {
+      "type": "NS_NATIONAL_GEOGRAPHIC",
+      "menuTitle": "National Geographic",
+      "dialogType": "DialogType1",
+      "paneCaption": "NATIONAL GEOGRAPHIC",
+      "paneId": "national-geographic",
+      "dialogProps": {
+        "caption": "National Geographic",
+        "source": "national-geographic"
+      }
+    },
+    "NS_NEW_SCIENTIST": {
+      "type": "NS_NEW_SCIENTIST",
+      "menuTitle": "New Scientist",
+      "dialogType": "DialogType1",
+      "paneCaption": "NEW SCIENTIST",
+      "paneId": "new-scientist",
+      "dialogProps": {
+        "caption": "New Scientist",
+        "source": "new-scientist"
+      }
+    },
+
+    "NS_MTV_NEWS": {
+      "type": "NS_MTV_NEWS",
+      "menuTitle": "MTV News",
+      "dialogType": "DialogType1",
+      "paneCaption": "MTV NEWS",
+      "paneId": "mtv-news",
+      "dialogProps": {
+        "caption": "MTV News",
+        "source": "mtv-news"
+      }
+    }
+  }
+}

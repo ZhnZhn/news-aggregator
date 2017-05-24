@@ -1,0 +1,27 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\header\\LoadingProgress.jsx",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\header\\LoadingProgress.js",
+ "sourceRoot": "",
+ "names": [
+  "COLOR",
+  "LOADING",
+  "FAILED",
+  "LoadingProgress",
+  "props",
+  "_onStore",
+  "actionType",
+  "ACTIONS",
+  "setState",
+  "completed",
+  "color",
+  "LOADING_COMPLETE",
+  "LOADING_FAILED",
+  "state",
+  "unsubscribe",
+  "store",
+  "listenLoadingProgress"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,QAAQ;AACZC,WAAU,SADE;AAEZC,UAAS;AAFG,CAAd;;IAKMC,e;;;AACJ,2BAAYC,KAAZ,EAAkB;AAAA;;AAAA;;AAAA,UAuBlBC,QAvBkB,GAuBP,UAACC,UAAD,EAAgB;AAAA,UACfC,OADe,GACH,MAAKH,KADF,CACfG,OADe;;AAEvB,UAAID,eAAeC,QAAQN,OAA3B,EAAmC;AACjC,cAAKO,QAAL,CAAc,EAAEC,WAAW,EAAb,EAAiBC,OAAOV,MAAMC,OAA9B,EAAd;AACD,OAFD,MAEO,IAAIK,eAAeC,QAAQI,gBAA3B,EAA4C;AACjD,cAAKH,QAAL,CAAc,EAAEC,WAAW,GAAb,EAAkBC,OAAOV,MAAMC,OAA/B,EAAd;AACD,OAFM,MAEA,IAAIK,eAAeC,QAAQK,cAA3B,EAA0C;AAC/C,cAAKJ,QAAL,CAAc,EAAEC,WAAW,GAAb,EAAkBC,OAAOV,MAAME,MAA/B,EAAd;AACD;AACJ,KAhCiB;;AAEhB,UAAKW,KAAL,GAAa;AACXJ,iBAAY,CADD;AAEXC,aAAQV,MAAMC;AAFH,KAAb;AAFgB;AAMjB;AACD;;;;;;;;;;;;wCAQmB;AACjB,WAAKa,WAAL,GAAmB,KAAKV,KAAL,CAAWW,KAAX,CAAiBC,qBAAjB,CAAuC,KAAKX,QAA5C,CAAnB;AACD;;;2CAEqB;AACpB,WAAKS,WAAL;AACD;;;6BAaO;AAAA,mBACuB,KAAKD,KAD5B;AAAA,UACEJ,SADF,UACEA,SADF;AAAA,UACaC,KADb,UACaA,KADb;;AAEN,aACE;AACG,gBAAQ,CADX;AAEG,eAAOA,KAFV;AAGG,mBAAWD;AAHd,QADF;AAOD;;;;;kBAIYN,e"
+}

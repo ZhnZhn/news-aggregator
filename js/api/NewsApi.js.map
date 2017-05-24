@@ -1,0 +1,22 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\api\\NewsApi.js",
+ "file": "D:\\_Dev\\_React\\_News\\js\\api\\NewsApi.js",
+ "sourceRoot": "",
+ "names": [
+  "ROOT",
+  "NewsApi",
+  "getRequestUrl",
+  "option",
+  "source",
+  "sortBy",
+  "apiNewsKey",
+  "checkResponse",
+  "json",
+  "status",
+  "message",
+  "msg"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,OAAO,iCAAb;AACA;;AAEA,IAAMC,UAAU;AACdC,eADc,yBACAC,MADA,EACO;AAAA,yBACsCA,MADtC,CACXC,MADW;AAAA,QACXA,MADW,kCACJ,WADI;AAAA,yBACsCD,MADtC,CACSE,MADT;AAAA,QACSA,MADT,kCACgB,KADhB;AAAA,QACuBC,UADvB,GACsCH,MADtC,CACuBG,UADvB;;AAEnB,WAAUN,IAAV,gBAAyBI,MAAzB,gBAA0CE,UAA1C,gBAA+DD,MAA/D;AACD,GAJa;AAMdE,eANc,yBAMAC,IANA,EAMML,MANN,EAMa;AAAA,QACjBM,MADiB,GACGD,IADH,CACjBC,MADiB;AAAA,QACTC,OADS,GACGF,IADH,CACTE,OADS;;AAEzB,QAAID,WAAW,OAAf,EAAuB;AACrB,YAAM,EAAEE,KAAKD,OAAP,EAAN;AACD;AACD,WAAO,IAAP;AACD;AAZa,CAAhB;;kBAeeT,O"
+}

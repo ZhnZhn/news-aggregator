@@ -1,0 +1,16 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\panes\\RouterPane.js",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\panes\\RouterPane.js",
+ "sourceRoot": "",
+ "names": [
+  "R",
+  "DEFAULT",
+  "RouterPane",
+  "getElement",
+  "type",
+  "El"
+ ],
+ "mappings": ";;;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC;AADQ,CAAV;;AAIA,IAAMC,aAAa;AACjBC,cAAY,oBAACC,IAAD,EAAU;AACpB,QAAMC,KAAKL,EAAEI,IAAF,CAAX;AACA,QAAIC,EAAJ,EAAQ;AACN,aAAOL,EAAEI,IAAF,CAAP;AACD,KAFD,MAEO;AACL,aAAQJ,EAAEC,OAAV;AACD;AACF;AARgB,CAAnB;;kBAWeC,U"
+}
