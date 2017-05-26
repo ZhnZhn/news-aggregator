@@ -51,11 +51,9 @@ var NewsSlice = {
     var news = _ref.news,
         itemConf = _ref.itemConf;
 
-    var result = Logic.loadNewsCompleted(this.news, news);
-    this.trigger(_NewsActions.TYPES.LOAD_NEWS_COMPLETED, result);
+    var r = Logic.loadNewsCompleted(this.news, news);
+    this.trigger(_NewsActions.TYPES.LOAD_NEWS_COMPLETED, r);
     this.triggerLoadingProgress(_LoadingProgressActions.TYPES.LOADING_COMPLETE);
-
-    _ComponentActions2.default.updateBrowser(itemConf);
   },
   onLoadNewsFailed: function onLoadNewsFailed(option) {
     _ComponentActions2.default.showModalDialog('ALERT_DIALOG', option);

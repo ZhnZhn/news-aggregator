@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -37,6 +41,9 @@ var S = {
     paddingLeft: '5px',
     borderRadius: '30%',
     textAlign: 'center'
+  },
+  CLOSE: {
+    color: 'black'
   }
 };
 
@@ -67,9 +74,14 @@ var MenuItemBadge = function (_Component) {
   (0, _createClass3.default)(MenuItemBadge, [{
     key: 'render',
     value: function render() {
+      var _props$itemBadge = this.props.itemBadge,
+          itemBadge = _props$itemBadge === undefined ? {} : _props$itemBadge,
+          isOpen = itemBadge.isOpen,
+          _badgeStyle = isOpen ? S.BADGE : (0, _extends3.default)({}, S.BADGE, S.CLOSE);
+
       return _react2.default.createElement(
         'span',
-        { style: S.BADGE, onClick: this._handleClick },
+        { style: _badgeStyle, onClick: this._handleClick },
         'V'
       );
     }

@@ -31,6 +31,7 @@ var _RouterPane2 = _interopRequireDefault(_RouterPane);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var showNewsPane = _ComponentActions2.default.showNewsPane;
+var closeNewsPane = _ComponentActions2.default.closeNewsPane;
 var loadNews = _NewsActions2.default.loadNews;
 
 var Factory = {
@@ -65,7 +66,8 @@ var Factory = {
       addAction: _NewsActions.TYPES.LOAD_NEWS_COMPLETED,
       showAction: _ComponentActions.TYPES.SHOW_NEWS_PANE,
       toggleAction: _ComponentActions.TYPES.TOGGLE_NEWS_PANE,
-      onCloseItem: _NewsActions2.default.removeNews
+      onCloseItem: _NewsActions2.default.removeNews,
+      onClose: closeNewsPane.bind(null, itemConf)
     });
   }
 };

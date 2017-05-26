@@ -96,20 +96,11 @@ class NewsPane extends Component {
           default: return undefined;
         }
       }
-      /*
-      if (actionType === addAction && option.id === id){
-        this.setState({
-          isShow: true,
-          articles: option.data,
-          sortBy: option.sortBy
-        })
-      } else if (actionType === showAction && option.id === id){
-        this.setState({ isShow: true })
-      }
-      */
    }
 
    _handleHide = () => {
+      const { onClose } = this.props;
+      onClose();
       this.setState({ isShow: false });
    }
 

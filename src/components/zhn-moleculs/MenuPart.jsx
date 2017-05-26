@@ -5,7 +5,7 @@ import OpenClose from '../zhn-atoms/OpenClose'
 import MenuItemBadge from './MenuItemBadge'
 
 const _renderMenuItems = function(option){
-  const { rowClass, items=[], hmItems={}, itemData, onClick, onClickBadge, ...rest } = option
+  const { rowClass, items=[], hmItems={}, itemData, onClick, onClickBadge, ...rest } = option  
   return items.map((item, index) => {
     const _className = (rowClass)
              ? rowClass + ' not-selected'
@@ -16,7 +16,7 @@ const _renderMenuItems = function(option){
           , { menuTitle} = _itemConf
           , badgeEl = itemData[item.id]
                ? <MenuItemBadge
-                    data={itemData[item.id]}
+                    itemBadge={itemData[item.id]}
                     itemConf={_itemConf}
                     onClick={onClickBadge}
                  />

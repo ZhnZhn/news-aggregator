@@ -7,6 +7,7 @@ import RouterDialog from '../../components/dialogs/RouterDialog'
 import RouterPane from '../../components/panes/RouterPane'
 
 const showNewsPane = ComponentActions.showNewsPane;
+const closeNewsPane = ComponentActions.closeNewsPane;
 const loadNews = NewsActions.loadNews;
 
 const Factory = {
@@ -34,7 +35,8 @@ const Factory = {
       addAction: NA.LOAD_NEWS_COMPLETED,
       showAction: CA.SHOW_NEWS_PANE,
       toggleAction: CA.TOGGLE_NEWS_PANE,
-      onCloseItem: NewsActions.removeNews
+      onCloseItem: NewsActions.removeNews,
+      onClose: closeNewsPane.bind(null, itemConf)
     });
   }
 }

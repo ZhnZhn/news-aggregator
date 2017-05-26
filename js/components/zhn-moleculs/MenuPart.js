@@ -42,7 +42,7 @@ var _renderMenuItems = function _renderMenuItems(option) {
         _itemConf = hmItems[item.id],
         menuTitle = _itemConf.menuTitle,
         badgeEl = itemData[item.id] ? _react2.default.createElement(_MenuItemBadge2.default, {
-      data: itemData[item.id],
+      itemBadge: itemData[item.id],
       itemConf: _itemConf,
       onClick: onClickBadge
     }) : undefined;

@@ -19,8 +19,8 @@ var NewsDialogLogic = {
     if (slice[type]) {
       return { key: type };
     } else {
-      slice[type] = true;
       var Comp = _Factory2.default.createDialog(itemConf);
+      slice[type] = true;
       return { key: type, Comp: Comp };
     }
   }
@@ -33,8 +33,8 @@ var NewsPaneLogic = {
     if (slice[type]) {
       return { id: itemConf.paneId };
     } else {
-      slice[type] = true;
       var Comp = _Factory2.default.createNewsPane(itemConf, store);
+      slice[type] = true;
       return { Comp: Comp };
     }
   },
@@ -46,14 +46,33 @@ var NewsPaneLogic = {
 };
 
 var BrowserLogic = {
-  updateBrowser: function updateBrowser(slice, itemConf) {
+  createResult: function createResult(slice, itemConf) {
+    var browserId = itemConf.browserId;
+
+    return {
+      id: browserId,
+      data: slice[browserId]
+    };
+  },
+  updateBadge: function updateBadge(slice, itemConf) {
+    var option = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : { isOpen: true };
     var browserId = itemConf.browserId,
         type = itemConf.type;
 
     if (!slice[browserId]) {
       slice[browserId] = {};
     }
-    slice[browserId][type] = { isLoaded: true };
+    slice[browserId][type] = Object.assign({}, slice[browserId][type], option);
+    return {
+      id: browserId,
+      data: slice[browserId]
+    };
+  },
+  toggleBadge: function toggleBadge(slice, itemConf) {
+    var browserId = itemConf.browserId,
+        type = itemConf.type;
+
+    slice[browserId][type].isOpen = !slice[browserId][type].isOpen;
     return {
       id: browserId,
       data: slice[browserId]
@@ -67,8 +86,8 @@ var ComponentSlice = {
   hmBrowser: {},
 
   onShowNewsDialog: function onShowNewsDialog(itemConf) {
-    var resalt = NewsDialogLogic.showNewsDialog(this.dialogInit, itemConf);
-    this.trigger(_ComponentActions.TYPES.SHOW_NEWS_DIALOG, resalt);
+    var r = NewsDialogLogic.showNewsDialog(this.dialogInit, itemConf);
+    this.trigger(_ComponentActions.TYPES.SHOW_NEWS_DIALOG, r);
   },
   onShowModalDialog: function onShowModalDialog(type) {
     var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -77,12 +96,20 @@ var ComponentSlice = {
     this.trigger(_ComponentActions.TYPES.SHOW_MODAL_DIALOG, option);
   },
   onShowNewsPane: function onShowNewsPane(itemConf) {
-    var resalt = NewsPaneLogic.showNewsPane(this.newsPaneInit, itemConf, this);
-    this.trigger(_ComponentActions.TYPES.SHOW_NEWS_PANE, resalt);
+    var pane = NewsPaneLogic.showNewsPane(this.newsPaneInit, itemConf, this);
+    var browser = BrowserLogic.updateBadge(this.hmBrowser, itemConf);
+    this.trigger(_ComponentActions.TYPES.SHOW_NEWS_PANE, pane);
+    this.trigger(_ComponentActions.TYPES.UPDATE_BROWSER, browser);
   },
   onToggleNewsPane: function onToggleNewsPane(itemConf) {
-    var result = NewsPaneLogic.toggleNewsPane(itemConf);
-    this.trigger(_ComponentActions.TYPES.TOGGLE_NEWS_PANE, result);
+    var browser = BrowserLogic.toggleBadge(this.hmBrowser, itemConf);
+    var pane = NewsPaneLogic.toggleNewsPane(itemConf);
+    this.trigger(_ComponentActions.TYPES.TOGGLE_NEWS_PANE, pane);
+    this.trigger(_ComponentActions.TYPES.UPDATE_BROWSER, browser);
+  },
+  onCloseNewsPane: function onCloseNewsPane(itemConf) {
+    var r = BrowserLogic.updateBadge(this.hmBrowser, itemConf, { isOpen: false });
+    this.trigger(_ComponentActions.TYPES.UPDATE_BROWSER, r);
   },
   onShowAbout: function onShowAbout() {
     this.trigger(_ComponentActions.TYPES.SHOW_ABOUT);
@@ -90,9 +117,9 @@ var ComponentSlice = {
   onShowBrowser: function onShowBrowser(browserId) {
     this.trigger(_ComponentActions.TYPES.SHOW_BROWSER, browserId);
   },
-  onUpdateBrowser: function onUpdateBrowser(itemConf) {
-    var result = BrowserLogic.updateBrowser(this.hmBrowser, itemConf);
-    this.trigger(_ComponentActions.TYPES.UPDATE_BROWSER, result);
+  onUpdateBrowser: function onUpdateBrowser(itemConf, option) {
+    var r = BrowserLogic.createResult(this.hmBrowser, itemConf);
+    this.trigger(_ComponentActions.TYPES.UPDATE_BROWSER, r);
   }
 };
 

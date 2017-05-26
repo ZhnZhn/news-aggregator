@@ -33,11 +33,9 @@ const NewsSlice = {
     this.triggerLoadingProgress(LP.LOADING)
   },
   onLoadNewsCompleted({ news, itemConf }){
-    const result = Logic.loadNewsCompleted(this.news, news);
-    this.trigger(TYPES.LOAD_NEWS_COMPLETED, result)
+    const r = Logic.loadNewsCompleted(this.news, news);
+    this.trigger(TYPES.LOAD_NEWS_COMPLETED, r)
     this.triggerLoadingProgress(LP.LOADING_COMPLETE)
-
-    ComponentActions.updateBrowser(itemConf)
   },
   onLoadNewsFailed(option){
     ComponentActions.showModalDialog('ALERT_DIALOG', option)

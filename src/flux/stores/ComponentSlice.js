@@ -8,8 +8,8 @@ const NewsDialogLogic = {
     if (slice[type]){
       return { key:type };
     } else {
-      slice[type] = true;
       const Comp = Factory.createDialog(itemConf);
+      slice[type] = true
       return { key:type, Comp };
     }
   }
@@ -21,8 +21,8 @@ const NewsPaneLogic = {
     if (slice[type]){
       return { id: itemConf.paneId };
     } else {
-      slice[type] = true;
       const Comp = Factory.createNewsPane(itemConf, store)
+      slice[type] = true;
       return { Comp };
     }
   },
@@ -32,19 +32,37 @@ const NewsPaneLogic = {
       id: itemConf.paneId
     };
   }
+
 }
 
 const BrowserLogic = {
-  updateBrowser(slice, itemConf){
-    const { browserId, type } = itemConf;
-    if (!slice[browserId]){
-      slice[browserId] = {}
-    }
-    slice[browserId][type] = { isLoaded: true }
+  createResult(slice, itemConf){
+    const { browserId } = itemConf;
     return {
       id: browserId,
       data: slice[browserId]
     };
+  },
+
+  updateBadge(slice, itemConf, option={ isOpen: true }){
+    const { browserId, type } = itemConf;
+    if (!slice[browserId]){
+      slice[browserId] = {}
+    }
+    slice[browserId][type] = Object.assign({}, slice[browserId][type], option)
+    return {
+      id: browserId,
+      data: slice[browserId]
+    };
+  },
+
+  toggleBadge(slice, itemConf){
+     const { browserId, type } = itemConf;
+     slice[browserId][type].isOpen = !slice[browserId][type].isOpen
+     return {
+       id: browserId,
+       data: slice[browserId]
+     };
   }
 }
 
@@ -54,8 +72,8 @@ const ComponentSlice = {
   hmBrowser: {},
 
   onShowNewsDialog(itemConf){
-    const resalt = NewsDialogLogic.showNewsDialog(this.dialogInit, itemConf);
-    this.trigger(TYPES.SHOW_NEWS_DIALOG, resalt)
+    const r = NewsDialogLogic.showNewsDialog(this.dialogInit, itemConf);
+    this.trigger(TYPES.SHOW_NEWS_DIALOG, r)
   },
 
   onShowModalDialog(type, option={}){
@@ -64,12 +82,20 @@ const ComponentSlice = {
   },
 
   onShowNewsPane(itemConf){
-    const resalt = NewsPaneLogic.showNewsPane(this.newsPaneInit, itemConf, this);
-    this.trigger(TYPES.SHOW_NEWS_PANE, resalt)
+    const pane = NewsPaneLogic.showNewsPane(this.newsPaneInit, itemConf, this);
+    const browser = BrowserLogic.updateBadge(this.hmBrowser, itemConf);
+    this.trigger(TYPES.SHOW_NEWS_PANE, pane)
+    this.trigger(TYPES.UPDATE_BROWSER, browser)
   },
   onToggleNewsPane(itemConf){
-    const result = NewsPaneLogic.toggleNewsPane(itemConf)
-    this.trigger(TYPES.TOGGLE_NEWS_PANE, result)
+    const browser = BrowserLogic.toggleBadge(this.hmBrowser, itemConf);
+    const pane = NewsPaneLogic.toggleNewsPane(itemConf);
+    this.trigger(TYPES.TOGGLE_NEWS_PANE, pane)
+    this.trigger(TYPES.UPDATE_BROWSER, browser)
+  },
+  onCloseNewsPane(itemConf){
+    const r = BrowserLogic.updateBadge(this.hmBrowser, itemConf, {isOpen:false});
+    this.trigger(TYPES.UPDATE_BROWSER, r)
   },
 
   onShowAbout(){
@@ -79,9 +105,9 @@ const ComponentSlice = {
   onShowBrowser(browserId){
     this.trigger(TYPES.SHOW_BROWSER, browserId)
   },
-  onUpdateBrowser(itemConf){
-    const result = BrowserLogic.updateBrowser(this.hmBrowser, itemConf);
-    this.trigger(TYPES.UPDATE_BROWSER, result)
+  onUpdateBrowser(itemConf, option){
+    const r = BrowserLogic.createResult(this.hmBrowser, itemConf);
+    this.trigger(TYPES.UPDATE_BROWSER, r)
   }
 }
 

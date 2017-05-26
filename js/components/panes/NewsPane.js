@@ -130,20 +130,12 @@ var NewsPane = function (_Component) {
             return undefined;
         }
       }
-      /*
-      if (actionType === addAction && option.id === id){
-        this.setState({
-          isShow: true,
-          articles: option.data,
-          sortBy: option.sortBy
-        })
-      } else if (actionType === showAction && option.id === id){
-        this.setState({ isShow: true })
-      }
-      */
     };
 
     _this._handleHide = function () {
+      var onClose = _this.props.onClose;
+
+      onClose();
       _this.setState({ isShow: false });
     };
 

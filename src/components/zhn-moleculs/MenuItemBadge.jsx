@@ -11,20 +11,29 @@ const S = {
     paddingLeft: '5px',
     borderRadius: '30%',
     textAlign: 'center'
+  },
+  CLOSE: {
+    color: 'black'
   }
 }
 
 
 class MenuItemBadge extends Component {
+
   _handleClick = (event) => {
-     event.stopPropagation();
-     const { itemConf, onClick } = this.props
+     event.stopPropagation()
+     const { itemConf, onClick } = this.props;
      onClick(itemConf)
   }
 
   render(){
+    const { itemBadge={} } = this.props
+        , { isOpen } = itemBadge
+        , _badgeStyle = isOpen
+             ? S.BADGE
+             : { ...S.BADGE, ...S.CLOSE }
     return (
-      <span style={S.BADGE} onClick={this._handleClick}>
+      <span style={_badgeStyle} onClick={this._handleClick}>
         V
       </span>
     );
