@@ -66,7 +66,7 @@ var HeaderBar = function HeaderBar(_ref) {
     _react2.default.createElement(_GitHubLink2.default, {
       className: 'header__github-link',
       title: 'GitHub Repository',
-      href: 'https://github.com/news-aggregator'
+      href: 'https://github.com/zhnzhn/news-aggregator'
     }),
     _react2.default.createElement(
       'div',

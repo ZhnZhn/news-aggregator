@@ -35,7 +35,7 @@ const HeaderBar = ({
     <GitHubLink
       className="header__github-link"
       title="GitHub Repository"
-      href="https://github.com/news-aggregator"
+      href="https://github.com/zhnzhn/news-aggregator"
     />
     <div className="header__bts">
         <ActionButton
