@@ -6,8 +6,11 @@ const S = {
     color: '#80c040',
     border : '2px solid #80c040',
     borderRadius : '50%',
-    width : '22px',
-    height : '22px',
+    textTransform: 'uppercase',
+    fontSize: '18px',
+    lineHeight: '24px',
+    width : '26px',
+    height : '26px',
     textAlign: 'center'
   },
   DESCR: {

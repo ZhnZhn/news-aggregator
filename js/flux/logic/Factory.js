@@ -66,6 +66,8 @@ var Factory = {
       addAction: _NewsActions.TYPES.LOAD_NEWS_COMPLETED,
       showAction: _ComponentActions.TYPES.SHOW_NEWS_PANE,
       toggleAction: _ComponentActions.TYPES.TOGGLE_NEWS_PANE,
+      onRemoveItems: _NewsActions2.default.removeAllNews.bind(null, paneId),
+      onRemoveUnder: _NewsActions2.default.removeUnderNews,
       onCloseItem: _NewsActions2.default.removeNews,
       onClose: closeNewsPane.bind(null, itemConf)
     });

@@ -24,6 +24,8 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -36,16 +38,21 @@ var _ShowHide = require('../zhn-atoms/ShowHide');
 
 var _ShowHide2 = _interopRequireDefault(_ShowHide);
 
+var _withDnDStyle = require('./decorators/withDnDStyle');
+
+var _withDnDStyle2 = _interopRequireDefault(_withDnDStyle);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var D_REMOVE_UNDER = 60;
+var D_REMOVE_ITEM = 35;
 
 var S = {
   ROOT: {
     position: 'relative',
     lineHeight: 1.5,
-    //marginBottom: '10px',
     marginBottom: '16px',
     marginRight: '25px',
-    //borderLeft: 'solid 3px green'
     boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
     borderBottomRightRadius: '2px'
   },
@@ -58,24 +65,17 @@ var S = {
     backgroundColor: '#3F51B5'
   },
   HEADER: {
-    //backgroundColor: '#232F3B',
     backgroundColor: '#404040',
     paddingTop: '8px',
     paddingLeft: '16px',
-    //paddingBottom: '5px',
     paddingBottom: '16px',
     lineHeight: 1.5,
-    //height: '32px',
     width: '100%',
     borderTopRightRadius: '2px',
     borderBottomRightRadius: '2px'
   },
   HEADER_OPEN: {
     borderLeft: '6px solid #607d8b'
-  },
-  CAPTION_OPEN: {
-    //display : 'inline-block',
-    color: '#607d8b'
   },
   CAPTION: {
     display: 'inline-block',
@@ -84,6 +84,9 @@ var S = {
     fontWeight: 'bold',
     paddingRight: '32px',
     cursor: 'pointer'
+  },
+  CAPTION_OPEN: {
+    color: '#607d8b'
   },
   SVG_CLOSE: {
     float: 'none',
@@ -100,6 +103,7 @@ var S = {
     paddingRight: '16px',
     paddingBottom: '4px',
     color: 'black',
+    fontSize: '17px',
     fontWeight: 'bold'
   },
   AUTHOR_ROOT: {
@@ -112,13 +116,9 @@ var S = {
     float: 'right',
     fontWeight: 'bold',
     color: 'gray',
-    //color: 'burlywood',
     paddingRight: '24px'
   },
   DATE: {
-    //float: 'right',
-    //color: 'cornflowerblue',
-    //color: '#3F51B5',
     color: 'gray',
     fontWeight: 'bold'
   }
@@ -132,13 +132,37 @@ var _toPublishedAt = function _toPublishedAt() {
   return time + ' ' + arr[0];
 };
 
-var Article = function (_Component) {
+var Article = (0, _withDnDStyle2.default)(_class = function (_Component) {
   (0, _inherits3.default)(Article, _Component);
 
   function Article(props) {
     (0, _classCallCheck3.default)(this, Article);
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (Article.__proto__ || Object.getPrototypeOf(Article)).call(this));
+
+    _this._dragStart = function (ev) {
+      ev.persist();
+      _this.clientX = ev.clientX;
+      _this.dragStartWithDnDStyle(ev);
+      ev.dataTransfer.effectAllowed = "move";
+      ev.dataTransfer.dropEffect = "move";
+    };
+
+    _this._dragEnd = function (ev) {
+      ev.preventDefault();
+      ev.persist();
+      _this.dragEndWithDnDStyle();
+      var _deltaX = Math.abs(_this.clientX - ev.clientX),
+          _this$props = _this.props,
+          item = _this$props.item,
+          onRemoveUnder = _this$props.onRemoveUnder;
+
+      if (_deltaX > D_REMOVE_UNDER) {
+        onRemoveUnder(item);
+      } else if (_deltaX > D_REMOVE_ITEM) {
+        _this._handleClose();
+      }
+    };
 
     _this._handleToggle = function () {
       _this.setState(function (prevState) {
@@ -149,9 +173,9 @@ var Article = function (_Component) {
     };
 
     _this._handleClose = function () {
-      var _this$props = _this.props,
-          onCloseItem = _this$props.onCloseItem,
-          item = _this$props.item;
+      var _this$props2 = _this.props,
+          onCloseItem = _this$props2.onCloseItem,
+          item = _this$props2.item;
 
       onCloseItem(item);
       _this.setState({ isClosed: true });
@@ -165,6 +189,11 @@ var Article = function (_Component) {
   }
 
   (0, _createClass3.default)(Article, [{
+    key: '_preventDefault',
+    value: function _preventDefault(ev) {
+      ev.preventDefault();
+    }
+  }, {
     key: 'render',
     value: function render() {
       var item = this.props.item,
@@ -183,7 +212,16 @@ var Article = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { style: (0, _extends3.default)({}, S.ROOT, _rootStyle) },
+        {
+          style: (0, _extends3.default)({}, S.ROOT, _rootStyle),
+          draggable: true,
+          onDragStart: this._dragStart,
+          onDragEnd: this._dragEnd,
+          onDrop: this._preventDefault,
+          onDragOver: this._preventDefault,
+          onDragEnter: this._preventDefault,
+          onDragLeave: this._preventDefault
+        },
         _react2.default.createElement(
           'div',
           { style: _headerStyle },
@@ -236,7 +274,7 @@ var Article = function (_Component) {
     }
   }]);
   return Article;
-}(_react.Component);
+}(_react.Component)) || _class;
 
 exports.default = Article;
 //# sourceMappingURL=D:\_Dev\_React\_News\js\components\items\Article.js.map

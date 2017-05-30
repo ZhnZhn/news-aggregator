@@ -5,6 +5,7 @@
                 "*.es6"
              ],    
     "plugins" : [        
+        "transform-decorators-legacy",
       [ "transform-react-remove-prop-types", {
          "mode": "wrap",
          "ignoreFilenames":["node_modules"]

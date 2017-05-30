@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import BrowserCaption from '../zhn-atoms/BrowserCaption'
+import CircleButton from '../zhn-atoms/CircleButton'
 import SvgHrzResize from '../zhn-atoms/SvgHrzResize'
 import ScrollPane from '../zhn-atoms/ScrollPane'
 
@@ -8,7 +9,7 @@ import Article from '../items/Article'
 
 const SHOW_POPUP = "show-popup"
     , CHILD_MARGIN = 36
-    , RESIZE_MIN_WIDTH = 350
+    , RESIZE_MIN_WIDTH = 400
     , RESIZE_MAX_WIDTH = 1200;
 
 const styles = {
@@ -29,6 +30,10 @@ const styles = {
     position : 'absolute',
     top : '30px',
     right: '0'
+  },
+  btCircle: {
+    marginLeft: '16px',
+    marginRight: '6px'
   },
   scrollDiv : {
     overflowY: 'auto',
@@ -76,13 +81,16 @@ class NewsPane extends Component {
       const { addAction, showAction, toggleAction, id } = this.props;
       if (option.id === id){
         switch(actionType){
-          case addAction:
+          case addAction: {
+            const sortBy = (option.sortBy)
+                    ? option.sortBy : this.state.sortBy
             this.setState({
               isShow: true,
               articles: option.data,
-              sortBy: option.sortBy
+              sortBy
             })
             break;
+           }
           case showAction:
             this.setState({ isShow: true })
             break;
@@ -108,20 +116,25 @@ class NewsPane extends Component {
      return this.rootDiv;
    }
 
-  _renderArticles(articles=[], onCloseItem){
+  _renderArticles(articles=[], onCloseItem, onRemoveUnder){
      return articles.map((article, index) => {
         return (
           <Article
              key={article.articleId}
              item={article}
              onCloseItem={onCloseItem}
+             onRemoveUnder={onRemoveUnder}
           />
         );
      })
   }
 
    render(){
-     const  { paneCaption, onCloseItem } = this.props
+      const {
+              paneCaption,
+              onRemoveItems,
+              onRemoveUnder, onCloseItem
+            } = this.props
           , { isShow, articles, sortBy } = this.state
           , _paneCaption = `${paneCaption} : ${sortBy}`
           , _styleIsShow = (isShow)
@@ -140,6 +153,11 @@ class NewsPane extends Component {
              caption={_paneCaption}
              onClose={this._handleHide}
           >
+            <CircleButton
+              caption="R"
+              style={styles.btCircle}
+              onClick={onRemoveItems}
+            />
             <SvgHrzResize
               minWidth={RESIZE_MIN_WIDTH}
               maxWidth={RESIZE_MAX_WIDTH}
@@ -147,7 +165,7 @@ class NewsPane extends Component {
             />
           </BrowserCaption>
           <ScrollPane style={styles.scrollDiv}>
-              { this._renderArticles(articles, onCloseItem) }
+              { this._renderArticles(articles, onCloseItem, onRemoveUnder) }
           </ScrollPane>
         </div>
      )

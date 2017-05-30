@@ -32,6 +32,10 @@ var _BrowserCaption = require('../zhn-atoms/BrowserCaption');
 
 var _BrowserCaption2 = _interopRequireDefault(_BrowserCaption);
 
+var _CircleButton = require('../zhn-atoms/CircleButton');
+
+var _CircleButton2 = _interopRequireDefault(_CircleButton);
+
 var _SvgHrzResize = require('../zhn-atoms/SvgHrzResize');
 
 var _SvgHrzResize2 = _interopRequireDefault(_SvgHrzResize);
@@ -48,7 +52,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var SHOW_POPUP = "show-popup",
     CHILD_MARGIN = 36,
-    RESIZE_MIN_WIDTH = 350,
+    RESIZE_MIN_WIDTH = 400,
     RESIZE_MAX_WIDTH = 1200;
 
 var styles = {
@@ -69,6 +73,10 @@ var styles = {
     position: 'absolute',
     top: '30px',
     right: '0'
+  },
+  btCircle: {
+    marginLeft: '16px',
+    marginRight: '6px'
   },
   scrollDiv: {
     overflowY: 'auto',
@@ -110,12 +118,15 @@ var NewsPane = function (_Component) {
       if (option.id === id) {
         switch (actionType) {
           case addAction:
-            _this.setState({
-              isShow: true,
-              articles: option.data,
-              sortBy: option.sortBy
-            });
-            break;
+            {
+              var sortBy = option.sortBy ? option.sortBy : _this.state.sortBy;
+              _this.setState({
+                isShow: true,
+                articles: option.data,
+                sortBy: sortBy
+              });
+              break;
+            }
           case showAction:
             _this.setState({ isShow: true });
             break;
@@ -169,12 +180,14 @@ var NewsPane = function (_Component) {
     value: function _renderArticles() {
       var articles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
       var onCloseItem = arguments[1];
+      var onRemoveUnder = arguments[2];
 
       return articles.map(function (article, index) {
         return _react2.default.createElement(_Article2.default, {
           key: article.articleId,
           item: article,
-          onCloseItem: onCloseItem
+          onCloseItem: onCloseItem,
+          onRemoveUnder: onRemoveUnder
         });
       });
     }
@@ -185,6 +198,8 @@ var NewsPane = function (_Component) {
 
       var _props = this.props,
           paneCaption = _props.paneCaption,
+          onRemoveItems = _props.onRemoveItems,
+          onRemoveUnder = _props.onRemoveUnder,
           onCloseItem = _props.onCloseItem,
           _state = this.state,
           isShow = _state.isShow,
@@ -209,6 +224,11 @@ var NewsPane = function (_Component) {
             caption: _paneCaption,
             onClose: this._handleHide
           },
+          _react2.default.createElement(_CircleButton2.default, {
+            caption: 'R',
+            style: styles.btCircle,
+            onClick: onRemoveItems
+          }),
           _react2.default.createElement(_SvgHrzResize2.default, {
             minWidth: RESIZE_MIN_WIDTH,
             maxWidth: RESIZE_MAX_WIDTH,
@@ -218,7 +238,7 @@ var NewsPane = function (_Component) {
         _react2.default.createElement(
           _ScrollPane2.default,
           { style: styles.scrollDiv },
-          this._renderArticles(articles, onCloseItem)
+          this._renderArticles(articles, onCloseItem, onRemoveUnder)
         )
       );
     }

@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 
+const CL_RESIZE = 'svg-resize';
 const S = {
   ROOT_DIV : {
-    display : 'inline-block'
+    display : 'inline-block',
+    lineHeight: '24px',
+    position: 'relative',
+    top: '2px'
   },
   LEFT_DIV : {
     marginLeft : '10px'
@@ -90,7 +94,7 @@ class SvgHrzResize extends Component {
     return (
       <div style={S.ROOT_DIV}>
         <div
-           className="svg-resize"
+           className={CL_RESIZE}
            style={S.LEFT_DIV}
            title="Resize container horizontal left"
            onMouseDown={this._handlerStartResize.bind(null, this._resizeLeft)}
@@ -114,7 +118,7 @@ class SvgHrzResize extends Component {
           </svg>
       </div>
       <div
-         className="svg-resize"
+         className={CL_RESIZE}
          style={S.LEFT_DIV}
          title="Resize container horizontal right"
          onMouseDown={this._handlerStartResize.bind(null, this._resizeRight)}

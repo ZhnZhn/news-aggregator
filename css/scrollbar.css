@@ -14,7 +14,8 @@
 .with-scroll::-webkit-scrollbar-track-piece{
     width: 2px;
     /*background-color: #232F3B;*/
-		background-color: #3f51b5;
+		/*background-color: #3f51b5;*/
+		background-color: #3f5178;
 	/*background-color:#333333;*/
 }
 

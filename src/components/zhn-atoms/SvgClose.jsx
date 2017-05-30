@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 
 const CL_ROOT = "svg-close"
 const STYLE = {
-  COLOR : '#F44336',
-  SVG : {
+  //COLOR : '#F44336',
+  COLOR: '#D64336',
+  SVG: {
     padding: '3px',
   }
 };

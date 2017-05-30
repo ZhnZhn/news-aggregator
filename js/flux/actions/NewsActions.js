@@ -30,12 +30,14 @@ var TYPES = exports.TYPES = {
   LOAD_NEWS_COMPLETED: 'loadNewsCompleted',
   LOAD_NEWS_FAILED: 'loadNewsFailed',
 
-  REMOVE_NEWS: 'removeNews'
+  REMOVE_NEWS: 'removeNews',
+  REMOVE_ALL_NEWS: 'removeAllNews',
+  REMOVE_UNDER_NEWS: 'removeUnderNews'
 };
 
 var NewsActions = _reflux2.default.createActions((_Reflux$createActions = {}, (0, _defineProperty3.default)(_Reflux$createActions, TYPES.LOAD_NEWS, {
   children: ['completed', 'failed']
-}), (0, _defineProperty3.default)(_Reflux$createActions, TYPES.REMOVE_NEWS, {}), _Reflux$createActions));
+}), (0, _defineProperty3.default)(_Reflux$createActions, TYPES.REMOVE_NEWS, {}), (0, _defineProperty3.default)(_Reflux$createActions, TYPES.REMOVE_ALL_NEWS, {}), (0, _defineProperty3.default)(_Reflux$createActions, TYPES.REMOVE_UNDER_NEWS, {}), _Reflux$createActions));
 
 NewsActions[TYPES.LOAD_NEWS].listen(function () {
   var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};

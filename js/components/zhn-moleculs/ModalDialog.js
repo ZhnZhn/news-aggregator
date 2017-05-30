@@ -24,6 +24,8 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -65,7 +67,7 @@ var STYLE = {
     display: 'block',
     backgroundColor: '#4D4D4D',
     //border: 'solid 2px #232F3B',
-    border: 'solid 2px #3f51b5',
+    border: 'solid 2px #3f5178',
     borderRadius: '5px',
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
     zIndex: 10
@@ -75,7 +77,7 @@ var STYLE = {
     //color: 'rgba(164, 135, 212,1)',
     color: '#9e9e9e',
     //backgroundColor: '#232F3B',
-    backgroundColor: '#3f51b5',
+    backgroundColor: '#3f5178',
     textAlign: 'center',
     fontSize: '18px'
   },
@@ -88,7 +90,7 @@ var STYLE = {
   }
 };
 
-var ModalDialog = function (_Component) {
+var ModalDialog = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(ModalDialog, _Component);
 
   function ModalDialog(props) {
@@ -198,13 +200,11 @@ var ModalDialog = function (_Component) {
     }
   }]);
   return ModalDialog;
-}(_react.Component);
-
-ModalDialog.defaultProps = {
+}(_react.Component), _class.defaultProps = {
   isWithButton: true,
   isNotUpdate: false,
   timeout: 450
-};
+}, _temp);
 ModalDialog.propTypes = process.env.NODE_ENV !== "production" ? {
   isShow: _propTypes2.default.bool,
   isWithButton: _propTypes2.default.bool,

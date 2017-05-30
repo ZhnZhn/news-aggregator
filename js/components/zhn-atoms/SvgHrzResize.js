@@ -26,9 +26,13 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var CL_RESIZE = 'svg-resize';
 var S = {
   ROOT_DIV: {
-    display: 'inline-block'
+    display: 'inline-block',
+    lineHeight: '24px',
+    position: 'relative',
+    top: '2px'
   },
   LEFT_DIV: {
     marginLeft: '10px'
@@ -127,7 +131,7 @@ var SvgHrzResize = function (_Component) {
         _react2.default.createElement(
           'div',
           {
-            className: 'svg-resize',
+            className: CL_RESIZE,
             style: S.LEFT_DIV,
             title: 'Resize container horizontal left',
             onMouseDown: this._handlerStartResize.bind(null, this._resizeLeft),
@@ -155,7 +159,7 @@ var SvgHrzResize = function (_Component) {
         _react2.default.createElement(
           'div',
           {
-            className: 'svg-resize',
+            className: CL_RESIZE,
             style: S.LEFT_DIV,
             title: 'Resize container horizontal right',
             onMouseDown: this._handlerStartResize.bind(null, this._resizeRight),

@@ -17,12 +17,34 @@ const Logic = {
     };
   },
 
+  removeAllNews(slice, paneId){
+    slice[paneId] = []
+    return {
+      id: paneId,
+      data: slice[paneId],
+      sortBy: ''
+    };
+  },
+
   removeNews(slice, item){
     const { id, source } = item;
     slice[source] = slice[source].filter(article => {
       return article.articleId !== id;
     })
+  },
+
+  removeUnderNews(slice, item){
+    const { articleId, source } = item;
+    const _underIndex = slice[source].findIndex(article => {
+      return article.articleId === articleId;
+    })
+    slice[source] = slice[source].slice(_underIndex+1)
+    return {
+      id: source,
+      data: slice[source]
+    };
   }
+
 }
 
 const NewsSlice = {
@@ -42,8 +64,17 @@ const NewsSlice = {
     this.triggerLoadingProgress(LP.LOADING_FAILED)
   },
 
+
   onRemoveNews(item){
     Logic.removeNews(this.news, item)
+  },
+  onRemoveAllNews(paneId){
+    const r = Logic.removeAllNews(this.news, paneId)
+    this.trigger(TYPES.LOAD_NEWS_COMPLETED, r)
+  },
+  onRemoveUnderNews(item){
+    const r = Logic.removeUnderNews(this.news, item)
+    this.trigger(TYPES.LOAD_NEWS_COMPLETED, r)
   }
 
 }

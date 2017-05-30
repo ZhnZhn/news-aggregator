@@ -18,6 +18,7 @@ const STYLE = {
     paddingLeft: '4px',
     verticalAlign: 'top',
     color: '#9e9e9e',
+    //color: '#8a8a8a',
     //color: 'rgba(164, 135, 212, 1)',
     fontFamily: 'Roboto, Arial Unicode MS, Arial, sans-serif',
     fontWeight: 'bold',
@@ -37,6 +38,7 @@ const STYLE = {
 
 const //FILL_OPEN = '#009688'
       FILL_OPEN = '#9e9e9e'
+      //FILL_OPEN = '#8a8a8a'
     , FILL_CLOSE = '#4D4D4D'
     , PATH_OPEN = "M 2,14 L 14,14 14,2 2,14"
     , PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";

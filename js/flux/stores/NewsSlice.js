@@ -28,6 +28,14 @@ var Logic = {
       sortBy: sortBy
     };
   },
+  removeAllNews: function removeAllNews(slice, paneId) {
+    slice[paneId] = [];
+    return {
+      id: paneId,
+      data: slice[paneId],
+      sortBy: ''
+    };
+  },
   removeNews: function removeNews(slice, item) {
     var id = item.id,
         source = item.source;
@@ -35,6 +43,19 @@ var Logic = {
     slice[source] = slice[source].filter(function (article) {
       return article.articleId !== id;
     });
+  },
+  removeUnderNews: function removeUnderNews(slice, item) {
+    var articleId = item.articleId,
+        source = item.source;
+
+    var _underIndex = slice[source].findIndex(function (article) {
+      return article.articleId === articleId;
+    });
+    slice[source] = slice[source].slice(_underIndex + 1);
+    return {
+      id: source,
+      data: slice[source]
+    };
   }
 };
 
@@ -61,6 +82,14 @@ var NewsSlice = {
   },
   onRemoveNews: function onRemoveNews(item) {
     Logic.removeNews(this.news, item);
+  },
+  onRemoveAllNews: function onRemoveAllNews(paneId) {
+    var r = Logic.removeAllNews(this.news, paneId);
+    this.trigger(_NewsActions.TYPES.LOAD_NEWS_COMPLETED, r);
+  },
+  onRemoveUnderNews: function onRemoveUnderNews(item) {
+    var r = Logic.removeUnderNews(this.news, item);
+    this.trigger(_NewsActions.TYPES.LOAD_NEWS_COMPLETED, r);
   }
 };
 

@@ -34,7 +34,8 @@ var S = {
   BADGE: {
     display: 'inline-block',
     color: 'grey',
-    backgroundColor: 'rgb(63, 81, 181)',
+    //backgroundColor: 'rgb(63, 81, 181)',
+    backgroundColor: '#3f5178',
     float: 'right',
     width: '32px',
     paddingRight: '5px',

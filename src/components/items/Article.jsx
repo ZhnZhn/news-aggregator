@@ -3,14 +3,17 @@ import React, { Component } from 'react'
 import SvgClose from '../zhn-atoms/SvgClose'
 import ShowHide from '../zhn-atoms/ShowHide'
 
+import withDnDStyle from './decorators/withDnDStyle'
+
+const D_REMOVE_UNDER = 60;
+const D_REMOVE_ITEM = 35;
+
 const S = {
   ROOT: {
     position : 'relative',
     lineHeight : 1.5,
-    //marginBottom: '10px',
     marginBottom: '16px',
     marginRight: '25px',
-    //borderLeft: 'solid 3px green'
     boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
     borderBottomRightRadius: '2px'
   },
@@ -23,30 +26,17 @@ const S = {
     backgroundColor: '#3F51B5'
   },
   HEADER: {
-    //backgroundColor: '#232F3B',
     backgroundColor: '#404040',
     paddingTop: '8px',
     paddingLeft: '16px',
-    //paddingBottom: '5px',
     paddingBottom: '16px',
     lineHeight: 1.5,
-    //height: '32px',
     width : '100%',
     borderTopRightRadius: '2px',
     borderBottomRightRadius: '2px',
-    //borderLeft: 'solid 6px darkcyan'
-    //borderLeft: 'solid 6px #3F51B5'
   },
   HEADER_OPEN: {
     borderLeft: '6px solid #607d8b'
-  },
-  CAPTION_OPEN: {
-    //display : 'inline-block',
-    color: '#607d8b',
-    //fontSize: '18px',
-    //fontWeight : 'bold',
-    //paddingRight: '32px',
-    //cursor: 'pointer'
   },
   CAPTION: {
     display : 'inline-block',
@@ -56,6 +46,9 @@ const S = {
     paddingRight: '32px',
     cursor: 'pointer'
   },
+  CAPTION_OPEN: {
+    color: '#607d8b',
+  },
   SVG_CLOSE: {
     float: 'none',
     position: 'absolute',
@@ -63,7 +56,6 @@ const S = {
     right: '0px'
   },
   IMG: {
-
   },
   DESCR: {
     display: 'block',
@@ -73,6 +65,7 @@ const S = {
     paddingRight: '16px',
     paddingBottom: '4px',
     color: 'black',
+    fontSize: '17px',
     fontWeight: 'bold'
   },
   AUTHOR_ROOT: {
@@ -85,13 +78,9 @@ const S = {
     float: 'right',
     fontWeight: 'bold',
     color: 'gray',
-    //color: 'burlywood',
     paddingRight: '24px'
   },
   DATE: {
-    //float: 'right',
-    //color: 'cornflowerblue',
-    //color: '#3F51B5',
     color: 'gray',
     fontWeight: 'bold'
   }
@@ -107,6 +96,7 @@ const _toPublishedAt = (publishedAt='') => {
   return `${time} ${arr[0]}`;
 }
 
+@withDnDStyle
 class Article extends Component {
   constructor(props){
     super()
@@ -114,6 +104,29 @@ class Article extends Component {
       isClosed: false,
       isShow: false
     }
+  }
+
+  _dragStart = (ev) => {
+    ev.persist()
+    this.clientX = ev.clientX
+    this.dragStartWithDnDStyle(ev)
+    ev.dataTransfer.effectAllowed="move"
+    ev.dataTransfer.dropEffect="move"
+  }
+  _dragEnd = (ev) => {
+    ev.preventDefault()
+    ev.persist()
+    this.dragEndWithDnDStyle()
+    const _deltaX = Math.abs(this.clientX - ev.clientX)
+        , { item, onRemoveUnder } = this.props;
+    if (_deltaX > D_REMOVE_UNDER) {
+      onRemoveUnder(item)
+    } else if (_deltaX > D_REMOVE_ITEM){
+      this._handleClose()
+    }
+  }
+  _preventDefault(ev){
+    ev.preventDefault()
   }
 
   _handleToggle = () => {
@@ -149,7 +162,16 @@ class Article extends Component {
              ? { display: 'none' }
              : undefined;
     return (
-        <div style={{...S.ROOT, ..._rootStyle}}>
+        <div
+          style={{...S.ROOT, ..._rootStyle}}
+          draggable={true}
+          onDragStart={this._dragStart}
+          onDragEnd={this._dragEnd}
+          onDrop={this._preventDefault}
+          onDragOver={this._preventDefault}
+          onDragEnter={this._preventDefault}
+          onDragLeave={this._preventDefault}
+        >
           <div style={_headerStyle}>
             <span
                className="not-selected"

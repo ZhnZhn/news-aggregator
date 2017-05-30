@@ -27,7 +27,7 @@ const STYLE = {
     display: 'block',
     backgroundColor: '#4D4D4D',
     //border: 'solid 2px #232F3B',
-    border: 'solid 2px #3f51b5',
+    border: 'solid 2px #3f5178',
     borderRadius: '5px',
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
     zIndex: 10
@@ -37,7 +37,7 @@ const STYLE = {
     //color: 'rgba(164, 135, 212,1)',
     color: '#9e9e9e',
     //backgroundColor: '#232F3B',
-    backgroundColor: '#3f51b5',
+    backgroundColor: '#3f5178',
     textAlign: 'center',
     fontSize: '18px'
   },

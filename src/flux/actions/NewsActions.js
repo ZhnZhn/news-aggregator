@@ -8,14 +8,18 @@ export const TYPES = {
   LOAD_NEWS_COMPLETED: 'loadNewsCompleted',
   LOAD_NEWS_FAILED: 'loadNewsFailed',
 
-  REMOVE_NEWS: 'removeNews'
+  REMOVE_NEWS: 'removeNews',
+  REMOVE_ALL_NEWS: 'removeAllNews',
+  REMOVE_UNDER_NEWS: 'removeUnderNews'
 }
 
 const NewsActions = Reflux.createActions({
   [TYPES.LOAD_NEWS] : {
     children: ['completed', 'failed']
   },
-  [TYPES.REMOVE_NEWS]: {}
+  [TYPES.REMOVE_NEWS]: {},
+  [TYPES.REMOVE_ALL_NEWS]: {},
+  [TYPES.REMOVE_UNDER_NEWS]: {}
 })
 
 NewsActions[TYPES.LOAD_NEWS].listen(function(option={}){

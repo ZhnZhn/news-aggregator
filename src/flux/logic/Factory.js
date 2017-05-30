@@ -35,6 +35,8 @@ const Factory = {
       addAction: NA.LOAD_NEWS_COMPLETED,
       showAction: CA.SHOW_NEWS_PANE,
       toggleAction: CA.TOGGLE_NEWS_PANE,
+      onRemoveItems: NewsActions.removeAllNews.bind(null, paneId),
+      onRemoveUnder: NewsActions.removeUnderNews,
       onCloseItem: NewsActions.removeNews,
       onClose: closeNewsPane.bind(null, itemConf)
     });
