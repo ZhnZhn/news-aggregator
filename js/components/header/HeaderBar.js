@@ -30,12 +30,13 @@ var _ActionButton2 = _interopRequireDefault(_ActionButton);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var TITLE = "News Aggregator v0.1.0";
+var TITLE = "News Aggregator v0.2.0";
 
 var HeaderBar = function HeaderBar(_ref) {
   var store = _ref.store,
       LOADING_ACTIONS = _ref.LOADING_ACTIONS,
       onNewsSources = _ref.onNewsSources,
+      onQuery = _ref.onQuery,
       onSettings = _ref.onSettings,
       onAbout = _ref.onAbout;
   return _react2.default.createElement(
@@ -61,6 +62,12 @@ var HeaderBar = function HeaderBar(_ref) {
         caption: 'News',
         title: 'Open News Sources Browser',
         onClick: onNewsSources
+      }),
+      _react2.default.createElement(_ActionButton2.default, {
+        type: 'TypeA',
+        caption: 'Query',
+        title: 'Webhose.io Query Dialog',
+        onClick: onQuery
       })
     ),
     _react2.default.createElement(_GitHubLink2.default, {

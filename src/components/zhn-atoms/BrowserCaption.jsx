@@ -12,7 +12,6 @@ const S = {
     paddingTop: '4px',
     paddingLeft: '10px',
     marginBottom: '10px',
-    marginRight: '-2px',
     borderTopLeftRadius: '4px',
     borderTopRightRadius: '4px'
   },
@@ -30,8 +29,8 @@ const S = {
   }
 }
 
-const BrowserCaption = ({ caption, children, onClose }) => (
-  <div style={S.ROOT}>
+const BrowserCaption = ({ rootStyle, caption, children, onClose }) => (
+  <div style={{...S.ROOT, ...rootStyle}}>
     <span
        className="not-selected"
        style={S.CAPTION}

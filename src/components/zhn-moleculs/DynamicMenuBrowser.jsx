@@ -93,7 +93,7 @@ class DynamicMenuBrowser extends Component {
           {...menuPart}
           key={index}
           hmItems={items}
-          {...restProps}          
+          {...restProps}
         />
       );
     })
@@ -104,7 +104,7 @@ class DynamicMenuBrowser extends Component {
         , { isShow, isLoading, isLoadingFailed, menuModel } = this.state;
     return (
       <Browser isShow={isShow} style={S.BROWSER}>
-        <BrowserCaption
+        <BrowserCaption          
           caption={caption}
           onClose={this._handleHide}
         />

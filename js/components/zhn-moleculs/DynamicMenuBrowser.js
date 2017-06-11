@@ -28,6 +28,8 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -77,7 +79,7 @@ var S = {
   }
 };
 
-var DynamicMenuBrowser = function (_Component) {
+var DynamicMenuBrowser = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(DynamicMenuBrowser, _Component);
 
   function DynamicMenuBrowser(props) {
@@ -189,10 +191,8 @@ var DynamicMenuBrowser = function (_Component) {
     }
   }]);
   return DynamicMenuBrowser;
-}(_react.Component);
-
-DynamicMenuBrowser.defaultProps = {
+}(_react.Component), _class.defaultProps = {
   onError: function onError() {}
-};
+}, _temp);
 exports.default = DynamicMenuBrowser;
 //# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-moleculs\DynamicMenuBrowser.js.map

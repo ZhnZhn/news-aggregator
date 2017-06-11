@@ -6,10 +6,10 @@ import AppLabel from './AppLabel'
 import GitHubLink from './GitHubLink'
 import ActionButton from '../zhn-atoms/ActionButton'
 
-const TITLE = "News Aggregator v0.1.0";
+const TITLE = "News Aggregator v0.2.0";
 
 const HeaderBar = ({
-  store, LOADING_ACTIONS, onNewsSources, onSettings, onAbout
+  store, LOADING_ACTIONS, onNewsSources, onQuery, onSettings, onAbout
 }) => (
   <div className="header">
     <LoadingProgress
@@ -30,6 +30,12 @@ const HeaderBar = ({
         caption="News"
         title="Open News Sources Browser"
         onClick={onNewsSources}
+      />
+      <ActionButton
+         type="TypeA"
+         caption="Query"
+         title="Webhose.io Query Dialog"
+         onClick={onQuery}
       />
     </span>
     <GitHubLink

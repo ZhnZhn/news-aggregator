@@ -1,17 +1,8 @@
 import React, { Component } from 'react'
 
 import DynamicMenuBrowser from '../zhn-moleculs/DynamicMenuBrowser'
+import PoweredBy from '../links/PoweredBy'
 import LinkNewsApi from '../links/LinkNewsApi'
-
-const S = {
-  BOTTOM: {
-    marginTop: '16px',
-    marginLeft: '8px'
-  },
-  TEXT: {
-    color: 'black'
-  }
-}
 
 class NewsBrowser extends Component {
 
@@ -55,38 +46,13 @@ class NewsBrowser extends Component {
          onClick={onClick}
          onError={onError}
          onClickBadge={onClickBadge}
-      >
-         <div style={S.BOTTOM}>
-           <span style={S.TEXT}>Powered by&nbsp;&nbsp;</span>
+      >         
+         <PoweredBy>
            <LinkNewsApi />
-         </div>
+         </PoweredBy>
       </DynamicMenuBrowser>
     );
   }
 }
-
-/*
-const NewsBrowser = ({
-  menuModel, rowClass, store, showAction, onClick, onError
-}) => {
-  return (
-    <DynamicMenuBrowser
-       caption="News Sources"
-       url="data/news-source-menu.json"
-       rowClass={rowClass}
-       store={store}
-       browserId="NEWS-API-ORG"
-       showAction={showAction}
-       onClick={onClick}
-       onError={onError}
-    >
-       <div style={S.BOTTOM}>
-         <span style={S.TEXT}>Powered by&nbsp;&nbsp;</span>
-         <LinkNewsApi />
-       </div>
-    </DynamicMenuBrowser>
-  );
-}
-*/
 
 export default NewsBrowser

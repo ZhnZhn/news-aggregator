@@ -3,19 +3,20 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
 var ROOT = 'https://newsapi.org/v1/articles';
-//const apiKey = 'a9d5f931a98b4d04a8ce21d260ffe157'
+var DF_SOURCE = 'bbc-sport';
+var DF_SORT_BY = 'top';
 
 var NewsApi = {
   getRequestUrl: function getRequestUrl(option) {
     var _option$source = option.source,
-        source = _option$source === undefined ? 'bbc-sport' : _option$source,
+        source = _option$source === undefined ? DF_SOURCE : _option$source,
         _option$sortBy = option.sortBy,
-        sortBy = _option$sortBy === undefined ? 'top' : _option$sortBy,
-        apiNewsKey = option.apiNewsKey;
+        sortBy = _option$sortBy === undefined ? DF_SORT_BY : _option$sortBy,
+        apiKey = option.apiKey;
 
-    return ROOT + '?source=' + source + '&apiKey=' + apiNewsKey + '&sortBy=' + sortBy;
+    option.apiKey = undefined;
+    return ROOT + '?source=' + source + '&apiKey=' + apiKey + '&sortBy=' + sortBy;
   },
   checkResponse: function checkResponse(json, option) {
     var status = json.status,

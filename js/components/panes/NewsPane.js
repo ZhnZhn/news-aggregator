@@ -69,6 +69,9 @@ var styles = {
     overflowY: 'hidden',
     overflowX: 'hidden'
   },
+  brCaption: {
+    marginRight: '-2px'
+  },
   hrzResize: {
     position: 'absolute',
     top: '30px',
@@ -221,6 +224,7 @@ var NewsPane = function (_Component) {
         _react2.default.createElement(
           _BrowserCaption2.default,
           {
+            rootStyle: styles.brCaption,
             caption: _paneCaption,
             onClose: this._handleHide
           },

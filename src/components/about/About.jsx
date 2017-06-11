@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-
-//import { ComponentActionTypes } from '../../flux/actions/ComponentActions';
-//import { ChartActionTypes } from '../../flux/actions/ChartActions';
+import React, { Component } from 'react'
 
 import ScrollPane from '../zhn-atoms/ScrollPane'
 import BrowserCaption from '../zhn-atoms/BrowserCaption'
 import LinkNewsApi from '../links/LinkNewsApi'
+import LinkWebhoseIo from '../links/LinkWebhoseIo'
 import Step from './Step'
 import IconLogoBar from './IconLogoBar'
 
@@ -43,6 +41,12 @@ const S = {
   },
   BLACK: {
     color: 'black'
+  },
+  MARGIN_TOP: {
+    marginTop: '8px'
+  },
+  PROVIDER: {
+    color: '#009AE5'
   }
 };
 
@@ -105,12 +109,18 @@ class About extends Component {
                  <p>
                    <span>News headline provider:&nbsp;</span>
                    <LinkNewsApi />
+                   <span>,&nbsp;</span>
+                   <LinkWebhoseIo />
                    <span>.</span>
                  </p>
-                 <p>
-                   NewsApi Key is required for using app.
+                 <p style={S.MARGIN_TOP}>
+                   Provider's API Key is required for using app, can be set in Settings Dialog.
                  </p>
              </div>
+             <p style={S.MARGIN_TOP}>
+               <span style={S.BLACK}>For&nbsp;</span>
+               <span style={S.PROVIDER}>NewsApi:</span>
+             </p>
              <Step
                 styleRoot={S.STEP}
                 step="1"
@@ -126,9 +136,29 @@ class About extends Component {
                 step="3"
                 description="Click a button Load in Dialog."
              />
-             <p style={{ marginTop: '16px' }}>
+             <p style={S.MARGIN_TOP}>
                Not all news source support all sortBy values.
              </p>
+
+             <p style={S.MARGIN_TOP}>
+               <span style={S.BLACK}>For&nbsp;</span>
+               <span style={S.PROVIDER}>Webhose:</span>
+             </p>
+             <Step
+                styleRoot={S.STEP}
+                step="1"
+                description="Click button Query."
+             />
+             <Step
+                styleRoot={S.STEP}
+                step="2"
+                description="Enter and choose parameters in Dialog."
+             />
+             <Step
+                styleRoot={S.STEP}
+                step="3"
+                description="Click a button Load in Dialog."
+             />
              <IconLogoBar />
              <p>
                <span style={S.BLACK}>

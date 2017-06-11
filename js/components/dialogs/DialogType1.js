@@ -98,6 +98,7 @@ var DialogType1 = function (_Component) {
           onClose: this._handleClose
         },
         _react2.default.createElement(_RowInputSelect2.default, {
+          accessKey: 's',
           caption: 'SortBy:',
           placeholder: 'Default: top',
           options: options,

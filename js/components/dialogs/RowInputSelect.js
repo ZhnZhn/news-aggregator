@@ -16,6 +16,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _CaptionInput = require('../zhn-atoms/CaptionInput');
+
+var _CaptionInput2 = _interopRequireDefault(_CaptionInput);
+
 var _InputSelect = require('../zhn-select/InputSelect');
 
 var _InputSelect2 = _interopRequireDefault(_InputSelect);
@@ -27,20 +31,24 @@ var _DialogStyles2 = _interopRequireDefault(_DialogStyles);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var RowInputSelect = function RowInputSelect(_ref) {
-   var _ref$caption = _ref.caption,
-       caption = _ref$caption === undefined ? '' : _ref$caption,
-       rest = (0, _objectWithoutProperties3.default)(_ref, ['caption']);
+   var caption = _ref.caption,
+       accessKey = _ref.accessKey,
+       rest = (0, _objectWithoutProperties3.default)(_ref, ['caption', 'accessKey']);
    return _react2.default.createElement(
       'div',
       { style: _DialogStyles2.default.rowDiv },
       _react2.default.createElement(
-         'span',
-         { style: _DialogStyles2.default.labelSpan },
-         caption
-      ),
-      _react2.default.createElement(_InputSelect2.default, (0, _extends3.default)({
-         width: '250'
-      }, rest))
+         'label',
+         { accessKey: accessKey },
+         _react2.default.createElement(_CaptionInput2.default, {
+            rootStyle: _DialogStyles2.default.labelSpan,
+            caption: caption,
+            accessKey: accessKey
+         }),
+         _react2.default.createElement(_InputSelect2.default, (0, _extends3.default)({
+            width: '250'
+         }, rest))
+      )
    );
 };
 

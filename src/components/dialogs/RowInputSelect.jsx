@@ -1,17 +1,22 @@
 import React from 'react';
 
-import InputSelect from '../zhn-select/InputSelect';
-import STYLE from '../styles/DialogStyles';
+import CaptionInput from '../zhn-atoms/CaptionInput'
+import InputSelect from '../zhn-select/InputSelect'
+import STYLE from '../styles/DialogStyles'
 
-const RowInputSelect = ({ caption='', ...rest }) => (
+const RowInputSelect = ({ caption, accessKey, ...rest }) => (
    <div style={STYLE.rowDiv}>
-      <span style={STYLE.labelSpan}>
-         {caption}
-      </span>
-      <InputSelect
-         width="250"
-         {...rest}
-      />
+      <label accessKey={accessKey}>
+        <CaptionInput
+           rootStyle={STYLE.labelSpan}
+           caption={caption}
+           accessKey={accessKey}
+        />
+        <InputSelect
+           width="250"
+           {...rest}
+        />
+      </label>
   </div>
 );
 

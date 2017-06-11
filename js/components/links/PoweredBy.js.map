@@ -1,0 +1,20 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\links\\PoweredBy.jsx",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\links\\PoweredBy.js",
+ "sourceRoot": "",
+ "names": [
+  "S",
+  "ROOT",
+  "marginTop",
+  "marginLeft",
+  "SPAN",
+  "color",
+  "PoweredBy",
+  "rootStyle",
+  "spanStyle",
+  "children"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;;;;;AAEA,IAAMA,IAAI;AACRC,QAAM;AACJC,eAAW,MADP;AAEJC,gBAAY;AAFR,GADE;AAKRC,QAAM;AACJC,WAAO;AADH;AALE,CAAV;;AAUA,IAAMC,YAAY,SAAZA,SAAY;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,SAAd,QAAcA,SAAd;AAAA,MAAyBC,QAAzB,QAAyBA,QAAzB;AAAA,SAChB;AAAA;AAAA,MAAK,kCAAWT,EAAEC,IAAb,EAAsBM,SAAtB,CAAL;AACE;AAAA;AAAA,QAAM,kCAAWP,EAAEI,IAAb,EAAsBI,SAAtB,CAAN;AAAA;AAAA,KADF;AAEKC;AAFL,GADgB;AAAA,CAAlB;;kBAMeH,S"
+}

@@ -44,7 +44,7 @@ class DialogType1 extends Component {
   }
 
   render(){
-    const { isShow, caption, onShow } = this.props;    
+    const { isShow, caption, onShow } = this.props;
     return (
       <DraggableDialog
            caption={caption}
@@ -54,6 +54,7 @@ class DialogType1 extends Component {
            onClose={this._handleClose}
        >
         <RowInputSelect
+          accessKey="s"
           caption="SortBy:"
           placeholder="Default: top"
           options={options}

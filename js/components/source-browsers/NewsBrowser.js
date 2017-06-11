@@ -28,21 +28,15 @@ var _DynamicMenuBrowser = require('../zhn-moleculs/DynamicMenuBrowser');
 
 var _DynamicMenuBrowser2 = _interopRequireDefault(_DynamicMenuBrowser);
 
+var _PoweredBy = require('../links/PoweredBy');
+
+var _PoweredBy2 = _interopRequireDefault(_PoweredBy);
+
 var _LinkNewsApi = require('../links/LinkNewsApi');
 
 var _LinkNewsApi2 = _interopRequireDefault(_LinkNewsApi);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var S = {
-  BOTTOM: {
-    marginTop: '16px',
-    marginLeft: '8px'
-  },
-  TEXT: {
-    color: 'black'
-  }
-};
 
 var NewsBrowser = function (_Component) {
   (0, _inherits3.default)(NewsBrowser, _Component);
@@ -106,13 +100,8 @@ var NewsBrowser = function (_Component) {
           onClickBadge: onClickBadge
         },
         _react2.default.createElement(
-          'div',
-          { style: S.BOTTOM },
-          _react2.default.createElement(
-            'span',
-            { style: S.TEXT },
-            'Powered by\xA0\xA0'
-          ),
+          _PoweredBy2.default,
+          null,
           _react2.default.createElement(_LinkNewsApi2.default, null)
         )
       );
@@ -120,30 +109,6 @@ var NewsBrowser = function (_Component) {
   }]);
   return NewsBrowser;
 }(_react.Component);
-
-/*
-const NewsBrowser = ({
-  menuModel, rowClass, store, showAction, onClick, onError
-}) => {
-  return (
-    <DynamicMenuBrowser
-       caption="News Sources"
-       url="data/news-source-menu.json"
-       rowClass={rowClass}
-       store={store}
-       browserId="NEWS-API-ORG"
-       showAction={showAction}
-       onClick={onClick}
-       onError={onError}
-    >
-       <div style={S.BOTTOM}>
-         <span style={S.TEXT}>Powered by&nbsp;&nbsp;</span>
-         <LinkNewsApi />
-       </div>
-    </DynamicMenuBrowser>
-  );
-}
-*/
 
 exports.default = NewsBrowser;
 //# sourceMappingURL=D:\_Dev\_React\_News\js\components\source-browsers\NewsBrowser.js.map

@@ -13,12 +13,24 @@ import RouterModalDialog from './dialogs/RouterModalDialog'
 
 const CL_COMP = "component-container";
 
+const _webhose = {
+    "type": "W_WEBHOSE",
+    "dialogType": "WebhoseQuery",
+    "paneCaption": "Webhose Query",
+    "paneId": "webhose",
+    "dialogProps": {
+      "caption": "Webhose Query",
+      "source": "webhose"
+    }
+}
+
 const AppNewsAggregator = () => (
   <div>
     <HeaderBar
       store={Store}
       LOADING_ACTIONS={LOADING_ACTIONS}
       onNewsSources={Actions.showBrowser.bind(Actions, 'NEWS_API_ORG')}
+      onQuery={Actions.showNewsDialog.bind(null, _webhose )}
       onSettings={Actions.showModalDialog.bind(Actions, 'SETTINGS_DIALOG', Store.exportSettingsFn())}
       onAbout={Actions.showAbout}
     />

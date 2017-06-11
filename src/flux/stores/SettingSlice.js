@@ -1,12 +1,14 @@
 
 const SettingSlice = {
   settings: {
-    newsKey: undefined
+    newsKey: undefined,
+    webhoseKey: undefined
   },
 
   exportSettingsFn(){
     return {
-      setNewsKey: this.setNewsKey.bind(this)
+      setNewsKey: this.setNewsKey.bind(this),
+      setWebhoseKey: this.setWebhoseKey.bind(this)
     }
   },
 
@@ -15,7 +17,15 @@ const SettingSlice = {
   },
   getNewsKey(){
     return this.settings.newsKey;
+  },
+
+  setWebhoseKey(value){
+    this.settings.webhoseKey = value
+  },
+  getWebhoseKey(){
+    return this.settings.webhoseKey;
   }
+
 }
 
 export default SettingSlice

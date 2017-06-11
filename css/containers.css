@@ -32,7 +32,7 @@
 .header__browser-bts {
   display: inline-block;
 }
-@media only screen and (max-width: 510px){
+@media only screen and (max-width: 600px){
   .header__label-app {
     display: none;
   }
@@ -43,6 +43,8 @@
 }
 
 .header__bts {
+  position: relative;
+  top: 2px;
   float: right;
   margin-right: 80px
 }
@@ -62,7 +64,7 @@
 .header__github-link:hover {
   fill: #80c040;
 }
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 650px){
   .header__github-link {
     display: none;
   }

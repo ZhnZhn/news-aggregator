@@ -40,6 +40,10 @@ var _LinkNewsApi = require('../links/LinkNewsApi');
 
 var _LinkNewsApi2 = _interopRequireDefault(_LinkNewsApi);
 
+var _LinkWebhoseIo = require('../links/LinkWebhoseIo');
+
+var _LinkWebhoseIo2 = _interopRequireDefault(_LinkWebhoseIo);
+
 var _Step = require('./Step');
 
 var _Step2 = _interopRequireDefault(_Step);
@@ -53,9 +57,6 @@ var _ContainerStyle = require('../styles/ContainerStyle');
 var _ContainerStyle2 = _interopRequireDefault(_ContainerStyle);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//import { ComponentActionTypes } from '../../flux/actions/ComponentActions';
-//import { ChartActionTypes } from '../../flux/actions/ChartActions';
 
 var CL_SHOW = "show-popup";
 
@@ -89,6 +90,12 @@ var S = {
   },
   BLACK: {
     color: 'black'
+  },
+  MARGIN_TOP: {
+    marginTop: '8px'
+  },
+  PROVIDER: {
+    color: '#009AE5'
   }
 };
 
@@ -185,13 +192,33 @@ var About = function (_Component) {
                 _react2.default.createElement(
                   'span',
                   null,
+                  ',\xA0'
+                ),
+                _react2.default.createElement(_LinkWebhoseIo2.default, null),
+                _react2.default.createElement(
+                  'span',
+                  null,
                   '.'
                 )
               ),
               _react2.default.createElement(
                 'p',
-                null,
-                'NewsApi Key is required for using app.'
+                { style: S.MARGIN_TOP },
+                'Provider\'s API Key is required for using app, can be set in Settings Dialog.'
+              )
+            ),
+            _react2.default.createElement(
+              'p',
+              { style: S.MARGIN_TOP },
+              _react2.default.createElement(
+                'span',
+                { style: S.BLACK },
+                'For\xA0'
+              ),
+              _react2.default.createElement(
+                'span',
+                { style: S.PROVIDER },
+                'NewsApi:'
               )
             ),
             _react2.default.createElement(_Step2.default, {
@@ -211,9 +238,38 @@ var About = function (_Component) {
             }),
             _react2.default.createElement(
               'p',
-              { style: { marginTop: '16px' } },
+              { style: S.MARGIN_TOP },
               'Not all news source support all sortBy values.'
             ),
+            _react2.default.createElement(
+              'p',
+              { style: S.MARGIN_TOP },
+              _react2.default.createElement(
+                'span',
+                { style: S.BLACK },
+                'For\xA0'
+              ),
+              _react2.default.createElement(
+                'span',
+                { style: S.PROVIDER },
+                'Webhose:'
+              )
+            ),
+            _react2.default.createElement(_Step2.default, {
+              styleRoot: S.STEP,
+              step: '1',
+              description: 'Click button Query.'
+            }),
+            _react2.default.createElement(_Step2.default, {
+              styleRoot: S.STEP,
+              step: '2',
+              description: 'Enter and choose parameters in Dialog.'
+            }),
+            _react2.default.createElement(_Step2.default, {
+              styleRoot: S.STEP,
+              step: '3',
+              description: 'Click a button Load in Dialog.'
+            }),
             _react2.default.createElement(_IconLogoBar2.default, null),
             _react2.default.createElement(
               'p',

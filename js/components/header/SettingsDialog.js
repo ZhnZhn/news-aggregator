@@ -32,34 +32,27 @@ var _ModalDialog = require('../zhn-moleculs/ModalDialog');
 
 var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
 
-var _InputSecret = require('../zhn-atoms/InputSecret');
+var _RowInputSecret = require('../dialogs/RowInputSecret');
 
-var _InputSecret2 = _interopRequireDefault(_InputSecret);
+var _RowInputSecret2 = _interopRequireDefault(_RowInputSecret);
 
 var _ActionButton = require('../zhn-atoms/ActionButton');
 
 var _ActionButton2 = _interopRequireDefault(_ActionButton);
-
-var _DialogStyles = require('../styles/DialogStyles');
-
-var _DialogStyles2 = _interopRequireDefault(_DialogStyles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var S = {
   MODAL: {
     position: 'static',
-    width: '370px',
-    height: '140px',
+    width: '380px',
+    height: '160px',
     margin: '70px auto 0px'
   }
 };
-//import RowCheckBox from '../dialogs/RowCheckBox';
 
 var SET_NEWS_KEY = 'setNewsKey';
-//const MODE_ADMIN = 'isAdminMode';
-//const MODE_DELTA = 'isDrawDeltaExtrems';
-//const MODE_ZOOM = 'isNotZoomToMinMax';
+var SET_WEBHOSE_KEY = 'setWebhoseKey';
 
 var SettingsDialog = function (_Component) {
   (0, _inherits3.default)(SettingsDialog, _Component);
@@ -69,13 +62,19 @@ var SettingsDialog = function (_Component) {
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (SettingsDialog.__proto__ || Object.getPrototypeOf(SettingsDialog)).call(this));
 
+    _this._regInput = function (propName, inputComp) {
+      _this[propName] = inputComp;
+    };
+
     _this._handleSet = function () {
       var _this$props = _this.props,
           data = _this$props.data,
           onClose = _this$props.onClose,
-          setNewsKey = (0, _safeFn2.default)(data, SET_NEWS_KEY);
+          setNewsKey = (0, _safeFn2.default)(data, SET_NEWS_KEY),
+          setWebhoseKey = (0, _safeFn2.default)(data, SET_WEBHOSE_KEY);
 
       setNewsKey(_this.inputComp.getValue());
+      setWebhoseKey(_this.inputWebhose.getValue());
       onClose();
     };
 
@@ -97,24 +96,11 @@ var SettingsDialog = function (_Component) {
     }
   }, {
     key: 'render',
-
-    /*
-    _handleMode = (fnName, mode) => {
-      const { data } = this.props
-          , fnMode = safeFn(data, fnName);
-      fnMode(mode)
-    }
-    */
-
     value: function render() {
-      var _this2 = this;
-
       var _props = this.props,
           isShow = _props.isShow,
           onClose = _props.onClose;
-      //, _isAdminMode = safeFn(data, MODE_ADMIN, false)()
-      //, _isDrawDeltaExtrems = safeFn(data, MODE_DELTA, false)()
-      //, _isNotZoomToMinMax = safeFn(data, MODE_ZOOM, false)();
+
 
       return _react2.default.createElement(
         _ModalDialog2.default,
@@ -125,21 +111,19 @@ var SettingsDialog = function (_Component) {
           commandButtons: this.commandButtons,
           onClose: onClose
         },
-        _react2.default.createElement(
-          'label',
-          { style: _DialogStyles2.default.rowDiv },
-          _react2.default.createElement(
-            'span',
-            { style: _DialogStyles2.default.labelSpan },
-            'NewsKey:'
-          ),
-          _react2.default.createElement(_InputSecret2.default, {
-            ref: function ref(c) {
-              return _this2.inputComp = c;
-            },
-            placeholder: 'News API Key'
-          })
-        )
+        _react2.default.createElement(_RowInputSecret2.default, {
+          accessKey: 'n',
+          caption: 'News:',
+          placeholder: 'News API Key, 32 Symbols',
+          onReg: this._regInput.bind(null, 'inputComp')
+        }),
+        _react2.default.createElement(_RowInputSecret2.default, {
+          accessKey: 'w',
+          caption: 'Webhose:',
+          placeholder: 'Webhose API Key, 36 Symbols',
+          maxLength: '36',
+          onReg: this._regInput.bind(null, 'inputWebhose')
+        })
       );
     }
   }]);
@@ -149,9 +133,8 @@ var SettingsDialog = function (_Component) {
 SettingsDialog.propTypes = process.env.NODE_ENV !== "production" ? {
   isShow: _react.PropTypes.bool,
   data: _react.PropTypes.shape({
-    setQuandlKey: _react.PropTypes.func,
-    isAdminMode: _react.PropTypes.func,
-    isDrawDeltaExtrems: _react.PropTypes.func
+    setNewsKey: _react.PropTypes.func,
+    setWebhoseKey: _react.PropTypes.func
   }),
   onClose: _react.PropTypes.func
 } : {};

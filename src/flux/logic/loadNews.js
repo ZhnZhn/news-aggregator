@@ -1,23 +1,22 @@
-import NewsApi from '../../api/NewsApi'
 import fnFetch from '../../utils/fn'
-import NewsApiAdapter from '../../adapters/NewsApiAdapter'
 
 const _fnCatch = ({ error, onFailed }) => {
   onFailed(error)
 }
 
-const _fnFetch = function({ json, option, onCompleted }){
-  const news = NewsApiAdapter.toNews(json, option);
+const _fFetch = (adapter) => function({ json, option, onCompleted }){
+  const news = adapter.toNews(json, option);
   const itemConf = option.itemConf;
   onCompleted({ news, itemConf })
 }
 
 const loadNews = function(option, onCompleted, onFailed){
+  const { api, adapter } = option;
   fnFetch({
-    uri: NewsApi.getRequestUrl(option),
+    uri: api.getRequestUrl(option),
     option: option,
-    onCheckResponse: NewsApi.checkResponse,
-    onFetch: _fnFetch,
+    onCheckResponse: api.checkResponse,
+    onFetch: _fFetch(adapter),
     onCompleted: onCompleted,
     onCatch: _fnCatch,
     onFailed: onFailed

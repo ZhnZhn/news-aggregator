@@ -1,11 +1,15 @@
-
-const ROOT = 'https://newsapi.org/v1/articles'
-//const apiKey = 'a9d5f931a98b4d04a8ce21d260ffe157'
+const ROOT = 'https://newsapi.org/v1/articles';
+const DF_SOURCE = 'bbc-sport';
+const DF_SORT_BY = 'top';
 
 const NewsApi = {
   getRequestUrl(option){
-    const { source='bbc-sport', sortBy='top', apiNewsKey } = option;
-    return `${ROOT}?source=${source}&apiKey=${apiNewsKey}&sortBy=${sortBy}`;
+    const {
+            source=DF_SOURCE, sortBy=DF_SORT_BY,
+            apiKey
+          } = option;
+    option.apiKey = undefined;
+    return `${ROOT}?source=${source}&apiKey=${apiKey}&sortBy=${sortBy}`;
   },
 
   checkResponse(json, option){

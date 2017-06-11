@@ -15,13 +15,13 @@ var _reflux = require('reflux');
 
 var _reflux2 = _interopRequireDefault(_reflux);
 
-var _Store = require('../stores/Store');
+var _RouterApiConf = require('../logic/RouterApiConf');
 
-var _Store2 = _interopRequireDefault(_Store);
+var _RouterApiConf2 = _interopRequireDefault(_RouterApiConf);
 
-var _RouterLoad = require('../logic/RouterLoad');
+var _loadNews = require('../logic/loadNews');
 
-var _RouterLoad2 = _interopRequireDefault(_RouterLoad);
+var _loadNews2 = _interopRequireDefault(_loadNews);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44,13 +44,16 @@ NewsActions[TYPES.LOAD_NEWS].listen(function () {
 
   var _option$loadId = option.loadId,
       loadId = _option$loadId === undefined ? 'N' : _option$loadId,
-      _apiNewsKey = _Store2.default.getNewsKey();
+      _conf = _RouterApiConf2.default.getApiKey(loadId),
+      apiKey = _conf.apiKey,
+      adapter = _conf.adapter,
+      api = _conf.api;
 
-  if (_apiNewsKey) {
-    option.apiNewsKey = _apiNewsKey;
-    _RouterLoad2.default[loadId](option, this.completed, this.failed);
+  if (apiKey) {
+    Object.assign(option, { apiKey: apiKey, adapter: adapter, api: api });
+    (0, _loadNews2.default)(option, this.completed, this.failed);
   } else {
-    this.failed({ msg: "NewsApi Key is not set. \nPlease, set and try again." });
+    this.failed({ msg: _conf.msgErr });
   }
 });
 

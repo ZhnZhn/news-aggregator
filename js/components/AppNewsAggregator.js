@@ -46,6 +46,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var CL_COMP = "component-container";
 
+var _webhose = {
+  "type": "W_WEBHOSE",
+  "dialogType": "WebhoseQuery",
+  "paneCaption": "Webhose Query",
+  "paneId": "webhose",
+  "dialogProps": {
+    "caption": "Webhose Query",
+    "source": "webhose"
+  }
+};
+
 var AppNewsAggregator = function AppNewsAggregator() {
   return _react2.default.createElement(
     'div',
@@ -54,6 +65,7 @@ var AppNewsAggregator = function AppNewsAggregator() {
       store: _Store2.default,
       LOADING_ACTIONS: _LoadingProgressActions.TYPES,
       onNewsSources: _ComponentActions2.default.showBrowser.bind(_ComponentActions2.default, 'NEWS_API_ORG'),
+      onQuery: _ComponentActions2.default.showNewsDialog.bind(null, _webhose),
       onSettings: _ComponentActions2.default.showModalDialog.bind(_ComponentActions2.default, 'SETTINGS_DIALOG', _Store2.default.exportSettingsFn()),
       onAbout: _ComponentActions2.default.showAbout
     }),

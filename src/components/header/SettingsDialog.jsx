@@ -1,35 +1,29 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
 
-import safeFn from '../../utils/safeFn';
+import safeFn from '../../utils/safeFn'
 
-import ModalDialog from '../zhn-moleculs/ModalDialog';
-import InputSecret from '../zhn-atoms/InputSecret';
-import ActionButton from '../zhn-atoms/ActionButton';
-//import RowCheckBox from '../dialogs/RowCheckBox';
-
-import STYLE from '../styles/DialogStyles';
+import ModalDialog from '../zhn-moleculs/ModalDialog'
+import RowInputSecret from '../dialogs/RowInputSecret'
+import ActionButton from '../zhn-atoms/ActionButton'
 
 const S = {
   MODAL : {
     position : 'static',
-    width: '370px',
-    height: '140px',
+    width: '380px',
+    height: '160px',
     margin: '70px auto 0px'
   }
 };
 
 const SET_NEWS_KEY = 'setNewsKey';
-//const MODE_ADMIN = 'isAdminMode';
-//const MODE_DELTA = 'isDrawDeltaExtrems';
-//const MODE_ZOOM = 'isNotZoomToMinMax';
+const SET_WEBHOSE_KEY = 'setWebhoseKey';
 
 class SettingsDialog extends Component {
   static propTypes = {
     isShow: PropTypes.bool,
     data: PropTypes.shape({
-      setQuandlKey: PropTypes.func,
-      isAdminMode: PropTypes.func,
-      isDrawDeltaExtrems: PropTypes.func
+      setNewsKey: PropTypes.func,
+      setWebhoseKey: PropTypes.func,
     }),
     onClose: PropTypes.func
   }
@@ -52,30 +46,25 @@ class SettingsDialog extends Component {
     return true;
   }
 
+  _regInput = (propName, inputComp) => {
+    this[propName] = inputComp
+  }
 
   _handleSet = () => {
     const { data, onClose } = this.props
-        , setNewsKey = safeFn(data, SET_NEWS_KEY);
+        , setNewsKey = safeFn(data, SET_NEWS_KEY)
+        , setWebhoseKey = safeFn(data, SET_WEBHOSE_KEY);
     setNewsKey(this.inputComp.getValue())
+    setWebhoseKey(this.inputWebhose.getValue())
     onClose()
   }
-  /*
-  _handleMode = (fnName, mode) => {
-    const { data } = this.props
-        , fnMode = safeFn(data, fnName);
-    fnMode(mode)
-  }
-  */
+
 
   render(){
     const {
             isShow,
-            //data,
             onClose
-          } = this.props
-        //, _isAdminMode = safeFn(data, MODE_ADMIN, false)()
-        //, _isDrawDeltaExtrems = safeFn(data, MODE_DELTA, false)()
-        //, _isNotZoomToMinMax = safeFn(data, MODE_ZOOM, false)();
+          } = this.props;
 
     return (
          <ModalDialog
@@ -85,36 +74,19 @@ class SettingsDialog extends Component {
             commandButtons={this.commandButtons}
             onClose={onClose}
          >
-
-           <label style={STYLE.rowDiv}>
-              <span style={STYLE.labelSpan}>
-                NewsKey:
-              </span>
-              <InputSecret
-                 ref={ c => this.inputComp = c}
-                 placeholder="News API Key"
-              />
-           </label>
-           {/*
-           <RowCheckBox
-              initValue={_isAdminMode}
-              caption="View in Admin Mode"
-              onCheck={this._handleMode.bind(null, MODE_ADMIN, true)}
-              onUnCheck={this._handleMode.bind(null, MODE_ADMIN, false)}
+           <RowInputSecret
+             accessKey="n"
+             caption="News:"
+             placeholder="News API Key, 32 Symbols"
+             onReg={this._regInput.bind(null, 'inputComp')}
            />
-           <RowCheckBox
-              initValue={_isDrawDeltaExtrems}
-              caption="Draw Delta Extrems"
-              onCheck={this._handleMode.bind(null, MODE_DELTA, true)}
-              onUnCheck={this._handleMode.bind(null, MODE_DELTA, false)}
+           <RowInputSecret
+             accessKey="w"
+             caption="Webhose:"
+             placeholder="Webhose API Key, 36 Symbols"
+             maxLength="36"
+             onReg={this._regInput.bind(null, 'inputWebhose')}
            />
-           <RowCheckBox
-              initValue={_isNotZoomToMinMax}
-              caption="Not Zoom to Min-Max"
-              onCheck={this._handleMode.bind(null, MODE_ZOOM, true)}
-              onUnCheck={this._handleMode.bind(null, MODE_ZOOM, false)}
-           />
-           */}
          </ModalDialog>
     );
   }

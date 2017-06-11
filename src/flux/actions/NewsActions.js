@@ -1,7 +1,7 @@
 import Reflux from 'reflux'
 
-import Store from '../stores/Store'
-import RouterLoad from '../logic/RouterLoad'
+import RouterApiConf from '../logic/RouterApiConf'
+import loadNews from '../logic/loadNews'
 
 export const TYPES = {
   LOAD_NEWS: 'loadNews',
@@ -24,12 +24,13 @@ const NewsActions = Reflux.createActions({
 
 NewsActions[TYPES.LOAD_NEWS].listen(function(option={}){
   const { loadId='N' } = option
-      , _apiNewsKey = Store.getNewsKey();
-  if (_apiNewsKey){
-    option.apiNewsKey = _apiNewsKey
-    RouterLoad[loadId](option, this.completed, this.failed)
+      , _conf = RouterApiConf.getApiKey(loadId)
+      , { apiKey, adapter, api } = _conf;
+  if (apiKey){
+    Object.assign(option, { apiKey, adapter, api })
+    loadNews(option, this.completed, this.failed)
   } else {
-    this.failed({ msg: "NewsApi Key is not set. \nPlease, set and try again." })
+    this.failed({ msg: _conf.msgErr })
   }
 })
 

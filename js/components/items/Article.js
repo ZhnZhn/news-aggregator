@@ -51,7 +51,7 @@ var S = {
   ROOT: {
     position: 'relative',
     lineHeight: 1.5,
-    marginBottom: '16px',
+    marginBottom: '5px',
     marginRight: '25px',
     boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
     borderBottomRightRadius: '2px'

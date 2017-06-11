@@ -16,7 +16,7 @@ var DialogStyles = {
     display: 'inline-block',
     //verticalAlign: 'top',
     textAlign: 'right',
-    width: '100px',
+    width: '110px',
     paddingRight: '5px',
     fontSize: '16px',
     fontWeight: 'bold',

@@ -30,14 +30,26 @@ const _maskValue = (len=0) => {
 
 class InputSecret extends Component {
 
-  state = {
-    value: ''
+  constructor(props){
+    super()
+    this.secret = ''
+    this.state = {
+      value: ''
+    }
+  }
+
+  componentDidMount(){
+    const { onReg } = this.props;
+    if (typeof onReg === 'function'){
+      onReg(this)
+    }
   }
 
   _handleChangeValue = (event) => {
     this.secret = event.target.value;
     this.setState({ value: _maskValue(this.secret.length) });
   }
+
 
   render(){
     const { placeholder, maxLength="32" } = this.props
@@ -64,7 +76,7 @@ class InputSecret extends Component {
   }
 
   getValue(){
-    return this.secret;
+    return this.secret.trim();
   }
 }
 

@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -24,7 +28,6 @@ var S = {
     paddingTop: '4px',
     paddingLeft: '10px',
     marginBottom: '10px',
-    marginRight: '-2px',
     borderTopLeftRadius: '4px',
     borderTopRightRadius: '4px'
   },
@@ -43,12 +46,13 @@ var S = {
 };
 
 var BrowserCaption = function BrowserCaption(_ref) {
-  var caption = _ref.caption,
+  var rootStyle = _ref.rootStyle,
+      caption = _ref.caption,
       children = _ref.children,
       onClose = _ref.onClose;
   return _react2.default.createElement(
     'div',
-    { style: S.ROOT },
+    { style: (0, _extends3.default)({}, S.ROOT, rootStyle) },
     _react2.default.createElement(
       'span',
       {

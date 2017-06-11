@@ -6,12 +6,14 @@ Object.defineProperty(exports, "__esModule", {
 
 var SettingSlice = {
   settings: {
-    newsKey: undefined
+    newsKey: undefined,
+    webhoseKey: undefined
   },
 
   exportSettingsFn: function exportSettingsFn() {
     return {
-      setNewsKey: this.setNewsKey.bind(this)
+      setNewsKey: this.setNewsKey.bind(this),
+      setWebhoseKey: this.setWebhoseKey.bind(this)
     };
   },
   setNewsKey: function setNewsKey(value) {
@@ -19,6 +21,12 @@ var SettingSlice = {
   },
   getNewsKey: function getNewsKey() {
     return this.settings.newsKey;
+  },
+  setWebhoseKey: function setWebhoseKey(value) {
+    this.settings.webhoseKey = value;
+  },
+  getWebhoseKey: function getWebhoseKey() {
+    return this.settings.webhoseKey;
   }
 };
 

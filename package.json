@@ -11,6 +11,7 @@
     "stats:json": "webpack --profile --json > stats.json",
     "stats:report": "webpack-bundle-analyzer stats.json --no-open --mode static",
     "stats:help": "webpack-bundle-analyzer --help > out.txt",
+    "start:emitter": "chokidar-socket-emitter",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Yevhenii Molodyi",

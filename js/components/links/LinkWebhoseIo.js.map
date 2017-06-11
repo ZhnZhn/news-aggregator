@@ -1,0 +1,12 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\links\\LinkWebhoseIo.jsx",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\links\\LinkWebhoseIo.js",
+ "sourceRoot": "",
+ "names": [
+  "LinkWebhoseIo",
+  "props"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,gBAAgB,SAAhBA,aAAgB,CAACC,KAAD;AAAA,UACnB;AACG,aAAM,YADT;AAEG,YAAK;AAFR,MAGOA,KAHP,EADmB;AAAA,CAAtB;;kBAOeD,a"
+}

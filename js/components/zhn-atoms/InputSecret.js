@@ -60,26 +60,33 @@ var _maskValue = function _maskValue() {
 var InputSecret = function (_Component) {
   (0, _inherits3.default)(InputSecret, _Component);
 
-  function InputSecret() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
+  function InputSecret(props) {
     (0, _classCallCheck3.default)(this, InputSecret);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+    var _this = (0, _possibleConstructorReturn3.default)(this, (InputSecret.__proto__ || Object.getPrototypeOf(InputSecret)).call(this));
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = InputSecret.__proto__ || Object.getPrototypeOf(InputSecret)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      value: ''
-    }, _this._handleChangeValue = function (event) {
+    _this._handleChangeValue = function (event) {
       _this.secret = event.target.value;
       _this.setState({ value: _maskValue(_this.secret.length) });
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    _this.secret = '';
+    _this.state = {
+      value: ''
+    };
+    return _this;
   }
 
   (0, _createClass3.default)(InputSecret, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var onReg = this.props.onReg;
+
+      if (typeof onReg === 'function') {
+        onReg(this);
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _props = this.props,
@@ -110,7 +117,7 @@ var InputSecret = function (_Component) {
   }, {
     key: 'getValue',
     value: function getValue() {
-      return this.secret;
+      return this.secret.trim();
     }
   }]);
   return InputSecret;

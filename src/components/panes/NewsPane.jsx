@@ -26,6 +26,9 @@ const styles = {
     overflowY: 'hidden',
     overflowX : 'hidden'
   },
+  brCaption: {
+    marginRight: '-2px'
+  },
   hrzResize : {
     position : 'absolute',
     top : '30px',
@@ -150,6 +153,7 @@ class NewsPane extends Component {
            style={{...styles.rootDiv, ..._styleIsShow}}
         >
           <BrowserCaption
+             rootStyle={styles.brCaption}
              caption={_paneCaption}
              onClose={this._handleHide}
           >

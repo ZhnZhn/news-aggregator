@@ -11,8 +11,8 @@ const D_REMOVE_ITEM = 35;
 const S = {
   ROOT: {
     position : 'relative',
-    lineHeight : 1.5,
-    marginBottom: '16px',
+    lineHeight : 1.5,    
+    marginBottom: '5px',
     marginRight: '25px',
     boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
     borderBottomRightRadius: '2px'

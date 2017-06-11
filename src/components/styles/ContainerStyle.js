@@ -20,6 +20,7 @@ const ContainerStyle = {
     padding: '0px',
     paddingBottom: '35px',
     position: 'relative',
+    width: '440px',
     height: 'calc(100vh - 71px)',
     minHeight: '500px',
     minWidth: '300px',

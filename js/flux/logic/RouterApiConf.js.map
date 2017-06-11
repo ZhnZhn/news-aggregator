@@ -1,0 +1,22 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\flux\\logic\\RouterApiConf.js",
+ "file": "D:\\_Dev\\_React\\_News\\js\\flux\\logic\\RouterApiConf.js",
+ "sourceRoot": "",
+ "names": [
+  "MSG_ERR_TAIL",
+  "MSG_ERR_DF",
+  "RouterApiConf",
+  "getApiKey",
+  "id",
+  "apiKey",
+  "getNewsKey",
+  "api",
+  "adapter",
+  "msgErr",
+  "getWebhoseKey",
+  "undefined"
+ ],
+ "mappings": ";;;;;;AACA;;;;AAEA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,eAAe,8CAArB;AACA,IAAMC,aAAa,0BAAnB;;AAEA,IAAMC,gBAAgB;AACpBC,aAAW,mBAACC,EAAD,EAAQ;AACjB,YAAOA,EAAP;AACE,WAAK,GAAL;AACE,eAAO;AACLC,kBAAQ,gBAAMC,UAAN,EADH;AAELC,gCAFK;AAGLC,2CAHK;AAILC,+BAAmBT;AAJd,SAAP;AAMF,WAAK,GAAL;AACE,eAAO;AACLK,kBAAQ,gBAAMK,aAAN,EADH;AAELH,mCAFK;AAGLC,2CAHK;AAILC,sCAA0BT;AAJrB,SAAP;AAMF;AACE,eAAO;AACLK,kBAAQM,SADH;AAELF,kBAAQR;AAFH,SAAP;AAhBJ;AAqBD;AAvBmB,CAAtB;;kBA0BeC,a"
+}

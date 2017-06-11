@@ -65,7 +65,7 @@ const NewsSlice = {
   },
 
 
-  onRemoveNews(item){
+  onRemoveNews(item){    
     Logic.removeNews(this.news, item)
   },
   onRemoveAllNews(paneId){
