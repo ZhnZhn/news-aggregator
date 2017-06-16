@@ -4,7 +4,7 @@ import DraggableDialog from '../zhn-moleculs/DraggableDialog'
 import RowInputText from './RowInputText'
 import RowInputSelect from './RowInputSelect'
 import PoweredBy from '../links/PoweredBy'
-import LinkWebhoseIo from '../links/LinkWebhoseIo'
+import { LinkWebhoseIo } from '../links/Links'
 import ActionButton from '../zhn-atoms/ActionButton'
 
 const S = {

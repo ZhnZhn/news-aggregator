@@ -1,5 +1,4 @@
 
-
 import { TYPES } from '../actions/NewsActions'
 import ComponentActions from '../actions/ComponentActions'
 import {TYPES as LP} from '../actions/LoadingProgressActions'
@@ -65,7 +64,7 @@ const NewsSlice = {
   },
 
 
-  onRemoveNews(item){    
+  onRemoveNews(item){
     Logic.removeNews(this.news, item)
   },
   onRemoveAllNews(paneId){

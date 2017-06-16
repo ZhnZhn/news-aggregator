@@ -8,10 +8,25 @@ var _NewsPane = require('./NewsPane');
 
 var _NewsPane2 = _interopRequireDefault(_NewsPane);
 
+var _Article = require('../items/Article');
+
+var _Article2 = _interopRequireDefault(_Article);
+
+var _StackItem = require('../items/StackItem');
+
+var _StackItem2 = _interopRequireDefault(_StackItem);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var R = {
-  DEFAULT: _NewsPane2.default
+  DEFAULT: {
+    Pane: _NewsPane2.default,
+    Item: _Article2.default
+  },
+  SO_TAGGED: {
+    Pane: _NewsPane2.default,
+    Item: _StackItem2.default
+  }
 };
 
 var RouterPane = {

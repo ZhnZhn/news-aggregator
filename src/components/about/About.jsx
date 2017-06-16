@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 
 import ScrollPane from '../zhn-atoms/ScrollPane'
 import BrowserCaption from '../zhn-atoms/BrowserCaption'
-import LinkNewsApi from '../links/LinkNewsApi'
-import LinkWebhoseIo from '../links/LinkWebhoseIo'
+import Link from '../links/Links'
 import Step from './Step'
 import IconLogoBar from './IconLogoBar'
 
@@ -50,6 +49,13 @@ const S = {
   }
 };
 
+
+const SpanKey = () =>
+<span>
+  <span>&nbsp;(</span>
+  <span style={S.BLACK}>Key</span>
+  <span>),&nbsp;</span>
+</span>
 
 class About extends Component {
   constructor(props){
@@ -107,14 +113,21 @@ class About extends Component {
                    <span style={S.APP_TITLE}>News Agreggator</span> is RESTFul client for reading news.
                  </p>
                  <p>
-                   <span>News headline provider:&nbsp;</span>
-                   <LinkNewsApi />
-                   <span>,&nbsp;</span>
-                   <LinkWebhoseIo />
+                   <span>News headline providers:&nbsp;</span>
+                </p>
+                <p>
+                   <Link.NewsApi />
+                   <SpanKey/>
+                   <Link.WebhoseIo />
+                   <SpanKey/>
+                   <Link.StackOverflow />
                    <span>.</span>
                  </p>
                  <p style={S.MARGIN_TOP}>
-                   Provider's API Key is required for using app, can be set in Settings Dialog.
+                   Provider's API Keys is required for using app.
+                 </p>
+                 <p>
+                   API Keys can be set in Settings Dialog.
                  </p>
              </div>
              <p style={S.MARGIN_TOP}>
@@ -142,21 +155,29 @@ class About extends Component {
 
              <p style={S.MARGIN_TOP}>
                <span style={S.BLACK}>For&nbsp;</span>
-               <span style={S.PROVIDER}>Webhose:</span>
+               <span style={S.PROVIDER}>Webhose</span>
+               <span style={S.PROVIDER}>,&nbsp;</span>
+               <span style={S.PROVIDER}>StackOverflow</span>
+               <span style={S.PROVIDER}>:</span>
              </p>
              <Step
                 styleRoot={S.STEP}
                 step="1"
-                description="Click button Query."
+                description="Click button Query in header."
              />
              <Step
                 styleRoot={S.STEP}
                 step="2"
-                description="Enter and choose parameters in Dialog."
+                description="Choose Data Provider in modal pane."
              />
              <Step
                 styleRoot={S.STEP}
                 step="3"
+                description="Enter and choose parameters in Dialog."
+             />
+             <Step
+                styleRoot={S.STEP}
+                step="4"
                 description="Click a button Load in Dialog."
              />
              <IconLogoBar />

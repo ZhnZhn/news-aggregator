@@ -56,13 +56,17 @@ var Factory = {
         paneType = itemConf.paneType,
         paneCaption = itemConf.paneCaption,
         paneId = itemConf.paneId,
-        El = _RouterPane2.default.getElement(paneType);
+        _RouterPane$getElemen = _RouterPane2.default.getElement(paneType),
+        Pane = _RouterPane$getElemen.Pane,
+        Item = _RouterPane$getElemen.Item;
 
-    return _react2.default.createElement(El, {
+    console.log(paneType);
+    return _react2.default.createElement(Pane, {
       key: type,
       id: paneId,
       paneCaption: paneCaption,
       store: store,
+      Item: Item,
       addAction: _NewsActions.TYPES.LOAD_NEWS_COMPLETED,
       showAction: _ComponentActions.TYPES.SHOW_NEWS_PANE,
       toggleAction: _ComponentActions.TYPES.TOGGLE_NEWS_PANE,

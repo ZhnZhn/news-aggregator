@@ -1,8 +1,18 @@
 
 import NewsPane from './NewsPane'
 
+import Article from '../items/Article'
+import StackItem from '../items/StackItem'
+
 const R = {
-  DEFAULT: NewsPane
+  DEFAULT: {
+    Pane: NewsPane,
+    Item: Article
+  },
+  SO_TAGGED: {
+    Pane: NewsPane,
+    Item: StackItem
+  }
 }
 
 const RouterPane = {

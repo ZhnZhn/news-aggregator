@@ -5,7 +5,7 @@ import CircleButton from '../zhn-atoms/CircleButton'
 import SvgHrzResize from '../zhn-atoms/SvgHrzResize'
 import ScrollPane from '../zhn-atoms/ScrollPane'
 
-import Article from '../items/Article'
+//import Article from '../items/Article'
 
 const SHOW_POPUP = "show-popup"
     , CHILD_MARGIN = 36
@@ -120,9 +120,10 @@ class NewsPane extends Component {
    }
 
   _renderArticles(articles=[], onCloseItem, onRemoveUnder){
+     const { Item } = this.props;
      return articles.map((article, index) => {
         return (
-          <Article
+          <Item
              key={article.articleId}
              item={article}
              onCloseItem={onCloseItem}

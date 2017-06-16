@@ -42,20 +42,26 @@ var _RouterModalDialog = require('./dialogs/RouterModalDialog');
 
 var _RouterModalDialog2 = _interopRequireDefault(_RouterModalDialog);
 
+var _NewsQuery = require('../conf/NewsQuery');
+
+var _NewsQuery2 = _interopRequireDefault(_NewsQuery);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CL_COMP = "component-container";
 
-var _webhose = {
-  "type": "W_WEBHOSE",
-  "dialogType": "WebhoseQuery",
-  "paneCaption": "Webhose Query",
-  "paneId": "webhose",
-  "dialogProps": {
-    "caption": "Webhose Query",
-    "source": "webhose"
-  }
-};
+/*
+const _webhose = {
+    "type": "W_WEBHOSE",
+    "dialogType": "WebhoseQuery",
+    "paneCaption": "Webhose Query",
+    "paneId": "webhose",
+    "dialogProps": {
+      "caption": "Webhose Query",
+      "source": "webhose"
+    }
+}
+*/
 
 var AppNewsAggregator = function AppNewsAggregator() {
   return _react2.default.createElement(
@@ -64,8 +70,10 @@ var AppNewsAggregator = function AppNewsAggregator() {
     _react2.default.createElement(_HeaderBar2.default, {
       store: _Store2.default,
       LOADING_ACTIONS: _LoadingProgressActions.TYPES,
-      onNewsSources: _ComponentActions2.default.showBrowser.bind(_ComponentActions2.default, 'NEWS_API_ORG'),
-      onQuery: _ComponentActions2.default.showNewsDialog.bind(null, _webhose),
+      onNewsSources: _ComponentActions2.default.showBrowser.bind(_ComponentActions2.default, 'NEWS_API_ORG')
+      //onQuery={Actions.showNewsDialog.bind(null, _webhose )}
+      , onQuery: _ComponentActions2.default.showNewsDialog.bind(null, _NewsQuery2.default.WEBHOSE),
+      onStackTagged: _ComponentActions2.default.showNewsDialog.bind(null, _NewsQuery2.default.STACK_TAGGED),
       onSettings: _ComponentActions2.default.showModalDialog.bind(_ComponentActions2.default, 'SETTINGS_DIALOG', _Store2.default.exportSettingsFn()),
       onAbout: _ComponentActions2.default.showAbout
     }),

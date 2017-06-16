@@ -1,0 +1,16 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\header\\PanelQuery.jsx",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\header\\PanelQuery.js",
+ "sourceRoot": "",
+ "names": [
+  "PanelQuery",
+  "className",
+  "isShow",
+  "onClose",
+  "onWebhose",
+  "onStackTagged"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAMA,aAAa,SAAbA,UAAa;AAAA,MACjBC,SADiB,QACjBA,SADiB;AAAA,MACNC,MADM,QACNA,MADM;AAAA,MAEjBC,OAFiB,QAEjBA,OAFiB;AAAA,MAERC,SAFQ,QAERA,SAFQ;AAAA,MAEGC,aAFH,QAEGA,aAFH;AAAA,SAIjB;AAAA;AAAA;AACE,cAAQH,MADV;AAEE,eAASC;AAFX;AAIE;AAAA;AAAA;AACE,mBAAWF,SADb;AAEE,gBAAQC;AAFV;AAIE;AAAA;AAAA;AACE,qBAAU,YADZ;AAEE,mBAASE;AAFX;AAAA;AAAA,OAJF;AAUE;AAAA;AAAA;AACE,qBAAU,YADZ;AAEE,mBAASC;AAFX;AAAA;AAAA;AAVF;AAJF,GAJiB;AAAA,CAAnB;;kBAiCeL,U"
+}

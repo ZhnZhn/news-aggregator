@@ -1,0 +1,13 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\conf\\NewsQuery.js",
+ "file": "D:\\_Dev\\_React\\_News\\js\\conf\\NewsQuery.js",
+ "sourceRoot": "",
+ "names": [
+  "NEWS_QUERY",
+  "WEBHOSE",
+  "STACK_TAGGED"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,aAAa;AACjBC,WAAS;AACP,YAAQ,WADD;AAEP,kBAAc,cAFP;AAGP,mBAAe,eAHR;AAIP,cAAU,SAJH;AAKP,mBAAe;AACZ,iBAAW,eADC;AAEZ,gBAAU;AAFE;AALR,GADQ;AAWjBC,gBAAc;AACZ,YAAQ,WADI;AAEZ,kBAAc,aAFF;AAGZ,mBAAe,uBAHH;AAIZ,cAAU,cAJE;AAKZ,gBAAY,WALA;AAMZ,mBAAe;AACZ,iBAAW;AADC;AANH;AAXG,CAAnB;;kBAwBeF,U"
+}

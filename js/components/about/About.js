@@ -36,13 +36,9 @@ var _BrowserCaption = require('../zhn-atoms/BrowserCaption');
 
 var _BrowserCaption2 = _interopRequireDefault(_BrowserCaption);
 
-var _LinkNewsApi = require('../links/LinkNewsApi');
+var _Links = require('../links/Links');
 
-var _LinkNewsApi2 = _interopRequireDefault(_LinkNewsApi);
-
-var _LinkWebhoseIo = require('../links/LinkWebhoseIo');
-
-var _LinkWebhoseIo2 = _interopRequireDefault(_LinkWebhoseIo);
+var _Links2 = _interopRequireDefault(_Links);
 
 var _Step = require('./Step');
 
@@ -97,6 +93,28 @@ var S = {
   PROVIDER: {
     color: '#009AE5'
   }
+};
+
+var SpanKey = function SpanKey() {
+  return _react2.default.createElement(
+    'span',
+    null,
+    _react2.default.createElement(
+      'span',
+      null,
+      '\xA0('
+    ),
+    _react2.default.createElement(
+      'span',
+      { style: S.BLACK },
+      'Key'
+    ),
+    _react2.default.createElement(
+      'span',
+      null,
+      '),\xA0'
+    )
+  );
 };
 
 var About = function (_Component) {
@@ -186,15 +204,17 @@ var About = function (_Component) {
                 _react2.default.createElement(
                   'span',
                   null,
-                  'News headline provider:\xA0'
-                ),
-                _react2.default.createElement(_LinkNewsApi2.default, null),
-                _react2.default.createElement(
-                  'span',
-                  null,
-                  ',\xA0'
-                ),
-                _react2.default.createElement(_LinkWebhoseIo2.default, null),
+                  'News headline providers:\xA0'
+                )
+              ),
+              _react2.default.createElement(
+                'p',
+                null,
+                _react2.default.createElement(_Links2.default.NewsApi, null),
+                _react2.default.createElement(SpanKey, null),
+                _react2.default.createElement(_Links2.default.WebhoseIo, null),
+                _react2.default.createElement(SpanKey, null),
+                _react2.default.createElement(_Links2.default.StackOverflow, null),
                 _react2.default.createElement(
                   'span',
                   null,
@@ -204,7 +224,12 @@ var About = function (_Component) {
               _react2.default.createElement(
                 'p',
                 { style: S.MARGIN_TOP },
-                'Provider\'s API Key is required for using app, can be set in Settings Dialog.'
+                'Provider\'s API Keys is required for using app.'
+              ),
+              _react2.default.createElement(
+                'p',
+                null,
+                'API Keys can be set in Settings Dialog.'
               )
             ),
             _react2.default.createElement(
@@ -252,22 +277,42 @@ var About = function (_Component) {
               _react2.default.createElement(
                 'span',
                 { style: S.PROVIDER },
-                'Webhose:'
+                'Webhose'
+              ),
+              _react2.default.createElement(
+                'span',
+                { style: S.PROVIDER },
+                ',\xA0'
+              ),
+              _react2.default.createElement(
+                'span',
+                { style: S.PROVIDER },
+                'StackOverflow'
+              ),
+              _react2.default.createElement(
+                'span',
+                { style: S.PROVIDER },
+                ':'
               )
             ),
             _react2.default.createElement(_Step2.default, {
               styleRoot: S.STEP,
               step: '1',
-              description: 'Click button Query.'
+              description: 'Click button Query in header.'
             }),
             _react2.default.createElement(_Step2.default, {
               styleRoot: S.STEP,
               step: '2',
-              description: 'Enter and choose parameters in Dialog.'
+              description: 'Choose Data Provider in modal pane.'
             }),
             _react2.default.createElement(_Step2.default, {
               styleRoot: S.STEP,
               step: '3',
+              description: 'Enter and choose parameters in Dialog.'
+            }),
+            _react2.default.createElement(_Step2.default, {
+              styleRoot: S.STEP,
+              step: '4',
               description: 'Click a button Load in Dialog.'
             }),
             _react2.default.createElement(_IconLogoBar2.default, null),

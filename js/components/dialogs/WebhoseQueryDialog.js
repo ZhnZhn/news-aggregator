@@ -40,9 +40,7 @@ var _PoweredBy = require('../links/PoweredBy');
 
 var _PoweredBy2 = _interopRequireDefault(_PoweredBy);
 
-var _LinkWebhoseIo = require('../links/LinkWebhoseIo');
-
-var _LinkWebhoseIo2 = _interopRequireDefault(_LinkWebhoseIo);
+var _Links = require('../links/Links');
 
 var _ActionButton = require('../zhn-atoms/ActionButton');
 
@@ -149,7 +147,7 @@ var WebhoseQueryDialog = function (_Component) {
         _react2.default.createElement(
           _PoweredBy2.default,
           { rootStyle: S.POWERED_BY },
-          _react2.default.createElement(_LinkWebhoseIo2.default, null)
+          _react2.default.createElement(_Links.LinkWebhoseIo, null)
         )
       );
     }

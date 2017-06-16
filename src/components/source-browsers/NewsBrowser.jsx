@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 
 import DynamicMenuBrowser from '../zhn-moleculs/DynamicMenuBrowser'
 import PoweredBy from '../links/PoweredBy'
-import LinkNewsApi from '../links/LinkNewsApi'
+import { LinkNewsApi } from '../links/Links'
+//import LinkNewsApi from '../links/LinkNewsApi'
 
 class NewsBrowser extends Component {
 
@@ -46,7 +47,7 @@ class NewsBrowser extends Component {
          onClick={onClick}
          onError={onError}
          onClickBadge={onClickBadge}
-      >         
+      >
          <PoweredBy>
            <LinkNewsApi />
          </PoweredBy>

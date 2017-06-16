@@ -1,0 +1,32 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\api\\StackOverflowApi.js",
+ "file": "D:\\_Dev\\_React\\_News\\js\\api\\StackOverflowApi.js",
+ "sourceRoot": "",
+ "names": [
+  "BASE",
+  "SORT_BY",
+  "FROM_DATE_S",
+  "TO_DATE_S",
+  "_rRequestUrl",
+  "TAG",
+  "tag",
+  "sortBy",
+  "fromDate",
+  "toDate",
+  "_fromDate",
+  "_toDate",
+  "StackOverflowApi",
+  "getRequestUrl",
+  "option",
+  "fn",
+  "requestType",
+  "checkResponse",
+  "json",
+  "error_message",
+  "error_name",
+  "msg"
+ ],
+ "mappings": ";;;;;AAAA,IAAMA,OAAO,mCAAb;;AAEA,IAAMC,UAAU,MAAhB;AACA,IAAMC,cAAc,UAApB;AACA,IAAMC,YAAY,UAAlB;;AAEA,IAAMC,eAAe;AACnBC,OAAK,mBAA+C;AAAA,QAA5CC,GAA4C,QAA5CA,GAA4C;AAAA,2BAAvCC,MAAuC;AAAA,QAAvCA,MAAuC,+BAAhCN,OAAgC;AAAA,QAAvBO,QAAuB,QAAvBA,QAAuB;AAAA,QAAbC,MAAa,QAAbA,MAAa;;AAClD,QAAMC,YAAYF,YAAYN,WAA9B;AAAA,QACMS,UAAUF,UAAUN,SAD1B;AAEA,WAAUH,IAAV,0DAAmEU,SAAnE,gBAAuFC,OAAvF,cAAuGJ,MAAvG,gBAAwHD,GAAxH;AACD;AALkB,CAArB;;AAQA,IAAMM,mBAAmB;AACvBC,eADuB,yBACTC,MADS,EACF;AACnB,QAAMC,KAAKX,aAAaU,OAAOE,WAApB,CAAX;AACA,WAAOD,GAAGD,MAAH,CAAP;AACD,GAJsB;AAKvBG,eALuB,yBAKTC,IALS,EAKHJ,MALG,EAKI;AAAA,QACjBK,aADiB,GACgBD,IADhB,CACjBC,aADiB;AAAA,2BACgBD,IADhB,CACFE,UADE;AAAA,QACFA,UADE,oCACS,EADT;;AAExB,QAAID,aAAJ,EAAkB;AACf,YAAM;AACJE,aAAQD,UAAR,SAAsBD;AADlB,OAAN;AAGF;AACA,WAAO,IAAP;AACH;AAbsB,CAAzB;;kBAgBeP,gB"
+}

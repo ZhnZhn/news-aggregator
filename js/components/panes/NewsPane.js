@@ -44,11 +44,9 @@ var _ScrollPane = require('../zhn-atoms/ScrollPane');
 
 var _ScrollPane2 = _interopRequireDefault(_ScrollPane);
 
-var _Article = require('../items/Article');
-
-var _Article2 = _interopRequireDefault(_Article);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import Article from '../items/Article'
 
 var SHOW_POPUP = "show-popup",
     CHILD_MARGIN = 36,
@@ -184,9 +182,10 @@ var NewsPane = function (_Component) {
       var articles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
       var onCloseItem = arguments[1];
       var onRemoveUnder = arguments[2];
+      var Item = this.props.Item;
 
       return articles.map(function (article, index) {
-        return _react2.default.createElement(_Article2.default, {
+        return _react2.default.createElement(Item, {
           key: article.articleId,
           item: article,
           onCloseItem: onCloseItem,

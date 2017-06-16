@@ -32,11 +32,11 @@ var _PoweredBy = require('../links/PoweredBy');
 
 var _PoweredBy2 = _interopRequireDefault(_PoweredBy);
 
-var _LinkNewsApi = require('../links/LinkNewsApi');
-
-var _LinkNewsApi2 = _interopRequireDefault(_LinkNewsApi);
+var _Links = require('../links/Links');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import LinkNewsApi from '../links/LinkNewsApi'
 
 var NewsBrowser = function (_Component) {
   (0, _inherits3.default)(NewsBrowser, _Component);
@@ -102,7 +102,7 @@ var NewsBrowser = function (_Component) {
         _react2.default.createElement(
           _PoweredBy2.default,
           null,
-          _react2.default.createElement(_LinkNewsApi2.default, null)
+          _react2.default.createElement(_Links.LinkNewsApi, null)
         )
       );
     }

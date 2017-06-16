@@ -1,0 +1,19 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\links\\Links.js",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\links\\Links.js",
+ "sourceRoot": "",
+ "names": [
+  "LinkNewsApi",
+  "title",
+  "href",
+  "LinkWebhoseIo",
+  "LinkStackOverflow",
+  "Link",
+  "NewsApi",
+  "WebhoseIo",
+  "StackOverflow"
+ ],
+ "mappings": ";;;;;;;AAAA;;;;AAEA;;;;;;AAEO,IAAMA,oCAAc,yBAAU;AACnCC,SAAO,aAD4B;AAEnCC,QAAM;AAF6B,CAAV,iBAApB;;AAKA,IAAMC,wCAAgB,yBAAU;AACrCF,SAAO,YAD8B;AAErCC,QAAM;AAF+B,CAAV,iBAAtB;;AAKA,IAAME,gDAAoB,yBAAU;AACzCH,SAAO,eADkC;AAEzCC,QAAM;AAFmC,CAAV,iBAA1B;;AAKP,IAAMG,OAAO;AACXC,WAASN,WADE;AAEXO,aAAWJ,aAFA;AAGXK,iBAAeJ;AAHJ,CAAb;;kBAMeC,I"
+}

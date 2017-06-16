@@ -26,12 +26,14 @@ const Factory = {
 
   createNewsPane : (itemConf, store) => {
     const { type, paneType, paneCaption, paneId } = itemConf
-        , El = RouterPane.getElement(paneType);
-    return React.createElement(El, {
+        , { Pane, Item } = RouterPane.getElement(paneType);
+    console.log(paneType)
+    return React.createElement(Pane, {
       key: type,
       id: paneId,
       paneCaption,
       store,
+      Item,
       addAction: NA.LOAD_NEWS_COMPLETED,
       showAction: CA.SHOW_NEWS_PANE,
       toggleAction: CA.TOGGLE_NEWS_PANE,

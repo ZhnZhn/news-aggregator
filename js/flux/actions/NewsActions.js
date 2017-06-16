@@ -44,12 +44,13 @@ NewsActions[TYPES.LOAD_NEWS].listen(function () {
 
   var _option$loadId = option.loadId,
       loadId = _option$loadId === undefined ? 'N' : _option$loadId,
-      _conf = _RouterApiConf2.default.getApiKey(loadId),
+      _conf = _RouterApiConf2.default.getApiConf(loadId),
       apiKey = _conf.apiKey,
       adapter = _conf.adapter,
       api = _conf.api;
 
   if (apiKey) {
+    //console.log(api)
     Object.assign(option, { apiKey: apiKey, adapter: adapter, api: api });
     (0, _loadNews2.default)(option, this.completed, this.failed);
   } else {
