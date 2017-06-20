@@ -26,6 +26,9 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var CL_BT = 'bt-flat';
+var CL_BT_SPAN = 'bt-flat__span';
+
 var ModalButton = function (_Component) {
   (0, _inherits3.default)(ModalButton, _Component);
 
@@ -49,22 +52,12 @@ var ModalButton = function (_Component) {
       var _this2 = this;
 
       var _props = this.props,
-          type = _props.type,
-          style = _props.style,
+          rootStyle = _props.rootStyle,
+          clDiv = _props.clDiv,
           title = _props.title,
           caption = _props.caption,
           children = _props.children,
           onClick = _props.onClick;
-
-      var _className = void 0;
-      switch (type) {
-        case 'TypeA':
-          _className = 'button-type-a';break;
-        case 'TypeC':
-          _className = 'button-type-c';break;
-        default:
-          _className = 'button-type-b';
-      }
 
       return _react2.default.createElement(
         'button',
@@ -72,13 +65,23 @@ var ModalButton = function (_Component) {
           ref: function ref(n) {
             return _this2.rootNode = n;
           },
-          className: _className,
-          style: style,
+          className: CL_BT,
+          style: rootStyle,
+          type: 'button',
+          tabIndex: 0,
           title: title,
           onClick: onClick
         },
-        caption,
-        children
+        _react2.default.createElement(
+          'div',
+          { className: clDiv },
+          _react2.default.createElement(
+            'span',
+            { className: CL_BT_SPAN },
+            caption,
+            children
+          )
+        )
       );
     }
   }]);

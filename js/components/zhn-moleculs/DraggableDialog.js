@@ -28,13 +28,13 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _SvgClose = require('../zhn-atoms/SvgClose');
+var _BrowserCaption = require('../zhn-atoms/BrowserCaption');
 
-var _SvgClose2 = _interopRequireDefault(_SvgClose);
+var _BrowserCaption2 = _interopRequireDefault(_BrowserCaption);
 
-var _ActionButton = require('../zhn-atoms/ActionButton');
+var _RaisedButton = require('../zhn-atoms/RaisedButton');
 
-var _ActionButton2 = _interopRequireDefault(_ActionButton);
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
 var _Interact = require('../../utils/Interact');
 
@@ -48,22 +48,10 @@ var styles = {
     top: '30px',
     left: '50px',
     backgroundColor: '#4D4D4D',
-    //border: 'solid 2px #232F3B',
-    //border: 'solid 2px #3f51b5',
     border: 'solid 2px #3f5178',
     borderRadius: '5px',
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
     zIndex: 10
-  },
-  captionDiv: {
-    padding: '5px',
-    //color: 'rgba(164, 135, 212,1)',
-    //backgroundColor: '#232F3B',
-    color: '#9e9e9e',
-    //backgroundColor: '#3f51b5',
-    backgroundColor: '#3f5178',
-    textAlign: 'center',
-    fontSize: '18px'
   },
   childrenDiv: {
     cursor: 'default'
@@ -91,18 +79,25 @@ var DraggableDialog = function (_Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = DraggableDialog.__proto__ || Object.getPrototypeOf(DraggableDialog)).call.apply(_ref, [this].concat(args))), _this), _this._renderCommandButton = function (commandButtons, onShowChart, onClose) {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = DraggableDialog.__proto__ || Object.getPrototypeOf(DraggableDialog)).call.apply(_ref, [this].concat(args))), _this), _this._renderCommandButton = function (_ref2) {
+      var commandButtons = _ref2.commandButtons,
+          S = _ref2.styleButton,
+          onShowChart = _ref2.onShowChart,
+          onClose = _ref2.onClose;
+
       return _react2.default.createElement(
         'div',
         { style: styles.commandDiv },
         commandButtons,
-        typeof onShowChart === 'function' && _react2.default.createElement(_ActionButton2.default, {
-          type: 'TypeC',
+        typeof onShowChart === 'function' && _react2.default.createElement(_RaisedButton2.default, {
+          rootStyle: S.RAISED_ROOT,
+          clDiv: S.CL_RAISED_DIV,
           caption: 'Show',
           onClick: onShowChart
         }),
-        _react2.default.createElement(_ActionButton2.default, {
-          type: 'TypeC',
+        _react2.default.createElement(_RaisedButton2.default, {
+          rootStyle: S.RAISED_ROOT,
+          clDiv: S.CL_RAISED_DIV,
           caption: 'Close',
           onClick: onClose
         })
@@ -122,9 +117,12 @@ var DraggableDialog = function (_Component) {
 
       var _props = this.props,
           isShow = _props.isShow,
+          rootStyle = _props.rootStyle,
           caption = _props.caption,
-          children = _props.children,
+          browserCaptionStyle = _props.browserCaptionStyle,
           commandButtons = _props.commandButtons,
+          styleButton = _props.styleButton,
+          children = _props.children,
           onShowChart = _props.onShowChart,
           onClose = _props.onClose,
           _styleShow = isShow ? { display: 'block' } : { display: 'none' },
@@ -137,24 +135,19 @@ var DraggableDialog = function (_Component) {
             return _this2.rootDivEl = c;
           },
           className: _classShow,
-          style: Object.assign({}, styles.rootDiv, _styleShow)
+          style: Object.assign({}, styles.rootDiv, rootStyle, _styleShow)
         },
-        _react2.default.createElement(
-          'div',
-          { style: styles.captionDiv },
-          _react2.default.createElement(
-            'span',
-            { className: 'not-selected' },
-            caption
-          ),
-          _react2.default.createElement(_SvgClose2.default, { onClose: onClose })
-        ),
+        _react2.default.createElement(_BrowserCaption2.default, {
+          rootStyle: browserCaptionStyle,
+          caption: caption,
+          onClose: onClose
+        }),
         _react2.default.createElement(
           'div',
           { style: styles.childrenDiv },
           children
         ),
-        this._renderCommandButton(commandButtons, onShowChart, onClose)
+        this._renderCommandButton({ commandButtons: commandButtons, styleButton: styleButton, onShowChart: onShowChart, onClose: onClose })
       );
     }
   }]);

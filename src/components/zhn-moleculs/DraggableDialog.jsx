@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import SvgClose from '../zhn-atoms/SvgClose'
-import ActionButton from '../zhn-atoms/ActionButton'
+import BrowserCaption from '../zhn-atoms/BrowserCaption'
+import RaisedButton from '../zhn-atoms/RaisedButton'
 
-import Interact from '../../utils/Interact';
+import Interact from '../../utils/Interact'
 
 const styles = {
   rootDiv: {
@@ -12,25 +12,13 @@ const styles = {
     top: '30px',
     left: '50px',
     backgroundColor: '#4D4D4D',
-    //border: 'solid 2px #232F3B',
-    //border: 'solid 2px #3f51b5',
     border: 'solid 2px #3f5178',
     borderRadius: '5px',
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
     zIndex: 10
   },
-  captionDiv:{
-    padding: '5px',
-    //color: 'rgba(164, 135, 212,1)',
-    //backgroundColor: '#232F3B',
-    color: '#9e9e9e',
-    //backgroundColor: '#3f51b5',
-    backgroundColor: '#3f5178',
-    textAlign: 'center',
-    fontSize: '18px'
-  },
-  childrenDiv : {
-    cursor : 'default'
+  childrenDiv: {
+    cursor: 'default'
   },
   commandDiv : {
      cursor: 'default',
@@ -58,19 +46,23 @@ class DraggableDialog extends Component {
      Interact.makeDragable(this.rootDivEl)
   }
 
-  _renderCommandButton = (commandButtons, onShowChart, onClose) => {
+  _renderCommandButton = ({
+    commandButtons, styleButton:S, onShowChart, onClose
+  }) => {
     return (
       <div style={styles.commandDiv}>
         {commandButtons}
         {typeof onShowChart === 'function' &&
-          <ActionButton
-             type="TypeC"
+          <RaisedButton
+             rootStyle={S.RAISED_ROOT}
+             clDiv={S.CL_RAISED_DIV}
              caption="Show"
              onClick={onShowChart}
           />
         }
-        <ActionButton
-           type="TypeC"
+        <RaisedButton
+           rootStyle={S.RAISED_ROOT}
+           clDiv={S.CL_RAISED_DIV}
            caption="Close"
            onClick={onClose}
         />
@@ -80,7 +72,10 @@ class DraggableDialog extends Component {
 
   render(){
     const {
-           isShow, caption, children, commandButtons,
+           isShow, rootStyle,
+           caption, browserCaptionStyle,
+           commandButtons, styleButton,
+           children,
            onShowChart, onClose
          } = this.props
         , _styleShow = isShow ? {display: 'block'} : {display: 'none'}
@@ -89,18 +84,17 @@ class DraggableDialog extends Component {
       <div
            ref={c => this.rootDivEl = c}
            className={_classShow}
-           style={Object.assign({}, styles.rootDiv, _styleShow)}
+           style={Object.assign({}, styles.rootDiv, rootStyle, _styleShow)}
       >
-        <div style={styles.captionDiv}>
-          <span className="not-selected">
-            {caption}
-          </span>
-          <SvgClose onClose={onClose} />
-        </div>
+        <BrowserCaption
+           rootStyle={browserCaptionStyle}
+           caption={caption}
+           onClose={onClose}
+        />
         <div style={styles.childrenDiv}>
            {children}
         </div>
-        {this._renderCommandButton(commandButtons, onShowChart, onClose)}
+        {this._renderCommandButton({ commandButtons, styleButton, onShowChart, onClose })}
       </div>
     );
   }

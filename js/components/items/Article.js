@@ -30,6 +30,14 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _withTheme = require('../hoc/withTheme');
+
+var _withTheme2 = _interopRequireDefault(_withTheme);
+
+var _Article = require('./Article.Style');
+
+var _Article2 = _interopRequireDefault(_Article);
+
 var _SvgClose = require('../zhn-atoms/SvgClose');
 
 var _SvgClose2 = _interopRequireDefault(_SvgClose);
@@ -196,7 +204,10 @@ var Article = (0, _withDnDStyle2.default)(_class = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var item = this.props.item,
+      var _props = this.props,
+          item = _props.item,
+          theme = _props.theme,
+          TS = theme.createStyle(_Article2.default),
           title = item.title,
           author = item.author,
           publishedAt = item.publishedAt,
@@ -224,7 +235,7 @@ var Article = (0, _withDnDStyle2.default)(_class = function (_Component) {
         },
         _react2.default.createElement(
           'div',
-          { style: _headerStyle },
+          { style: (0, _extends3.default)({}, _headerStyle, TS.HEADER) },
           _react2.default.createElement(
             'span',
             {
@@ -241,7 +252,10 @@ var Article = (0, _withDnDStyle2.default)(_class = function (_Component) {
         ),
         _react2.default.createElement(
           _ShowHide2.default,
-          { isShow: isShow },
+          {
+            style: TS.DESCR,
+            isShow: isShow
+          },
           _react2.default.createElement(
             'div',
             { className: 'wrapper-link' },
@@ -276,5 +290,5 @@ var Article = (0, _withDnDStyle2.default)(_class = function (_Component) {
   return Article;
 }(_react.Component)) || _class;
 
-exports.default = Article;
+exports.default = (0, _withTheme2.default)(Article);
 //# sourceMappingURL=D:\_Dev\_React\_News\js\components\items\Article.js.map

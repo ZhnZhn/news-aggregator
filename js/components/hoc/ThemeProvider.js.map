@@ -1,0 +1,21 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\hoc\\ThemeProvider.jsx",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\hoc\\ThemeProvider.js",
+ "sourceRoot": "",
+ "names": [
+  "ThemeProvider",
+  "theme",
+  "props",
+  "context",
+  "only",
+  "children",
+  "childContextTypes",
+  "object",
+  "isRequired",
+  "propTypes",
+  "element"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;AAAA;;AACA;;;;;;IAEMA,a;;;;sCASa;AACf,aAAO,EAAEC,OAAQ,KAAKA,KAAf,EAAP;AACD;;;AAED,yBAAYC,KAAZ,EAAmBC,OAAnB,EAA2B;AAAA;;AAAA,4IACnBD,KADmB,EACZC,OADY;;AAEzB,UAAKF,KAAL,GAAaC,MAAMD,KAAnB;AAFyB;AAG1B;;;;6BAEO;AACN,aAAO,gBAASG,IAAT,CAAc,KAAKF,KAAL,CAAWG,QAAzB,CAAP;AACD;;;4BAfMC,iB,GAAoB;AACzBL,SAAQ,oBAAUM,MAAV,CAAiBC;AADA,C;AALvBR,a,CACGS,S,2CAAY;AACjBR,SAAQ,oBAAUM,MAAV,CAAiBC,UADR;AAEjBH,YAAW,oBAAUK,OAAV,CAAkBF;AAFZ,C;kBAsBNR,a"
+}

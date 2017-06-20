@@ -28,6 +28,14 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _withTheme = require('../hoc/withTheme');
+
+var _withTheme2 = _interopRequireDefault(_withTheme);
+
+var _About = require('./About.Style');
+
+var _About2 = _interopRequireDefault(_About);
+
 var _ScrollPane = require('../zhn-atoms/ScrollPane');
 
 var _ScrollPane2 = _interopRequireDefault(_ScrollPane);
@@ -48,6 +56,10 @@ var _IconLogoBar = require('./IconLogoBar');
 
 var _IconLogoBar2 = _interopRequireDefault(_IconLogoBar);
 
+var _SpanKey = require('./SpanKey');
+
+var _SpanKey2 = _interopRequireDefault(_SpanKey);
+
 var _ContainerStyle = require('../styles/ContainerStyle');
 
 var _ContainerStyle2 = _interopRequireDefault(_ContainerStyle);
@@ -55,67 +67,6 @@ var _ContainerStyle2 = _interopRequireDefault(_ContainerStyle);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CL_SHOW = "show-popup";
-
-var S = {
-  SCROLL_DIV: {
-    overflowY: 'auto',
-    height: '92%',
-    paddingRight: '10px'
-  },
-  DIV_WRAPPER: {
-    paddingLeft: '12px',
-    paddingRight: '5px',
-    lineHeight: 1.4,
-    color: 'gray',
-    fontWeight: 'bold'
-  },
-  DIV_TEXT: {
-    lineHeight: 1.8
-  },
-  BLOCK: {
-    display: 'block'
-  },
-  NONE: {
-    display: 'none'
-  },
-  APP_TITLE: {
-    color: '#80c040'
-  },
-  STEP: {
-    marginTop: '3px'
-  },
-  BLACK: {
-    color: 'black'
-  },
-  MARGIN_TOP: {
-    marginTop: '8px'
-  },
-  PROVIDER: {
-    color: '#009AE5'
-  }
-};
-
-var SpanKey = function SpanKey() {
-  return _react2.default.createElement(
-    'span',
-    null,
-    _react2.default.createElement(
-      'span',
-      null,
-      '\xA0('
-    ),
-    _react2.default.createElement(
-      'span',
-      { style: S.BLACK },
-      'Key'
-    ),
-    _react2.default.createElement(
-      'span',
-      null,
-      '),\xA0'
-    )
-  );
-};
 
 var About = function (_Component) {
   (0, _inherits3.default)(About, _Component);
@@ -165,7 +116,9 @@ var About = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var isShow = this.state.isShow,
+      var theme = this.props.theme,
+          S = theme.createStyle(_About2.default),
+          isShow = this.state.isShow,
           _rootClass = isShow ? CL_SHOW : null,
           _rootStyle = isShow ? S.BLOCK : S.NONE;
 
@@ -173,15 +126,19 @@ var About = function (_Component) {
         'div',
         {
           className: _rootClass,
-          style: (0, _extends3.default)({}, _ContainerStyle2.default.aboutRootDiv, _rootStyle)
+          style: (0, _extends3.default)({}, _ContainerStyle2.default.aboutRootDiv, _rootStyle, S.ROOT)
         },
         _react2.default.createElement(_BrowserCaption2.default, {
+          rootStyle: S.BROWSER_CAPTION,
           caption: 'About',
           onClose: this._handleClose
         }),
         _react2.default.createElement(
           _ScrollPane2.default,
-          { style: S.SCROLL_DIV },
+          {
+            className: S.CL_SCROLL_PANE,
+            style: S.SCROLL_DIV
+          },
           _react2.default.createElement(
             'div',
             { style: S.DIV_WRAPPER },
@@ -211,9 +168,9 @@ var About = function (_Component) {
                 'p',
                 null,
                 _react2.default.createElement(_Links2.default.NewsApi, null),
-                _react2.default.createElement(SpanKey, null),
+                _react2.default.createElement(_SpanKey2.default, { style: S.BLACK }),
                 _react2.default.createElement(_Links2.default.WebhoseIo, null),
-                _react2.default.createElement(SpanKey, null),
+                _react2.default.createElement(_SpanKey2.default, { style: S.BLACK }),
                 _react2.default.createElement(_Links2.default.StackOverflow, null),
                 _react2.default.createElement(
                   'span',
@@ -333,5 +290,5 @@ var About = function (_Component) {
   return About;
 }(_react.Component);
 
-exports.default = About;
+exports.default = (0, _withTheme2.default)(About);
 //# sourceMappingURL=D:\_Dev\_React\_News\js\components\about\About.js.map

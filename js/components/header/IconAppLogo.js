@@ -12,12 +12,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var IconAppLogo = function IconAppLogo(_ref) {
   var className = _ref.className,
-      title = _ref.title;
+      title = _ref.title,
+      onClick = _ref.onClick;
   return _react2.default.createElement(
     "span",
     {
       className: className,
-      title: title
+      title: title,
+      onClick: onClick
     },
     _react2.default.createElement(
       "svg",

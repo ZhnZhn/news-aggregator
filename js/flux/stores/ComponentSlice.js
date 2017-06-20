@@ -120,6 +120,9 @@ var ComponentSlice = {
   onUpdateBrowser: function onUpdateBrowser(itemConf, option) {
     var r = BrowserLogic.createResult(this.hmBrowser, itemConf);
     this.trigger(_ComponentActions.TYPES.UPDATE_BROWSER, r);
+  },
+  onChangeTheme: function onChangeTheme() {
+    this.trigger(_ComponentActions.TYPES.CHANGE_THEME);
   }
 };
 

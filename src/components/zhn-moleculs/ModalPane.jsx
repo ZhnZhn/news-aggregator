@@ -22,9 +22,12 @@ class ModalPane extends Component {
   }
 
   render(){
-    const { children } = this.props;
+    const { style, children } = this.props;
     return (
-      <div ref={n => this.rootNode = n}>
+      <div
+        style={style}
+        ref={n => this.rootNode = n}
+      >
         {children}
       </div>
     );

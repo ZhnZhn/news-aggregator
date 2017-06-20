@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 
+import withTheme from '../hoc/withTheme'
+import styleConfig from './Dialog.Style'
+
 import DraggableDialog from '../zhn-moleculs/DraggableDialog'
 import RowInputText from './RowInputText'
 import RowInputSelect from './RowInputSelect'
 import PoweredBy from '../links/PoweredBy'
 import { LinkWebhoseIo } from '../links/Links'
-import ActionButton from '../zhn-atoms/ActionButton'
+import RaisedButton from '../zhn-atoms/RaisedButton'
 
 const S = {
   POWERED_BY: {
@@ -13,7 +16,6 @@ const S = {
     marginBottom: '8px'
   }
 }
-
 
 const options = [
   { caption: 'news', value: 'news'},
@@ -25,13 +27,6 @@ class WebhoseQueryDialog extends Component {
   constructor(props){
     super()
     this.siteType = undefined
-    this.commandButtons = [
-      <ActionButton
-        type="TypeC"
-        caption="Load"
-        onClick={this._handleLoad}
-      />
-    ]
   }
 
   _regInput = (propName, inputComp) => {
@@ -63,13 +58,30 @@ class WebhoseQueryDialog extends Component {
     this.props.onClose()
   }
 
+  _createCommandButtons = (S) => {
+    return [
+      <RaisedButton
+        rootStyle={S.RAISED_ROOT}
+        clDiv={S.CL_RAISED_DIV}
+        caption="Load"
+        onClick={this._handleLoad}
+      />
+    ];
+  }
+
   render(){
-    const { isShow, onShow } = this.props;
+    const { isShow, theme, onShow } = this.props
+         , TS = theme.createStyle(styleConfig)
+         , _commandButtons = this._createCommandButtons(TS.BT);
+
     return (
       <DraggableDialog
+           rootStyle={TS.R_DIALOG}
+           browserCaptionStyle={TS.BROWSER_CAPTION}
+           styleButton={TS.BT}
            caption="Webhose.io Query"
            isShow={isShow}
-           commandButtons={this.commandButtons}
+           commandButtons={_commandButtons}
            onShowChart={onShow}
            onClose={this._handleClose}
        >
@@ -103,4 +115,4 @@ class WebhoseQueryDialog extends Component {
   }
 }
 
-export default WebhoseQueryDialog
+export default withTheme(WebhoseQueryDialog)

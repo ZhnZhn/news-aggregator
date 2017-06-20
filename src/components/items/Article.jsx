@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 
+import withTheme from '../hoc/withTheme'
+import styleConfig from './Article.Style'
+
 import SvgClose from '../zhn-atoms/SvgClose'
 import ShowHide from '../zhn-atoms/ShowHide'
 
@@ -11,7 +14,7 @@ const D_REMOVE_ITEM = 35;
 const S = {
   ROOT: {
     position : 'relative',
-    lineHeight : 1.5,    
+    lineHeight : 1.5,
     marginBottom: '5px',
     marginRight: '25px',
     boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
@@ -144,7 +147,8 @@ class Article extends Component {
   }
 
   render() {
-    const { item } = this.props
+    const { item, theme } = this.props
+        , TS = theme.createStyle(styleConfig)
         , { title, author, publishedAt,
             url
             //, urlToImage
@@ -172,7 +176,7 @@ class Article extends Component {
           onDragEnter={this._preventDefault}
           onDragLeave={this._preventDefault}
         >
-          <div style={_headerStyle}>
+          <div style={{ ..._headerStyle, ...TS.HEADER }}>
             <span
                className="not-selected"
                style={_captionStyle}
@@ -186,7 +190,10 @@ class Article extends Component {
             />
           </div>
 
-          <ShowHide isShow={isShow}>
+          <ShowHide
+            style={TS.DESCR}
+            isShow={isShow}
+          >
               <div className="wrapper-link">
                 <a href={url}>
                   <span style={S.DESCR}>
@@ -208,4 +215,4 @@ class Article extends Component {
     }
 }
 
-export default Article
+export default withTheme(Article)

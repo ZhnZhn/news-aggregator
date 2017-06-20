@@ -26,8 +26,7 @@ const Factory = {
 
   createNewsPane : (itemConf, store) => {
     const { type, paneType, paneCaption, paneId } = itemConf
-        , { Pane, Item } = RouterPane.getElement(paneType);
-    console.log(paneType)
+        , { Pane, Item } = RouterPane.getElement(paneType);    
     return React.createElement(Pane, {
       key: type,
       id: paneId,

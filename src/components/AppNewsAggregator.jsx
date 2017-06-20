@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import Store from '../flux/stores/Store'
 import Actions, { TYPES } from '../flux/actions/ComponentActions'
 import { TYPES as LOADING_ACTIONS } from '../flux/actions/LoadingProgressActions'
+
+import ThemeProvider from './hoc/ThemeProvider'
+import theme  from './styles/theme'
 
 import HeaderBar from './header/HeaderBar'
 import BrowserContainer from './zhn-containers/BrowserContainer'
@@ -15,52 +18,57 @@ import QUERY from '../conf/NewsQuery'
 
 const CL_COMP = "component-container";
 
-/*
-const _webhose = {
-    "type": "W_WEBHOSE",
-    "dialogType": "WebhoseQuery",
-    "paneCaption": "Webhose Query",
-    "paneId": "webhose",
-    "dialogProps": {
-      "caption": "Webhose Query",
-      "source": "webhose"
+class AppNewsAggregator extends Component {
+  componentDidMount(){
+    this.unsubscribe = Store.listen(this._onStore)
+  }
+  componentWillUnmount(){
+    this.unsubscribe()
+  }
+  _onStore = (actionType) => {
+    if (actionType === TYPES.CHANGE_THEME){
+      this.forceUpdate()
     }
-}
-*/
+  }
 
-const AppNewsAggregator = () => (
-  <div>
-    <HeaderBar
-      store={Store}
-      LOADING_ACTIONS={LOADING_ACTIONS}
-      onNewsSources={Actions.showBrowser.bind(Actions, 'NEWS_API_ORG')}
-      //onQuery={Actions.showNewsDialog.bind(null, _webhose )}
-      onQuery={Actions.showNewsDialog.bind(null, QUERY.WEBHOSE )}
-      onStackTagged={Actions.showNewsDialog.bind(null, QUERY.STACK_TAGGED )}
-      onSettings={Actions.showModalDialog.bind(Actions, 'SETTINGS_DIALOG', Store.exportSettingsFn())}
-      onAbout={Actions.showAbout}
-    />
-    <div className={CL_COMP}>
-      <BrowserContainer
-        store={Store}
-      />
-      <About
-        isInitShow={true}
-        store={Store}
-        showAction={TYPES.SHOW_ABOUT}
-        hideAction={TYPES.SHOW_NEWS_PANE}
-      />
-      <ComponentHrzContainer
-        store={Store}
-        addAction={TYPES.SHOW_NEWS_PANE}
-      />
-    </div>
-    <ModalDialogContainer
-      store={Store}
-      router={RouterModalDialog}
-      showAction={TYPES.SHOW_MODAL_DIALOG}
-    />
-  </div>
-);
+  render(){
+    return (
+      <ThemeProvider theme={theme}>
+        <div>
+          <HeaderBar
+            store={Store}
+            LOADING_ACTIONS={LOADING_ACTIONS}
+            onChangeTheme={Actions.changeTheme}
+            onNewsSources={Actions.showBrowser.bind(Actions, 'NEWS_API_ORG')}
+            onQuery={Actions.showNewsDialog.bind(null, QUERY.WEBHOSE )}
+            onStackTagged={Actions.showNewsDialog.bind(null, QUERY.STACK_TAGGED )}
+            onSettings={Actions.showModalDialog.bind(Actions, 'SETTINGS_DIALOG', Store.exportSettingsFn())}
+            onAbout={Actions.showAbout}
+          />
+          <div className={CL_COMP}>
+            <BrowserContainer
+              store={Store}
+            />
+            <About
+              isInitShow={true}
+              store={Store}
+              showAction={TYPES.SHOW_ABOUT}
+              hideAction={TYPES.SHOW_NEWS_PANE}
+            />
+            <ComponentHrzContainer
+              store={Store}
+              addAction={TYPES.SHOW_NEWS_PANE}
+            />
+          </div>
+          <ModalDialogContainer
+            store={Store}
+            router={RouterModalDialog}
+            showAction={TYPES.SHOW_MODAL_DIALOG}
+          />
+        </div>
+      </ThemeProvider>
+    );
+  }
+}
 
 export default AppNewsAggregator

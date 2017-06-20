@@ -38,8 +38,8 @@ const STYLE = {
 
 const //FILL_OPEN = '#009688'
       FILL_OPEN = '#9e9e9e'
-      //FILL_OPEN = '#8a8a8a'
-    , FILL_CLOSE = '#4D4D4D'
+      //FILL_OPEN = '#8a8a8a'    
+    , FILL_CLOSE = 'transparent'
     , PATH_OPEN = "M 2,14 L 14,14 14,2 2,14"
     , PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 
@@ -88,7 +88,7 @@ class OpenClose extends Component {
 
   render(){
     const {
-            style, styleNotSelected, styleCaption, caption,
+            style, itemStyle, styleCaption, caption,
             fillOpen, fillClose,
             isDraggable, option, onDragStart, onDragEnter, onDragOver, onDragLeave, onDrop,
             children
@@ -104,26 +104,26 @@ class OpenClose extends Component {
                  }
               : undefined ;
 
-    let _pathV, _fillV, _styleCollapse, _classShow, _styleNotSelected;
+    let _pathV, _fillV, _styleCollapse, _classShow, _itemStyle;
     if (this.state.isOpen){
       _pathV = PATH_OPEN;
       _fillV = fillOpen;
       _styleCollapse = STYLE.BLOCK;
       _classShow = 'show-popup';
-      _styleNotSelected = null;
+      _itemStyle = null;
     } else {
       _pathV = PATH_CLOSE;
       _fillV = fillClose;
       _styleCollapse = STYLE.NONE;
       _classShow = null;
-      _styleNotSelected = styleNotSelected;
+      _itemStyle = itemStyle;
     }
 
     return (
       <div style={{...STYLE.ROOT, ...style}}>
         <div
            className="not-selected"
-           style={{...STYLE.ROOT_CAPTION, ..._styleNotSelected }}
+           style={{...STYLE.ROOT_CAPTION, ..._itemStyle }}
            onClick={this._handleToggle}
            {..._dragOption}
          >

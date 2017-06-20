@@ -100,17 +100,24 @@ class DynamicMenuBrowser extends Component {
   }
 
   render(){
-    const { caption, children, ...restProps } = this.props
+    const { caption,
+            clScrollPane,
+            browserStyle, browserCaptionStyle,
+            children, ...restProps } = this.props
         , { isShow, isLoading, isLoadingFailed, menuModel } = this.state;
     return (
-      <Browser isShow={isShow} style={S.BROWSER}>
-        <BrowserCaption          
+      <Browser isShow={isShow} style={{...S.BROWSER, ...browserStyle}}>
+        <BrowserCaption
+          rootStyle={browserCaptionStyle}
           caption={caption}
           onClose={this._handleHide}
         />
         { isLoading && <SpinnerLoading style={S.SPINNER_LOADING} />}
         { isLoadingFailed && <SpinnerLoading style={S.SPINNER_LOADING} isFailed={true} />}
-        <ScrollPane style={S.SCROLL_PANE}>
+        <ScrollPane
+           className={clScrollPane}
+           style={S.SCROLL_PANE}
+        >
           {this._renderMenuParts({ menuModel, ...restProps})}
           {children}
         </ScrollPane>

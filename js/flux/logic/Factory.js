@@ -60,7 +60,6 @@ var Factory = {
         Pane = _RouterPane$getElemen.Pane,
         Item = _RouterPane$getElemen.Item;
 
-    console.log(paneType);
     return _react2.default.createElement(Pane, {
       key: type,
       id: paneId,

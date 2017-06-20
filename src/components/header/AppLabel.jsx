@@ -1,7 +1,12 @@
 import React from 'react';
 
-const AppLabel = ({ className, style, caption }) => (
-  <span className={className} style={style}>
+const AppLabel = ({ className, style, caption, title, onClick }) => (
+  <span
+     className={className}
+     style={style}
+     title={title}
+     onClick={onClick}
+  >
     {caption}
   </span>
 );

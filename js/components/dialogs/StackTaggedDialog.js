@@ -24,6 +24,14 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _withTheme = require('../hoc/withTheme');
+
+var _withTheme2 = _interopRequireDefault(_withTheme);
+
+var _Dialog = require('./Dialog.Style');
+
+var _Dialog2 = _interopRequireDefault(_Dialog);
+
 var _dt = require('../../utils/dt');
 
 var _dt2 = _interopRequireDefault(_dt);
@@ -46,9 +54,9 @@ var _PoweredBy2 = _interopRequireDefault(_PoweredBy);
 
 var _Links = require('../links/Links');
 
-var _ActionButton = require('../zhn-atoms/ActionButton');
+var _RaisedButton = require('../zhn-atoms/RaisedButton');
 
-var _ActionButton2 = _interopRequireDefault(_ActionButton);
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
 var _DatesFragment = require('./DatesFragment');
 
@@ -115,12 +123,16 @@ var StackTaggedDialog = function (_Component) {
       _this.props.onClose();
     };
 
+    _this._createCommandButtons = function (S) {
+      return [_react2.default.createElement(_RaisedButton2.default, {
+        rootStyle: S.RAISED_ROOT,
+        clDiv: S.CL_RAISED_DIV,
+        caption: 'Load',
+        onClick: _this._handleLoad
+      })];
+    };
+
     _this.siteType = undefined;
-    _this.commandButtons = [_react2.default.createElement(_ActionButton2.default, {
-      type: 'TypeC',
-      caption: 'Load',
-      onClick: _this._handleLoad
-    })];
     return _this;
   }
 
@@ -131,14 +143,20 @@ var StackTaggedDialog = function (_Component) {
 
       var _props = this.props,
           isShow = _props.isShow,
-          onShow = _props.onShow;
+          theme = _props.theme,
+          onShow = _props.onShow,
+          TS = theme.createStyle(_Dialog2.default),
+          _commandButtons = this._createCommandButtons(TS.BT);
 
       return _react2.default.createElement(
         _DraggableDialog2.default,
         {
+          rootStyle: TS.R_DIALOG,
+          browserCaptionStyle: TS.BROWSER_CAPTION,
+          styleButton: TS.BT,
           caption: 'Tagged Questions',
           isShow: isShow,
-          commandButtons: this.commandButtons,
+          commandButtons: _commandButtons,
           onShowChart: onShow,
           onClose: this._handleClose
         },
@@ -177,5 +195,5 @@ var StackTaggedDialog = function (_Component) {
   return StackTaggedDialog;
 }(_react.Component);
 
-exports.default = StackTaggedDialog;
+exports.default = (0, _withTheme2.default)(StackTaggedDialog);
 //# sourceMappingURL=D:\_Dev\_React\_News\js\components\dialogs\StackTaggedDialog.js.map

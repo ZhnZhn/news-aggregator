@@ -4,7 +4,8 @@ import ModalPane from '../zhn-moleculs/ModalPane'
 import ShowHide from '../zhn-atoms/ShowHide'
 
 const PanelQuery = ({
-  className, isShow,
+  className, paneStyle, isShow,
+  clItem,
   onClose, onWebhose, onStackTagged
 }) =>
   <ModalPane
@@ -13,22 +14,23 @@ const PanelQuery = ({
   >
     <ShowHide
       className={className}
+      style={paneStyle}
       isShow={isShow}
     >
       <div
-        className="row__topic"
+        className={clItem}
         onClick={onWebhose}
       >
         Webhose
       </div>
       <div
-        className="row__topic"
+        className={clItem}
         onClick={onStackTagged}
       >
         StackOverflow: Tagged Questions
       </div>
       {/*
-      <div className="row__topic">
+      <div className={clItem}>
         StackOverflow: Search Questions
       </div>
       */}

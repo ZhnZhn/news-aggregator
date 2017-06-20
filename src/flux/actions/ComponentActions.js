@@ -11,7 +11,9 @@ export const TYPES = {
   SHOW_ABOUT: 'showAbout',
 
   SHOW_BROWSER: 'showBrowser',
-  UPDATE_BROWSER: 'updateBrowser'
+  UPDATE_BROWSER: 'updateBrowser',
+
+  CHANGE_THEME: 'changeTheme'
 }
 
 const Actions = Reflux.createActions({
@@ -24,7 +26,9 @@ const Actions = Reflux.createActions({
 
   [TYPES.SHOW_ABOUT]: {},
   [TYPES.SHOW_BROWSER]: {},
-  [TYPES.UPDATE_BROWSER]: {}
+  [TYPES.UPDATE_BROWSER]: {},
+
+  [TYPES.CHANGE_THEME]: {}
 })
 
 export default Actions

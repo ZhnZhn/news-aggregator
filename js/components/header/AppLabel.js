@@ -13,10 +13,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var AppLabel = function AppLabel(_ref) {
   var className = _ref.className,
       style = _ref.style,
-      caption = _ref.caption;
+      caption = _ref.caption,
+      title = _ref.title,
+      onClick = _ref.onClick;
   return _react2.default.createElement(
     'span',
-    { className: className, style: style },
+    {
+      className: className,
+      style: style,
+      title: title,
+      onClick: onClick
+    },
     caption
   );
 };

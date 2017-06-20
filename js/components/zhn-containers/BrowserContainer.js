@@ -38,7 +38,7 @@ var _DialogContainer2 = _interopRequireDefault(_DialogContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var CL_MENU_ITEM = "row__news-source";
+//const CL_MENU_ITEM = "row__news-source";
 
 var onClick = _ComponentActions2.default.showNewsDialog;
 var onError = _ComponentActions2.default.showModalDialog.bind(null, 'ALERT_DIALOG');
@@ -64,9 +64,9 @@ var BrowserContainer = function (_Component) {
           store: store,
           showAction: _ComponentActions.TYPES.SHOW_BROWSER,
           updateAction: _ComponentActions.TYPES.UPDATE_BROWSER,
-          browserId: 'NEWS_API_ORG',
-          rowClass: CL_MENU_ITEM,
-          onClick: onClick,
+          browserId: 'NEWS_API_ORG'
+          //rowClass={CL_MENU_ITEM}
+          , onClick: onClick,
           onError: onError,
           onClickBadge: onClickBadge
         }),

@@ -1,0 +1,32 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\dialogs\\Dialog.Style.js",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\dialogs\\Dialog.Style.js",
+ "sourceRoot": "",
+ "names": [
+  "S",
+  "BROWSER_CAPTION",
+  "padding",
+  "color",
+  "backgroundColor",
+  "textAlign",
+  "fontSize",
+  "BT_RAISED_ROOT",
+  "marginRight",
+  "marginLeft",
+  "styleConfig",
+  "themeName",
+  "undefined",
+  "style",
+  "createStyle",
+  "CSS_RULE",
+  "R_DIALOG",
+  "BG_HEADER",
+  "BT",
+  "CL_RAISED_DIV",
+  "CL_BT_RAISED_DIV",
+  "RAISED_ROOT"
+ ],
+ "mappings": ";;;;;;;;;;;;AACA,IAAMA,IAAI;AACRC,mBAAiB;AACfC,aAAS,KADM;AAEfC,WAAO,SAFQ;AAGfC,qBAAiB,SAHF;AAIfC,eAAW,QAJI;AAKfC,cAAU;AALK,GADT;AAQRC,kBAAgB;AACdC,iBAAa,KADC;AAEdC,gBAAY;AAFE;AARR,CAAV;;AAcA,IAAMC,cAAc;AAClBC,aAAYC,SADM;AAElBC,SAAQD,SAFU;AAGlBE,eAAc,qBAACC,QAAD,EAAWJ,SAAX,EAAyB;AACrC,WAAO;AACL;AACAK,2CACKD,SAASC,QADd,CAFK;AAKLf,kDACKD,EAAEC,eADP,EAEKc,SAASE,SAFd,CALK;AASLC,UAAI;AACFC,uBAAeJ,SAASK,gBADtB;AAEFC,gDACKrB,EAAEO,cADP,EAEKQ,SAASE,SAFd;AAFE;AATC,KAAP;AAuBD;AA3BiB,CAApB;;kBA8BeP,W"
+}

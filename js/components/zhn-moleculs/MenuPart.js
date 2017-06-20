@@ -26,8 +26,11 @@ var _MenuItemBadge2 = _interopRequireDefault(_MenuItemBadge);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var CL_NOT_S = 'not-selected';
+
 var _renderMenuItems = function _renderMenuItems(option) {
   var rowClass = option.rowClass,
+      badgeStyle = option.badgeStyle,
       _option$items = option.items,
       items = _option$items === undefined ? [] : _option$items,
       _option$hmItems = option.hmItems,
@@ -35,13 +38,14 @@ var _renderMenuItems = function _renderMenuItems(option) {
       itemData = option.itemData,
       onClick = option.onClick,
       onClickBadge = option.onClickBadge,
-      rest = (0, _objectWithoutProperties3.default)(option, ['rowClass', 'items', 'hmItems', 'itemData', 'onClick', 'onClickBadge']);
+      rest = (0, _objectWithoutProperties3.default)(option, ['rowClass', 'badgeStyle', 'items', 'hmItems', 'itemData', 'onClick', 'onClickBadge']);
 
   return items.map(function (item, index) {
-    var _className = rowClass ? rowClass + ' not-selected' : index % 2 ? 'row__topic__even not-selected' : 'row__topic__odd not-selected',
+    var _className = rowClass ? rowClass + ' ' + CL_NOT_S : CL_NOT_S,
         _itemConf = hmItems[item.id],
         menuTitle = _itemConf.menuTitle,
         badgeEl = itemData[item.id] ? _react2.default.createElement(_MenuItemBadge2.default, {
+      style: badgeStyle,
       itemBadge: itemData[item.id],
       itemConf: _itemConf,
       onClick: onClickBadge
@@ -64,15 +68,18 @@ var _renderMenuItems = function _renderMenuItems(option) {
 };
 
 var MenuPart = function MenuPart(_ref) {
-  var caption = _ref.caption,
+  var openCloseStyle = _ref.openCloseStyle,
+      itemStyle = _ref.itemStyle,
+      caption = _ref.caption,
       isInitClose = _ref.isInitClose,
-      restProps = (0, _objectWithoutProperties3.default)(_ref, ['caption', 'isInitClose']);
+      restProps = (0, _objectWithoutProperties3.default)(_ref, ['openCloseStyle', 'itemStyle', 'caption', 'isInitClose']);
   return _react2.default.createElement(
     _OpenClose2.default,
     {
+      style: openCloseStyle,
       caption: caption,
       isClose: isInitClose,
-      styleNotSelected: { borderBottom: "1px solid #9e9e9e" }
+      itemStyle: itemStyle
     },
     _renderMenuItems(restProps)
   );

@@ -24,6 +24,8 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -71,13 +73,13 @@ var STYLE = {
 
 var //FILL_OPEN = '#009688'
 FILL_OPEN = '#9e9e9e'
-//FILL_OPEN = '#8a8a8a'
+//FILL_OPEN = '#8a8a8a'    
 ,
-    FILL_CLOSE = '#4D4D4D',
+    FILL_CLOSE = 'transparent',
     PATH_OPEN = "M 2,14 L 14,14 14,2 2,14",
     PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 
-var OpenClose = function (_Component) {
+var OpenClose = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(OpenClose, _Component);
 
   function OpenClose(props) {
@@ -100,7 +102,7 @@ var OpenClose = function (_Component) {
     value: function render() {
       var _props = this.props,
           style = _props.style,
-          styleNotSelected = _props.styleNotSelected,
+          itemStyle = _props.itemStyle,
           styleCaption = _props.styleCaption,
           caption = _props.caption,
           fillOpen = _props.fillOpen,
@@ -126,19 +128,19 @@ var OpenClose = function (_Component) {
           _fillV = void 0,
           _styleCollapse = void 0,
           _classShow = void 0,
-          _styleNotSelected = void 0;
+          _itemStyle = void 0;
       if (this.state.isOpen) {
         _pathV = PATH_OPEN;
         _fillV = fillOpen;
         _styleCollapse = STYLE.BLOCK;
         _classShow = 'show-popup';
-        _styleNotSelected = null;
+        _itemStyle = null;
       } else {
         _pathV = PATH_CLOSE;
         _fillV = fillClose;
         _styleCollapse = STYLE.NONE;
         _classShow = null;
-        _styleNotSelected = styleNotSelected;
+        _itemStyle = itemStyle;
       }
 
       return _react2.default.createElement(
@@ -148,7 +150,7 @@ var OpenClose = function (_Component) {
           'div',
           (0, _extends3.default)({
             className: 'not-selected',
-            style: (0, _extends3.default)({}, STYLE.ROOT_CAPTION, _styleNotSelected),
+            style: (0, _extends3.default)({}, STYLE.ROOT_CAPTION, _itemStyle),
             onClick: this._handleToggle
           }, _dragOption),
           _react2.default.createElement(
@@ -186,13 +188,11 @@ var OpenClose = function (_Component) {
     }
   }]);
   return OpenClose;
-}(_react.Component);
-
-OpenClose.defaultProps = {
+}(_react.Component), _class.defaultProps = {
   isClose: true,
   fillOpen: FILL_OPEN,
   fillClose: FILL_CLOSE
-};
+}, _temp);
 OpenClose.propTypes = process.env.NODE_ENV !== "production" ? {
   isClose: _propTypes2.default.bool,
 

@@ -24,6 +24,14 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _withTheme = require('../hoc/withTheme');
+
+var _withTheme2 = _interopRequireDefault(_withTheme);
+
+var _Dialog = require('./Dialog.Style');
+
+var _Dialog2 = _interopRequireDefault(_Dialog);
+
 var _DraggableDialog = require('../zhn-moleculs/DraggableDialog');
 
 var _DraggableDialog2 = _interopRequireDefault(_DraggableDialog);
@@ -32,9 +40,9 @@ var _RowInputSelect = require('./RowInputSelect');
 
 var _RowInputSelect2 = _interopRequireDefault(_RowInputSelect);
 
-var _ActionButton = require('../zhn-atoms/ActionButton');
+var _RaisedButton = require('../zhn-atoms/RaisedButton');
 
-var _ActionButton2 = _interopRequireDefault(_ActionButton);
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -71,12 +79,16 @@ var DialogType1 = function (_Component) {
       _this.props.onClose();
     };
 
+    _this._createCommandButtons = function (S) {
+      return [_react2.default.createElement(_RaisedButton2.default, {
+        rootStyle: S.RAISED_ROOT,
+        clDiv: S.CL_RAISED_DIV,
+        caption: 'Load',
+        onClick: _this._handleLoad
+      })];
+    };
+
     _this.sortBy = undefined;
-    _this.commandButtons = [_react2.default.createElement(_ActionButton2.default, {
-      type: 'TypeC',
-      caption: 'Load',
-      onClick: _this._handleLoad
-    })];
     return _this;
   }
 
@@ -86,14 +98,20 @@ var DialogType1 = function (_Component) {
       var _props = this.props,
           isShow = _props.isShow,
           caption = _props.caption,
-          onShow = _props.onShow;
+          theme = _props.theme,
+          onShow = _props.onShow,
+          S = theme.createStyle(_Dialog2.default),
+          _commandButtons = this._createCommandButtons(S.BT);
 
       return _react2.default.createElement(
         _DraggableDialog2.default,
         {
+          rootStyle: S.R_DIALOG,
+          browserCaptionStyle: S.BROWSER_CAPTION,
+          styleButton: S.BT,
           caption: caption,
           isShow: isShow,
-          commandButtons: this.commandButtons,
+          commandButtons: _commandButtons,
           onShowChart: onShow,
           onClose: this._handleClose
         },
@@ -110,5 +128,5 @@ var DialogType1 = function (_Component) {
   return DialogType1;
 }(_react.Component);
 
-exports.default = DialogType1;
+exports.default = (0, _withTheme2.default)(DialogType1);
 //# sourceMappingURL=D:\_Dev\_React\_News\js\components\dialogs\DialogType1.js.map

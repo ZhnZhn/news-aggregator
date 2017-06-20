@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+
+import withTheme from '../hoc/withTheme'
+import styleConfig from './NewsPane.Style'
 
 import BrowserCaption from '../zhn-atoms/BrowserCaption'
 import CircleButton from '../zhn-atoms/CircleButton'
 import SvgHrzResize from '../zhn-atoms/SvgHrzResize'
 import ScrollPane from '../zhn-atoms/ScrollPane'
-
-//import Article from '../items/Article'
 
 const SHOW_POPUP = "show-popup"
     , CHILD_MARGIN = 36
@@ -80,7 +81,7 @@ class NewsPane extends Component {
     this.unsubscribe()
   }
 
-   _onStore = (actionType, option) => {
+   _onStore = (actionType, option={}) => {
       const { addAction, showAction, toggleAction, id } = this.props;
       if (option.id === id){
         switch(actionType){
@@ -111,8 +112,8 @@ class NewsPane extends Component {
 
    _handleHide = () => {
       const { onClose } = this.props;
-      onClose();
-      this.setState({ isShow: false });
+      onClose()
+      this.setState({ isShow: false })
    }
 
    _getRootDiv = () => {
@@ -136,9 +137,11 @@ class NewsPane extends Component {
    render(){
       const {
               paneCaption,
+              theme,
               onRemoveItems,
               onRemoveUnder, onCloseItem
             } = this.props
+          , TS = theme.createStyle(styleConfig)
           , { isShow, articles, sortBy } = this.state
           , _paneCaption = `${paneCaption} : ${sortBy}`
           , _styleIsShow = (isShow)
@@ -151,10 +154,10 @@ class NewsPane extends Component {
         <div
            ref={node => this.rootDiv = node}
            className={_classIsShow}
-           style={{...styles.rootDiv, ..._styleIsShow}}
+           style={{...styles.rootDiv, ...TS.PANE_ROOT, ..._styleIsShow}}
         >
           <BrowserCaption
-             rootStyle={styles.brCaption}
+             rootStyle={{ ...styles.brCaption, ...TS.PANE_CAPTION }}
              caption={_paneCaption}
              onClose={this._handleHide}
           >
@@ -169,7 +172,7 @@ class NewsPane extends Component {
               getDomNode={this._getRootDiv}
             />
           </BrowserCaption>
-          <ScrollPane style={styles.scrollDiv}>
+          <ScrollPane className={TS.CL_SCROLL_PANE} style={styles.scrollDiv}>
               { this._renderArticles(articles, onCloseItem, onRemoveUnder) }
           </ScrollPane>
         </div>
@@ -177,4 +180,4 @@ class NewsPane extends Component {
    }
 }
 
-export default NewsPane
+export default withTheme(NewsPane)

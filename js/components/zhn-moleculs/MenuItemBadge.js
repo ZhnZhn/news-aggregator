@@ -75,14 +75,16 @@ var MenuItemBadge = function (_Component) {
   (0, _createClass3.default)(MenuItemBadge, [{
     key: 'render',
     value: function render() {
-      var _props$itemBadge = this.props.itemBadge,
+      var _props = this.props,
+          style = _props.style,
+          _props$itemBadge = _props.itemBadge,
           itemBadge = _props$itemBadge === undefined ? {} : _props$itemBadge,
           isOpen = itemBadge.isOpen,
           _badgeStyle = isOpen ? S.BADGE : (0, _extends3.default)({}, S.BADGE, S.CLOSE);
 
       return _react2.default.createElement(
         'span',
-        { style: _badgeStyle, onClick: this._handleClick },
+        { style: (0, _extends3.default)({}, _badgeStyle, style), onClick: this._handleClick },
         'V'
       );
     }

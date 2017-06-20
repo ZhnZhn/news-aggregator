@@ -108,6 +108,10 @@ const ComponentSlice = {
   onUpdateBrowser(itemConf, option){
     const r = BrowserLogic.createResult(this.hmBrowser, itemConf);
     this.trigger(TYPES.UPDATE_BROWSER, r)
+  },
+
+  onChangeTheme(){
+    this.trigger(TYPES.CHANGE_THEME)
   }
 }
 

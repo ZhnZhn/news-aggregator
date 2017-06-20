@@ -164,8 +164,11 @@ var DynamicMenuBrowser = (_temp = _class = function (_Component) {
     value: function render() {
       var _props = this.props,
           caption = _props.caption,
+          clScrollPane = _props.clScrollPane,
+          browserStyle = _props.browserStyle,
+          browserCaptionStyle = _props.browserCaptionStyle,
           children = _props.children,
-          restProps = (0, _objectWithoutProperties3.default)(_props, ['caption', 'children']),
+          restProps = (0, _objectWithoutProperties3.default)(_props, ['caption', 'clScrollPane', 'browserStyle', 'browserCaptionStyle', 'children']),
           _state = this.state,
           isShow = _state.isShow,
           isLoading = _state.isLoading,
@@ -174,8 +177,9 @@ var DynamicMenuBrowser = (_temp = _class = function (_Component) {
 
       return _react2.default.createElement(
         _Browser2.default,
-        { isShow: isShow, style: S.BROWSER },
+        { isShow: isShow, style: (0, _extends3.default)({}, S.BROWSER, browserStyle) },
         _react2.default.createElement(_BrowserCaption2.default, {
+          rootStyle: browserCaptionStyle,
           caption: caption,
           onClose: this._handleHide
         }),
@@ -183,7 +187,10 @@ var DynamicMenuBrowser = (_temp = _class = function (_Component) {
         isLoadingFailed && _react2.default.createElement(_SpinnerLoading2.default, { style: S.SPINNER_LOADING, isFailed: true }),
         _react2.default.createElement(
           _ScrollPane2.default,
-          { style: S.SCROLL_PANE },
+          {
+            className: clScrollPane,
+            style: S.SCROLL_PANE
+          },
           this._renderMenuParts((0, _extends3.default)({ menuModel: menuModel }, restProps)),
           children
         )

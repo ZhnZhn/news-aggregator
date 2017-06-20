@@ -20,7 +20,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var PanelQuery = function PanelQuery(_ref) {
   var className = _ref.className,
+      paneStyle = _ref.paneStyle,
       isShow = _ref.isShow,
+      clItem = _ref.clItem,
       onClose = _ref.onClose,
       onWebhose = _ref.onWebhose,
       onStackTagged = _ref.onStackTagged;
@@ -34,12 +36,13 @@ var PanelQuery = function PanelQuery(_ref) {
       _ShowHide2.default,
       {
         className: className,
+        style: paneStyle,
         isShow: isShow
       },
       _react2.default.createElement(
         'div',
         {
-          className: 'row__topic',
+          className: clItem,
           onClick: onWebhose
         },
         'Webhose'
@@ -47,7 +50,7 @@ var PanelQuery = function PanelQuery(_ref) {
       _react2.default.createElement(
         'div',
         {
-          className: 'row__topic',
+          className: clItem,
           onClick: onStackTagged
         },
         'StackOverflow: Tagged Questions'

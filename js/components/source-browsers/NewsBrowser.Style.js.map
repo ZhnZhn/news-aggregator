@@ -1,0 +1,29 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\source-browsers\\NewsBrowser.Style.js",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\source-browsers\\NewsBrowser.Style.js",
+ "sourceRoot": "",
+ "names": [
+  "styleConfig",
+  "themeName",
+  "undefined",
+  "style",
+  "createStyle",
+  "CSS_RULE",
+  "_clMenuItem",
+  "_itemColor",
+  "color",
+  "CL_SCROLL_PANE",
+  "CL_MENU_ITEM",
+  "ROOT",
+  "BG",
+  "OPEN_CLOSE",
+  "BROWSER_CAPTION",
+  "BG_HEADER",
+  "ITEM",
+  "borderBottom",
+  "BADGE"
+ ],
+ "mappings": ";;;;;;;;;;;;AACA;;AAEA,IAAMA,cAAc;AAClBC,aAAYC,SADM;AAElBC,SAAQD,SAFU;AAGlBE,eAAc,qBAACC,QAAD,EAAWJ,SAAX,EAAyB;AACrC,QAAIK,oBAAJ;AAAA,QAAiBC,mBAAjB;AACA,YAAON,SAAP;AACE,WAAK,OAAL;AACEK,sBAAc,yBAAd;AACAC,qBAAa,EAAEC,OAAO,SAAT,EAAb;AACA;AACF;AACEF,sBAAc,kBAAd;AANJ;AAQA,WAAO;AACLG,sBAAgBJ,SAASI,cADpB;AAELC,oBAAcJ,WAFT;;AAILK,uCACKN,SAASO,EADd,CAJK;AAOLC,6CACKR,SAASO,EADd,CAPK;AAULE,kDACKT,SAASU,SADd,CAVK;AAaLC;AACEC,sBAAc;AADhB,SAEKV,UAFL,CAbK;AAiBLW,wCACKb,SAASU,SADd;AAjBK,KAAP;AAqBD;AAlCiB,CAApB;;kBAqCef,W"
+}

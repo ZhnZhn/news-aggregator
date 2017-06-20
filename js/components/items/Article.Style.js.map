@@ -1,0 +1,21 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\items\\Article.Style.js",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\items\\Article.Style.js",
+ "sourceRoot": "",
+ "names": [
+  "styleConfig",
+  "themeName",
+  "undefined",
+  "style",
+  "createStyle",
+  "CSS_RULE",
+  "_header",
+  "_descr",
+  "backgroundColor",
+  "HEADER",
+  "DESCR"
+ ],
+ "mappings": ";;;;;;;;;;;;AACA;;AAEA,IAAMA,cAAc;AAClBC,aAAYC,SADM;AAElBC,SAAQD,SAFU;AAGlBE,eAAa,qBAACC,QAAD,EAAWJ,SAAX,EAAyB;AACpC,QAAIK,gBAAJ;AAAA,QAAaC,eAAb;AACA,YAAON,SAAP;AACE,WAAK,OAAL;AACEK,kBAAU;AACRE,2BAAiB;AADT,SAAV;AAGAD,iBAAS;AACPC,2BAAiB;AADV,SAAT;AAGA;AACF;AACEF,kBAAU;AACRE,2BAAiB;AADT,SAAV;AAVJ;AAcA,WAAO;AACJC,yCACKH,OADL,CADI;AAIJI,wCACKH,MADL;AAJI,KAAP;AAQD;AA3BiB,CAApB;;kBA8BeP,W"
+}

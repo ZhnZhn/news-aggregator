@@ -1,4 +1,4 @@
-import React, { Component} from 'react'
+import React, { Component } from 'react'
 
 const S = {
   BADGE: {
@@ -28,13 +28,13 @@ class MenuItemBadge extends Component {
   }
 
   render(){
-    const { itemBadge={} } = this.props
+    const { style, itemBadge={} } = this.props
         , { isOpen } = itemBadge
         , _badgeStyle = isOpen
              ? S.BADGE
              : { ...S.BADGE, ...S.CLOSE }
     return (
-      <span style={_badgeStyle} onClick={this._handleClick}>
+      <span style={{ ..._badgeStyle, ...style }} onClick={this._handleClick}>
         V
       </span>
     );

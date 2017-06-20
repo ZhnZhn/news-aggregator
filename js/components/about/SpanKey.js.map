@@ -1,0 +1,12 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\about\\SpanKey.jsx",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\about\\SpanKey.js",
+ "sourceRoot": "",
+ "names": [
+  "SpanKey",
+  "style"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,UAAU,SAAVA,OAAU;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,SACd;AAAA;AAAA;AACE;AAAA;AAAA;AAAA;AAAA,KADF;AAEE;AAAA;AAAA,QAAM,OAAOA,KAAb;AAAA;AAAA,KAFF;AAGE;AAAA;AAAA;AAAA;AAAA;AAHF,GADc;AAAA,CAAhB;;kBAOeD,O"
+}

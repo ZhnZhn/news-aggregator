@@ -1,6 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
 
-import ModalDialog from '../zhn-moleculs/ModalDialog';
+import withTheme from '../hoc/withTheme'
+import styleConfig from './Dialog.Style'
+
+import ModalDialog from '../zhn-moleculs/ModalDialog'
 
 const S = {
   CAPTION: {
@@ -54,14 +57,18 @@ class AlertDialog extends Component{
   }
 
   render(){
-    const { isShow, data, onClose } = this.props
+    const { isShow, data, theme, onClose } = this.props
+        , TS = theme.createStyle(styleConfig)
         , _msg  = _toMsg(data);
     return (
       <ModalDialog
-        caption="Exception"
-        styleCaption={S.CAPTION}
-        isShow={isShow}
-        onClose={onClose}
+         style={TS.R_DIALOG }
+         styleCaption={TS.BROWSER_CAPTION}
+         styleButton={TS.BT}
+         caption="Exception"
+         //styleCaption={S.CAPTION}
+         isShow={isShow}
+         onClose={onClose}
       >
          <div>
             <p style={S.MSG}>
@@ -73,4 +80,4 @@ class AlertDialog extends Component{
   }
 }
 
-export default AlertDialog
+export default withTheme(AlertDialog)

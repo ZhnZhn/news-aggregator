@@ -4,8 +4,6 @@ import SvgClose from './SvgClose'
 
 const S = {
   ROOT: {
-    //backgroundColor: '#232F3B',
-    //backgroundColor: '#3f51b5',
     backgroundColor: '#3f5178',
     color: 'rgba(164, 135, 212, 1)',
     lineHeight: '1.8',

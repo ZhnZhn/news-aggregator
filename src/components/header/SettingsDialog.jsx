@@ -2,15 +2,18 @@ import React, { Component, PropTypes } from 'react'
 
 import safeFn from '../../utils/safeFn'
 
+import withTheme from '../hoc/withTheme'
+import styleConfig from '../dialogs/Dialog.Style'
+
 import ModalDialog from '../zhn-moleculs/ModalDialog'
 import RowInputSecret from '../dialogs/RowInputSecret'
-import ActionButton from '../zhn-atoms/ActionButton'
+import RaisedButton from '../zhn-atoms/RaisedButton'
 
 const S = {
   MODAL : {
     position : 'static',
     width: '380px',
-    height: '160px',
+    height: '180px',
     margin: '70px auto 0px'
   }
 };
@@ -30,13 +33,6 @@ class SettingsDialog extends Component {
 
   constructor(props){
     super()
-    this.commandButtons = [
-       <ActionButton
-          type="TypeC"
-          caption="Set"
-          onClick={this._handleSet}
-       />
-    ]
   }
 
   shouldComponentUpdate(nextProps, nextState){
@@ -59,19 +55,34 @@ class SettingsDialog extends Component {
     onClose()
   }
 
+  _createCommandButtons = (S) => {
+    return [
+      <RaisedButton
+        rootStyle={S.RAISED_ROOT}
+        clDiv={S.CL_RAISED_DIV}
+        caption="Set"
+        onClick={this._handleSet}
+      />
+    ];
+  }
 
   render(){
     const {
             isShow,
+            theme,
             onClose
-          } = this.props;
+          } = this.props
+          , TS = theme.createStyle(styleConfig)
+          , _commandButtons = this._createCommandButtons(TS.BT);
 
     return (
          <ModalDialog
-            style={S.MODAL}
+            style={{ ...S.MODAL, ...TS.R_DIALOG }}
+            styleCaption={TS.BROWSER_CAPTION}
+            styleButton={TS.BT}
             caption="User Settings"
             isShow={isShow}
-            commandButtons={this.commandButtons}
+            commandButtons={_commandButtons}
             onClose={onClose}
          >
            <RowInputSecret
@@ -92,4 +103,4 @@ class SettingsDialog extends Component {
   }
 }
 
-export default SettingsDialog
+export default withTheme(SettingsDialog)

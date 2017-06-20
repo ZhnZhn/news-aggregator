@@ -65,13 +65,18 @@ var ModalPane = (_temp2 = _class = function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var children = this.props.children;
+      var _props = this.props,
+          style = _props.style,
+          children = _props.children;
 
       return _react2.default.createElement(
         'div',
-        { ref: function ref(n) {
+        {
+          style: style,
+          ref: function ref(n) {
             return _this2.rootNode = n;
-          } },
+          }
+        },
         children
       );
     }

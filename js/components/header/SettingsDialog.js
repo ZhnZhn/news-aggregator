@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -28,6 +32,14 @@ var _safeFn = require('../../utils/safeFn');
 
 var _safeFn2 = _interopRequireDefault(_safeFn);
 
+var _withTheme = require('../hoc/withTheme');
+
+var _withTheme2 = _interopRequireDefault(_withTheme);
+
+var _Dialog = require('../dialogs/Dialog.Style');
+
+var _Dialog2 = _interopRequireDefault(_Dialog);
+
 var _ModalDialog = require('../zhn-moleculs/ModalDialog');
 
 var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
@@ -36,9 +48,9 @@ var _RowInputSecret = require('../dialogs/RowInputSecret');
 
 var _RowInputSecret2 = _interopRequireDefault(_RowInputSecret);
 
-var _ActionButton = require('../zhn-atoms/ActionButton');
+var _RaisedButton = require('../zhn-atoms/RaisedButton');
 
-var _ActionButton2 = _interopRequireDefault(_ActionButton);
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -46,7 +58,7 @@ var S = {
   MODAL: {
     position: 'static',
     width: '380px',
-    height: '160px',
+    height: '180px',
     margin: '70px auto 0px'
   }
 };
@@ -78,11 +90,15 @@ var SettingsDialog = function (_Component) {
       onClose();
     };
 
-    _this.commandButtons = [_react2.default.createElement(_ActionButton2.default, {
-      type: 'TypeC',
-      caption: 'Set',
-      onClick: _this._handleSet
-    })];
+    _this._createCommandButtons = function (S) {
+      return [_react2.default.createElement(_RaisedButton2.default, {
+        rootStyle: S.RAISED_ROOT,
+        clDiv: S.CL_RAISED_DIV,
+        caption: 'Set',
+        onClick: _this._handleSet
+      })];
+    };
+
     return _this;
   }
 
@@ -99,16 +115,20 @@ var SettingsDialog = function (_Component) {
     value: function render() {
       var _props = this.props,
           isShow = _props.isShow,
-          onClose = _props.onClose;
-
+          theme = _props.theme,
+          onClose = _props.onClose,
+          TS = theme.createStyle(_Dialog2.default),
+          _commandButtons = this._createCommandButtons(TS.BT);
 
       return _react2.default.createElement(
         _ModalDialog2.default,
         {
-          style: S.MODAL,
+          style: (0, _extends3.default)({}, S.MODAL, TS.R_DIALOG),
+          styleCaption: TS.BROWSER_CAPTION,
+          styleButton: TS.BT,
           caption: 'User Settings',
           isShow: isShow,
-          commandButtons: this.commandButtons,
+          commandButtons: _commandButtons,
           onClose: onClose
         },
         _react2.default.createElement(_RowInputSecret2.default, {
@@ -138,5 +158,5 @@ SettingsDialog.propTypes = process.env.NODE_ENV !== "production" ? {
   }),
   onClose: _react.PropTypes.func
 } : {};
-exports.default = SettingsDialog;
+exports.default = (0, _withTheme2.default)(SettingsDialog);
 //# sourceMappingURL=D:\_Dev\_React\_News\js\components\header\SettingsDialog.js.map

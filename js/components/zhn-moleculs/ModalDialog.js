@@ -34,13 +34,13 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _SvgClose = require('../zhn-atoms/SvgClose');
+var _BrowserCaption = require('../zhn-atoms/BrowserCaption');
 
-var _SvgClose2 = _interopRequireDefault(_SvgClose);
+var _BrowserCaption2 = _interopRequireDefault(_BrowserCaption);
 
-var _ActionButton = require('../zhn-atoms/ActionButton');
+var _RaisedButton = require('../zhn-atoms/RaisedButton');
 
-var _ActionButton2 = _interopRequireDefault(_ActionButton);
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -101,6 +101,7 @@ var ModalDialog = (_temp = _class = function (_Component) {
     _this._renderCommandButton = function () {
       var _this$props = _this.props,
           commandButtons = _this$props.commandButtons,
+          TS = _this$props.styleButton,
           withoutClose = _this$props.withoutClose,
           onClose = _this$props.onClose;
 
@@ -108,8 +109,9 @@ var ModalDialog = (_temp = _class = function (_Component) {
         'div',
         { style: STYLE.COMMAND_DIV },
         commandButtons,
-        !withoutClose && _react2.default.createElement(_ActionButton2.default, {
-          type: 'TypeC',
+        !withoutClose && _react2.default.createElement(_RaisedButton2.default, {
+          rootStyle: TS.RAISED_ROOT,
+          clDiv: TS.CL_RAISED_DIV,
           caption: 'Close',
           onClick: onClose
         })
@@ -180,16 +182,11 @@ var ModalDialog = (_temp = _class = function (_Component) {
           style: (0, _extends3.default)({}, STYLE.ROOT_DIV, style, _style),
           onClick: this._handleClickDialog
         },
-        _react2.default.createElement(
-          'div',
-          { style: STYLE.CAPTON_DIV },
-          _react2.default.createElement(
-            'span',
-            { style: styleCaption },
-            caption
-          ),
-          _react2.default.createElement(_SvgClose2.default, { onClose: onClose })
-        ),
+        _react2.default.createElement(_BrowserCaption2.default, {
+          rootStyle: styleCaption,
+          caption: caption,
+          onClose: onClose
+        }),
         _react2.default.createElement(
           'div',
           null,
@@ -203,7 +200,11 @@ var ModalDialog = (_temp = _class = function (_Component) {
 }(_react.Component), _class.defaultProps = {
   isWithButton: true,
   isNotUpdate: false,
-  timeout: 450
+  timeout: 450,
+  styleButton: {
+    RAISED_ROOT: undefined,
+    CL_RAISED_DIV: undefined
+  }
 }, _temp);
 ModalDialog.propTypes = process.env.NODE_ENV !== "production" ? {
   isShow: _propTypes2.default.bool,

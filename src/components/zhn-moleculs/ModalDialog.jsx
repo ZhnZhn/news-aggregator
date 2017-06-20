@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import SvgClose from '../zhn-atoms/SvgClose'
-import ActionButton from '../zhn-atoms/ActionButton'
+import BrowserCaption from '../zhn-atoms/BrowserCaption'
+import RaisedButton from '../zhn-atoms/RaisedButton'
 
 const CL = {
   SHOWING : 'show-popup',
@@ -65,7 +65,11 @@ class ModalDialog extends Component {
    static defaultProps = {
      isWithButton: true,
      isNotUpdate: false,
-     timeout: 450
+     timeout: 450,
+     styleButton: {
+       RAISED_ROOT: undefined,
+       CL_RAISED_DIV: undefined
+     }
    }
 
    constructor(props){
@@ -96,13 +100,14 @@ class ModalDialog extends Component {
    }
 
   _renderCommandButton = () => {
-    const { commandButtons, withoutClose, onClose } = this.props;
+    const { commandButtons, styleButton:TS, withoutClose, onClose } = this.props;
     return (
       <div style={STYLE.COMMAND_DIV}>
         {commandButtons}
         { !withoutClose &&
-            <ActionButton
-               type="TypeC"
+            <RaisedButton
+               rootStyle={TS.RAISED_ROOT}
+               clDiv={TS.CL_RAISED_DIV}
                caption="Close"
                onClick={onClose}
             />
@@ -137,10 +142,17 @@ class ModalDialog extends Component {
              style={{ ...STYLE.ROOT_DIV, ...style, ..._style}}
              onClick={this._handleClickDialog}
          >
+             <BrowserCaption
+               rootStyle={styleCaption}
+               caption={caption}
+               onClose={onClose}
+             />
+             {/*
              <div style={STYLE.CAPTON_DIV}>
                 <span style={styleCaption}>{caption}</span>
                 <SvgClose onClose={onClose} />
              </div>
+             */}
              <div>
                {children}
              </div>

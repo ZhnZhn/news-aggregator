@@ -24,6 +24,14 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _withTheme = require('../hoc/withTheme');
+
+var _withTheme2 = _interopRequireDefault(_withTheme);
+
+var _HeaderBar = require('./HeaderBar.Style');
+
+var _HeaderBar2 = _interopRequireDefault(_HeaderBar);
+
 var _LoadingProgress = require('./LoadingProgress');
 
 var _LoadingProgress2 = _interopRequireDefault(_LoadingProgress);
@@ -40,9 +48,9 @@ var _GitHubLink = require('./GitHubLink');
 
 var _GitHubLink2 = _interopRequireDefault(_GitHubLink);
 
-var _ActionButton = require('../zhn-atoms/ActionButton');
+var _FlatButton = require('../zhn-atoms/FlatButton');
 
-var _ActionButton2 = _interopRequireDefault(_ActionButton);
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
 
 var _ModalButton = require('../zhn-atoms/ModalButton');
 
@@ -91,6 +99,19 @@ var HeaderBar = function (_Component) {
       _this._handleClickQuery();
     };
 
+    _this._handleChangeTheme = function () {
+      var _this$props = _this.props,
+          theme = _this$props.theme,
+          onChangeTheme = _this$props.onChangeTheme;
+
+      if (theme.themeName === 'GREY') {
+        theme.setThemeName('WHITE');
+      } else {
+        theme.setThemeName('GREY');
+      }
+      onChangeTheme();
+    };
+
     _this.state = {
       isQuery: false
     };
@@ -106,13 +127,17 @@ var HeaderBar = function (_Component) {
           onNewsSources = _props.onNewsSources,
           onSettings = _props.onSettings,
           onAbout = _props.onAbout,
+          theme = _props.theme,
+          S = theme.createStyle(_HeaderBar2.default),
           isQuery = this.state.isQuery;
 
       return _react2.default.createElement(
         'div',
-        { className: 'header' },
+        { className: 'header', style: S.HEADER },
         _react2.default.createElement(_PanelQuery2.default, {
+          paneStyle: S.PANE,
           className: 'header__panel-browser',
+          clItem: S.CL_QUERY_ITEM,
           isShow: isQuery,
           onClose: this._handleCloseQuery,
           onWebhose: this._handleClickSource.bind(null, 'Webhose'),
@@ -124,29 +149,34 @@ var HeaderBar = function (_Component) {
         }),
         _react2.default.createElement(_IconAppLogo2.default, {
           className: 'header__icon-app',
-          title: TITLE
+          title: TITLE,
+          onClick: this._handleChangeTheme
         }),
         _react2.default.createElement(_AppLabel2.default, {
           className: 'header__label-app',
-          caption: TITLE
+          caption: TITLE,
+          title: 'Click to Change UI Theme',
+          onClick: this._handleChangeTheme
         }),
         _react2.default.createElement(
           'span',
           { className: 'header__browser-bts' },
-          _react2.default.createElement(_ActionButton2.default, {
-            type: 'TypeA',
+          _react2.default.createElement(_FlatButton2.default, {
+            rootStyle: S.BT.FLAT_ROOT,
+            clDiv: S.BT.CL_FLAT_DIV,
             caption: 'News',
             title: 'Open News Sources Browser',
             onClick: onNewsSources
           }),
           _react2.default.createElement(
-            _ModalButton2.default,
-            {
-              type: 'TypeA',
+            _ModalButton2.default
+            //type="TypeA"
+            ,
+            { rootStyle: S.BT.FLAT_ROOT,
+              clDiv: S.BT.CL_FLAT_DIV,
               caption: 'Query',
-              title: 'Panel Query Source'
-              //onClick={onQuery}
-              , onClick: this._handleClickQuery,
+              title: 'Panel Query Source',
+              onClick: this._handleClickQuery,
               onReg: this._onRegQuery
             },
             _react2.default.createElement('span', { className: 'arrow-down' })
@@ -160,15 +190,19 @@ var HeaderBar = function (_Component) {
         _react2.default.createElement(
           'div',
           { className: 'header__bts' },
-          _react2.default.createElement(_ActionButton2.default, {
-            type: 'TypeA',
-            caption: 'Settings',
+          _react2.default.createElement(_FlatButton2.default, {
+            rootStyle: S.BT.FLAT_ROOT,
+            clDiv: S.BT.CL_FLAT_DIV
+            //type="TypeA"
+            , caption: 'Settings',
             title: 'Open Settings Dialog',
             onClick: onSettings
           }),
-          _react2.default.createElement(_ActionButton2.default, {
-            type: 'TypeA',
-            caption: 'About',
+          _react2.default.createElement(_FlatButton2.default, {
+            rootStyle: S.BT.FLAT_ROOT,
+            clDiv: S.BT.CL_FLAT_DIV
+            //type="TypeA"
+            , caption: 'About',
             title: 'About',
             onClick: onAbout
           })
@@ -179,5 +213,5 @@ var HeaderBar = function (_Component) {
   return HeaderBar;
 }(_react.Component);
 
-exports.default = HeaderBar;
+exports.default = (0, _withTheme2.default)(HeaderBar);
 //# sourceMappingURL=D:\_Dev\_React\_News\js\components\header\HeaderBar.js.map

@@ -20,9 +20,19 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _withTheme = require('../hoc/withTheme');
+
+var _withTheme2 = _interopRequireDefault(_withTheme);
+
+var _Dialog = require('./Dialog.Style');
+
+var _Dialog2 = _interopRequireDefault(_Dialog);
 
 var _ModalDialog = require('../zhn-moleculs/ModalDialog');
 
@@ -62,7 +72,7 @@ var _toMsg = function _toMsg(data) {
   return 'Exception Message';
 };
 
-var AlertDialog = function (_Component) {
+var AlertDialog = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(AlertDialog, _Component);
 
   function AlertDialog() {
@@ -84,15 +94,20 @@ var AlertDialog = function (_Component) {
       var _props = this.props,
           isShow = _props.isShow,
           data = _props.data,
+          theme = _props.theme,
           onClose = _props.onClose,
+          TS = theme.createStyle(_Dialog2.default),
           _msg = _toMsg(data);
 
       return _react2.default.createElement(
         _ModalDialog2.default,
         {
-          caption: 'Exception',
-          styleCaption: S.CAPTION,
-          isShow: isShow,
+          style: TS.R_DIALOG,
+          styleCaption: TS.BROWSER_CAPTION,
+          styleButton: TS.BT,
+          caption: 'Exception'
+          //styleCaption={S.CAPTION}
+          , isShow: isShow,
           onClose: onClose
         },
         _react2.default.createElement(
@@ -108,11 +123,9 @@ var AlertDialog = function (_Component) {
     }
   }]);
   return AlertDialog;
-}(_react.Component);
-
-AlertDialog.defaultProps = {
+}(_react.Component), _class.defaultProps = {
   data: {}
-};
+}, _temp);
 AlertDialog.propTypes = process.env.NODE_ENV !== "production" ? {
   isShow: _react.PropTypes.bool,
   data: _react.PropTypes.shape({
@@ -122,5 +135,5 @@ AlertDialog.propTypes = process.env.NODE_ENV !== "production" ? {
   }),
   onClose: _react.PropTypes.func
 } : {};
-exports.default = AlertDialog;
+exports.default = (0, _withTheme2.default)(AlertDialog);
 //# sourceMappingURL=D:\_Dev\_React\_News\js\components\dialogs\AlertDialog.js.map

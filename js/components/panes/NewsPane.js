@@ -28,6 +28,14 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _withTheme = require('../hoc/withTheme');
+
+var _withTheme2 = _interopRequireDefault(_withTheme);
+
+var _NewsPane = require('./NewsPane.Style');
+
+var _NewsPane2 = _interopRequireDefault(_NewsPane);
+
 var _BrowserCaption = require('../zhn-atoms/BrowserCaption');
 
 var _BrowserCaption2 = _interopRequireDefault(_BrowserCaption);
@@ -45,8 +53,6 @@ var _ScrollPane = require('../zhn-atoms/ScrollPane');
 var _ScrollPane2 = _interopRequireDefault(_ScrollPane);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//import Article from '../items/Article'
 
 var SHOW_POPUP = "show-popup",
     CHILD_MARGIN = 36,
@@ -109,7 +115,8 @@ var NewsPane = function (_Component) {
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (NewsPane.__proto__ || Object.getPrototypeOf(NewsPane)).call(this));
 
-    _this._onStore = function (actionType, option) {
+    _this._onStore = function (actionType) {
+      var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       var _this$props = _this.props,
           addAction = _this$props.addAction,
           showAction = _this$props.showAction,
@@ -200,9 +207,11 @@ var NewsPane = function (_Component) {
 
       var _props = this.props,
           paneCaption = _props.paneCaption,
+          theme = _props.theme,
           onRemoveItems = _props.onRemoveItems,
           onRemoveUnder = _props.onRemoveUnder,
           onCloseItem = _props.onCloseItem,
+          TS = theme.createStyle(_NewsPane2.default),
           _state = this.state,
           isShow = _state.isShow,
           articles = _state.articles,
@@ -218,12 +227,12 @@ var NewsPane = function (_Component) {
             return _this2.rootDiv = node;
           },
           className: _classIsShow,
-          style: (0, _extends3.default)({}, styles.rootDiv, _styleIsShow)
+          style: (0, _extends3.default)({}, styles.rootDiv, TS.PANE_ROOT, _styleIsShow)
         },
         _react2.default.createElement(
           _BrowserCaption2.default,
           {
-            rootStyle: styles.brCaption,
+            rootStyle: (0, _extends3.default)({}, styles.brCaption, TS.PANE_CAPTION),
             caption: _paneCaption,
             onClose: this._handleHide
           },
@@ -240,7 +249,7 @@ var NewsPane = function (_Component) {
         ),
         _react2.default.createElement(
           _ScrollPane2.default,
-          { style: styles.scrollDiv },
+          { className: TS.CL_SCROLL_PANE, style: styles.scrollDiv },
           this._renderArticles(articles, onCloseItem, onRemoveUnder)
         )
       );
@@ -249,5 +258,5 @@ var NewsPane = function (_Component) {
   return NewsPane;
 }(_react.Component);
 
-exports.default = NewsPane;
+exports.default = (0, _withTheme2.default)(NewsPane);
 //# sourceMappingURL=D:\_Dev\_React\_News\js\components\panes\NewsPane.js.map

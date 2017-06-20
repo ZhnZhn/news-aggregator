@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 
+import withTheme from '../hoc/withTheme'
+import styleConfig from './Dialog.Style'
+
 import DraggableDialog from '../zhn-moleculs/DraggableDialog'
 import RowInputSelect from './RowInputSelect'
-import ActionButton from '../zhn-atoms/ActionButton'
+import RaisedButton from '../zhn-atoms/RaisedButton'
 
 const options = [
   { caption: 'top', value: 'top'},
@@ -14,13 +17,6 @@ class DialogType1 extends Component {
   constructor(props){
     super()
     this.sortBy = undefined
-    this.commandButtons = [
-      <ActionButton
-        type="TypeC"
-        caption="Load"
-        onClick={this._handleLoad}
-      />
-    ]
   }
 
   _selectSortBy = (option) => {
@@ -43,13 +39,33 @@ class DialogType1 extends Component {
     this.props.onClose()
   }
 
+  _createCommandButtons = (S) => {
+    return [
+      <RaisedButton
+        rootStyle={S.RAISED_ROOT}
+        clDiv={S.CL_RAISED_DIV}
+        caption="Load"
+        onClick={this._handleLoad}
+      />
+    ];
+  }
+
   render(){
-    const { isShow, caption, onShow } = this.props;
+    const { isShow, caption,
+            theme,
+            onShow
+          } = this.props
+        , S = theme.createStyle(styleConfig)
+        , _commandButtons = this._createCommandButtons(S.BT);
+
     return (
       <DraggableDialog
+           rootStyle={S.R_DIALOG}
+           browserCaptionStyle={S.BROWSER_CAPTION}
+           styleButton={S.BT}
            caption={caption}
            isShow={isShow}
-           commandButtons={this.commandButtons}
+           commandButtons={_commandButtons}
            onShowChart={onShow}
            onClose={this._handleClose}
        >
@@ -65,4 +81,4 @@ class DialogType1 extends Component {
   }
 }
 
-export default DialogType1
+export default withTheme(DialogType1)

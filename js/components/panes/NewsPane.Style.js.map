@@ -1,0 +1,22 @@
+)]}
+{
+ "version": 3,
+ "sources": "D:\\_Dev\\_React\\_News\\src\\components\\panes\\NewsPane.Style.js",
+ "file": "D:\\_Dev\\_React\\_News\\js\\components\\panes\\NewsPane.Style.js",
+ "sourceRoot": "",
+ "names": [
+  "styleConfig",
+  "themeName",
+  "undefined",
+  "style",
+  "createStyle",
+  "CSS_RULE",
+  "_paneRoot",
+  "backgroundColor",
+  "CL_SCROLL_PANE",
+  "PANE_CAPTION",
+  "BG_HEADER",
+  "PANE_ROOT"
+ ],
+ "mappings": ";;;;;;;;;;;;AAEA,IAAMA,cAAc;AAClBC,aAAYC,SADM;AAElBC,SAAQD,SAFU;AAGlBE,eAAc,qBAACC,QAAD,EAAWJ,SAAX,EAAyB;AACrC,QAAIK,kBAAJ;AACA,YAAOL,SAAP;AACE,WAAK,OAAL;AACEK,oBAAY,EAAEC,iBAAiB,oBAAnB,EAAZ;AACA;AACF;AAJF;AAMA,WAAO;AACLC,sBAAgBH,SAASG,cADpB;AAELC,+CACKJ,SAASK,SADd,CAFK;AAKLC,4CACKL,SADL;AALK,KAAP;AASD;AApBiB,CAApB;;kBAuBeN,W"
+}

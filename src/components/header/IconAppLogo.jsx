@@ -1,9 +1,10 @@
 import React from 'react';
 
-const IconAppLogo = ({ className, title }) => (
+const IconAppLogo = ({ className, title, onClick }) => (
     <span
        className={className}
        title={title}
+       onClick={onClick}
     >
     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
          fill-rule="evenodd"

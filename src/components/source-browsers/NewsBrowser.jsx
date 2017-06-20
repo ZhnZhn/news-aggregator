@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 
+import withTheme from '../hoc/withTheme'
+import styleConfig from './NewsBrowser.Style'
+
 import DynamicMenuBrowser from '../zhn-moleculs/DynamicMenuBrowser'
 import PoweredBy from '../links/PoweredBy'
 import { LinkNewsApi } from '../links/Links'
-//import LinkNewsApi from '../links/LinkNewsApi'
 
 class NewsBrowser extends Component {
 
@@ -30,16 +32,24 @@ class NewsBrowser extends Component {
 
   render(){
     const {
-            rowClass, store, showAction, browserId,
+            store, showAction, browserId,
+            theme,
             onClick, onError,
             onClickBadge
-          } = this.props;
+          } = this.props
+        , S = theme.createStyle(styleConfig)
     const { itemData } = this.state;
     return (
       <DynamicMenuBrowser
+         clScrollPane={S.CL_SCROLL_PANE}
+         browserStyle={S.ROOT}
+         browserCaptionStyle={S.BROWSER_CAPTION}
+         openCloseStyle={S.OPEN_CLOSE}
+         itemStyle={S.ITEM}
+         badgeStyle={S.BADGE}
          caption="News Sources"
          url="data/news-source-menu.json"
-         rowClass={rowClass}
+         rowClass={S.CL_MENU_ITEM}
          store={store}
          browserId={browserId}
          itemData={itemData}
@@ -56,4 +66,4 @@ class NewsBrowser extends Component {
   }
 }
 
-export default NewsBrowser
+export default withTheme(NewsBrowser)

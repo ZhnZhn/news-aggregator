@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 
+const CL_BT = 'bt-flat';
+const CL_BT_SPAN = 'bt-flat__span';
+
 class ModalButton extends Component {
 
   componentDidMount(){
@@ -11,26 +14,25 @@ class ModalButton extends Component {
 
   render(){
     const {
-            type, style, title, caption,
+            rootStyle, clDiv, title, caption,
             children, onClick
           } = this.props;
-    let _className;
-    switch (type) {
-      case 'TypeA': _className = 'button-type-a'; break;
-      case 'TypeC': _className = 'button-type-c'; break;
-      default     : _className = 'button-type-b';
-    }
-
     return (
       <button
-           ref={n => this.rootNode = n}
-           className={_className}
-           style={style}
-           title={title}
-           onClick={onClick}
-       >
-         {caption}
-         {children}
+        ref={n => this.rootNode = n}
+        className={CL_BT}
+        style={rootStyle}
+        type="button"
+        tabIndex={0}
+        title={title}
+        onClick={onClick}
+      >
+        <div className={clDiv}>
+          <span className={CL_BT_SPAN}>
+            {caption}
+            {children}
+          </span>
+        </div>
       </button>
     );
   }

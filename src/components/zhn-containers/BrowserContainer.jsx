@@ -5,7 +5,7 @@ import ComponentActions, { TYPES } from '../../flux/actions/ComponentActions'
 import NewsBrowser from '../source-browsers/NewsBrowser'
 import DialogContainer from './DialogContainer'
 
-const CL_MENU_ITEM = "row__news-source";
+//const CL_MENU_ITEM = "row__news-source";
 
 const onClick = ComponentActions.showNewsDialog;
 const onError = ComponentActions.showModalDialog.bind(null, 'ALERT_DIALOG');
@@ -21,7 +21,7 @@ class BrowserContainer extends Component {
            showAction={TYPES.SHOW_BROWSER}
            updateAction={TYPES.UPDATE_BROWSER}
            browserId="NEWS_API_ORG"
-           rowClass={CL_MENU_ITEM}
+           //rowClass={CL_MENU_ITEM}
            onClick={onClick}
            onError={onError}
            onClickBadge={onClickBadge}

@@ -4,18 +4,19 @@ import PropTypes from 'prop-types'
 import OpenClose from '../zhn-atoms/OpenClose'
 import MenuItemBadge from './MenuItemBadge'
 
+const CL_NOT_S = 'not-selected';
+
 const _renderMenuItems = function(option){
-  const { rowClass, items=[], hmItems={}, itemData, onClick, onClickBadge, ...rest } = option  
+  const { rowClass, badgeStyle, items=[], hmItems={}, itemData, onClick, onClickBadge, ...rest } = option
   return items.map((item, index) => {
     const _className = (rowClass)
-             ? rowClass + ' not-selected'
-             : (index % 2)
-                 ? 'row__topic__even not-selected'
-                 : 'row__topic__odd not-selected'
+             ? `${rowClass} ${CL_NOT_S}`
+             :  CL_NOT_S
           , _itemConf = hmItems[item.id]
           , { menuTitle} = _itemConf
           , badgeEl = itemData[item.id]
                ? <MenuItemBadge
+                    style={badgeStyle}
                     itemBadge={itemData[item.id]}
                     itemConf={_itemConf}
                     onClick={onClickBadge}
@@ -38,12 +39,13 @@ const _renderMenuItems = function(option){
 }
 
 const MenuPart = ({
-  caption, isInitClose, ...restProps
+  openCloseStyle, itemStyle, caption, isInitClose, ...restProps
 }) => (
   <OpenClose
+     style={openCloseStyle}
      caption={caption}
      isClose={isInitClose}
-     styleNotSelected={{ borderBottom: "1px solid #9e9e9e" }}
+     itemStyle={itemStyle}
   >
      {_renderMenuItems(restProps)}
   </OpenClose>

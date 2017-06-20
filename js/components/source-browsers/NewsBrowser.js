@@ -24,6 +24,14 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _withTheme = require('../hoc/withTheme');
+
+var _withTheme2 = _interopRequireDefault(_withTheme);
+
+var _NewsBrowser = require('./NewsBrowser.Style');
+
+var _NewsBrowser2 = _interopRequireDefault(_NewsBrowser);
+
 var _DynamicMenuBrowser = require('../zhn-moleculs/DynamicMenuBrowser');
 
 var _DynamicMenuBrowser2 = _interopRequireDefault(_DynamicMenuBrowser);
@@ -35,8 +43,6 @@ var _PoweredBy2 = _interopRequireDefault(_PoweredBy);
 var _Links = require('../links/Links');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//import LinkNewsApi from '../links/LinkNewsApi'
 
 var NewsBrowser = function (_Component) {
   (0, _inherits3.default)(NewsBrowser, _Component);
@@ -76,21 +82,28 @@ var NewsBrowser = function (_Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
-          rowClass = _props.rowClass,
           store = _props.store,
           showAction = _props.showAction,
           browserId = _props.browserId,
+          theme = _props.theme,
           onClick = _props.onClick,
           onError = _props.onError,
-          onClickBadge = _props.onClickBadge;
+          onClickBadge = _props.onClickBadge,
+          S = theme.createStyle(_NewsBrowser2.default);
       var itemData = this.state.itemData;
 
       return _react2.default.createElement(
         _DynamicMenuBrowser2.default,
         {
+          clScrollPane: S.CL_SCROLL_PANE,
+          browserStyle: S.ROOT,
+          browserCaptionStyle: S.BROWSER_CAPTION,
+          openCloseStyle: S.OPEN_CLOSE,
+          itemStyle: S.ITEM,
+          badgeStyle: S.BADGE,
           caption: 'News Sources',
           url: 'data/news-source-menu.json',
-          rowClass: rowClass,
+          rowClass: S.CL_MENU_ITEM,
           store: store,
           browserId: browserId,
           itemData: itemData,
@@ -110,5 +123,5 @@ var NewsBrowser = function (_Component) {
   return NewsBrowser;
 }(_react.Component);
 
-exports.default = NewsBrowser;
+exports.default = (0, _withTheme2.default)(NewsBrowser);
 //# sourceMappingURL=D:\_Dev\_React\_News\js\components\source-browsers\NewsBrowser.js.map

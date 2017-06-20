@@ -1,61 +1,18 @@
 import React, { Component } from 'react'
 
+import withTheme from '../hoc/withTheme'
+import styleConfig from './About.Style'
+
 import ScrollPane from '../zhn-atoms/ScrollPane'
 import BrowserCaption from '../zhn-atoms/BrowserCaption'
 import Link from '../links/Links'
 import Step from './Step'
 import IconLogoBar from './IconLogoBar'
+import SpanKey from './SpanKey'
 
 import STYLE from '../styles/ContainerStyle'
 
 const CL_SHOW = "show-popup";
-
-const S = {
-  SCROLL_DIV : {
-    overflowY: 'auto',
-    height: '92%',
-    paddingRight: '10px'
-  },
-  DIV_WRAPPER : {
-    paddingLeft: '12px',
-    paddingRight: '5px',
-    lineHeight : 1.4,
-    color: 'gray',
-    fontWeight: 'bold'
-  },
-  DIV_TEXT: {
-    lineHeight: 1.8
-  },
-  BLOCK: {
-    display: 'block'
-  },
-  NONE: {
-    display: 'none'
-  },
-  APP_TITLE: {
-    color: '#80c040'
-  },
-  STEP: {
-    marginTop: '3px'
-  },
-  BLACK: {
-    color: 'black'
-  },
-  MARGIN_TOP: {
-    marginTop: '8px'
-  },
-  PROVIDER: {
-    color: '#009AE5'
-  }
-};
-
-
-const SpanKey = () =>
-<span>
-  <span>&nbsp;(</span>
-  <span style={S.BLACK}>Key</span>
-  <span>),&nbsp;</span>
-</span>
 
 class About extends Component {
   constructor(props){
@@ -89,24 +46,30 @@ class About extends Component {
   }
 
   render(){
-    const { isShow } = this.state
-        ,  _rootClass = isShow
+    const  { theme } = this.props
+         , S = theme.createStyle(styleConfig)
+         , { isShow } = this.state
+         , _rootClass = isShow
               ? CL_SHOW
               : null
-        , _rootStyle = isShow
+         , _rootStyle = isShow
               ? S.BLOCK
               : S.NONE;
     return (
       <div
         className={_rootClass}
-        style={{ ...STYLE.aboutRootDiv, ..._rootStyle }}
+        style={{...STYLE.aboutRootDiv, ..._rootStyle, ...S.ROOT}}
        >
          <BrowserCaption
+            rootStyle={S.BROWSER_CAPTION}
             caption="About"
             onClose={this._handleClose}
          />
 
-         <ScrollPane style={S.SCROLL_DIV}>
+         <ScrollPane
+            className={S.CL_SCROLL_PANE}
+            style={S.SCROLL_DIV}
+         >
            <div style={S.DIV_WRAPPER}>
               <div style={S.DIV_TEXT}>
                  <p>
@@ -117,9 +80,9 @@ class About extends Component {
                 </p>
                 <p>
                    <Link.NewsApi />
-                   <SpanKey/>
+                   <SpanKey style={S.BLACK} />
                    <Link.WebhoseIo />
-                   <SpanKey/>
+                   <SpanKey style={S.BLACK} />
                    <Link.StackOverflow />
                    <span>.</span>
                  </p>
@@ -193,4 +156,4 @@ class About extends Component {
   }
 }
 
-export default About
+export default withTheme(About)

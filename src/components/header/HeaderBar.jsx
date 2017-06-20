@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 
+import withTheme from '../hoc/withTheme'
+import styleConfig from './HeaderBar.Style'
+
 import LoadingProgress from './LoadingProgress'
 import IconAppLogo from './IconAppLogo'
 import AppLabel from './AppLabel'
 import GitHubLink from './GitHubLink'
-import ActionButton from '../zhn-atoms/ActionButton'
+import FlatButton from '../zhn-atoms/FlatButton'
 import ModalButton from '../zhn-atoms/ModalButton'
 import PanelQuery from './PanelQuery'
 
@@ -43,18 +46,31 @@ class HeaderBar extends Component {
     this._handleClickQuery()
   }
 
+  _handleChangeTheme = () => {
+    const { theme, onChangeTheme } = this.props;
+    if (theme.themeName === 'GREY'){
+      theme.setThemeName('WHITE')
+    } else {
+      theme.setThemeName('GREY')
+    }
+    onChangeTheme()
+  }
+
   render() {
     const {
             store, LOADING_ACTIONS,
             onNewsSources,
-            //onQuery,
-            onSettings, onAbout
+            onSettings, onAbout,
+            theme
           } = this.props
+        , S = theme.createStyle(styleConfig)
         , { isQuery } = this.state;
     return (
-      <div className="header">
+      <div className="header" style={S.HEADER}>
         <PanelQuery
+          paneStyle={S.PANE}
           className="header__panel-browser"
+          clItem={S.CL_QUERY_ITEM}
           isShow={isQuery}
           onClose={this._handleCloseQuery}
           onWebhose={this._handleClickSource.bind(null, 'Webhose')}
@@ -67,23 +83,28 @@ class HeaderBar extends Component {
         <IconAppLogo
            className="header__icon-app"
            title={TITLE}
+           onClick={this._handleChangeTheme}
         />
         <AppLabel
            className="header__label-app"
            caption={TITLE}
+           title="Click to Change UI Theme"
+           onClick={this._handleChangeTheme}
         />
         <span className="header__browser-bts">
-          <ActionButton
-            type="TypeA"
+          <FlatButton
+            rootStyle={S.BT.FLAT_ROOT}
+            clDiv={S.BT.CL_FLAT_DIV}
             caption="News"
             title="Open News Sources Browser"
             onClick={onNewsSources}
           />
           <ModalButton
-             type="TypeA"
+             //type="TypeA"
+             rootStyle={S.BT.FLAT_ROOT}
+             clDiv={S.BT.CL_FLAT_DIV}
              caption="Query"
              title="Panel Query Source"
-             //onClick={onQuery}
              onClick={this._handleClickQuery}
              onReg={this._onRegQuery}
           >
@@ -96,14 +117,18 @@ class HeaderBar extends Component {
           href="https://github.com/zhnzhn/news-aggregator"
         />
         <div className="header__bts">
-            <ActionButton
-              type="TypeA"
+            <FlatButton
+              rootStyle={S.BT.FLAT_ROOT}
+              clDiv={S.BT.CL_FLAT_DIV}
+              //type="TypeA"
               caption="Settings"
               title="Open Settings Dialog"
               onClick={onSettings}
             />
-            <ActionButton
-              type="TypeA"
+            <FlatButton
+              rootStyle={S.BT.FLAT_ROOT}
+              clDiv={S.BT.CL_FLAT_DIV}
+              //type="TypeA"
               caption="About"
               title="About"
               onClick={onAbout}
@@ -115,4 +140,4 @@ class HeaderBar extends Component {
 }
 
 
-export default HeaderBar
+export default withTheme(HeaderBar)
