@@ -24,7 +24,8 @@ class LoadingProgress extends Component {
     this.unsubscribe()
   }
 
-  shouldComponentUpdate(nextState, nextProps){
+
+  shouldComponentUpdate(nextProps, nextState){
     if (this.props !== nextProps){
       return false;
     }

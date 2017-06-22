@@ -74,7 +74,7 @@ var LoadingProgress = function (_Component) {
     }
   }, {
     key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextState, nextProps) {
+    value: function shouldComponentUpdate(nextProps, nextState) {
       if (this.props !== nextProps) {
         return false;
       }
