@@ -40,13 +40,13 @@ var _DraggableDialog = require('../zhn-moleculs/DraggableDialog');
 
 var _DraggableDialog2 = _interopRequireDefault(_DraggableDialog);
 
-var _RowInputText = require('./RowInputText');
+var _TextField = require('../zhn-m-input/TextField');
 
-var _RowInputText2 = _interopRequireDefault(_RowInputText);
+var _TextField2 = _interopRequireDefault(_TextField);
 
-var _RowInputSelect = require('./RowInputSelect');
+var _InputSelect = require('../zhn-m-input/InputSelect');
 
-var _RowInputSelect2 = _interopRequireDefault(_RowInputSelect);
+var _InputSelect2 = _interopRequireDefault(_InputSelect);
 
 var _PoweredBy = require('../links/PoweredBy');
 
@@ -57,10 +57,6 @@ var _Links = require('../links/Links');
 var _RaisedButton = require('../zhn-atoms/RaisedButton');
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-var _DatesFragment = require('./DatesFragment');
-
-var _DatesFragment2 = _interopRequireDefault(_DatesFragment);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -75,6 +71,7 @@ var _initFromDate = _dt2.default.getFromDate(1),
     _initToDate = _dt2.default.getToDate(),
     _onTestDate = _dt2.default.isValidDate;
 
+var DF_SORT_BY = { caption: "Hot Week Tab", value: "week" };
 var _sortByOptions = [{ caption: "Activity, Recent Day", value: "activity" }, { caption: "Creation Date", value: "creation" }, { caption: "Score", value: "votes" }, { caption: "Hot Tab", value: "hot" }, { caption: "Hot Week Tab", value: "week" }, { caption: "Hot Month Tab", value: "month" }];
 
 var StackTaggedDialog = function (_Component) {
@@ -84,10 +81,6 @@ var StackTaggedDialog = function (_Component) {
     (0, _classCallCheck3.default)(this, StackTaggedDialog);
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (StackTaggedDialog.__proto__ || Object.getPrototypeOf(StackTaggedDialog)).call(this));
-
-    _this._regInput = function (propName, inputComp) {
-      _this[propName] = inputComp;
-    };
 
     _this._selectSortBy = function (option) {
       _this.sortBy = option ? option.value : undefined;
@@ -100,9 +93,8 @@ var StackTaggedDialog = function (_Component) {
           itemConf = _this$props.itemConf,
           onLoad = _this$props.onLoad,
           _tag = _this.inputTag.getValue(),
-          _this$datesFragment$g = _this.datesFragment.getValues(),
-          fromDate = _this$datesFragment$g.fromDate,
-          toDate = _this$datesFragment$g.toDate,
+          fromDate = _this.fromDate.getValue(),
+          toDate = _this.toDate.getValue(),
           _fromDate = _dt2.default.toUTCMillis(fromDate) / 1000,
           _toDate = _dt2.default.toUTCMillis(toDate) / 1000;
 
@@ -128,11 +120,12 @@ var StackTaggedDialog = function (_Component) {
         rootStyle: S.RAISED_ROOT,
         clDiv: S.CL_RAISED_DIV,
         caption: 'Load',
+        isPrimary: true,
         onClick: _this._handleLoad
       })];
     };
 
-    _this.siteType = undefined;
+    _this.sortBy = DF_SORT_BY.value;
     return _this;
   }
 
@@ -160,29 +153,37 @@ var StackTaggedDialog = function (_Component) {
           onShowChart: onShow,
           onClose: this._handleClose
         },
-        _react2.default.createElement(_RowInputText2.default, {
-          accessKey: 't',
-          caption: 'Tag:',
-          placeholder: 'Default: css',
-          spellCheck: true,
-          autoCorrect: 'on',
-          autoComplete: 'on',
-          onReg: this._regInput.bind(null, 'inputTag')
+        _react2.default.createElement(_TextField2.default, {
+          ref: function ref(comp) {
+            return _this2.inputTag = comp;
+          },
+          caption: 'Tag (Default: CSS)',
+          initValue: 'CSS'
         }),
-        _react2.default.createElement(_RowInputSelect2.default, {
-          accessKey: 's',
-          caption: 'SortBy:',
-          placeholder: 'Default: Hot Week Tab',
+        _react2.default.createElement(_InputSelect2.default, {
+          caption: 'SortBy',
+          initItem: DF_SORT_BY,
           options: _sortByOptions,
+          styleConfig: TS.SELECT,
           onSelect: this._selectSortBy
         }),
-        _react2.default.createElement(_DatesFragment2.default, {
-          ref: function ref(c) {
-            return _this2.datesFragment = c;
+        _react2.default.createElement(_TextField2.default, {
+          ref: function ref(comp) {
+            return _this2.fromDate = comp;
           },
-          initFromDate: _initFromDate,
-          initToDate: _initToDate,
-          onTestDate: _onTestDate
+          caption: 'From Date',
+          initValue: _initFromDate,
+          errorMsg: 'YYYY-MM-DD format must be',
+          onTest: _onTestDate
+        }),
+        _react2.default.createElement(_TextField2.default, {
+          ref: function ref(comp) {
+            return _this2.toDate = comp;
+          },
+          caption: 'To Date',
+          initValue: _initToDate,
+          errorMsg: 'YYYY-MM-DD format must be',
+          onTest: _onTestDate
         }),
         _react2.default.createElement(
           _PoweredBy2.default,

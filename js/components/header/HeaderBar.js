@@ -62,7 +62,7 @@ var _PanelQuery2 = _interopRequireDefault(_PanelQuery);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var TITLE = "News Aggregator v0.3.0";
+var TITLE = "News Aggregator v0.4.0";
 
 var HeaderBar = function (_Component) {
   (0, _inherits3.default)(HeaderBar, _Component);

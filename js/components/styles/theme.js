@@ -28,6 +28,8 @@ var CSS_RULE = {
   CL_BT_RAISED_DIV: 'bt-raise__div',
   CL_BT_FLAT_DIV: 'bt-flat__div',
 
+  CL_SELECT_ITEM: 'm-select__item',
+
   BG: {
     backgroundColor: '#4d4d4d'
   },
@@ -37,6 +39,7 @@ var CSS_RULE = {
   R_DIALOG: {
     border: 'solid 2px ' + C.BG_HEADER_GREY
   }
+
 };
 
 var THEME_NAME = exports.THEME_NAME = {
@@ -53,6 +56,8 @@ var _setTheme = (_setTheme2 = {}, (0, _defineProperty3.default)(_setTheme2, THEM
   CSS_RULE.CL_BT_RAISED_DIV = 'bt-raise__div';
   CSS_RULE.CL_BT_FLAT_DIV = 'bt-flat__div';
 
+  CSS_RULE.CL_SELECT_ITEM = 'm-select__item';
+
   CSS_RULE.BG.backgroundColor = '#4d4d4d';
   CSS_RULE.BG_HEADER.backgroundColor = C.BG_HEADER_GREY;
   Object.assign(CSS_RULE.R_DIALOG, {
@@ -66,6 +71,8 @@ var _setTheme = (_setTheme2 = {}, (0, _defineProperty3.default)(_setTheme2, THEM
   CSS_RULE.CL_QUERY_ITEM = 'row__topic--white';
   CSS_RULE.CL_BT_RAISED_DIV = 'bt-raise__div--white';
   CSS_RULE.CL_BT_FLAT_DIV = 'bt-flat__div--white';
+
+  CSS_RULE.CL_SELECT_ITEM = 'm-select__item--white';
 
   CSS_RULE.BG.backgroundColor = C.BG_WHITE;
   CSS_RULE.BG_HEADER.backgroundColor = C.BG_HEADER_WHITE;

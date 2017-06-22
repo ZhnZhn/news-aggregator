@@ -240,8 +240,8 @@ button::-moz-focus-inner {
   background-color: rgba(0, 0, 0, 0);
 }
 .bt-flat__div:hover{
-  /*background-color: rgba(153,153,153, 0.2);*/
-  background-color: rgba(220,220,220, 0.2);
+  /*background-color: rgba(220,220,220, 0.2);*/
+  background-color: rgba(120, 120, 120, 0.2);
 }
 .bt-flat__span {
   position: relative;

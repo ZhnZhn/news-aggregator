@@ -23,7 +23,7 @@ const styles = {
   commandDiv : {
      cursor: 'default',
      float: 'right',
-     marginTop: '8px',
+     marginTop: '16px',
      marginBottom: '10px',
      marginRight: '4px'
   }

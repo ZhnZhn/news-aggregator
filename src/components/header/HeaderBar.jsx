@@ -11,7 +11,7 @@ import FlatButton from '../zhn-atoms/FlatButton'
 import ModalButton from '../zhn-atoms/ModalButton'
 import PanelQuery from './PanelQuery'
 
-const TITLE = "News Aggregator v0.3.0";
+const TITLE = "News Aggregator v0.4.0";
 
 class HeaderBar extends Component {
   constructor(props){

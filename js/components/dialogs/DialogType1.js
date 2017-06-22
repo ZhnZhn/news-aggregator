@@ -36,9 +36,9 @@ var _DraggableDialog = require('../zhn-moleculs/DraggableDialog');
 
 var _DraggableDialog2 = _interopRequireDefault(_DraggableDialog);
 
-var _RowInputSelect = require('./RowInputSelect');
+var _InputSelect = require('../zhn-m-input/InputSelect');
 
-var _RowInputSelect2 = _interopRequireDefault(_RowInputSelect);
+var _InputSelect2 = _interopRequireDefault(_InputSelect);
 
 var _RaisedButton = require('../zhn-atoms/RaisedButton');
 
@@ -46,7 +46,9 @@ var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var options = [{ caption: 'top', value: 'top' }, { caption: 'latest', value: 'latest' }, { caption: 'popular', value: 'popular' }];
+var DF_SORTBY = { caption: 'Top', value: 'top' };
+
+var options = [{ caption: 'Top', value: 'top' }, { caption: 'Latest', value: 'latest' }, { caption: 'Popular', value: 'popular' }];
 
 var DialogType1 = function (_Component) {
   (0, _inherits3.default)(DialogType1, _Component);
@@ -84,11 +86,12 @@ var DialogType1 = function (_Component) {
         rootStyle: S.RAISED_ROOT,
         clDiv: S.CL_RAISED_DIV,
         caption: 'Load',
+        isPrimary: true,
         onClick: _this._handleLoad
       })];
     };
 
-    _this.sortBy = undefined;
+    _this.sortBy = DF_SORTBY.value;
     return _this;
   }
 
@@ -115,11 +118,11 @@ var DialogType1 = function (_Component) {
           onShowChart: onShow,
           onClose: this._handleClose
         },
-        _react2.default.createElement(_RowInputSelect2.default, {
-          accessKey: 's',
-          caption: 'SortBy:',
-          placeholder: 'Default: top',
+        _react2.default.createElement(_InputSelect2.default, {
+          caption: 'SortBy',
+          initItem: DF_SORTBY,
           options: options,
+          styleConfig: S.SELECT,
           onSelect: this._selectSortBy
         })
       );

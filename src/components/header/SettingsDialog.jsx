@@ -6,20 +6,32 @@ import withTheme from '../hoc/withTheme'
 import styleConfig from '../dialogs/Dialog.Style'
 
 import ModalDialog from '../zhn-moleculs/ModalDialog'
-import RowInputSecret from '../dialogs/RowInputSecret'
+import SecretField from '../zhn-m-input/SecretField'
 import RaisedButton from '../zhn-atoms/RaisedButton'
 
 const S = {
   MODAL : {
     position : 'static',
-    width: '380px',
-    height: '180px',
+    width: '320px',
+    height: '250px',
     margin: '70px auto 0px'
   }
 };
 
 const SET_NEWS_KEY = 'setNewsKey';
 const SET_WEBHOSE_KEY = 'setWebhoseKey';
+
+const STR_EMPTY = '';
+const _onTestLengthOrEmpty = (length) => (str) => {
+  if ( str.length === length || str === STR_EMPTY) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+const _onTestNewsApi = _onTestLengthOrEmpty(32);
+const _onTestWebhose = _onTestLengthOrEmpty(36);
 
 class SettingsDialog extends Component {
   static propTypes = {
@@ -42,15 +54,11 @@ class SettingsDialog extends Component {
     return true;
   }
 
-  _regInput = (propName, inputComp) => {
-    this[propName] = inputComp
-  }
-
   _handleSet = () => {
     const { data, onClose } = this.props
         , setNewsKey = safeFn(data, SET_NEWS_KEY)
         , setWebhoseKey = safeFn(data, SET_WEBHOSE_KEY);
-    setNewsKey(this.inputComp.getValue())
+    setNewsKey(this.inputNews.getValue())
     setWebhoseKey(this.inputWebhose.getValue())
     onClose()
   }
@@ -61,44 +69,42 @@ class SettingsDialog extends Component {
         rootStyle={S.RAISED_ROOT}
         clDiv={S.CL_RAISED_DIV}
         caption="Set"
+        isPrimary={true}
         onClick={this._handleSet}
       />
     ];
   }
 
   render(){
-    const {
-            isShow,
-            theme,
-            onClose
-          } = this.props
-          , TS = theme.createStyle(styleConfig)
-          , _commandButtons = this._createCommandButtons(TS.BT);
+    const { isShow, theme, onClose } = this.props
+        , TS = theme.createStyle(styleConfig)
+        , _commandButtons = this._createCommandButtons(TS.BT);
 
     return (
-         <ModalDialog
-            style={{ ...S.MODAL, ...TS.R_DIALOG }}
-            styleCaption={TS.BROWSER_CAPTION}
-            styleButton={TS.BT}
-            caption="User Settings"
-            isShow={isShow}
-            commandButtons={_commandButtons}
-            onClose={onClose}
-         >
-           <RowInputSecret
-             accessKey="n"
-             caption="News:"
-             placeholder="News API Key, 32 Symbols"
-             onReg={this._regInput.bind(null, 'inputComp')}
+        <ModalDialog
+           style={{ ...S.MODAL, ...TS.R_DIALOG }}
+           styleCaption={TS.BROWSER_CAPTION}
+           styleButton={TS.BT}
+           caption="User Settings"
+           isShow={isShow}
+           commandButtons={_commandButtons}
+           onClose={onClose}
+        >
+           <SecretField
+             ref={comp => this.inputNews = comp}
+             caption="NewsApi API Key (32 Symbols)"
+             onTest={_onTestNewsApi}
+             errorMsg="32 symbols must be"
+             maxLength={32}
            />
-           <RowInputSecret
-             accessKey="w"
-             caption="Webhose:"
-             placeholder="Webhose API Key, 36 Symbols"
-             maxLength="36"
-             onReg={this._regInput.bind(null, 'inputWebhose')}
+           <SecretField
+             ref={comp => this.inputWebhose = comp}
+             caption="Webhose API Key (36 Symbols)"
+             onTest={_onTestWebhose}
+             errorMsg="36 symbols must be"
+             maxLength={36}
            />
-         </ModalDialog>
+       </ModalDialog>
     );
   }
 }

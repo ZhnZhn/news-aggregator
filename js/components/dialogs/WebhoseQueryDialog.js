@@ -36,13 +36,13 @@ var _DraggableDialog = require('../zhn-moleculs/DraggableDialog');
 
 var _DraggableDialog2 = _interopRequireDefault(_DraggableDialog);
 
-var _RowInputText = require('./RowInputText');
+var _TextField = require('../zhn-m-input/TextField');
 
-var _RowInputText2 = _interopRequireDefault(_RowInputText);
+var _TextField2 = _interopRequireDefault(_TextField);
 
-var _RowInputSelect = require('./RowInputSelect');
+var _InputSelect = require('../zhn-m-input/InputSelect');
 
-var _RowInputSelect2 = _interopRequireDefault(_RowInputSelect);
+var _InputSelect2 = _interopRequireDefault(_InputSelect);
 
 var _PoweredBy = require('../links/PoweredBy');
 
@@ -63,7 +63,20 @@ var S = {
   }
 };
 
-var options = [{ caption: 'news', value: 'news' }, { caption: 'blogs', value: 'blogs' }];
+var DF_SITY_TYPE = {
+  caption: 'News', value: 'news'
+};
+
+var options = [{ caption: 'News', value: 'news' }, { caption: 'Blogs', value: 'blogs' }];
+
+var _onTestDaysBefore = function _onTestDaysBefore(value) {
+  var _n = parseInt(value, 10);
+  if (!Number.isNaN(_n) && _n > 0 && _n < 31 || value === '') {
+    return true;
+  } else {
+    return false;
+  }
+};
 
 var WebhoseQueryDialog = function (_Component) {
   (0, _inherits3.default)(WebhoseQueryDialog, _Component);
@@ -72,10 +85,6 @@ var WebhoseQueryDialog = function (_Component) {
     (0, _classCallCheck3.default)(this, WebhoseQueryDialog);
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (WebhoseQueryDialog.__proto__ || Object.getPrototypeOf(WebhoseQueryDialog)).call(this));
-
-    _this._regInput = function (propName, inputComp) {
-      _this[propName] = inputComp;
-    };
 
     _this._selectSiteType = function (option) {
       _this.siteType = option ? option.value : undefined;
@@ -110,6 +119,7 @@ var WebhoseQueryDialog = function (_Component) {
         rootStyle: S.RAISED_ROOT,
         clDiv: S.CL_RAISED_DIV,
         caption: 'Load',
+        isPrimary: true,
         onClick: _this._handleLoad
       })];
     };
@@ -121,6 +131,8 @@ var WebhoseQueryDialog = function (_Component) {
   (0, _createClass3.default)(WebhoseQueryDialog, [{
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var _props = this.props,
           isShow = _props.isShow,
           theme = _props.theme,
@@ -140,27 +152,28 @@ var WebhoseQueryDialog = function (_Component) {
           onShowChart: onShow,
           onClose: this._handleClose
         },
-        _react2.default.createElement(_RowInputText2.default, {
-          accessKey: 't',
-          caption: 'In Title:',
-          placeholder: 'Default: Weather',
-          spellCheck: true,
-          autoCorrect: 'on',
-          autoComplete: 'on',
-          onReg: this._regInput.bind(null, 'inputTitle')
+        _react2.default.createElement(_TextField2.default, {
+          ref: function ref(comp) {
+            return _this2.inputTitle = comp;
+          },
+          caption: 'In Title (Default: Weather)',
+          initValue: 'Weather'
         }),
-        _react2.default.createElement(_RowInputSelect2.default, {
-          accessKey: 's',
-          caption: 'SiteType:',
-          placeholder: 'Default: News',
+        _react2.default.createElement(_InputSelect2.default, {
+          caption: 'Site Type',
+          initItem: DF_SITY_TYPE,
           options: options,
+          styleConfig: TS.SELECT,
           onSelect: this._selectSiteType
         }),
-        _react2.default.createElement(_RowInputText2.default, {
-          accessKey: 'b',
-          caption: 'Before Days:',
-          placeholder: 'Default: 2, Number, Max 30',
-          onReg: this._regInput.bind(null, 'inputBeforeDays')
+        _react2.default.createElement(_TextField2.default, {
+          ref: function ref(comp) {
+            return _this2.inputBeforeDays = comp;
+          },
+          caption: 'Before Days (Default: 2, Max 30)',
+          initValue: 2,
+          errorMsg: '0<n<31 value must be',
+          onTest: _onTestDaysBefore
         }),
         _react2.default.createElement(
           _PoweredBy2.default,

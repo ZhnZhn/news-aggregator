@@ -16,7 +16,8 @@ var S = {
     color: '#9e9e9e',
     backgroundColor: '#3f5178',
     textAlign: 'center',
-    fontSize: '18px'
+    fontSize: '18px',
+    marginBottom: '0px'
   },
   BT_RAISED_ROOT: {
     marginRight: '2px',
@@ -29,12 +30,18 @@ var styleConfig = {
   style: undefined,
   createStyle: function createStyle(CSS_RULE, themeName) {
     return {
-      //CL_BT_RAISED_DIV: CSS_RULE.CL_BT_RAISED_DIV,
       R_DIALOG: (0, _extends3.default)({}, CSS_RULE.R_DIALOG),
       BROWSER_CAPTION: (0, _extends3.default)({}, S.BROWSER_CAPTION, CSS_RULE.BG_HEADER),
       BT: {
         CL_RAISED_DIV: CSS_RULE.CL_BT_RAISED_DIV,
         RAISED_ROOT: (0, _extends3.default)({}, S.BT_RAISED_ROOT, CSS_RULE.BG_HEADER)
+      },
+      SELECT: {
+        CL_ITEM: CSS_RULE.CL_SELECT_ITEM,
+        ROOT: {
+          width: '280px'
+        },
+        MODAL_PANE: (0, _extends3.default)({}, CSS_RULE.BG)
       }
     };
   }

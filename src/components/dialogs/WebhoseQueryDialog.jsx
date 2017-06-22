@@ -4,8 +4,8 @@ import withTheme from '../hoc/withTheme'
 import styleConfig from './Dialog.Style'
 
 import DraggableDialog from '../zhn-moleculs/DraggableDialog'
-import RowInputText from './RowInputText'
-import RowInputSelect from './RowInputSelect'
+import TextField from '../zhn-m-input/TextField'
+import InputSelect from '../zhn-m-input/InputSelect'
 import PoweredBy from '../links/PoweredBy'
 import { LinkWebhoseIo } from '../links/Links'
 import RaisedButton from '../zhn-atoms/RaisedButton'
@@ -17,20 +17,28 @@ const S = {
   }
 }
 
+const DF_SITY_TYPE = {
+  caption: 'News', value: 'news'
+};
+
 const options = [
-  { caption: 'news', value: 'news'},
-  { caption: 'blogs', value: 'blogs'}
+  { caption: 'News', value: 'news'},
+  { caption: 'Blogs', value: 'blogs'}
 ];
 
+const _onTestDaysBefore = (value) => {
+  const _n = parseInt(value, 10)
+  if ((!Number.isNaN(_n) && _n>0 && _n<31) || value === '') {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 class WebhoseQueryDialog extends Component {
   constructor(props){
     super()
     this.siteType = undefined
-  }
-
-  _regInput = (propName, inputComp) => {
-    this[propName] = inputComp
   }
 
   _selectSiteType = (option) => {
@@ -64,6 +72,7 @@ class WebhoseQueryDialog extends Component {
         rootStyle={S.RAISED_ROOT}
         clDiv={S.CL_RAISED_DIV}
         caption="Load"
+        isPrimary={true}
         onClick={this._handleLoad}
       />
     ];
@@ -85,28 +94,26 @@ class WebhoseQueryDialog extends Component {
            onShowChart={onShow}
            onClose={this._handleClose}
        >
-        <RowInputText
-          accessKey="t"
-          caption="In Title:"
-          placeholder="Default: Weather"
-          spellCheck={true}
-          autoCorrect="on"
-          autoComplete="on"
-          onReg={this._regInput.bind(null, 'inputTitle')}
+        <TextField
+          ref={comp => this.inputTitle = comp}
+          caption="In Title (Default: Weather)"
+          initValue="Weather"
         />
-        <RowInputSelect
-          accessKey="s"
-          caption="SiteType:"
-          placeholder="Default: News"
+        <InputSelect
+          caption="Site Type"
+          initItem={DF_SITY_TYPE}
           options={options}
+          styleConfig={TS.SELECT}
           onSelect={this._selectSiteType}
         />
-        <RowInputText
-          accessKey="b"
-          caption="Before Days:"
-          placeholder="Default: 2, Number, Max 30"
-          onReg={this._regInput.bind(null, 'inputBeforeDays')}
+        <TextField
+          ref={comp => this.inputBeforeDays = comp}
+          caption="Before Days (Default: 2, Max 30)"
+          initValue={2}
+          errorMsg="0<n<31 value must be"
+          onTest={_onTestDaysBefore}
         />
+
         <PoweredBy rootStyle={S.POWERED_BY}>
           <LinkWebhoseIo />
         </PoweredBy>

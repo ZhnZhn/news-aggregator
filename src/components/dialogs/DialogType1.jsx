@@ -4,19 +4,21 @@ import withTheme from '../hoc/withTheme'
 import styleConfig from './Dialog.Style'
 
 import DraggableDialog from '../zhn-moleculs/DraggableDialog'
-import RowInputSelect from './RowInputSelect'
+import InputSelect from '../zhn-m-input/InputSelect'
 import RaisedButton from '../zhn-atoms/RaisedButton'
 
+const DF_SORTBY =   { caption: 'Top', value: 'top'};
+
 const options = [
-  { caption: 'top', value: 'top'},
-  { caption: 'latest', value: 'latest'},
-  { caption: 'popular', value: 'popular'},
-]
+  { caption: 'Top', value: 'top'},
+  { caption: 'Latest', value: 'latest'},
+  { caption: 'Popular', value: 'popular'},
+];
 
 class DialogType1 extends Component {
   constructor(props){
     super()
-    this.sortBy = undefined
+    this.sortBy = DF_SORTBY.value
   }
 
   _selectSortBy = (option) => {
@@ -45,6 +47,7 @@ class DialogType1 extends Component {
         rootStyle={S.RAISED_ROOT}
         clDiv={S.CL_RAISED_DIV}
         caption="Load"
+        isPrimary={true}
         onClick={this._handleLoad}
       />
     ];
@@ -68,12 +71,12 @@ class DialogType1 extends Component {
            commandButtons={_commandButtons}
            onShowChart={onShow}
            onClose={this._handleClose}
-       >
-        <RowInputSelect
-          accessKey="s"
-          caption="SortBy:"
-          placeholder="Default: top"
+       >        
+        <InputSelect
+          caption="SortBy"
+          initItem={DF_SORTBY}
           options={options}
+          styleConfig={S.SELECT}
           onSelect={this._selectSortBy}
         />
       </DraggableDialog>

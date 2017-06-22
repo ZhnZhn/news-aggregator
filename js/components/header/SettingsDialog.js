@@ -44,9 +44,9 @@ var _ModalDialog = require('../zhn-moleculs/ModalDialog');
 
 var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
 
-var _RowInputSecret = require('../dialogs/RowInputSecret');
+var _SecretField = require('../zhn-m-input/SecretField');
 
-var _RowInputSecret2 = _interopRequireDefault(_RowInputSecret);
+var _SecretField2 = _interopRequireDefault(_SecretField);
 
 var _RaisedButton = require('../zhn-atoms/RaisedButton');
 
@@ -57,14 +57,28 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var S = {
   MODAL: {
     position: 'static',
-    width: '380px',
-    height: '180px',
+    width: '320px',
+    height: '250px',
     margin: '70px auto 0px'
   }
 };
 
 var SET_NEWS_KEY = 'setNewsKey';
 var SET_WEBHOSE_KEY = 'setWebhoseKey';
+
+var STR_EMPTY = '';
+var _onTestLengthOrEmpty = function _onTestLengthOrEmpty(length) {
+  return function (str) {
+    if (str.length === length || str === STR_EMPTY) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+};
+
+var _onTestNewsApi = _onTestLengthOrEmpty(32);
+var _onTestWebhose = _onTestLengthOrEmpty(36);
 
 var SettingsDialog = function (_Component) {
   (0, _inherits3.default)(SettingsDialog, _Component);
@@ -74,10 +88,6 @@ var SettingsDialog = function (_Component) {
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (SettingsDialog.__proto__ || Object.getPrototypeOf(SettingsDialog)).call(this));
 
-    _this._regInput = function (propName, inputComp) {
-      _this[propName] = inputComp;
-    };
-
     _this._handleSet = function () {
       var _this$props = _this.props,
           data = _this$props.data,
@@ -85,7 +95,7 @@ var SettingsDialog = function (_Component) {
           setNewsKey = (0, _safeFn2.default)(data, SET_NEWS_KEY),
           setWebhoseKey = (0, _safeFn2.default)(data, SET_WEBHOSE_KEY);
 
-      setNewsKey(_this.inputComp.getValue());
+      setNewsKey(_this.inputNews.getValue());
       setWebhoseKey(_this.inputWebhose.getValue());
       onClose();
     };
@@ -95,6 +105,7 @@ var SettingsDialog = function (_Component) {
         rootStyle: S.RAISED_ROOT,
         clDiv: S.CL_RAISED_DIV,
         caption: 'Set',
+        isPrimary: true,
         onClick: _this._handleSet
       })];
     };
@@ -113,6 +124,8 @@ var SettingsDialog = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var _props = this.props,
           isShow = _props.isShow,
           theme = _props.theme,
@@ -131,18 +144,23 @@ var SettingsDialog = function (_Component) {
           commandButtons: _commandButtons,
           onClose: onClose
         },
-        _react2.default.createElement(_RowInputSecret2.default, {
-          accessKey: 'n',
-          caption: 'News:',
-          placeholder: 'News API Key, 32 Symbols',
-          onReg: this._regInput.bind(null, 'inputComp')
+        _react2.default.createElement(_SecretField2.default, {
+          ref: function ref(comp) {
+            return _this2.inputNews = comp;
+          },
+          caption: 'NewsApi API Key (32 Symbols)',
+          onTest: _onTestNewsApi,
+          errorMsg: '32 symbols must be',
+          maxLength: 32
         }),
-        _react2.default.createElement(_RowInputSecret2.default, {
-          accessKey: 'w',
-          caption: 'Webhose:',
-          placeholder: 'Webhose API Key, 36 Symbols',
-          maxLength: '36',
-          onReg: this._regInput.bind(null, 'inputWebhose')
+        _react2.default.createElement(_SecretField2.default, {
+          ref: function ref(comp) {
+            return _this2.inputWebhose = comp;
+          },
+          caption: 'Webhose API Key (36 Symbols)',
+          onTest: _onTestWebhose,
+          errorMsg: '36 symbols must be',
+          maxLength: 36
         })
       );
     }

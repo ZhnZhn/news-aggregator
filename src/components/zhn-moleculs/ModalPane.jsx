@@ -16,8 +16,9 @@ class ModalPane extends Component {
   }
 
   _handleClickOutside = (event) => {
+    const { onClose } = this.props;    
     if (!this.rootNode.contains(event.target)){
-      this.props.onClose(event)
+      onClose(event)
     }
   }
 

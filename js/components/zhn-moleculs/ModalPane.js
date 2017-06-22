@@ -43,8 +43,10 @@ var ModalPane = (_temp2 = _class = function (_Component) {
     }
 
     return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = ModalPane.__proto__ || Object.getPrototypeOf(ModalPane)).call.apply(_ref, [this].concat(args))), _this), _this._handleClickOutside = function (event) {
+      var onClose = _this.props.onClose;
+
       if (!_this.rootNode.contains(event.target)) {
-        _this.props.onClose(event);
+        onClose(event);
       }
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }

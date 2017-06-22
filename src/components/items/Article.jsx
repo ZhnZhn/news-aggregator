@@ -70,6 +70,7 @@ const S = {
     color: 'black',
     fontSize: '17px',
     fontWeight: 'bold'
+    //fontFamily: 'Helvetica Neue, Arial, Helvetica, sans-serif'
   },
   AUTHOR_ROOT: {
     paddingTop: '6px',

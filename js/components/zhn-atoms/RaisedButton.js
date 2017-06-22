@@ -13,10 +13,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var CL_BT = 'bt-raised';
 var CL_BT_SPAN = 'bt-raised__span';
 
+var S = {
+  PRIMARY_SPAN: {
+    color: 'greenyellow'
+  }
+};
+
 var RaisedButton = function RaisedButton(_ref) {
   var rootStyle = _ref.rootStyle,
       clDiv = _ref.clDiv,
       caption = _ref.caption,
+      isPrimary = _ref.isPrimary,
       onClick = _ref.onClick;
   return _react2.default.createElement(
     'button',
@@ -32,7 +39,10 @@ var RaisedButton = function RaisedButton(_ref) {
       { className: clDiv },
       _react2.default.createElement(
         'span',
-        { className: CL_BT_SPAN },
+        {
+          className: CL_BT_SPAN,
+          style: isPrimary && S.PRIMARY_SPAN
+        },
         caption
       )
     )
