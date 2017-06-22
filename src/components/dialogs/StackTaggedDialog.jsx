@@ -100,6 +100,7 @@ class StackTaggedDialog extends Component {
            onClose={this._handleClose}
        >
          <TextField
+           rootStyle={TS.INPUT_ROOT}
            ref={comp => this.inputTag = comp}
            caption="Tag (Default: CSS)"
            initValue="CSS"
@@ -112,6 +113,7 @@ class StackTaggedDialog extends Component {
            onSelect={this._selectSortBy}
          />
         <TextField
+          rootStyle={TS.INPUT_ROOT}
           ref={comp => this.fromDate = comp}
           caption="From Date"
           initValue={_initFromDate}
@@ -119,6 +121,7 @@ class StackTaggedDialog extends Component {
           onTest={_onTestDate}
         />
         <TextField
+          rootStyle={TS.INPUT_ROOT}
           ref={comp => this.toDate = comp}
           caption="To Date"
           initValue={_initToDate}

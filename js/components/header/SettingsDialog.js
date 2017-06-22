@@ -145,22 +145,24 @@ var SettingsDialog = function (_Component) {
           onClose: onClose
         },
         _react2.default.createElement(_SecretField2.default, {
+          rootStyle: TS.INPUT_ROOT,
           ref: function ref(comp) {
             return _this2.inputNews = comp;
           },
           caption: 'NewsApi API Key (32 Symbols)',
-          onTest: _onTestNewsApi,
+          maxLength: 32,
           errorMsg: '32 symbols must be',
-          maxLength: 32
+          onTest: _onTestNewsApi
         }),
         _react2.default.createElement(_SecretField2.default, {
+          rootStyle: TS.INPUT_ROOT,
           ref: function ref(comp) {
             return _this2.inputWebhose = comp;
           },
           caption: 'Webhose API Key (36 Symbols)',
-          onTest: _onTestWebhose,
+          maxLength: 36,
           errorMsg: '36 symbols must be',
-          maxLength: 36
+          onTest: _onTestWebhose
         })
       );
     }

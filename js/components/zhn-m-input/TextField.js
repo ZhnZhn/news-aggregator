@@ -36,10 +36,6 @@ var CL_DIV = 'm-textfield-input__div';
 var CL_INPUT = 'm-textfield-input';
 
 var S = {
-  ROOT: {
-    width: '280px',
-    display: 'block'
-  },
   LABEL_TO_INPUT: {
     transform: 'scale(1) translate(0px, 0px)'
   },
@@ -116,6 +112,7 @@ var TextField = function (_Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
+          rootStyle = _props.rootStyle,
           caption = _props.caption,
           _props$errorMsg = _props.errorMsg,
           errorMsg = _props$errorMsg === undefined ? '' : _props$errorMsg,
@@ -130,7 +127,7 @@ var TextField = function (_Component) {
         'div',
         {
           className: CL_SELECT,
-          style: S.ROOT
+          style: rootStyle
         },
         _react2.default.createElement(
           'label',

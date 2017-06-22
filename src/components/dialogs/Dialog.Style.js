@@ -1,7 +1,8 @@
 
 const S = {
   BROWSER_CAPTION: {
-    padding: '5px',
+    //padding: '5px',
+    paddingTop: '5px',
     color: '#9e9e9e',
     backgroundColor: '#3f5178',
     textAlign: 'center',
@@ -11,6 +12,10 @@ const S = {
   BT_RAISED_ROOT: {
     marginRight: '2px',
     marginLeft: '2px'
+  },
+  INPUT_ROOT: {
+    width: '280px',
+    display: 'block'
   }
 }
 
@@ -25,6 +30,9 @@ const styleConfig = {
       BROWSER_CAPTION: {
         ...S.BROWSER_CAPTION,
         ...CSS_RULE.BG_HEADER
+      },
+      INPUT_ROOT: {
+        ...S.INPUT_ROOT
       },
       BT: {
         CL_RAISED_DIV: CSS_RULE.CL_BT_RAISED_DIV,

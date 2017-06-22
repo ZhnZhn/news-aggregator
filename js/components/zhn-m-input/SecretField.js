@@ -127,6 +127,7 @@ var SecretField = function (_Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
+          rootStyle = _props.rootStyle,
           caption = _props.caption,
           _props$errorMsg = _props.errorMsg,
           errorMsg = _props$errorMsg === undefined ? '' : _props$errorMsg,
@@ -138,12 +139,11 @@ var SecretField = function (_Component) {
           _labelErrStyle = isPassTest ? undefined : S.LABEL_ON_ERROR,
           _lineStyle = isPassTest ? undefined : S.LINE_ERROR;
 
-      console.log(value);
       return _react2.default.createElement(
         'div',
         {
           className: CL_SELECT,
-          style: S.ROOT
+          style: rootStyle
         },
         _react2.default.createElement(
           'label',

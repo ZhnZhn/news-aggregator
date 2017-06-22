@@ -34,7 +34,7 @@ const S = {
 };
 
 const _maskValue = (len=0) => {
-  let i=0, str = ''
+  let i=0, str = '';
   for (i; i<len; i++){
     str = str + 'X'
   }
@@ -63,7 +63,7 @@ class SecretField extends Component {
   }
 
   _handleChangeInput = (event) => {
-    this.secret = event.target.value;
+    this.secret = event.target.value
     const _value = _maskValue(this.secret.length)
     if (this.isOnTest) {
       const _isPassTest = this.props.onTest(_value)
@@ -87,7 +87,7 @@ class SecretField extends Component {
   }
 
   render(){
-    const { caption, errorMsg='', maxLength } = this.props
+    const { rootStyle, caption, errorMsg='', maxLength } = this.props
         , { value, isPassTest } = this.state
         , _labelStyle = (value || this.isFocus)
             ? undefined
@@ -99,11 +99,10 @@ class SecretField extends Component {
             ? undefined
             : S.LINE_ERROR;
 
-    console.log(value)
     return (
       <div
         className={CL_SELECT}
-        style={S.ROOT}
+        style={rootStyle}
       >
         <label
           className={CL_LABEL}

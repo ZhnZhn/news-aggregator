@@ -15,20 +15,20 @@ class LoadingProgress extends Component {
       color : COLOR.LOADING
     }
   }
-  /*
-  getInitialState(){
-    return {
-      completed : 0,
-      color : COLOR.LOADING
-    }
-  },
-  */
+
   componentDidMount(){
     this.unsubscribe = this.props.store.listenLoadingProgress(this._onStore)
   }
 
   componentWillUnmount(){
     this.unsubscribe()
+  }
+
+  shouldComponentUpdate(nextState, nextProps){
+    if (this.props !== nextProps){
+      return false;
+    }
+    return true;
   }
 
   _onStore = (actionType) => {
@@ -53,6 +53,5 @@ class LoadingProgress extends Component {
     );
   }
 }
-
 
 export default LoadingProgress

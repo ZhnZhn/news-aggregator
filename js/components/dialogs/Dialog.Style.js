@@ -12,7 +12,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var S = {
   BROWSER_CAPTION: {
-    padding: '5px',
+    //padding: '5px',
+    paddingTop: '5px',
     color: '#9e9e9e',
     backgroundColor: '#3f5178',
     textAlign: 'center',
@@ -22,6 +23,10 @@ var S = {
   BT_RAISED_ROOT: {
     marginRight: '2px',
     marginLeft: '2px'
+  },
+  INPUT_ROOT: {
+    width: '280px',
+    display: 'block'
   }
 };
 
@@ -32,6 +37,7 @@ var styleConfig = {
     return {
       R_DIALOG: (0, _extends3.default)({}, CSS_RULE.R_DIALOG),
       BROWSER_CAPTION: (0, _extends3.default)({}, S.BROWSER_CAPTION, CSS_RULE.BG_HEADER),
+      INPUT_ROOT: (0, _extends3.default)({}, S.INPUT_ROOT),
       BT: {
         CL_RAISED_DIV: CSS_RULE.CL_BT_RAISED_DIV,
         RAISED_ROOT: (0, _extends3.default)({}, S.BT_RAISED_ROOT, CSS_RULE.BG_HEADER)

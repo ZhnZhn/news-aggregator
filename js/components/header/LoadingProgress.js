@@ -61,15 +61,6 @@ var LoadingProgress = function (_Component) {
     };
     return _this;
   }
-  /*
-  getInitialState(){
-    return {
-      completed : 0,
-      color : COLOR.LOADING
-    }
-  },
-  */
-
 
   (0, _createClass3.default)(LoadingProgress, [{
     key: 'componentDidMount',
@@ -80,6 +71,14 @@ var LoadingProgress = function (_Component) {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
       this.unsubscribe();
+    }
+  }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextState, nextProps) {
+      if (this.props !== nextProps) {
+        return false;
+      }
+      return true;
     }
   }, {
     key: 'render',

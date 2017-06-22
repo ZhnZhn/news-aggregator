@@ -91,18 +91,20 @@ class SettingsDialog extends Component {
            onClose={onClose}
         >
            <SecretField
-             ref={comp => this.inputNews = comp}
-             caption="NewsApi API Key (32 Symbols)"
-             onTest={_onTestNewsApi}
-             errorMsg="32 symbols must be"
-             maxLength={32}
+              rootStyle={TS.INPUT_ROOT}
+              ref={comp => this.inputNews = comp}
+              caption="NewsApi API Key (32 Symbols)"
+              maxLength={32}
+              errorMsg="32 symbols must be"
+              onTest={_onTestNewsApi}
            />
            <SecretField
-             ref={comp => this.inputWebhose = comp}
-             caption="Webhose API Key (36 Symbols)"
-             onTest={_onTestWebhose}
-             errorMsg="36 symbols must be"
-             maxLength={36}
+              rootStyle={TS.INPUT_ROOT}
+              ref={comp => this.inputWebhose = comp}
+              caption="Webhose API Key (36 Symbols)"
+              maxLength={36}
+              errorMsg="36 symbols must be"
+              onTest={_onTestWebhose}
            />
        </ModalDialog>
     );

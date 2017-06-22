@@ -6,10 +6,6 @@ const CL_DIV = 'm-textfield-input__div';
 const CL_INPUT = 'm-textfield-input';
 
 const S = {
-  ROOT: {
-     width: '280px',
-     display: 'block'
-  },
   LABEL_TO_INPUT: {
      transform: 'scale(1) translate(0px, 0px)'
   },
@@ -75,7 +71,7 @@ class TextField extends Component {
  }
 
   render(){
-    const { caption, errorMsg='' } = this.props
+    const { rootStyle, caption, errorMsg='' } = this.props
         , { value, isPassTest } = this.state
         , _labelStyle = (value || this.isFocus)
             ? undefined
@@ -90,7 +86,7 @@ class TextField extends Component {
     return (
       <div
         className={CL_SELECT}
-        style={S.ROOT}
+        style={rootStyle}
       >
         <label
           className={CL_LABEL}

@@ -154,6 +154,7 @@ var StackTaggedDialog = function (_Component) {
           onClose: this._handleClose
         },
         _react2.default.createElement(_TextField2.default, {
+          rootStyle: TS.INPUT_ROOT,
           ref: function ref(comp) {
             return _this2.inputTag = comp;
           },
@@ -168,6 +169,7 @@ var StackTaggedDialog = function (_Component) {
           onSelect: this._selectSortBy
         }),
         _react2.default.createElement(_TextField2.default, {
+          rootStyle: TS.INPUT_ROOT,
           ref: function ref(comp) {
             return _this2.fromDate = comp;
           },
@@ -177,6 +179,7 @@ var StackTaggedDialog = function (_Component) {
           onTest: _onTestDate
         }),
         _react2.default.createElement(_TextField2.default, {
+          rootStyle: TS.INPUT_ROOT,
           ref: function ref(comp) {
             return _this2.toDate = comp;
           },
