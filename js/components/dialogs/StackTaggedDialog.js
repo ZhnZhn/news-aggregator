@@ -20,6 +20,8 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -58,6 +60,10 @@ var _RaisedButton = require('../zhn-atoms/RaisedButton');
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
+var _withKeyDown = require('./decorators/withKeyDown');
+
+var _withKeyDown2 = _interopRequireDefault(_withKeyDown);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var S = {
@@ -74,7 +80,7 @@ var _initFromDate = _dt2.default.getFromDate(1),
 var DF_SORT_BY = { caption: "Hot Week Tab", value: "week" };
 var _sortByOptions = [{ caption: "Activity, Recent Day", value: "activity" }, { caption: "Creation Date", value: "creation" }, { caption: "Score", value: "votes" }, { caption: "Hot Tab", value: "hot" }, { caption: "Hot Week Tab", value: "week" }, { caption: "Hot Month Tab", value: "month" }];
 
-var StackTaggedDialog = function (_Component) {
+var StackTaggedDialog = (0, _withKeyDown2.default)(_class = function (_Component) {
   (0, _inherits3.default)(StackTaggedDialog, _Component);
 
   function StackTaggedDialog(props) {
@@ -126,6 +132,7 @@ var StackTaggedDialog = function (_Component) {
     };
 
     _this.sortBy = DF_SORT_BY.value;
+    _this._handleKeyDownWith = _this._handleKeyDownWith.bind(_this);
     return _this;
   }
 
@@ -150,6 +157,7 @@ var StackTaggedDialog = function (_Component) {
           caption: 'Tagged Questions',
           isShow: isShow,
           commandButtons: _commandButtons,
+          onKeyDown: this._handleKeyDownWith,
           onShowChart: onShow,
           onClose: this._handleClose
         },
@@ -197,7 +205,7 @@ var StackTaggedDialog = function (_Component) {
     }
   }]);
   return StackTaggedDialog;
-}(_react.Component);
+}(_react.Component)) || _class;
 
 exports.default = (0, _withTheme2.default)(StackTaggedDialog);
 //# sourceMappingURL=D:\_Dev\_React\_News\js\components\dialogs\StackTaggedDialog.js.map

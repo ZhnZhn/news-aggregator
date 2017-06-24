@@ -45,7 +45,7 @@ var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CL = {
-  SHOWING: 'show-popup',
+  SHOWING: 'dialog show-popup',
   HIDING: 'hide-popup'
 };
 
@@ -66,7 +66,6 @@ var STYLE = {
     left: '40%',
     display: 'block',
     backgroundColor: '#4D4D4D',
-    //border: 'solid 2px #232F3B',
     border: 'solid 2px #3f5178',
     borderRadius: '5px',
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
@@ -74,9 +73,7 @@ var STYLE = {
   },
   CAPTON_DIV: {
     padding: '5px',
-    //color: 'rgba(164, 135, 212,1)',
     color: '#9e9e9e',
-    //backgroundColor: '#232F3B',
     backgroundColor: '#3f5178',
     textAlign: 'center',
     fontSize: '18px'
@@ -98,21 +95,32 @@ var ModalDialog = (_temp = _class = function (_Component) {
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (ModalDialog.__proto__ || Object.getPrototypeOf(ModalDialog)).call(this));
 
+    _this._handleKeyDown = function (event) {
+      var focused = document.activeElement;
+      if (focused == _this.rootDiv) {
+        _this.props.onKeyDown(event);
+      }
+    };
+
     _this._renderCommandButton = function () {
       var _this$props = _this.props,
+          divBtStyle = _this$props.divBtStyle,
           commandButtons = _this$props.commandButtons,
           TS = _this$props.styleButton,
           withoutClose = _this$props.withoutClose,
+          _this$props$isClosePr = _this$props.isClosePrimary,
+          isClosePrimary = _this$props$isClosePr === undefined ? false : _this$props$isClosePr,
           onClose = _this$props.onClose;
 
       return _react2.default.createElement(
         'div',
-        { style: STYLE.COMMAND_DIV },
+        { style: (0, _extends3.default)({}, STYLE.COMMAND_DIV, divBtStyle) },
         commandButtons,
         !withoutClose && _react2.default.createElement(_RaisedButton2.default, {
           rootStyle: TS.RAISED_ROOT,
           clDiv: TS.CL_RAISED_DIV,
           caption: 'Close',
+          isPrimary: isClosePrimary,
           onClick: onClose
         })
       );
@@ -123,6 +131,11 @@ var ModalDialog = (_temp = _class = function (_Component) {
   }
 
   (0, _createClass3.default)(ModalDialog, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.rootDiv.focus();
+    }
+  }, {
     key: 'shouldComponentUpdate',
     value: function shouldComponentUpdate(nextProps, nextState) {
       if (nextProps !== this.props) {
@@ -142,6 +155,9 @@ var ModalDialog = (_temp = _class = function (_Component) {
           _this2.setState({});
         }, this.props.timeout);
       }
+      if (this.props.isShow && !prevProps.isShow) {
+        this.rootDiv.focus();
+      }
     }
   }, {
     key: '_handleClickDialog',
@@ -151,6 +167,8 @@ var ModalDialog = (_temp = _class = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
+      var _this3 = this;
+
       var _props = this.props,
           isShow = _props.isShow,
           isWithButton = _props.isWithButton,
@@ -178,9 +196,14 @@ var ModalDialog = (_temp = _class = function (_Component) {
       return _react2.default.createElement(
         'div',
         {
+          ref: function ref(n) {
+            return _this3.rootDiv = n;
+          },
+          tabIndex: '1',
           className: _className,
           style: (0, _extends3.default)({}, STYLE.ROOT_DIV, style, _style),
-          onClick: this._handleClickDialog
+          onClick: this._handleClickDialog,
+          onKeyDown: this._handleKeyDown
         },
         _react2.default.createElement(_BrowserCaption2.default, {
           rootStyle: styleCaption,

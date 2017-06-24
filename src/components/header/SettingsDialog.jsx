@@ -13,8 +13,12 @@ const S = {
   MODAL : {
     position : 'static',
     width: '320px',
-    height: '250px',
+    height: '240px',
     margin: '70px auto 0px'
+  },
+  DIV_BT: {
+    marginTop: '26px',
+    marginBottom: '4px'
   }
 };
 
@@ -54,6 +58,12 @@ class SettingsDialog extends Component {
     return true;
   }
 
+  _handleKeyDown = (event) => {
+    if (event.keyCode === 13 || event.keyCode === 27) {
+      this.props.onClose()
+    }
+  }
+
   _handleSet = () => {
     const { data, onClose } = this.props
         , setNewsKey = safeFn(data, SET_NEWS_KEY)
@@ -68,8 +78,7 @@ class SettingsDialog extends Component {
       <RaisedButton
         rootStyle={S.RAISED_ROOT}
         clDiv={S.CL_RAISED_DIV}
-        caption="Set"
-        isPrimary={true}
+        caption="Set & Close"
         onClick={this._handleSet}
       />
     ];
@@ -83,11 +92,14 @@ class SettingsDialog extends Component {
     return (
         <ModalDialog
            style={{ ...S.MODAL, ...TS.R_DIALOG }}
+           divBtStyle={S.DIV_BT}
            styleCaption={TS.BROWSER_CAPTION}
            styleButton={TS.BT}
            caption="User Settings"
            isShow={isShow}
+           isClosePrimary={true}
            commandButtons={_commandButtons}
+           onKeyDown={this._handleKeyDown}
            onClose={onClose}
         >
            <SecretField

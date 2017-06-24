@@ -3,21 +3,14 @@ import React, { Component } from 'react'
 import ArrowCell from './ArrowCell'
 import OptionsPane from './OptionsPane'
 
-const CL_SELECT = 'm-select';
-const CL_LABEL = 'm-select__label';
-const CL_DIV = 'm-select__div';
-const CL_DIV_VALUE = 'm-select__div__value';
-const CL_DIV_BT = 'm-select__div__bt';
-
-const S = {
-  LINE: {
-    position: 'absolute',
-    bottom: '22px',
-    width: '100%',
-    borderBottom: '2px solid black'
-  }
+const CL = {
+  SELECT: 'm-select',
+  LABEL: 'm-select__label',
+  DIV: 'm-select__div',
+  DIV_VALUE: 'm-select__div__value',
+  DIV_BT: 'm-select__div__bt',
+  INPUT_LINE: 'm-select__line'
 };
-
 
 class InputSelect extends Component {
   static defaultProps = {
@@ -57,7 +50,7 @@ class InputSelect extends Component {
 
     return (
       <div
-        className={CL_SELECT}
+        className={CL.SELECT}
         style={TS.ROOT}
         onClick={this._handleOpen}
       >
@@ -70,20 +63,19 @@ class InputSelect extends Component {
            onSelect={this._handleSelect}
            onClose={this._handleClose}
          />
-        <label className={CL_LABEL}>
+        <label className={CL.LABEL}>
           {caption}
         </label>
-        <div className={CL_DIV}>
-          <div className={CL_DIV_VALUE}>
+        <div className={CL.DIV}>
+          <div className={CL.DIV_VALUE}>
              {item.caption}
           </div>
-          <button className={CL_DIV_BT}>
+          <button className={CL.DIV_BT}>
             <div>
               <ArrowCell />
             </div>
           </button>
-          <div style={S.LINE}>
-          </div>
+          <div className={CL.INPUT_LINE} />
         </div>
       </div>
     );

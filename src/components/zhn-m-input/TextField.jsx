@@ -1,31 +1,23 @@
 import React, { Component } from 'react'
 
-const CL_SELECT = 'm-select';
-const CL_LABEL = 'm-select__label';
-const CL_DIV = 'm-textfield-input__div';
-const CL_INPUT = 'm-textfield-input';
+const CL = {
+  SELECT: 'm-select',
+  LABEL: 'm-select__label',
+  DIV: 'm-textfield-input__div',
+  INPUT: 'm-textfield-input',
+  INPUT_LINE: 'm-input__line',
+  INPUT_MSG_ERR: 'm-input__msg-err'
+};
 
 const S = {
   LABEL_TO_INPUT: {
-     transform: 'scale(1) translate(0px, 0px)'
+     transform: 'scale(1) translate(0px, -6px)'
   },
   LABEL_ON_ERROR: {
     color: '#F44336'
   },
-  LINE: {
-    position: 'absolute',
-    bottom: '6px',
-    width: '100%',
-    borderBottom: '2px solid black'
-  },
   LINE_ERROR: {
     borderBottom: '2px solid #F44336'
-  },
-  MSG_ERROR: {
-    position: 'absolute',
-    bottom: '-18px',
-    left: '4px',
-    color: '#F44336'
   }
 };
 
@@ -85,19 +77,19 @@ class TextField extends Component {
 
     return (
       <div
-        className={CL_SELECT}
+        className={CL.SELECT}
         style={rootStyle}
       >
         <label
-          className={CL_LABEL}
+          className={CL.LABEL}
           style={{..._labelStyle, ..._labelErrStyle}}
          >
           {caption}
         </label>
-        <div className={CL_DIV}>
+        <div className={CL.DIV}>
           <input
             type="text"
-            className={CL_INPUT}
+            className={CL.INPUT}
             value={value}
             autoComplete="new-text"
             autoCorrect="off"
@@ -109,15 +101,15 @@ class TextField extends Component {
             onChange={this._handleInputChange}
             onKeyDown={this._handleKeyDown}
           />
-          <div style={{...S.LINE, ..._lineStyle}} />
-          { _lineStyle && <div style={S.MSG_ERROR}>{errorMsg}</div>}
+          <div className={CL.INPUT_LINE} style={_lineStyle} />
+          { _lineStyle && <div className={CL.INPUT_MSG_ERR}>{errorMsg}</div>}
         </div>
       </div>
     );
   }
 
   getValue(){
-    return (''+this.state.value).trim();
+    return String(this.state.value).trim();
   }
 }
 

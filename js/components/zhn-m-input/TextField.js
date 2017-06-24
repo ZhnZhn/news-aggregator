@@ -30,32 +30,24 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var CL_SELECT = 'm-select';
-var CL_LABEL = 'm-select__label';
-var CL_DIV = 'm-textfield-input__div';
-var CL_INPUT = 'm-textfield-input';
+var CL = {
+  SELECT: 'm-select',
+  LABEL: 'm-select__label',
+  DIV: 'm-textfield-input__div',
+  INPUT: 'm-textfield-input',
+  INPUT_LINE: 'm-input__line',
+  INPUT_MSG_ERR: 'm-input__msg-err'
+};
 
 var S = {
   LABEL_TO_INPUT: {
-    transform: 'scale(1) translate(0px, 0px)'
+    transform: 'scale(1) translate(0px, -6px)'
   },
   LABEL_ON_ERROR: {
     color: '#F44336'
   },
-  LINE: {
-    position: 'absolute',
-    bottom: '6px',
-    width: '100%',
-    borderBottom: '2px solid black'
-  },
   LINE_ERROR: {
     borderBottom: '2px solid #F44336'
-  },
-  MSG_ERROR: {
-    position: 'absolute',
-    bottom: '-18px',
-    left: '4px',
-    color: '#F44336'
   }
 };
 
@@ -126,23 +118,23 @@ var TextField = function (_Component) {
       return _react2.default.createElement(
         'div',
         {
-          className: CL_SELECT,
+          className: CL.SELECT,
           style: rootStyle
         },
         _react2.default.createElement(
           'label',
           {
-            className: CL_LABEL,
+            className: CL.LABEL,
             style: (0, _extends3.default)({}, _labelStyle, _labelErrStyle)
           },
           caption
         ),
         _react2.default.createElement(
           'div',
-          { className: CL_DIV },
+          { className: CL.DIV },
           _react2.default.createElement('input', {
             type: 'text',
-            className: CL_INPUT,
+            className: CL.INPUT,
             value: value,
             autoComplete: 'new-text',
             autoCorrect: 'off',
@@ -154,10 +146,10 @@ var TextField = function (_Component) {
             onChange: this._handleInputChange,
             onKeyDown: this._handleKeyDown
           }),
-          _react2.default.createElement('div', { style: (0, _extends3.default)({}, S.LINE, _lineStyle) }),
+          _react2.default.createElement('div', { className: CL.INPUT_LINE, style: _lineStyle }),
           _lineStyle && _react2.default.createElement(
             'div',
-            { style: S.MSG_ERROR },
+            { className: CL.INPUT_MSG_ERR },
             errorMsg
           )
         )
@@ -166,7 +158,7 @@ var TextField = function (_Component) {
   }, {
     key: 'getValue',
     value: function getValue() {
-      return ('' + this.state.value).trim();
+      return String(this.state.value).trim();
     }
   }]);
   return TextField;

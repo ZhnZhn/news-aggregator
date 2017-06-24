@@ -20,6 +20,8 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -54,6 +56,10 @@ var _RaisedButton = require('../zhn-atoms/RaisedButton');
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
+var _withKeyDown = require('./decorators/withKeyDown');
+
+var _withKeyDown2 = _interopRequireDefault(_withKeyDown);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var S = {
@@ -78,7 +84,7 @@ var _onTestDaysBefore = function _onTestDaysBefore(value) {
   }
 };
 
-var WebhoseQueryDialog = function (_Component) {
+var WebhoseQueryDialog = (0, _withKeyDown2.default)(_class = function (_Component) {
   (0, _inherits3.default)(WebhoseQueryDialog, _Component);
 
   function WebhoseQueryDialog(props) {
@@ -125,6 +131,7 @@ var WebhoseQueryDialog = function (_Component) {
     };
 
     _this.siteType = undefined;
+    _this._handleKeyDownWith = _this._handleKeyDownWith.bind(_this);
     return _this;
   }
 
@@ -149,6 +156,7 @@ var WebhoseQueryDialog = function (_Component) {
           caption: 'Webhose.io Query',
           isShow: isShow,
           commandButtons: _commandButtons,
+          onKeyDown: this._handleKeyDownWith,
           onShowChart: onShow,
           onClose: this._handleClose
         },
@@ -186,7 +194,7 @@ var WebhoseQueryDialog = function (_Component) {
     }
   }]);
   return WebhoseQueryDialog;
-}(_react.Component);
+}(_react.Component)) || _class;
 
 exports.default = (0, _withTheme2.default)(WebhoseQueryDialog);
 //# sourceMappingURL=D:\_Dev\_React\_News\js\components\dialogs\WebhoseQueryDialog.js.map

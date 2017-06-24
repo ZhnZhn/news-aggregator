@@ -6,6 +6,9 @@ import RaisedButton from '../zhn-atoms/RaisedButton'
 
 import Interact from '../../utils/Interact'
 
+const CL_DIALOG = 'dialog';
+const CL_DIALOG_OPEN = 'dialog show-popup';
+
 const styles = {
   rootDiv: {
     position: 'absolute',
@@ -26,6 +29,12 @@ const styles = {
      marginTop: '16px',
      marginBottom: '10px',
      marginRight: '4px'
+  },
+  BLOCK: {
+    display: 'block'
+  },
+  NONE: {
+    display: 'none'
   }
 };
 
@@ -43,7 +52,20 @@ class DraggableDialog extends Component {
   }
 
   componentDidMount(){
-     Interact.makeDragable(this.rootDivEl)
+     Interact.makeDragable(this.rootDiv)
+     this.rootDiv.focus()
+  }
+  componentDidUpdate(prevProps, prevState){
+    if (this.props.isShow && !prevProps.isShow) {
+      this.rootDiv.focus()
+    }
+  }
+
+  _handleKeyDown = (event) => {
+    const focused = document.activeElement;
+     if (focused == this.rootDiv){
+       this.props.onKeyDown(event)
+     }
   }
 
   _renderCommandButton = ({
@@ -78,13 +100,15 @@ class DraggableDialog extends Component {
            children,
            onShowChart, onClose
          } = this.props
-        , _styleShow = isShow ? {display: 'block'} : {display: 'none'}
-        , _classShow = isShow ? 'show-popup' : undefined;
+        , _styleShow = isShow ? styles.BLOCK : styles.NONE
+        , _classShow = isShow ? CL_DIALOG_OPEN : CL_DIALOG;
     return (
       <div
-           ref={c => this.rootDivEl = c}
+           ref={c => this.rootDiv = c}
            className={_classShow}
            style={Object.assign({}, styles.rootDiv, rootStyle, _styleShow)}
+           tabIndex="1"
+           onKeyDown={this._handleKeyDown}
       >
         <BrowserCaption
            rootStyle={browserCaptionStyle}

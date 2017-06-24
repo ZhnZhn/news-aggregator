@@ -58,8 +58,12 @@ var S = {
   MODAL: {
     position: 'static',
     width: '320px',
-    height: '250px',
+    height: '240px',
     margin: '70px auto 0px'
+  },
+  DIV_BT: {
+    marginTop: '26px',
+    marginBottom: '4px'
   }
 };
 
@@ -88,6 +92,12 @@ var SettingsDialog = function (_Component) {
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (SettingsDialog.__proto__ || Object.getPrototypeOf(SettingsDialog)).call(this));
 
+    _this._handleKeyDown = function (event) {
+      if (event.keyCode === 13 || event.keyCode === 27) {
+        _this.props.onClose();
+      }
+    };
+
     _this._handleSet = function () {
       var _this$props = _this.props,
           data = _this$props.data,
@@ -104,8 +114,7 @@ var SettingsDialog = function (_Component) {
       return [_react2.default.createElement(_RaisedButton2.default, {
         rootStyle: S.RAISED_ROOT,
         clDiv: S.CL_RAISED_DIV,
-        caption: 'Set',
-        isPrimary: true,
+        caption: 'Set & Close',
         onClick: _this._handleSet
       })];
     };
@@ -137,11 +146,14 @@ var SettingsDialog = function (_Component) {
         _ModalDialog2.default,
         {
           style: (0, _extends3.default)({}, S.MODAL, TS.R_DIALOG),
+          divBtStyle: S.DIV_BT,
           styleCaption: TS.BROWSER_CAPTION,
           styleButton: TS.BT,
           caption: 'User Settings',
           isShow: isShow,
+          isClosePrimary: true,
           commandButtons: _commandButtons,
+          onKeyDown: this._handleKeyDown,
           onClose: onClose
         },
         _react2.default.createElement(_SecretField2.default, {

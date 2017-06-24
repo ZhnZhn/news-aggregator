@@ -5,7 +5,7 @@ import BrowserCaption from '../zhn-atoms/BrowserCaption'
 import RaisedButton from '../zhn-atoms/RaisedButton'
 
 const CL = {
-  SHOWING : 'show-popup',
+  SHOWING : 'dialog show-popup',
   HIDING : 'hide-popup'
 };
 
@@ -26,7 +26,6 @@ const STYLE = {
     left: '40%',
     display: 'block',
     backgroundColor: '#4D4D4D',
-    //border: 'solid 2px #232F3B',
     border: 'solid 2px #3f5178',
     borderRadius: '5px',
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
@@ -34,9 +33,7 @@ const STYLE = {
   },
   CAPTON_DIV:{
     padding: '5px',
-    //color: 'rgba(164, 135, 212,1)',
     color: '#9e9e9e',
-    //backgroundColor: '#232F3B',
     backgroundColor: '#3f5178',
     textAlign: 'center',
     fontSize: '18px'
@@ -76,6 +73,9 @@ class ModalDialog extends Component {
      super()
      this.wasClosing = false
    }
+   componentDidMount(){
+     this.rootDiv.focus()
+   }
 
    shouldComponentUpdate(nextProps, nextState){
      if (nextProps !== this.props){
@@ -93,22 +93,33 @@ class ModalDialog extends Component {
          this.props.timeout
        )
      }
+     if (this.props.isShow && !prevProps.isShow) {
+       this.rootDiv.focus()
+     }
    }
 
   _handleClickDialog(event) {
     event.stopPropagation()
    }
 
+   _handleKeyDown = (event) => {
+     const focused = document.activeElement;
+      if (focused == this.rootDiv){
+        this.props.onKeyDown(event)
+      }
+   }
+
   _renderCommandButton = () => {
-    const { commandButtons, styleButton:TS, withoutClose, onClose } = this.props;
+    const { divBtStyle, commandButtons, styleButton:TS, withoutClose, isClosePrimary=false, onClose } = this.props;
     return (
-      <div style={STYLE.COMMAND_DIV}>
+      <div style={{ ...STYLE.COMMAND_DIV, ...divBtStyle }}>
         {commandButtons}
         { !withoutClose &&
             <RaisedButton
                rootStyle={TS.RAISED_ROOT}
                clDiv={TS.CL_RAISED_DIV}
                caption="Close"
+               isPrimary={isClosePrimary}
                onClick={onClose}
             />
         }
@@ -118,7 +129,8 @@ class ModalDialog extends Component {
 
   render(){
     const {
-            isShow, isWithButton, style,
+            isShow, isWithButton,
+            style,
             caption, styleCaption,
             children, onClose
           } = this.props;
@@ -138,21 +150,18 @@ class ModalDialog extends Component {
 
     return (
          <div
+             ref={n => this.rootDiv = n}
+             tabIndex="1"
              className={_className}
              style={{ ...STYLE.ROOT_DIV, ...style, ..._style}}
              onClick={this._handleClickDialog}
+             onKeyDown={this._handleKeyDown}
          >
              <BrowserCaption
                rootStyle={styleCaption}
                caption={caption}
                onClose={onClose}
              />
-             {/*
-             <div style={STYLE.CAPTON_DIV}>
-                <span style={styleCaption}>{caption}</span>
-                <SvgClose onClose={onClose} />
-             </div>
-             */}
              <div>
                {children}
              </div>

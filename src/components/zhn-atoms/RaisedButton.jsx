@@ -9,22 +9,26 @@ const S = {
   }
 }
 
-const RaisedButton = ({ rootStyle, clDiv, caption, isPrimary, onClick }) =>
-  <button
-    className={CL_BT}
-    style={rootStyle}
-    type="button"
-    tabIndex={0}
-    onClick={onClick}
-  >
-    <div className={clDiv}>
-      <span
-         className={CL_BT_SPAN}
-         style={isPrimary && S.PRIMARY_SPAN}
-      >
-        {caption}
-      </span>
-    </div>
-  </button>
+const RaisedButton = ({ rootStyle, clDiv, caption, isPrimary, isSumbit, onClick }) => {
+  const _spanStyle = (isPrimary) ? S.PRIMARY_SPAN : undefined;
+  return (
+    <button
+      className={CL_BT}
+      style={rootStyle}
+      type="button"
+      tabIndex={0}
+      onClick={onClick}
+    >
+      <div className={clDiv}>
+        <span
+           className={CL_BT_SPAN}
+           style={_spanStyle}
+        >
+          {caption}
+        </span>
+      </div>
+    </button>
+  );
+}
 
 export default RaisedButton

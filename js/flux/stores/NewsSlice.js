@@ -72,8 +72,10 @@ var NewsSlice = {
     var news = _ref.news,
         itemConf = _ref.itemConf;
 
-    var r = Logic.loadNewsCompleted(this.news, news);
-    this.trigger(_NewsActions.TYPES.LOAD_NEWS_COMPLETED, r);
+    if (news) {
+      var r = Logic.loadNewsCompleted(this.news, news);
+      this.trigger(_NewsActions.TYPES.LOAD_NEWS_COMPLETED, r);
+    }
     this.triggerLoadingProgress(_LoadingProgressActions.TYPES.LOADING_COMPLETE);
   },
   onLoadNewsFailed: function onLoadNewsFailed(option) {

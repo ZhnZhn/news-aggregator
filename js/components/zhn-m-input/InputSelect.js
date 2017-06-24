@@ -36,19 +36,13 @@ var _OptionsPane2 = _interopRequireDefault(_OptionsPane);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var CL_SELECT = 'm-select';
-var CL_LABEL = 'm-select__label';
-var CL_DIV = 'm-select__div';
-var CL_DIV_VALUE = 'm-select__div__value';
-var CL_DIV_BT = 'm-select__div__bt';
-
-var S = {
-  LINE: {
-    position: 'absolute',
-    bottom: '22px',
-    width: '100%',
-    borderBottom: '2px solid black'
-  }
+var CL = {
+  SELECT: 'm-select',
+  LABEL: 'm-select__label',
+  DIV: 'm-select__div',
+  DIV_VALUE: 'm-select__div__value',
+  DIV_BT: 'm-select__div__bt',
+  INPUT_LINE: 'm-select__line'
 };
 
 var InputSelect = (_temp = _class = function (_Component) {
@@ -98,7 +92,7 @@ var InputSelect = (_temp = _class = function (_Component) {
       return _react2.default.createElement(
         'div',
         {
-          className: CL_SELECT,
+          className: CL.SELECT,
           style: TS.ROOT,
           onClick: this._handleOpen
         },
@@ -113,27 +107,27 @@ var InputSelect = (_temp = _class = function (_Component) {
         }),
         _react2.default.createElement(
           'label',
-          { className: CL_LABEL },
+          { className: CL.LABEL },
           caption
         ),
         _react2.default.createElement(
           'div',
-          { className: CL_DIV },
+          { className: CL.DIV },
           _react2.default.createElement(
             'div',
-            { className: CL_DIV_VALUE },
+            { className: CL.DIV_VALUE },
             item.caption
           ),
           _react2.default.createElement(
             'button',
-            { className: CL_DIV_BT },
+            { className: CL.DIV_BT },
             _react2.default.createElement(
               'div',
               null,
               _react2.default.createElement(_ArrowCell2.default, null)
             )
           ),
-          _react2.default.createElement('div', { style: S.LINE })
+          _react2.default.createElement('div', { className: CL.INPUT_LINE })
         )
       );
     }

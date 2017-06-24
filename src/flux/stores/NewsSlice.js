@@ -54,8 +54,10 @@ const NewsSlice = {
     this.triggerLoadingProgress(LP.LOADING)
   },
   onLoadNewsCompleted({ news, itemConf }){
-    const r = Logic.loadNewsCompleted(this.news, news);
-    this.trigger(TYPES.LOAD_NEWS_COMPLETED, r)
+    if (news) {
+      const r = Logic.loadNewsCompleted(this.news, news);
+      this.trigger(TYPES.LOAD_NEWS_COMPLETED, r)
+    }
     this.triggerLoadingProgress(LP.LOADING_COMPLETE)
   },
   onLoadNewsFailed(option){

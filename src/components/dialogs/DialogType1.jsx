@@ -7,6 +7,8 @@ import DraggableDialog from '../zhn-moleculs/DraggableDialog'
 import InputSelect from '../zhn-m-input/InputSelect'
 import RaisedButton from '../zhn-atoms/RaisedButton'
 
+import withKeyDown from './decorators/withKeyDown'
+
 const DF_SORTBY =   { caption: 'Top', value: 'top'};
 
 const options = [
@@ -15,11 +17,24 @@ const options = [
   { caption: 'Popular', value: 'popular'},
 ];
 
+@withKeyDown
 class DialogType1 extends Component {
   constructor(props){
     super()
     this.sortBy = DF_SORTBY.value
+    this._handleKeyDownWith = this._handleKeyDownWith.bind(this)
   }
+
+
+  shouldComponentUpdate(nextProps, nextState){
+    if (this.props !== nextProps){
+       if (!this.props.isShow && !nextProps.isShow){
+          return false;
+       }
+    }
+    return true;
+  }
+
 
   _selectSortBy = (option) => {
     this.sortBy = (option)
@@ -63,15 +78,17 @@ class DialogType1 extends Component {
 
     return (
       <DraggableDialog
+           ref={comp => this.dialogComp = comp}
            rootStyle={S.R_DIALOG}
            browserCaptionStyle={S.BROWSER_CAPTION}
            styleButton={S.BT}
            caption={caption}
            isShow={isShow}
            commandButtons={_commandButtons}
+           onKeyDown={this._handleKeyDownWith}
            onShowChart={onShow}
            onClose={this._handleClose}
-       >        
+       >
         <InputSelect
           caption="SortBy"
           initItem={DF_SORTBY}

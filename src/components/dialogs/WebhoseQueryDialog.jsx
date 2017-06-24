@@ -10,6 +10,8 @@ import PoweredBy from '../links/PoweredBy'
 import { LinkWebhoseIo } from '../links/Links'
 import RaisedButton from '../zhn-atoms/RaisedButton'
 
+import withKeyDown from './decorators/withKeyDown'
+
 const S = {
   POWERED_BY: {
     marginLeft: '16px',
@@ -35,10 +37,12 @@ const _onTestDaysBefore = (value) => {
   }
 }
 
+@withKeyDown
 class WebhoseQueryDialog extends Component {
   constructor(props){
     super()
     this.siteType = undefined
+    this._handleKeyDownWith = this._handleKeyDownWith.bind(this)
   }
 
   _selectSiteType = (option) => {
@@ -91,6 +95,7 @@ class WebhoseQueryDialog extends Component {
            caption="Webhose.io Query"
            isShow={isShow}
            commandButtons={_commandButtons}
+           onKeyDown={this._handleKeyDownWith}
            onShowChart={onShow}
            onClose={this._handleClose}
        >

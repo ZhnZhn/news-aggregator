@@ -68,7 +68,8 @@ const S = {
     paddingRight: '16px',
     paddingBottom: '4px',
     color: 'black',
-    fontSize: '17px',
+    fontFamily: 'Verdana,Arial,sans-serif',
+    fontSize: '16px',  
     fontWeight: 'bold'
     //fontFamily: 'Helvetica Neue, Arial, Helvetica, sans-serif'
   },

@@ -24,7 +24,10 @@ var RaisedButton = function RaisedButton(_ref) {
       clDiv = _ref.clDiv,
       caption = _ref.caption,
       isPrimary = _ref.isPrimary,
+      isSumbit = _ref.isSumbit,
       onClick = _ref.onClick;
+
+  var _spanStyle = isPrimary ? S.PRIMARY_SPAN : undefined;
   return _react2.default.createElement(
     'button',
     {
@@ -41,7 +44,7 @@ var RaisedButton = function RaisedButton(_ref) {
         'span',
         {
           className: CL_BT_SPAN,
-          style: isPrimary && S.PRIMARY_SPAN
+          style: _spanStyle
         },
         caption
       )

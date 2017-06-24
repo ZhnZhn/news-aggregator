@@ -20,7 +20,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class, _temp;
+var _class, _temp2;
 
 var _react = require('react');
 
@@ -72,12 +72,25 @@ var _toMsg = function _toMsg(data) {
   return 'Exception Message';
 };
 
-var AlertDialog = (_temp = _class = function (_Component) {
+var AlertDialog = (_temp2 = _class = function (_Component) {
   (0, _inherits3.default)(AlertDialog, _Component);
 
   function AlertDialog() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, AlertDialog);
-    return (0, _possibleConstructorReturn3.default)(this, (AlertDialog.__proto__ || Object.getPrototypeOf(AlertDialog)).apply(this, arguments));
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = AlertDialog.__proto__ || Object.getPrototypeOf(AlertDialog)).call.apply(_ref, [this].concat(args))), _this), _this._handleKeyDown = function (event) {
+      if (event.keyCode === 27 || event.keyCode === 13) {
+        _this.props.onClose();
+      }
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
   (0, _createClass3.default)(AlertDialog, [{
@@ -105,9 +118,10 @@ var AlertDialog = (_temp = _class = function (_Component) {
           style: TS.R_DIALOG,
           styleCaption: TS.BROWSER_CAPTION,
           styleButton: TS.BT,
-          caption: 'Exception'
-          //styleCaption={S.CAPTION}
-          , isShow: isShow,
+          caption: 'Exception',
+          isShow: isShow,
+          isClosePrimary: true,
+          onKeyDown: this._handleKeyDown,
           onClose: onClose
         },
         _react2.default.createElement(
@@ -125,7 +139,7 @@ var AlertDialog = (_temp = _class = function (_Component) {
   return AlertDialog;
 }(_react.Component), _class.defaultProps = {
   data: {}
-}, _temp);
+}, _temp2);
 AlertDialog.propTypes = process.env.NODE_ENV !== "production" ? {
   isShow: _react.PropTypes.bool,
   data: _react.PropTypes.shape({

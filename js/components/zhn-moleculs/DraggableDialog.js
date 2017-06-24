@@ -42,6 +42,9 @@ var _Interact2 = _interopRequireDefault(_Interact);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var CL_DIALOG = 'dialog';
+var CL_DIALOG_OPEN = 'dialog show-popup';
+
 var styles = {
   rootDiv: {
     position: 'absolute',
@@ -62,6 +65,12 @@ var styles = {
     marginTop: '16px',
     marginBottom: '10px',
     marginRight: '4px'
+  },
+  BLOCK: {
+    display: 'block'
+  },
+  NONE: {
+    display: 'none'
   }
 };
 
@@ -79,7 +88,12 @@ var DraggableDialog = function (_Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = DraggableDialog.__proto__ || Object.getPrototypeOf(DraggableDialog)).call.apply(_ref, [this].concat(args))), _this), _this._renderCommandButton = function (_ref2) {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = DraggableDialog.__proto__ || Object.getPrototypeOf(DraggableDialog)).call.apply(_ref, [this].concat(args))), _this), _this._handleKeyDown = function (event) {
+      var focused = document.activeElement;
+      if (focused == _this.rootDiv) {
+        _this.props.onKeyDown(event);
+      }
+    }, _this._renderCommandButton = function (_ref2) {
       var commandButtons = _ref2.commandButtons,
           S = _ref2.styleButton,
           onShowChart = _ref2.onShowChart,
@@ -108,7 +122,15 @@ var DraggableDialog = function (_Component) {
   (0, _createClass3.default)(DraggableDialog, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      _Interact2.default.makeDragable(this.rootDivEl);
+      _Interact2.default.makeDragable(this.rootDiv);
+      this.rootDiv.focus();
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (this.props.isShow && !prevProps.isShow) {
+        this.rootDiv.focus();
+      }
     }
   }, {
     key: 'render',
@@ -125,17 +147,19 @@ var DraggableDialog = function (_Component) {
           children = _props.children,
           onShowChart = _props.onShowChart,
           onClose = _props.onClose,
-          _styleShow = isShow ? { display: 'block' } : { display: 'none' },
-          _classShow = isShow ? 'show-popup' : undefined;
+          _styleShow = isShow ? styles.BLOCK : styles.NONE,
+          _classShow = isShow ? CL_DIALOG_OPEN : CL_DIALOG;
 
       return _react2.default.createElement(
         'div',
         {
           ref: function ref(c) {
-            return _this2.rootDivEl = c;
+            return _this2.rootDiv = c;
           },
           className: _classShow,
-          style: Object.assign({}, styles.rootDiv, rootStyle, _styleShow)
+          style: Object.assign({}, styles.rootDiv, rootStyle, _styleShow),
+          tabIndex: '1',
+          onKeyDown: this._handleKeyDown
         },
         _react2.default.createElement(_BrowserCaption2.default, {
           rootStyle: browserCaptionStyle,

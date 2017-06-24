@@ -12,6 +12,7 @@ const _fnMsg400 = (option) => {
 
 const FREQUENCY_RESTRICTION = 5000;
 const MSG_FREQUENCY_RESTRICTION = 'Time request frequency restriction.\n1 Request per 5 second.'
+const MSG_LOAD_RESTRICTION = 'Request has already loaded.\n1 Request per 5 second.';
 let _lastUri;
 let _msLastFetch;
 
@@ -23,7 +24,8 @@ const fnFetch = function({
     if ( _lastUri !== uri ) {
       onFailed({ msg: MSG_FREQUENCY_RESTRICTION })
     } else {
-      onCompleted({ json: {}, option })
+      onFailed({ msg: MSG_LOAD_RESTRICTION })
+      //onCompleted({ json: {}, option })
     }
   } else {
     _lastUri = uri;

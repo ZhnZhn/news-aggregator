@@ -12,6 +12,8 @@ import PoweredBy from '../links/PoweredBy'
 import { LinkStackOverflow } from '../links/Links'
 import RaisedButton from '../zhn-atoms/RaisedButton'
 
+import withKeyDown from './decorators/withKeyDown'
+
 const S = {
   POWERED_BY: {
     marginLeft: '16px',
@@ -33,11 +35,12 @@ const _sortByOptions = [
   { caption: "Hot Month Tab", value: "month" }
 ];
 
-
+@withKeyDown
 class StackTaggedDialog extends Component {
   constructor(props){
     super()
     this.sortBy = DF_SORT_BY.value
+    this._handleKeyDownWith = this._handleKeyDownWith.bind(this)
   }
 
   _selectSortBy = (option) => {
@@ -96,6 +99,7 @@ class StackTaggedDialog extends Component {
            caption="Tagged Questions"
            isShow={isShow}
            commandButtons={_commandButtons}
+           onKeyDown={this._handleKeyDownWith}
            onShowChart={onShow}
            onClose={this._handleClose}
        >

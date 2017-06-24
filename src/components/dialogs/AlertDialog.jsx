@@ -56,6 +56,12 @@ class AlertDialog extends Component{
     return true;
   }
 
+  _handleKeyDown = (event) => {
+    if (event.keyCode === 27 || event.keyCode === 13){
+      this.props.onClose()
+    }
+  }
+
   render(){
     const { isShow, data, theme, onClose } = this.props
         , TS = theme.createStyle(styleConfig)
@@ -66,8 +72,9 @@ class AlertDialog extends Component{
          styleCaption={TS.BROWSER_CAPTION}
          styleButton={TS.BT}
          caption="Exception"
-         //styleCaption={S.CAPTION}
          isShow={isShow}
+         isClosePrimary={true}
+         onKeyDown={this._handleKeyDown}
          onClose={onClose}
       >
          <div>
