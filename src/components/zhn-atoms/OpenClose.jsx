@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+const CL_CAPTION = 'open-close not-selected';
+
 const STYLE = {
   ROOT: {
     backgroundColor: '#4D4D4D',
@@ -36,9 +38,7 @@ const STYLE = {
   }
 };
 
-const //FILL_OPEN = '#009688'
-      FILL_OPEN = '#9e9e9e'
-      //FILL_OPEN = '#8a8a8a'    
+const FILL_OPEN = '#9e9e9e'
     , FILL_CLOSE = 'transparent'
     , PATH_OPEN = "M 2,14 L 14,14 14,2 2,14"
     , PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
@@ -85,6 +85,11 @@ class OpenClose extends Component {
   _handleToggle = () => {
     this.setState({ isOpen : !this.state.isOpen })
   }
+  _handleKeyDown = (event) => {
+    if (event.keyCode === 13 || event.keyCode === 27 ) {
+      this._handleToggle()
+    }
+  }
 
   render(){
     const {
@@ -122,9 +127,11 @@ class OpenClose extends Component {
     return (
       <div style={{...STYLE.ROOT, ...style}}>
         <div
-           className="not-selected"
+           className={CL_CAPTION}
+           tabIndex="0"
            style={{...STYLE.ROOT_CAPTION, ..._itemStyle }}
            onClick={this._handleToggle}
+           onKeyDown={this._handleKeyDown}
            {..._dragOption}
          >
           <div style={STYLE.SVG}>

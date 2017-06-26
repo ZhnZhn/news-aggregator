@@ -24,6 +24,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _CaptionInput = require('./CaptionInput');
+
+var _CaptionInput2 = _interopRequireDefault(_CaptionInput);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CL_BT = 'bt-flat';
@@ -56,6 +60,7 @@ var ModalButton = function (_Component) {
           clDiv = _props.clDiv,
           title = _props.title,
           caption = _props.caption,
+          accessKey = _props.accessKey,
           children = _props.children,
           onClick = _props.onClick;
 
@@ -70,15 +75,19 @@ var ModalButton = function (_Component) {
           type: 'button',
           tabIndex: 0,
           title: title,
+          accessKey: accessKey,
           onClick: onClick
         },
         _react2.default.createElement(
           'div',
           { className: clDiv },
           _react2.default.createElement(
-            'span',
-            { className: CL_BT_SPAN },
-            caption,
+            _CaptionInput2.default,
+            {
+              className: CL_BT_SPAN,
+              caption: caption,
+              accessKey: accessKey
+            },
             children
           )
         )

@@ -38,13 +38,13 @@ var _Article = require('./Article.Style');
 
 var _Article2 = _interopRequireDefault(_Article);
 
-var _SvgClose = require('../zhn-atoms/SvgClose');
+var _ItemHeader = require('./ItemHeader');
 
-var _SvgClose2 = _interopRequireDefault(_SvgClose);
+var _ItemHeader2 = _interopRequireDefault(_ItemHeader);
 
-var _ShowHide = require('../zhn-atoms/ShowHide');
+var _ArticleDescr = require('./ArticleDescr');
 
-var _ShowHide2 = _interopRequireDefault(_ShowHide);
+var _ArticleDescr2 = _interopRequireDefault(_ArticleDescr);
 
 var _withDnDStyle = require('./decorators/withDnDStyle');
 
@@ -54,6 +54,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var D_REMOVE_UNDER = 60;
 var D_REMOVE_ITEM = 35;
+
+var CL_ITEM_HEADER = "article-header";
 
 var S = {
   ROOT: {
@@ -102,36 +104,7 @@ var S = {
     top: '8px',
     right: '0px'
   },
-  IMG: {},
-  DESCR: {
-    display: 'block',
-    lineHeight: 1.8,
-    paddingTop: '8px',
-    paddingLeft: '16px',
-    paddingRight: '16px',
-    paddingBottom: '4px',
-    color: 'black',
-    fontFamily: 'Verdana,Arial,sans-serif',
-    fontSize: '16px',
-    fontWeight: 'bold'
-    //fontFamily: 'Helvetica Neue, Arial, Helvetica, sans-serif'
-  },
-  AUTHOR_ROOT: {
-    paddingTop: '6px',
-    paddingLeft: '16px',
-    paddingRight: '8px',
-    paddingBottom: '6px'
-  },
-  AUTHOR: {
-    float: 'right',
-    fontWeight: 'bold',
-    color: 'gray',
-    paddingRight: '24px'
-  },
-  DATE: {
-    color: 'gray',
-    fontWeight: 'bold'
-  }
+  IMG: {}
 };
 
 var _toPublishedAt = function _toPublishedAt() {
@@ -191,6 +164,15 @@ var Article = (0, _withDnDStyle2.default)(_class = function (_Component) {
       _this.setState({ isClosed: true });
     };
 
+    _this._handleHide = function () {
+      _this.headerComp.focus();
+      _this.setState({ isShow: false });
+    };
+
+    _this._refItemHeader = function (comp) {
+      _this.headerComp = comp;
+    };
+
     _this.state = {
       isClosed: false,
       isShow: false
@@ -235,57 +217,27 @@ var Article = (0, _withDnDStyle2.default)(_class = function (_Component) {
           onDragEnter: this._preventDefault,
           onDragLeave: this._preventDefault
         },
-        _react2.default.createElement(
-          'div',
-          { style: (0, _extends3.default)({}, _headerStyle, TS.HEADER) },
-          _react2.default.createElement(
-            'span',
-            {
-              className: 'not-selected',
-              style: _captionStyle,
-              onClick: this._handleToggle
-            },
-            title
-          ),
-          _react2.default.createElement(_SvgClose2.default, {
-            style: S.SVG_CLOSE,
-            onClose: this._handleClose
-          })
-        ),
-        _react2.default.createElement(
-          _ShowHide2.default,
-          {
-            style: TS.DESCR,
-            isShow: isShow
-          },
-          _react2.default.createElement(
-            'div',
-            { className: 'wrapper-link' },
-            _react2.default.createElement(
-              'a',
-              { href: url },
-              _react2.default.createElement(
-                'span',
-                { style: S.DESCR },
-                description
-              )
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            { style: S.AUTHOR_ROOT },
-            _react2.default.createElement(
-              'span',
-              { style: S.DATE },
-              _publishedAt
-            ),
-            _react2.default.createElement(
-              'span',
-              { style: S.AUTHOR },
-              author
-            )
-          )
-        )
+        _react2.default.createElement(_ItemHeader2.default, {
+          ref: this._refItemHeader,
+          className: CL_ITEM_HEADER,
+          style: (0, _extends3.default)({}, _headerStyle, TS.HEADER),
+          captionStyle: _captionStyle,
+          svgCloseStyle: S.SVG_CLOSE,
+          title: title,
+          url: url,
+          isShow: isShow,
+          onClick: this._handleToggle,
+          onClose: this._handleClose
+        }),
+        _react2.default.createElement(_ArticleDescr2.default, {
+          style: TS.DESCR,
+          isShow: isShow,
+          url: url,
+          description: description,
+          publishedAt: _publishedAt,
+          author: author,
+          onHide: this._handleHide
+        })
       );
     }
   }]);

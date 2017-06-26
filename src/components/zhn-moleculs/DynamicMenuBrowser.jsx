@@ -85,7 +85,7 @@ class DynamicMenuBrowser extends Component {
     this.setState({ isShow: false })
   }
 
-  _renderMenuParts({ menuModel, ...restProps }){
+  _renderMenuParts({ styleConfig, menuModel, restProps }){
     const { menu=[], items={} } = menuModel;
     return menu.map((menuPart, index) => {
       return (
@@ -93,6 +93,7 @@ class DynamicMenuBrowser extends Component {
           {...menuPart}
           key={index}
           hmItems={items}
+          styleConfig={styleConfig}
           {...restProps}
         />
       );
@@ -100,25 +101,24 @@ class DynamicMenuBrowser extends Component {
   }
 
   render(){
-    const { caption,
-            clScrollPane,
-            browserStyle, browserCaptionStyle,
+    const { styleConfig:TS,
+            caption,
             children, ...restProps } = this.props
         , { isShow, isLoading, isLoadingFailed, menuModel } = this.state;
     return (
-      <Browser isShow={isShow} style={{...S.BROWSER, ...browserStyle}}>
+      <Browser isShow={isShow} style={{...S.BROWSER, ...TS.BROWSER}}>
         <BrowserCaption
-          rootStyle={browserCaptionStyle}
+          rootStyle={TS.BROWSER_CAPTION}
           caption={caption}
           onClose={this._handleHide}
         />
         { isLoading && <SpinnerLoading style={S.SPINNER_LOADING} />}
         { isLoadingFailed && <SpinnerLoading style={S.SPINNER_LOADING} isFailed={true} />}
         <ScrollPane
-           className={clScrollPane}
+           className={TS.CL_SCROLL_PANE}
            style={S.SCROLL_PANE}
         >
-          {this._renderMenuParts({ menuModel, ...restProps})}
+          {this._renderMenuParts({ styleConfig: TS, menuModel, restProps})}
           {children}
         </ScrollPane>
       </Browser>

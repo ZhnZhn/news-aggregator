@@ -17,17 +17,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var LinkNewsApi = exports.LinkNewsApi = (0, _withProps2.default)({
   title: "NewsApi.org",
-  href: "https://newsapi.org"
+  href: "https://newsapi.org",
+  tabIndex: "-1"
 })(_Link2.default);
 
 var LinkWebhoseIo = exports.LinkWebhoseIo = (0, _withProps2.default)({
   title: "Webhose.io",
-  href: "https://webhose.io"
+  href: "https://webhose.io",
+  tabIndex: "-1"
 })(_Link2.default);
 
 var LinkStackOverflow = exports.LinkStackOverflow = (0, _withProps2.default)({
   title: "StackOverflow",
-  href: "https://stackoverflow.com"
+  href: "https://stackoverflow.com",
+  tabIndex: "-1"
 })(_Link2.default);
 
 var Link = {

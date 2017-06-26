@@ -93,6 +93,11 @@ var DraggableDialog = function (_Component) {
       if (focused == _this.rootDiv) {
         _this.props.onKeyDown(event);
       }
+    }, _this._handleClose = function (event) {
+      if (_this.prevFocusedEl) {
+        _this.prevFocusedEl.focus();
+      }
+      _this.props.onClose();
     }, _this._renderCommandButton = function (_ref2) {
       var commandButtons = _ref2.commandButtons,
           S = _ref2.styleButton,
@@ -113,7 +118,7 @@ var DraggableDialog = function (_Component) {
           rootStyle: S.RAISED_ROOT,
           clDiv: S.CL_RAISED_DIV,
           caption: 'Close',
-          onClick: onClose
+          onClick: _this._handleClose
         })
       );
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
@@ -123,6 +128,7 @@ var DraggableDialog = function (_Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       _Interact2.default.makeDragable(this.rootDiv);
+      this.prevFocusedEl = document.activeElement;
       this.rootDiv.focus();
     }
   }, {
@@ -158,7 +164,7 @@ var DraggableDialog = function (_Component) {
           },
           className: _classShow,
           style: Object.assign({}, styles.rootDiv, rootStyle, _styleShow),
-          tabIndex: '1',
+          tabIndex: '0',
           onKeyDown: this._handleKeyDown
         },
         _react2.default.createElement(_BrowserCaption2.default, {
@@ -173,6 +179,13 @@ var DraggableDialog = function (_Component) {
         ),
         this._renderCommandButton({ commandButtons: commandButtons, styleButton: styleButton, onShowChart: onShowChart, onClose: onClose })
       );
+    }
+  }, {
+    key: 'focusPrevEl',
+    value: function focusPrevEl() {
+      if (this.prevFocusedEl) {
+        this.prevFocusedEl.focus();
+      }
     }
   }]);
   return DraggableDialog;

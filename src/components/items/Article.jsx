@@ -3,13 +3,15 @@ import React, { Component } from 'react'
 import withTheme from '../hoc/withTheme'
 import styleConfig from './Article.Style'
 
-import SvgClose from '../zhn-atoms/SvgClose'
-import ShowHide from '../zhn-atoms/ShowHide'
+import ItemHeader from './ItemHeader'
+import ArticleDescr from './ArticleDescr'
 
 import withDnDStyle from './decorators/withDnDStyle'
 
 const D_REMOVE_UNDER = 60;
 const D_REMOVE_ITEM = 35;
+
+const CL_ITEM_HEADER = "article-header"
 
 const S = {
   ROOT: {
@@ -59,35 +61,6 @@ const S = {
     right: '0px'
   },
   IMG: {
-  },
-  DESCR: {
-    display: 'block',
-    lineHeight: 1.8,
-    paddingTop: '8px',
-    paddingLeft: '16px',
-    paddingRight: '16px',
-    paddingBottom: '4px',
-    color: 'black',
-    fontFamily: 'Verdana,Arial,sans-serif',
-    fontSize: '16px',  
-    fontWeight: 'bold'
-    //fontFamily: 'Helvetica Neue, Arial, Helvetica, sans-serif'
-  },
-  AUTHOR_ROOT: {
-    paddingTop: '6px',
-    paddingLeft: '16px',
-    paddingRight: '8px',
-    paddingBottom: '6px'
-  },
-  AUTHOR: {
-    float: 'right',
-    fontWeight: 'bold',
-    color: 'gray',
-    paddingRight: '24px'
-  },
-  DATE: {
-    color: 'gray',
-    fontWeight: 'bold'
   }
 }
 
@@ -148,6 +121,15 @@ class Article extends Component {
     this.setState({ isClosed: true })
   }
 
+  _handleHide = () => {
+    this.headerComp.focus()
+    this.setState({ isShow: false })
+  }
+
+  _refItemHeader = (comp) => {
+    this.headerComp = comp
+  }
+
   render() {
     const { item, theme } = this.props
         , TS = theme.createStyle(styleConfig)
@@ -178,42 +160,29 @@ class Article extends Component {
           onDragEnter={this._preventDefault}
           onDragLeave={this._preventDefault}
         >
-          <div style={{ ..._headerStyle, ...TS.HEADER }}>
-            <span
-               className="not-selected"
-               style={_captionStyle}
-               onClick={this._handleToggle}
-            >
-               {title}
-            </span>
-            <SvgClose
-                style={S.SVG_CLOSE}
-                onClose={this._handleClose}
-            />
-          </div>
-
-          <ShowHide
-            style={TS.DESCR}
-            isShow={isShow}
-          >
-              <div className="wrapper-link">
-                <a href={url}>
-                  <span style={S.DESCR}>
-                     {description}
-                  </span>
-                </a>
-              </div>
-              <div style={S.AUTHOR_ROOT}>
-                <span style={S.DATE}>
-                   {_publishedAt}
-                </span>
-                <span style={S.AUTHOR}>
-                  {author}
-                </span>
-              </div>
-          </ShowHide>
+          <ItemHeader
+             ref={this._refItemHeader}
+             className={CL_ITEM_HEADER}
+             style={{ ..._headerStyle, ...TS.HEADER }}
+             captionStyle={_captionStyle}
+             svgCloseStyle={S.SVG_CLOSE}
+             title={title}
+             url={url}
+             isShow={isShow}
+             onClick={this._handleToggle}
+             onClose={this._handleClose}
+          />
+          <ArticleDescr
+             style={TS.DESCR}
+             isShow={isShow}
+             url={url}
+             description={description}
+             publishedAt={_publishedAt}
+             author={author}
+             onHide={this._handleHide}
+          />
         </div>
-        );
+      );
     }
 }
 

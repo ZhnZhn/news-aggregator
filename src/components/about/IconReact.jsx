@@ -5,6 +5,7 @@ const IconReact = () =>
       className="icon__react"
       title="React"
       href="https://facebook.github.io/react/"
+      tabIndex="-1"
    >
     <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round">
         <title>React Logo</title>

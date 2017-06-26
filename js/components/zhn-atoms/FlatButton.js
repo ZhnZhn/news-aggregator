@@ -8,6 +8,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _CaptionInput = require('./CaptionInput');
+
+var _CaptionInput2 = _interopRequireDefault(_CaptionInput);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CL_BT = 'bt-flat';
@@ -19,6 +23,7 @@ var FlatButton = function FlatButton(_ref) {
       _ref$title = _ref.title,
       title = _ref$title === undefined ? '' : _ref$title,
       caption = _ref.caption,
+      accessKey = _ref.accessKey,
       children = _ref.children,
       onClick = _ref.onClick;
   return _react2.default.createElement(
@@ -29,16 +34,17 @@ var FlatButton = function FlatButton(_ref) {
       type: 'button',
       tabIndex: 0,
       title: title,
+      accessKey: accessKey,
       onClick: onClick
     },
     _react2.default.createElement(
       'div',
       { className: clDiv },
-      _react2.default.createElement(
-        'span',
-        { className: CL_BT_SPAN },
-        caption
-      ),
+      _react2.default.createElement(_CaptionInput2.default, {
+        className: CL_BT_SPAN,
+        caption: caption,
+        accessKey: accessKey
+      }),
       children
     )
   );

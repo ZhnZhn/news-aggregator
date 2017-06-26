@@ -24,6 +24,16 @@ var NEWS_QUERY = {
     "dialogProps": {
       "caption": "Tagged Questions"
     }
+  },
+  STACK_SEARCH: {
+    "type": "SO_SEARCH",
+    "dialogType": "StackSearch",
+    "paneCaption": "StackOverflow: Search Questions",
+    "paneId": "stack_search",
+    "paneType": "SO_SEARCH",
+    "dialogProps": {
+      "caption": "Search Questions"
+    }
   }
 };
 

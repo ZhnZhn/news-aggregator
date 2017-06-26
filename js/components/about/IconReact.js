@@ -16,7 +16,8 @@ var IconReact = function IconReact() {
             {
                   className: "icon__react",
                   title: "React",
-                  href: "https://facebook.github.io/react/"
+                  href: "https://facebook.github.io/react/",
+                  tabIndex: "-1"
             },
             _react2.default.createElement(
                   "svg",

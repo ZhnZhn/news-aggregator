@@ -133,6 +133,7 @@ var ModalDialog = (_temp = _class = function (_Component) {
   (0, _createClass3.default)(ModalDialog, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
+      this.prevFocusedEl = document.activeElement;
       this.rootDiv.focus();
     }
   }, {
@@ -154,6 +155,9 @@ var ModalDialog = (_temp = _class = function (_Component) {
         setTimeout(function () {
           _this2.setState({});
         }, this.props.timeout);
+        if (this.prevFocusedEl) {
+          this.prevFocusedEl.focus();
+        }
       }
       if (this.props.isShow && !prevProps.isShow) {
         this.rootDiv.focus();
@@ -199,7 +203,7 @@ var ModalDialog = (_temp = _class = function (_Component) {
           ref: function ref(n) {
             return _this3.rootDiv = n;
           },
-          tabIndex: '1',
+          tabIndex: '0',
           className: _className,
           style: (0, _extends3.default)({}, STYLE.ROOT_DIV, style, _style),
           onClick: this._handleClickDialog,

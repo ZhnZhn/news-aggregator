@@ -95,15 +95,9 @@ var NewsBrowser = function (_Component) {
       return _react2.default.createElement(
         _DynamicMenuBrowser2.default,
         {
-          clScrollPane: S.CL_SCROLL_PANE,
-          browserStyle: S.ROOT,
-          browserCaptionStyle: S.BROWSER_CAPTION,
-          openCloseStyle: S.OPEN_CLOSE,
-          itemStyle: S.ITEM,
-          badgeStyle: S.BADGE,
+          styleConfig: S,
           caption: 'News Sources',
           url: 'data/news-source-menu.json',
-          rowClass: S.CL_MENU_ITEM,
           store: store,
           browserId: browserId,
           itemData: itemData,

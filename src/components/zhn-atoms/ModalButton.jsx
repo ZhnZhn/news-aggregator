@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import CaptionInput from './CaptionInput'
+
 const CL_BT = 'bt-flat';
 const CL_BT_SPAN = 'bt-flat__span';
 
@@ -15,6 +17,7 @@ class ModalButton extends Component {
   render(){
     const {
             rootStyle, clDiv, title, caption,
+            accessKey,
             children, onClick
           } = this.props;
     return (
@@ -25,13 +28,17 @@ class ModalButton extends Component {
         type="button"
         tabIndex={0}
         title={title}
+        accessKey={accessKey}
         onClick={onClick}
       >
         <div className={clDiv}>
-          <span className={CL_BT_SPAN}>
-            {caption}
-            {children}
-          </span>
+          <CaptionInput
+            className={CL_BT_SPAN}
+            caption={caption}
+            accessKey={accessKey}
+          >
+             {children}
+          </CaptionInput>
         </div>
       </button>
     );

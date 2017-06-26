@@ -121,6 +121,7 @@ var AppNewsAggregator = function (_Component) {
             onNewsSources: _ComponentActions2.default.showBrowser.bind(_ComponentActions2.default, 'NEWS_API_ORG'),
             onQuery: _ComponentActions2.default.showNewsDialog.bind(null, _NewsQuery2.default.WEBHOSE),
             onStackTagged: _ComponentActions2.default.showNewsDialog.bind(null, _NewsQuery2.default.STACK_TAGGED),
+            onStackSearch: _ComponentActions2.default.showNewsDialog.bind(null, _NewsQuery2.default.STACK_SEARCH),
             onSettings: _ComponentActions2.default.showModalDialog.bind(_ComponentActions2.default, 'SETTINGS_DIALOG', _Store2.default.exportSettingsFn()),
             onAbout: _ComponentActions2.default.showAbout
           }),

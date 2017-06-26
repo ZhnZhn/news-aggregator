@@ -1,0 +1,19 @@
+.row__news-source--white {
+  line-height: 2;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 16px;
+  cursor: pointer;
+}
+.row__news-source--white:nth-child(odd) {
+  background-color: #ebf010;
+}
+.row__news-source--white:hover {
+  border-bottom: 1px solid #1B75BB;
+}
+.row__news-source--white:focus {
+  border-bottom: 2px solid greenyellow;
+}

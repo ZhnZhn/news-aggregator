@@ -120,7 +120,7 @@ var InputSelect = (_temp = _class = function (_Component) {
           ),
           _react2.default.createElement(
             'button',
-            { className: CL.DIV_BT },
+            { className: CL.DIV_BT, tabIndex: '0' },
             _react2.default.createElement(
               'div',
               null,

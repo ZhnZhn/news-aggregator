@@ -118,6 +118,7 @@ var StackTaggedDialog = (0, _withKeyDown2.default)(_class = function (_Component
     };
 
     _this._handleClose = function () {
+      _this.dialogComp.focusPrevEl();
       _this.props.onClose();
     };
 
@@ -151,6 +152,9 @@ var StackTaggedDialog = (0, _withKeyDown2.default)(_class = function (_Component
       return _react2.default.createElement(
         _DraggableDialog2.default,
         {
+          ref: function ref(comp) {
+            return _this2.dialogComp = comp;
+          },
           rootStyle: TS.R_DIALOG,
           browserCaptionStyle: TS.BROWSER_CAPTION,
           styleButton: TS.BT,

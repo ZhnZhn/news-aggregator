@@ -19,7 +19,8 @@ var GitHubLink = function GitHubLink(_ref) {
     {
       className: className,
       title: title,
-      href: href
+      href: href,
+      tabIndex: "-1"
     },
     _react2.default.createElement(
       "svg",

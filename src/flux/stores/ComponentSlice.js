@@ -71,7 +71,7 @@ const ComponentSlice = {
   newsPaneInit: {},
   hmBrowser: {},
 
-  onShowNewsDialog(itemConf){
+  onShowNewsDialog(itemConf, event){    
     const r = NewsDialogLogic.showNewsDialog(this.dialogInit, itemConf);
     this.trigger(TYPES.SHOW_NEWS_DIALOG, r)
   },

@@ -26,6 +26,10 @@ var R = {
   SO_TAGGED: {
     Pane: _NewsPane2.default,
     Item: _StackItem2.default
+  },
+  SO_SEARCH: {
+    Pane: _NewsPane2.default,
+    Item: _StackItem2.default
   }
 };
 

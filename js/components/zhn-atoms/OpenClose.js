@@ -36,6 +36,8 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var CL_CAPTION = 'open-close not-selected';
+
 var STYLE = {
   ROOT: {
     backgroundColor: '#4D4D4D',
@@ -71,10 +73,7 @@ var STYLE = {
   }
 };
 
-var //FILL_OPEN = '#009688'
-FILL_OPEN = '#9e9e9e'
-//FILL_OPEN = '#8a8a8a'    
-,
+var FILL_OPEN = '#9e9e9e',
     FILL_CLOSE = 'transparent',
     PATH_OPEN = "M 2,14 L 14,14 14,2 2,14",
     PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
@@ -89,6 +88,12 @@ var OpenClose = (_temp = _class = function (_Component) {
 
     _this._handleToggle = function () {
       _this.setState({ isOpen: !_this.state.isOpen });
+    };
+
+    _this._handleKeyDown = function (event) {
+      if (event.keyCode === 13 || event.keyCode === 27) {
+        _this._handleToggle();
+      }
     };
 
     _this.state = {
@@ -149,9 +154,11 @@ var OpenClose = (_temp = _class = function (_Component) {
         _react2.default.createElement(
           'div',
           (0, _extends3.default)({
-            className: 'not-selected',
+            className: CL_CAPTION,
+            tabIndex: '0',
             style: (0, _extends3.default)({}, STYLE.ROOT_CAPTION, _itemStyle),
-            onClick: this._handleToggle
+            onClick: this._handleToggle,
+            onKeyDown: this._handleKeyDown
           }, _dragOption),
           _react2.default.createElement(
             'div',

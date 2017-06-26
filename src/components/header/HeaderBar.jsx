@@ -41,6 +41,9 @@ class HeaderBar extends Component {
       case 'StackTagged':
         this.props.onStackTagged()
         break;
+      case 'StackSearch':
+        this.props.onStackSearch()
+        break;
       default:
     }
     this._handleClickQuery()
@@ -75,6 +78,7 @@ class HeaderBar extends Component {
           onClose={this._handleCloseQuery}
           onWebhose={this._handleClickSource.bind(null, 'Webhose')}
           onStackTagged={this._handleClickSource.bind(null, 'StackTagged')}
+          onStackSearch={this._handleClickSource.bind(null, 'StackSearch')}
         />
         <LoadingProgress
            store={store}
@@ -97,14 +101,15 @@ class HeaderBar extends Component {
             clDiv={S.BT.CL_FLAT_DIV}
             caption="News"
             title="Open News Sources Browser"
+            accessKey="n"
             onClick={onNewsSources}
           />
           <ModalButton
-             //type="TypeA"
              rootStyle={S.BT.FLAT_ROOT}
              clDiv={S.BT.CL_FLAT_DIV}
              caption="Query"
              title="Panel Query Source"
+             accessKey="q"
              onClick={this._handleClickQuery}
              onReg={this._onRegQuery}
           >
@@ -120,17 +125,17 @@ class HeaderBar extends Component {
             <FlatButton
               rootStyle={S.BT.FLAT_ROOT}
               clDiv={S.BT.CL_FLAT_DIV}
-              //type="TypeA"
               caption="Settings"
               title="Open Settings Dialog"
+              accessKey="s"
               onClick={onSettings}
             />
             <FlatButton
               rootStyle={S.BT.FLAT_ROOT}
               clDiv={S.BT.CL_FLAT_DIV}
-              //type="TypeA"
               caption="About"
               title="About"
+              accessKey="a"
               onClick={onAbout}
             />
         </div>

@@ -16,9 +16,9 @@ const styleConfig = {
     }
     return {
       CL_SCROLL_PANE: CSS_RULE.CL_SCROLL_PANE,
-      CL_MENU_ITEM: _clMenuItem,
+      CL_ROW: _clMenuItem,
 
-      ROOT: {
+      BROWSER: {
         ...CSS_RULE.BG
       },
       OPEN_CLOSE: {

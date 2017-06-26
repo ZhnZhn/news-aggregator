@@ -19,7 +19,8 @@ var IconGitHub = function IconGitHub(_ref) {
     {
       className: className,
       title: title,
-      href: uri
+      href: uri,
+      tabIndex: "-1"
     },
     _react2.default.createElement(
       "svg",

@@ -69,15 +69,16 @@ class ModalDialog extends Component {
      }
    }
 
-   constructor(props){
+   constructor(props) {
      super()
      this.wasClosing = false
    }
-   componentDidMount(){
+   componentDidMount() {
+     this.prevFocusedEl = document.activeElement
      this.rootDiv.focus()
    }
 
-   shouldComponentUpdate(nextProps, nextState){
+   shouldComponentUpdate(nextProps, nextState) {
      if (nextProps !== this.props){
        if (nextProps.isNotUpdate){
          return false;
@@ -92,6 +93,9 @@ class ModalDialog extends Component {
          () => { this.setState({}) },
          this.props.timeout
        )
+       if ( this.prevFocusedEl) {
+          this.prevFocusedEl.focus()
+       }    
      }
      if (this.props.isShow && !prevProps.isShow) {
        this.rootDiv.focus()
@@ -151,7 +155,7 @@ class ModalDialog extends Component {
     return (
          <div
              ref={n => this.rootDiv = n}
-             tabIndex="1"
+             tabIndex="0"
              className={_className}
              style={{ ...STYLE.ROOT_DIV, ...style, ..._style}}
              onClick={this._handleClickDialog}

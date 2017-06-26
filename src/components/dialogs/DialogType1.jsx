@@ -53,6 +53,7 @@ class DialogType1 extends Component {
   }
 
   _handleClose = () => {
+    this.dialogComp.focusPrevEl()
     this.props.onClose()
   }
 

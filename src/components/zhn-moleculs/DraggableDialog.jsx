@@ -53,6 +53,7 @@ class DraggableDialog extends Component {
 
   componentDidMount(){
      Interact.makeDragable(this.rootDiv)
+     this.prevFocusedEl = document.activeElement
      this.rootDiv.focus()
   }
   componentDidUpdate(prevProps, prevState){
@@ -66,6 +67,13 @@ class DraggableDialog extends Component {
      if (focused == this.rootDiv){
        this.props.onKeyDown(event)
      }
+  }
+
+  _handleClose = (event) => {
+    if (this.prevFocusedEl) {
+      this.prevFocusedEl.focus()
+    }
+    this.props.onClose()
   }
 
   _renderCommandButton = ({
@@ -85,8 +93,8 @@ class DraggableDialog extends Component {
         <RaisedButton
            rootStyle={S.RAISED_ROOT}
            clDiv={S.CL_RAISED_DIV}
-           caption="Close"
-           onClick={onClose}
+           caption="Close"           
+           onClick={this._handleClose}
         />
       </div>
     );
@@ -107,7 +115,7 @@ class DraggableDialog extends Component {
            ref={c => this.rootDiv = c}
            className={_classShow}
            style={Object.assign({}, styles.rootDiv, rootStyle, _styleShow)}
-           tabIndex="1"
+           tabIndex="0"
            onKeyDown={this._handleKeyDown}
       >
         <BrowserCaption
@@ -122,6 +130,13 @@ class DraggableDialog extends Component {
       </div>
     );
   }
+
+  focusPrevEl(){
+    if (this.prevFocusedEl){
+      this.prevFocusedEl.focus()
+    }
+  }
+
 }
 
 export default DraggableDialog

@@ -84,6 +84,7 @@ var DialogType1 = (0, _withKeyDown2.default)(_class = function (_Component) {
     };
 
     _this._handleClose = function () {
+      _this.dialogComp.focusPrevEl();
       _this.props.onClose();
     };
 

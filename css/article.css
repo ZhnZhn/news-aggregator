@@ -1,0 +1,7 @@
+.article-header:focus {
+  border-bottom: 2px solid greenyellow;
+}
+
+.wrapper-link:hover, .wrapper-link:focus {
+  border-bottom: medium solid #1B75BB;
+}

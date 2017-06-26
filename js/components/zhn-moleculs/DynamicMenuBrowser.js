@@ -4,13 +4,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends2 = require('babel-runtime/helpers/extends');
-
-var _extends3 = _interopRequireDefault(_extends2);
-
 var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
 
 var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
 
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
@@ -145,8 +145,9 @@ var DynamicMenuBrowser = (_temp = _class = function (_Component) {
   }, {
     key: '_renderMenuParts',
     value: function _renderMenuParts(_ref) {
-      var menuModel = _ref.menuModel,
-          restProps = (0, _objectWithoutProperties3.default)(_ref, ['menuModel']);
+      var styleConfig = _ref.styleConfig,
+          menuModel = _ref.menuModel,
+          restProps = _ref.restProps;
       var _menuModel$menu = menuModel.menu,
           menu = _menuModel$menu === undefined ? [] : _menuModel$menu,
           _menuModel$items = menuModel.items,
@@ -155,7 +156,8 @@ var DynamicMenuBrowser = (_temp = _class = function (_Component) {
       return menu.map(function (menuPart, index) {
         return _react2.default.createElement(_MenuPart2.default, (0, _extends3.default)({}, menuPart, {
           key: index,
-          hmItems: items
+          hmItems: items,
+          styleConfig: styleConfig
         }, restProps));
       });
     }
@@ -163,12 +165,10 @@ var DynamicMenuBrowser = (_temp = _class = function (_Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
+          TS = _props.styleConfig,
           caption = _props.caption,
-          clScrollPane = _props.clScrollPane,
-          browserStyle = _props.browserStyle,
-          browserCaptionStyle = _props.browserCaptionStyle,
           children = _props.children,
-          restProps = (0, _objectWithoutProperties3.default)(_props, ['caption', 'clScrollPane', 'browserStyle', 'browserCaptionStyle', 'children']),
+          restProps = (0, _objectWithoutProperties3.default)(_props, ['styleConfig', 'caption', 'children']),
           _state = this.state,
           isShow = _state.isShow,
           isLoading = _state.isLoading,
@@ -177,9 +177,9 @@ var DynamicMenuBrowser = (_temp = _class = function (_Component) {
 
       return _react2.default.createElement(
         _Browser2.default,
-        { isShow: isShow, style: (0, _extends3.default)({}, S.BROWSER, browserStyle) },
+        { isShow: isShow, style: (0, _extends3.default)({}, S.BROWSER, TS.BROWSER) },
         _react2.default.createElement(_BrowserCaption2.default, {
-          rootStyle: browserCaptionStyle,
+          rootStyle: TS.BROWSER_CAPTION,
           caption: caption,
           onClose: this._handleHide
         }),
@@ -188,10 +188,10 @@ var DynamicMenuBrowser = (_temp = _class = function (_Component) {
         _react2.default.createElement(
           _ScrollPane2.default,
           {
-            className: clScrollPane,
+            className: TS.CL_SCROLL_PANE,
             style: S.SCROLL_PANE
           },
-          this._renderMenuParts((0, _extends3.default)({ menuModel: menuModel }, restProps)),
+          this._renderMenuParts({ styleConfig: TS, menuModel: menuModel, restProps: restProps }),
           children
         )
       );

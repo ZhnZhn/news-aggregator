@@ -2,12 +2,14 @@
 import DialogType1 from './DialogType1'
 import WebhoseQueryDialog from './WebhoseQueryDialog'
 import StackTaggedDialog from './StackTaggedDialog'
+import StackSearchDialog from './StackSearchDialog'
 
 const R = {
   DEFAULT: DialogType1,
   DialogType1: DialogType1,
   WebhoseQuery: WebhoseQueryDialog,
-  StackTagged: StackTaggedDialog
+  StackTagged: StackTaggedDialog,
+  StackSearch: StackSearchDialog
 }
 
 const RouterDialog = {

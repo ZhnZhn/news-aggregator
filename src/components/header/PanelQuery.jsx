@@ -1,41 +1,64 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import ModalPane from '../zhn-moleculs/ModalPane'
+import MenuItem from '../zhn-atoms/MenuItem'
 import ShowHide from '../zhn-atoms/ShowHide'
 
-const PanelQuery = ({
-  className, paneStyle, isShow,
-  clItem,
-  onClose, onWebhose, onStackTagged
-}) =>
-  <ModalPane
-    isShow={isShow}
-    onClose={onClose}
-  >
-    <ShowHide
-      className={className}
-      style={paneStyle}
-      isShow={isShow}
-    >
-      <div
-        className={clItem}
-        onClick={onWebhose}
-      >
-        Webhose
-      </div>
-      <div
-        className={clItem}
-        onClick={onStackTagged}
-      >
-        StackOverflow: Tagged Questions
-      </div>
-      {/*
-      <div className={clItem}>
-        StackOverflow: Search Questions
-      </div>
-      */}
-    </ShowHide>
- </ModalPane>
+class PanelQuery extends Component {
+  componentDidUpdate(prevProps, prevState){
+    if (this.props !== prevProps){
+      if (this.props.isShow && !prevProps.isShow) {
+        this.prevFocused = document.activeElement
+        this.firstItem.focus()
+      } else if ( !this.props.isShow && prevProps.isShow) {
+        if (this.prevFocused) {
+          this.prevFocused.focus()
+        }
+      }
+    }
+  }
 
+  render(){
+    const {
+           className, paneStyle, isShow,
+           clItem,
+           onClose,
+           onWebhose, onStackTagged, onStackSearch
+         } = this.props;
+    
+    return (
+      <ModalPane
+        isShow={isShow}
+        onClose={onClose}
+      >
+        <ShowHide
+          className={className}
+          style={paneStyle}
+          isShow={isShow}
+        >
+          <MenuItem
+            ref={comp => this.firstItem = comp}
+            className={clItem}
+            caption="Webhose"
+            onClick={onWebhose}
+            onClose={onClose}
+          />
+          <MenuItem
+            className={clItem}
+            caption="StackOverflow: Tagged Questions"
+            onClick={onStackTagged}
+            onClose={onClose}
+          />
+          <MenuItem
+            className={clItem}
+            caption="StackOverflow: Search Questions"
+            onClick={onStackSearch}
+            onClose={onClose}
+          />
+        </ShowHide>
+     </ModalPane>
+    );
+  }
+}
 
 export default PanelQuery

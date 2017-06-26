@@ -28,24 +28,30 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var CL_NOT_S = 'not-selected';
 
-var _renderMenuItems = function _renderMenuItems(option) {
-  var rowClass = option.rowClass,
-      badgeStyle = option.badgeStyle,
-      _option$items = option.items,
+var _createOnKeyDown = function _createOnKeyDown(onClick) {
+  return function (event) {
+    if (event.keyCode === 13) {
+      onClick();
+    }
+  };
+};
+
+var _renderMenuItems = function _renderMenuItems(TS, option) {
+  var _option$items = option.items,
       items = _option$items === undefined ? [] : _option$items,
       _option$hmItems = option.hmItems,
       hmItems = _option$hmItems === undefined ? {} : _option$hmItems,
       itemData = option.itemData,
       onClick = option.onClick,
       onClickBadge = option.onClickBadge,
-      rest = (0, _objectWithoutProperties3.default)(option, ['rowClass', 'badgeStyle', 'items', 'hmItems', 'itemData', 'onClick', 'onClickBadge']);
+      rest = (0, _objectWithoutProperties3.default)(option, ['items', 'hmItems', 'itemData', 'onClick', 'onClickBadge']);
 
   return items.map(function (item, index) {
-    var _className = rowClass ? rowClass + ' ' + CL_NOT_S : CL_NOT_S,
+    var _className = TS.CL_ROW ? TS.CL_ROW + ' ' + CL_NOT_S : CL_NOT_S,
         _itemConf = hmItems[item.id],
         menuTitle = _itemConf.menuTitle,
         badgeEl = itemData[item.id] ? _react2.default.createElement(_MenuItemBadge2.default, {
-      style: badgeStyle,
+      style: TS.BADGE,
       itemBadge: itemData[item.id],
       itemConf: _itemConf,
       onClick: onClickBadge
@@ -53,13 +59,15 @@ var _renderMenuItems = function _renderMenuItems(option) {
 
 
     Object.assign(_itemConf, rest);
-
+    var _onClick = onClick.bind(null, _itemConf);
     return _react2.default.createElement(
       'div',
       {
+        tabIndex: '0',
         key: index,
         className: _className,
-        onClick: onClick.bind(null, _itemConf)
+        onClick: _onClick,
+        onKeyDown: _createOnKeyDown(_onClick)
       },
       menuTitle,
       badgeEl
@@ -68,20 +76,19 @@ var _renderMenuItems = function _renderMenuItems(option) {
 };
 
 var MenuPart = function MenuPart(_ref) {
-  var openCloseStyle = _ref.openCloseStyle,
-      itemStyle = _ref.itemStyle,
+  var TS = _ref.styleConfig,
       caption = _ref.caption,
       isInitClose = _ref.isInitClose,
-      restProps = (0, _objectWithoutProperties3.default)(_ref, ['openCloseStyle', 'itemStyle', 'caption', 'isInitClose']);
+      restProps = (0, _objectWithoutProperties3.default)(_ref, ['styleConfig', 'caption', 'isInitClose']);
   return _react2.default.createElement(
     _OpenClose2.default,
     {
-      style: openCloseStyle,
+      style: TS.OPEN_CLOSE,
       caption: caption,
       isClose: isInitClose,
-      itemStyle: itemStyle
+      itemStyle: TS.ITEM
     },
-    _renderMenuItems(restProps)
+    _renderMenuItems(TS, restProps)
   );
 };
 

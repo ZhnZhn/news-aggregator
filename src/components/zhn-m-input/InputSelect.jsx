@@ -70,7 +70,7 @@ class InputSelect extends Component {
           <div className={CL.DIV_VALUE}>
              {item.caption}
           </div>
-          <button className={CL.DIV_BT}>
+          <button className={CL.DIV_BT} tabIndex="0">
             <div>
               <ArrowCell />
             </div>

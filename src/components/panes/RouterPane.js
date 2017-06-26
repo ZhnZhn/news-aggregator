@@ -12,6 +12,10 @@ const R = {
   SO_TAGGED: {
     Pane: NewsPane,
     Item: StackItem
+  },
+  SO_SEARCH: {
+    Pane: NewsPane,
+    Item: StackItem
   }
 }
 

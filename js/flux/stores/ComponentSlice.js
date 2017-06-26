@@ -85,7 +85,7 @@ var ComponentSlice = {
   newsPaneInit: {},
   hmBrowser: {},
 
-  onShowNewsDialog: function onShowNewsDialog(itemConf) {
+  onShowNewsDialog: function onShowNewsDialog(itemConf, event) {
     var r = NewsDialogLogic.showNewsDialog(this.dialogInit, itemConf);
     this.trigger(_ComponentActions.TYPES.SHOW_NEWS_DIALOG, r);
   },

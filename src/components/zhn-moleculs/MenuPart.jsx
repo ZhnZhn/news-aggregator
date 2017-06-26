@@ -6,17 +6,23 @@ import MenuItemBadge from './MenuItemBadge'
 
 const CL_NOT_S = 'not-selected';
 
-const _renderMenuItems = function(option){
-  const { rowClass, badgeStyle, items=[], hmItems={}, itemData, onClick, onClickBadge, ...rest } = option
+const _createOnKeyDown = (onClick) => (event) => {
+  if (event.keyCode === 13){
+    onClick()
+  }
+}
+
+const _renderMenuItems = function(TS, option){
+  const { items=[], hmItems={}, itemData, onClick, onClickBadge, ...rest } = option
   return items.map((item, index) => {
-    const _className = (rowClass)
-             ? `${rowClass} ${CL_NOT_S}`
+    const _className = (TS.CL_ROW)
+             ? `${TS.CL_ROW} ${CL_NOT_S}`
              :  CL_NOT_S
           , _itemConf = hmItems[item.id]
           , { menuTitle} = _itemConf
           , badgeEl = itemData[item.id]
                ? <MenuItemBadge
-                    style={badgeStyle}
+                    style={TS.BADGE}
                     itemBadge={itemData[item.id]}
                     itemConf={_itemConf}
                     onClick={onClickBadge}
@@ -24,12 +30,14 @@ const _renderMenuItems = function(option){
                : undefined;
 
     Object.assign(_itemConf, rest)
-
+    const _onClick = onClick.bind(null, _itemConf);
     return (
        <div
+           tabIndex="0"
            key={index}
            className={_className}
-           onClick={onClick.bind(null, _itemConf)}
+           onClick={_onClick}
+           onKeyDown={_createOnKeyDown(_onClick)}
         >
           {menuTitle}
           {badgeEl}
@@ -39,15 +47,16 @@ const _renderMenuItems = function(option){
 }
 
 const MenuPart = ({
-  openCloseStyle, itemStyle, caption, isInitClose, ...restProps
+  styleConfig:TS,
+  caption, isInitClose, ...restProps
 }) => (
   <OpenClose
-     style={openCloseStyle}
+     style={TS.OPEN_CLOSE}
      caption={caption}
      isClose={isInitClose}
-     itemStyle={itemStyle}
+     itemStyle={TS.ITEM}
   >
-     {_renderMenuItems(restProps)}
+     {_renderMenuItems(TS, restProps)}
   </OpenClose>
 )
 

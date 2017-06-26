@@ -67,6 +67,7 @@ class WebhoseQueryDialog extends Component {
   }
 
   _handleClose = () => {
+    this.dialogComp.focusPrevEl()
     this.props.onClose()
   }
 
@@ -89,6 +90,7 @@ class WebhoseQueryDialog extends Component {
 
     return (
       <DraggableDialog
+           ref={comp => this.dialogComp = comp}
            rootStyle={TS.R_DIALOG}
            browserCaptionStyle={TS.BROWSER_CAPTION}
            styleButton={TS.BT}

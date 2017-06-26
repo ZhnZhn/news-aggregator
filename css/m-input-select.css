@@ -93,6 +93,10 @@
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+.m-select__div__bt:focus {
+  fill: greenyellow;
+}
+
 
 .m-select__item {
   color: white;
@@ -108,13 +112,4 @@
   bottom: 23px;
   width: 100%;
   border-bottom: 2px solid black;
-}
-
-.m-select__item--white {
-  color: rgb(48, 48, 48);
-  line-height: 2;
-  padding-left: 16px;
-}
-.m-select__item--white:hover {
-  background-color: rgba(255,255,255, 0.4);
 }

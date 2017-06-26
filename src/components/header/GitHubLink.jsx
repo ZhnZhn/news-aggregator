@@ -5,6 +5,7 @@ const GitHubLink = ({ className, title, href }) => (
     className={className}
     title={title}
     href={href}
+    tabIndex="-1"
   >
     <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414">
       <title>GitHub Logo</title>

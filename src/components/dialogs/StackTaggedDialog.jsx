@@ -71,6 +71,7 @@ class StackTaggedDialog extends Component {
   }
 
   _handleClose = () => {
+    this.dialogComp.focusPrevEl()
     this.props.onClose()
   }
 
@@ -93,6 +94,7 @@ class StackTaggedDialog extends Component {
 
     return (
       <DraggableDialog
+           ref={comp => this.dialogComp = comp}
            rootStyle={TS.R_DIALOG}
            browserCaptionStyle={TS.BROWSER_CAPTION}
            styleButton={TS.BT}

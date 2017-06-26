@@ -20,6 +20,17 @@ const NEWS_QUERY = {
        "caption": "Tagged Questions",
        //"source": "webhose"
      }
+  },
+  STACK_SEARCH: {
+    "type": "SO_SEARCH",
+    "dialogType": "StackSearch",
+    "paneCaption": "StackOverflow: Search Questions",
+    "paneId": "stack_search",
+    "paneType": "SO_SEARCH",
+    "dialogProps": {
+       "caption": "Search Questions",
+       //"source": "webhose"
+     }
   }
 }
 

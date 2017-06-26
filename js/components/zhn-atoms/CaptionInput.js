@@ -17,10 +17,12 @@ var S = {
 };
 
 var CaptionInput = function CaptionInput(_ref) {
-  var rootStyle = _ref.rootStyle,
+  var className = _ref.className,
+      rootStyle = _ref.rootStyle,
       _ref$caption = _ref.caption,
       caption = _ref$caption === undefined ? '' : _ref$caption,
-      accessKey = _ref.accessKey;
+      accessKey = _ref.accessKey,
+      children = _ref.children;
 
   var _index = caption.toLowerCase().indexOf(accessKey);
   if (accessKey && _index !== -1) {
@@ -29,7 +31,7 @@ var CaptionInput = function CaptionInput(_ref) {
         _after = caption.substring(_index + 1);
     return _react2.default.createElement(
       'span',
-      { style: rootStyle },
+      { className: className, style: rootStyle },
       _react2.default.createElement(
         'span',
         null,
@@ -44,13 +46,15 @@ var CaptionInput = function CaptionInput(_ref) {
         'span',
         null,
         _after
-      )
+      ),
+      children
     );
   } else {
     return _react2.default.createElement(
       'span',
-      { style: rootStyle },
-      caption
+      { className: className, style: rootStyle },
+      caption,
+      children
     );
   }
 };

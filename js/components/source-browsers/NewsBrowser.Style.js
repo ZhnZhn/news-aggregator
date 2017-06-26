@@ -28,9 +28,9 @@ var styleConfig = {
     }
     return {
       CL_SCROLL_PANE: CSS_RULE.CL_SCROLL_PANE,
-      CL_MENU_ITEM: _clMenuItem,
+      CL_ROW: _clMenuItem,
 
-      ROOT: (0, _extends3.default)({}, CSS_RULE.BG),
+      BROWSER: (0, _extends3.default)({}, CSS_RULE.BG),
       OPEN_CLOSE: (0, _extends3.default)({}, CSS_RULE.BG),
       BROWSER_CAPTION: (0, _extends3.default)({}, CSS_RULE.BG_HEADER),
       ITEM: (0, _extends3.default)({
