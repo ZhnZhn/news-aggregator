@@ -33,9 +33,9 @@ const _toArticles = (json) => {
   return articles;
 }
 
-const IexAdapter = {  
+const IexAdapter = {
   toNews(json, option) {
-    const { symbol, recent } = option
+    const { symbol, recent='' } = option
         , articles = _toArticles(json);
 
     return {

@@ -45,7 +45,8 @@ var _toArticles = function _toArticles(json) {
 var IexAdapter = {
   toNews: function toNews(json, option) {
     var symbol = option.symbol,
-        recent = option.recent,
+        _option$recent = option.recent,
+        recent = _option$recent === undefined ? '' : _option$recent,
         articles = _toArticles(json);
 
     return {
