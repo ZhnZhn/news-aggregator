@@ -34,6 +34,17 @@ var NEWS_QUERY = {
     "dialogProps": {
       "caption": "Search Questions"
     }
+  },
+
+  IEX: {
+    "type": "IEX_NEWS",
+    "dialogType": "IexNews",
+    "paneCaption": "Iex Stock News",
+    "paneId": "iex_news",
+    "paneType": "IEX_NEWS",
+    "dialogProps": {
+      "caption": "IEX Stock News"
+    }
   }
 };
 

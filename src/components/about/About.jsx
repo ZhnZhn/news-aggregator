@@ -8,7 +8,7 @@ import BrowserCaption from '../zhn-atoms/BrowserCaption'
 import Link from '../links/Links'
 import Step from './Step'
 import IconLogoBar from './IconLogoBar'
-import SpanKey from './SpanKey'
+//import ShowHide from '../zhn-atoms/ShowHide'
 
 import STYLE from '../styles/ContainerStyle'
 
@@ -79,12 +79,18 @@ class About extends Component {
                    <span>News headline providers:&nbsp;</span>
                 </p>
                 <p>
-                   <Link.NewsApi />
-                   <SpanKey style={S.BLACK} />
-                   <Link.WebhoseIo />
-                   <SpanKey style={S.BLACK} />
-                   <Link.StackOverflow />
-                   <span>.</span>
+                   <div>
+                     <Link.NewsApi />
+                   </div>
+                   <div>
+                     <Link.WebhoseIo />
+                   </div>
+                   <div>
+                     <Link.StackOverflow />
+                   </div>
+                   <div>
+                     <Link.IexApi />
+                   </div>
                  </p>
                  <p style={S.MARGIN_TOP}>
                    Provider's API Keys is required for using app.
@@ -118,10 +124,9 @@ class About extends Component {
 
              <p style={S.MARGIN_TOP}>
                <span style={S.BLACK}>For&nbsp;</span>
-               <span style={S.PROVIDER}>Webhose</span>
-               <span style={S.PROVIDER}>,&nbsp;</span>
-               <span style={S.PROVIDER}>StackOverflow</span>
-               <span style={S.PROVIDER}>:</span>
+               <span style={S.PROVIDER}>
+                  Webhose,&nbsp;StackOverflow,&nbsp;IEX:
+                </span>
              </p>
              <Step
                 styleRoot={S.STEP}

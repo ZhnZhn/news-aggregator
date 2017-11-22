@@ -56,10 +56,6 @@ var _IconLogoBar = require('./IconLogoBar');
 
 var _IconLogoBar2 = _interopRequireDefault(_IconLogoBar);
 
-var _SpanKey = require('./SpanKey');
-
-var _SpanKey2 = _interopRequireDefault(_SpanKey);
-
 var _ContainerStyle = require('../styles/ContainerStyle');
 
 var _ContainerStyle2 = _interopRequireDefault(_ContainerStyle);
@@ -67,6 +63,7 @@ var _ContainerStyle2 = _interopRequireDefault(_ContainerStyle);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CL_SHOW = "show-popup";
+//import ShowHide from '../zhn-atoms/ShowHide'
 
 var About = function (_Component) {
   (0, _inherits3.default)(About, _Component);
@@ -167,15 +164,25 @@ var About = function (_Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                _react2.default.createElement(_Links2.default.NewsApi, null),
-                _react2.default.createElement(_SpanKey2.default, { style: S.BLACK }),
-                _react2.default.createElement(_Links2.default.WebhoseIo, null),
-                _react2.default.createElement(_SpanKey2.default, { style: S.BLACK }),
-                _react2.default.createElement(_Links2.default.StackOverflow, null),
                 _react2.default.createElement(
-                  'span',
+                  'div',
                   null,
-                  '.'
+                  _react2.default.createElement(_Links2.default.NewsApi, null)
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(_Links2.default.WebhoseIo, null)
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(_Links2.default.StackOverflow, null)
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  _react2.default.createElement(_Links2.default.IexApi, null)
                 )
               ),
               _react2.default.createElement(
@@ -234,22 +241,7 @@ var About = function (_Component) {
               _react2.default.createElement(
                 'span',
                 { style: S.PROVIDER },
-                'Webhose'
-              ),
-              _react2.default.createElement(
-                'span',
-                { style: S.PROVIDER },
-                ',\xA0'
-              ),
-              _react2.default.createElement(
-                'span',
-                { style: S.PROVIDER },
-                'StackOverflow'
-              ),
-              _react2.default.createElement(
-                'span',
-                { style: S.PROVIDER },
-                ':'
+                'Webhose,\xA0StackOverflow,\xA0IEX:'
               )
             ),
             _react2.default.createElement(_Step2.default, {

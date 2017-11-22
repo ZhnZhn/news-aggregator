@@ -52,8 +52,14 @@ var fnFetch = function fnFetch(_ref) {
       var status = response.status,
           statusText = response.statusText;
 
-      if (status >= 500 && status < 600) {
-        throw { msg: 'Response Error ' + status + ' : ' + statusText };
+      if (status === 404) {
+        throw {
+          msg: 'Not Found ' + status
+        };
+      } else if (status >= 500 && status < 600) {
+        throw {
+          msg: 'Response Error ' + status + ' : ' + statusText
+        };
       } else {
         return Promise.all([Promise.resolve(status), response.json()]);
       }

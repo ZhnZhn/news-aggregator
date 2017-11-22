@@ -5,15 +5,18 @@ import safeFn from '../../utils/safeFn'
 import withTheme from '../hoc/withTheme'
 import styleConfig from '../dialogs/Dialog.Style'
 
+import Actions from '../../flux/actions/ComponentActions'
+
 import ModalDialog from '../zhn-moleculs/ModalDialog'
 import SecretField from '../zhn-m-input/SecretField'
+import InputSelect from '../zhn-m-input/InputSelect'
 import RaisedButton from '../zhn-atoms/RaisedButton'
 
 const S = {
   MODAL : {
     position : 'static',
     width: '320px',
-    height: '240px',
+    height: '300px',
     margin: '70px auto 0px'
   },
   DIV_BT: {
@@ -24,6 +27,12 @@ const S = {
 
 const SET_NEWS_KEY = 'setNewsKey';
 const SET_WEBHOSE_KEY = 'setWebhoseKey';
+
+const DF_THEME = { caption: "Dark", value: "GREY" };
+const _themeOptions = [
+  { caption: "Dark", value: "GREY" },
+  { caption: "Light", value: "WHITE" },
+];
 
 const STR_EMPTY = '';
 const _onTestLengthOrEmpty = (length) => (str) => {
@@ -73,6 +82,18 @@ class SettingsDialog extends Component {
     onClose()
   }
 
+  _selectTheme = (item) => {
+    const { theme } = this.props;
+    if (
+        item &&
+        theme.getThemeName() !== item.value
+    ) {
+      theme.setThemeName(item.value)
+      Actions.changeTheme()
+      this.forceUpdate()
+    }
+  }
+
   _createCommandButtons = (S) => {
     return [
       <RaisedButton
@@ -117,6 +138,13 @@ class SettingsDialog extends Component {
               maxLength={36}
               errorMsg="36 symbols must be"
               onTest={_onTestWebhose}
+           />
+           <InputSelect
+             styleConfig={TS.SELECT}
+             caption="Theme (Default: Dark)"
+             initItem={DF_THEME}
+             options={_themeOptions}
+             onSelect={this._selectTheme}
            />
        </ModalDialog>
     );

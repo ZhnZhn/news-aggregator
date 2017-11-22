@@ -134,7 +134,7 @@ class Article extends Component {
     const { item, theme } = this.props
         , TS = theme.createStyle(styleConfig)
         , { title, author, publishedAt,
-            url
+            url, related
             //, urlToImage
           } = item
         , description = item.description || 'More...'
@@ -177,6 +177,7 @@ class Article extends Component {
              isShow={isShow}
              url={url}
              description={description}
+             related={related}
              publishedAt={_publishedAt}
              author={author}
              onHide={this._handleHide}

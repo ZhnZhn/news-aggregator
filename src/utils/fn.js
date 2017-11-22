@@ -33,8 +33,14 @@ const fnFetch = function({
     fetch(uri)
       .then((response) => {
         const { status, statusText } = response;
-        if (status>=500 && status<600){
-          throw { msg : `Response Error ${status} : ${statusText}` };
+        if (status === 404) {
+          throw {
+            msg: `Not Found ${status}`
+          };
+        } else if (status>=500 && status<600){
+          throw {
+            msg : `Response Error ${status} : ${statusText}`
+          };
         } else {
           return Promise.all([
             Promise.resolve(status),

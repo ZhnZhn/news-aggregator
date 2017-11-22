@@ -40,6 +40,10 @@ var _Dialog = require('../dialogs/Dialog.Style');
 
 var _Dialog2 = _interopRequireDefault(_Dialog);
 
+var _ComponentActions = require('../../flux/actions/ComponentActions');
+
+var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
+
 var _ModalDialog = require('../zhn-moleculs/ModalDialog');
 
 var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
@@ -47,6 +51,10 @@ var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
 var _SecretField = require('../zhn-m-input/SecretField');
 
 var _SecretField2 = _interopRequireDefault(_SecretField);
+
+var _InputSelect = require('../zhn-m-input/InputSelect');
+
+var _InputSelect2 = _interopRequireDefault(_InputSelect);
 
 var _RaisedButton = require('../zhn-atoms/RaisedButton');
 
@@ -58,7 +66,7 @@ var S = {
   MODAL: {
     position: 'static',
     width: '320px',
-    height: '240px',
+    height: '300px',
     margin: '70px auto 0px'
   },
   DIV_BT: {
@@ -69,6 +77,9 @@ var S = {
 
 var SET_NEWS_KEY = 'setNewsKey';
 var SET_WEBHOSE_KEY = 'setWebhoseKey';
+
+var DF_THEME = { caption: "Dark", value: "GREY" };
+var _themeOptions = [{ caption: "Dark", value: "GREY" }, { caption: "Light", value: "WHITE" }];
 
 var STR_EMPTY = '';
 var _onTestLengthOrEmpty = function _onTestLengthOrEmpty(length) {
@@ -108,6 +119,16 @@ var SettingsDialog = function (_Component) {
       setNewsKey(_this.inputNews.getValue());
       setWebhoseKey(_this.inputWebhose.getValue());
       onClose();
+    };
+
+    _this._selectTheme = function (item) {
+      var theme = _this.props.theme;
+
+      if (item && theme.getThemeName() !== item.value) {
+        theme.setThemeName(item.value);
+        _ComponentActions2.default.changeTheme();
+        _this.forceUpdate();
+      }
     };
 
     _this._createCommandButtons = function (S) {
@@ -175,6 +196,13 @@ var SettingsDialog = function (_Component) {
           maxLength: 36,
           errorMsg: '36 symbols must be',
           onTest: _onTestWebhose
+        }),
+        _react2.default.createElement(_InputSelect2.default, {
+          styleConfig: TS.SELECT,
+          caption: 'Theme (Default: Dark)',
+          initItem: DF_THEME,
+          options: _themeOptions,
+          onSelect: this._selectTheme
         })
       );
     }

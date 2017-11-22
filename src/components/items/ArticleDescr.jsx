@@ -12,11 +12,11 @@ const S = {
     paddingLeft: '16px',
     paddingRight: '16px',
     paddingBottom: '4px',
-    color: 'black',
-    fontFamily: 'Verdana,Arial,sans-serif',
+    color: '#121212',
+    fontFamily: 'Verdana, Arial, sans-serif',
     fontSize: '16px',
     fontWeight: 'bold'
-    //fontFamily: 'Helvetica Neue, Arial, Helvetica, sans-serif'
+    //fontFamily: '"Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif'
   },
   AUTHOR_ROOT: {
     paddingTop: '6px',
@@ -50,7 +50,7 @@ class ArticleDescr extends Component {
   render(){
     const {
             style, isShow,
-            url, description,
+            url, description, related,
             publishedAt, author
           } = this.props;
     return (
@@ -69,6 +69,12 @@ class ArticleDescr extends Component {
               </span>
             </a>
           </div>
+          {
+            related &&
+            <div style={S.DESCR}>
+              {related}
+            </div>
+          }
           <div style={S.AUTHOR_ROOT}>
             <span style={S.DATE}>
                {publishedAt}

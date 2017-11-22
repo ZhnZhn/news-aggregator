@@ -70,10 +70,11 @@ var PanelQuery = function (_Component) {
           paneStyle = _props.paneStyle,
           isShow = _props.isShow,
           clItem = _props.clItem,
-          onClose = _props.onClose,
           onWebhose = _props.onWebhose,
           onStackTagged = _props.onStackTagged,
-          onStackSearch = _props.onStackSearch;
+          onStackSearch = _props.onStackSearch,
+          onIex = _props.onIex,
+          onClose = _props.onClose;
 
 
       return _react2.default.createElement(
@@ -108,6 +109,12 @@ var PanelQuery = function (_Component) {
             className: clItem,
             caption: 'StackOverflow: Search Questions',
             onClick: onStackSearch,
+            onClose: onClose
+          }),
+          _react2.default.createElement(_MenuItem2.default, {
+            className: clItem,
+            caption: 'IEX Stock News',
+            onClick: onIex,
             onClose: onClose
           })
         )

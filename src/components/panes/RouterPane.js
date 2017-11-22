@@ -16,7 +16,12 @@ const R = {
   SO_SEARCH: {
     Pane: NewsPane,
     Item: StackItem
+  },
+  IEX: {
+    Pane: NewsPane,
+    Item: Article
   }
+
 }
 
 const RouterPane = {

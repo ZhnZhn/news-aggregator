@@ -82,7 +82,10 @@ class NewsPane extends Component {
   }
 
    _onStore = (actionType, option={}) => {
-      const { addAction, showAction, toggleAction, id } = this.props;
+      const {
+              addAction, showAction, toggleAction,
+              id 
+            } = this.props;
       if (option.id === id){
         switch(actionType){
           case addAction: {

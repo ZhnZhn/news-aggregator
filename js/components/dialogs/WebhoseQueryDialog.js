@@ -52,6 +52,8 @@ var _PoweredBy2 = _interopRequireDefault(_PoweredBy);
 
 var _Links = require('../links/Links');
 
+var _Links2 = _interopRequireDefault(_Links);
+
 var _RaisedButton = require('../zhn-atoms/RaisedButton');
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
@@ -192,7 +194,7 @@ var WebhoseQueryDialog = (0, _withKeyDown2.default)(_class = function (_Componen
         _react2.default.createElement(
           _PoweredBy2.default,
           { rootStyle: S.POWERED_BY },
-          _react2.default.createElement(_Links.LinkWebhoseIo, null)
+          _react2.default.createElement(_Links2.default.WebhoseIo, null)
         )
       );
     }

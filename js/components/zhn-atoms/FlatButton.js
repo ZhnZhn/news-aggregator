@@ -18,7 +18,9 @@ var CL_BT = 'bt-flat';
 var CL_BT_SPAN = 'bt-flat__span';
 
 var FlatButton = function FlatButton(_ref) {
-  var rootStyle = _ref.rootStyle,
+  var _ref$className = _ref.className,
+      className = _ref$className === undefined ? '' : _ref$className,
+      rootStyle = _ref.rootStyle,
       clDiv = _ref.clDiv,
       _ref$title = _ref.title,
       title = _ref$title === undefined ? '' : _ref$title,
@@ -29,7 +31,7 @@ var FlatButton = function FlatButton(_ref) {
   return _react2.default.createElement(
     'button',
     {
-      className: CL_BT,
+      className: CL_BT + ' ' + className,
       style: rootStyle,
       type: 'button',
       tabIndex: 0,

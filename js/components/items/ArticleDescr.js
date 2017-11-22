@@ -40,11 +40,11 @@ var S = {
     paddingLeft: '16px',
     paddingRight: '16px',
     paddingBottom: '4px',
-    color: 'black',
-    fontFamily: 'Verdana,Arial,sans-serif',
+    color: '#121212',
+    fontFamily: 'Verdana, Arial, sans-serif',
     fontSize: '16px',
     fontWeight: 'bold'
-    //fontFamily: 'Helvetica Neue, Arial, Helvetica, sans-serif'
+    //fontFamily: '"Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif'
   },
   AUTHOR_ROOT: {
     paddingTop: '6px',
@@ -96,6 +96,7 @@ var ArticleDescr = function (_Component) {
           isShow = _props.isShow,
           url = _props.url,
           description = _props.description,
+          related = _props.related,
           publishedAt = _props.publishedAt,
           author = _props.author;
 
@@ -121,6 +122,11 @@ var ArticleDescr = function (_Component) {
               description
             )
           )
+        ),
+        related && _react2.default.createElement(
+          'div',
+          { style: S.DESCR },
+          related
         ),
         _react2.default.createElement(
           'div',

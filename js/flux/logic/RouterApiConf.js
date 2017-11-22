@@ -32,6 +32,14 @@ var _StackOverflowAdapter = require('../../adapters/StackOverflowAdapter');
 
 var _StackOverflowAdapter2 = _interopRequireDefault(_StackOverflowAdapter);
 
+var _IexApi = require('../../api/IexApi');
+
+var _IexApi2 = _interopRequireDefault(_IexApi);
+
+var _IexAdapter = require('../../adapters/IexAdapter');
+
+var _IexAdapter2 = _interopRequireDefault(_IexAdapter);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MSG_ERR_TAIL = 'Key is not set. \nPlease, set and try again.';
@@ -60,6 +68,13 @@ var RouterApiConf = {
           api: _StackOverflowApi2.default,
           adapter: _StackOverflowAdapter2.default,
           msgErr: 'StackOverflowApi API ' + MSG_ERR_TAIL
+        };
+      case 'IEX':
+        return {
+          apiKey: true,
+          api: _IexApi2.default,
+          adapter: _IexAdapter2.default,
+          msgErr: 'IEX API ' + MSG_ERR_TAIL
         };
       default:
         return {

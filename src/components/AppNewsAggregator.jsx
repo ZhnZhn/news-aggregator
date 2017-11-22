@@ -43,6 +43,7 @@ class AppNewsAggregator extends Component {
             onQuery={Actions.showNewsDialog.bind(null, QUERY.WEBHOSE )}
             onStackTagged={Actions.showNewsDialog.bind(null, QUERY.STACK_TAGGED )}
             onStackSearch={Actions.showNewsDialog.bind(null, QUERY.STACK_SEARCH)}
+            onIex={Actions.showNewsDialog.bind(null, QUERY.IEX)}
             onSettings={Actions.showModalDialog.bind(Actions, 'SETTINGS_DIALOG', Store.exportSettingsFn())}
             onAbout={Actions.showAbout}
           />

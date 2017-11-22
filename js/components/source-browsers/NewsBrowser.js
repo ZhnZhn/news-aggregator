@@ -42,6 +42,8 @@ var _PoweredBy2 = _interopRequireDefault(_PoweredBy);
 
 var _Links = require('../links/Links');
 
+var _Links2 = _interopRequireDefault(_Links);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var NewsBrowser = function (_Component) {
@@ -109,7 +111,7 @@ var NewsBrowser = function (_Component) {
         _react2.default.createElement(
           _PoweredBy2.default,
           null,
-          _react2.default.createElement(_Links.LinkNewsApi, null)
+          _react2.default.createElement(_Links2.default.NewsApi, null)
         )
       );
     }

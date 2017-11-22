@@ -6,13 +6,14 @@ const CL_BT = 'bt-flat';
 const CL_BT_SPAN = 'bt-flat__span';
 
 const FlatButton = ({
+  className='',
   rootStyle, clDiv, title='', caption,
   accessKey,
   children,
   onClick
 }) =>
   <button
-    className={CL_BT}
+    className={`${CL_BT} ${className}`}
     style={rootStyle}
     type="button"
     tabIndex={0}

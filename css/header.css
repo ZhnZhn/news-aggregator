@@ -41,7 +41,19 @@
      display: inline-block;
      margin-left: 45px;
   }
+  .header__bt-about {
+    display: none;
+  }
 }
+@media only screen and (max-width: 375px) {
+  .header__icon-app {
+    display: none;
+  }
+  .header__browser-bts {
+    margin-left: 0;
+  }
+}
+
 
 .header__bts {
   position: relative;
@@ -70,7 +82,7 @@
     display: none;
   }
   .header__bts {
-    margin-right: 16px;
+    margin-right: 0;
   }
 }
 

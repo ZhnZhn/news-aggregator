@@ -13,6 +13,18 @@ import PanelQuery from './PanelQuery'
 
 const TITLE = "News Aggregator v0.4.0";
 
+const CL = {
+  HEADER: "header",
+    PANEL_BROWSER: "header__panel-browser",
+    ICON_APP: "header__icon-app",
+    LABEL_APP: "header__label-app",
+    BROWSER_BTS: "header__browser-bts",
+    ARROW_DOWN: "arrow-down",
+    GITHUB_LINK: "header__github-link",
+    BTS: "header__bts",
+    BT_ABOUT: "header__bt-about"
+};
+
 class HeaderBar extends Component {
   constructor(props){
     super()
@@ -44,6 +56,9 @@ class HeaderBar extends Component {
       case 'StackSearch':
         this.props.onStackSearch()
         break;
+      case 'Iex':
+        this.props.onIex()
+        break;
       default:
     }
     this._handleClickQuery()
@@ -69,33 +84,34 @@ class HeaderBar extends Component {
         , S = theme.createStyle(styleConfig)
         , { isQuery } = this.state;
     return (
-      <div className="header" style={S.HEADER}>
+      <div className={CL.HEADER} style={S.HEADER}>
         <PanelQuery
           paneStyle={S.PANE}
-          className="header__panel-browser"
+          className={CL.PANEL_BROWSER}
           clItem={S.CL_QUERY_ITEM}
           isShow={isQuery}
           onClose={this._handleCloseQuery}
           onWebhose={this._handleClickSource.bind(null, 'Webhose')}
           onStackTagged={this._handleClickSource.bind(null, 'StackTagged')}
           onStackSearch={this._handleClickSource.bind(null, 'StackSearch')}
+          onIex={this._handleClickSource.bind(null, 'Iex')}
         />
         <LoadingProgress
            store={store}
            ACTIONS={LOADING_ACTIONS}
         />
         <IconAppLogo
-           className="header__icon-app"
+           className={CL.ICON_APP}
            title={TITLE}
            onClick={this._handleChangeTheme}
         />
         <AppLabel
-           className="header__label-app"
+           className={CL.LABEL_APP}
            caption={TITLE}
            title="Click to Change UI Theme"
            onClick={this._handleChangeTheme}
         />
-        <span className="header__browser-bts">
+        <span className={CL.BROWSER_BTS}>
           <FlatButton
             rootStyle={S.BT.FLAT_ROOT}
             clDiv={S.BT.CL_FLAT_DIV}
@@ -113,15 +129,15 @@ class HeaderBar extends Component {
              onClick={this._handleClickQuery}
              onReg={this._onRegQuery}
           >
-            <span className="arrow-down"></span>
+            <span className={CL.ARROW_DOWN}></span>
           </ModalButton>
         </span>
         <GitHubLink
-          className="header__github-link"
+          className={CL.GITHUB_LINK}
           title="GitHub Repository"
           href="https://github.com/zhnzhn/news-aggregator"
         />
-        <div className="header__bts">
+        <div className={CL.BTS}>
             <FlatButton
               rootStyle={S.BT.FLAT_ROOT}
               clDiv={S.BT.CL_FLAT_DIV}
@@ -131,6 +147,7 @@ class HeaderBar extends Component {
               onClick={onSettings}
             />
             <FlatButton
+              className={CL.BT_ABOUT}
               rootStyle={S.BT.FLAT_ROOT}
               clDiv={S.BT.CL_FLAT_DIV}
               caption="About"

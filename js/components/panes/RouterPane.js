@@ -30,7 +30,12 @@ var R = {
   SO_SEARCH: {
     Pane: _NewsPane2.default,
     Item: _StackItem2.default
+  },
+  IEX: {
+    Pane: _NewsPane2.default,
+    Item: _Article2.default
   }
+
 };
 
 var RouterPane = {

@@ -7,7 +7,7 @@ import DraggableDialog from '../zhn-moleculs/DraggableDialog'
 import TextField from '../zhn-m-input/TextField'
 import InputSelect from '../zhn-m-input/InputSelect'
 import PoweredBy from '../links/PoweredBy'
-import { LinkWebhoseIo } from '../links/Links'
+import Link from '../links/Links'
 import RaisedButton from '../zhn-atoms/RaisedButton'
 
 import withKeyDown from './decorators/withKeyDown'
@@ -124,7 +124,7 @@ class WebhoseQueryDialog extends Component {
         />
 
         <PoweredBy rootStyle={S.POWERED_BY}>
-          <LinkWebhoseIo />
+          <Link.WebhoseIo />
         </PoweredBy>
       </DraggableDialog>
     );

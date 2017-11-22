@@ -56,6 +56,8 @@ var _PoweredBy2 = _interopRequireDefault(_PoweredBy);
 
 var _Links = require('../links/Links');
 
+var _Links2 = _interopRequireDefault(_Links);
+
 var _RaisedButton = require('../zhn-atoms/RaisedButton');
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
@@ -203,7 +205,7 @@ var StackTaggedDialog = (0, _withKeyDown2.default)(_class = function (_Component
         _react2.default.createElement(
           _PoweredBy2.default,
           { rootStyle: S.POWERED_BY },
-          _react2.default.createElement(_Links.LinkStackOverflow, null)
+          _react2.default.createElement(_Links2.default.StackOverflow, null)
         )
       );
     }

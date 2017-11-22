@@ -22,10 +22,12 @@ class PanelQuery extends Component {
     const {
            className, paneStyle, isShow,
            clItem,
-           onClose,
-           onWebhose, onStackTagged, onStackSearch
+           onWebhose,
+           onStackTagged, onStackSearch,
+           onIex,
+           onClose
          } = this.props;
-    
+
     return (
       <ModalPane
         isShow={isShow}
@@ -53,6 +55,12 @@ class PanelQuery extends Component {
             className={clItem}
             caption="StackOverflow: Search Questions"
             onClick={onStackSearch}
+            onClose={onClose}
+          />
+          <MenuItem
+            className={clItem}
+            caption="IEX Stock News"
+            onClick={onIex}
             onClose={onClose}
           />
         </ShowHide>

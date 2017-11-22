@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import withTheme from '../hoc/withTheme'
 import styleConfig from './Dialog.Style'
 
-import DateUtil from '../../utils/dt'
 
 import DraggableDialog from '../zhn-moleculs/DraggableDialog'
 import TextField from '../zhn-m-input/TextField'
@@ -21,20 +20,18 @@ const S = {
   }
 };
 
-const _initFromDate = DateUtil.getFromDate(1)
-    , _initToDate = DateUtil.getToDate()
-    , _onTestDate = DateUtil.isValidDate;
 
-const DF_SORT_BY = { caption: "Score", value: "votes" };
+const DF_SORT_BY = { caption: "20 News", value: "20" };
 const _sortByOptions = [
-  { caption: "Activity, Recent Day", value: "activity" },
-  { caption: "Creation Date", value: "creation"},
-  { caption: "Score", value: "votes" },
-  { caption: "Relevance", value: "relevance" }
+  { caption: "10 News", value: "10" },
+  { caption: "20 News", value: "20"},
+  { caption: "30 News", value: "30" },
+  { caption: "40 News", value: "40" },
+  { caption: "50 News", value: "50" }
 ];
 
 @withKeyDown
-class StackSearchDialog extends Component {
+class IexNewsDialog extends Component {
   constructor(props){
     super()
     this.sortBy = DF_SORT_BY.value
@@ -42,31 +39,20 @@ class StackSearchDialog extends Component {
   }
 
   _selectSortBy = (option) => {
-    this.sortBy = (option)
+    this.recent = (option)
        ? option.value
        : undefined
   }
 
   _handleLoad = () => {
     const { type, source, itemConf, onLoad } = this.props
-        , _tagged = this.inputTagged.getValue()
-        , _inTitle = this.inputInTitle.getValue()
-        , fromDate = this.fromDate.getValue()
-        , toDate = this.toDate.getValue()
-        , _fromDate = DateUtil.toUTCMillis(fromDate)/1000
-        , _toDate = DateUtil.toUTCMillis(toDate)/1000;
+        , _symbol = this.inputSymbol.getValue()
 
     onLoad({
-      type,
-      source,
-      itemConf,
-      loadId: 'SO',
-      requestType: 'SEARCH',
-      tagged: _tagged,
-      inTitle: _inTitle,
-      sortBy: this.sortBy,
-      fromDate: _fromDate,
-      toDate: _toDate
+      type, source, itemConf,
+      loadId: 'IEX',
+      symbol: _symbol,
+      recent: this.recent
     })
   }
 
@@ -98,7 +84,7 @@ class StackSearchDialog extends Component {
            rootStyle={TS.R_DIALOG}
            browserCaptionStyle={TS.BROWSER_CAPTION}
            styleButton={TS.BT}
-           caption="Search Questions"
+           caption="IEX Stock News"
            isShow={isShow}
            commandButtons={_commandButtons}
            onKeyDown={this._handleKeyDownWith}
@@ -107,46 +93,24 @@ class StackSearchDialog extends Component {
        >
          <TextField
            rootStyle={TS.INPUT_ROOT}
-           ref={comp => this.inputTagged = comp}
-           caption="Tagged (Default: CSS)"
-           initValue="CSS"
-         />
-         <TextField
-           rootStyle={TS.INPUT_ROOT}
-           ref={comp => this.inputInTitle = comp}
-           caption="In Title (Default: flexbox)"
-           initValue="flexbox"
+           ref={comp => this.inputSymbol = comp}
+           caption="Stock Symbol (Default: AAPL)"
+           initValue="AAPL"
          />
          <InputSelect
-           caption="SortBy"
+           caption="Recent"
            initItem={DF_SORT_BY}
            options={_sortByOptions}
            styleConfig={TS.SELECT}
            onSelect={this._selectSortBy}
          />
-        <TextField
-          rootStyle={TS.INPUT_ROOT}
-          ref={comp => this.fromDate = comp}
-          caption="From Date"
-          initValue={_initFromDate}
-          errorMsg="YYYY-MM-DD format must be"
-          onTest={_onTestDate}
-        />
-        <TextField
-          rootStyle={TS.INPUT_ROOT}
-          ref={comp => this.toDate = comp}
-          caption="To Date"
-          initValue={_initToDate}
-          errorMsg="YYYY-MM-DD format must be"
-          onTest={_onTestDate}
-        />
 
         <PoweredBy rootStyle={S.POWERED_BY}>
-          <Link.StackOverflow />
+          <Link.IexApi />
         </PoweredBy>
       </DraggableDialog>
     );
   }
 }
 
-export default withTheme(StackSearchDialog)
+export default withTheme(IexNewsDialog)

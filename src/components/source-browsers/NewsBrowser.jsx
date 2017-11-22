@@ -5,7 +5,7 @@ import styleConfig from './NewsBrowser.Style'
 
 import DynamicMenuBrowser from '../zhn-moleculs/DynamicMenuBrowser'
 import PoweredBy from '../links/PoweredBy'
-import { LinkNewsApi } from '../links/Links'
+import Link from '../links/Links'
 
 class NewsBrowser extends Component {
 
@@ -40,7 +40,7 @@ class NewsBrowser extends Component {
         , S = theme.createStyle(styleConfig)
     const { itemData } = this.state;
     return (
-      <DynamicMenuBrowser        
+      <DynamicMenuBrowser
          styleConfig={S}
          caption="News Sources"
          url="data/news-source-menu.json"
@@ -53,7 +53,7 @@ class NewsBrowser extends Component {
          onClickBadge={onClickBadge}
       >
          <PoweredBy>
-           <LinkNewsApi />
+           <Link.NewsApi />
          </PoweredBy>
       </DynamicMenuBrowser>
     );

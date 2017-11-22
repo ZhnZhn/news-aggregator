@@ -20,6 +20,10 @@ var _StackSearchDialog = require('./StackSearchDialog');
 
 var _StackSearchDialog2 = _interopRequireDefault(_StackSearchDialog);
 
+var _IexNewsDialog = require('./IexNewsDialog');
+
+var _IexNewsDialog2 = _interopRequireDefault(_IexNewsDialog);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var R = {
@@ -27,17 +31,13 @@ var R = {
   DialogType1: _DialogType2.default,
   WebhoseQuery: _WebhoseQueryDialog2.default,
   StackTagged: _StackTaggedDialog2.default,
-  StackSearch: _StackSearchDialog2.default
+  StackSearch: _StackSearchDialog2.default,
+  IexNews: _IexNewsDialog2.default
 };
 
 var RouterDialog = {
   getElement: function getElement(type) {
-    var El = R[type];
-    if (El) {
-      return R[type];
-    } else {
-      return R.DEFAULT;
-    }
+    return R[type] || R.DEFAULT;
   }
 };
 

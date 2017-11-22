@@ -34,10 +34,6 @@ var _Dialog = require('./Dialog.Style');
 
 var _Dialog2 = _interopRequireDefault(_Dialog);
 
-var _dt = require('../../utils/dt');
-
-var _dt2 = _interopRequireDefault(_dt);
-
 var _DraggableDialog = require('../zhn-moleculs/DraggableDialog');
 
 var _DraggableDialog2 = _interopRequireDefault(_DraggableDialog);
@@ -75,23 +71,19 @@ var S = {
   }
 };
 
-var _initFromDate = _dt2.default.getFromDate(1),
-    _initToDate = _dt2.default.getToDate(),
-    _onTestDate = _dt2.default.isValidDate;
+var DF_SORT_BY = { caption: "20 News", value: "20" };
+var _sortByOptions = [{ caption: "10 News", value: "10" }, { caption: "20 News", value: "20" }, { caption: "30 News", value: "30" }, { caption: "40 News", value: "40" }, { caption: "50 News", value: "50" }];
 
-var DF_SORT_BY = { caption: "Score", value: "votes" };
-var _sortByOptions = [{ caption: "Activity, Recent Day", value: "activity" }, { caption: "Creation Date", value: "creation" }, { caption: "Score", value: "votes" }, { caption: "Relevance", value: "relevance" }];
+var IexNewsDialog = (0, _withKeyDown2.default)(_class = function (_Component) {
+  (0, _inherits3.default)(IexNewsDialog, _Component);
 
-var StackSearchDialog = (0, _withKeyDown2.default)(_class = function (_Component) {
-  (0, _inherits3.default)(StackSearchDialog, _Component);
+  function IexNewsDialog(props) {
+    (0, _classCallCheck3.default)(this, IexNewsDialog);
 
-  function StackSearchDialog(props) {
-    (0, _classCallCheck3.default)(this, StackSearchDialog);
-
-    var _this = (0, _possibleConstructorReturn3.default)(this, (StackSearchDialog.__proto__ || Object.getPrototypeOf(StackSearchDialog)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (IexNewsDialog.__proto__ || Object.getPrototypeOf(IexNewsDialog)).call(this));
 
     _this._selectSortBy = function (option) {
-      _this.sortBy = option ? option.value : undefined;
+      _this.recent = option ? option.value : undefined;
     };
 
     _this._handleLoad = function () {
@@ -100,24 +92,13 @@ var StackSearchDialog = (0, _withKeyDown2.default)(_class = function (_Component
           source = _this$props.source,
           itemConf = _this$props.itemConf,
           onLoad = _this$props.onLoad,
-          _tagged = _this.inputTagged.getValue(),
-          _inTitle = _this.inputInTitle.getValue(),
-          fromDate = _this.fromDate.getValue(),
-          toDate = _this.toDate.getValue(),
-          _fromDate = _dt2.default.toUTCMillis(fromDate) / 1000,
-          _toDate = _dt2.default.toUTCMillis(toDate) / 1000;
+          _symbol = _this.inputSymbol.getValue();
 
       onLoad({
-        type: type,
-        source: source,
-        itemConf: itemConf,
-        loadId: 'SO',
-        requestType: 'SEARCH',
-        tagged: _tagged,
-        inTitle: _inTitle,
-        sortBy: _this.sortBy,
-        fromDate: _fromDate,
-        toDate: _toDate
+        type: type, source: source, itemConf: itemConf,
+        loadId: 'IEX',
+        symbol: _symbol,
+        recent: _this.recent
       });
     };
 
@@ -141,7 +122,7 @@ var StackSearchDialog = (0, _withKeyDown2.default)(_class = function (_Component
     return _this;
   }
 
-  (0, _createClass3.default)(StackSearchDialog, [{
+  (0, _createClass3.default)(IexNewsDialog, [{
     key: 'render',
     value: function render() {
       var _this2 = this;
@@ -162,7 +143,7 @@ var StackSearchDialog = (0, _withKeyDown2.default)(_class = function (_Component
           rootStyle: TS.R_DIALOG,
           browserCaptionStyle: TS.BROWSER_CAPTION,
           styleButton: TS.BT,
-          caption: 'Search Questions',
+          caption: 'IEX Stock News',
           isShow: isShow,
           commandButtons: _commandButtons,
           onKeyDown: this._handleKeyDownWith,
@@ -172,56 +153,28 @@ var StackSearchDialog = (0, _withKeyDown2.default)(_class = function (_Component
         _react2.default.createElement(_TextField2.default, {
           rootStyle: TS.INPUT_ROOT,
           ref: function ref(comp) {
-            return _this2.inputTagged = comp;
+            return _this2.inputSymbol = comp;
           },
-          caption: 'Tagged (Default: CSS)',
-          initValue: 'CSS'
-        }),
-        _react2.default.createElement(_TextField2.default, {
-          rootStyle: TS.INPUT_ROOT,
-          ref: function ref(comp) {
-            return _this2.inputInTitle = comp;
-          },
-          caption: 'In Title (Default: flexbox)',
-          initValue: 'flexbox'
+          caption: 'Stock Symbol (Default: AAPL)',
+          initValue: 'AAPL'
         }),
         _react2.default.createElement(_InputSelect2.default, {
-          caption: 'SortBy',
+          caption: 'Recent',
           initItem: DF_SORT_BY,
           options: _sortByOptions,
           styleConfig: TS.SELECT,
           onSelect: this._selectSortBy
         }),
-        _react2.default.createElement(_TextField2.default, {
-          rootStyle: TS.INPUT_ROOT,
-          ref: function ref(comp) {
-            return _this2.fromDate = comp;
-          },
-          caption: 'From Date',
-          initValue: _initFromDate,
-          errorMsg: 'YYYY-MM-DD format must be',
-          onTest: _onTestDate
-        }),
-        _react2.default.createElement(_TextField2.default, {
-          rootStyle: TS.INPUT_ROOT,
-          ref: function ref(comp) {
-            return _this2.toDate = comp;
-          },
-          caption: 'To Date',
-          initValue: _initToDate,
-          errorMsg: 'YYYY-MM-DD format must be',
-          onTest: _onTestDate
-        }),
         _react2.default.createElement(
           _PoweredBy2.default,
           { rootStyle: S.POWERED_BY },
-          _react2.default.createElement(_Links2.default.StackOverflow, null)
+          _react2.default.createElement(_Links2.default.IexApi, null)
         )
       );
     }
   }]);
-  return StackSearchDialog;
+  return IexNewsDialog;
 }(_react.Component)) || _class;
 
-exports.default = (0, _withTheme2.default)(StackSearchDialog);
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\dialogs\StackSearchDialog.js.map
+exports.default = (0, _withTheme2.default)(IexNewsDialog);
+//# sourceMappingURL=D:\_Dev\_React\_News\js\components\dialogs\IexNewsDialog.js.map

@@ -27,16 +27,15 @@ const Logic = {
 
   removeNews(slice, item){
     const { id, source } = item;
-    slice[source] = slice[source].filter(article => {
-      return article.articleId !== id;
-    })
+    slice[source] = slice[source]
+      .filter(article => article.articleId !== id)
   },
 
   removeUnderNews(slice, item){
     const { articleId, source } = item;
-    const _underIndex = slice[source].findIndex(article => {
-      return article.articleId === articleId;
-    })
+    const _underIndex = slice[source]
+      .findIndex(article => article.articleId === articleId);
+
     slice[source] = slice[source].slice(_underIndex+1)
     return {
       id: source,

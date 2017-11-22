@@ -64,6 +64,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var TITLE = "News Aggregator v0.4.0";
 
+var CL = {
+  HEADER: "header",
+  PANEL_BROWSER: "header__panel-browser",
+  ICON_APP: "header__icon-app",
+  LABEL_APP: "header__label-app",
+  BROWSER_BTS: "header__browser-bts",
+  ARROW_DOWN: "arrow-down",
+  GITHUB_LINK: "header__github-link",
+  BTS: "header__bts",
+  BT_ABOUT: "header__bt-about"
+};
+
 var HeaderBar = function (_Component) {
   (0, _inherits3.default)(HeaderBar, _Component);
 
@@ -96,6 +108,9 @@ var HeaderBar = function (_Component) {
           break;
         case 'StackSearch':
           _this.props.onStackSearch();
+          break;
+        case 'Iex':
+          _this.props.onIex();
           break;
         default:
       }
@@ -136,35 +151,36 @@ var HeaderBar = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'header', style: S.HEADER },
+        { className: CL.HEADER, style: S.HEADER },
         _react2.default.createElement(_PanelQuery2.default, {
           paneStyle: S.PANE,
-          className: 'header__panel-browser',
+          className: CL.PANEL_BROWSER,
           clItem: S.CL_QUERY_ITEM,
           isShow: isQuery,
           onClose: this._handleCloseQuery,
           onWebhose: this._handleClickSource.bind(null, 'Webhose'),
           onStackTagged: this._handleClickSource.bind(null, 'StackTagged'),
-          onStackSearch: this._handleClickSource.bind(null, 'StackSearch')
+          onStackSearch: this._handleClickSource.bind(null, 'StackSearch'),
+          onIex: this._handleClickSource.bind(null, 'Iex')
         }),
         _react2.default.createElement(_LoadingProgress2.default, {
           store: store,
           ACTIONS: LOADING_ACTIONS
         }),
         _react2.default.createElement(_IconAppLogo2.default, {
-          className: 'header__icon-app',
+          className: CL.ICON_APP,
           title: TITLE,
           onClick: this._handleChangeTheme
         }),
         _react2.default.createElement(_AppLabel2.default, {
-          className: 'header__label-app',
+          className: CL.LABEL_APP,
           caption: TITLE,
           title: 'Click to Change UI Theme',
           onClick: this._handleChangeTheme
         }),
         _react2.default.createElement(
           'span',
-          { className: 'header__browser-bts' },
+          { className: CL.BROWSER_BTS },
           _react2.default.createElement(_FlatButton2.default, {
             rootStyle: S.BT.FLAT_ROOT,
             clDiv: S.BT.CL_FLAT_DIV,
@@ -184,17 +200,17 @@ var HeaderBar = function (_Component) {
               onClick: this._handleClickQuery,
               onReg: this._onRegQuery
             },
-            _react2.default.createElement('span', { className: 'arrow-down' })
+            _react2.default.createElement('span', { className: CL.ARROW_DOWN })
           )
         ),
         _react2.default.createElement(_GitHubLink2.default, {
-          className: 'header__github-link',
+          className: CL.GITHUB_LINK,
           title: 'GitHub Repository',
           href: 'https://github.com/zhnzhn/news-aggregator'
         }),
         _react2.default.createElement(
           'div',
-          { className: 'header__bts' },
+          { className: CL.BTS },
           _react2.default.createElement(_FlatButton2.default, {
             rootStyle: S.BT.FLAT_ROOT,
             clDiv: S.BT.CL_FLAT_DIV,
@@ -204,6 +220,7 @@ var HeaderBar = function (_Component) {
             onClick: onSettings
           }),
           _react2.default.createElement(_FlatButton2.default, {
+            className: CL.BT_ABOUT,
             rootStyle: S.BT.FLAT_ROOT,
             clDiv: S.BT.CL_FLAT_DIV,
             caption: 'About',

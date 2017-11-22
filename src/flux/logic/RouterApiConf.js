@@ -7,6 +7,8 @@ import WebhoseApi from '../../api/WebhoseApi'
 import WebhoseAdapter from '../../adapters/WebhoseAdapter'
 import StackOverflowApi from '../../api/StackOverflowApi'
 import StackOverflowAdapter from '../../adapters/StackOverflowAdapter'
+import IexApi from '../../api/IexApi'
+import IexAdapter from '../../adapters/IexAdapter' 
 
 const MSG_ERR_TAIL = 'Key is not set. \nPlease, set and try again.';
 const MSG_ERR_DF = 'Unknow news API provider';
@@ -35,6 +37,13 @@ const RouterApiConf = {
           adapter: StackOverflowAdapter,
           msgErr: `StackOverflowApi API ${MSG_ERR_TAIL}`
         }
+      case 'IEX':
+         return {
+           apiKey: true,
+           api: IexApi,
+           adapter: IexAdapter,
+           msgErr: `IEX API ${MSG_ERR_TAIL}`
+         }
       default:
         return {
           apiKey: undefined,

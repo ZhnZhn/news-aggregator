@@ -196,6 +196,7 @@ var Article = (0, _withDnDStyle2.default)(_class = function (_Component) {
           author = item.author,
           publishedAt = item.publishedAt,
           url = item.url,
+          related = item.related,
           description = item.description || 'More...',
           _state = this.state,
           isClosed = _state.isClosed,
@@ -234,6 +235,7 @@ var Article = (0, _withDnDStyle2.default)(_class = function (_Component) {
           isShow: isShow,
           url: url,
           description: description,
+          related: related,
           publishedAt: _publishedAt,
           author: author,
           onHide: this._handleHide

@@ -51,6 +51,7 @@ var Logic = {
     var _underIndex = slice[source].findIndex(function (article) {
       return article.articleId === articleId;
     });
+
     slice[source] = slice[source].slice(_underIndex + 1);
     return {
       id: source,
