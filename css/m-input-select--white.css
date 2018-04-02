@@ -1,8 +1,0 @@
-.m-select__item--white {
-  color: rgb(48, 48, 48);
-  line-height: 2;
-  padding-left: 16px;
-}
-.m-select__item--white:hover {
-  background-color: rgba(255,255,255, 0.4);
-}

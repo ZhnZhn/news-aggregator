@@ -28,32 +28,38 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _ThemeContext = require('./ThemeContext');
+
+var _ThemeContext2 = _interopRequireDefault(_ThemeContext);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var withTheme = function withTheme(Wrapper) {
-  var _class, _temp;
-
-  return _temp = _class = function (_Component) {
+  return function (_Component) {
     (0, _inherits3.default)(_class, _Component);
 
-    function _class(props, context) {
+    function _class() {
       (0, _classCallCheck3.default)(this, _class);
-      return (0, _possibleConstructorReturn3.default)(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props, context));
+      return (0, _possibleConstructorReturn3.default)(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
     }
 
     (0, _createClass3.default)(_class, [{
       key: 'render',
       value: function render() {
-        var theme = this.context.theme;
+        var _this2 = this;
 
-        return _react2.default.createElement(Wrapper, (0, _extends3.default)({}, this.props, { theme: theme }));
+        return _react2.default.createElement(
+          _ThemeContext2.default.Consumer,
+          null,
+          function (theme) {
+            return _react2.default.createElement(Wrapper, (0, _extends3.default)({}, _this2.props, { theme: theme }));
+          }
+        );
       }
     }]);
     return _class;
-  }(_react.Component), _class.contextTypes = {
-    theme: _react.PropTypes.object
-  }, _temp;
+  }(_react.Component);
 };
 
 exports.default = withTheme;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\hoc\withTheme.js.map
+//# sourceMappingURL=withTheme.js.map

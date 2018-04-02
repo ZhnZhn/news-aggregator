@@ -1,9 +1,9 @@
-)]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_News\\src\\flux\\logic\\Factory.js",
- "file": "D:\\_Dev\\_React\\_News\\js\\flux\\logic\\Factory.js",
- "sourceRoot": "",
+ "sources": [
+  "../../../src/flux/logic/Factory.js"
+ ],
+ "file": "../../../src/flux/logic/Factory.js",
  "names": [
   "showNewsPane",
   "closeNewsPane",

@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -34,13 +38,13 @@ var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
 
 var _LoadingProgressActions = require('../flux/actions/LoadingProgressActions');
 
-var _ThemeProvider = require('./hoc/ThemeProvider');
-
-var _ThemeProvider2 = _interopRequireDefault(_ThemeProvider);
-
 var _theme = require('./styles/theme');
 
 var _theme2 = _interopRequireDefault(_theme);
+
+var _ThemeContext = require('./hoc/ThemeContext');
+
+var _ThemeContext2 = _interopRequireDefault(_ThemeContext);
 
 var _HeaderBar = require('./header/HeaderBar');
 
@@ -74,25 +78,48 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var CL_COMP = "component-container";
 
+var _fShowBrowser = function _fShowBrowser(id) {
+  return _ComponentActions2.default.showBrowser.bind(_ComponentActions2.default, id);
+};
+var _fShowDialog = function _fShowDialog(id) {
+  return _ComponentActions2.default.showNewsDialog.bind(null, id);
+};
+var _fSettings = function _fSettings() {
+  return _ComponentActions2.default.showModalDialog.bind(_ComponentActions2.default, 'SETTINGS_DIALOG', _Store2.default.exportSettingsFn());
+};
+
 var AppNewsAggregator = function (_Component) {
   (0, _inherits3.default)(AppNewsAggregator, _Component);
 
-  function AppNewsAggregator() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
+  function AppNewsAggregator(props) {
     (0, _classCallCheck3.default)(this, AppNewsAggregator);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+    var _this = (0, _possibleConstructorReturn3.default)(this, (AppNewsAggregator.__proto__ || Object.getPrototypeOf(AppNewsAggregator)).call(this));
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = AppNewsAggregator.__proto__ || Object.getPrototypeOf(AppNewsAggregator)).call.apply(_ref, [this].concat(args))), _this), _this._onStore = function (actionType) {
+    _this._onStore = function (actionType) {
       if (actionType === _ComponentActions.TYPES.CHANGE_THEME) {
-        _this.forceUpdate();
+        _this.setState(function () {
+          return {
+            theme: (0, _extends3.default)({}, _theme2.default)
+          };
+        });
       }
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    _this.showNewsBrowser = _fShowBrowser('NEWS_API_ORG');
+
+    _this.showWebhoseWeb = _fShowDialog(_NewsQuery2.default.WEBHOSE_WEB);
+    _this.showWebhoseBrodcast = _fShowDialog(_NewsQuery2.default.WEBHOSE_BRODCAST);
+    _this.showStackTagged = _fShowDialog(_NewsQuery2.default.STACK_TAGGED);
+    _this.showStackSearch = _fShowDialog(_NewsQuery2.default.STACK_SEARCH);
+    _this.showIex = _fShowDialog(_NewsQuery2.default.IEX);
+    _this.showNewsSearch = _fShowDialog(_NewsQuery2.default.NEWS_SEARCH);
+
+    _this.showSettings = _fSettings();
+    _this.state = {
+      theme: _theme2.default
+    };
+    return _this;
   }
 
   (0, _createClass3.default)(AppNewsAggregator, [{
@@ -109,8 +136,8 @@ var AppNewsAggregator = function (_Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        _ThemeProvider2.default,
-        { theme: _theme2.default },
+        _ThemeContext2.default.Provider,
+        { value: _theme2.default },
         _react2.default.createElement(
           'div',
           null,
@@ -118,12 +145,14 @@ var AppNewsAggregator = function (_Component) {
             store: _Store2.default,
             LOADING_ACTIONS: _LoadingProgressActions.TYPES,
             onChangeTheme: _ComponentActions2.default.changeTheme,
-            onNewsSources: _ComponentActions2.default.showBrowser.bind(_ComponentActions2.default, 'NEWS_API_ORG'),
-            onQuery: _ComponentActions2.default.showNewsDialog.bind(null, _NewsQuery2.default.WEBHOSE),
-            onStackTagged: _ComponentActions2.default.showNewsDialog.bind(null, _NewsQuery2.default.STACK_TAGGED),
-            onStackSearch: _ComponentActions2.default.showNewsDialog.bind(null, _NewsQuery2.default.STACK_SEARCH),
-            onIex: _ComponentActions2.default.showNewsDialog.bind(null, _NewsQuery2.default.IEX),
-            onSettings: _ComponentActions2.default.showModalDialog.bind(_ComponentActions2.default, 'SETTINGS_DIALOG', _Store2.default.exportSettingsFn()),
+            onNewsSources: this.showNewsBrowser,
+            onQuery: this.showWebhoseWeb,
+            onWebhoseBrodcast: this.showWebhoseBrodcast,
+            onStackTagged: this.showStackTagged,
+            onStackSearch: this.showStackSearch,
+            onIex: this.showIex,
+            onNewsSearch: this.showNewsSearch,
+            onSettings: this.showSettings,
             onAbout: _ComponentActions2.default.showAbout
           }),
           _react2.default.createElement(
@@ -156,4 +185,4 @@ var AppNewsAggregator = function (_Component) {
 }(_react.Component);
 
 exports.default = AppNewsAggregator;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\AppNewsAggregator.js.map
+//# sourceMappingURL=AppNewsAggregator.js.map

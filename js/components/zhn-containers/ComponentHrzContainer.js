@@ -69,7 +69,7 @@ var ComponentHrzContainer = function (_Component) {
     key: '_renderContainers',
     value: function _renderContainers(containers) {
       return containers.map(function (container) {
-        return container;
+        return _react2.default.cloneElement(container);
       });
     }
   }, {
@@ -94,4 +94,4 @@ ComponentHrzContainer.propTypes = process.env.NODE_ENV !== "production" ? {
   addAction: _propTypes2.default.string
 } : {};
 exports.default = ComponentHrzContainer;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-containers\ComponentHrzContainer.js.map
+//# sourceMappingURL=ComponentHrzContainer.js.map

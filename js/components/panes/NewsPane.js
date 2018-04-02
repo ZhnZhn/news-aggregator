@@ -123,6 +123,7 @@ var NewsPane = function (_Component) {
           toggleAction = _this$props.toggleAction,
           id = _this$props.id;
 
+
       if (option.id === id) {
         switch (actionType) {
           case addAction:
@@ -259,4 +260,4 @@ var NewsPane = function (_Component) {
 }(_react.Component);
 
 exports.default = (0, _withTheme2.default)(NewsPane);
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\panes\NewsPane.js.map
+//# sourceMappingURL=NewsPane.js.map

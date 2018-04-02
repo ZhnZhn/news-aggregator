@@ -1,17 +1,14 @@
-)]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_News\\src\\components\\hoc\\withTheme.jsx",
- "file": "D:\\_Dev\\_React\\_News\\js\\components\\hoc\\withTheme.js",
- "sourceRoot": "",
+ "sources": [
+  "../../../src/components/hoc/withTheme.js"
+ ],
+ "file": "../../../src/components/hoc/withTheme.js",
  "names": [
   "withTheme",
   "Wrapper",
   "props",
-  "context",
-  "theme",
-  "contextTypes",
-  "object"
+  "theme"
  ],
- "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;;;AAEA,IAAMA,YAAY,SAAZA,SAAY,CAACC,OAAD;AAAA;;AAAA;AAAA;;AAKhB,oBAAYC,KAAZ,EAAmBC,OAAnB,EAA2B;AAAA;AAAA,2HACnBD,KADmB,EACZC,OADY;AAE1B;;AAPe;AAAA;AAAA,+BASR;AAAA,YACEC,KADF,GACY,KAAKD,OADjB,CACEC,KADF;;AAEN,eAAO,8BAAC,OAAD,6BAAa,KAAKF,KAAlB,IAAyB,OAAOE,KAAhC,IAAP;AACD;AAZe;AAAA;AAAA,8BACTC,YADS,GACM;AACpBD,WAAQ,iBAAUE;AADE,GADN;AAAA,CAAlB;;kBAeeN,S"
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AACA;;;;;;AAEA,IAAMA,YAAY,SAAZA,SAAY,CAACC,OAAD;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA,+BACR;AAAA;;AACN,eACE;AAAA,iCAAc,QAAd;AAAA;AACI;AAAA,mBAAS,8BAAC,OAAD,6BAAa,OAAKC,KAAlB,IAAyB,OAAOC,KAAhC,IAAT;AAAA;AADJ,SADF;AAKD;AAPe;AAAA;AAAA;AAAA,CAAlB;;kBAUeH,S"
 }

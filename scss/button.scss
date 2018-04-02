@@ -176,16 +176,6 @@ button::-moz-focus-inner {
   outline: greenyellow auto 2px;
 }
 
-.bt-raise__div {
-  height: 36px;
-  border-radius: 2px;
-  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-  top: 0px;
-  color: rgb(48, 48, 48);
-}
-.bt-raise__div:hover {
-  background-color: rgba(48,48,48, 0.4);
-}
 
 .bt-raised__span {
   position: relative;
@@ -201,16 +191,6 @@ button::-moz-focus-inner {
   padding-right: 16px;
 }
 
-.bt-raise__div--white {
-  height: 36px;
-  border-radius: 2px;
-  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-  top: 0px;
-  color: rgb(255,255,255);
-}
-.bt-raise__div--white:hover {
-  background-color: rgba(255,255,255, 0.4);
-}
 
 
 .bt-flat {
@@ -236,21 +216,11 @@ button::-moz-focus-inner {
   background-color: rgba(0, 0, 0, 0);
   text-align: center;
 }
-.bt-flat__div {
-  height: 36px;
-  border-radius: 2px;
-  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-  top: 0px;
-  background-color: rgba(0, 0, 0, 0);
-}
-.bt-flat__div:hover {
-  /*background-color: rgba(220,220,220, 0.2);*/
-  background-color: rgba(120, 120, 120, 0.2);
-}
 .bt-flat:focus {
   /*background-color: rgba(220,220,220, 0.2);*/
   background-color: rgba(120, 120, 120, 0.2);
 }
+
 
 .bt-flat__span {
   position: relative;
@@ -266,13 +236,4 @@ button::-moz-focus-inner {
   padding-right: 16px;
 }
 
-.bt-flat__div--white {
-  height: 36px;
-  border-radius: 2px;
-  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-  top: 0px;
-  background-color: rgba(0, 0, 0, 0);
-}
-.bt-flat__div--white:hover{
-  background-color: rgba(153,153,153, 0.2);
-}
+@import 'button-mixin'

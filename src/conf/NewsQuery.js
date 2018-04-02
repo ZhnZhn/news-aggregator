@@ -1,12 +1,26 @@
 
 const NEWS_QUERY = {
-  WEBHOSE: {
-    "type": "W_WEBHOSE",
+  WEBHOSE_WEB: {
+    "type": "W_WEBHOSE_WEB",
     "dialogType": "WebhoseQuery",
     "paneCaption": "Webhose Query",
     "paneId": "webhose",
+    "loadId": "W",
+    "requestType": "NEWS",
     "dialogProps": {
        "caption": "Webhose Query",
+       "source": "webhose"
+     }
+  },
+  WEBHOSE_BRODCAST: {
+    "type": "W_WEBHOSE_BRODCAST",
+    "dialogType": "WebhoseBrodcast",
+    "paneCaption": "Webhose.Io Broadcast",
+    "paneId": "webhose_brodcast",
+    "loadId": "W",
+    "requestType": "BRODCAST",
+    "dialogProps": {
+       "caption": "Webhose Broadcast",
        "source": "webhose"
      }
   },
@@ -42,6 +56,16 @@ const NEWS_QUERY = {
     "dialogProps": {
        "caption": "IEX Stock News",
        //"source": "iex_news"
+     }
+  },
+  NEWS_SEARCH: {
+    "type": "NEWS_SEARCH",
+    "dialogType": "NewsApiSearch",
+    "paneCaption": "NewsApi Search",
+    "paneId": "newsapi_search",
+    "dialogProps": {
+       "caption": "NewsApi Search",
+       "source": "newsapi_search"
      }
   }
 }

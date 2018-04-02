@@ -18,13 +18,16 @@ class PanelQuery extends Component {
     }
   }
 
+  _refFirstItem = comp => this.firstItem = comp
+
   render(){
     const {
            className, paneStyle, isShow,
            clItem,
-           onWebhose,
+           onWebhose, onWebhoseBrodcast,
            onStackTagged, onStackSearch,
            onIex,
+           onNewsApi,
            onClose
          } = this.props;
 
@@ -39,10 +42,16 @@ class PanelQuery extends Component {
           isShow={isShow}
         >
           <MenuItem
-            ref={comp => this.firstItem = comp}
+            ref={this._refFirstItem}
             className={clItem}
-            caption="Webhose"
+            caption="Webhose: News, Blogs"
             onClick={onWebhose}
+            onClose={onClose}
+          />
+          <MenuItem
+            className={clItem}
+            caption="Webhose: Broadcast"
+            onClick={onWebhoseBrodcast}
             onClose={onClose}
           />
           <MenuItem
@@ -61,6 +70,12 @@ class PanelQuery extends Component {
             className={clItem}
             caption="IEX Stock News"
             onClick={onIex}
+            onClose={onClose}
+          />
+          <MenuItem
+            className={clItem}
+            caption="NewsApi Headlines"
+            onClick={onNewsApi}
             onClose={onClose}
           />
         </ShowHide>

@@ -1,9 +1,9 @@
-)]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_News\\src\\components\\hoc\\ThemeProvider.jsx",
- "file": "D:\\_Dev\\_React\\_News\\js\\components\\hoc\\ThemeProvider.js",
- "sourceRoot": "",
+ "sources": [
+  "../../../src/components/hoc/ThemeProvider.js"
+ ],
+ "file": "../../../src/components/hoc/ThemeProvider.js",
  "names": [
   "ThemeProvider",
   "theme",

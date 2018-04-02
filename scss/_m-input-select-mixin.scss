@@ -1,0 +1,26 @@
+@import 'base/themeSuffix';
+
+
+@mixin m-select($suffix, $color, $bgc-hover) {
+  .m-select__item {
+    &#{$suffix} {
+      color: $color;
+      line-height: 2;
+      padding-left: 16px;
+    }
+    &#{$suffix}:hover {
+      background-color: $bgc-hover;
+    }
+  }
+}
+
+//for Dark Theme
+$_cDark: white;
+$_bgcHoverDark: rgba(48,48,48, 0.4);
+//for Light Theme
+$_cLight: rgb(48, 48, 48);
+$_bgcHoverLight: rgba(255,255,255, 0.4);
+
+@include m-select($thGreySuffix, $_cDark, $_bgcHoverDark)
+@include m-select($thWhiteSuffix, $_cLight, $_bgcHoverLight)
+@include m-select($thSandSuffix, $_cLight, $_bgcHoverLight)

@@ -1,9 +1,9 @@
-)]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_News\\src\\components\\panes\\NewsPane.Style.js",
- "file": "D:\\_Dev\\_React\\_News\\js\\components\\panes\\NewsPane.Style.js",
- "sourceRoot": "",
+ "sources": [
+  "../../../src/components/panes/NewsPane.Style.js"
+ ],
+ "file": "../../../src/components/panes/NewsPane.Style.js",
  "names": [
   "styleConfig",
   "themeName",
@@ -18,5 +18,5 @@
   "BG_HEADER",
   "PANE_ROOT"
  ],
- "mappings": ";;;;;;;;;;;;AAEA,IAAMA,cAAc;AAClBC,aAAYC,SADM;AAElBC,SAAQD,SAFU;AAGlBE,eAAc,qBAACC,QAAD,EAAWJ,SAAX,EAAyB;AACrC,QAAIK,kBAAJ;AACA,YAAOL,SAAP;AACE,WAAK,OAAL;AACEK,oBAAY,EAAEC,iBAAiB,oBAAnB,EAAZ;AACA;AACF;AAJF;AAMA,WAAO;AACLC,sBAAgBH,SAASG,cADpB;AAELC,+CACKJ,SAASK,SADd,CAFK;AAKLC,4CACKL,SADL;AALK,KAAP;AASD;AApBiB,CAApB;;kBAuBeN,W"
+ "mappings": ";;;;;;;;;;;;AAEA,IAAMA,cAAc;AAClBC,aAAYC,SADM;AAElBC,SAAQD,SAFU;AAGlBE,eAAc,qBAACC,QAAD,EAAWJ,SAAX,EAAyB;AACrC,QAAIK,kBAAJ;AACA,YAAOL,SAAP;AACE,WAAK,OAAL;AACEK,oBAAY,EAAEC,iBAAiB,oBAAnB,EAAZ;AACA;AACF,WAAK,MAAL;AACED,oBAAY,EAAEC,iBAAiB,SAAnB,EAAZ;AACA;AACF;AAPF;AASA,WAAO;AACLC,sBAAgBH,SAASG,cADpB;AAELC,+CACKJ,SAASK,SADd,CAFK;AAKLC,4CACKL,SADL;AALK,KAAP;AASD;AAvBiB,CAApB;;kBA0BeN,W"
 }

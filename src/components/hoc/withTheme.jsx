@@ -1,17 +1,13 @@
-import React , { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import ThemeContext from './ThemeContext'
 
 const withTheme = (Wrapper) => class extends Component {
-  static contextTypes = {
-    theme : PropTypes.object
-  }
-
-  constructor(props, context){
-    super(props, context)
-  }
-
   render(){
-    const { theme } = this.context;
-    return <Wrapper {...this.props} theme={theme} />;
+    return (
+      <ThemeContext.Consumer>
+        { theme => <Wrapper {...this.props} theme={theme} />}
+      </ThemeContext.Consumer>
+    );
   }
 }
 

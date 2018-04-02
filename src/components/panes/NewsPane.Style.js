@@ -8,7 +8,10 @@ const styleConfig = {
     switch(themeName){
       case 'WHITE':
         _paneRoot = { backgroundColor: 'rgb(235, 241, 245)' }
-        break
+        break;
+      case 'SAND':
+        _paneRoot = { backgroundColor: '#e8e0cb' }
+        break;
       default:
     }
     return {

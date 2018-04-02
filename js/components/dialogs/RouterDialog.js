@@ -12,6 +12,10 @@ var _WebhoseQueryDialog = require('./WebhoseQueryDialog');
 
 var _WebhoseQueryDialog2 = _interopRequireDefault(_WebhoseQueryDialog);
 
+var _WebhoseBrodcastDialog = require('./WebhoseBrodcastDialog');
+
+var _WebhoseBrodcastDialog2 = _interopRequireDefault(_WebhoseBrodcastDialog);
+
 var _StackTaggedDialog = require('./StackTaggedDialog');
 
 var _StackTaggedDialog2 = _interopRequireDefault(_StackTaggedDialog);
@@ -24,15 +28,19 @@ var _IexNewsDialog = require('./IexNewsDialog');
 
 var _IexNewsDialog2 = _interopRequireDefault(_IexNewsDialog);
 
+var _NewsApiSearchDialog = require('./NewsApiSearchDialog');
+
+var _NewsApiSearchDialog2 = _interopRequireDefault(_NewsApiSearchDialog);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var R = {
   DEFAULT: _DialogType2.default,
   DialogType1: _DialogType2.default,
-  WebhoseQuery: _WebhoseQueryDialog2.default,
-  StackTagged: _StackTaggedDialog2.default,
-  StackSearch: _StackSearchDialog2.default,
-  IexNews: _IexNewsDialog2.default
+  WebhoseQuery: _WebhoseQueryDialog2.default, WebhoseBrodcast: _WebhoseBrodcastDialog2.default,
+  StackTagged: _StackTaggedDialog2.default, StackSearch: _StackSearchDialog2.default,
+  IexNews: _IexNewsDialog2.default,
+  NewsApiSearch: _NewsApiSearchDialog2.default
 };
 
 var RouterDialog = {
@@ -42,4 +50,4 @@ var RouterDialog = {
 };
 
 exports.default = RouterDialog;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\dialogs\RouterDialog.js.map
+//# sourceMappingURL=RouterDialog.js.map

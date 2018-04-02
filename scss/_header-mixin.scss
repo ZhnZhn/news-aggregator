@@ -1,0 +1,31 @@
+@import 'base/values';
+@import 'base/themeSuffix';
+@import 'base/palette';
+
+@mixin row__topic($suffix, $bg-color-row-odd) {
+  .row__topic {
+    &#{$suffix} {
+      line-height: 2;
+      color: black;
+      font-size: 16px;
+      font-weight: bold;
+      padding-top: 1px;
+      padding-bottom: 1px;
+      padding-left: 16px;
+      cursor: pointer;
+    }
+    &#{$suffix}:nth-child(odd) {
+      background-color: $bg-color-row-odd;
+    }
+    &#{$suffix}:hover {
+      border-bottom: 1px solid $cBorderHover;
+    }
+    &#{$suffix}:focus {
+      border-bottom: 2px solid $cBorderFocus;
+    }
+  }
+}
+
+@include row__topic($thGreySuffix, $bgcRowGrey)
+@include row__topic($thWhiteSuffix, $bgcRowWhite)
+@include row__topic($thSandSuffix, $bgcRowSand)

@@ -1,14 +1,8 @@
 
 import Store from '../stores/Store'
 
-import NewsApi from '../../api/NewsApi'
-import NewsApiAdapter from '../../adapters/NewsApiAdapter'
-import WebhoseApi from '../../api/WebhoseApi'
-import WebhoseAdapter from '../../adapters/WebhoseAdapter'
-import StackOverflowApi from '../../api/StackOverflowApi'
-import StackOverflowAdapter from '../../adapters/StackOverflowAdapter'
-import IexApi from '../../api/IexApi'
-import IexAdapter from '../../adapters/IexAdapter' 
+import Adapter from '../../adapters/Adapters'
+import Api from '../../api/Api'
 
 const MSG_ERR_TAIL = 'Key is not set. \nPlease, set and try again.';
 const MSG_ERR_DF = 'Unknow news API provider';
@@ -19,31 +13,38 @@ const RouterApiConf = {
       case 'N':
         return {
           apiKey: Store.getNewsKey(),
-          api: NewsApi,
-          adapter: NewsApiAdapter,
+          api: Api.News,
+          adapter: Adapter.News,
+          msgErr: `NewsApi ${MSG_ERR_TAIL}`
+        };
+      case 'NS':
+        return {
+          apiKey: Store.getNewsKey(),
+          api: Api.NewsSearch,
+          adapter: Adapter.News,
           msgErr: `NewsApi ${MSG_ERR_TAIL}`
         };
       case 'W':
         return {
           apiKey: Store.getWebhoseKey(),
-          api: WebhoseApi,
-          adapter: WebhoseAdapter,
+          api: Api.Webhose,
+          adapter: Adapter.Webhose,
           msgErr: `Webhose.io API ${MSG_ERR_TAIL}`
         };
       case 'SO':
         return {
           apiKey: true,
-          api: StackOverflowApi,
-          adapter: StackOverflowAdapter,
+          api: Api.StackOverflow,
+          adapter: Adapter.StackOverflow,
           msgErr: `StackOverflowApi API ${MSG_ERR_TAIL}`
-        }
+        };
       case 'IEX':
          return {
            apiKey: true,
-           api: IexApi,
-           adapter: IexAdapter,
+           api: Api.Iex,
+           adapter: Adapter.Iex,
            msgErr: `IEX API ${MSG_ERR_TAIL}`
-         }
+         };
       default:
         return {
           apiKey: undefined,

@@ -1,0 +1,112 @@
+
+.header {
+  position : relative;
+  width: 100%;
+  background-color: rgba(77, 77, 77, 1);
+  min-height: 50px;
+  max-height: 50px;
+  padding-top: 8px;
+  padding-left: 12px;
+  //margin-bottom: 16px;
+  box-shadow: rgba(0,0,0, 0.14) 0px 0px 4px, rgba(0,0,0, 0.6) 0px 4px 8px;
+  z-index: 50;
+}
+.header__icon-app {
+  display: inline-block;
+  position: absolute;
+  top: 7px;
+  left: 16px;
+  width : 32px;
+  height : 32px;
+  cursor: pointer;
+}
+.header__label-app {
+  display: inline-block;
+  color:#80c040;
+  margin-left: 35px;
+  padding-top: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.header__browser-bts {
+  display: inline-block;
+}
+@media only screen and (max-width: 680px){
+  .header__label-app {
+    display: none;
+  }
+  .header__browser-bts {
+     display: inline-block;
+     margin-left: 45px;
+  }
+  .header__bt-about {
+    display: none;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .header__icon-app {
+    display: none;
+  }
+  .header__browser-bts {
+    margin-left: 0;
+  }
+}
+
+
+.header__bts {
+  position: relative;
+  //top: 2px;
+  float: right;
+  margin-right: 80px
+}
+.header__github-link {
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  right: 24px;
+  text-decoration: none;
+  fill: grey;
+  transition: fill 200ms ease-out;
+}
+.header__github-link svg {
+  width: 2.5rem;
+  height: 3rem;
+}
+.header__github-link:hover,.header__github-link:focus {
+  fill: #80c040;
+}
+@media only screen and (max-width: 740px){
+  .header__github-link {
+    display: none;
+  }
+  .header__bts {
+    margin-right: 0;
+  }
+}
+
+.header__panel-browser {
+  position: absolute;
+  z-index: 1010;
+  top: 45px;
+  left: 160px;
+
+  width: 300px;
+
+  padding-top : 5px;
+  padding-bottom : 5px;
+
+  background-color: rgba(77, 77, 77, 1);
+  border-bottom: 4px solid #80c040;
+  border-radius : 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 5px;
+}
+@media only screen and (max-width: 680px){
+  .header__panel-browser {
+    left: 10px;
+  }
+}
+
+@import 'header-mixin'

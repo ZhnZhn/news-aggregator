@@ -84,8 +84,9 @@ class NewsPane extends Component {
    _onStore = (actionType, option={}) => {
       const {
               addAction, showAction, toggleAction,
-              id 
+              id
             } = this.props;
+
       if (option.id === id){
         switch(actionType){
           case addAction: {
@@ -153,6 +154,7 @@ class NewsPane extends Component {
          , _classIsShow = (isShow)
                ? SHOW_POPUP
                : undefined;
+
      return(
         <div
            ref={node => this.rootDiv = node}

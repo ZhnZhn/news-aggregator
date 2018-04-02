@@ -52,14 +52,16 @@ class WebhoseQueryDialog extends Component {
   }
 
   _handleLoad = () => {
-    const { type, source, itemConf, onLoad } = this.props
+    const { type, source, itemConf={}, onLoad } = this.props
+        , { requestType, loadId } = itemConf
         , _inTitle = this.inputTitle.getValue()
         , _beforeDays = this.inputBeforeDays.getValue();
     onLoad({
       type,
       source,
+      requestType,
       itemConf,
-      loadId: 'W',
+      loadId,
       inTitle: _inTitle,
       siteType: this.siteType,
       beforeDays: _beforeDays
@@ -83,6 +85,10 @@ class WebhoseQueryDialog extends Component {
     ];
   }
 
+  _refDialoComp = comp => this.dialogComp = comp
+  _refInputTitle = comp => this.inputTitle = comp
+  _refInputBeforeDays = comp => this.inputBeforeDays = comp
+
   render(){
     const { isShow, theme, onShow } = this.props
          , TS = theme.createStyle(styleConfig)
@@ -90,11 +96,11 @@ class WebhoseQueryDialog extends Component {
 
     return (
       <DraggableDialog
-           ref={comp => this.dialogComp = comp}
+           ref={this._refDialoComp}
            rootStyle={TS.R_DIALOG}
            browserCaptionStyle={TS.BROWSER_CAPTION}
            styleButton={TS.BT}
-           caption="Webhose.io Query"
+           caption="Webhose: News, Blogs"
            isShow={isShow}
            commandButtons={_commandButtons}
            onKeyDown={this._handleKeyDownWith}
@@ -103,7 +109,7 @@ class WebhoseQueryDialog extends Component {
        >
         <TextField
           rootStyle={TS.INPUT_ROOT}
-          ref={comp => this.inputTitle = comp}
+          ref={this._refInputTitle}
           caption="In Title (Default: Weather)"
           initValue="Weather"
         />
@@ -116,7 +122,7 @@ class WebhoseQueryDialog extends Component {
         />
         <TextField
           rootStyle={TS.INPUT_ROOT}
-          ref={comp => this.inputBeforeDays = comp}
+          ref={this._refInputBeforeDays}
           caption="Before Days (Default: 2, Max 30)"
           initValue={2}
           errorMsg="0<n<31 value must be"

@@ -31,7 +31,7 @@ var S = {
   },
   CAPTION: {
     //color: '#9e9e9e',
-    color: '#8a8a8a',
+    //color: '#8a8a8a',
     fontSize: '18px',
     fontWeight: 'bold'
   },
@@ -68,4 +68,4 @@ var BrowserCaption = function BrowserCaption(_ref) {
 };
 
 exports.default = BrowserCaption;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-atoms\BrowserCaption.js.map
+//# sourceMappingURL=BrowserCaption.js.map

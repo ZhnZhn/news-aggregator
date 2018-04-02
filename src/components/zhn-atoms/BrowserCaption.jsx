@@ -15,7 +15,7 @@ const S = {
   },
   CAPTION: {
     //color: '#9e9e9e',
-    color: '#8a8a8a',
+    //color: '#8a8a8a',
     fontSize: '18px',
     fontWeight: 'bold'
   },

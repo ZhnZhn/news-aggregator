@@ -1,22 +1,21 @@
-)]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_News\\src\\flux\\stores\\SettingSlice.js",
- "file": "D:\\_Dev\\_React\\_News\\js\\flux\\stores\\SettingSlice.js",
- "sourceRoot": "",
+ "sources": [
+  "../../../src/flux/stores/SettingSlice.js"
+ ],
+ "file": "../../../src/flux/stores/SettingSlice.js",
  "names": [
   "SettingSlice",
   "settings",
-  "newsKey",
-  "undefined",
-  "webhoseKey",
   "exportSettingsFn",
   "setNewsKey",
   "bind",
   "setWebhoseKey",
   "value",
+  "newsKey",
   "getNewsKey",
+  "webhoseKey",
   "getWebhoseKey"
  ],
- "mappings": ";;;;;;AACA,IAAMA,eAAe;AACnBC,YAAU;AACRC,aAASC,SADD;AAERC,gBAAYD;AAFJ,GADS;;AAMnBE,kBANmB,8BAMD;AAChB,WAAO;AACLC,kBAAY,KAAKA,UAAL,CAAgBC,IAAhB,CAAqB,IAArB,CADP;AAELC,qBAAe,KAAKA,aAAL,CAAmBD,IAAnB,CAAwB,IAAxB;AAFV,KAAP;AAID,GAXkB;AAanBD,YAbmB,sBAaRG,KAbQ,EAaF;AACf,SAAKR,QAAL,CAAcC,OAAd,GAAwBO,KAAxB;AACD,GAfkB;AAgBnBC,YAhBmB,wBAgBP;AACV,WAAO,KAAKT,QAAL,CAAcC,OAArB;AACD,GAlBkB;AAoBnBM,eApBmB,yBAoBLC,KApBK,EAoBC;AAClB,SAAKR,QAAL,CAAcG,UAAd,GAA2BK,KAA3B;AACD,GAtBkB;AAuBnBE,eAvBmB,2BAuBJ;AACb,WAAO,KAAKV,QAAL,CAAcG,UAArB;AACD;AAzBkB,CAArB;;kBA6BeJ,Y"
+ "mappings": ";;;;;;AACA,IAAMA,eAAe;AACnBC,YAAU,EADS;;AAGnBC,kBAHmB,8BAGD;AAChB,WAAO;AACLC,kBAAY,KAAKA,UAAL,CAAgBC,IAAhB,CAAqB,IAArB,CADP;AAELC,qBAAe,KAAKA,aAAL,CAAmBD,IAAnB,CAAwB,IAAxB;AAFV,KAAP;AAID,GARkB;AAUnBD,YAVmB,sBAURG,KAVQ,EAUF;AACf,SAAKL,QAAL,CAAcM,OAAd,GAAwBD,KAAxB;AACD,GAZkB;AAanBE,YAbmB,wBAaP;AACV,WAAO,KAAKP,QAAL,CAAcM,OAArB;AACD,GAfkB;AAiBnBF,eAjBmB,yBAiBLC,KAjBK,EAiBC;AAClB,SAAKL,QAAL,CAAcQ,UAAd,GAA2BH,KAA3B;AACD,GAnBkB;AAoBnBI,eApBmB,2BAoBJ;AACb,WAAO,KAAKT,QAAL,CAAcQ,UAArB;AACD;AAtBkB,CAArB;;kBA0BeT,Y"
 }

@@ -8,37 +8,13 @@ var _Store = require('../stores/Store');
 
 var _Store2 = _interopRequireDefault(_Store);
 
-var _NewsApi = require('../../api/NewsApi');
+var _Adapters = require('../../adapters/Adapters');
 
-var _NewsApi2 = _interopRequireDefault(_NewsApi);
+var _Adapters2 = _interopRequireDefault(_Adapters);
 
-var _NewsApiAdapter = require('../../adapters/NewsApiAdapter');
+var _Api = require('../../api/Api');
 
-var _NewsApiAdapter2 = _interopRequireDefault(_NewsApiAdapter);
-
-var _WebhoseApi = require('../../api/WebhoseApi');
-
-var _WebhoseApi2 = _interopRequireDefault(_WebhoseApi);
-
-var _WebhoseAdapter = require('../../adapters/WebhoseAdapter');
-
-var _WebhoseAdapter2 = _interopRequireDefault(_WebhoseAdapter);
-
-var _StackOverflowApi = require('../../api/StackOverflowApi');
-
-var _StackOverflowApi2 = _interopRequireDefault(_StackOverflowApi);
-
-var _StackOverflowAdapter = require('../../adapters/StackOverflowAdapter');
-
-var _StackOverflowAdapter2 = _interopRequireDefault(_StackOverflowAdapter);
-
-var _IexApi = require('../../api/IexApi');
-
-var _IexApi2 = _interopRequireDefault(_IexApi);
-
-var _IexAdapter = require('../../adapters/IexAdapter');
-
-var _IexAdapter2 = _interopRequireDefault(_IexAdapter);
+var _Api2 = _interopRequireDefault(_Api);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51,29 +27,36 @@ var RouterApiConf = {
       case 'N':
         return {
           apiKey: _Store2.default.getNewsKey(),
-          api: _NewsApi2.default,
-          adapter: _NewsApiAdapter2.default,
+          api: _Api2.default.News,
+          adapter: _Adapters2.default.News,
+          msgErr: 'NewsApi ' + MSG_ERR_TAIL
+        };
+      case 'NS':
+        return {
+          apiKey: _Store2.default.getNewsKey(),
+          api: _Api2.default.NewsSearch,
+          adapter: _Adapters2.default.News,
           msgErr: 'NewsApi ' + MSG_ERR_TAIL
         };
       case 'W':
         return {
           apiKey: _Store2.default.getWebhoseKey(),
-          api: _WebhoseApi2.default,
-          adapter: _WebhoseAdapter2.default,
+          api: _Api2.default.Webhose,
+          adapter: _Adapters2.default.Webhose,
           msgErr: 'Webhose.io API ' + MSG_ERR_TAIL
         };
       case 'SO':
         return {
           apiKey: true,
-          api: _StackOverflowApi2.default,
-          adapter: _StackOverflowAdapter2.default,
+          api: _Api2.default.StackOverflow,
+          adapter: _Adapters2.default.StackOverflow,
           msgErr: 'StackOverflowApi API ' + MSG_ERR_TAIL
         };
       case 'IEX':
         return {
           apiKey: true,
-          api: _IexApi2.default,
-          adapter: _IexAdapter2.default,
+          api: _Api2.default.Iex,
+          adapter: _Adapters2.default.Iex,
           msgErr: 'IEX API ' + MSG_ERR_TAIL
         };
       default:
@@ -86,4 +69,4 @@ var RouterApiConf = {
 };
 
 exports.default = RouterApiConf;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\flux\logic\RouterApiConf.js.map
+//# sourceMappingURL=RouterApiConf.js.map

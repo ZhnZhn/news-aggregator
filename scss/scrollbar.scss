@@ -1,0 +1,34 @@
+
+.with-scroll::-webkit-scrollbar {
+	//background-color:black;
+    width: 5px;
+}
+
+.with-scroll::-webkit-scrollbar-track {
+  //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color:black;
+    width: 2px;
+    border-radius: 2px;
+}
+
+.with-scroll::-webkit-scrollbar-thumb {
+	width:3px;
+	height: 50px;
+	background-color: #8BC34A;
+  border-radius: 2px;
+}
+
+.scroll-browser-by{
+	overflow-y: auto;
+	height: 80%;
+	height: calc(100% - 85px);
+	padding-right: 10px;
+}
+.scroll-browser-by--search{
+	overflow-y: auto;
+	height: 80%;
+	height: calc(100% - 120px);
+	padding-right: 10px;
+}
+
+@import 'scrollbar-mixin'

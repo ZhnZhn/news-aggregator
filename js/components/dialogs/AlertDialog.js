@@ -21,6 +21,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _class, _temp2;
+//import PropTypes from 'prop-types'
 
 var _react = require('react');
 
@@ -92,6 +93,17 @@ var AlertDialog = (_temp2 = _class = function (_Component) {
       }
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
+  /*
+  static propTypes = {
+    isShow: PropTypes.bool,
+    data: PropTypes.shape({
+      alertCaption: PropTypes.string,
+      alertItemId: PropTypes.string,
+      alertDescr: PropTypes.string
+    }),
+    onClose: PropTypes.func
+  }
+  */
 
   (0, _createClass3.default)(AlertDialog, [{
     key: 'shouldComponentUpdate',
@@ -140,14 +152,5 @@ var AlertDialog = (_temp2 = _class = function (_Component) {
 }(_react.Component), _class.defaultProps = {
   data: {}
 }, _temp2);
-AlertDialog.propTypes = process.env.NODE_ENV !== "production" ? {
-  isShow: _react.PropTypes.bool,
-  data: _react.PropTypes.shape({
-    alertCaption: _react.PropTypes.string,
-    alertItemId: _react.PropTypes.string,
-    alertDescr: _react.PropTypes.string
-  }),
-  onClose: _react.PropTypes.func
-} : {};
 exports.default = (0, _withTheme2.default)(AlertDialog);
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\dialogs\AlertDialog.js.map
+//# sourceMappingURL=AlertDialog.js.map

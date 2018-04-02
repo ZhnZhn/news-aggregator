@@ -1,21 +1,23 @@
 
 import DialogType1 from './DialogType1'
-import WebhoseQueryDialog from './WebhoseQueryDialog'
-import StackTaggedDialog from './StackTaggedDialog'
-import StackSearchDialog from './StackSearchDialog'
-import IexNewsDialog from './IexNewsDialog'
+import WebhoseQuery from './WebhoseQueryDialog'
+import WebhoseBrodcast from './WebhoseBrodcastDialog'
+import StackTagged from './StackTaggedDialog'
+import StackSearch from './StackSearchDialog'
+import IexNews from './IexNewsDialog'
+import NewsApiSearch from './NewsApiSearchDialog'
 
 const R = {
   DEFAULT: DialogType1,
-  DialogType1: DialogType1,
-  WebhoseQuery: WebhoseQueryDialog,
-  StackTagged: StackTaggedDialog,
-  StackSearch: StackSearchDialog,
-  IexNews: IexNewsDialog
+  DialogType1,
+  WebhoseQuery, WebhoseBrodcast,
+  StackTagged, StackSearch,
+  IexNews,
+  NewsApiSearch
 }
 
 const RouterDialog = {
-  getElement: (type) => {    
+  getElement: (type) => {
    return R[type] || R.DEFAULT;
   }
 }

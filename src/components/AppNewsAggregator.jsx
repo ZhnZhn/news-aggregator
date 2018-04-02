@@ -4,8 +4,8 @@ import Store from '../flux/stores/Store'
 import Actions, { TYPES } from '../flux/actions/ComponentActions'
 import { TYPES as LOADING_ACTIONS } from '../flux/actions/LoadingProgressActions'
 
-import ThemeProvider from './hoc/ThemeProvider'
 import theme  from './styles/theme'
+import ThemeContext from './hoc/ThemeContext'
 
 import HeaderBar from './header/HeaderBar'
 import BrowserContainer from './zhn-containers/BrowserContainer'
@@ -18,7 +18,30 @@ import QUERY from '../conf/NewsQuery'
 
 const CL_COMP = "component-container";
 
+const _fShowBrowser = id => Actions.showBrowser.bind(Actions, id);
+const _fShowDialog = id => Actions.showNewsDialog.bind(null, id);
+const _fSettings = () => Actions.showModalDialog.bind(
+   Actions, 'SETTINGS_DIALOG', Store.exportSettingsFn()
+ );
+
 class AppNewsAggregator extends Component {
+  constructor(props){
+    super()
+    this.showNewsBrowser = _fShowBrowser('NEWS_API_ORG')
+
+    this.showWebhoseWeb = _fShowDialog(QUERY.WEBHOSE_WEB)
+    this.showWebhoseBrodcast = _fShowDialog(QUERY.WEBHOSE_BRODCAST)
+    this.showStackTagged = _fShowDialog(QUERY.STACK_TAGGED)
+    this.showStackSearch= _fShowDialog(QUERY.STACK_SEARCH)
+    this.showIex= _fShowDialog(QUERY.IEX)
+    this.showNewsSearch = _fShowDialog(QUERY.NEWS_SEARCH)
+
+    this.showSettings = _fSettings()
+    this.state = {
+      theme
+    }
+  }
+
   componentDidMount(){
     this.unsubscribe = Store.listen(this._onStore)
   }
@@ -27,24 +50,28 @@ class AppNewsAggregator extends Component {
   }
   _onStore = (actionType) => {
     if (actionType === TYPES.CHANGE_THEME){
-      this.forceUpdate()
+      this.setState(()=>({
+        theme: {...theme}
+      }))
     }
   }
 
   render(){
     return (
-      <ThemeProvider theme={theme}>
+      <ThemeContext.Provider value={theme}>
         <div>
           <HeaderBar
             store={Store}
             LOADING_ACTIONS={LOADING_ACTIONS}
             onChangeTheme={Actions.changeTheme}
-            onNewsSources={Actions.showBrowser.bind(Actions, 'NEWS_API_ORG')}
-            onQuery={Actions.showNewsDialog.bind(null, QUERY.WEBHOSE )}
-            onStackTagged={Actions.showNewsDialog.bind(null, QUERY.STACK_TAGGED )}
-            onStackSearch={Actions.showNewsDialog.bind(null, QUERY.STACK_SEARCH)}
-            onIex={Actions.showNewsDialog.bind(null, QUERY.IEX)}
-            onSettings={Actions.showModalDialog.bind(Actions, 'SETTINGS_DIALOG', Store.exportSettingsFn())}
+            onNewsSources={this.showNewsBrowser}
+            onQuery={this.showWebhoseWeb}
+            onWebhoseBrodcast={this.showWebhoseBrodcast}
+            onStackTagged={this.showStackTagged}
+            onStackSearch={this.showStackSearch}
+            onIex={this.showIex}
+            onNewsSearch={this.showNewsSearch}
+            onSettings={this.showSettings}
             onAbout={Actions.showAbout}
           />
           <div className={CL_COMP}>
@@ -68,7 +95,7 @@ class AppNewsAggregator extends Component {
             showAction={TYPES.SHOW_MODAL_DIALOG}
           />
         </div>
-      </ThemeProvider>
+      </ThemeContext.Provider>
     );
   }
 }

@@ -42,8 +42,19 @@ var PanelQuery = function (_Component) {
   (0, _inherits3.default)(PanelQuery, _Component);
 
   function PanelQuery() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, PanelQuery);
-    return (0, _possibleConstructorReturn3.default)(this, (PanelQuery.__proto__ || Object.getPrototypeOf(PanelQuery)).apply(this, arguments));
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = PanelQuery.__proto__ || Object.getPrototypeOf(PanelQuery)).call.apply(_ref, [this].concat(args))), _this), _this._refFirstItem = function (comp) {
+      return _this.firstItem = comp;
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
   (0, _createClass3.default)(PanelQuery, [{
@@ -63,17 +74,17 @@ var PanelQuery = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       var _props = this.props,
           className = _props.className,
           paneStyle = _props.paneStyle,
           isShow = _props.isShow,
           clItem = _props.clItem,
           onWebhose = _props.onWebhose,
+          onWebhoseBrodcast = _props.onWebhoseBrodcast,
           onStackTagged = _props.onStackTagged,
           onStackSearch = _props.onStackSearch,
           onIex = _props.onIex,
+          onNewsApi = _props.onNewsApi,
           onClose = _props.onClose;
 
 
@@ -91,12 +102,16 @@ var PanelQuery = function (_Component) {
             isShow: isShow
           },
           _react2.default.createElement(_MenuItem2.default, {
-            ref: function ref(comp) {
-              return _this2.firstItem = comp;
-            },
+            ref: this._refFirstItem,
             className: clItem,
-            caption: 'Webhose',
+            caption: 'Webhose: News, Blogs',
             onClick: onWebhose,
+            onClose: onClose
+          }),
+          _react2.default.createElement(_MenuItem2.default, {
+            className: clItem,
+            caption: 'Webhose: Broadcast',
+            onClick: onWebhoseBrodcast,
             onClose: onClose
           }),
           _react2.default.createElement(_MenuItem2.default, {
@@ -116,6 +131,12 @@ var PanelQuery = function (_Component) {
             caption: 'IEX Stock News',
             onClick: onIex,
             onClose: onClose
+          }),
+          _react2.default.createElement(_MenuItem2.default, {
+            className: clItem,
+            caption: 'NewsApi Headlines',
+            onClick: onNewsApi,
+            onClose: onClose
           })
         )
       );
@@ -125,4 +146,4 @@ var PanelQuery = function (_Component) {
 }(_react.Component);
 
 exports.default = PanelQuery;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\header\PanelQuery.js.map
+//# sourceMappingURL=PanelQuery.js.map

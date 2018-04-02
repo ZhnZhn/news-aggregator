@@ -5,10 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var SettingSlice = {
-  settings: {
-    newsKey: undefined,
-    webhoseKey: undefined
-  },
+  settings: {},
 
   exportSettingsFn: function exportSettingsFn() {
     return {
@@ -31,4 +28,4 @@ var SettingSlice = {
 };
 
 exports.default = SettingSlice;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\flux\stores\SettingSlice.js.map
+//# sourceMappingURL=SettingSlice.js.map

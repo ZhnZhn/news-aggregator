@@ -102,16 +102,20 @@ var WebhoseQueryDialog = (0, _withKeyDown2.default)(_class = function (_Componen
       var _this$props = _this.props,
           type = _this$props.type,
           source = _this$props.source,
-          itemConf = _this$props.itemConf,
+          _this$props$itemConf = _this$props.itemConf,
+          itemConf = _this$props$itemConf === undefined ? {} : _this$props$itemConf,
           onLoad = _this$props.onLoad,
+          requestType = itemConf.requestType,
+          loadId = itemConf.loadId,
           _inTitle = _this.inputTitle.getValue(),
           _beforeDays = _this.inputBeforeDays.getValue();
 
       onLoad({
         type: type,
         source: source,
+        requestType: requestType,
         itemConf: itemConf,
-        loadId: 'W',
+        loadId: loadId,
         inTitle: _inTitle,
         siteType: _this.siteType,
         beforeDays: _beforeDays
@@ -133,6 +137,18 @@ var WebhoseQueryDialog = (0, _withKeyDown2.default)(_class = function (_Componen
       })];
     };
 
+    _this._refDialoComp = function (comp) {
+      return _this.dialogComp = comp;
+    };
+
+    _this._refInputTitle = function (comp) {
+      return _this.inputTitle = comp;
+    };
+
+    _this._refInputBeforeDays = function (comp) {
+      return _this.inputBeforeDays = comp;
+    };
+
     _this.siteType = undefined;
     _this._handleKeyDownWith = _this._handleKeyDownWith.bind(_this);
     return _this;
@@ -141,8 +157,6 @@ var WebhoseQueryDialog = (0, _withKeyDown2.default)(_class = function (_Componen
   (0, _createClass3.default)(WebhoseQueryDialog, [{
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       var _props = this.props,
           isShow = _props.isShow,
           theme = _props.theme,
@@ -153,13 +167,11 @@ var WebhoseQueryDialog = (0, _withKeyDown2.default)(_class = function (_Componen
       return _react2.default.createElement(
         _DraggableDialog2.default,
         {
-          ref: function ref(comp) {
-            return _this2.dialogComp = comp;
-          },
+          ref: this._refDialoComp,
           rootStyle: TS.R_DIALOG,
           browserCaptionStyle: TS.BROWSER_CAPTION,
           styleButton: TS.BT,
-          caption: 'Webhose.io Query',
+          caption: 'Webhose: News, Blogs',
           isShow: isShow,
           commandButtons: _commandButtons,
           onKeyDown: this._handleKeyDownWith,
@@ -168,9 +180,7 @@ var WebhoseQueryDialog = (0, _withKeyDown2.default)(_class = function (_Componen
         },
         _react2.default.createElement(_TextField2.default, {
           rootStyle: TS.INPUT_ROOT,
-          ref: function ref(comp) {
-            return _this2.inputTitle = comp;
-          },
+          ref: this._refInputTitle,
           caption: 'In Title (Default: Weather)',
           initValue: 'Weather'
         }),
@@ -183,9 +193,7 @@ var WebhoseQueryDialog = (0, _withKeyDown2.default)(_class = function (_Componen
         }),
         _react2.default.createElement(_TextField2.default, {
           rootStyle: TS.INPUT_ROOT,
-          ref: function ref(comp) {
-            return _this2.inputBeforeDays = comp;
-          },
+          ref: this._refInputBeforeDays,
           caption: 'Before Days (Default: 2, Max 30)',
           initValue: 2,
           errorMsg: '0<n<31 value must be',
@@ -203,4 +211,4 @@ var WebhoseQueryDialog = (0, _withKeyDown2.default)(_class = function (_Componen
 }(_react.Component)) || _class;
 
 exports.default = (0, _withTheme2.default)(WebhoseQueryDialog);
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\dialogs\WebhoseQueryDialog.js.map
+//# sourceMappingURL=WebhoseQueryDialog.js.map

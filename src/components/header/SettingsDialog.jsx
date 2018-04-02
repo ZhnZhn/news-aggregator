@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+//import PropTypes from 'prop-types'
 
 import safeFn from '../../utils/safeFn'
 
@@ -32,6 +33,7 @@ const DF_THEME = { caption: "Dark", value: "GREY" };
 const _themeOptions = [
   { caption: "Dark", value: "GREY" },
   { caption: "Light", value: "WHITE" },
+  { caption: "Sand", value: "SAND" }
 ];
 
 const STR_EMPTY = '';
@@ -47,6 +49,7 @@ const _onTestNewsApi = _onTestLengthOrEmpty(32);
 const _onTestWebhose = _onTestLengthOrEmpty(36);
 
 class SettingsDialog extends Component {
+  /*
   static propTypes = {
     isShow: PropTypes.bool,
     data: PropTypes.shape({
@@ -55,13 +58,15 @@ class SettingsDialog extends Component {
     }),
     onClose: PropTypes.func
   }
-
+  */
   constructor(props){
     super()
   }
 
   shouldComponentUpdate(nextProps, nextState){
-    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
+    if (nextProps !== this.props
+      && nextProps.isShow === this.props.isShow      
+    ) {
       return false;
     }
     return true;
@@ -105,6 +110,9 @@ class SettingsDialog extends Component {
     ];
   }
 
+  _refInputNews = comp => this.inputNews = comp
+  _refInputWebhose = comp => this.inputWebhose = comp
+
   render(){
     const { isShow, theme, onClose } = this.props
         , TS = theme.createStyle(styleConfig)
@@ -125,7 +133,7 @@ class SettingsDialog extends Component {
         >
            <SecretField
               rootStyle={TS.INPUT_ROOT}
-              ref={comp => this.inputNews = comp}
+              ref={this._refInputNews}
               caption="NewsApi API Key (32 Symbols)"
               maxLength={32}
               errorMsg="32 symbols must be"
@@ -133,7 +141,7 @@ class SettingsDialog extends Component {
            />
            <SecretField
               rootStyle={TS.INPUT_ROOT}
-              ref={comp => this.inputWebhose = comp}
+              ref={this._refInputWebhose}
               caption="Webhose API Key (36 Symbols)"
               maxLength={36}
               errorMsg="36 symbols must be"

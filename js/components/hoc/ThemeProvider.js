@@ -63,4 +63,4 @@ ThemeProvider.propTypes = process.env.NODE_ENV !== "production" ? {
   children: _propTypes2.default.element.isRequired
 } : {};
 exports.default = ThemeProvider;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\hoc\ThemeProvider.js.map
+//# sourceMappingURL=ThemeProvider.js.map

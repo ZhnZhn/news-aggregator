@@ -48,4 +48,4 @@ var NewsApiAdapter = {
 };
 
 exports.default = NewsApiAdapter;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\adapters\NewsApiAdapter.js.map
+//# sourceMappingURL=NewsApiAdapter.js.map

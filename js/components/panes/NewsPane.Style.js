@@ -19,6 +19,9 @@ var styleConfig = {
       case 'WHITE':
         _paneRoot = { backgroundColor: 'rgb(235, 241, 245)' };
         break;
+      case 'SAND':
+        _paneRoot = { backgroundColor: '#e8e0cb' };
+        break;
       default:
     }
     return {
@@ -30,4 +33,4 @@ var styleConfig = {
 };
 
 exports.default = styleConfig;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\panes\NewsPane.Style.js.map
+//# sourceMappingURL=NewsPane.Style.js.map

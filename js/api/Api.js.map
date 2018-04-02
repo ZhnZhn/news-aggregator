@@ -1,0 +1,16 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/Api.js"
+ ],
+ "file": "../../src/api/Api.js",
+ "names": [
+  "Api",
+  "News",
+  "Webhose",
+  "StackOverflow",
+  "Iex",
+  "NewsSearch"
+ ],
+ "mappings": ";;;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,MAAM;AACVC,yBADU,EACJC,6BADI,EACKC,yCADL,EACoBC,qBADpB,EACyBC;AADzB,CAAZ;;kBAIeL,G"
+}

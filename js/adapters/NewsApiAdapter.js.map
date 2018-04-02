@@ -1,9 +1,9 @@
-)]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_News\\src\\adapters\\NewsApiAdapter.js",
- "file": "D:\\_Dev\\_React\\_News\\js\\adapters\\NewsApiAdapter.js",
- "sourceRoot": "",
+ "sources": [
+  "../../src/adapters/NewsApiAdapter.js"
+ ],
+ "file": "../../src/adapters/NewsApiAdapter.js",
  "names": [
   "_toFirstUpper",
   "str",

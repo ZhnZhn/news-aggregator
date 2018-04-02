@@ -1,4 +1,10 @@
-const ROOT = 'https://webhose.io/filterWebContent';
+
+const C = {
+  ROOT_URL: 'https://webhose.io/',
+  NEWS_SLICE: 'filterWebContent',
+  BRODCAST_SLICE: 'broadcastFilter'
+};
+
 const DF_SITE_TYPE = 'news';
 const DF_IN_TITLE = 'Weather';
 const DF_BEFORE_DAYS = 2;
@@ -14,8 +20,48 @@ const _crTs = (beforeDays) => {
   }
 }
 
+const _crNewsUrl = (option) => {
+  const {
+         apiKey, inTitle,
+         siteType=DF_SITE_TYPE,
+         beforeDays
+       } = option
+      , _beforeDays = (beforeDays)
+           ? beforeDays
+           : DF_BEFORE_DAYS
+      , _ts = _crTs(_beforeDays)
+      , _inTitle = (inTitle)
+            ? inTitle
+            : DF_IN_TITLE;
+  option.apiKey = undefined
+  return `${C.ROOT_URL}${C.NEWS_SLICE}?token=${apiKey}&format=json&sort=crawled&ts=${_ts}&q=language:english thread.title:${_inTitle} site_type:${siteType}`;
+}
+
+const _crBrodcastUrl = (option) => {
+  const {
+          apiKey, query,
+          beforeDays
+        } = option
+  , _beforeDays = (beforeDays)
+       ? beforeDays
+       : DF_BEFORE_DAYS
+  , _ts = _crTs(_beforeDays);
+  option.key = undefined
+  return `${C.ROOT_URL}${C.BRODCAST_SLICE}?token=${apiKey}&format=json&ts=${_ts}&q=${query}`;
+}
+
+const _rCreateUrl = {
+  NEWS: _crNewsUrl,
+  BRODCAST: _crBrodcastUrl
+};
+
 const WebhoseApi = {
   getRequestUrl(option){
+    const { requestType } = option
+        , fnCr = _rCreateUrl[requestType];
+
+    return fnCr(option);
+    /*
     const {
            apiKey, inTitle,
            siteType=DF_SITE_TYPE,
@@ -27,9 +73,10 @@ const WebhoseApi = {
         , _ts = _crTs(_beforeDays)
         , _inTitle = (inTitle)
               ? inTitle
-              : DF_IN_TITLE;        
+              : DF_IN_TITLE;
     option.apiKey = undefined
     return `${ROOT}?token=${apiKey}&format=json&sort=crawled&ts=${_ts}&q=language:english thread.title:${_inTitle} site_type:${siteType}`
+    */
   },
 
   checkResponse(json, option){

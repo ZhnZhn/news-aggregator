@@ -2,21 +2,15 @@
 //color: #009ae5 - header_browser
 
 const styleConfig = {
-  themeName : undefined,
-  style : undefined,
+  themeName: undefined,
+  style: undefined,
   createStyle : (CSS_RULE, themeName) => {
-    let _clMenuItem, _itemColor;
-    switch(themeName){
-      case 'WHITE':
-        _clMenuItem = "row__news-source--white"
-        _itemColor = { color: '#5f5f5f' }
-        break;
-      default:
-        _clMenuItem = "row__news-source"
-    }
+    const _itemColor = themeName === 'WHITE'
+              ? { color: '#5f5f5f' }
+              : undefined;
     return {
       CL_SCROLL_PANE: CSS_RULE.CL_SCROLL_PANE,
-      CL_ROW: _clMenuItem,
+      CL_ROW: CSS_RULE.CL_ROW_NEWS_SOURCE,      
 
       BROWSER: {
         ...CSS_RULE.BG

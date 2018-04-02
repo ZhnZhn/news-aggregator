@@ -112,6 +112,9 @@ var HeaderBar = function (_Component) {
         case 'Iex':
           _this.props.onIex();
           break;
+        case 'NewsSearch':
+          _this.props.onNewsSearch();
+          break;
         default:
       }
       _this._handleClickQuery();
@@ -159,9 +162,11 @@ var HeaderBar = function (_Component) {
           isShow: isQuery,
           onClose: this._handleCloseQuery,
           onWebhose: this._handleClickSource.bind(null, 'Webhose'),
+          onWebhoseBrodcast: this.props.onWebhoseBrodcast,
           onStackTagged: this._handleClickSource.bind(null, 'StackTagged'),
           onStackSearch: this._handleClickSource.bind(null, 'StackSearch'),
-          onIex: this._handleClickSource.bind(null, 'Iex')
+          onIex: this._handleClickSource.bind(null, 'Iex'),
+          onNewsApi: this._handleClickSource.bind(null, 'NewsSearch')
         }),
         _react2.default.createElement(_LoadingProgress2.default, {
           store: store,
@@ -236,4 +241,4 @@ var HeaderBar = function (_Component) {
 }(_react.Component);
 
 exports.default = (0, _withTheme2.default)(HeaderBar);
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\header\HeaderBar.js.map
+//# sourceMappingURL=HeaderBar.js.map

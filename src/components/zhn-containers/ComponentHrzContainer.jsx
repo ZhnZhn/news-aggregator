@@ -35,7 +35,7 @@ class ComponentHrzContainer extends Component {
 
   _renderContainers(containers){
     return containers.map(container => {
-      return container;
+      return React.cloneElement(container);
     });
   }
 

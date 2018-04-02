@@ -1,20 +1,22 @@
-)]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_News\\src\\components\\dialogs\\RouterDialog.js",
- "file": "D:\\_Dev\\_React\\_News\\js\\components\\dialogs\\RouterDialog.js",
- "sourceRoot": "",
+ "sources": [
+  "../../../src/components/dialogs/RouterDialog.js"
+ ],
+ "file": "../../../src/components/dialogs/RouterDialog.js",
  "names": [
   "R",
   "DEFAULT",
   "DialogType1",
   "WebhoseQuery",
+  "WebhoseBrodcast",
   "StackTagged",
   "StackSearch",
   "IexNews",
+  "NewsApiSearch",
   "RouterDialog",
   "getElement",
   "type"
  ],
- "mappings": ";;;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,+BADQ;AAERC,mCAFQ;AAGRC,4CAHQ;AAIRC,0CAJQ;AAKRC,0CALQ;AAMRC;AANQ,CAAV;;AASA,IAAMC,eAAe;AACnBC,cAAY,oBAACC,IAAD,EAAU;AACrB,WAAOT,EAAES,IAAF,KAAWT,EAAEC,OAApB;AACA;AAHkB,CAArB;;kBAMeM,Y"
+ "mappings": ";;;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,+BADQ;AAERC,mCAFQ;AAGRC,4CAHQ,EAGMC,gDAHN;AAIRC,0CAJQ,EAIKC,wCAJL;AAKRC,kCALQ;AAMRC;AANQ,CAAV;;AASA,IAAMC,eAAe;AACnBC,cAAY,oBAACC,IAAD,EAAU;AACrB,WAAOX,EAAEW,IAAF,KAAWX,EAAEC,OAApB;AACA;AAHkB,CAArB;;kBAMeQ,Y"
 }

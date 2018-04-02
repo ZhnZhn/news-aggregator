@@ -9,10 +9,18 @@ const styleConfig = {
     switch(themeName){
       case 'WHITE':
         _header = {
-          backgroundColor: 'rgb(230, 236, 240)'
+          backgroundColor: '#dfe4e7'
         }
         _descr = {
           backgroundColor: 'white'
+        }
+        break;
+      case 'SAND':
+        _header = {
+          backgroundColor: '#c6bda5'
+        }
+        _descr = {
+          backgroundColor: '#e8e0cb'
         }
         break;
       default:

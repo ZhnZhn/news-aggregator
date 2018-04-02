@@ -78,4 +78,4 @@ var Factory = {
 };
 
 exports.default = Factory;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\flux\logic\Factory.js.map
+//# sourceMappingURL=Factory.js.map

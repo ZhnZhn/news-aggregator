@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+//import PropTypes from 'prop-types'
 
 import withTheme from '../hoc/withTheme'
 import styleConfig from './Dialog.Style'
@@ -35,7 +36,7 @@ const _toMsg = (data) => {
 }
 
 class AlertDialog extends Component{
-
+  /*
   static propTypes = {
     isShow: PropTypes.bool,
     data: PropTypes.shape({
@@ -45,6 +46,8 @@ class AlertDialog extends Component{
     }),
     onClose: PropTypes.func
   }
+  */
+
   static defaultProps = {
     data: {}
   }

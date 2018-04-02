@@ -1,0 +1,35 @@
+@import 'base/values';
+@import 'base/themeSuffix';
+@import 'base/palette';
+
+@mixin row__news-source($suffix, $bg-color-row-odd){
+  .row__news-source {
+    &#{$suffix} {
+      font-size: 16px;
+      font-weight: bold;
+      color: black;
+      line-height: 2;
+      padding-top: 1px;
+      padding-bottom: 1px;
+      padding-left: 16px;
+      cursor: pointer;
+    }
+    &#{$suffix}:nth-child(odd) {
+      background-color: $bg-color-row-odd;
+    }
+    &#{$suffix}:hover {
+      border-bottom: 1px solid $cBorderHover;
+    }
+    &#{$suffix}:focus {
+      border-bottom: 1px solid $cBorderFocus;
+    }
+  }
+}
+
+.open-close:focus {
+  border-bottom: 1px solid $cBorderFocus !important;
+}
+
+@include row__news-source($thGreySuffix, $bgcRowGrey)
+@include row__news-source($thWhiteSuffix, $bgcRowWhite)
+@include row__news-source($thSandSuffix, $bgcRowSand)

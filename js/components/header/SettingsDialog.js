@@ -62,6 +62,8 @@ var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//import PropTypes from 'prop-types'
+
 var S = {
   MODAL: {
     position: 'static',
@@ -79,7 +81,7 @@ var SET_NEWS_KEY = 'setNewsKey';
 var SET_WEBHOSE_KEY = 'setWebhoseKey';
 
 var DF_THEME = { caption: "Dark", value: "GREY" };
-var _themeOptions = [{ caption: "Dark", value: "GREY" }, { caption: "Light", value: "WHITE" }];
+var _themeOptions = [{ caption: "Dark", value: "GREY" }, { caption: "Light", value: "WHITE" }, { caption: "Sand", value: "SAND" }];
 
 var STR_EMPTY = '';
 var _onTestLengthOrEmpty = function _onTestLengthOrEmpty(length) {
@@ -98,6 +100,16 @@ var _onTestWebhose = _onTestLengthOrEmpty(36);
 var SettingsDialog = function (_Component) {
   (0, _inherits3.default)(SettingsDialog, _Component);
 
+  /*
+  static propTypes = {
+    isShow: PropTypes.bool,
+    data: PropTypes.shape({
+      setNewsKey: PropTypes.func,
+      setWebhoseKey: PropTypes.func,
+    }),
+    onClose: PropTypes.func
+  }
+  */
   function SettingsDialog(props) {
     (0, _classCallCheck3.default)(this, SettingsDialog);
 
@@ -140,6 +152,14 @@ var SettingsDialog = function (_Component) {
       })];
     };
 
+    _this._refInputNews = function (comp) {
+      return _this.inputNews = comp;
+    };
+
+    _this._refInputWebhose = function (comp) {
+      return _this.inputWebhose = comp;
+    };
+
     return _this;
   }
 
@@ -154,8 +174,6 @@ var SettingsDialog = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       var _props = this.props,
           isShow = _props.isShow,
           theme = _props.theme,
@@ -179,9 +197,7 @@ var SettingsDialog = function (_Component) {
         },
         _react2.default.createElement(_SecretField2.default, {
           rootStyle: TS.INPUT_ROOT,
-          ref: function ref(comp) {
-            return _this2.inputNews = comp;
-          },
+          ref: this._refInputNews,
           caption: 'NewsApi API Key (32 Symbols)',
           maxLength: 32,
           errorMsg: '32 symbols must be',
@@ -189,9 +205,7 @@ var SettingsDialog = function (_Component) {
         }),
         _react2.default.createElement(_SecretField2.default, {
           rootStyle: TS.INPUT_ROOT,
-          ref: function ref(comp) {
-            return _this2.inputWebhose = comp;
-          },
+          ref: this._refInputWebhose,
           caption: 'Webhose API Key (36 Symbols)',
           maxLength: 36,
           errorMsg: '36 symbols must be',
@@ -210,13 +224,5 @@ var SettingsDialog = function (_Component) {
   return SettingsDialog;
 }(_react.Component);
 
-SettingsDialog.propTypes = process.env.NODE_ENV !== "production" ? {
-  isShow: _react.PropTypes.bool,
-  data: _react.PropTypes.shape({
-    setNewsKey: _react.PropTypes.func,
-    setWebhoseKey: _react.PropTypes.func
-  }),
-  onClose: _react.PropTypes.func
-} : {};
 exports.default = (0, _withTheme2.default)(SettingsDialog);
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\header\SettingsDialog.js.map
+//# sourceMappingURL=SettingsDialog.js.map

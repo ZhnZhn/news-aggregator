@@ -1,9 +1,6 @@
 
 const SettingSlice = {
-  settings: {
-    newsKey: undefined,
-    webhoseKey: undefined
-  },
+  settings: {},
 
   exportSettingsFn(){
     return {
