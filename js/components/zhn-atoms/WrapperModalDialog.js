@@ -20,15 +20,15 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import PropTypes from 'prop-types'
 
 var CL = {
   INIT: 'modal-root',
@@ -48,7 +48,7 @@ var STYLE = {
   }
 };
 
-var WrapperModalDialog = function (_Component) {
+var WrapperModalDialog = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(WrapperModalDialog, _Component);
 
   function WrapperModalDialog(props) {
@@ -59,6 +59,14 @@ var WrapperModalDialog = function (_Component) {
     _this.wasClosing = true;
     return _this;
   }
+  /*
+  static propTypes = {
+    isShow  : PropTypes.bool,
+    timeout : PropTypes.number,
+    onClose : PropTypes.func
+  }
+  */
+
 
   (0, _createClass3.default)(WrapperModalDialog, [{
     key: 'componentDidUpdate',
@@ -101,15 +109,8 @@ var WrapperModalDialog = function (_Component) {
     }
   }]);
   return WrapperModalDialog;
-}(_react.Component);
-
-WrapperModalDialog.defaultProps = {
+}(_react.Component), _class.defaultProps = {
   timeout: 450
-};
-WrapperModalDialog.propTypes = process.env.NODE_ENV !== "production" ? {
-  isShow: _propTypes2.default.bool,
-  timeout: _propTypes2.default.number,
-  onClose: _propTypes2.default.func
-} : {};
+}, _temp);
 exports.default = WrapperModalDialog;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-atoms\WrapperModalDialog.js.map
+//# sourceMappingURL=WrapperModalDialog.js.map

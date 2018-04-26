@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 
 const TRANSITION = {
   WIDTH : 'width 500ms ease-out',
@@ -7,10 +7,12 @@ const TRANSITION = {
 }
 
 class ProgressLine extends Component {
+  /*
   static propTypes = {
     color: PropTypes.string,
     height: PropTypes.number
   }
+  */
   static defaultProps = {
     color : '#2F7ED8',
     height : 3

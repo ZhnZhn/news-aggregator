@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 
 class ComponentHrzContainer extends Component {
+  /*
   static propTypes = {
     store: PropTypes.shape({
       listen: PropTypes.func
     }),
     addAction: PropTypes.string
   }
+  */
 
   constructor(props){
     super()

@@ -1,9 +1,9 @@
-)]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_News\\src\\components\\zhn-atoms\\Browser.jsx",
- "file": "D:\\_Dev\\_React\\_News\\js\\components\\zhn-atoms\\Browser.js",
- "sourceRoot": "",
+ "sources": [
+  "../../../src/components/zhn-atoms/Browser.js"
+ ],
+ "file": "../../../src/components/zhn-atoms/Browser.js",
  "names": [
   "CL_SHOW",
   "S",
@@ -16,10 +16,7 @@
   "children",
   "_styleOpen",
   "_classOpen",
-  "browserRootDiv",
-  "propTypes",
-  "bool",
-  "object"
+  "browserRootDiv"
  ],
- "mappings": ";;;;;;;;;;AAAA;;;;AACA;;;;AAEA;;;;;;AAEA,IAAMA,UAAU,YAAhB;AACA,IAAMC,IAAI;AACRC,SAAQ;AACNC,aAAU;AADJ,GADA;AAIRC,QAAO;AACLD,aAAU;AADL;AAJC,CAAV;;AASA,IAAME,UAAU,SAAVA,OAAU,OAAiC;AAAA,MAA9BC,MAA8B,QAA9BA,MAA8B;AAAA,MAAtBC,KAAsB,QAAtBA,KAAsB;AAAA,MAAfC,QAAe,QAAfA,QAAe;;AAC/C,MAAMC,aAAaH,SAASL,EAAEC,KAAX,GAAmBD,EAAEG,IAAxC;AAAA,MACMM,aAAaJ,SAASN,OAAT,GAAmB,IADtC;AAEA,SACG;AAAA;AAAA;AACG,iBAAWU,UADd;AAEG,wCAAW,yBAAMC,cAAjB,EAAoCJ,KAApC,EAA8CE,UAA9C;AAFH;AAIID;AAJJ,GADH;AAQD,CAXD;;AAaAH,QAAQO,SAAR,2CAAoB;AAClBN,UAAQ,oBAAUO,IADA;AAElBN,SAAO,oBAAUO;AAFC,CAApB;;kBAKeT,O"
+ "mappings": ";;;;;;;;;;AAAA;;;;AAGA;;;;;;AAEA,IAAMA,UAAU,YAAhB;AAJA;;AAKA,IAAMC,IAAI;AACRC,SAAQ;AACNC,aAAU;AADJ,GADA;AAIRC,QAAO;AACLD,aAAU;AADL;AAJC,CAAV;;AASA,IAAME,UAAU,SAAVA,OAAU,OAAiC;AAAA,MAA9BC,MAA8B,QAA9BA,MAA8B;AAAA,MAAtBC,KAAsB,QAAtBA,KAAsB;AAAA,MAAfC,QAAe,QAAfA,QAAe;;AAC/C,MAAMC,aAAaH,SAASL,EAAEC,KAAX,GAAmBD,EAAEG,IAAxC;AAAA,MACMM,aAAaJ,SAASN,OAAT,GAAmB,IADtC;AAEA,SACG;AAAA;AAAA;AACG,iBAAWU,UADd;AAEG,wCAAW,yBAAMC,cAAjB,EAAoCJ,KAApC,EAA8CE,UAA9C;AAFH;AAIID;AAJJ,GADH;AAQD,CAXD;;AAaA;;;;;;;kBAOeH,O"
 }

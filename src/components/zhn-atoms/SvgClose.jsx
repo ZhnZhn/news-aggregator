@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 
 const CL_ROOT = "svg-close"
 const STYLE = {
@@ -28,10 +28,12 @@ const SvgClose = ({ style, onClose }) => (
    </div>
 )
 
+/*
 SvgClose.propTypes = {
   style: PropTypes.object,
   onClose: PropTypes.func
 }
+*/
 SvgClose.defaultProps = {
   onClose: () => {}
 }

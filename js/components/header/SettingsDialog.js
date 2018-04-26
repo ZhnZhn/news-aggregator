@@ -138,7 +138,7 @@ var SettingsDialog = function (_Component) {
 
       if (item && theme.getThemeName() !== item.value) {
         theme.setThemeName(item.value);
-        _ComponentActions2.default.changeTheme();
+        _ComponentActions2.default.changeTheme(item.value);
         _this.forceUpdate();
       }
     };

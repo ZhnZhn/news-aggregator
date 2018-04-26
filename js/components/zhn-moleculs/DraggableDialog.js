@@ -24,10 +24,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
 var _BrowserCaption = require('../zhn-atoms/BrowserCaption');
 
 var _BrowserCaption2 = _interopRequireDefault(_BrowserCaption);
@@ -43,6 +39,8 @@ var _Interact2 = _interopRequireDefault(_Interact);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CL_DIALOG = 'dialog';
+//import PropTypes from 'prop-types'
+
 var CL_DIALOG_OPEN = 'dialog show-popup';
 
 var styles = {
@@ -126,6 +124,21 @@ var DraggableDialog = function (_Component) {
 
   (0, _createClass3.default)(DraggableDialog, [{
     key: 'componentDidMount',
+
+    /*
+    static propTypes = {
+      isShow: PropTypes.bool,
+      caption: PropTypes.string,
+      children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+      ]),
+      commandButtons: PropTypes.arrayOf(PropTypes.element),
+      onShowChart: PropTypes.func,
+      onClose: PropTypes.func
+    }
+    */
+
     value: function componentDidMount() {
       _Interact2.default.makeDragable(this.rootDiv);
       this.prevFocusedEl = document.activeElement;
@@ -191,13 +204,5 @@ var DraggableDialog = function (_Component) {
   return DraggableDialog;
 }(_react.Component);
 
-DraggableDialog.propTypes = process.env.NODE_ENV !== "production" ? {
-  isShow: _propTypes2.default.bool,
-  caption: _propTypes2.default.string,
-  children: _propTypes2.default.oneOfType([_propTypes2.default.arrayOf(_propTypes2.default.node), _propTypes2.default.node]),
-  commandButtons: _propTypes2.default.arrayOf(_propTypes2.default.element),
-  onShowChart: _propTypes2.default.func,
-  onClose: _propTypes2.default.func
-} : {};
 exports.default = DraggableDialog;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-moleculs\DraggableDialog.js.map
+//# sourceMappingURL=DraggableDialog.js.map

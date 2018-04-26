@@ -12,10 +12,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
 var _OpenClose = require('../zhn-atoms/OpenClose');
 
 var _OpenClose2 = _interopRequireDefault(_OpenClose);
@@ -25,6 +21,8 @@ var _MenuItemBadge = require('./MenuItemBadge');
 var _MenuItemBadge2 = _interopRequireDefault(_MenuItemBadge);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import PropTypes from 'prop-types'
 
 var CL_NOT_S = 'not-selected';
 
@@ -92,11 +90,13 @@ var MenuPart = function MenuPart(_ref) {
   );
 };
 
-MenuPart.propTypes = process.env.NODE_ENV !== "production" ? {
-  caption: _propTypes2.default.string,
-  items: _propTypes2.default.arrayOf(_propTypes2.default.object),
-  isInitClose: _propTypes2.default.bool
-} : {};
+/*
+MenuPart.propTypes = {
+  caption: PropTypes.string,
+  items: PropTypes.arrayOf(PropTypes.object),
+  isInitClose: PropTypes.bool
+}
+*/
 
 exports.default = MenuPart;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-moleculs\MenuPart.js.map
+//# sourceMappingURL=MenuPart.js.map

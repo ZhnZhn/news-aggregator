@@ -121,10 +121,10 @@ var ComponentSlice = {
     var r = BrowserLogic.createResult(this.hmBrowser, itemConf);
     this.trigger(_ComponentActions.TYPES.UPDATE_BROWSER, r);
   },
-  onChangeTheme: function onChangeTheme() {
-    this.trigger(_ComponentActions.TYPES.CHANGE_THEME);
+  onChangeTheme: function onChangeTheme(themeName) {
+    this.trigger(_ComponentActions.TYPES.CHANGE_THEME, themeName);
   }
 };
 
 exports.default = ComponentSlice;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\flux\stores\ComponentSlice.js.map
+//# sourceMappingURL=ComponentSlice.js.map

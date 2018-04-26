@@ -20,22 +20,22 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import PropTypes from 'prop-types'
 
 var TRANSITION = {
   WIDTH: 'width 500ms ease-out',
   OPACITY: 'opacity 400ms linear'
 };
 
-var ProgressLine = function (_Component) {
+var ProgressLine = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(ProgressLine, _Component);
 
   function ProgressLine() {
@@ -50,6 +50,13 @@ var ProgressLine = function (_Component) {
     _this.state = {};
     return _this;
   }
+  /*
+  static propTypes = {
+    color: PropTypes.string,
+    height: PropTypes.number
+  }
+  */
+
 
   (0, _createClass3.default)(ProgressLine, [{
     key: 'componentWillUnmount',
@@ -128,15 +135,9 @@ var ProgressLine = function (_Component) {
     }
   }]);
   return ProgressLine;
-}(_react.Component);
-
-ProgressLine.defaultProps = {
+}(_react.Component), _class.defaultProps = {
   color: '#2F7ED8',
   height: 3
-};
-ProgressLine.propTypes = process.env.NODE_ENV !== "production" ? {
-  color: _propTypes2.default.string,
-  height: _propTypes2.default.number
-} : {};
+}, _temp);
 exports.default = ProgressLine;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-atoms\ProgressLine.js.map
+//# sourceMappingURL=ProgressLine.js.map

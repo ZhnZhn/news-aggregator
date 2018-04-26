@@ -25,14 +25,11 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _class, _temp;
+//import PropTypes from 'prop-types'
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _BrowserCaption = require('../zhn-atoms/BrowserCaption');
 
@@ -129,6 +126,20 @@ var ModalDialog = (_temp = _class = function (_Component) {
     _this.wasClosing = false;
     return _this;
   }
+  /*
+   static propTypes = {
+     isShow: PropTypes.bool,
+     isWithButton: PropTypes.bool,
+     isNotUpdate: PropTypes.bool,
+     withoutClose: PropTypes.bool,
+     commandButtons: PropTypes.arrayOf(PropTypes.element),
+     timeout: PropTypes.number,
+     caption: PropTypes.string,
+     style: PropTypes.object,
+     onClose: PropTypes.func
+   }
+   */
+
 
   (0, _createClass3.default)(ModalDialog, [{
     key: 'componentDidMount',
@@ -233,16 +244,5 @@ var ModalDialog = (_temp = _class = function (_Component) {
     CL_RAISED_DIV: undefined
   }
 }, _temp);
-ModalDialog.propTypes = process.env.NODE_ENV !== "production" ? {
-  isShow: _propTypes2.default.bool,
-  isWithButton: _propTypes2.default.bool,
-  isNotUpdate: _propTypes2.default.bool,
-  withoutClose: _propTypes2.default.bool,
-  commandButtons: _propTypes2.default.arrayOf(_propTypes2.default.element),
-  timeout: _propTypes2.default.number,
-  caption: _propTypes2.default.string,
-  style: _propTypes2.default.object,
-  onClose: _propTypes2.default.func
-} : {};
 exports.default = ModalDialog;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-moleculs\ModalDialog.js.map
+//# sourceMappingURL=ModalDialog.js.map

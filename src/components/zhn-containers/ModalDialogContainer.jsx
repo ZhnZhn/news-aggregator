@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 
 import WrapperModalDialog from '../zhn-atoms/WrapperModalDialog';
 
 class ModalDialogContainer extends Component {
+  /*
   static propTypes = {
     store: PropTypes.shape({
       listen: PropTypes.func
     })
   }
+  */
 
   state = {
     isShow : false,

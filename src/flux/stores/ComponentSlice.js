@@ -72,7 +72,7 @@ const ComponentSlice = {
   hmBrowser: {},
 
   onShowNewsDialog(itemConf, event){
-    const r = NewsDialogLogic.showNewsDialog(this.dialogInit, itemConf);    
+    const r = NewsDialogLogic.showNewsDialog(this.dialogInit, itemConf);
     this.trigger(TYPES.SHOW_NEWS_DIALOG, r)
   },
 
@@ -110,8 +110,8 @@ const ComponentSlice = {
     this.trigger(TYPES.UPDATE_BROWSER, r)
   },
 
-  onChangeTheme(){
-    this.trigger(TYPES.CHANGE_THEME)
+  onChangeTheme(themeName){
+    this.trigger(TYPES.CHANGE_THEME, themeName)
   }
 }
 

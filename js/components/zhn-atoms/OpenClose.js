@@ -30,11 +30,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import PropTypes from 'prop-types'
 
 var CL_CAPTION = 'open-close not-selected';
 
@@ -101,6 +99,28 @@ var OpenClose = (_temp = _class = function (_Component) {
     };
     return _this;
   }
+  /*
+  static propTypes = {
+    isClose: PropTypes.bool,
+      style: PropTypes.object,
+    styleNotSelected: PropTypes.object,
+    styleCaption: PropTypes.object,
+      caption: PropTypes.string,
+    fillOpen: PropTypes.string,
+    fillClose: PropTypes.string,
+      isDraggable: PropTypes.bool,
+    option: PropTypes.object,
+    onDragStart: PropTypes.func,
+    onDragEnter: PropTypes.func,
+    onDragOver: PropTypes.func,
+    onDragLeave: PropTypes.func,
+    onDrop: PropTypes.func,
+      children: PropTypes.oneOfType([
+       PropTypes.arrayOf(PropTypes.node),
+       PropTypes.node
+    ])
+  }
+  */
 
   (0, _createClass3.default)(OpenClose, [{
     key: 'render',
@@ -200,26 +220,5 @@ var OpenClose = (_temp = _class = function (_Component) {
   fillOpen: FILL_OPEN,
   fillClose: FILL_CLOSE
 }, _temp);
-OpenClose.propTypes = process.env.NODE_ENV !== "production" ? {
-  isClose: _propTypes2.default.bool,
-
-  style: _propTypes2.default.object,
-  styleNotSelected: _propTypes2.default.object,
-  styleCaption: _propTypes2.default.object,
-
-  caption: _propTypes2.default.string,
-  fillOpen: _propTypes2.default.string,
-  fillClose: _propTypes2.default.string,
-
-  isDraggable: _propTypes2.default.bool,
-  option: _propTypes2.default.object,
-  onDragStart: _propTypes2.default.func,
-  onDragEnter: _propTypes2.default.func,
-  onDragOver: _propTypes2.default.func,
-  onDragLeave: _propTypes2.default.func,
-  onDrop: _propTypes2.default.func,
-
-  children: _propTypes2.default.oneOfType([_propTypes2.default.arrayOf(_propTypes2.default.node), _propTypes2.default.node])
-} : {};
 exports.default = OpenClose;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-atoms\OpenClose.js.map
+//# sourceMappingURL=OpenClose.js.map

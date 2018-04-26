@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 
 const CL = {
   INIT : 'modal-root',
@@ -20,11 +20,13 @@ const STYLE = {
 }
 
 class WrapperModalDialog extends Component {
+  /*
   static propTypes = {
     isShow  : PropTypes.bool,
     timeout : PropTypes.number,
     onClose : PropTypes.func
   }
+  */
   static defaultProps = {
     timeout : 450
   }

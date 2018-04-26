@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 
 import BrowserCaption from '../zhn-atoms/BrowserCaption'
 import RaisedButton from '../zhn-atoms/RaisedButton'
@@ -39,6 +39,7 @@ const styles = {
 };
 
 class DraggableDialog extends Component {
+  /*
   static propTypes = {
     isShow: PropTypes.bool,
     caption: PropTypes.string,
@@ -50,6 +51,7 @@ class DraggableDialog extends Component {
     onShowChart: PropTypes.func,
     onClose: PropTypes.func
   }
+  */
 
   componentDidMount(){
      Interact.makeDragable(this.rootDiv)
@@ -93,7 +95,7 @@ class DraggableDialog extends Component {
         <RaisedButton
            rootStyle={S.RAISED_ROOT}
            clDiv={S.CL_RAISED_DIV}
-           caption="Close"           
+           caption="Close"
            onClick={this._handleClose}
         />
       </div>

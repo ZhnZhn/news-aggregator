@@ -24,10 +24,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
 var _WrapperModalDialog = require('../zhn-atoms/WrapperModalDialog');
 
 var _WrapperModalDialog2 = _interopRequireDefault(_WrapperModalDialog);
@@ -113,6 +109,13 @@ var ModalDialogContainer = function (_Component) {
       });
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
+  /*
+  static propTypes = {
+    store: PropTypes.shape({
+      listen: PropTypes.func
+    })
+  }
+  */
 
   (0, _createClass3.default)(ModalDialogContainer, [{
     key: 'componentDidMount',
@@ -143,11 +146,7 @@ var ModalDialogContainer = function (_Component) {
   }]);
   return ModalDialogContainer;
 }(_react.Component);
+//import PropTypes from 'prop-types'
 
-ModalDialogContainer.propTypes = process.env.NODE_ENV !== "production" ? {
-  store: _propTypes2.default.shape({
-    listen: _propTypes2.default.func
-  })
-} : {};
 exports.default = ModalDialogContainer;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-containers\ModalDialogContainer.js.map
+//# sourceMappingURL=ModalDialogContainer.js.map

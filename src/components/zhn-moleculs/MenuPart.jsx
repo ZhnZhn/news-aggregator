@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 
 import OpenClose from '../zhn-atoms/OpenClose'
 import MenuItemBadge from './MenuItemBadge'
@@ -60,10 +60,12 @@ const MenuPart = ({
   </OpenClose>
 )
 
+/*
 MenuPart.propTypes = {
   caption: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.object),
   isInitClose: PropTypes.bool
 }
+*/
 
 export default MenuPart

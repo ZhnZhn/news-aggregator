@@ -4,7 +4,7 @@ import Store from '../flux/stores/Store'
 import Actions, { TYPES } from '../flux/actions/ComponentActions'
 import { TYPES as LOADING_ACTIONS } from '../flux/actions/LoadingProgressActions'
 
-import theme  from './styles/theme'
+import initTheme  from './styles/theme'
 import ThemeContext from './hoc/ThemeContext'
 
 import HeaderBar from './header/HeaderBar'
@@ -38,7 +38,7 @@ class AppNewsAggregator extends Component {
 
     this.showSettings = _fSettings()
     this.state = {
-      theme
+      theme: initTheme
     }
   }
 
@@ -48,15 +48,19 @@ class AppNewsAggregator extends Component {
   componentWillUnmount(){
     this.unsubscribe()
   }
-  _onStore = (actionType) => {
+  _onStore = (actionType, themeName) => {
     if (actionType === TYPES.CHANGE_THEME){
-      this.setState(()=>({
-        theme: {...theme}
-      }))
+      this.setState(({ theme }) => {
+          theme.setThemeName(themeName)
+          return {
+            theme: {...theme}
+          };
+      })
     }
   }
 
   render(){
+    const { theme } = this.state;
     return (
       <ThemeContext.Provider value={theme}>
         <div>

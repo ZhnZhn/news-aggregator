@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 
 import BrowserCaption from '../zhn-atoms/BrowserCaption'
 import RaisedButton from '../zhn-atoms/RaisedButton'
@@ -48,6 +48,7 @@ const STYLE = {
 };
 
 class ModalDialog extends Component {
+  /*
    static propTypes = {
      isShow: PropTypes.bool,
      isWithButton: PropTypes.bool,
@@ -59,6 +60,7 @@ class ModalDialog extends Component {
      style: PropTypes.object,
      onClose: PropTypes.func
    }
+   */
    static defaultProps = {
      isWithButton: true,
      isNotUpdate: false,
@@ -95,7 +97,7 @@ class ModalDialog extends Component {
        )
        if ( this.prevFocusedEl) {
           this.prevFocusedEl.focus()
-       }    
+       }
      }
      if (this.props.isShow && !prevProps.isShow) {
        this.rootDiv.focus()

@@ -96,11 +96,14 @@ var AppNewsAggregator = function (_Component) {
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (AppNewsAggregator.__proto__ || Object.getPrototypeOf(AppNewsAggregator)).call(this));
 
-    _this._onStore = function (actionType) {
+    _this._onStore = function (actionType, themeName) {
       if (actionType === _ComponentActions.TYPES.CHANGE_THEME) {
-        _this.setState(function () {
+        _this.setState(function (_ref) {
+          var theme = _ref.theme;
+
+          theme.setThemeName(themeName);
           return {
-            theme: (0, _extends3.default)({}, _theme2.default)
+            theme: (0, _extends3.default)({}, theme)
           };
         });
       }
@@ -135,9 +138,11 @@ var AppNewsAggregator = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
+      var theme = this.state.theme;
+
       return _react2.default.createElement(
         _ThemeContext2.default.Provider,
-        { value: _theme2.default },
+        { value: theme },
         _react2.default.createElement(
           'div',
           null,

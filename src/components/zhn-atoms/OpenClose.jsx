@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 
 const CL_CAPTION = 'open-close not-selected';
 
@@ -44,6 +44,7 @@ const FILL_OPEN = '#9e9e9e'
     , PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 
 class OpenClose extends Component {
+  /*
   static propTypes = {
     isClose: PropTypes.bool,
 
@@ -68,6 +69,7 @@ class OpenClose extends Component {
        PropTypes.node
     ])
   }
+  */
 
   static defaultProps = {
     isClose: true,

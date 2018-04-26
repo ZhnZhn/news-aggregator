@@ -65,7 +65,7 @@ class SettingsDialog extends Component {
 
   shouldComponentUpdate(nextProps, nextState){
     if (nextProps !== this.props
-      && nextProps.isShow === this.props.isShow      
+      && nextProps.isShow === this.props.isShow
     ) {
       return false;
     }
@@ -94,7 +94,7 @@ class SettingsDialog extends Component {
         theme.getThemeName() !== item.value
     ) {
       theme.setThemeName(item.value)
-      Actions.changeTheme()
+      Actions.changeTheme(item.value)
       this.forceUpdate()
     }
   }

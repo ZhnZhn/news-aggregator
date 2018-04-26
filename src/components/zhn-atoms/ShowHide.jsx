@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 
 const SHOW_POPUP = 'show-popup'
 const S = {
@@ -30,6 +30,7 @@ const ShowHide = (props) => {
     );
  }
 
+/*
 ShowHide.propTypes = {
   isShow: PropTypes.bool,
   className: PropTypes.string,
@@ -39,5 +40,6 @@ ShowHide.propTypes = {
     PropTypes.node
   ]
 }
+*/
 
 export default ShowHide

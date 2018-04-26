@@ -12,10 +12,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
 var _ContainerStyle = require('../styles/ContainerStyle');
 
 var _ContainerStyle2 = _interopRequireDefault(_ContainerStyle);
@@ -23,6 +19,8 @@ var _ContainerStyle2 = _interopRequireDefault(_ContainerStyle);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CL_SHOW = 'show-popup';
+//import PropTypes from 'prop-types'
+
 var S = {
   BLOCK: {
     display: 'block'
@@ -49,10 +47,12 @@ var Browser = function Browser(_ref) {
   );
 };
 
-Browser.propTypes = process.env.NODE_ENV !== "production" ? {
-  isShow: _propTypes2.default.bool,
-  style: _propTypes2.default.object
-} : {};
+/*
+Browser.propTypes = {
+  isShow: PropTypes.bool,
+  style: PropTypes.object
+}
+*/
 
 exports.default = Browser;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-atoms\Browser.js.map
+//# sourceMappingURL=Browser.js.map

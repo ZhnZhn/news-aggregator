@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 
 import STYLE from '../styles/ContainerStyle'
 
@@ -26,9 +26,11 @@ const Browser = ({ isShow, style, children }) => {
   );
 };
 
+/*
 Browser.propTypes = {
   isShow: PropTypes.bool,
   style: PropTypes.object
 }
+*/
 
 export default Browser
