@@ -25,7 +25,7 @@ const _fnMsg400 = (option) => {
 var FREQUENCY_RESTRICTION = 5000;
 var MSG_FREQUENCY_RESTRICTION = 'Time request frequency restriction.\n1 Request per 5 second.';
 var MSG_LOAD_RESTRICTION = 'Request has already loaded.\n1 Request per 5 second.';
-var _lastUri = void 0;
+var _recentUri = void 0;
 var _msLastFetch = void 0;
 
 var fnFetch = function fnFetch(_ref) {
@@ -39,14 +39,14 @@ var fnFetch = function fnFetch(_ref) {
 
   var _msNow = Date.now();
   if (_msNow - _msLastFetch < FREQUENCY_RESTRICTION) {
-    if (_lastUri !== uri) {
+    if (_recentUri !== uri) {
       onFailed({ msg: MSG_FREQUENCY_RESTRICTION });
     } else {
       onFailed({ msg: MSG_LOAD_RESTRICTION });
       //onCompleted({ json: {}, option })
     }
   } else {
-    _lastUri = uri;
+    _recentUri = uri;
     _msLastFetch = _msNow;
     fetch(uri).then(function (response) {
       var status = response.status,
@@ -79,4 +79,4 @@ var fnFetch = function fnFetch(_ref) {
 };
 
 exports.default = fnFetch;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\utils\fn.js.map
+//# sourceMappingURL=fn.js.map

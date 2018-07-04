@@ -3,20 +3,33 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var ROOT = 'https://newsapi.org/v1/articles';
-var DF_SOURCE = 'bbc-sport';
-var DF_SORT_BY = 'top';
+//const ROOT_V1 = 'https://newsapi.org/v1/articles';
+//const DF_SOURCE = 'bbc-sport';
+//const DF_SORT_BY = 'top';
+// `${ROOT_V1}?source=${source}&apiKey=${apiKey}&sortBy=${sortBy}`;
+
+var C = {
+  ROOT_V2: 'https://newsapi.org/v2/',
+  TOP: 'top',
+  TOPIC_TOP: 'top-headlines',
+  TOPIC_EVERYTHING: 'everything'
+};
+
+var _crUrl2 = function _crUrl2(option, apiKey) {
+  var source = option.source,
+      sortBy = option.sortBy;
+
+  var _topic = sortBy === C.TOP ? C.TOPIC_TOP + '?' : C.TOPIC_EVERYTHING + '?sortBy=' + sortBy + '&language=en&';
+
+  return '' + C.ROOT_V2 + _topic + 'sources=' + source + '&apiKey=' + apiKey;
+};
 
 var NewsApi = {
   getRequestUrl: function getRequestUrl(option) {
-    var _option$source = option.source,
-        source = _option$source === undefined ? DF_SOURCE : _option$source,
-        _option$sortBy = option.sortBy,
-        sortBy = _option$sortBy === undefined ? DF_SORT_BY : _option$sortBy,
-        apiKey = option.apiKey;
+    var apiKey = option.apiKey;
 
     option.apiKey = undefined;
-    return ROOT + '?source=' + source + '&apiKey=' + apiKey + '&sortBy=' + sortBy;
+    return _crUrl2(option, apiKey);
   },
   checkResponse: function checkResponse(json, option) {
     var status = json.status,
@@ -30,4 +43,4 @@ var NewsApi = {
 };
 
 exports.default = NewsApi;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\api\NewsApi.js.map
+//# sourceMappingURL=NewsApi.js.map

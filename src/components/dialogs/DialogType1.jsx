@@ -13,8 +13,8 @@ const DF_SORTBY =   { caption: 'Top', value: 'top'};
 
 const options = [
   { caption: 'Top', value: 'top'},
-  { caption: 'Latest', value: 'latest'},
-  { caption: 'Popular', value: 'popular'},
+  { caption: 'Popular', value: 'popularity'},
+  { caption: 'Newest', value: 'publishedAt' }
 ];
 
 @withKeyDown

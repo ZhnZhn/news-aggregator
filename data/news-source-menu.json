@@ -29,10 +29,14 @@
     },{
       "caption": "Business",
       "items": [
+        { "id": "NS_AUSTRALIAN_FINANCIAL" },      
         { "id": "NS_BLOOMBERG" },
         { "id": "NS_BUSINESS_INSIDER" },
         { "id": "NS_CNBC" },
-        { "id": "NS_FINANCIAL_TIMES" }
+        { "id": "NS_FINANCIAL_POST" },
+        { "id": "NS_FINANCIAL_TIMES" },
+        { "id": "NS_FORTUNE_500" },
+        { "id": "NS_WALLSTREET_JOURNAL" }        
       ]
     },{
       "caption": "Technology",
@@ -302,6 +306,53 @@
       "dialogProps": {
         "caption": "Financial Times",
         "source": "financial-times"
+      }
+    },
+    "NS_FORTUNE_500": {
+      "type": "NS_FORTUNE_500",
+      "menuTitle": "Fortune 500",
+      "dialogType": "DialogType1",
+      "paneCaption": "FORTUNE 500",
+      "paneId": "fortune",
+      "dialogProps": {
+        "caption": "Fortune 500",
+        "source": "fortune"
+      }
+    },
+    "NS_AUSTRALIAN_FINANCIAL": {
+      "type": "NS_AUSTRALIAN_FINANCIAL",
+      "menuTitle": "Australian Financial",
+      "dialogType": "DialogType1",
+      "paneCaption": "AUSTRALIAN FINANCIAL",
+      "paneId": "australian-financial-review",
+      "dialogProps": {
+        "caption": "Australian Financial",
+        "source": "australian-financial-review",
+        "v": 2        
+      }
+    },
+    "NS_FINANCIAL_POST": {
+      "type": "NS_FINANCIAL_POST",
+      "menuTitle": "Financial Post",
+      "dialogType": "DialogType1",
+      "paneCaption": "FINANCIAL POST",
+      "paneId": "financial-post",
+      "dialogProps": {
+        "caption": "Financial Post",
+        "source": "financial-post",
+        "v": 2        
+      }
+    },
+    "NS_WALLSTREET_JOURNAL": {
+      "type": "NS_WALLSTREET_JOURNAL",
+      "menuTitle": "The Wall Street Journal",
+      "dialogType": "DialogType1",
+      "paneCaption": "THE WALL STREET JOURNAL",
+      "paneId": "the-wall-street-journal",
+      "dialogProps": {
+        "caption": "The Wall Street Joural",
+        "source": "the-wall-street-journal",
+        "v": 2        
       }
     },
     "NS_CNBC": {

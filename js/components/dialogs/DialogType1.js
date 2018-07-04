@@ -54,7 +54,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var DF_SORTBY = { caption: 'Top', value: 'top' };
 
-var options = [{ caption: 'Top', value: 'top' }, { caption: 'Latest', value: 'latest' }, { caption: 'Popular', value: 'popular' }];
+var options = [{ caption: 'Top', value: 'top' }, { caption: 'Popular', value: 'popularity' }, { caption: 'Newest', value: 'publishedAt' }];
 
 var DialogType1 = (0, _withKeyDown2.default)(_class = function (_Component) {
   (0, _inherits3.default)(DialogType1, _Component);
@@ -156,4 +156,4 @@ var DialogType1 = (0, _withKeyDown2.default)(_class = function (_Component) {
 }(_react.Component)) || _class;
 
 exports.default = (0, _withTheme2.default)(DialogType1);
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\dialogs\DialogType1.js.map
+//# sourceMappingURL=DialogType1.js.map
