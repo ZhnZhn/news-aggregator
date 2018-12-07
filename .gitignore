@@ -2,6 +2,7 @@ jspm_packages
 node_modules
 local_modules
 npm-debug.log
+_init_source.bat
 _start_server.bat
 bundle.min.js
 bundle.min.js.map

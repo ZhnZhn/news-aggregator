@@ -66,8 +66,8 @@
   "dependencies": {
     "babel-runtime": "^6.23.0",
     "interact.js": "^1.2.8",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "reflux": "^5.0.4",
     "shortid": "^2.2.8"
   }

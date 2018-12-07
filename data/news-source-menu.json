@@ -42,6 +42,7 @@
       "caption": "Technology",
       "items": [
         { "id": "NS_ARS_TECHNICA" },
+        { "id": "NS_CRYPTO_COINS_NEWS" },
         { "id": "NS_ENGADGET" },
         { "id": "NS_HACKER_NEWS" },
         { "id": "NS_TECHCRUNCH" },
@@ -376,6 +377,17 @@
       "dialogProps": {
         "caption": "Ars Technica",
         "source": "ars-technica"
+      }
+    },
+    "NS_CRYPTO_COINS_NEWS": {
+      "type": "NS_CRYPTO_COINS_NEWS",
+      "menuTitle": "Crypto Coins News",
+      "dialogType": "DialogType1",
+      "paneCaption": "CRYPTO COINS NEWS",
+      "paneId": "crypto-coins-news",
+      "dialogProps": {
+        "caption": "Crypto Coin News",
+        "source": "crypto-coins-news"
       }
     },
     "NS_ENGADGET": {
