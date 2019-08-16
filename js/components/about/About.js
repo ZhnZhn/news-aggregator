@@ -283,4 +283,4 @@ var About = function (_Component) {
 }(_react.Component);
 
 exports.default = (0, _withTheme2.default)(About);
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\about\About.js.map
+//# sourceMappingURL=About.js.map

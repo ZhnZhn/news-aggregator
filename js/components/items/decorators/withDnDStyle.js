@@ -28,4 +28,4 @@ var withDnDStyle = function withDnDStyle(target) {
 };
 
 exports.default = withDnDStyle;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\items\decorators\withDnDStyle.js.map
+//# sourceMappingURL=withDnDStyle.js.map

@@ -62,4 +62,4 @@ var styleConfig = {
 };
 
 exports.default = styleConfig;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\about\About.Style.js.map
+//# sourceMappingURL=About.Style.js.map

@@ -214,4 +214,4 @@ var StackTaggedDialog = (0, _withKeyDown2.default)(_class = function (_Component
 }(_react.Component)) || _class;
 
 exports.default = (0, _withTheme2.default)(StackTaggedDialog);
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\dialogs\StackTaggedDialog.js.map
+//# sourceMappingURL=StackTaggedDialog.js.map

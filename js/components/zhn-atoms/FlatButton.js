@@ -53,4 +53,4 @@ var FlatButton = function FlatButton(_ref) {
 };
 
 exports.default = FlatButton;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-atoms\FlatButton.js.map
+//# sourceMappingURL=FlatButton.js.map

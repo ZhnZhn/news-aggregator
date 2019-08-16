@@ -12,16 +12,19 @@
       padding-top: 1px;
       padding-bottom: 1px;
       padding-left: 16px;
+      border-bottom: 1px solid transparent;
       cursor: pointer;
     }
-    &#{$suffix}:nth-child(odd) {
-      background-color: $bg-color-row-odd;
+    @if variable-exist("bg-color-row-odd") {
+      &#{$suffix}:nth-child(odd) {
+        background-color: $bg-color-row-odd;
+      }
     }
     &#{$suffix}:hover {
       border-bottom: 1px solid $cBorderHover;
     }
     &#{$suffix}:focus {
-      border-bottom: 1px solid $cBorderFocus;
+      border-bottom: 1px solid $cBorderHover;
     }
   }
 }
@@ -30,6 +33,7 @@
   border-bottom: 1px solid $cBorderFocus !important;
 }
 
-@include row__news-source($thGreySuffix, $bgcRowGrey)
+//@include row__news-source($thGreySuffix, $bgcRowGrey)
+@include row__news-source($thGreySuffix)
 @include row__news-source($thWhiteSuffix, $bgcRowWhite)
 @include row__news-source($thSandSuffix, $bgcRowSand)

@@ -2,8 +2,8 @@
 //color: #009ae5 - header_browser
 
 const styleConfig = {
-  themeName: undefined,
-  style: undefined,
+  themeName: void 0,
+  style: void 0,
   createStyle : (CSS_RULE, themeName) => {
     const _itemColor = themeName === 'WHITE'
               ? { color: '#5f5f5f' }

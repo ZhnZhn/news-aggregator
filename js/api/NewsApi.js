@@ -15,22 +15,30 @@ var C = {
   TOPIC_EVERYTHING: 'everything'
 };
 
-var _crUrl2 = function _crUrl2(option, apiKey) {
-  var source = option.source,
-      sortBy = option.sortBy;
+var _crUrl2 = function _crUrl2(_ref) {
+  var source = _ref.source,
+      sortBy = _ref.sortBy;
 
   var _topic = sortBy === C.TOP ? C.TOPIC_TOP + '?' : C.TOPIC_EVERYTHING + '?sortBy=' + sortBy + '&language=en&';
-
-  return '' + C.ROOT_V2 + _topic + 'sources=' + source + '&apiKey=' + apiKey;
+  return '' + C.ROOT_V2 + _topic + 'sources=' + source;
 };
 
 var NewsApi = {
   getRequestUrl: function getRequestUrl(option) {
+    return _crUrl2(option);
+  },
+
+  crOptionFetch: function crOptionFetch(option) {
     var apiKey = option.apiKey;
 
-    option.apiKey = undefined;
-    return _crUrl2(option, apiKey);
+    option.apiKey = void 0;
+    return {
+      headers: {
+        'X-Api-Key': apiKey
+      }
+    };
   },
+
   checkResponse: function checkResponse(json, option) {
     var status = json.status,
         message = json.message;

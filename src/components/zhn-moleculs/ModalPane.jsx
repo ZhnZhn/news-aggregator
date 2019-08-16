@@ -1,33 +1,76 @@
 import React, { Component } from 'react'
+//import PropTypes from 'prop-types'
+
+import withTheme from '../hoc/withTheme'
+import styleConfig from './ModalPane.Style'
+
+//const TH_ID = 'MODAL_PANE';
 
 class ModalPane extends Component {
+  /*
+  static propTypes = {
+    className: PropTypes.string,
+    style: PropTypes.object,
+    theme: PropTypes.object,
+    isShow: PropTypes.bool,
+    onClose: PropTypes.func
+  }
+  */
+
   static defaultProps = {
     onClose: () => {}
   }
 
-  componentWillReceiveProps(nextProps){
-    if (this.props !== nextProps ){
-      if (nextProps.isShow){
-        document.addEventListener('click', this._handleClickOutside, true)
+  _hClickOutside = (event) => {
+    if (this.rootNode
+      && this.rootNode.contains
+      && !this.rootNode.contains(event.target)
+    ){
+      event.stopPropagation()
+      this.props.onClose(event)
+    }
+  }
+
+  _addOutsideListener = () => {
+    document.addEventListener('click', this._hClickOutside, true)
+  }
+  _removeOutsideListener = () => {
+    document.removeEventListener('click', this._hClickOutside, true)
+  }
+
+  componentDidMount() {
+    if (this.props.isShow) {
+      this._addOutsideListener()
+    }
+  }
+  componentWillUnmount() {
+    this._removeOutsideListener()
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps ){
+      if (this.props.isShow){
+        this._addOutsideListener()
       } else {
-        document.removeEventListener('click', this._handleClickOutside, true)
+        this._removeOutsideListener()
       }
     }
   }
 
-  _handleClickOutside = (event) => {
-    const { onClose } = this.props;
-    if (!this.rootNode.contains(event.target)) {
-      onClose(event)
-    }
-  }
+  _refRootNode = n => this.rootNode = n
 
   render(){
-    const { style, children } = this.props;
+    const {
+      theme,
+      style,
+      children
+    } = this.props
+    , TS = theme.createStyle(styleConfig);
+    //, TS = theme.getStyle(TH_ID);
     return (
       <div
-        style={style}
-        ref={n => this.rootNode = n}
+         ref={this._refRootNode}
+         style={{...style, ...TS.ROOT}}
       >
         {children}
       </div>
@@ -35,4 +78,4 @@ class ModalPane extends Component {
   }
 }
 
-export default ModalPane
+export default withTheme(ModalPane)

@@ -22,4 +22,4 @@ var Dom = {
 };
 
 exports.default = Dom;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\utils\Dom.js.map
+//# sourceMappingURL=Dom.js.map

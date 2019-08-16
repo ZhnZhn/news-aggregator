@@ -41,4 +41,4 @@ var PoweredBy = function PoweredBy(_ref) {
 };
 
 exports.default = PoweredBy;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\links\PoweredBy.js.map
+//# sourceMappingURL=PoweredBy.js.map

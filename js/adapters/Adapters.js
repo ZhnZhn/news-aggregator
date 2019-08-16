@@ -27,4 +27,4 @@ var Adapters = {
 };
 
 exports.default = Adapters;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\adapters\Adapters.js.map
+//# sourceMappingURL=Adapters.js.map

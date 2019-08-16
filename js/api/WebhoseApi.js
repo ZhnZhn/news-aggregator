@@ -91,4 +91,4 @@ var WebhoseApi = {
 };
 
 exports.default = WebhoseApi;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\api\WebhoseApi.js.map
+//# sourceMappingURL=WebhoseApi.js.map

@@ -79,4 +79,4 @@ var StackOverflowApi = {
 };
 
 exports.default = StackOverflowApi;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\api\StackOverflowApi.js.map
+//# sourceMappingURL=StackOverflowApi.js.map

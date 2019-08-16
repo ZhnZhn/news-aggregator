@@ -51,15 +51,16 @@ var ItemHeader = function (_Component) {
       var keyCode = event.keyCode;
       var _this$props = _this.props,
           isShow = _this$props.isShow,
-          url = _this$props.url,
           onClick = _this$props.onClick,
-          onClose = _this$props.onClose;
+          onClose = _this$props.onClose,
+          onHide = _this$props.onHide;
 
       if (keyCode === 13) {
         if (!isShow) {
           onClick();
         } else {
-          window.open(url, '_blank');
+          onHide();
+          //window.open(url, '_blank')
         }
       } else if (keyCode === 27 && isShow) {
         onClick();
@@ -67,7 +68,7 @@ var ItemHeader = function (_Component) {
         onClose();
       }
     }, _this._refRoot = function (node) {
-      _this.rootNode = node;
+      return _this.rootNode = node;
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
@@ -109,11 +110,13 @@ var ItemHeader = function (_Component) {
   }, {
     key: 'focus',
     value: function focus() {
-      this.rootNode.focus();
+      if (this.rootNode && this.rootNode.focus) {
+        this.rootNode.focus();
+      }
     }
   }]);
   return ItemHeader;
 }(_react.Component);
 
 exports.default = ItemHeader;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\items\ItemHeader.js.map
+//# sourceMappingURL=ItemHeader.js.map

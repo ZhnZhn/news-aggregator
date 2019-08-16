@@ -9,13 +9,10 @@ import Link from '../links/Links'
 
 class NewsBrowser extends Component {
 
-  constructor(){
-    super()
-    this.state = {
-      itemData: {}
-    }
+  state = {
+    itemData: {}
   }
-
+  
   componentDidMount(){
     this.unsubscribe = this.props.store.listen(this._onStore)
   }

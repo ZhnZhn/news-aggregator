@@ -1,9 +1,9 @@
-)]}
 {
  "version": 3,
- "sources": "D:\\_Dev\\_React\\_News\\src\\components\\items\\ArticleDescr.jsx",
- "file": "D:\\_Dev\\_React\\_News\\js\\components\\items\\ArticleDescr.js",
- "sourceRoot": "",
+ "sources": [
+  "../../../src/components/items/ArticleDescr.js"
+ ],
+ "file": "../../../src/components/items/ArticleDescr.js",
  "names": [
   "CL_DIV",
   "S",

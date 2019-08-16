@@ -20,6 +20,8 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -39,7 +41,7 @@ var S = {
   }
 };
 
-var SvgHrzResize = function (_Component) {
+var SvgHrzResize = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(SvgHrzResize, _Component);
 
   function SvgHrzResize(props) {
@@ -188,10 +190,8 @@ var SvgHrzResize = function (_Component) {
     }
   }]);
   return SvgHrzResize;
-}(_react.Component);
-
-SvgHrzResize.defaultProps = {
+}(_react.Component), _class.defaultProps = {
   getDomNode: function getDomNode() {}
-};
+}, _temp);
 exports.default = SvgHrzResize;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-atoms\SvgHrzResize.js.map
+//# sourceMappingURL=SvgHrzResize.js.map

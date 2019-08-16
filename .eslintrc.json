@@ -4,22 +4,23 @@
         "es6" : true,
         "browser": true,
         "jest": true
-    },
-    "ecmaFeatures": {
-        "jsx": true,
-        "experimentalObjectRestSpread" : true
-    },
+    },    
     "plugins" : [
-          "react"
+          "react",
+          "jsx-a11y" 
     ],
 
-    "extends": "eslint:recommended",
+    "extends": [ 
+      "eslint:recommended",
+      "plugin:jsx-a11y/recommended"
+    ],
 
 
     "rules" : {
 
     "no-mixed-spaces-and-tabs" : [2, "smart-tabs"],
     "no-console" : 0,
+    "no-whitespace-before-property": 2,
 
     "default-case": 2,
     "jsx-quotes": [2, "prefer-double"],
@@ -51,7 +52,10 @@
     "react/self-closing-comp": 1,
 
     "react/sort-comp": 0,
-    "react/wrap-multilines": [1, {"declaration": false, "assignment": false}]
+    "react/jsx-wrap-multilines": [1, {"declaration": false, "assignment": false}],
+
+
+      "jsx-a11y/no-access-key": 0 
 
     }
 

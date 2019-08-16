@@ -98,4 +98,4 @@ var ModalButton = function (_Component) {
 }(_react.Component);
 
 exports.default = ModalButton;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-atoms\ModalButton.js.map
+//# sourceMappingURL=ModalButton.js.map

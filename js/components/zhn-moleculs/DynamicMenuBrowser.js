@@ -64,6 +64,7 @@ var S = {
     overflowY: 'auto',
     height: '92%',
     paddingRight: '10px'
+    //paddingLeft: '4px'
   },
   SPINNER_LOADING: {
     position: 'relative',
@@ -202,4 +203,4 @@ var DynamicMenuBrowser = (_temp = _class = function (_Component) {
   onError: function onError() {}
 }, _temp);
 exports.default = DynamicMenuBrowser;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-moleculs\DynamicMenuBrowser.js.map
+//# sourceMappingURL=DynamicMenuBrowser.js.map

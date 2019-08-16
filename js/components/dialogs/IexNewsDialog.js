@@ -177,4 +177,4 @@ var IexNewsDialog = (0, _withKeyDown2.default)(_class = function (_Component) {
 }(_react.Component)) || _class;
 
 exports.default = (0, _withTheme2.default)(IexNewsDialog);
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\dialogs\IexNewsDialog.js.map
+//# sourceMappingURL=IexNewsDialog.js.map

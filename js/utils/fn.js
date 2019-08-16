@@ -30,6 +30,7 @@ var _msLastFetch = void 0;
 
 var fnFetch = function fnFetch(_ref) {
   var uri = _ref.uri,
+      optionFetch = _ref.optionFetch,
       option = _ref.option,
       onCheckResponse = _ref.onCheckResponse,
       onFetch = _ref.onFetch,
@@ -48,7 +49,7 @@ var fnFetch = function fnFetch(_ref) {
   } else {
     _recentUri = uri;
     _msLastFetch = _msNow;
-    fetch(uri).then(function (response) {
+    fetch(uri, optionFetch).then(function (response) {
       var status = response.status,
           statusText = response.statusText;
 

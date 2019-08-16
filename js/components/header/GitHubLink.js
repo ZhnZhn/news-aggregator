@@ -44,4 +44,4 @@ GitHubLink.propTypes = {
 */
 
 exports.default = GitHubLink;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\header\GitHubLink.js.map
+//# sourceMappingURL=GitHubLink.js.map

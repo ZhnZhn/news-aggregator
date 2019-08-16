@@ -13,8 +13,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //color: #009ae5 - header_browser
 
 var styleConfig = {
-  themeName: undefined,
-  style: undefined,
+  themeName: void 0,
+  style: void 0,
   createStyle: function createStyle(CSS_RULE, themeName) {
     var _itemColor = themeName === 'WHITE' ? { color: '#5f5f5f' } : undefined;
     return {

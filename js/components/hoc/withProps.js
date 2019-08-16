@@ -23,4 +23,4 @@ var withProps = function withProps(overrideProps) {
 };
 
 exports.default = withProps;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\hoc\withProps.js.map
+//# sourceMappingURL=withProps.js.map

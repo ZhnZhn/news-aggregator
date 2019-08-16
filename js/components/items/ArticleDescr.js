@@ -30,7 +30,7 @@ var _ShowHide2 = _interopRequireDefault(_ShowHide);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var CL_DIV = "wrapper-link";
+var CL_DIV = "link-wrapper";
 
 var S = {
   DESCR: {
@@ -149,4 +149,4 @@ var ArticleDescr = function (_Component) {
 }(_react.Component);
 
 exports.default = ArticleDescr;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\items\ArticleDescr.js.map
+//# sourceMappingURL=ArticleDescr.js.map

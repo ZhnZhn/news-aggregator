@@ -30,4 +30,4 @@ var styleConfig = {
 };
 
 exports.default = styleConfig;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\header\HeaderBar.Style.js.map
+//# sourceMappingURL=HeaderBar.Style.js.map

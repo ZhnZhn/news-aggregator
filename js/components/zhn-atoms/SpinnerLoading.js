@@ -19,4 +19,4 @@ var SpinnerLoading = function SpinnerLoading(_ref) {
 };
 
 exports.default = SpinnerLoading;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-atoms\SpinnerLoading.js.map
+//# sourceMappingURL=SpinnerLoading.js.map

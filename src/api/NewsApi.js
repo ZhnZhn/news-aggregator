@@ -10,32 +10,33 @@ const C = {
   TOPIC_EVERYTHING: 'everything'
 };
 
-const _crUrl2 = (option, apiKey) => {
-  const {
-          source,
-          sortBy
-        } = option;
+const _crUrl2 = ({ source, sortBy }) => {
   const _topic = sortBy === C.TOP
     ? `${C.TOPIC_TOP}?`
     : `${C.TOPIC_EVERYTHING}?sortBy=${sortBy}&language=en&`;
-
-  return `${C.ROOT_V2}${_topic}sources=${source}&apiKey=${apiKey}`;
+  return `${C.ROOT_V2}${_topic}sources=${source}`;
 };
 
 const NewsApi = {
-  getRequestUrl(option){
+  getRequestUrl: option => _crUrl2(option),
+
+  crOptionFetch: option => {
     const { apiKey } = option;
-    option.apiKey = undefined;
-    return _crUrl2(option, apiKey);
+    option.apiKey = void 0;
+    return {
+      headers: {
+        'X-Api-Key': apiKey
+      }
+    };
   },
 
-  checkResponse(json, option){
+  checkResponse: (json, option) => {
     const { status, message } = json;
     if (status === 'error'){
       throw { msg: message };
     }
     return true;
   }
-}
+};
 
 export default NewsApi

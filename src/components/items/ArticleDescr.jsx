@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import ShowHide from '../zhn-atoms/ShowHide'
 
-const CL_DIV = "wrapper-link";
+const CL_DIV = "link-wrapper";
 
 const S = {
   DESCR: {

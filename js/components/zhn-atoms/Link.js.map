@@ -1,13 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_News\\src\\components\\zhn-atoms\\Link.jsx",
- "file": "D:\\_Dev\\_React\\_News\\js\\components\\zhn-atoms\\Link.js",
- "sourceRoot": "",
- "names": [
-  "Link",
-  "title",
-  "rest"
- ],
- "mappings": ";;;;;;;;;;;;;;AAAA;;;;;;AAEA,IAAMA,OAAO,SAAPA,IAAO;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,MAAaC,IAAb;AAAA,SACZ;AAAA;AAAA,6BAAG,QAAO,QAAV,EAAmB,WAAU,MAA7B,IAAwCA,IAAxC;AACKD;AADL,GADY;AAAA,CAAb;;kBAKeD,I"
-}
+{"version":3,"sources":["../../../src/components/zhn-atoms/Link.jsx"],"names":["Link","title","rest"],"mappings":";;;;;;;;;;;;;;AAAA;;;;;;AAEA,IAAMA,OAAO,SAAPA,IAAO;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,MAAaC,IAAb;AAAA,SACZ;AAAA;AAAA,6BAAG,QAAO,QAAV,EAAmB,WAAU,MAA7B,IAAwCA,IAAxC;AACKD;AADL,GADY;AAAA,CAAb;;kBAKeD,I","file":"Link.js","sourcesContent":["import React from 'react'\r\n\r\nconst Link = ({ title, ...rest }) =>\r\n <a target=\"_blank\" className=\"link\" {...rest}>\r\n     {title}\r\n  </a>\r\n\r\nexport default Link\r\n"]}

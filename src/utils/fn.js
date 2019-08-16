@@ -17,7 +17,13 @@ let _recentUri;
 let _msLastFetch;
 
 const fnFetch = function({
-   uri, option, onCheckResponse, onFetch, onCompleted, onFailed, onCatch
+   uri, optionFetch,
+   option,
+   onCheckResponse,
+   onFetch,
+   onCompleted,
+   onFailed,
+   onCatch
  }){
   const _msNow = Date.now();
   if ( _msNow - _msLastFetch < FREQUENCY_RESTRICTION ) {
@@ -30,8 +36,8 @@ const fnFetch = function({
   } else {
     _recentUri = uri;
     _msLastFetch = _msNow;
-    fetch(uri)
-      .then((response) => {
+    fetch(uri, optionFetch)
+      .then(response => {
         const { status, statusText } = response;
         if (status === 404) {
           throw {

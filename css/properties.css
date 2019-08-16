@@ -1,0 +1,14 @@
+.focusable:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+.gap-right:before {
+   content: '';
+   position: absolute;
+   right: 0;
+   top: 0;
+   width: 38px;
+   height: 100%;   
+   background: inherit;
+}

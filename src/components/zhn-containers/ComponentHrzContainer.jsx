@@ -10,12 +10,8 @@ class ComponentHrzContainer extends Component {
     addAction: PropTypes.string
   }
   */
-
-  constructor(props){
-    super()
-    this.state = {
-      containers : []
-    }
+  state = {
+    containers: []
   }
 
   componentDidMount(){

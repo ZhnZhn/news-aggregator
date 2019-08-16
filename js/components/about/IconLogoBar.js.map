@@ -1,16 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_News\\src\\components\\about\\IconLogoBar.jsx",
- "file": "D:\\_Dev\\_React\\_News\\js\\components\\about\\IconLogoBar.js",
- "sourceRoot": "",
- "names": [
-  "S",
-  "ROOT",
-  "textAlign",
-  "paddingTop",
-  "IconLogoBar",
-  "props"
- ],
- "mappings": ";;;;;;AAAA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,QAAO;AACLC,eAAY,QADP;AAELC,gBAAY;AAFP;AADC,CAAV;;AAOA,IAAMC,cAAc,SAAdA,WAAc,CAACC,KAAD;AAAA,SAClB;AAAA;AAAA,MAAK,OAAOL,EAAEC,IAAd;AACG;AACG,iBAAU,cADb;AAEG,aAAM,eAFT;AAGG,WAAI;AAHP,MADH;AAMG;AANH,GADkB;AAAA,CAApB;;kBAWeG,W"
-}
+{"version":3,"sources":["../../../src/components/about/IconLogoBar.jsx"],"names":["S","ROOT","textAlign","paddingTop","IconLogoBar","props"],"mappings":";;;;;;AAAA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,QAAO;AACLC,eAAY,QADP;AAELC,gBAAY;AAFP;AADC,CAAV;;AAOA,IAAMC,cAAc,SAAdA,WAAc,CAACC,KAAD;AAAA,SAClB;AAAA;AAAA,MAAK,OAAOL,EAAEC,IAAd;AACG;AACG,iBAAU,cADb;AAEG,aAAM,eAFT;AAGG,WAAI;AAHP,MADH;AAMG;AANH,GADkB;AAAA,CAApB;;kBAWeG,W","file":"IconLogoBar.js","sourcesContent":["import React from 'react'\r\n\r\nimport IconGitHub from './IconGitHub'\r\nimport IconReact from './IconReact'\r\n\r\nconst S = {\r\n  ROOT : {\r\n    textAlign : 'center',\r\n    paddingTop: '20px'\r\n  }\r\n}\r\n\r\nconst IconLogoBar = (props) => (\r\n  <div style={S.ROOT}>\r\n     <IconGitHub\r\n        className=\"icon__github\"\r\n        title=\"GitHub ZhnZhn\"\r\n        uri=\"https://github.com/zhnzhn\"\r\n     />\r\n     <IconReact />\r\n  </div>\r\n);\r\n\r\nexport default IconLogoBar\r\n"]}

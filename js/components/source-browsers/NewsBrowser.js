@@ -50,11 +50,19 @@ var NewsBrowser = function (_Component) {
   (0, _inherits3.default)(NewsBrowser, _Component);
 
   function NewsBrowser() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, NewsBrowser);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (NewsBrowser.__proto__ || Object.getPrototypeOf(NewsBrowser)).call(this));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this._onStore = function (actionType, option) {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = NewsBrowser.__proto__ || Object.getPrototypeOf(NewsBrowser)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      itemData: {}
+    }, _this._onStore = function (actionType, option) {
       var _this$props = _this.props,
           updateAction = _this$props.updateAction,
           browserId = _this$props.browserId;
@@ -62,12 +70,7 @@ var NewsBrowser = function (_Component) {
       if (actionType === updateAction && option.id === browserId) {
         _this.setState({ itemData: option.data });
       }
-    };
-
-    _this.state = {
-      itemData: {}
-    };
-    return _this;
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
   (0, _createClass3.default)(NewsBrowser, [{
@@ -120,4 +123,4 @@ var NewsBrowser = function (_Component) {
 }(_react.Component);
 
 exports.default = (0, _withTheme2.default)(NewsBrowser);
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\source-browsers\NewsBrowser.js.map
+//# sourceMappingURL=NewsBrowser.js.map

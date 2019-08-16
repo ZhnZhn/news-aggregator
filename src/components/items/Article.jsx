@@ -11,7 +11,7 @@ import withDnDStyle from './decorators/withDnDStyle'
 const D_REMOVE_UNDER = 60;
 const D_REMOVE_ITEM = 35;
 
-const CL_ITEM_HEADER = "article-header"
+const CL_ITEM_HEADER = "article-header";
 
 const S = {
   ROOT: {
@@ -139,16 +139,16 @@ class Article extends Component {
           } = item
         , description = item.description || 'More...'
         , { isClosed, isShow } = this.state
-        , _headerStyle = (isShow)
-             ? Object.assign({}, S.HEADER, S.HEADER_OPEN)
+        , _headerStyle = isShow
+             ? { ...S.HEADER, ...S.HEADER_OPEN }
              : S.HEADER
-        , _captionStyle = (isShow)
-             ? Object.assign({}, S.CAPTION, S.CAPTION_OPEN)
+        , _captionStyle = isShow
+             ? {...S.CAPTION, ...S.CAPTION_OPEN}
              : S.CAPTION
         , _publishedAt = _toPublishedAt(publishedAt)
-        , _rootStyle = (isClosed)
+        , _rootStyle = isClosed
              ? { display: 'none' }
-             : undefined;
+             : void 0;
     return (
         <div
           style={{...S.ROOT, ..._rootStyle}}
@@ -171,6 +171,7 @@ class Article extends Component {
              isShow={isShow}
              onClick={this._handleToggle}
              onClose={this._handleClose}
+             onHide={this._handleHide}
           />
           <ArticleDescr
              style={TS.DESCR}

@@ -25,4 +25,4 @@ var IexApi = {
 };
 
 exports.default = IexApi;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\api\IexApi.js.map
+//# sourceMappingURL=IexApi.js.map

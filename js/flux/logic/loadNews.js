@@ -1,14 +1,18 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _fn = require('../../utils/fn');
+var _fn = require("../../utils/fn");
 
 var _fn2 = _interopRequireDefault(_fn);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _isFn = function _isFn(fn) {
+  return typeof fn === "function";
+};
 
 var _fnCatch = function _fnCatch(_ref) {
   var error = _ref.error,
@@ -33,8 +37,10 @@ var loadNews = function loadNews(option, onCompleted, onFailed) {
   var api = option.api,
       adapter = option.adapter;
 
+
   (0, _fn2.default)({
     uri: api.getRequestUrl(option),
+    optionFetch: _isFn(api.crOptionFetch) ? api.crOptionFetch(option) : void 0,
     option: option,
     onCheckResponse: api.checkResponse,
     onFetch: _fFetch(adapter),
@@ -45,4 +51,4 @@ var loadNews = function loadNews(option, onCompleted, onFailed) {
 };
 
 exports.default = loadNews;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\flux\logic\loadNews.js.map
+//# sourceMappingURL=loadNews.js.map

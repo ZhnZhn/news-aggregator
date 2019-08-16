@@ -201,10 +201,10 @@ var Article = (0, _withDnDStyle2.default)(_class = function (_Component) {
           _state = this.state,
           isClosed = _state.isClosed,
           isShow = _state.isShow,
-          _headerStyle = isShow ? Object.assign({}, S.HEADER, S.HEADER_OPEN) : S.HEADER,
-          _captionStyle = isShow ? Object.assign({}, S.CAPTION, S.CAPTION_OPEN) : S.CAPTION,
+          _headerStyle = isShow ? (0, _extends3.default)({}, S.HEADER, S.HEADER_OPEN) : S.HEADER,
+          _captionStyle = isShow ? (0, _extends3.default)({}, S.CAPTION, S.CAPTION_OPEN) : S.CAPTION,
           _publishedAt = _toPublishedAt(publishedAt),
-          _rootStyle = isClosed ? { display: 'none' } : undefined;
+          _rootStyle = isClosed ? { display: 'none' } : void 0;
 
       return _react2.default.createElement(
         'div',
@@ -228,7 +228,8 @@ var Article = (0, _withDnDStyle2.default)(_class = function (_Component) {
           url: url,
           isShow: isShow,
           onClick: this._handleToggle,
-          onClose: this._handleClose
+          onClose: this._handleClose,
+          onHide: this._handleHide
         }),
         _react2.default.createElement(_ArticleDescr2.default, {
           style: TS.DESCR,
@@ -247,4 +248,4 @@ var Article = (0, _withDnDStyle2.default)(_class = function (_Component) {
 }(_react.Component)) || _class;
 
 exports.default = (0, _withTheme2.default)(Article);
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\items\Article.js.map
+//# sourceMappingURL=Article.js.map

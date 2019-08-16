@@ -47,4 +47,4 @@ var Link = {
 };
 
 exports.default = Link;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\links\Links.js.map
+//# sourceMappingURL=Links.js.map

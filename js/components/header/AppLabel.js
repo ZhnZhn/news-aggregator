@@ -29,4 +29,4 @@ var AppLabel = function AppLabel(_ref) {
 };
 
 exports.default = AppLabel;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\header\AppLabel.js.map
+//# sourceMappingURL=AppLabel.js.map

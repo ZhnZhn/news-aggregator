@@ -1,0 +1,42 @@
+
+const CL_ROW = 'menu-more__item not-selected';
+
+const crModelMore = ({
+  onMinWidth, onInitWidth,
+  onPlusWidth, onMinusWidth
+}) => {
+  return {
+    baseTitleCl: CL_ROW,
+    pageWidth: 180,
+    maxPages: 2,
+    p0: [
+      {
+        id: 'p1',
+        type: 'sub',
+        cn: CL_ROW,
+        name: 'Resize'
+      }
+    ],
+    p1: [
+      {
+        cn: CL_ROW,
+        name: 'to MinWidth',
+        onClick: onMinWidth
+      },{
+        cn: CL_ROW,
+        name: 'to InitWidth',
+        onClick: onInitWidth
+      },{
+        cn: CL_ROW,
+        name: '+10px to Width',
+        onClick: onPlusWidth
+      },{
+        cn: CL_ROW,
+        name: '-10px to Width',
+        onClick: onMinusWidth
+      }
+    ]
+  };
+}
+
+export default crModelMore

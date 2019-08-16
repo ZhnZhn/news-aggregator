@@ -37,4 +37,4 @@ var ContainerStyle = {
 };
 
 exports.default = ContainerStyle;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\styles\ContainerStyle.js.map
+//# sourceMappingURL=ContainerStyle.js.map

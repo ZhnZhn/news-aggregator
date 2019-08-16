@@ -1,7 +1,17 @@
+
+.article-header {
+  border-bottom: 2px solid transparent;
+}
+
 .article-header:focus {
   border-bottom: 2px solid greenyellow;
 }
 
-.wrapper-link:hover, .wrapper-link:focus {
-  border-bottom: medium solid #1B75BB;
+.link-wrapper {
+ border-bottom: medium solid transparent;
+}
+
+.link-wrapper:hover,
+.link-wrapper:focus {
+  border-bottom: medium solid #1b75bb;
 }

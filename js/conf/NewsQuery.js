@@ -37,6 +37,7 @@ var NEWS_QUERY = {
     "paneType": "SO_TAGGED",
     "dialogProps": {
       "caption": "Tagged Questions"
+      //"source": "webhose"
     }
   },
   STACK_SEARCH: {
@@ -47,6 +48,7 @@ var NEWS_QUERY = {
     "paneType": "SO_SEARCH",
     "dialogProps": {
       "caption": "Search Questions"
+      //"source": "webhose"
     }
   },
 
@@ -58,6 +60,7 @@ var NEWS_QUERY = {
     "paneType": "IEX_NEWS",
     "dialogProps": {
       "caption": "IEX Stock News"
+      //"source": "iex_news"
     }
   },
   NEWS_SEARCH: {

@@ -97,4 +97,4 @@ var NewsSlice = {
 };
 
 exports.default = NewsSlice;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\flux\stores\NewsSlice.js.map
+//# sourceMappingURL=NewsSlice.js.map

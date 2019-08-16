@@ -1,14 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/hoc/withTheme.js"
- ],
- "file": "../../../src/components/hoc/withTheme.js",
- "names": [
-  "withTheme",
-  "Wrapper",
-  "props",
-  "theme"
- ],
- "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AACA;;;;;;AAEA,IAAMA,YAAY,SAAZA,SAAY,CAACC,OAAD;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA,+BACR;AAAA;;AACN,eACE;AAAA,iCAAc,QAAd;AAAA;AACI;AAAA,mBAAS,8BAAC,OAAD,6BAAa,OAAKC,KAAlB,IAAyB,OAAOC,KAAhC,IAAT;AAAA;AADJ,SADF;AAKD;AAPe;AAAA;AAAA;AAAA,CAAlB;;kBAUeH,S"
-}
+{"version":3,"sources":["../../../src/components/hoc/withTheme.jsx"],"names":["withTheme","Wrapper","props","theme"],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AACA;;;;;;AAEA,IAAMA,YAAY,SAAZA,SAAY,CAACC,OAAD;AAAA;AAAA;;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA,+BACR;AAAA;;AACN,eACE;AAAA,iCAAc,QAAd;AAAA;AACI;AAAA,mBAAS,8BAAC,OAAD,6BAAa,OAAKC,KAAlB,IAAyB,OAAOC,KAAhC,IAAT;AAAA;AADJ,SADF;AAKD;AAPe;AAAA;AAAA;AAAA,CAAlB;;kBAUeH,S","file":"withTheme.js","sourcesContent":["import React, { Component } from 'react'\r\nimport ThemeContext from './ThemeContext'\r\n\r\nconst withTheme = (Wrapper) => class extends Component {\r\n  render(){\r\n    return (\r\n      <ThemeContext.Consumer>\r\n        { theme => <Wrapper {...this.props} theme={theme} />}\r\n      </ThemeContext.Consumer>\r\n    );\r\n  }\r\n}\r\n\r\nexport default withTheme\r\n"]}

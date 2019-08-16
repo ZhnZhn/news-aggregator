@@ -34,6 +34,8 @@ var _SvgClose2 = _interopRequireDefault(_SvgClose);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var CL_WRAPPER = "link-wrapper";
+
 var S = {
   ROOT: {
     position: 'relative',
@@ -96,24 +98,27 @@ var S = {
 var StackItem = function (_Component) {
   (0, _inherits3.default)(StackItem, _Component);
 
-  function StackItem(props) {
+  function StackItem() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, StackItem);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (StackItem.__proto__ || Object.getPrototypeOf(StackItem)).call(this));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this._handleClose = function () {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = StackItem.__proto__ || Object.getPrototypeOf(StackItem)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      isClosed: false
+    }, _this._handleClose = function () {
       var _this$props = _this.props,
           onCloseItem = _this$props.onCloseItem,
           item = _this$props.item;
 
       onCloseItem(item);
       _this.setState({ isClosed: true });
-    };
-
-    _this.state = {
-      isClosed: false
-    };
-    return _this;
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
   (0, _createClass3.default)(StackItem, [{
@@ -186,7 +191,7 @@ var StackItem = function (_Component) {
         _react2.default.createElement(
           'a',
           {
-            className: 'wrapper-link',
+            className: CL_WRAPPER,
             style: S.LINK,
             href: link
           },
@@ -208,4 +213,4 @@ var StackItem = function (_Component) {
 }(_react.Component);
 
 exports.default = StackItem;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\items\StackItem.js.map
+//# sourceMappingURL=StackItem.js.map

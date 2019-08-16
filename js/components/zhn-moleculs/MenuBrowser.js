@@ -58,6 +58,7 @@ var S = {
     overflowY: 'auto',
     height: '92%',
     paddingRight: '10px'
+    //paddingLeft: '4px'
   },
   ROOT_MENU: {
     paddingLeft: '4px'
@@ -117,4 +118,4 @@ var MenuBrowser = function (_Component) {
 }(_react.Component);
 
 exports.default = MenuBrowser;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-moleculs\MenuBrowser.js.map
+//# sourceMappingURL=MenuBrowser.js.map

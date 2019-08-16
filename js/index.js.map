@@ -1,12 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_News\\src\\index.jsx",
- "file": "D:\\_Dev\\_React\\_News\\js\\index.js",
- "sourceRoot": "",
- "names": [
-  "document",
-  "getElementById"
- ],
- "mappings": ";;AAAA;;;;AACA;;AAEA;;;;;;AAEA,sBAAO,gEAAP,EAA8BA,SAASC,cAAT,CAAwB,KAAxB,CAA9B"
-}
+{"version":3,"sources":["../src/index.jsx"],"names":["document","getElementById"],"mappings":";;AAAA;;;;AACA;;AAEA;;;;;;AAEA,sBAAO,gEAAP,EAA8BA,SAASC,cAAT,CAAwB,KAAxB,CAA9B","file":"index.js","sourcesContent":["import React from 'react'\r\nimport { render } from 'react-dom'\r\n\r\nimport AppNewsAggregator from './components/AppNewsAggregator'\r\n\r\nrender(<AppNewsAggregator />, document.getElementById('app'))\r\n"]}

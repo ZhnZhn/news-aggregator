@@ -93,4 +93,4 @@ var MenuItemBadge = function (_Component) {
 }(_react.Component);
 
 exports.default = MenuItemBadge;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-moleculs\MenuItemBadge.js.map
+//# sourceMappingURL=MenuItemBadge.js.map

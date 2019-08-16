@@ -10,13 +10,14 @@ class ItemHeader extends Component {
 
   _handleKeyDown = (event) => {
     const keyCode = event.keyCode;
-    const { isShow, url, onClick, onClose } = this.props;
+    const { isShow, onClick, onClose, onHide } = this.props;
     if (keyCode === 13) {
       if (!isShow) {
         onClick()
       } else {
-        window.open(url, '_blank')
-      }   
+        onHide()
+        //window.open(url, '_blank')
+      }
     } else if (keyCode === 27 && isShow) {
       onClick()
     } else if (keyCode === 8) {
@@ -24,9 +25,7 @@ class ItemHeader extends Component {
     }
   }
 
- _refRoot = (node) => {
-   this.rootNode = node
- }
+ _refRoot = node => this.rootNode = node 
 
   render(){
     const {
@@ -59,7 +58,9 @@ class ItemHeader extends Component {
   }
 
   focus() {
-    this.rootNode.focus()
+    if (this.rootNode && this.rootNode.focus) {
+      this.rootNode.focus()
+    }
   }
 }
 

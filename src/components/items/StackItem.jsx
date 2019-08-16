@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import SvgClose from '../zhn-atoms/SvgClose'
 
+const CL_WRAPPER = "link-wrapper"
+
 const S = {
   ROOT: {
     position: 'relative',
@@ -62,13 +64,10 @@ const S = {
 }
 
 class StackItem extends Component {
-  constructor(props){
-    super()
-    this.state = {
-      isClosed: false
-    }
+  state = {
+    isClosed: false
   }
-
+  
   _handleClose = () => {
     const { onCloseItem, item } = this.props;
     onCloseItem(item)
@@ -128,7 +127,7 @@ class StackItem extends Component {
            />
           </div>
           <a
-            className="wrapper-link"
+            className={CL_WRAPPER}
             style={S.LINK}
             href={link}
           >

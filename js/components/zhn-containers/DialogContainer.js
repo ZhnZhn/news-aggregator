@@ -159,4 +159,4 @@ var DialogContainer = function (_Component) {
 }(_react.Component);
 
 exports.default = DialogContainer;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-containers\DialogContainer.js.map
+//# sourceMappingURL=DialogContainer.js.map

@@ -29,4 +29,4 @@ var Link = function Link(_ref) {
 };
 
 exports.default = Link;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-atoms\Link.js.map
+//# sourceMappingURL=Link.js.map

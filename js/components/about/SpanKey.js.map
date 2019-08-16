@@ -1,12 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_News\\src\\components\\about\\SpanKey.jsx",
- "file": "D:\\_Dev\\_React\\_News\\js\\components\\about\\SpanKey.js",
- "sourceRoot": "",
- "names": [
-  "SpanKey",
-  "style"
- ],
- "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,UAAU,SAAVA,OAAU;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,SACd;AAAA;AAAA;AACE;AAAA;AAAA;AAAA;AAAA,KADF;AAEE;AAAA;AAAA,QAAM,OAAOA,KAAb;AAAA;AAAA,KAFF;AAGE;AAAA;AAAA;AAAA;AAAA;AAHF,GADc;AAAA,CAAhB;;kBAOeD,O"
-}
+{"version":3,"sources":["../../../src/components/about/SpanKey.jsx"],"names":["SpanKey","style"],"mappings":";;;;;;AAAA;;;;;;AAEA,IAAMA,UAAU,SAAVA,OAAU;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,SACd;AAAA;AAAA;AACE;AAAA;AAAA;AAAA;AAAA,KADF;AAEE;AAAA;AAAA,QAAM,OAAOA,KAAb;AAAA;AAAA,KAFF;AAGE;AAAA;AAAA;AAAA;AAAA;AAHF,GADc;AAAA,CAAhB;;kBAOeD,O","file":"SpanKey.js","sourcesContent":["import React from 'react'\r\n\r\nconst SpanKey = ({ style }) =>\r\n  <span>\r\n    <span>&nbsp;(</span>\r\n    <span style={style}>Key</span>\r\n    <span>),&nbsp;</span>\r\n  </span>\r\n\r\nexport default SpanKey\r\n"]}

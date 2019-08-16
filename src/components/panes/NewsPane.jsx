@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import withTheme from '../hoc/withTheme'
 import styleConfig from './NewsPane.Style'
 
+import crModelMore from './crModelMore'
+import ModalSlider from '../zhn-modal-slider/ModalSlider'
 import BrowserCaption from '../zhn-atoms/BrowserCaption'
 import CircleButton from '../zhn-atoms/CircleButton'
 import SvgHrzResize from '../zhn-atoms/SvgHrzResize'
@@ -10,8 +12,14 @@ import ScrollPane from '../zhn-atoms/ScrollPane'
 
 const SHOW_POPUP = "show-popup"
     , CHILD_MARGIN = 36
-    , RESIZE_MIN_WIDTH = 400
-    , RESIZE_MAX_WIDTH = 1200;
+    , RESIZE_INIT_WIDTH = 635
+    , RESIZE_MIN_WIDTH = 395
+    , RESIZE_MAX_WIDTH = 1200
+    , DELTA = 10;
+
+const CL = {
+  MENU_MORE: "popup-menu items__menu-more"
+};
 
 const styles = {
   rootDiv : {
@@ -61,13 +69,26 @@ const styles = {
   }
 };
 
+const _getWidth = style => parseInt(style.width, 10)
+  || RESIZE_INIT_WIDTH;
+const _toStyleWidth = width => width + 'px';
+
 class NewsPane extends Component {
 
   constructor(props){
-    super();
+    super(props);
     this.childMargin = CHILD_MARGIN;
+
+    this._MODEL = crModelMore({
+      onMinWidth: this._resizeTo.bind(this, RESIZE_MIN_WIDTH),
+      onInitWidth: this._resizeTo.bind(this, RESIZE_INIT_WIDTH),
+      onPlusWidth: this._plusToWidth,
+      onMinusWidth: this._minusToWidth,
+    })
+
     this.state = {
       isShow: true,
+      isMore: false,
       articles: [],
       sortBy: ''
     };
@@ -114,6 +135,40 @@ class NewsPane extends Component {
       }
    }
 
+   _showMore = () => {
+      this.setState({ isMore: true })
+   }
+   _hToggleMore = () => {
+     this.setState(prevState => ({
+       isMore: !prevState.isMore
+     }))
+   }
+
+   _getRootNodeStyle = () => {
+     const { rootDiv } = this
+     , { style={} } = rootDiv || {};
+     return style;
+   }
+
+   _resizeTo = (width) => {
+     this._getRootNodeStyle().width = _toStyleWidth(width);
+   }
+
+   _plusToWidth = () => {
+     const style = this._getRootNodeStyle()
+         , w = _getWidth(style) + DELTA;
+     if (w < RESIZE_MAX_WIDTH) {
+        style.width = _toStyleWidth(w)
+     }
+   }
+   _minusToWidth = () => {
+     const style = this._getRootNodeStyle()
+         , w = _getWidth(style) - DELTA;
+     if (w > RESIZE_MIN_WIDTH) {
+       style.width = _toStyleWidth(w)
+     }
+   }
+
    _handleHide = () => {
       const { onClose } = this.props;
       onClose()
@@ -138,6 +193,8 @@ class NewsPane extends Component {
      })
   }
 
+  _refRootDiv = node => this.rootDiv = node
+
    render(){
       const {
               paneCaption,
@@ -146,24 +203,32 @@ class NewsPane extends Component {
               onRemoveUnder, onCloseItem
             } = this.props
           , TS = theme.createStyle(styleConfig)
-          , { isShow, articles, sortBy } = this.state
+          , { isShow, isMore, articles, sortBy } = this.state
           , _paneCaption = `${paneCaption} : ${sortBy}`
-          , _styleIsShow = (isShow)
+          , _styleIsShow = isShow
                ? styles.inlineBlock
                : styles.none
-         , _classIsShow = (isShow)
+         , _classIsShow = isShow
                ? SHOW_POPUP
-               : undefined;
+               : void 0;
 
      return(
         <div
-           ref={node => this.rootDiv = node}
+           ref={this._refRootDiv}
            className={_classIsShow}
            style={{...styles.rootDiv, ...TS.PANE_ROOT, ..._styleIsShow}}
         >
+          <ModalSlider
+            isShow={isMore}
+            className={CL.MENU_MORE}
+            style={TS.EL_BORDER}
+            model={this._MODEL}
+            onClose={this._hToggleMore}
+          />
           <BrowserCaption
              rootStyle={{ ...styles.brCaption, ...TS.PANE_CAPTION }}
              caption={_paneCaption}
+             onMore={this._showMore}
              onClose={this._handleHide}
           >
             <CircleButton

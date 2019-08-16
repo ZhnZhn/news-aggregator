@@ -36,4 +36,4 @@ var IconReact = function IconReact() {
 };
 
 exports.default = IconReact;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\about\IconReact.js.map
+//# sourceMappingURL=IconReact.js.map

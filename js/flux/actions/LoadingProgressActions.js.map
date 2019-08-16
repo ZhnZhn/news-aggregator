@@ -1,16 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_News\\src\\flux\\actions\\LoadingProgressActions.js",
- "file": "D:\\_Dev\\_React\\_News\\js\\flux\\actions\\LoadingProgressActions.js",
- "sourceRoot": "",
- "names": [
-  "TYPES",
-  "LOADING",
-  "LOADING_COMPLETE",
-  "LOADING_FAILED",
-  "LoadingProgressActions",
-  "createActions"
- ],
- "mappings": ";;;;;;;;;;;;;AAAA;;;;;;AAEO,IAAMA,wBAAQ;AACnBC,WAAU,iBADS;AAEnBC,oBAAmB,yBAFA;AAGnBC,kBAAiB;AAHE,CAAd;;AAMP,IAAMC,yBAAyB,iBAAOC,aAAP,mFAC5BL,MAAMC,OADsB,EACX,EADW,wDAE5BD,MAAME,gBAFsB,EAEF,EAFE,wDAG5BF,MAAMG,cAHsB,EAGJ,EAHI,0BAA/B;;kBAMeC,sB"
-}
+{"version":3,"sources":["../../../src/flux/actions/LoadingProgressActions.js"],"names":["TYPES","LOADING","LOADING_COMPLETE","LOADING_FAILED","LoadingProgressActions","createActions"],"mappings":";;;;;;;;;;;;;AAAA;;;;;;AAEO,IAAMA,wBAAQ;AACnBC,WAAU,iBADS;AAEnBC,oBAAmB,yBAFA;AAGnBC,kBAAiB;AAHE,CAAd;;AAMP,IAAMC,yBAAyB,iBAAOC,aAAP,mFAC5BL,MAAMC,OADsB,EACX,EADW,wDAE5BD,MAAME,gBAFsB,EAEF,EAFE,wDAG5BF,MAAMG,cAHsB,EAGJ,EAHI,0BAA/B;;kBAMeC,sB","file":"LoadingProgressActions.js","sourcesContent":["import Reflux from 'reflux';\r\n\r\nexport const TYPES = {\r\n  LOADING : 'loadingProgress',\r\n  LOADING_COMPLETE : 'loadingProgressComplete',\r\n  LOADING_FAILED : 'loadingProgressFailed'\r\n}\r\n\r\nconst LoadingProgressActions = Reflux.createActions({\r\n  [TYPES.LOADING] : {},\r\n  [TYPES.LOADING_COMPLETE] : {},\r\n  [TYPES.LOADING_FAILED] : {}\r\n})\r\n\r\nexport default LoadingProgressActions\r\n"]}

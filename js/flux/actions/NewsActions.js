@@ -59,4 +59,4 @@ NewsActions[TYPES.LOAD_NEWS].listen(function () {
 });
 
 exports.default = NewsActions;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\flux\actions\NewsActions.js.map
+//# sourceMappingURL=NewsActions.js.map

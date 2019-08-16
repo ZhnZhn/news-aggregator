@@ -87,4 +87,4 @@ var MenuItem = (_temp2 = _class = function (_Component) {
   onClose: function onClose() {}
 }, _temp2);
 exports.default = MenuItem;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-atoms\MenuItem.js.map
+//# sourceMappingURL=MenuItem.js.map

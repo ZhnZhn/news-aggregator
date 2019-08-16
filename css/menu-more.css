@@ -1,0 +1,14 @@
+.menu-more__item {
+  line-height: 2.2;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-bottom: 1px solid transparent;
+  outline: none;
+  user-select: none;
+  cursor: pointer; }
+
+.menu-more__item:focus {
+  border-bottom: 1px solid #1b75bb; }

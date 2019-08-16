@@ -21,4 +21,4 @@ var withKeyDown = function withKeyDown(target) {
 };
 
 exports.default = withKeyDown;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\dialogs\decorators\withKeyDown.js.map
+//# sourceMappingURL=withKeyDown.js.map

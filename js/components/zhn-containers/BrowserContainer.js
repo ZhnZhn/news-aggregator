@@ -82,4 +82,4 @@ var BrowserContainer = function (_Component) {
 }(_react.Component);
 
 exports.default = BrowserContainer;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\zhn-containers\BrowserContainer.js.map
+//# sourceMappingURL=BrowserContainer.js.map

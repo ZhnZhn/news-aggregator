@@ -13,4 +13,4 @@ var _AppNewsAggregator2 = _interopRequireDefault(_AppNewsAggregator);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _reactDom.render)(_react2.default.createElement(_AppNewsAggregator2.default, null), document.getElementById('app'));
-//# sourceMappingURL=D:\_Dev\_React\_News\js\index.js.map
+//# sourceMappingURL=index.js.map

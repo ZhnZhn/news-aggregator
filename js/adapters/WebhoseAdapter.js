@@ -102,4 +102,4 @@ var WebhoseAdapter = {
 };
 
 exports.default = WebhoseAdapter;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\adapters\WebhoseAdapter.js.map
+//# sourceMappingURL=WebhoseAdapter.js.map

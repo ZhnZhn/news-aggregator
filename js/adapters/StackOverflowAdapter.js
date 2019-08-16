@@ -47,4 +47,4 @@ var StackOverflowAdapter = {
 };
 
 exports.default = StackOverflowAdapter;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\adapters\StackOverflowAdapter.js.map
+//# sourceMappingURL=StackOverflowAdapter.js.map

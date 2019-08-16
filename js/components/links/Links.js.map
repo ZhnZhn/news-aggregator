@@ -1,18 +1,1 @@
-)]}
-{
- "version": 3,
- "sources": "D:\\_Dev\\_React\\_News\\src\\components\\links\\Links.js",
- "file": "D:\\_Dev\\_React\\_News\\js\\components\\links\\Links.js",
- "sourceRoot": "",
- "names": [
-  "NewsApi",
-  "title",
-  "href",
-  "tabIndex",
-  "WebhoseIo",
-  "StackOverflow",
-  "IexApi",
-  "Link"
- ],
- "mappings": ";;;;;;;AAAA;;;;AAEA;;;;;;AAEO,IAAMA,4BAAU,yBAAU;AAC/BC,SAAO,aADwB;AAE/BC,QAAM,qBAFyB;AAG/BC,YAAU;AAHqB,CAAV,iBAAhB;;AAMA,IAAMC,gCAAY,yBAAU;AACjCH,SAAO,YAD0B;AAEjCC,QAAM,oBAF2B;AAGjCC,YAAU;AAHuB,CAAV,iBAAlB;;AAMA,IAAME,wCAAgB,yBAAU;AACrCJ,SAAO,eAD8B;AAErCC,QAAM,2BAF+B;AAGrCC,YAAU;AAH2B,CAAV,iBAAtB;;AAMA,IAAMG,0BAAS,yBAAU;AAC9BL,SAAO,mBADuB;AAE9BC,QAAM,mCAFwB;AAG9BC,YAAU;AAHoB,CAAV,iBAAf;;AAMP,IAAMI,OAAO;AACXP,kBADW;AAEXI,sBAFW;AAGXC,8BAHW;AAIXC;AAJW,CAAb;;kBAOeC,I"
-}
+{"version":3,"sources":["../../../src/components/links/Links.js"],"names":["NewsApi","title","href","tabIndex","WebhoseIo","StackOverflow","IexApi","Link"],"mappings":";;;;;;;AAAA;;;;AAEA;;;;;;AAEO,IAAMA,4BAAU,yBAAU;AAC/BC,SAAO,aADwB;AAE/BC,QAAM,qBAFyB;AAG/BC,YAAU;AAHqB,CAAV,iBAAhB;;AAMA,IAAMC,gCAAY,yBAAU;AACjCH,SAAO,YAD0B;AAEjCC,QAAM,oBAF2B;AAGjCC,YAAU;AAHuB,CAAV,iBAAlB;;AAMA,IAAME,wCAAgB,yBAAU;AACrCJ,SAAO,eAD8B;AAErCC,QAAM,2BAF+B;AAGrCC,YAAU;AAH2B,CAAV,iBAAtB;;AAMA,IAAMG,0BAAS,yBAAU;AAC9BL,SAAO,mBADuB;AAE9BC,QAAM,mCAFwB;AAG9BC,YAAU;AAHoB,CAAV,iBAAf;;AAMP,IAAMI,OAAO;AACXP,kBADW;AAEXI,sBAFW;AAGXC,8BAHW;AAIXC;AAJW,CAAb;;kBAOeC,I","file":"Links.js","sourcesContent":["import withProps from '../hoc/withProps'\r\n\r\nimport BaseComp from '../zhn-atoms/Link'\r\n\r\nexport const NewsApi = withProps({\r\n  title: \"NewsApi.org\",\r\n  href: \"https://newsapi.org\",\r\n  tabIndex: \"-1\"\r\n})(BaseComp)\r\n\r\nexport const WebhoseIo = withProps({\r\n  title: \"Webhose.io\",\r\n  href: \"https://webhose.io\",\r\n  tabIndex: \"-1\"\r\n})(BaseComp)\r\n\r\nexport const StackOverflow = withProps({\r\n  title: \"StackOverflow\",\r\n  href: \"https://stackoverflow.com\",\r\n  tabIndex: \"-1\"\r\n})(BaseComp)\r\n\r\nexport const IexApi = withProps({\r\n  title: \"IEX Developer API\",\r\n  href: \"https://iextrading.com/developer/\",\r\n  tabIndex: \"-1\"\r\n})(BaseComp)\r\n\r\nconst Link = {\r\n  NewsApi,\r\n  WebhoseIo,\r\n  StackOverflow,\r\n  IexApi\r\n};\r\n\r\nexport default Link\r\n"]}

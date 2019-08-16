@@ -98,4 +98,4 @@ var LoadingProgress = function (_Component) {
 }(_react.Component);
 
 exports.default = LoadingProgress;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\header\LoadingProgress.js.map
+//# sourceMappingURL=LoadingProgress.js.map

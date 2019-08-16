@@ -34,4 +34,4 @@ var SpanKey = function SpanKey(_ref) {
 };
 
 exports.default = SpanKey;
-//# sourceMappingURL=D:\_Dev\_React\_News\js\components\about\SpanKey.js.map
+//# sourceMappingURL=SpanKey.js.map
