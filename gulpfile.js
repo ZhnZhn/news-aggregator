@@ -1,6 +1,6 @@
 'use strict';
 
-var gulp = require('gulp')  
+const gulp = require('gulp')
   , del = require('del')
   , concat = require('gulp-concat')
   , cleanCss = require('gulp-clean-css')
@@ -10,46 +10,44 @@ var gulp = require('gulp')
   , rename = require('gulp-rename')
   , sass = require('gulp-sass');
 
-var inputSass = './scss/*.scss';
-var outputCss = './css';
+const PATH = {
+  INPUT_SASS: './scss/*.scss',
+  OUTPUT_CSS: './css'
+};
 
 gulp.task('sass', function(){
-  return gulp.src(inputSass)
+  return gulp.src(PATH.INPUT_SASS)
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest(outputCss));  
+    .pipe(gulp.dest(PATH.OUTPUT_CSS));
 });
-
-
-
 
 gulp.task('clean', function(){
   return del(['./css/*.min.css']);
 })
 
-gulp.task('styles', ['clean'], function(){
+gulp.task('styles', gulp.series(['clean'], function(){
   return gulp.src(['./css/*.css', '!./css/*.min.css'])
-       .pipe(concat('app.min.css'))
-       .pipe(cleanCss())
-       .pipe(rev())
-       .pipe(gulp.dest('./css'))
-});
+    .pipe(concat('app.min.css'))
+    .pipe(cleanCss())
+    .pipe(rev())
+    .pipe(gulp.dest('./css'));
+}));
 
-gulp.task('inject-css', ['styles'], function(){
-   var target = gulp.src('./template/gulp.ejs')
-     , source = gulp.src(['./css/*.min.css'], { read:false })
+gulp.task('inject-css', gulp.series(['styles'], function(){
+   const target = gulp.src('./template/gulp.ejs')
+       , source = gulp.src(['./css/*.min.css'], { read:false });
+   return target
+     .pipe(inject(source))
+     .pipe(gulp.dest('./template'));
+}));
 
-   return target.pipe(inject(source))
-                .pipe(gulp.dest('./template'))
-});
+gulp.task('template', gulp.series(['inject-css'], function(){
+  return gulp
+    .src('./template/gulp.ejs')
+    .pipe(replace('<!-- inject:css -->',''))
+    .pipe(replace('<!-- endinject  -->', ''))
+    .pipe(rename('index.ejs'))
+    .pipe(gulp.dest('./template'));
+}))
 
-gulp.task('template', ['inject-css'], function(){
-  return gulp.src('./template/gulp.ejs')
-             .pipe(replace('<!-- inject:css -->',''))
-             .pipe(replace('<!-- endinject  -->', '')) 
-             .pipe(rename('index.ejs'))
-             .pipe(gulp.dest('./template'))
-})
-
-
-
-gulp.task('default', ['template']);
+gulp.task('default', gulp.series(['template']));
