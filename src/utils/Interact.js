@@ -1,4 +1,4 @@
-import interact from 'interact.js'
+import interact from 'interactjs'
 
 const Interact = {
   dragMoveListener: function(event){

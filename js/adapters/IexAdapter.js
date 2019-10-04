@@ -4,15 +4,16 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _shortid = require('shortid');
+var _crId = require('../utils/crId');
 
-var _shortid2 = _interopRequireDefault(_shortid);
+var _crId2 = _interopRequireDefault(_crId);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var C = {
   SOURCE: 'iex_news'
-};
+}; //import shortid from 'shortid'
+
 
 var _toArticles = function _toArticles(json) {
   if (!Array.isArray(json)) {
@@ -30,7 +31,7 @@ var _toArticles = function _toArticles(json) {
 
     return {
       source: C.SOURCE,
-      articleId: _shortid2.default.generate(),
+      articleId: (0, _crId2.default)(),
       title: headline,
       description: summary,
       related: _related,

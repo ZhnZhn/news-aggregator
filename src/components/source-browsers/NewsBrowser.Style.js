@@ -10,7 +10,7 @@ const styleConfig = {
               : undefined;
     return {
       CL_SCROLL_PANE: CSS_RULE.CL_SCROLL_PANE,
-      CL_ROW: CSS_RULE.CL_ROW_NEWS_SOURCE,      
+      CL_ROW: CSS_RULE.CL_ROW_NEWS_SOURCE,
 
       BROWSER: {
         ...CSS_RULE.BG
@@ -22,7 +22,6 @@ const styleConfig = {
         ...CSS_RULE.BG_HEADER
       },
       ITEM: {
-        borderBottom: "1px solid #9e9e9e",
         ..._itemColor
       },
       BADGE: {

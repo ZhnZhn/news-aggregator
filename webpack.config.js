@@ -7,8 +7,8 @@ const path = require('path')
 module.exports = {
   entry: {
      lib: [
-            "react", "react-dom", "interact.js",         
-            "reflux", "shortid",                            
+            "react", "react-dom", "interactjs",         
+            "reflux", "nanoid",                            
             "babel-runtime/helpers/classCallCheck",
             "babel-runtime/helpers/createClass",
             "babel-runtime/helpers/possibleConstructorReturn",

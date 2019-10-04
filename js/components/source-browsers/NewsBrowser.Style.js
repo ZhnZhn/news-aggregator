@@ -24,9 +24,7 @@ var styleConfig = {
       BROWSER: (0, _extends3.default)({}, CSS_RULE.BG),
       OPEN_CLOSE: (0, _extends3.default)({}, CSS_RULE.BG),
       BROWSER_CAPTION: (0, _extends3.default)({}, CSS_RULE.BG_HEADER),
-      ITEM: (0, _extends3.default)({
-        borderBottom: "1px solid #9e9e9e"
-      }, _itemColor),
+      ITEM: (0, _extends3.default)({}, _itemColor),
       BADGE: (0, _extends3.default)({}, CSS_RULE.BG_HEADER)
     };
   }

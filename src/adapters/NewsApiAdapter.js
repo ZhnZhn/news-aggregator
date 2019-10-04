@@ -1,4 +1,4 @@
-import shortid from 'shortid'
+import crId from '../utils/crId'
 
 const _toFirstUpper = (str) => {
   if (typeof str !== 'string'){
@@ -11,7 +11,7 @@ const _toFirstUpper = (str) => {
 const NewsApiAdapter = {
   toArticles: (articles=[], source) => {
     return articles.map((article) => {
-      article.articleId = shortid.generate()
+      article.articleId = crId()
       article.source = source
       return article;
     })

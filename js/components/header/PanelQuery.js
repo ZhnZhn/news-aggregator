@@ -38,6 +38,8 @@ var _ShowHide2 = _interopRequireDefault(_ShowHide);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var CL_ITEM = 'row__topic';
+
 var PanelQuery = function (_Component) {
   (0, _inherits3.default)(PanelQuery, _Component);
 
@@ -78,7 +80,6 @@ var PanelQuery = function (_Component) {
           className = _props.className,
           paneStyle = _props.paneStyle,
           isShow = _props.isShow,
-          clItem = _props.clItem,
           onWebhose = _props.onWebhose,
           onWebhoseBrodcast = _props.onWebhoseBrodcast,
           onStackTagged = _props.onStackTagged,
@@ -103,37 +104,37 @@ var PanelQuery = function (_Component) {
           },
           _react2.default.createElement(_MenuItem2.default, {
             ref: this._refFirstItem,
-            className: clItem,
+            className: CL_ITEM,
             caption: 'Webhose: News, Blogs',
             onClick: onWebhose,
             onClose: onClose
           }),
           _react2.default.createElement(_MenuItem2.default, {
-            className: clItem,
+            className: CL_ITEM,
             caption: 'Webhose: Broadcast',
             onClick: onWebhoseBrodcast,
             onClose: onClose
           }),
           _react2.default.createElement(_MenuItem2.default, {
-            className: clItem,
+            className: CL_ITEM,
             caption: 'StackOverflow: Tagged Questions',
             onClick: onStackTagged,
             onClose: onClose
           }),
           _react2.default.createElement(_MenuItem2.default, {
-            className: clItem,
+            className: CL_ITEM,
             caption: 'StackOverflow: Search Questions',
             onClick: onStackSearch,
             onClose: onClose
           }),
           _react2.default.createElement(_MenuItem2.default, {
-            className: clItem,
+            className: CL_ITEM,
             caption: 'IEX Stock News',
             onClick: onIex,
             onClose: onClose
           }),
           _react2.default.createElement(_MenuItem2.default, {
-            className: clItem,
+            className: CL_ITEM,
             caption: 'NewsApi Headlines',
             onClick: onNewsApi,
             onClose: onClose

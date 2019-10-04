@@ -100,28 +100,22 @@ var _onTestWebhose = _onTestLengthOrEmpty(36);
 var SettingsDialog = function (_Component) {
   (0, _inherits3.default)(SettingsDialog, _Component);
 
-  /*
-  static propTypes = {
-    isShow: PropTypes.bool,
-    data: PropTypes.shape({
-      setNewsKey: PropTypes.func,
-      setWebhoseKey: PropTypes.func,
-    }),
-    onClose: PropTypes.func
-  }
-  */
-  function SettingsDialog(props) {
+  function SettingsDialog() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, SettingsDialog);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (SettingsDialog.__proto__ || Object.getPrototypeOf(SettingsDialog)).call(this));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this._handleKeyDown = function (event) {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = SettingsDialog.__proto__ || Object.getPrototypeOf(SettingsDialog)).call.apply(_ref, [this].concat(args))), _this), _this._handleKeyDown = function (event) {
       if (event.keyCode === 13 || event.keyCode === 27) {
         _this.props.onClose();
       }
-    };
-
-    _this._handleSet = function () {
+    }, _this._handleSet = function () {
       var _this$props = _this.props,
           data = _this$props.data,
           onClose = _this$props.onClose,
@@ -131,9 +125,7 @@ var SettingsDialog = function (_Component) {
       setNewsKey(_this.inputNews.getValue());
       setWebhoseKey(_this.inputWebhose.getValue());
       onClose();
-    };
-
-    _this._selectTheme = function (item) {
+    }, _this._selectTheme = function (item) {
       var theme = _this.props.theme;
 
       if (item && theme.getThemeName() !== item.value) {
@@ -141,30 +133,34 @@ var SettingsDialog = function (_Component) {
         _ComponentActions2.default.changeTheme(item.value);
         _this.forceUpdate();
       }
-    };
-
-    _this._createCommandButtons = function (S) {
+    }, _this._createCommandButtons = function (S) {
       return [_react2.default.createElement(_RaisedButton2.default, {
         rootStyle: S.RAISED_ROOT,
         clDiv: S.CL_RAISED_DIV,
         caption: 'Set & Close',
         onClick: _this._handleSet
       })];
-    };
-
-    _this._refInputNews = function (comp) {
+    }, _this._refInputNews = function (comp) {
       return _this.inputNews = comp;
-    };
-
-    _this._refInputWebhose = function (comp) {
+    }, _this._refInputWebhose = function (comp) {
       return _this.inputWebhose = comp;
-    };
-
-    return _this;
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
   (0, _createClass3.default)(SettingsDialog, [{
     key: 'shouldComponentUpdate',
+
+    /*
+    static propTypes = {
+      isShow: PropTypes.bool,
+      data: PropTypes.shape({
+        setNewsKey: PropTypes.func,
+        setWebhoseKey: PropTypes.func,
+      }),
+      onClose: PropTypes.func
+    }
+    */
+
     value: function shouldComponentUpdate(nextProps, nextState) {
       if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
         return false;
@@ -195,22 +191,30 @@ var SettingsDialog = function (_Component) {
           onKeyDown: this._handleKeyDown,
           onClose: onClose
         },
-        _react2.default.createElement(_SecretField2.default, {
-          rootStyle: TS.INPUT_ROOT,
-          ref: this._refInputNews,
-          caption: 'NewsApi API Key (32 Symbols)',
-          maxLength: 32,
-          errorMsg: '32 symbols must be',
-          onTest: _onTestNewsApi
-        }),
-        _react2.default.createElement(_SecretField2.default, {
-          rootStyle: TS.INPUT_ROOT,
-          ref: this._refInputWebhose,
-          caption: 'Webhose API Key (36 Symbols)',
-          maxLength: 36,
-          errorMsg: '36 symbols must be',
-          onTest: _onTestWebhose
-        }),
+        _react2.default.createElement(
+          'form',
+          null,
+          _react2.default.createElement(_SecretField2.default, {
+            rootStyle: TS.INPUT_ROOT,
+            ref: this._refInputNews,
+            caption: 'NewsApi API Key (32 Symbols)',
+            maxLength: 32,
+            errorMsg: '32 symbols must be',
+            onTest: _onTestNewsApi
+          })
+        ),
+        _react2.default.createElement(
+          'form',
+          null,
+          _react2.default.createElement(_SecretField2.default, {
+            rootStyle: TS.INPUT_ROOT,
+            ref: this._refInputWebhose,
+            caption: 'Webhose API Key (36 Symbols)',
+            maxLength: 36,
+            errorMsg: '36 symbols must be',
+            onTest: _onTestWebhose
+          })
+        ),
         _react2.default.createElement(_InputSelect2.default, {
           styleConfig: TS.SELECT,
           caption: 'Theme (Default: Dark)',

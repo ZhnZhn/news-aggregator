@@ -1,0 +1,11 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/crId.js"
+ ],
+ "file": "../../src/utils/crId.js",
+ "names": [
+  "crId"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,OAAO,SAAPA,IAAO;AAAA,SAAM,uBAAN;AAAA,CAAb;;kBAEeA,I"
+}

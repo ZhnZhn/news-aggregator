@@ -6,7 +6,7 @@ class MenuItem extends Component {
      onClose: () => {}
    }
 
-  _handleKeyDown = (event) => {
+  _hKeyDown = (event) => {
     if (event.keyCode === 13 ) {
       this.props.onClick()
     } else if (event.keyCode === 27 ) {
@@ -14,15 +14,17 @@ class MenuItem extends Component {
     }
   }
 
+  _refDivNode = node => this.divNode = node
+
   render(){
     const { className, caption, onClick } = this.props;
     return (
       <div
-        ref={n => this.divNode = n}
+        ref={this._refDivNode}
         className={className}
         tabIndex="0"
         onClick={onClick}
-        onKeyDown={this._handleKeyDown}
+        onKeyDown={this._hKeyDown}
       >
         {caption}
       </div>
@@ -30,7 +32,9 @@ class MenuItem extends Component {
   }
 
   focus(){
-    this.divNode.focus()
+    if (this.divNode) {
+       this.divNode.focus()
+    }
   }
 }
 

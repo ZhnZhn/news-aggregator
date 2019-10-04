@@ -48,13 +48,9 @@ var _GitHubLink = require('./GitHubLink');
 
 var _GitHubLink2 = _interopRequireDefault(_GitHubLink);
 
-var _FlatButton = require('../zhn-atoms/FlatButton');
+var _Atoms = require('../zhn-atoms/Atoms');
 
-var _FlatButton2 = _interopRequireDefault(_FlatButton);
-
-var _ModalButton = require('../zhn-atoms/ModalButton');
-
-var _ModalButton2 = _interopRequireDefault(_ModalButton);
+var _Atoms2 = _interopRequireDefault(_Atoms);
 
 var _PanelQuery = require('./PanelQuery');
 
@@ -76,29 +72,39 @@ var CL = {
   BT_ABOUT: "header__bt-about"
 };
 
+var STYLE = {
+  SVG_ICON: {
+    position: 'relative',
+    top: -1,
+    verticalAlign: 'middle',
+    marginLeft: 8,
+    marginRight: 8
+  }
+};
+
 var HeaderBar = function (_Component) {
   (0, _inherits3.default)(HeaderBar, _Component);
 
   function HeaderBar(props) {
     (0, _classCallCheck3.default)(this, HeaderBar);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (HeaderBar.__proto__ || Object.getPrototypeOf(HeaderBar)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (HeaderBar.__proto__ || Object.getPrototypeOf(HeaderBar)).call(this, props));
 
     _this._onRegQuery = function (node) {
       _this.btQueryNode = node;
     };
 
-    _this._handleClickQuery = function () {
+    _this._hClickQuery = function () {
       _this.setState({ isQuery: !_this.state.isQuery });
     };
 
-    _this._handleCloseQuery = function (event) {
+    _this._hCloseQuery = function (event) {
       if (!_this.btQueryNode.contains(event.target)) {
         _this.setState({ isQuery: false });
       }
     };
 
-    _this._handleClickSource = function (id) {
+    _this._hClickSource = function (id) {
       switch (id) {
         case 'Webhose':
           _this.props.onQuery();
@@ -117,10 +123,10 @@ var HeaderBar = function (_Component) {
           break;
         default:
       }
-      _this._handleClickQuery();
+      _this._hClickQuery();
     };
 
-    _this._handleChangeTheme = function () {
+    _this._hChangeTheme = function () {
       var _this$props = _this.props,
           theme = _this$props.theme,
           onChangeTheme = _this$props.onChangeTheme;
@@ -132,6 +138,12 @@ var HeaderBar = function (_Component) {
       }
       onChangeTheme();
     };
+
+    _this._hWebhose = _this._hClickSource.bind(null, 'Webhose');
+    _this._hStackTagged = _this._hClickSource.bind(null, 'StackTagged');
+    _this._hStackSearch = _this._hClickSource.bind(null, 'StackSearch');
+    _this._hIex = _this._hClickSource.bind(null, 'Iex');
+    _this._hNewsApi = _this._hClickSource.bind(null, 'NewsSearch');
 
     _this.state = {
       isQuery: false
@@ -158,15 +170,14 @@ var HeaderBar = function (_Component) {
         _react2.default.createElement(_PanelQuery2.default, {
           paneStyle: S.PANE,
           className: CL.PANEL_BROWSER,
-          clItem: S.CL_QUERY_ITEM,
           isShow: isQuery,
-          onClose: this._handleCloseQuery,
-          onWebhose: this._handleClickSource.bind(null, 'Webhose'),
+          onClose: this._hCloseQuery,
+          onWebhose: this._hWebhose,
           onWebhoseBrodcast: this.props.onWebhoseBrodcast,
-          onStackTagged: this._handleClickSource.bind(null, 'StackTagged'),
-          onStackSearch: this._handleClickSource.bind(null, 'StackSearch'),
-          onIex: this._handleClickSource.bind(null, 'Iex'),
-          onNewsApi: this._handleClickSource.bind(null, 'NewsSearch')
+          onStackTagged: this._hStackTagged,
+          onStackSearch: this._hStackSearch,
+          onIex: this._hIex,
+          onNewsApi: this._hNewsApi
         }),
         _react2.default.createElement(_LoadingProgress2.default, {
           store: store,
@@ -175,18 +186,18 @@ var HeaderBar = function (_Component) {
         _react2.default.createElement(_IconAppLogo2.default, {
           className: CL.ICON_APP,
           title: TITLE,
-          onClick: this._handleChangeTheme
+          onClick: this._hChangeTheme
         }),
         _react2.default.createElement(_AppLabel2.default, {
           className: CL.LABEL_APP,
           caption: TITLE,
           title: 'Click to Change UI Theme',
-          onClick: this._handleChangeTheme
+          onClick: this._hChangeTheme
         }),
         _react2.default.createElement(
           'span',
           { className: CL.BROWSER_BTS },
-          _react2.default.createElement(_FlatButton2.default, {
+          _react2.default.createElement(_Atoms2.default.FlatButton, {
             rootStyle: S.BT.FLAT_ROOT,
             clDiv: S.BT.CL_FLAT_DIV,
             caption: 'News',
@@ -195,14 +206,14 @@ var HeaderBar = function (_Component) {
             onClick: onNewsSources
           }),
           _react2.default.createElement(
-            _ModalButton2.default,
+            _Atoms2.default.ModalButton,
             {
               rootStyle: S.BT.FLAT_ROOT,
               clDiv: S.BT.CL_FLAT_DIV,
               caption: 'Query',
               title: 'Panel Query Source',
               accessKey: 'q',
-              onClick: this._handleClickQuery,
+              onClick: this._hClickQuery,
               onReg: this._onRegQuery
             },
             _react2.default.createElement('span', { className: CL.ARROW_DOWN })
@@ -216,23 +227,29 @@ var HeaderBar = function (_Component) {
         _react2.default.createElement(
           'div',
           { className: CL.BTS },
-          _react2.default.createElement(_FlatButton2.default, {
-            rootStyle: S.BT.FLAT_ROOT,
-            clDiv: S.BT.CL_FLAT_DIV,
-            caption: 'Settings',
-            title: 'Open Settings Dialog',
-            accessKey: 's',
-            onClick: onSettings
-          }),
-          _react2.default.createElement(_FlatButton2.default, {
-            className: CL.BT_ABOUT,
-            rootStyle: S.BT.FLAT_ROOT,
-            clDiv: S.BT.CL_FLAT_DIV,
-            caption: 'About',
-            title: 'About',
-            accessKey: 'a',
-            onClick: onAbout
-          })
+          _react2.default.createElement(
+            _Atoms2.default.FlatButton,
+            {
+              rootStyle: S.BT.FLAT_ROOT,
+              clDiv: S.BT.CL_FLAT_DIV,
+              title: 'Open Settings Dialog',
+              accessKey: 's',
+              onClick: onSettings
+            },
+            _react2.default.createElement(_Atoms2.default.SvgSettings, { style: STYLE.SVG_ICON })
+          ),
+          _react2.default.createElement(
+            _Atoms2.default.FlatButton,
+            {
+              className: CL.BT_ABOUT,
+              rootStyle: S.BT.FLAT_ROOT,
+              clDiv: S.BT.CL_FLAT_DIV,
+              title: 'About web app News Aggregator',
+              accessKey: 'a',
+              onClick: onAbout
+            },
+            _react2.default.createElement(_Atoms2.default.SvgInfo, { style: STYLE.SVG_ICON })
+          )
         )
       );
     }

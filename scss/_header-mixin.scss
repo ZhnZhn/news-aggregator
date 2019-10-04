@@ -12,20 +12,16 @@
       padding-top: 1px;
       padding-bottom: 1px;
       padding-left: 16px;
+      border-bottom: 1px solid transparent;
       cursor: pointer;
-    }
-    &#{$suffix}:nth-child(odd) {
-      background-color: $bg-color-row-odd;
     }
     &#{$suffix}:hover {
       border-bottom: 1px solid $cBorderHover;
     }
     &#{$suffix}:focus {
-      border-bottom: 2px solid $cBorderFocus;
+      border-bottom: 1px solid $cBorderHover;
     }
   }
 }
 
 @include row__topic($thGreySuffix, $bgcRowGrey)
-@include row__topic($thWhiteSuffix, $bgcRowWhite)
-@include row__topic($thSandSuffix, $bgcRowSand)

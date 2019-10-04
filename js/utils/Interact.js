@@ -4,9 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _interact = require('interact.js');
+var _interactjs = require('interactjs');
 
-var _interact2 = _interopRequireDefault(_interact);
+var _interactjs2 = _interopRequireDefault(_interactjs);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61,7 +61,7 @@ var Interact = {
   },
 
   makeDragable: function makeDragable(domNode) {
-    (0, _interact2.default)(domNode).draggable({
+    (0, _interactjs2.default)(domNode).draggable({
       inertia: true,
 
       restrict: {

@@ -59,9 +59,6 @@ class SettingsDialog extends Component {
     onClose: PropTypes.func
   }
   */
-  constructor(props){
-    super()
-  }
 
   shouldComponentUpdate(nextProps, nextState){
     if (nextProps !== this.props
@@ -131,22 +128,26 @@ class SettingsDialog extends Component {
            onKeyDown={this._handleKeyDown}
            onClose={onClose}
         >
-           <SecretField
-              rootStyle={TS.INPUT_ROOT}
-              ref={this._refInputNews}
-              caption="NewsApi API Key (32 Symbols)"
-              maxLength={32}
-              errorMsg="32 symbols must be"
-              onTest={_onTestNewsApi}
-           />
-           <SecretField
-              rootStyle={TS.INPUT_ROOT}
-              ref={this._refInputWebhose}
-              caption="Webhose API Key (36 Symbols)"
-              maxLength={36}
-              errorMsg="36 symbols must be"
-              onTest={_onTestWebhose}
-           />
+           <form>
+             <SecretField
+                rootStyle={TS.INPUT_ROOT}
+                ref={this._refInputNews}
+                caption="NewsApi API Key (32 Symbols)"
+                maxLength={32}
+                errorMsg="32 symbols must be"
+                onTest={_onTestNewsApi}
+             />
+           </form>
+           <form>
+             <SecretField
+                rootStyle={TS.INPUT_ROOT}
+                ref={this._refInputWebhose}
+                caption="Webhose API Key (36 Symbols)"
+                maxLength={36}
+                errorMsg="36 symbols must be"
+                onTest={_onTestWebhose}
+             />
+           </form>
            <InputSelect
              styleConfig={TS.SELECT}
              caption="Theme (Default: Dark)"

@@ -42,20 +42,20 @@ var MenuItem = (_temp2 = _class = function (_Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = MenuItem.__proto__ || Object.getPrototypeOf(MenuItem)).call.apply(_ref, [this].concat(args))), _this), _this._handleKeyDown = function (event) {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = MenuItem.__proto__ || Object.getPrototypeOf(MenuItem)).call.apply(_ref, [this].concat(args))), _this), _this._hKeyDown = function (event) {
       if (event.keyCode === 13) {
         _this.props.onClick();
       } else if (event.keyCode === 27) {
         _this.props.onClose({ target: _this.divNode });
       }
+    }, _this._refDivNode = function (node) {
+      return _this.divNode = node;
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
   (0, _createClass3.default)(MenuItem, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       var _props = this.props,
           className = _props.className,
           caption = _props.caption,
@@ -64,13 +64,11 @@ var MenuItem = (_temp2 = _class = function (_Component) {
       return _react2.default.createElement(
         "div",
         {
-          ref: function ref(n) {
-            return _this2.divNode = n;
-          },
+          ref: this._refDivNode,
           className: className,
           tabIndex: "0",
           onClick: onClick,
-          onKeyDown: this._handleKeyDown
+          onKeyDown: this._hKeyDown
         },
         caption
       );
@@ -78,7 +76,9 @@ var MenuItem = (_temp2 = _class = function (_Component) {
   }, {
     key: "focus",
     value: function focus() {
-      this.divNode.focus();
+      if (this.divNode) {
+        this.divNode.focus();
+      }
     }
   }]);
   return MenuItem;

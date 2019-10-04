@@ -7,8 +7,7 @@ import LoadingProgress from './LoadingProgress'
 import IconAppLogo from './IconAppLogo'
 import AppLabel from './AppLabel'
 import GitHubLink from './GitHubLink'
-import FlatButton from '../zhn-atoms/FlatButton'
-import ModalButton from '../zhn-atoms/ModalButton'
+import A from '../zhn-atoms/Atoms'
 import PanelQuery from './PanelQuery'
 
 const TITLE = "News Aggregator v0.4.0";
@@ -25,9 +24,27 @@ const CL = {
     BT_ABOUT: "header__bt-about"
 };
 
+const STYLE = {
+  SVG_ICON: {
+    position: 'relative',
+    top: -1,
+    verticalAlign: 'middle',
+    marginLeft: 8,
+    marginRight: 8
+  }
+};
+
 class HeaderBar extends Component {
+
   constructor(props){
-    super()
+    super(props)
+
+    this._hWebhose= this._hClickSource.bind(null, 'Webhose')
+    this._hStackTagged=this._hClickSource.bind(null, 'StackTagged')
+    this._hStackSearch=this._hClickSource.bind(null, 'StackSearch')
+    this._hIex=this._hClickSource.bind(null, 'Iex')
+    this._hNewsApi=this._hClickSource.bind(null, 'NewsSearch')
+
     this.state = {
       isQuery: false
     }
@@ -36,16 +53,16 @@ class HeaderBar extends Component {
   _onRegQuery = (node) => {
     this.btQueryNode = node
   }
-  _handleClickQuery = () => {
+  _hClickQuery = () => {
     this.setState({ isQuery: !this.state.isQuery })
   }
-  _handleCloseQuery = (event) => {
+  _hCloseQuery = (event) => {
     if (!this.btQueryNode.contains(event.target)){
       this.setState({ isQuery: false })
     }
   }
 
-  _handleClickSource = (id) => {
+  _hClickSource = (id) => {
     switch(id){
       case 'Webhose':
         this.props.onQuery()
@@ -64,10 +81,10 @@ class HeaderBar extends Component {
         break;
       default:
     }
-    this._handleClickQuery()
+    this._hClickQuery()
   }
 
-  _handleChangeTheme = () => {
+  _hChangeTheme = () => {
     const { theme, onChangeTheme } = this.props;
     if (theme.themeName === 'GREY'){
       theme.setThemeName('WHITE')
@@ -91,15 +108,14 @@ class HeaderBar extends Component {
         <PanelQuery
           paneStyle={S.PANE}
           className={CL.PANEL_BROWSER}
-          clItem={S.CL_QUERY_ITEM}
           isShow={isQuery}
-          onClose={this._handleCloseQuery}
-          onWebhose={this._handleClickSource.bind(null, 'Webhose')}
+          onClose={this._hCloseQuery}
+          onWebhose={this._hWebhose}
           onWebhoseBrodcast={this.props.onWebhoseBrodcast}
-          onStackTagged={this._handleClickSource.bind(null, 'StackTagged')}
-          onStackSearch={this._handleClickSource.bind(null, 'StackSearch')}
-          onIex={this._handleClickSource.bind(null, 'Iex')}
-          onNewsApi={this._handleClickSource.bind(null, 'NewsSearch')}
+          onStackTagged={this._hStackTagged}
+          onStackSearch={this._hStackSearch}
+          onIex={this._hIex}
+          onNewsApi={this._hNewsApi}
         />
         <LoadingProgress
            store={store}
@@ -108,16 +124,16 @@ class HeaderBar extends Component {
         <IconAppLogo
            className={CL.ICON_APP}
            title={TITLE}
-           onClick={this._handleChangeTheme}
+           onClick={this._hChangeTheme}
         />
         <AppLabel
            className={CL.LABEL_APP}
            caption={TITLE}
            title="Click to Change UI Theme"
-           onClick={this._handleChangeTheme}
+           onClick={this._hChangeTheme}
         />
         <span className={CL.BROWSER_BTS}>
-          <FlatButton
+          <A.FlatButton
             rootStyle={S.BT.FLAT_ROOT}
             clDiv={S.BT.CL_FLAT_DIV}
             caption="News"
@@ -125,17 +141,17 @@ class HeaderBar extends Component {
             accessKey="n"
             onClick={onNewsSources}
           />
-          <ModalButton
+          <A.ModalButton
              rootStyle={S.BT.FLAT_ROOT}
              clDiv={S.BT.CL_FLAT_DIV}
              caption="Query"
              title="Panel Query Source"
              accessKey="q"
-             onClick={this._handleClickQuery}
+             onClick={this._hClickQuery}
              onReg={this._onRegQuery}
           >
-            <span className={CL.ARROW_DOWN}></span>
-          </ModalButton>
+            <span className={CL.ARROW_DOWN} />
+          </A.ModalButton>
         </span>
         <GitHubLink
           className={CL.GITHUB_LINK}
@@ -143,23 +159,25 @@ class HeaderBar extends Component {
           href="https://github.com/zhnzhn/news-aggregator"
         />
         <div className={CL.BTS}>
-            <FlatButton
+            <A.FlatButton
               rootStyle={S.BT.FLAT_ROOT}
               clDiv={S.BT.CL_FLAT_DIV}
-              caption="Settings"
               title="Open Settings Dialog"
               accessKey="s"
               onClick={onSettings}
-            />
-            <FlatButton
+            >
+              <A.SvgSettings style={STYLE.SVG_ICON} />
+            </A.FlatButton>
+            <A.FlatButton
               className={CL.BT_ABOUT}
               rootStyle={S.BT.FLAT_ROOT}
               clDiv={S.BT.CL_FLAT_DIV}
-              caption="About"
-              title="About"
+              title="About web app News Aggregator"
               accessKey="a"
               onClick={onAbout}
-            />
+            >
+              <A.SvgInfo style={STYLE.SVG_ICON} />
+            </A.FlatButton>
         </div>
       </div>
      );

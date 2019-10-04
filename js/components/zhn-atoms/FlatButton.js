@@ -42,11 +42,11 @@ var FlatButton = function FlatButton(_ref) {
     _react2.default.createElement(
       'div',
       { className: clDiv },
-      _react2.default.createElement(_CaptionInput2.default, {
+      caption ? _react2.default.createElement(_CaptionInput2.default, {
         className: CL_BT_SPAN,
         caption: caption,
         accessKey: accessKey
-      }),
+      }) : null,
       children
     )
   );

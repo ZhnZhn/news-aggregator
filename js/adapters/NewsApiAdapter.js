@@ -4,9 +4,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _shortid = require('shortid');
+var _crId = require('../utils/crId');
 
-var _shortid2 = _interopRequireDefault(_shortid);
+var _crId2 = _interopRequireDefault(_crId);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23,7 +23,7 @@ var NewsApiAdapter = {
     var source = arguments[1];
 
     return articles.map(function (article) {
-      article.articleId = _shortid2.default.generate();
+      article.articleId = (0, _crId2.default)();
       article.source = source;
       return article;
     });

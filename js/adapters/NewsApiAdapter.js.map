@@ -1,1 +1,28 @@
-{"version":3,"sources":["../../src/adapters/NewsApiAdapter.js"],"names":["_toFirstUpper","str","charAt","toUpperCase","slice","NewsApiAdapter","toArticles","articles","source","map","article","articleId","generate","toNews","json","option","sortBy","_sortBy","_articles"],"mappings":";;;;;;AAAA;;;;;;AAEA,IAAMA,gBAAgB,SAAhBA,aAAgB,CAACC,GAAD,EAAS;AAC7B,MAAI,OAAOA,GAAP,KAAe,QAAnB,EAA4B;AAC1B,WAAO,EAAP;AACD;AACD,SAAOA,IAAIC,MAAJ,CAAW,CAAX,EAAcC,WAAd,KAA8BF,IAAIG,KAAJ,CAAU,CAAV,CAArC;AACD,CALD;;AAQA,IAAMC,iBAAiB;AACrBC,cAAY,sBAAyB;AAAA,QAAxBC,QAAwB,uEAAf,EAAe;AAAA,QAAXC,MAAW;;AACnC,WAAOD,SAASE,GAAT,CAAa,UAACC,OAAD,EAAa;AAC/BA,cAAQC,SAAR,GAAoB,kBAAQC,QAAR,EAApB;AACAF,cAAQF,MAAR,GAAiBA,MAAjB;AACA,aAAOE,OAAP;AACD,KAJM,CAAP;AAKD,GAPoB;;AASrBG,UAAQ,gBAACC,IAAD,EAAOC,MAAP,EAAkB;AAClB,QAAEP,MAAF,GAAaO,MAAb,CAAEP,MAAF;AAAA,yBAC4BM,IAD5B,CACEP,QADF;AAAA,QACEA,QADF,kCACW,EADX;AAAA,uBAC4BO,IAD5B,CACeE,MADf;AAAA,QACeA,MADf,gCACsB,EADtB;;;AAGN,QAAMC,UAAUjB,cAAcgB,MAAd,CAAhB;AAAA,QACME,YAAYb,eAAeC,UAAf,CAA0BC,QAA1B,EAAoCC,MAApC,CADlB;AAEA,WAAO;AACLA,cAAQA,MADH;AAELD,gBAAUW,SAFL;AAGLF,cAAQC;AAHH,KAAP;AAKD;AApBoB,CAAvB;;kBAuBeZ,c","file":"NewsApiAdapter.js","sourcesContent":["import shortid from 'shortid'\r\n\r\nconst _toFirstUpper = (str) => {\r\n  if (typeof str !== 'string'){\r\n    return '';\r\n  }\r\n  return str.charAt(0).toUpperCase() + str.slice(1);\r\n}\r\n\r\n\r\nconst NewsApiAdapter = {\r\n  toArticles: (articles=[], source) => {\r\n    return articles.map((article) => {\r\n      article.articleId = shortid.generate()\r\n      article.source = source\r\n      return article;\r\n    })\r\n  },\r\n\r\n  toNews: (json, option) => {\r\n    const { source } = option\r\n        , { articles=[], sortBy=''} = json\r\n\r\n    const _sortBy = _toFirstUpper(sortBy)\r\n        , _articles = NewsApiAdapter.toArticles(articles, source);\r\n    return {\r\n      source: source,\r\n      articles: _articles,\r\n      sortBy: _sortBy\r\n    };\r\n  }\r\n}\r\n\r\nexport default NewsApiAdapter\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../src/adapters/NewsApiAdapter.js"
+ ],
+ "file": "../../src/adapters/NewsApiAdapter.js",
+ "names": [
+  "_toFirstUpper",
+  "str",
+  "charAt",
+  "toUpperCase",
+  "slice",
+  "NewsApiAdapter",
+  "toArticles",
+  "articles",
+  "source",
+  "map",
+  "article",
+  "articleId",
+  "toNews",
+  "json",
+  "option",
+  "sortBy",
+  "_sortBy",
+  "_articles"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,gBAAgB,SAAhBA,aAAgB,CAACC,GAAD,EAAS;AAC7B,MAAI,OAAOA,GAAP,KAAe,QAAnB,EAA4B;AAC1B,WAAO,EAAP;AACD;AACD,SAAOA,IAAIC,MAAJ,CAAW,CAAX,EAAcC,WAAd,KAA8BF,IAAIG,KAAJ,CAAU,CAAV,CAArC;AACD,CALD;;AAQA,IAAMC,iBAAiB;AACrBC,cAAY,sBAAyB;AAAA,QAAxBC,QAAwB,uEAAf,EAAe;AAAA,QAAXC,MAAW;;AACnC,WAAOD,SAASE,GAAT,CAAa,UAACC,OAAD,EAAa;AAC/BA,cAAQC,SAAR,GAAoB,qBAApB;AACAD,cAAQF,MAAR,GAAiBA,MAAjB;AACA,aAAOE,OAAP;AACD,KAJM,CAAP;AAKD,GAPoB;;AASrBE,UAAQ,gBAACC,IAAD,EAAOC,MAAP,EAAkB;AAClB,QAAEN,MAAF,GAAaM,MAAb,CAAEN,MAAF;AAAA,yBAC4BK,IAD5B,CACEN,QADF;AAAA,QACEA,QADF,kCACW,EADX;AAAA,uBAC4BM,IAD5B,CACeE,MADf;AAAA,QACeA,MADf,gCACsB,EADtB;;;AAGN,QAAMC,UAAUhB,cAAce,MAAd,CAAhB;AAAA,QACME,YAAYZ,eAAeC,UAAf,CAA0BC,QAA1B,EAAoCC,MAApC,CADlB;AAEA,WAAO;AACLA,cAAQA,MADH;AAELD,gBAAUU,SAFL;AAGLF,cAAQC;AAHH,KAAP;AAKD;AApBoB,CAAvB;;kBAuBeX,c"
+}

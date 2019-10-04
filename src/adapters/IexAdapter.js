@@ -1,4 +1,5 @@
-import shortid from 'shortid'
+//import shortid from 'shortid'
+import crId from '../utils/crId'
 
 const C = {
   SOURCE: 'iex_news'
@@ -21,7 +22,7 @@ const _toArticles = (json) => {
                 : undefined;
       return {
         source: C.SOURCE,
-        articleId: shortid.generate(),
+        articleId: crId(),
         title: headline,
         description: summary,
         related: _related,

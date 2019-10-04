@@ -42,16 +42,18 @@
      display: inline-block;
      margin-left: 45px;
   }
-  .header__bt-about {
-    display: none;
-  }
 }
 @media only screen and (max-width: 375px) {
   .header__icon-app {
     display: none;
   }
   .header__browser-bts {
-    margin-left: 0;
+    margin-left: 8px;
+  }
+}
+@media only screen and (max-width: 300px) {
+  .header__bt-about {
+    display: none;
   }
 }
 
@@ -75,7 +77,8 @@
   width: 2.5rem;
   height: 3rem;
 }
-.header__github-link:hover,.header__github-link:focus {
+.header__github-link:hover,
+.header__github-link:focus {
   fill: #80c040;
 }
 @media only screen and (max-width: 740px){

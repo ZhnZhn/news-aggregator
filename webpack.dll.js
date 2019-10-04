@@ -8,8 +8,8 @@ module.exports = {
   entry: {
      lib: [
             "react", "react-dom",
-            "interact.js",         
-            "reflux", "shortid",                            
+            "interactjs",         
+            "reflux", "nanoid",                            
             "babel-runtime/helpers/classCallCheck",
             "babel-runtime/helpers/createClass",
             "babel-runtime/helpers/possibleConstructorReturn",

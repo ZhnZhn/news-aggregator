@@ -7,13 +7,15 @@
         { "id": "NS_FOX_SPORTS" },
         { "id": "NS_FOUR_FOUR_TWO" },
         { "id": "NS_FOOTBALL_ITALIA" },
-        { "id": "NS_NFL_NEWS" }
+        { "id": "NS_NFL_NEWS" },
+        { "id": "NS_MARCA" }
       ]
     },{
       "caption": "General",
       "items": [
         { "id": "NS_ABC_NEWS" },
         { "id": "NS_ASSOCIATED_PRESS" },
+        { "id": "NS_AXIOS" },
         { "id": "NS_BBC_NEWS" },
         { "id": "NS_INDEPENDENT" },
         { "id": "NS_GOOGLE_NEWS" },
@@ -21,7 +23,6 @@
         { "id": "NS_NEW_YORK_MAGAZINE" },
         { "id": "NS_NEWSWEEK" },
         { "id": "NS_TIME" },
-        { "id": "NS_THE_ECONOMIST" },
         { "id": "NS_THE_TELEGRAPH" },
         { "id": "NS_REDDIT_R_ALL" },
         { "id": "NS_REUTERS" }
@@ -131,6 +132,17 @@
         "source": "nfl-news"
       }
     },
+    "NS_MARCA": {
+      "type": "NS_MARCA",
+      "menuTitle": "Marca",
+      "dialogType": "DialogType1",
+      "paneCaption": "Marca",
+      "paneId": "marca",
+      "dialogProps": {
+        "caption": "Marca",
+        "source": "marca"
+      }
+    },
 
     "NS_ABC_NEWS": {
       "type": "NS_ABC_NEWS",
@@ -186,18 +198,7 @@
         "caption": "New York Magazine",
         "source": "new-york-magazine"
       }
-    },
-    "NS_THE_ECONOMIST": {
-      "type": "NS_THE_ECONOMIST",
-      "menuTitle": "The Economist",
-      "dialogType": "DialogType1",
-      "paneCaption":"THE ECONOMIST",
-      "paneId": "the-economist",
-      "dialogProps": {
-        "caption": "The Economist",
-        "source": "the-economist"
-      }
-    },
+    },    
     "NS_TIME": {
       "type": "NS_TIME",
       "menuTitle": "Time",
@@ -240,6 +241,17 @@
       "dialogProps": {
         "caption": "Associated Press",
         "source": "associated-press"
+      }
+    },
+    "NS_AXIOS": {
+      "type": "NS_AXIOS",
+      "menuTitle": "Axios",
+      "dialogType": "DialogType1",
+      "paneCaption":"AXIOS",
+      "paneId": "axios",
+      "dialogProps": {
+        "caption": "Axios",
+        "source": "axios"
       }
     },
     "NS_INDEPENDENT": {

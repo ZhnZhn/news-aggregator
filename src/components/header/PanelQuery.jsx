@@ -4,6 +4,8 @@ import ModalPane from '../zhn-moleculs/ModalPane'
 import MenuItem from '../zhn-atoms/MenuItem'
 import ShowHide from '../zhn-atoms/ShowHide'
 
+const CL_ITEM = 'row__topic';
+
 class PanelQuery extends Component {
   componentDidUpdate(prevProps, prevState){
     if (this.props !== prevProps){
@@ -23,7 +25,6 @@ class PanelQuery extends Component {
   render(){
     const {
            className, paneStyle, isShow,
-           clItem,
            onWebhose, onWebhoseBrodcast,
            onStackTagged, onStackSearch,
            onIex,
@@ -43,37 +44,37 @@ class PanelQuery extends Component {
         >
           <MenuItem
             ref={this._refFirstItem}
-            className={clItem}
+            className={CL_ITEM}
             caption="Webhose: News, Blogs"
             onClick={onWebhose}
             onClose={onClose}
           />
           <MenuItem
-            className={clItem}
+            className={CL_ITEM}
             caption="Webhose: Broadcast"
             onClick={onWebhoseBrodcast}
             onClose={onClose}
           />
           <MenuItem
-            className={clItem}
+            className={CL_ITEM}
             caption="StackOverflow: Tagged Questions"
             onClick={onStackTagged}
             onClose={onClose}
           />
           <MenuItem
-            className={clItem}
+            className={CL_ITEM}
             caption="StackOverflow: Search Questions"
             onClick={onStackSearch}
             onClose={onClose}
           />
           <MenuItem
-            className={clItem}
+            className={CL_ITEM}
             caption="IEX Stock News"
             onClick={onIex}
             onClose={onClose}
           />
           <MenuItem
-            className={clItem}
+            className={CL_ITEM}
             caption="NewsApi Headlines"
             onClick={onNewsApi}
             onClose={onClose}

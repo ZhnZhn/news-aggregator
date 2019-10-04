@@ -86,7 +86,7 @@ var THEME_CONFIG = (_THEME_CONFIG = {}, (0, _defineProperty3.default)(_THEME_CON
 
 var CL_PROPS = {
   CL_SCROLL_PANE: 'with-scroll',
-  CL_QUERY_ITEM: 'row__topic',
+  //CL_QUERY_ITEM: 'row__topic',
   CL_BT_RAISED_DIV: 'bt-raise__div',
   CL_BT_FLAT_DIV: 'bt-flat__div',
   CL_SELECT_ITEM: 'm-select__item',
