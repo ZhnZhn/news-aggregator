@@ -1,5 +1,5 @@
 # [News Aggregator](https://zhnzhn.github.io/news-aggregator)
-**News Agreggator** is RESTFul client for reading news.  
+**News Agreggator** is RESTFul web application for reading news.  
 News headline provider: [NewsApi.org](https://newsapi.org), [Webhose.io](https://webhose.io).  
 Provider's API Key is required for using app.  
 
