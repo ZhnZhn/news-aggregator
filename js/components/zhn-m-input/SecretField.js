@@ -24,6 +24,8 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _class, _temp;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -37,30 +39,34 @@ var CL_INPUT = 'm-textfield-input';
 
 var S = {
   ROOT: {
-    width: '280px',
-    display: 'block'
+    display: 'block',
+    width: 280
   },
   LABEL_TO_INPUT: {
     transform: 'scale(1) translate(0px, 0px)'
   },
   LABEL_ON_ERROR: {
-    color: '#F44336'
+    color: '#f44336'
   },
   LINE: {
     position: 'absolute',
-    bottom: '6px',
+    bottom: 6,
     width: '100%',
     borderBottom: '2px solid black'
   },
   LINE_ERROR: {
-    borderBottom: '2px solid #F44336'
+    borderBottom: '2px solid #f44336'
   },
   MSG_ERROR: {
     position: 'absolute',
-    bottom: '-18px',
-    left: '4px',
-    color: '#F44336'
+    bottom: -18,
+    left: 4,
+    color: '#f44336'
   }
+};
+
+var _isFn = function _isFn(fn) {
+  return typeof fn === 'function';
 };
 
 var _maskValue = function _maskValue() {
@@ -74,13 +80,20 @@ var _maskValue = function _maskValue() {
   return str;
 };
 
-var SecretField = function (_Component) {
+var _crInitialState = function _crInitialState() {
+  return {
+    value: '',
+    isPassTest: true
+  };
+};
+
+var SecretField = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(SecretField, _Component);
 
   function SecretField(props) {
     (0, _classCallCheck3.default)(this, SecretField);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (SecretField.__proto__ || Object.getPrototypeOf(SecretField)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (SecretField.__proto__ || Object.getPrototypeOf(SecretField)).call(this, props));
 
     _this._handleFocusInput = function () {
       _this.isFocus = true;
@@ -107,7 +120,15 @@ var SecretField = function (_Component) {
     };
 
     _this._handleKeyDown = function (event) {
-      if (event.keyCode === 27) {
+      var keyCode = event.keyCode;
+
+      if (keyCode === 13) {
+        event.preventDefault();
+        _this.props.onEnter(_this.secret);
+      } else if (keyCode === 46) {
+        _this.secret = '';
+        _this.setState(_crInitialState());
+      } else if (keyCode === 27) {
         _this.secret = '';
         var _isPassTest = _this.isOnTest ? _this.props.onTest(_this.secret) : true;
         _this.setState({ value: '', isPassTest: _isPassTest });
@@ -115,11 +136,8 @@ var SecretField = function (_Component) {
     };
 
     _this.isFocus = false;
-    _this.isOnTest = typeof props.onTest === 'function' ? true : false;
-    _this.state = {
-      value: '',
-      isPassTest: true
-    };
+    _this.isOnTest = _isFn(props.onTest) ? true : false;
+    _this.state = _crInitialState();
     return _this;
   }
 
@@ -135,9 +153,9 @@ var SecretField = function (_Component) {
           _state = this.state,
           value = _state.value,
           isPassTest = _state.isPassTest,
-          _labelStyle = value || this.isFocus ? undefined : S.LABEL_TO_INPUT,
-          _labelErrStyle = isPassTest ? undefined : S.LABEL_ON_ERROR,
-          _lineStyle = isPassTest ? undefined : S.LINE_ERROR;
+          _labelStyle = value || this.isFocus ? void 0 : S.LABEL_TO_INPUT,
+          _labelErrStyle = isPassTest ? void 0 : S.LABEL_ON_ERROR,
+          _lineStyle = isPassTest ? void 0 : S.LINE_ERROR;
 
       return _react2.default.createElement(
         'div',
@@ -191,7 +209,8 @@ var SecretField = function (_Component) {
     }
   }]);
   return SecretField;
-}(_react.Component);
-
+}(_react.Component), _class.defaultProps = {
+  onEnter: function onEnter() {}
+}, _temp);
 exports.default = SecretField;
 //# sourceMappingURL=SecretField.js.map

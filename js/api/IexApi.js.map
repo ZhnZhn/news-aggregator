@@ -1,1 +1,22 @@
-{"version":3,"sources":["../../src/api/IexApi.js"],"names":["C","DF_SYMBOL","DF_RECENT","BASE_URL","IexApi","getRequestUrl","option","symbol","recent","checkResponse","json"],"mappings":";;;;;;AACA,IAAMA,IAAI;AACRC,aAAW,MADH;AAERC,aAAW,IAFH;AAGRC,YAAU;AAHF,CAAV;;AAMA,IAAMC,SAAS;AACbC,eADa,yBACCC,MADD,EACQ;AAAA,yBAITA,MAJS,CAEXC,MAFW;AAAA,QAEXA,MAFW,kCAEJP,EAAEC,SAFE;AAAA,yBAITK,MAJS,CAGXE,MAHW;AAAA,QAGXA,MAHW,kCAGJR,EAAEE,SAHE;;AAKnB,WAAUF,EAAEG,QAAZ,SAAwBI,MAAxB,mBAA4CC,MAA5C;AACD,GAPY;AASbC,eATa,yBASCC,IATD,EASOJ,MATP,EASc;AACzB,WAAO,IAAP;AACD;AAXY,CAAf;;kBAeeF,M","file":"IexApi.js","sourcesContent":["\r\nconst C = {\r\n  DF_SYMBOL: 'AAPL',\r\n  DF_RECENT: '20',\r\n  BASE_URL: 'https://api.iextrading.com/1.0/stock'\r\n};\r\n\r\nconst IexApi = {\r\n  getRequestUrl(option){\r\n    const {\r\n            symbol=C.DF_SYMBOL,\r\n            recent=C.DF_RECENT\r\n          } = option;\r\n    return `${C.BASE_URL}/${symbol}/news/last/${recent}`;\r\n  },\r\n\r\n  checkResponse(json, option){\r\n    return true;\r\n  }\r\n\r\n}\r\n\r\nexport default IexApi\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/IexApi.js"
+ ],
+ "file": "../../src/api/IexApi.js",
+ "names": [
+  "C",
+  "DF_SYMBOL",
+  "DF_RECENT",
+  "BASE_URL",
+  "IexApi",
+  "getRequestUrl",
+  "option",
+  "symbol",
+  "recent",
+  "apiKey",
+  "checkResponse",
+  "json"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,IAAI;AACRC,aAAW,MADH;AAERC,aAAW,IAFH;AAGRC,YAAU;AACV;AAJQ,CAAV;;AAOA,IAAMC,SAAS;AACbC,eADa,yBACCC,MADD,EACQ;AAAA,yBAKTA,MALS,CAEXC,MAFW;AAAA,QAEXA,MAFW,kCAEJP,EAAEC,SAFE;AAAA,yBAKTK,MALS,CAGXE,MAHW;AAAA,QAGXA,MAHW,kCAGJR,EAAEE,SAHE;AAAA,QAIXO,MAJW,GAKTH,MALS,CAIXG,MAJW;;AAMnB,WAAUT,EAAEG,QAAZ,SAAwBI,MAAxB,mBAA4CC,MAA5C,eAA4DC,MAA5D;AACD,GARY;AAUbC,eAVa,yBAUCC,IAVD,EAUOL,MAVP,EAUc;AACzB,WAAO,IAAP;AACD;AAZY,CAAf;;kBAgBeF,M"
+}

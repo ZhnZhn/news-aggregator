@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 
-import ModalPane from '../zhn-moleculs/ModalPane'
-import MenuItem from '../zhn-atoms/MenuItem'
-import ShowHide from '../zhn-atoms/ShowHide'
+import A from '../Comp'
 
 const CL_ITEM = 'row__topic';
 
@@ -24,63 +22,63 @@ class PanelQuery extends Component {
 
   render(){
     const {
-           className, paneStyle, isShow,
-           onWebhose, onWebhoseBrodcast,
-           onStackTagged, onStackSearch,
-           onIex,
-           onNewsApi,
-           onClose
-         } = this.props;
+     className, paneStyle, isShow,
+     onIex,
+     onNewsApi,
+     onStackTagged, onStackSearch,
+     onWebhose, onWebhoseBrodcast,
+     onClose
+   } = this.props;
 
     return (
-      <ModalPane
+      <A.ModalPane
         isShow={isShow}
         onClose={onClose}
       >
-        <ShowHide
+        <A.ShowHide
           className={className}
           style={paneStyle}
           isShow={isShow}
         >
-          <MenuItem
+          <A.MenuItem
             ref={this._refFirstItem}
             className={CL_ITEM}
-            caption="Webhose: News, Blogs"
-            onClick={onWebhose}
+            caption="IEX Cloud: Stock News"
+            onClick={onIex}
             onClose={onClose}
           />
-          <MenuItem
+          <A.MenuItem
             className={CL_ITEM}
-            caption="Webhose: Broadcast"
-            onClick={onWebhoseBrodcast}
+            caption="NewsApi: Search"
+            onClick={onNewsApi}
             onClose={onClose}
           />
-          <MenuItem
+          <A.MenuItem
             className={CL_ITEM}
             caption="StackOverflow: Tagged Questions"
             onClick={onStackTagged}
             onClose={onClose}
           />
-          <MenuItem
+          <A.MenuItem
             className={CL_ITEM}
             caption="StackOverflow: Search Questions"
             onClick={onStackSearch}
             onClose={onClose}
           />
-          <MenuItem
+          <A.MenuItem
             className={CL_ITEM}
-            caption="IEX Stock News"
-            onClick={onIex}
+            caption="Webhose: Broadcast"
+            onClick={onWebhoseBrodcast}
             onClose={onClose}
           />
-          <MenuItem
+          <A.MenuItem
             className={CL_ITEM}
-            caption="NewsApi Headlines"
-            onClick={onNewsApi}
+            caption="Webhose: News, Blogs"
+            onClick={onWebhose}
             onClose={onClose}
           />
-        </ShowHide>
-     </ModalPane>
+        </A.ShowHide>
+     </A.ModalPane>
     );
   }
 }

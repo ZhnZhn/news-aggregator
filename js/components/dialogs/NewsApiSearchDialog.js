@@ -34,29 +34,9 @@ var _Dialog = require('./Dialog.Style');
 
 var _Dialog2 = _interopRequireDefault(_Dialog);
 
-var _DraggableDialog = require('../zhn-moleculs/DraggableDialog');
+var _Comp = require('../Comp');
 
-var _DraggableDialog2 = _interopRequireDefault(_DraggableDialog);
-
-var _TextField = require('../zhn-m-input/TextField');
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _InputSelect = require('../zhn-m-input/InputSelect');
-
-var _InputSelect2 = _interopRequireDefault(_InputSelect);
-
-var _PoweredBy = require('../links/PoweredBy');
-
-var _PoweredBy2 = _interopRequireDefault(_PoweredBy);
-
-var _Links = require('../links/Links');
-
-var _Links2 = _interopRequireDefault(_Links);
-
-var _RaisedButton = require('../zhn-atoms/RaisedButton');
-
-var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+var _Comp2 = _interopRequireDefault(_Comp);
 
 var _withKeyDown = require('./decorators/withKeyDown');
 
@@ -66,13 +46,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var S = {
   POWERED_BY: {
-    marginLeft: '16px',
-    marginBottom: '8px'
+    marginLeft: 16,
+    marginBottom: 8
   }
 };
 
-var _sortByOptions = [{ caption: "Relevancy", value: "relevancy" }, { caption: "Popularity", value: "popularity" }, { caption: "PublishedAt", value: "publishedAt" }];
-var DF_SORT_BY = _sortByOptions[0];
+var SORT_BY_OPTIONS = [{ caption: "Relevancy", value: "relevancy" }, { caption: "Popularity", value: "popularity" }, { caption: "PublishedAt", value: "publishedAt" }];
+var DF_SORT_BY = SORT_BY_OPTIONS[0];
 
 var NewsApiSearchDialog = (0, _withKeyDown2.default)(_class = function (_Component) {
   (0, _inherits3.default)(NewsApiSearchDialog, _Component);
@@ -80,10 +60,10 @@ var NewsApiSearchDialog = (0, _withKeyDown2.default)(_class = function (_Compone
   function NewsApiSearchDialog(props) {
     (0, _classCallCheck3.default)(this, NewsApiSearchDialog);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (NewsApiSearchDialog.__proto__ || Object.getPrototypeOf(NewsApiSearchDialog)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (NewsApiSearchDialog.__proto__ || Object.getPrototypeOf(NewsApiSearchDialog)).call(this, props));
 
     _this._selectSortBy = function (option) {
-      _this.sortBy = option ? option.value : undefined;
+      _this.sortBy = option ? option.value : void 0;
     };
 
     _this._handleLoad = function () {
@@ -108,13 +88,21 @@ var NewsApiSearchDialog = (0, _withKeyDown2.default)(_class = function (_Compone
     };
 
     _this._createCommandButtons = function (S) {
-      return [_react2.default.createElement(_RaisedButton2.default, {
+      return [_react2.default.createElement(_Comp2.default.RaisedButton, {
         rootStyle: S.RAISED_ROOT,
         clDiv: S.CL_RAISED_DIV,
         caption: 'Load',
         isPrimary: true,
         onClick: _this._handleLoad
       })];
+    };
+
+    _this._refDialogComp = function (comp) {
+      return _this.dialogComp = comp;
+    };
+
+    _this._refInputSymbol = function (comp) {
+      return _this.inputSymbol = comp;
     };
 
     _this.sortBy = DF_SORT_BY.value;
@@ -125,8 +113,6 @@ var NewsApiSearchDialog = (0, _withKeyDown2.default)(_class = function (_Compone
   (0, _createClass3.default)(NewsApiSearchDialog, [{
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       var _props = this.props,
           isShow = _props.isShow,
           theme = _props.theme,
@@ -135,11 +121,9 @@ var NewsApiSearchDialog = (0, _withKeyDown2.default)(_class = function (_Compone
           _commandButtons = this._createCommandButtons(TS.BT);
 
       return _react2.default.createElement(
-        _DraggableDialog2.default,
+        _Comp2.default.DraggableDialog,
         {
-          ref: function ref(comp) {
-            return _this2.dialogComp = comp;
-          },
+          ref: this._refDialogComp,
           rootStyle: TS.R_DIALOG,
           browserCaptionStyle: TS.BROWSER_CAPTION,
           styleButton: TS.BT,
@@ -150,25 +134,23 @@ var NewsApiSearchDialog = (0, _withKeyDown2.default)(_class = function (_Compone
           onShowChart: onShow,
           onClose: this._handleClose
         },
-        _react2.default.createElement(_TextField2.default, {
+        _react2.default.createElement(_Comp2.default.TextField, {
           rootStyle: TS.INPUT_ROOT,
-          ref: function ref(comp) {
-            return _this2.inputSymbol = comp;
-          },
+          ref: this._refInputSymbol,
           caption: 'Term (Default: Weather)',
           initValue: 'Weather'
         }),
-        _react2.default.createElement(_InputSelect2.default, {
+        _react2.default.createElement(_Comp2.default.InputSelect, {
           caption: 'SortBy',
           initItem: DF_SORT_BY,
-          options: _sortByOptions,
+          options: SORT_BY_OPTIONS,
           styleConfig: TS.SELECT,
           onSelect: this._selectSortBy
         }),
         _react2.default.createElement(
-          _PoweredBy2.default,
+          _Comp2.default.Link.PoweredBy,
           { rootStyle: S.POWERED_BY },
-          _react2.default.createElement(_Links2.default.NewsApi, null)
+          _react2.default.createElement(_Comp2.default.Link.NewsApi, null)
         )
       );
     }

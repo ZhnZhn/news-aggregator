@@ -44,39 +44,27 @@ var _ComponentActions = require('../../flux/actions/ComponentActions');
 
 var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
 
-var _ModalDialog = require('../zhn-moleculs/ModalDialog');
+var _Comp = require('../Comp');
 
-var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
-
-var _SecretField = require('../zhn-m-input/SecretField');
-
-var _SecretField2 = _interopRequireDefault(_SecretField);
-
-var _InputSelect = require('../zhn-m-input/InputSelect');
-
-var _InputSelect2 = _interopRequireDefault(_InputSelect);
-
-var _RaisedButton = require('../zhn-atoms/RaisedButton');
-
-var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+var _Comp2 = _interopRequireDefault(_Comp);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//import PropTypes from 'prop-types'
 
 var S = {
   MODAL: {
     position: 'static',
-    width: '320px',
-    height: '300px',
+    width: 320,
+    height: 370,
     margin: '70px auto 0px'
   },
   DIV_BT: {
-    marginTop: '26px',
-    marginBottom: '4px'
+    marginTop: 26,
+    marginBottom: 4
   }
 };
+//import PropTypes from 'prop-types'
 
+var SET_IEX_KEY = 'setIexKey';
 var SET_NEWS_KEY = 'setNewsKey';
 var SET_WEBHOSE_KEY = 'setWebhoseKey';
 
@@ -94,8 +82,17 @@ var _onTestLengthOrEmpty = function _onTestLengthOrEmpty(length) {
   };
 };
 
+var _onTestIexApi = _onTestLengthOrEmpty(35);
 var _onTestNewsApi = _onTestLengthOrEmpty(32);
 var _onTestWebhose = _onTestLengthOrEmpty(36);
+
+var _getKeySetters = function _getKeySetters(data) {
+  return {
+    setIexKey: (0, _safeFn2.default)(data, SET_IEX_KEY),
+    setNewsKey: (0, _safeFn2.default)(data, SET_NEWS_KEY),
+    setWebhoseKey: (0, _safeFn2.default)(data, SET_WEBHOSE_KEY)
+  };
+};
 
 var SettingsDialog = function (_Component) {
   (0, _inherits3.default)(SettingsDialog, _Component);
@@ -119,9 +116,12 @@ var SettingsDialog = function (_Component) {
       var _this$props = _this.props,
           data = _this$props.data,
           onClose = _this$props.onClose,
-          setNewsKey = (0, _safeFn2.default)(data, SET_NEWS_KEY),
-          setWebhoseKey = (0, _safeFn2.default)(data, SET_WEBHOSE_KEY);
+          _getKeySetters2 = _getKeySetters(data),
+          setIexKey = _getKeySetters2.setIexKey,
+          setNewsKey = _getKeySetters2.setNewsKey,
+          setWebhoseKey = _getKeySetters2.setWebhoseKey;
 
+      setIexKey(_this.inputIex.getValue());
       setNewsKey(_this.inputNews.getValue());
       setWebhoseKey(_this.inputWebhose.getValue());
       onClose();
@@ -134,12 +134,14 @@ var SettingsDialog = function (_Component) {
         _this.forceUpdate();
       }
     }, _this._createCommandButtons = function (S) {
-      return [_react2.default.createElement(_RaisedButton2.default, {
+      return [_react2.default.createElement(_Comp2.default.RaisedButton, {
         rootStyle: S.RAISED_ROOT,
         clDiv: S.CL_RAISED_DIV,
-        caption: 'Set & Close',
+        caption: 'Set All & Close',
         onClick: _this._handleSet
       })];
+    }, _this._refInputIex = function (comp) {
+      return _this.inputIex = comp;
     }, _this._refInputNews = function (comp) {
       return _this.inputNews = comp;
     }, _this._refInputWebhose = function (comp) {
@@ -173,12 +175,17 @@ var SettingsDialog = function (_Component) {
       var _props = this.props,
           isShow = _props.isShow,
           theme = _props.theme,
+          data = _props.data,
           onClose = _props.onClose,
+          _getKeySetters3 = _getKeySetters(data),
+          setIexKey = _getKeySetters3.setIexKey,
+          setNewsKey = _getKeySetters3.setNewsKey,
+          setWebhoseKey = _getKeySetters3.setWebhoseKey,
           TS = theme.createStyle(_Dialog2.default),
           _commandButtons = this._createCommandButtons(TS.BT);
 
       return _react2.default.createElement(
-        _ModalDialog2.default,
+        _Comp2.default.ModalDialog,
         {
           style: (0, _extends3.default)({}, S.MODAL, TS.R_DIALOG),
           divBtStyle: S.DIV_BT,
@@ -194,28 +201,43 @@ var SettingsDialog = function (_Component) {
         _react2.default.createElement(
           'form',
           null,
-          _react2.default.createElement(_SecretField2.default, {
+          _react2.default.createElement(_Comp2.default.SecretField, {
             rootStyle: TS.INPUT_ROOT,
-            ref: this._refInputNews,
-            caption: 'NewsApi API Key (32 Symbols)',
-            maxLength: 32,
-            errorMsg: '32 symbols must be',
-            onTest: _onTestNewsApi
+            ref: this._refInputIex,
+            caption: 'IEX Cloud API Key (35 Symbols)',
+            maxLength: 35,
+            errorMsg: '35 symbols must be',
+            onTest: _onTestIexApi,
+            onEnter: setIexKey
           })
         ),
         _react2.default.createElement(
           'form',
           null,
-          _react2.default.createElement(_SecretField2.default, {
+          _react2.default.createElement(_Comp2.default.SecretField, {
+            rootStyle: TS.INPUT_ROOT,
+            ref: this._refInputNews,
+            caption: 'NewsApi API Key (32 Symbols)',
+            maxLength: 32,
+            errorMsg: '32 symbols must be',
+            onTest: _onTestNewsApi,
+            onEnter: setNewsKey
+          })
+        ),
+        _react2.default.createElement(
+          'form',
+          null,
+          _react2.default.createElement(_Comp2.default.SecretField, {
             rootStyle: TS.INPUT_ROOT,
             ref: this._refInputWebhose,
             caption: 'Webhose API Key (36 Symbols)',
             maxLength: 36,
             errorMsg: '36 symbols must be',
-            onTest: _onTestWebhose
+            onTest: _onTestWebhose,
+            onEnter: setWebhoseKey
           })
         ),
-        _react2.default.createElement(_InputSelect2.default, {
+        _react2.default.createElement(_Comp2.default.InputSelect, {
           styleConfig: TS.SELECT,
           caption: 'Theme (Default: Dark)',
           initItem: DF_THEME,

@@ -8,24 +8,22 @@ import styleConfig from '../dialogs/Dialog.Style'
 
 import Actions from '../../flux/actions/ComponentActions'
 
-import ModalDialog from '../zhn-moleculs/ModalDialog'
-import SecretField from '../zhn-m-input/SecretField'
-import InputSelect from '../zhn-m-input/InputSelect'
-import RaisedButton from '../zhn-atoms/RaisedButton'
+import A from '../Comp'
 
 const S = {
   MODAL : {
     position : 'static',
-    width: '320px',
-    height: '300px',
+    width: 320,
+    height: 370,
     margin: '70px auto 0px'
   },
   DIV_BT: {
-    marginTop: '26px',
-    marginBottom: '4px'
+    marginTop: 26,
+    marginBottom: 4
   }
 };
 
+const SET_IEX_KEY = 'setIexKey';
 const SET_NEWS_KEY = 'setNewsKey';
 const SET_WEBHOSE_KEY = 'setWebhoseKey';
 
@@ -45,8 +43,17 @@ const _onTestLengthOrEmpty = (length) => (str) => {
   }
 }
 
+const _onTestIexApi = _onTestLengthOrEmpty(35);
 const _onTestNewsApi = _onTestLengthOrEmpty(32);
 const _onTestWebhose = _onTestLengthOrEmpty(36);
+
+const _getKeySetters = (data) => {
+   return {
+     setIexKey: safeFn(data, SET_IEX_KEY),
+     setNewsKey: safeFn(data, SET_NEWS_KEY),
+     setWebhoseKey: safeFn(data, SET_WEBHOSE_KEY)
+   };
+};
 
 class SettingsDialog extends Component {
   /*
@@ -77,8 +84,11 @@ class SettingsDialog extends Component {
 
   _handleSet = () => {
     const { data, onClose } = this.props
-        , setNewsKey = safeFn(data, SET_NEWS_KEY)
-        , setWebhoseKey = safeFn(data, SET_WEBHOSE_KEY);
+    , { setIexKey,
+        setNewsKey,
+        setWebhoseKey
+    } = _getKeySetters(data);
+    setIexKey(this.inputIex.getValue())
     setNewsKey(this.inputNews.getValue())
     setWebhoseKey(this.inputWebhose.getValue())
     onClose()
@@ -98,25 +108,30 @@ class SettingsDialog extends Component {
 
   _createCommandButtons = (S) => {
     return [
-      <RaisedButton
+      <A.RaisedButton
         rootStyle={S.RAISED_ROOT}
         clDiv={S.CL_RAISED_DIV}
-        caption="Set & Close"
+        caption="Set All & Close"
         onClick={this._handleSet}
       />
     ];
   }
 
+  _refInputIex = comp => this.inputIex = comp
   _refInputNews = comp => this.inputNews = comp
   _refInputWebhose = comp => this.inputWebhose = comp
 
   render(){
-    const { isShow, theme, onClose } = this.props
-        , TS = theme.createStyle(styleConfig)
-        , _commandButtons = this._createCommandButtons(TS.BT);
+    const { isShow, theme, data, onClose } = this.props
+    , { setIexKey,
+        setNewsKey,
+        setWebhoseKey
+    } = _getKeySetters(data)
+    , TS = theme.createStyle(styleConfig)
+    , _commandButtons = this._createCommandButtons(TS.BT);
 
     return (
-        <ModalDialog
+        <A.ModalDialog
            style={{ ...S.MODAL, ...TS.R_DIALOG }}
            divBtStyle={S.DIV_BT}
            styleCaption={TS.BROWSER_CAPTION}
@@ -129,33 +144,46 @@ class SettingsDialog extends Component {
            onClose={onClose}
         >
            <form>
-             <SecretField
+             <A.SecretField
+                rootStyle={TS.INPUT_ROOT}
+                ref={this._refInputIex}
+                caption="IEX Cloud API Key (35 Symbols)"
+                maxLength={35}
+                errorMsg="35 symbols must be"
+                onTest={_onTestIexApi}
+                onEnter={setIexKey}
+             />
+           </form>
+           <form>
+             <A.SecretField
                 rootStyle={TS.INPUT_ROOT}
                 ref={this._refInputNews}
                 caption="NewsApi API Key (32 Symbols)"
                 maxLength={32}
                 errorMsg="32 symbols must be"
                 onTest={_onTestNewsApi}
+                onEnter={setNewsKey}
              />
            </form>
            <form>
-             <SecretField
+             <A.SecretField
                 rootStyle={TS.INPUT_ROOT}
                 ref={this._refInputWebhose}
                 caption="Webhose API Key (36 Symbols)"
                 maxLength={36}
                 errorMsg="36 symbols must be"
                 onTest={_onTestWebhose}
+                onEnter={setWebhoseKey}
              />
            </form>
-           <InputSelect
+           <A.InputSelect
              styleConfig={TS.SELECT}
              caption="Theme (Default: Dark)"
              initItem={DF_THEME}
              options={_themeOptions}
              onSelect={this._selectTheme}
            />
-       </ModalDialog>
+       </A.ModalDialog>
     );
   }
 }

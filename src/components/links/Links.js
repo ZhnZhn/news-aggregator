@@ -1,6 +1,7 @@
 import withProps from '../hoc/withProps'
 
 import BaseComp from '../zhn-atoms/Link'
+import PoweredBy from './PoweredBy'
 
 export const NewsApi = withProps({
   title: "NewsApi.org",
@@ -21,8 +22,8 @@ export const StackOverflow = withProps({
 })(BaseComp)
 
 export const IexApi = withProps({
-  title: "IEX Developer API",
-  href: "https://iextrading.com/developer/",
+  title: "IEX Cloud API",
+  href: "https://iexcloud.io",
   tabIndex: "-1"
 })(BaseComp)
 
@@ -30,7 +31,8 @@ const Link = {
   NewsApi,
   WebhoseIo,
   StackOverflow,
-  IexApi
+  IexApi,
+  PoweredBy
 };
 
 export default Link

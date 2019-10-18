@@ -7,31 +7,33 @@ const CL_INPUT = 'm-textfield-input';
 
 const S = {
   ROOT: {
-     width: '280px',
-     display: 'block'
+     display: 'block',
+     width: 280
   },
   LABEL_TO_INPUT: {
      transform: 'scale(1) translate(0px, 0px)'
   },
   LABEL_ON_ERROR: {
-    color: '#F44336'
+    color: '#f44336'
   },
   LINE: {
     position: 'absolute',
-    bottom: '6px',
+    bottom: 6,
     width: '100%',
     borderBottom: '2px solid black'
   },
   LINE_ERROR: {
-    borderBottom: '2px solid #F44336'
+    borderBottom: '2px solid #f44336'
   },
   MSG_ERROR: {
     position: 'absolute',
-    bottom: '-18px',
-    left: '4px',
-    color: '#F44336'
+    bottom: -18,
+    left: 4,
+    color: '#f44336'
   }
 };
+
+const _isFn = fn => typeof fn === 'function';
 
 const _maskValue = (len=0) => {
   let i=0, str = '';
@@ -42,15 +44,22 @@ const _maskValue = (len=0) => {
 };
 
 
+const _crInitialState = () => ({
+  value: '',
+  isPassTest: true
+});
+
 class SecretField extends Component {
+
+  static defaultProps = {
+    onEnter: () => {}
+  }
+
   constructor(props){
-    super()
+    super(props)
     this.isFocus = false
-    this.isOnTest = (typeof props.onTest === 'function') ? true : false
-    this.state = {
-      value: '',
-      isPassTest: true
-    }
+    this.isOnTest = _isFn(props.onTest) ? true : false
+    this.state = _crInitialState()
   }
 
   _handleFocusInput = () => {
@@ -77,11 +86,18 @@ class SecretField extends Component {
   }
 
   _handleKeyDown = (event) => {
-    if (event.keyCode === 27){
+    const { keyCode } = event;
+    if (keyCode === 13) {
+      event.preventDefault()
+      this.props.onEnter(this.secret)
+    } else if (keyCode === 46) {
       this.secret = ''
-      const _isPassTest = (this.isOnTest)
-               ? this.props.onTest(this.secret)
-               : true;
+      this.setState(_crInitialState())
+    } else if (keyCode === 27){
+      this.secret = ''
+      const _isPassTest = this.isOnTest
+        ? this.props.onTest(this.secret)
+        : true;
       this.setState({ value: '', isPassTest: _isPassTest })
     }
   }
@@ -90,13 +106,13 @@ class SecretField extends Component {
     const { rootStyle, caption, errorMsg='', maxLength } = this.props
         , { value, isPassTest } = this.state
         , _labelStyle = (value || this.isFocus)
-            ? undefined
+            ? void 0
             : S.LABEL_TO_INPUT
-        , _labelErrStyle = (isPassTest)
-            ? undefined
+        , _labelErrStyle = isPassTest
+            ? void 0
             : S.LABEL_ON_ERROR
-        , _lineStyle = (isPassTest)
-            ? undefined
+        , _lineStyle = isPassTest
+            ? void 0
             : S.LINE_ERROR;
 
     return (

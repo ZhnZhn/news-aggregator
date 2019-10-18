@@ -50,7 +50,6 @@ NewsActions[TYPES.LOAD_NEWS].listen(function () {
       api = _conf.api;
 
   if (apiKey) {
-    //console.log(api)
     Object.assign(option, { apiKey: apiKey, adapter: adapter, api: api });
     (0, _loadNews2.default)(option, this.completed, this.failed);
   } else {

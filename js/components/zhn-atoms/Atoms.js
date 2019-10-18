@@ -12,6 +12,14 @@ var _SvgIcons = require('./svg/SvgIcons');
 
 var _SvgIcons2 = _interopRequireDefault(_SvgIcons);
 
+var _ScrollPane = require('./ScrollPane');
+
+var _ScrollPane2 = _interopRequireDefault(_ScrollPane);
+
+var _BrowserCaption = require('./BrowserCaption');
+
+var _BrowserCaption2 = _interopRequireDefault(_BrowserCaption);
+
 var _FlatButton = require('./FlatButton');
 
 var _FlatButton2 = _interopRequireDefault(_FlatButton);
@@ -20,11 +28,31 @@ var _ModalButton = require('./ModalButton');
 
 var _ModalButton2 = _interopRequireDefault(_ModalButton);
 
+var _RaisedButton = require('./RaisedButton');
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _MenuItem = require('./MenuItem');
+
+var _MenuItem2 = _interopRequireDefault(_MenuItem);
+
+var _ShowHide = require('./ShowHide');
+
+var _ShowHide2 = _interopRequireDefault(_ShowHide);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Atoms = (0, _extends3.default)({}, _SvgIcons2.default, {
+
+  ScrollPane: _ScrollPane2.default,
+  BrowserCaption: _BrowserCaption2.default,
+
   FlatButton: _FlatButton2.default,
-  ModalButton: _ModalButton2.default
+  ModalButton: _ModalButton2.default,
+  RaisedButton: _RaisedButton2.default,
+
+  MenuItem: _MenuItem2.default,
+  ShowHide: _ShowHide2.default
 });
 
 exports.default = Atoms;

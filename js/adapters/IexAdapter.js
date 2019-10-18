@@ -27,7 +27,7 @@ var _toArticles = function _toArticles(json) {
         summary = item.summary,
         related = item.related,
         url = item.url,
-        _related = related ? related.split(',').join(', ') : undefined;
+        _related = related ? related.split(',').join(', ') : void 0;
 
     return {
       source: C.SOURCE,

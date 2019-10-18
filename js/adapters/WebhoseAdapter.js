@@ -43,7 +43,6 @@ var _toBroadcast = function _toBroadcast(json, option) {
   var items = json.items,
       requestsLeft = json.requestsLeft,
       articles = [];
-  //console.log(json)
 
   items.forEach(function (post) {
     post.articleId = post.uuid;

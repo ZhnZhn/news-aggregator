@@ -13,6 +13,10 @@ var _Link = require('../zhn-atoms/Link');
 
 var _Link2 = _interopRequireDefault(_Link);
 
+var _PoweredBy = require('./PoweredBy');
+
+var _PoweredBy2 = _interopRequireDefault(_PoweredBy);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var NewsApi = exports.NewsApi = (0, _withProps2.default)({
@@ -34,8 +38,8 @@ var StackOverflow = exports.StackOverflow = (0, _withProps2.default)({
 })(_Link2.default);
 
 var IexApi = exports.IexApi = (0, _withProps2.default)({
-  title: "IEX Developer API",
-  href: "https://iextrading.com/developer/",
+  title: "IEX Cloud API",
+  href: "https://iexcloud.io",
   tabIndex: "-1"
 })(_Link2.default);
 
@@ -43,7 +47,8 @@ var Link = {
   NewsApi: NewsApi,
   WebhoseIo: WebhoseIo,
   StackOverflow: StackOverflow,
-  IexApi: IexApi
+  IexApi: IexApi,
+  PoweredBy: _PoweredBy2.default
 };
 
 exports.default = Link;

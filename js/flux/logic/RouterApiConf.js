@@ -54,14 +54,13 @@ var RouterApiConf = {
         };
       case 'IEX':
         return {
-          apiKey: true,
+          apiKey: _Store2.default.getIexKey(),
           api: _Api2.default.Iex,
           adapter: _Adapters2.default.Iex,
-          msgErr: 'IEX API ' + MSG_ERR_TAIL
+          msgErr: 'IEX Cloud API ' + MSG_ERR_TAIL
         };
       default:
         return {
-          apiKey: undefined,
           msgErr: MSG_ERR_DF
         };
     }

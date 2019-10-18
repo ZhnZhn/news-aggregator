@@ -31,8 +31,7 @@ const _toNews = (json) => {
 
 const _toBroadcast = (json, option) => {
   const { items, requestsLeft } = json
-      , articles = [];
-  //console.log(json)
+      , articles = [];  
   items.forEach(post => {
     post.articleId = post.uuid
     post.source = C.W_B

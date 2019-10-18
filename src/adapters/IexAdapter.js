@@ -19,7 +19,7 @@ const _toArticles = (json) => {
             } = item
            , _related = related
                 ? related.split(',').join(', ')
-                : undefined;
+                : void 0;
       return {
         source: C.SOURCE,
         articleId: crId(),

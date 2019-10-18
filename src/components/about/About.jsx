@@ -3,12 +3,9 @@ import React, { Component } from 'react'
 import withTheme from '../hoc/withTheme'
 import styleConfig from './About.Style'
 
-import ScrollPane from '../zhn-atoms/ScrollPane'
-import BrowserCaption from '../zhn-atoms/BrowserCaption'
-import Link from '../links/Links'
+import A from '../Comp'
 import Step from './Step'
 import IconLogoBar from './IconLogoBar'
-//import ShowHide from '../zhn-atoms/ShowHide'
 
 import STYLE from '../styles/ContainerStyle'
 
@@ -16,7 +13,7 @@ const CL_SHOW = "show-popup";
 
 class About extends Component {
   constructor(props){
-    super();
+    super(props);
     this.state = {
       isShow : props.isInitShow
     }
@@ -37,7 +34,7 @@ class About extends Component {
       case hideAction:
          this.setState({ isShow : false })
          break;
-      default: return undefined;
+      default: return void 0;
     }
   }
 
@@ -60,13 +57,13 @@ class About extends Component {
         className={_rootClass}
         style={{...STYLE.aboutRootDiv, ..._rootStyle, ...S.ROOT}}
        >
-         <BrowserCaption
+         <A.BrowserCaption
             rootStyle={S.BROWSER_CAPTION}
-            caption="About"
+            caption="About News Aggregator"
             onClose={this._handleClose}
          />
 
-         <ScrollPane
+         <A.ScrollPane
             className={S.CL_SCROLL_PANE}
             style={S.SCROLL_DIV}
          >
@@ -79,17 +76,17 @@ class About extends Component {
                    <span>News headline providers:&nbsp;</span>
                 </p>
                 <p>
+                  <div>
+                    <A.Link.IexApi />
+                  </div>
                    <div>
-                     <Link.NewsApi />
+                     <A.Link.NewsApi />
                    </div>
                    <div>
-                     <Link.WebhoseIo />
+                     <A.Link.StackOverflow />
                    </div>
                    <div>
-                     <Link.StackOverflow />
-                   </div>
-                   <div>
-                     <Link.IexApi />
+                     <A.Link.WebhoseIo />
                    </div>
                  </p>
                  <p style={S.MARGIN_TOP}>
@@ -125,7 +122,7 @@ class About extends Component {
              <p style={S.MARGIN_TOP}>
                <span style={S.BLACK}>For&nbsp;</span>
                <span style={S.PROVIDER}>
-                  Webhose,&nbsp;StackOverflow,&nbsp;IEX:
+                  IEX Cloud,&nbsp;StackOverflow,&nbsp;Webhose:
                 </span>
              </p>
              <Step
@@ -155,7 +152,7 @@ class About extends Component {
                </span>
             </p>
            </div>
-        </ScrollPane>
+        </A.ScrollPane>
       </div>
     );
   }

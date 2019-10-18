@@ -55,21 +55,21 @@ var NEWS_QUERY = {
   IEX: {
     "type": "IEX_NEWS",
     "dialogType": "IexNews",
-    "paneCaption": "Iex Stock News",
+    "paneCaption": "IEX Cloud: Stock News",
     "paneId": "iex_news",
     "paneType": "IEX_NEWS",
     "dialogProps": {
-      "caption": "IEX Stock News"
+      "caption": "IEX Cloud: Stock News"
       //"source": "iex_news"
     }
   },
   NEWS_SEARCH: {
     "type": "NEWS_SEARCH",
     "dialogType": "NewsApiSearch",
-    "paneCaption": "NewsApi Search",
+    "paneCaption": "NewsApi: Search",
     "paneId": "newsapi_search",
     "dialogProps": {
-      "caption": "NewsApi Search",
+      "caption": "NewsApi: Search",
       "source": "newsapi_search"
     }
   }

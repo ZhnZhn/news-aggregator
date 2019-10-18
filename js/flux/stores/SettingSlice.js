@@ -1,29 +1,35 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var SettingSlice = {
-  settings: {},
+var _Type = require('../../conf/Type');
 
+var _settings = {};
+
+var _fSetKey = function _fSetKey(propName) {
+  return function (value) {
+    _settings[propName] = value;
+  };
+};
+
+var SettingSlice = {
   exportSettingsFn: function exportSettingsFn() {
     return {
-      setNewsKey: this.setNewsKey.bind(this),
-      setWebhoseKey: this.setWebhoseKey.bind(this)
+      setIexKey: _fSetKey(_Type.LoadType.IEX),
+      setNewsKey: _fSetKey(_Type.LoadType.NEWS),
+      setWebhoseKey: _fSetKey(_Type.LoadType.WEBHOSE)
     };
   },
-  setNewsKey: function setNewsKey(value) {
-    this.settings.newsKey = value;
+  getIexKey: function getIexKey() {
+    return _settings[_Type.LoadType.IEX];
   },
   getNewsKey: function getNewsKey() {
-    return this.settings.newsKey;
-  },
-  setWebhoseKey: function setWebhoseKey(value) {
-    this.settings.webhoseKey = value;
+    return _settings[_Type.LoadType.NEWS];
   },
   getWebhoseKey: function getWebhoseKey() {
-    return this.settings.webhoseKey;
+    return _settings[_Type.LoadType.WEBHOSE];
   }
 };
 

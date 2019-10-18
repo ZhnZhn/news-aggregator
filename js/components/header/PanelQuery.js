@@ -24,17 +24,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ModalPane = require('../zhn-moleculs/ModalPane');
+var _Comp = require('../Comp');
 
-var _ModalPane2 = _interopRequireDefault(_ModalPane);
-
-var _MenuItem = require('../zhn-atoms/MenuItem');
-
-var _MenuItem2 = _interopRequireDefault(_MenuItem);
-
-var _ShowHide = require('../zhn-atoms/ShowHide');
-
-var _ShowHide2 = _interopRequireDefault(_ShowHide);
+var _Comp2 = _interopRequireDefault(_Comp);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -80,63 +72,63 @@ var PanelQuery = function (_Component) {
           className = _props.className,
           paneStyle = _props.paneStyle,
           isShow = _props.isShow,
-          onWebhose = _props.onWebhose,
-          onWebhoseBrodcast = _props.onWebhoseBrodcast,
-          onStackTagged = _props.onStackTagged,
-          onStackSearch = _props.onStackSearch,
           onIex = _props.onIex,
           onNewsApi = _props.onNewsApi,
+          onStackTagged = _props.onStackTagged,
+          onStackSearch = _props.onStackSearch,
+          onWebhose = _props.onWebhose,
+          onWebhoseBrodcast = _props.onWebhoseBrodcast,
           onClose = _props.onClose;
 
 
       return _react2.default.createElement(
-        _ModalPane2.default,
+        _Comp2.default.ModalPane,
         {
           isShow: isShow,
           onClose: onClose
         },
         _react2.default.createElement(
-          _ShowHide2.default,
+          _Comp2.default.ShowHide,
           {
             className: className,
             style: paneStyle,
             isShow: isShow
           },
-          _react2.default.createElement(_MenuItem2.default, {
+          _react2.default.createElement(_Comp2.default.MenuItem, {
             ref: this._refFirstItem,
             className: CL_ITEM,
-            caption: 'Webhose: News, Blogs',
-            onClick: onWebhose,
+            caption: 'IEX Cloud: Stock News',
+            onClick: onIex,
             onClose: onClose
           }),
-          _react2.default.createElement(_MenuItem2.default, {
+          _react2.default.createElement(_Comp2.default.MenuItem, {
             className: CL_ITEM,
-            caption: 'Webhose: Broadcast',
-            onClick: onWebhoseBrodcast,
+            caption: 'NewsApi: Search',
+            onClick: onNewsApi,
             onClose: onClose
           }),
-          _react2.default.createElement(_MenuItem2.default, {
+          _react2.default.createElement(_Comp2.default.MenuItem, {
             className: CL_ITEM,
             caption: 'StackOverflow: Tagged Questions',
             onClick: onStackTagged,
             onClose: onClose
           }),
-          _react2.default.createElement(_MenuItem2.default, {
+          _react2.default.createElement(_Comp2.default.MenuItem, {
             className: CL_ITEM,
             caption: 'StackOverflow: Search Questions',
             onClick: onStackSearch,
             onClose: onClose
           }),
-          _react2.default.createElement(_MenuItem2.default, {
+          _react2.default.createElement(_Comp2.default.MenuItem, {
             className: CL_ITEM,
-            caption: 'IEX Stock News',
-            onClick: onIex,
+            caption: 'Webhose: Broadcast',
+            onClick: onWebhoseBrodcast,
             onClose: onClose
           }),
-          _react2.default.createElement(_MenuItem2.default, {
+          _react2.default.createElement(_Comp2.default.MenuItem, {
             className: CL_ITEM,
-            caption: 'NewsApi Headlines',
-            onClick: onNewsApi,
+            caption: 'Webhose: News, Blogs',
+            onClick: onWebhose,
             onClose: onClose
           })
         )

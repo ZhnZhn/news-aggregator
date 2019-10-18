@@ -36,17 +36,9 @@ var _About = require('./About.Style');
 
 var _About2 = _interopRequireDefault(_About);
 
-var _ScrollPane = require('../zhn-atoms/ScrollPane');
+var _Comp = require('../Comp');
 
-var _ScrollPane2 = _interopRequireDefault(_ScrollPane);
-
-var _BrowserCaption = require('../zhn-atoms/BrowserCaption');
-
-var _BrowserCaption2 = _interopRequireDefault(_BrowserCaption);
-
-var _Links = require('../links/Links');
-
-var _Links2 = _interopRequireDefault(_Links);
+var _Comp2 = _interopRequireDefault(_Comp);
 
 var _Step = require('./Step');
 
@@ -63,7 +55,6 @@ var _ContainerStyle2 = _interopRequireDefault(_ContainerStyle);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CL_SHOW = "show-popup";
-//import ShowHide from '../zhn-atoms/ShowHide'
 
 var About = function (_Component) {
   (0, _inherits3.default)(About, _Component);
@@ -71,7 +62,7 @@ var About = function (_Component) {
   function About(props) {
     (0, _classCallCheck3.default)(this, About);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (About.__proto__ || Object.getPrototypeOf(About)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (About.__proto__ || Object.getPrototypeOf(About)).call(this, props));
 
     _this._onStore = function (actionType, data) {
       var _this$props = _this.props,
@@ -86,7 +77,7 @@ var About = function (_Component) {
           _this.setState({ isShow: false });
           break;
         default:
-          return undefined;
+          return void 0;
       }
     };
 
@@ -125,13 +116,13 @@ var About = function (_Component) {
           className: _rootClass,
           style: (0, _extends3.default)({}, _ContainerStyle2.default.aboutRootDiv, _rootStyle, S.ROOT)
         },
-        _react2.default.createElement(_BrowserCaption2.default, {
+        _react2.default.createElement(_Comp2.default.BrowserCaption, {
           rootStyle: S.BROWSER_CAPTION,
-          caption: 'About',
+          caption: 'About News Aggregator',
           onClose: this._handleClose
         }),
         _react2.default.createElement(
-          _ScrollPane2.default,
+          _Comp2.default.ScrollPane,
           {
             className: S.CL_SCROLL_PANE,
             style: S.SCROLL_DIV
@@ -167,22 +158,22 @@ var About = function (_Component) {
                 _react2.default.createElement(
                   'div',
                   null,
-                  _react2.default.createElement(_Links2.default.NewsApi, null)
+                  _react2.default.createElement(_Comp2.default.Link.IexApi, null)
                 ),
                 _react2.default.createElement(
                   'div',
                   null,
-                  _react2.default.createElement(_Links2.default.WebhoseIo, null)
+                  _react2.default.createElement(_Comp2.default.Link.NewsApi, null)
                 ),
                 _react2.default.createElement(
                   'div',
                   null,
-                  _react2.default.createElement(_Links2.default.StackOverflow, null)
+                  _react2.default.createElement(_Comp2.default.Link.StackOverflow, null)
                 ),
                 _react2.default.createElement(
                   'div',
                   null,
-                  _react2.default.createElement(_Links2.default.IexApi, null)
+                  _react2.default.createElement(_Comp2.default.Link.WebhoseIo, null)
                 )
               ),
               _react2.default.createElement(
@@ -241,7 +232,7 @@ var About = function (_Component) {
               _react2.default.createElement(
                 'span',
                 { style: S.PROVIDER },
-                'Webhose,\xA0StackOverflow,\xA0IEX:'
+                'IEX Cloud,\xA0StackOverflow,\xA0Webhose:'
               )
             ),
             _react2.default.createElement(_Step2.default, {

@@ -1,28 +1,28 @@
+import { LoadType as LT } from '../../conf/Type'
+
+const _settings = {};
+
+const _fSetKey = (propName) => (value) => {
+  _settings[propName] = value
+};
 
 const SettingSlice = {
-  settings: {},
-
   exportSettingsFn(){
     return {
-      setNewsKey: this.setNewsKey.bind(this),
-      setWebhoseKey: this.setWebhoseKey.bind(this)
-    }
+      setIexKey: _fSetKey(LT.IEX),
+      setNewsKey: _fSetKey(LT.NEWS),
+      setWebhoseKey: _fSetKey(LT.WEBHOSE)
+    };
   },
-
-  setNewsKey(value){
-    this.settings.newsKey = value
+  getIexKey(){
+    return _settings[LT.IEX];
   },
   getNewsKey(){
-    return this.settings.newsKey;
-  },
-
-  setWebhoseKey(value){
-    this.settings.webhoseKey = value
+    return _settings[LT.NEWS];
   },
   getWebhoseKey(){
-    return this.settings.webhoseKey;
+    return _settings[LT.WEBHOSE];
   }
-
 }
 
 export default SettingSlice

@@ -1,0 +1,14 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/conf/Type.js"
+ ],
+ "file": "../../src/conf/Type.js",
+ "names": [
+  "LoadType",
+  "IEX",
+  "NEWS",
+  "WEBHOSE"
+ ],
+ "mappings": ";;;;;AACO,IAAMA,8BAAW;AACtBC,OAAK,KADiB;AAEtBC,QAAM,MAFgB;AAGtBC,WAAS;AAHa,CAAjB"
+}

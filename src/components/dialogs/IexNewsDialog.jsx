@@ -3,50 +3,43 @@ import React, { Component } from 'react'
 import withTheme from '../hoc/withTheme'
 import styleConfig from './Dialog.Style'
 
-
-import DraggableDialog from '../zhn-moleculs/DraggableDialog'
-import TextField from '../zhn-m-input/TextField'
-import InputSelect from '../zhn-m-input/InputSelect'
-import PoweredBy from '../links/PoweredBy'
-import Link from '../links/Links'
-import RaisedButton from '../zhn-atoms/RaisedButton'
+import A from '../Comp'
 
 import withKeyDown from './decorators/withKeyDown'
 
 const S = {
   POWERED_BY: {
-    marginLeft: '16px',
-    marginBottom: '8px'
+    marginLeft: 16,
+    marginBottom: 8
   }
 };
 
-
-const DF_SORT_BY = { caption: "20 News", value: "20" };
-const _sortByOptions = [
+const RECENT_OPTIONS = [
   { caption: "10 News", value: "10" },
-  { caption: "20 News", value: "20"},
+  { caption: "20 News", value: "20" },
   { caption: "30 News", value: "30" },
   { caption: "40 News", value: "40" },
   { caption: "50 News", value: "50" }
 ];
+const DF_RECENT = RECENT_OPTIONS[1];
 
 @withKeyDown
 class IexNewsDialog extends Component {
   constructor(props){
-    super()
-    this.sortBy = DF_SORT_BY.value
+    super(props)
+    this.sortBy = DF_RECENT.value
     this._handleKeyDownWith = this._handleKeyDownWith.bind(this)
   }
 
-  _selectSortBy = (option) => {
-    this.recent = (option)
+  _selectRecent = (option) => {
+    this.recent = option
        ? option.value
-       : undefined
+       : void 0
   }
 
   _handleLoad = () => {
     const { type, source, itemConf, onLoad } = this.props
-        , _symbol = this.inputSymbol.getValue()
+        , _symbol = this.inputSymbol.getValue();
 
     onLoad({
       type, source, itemConf,
@@ -63,7 +56,7 @@ class IexNewsDialog extends Component {
 
   _createCommandButtons = (S) => {
     return [
-      <RaisedButton
+      <A.RaisedButton
         rootStyle={S.RAISED_ROOT}
         clDiv={S.CL_RAISED_DIV}
         caption="Load"
@@ -73,42 +66,44 @@ class IexNewsDialog extends Component {
     ];
   }
 
+  _refDialogComp = comp => this.dialogComp = comp
+  _refInputSymbol = comp => this.inputSymbol = comp
+
   render(){
     const { isShow, theme, onShow } = this.props
          , TS = theme.createStyle(styleConfig)
          , _commandButtons = this._createCommandButtons(TS.BT);
 
     return (
-      <DraggableDialog
-           ref={comp => this.dialogComp = comp}
+      <A.DraggableDialog
+           ref={this._refDialogComp}
            rootStyle={TS.R_DIALOG}
            browserCaptionStyle={TS.BROWSER_CAPTION}
            styleButton={TS.BT}
-           caption="IEX Stock News"
+           caption="IEX Cloud: Stock News"
            isShow={isShow}
            commandButtons={_commandButtons}
            onKeyDown={this._handleKeyDownWith}
            onShowChart={onShow}
            onClose={this._handleClose}
        >
-         <TextField
+         <A.TextField
+           ref={this._refInputSymbol}
            rootStyle={TS.INPUT_ROOT}
-           ref={comp => this.inputSymbol = comp}
            caption="Stock Symbol (Default: AAPL)"
            initValue="AAPL"
          />
-         <InputSelect
+         <A.InputSelect
            caption="Recent"
-           initItem={DF_SORT_BY}
-           options={_sortByOptions}
+           initItem={DF_RECENT}
+           options={RECENT_OPTIONS}
            styleConfig={TS.SELECT}
-           onSelect={this._selectSortBy}
+           onSelect={this._selectRecent}
          />
-
-        <PoweredBy rootStyle={S.POWERED_BY}>
-          <Link.IexApi />
-        </PoweredBy>
-      </DraggableDialog>
+        <A.Link.PoweredBy rootStyle={S.POWERED_BY}>
+          <A.Link.IexApi />
+        </A.Link.PoweredBy>
+      </A.DraggableDialog>
     );
   }
 }

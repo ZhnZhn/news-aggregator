@@ -1,1 +1,21 @@
-{"version":3,"sources":["../../src/utils/Dom.js"],"names":["_domParser","DOMParser","parseFromString","textInput","documentElement","textContent","Dom","htmlDecode","_textInput","doc"],"mappings":";;;;;AAAA,IAAMA,aAAcC,SAAD,GACR,IAAIA,SAAJ,EADQ,GAER;AACEC,mBAAiB,yBAACC,SAAD,EAAe;AAC7B,WAAO;AACLC,uBAAkB;AAChBC,qBAAcF;AADE;AADb,KAAP;AAKD;AAPJ,CAFX;;AAYA,IAAMG,MAAM;AAEVC,YAFU,sBAECJ,SAFD,EAEW;AAClB,QAAMK,aAAc,OAAOL,SAAP,KAAqB,QAAtB,GACRA,SADQ,GACI,EADvB;AAEA,QAAMM,MAAMT,WAAWE,eAAX,CAA2BM,UAA3B,EAAuC,WAAvC,CAAZ;AACA,WAAOC,IAAIL,eAAJ,CAAoBC,WAA3B;AACF;AAPS,CAAZ;;kBAWeC,G","file":"Dom.js","sourcesContent":["const _domParser = (DOMParser)\r\n         ? new DOMParser()\r\n         : {\r\n             parseFromString: (textInput) => {\r\n                return {\r\n                  documentElement : {\r\n                    textContent : textInput\r\n                  }\r\n                };\r\n              }\r\n           }\r\n\r\nconst Dom = {\r\n\r\n  htmlDecode(textInput){\r\n     const _textInput = (typeof textInput === 'string')\r\n              ? textInput : ''; \r\n     const doc = _domParser.parseFromString(_textInput, \"text/html\");\r\n     return doc.documentElement.textContent;\r\n  }\r\n\r\n};\r\n\r\nexport default Dom\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/Dom.js"
+ ],
+ "file": "../../src/utils/Dom.js",
+ "names": [
+  "_isStr",
+  "str",
+  "_domParser",
+  "DOMParser",
+  "parseFromString",
+  "documentElement",
+  "textContent",
+  "textInput",
+  "Dom",
+  "htmlDecode",
+  "_textInput"
+ ],
+ "mappings": ";;;;;AAAA,IAAMA,SAAS,SAATA,MAAS;AAAA,UAAO,OAAOC,GAAP,KAAe,QAAtB;AAAA,CAAf;;AAEA,IAAMC,aAAaC,YACd,IAAIA,SAAJ,EADc,GAEd;AACEC,oBAAiB;AAAA,aAAc;AAC5BC,0BAAiB;AACbC,yBAAaC;AADA;AADW,OAAd;AAAA;AADnB,CAFL;;AAUA,IAAMC,MAAM;AACVC,aADU,sBACCF,SADD,EACW;AAClB,UAAMG,aAAaV,OAAOO,SAAP,IAAoBA,SAApB,GAAgC,EAAnD;AACA,aAAOL,WACJE,eADI,CACYM,UADZ,EACwB,WADxB,EAEJL,eAFI,CAEYC,WAFnB;AAGF;AANS,CAAZ;;kBASeE,G"
+}

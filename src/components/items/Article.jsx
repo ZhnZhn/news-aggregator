@@ -16,39 +16,39 @@ const CL_ITEM_HEADER = "article-header";
 const S = {
   ROOT: {
     position : 'relative',
+    marginBottom: 5,
+    marginRight: 25,
     lineHeight : 1.5,
-    marginBottom: '5px',
-    marginRight: '25px',
+    borderBottomRightRadius: 2,
     boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
-    borderBottomRightRadius: '2px'
   },
   LEFT_LINE: {
     position: 'absolute',
-    top: '0px',
-    left: 'Opx',
-    width: '3px',
-    height: '8px',
-    backgroundColor: '#3F51B5'
+    top: 0,
+    left: 0,
+    width: 3,
+    height: 8,
+    backgroundColor: '#3f51b5'
   },
   HEADER: {
+    width: '100%',
     backgroundColor: '#404040',
-    paddingTop: '8px',
-    paddingLeft: '16px',
-    paddingBottom: '16px',
+    paddingTop: 8,
+    paddingLeft: 16,
+    paddingBottom: 16,
     lineHeight: 1.5,
-    width : '100%',
-    borderTopRightRadius: '2px',
-    borderBottomRightRadius: '2px',
+    borderTopRightRadius: 2,
+    borderBottomRightRadius: 2
   },
   HEADER_OPEN: {
     borderLeft: '6px solid #607d8b'
   },
   CAPTION: {
     display : 'inline-block',
+    paddingRight: 32,
     color: 'black',
     fontSize: '18px',
     fontWeight : 'bold',
-    paddingRight: '32px',
     cursor: 'pointer'
   },
   CAPTION_OPEN: {
@@ -57,31 +57,41 @@ const S = {
   SVG_CLOSE: {
     float: 'none',
     position: 'absolute',
-    top: '8px',
-    right: '0px'
-  },
-  IMG: {
+    top: 8,
+    right: 0
   }
 }
 
-const _toPublishedAt = (publishedAt='') => {
-  const arr = (publishedAt !== null)
+const _isStr = str => typeof str === 'string';
+const _isNum = n => typeof n === 'number';
+
+const _toDateTime = datetime => {
+  const _d = new Date(datetime)
+  , _dStr = _d.toDateString()
+  , _tStr = _d.toTimeString()
+  , _tArr = _tStr.split(' ');
+  return `${_tArr[0]} ${_dStr}`;
+};
+
+const _toPublishedAt = (publishedAt) => {
+  if (_isNum(publishedAt)) {
+    return _toDateTime(publishedAt);
+  }
+  const _arr = _isStr(publishedAt)
            ? publishedAt.split('T')
            : ['']
-      , time = (arr[1])
-          ? arr[1].replace('Z', '').substring(0, 8)
+      , _time = _arr[1]
+          ? _arr[1].replace('Z', '').substring(0, 8)
           : 'No Time';
-  return `${time} ${arr[0]}`;
-}
+  return `${_time} ${_arr[0]}`;
+};
 
 @withDnDStyle
 class Article extends Component {
-  constructor(props){
-    super()
-    this.state = {
-      isClosed: false,
-      isShow: false
-    }
+
+  state = {
+    isClosed: false,
+    isShow: false
   }
 
   _dragStart = (ev) => {
@@ -108,11 +118,9 @@ class Article extends Component {
   }
 
   _handleToggle = () => {
-    this.setState(prevState => {
-      return {
-        isShow: !prevState.isShow
-      };
-    })
+    this.setState(prevState => ({
+      isShow: !prevState.isShow
+    }))
   }
 
   _handleClose = () => {
