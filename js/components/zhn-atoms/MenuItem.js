@@ -43,9 +43,11 @@ var MenuItem = (_temp2 = _class = function (_Component) {
     }
 
     return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = MenuItem.__proto__ || Object.getPrototypeOf(MenuItem)).call.apply(_ref, [this].concat(args))), _this), _this._hKeyDown = function (event) {
-      if (event.keyCode === 13) {
+      var keyCode = event.keyCode;
+
+      if (keyCode === 13) {
         _this.props.onClick();
-      } else if (event.keyCode === 27) {
+      } else if (keyCode === 27) {
         _this.props.onClose({ target: _this.divNode });
       }
     }, _this._refDivNode = function (node) {
@@ -65,6 +67,7 @@ var MenuItem = (_temp2 = _class = function (_Component) {
         "div",
         {
           ref: this._refDivNode,
+          role: "menuitem",
           className: className,
           tabIndex: "0",
           onClick: onClick,

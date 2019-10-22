@@ -94,7 +94,7 @@ var AppNewsAggregator = function (_Component) {
   function AppNewsAggregator(props) {
     (0, _classCallCheck3.default)(this, AppNewsAggregator);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (AppNewsAggregator.__proto__ || Object.getPrototypeOf(AppNewsAggregator)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (AppNewsAggregator.__proto__ || Object.getPrototypeOf(AppNewsAggregator)).call(this, props));
 
     _this._onStore = function (actionType, themeName) {
       if (actionType === _ComponentActions.TYPES.CHANGE_THEME) {

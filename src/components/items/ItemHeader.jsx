@@ -16,16 +16,15 @@ class ItemHeader extends Component {
         onClick()
       } else {
         onHide()
-        //window.open(url, '_blank')
       }
     } else if (keyCode === 27 && isShow) {
       onClick()
-    } else if (keyCode === 8) {
+    } else if (keyCode === 8 || keyCode === 46) {
       onClose()
     }
   }
 
- _refRoot = node => this.rootNode = node 
+ _refRoot = node => this.rootNode = node
 
   render(){
     const {
@@ -35,7 +34,7 @@ class ItemHeader extends Component {
             onClick
           } = this.props;
     return (
-      <div
+      <div                
         ref={this._refRoot}
         tabIndex="0"
         className={className}

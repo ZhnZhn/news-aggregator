@@ -10,7 +10,8 @@ var crModelMore = function crModelMore(_ref) {
   var onMinWidth = _ref.onMinWidth,
       onInitWidth = _ref.onInitWidth,
       onPlusWidth = _ref.onPlusWidth,
-      onMinusWidth = _ref.onMinusWidth;
+      onMinusWidth = _ref.onMinusWidth,
+      onRemoveItems = _ref.onRemoveItems;
 
   return {
     baseTitleCl: CL_ROW,
@@ -21,6 +22,11 @@ var crModelMore = function crModelMore(_ref) {
       type: 'sub',
       cn: CL_ROW,
       name: 'Resize'
+    }, {
+      cn: CL_ROW,
+      name: 'Remove Items',
+      onClick: onRemoveItems,
+      isClose: true
     }],
     p1: [{
       cn: CL_ROW,

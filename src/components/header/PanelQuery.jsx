@@ -29,17 +29,13 @@ class PanelQuery extends Component {
      onWebhose, onWebhoseBrodcast,
      onClose
    } = this.props;
-
     return (
-      <A.ModalPane
+      <A.ModalPopup
         isShow={isShow}
+        className={className}
+        style={paneStyle}
         onClose={onClose}
       >
-        <A.ShowHide
-          className={className}
-          style={paneStyle}
-          isShow={isShow}
-        >
           <A.MenuItem
             ref={this._refFirstItem}
             className={CL_ITEM}
@@ -77,8 +73,7 @@ class PanelQuery extends Component {
             onClick={onWebhose}
             onClose={onClose}
           />
-        </A.ShowHide>
-     </A.ModalPane>
+       </A.ModalPopup>
     );
   }
 }

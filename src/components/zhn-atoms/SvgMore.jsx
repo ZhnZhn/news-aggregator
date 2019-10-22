@@ -5,8 +5,9 @@ const CL = 'focusable';
 const S = {
   BT: {
     verticalAlign: 'middle',
-    paddingLeft: '6px',
-    paddingRight: '6px'
+    paddingLeft: 6,
+    paddingRight: 6,
+    cursor: 'pointer'
   },
   SVG: {
     fill: 'black',
@@ -16,6 +17,7 @@ const S = {
 
 const SvgMore = ({
   style, svgStyle,
+  title='Menu More',
   btRef,
   onClick
 }) => {
@@ -24,6 +26,7 @@ const SvgMore = ({
       ref={btRef}
       className={CL}
       style={{...S.BT, ...style }}
+      title={title}
       onClick={onClick}
     >
       <svg

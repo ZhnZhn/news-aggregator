@@ -10,6 +10,23 @@ var _typeof3 = _interopRequireDefault(_typeof2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var _isStr = function _isStr(str) {
+	return typeof str === 'string';
+};
+var _isNum = function _isNum(n) {
+	return typeof n === 'number';
+};
+
+var _toDateTime = function _toDateTime(datetime) {
+	var _d = new Date(datetime),
+	    _tStr = _d.toTimeString(),
+	    _tArr = _tStr.split(' '),
+	    _y = _d.getUTCFullYear(),
+	    _m = _d.getUTCMonth() + 1,
+	    _day = _d.getUTCDate();
+	return _tArr[0] + ' ' + _day + '-' + _m + '-' + _y;
+};
+
 var DateUtil = {
 	isValidDate: function isValidDate(str) {
 		// STRING FORMAT yyyy-mm-dd
@@ -88,9 +105,23 @@ var DateUtil = {
 			var arr = strDate.split('-');
 			return Date.UTC(arr[0], parseInt(arr[1], 10) - 1, arr[2]);
 		} else {
-			return undefined;
+			return void 0;
 		}
+	},
+
+
+	toTimeDate: function toTimeDate(publishedAt) {
+		if (_isNum(publishedAt)) {
+			return _toDateTime(publishedAt);
+		}
+		//yyyy-MM-ddTHH:mm:ssZ
+		var _arr = _isStr(publishedAt) ? publishedAt.split('T') : [''],
+		    _arrDate = _arr[0].split('-'),
+		    _date = _arrDate.length === 3 ? _arrDate[2] + '-' + _arrDate[1] + '-' + _arrDate[0] : '',
+		    _time = _arr[1] ? _arr[1].replace('Z', '').substring(0, 8) : 'No Time';
+		return _time + ' ' + _date;
 	}
+
 };
 
 exports.default = DateUtil;

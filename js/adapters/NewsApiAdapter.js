@@ -11,10 +11,7 @@ var _crId2 = _interopRequireDefault(_crId);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _toFirstUpper = function _toFirstUpper(str) {
-  if (typeof str !== 'string') {
-    return '';
-  }
-  return str.charAt(0).toUpperCase() + str.slice(1);
+  return typeof str !== 'string' ? '' : str.charAt(0).toUpperCase() + str.slice(1);
 };
 
 var NewsApiAdapter = {
@@ -34,11 +31,10 @@ var NewsApiAdapter = {
         _json$articles = json.articles,
         articles = _json$articles === undefined ? [] : _json$articles,
         _json$sortBy = json.sortBy,
-        sortBy = _json$sortBy === undefined ? '' : _json$sortBy;
-
-
-    var _sortBy = _toFirstUpper(sortBy),
+        sortBy = _json$sortBy === undefined ? '' : _json$sortBy,
+        _sortBy = _toFirstUpper(sortBy),
         _articles = NewsApiAdapter.toArticles(articles, source);
+
     return {
       source: source,
       articles: _articles,

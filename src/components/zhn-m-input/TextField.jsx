@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import crId from '../../utils/crId'
+
 const CL = {
   SELECT: 'm-select',
   LABEL: 'm-select__label',
@@ -14,50 +16,52 @@ const S = {
      transform: 'scale(1) translate(0px, -6px)'
   },
   LABEL_ON_ERROR: {
-    color: '#F44336'
+    color: '#f44336'
   },
   LINE_ERROR: {
     borderBottom: '2px solid #F44336'
   }
 };
 
+const _isFn = fn => typeof fn === 'function';
+
 class TextField extends Component {
   constructor(props){
-    super()
+    super(props)
+    this._id = props.id || crId()
     this.isFocus = false;
-    this.isOnTest = (typeof props.onTest === 'function') ? true : false
-    this.isOnEnter = (typeof props.onEnter === 'function') ? true : false
-    const _value = (props.initValue) ? props.initValue: '';
+    this.isOnTest = _isFn(props.onTest)
+    this.isOnEnter = _isFn(props.onEnter)
+    const _value = props.initValue || '';
     this.state = {
       value: _value,
-      isPassTest: (this.isOnTest) ? props.onTest(_value) : true
+      isPassTest: this.isOnTest ? props.onTest(_value) : true
     }
   }
 
-  _handleFocusInput = () => {
+  _hFocusInput = () => {
     this.isFocus = true
     this.forceUpdate()
   }
-  _handleBlurInput = () => {
+  _hBlurInput = () => {
     this.isFocus = false
     this.forceUpdate()
   }
 
-  _handleInputChange = (event) => {
-    if (this.isOnTest) {
-      const _isPassTest = this.props.onTest(event.target.value)
-      this.setState({
-        value : event.target.value,
-        isPassTest: _isPassTest
-      })
-    } else {
-      this.setState({ value : event.target.value })
-    }
+  _hInputChange = (event) => {
+    const value = event.target.value;
+    this.setState({
+      value,
+      isPassTest: this.isOnTest
+        ? this.props.onTest(value)
+        : true
+    })
   }
- _handleKeyDown = (event) => {
-   if (event.keyCode === 27){
+ _hKeyDown = (event) => {
+   const { keyCode } = event;
+   if (keyCode === 46 || keyCode === 27){
      this.setState({ value: '' })
-   } else if (event.keyCode === 13 && this.isOnEnter) {
+   } else if (keyCode === 13 && this.isOnEnter) {
      this.props.onEnter(event.target.value)
    }
  }
@@ -66,13 +70,13 @@ class TextField extends Component {
     const { rootStyle, caption, errorMsg='' } = this.props
         , { value, isPassTest } = this.state
         , _labelStyle = (value || this.isFocus)
-            ? undefined
+            ? void 0
             : S.LABEL_TO_INPUT
-        , _labelErrStyle = (isPassTest)
-            ? undefined
+        , _labelErrStyle = isPassTest
+            ? void 0
             : S.LABEL_ON_ERROR
-        , _lineStyle = (isPassTest)
-            ? undefined
+        , _lineStyle = isPassTest
+            ? void 0
             : S.LINE_ERROR;
 
     return (
@@ -83,11 +87,13 @@ class TextField extends Component {
         <label
           className={CL.LABEL}
           style={{..._labelStyle, ..._labelErrStyle}}
+          htmlFor={this._id}
          >
           {caption}
         </label>
         <div className={CL.DIV}>
           <input
+            id={this._id}
             type="text"
             className={CL.INPUT}
             value={value}
@@ -96,10 +102,10 @@ class TextField extends Component {
             autoCapitalize="off"
             spellCheck={false}
             translate={false}
-            onFocus={this._handleFocusInput}
-            onBlur={this._handleBlurInput}
-            onChange={this._handleInputChange}
-            onKeyDown={this._handleKeyDown}
+            onFocus={this._hFocusInput}
+            onBlur={this._hBlurInput}
+            onChange={this._hInputChange}
+            onKeyDown={this._hKeyDown}
           />
           <div className={CL.INPUT_LINE} style={_lineStyle} />
           { _lineStyle && <div className={CL.INPUT_MSG_ERR}>{errorMsg}</div>}

@@ -19,8 +19,9 @@ var CL = 'focusable';
 var S = {
   BT: {
     verticalAlign: 'middle',
-    paddingLeft: '6px',
-    paddingRight: '6px'
+    paddingLeft: 6,
+    paddingRight: 6,
+    cursor: 'pointer'
   },
   SVG: {
     fill: 'black',
@@ -31,6 +32,8 @@ var S = {
 var SvgMore = function SvgMore(_ref) {
   var style = _ref.style,
       svgStyle = _ref.svgStyle,
+      _ref$title = _ref.title,
+      title = _ref$title === undefined ? 'Menu More' : _ref$title,
       btRef = _ref.btRef,
       onClick = _ref.onClick;
 
@@ -40,6 +43,7 @@ var SvgMore = function SvgMore(_ref) {
       ref: btRef,
       className: CL,
       style: (0, _extends3.default)({}, S.BT, style),
+      title: title,
       onClick: onClick
     },
     _react2.default.createElement(

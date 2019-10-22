@@ -60,11 +60,10 @@ var ItemHeader = function (_Component) {
           onClick();
         } else {
           onHide();
-          //window.open(url, '_blank')
         }
       } else if (keyCode === 27 && isShow) {
         onClick();
-      } else if (keyCode === 8) {
+      } else if (keyCode === 8 || keyCode === 46) {
         onClose();
       }
     }, _this._refRoot = function (node) {

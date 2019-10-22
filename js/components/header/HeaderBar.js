@@ -94,14 +94,16 @@ var HeaderBar = function (_Component) {
       _this.btQueryNode = node;
     };
 
-    _this._hClickQuery = function () {
-      _this.setState({ isQuery: !_this.state.isQuery });
+    _this._hToggleQuery = function () {
+      _this.setState(function (prevState) {
+        return {
+          isQuery: !prevState.isQuery
+        };
+      });
     };
 
     _this._hCloseQuery = function (event) {
-      if (!_this.btQueryNode.contains(event.target)) {
-        _this.setState({ isQuery: false });
-      }
+      _this.setState({ isQuery: false });
     };
 
     _this._hClickSource = function (id) {
@@ -123,7 +125,7 @@ var HeaderBar = function (_Component) {
           break;
         default:
       }
-      _this._hClickQuery();
+      _this._hCloseQuery();
     };
 
     _this._hChangeTheme = function () {
@@ -150,6 +152,14 @@ var HeaderBar = function (_Component) {
     };
     return _this;
   }
+  /*
+  _hCloseQuery = (event) => {
+    if (!this.btQueryNode.contains(event.target)){
+      this.setState({ isQuery: false })
+    }
+  }
+  */
+
 
   (0, _createClass3.default)(HeaderBar, [{
     key: 'render',
@@ -157,10 +167,11 @@ var HeaderBar = function (_Component) {
       var _props = this.props,
           store = _props.store,
           LOADING_ACTIONS = _props.LOADING_ACTIONS,
+          theme = _props.theme,
           onNewsSources = _props.onNewsSources,
           onSettings = _props.onSettings,
           onAbout = _props.onAbout,
-          theme = _props.theme,
+          onWebhoseBrodcast = _props.onWebhoseBrodcast,
           S = theme.createStyle(_HeaderBar2.default),
           isQuery = this.state.isQuery;
 
@@ -171,9 +182,9 @@ var HeaderBar = function (_Component) {
           paneStyle: S.PANE,
           className: CL.PANEL_BROWSER,
           isShow: isQuery,
-          onClose: this._hCloseQuery,
+          onClose: this._hToggleQuery,
           onWebhose: this._hWebhose,
-          onWebhoseBrodcast: this.props.onWebhoseBrodcast,
+          onWebhoseBrodcast: onWebhoseBrodcast,
           onStackTagged: this._hStackTagged,
           onStackSearch: this._hStackSearch,
           onIex: this._hIex,
@@ -213,7 +224,7 @@ var HeaderBar = function (_Component) {
               caption: 'Query',
               title: 'Panel Query Source',
               accessKey: 'q',
-              onClick: this._hClickQuery,
+              onClick: this._hToggleQuery,
               onReg: this._onRegQuery
             },
             _react2.default.createElement('span', { className: CL.ARROW_DOWN })
@@ -244,7 +255,7 @@ var HeaderBar = function (_Component) {
               className: CL.BT_ABOUT,
               rootStyle: S.BT.FLAT_ROOT,
               clDiv: S.BT.CL_FLAT_DIV,
-              title: 'About web app News Aggregator',
+              title: 'About News Aggregator',
               accessKey: 'a',
               onClick: onAbout
             },

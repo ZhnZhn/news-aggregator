@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import dt from '../../utils/dt'
+
 import withTheme from '../hoc/withTheme'
 import styleConfig from './Article.Style'
 
@@ -59,32 +61,11 @@ const S = {
     position: 'absolute',
     top: 8,
     right: 0
+  },
+  NONE: {
+    display: 'none'
   }
 }
-
-const _isStr = str => typeof str === 'string';
-const _isNum = n => typeof n === 'number';
-
-const _toDateTime = datetime => {
-  const _d = new Date(datetime)
-  , _dStr = _d.toDateString()
-  , _tStr = _d.toTimeString()
-  , _tArr = _tStr.split(' ');
-  return `${_tArr[0]} ${_dStr}`;
-};
-
-const _toPublishedAt = (publishedAt) => {
-  if (_isNum(publishedAt)) {
-    return _toDateTime(publishedAt);
-  }
-  const _arr = _isStr(publishedAt)
-           ? publishedAt.split('T')
-           : ['']
-      , _time = _arr[1]
-          ? _arr[1].replace('Z', '').substring(0, 8)
-          : 'No Time';
-  return `${_time} ${_arr[0]}`;
-};
 
 @withDnDStyle
 class Article extends Component {
@@ -153,9 +134,9 @@ class Article extends Component {
         , _captionStyle = isShow
              ? {...S.CAPTION, ...S.CAPTION_OPEN}
              : S.CAPTION
-        , _publishedAt = _toPublishedAt(publishedAt)
+        , _publishedAt = dt.toTimeDate(publishedAt)
         , _rootStyle = isClosed
-             ? { display: 'none' }
+             ? S.NONE
              : void 0;
     return (
         <div

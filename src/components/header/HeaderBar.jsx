@@ -39,11 +39,11 @@ class HeaderBar extends Component {
   constructor(props){
     super(props)
 
-    this._hWebhose= this._hClickSource.bind(null, 'Webhose')
-    this._hStackTagged=this._hClickSource.bind(null, 'StackTagged')
-    this._hStackSearch=this._hClickSource.bind(null, 'StackSearch')
-    this._hIex=this._hClickSource.bind(null, 'Iex')
-    this._hNewsApi=this._hClickSource.bind(null, 'NewsSearch')
+    this._hWebhose = this._hClickSource.bind(null, 'Webhose')
+    this._hStackTagged = this._hClickSource.bind(null, 'StackTagged')
+    this._hStackSearch = this._hClickSource.bind(null, 'StackSearch')
+    this._hIex = this._hClickSource.bind(null, 'Iex')
+    this._hNewsApi = this._hClickSource.bind(null, 'NewsSearch')
 
     this.state = {
       isQuery: false
@@ -53,13 +53,20 @@ class HeaderBar extends Component {
   _onRegQuery = (node) => {
     this.btQueryNode = node
   }
-  _hClickQuery = () => {
-    this.setState({ isQuery: !this.state.isQuery })
+  _hToggleQuery = () => {
+    this.setState(prevState => ({
+      isQuery: !prevState.isQuery
+    }))
   }
+  /*
   _hCloseQuery = (event) => {
     if (!this.btQueryNode.contains(event.target)){
       this.setState({ isQuery: false })
     }
+  }
+  */
+  _hCloseQuery = (event) => {
+    this.setState({ isQuery: false })
   }
 
   _hClickSource = (id) => {
@@ -81,7 +88,7 @@ class HeaderBar extends Component {
         break;
       default:
     }
-    this._hClickQuery()
+    this._hCloseQuery()
   }
 
   _hChangeTheme = () => {
@@ -97,9 +104,10 @@ class HeaderBar extends Component {
   render() {
     const {
             store, LOADING_ACTIONS,
+            theme,
             onNewsSources,
             onSettings, onAbout,
-            theme
+            onWebhoseBrodcast
           } = this.props
         , S = theme.createStyle(styleConfig)
         , { isQuery } = this.state;
@@ -109,9 +117,9 @@ class HeaderBar extends Component {
           paneStyle={S.PANE}
           className={CL.PANEL_BROWSER}
           isShow={isQuery}
-          onClose={this._hCloseQuery}
+          onClose={this._hToggleQuery}
           onWebhose={this._hWebhose}
-          onWebhoseBrodcast={this.props.onWebhoseBrodcast}
+          onWebhoseBrodcast={onWebhoseBrodcast}
           onStackTagged={this._hStackTagged}
           onStackSearch={this._hStackSearch}
           onIex={this._hIex}
@@ -147,7 +155,7 @@ class HeaderBar extends Component {
              caption="Query"
              title="Panel Query Source"
              accessKey="q"
-             onClick={this._hClickQuery}
+             onClick={this._hToggleQuery}
              onReg={this._onRegQuery}
           >
             <span className={CL.ARROW_DOWN} />
@@ -172,7 +180,7 @@ class HeaderBar extends Component {
               className={CL.BT_ABOUT}
               rootStyle={S.BT.FLAT_ROOT}
               clDiv={S.BT.CL_FLAT_DIV}
-              title="About web app News Aggregator"
+              title="About News Aggregator"
               accessKey="a"
               onClick={onAbout}
             >

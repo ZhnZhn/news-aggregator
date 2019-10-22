@@ -30,6 +30,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _dt = require('../../utils/dt');
+
+var _dt2 = _interopRequireDefault(_dt);
+
 var _withTheme = require('../hoc/withTheme');
 
 var _withTheme2 = _interopRequireDefault(_withTheme);
@@ -103,31 +107,10 @@ var S = {
     position: 'absolute',
     top: 8,
     right: 0
+  },
+  NONE: {
+    display: 'none'
   }
-};
-
-var _isStr = function _isStr(str) {
-  return typeof str === 'string';
-};
-var _isNum = function _isNum(n) {
-  return typeof n === 'number';
-};
-
-var _toDateTime = function _toDateTime(datetime) {
-  var _d = new Date(datetime),
-      _dStr = _d.toDateString(),
-      _tStr = _d.toTimeString(),
-      _tArr = _tStr.split(' ');
-  return _tArr[0] + ' ' + _dStr;
-};
-
-var _toPublishedAt = function _toPublishedAt(publishedAt) {
-  if (_isNum(publishedAt)) {
-    return _toDateTime(publishedAt);
-  }
-  var _arr = _isStr(publishedAt) ? publishedAt.split('T') : [''],
-      _time = _arr[1] ? _arr[1].replace('Z', '').substring(0, 8) : 'No Time';
-  return _time + ' ' + _arr[0];
 };
 
 var Article = (0, _withDnDStyle2.default)(_class = function (_Component) {
@@ -211,8 +194,8 @@ var Article = (0, _withDnDStyle2.default)(_class = function (_Component) {
           isShow = _state.isShow,
           _headerStyle = isShow ? (0, _extends3.default)({}, S.HEADER, S.HEADER_OPEN) : S.HEADER,
           _captionStyle = isShow ? (0, _extends3.default)({}, S.CAPTION, S.CAPTION_OPEN) : S.CAPTION,
-          _publishedAt = _toPublishedAt(publishedAt),
-          _rootStyle = isClosed ? { display: 'none' } : void 0;
+          _publishedAt = _dt2.default.toTimeDate(publishedAt),
+          _rootStyle = isClosed ? S.NONE : void 0;
 
       return _react2.default.createElement(
         'div',

@@ -80,58 +80,51 @@ var PanelQuery = function (_Component) {
           onWebhoseBrodcast = _props.onWebhoseBrodcast,
           onClose = _props.onClose;
 
-
       return _react2.default.createElement(
-        _Comp2.default.ModalPane,
+        _Comp2.default.ModalPopup,
         {
           isShow: isShow,
+          className: className,
+          style: paneStyle,
           onClose: onClose
         },
-        _react2.default.createElement(
-          _Comp2.default.ShowHide,
-          {
-            className: className,
-            style: paneStyle,
-            isShow: isShow
-          },
-          _react2.default.createElement(_Comp2.default.MenuItem, {
-            ref: this._refFirstItem,
-            className: CL_ITEM,
-            caption: 'IEX Cloud: Stock News',
-            onClick: onIex,
-            onClose: onClose
-          }),
-          _react2.default.createElement(_Comp2.default.MenuItem, {
-            className: CL_ITEM,
-            caption: 'NewsApi: Search',
-            onClick: onNewsApi,
-            onClose: onClose
-          }),
-          _react2.default.createElement(_Comp2.default.MenuItem, {
-            className: CL_ITEM,
-            caption: 'StackOverflow: Tagged Questions',
-            onClick: onStackTagged,
-            onClose: onClose
-          }),
-          _react2.default.createElement(_Comp2.default.MenuItem, {
-            className: CL_ITEM,
-            caption: 'StackOverflow: Search Questions',
-            onClick: onStackSearch,
-            onClose: onClose
-          }),
-          _react2.default.createElement(_Comp2.default.MenuItem, {
-            className: CL_ITEM,
-            caption: 'Webhose: Broadcast',
-            onClick: onWebhoseBrodcast,
-            onClose: onClose
-          }),
-          _react2.default.createElement(_Comp2.default.MenuItem, {
-            className: CL_ITEM,
-            caption: 'Webhose: News, Blogs',
-            onClick: onWebhose,
-            onClose: onClose
-          })
-        )
+        _react2.default.createElement(_Comp2.default.MenuItem, {
+          ref: this._refFirstItem,
+          className: CL_ITEM,
+          caption: 'IEX Cloud: Stock News',
+          onClick: onIex,
+          onClose: onClose
+        }),
+        _react2.default.createElement(_Comp2.default.MenuItem, {
+          className: CL_ITEM,
+          caption: 'NewsApi: Search',
+          onClick: onNewsApi,
+          onClose: onClose
+        }),
+        _react2.default.createElement(_Comp2.default.MenuItem, {
+          className: CL_ITEM,
+          caption: 'StackOverflow: Tagged Questions',
+          onClick: onStackTagged,
+          onClose: onClose
+        }),
+        _react2.default.createElement(_Comp2.default.MenuItem, {
+          className: CL_ITEM,
+          caption: 'StackOverflow: Search Questions',
+          onClick: onStackSearch,
+          onClose: onClose
+        }),
+        _react2.default.createElement(_Comp2.default.MenuItem, {
+          className: CL_ITEM,
+          caption: 'Webhose: Broadcast',
+          onClick: onWebhoseBrodcast,
+          onClose: onClose
+        }),
+        _react2.default.createElement(_Comp2.default.MenuItem, {
+          className: CL_ITEM,
+          caption: 'Webhose: News, Blogs',
+          onClick: onWebhose,
+          onClose: onClose
+        })
       );
     }
   }]);

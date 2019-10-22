@@ -1,11 +1,13 @@
 import DraggableDialog from './DraggableDialog'
 import ModalDialog from './ModalDialog'
-import ModalPane from '../zhn-moleculs/ModalPane'
+import ModalPane from './ModalPane'
+import ModalPopup from './ModalPopup'
 
 const A = {
   DraggableDialog,
   ModalDialog,
-  ModalPane
+  ModalPane,
+  ModalPopup
 };
 
 export default A

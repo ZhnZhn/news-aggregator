@@ -26,7 +26,7 @@ class ModalPane extends Component {
       && this.rootNode.contains
       && !this.rootNode.contains(event.target)
     ){
-      event.stopPropagation()
+      event.stopPropagation()      
       this.props.onClose(event)
     }
   }

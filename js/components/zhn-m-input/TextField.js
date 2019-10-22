@@ -28,6 +28,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _crId = require('../../utils/crId');
+
+var _crId2 = _interopRequireDefault(_crId);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CL = {
@@ -44,11 +48,15 @@ var S = {
     transform: 'scale(1) translate(0px, -6px)'
   },
   LABEL_ON_ERROR: {
-    color: '#F44336'
+    color: '#f44336'
   },
   LINE_ERROR: {
     borderBottom: '2px solid #F44336'
   }
+};
+
+var _isFn = function _isFn(fn) {
+  return typeof fn === 'function';
 };
 
 var TextField = function (_Component) {
@@ -57,42 +65,41 @@ var TextField = function (_Component) {
   function TextField(props) {
     (0, _classCallCheck3.default)(this, TextField);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (TextField.__proto__ || Object.getPrototypeOf(TextField)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (TextField.__proto__ || Object.getPrototypeOf(TextField)).call(this, props));
 
-    _this._handleFocusInput = function () {
+    _this._hFocusInput = function () {
       _this.isFocus = true;
       _this.forceUpdate();
     };
 
-    _this._handleBlurInput = function () {
+    _this._hBlurInput = function () {
       _this.isFocus = false;
       _this.forceUpdate();
     };
 
-    _this._handleInputChange = function (event) {
-      if (_this.isOnTest) {
-        var _isPassTest = _this.props.onTest(event.target.value);
-        _this.setState({
-          value: event.target.value,
-          isPassTest: _isPassTest
-        });
-      } else {
-        _this.setState({ value: event.target.value });
-      }
+    _this._hInputChange = function (event) {
+      var value = event.target.value;
+      _this.setState({
+        value: value,
+        isPassTest: _this.isOnTest ? _this.props.onTest(value) : true
+      });
     };
 
-    _this._handleKeyDown = function (event) {
-      if (event.keyCode === 27) {
+    _this._hKeyDown = function (event) {
+      var keyCode = event.keyCode;
+
+      if (keyCode === 46 || keyCode === 27) {
         _this.setState({ value: '' });
-      } else if (event.keyCode === 13 && _this.isOnEnter) {
+      } else if (keyCode === 13 && _this.isOnEnter) {
         _this.props.onEnter(event.target.value);
       }
     };
 
+    _this._id = props.id || (0, _crId2.default)();
     _this.isFocus = false;
-    _this.isOnTest = typeof props.onTest === 'function' ? true : false;
-    _this.isOnEnter = typeof props.onEnter === 'function' ? true : false;
-    var _value = props.initValue ? props.initValue : '';
+    _this.isOnTest = _isFn(props.onTest);
+    _this.isOnEnter = _isFn(props.onEnter);
+    var _value = props.initValue || '';
     _this.state = {
       value: _value,
       isPassTest: _this.isOnTest ? props.onTest(_value) : true
@@ -111,9 +118,9 @@ var TextField = function (_Component) {
           _state = this.state,
           value = _state.value,
           isPassTest = _state.isPassTest,
-          _labelStyle = value || this.isFocus ? undefined : S.LABEL_TO_INPUT,
-          _labelErrStyle = isPassTest ? undefined : S.LABEL_ON_ERROR,
-          _lineStyle = isPassTest ? undefined : S.LINE_ERROR;
+          _labelStyle = value || this.isFocus ? void 0 : S.LABEL_TO_INPUT,
+          _labelErrStyle = isPassTest ? void 0 : S.LABEL_ON_ERROR,
+          _lineStyle = isPassTest ? void 0 : S.LINE_ERROR;
 
       return _react2.default.createElement(
         'div',
@@ -125,7 +132,8 @@ var TextField = function (_Component) {
           'label',
           {
             className: CL.LABEL,
-            style: (0, _extends3.default)({}, _labelStyle, _labelErrStyle)
+            style: (0, _extends3.default)({}, _labelStyle, _labelErrStyle),
+            htmlFor: this._id
           },
           caption
         ),
@@ -133,6 +141,7 @@ var TextField = function (_Component) {
           'div',
           { className: CL.DIV },
           _react2.default.createElement('input', {
+            id: this._id,
             type: 'text',
             className: CL.INPUT,
             value: value,
@@ -141,10 +150,10 @@ var TextField = function (_Component) {
             autoCapitalize: 'off',
             spellCheck: false,
             translate: false,
-            onFocus: this._handleFocusInput,
-            onBlur: this._handleBlurInput,
-            onChange: this._handleInputChange,
-            onKeyDown: this._handleKeyDown
+            onFocus: this._hFocusInput,
+            onBlur: this._hBlurInput,
+            onChange: this._hInputChange,
+            onKeyDown: this._hKeyDown
           }),
           _react2.default.createElement('div', { className: CL.INPUT_LINE, style: _lineStyle }),
           _lineStyle && _react2.default.createElement(

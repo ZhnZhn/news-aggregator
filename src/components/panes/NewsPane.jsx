@@ -26,35 +26,35 @@ const styles = {
     backgroundColor: '#4D4D4D',
     padding : '0px 0px 3px 0px',
     position: 'relative',
-    borderRadius: '4px',
-    width: '635px',
+    borderRadius: 4,
+    width: 635,
     height: 'calc(100vh - 71px)',
-    minHeight: '500px',
-    marginLeft: '16px',
+    minHeight: 500,
+    marginLeft: 16,
     boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
     overflowY: 'hidden',
     overflowX : 'hidden'
   },
   brCaption: {
-    marginRight: '-2px'
+    marginRight: -2
   },
   hrzResize : {
     position : 'absolute',
-    top : '30px',
+    top : 30,
     right: '0'
   },
   btCircle: {
-    marginLeft: '16px',
-    marginRight: '6px'
+    marginLeft: 16,
+    marginRight: 6
   },
   scrollDiv : {
     overflowY: 'auto',
     height: '92%',
-    paddingRight: '10px'
+    paddingRight: 10
   },
   chartDiv : {
     overflowY: 'auto',
-    height : '680px'
+    height : 680
   },
   transitionOption : {
     transitionName : "scaleY",
@@ -84,6 +84,7 @@ class NewsPane extends Component {
       onInitWidth: this._resizeTo.bind(this, RESIZE_INIT_WIDTH),
       onPlusWidth: this._plusToWidth,
       onMinusWidth: this._minusToWidth,
+      onRemoveItems: props.onRemoveItems
     })
 
     this.state = {
@@ -233,6 +234,7 @@ class NewsPane extends Component {
           >
             <CircleButton
               caption="R"
+              title="Remove Items"
               style={styles.btCircle}
               onClick={onRemoveItems}
             />

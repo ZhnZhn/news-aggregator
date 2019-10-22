@@ -36,10 +36,10 @@ var S = {
   DESCR: {
     display: 'block',
     lineHeight: 1.8,
-    paddingTop: '8px',
-    paddingLeft: '16px',
-    paddingRight: '16px',
-    paddingBottom: '4px',
+    paddingTop: 8,
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingBottom: 4,
     color: '#121212',
     fontFamily: 'Verdana, Arial, sans-serif',
     fontSize: '16px',
@@ -47,19 +47,24 @@ var S = {
     //fontFamily: '"Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif'
   },
   AUTHOR_ROOT: {
-    paddingTop: '6px',
-    paddingLeft: '16px',
-    paddingRight: '8px',
-    paddingBottom: '6px'
+    display: 'flex',
+    justifyContent: 'space-between',
+    padding: '6px 8px 6px 16px'
+    /*paddingTop: 6,
+    paddingLeft: 16,
+    paddingRight: 8,
+    paddingBottom: 6*/
   },
   AUTHOR: {
-    float: 'right',
-    fontWeight: 'bold',
+    //float: 'right',
     color: 'gray',
-    paddingRight: '24px'
+    paddingRight: 16,
+    fontWeight: 'bold'
   },
   DATE: {
     color: 'gray',
+    flexShrink: 0,
+    paddingRight: 32,
     fontWeight: 'bold'
   }
 };
@@ -78,7 +83,7 @@ var ArticleDescr = function (_Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = ArticleDescr.__proto__ || Object.getPrototypeOf(ArticleDescr)).call.apply(_ref, [this].concat(args))), _this), _this._handleKeyDown = function (event) {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = ArticleDescr.__proto__ || Object.getPrototypeOf(ArticleDescr)).call.apply(_ref, [this].concat(args))), _this), _this._hKeyDown = function (event) {
       var keyCode = event.keyCode;
       if (keyCode === 13) {
         window.open(_this.props.url, '_blank');
@@ -109,9 +114,10 @@ var ArticleDescr = function (_Component) {
         _react2.default.createElement(
           'div',
           {
+            role: 'link',
             tabIndex: '0',
             className: CL_DIV,
-            onKeyDown: this._handleKeyDown
+            onKeyDown: this._hKeyDown
           },
           _react2.default.createElement(
             'a',

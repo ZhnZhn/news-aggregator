@@ -3,7 +3,8 @@ const CL_ROW = 'menu-more__item not-selected';
 
 const crModelMore = ({
   onMinWidth, onInitWidth,
-  onPlusWidth, onMinusWidth
+  onPlusWidth, onMinusWidth,
+  onRemoveItems
 }) => {
   return {
     baseTitleCl: CL_ROW,
@@ -15,6 +16,11 @@ const crModelMore = ({
         type: 'sub',
         cn: CL_ROW,
         name: 'Resize'
+      },{
+        cn: CL_ROW,
+        name: 'Remove Items',
+        onClick: onRemoveItems,
+        isClose: true
       }
     ],
     p1: [

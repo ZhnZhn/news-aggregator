@@ -26,7 +26,7 @@ const _fSettings = () => Actions.showModalDialog.bind(
 
 class AppNewsAggregator extends Component {
   constructor(props){
-    super()
+    super(props)
     this.showNewsBrowser = _fShowBrowser('NEWS_API_ORG')
 
     this.showWebhoseWeb = _fShowDialog(QUERY.WEBHOSE_WEB)

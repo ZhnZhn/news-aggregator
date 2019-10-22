@@ -8,7 +8,8 @@
   "A",
   "DraggableDialog",
   "ModalDialog",
-  "ModalPane"
+  "ModalPane",
+  "ModalPopup"
  ],
- "mappings": ";;;;;;AAAA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,4CADQ;AAERC,oCAFQ;AAGRC;AAHQ,CAAV;;kBAMeH,C"
+ "mappings": ";;;;;;AAAA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,4CADQ;AAERC,oCAFQ;AAGRC,gCAHQ;AAIRC;AAJQ,CAAV;;kBAOeJ,C"
 }
