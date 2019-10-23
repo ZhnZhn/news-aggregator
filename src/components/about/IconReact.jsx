@@ -1,10 +1,10 @@
 import React from 'react';
 
-const IconReact = () =>
+const IconReact = () => (
    <a
       className="icon__react"
       title="React"
-      href="https://facebook.github.io/react/"
+      href="https://reactjs.org"
       tabIndex="-1"
    >
     <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round">
@@ -26,6 +26,6 @@ const IconReact = () =>
   C285.567,460.886,244.898,410.344,210.821,351.482z"/>
     </svg>
   </a>
-
+)
 
 export default IconReact

@@ -6,7 +6,6 @@ import styleConfig from './HeaderBar.Style'
 import LoadingProgress from './LoadingProgress'
 import IconAppLogo from './IconAppLogo'
 import AppLabel from './AppLabel'
-import GitHubLink from './GitHubLink'
 import A from '../zhn-atoms/Atoms'
 import PanelQuery from './PanelQuery'
 
@@ -19,7 +18,6 @@ const CL = {
     LABEL_APP: "header__label-app",
     BROWSER_BTS: "header__browser-bts",
     ARROW_DOWN: "arrow-down",
-    GITHUB_LINK: "header__github-link",
     BTS: "header__bts",
     BT_ABOUT: "header__bt-about"
 };
@@ -91,6 +89,7 @@ class HeaderBar extends Component {
     this._hCloseQuery()
   }
 
+  /*
   _hChangeTheme = () => {
     const { theme, onChangeTheme } = this.props;
     if (theme.themeName === 'GREY'){
@@ -100,6 +99,7 @@ class HeaderBar extends Component {
     }
     onChangeTheme()
   }
+  */
 
   render() {
     const {
@@ -132,13 +132,13 @@ class HeaderBar extends Component {
         <IconAppLogo
            className={CL.ICON_APP}
            title={TITLE}
-           onClick={this._hChangeTheme}
+           //onClick={this._hChangeTheme}
         />
         <AppLabel
            className={CL.LABEL_APP}
            caption={TITLE}
-           title="Click to Change UI Theme"
-           onClick={this._hChangeTheme}
+           //title="News Aggregator"
+           //onClick={this._hChangeTheme}
         />
         <span className={CL.BROWSER_BTS}>
           <A.FlatButton
@@ -161,11 +161,6 @@ class HeaderBar extends Component {
             <span className={CL.ARROW_DOWN} />
           </A.ModalButton>
         </span>
-        <GitHubLink
-          className={CL.GITHUB_LINK}
-          title="GitHub Repository"
-          href="https://github.com/zhnzhn/news-aggregator"
-        />
         <div className={CL.BTS}>
             <A.FlatButton
               rootStyle={S.BT.FLAT_ROOT}

@@ -6,9 +6,9 @@ import {TYPES as LP} from '../actions/LoadingProgressActions'
 const Logic = {
   loadNewsCompleted(slice, news){
     const { source, articles=[], sortBy } = news;
-    slice[source] = (slice[source])
-            ? articles.concat(slice[source])
-            : articles
+    slice[source] = slice[source]
+      ? articles.concat(slice[source])
+      : articles
     return {
       id: source,
       data: slice[source],
@@ -60,7 +60,7 @@ const NewsSlice = {
     this.triggerLoadingProgress(LP.LOADING_COMPLETE)
   },
   onLoadNewsFailed(option){
-    ComponentActions.showModalDialog('ALERT_DIALOG', option)    
+    ComponentActions.showModalDialog('ALERT_DIALOG', option)
     this.triggerLoadingProgress(LP.LOADING_FAILED)
   },
 

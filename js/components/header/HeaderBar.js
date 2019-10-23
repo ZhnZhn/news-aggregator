@@ -44,10 +44,6 @@ var _AppLabel = require('./AppLabel');
 
 var _AppLabel2 = _interopRequireDefault(_AppLabel);
 
-var _GitHubLink = require('./GitHubLink');
-
-var _GitHubLink2 = _interopRequireDefault(_GitHubLink);
-
 var _Atoms = require('../zhn-atoms/Atoms');
 
 var _Atoms2 = _interopRequireDefault(_Atoms);
@@ -67,7 +63,6 @@ var CL = {
   LABEL_APP: "header__label-app",
   BROWSER_BTS: "header__browser-bts",
   ARROW_DOWN: "arrow-down",
-  GITHUB_LINK: "header__github-link",
   BTS: "header__bts",
   BT_ABOUT: "header__bt-about"
 };
@@ -128,19 +123,6 @@ var HeaderBar = function (_Component) {
       _this._hCloseQuery();
     };
 
-    _this._hChangeTheme = function () {
-      var _this$props = _this.props,
-          theme = _this$props.theme,
-          onChangeTheme = _this$props.onChangeTheme;
-
-      if (theme.themeName === 'GREY') {
-        theme.setThemeName('WHITE');
-      } else {
-        theme.setThemeName('GREY');
-      }
-      onChangeTheme();
-    };
-
     _this._hWebhose = _this._hClickSource.bind(null, 'Webhose');
     _this._hStackTagged = _this._hClickSource.bind(null, 'StackTagged');
     _this._hStackSearch = _this._hClickSource.bind(null, 'StackSearch');
@@ -163,6 +145,20 @@ var HeaderBar = function (_Component) {
 
   (0, _createClass3.default)(HeaderBar, [{
     key: 'render',
+
+
+    /*
+    _hChangeTheme = () => {
+      const { theme, onChangeTheme } = this.props;
+      if (theme.themeName === 'GREY'){
+        theme.setThemeName('WHITE')
+      } else {
+        theme.setThemeName('GREY')
+      }
+      onChangeTheme()
+    }
+    */
+
     value: function render() {
       var _props = this.props,
           store = _props.store,
@@ -196,14 +192,14 @@ var HeaderBar = function (_Component) {
         }),
         _react2.default.createElement(_IconAppLogo2.default, {
           className: CL.ICON_APP,
-          title: TITLE,
-          onClick: this._hChangeTheme
+          title: TITLE
+          //onClick={this._hChangeTheme}
         }),
         _react2.default.createElement(_AppLabel2.default, {
           className: CL.LABEL_APP,
-          caption: TITLE,
-          title: 'Click to Change UI Theme',
-          onClick: this._hChangeTheme
+          caption: TITLE
+          //title="News Aggregator"
+          //onClick={this._hChangeTheme}
         }),
         _react2.default.createElement(
           'span',
@@ -230,11 +226,6 @@ var HeaderBar = function (_Component) {
             _react2.default.createElement('span', { className: CL.ARROW_DOWN })
           )
         ),
-        _react2.default.createElement(_GitHubLink2.default, {
-          className: CL.GITHUB_LINK,
-          title: 'GitHub Repository',
-          href: 'https://github.com/zhnzhn/news-aggregator'
-        }),
         _react2.default.createElement(
           'div',
           { className: CL.BTS },

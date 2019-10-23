@@ -141,16 +141,12 @@ var About = function (_Component) {
                   { style: S.APP_TITLE },
                   'News Agreggator'
                 ),
-                ' is RESTFul client for reading news.'
+                ' is web app for browsing news.'
               ),
               _react2.default.createElement(
                 'p',
                 null,
-                _react2.default.createElement(
-                  'span',
-                  null,
-                  'News headline providers:\xA0'
-                )
+                'News headlines providers:\xA0'
               ),
               _react2.default.createElement(
                 'p',
@@ -179,12 +175,12 @@ var About = function (_Component) {
               _react2.default.createElement(
                 'p',
                 { style: S.MARGIN_TOP },
-                'Provider\'s API Keys is required for using app.'
+                'Personal API Keys from providers are required.'
               ),
               _react2.default.createElement(
                 'p',
                 null,
-                'API Keys can be set in Settings Dialog.'
+                'API Keys can be set by means off Settings Dialog.'
               )
             ),
             _react2.default.createElement(
@@ -193,28 +189,23 @@ var About = function (_Component) {
               _react2.default.createElement(
                 'span',
                 { style: S.BLACK },
-                'For\xA0'
-              ),
-              _react2.default.createElement(
-                'span',
-                { style: S.PROVIDER },
-                'NewsApi:'
+                'Browsing by new source:'
               )
             ),
             _react2.default.createElement(_Step2.default, {
               styleRoot: S.STEP,
               step: '1',
-              description: 'Choose a news source in News Providers.'
+              description: 'Please, click button News in header.'
             }),
             _react2.default.createElement(_Step2.default, {
               styleRoot: S.STEP,
               step: '2',
-              description: 'Select sortBy in draggable Dialog.'
+              description: 'Choose a topic and news source.'
             }),
             _react2.default.createElement(_Step2.default, {
               styleRoot: S.STEP,
               step: '3',
-              description: 'Click a button Load in Dialog.'
+              description: 'Click a button Load in dialog.'
             }),
             _react2.default.createElement(
               'p',
@@ -227,33 +218,23 @@ var About = function (_Component) {
               _react2.default.createElement(
                 'span',
                 { style: S.BLACK },
-                'For\xA0'
-              ),
-              _react2.default.createElement(
-                'span',
-                { style: S.PROVIDER },
-                'IEX Cloud,\xA0StackOverflow,\xA0Webhose:'
+                'Browsing by search terms:'
               )
             ),
             _react2.default.createElement(_Step2.default, {
               styleRoot: S.STEP,
               step: '1',
-              description: 'Click button Query in header.'
+              description: 'Please, click button Query in header.'
             }),
             _react2.default.createElement(_Step2.default, {
               styleRoot: S.STEP,
               step: '2',
-              description: 'Choose Data Provider in modal pane.'
+              description: 'Choose news source in modal pane.'
             }),
             _react2.default.createElement(_Step2.default, {
               styleRoot: S.STEP,
               step: '3',
-              description: 'Enter and choose parameters in Dialog.'
-            }),
-            _react2.default.createElement(_Step2.default, {
-              styleRoot: S.STEP,
-              step: '4',
-              description: 'Click a button Load in Dialog.'
+              description: 'Click a button Load in dialog.'
             }),
             _react2.default.createElement(_IconLogoBar2.default, null),
             _react2.default.createElement(

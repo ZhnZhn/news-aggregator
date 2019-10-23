@@ -70,11 +70,11 @@ class About extends Component {
            <div style={S.DIV_WRAPPER}>
               <div style={S.DIV_TEXT}>
                  <p>
-                   <span style={S.APP_TITLE}>News Agreggator</span> is RESTFul client for reading news.
+                   <span style={S.APP_TITLE}>News Agreggator</span> is web app for browsing news.
                  </p>
                  <p>
-                   <span>News headline providers:&nbsp;</span>
-                </p>
+                   News headlines providers:&nbsp;
+                 </p>
                 <p>
                   <div>
                     <A.Link.IexApi />
@@ -90,60 +90,51 @@ class About extends Component {
                    </div>
                  </p>
                  <p style={S.MARGIN_TOP}>
-                   Provider's API Keys is required for using app.
+                   Personal API Keys from providers are required.
                  </p>
                  <p>
-                   API Keys can be set in Settings Dialog.
+                   API Keys can be set by means off Settings Dialog.
                  </p>
              </div>
              <p style={S.MARGIN_TOP}>
-               <span style={S.BLACK}>For&nbsp;</span>
-               <span style={S.PROVIDER}>NewsApi:</span>
+               <span style={S.BLACK}>Browsing by new source:</span>
              </p>
              <Step
                 styleRoot={S.STEP}
                 step="1"
-                description="Choose a news source in News Providers."
+                description="Please, click button News in header."
              />
              <Step
                 styleRoot={S.STEP}
                 step="2"
-                description="Select sortBy in draggable Dialog."
+                description="Choose a topic and news source."
              />
              <Step
                 styleRoot={S.STEP}
                 step="3"
-                description="Click a button Load in Dialog."
+                description="Click a button Load in dialog."
              />
              <p style={S.MARGIN_TOP}>
                Not all news source support all sortBy values.
              </p>
 
              <p style={S.MARGIN_TOP}>
-               <span style={S.BLACK}>For&nbsp;</span>
-               <span style={S.PROVIDER}>
-                  IEX Cloud,&nbsp;StackOverflow,&nbsp;Webhose:
-                </span>
+               <span style={S.BLACK}>Browsing by search terms:</span>
              </p>
              <Step
                 styleRoot={S.STEP}
                 step="1"
-                description="Click button Query in header."
+                description="Please, click button Query in header."
              />
              <Step
                 styleRoot={S.STEP}
                 step="2"
-                description="Choose Data Provider in modal pane."
+                description="Choose news source in modal pane."
              />
              <Step
                 styleRoot={S.STEP}
                 step="3"
-                description="Enter and choose parameters in Dialog."
-             />
-             <Step
-                styleRoot={S.STEP}
-                step="4"
-                description="Click a button Load in Dialog."
+                description="Click a button Load in dialog."
              />
              <IconLogoBar />
              <p>

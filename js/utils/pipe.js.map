@@ -1,0 +1,18 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/pipe.js"
+ ],
+ "file": "../../src/utils/pipe.js",
+ "names": [
+  "pipe",
+  "fns",
+  "length",
+  "arg",
+  "x",
+  "reduce",
+  "v",
+  "fn"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,OAAO,SAAPA,IAAO,GAAY;AAAA,oCAARC,GAAQ;AAARA,OAAQ;AAAA;;AACvB,MAAIA,IAAIC,MAAJ,KAAe,CAAnB,EAAsB;AACpB,WAAO;AAAA,aAAOC,GAAP;AAAA,KAAP;AACD;AACD,MAAIF,IAAIC,MAAJ,KAAe,CAAnB,EAAsB;AACpB,WAAOD,IAAI,CAAJ,CAAP;AACD;AACD,SAAO,UAACG,CAAD;AAAA,WAAOH,IAAII,MAAJ,CAAW,UAACC,CAAD,EAAIC,EAAJ;AAAA,aAAWA,GAAGD,CAAH,CAAX;AAAA,KAAX,EAA6BF,CAA7B,CAAP;AAAA,GAAP;AACD,CARD;;kBAUeJ,I"
+}

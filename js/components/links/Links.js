@@ -38,7 +38,7 @@ var StackOverflow = exports.StackOverflow = (0, _withProps2.default)({
 })(_Link2.default);
 
 var IexApi = exports.IexApi = (0, _withProps2.default)({
-  title: "IEX Cloud API",
+  title: "IEX Cloud",
   href: "https://iexcloud.io",
   tabIndex: "-1"
 })(_Link2.default);

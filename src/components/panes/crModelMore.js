@@ -18,7 +18,7 @@ const crModelMore = ({
         name: 'Resize'
       },{
         cn: CL_ROW,
-        name: 'Remove Items',
+        name: 'Remove All Items',
         onClick: onRemoveItems,
         isClose: true
       }

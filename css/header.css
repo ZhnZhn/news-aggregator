@@ -15,8 +15,7 @@
   top: 7px;
   left: 16px;
   width: 32px;
-  height: 32px;
-  cursor: pointer; }
+  height: 32px; }
 
 .header__label-app {
   display: inline-block;
@@ -26,8 +25,7 @@
   padding-left: 10px;
   padding-right: 10px;
   font-size: 18px;
-  font-weight: bold;
-  cursor: pointer; }
+  font-weight: bold; }
 
 .header__browser-bts {
   display: inline-block; }
@@ -52,28 +50,9 @@
 .header__bts {
   position: relative;
   float: right;
-  margin-right: 80px; }
-
-.header__github-link {
-  display: inline-block;
-  position: absolute;
-  top: 0px;
-  right: 24px;
-  text-decoration: none;
-  fill: grey;
-  transition: fill 200ms ease-out; }
-
-.header__github-link svg {
-  width: 2.5rem;
-  height: 3rem; }
-
-.header__github-link:hover,
-.header__github-link:focus {
-  fill: #80c040; }
+  margin-right: 16px; }
 
 @media only screen and (max-width: 740px) {
-  .header__github-link {
-    display: none; }
   .header__bts {
     margin-right: 0; } }
 

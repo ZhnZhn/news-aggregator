@@ -21,18 +21,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var S = {
   ROOT: {
     textAlign: 'center',
-    paddingTop: '20px'
+    paddingTop: 20
   }
 };
 
-var IconLogoBar = function IconLogoBar(props) {
+var IconLogoBar = function IconLogoBar() {
   return _react2.default.createElement(
     'div',
     { style: S.ROOT },
     _react2.default.createElement(_IconGitHub2.default, {
       className: 'icon__github',
-      title: 'GitHub ZhnZhn',
-      uri: 'https://github.com/zhnzhn'
+      title: 'GitHub: Repo News Aggregator',
+      uri: 'https://github.com/zhnzhn/news-aggregator'
     }),
     _react2.default.createElement(_IconReact2.default, null)
   );

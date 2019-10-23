@@ -22,7 +22,7 @@ export const StackOverflow = withProps({
 })(BaseComp)
 
 export const IexApi = withProps({
-  title: "IEX Cloud API",
+  title: "IEX Cloud",
   href: "https://iexcloud.io",
   tabIndex: "-1"
 })(BaseComp)
