@@ -69,8 +69,16 @@ var NEWS_QUERY = {
     "paneCaption": "NewsApi: Search",
     "paneId": "newsapi_search",
     "dialogProps": {
-      "caption": "NewsApi: Search",
       "source": "newsapi_search"
+    }
+  },
+  NEWS_TOP: {
+    "type": "NEWS_TOP",
+    "dialogType": "NewsApiTop",
+    "paneCaption": "NewsApi: Top By",
+    "paneId": "newsapi_top",
+    "dialogProps": {
+      "source": "newsapi_top"
     }
   }
 };

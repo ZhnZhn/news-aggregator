@@ -149,11 +149,10 @@ var NewsPane = function (_Component) {
         switch (actionType) {
           case addAction:
             {
-              var sortBy = option.sortBy ? option.sortBy : _this.state.sortBy;
               _this.setState({
                 isShow: true,
                 articles: option.data,
-                sortBy: sortBy
+                sortBy: option.sortBy || _this.state.sortBy
               });
               break;
             }
@@ -168,7 +167,7 @@ var NewsPane = function (_Component) {
             });
             break;
           default:
-            return undefined;
+            return void 0;
         }
       }
     };
@@ -292,7 +291,8 @@ var NewsPane = function (_Component) {
           isMore = _state.isMore,
           articles = _state.articles,
           sortBy = _state.sortBy,
-          _paneCaption = paneCaption + ' : ' + sortBy,
+          _sortBy = sortBy ? ': ' + sortBy : '',
+          _paneCaption = '' + paneCaption + _sortBy,
           _styleIsShow = isShow ? styles.inlineBlock : styles.none,
           _classIsShow = isShow ? SHOW_POPUP : void 0;
 
@@ -320,7 +320,7 @@ var NewsPane = function (_Component) {
           },
           _react2.default.createElement(_CircleButton2.default, {
             caption: 'R',
-            title: 'Remove Items',
+            title: 'Remove All Items',
             style: styles.btCircle,
             onClick: onRemoveItems
           }),

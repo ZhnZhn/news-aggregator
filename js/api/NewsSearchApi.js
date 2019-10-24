@@ -3,38 +3,28 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _NewsApiFns = require('./NewsApiFns');
+
+var _NewsApiFns2 = _interopRequireDefault(_NewsApiFns);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var ROOT = 'https://newsapi.org/v2/everything';
 
-var NewsApi = {
+var NewsApi = (0, _extends3.default)({
   getRequestUrl: function getRequestUrl(_ref) {
     var _ref$symbol = _ref.symbol,
         symbol = _ref$symbol === undefined ? 'Weather' : _ref$symbol,
         _ref$sortBy = _ref.sortBy,
         sortBy = _ref$sortBy === undefined ? 'relevancy' : _ref$sortBy;
     return ROOT + '?q=' + symbol + '&sortBy=' + sortBy;
-  },
-
-  crOptionFetch: function crOptionFetch(option) {
-    var apiKey = option.apiKey;
-
-    option.apiKey = void 0;
-    return {
-      headers: {
-        'X-Api-Key': apiKey
-      }
-    };
-  },
-
-  checkResponse: function checkResponse(json, option) {
-    var status = json.status,
-        message = json.message;
-
-    if (status === 'error') {
-      throw { msg: message };
-    }
-    return true;
   }
-};
+}, _NewsApiFns2.default);
 
 exports.default = NewsApi;
 //# sourceMappingURL=NewsSearchApi.js.map

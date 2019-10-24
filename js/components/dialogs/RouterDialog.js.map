@@ -1,1 +1,23 @@
-{"version":3,"sources":["../../../src/components/dialogs/RouterDialog.js"],"names":["R","DEFAULT","DialogType1","WebhoseQuery","WebhoseBrodcast","StackTagged","StackSearch","IexNews","NewsApiSearch","RouterDialog","getElement","type"],"mappings":";;;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,+BADQ;AAERC,mCAFQ;AAGRC,4CAHQ,EAGMC,gDAHN;AAIRC,0CAJQ,EAIKC,wCAJL;AAKRC,kCALQ;AAMRC;AANQ,CAAV;;AASA,IAAMC,eAAe;AACnBC,cAAY,oBAACC,IAAD,EAAU;AACrB,WAAOX,EAAEW,IAAF,KAAWX,EAAEC,OAApB;AACA;AAHkB,CAArB;;kBAMeQ,Y","file":"RouterDialog.js","sourcesContent":["\r\nimport DialogType1 from './DialogType1'\r\nimport WebhoseQuery from './WebhoseQueryDialog'\r\nimport WebhoseBrodcast from './WebhoseBrodcastDialog'\r\nimport StackTagged from './StackTaggedDialog'\r\nimport StackSearch from './StackSearchDialog'\r\nimport IexNews from './IexNewsDialog'\r\nimport NewsApiSearch from './NewsApiSearchDialog'\r\n\r\nconst R = {\r\n  DEFAULT: DialogType1,\r\n  DialogType1,\r\n  WebhoseQuery, WebhoseBrodcast,\r\n  StackTagged, StackSearch,\r\n  IexNews,\r\n  NewsApiSearch\r\n}\r\n\r\nconst RouterDialog = {\r\n  getElement: (type) => {\r\n   return R[type] || R.DEFAULT;\r\n  }\r\n}\r\n\r\nexport default RouterDialog\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/dialogs/RouterDialog.js"
+ ],
+ "file": "../../../src/components/dialogs/RouterDialog.js",
+ "names": [
+  "R",
+  "DEFAULT",
+  "DialogType1",
+  "WebhoseQuery",
+  "WebhoseBrodcast",
+  "StackTagged",
+  "StackSearch",
+  "IexNews",
+  "NewsApiSearch",
+  "NewsApiTop",
+  "RouterDialog",
+  "getElement",
+  "type"
+ ],
+ "mappings": ";;;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,+BADQ;AAERC,mCAFQ;AAGRC,4CAHQ,EAGMC,gDAHN;AAIRC,0CAJQ,EAIKC,wCAJL;AAKRC,kCALQ;AAMRC,8CANQ,EAMOC;AANP,CAAV;;AASA,IAAMC,eAAe;AACnBC,cAAY,oBAACC,IAAD,EAAU;AACrB,WAAOZ,EAAEY,IAAF,KAAWZ,EAAEC,OAApB;AACA;AAHkB,CAArB;;kBAMeS,Y"
+}

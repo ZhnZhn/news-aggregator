@@ -3,6 +3,8 @@
 //const DF_SORT_BY = 'top';
 // `${ROOT_V1}?source=${source}&apiKey=${apiKey}&sortBy=${sortBy}`;
 
+import NewsApiFns from './NewsApiFns'
+
 const C = {
   ROOT_V2: 'https://newsapi.org/v2/',
   TOP: 'top',
@@ -19,24 +21,7 @@ const _crUrl2 = ({ source, sortBy }) => {
 
 const NewsApi = {
   getRequestUrl: option => _crUrl2(option),
-
-  crOptionFetch: option => {
-    const { apiKey } = option;
-    option.apiKey = void 0;
-    return {
-      headers: {
-        'X-Api-Key': apiKey
-      }
-    };
-  },
-
-  checkResponse: (json, option) => {
-    const { status, message } = json;
-    if (status === 'error'){
-      throw { msg: message };
-    }
-    return true;
-  }
+  ...NewsApiFns
 };
 
 export default NewsApi

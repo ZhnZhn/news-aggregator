@@ -4,37 +4,41 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _crId = require('../utils/crId');
+var _ut = require('../utils/ut');
 
-var _crId2 = _interopRequireDefault(_crId);
+var _ut2 = _interopRequireDefault(_ut);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var NEWS_SEARCH = 'newsapi_search';
+var crId = _ut2.default.crId,
+    joinStrsBy = _ut2.default.joinStrsBy,
+    toFirstUpperCase = _ut2.default.toFirstUpperCase;
 
-var _toFirstUpper = function _toFirstUpper(str) {
-  return typeof str !== 'string' ? '' : str.charAt(0).toUpperCase() + str.slice(1);
-};
+
+var NEWS_SEARCH = 'newsapi_search';
+var NEWS_TOP = 'newsapi_top';
 
 var _fToArticle = function _fToArticle(source) {
   return function (article) {
-    article.articleId = (0, _crId2.default)();
+    article.articleId = crId();
     article.source = source;
     return article;
   };
 };
-var _toSearchArticle = function _toSearchArticle(article) {
-  article.articleId = (0, _crId2.default)();
+var _fToSearchArticle = function _fToSearchArticle(source) {
+  return function (article) {
+    article.articleId = crId();
 
-  var _ref = article || {},
-      source = _ref.source,
-      _ref2 = source || {},
-      name = _ref2.name,
-      _source = name ? name + ', ' : '';
+    var _ref = article || {},
+        source = _ref.source,
+        author = _ref.author,
+        _ref2 = source || {},
+        name = _ref2.name;
 
-  article.source = NEWS_SEARCH;
-  article.author = '' + _source + article.author;
-  return article;
+    article.source = source;
+    article.author = joinStrsBy([name, author]);
+    return article;
+  };
 };
 
 var NewsApiAdapter = {
@@ -42,17 +46,15 @@ var NewsApiAdapter = {
     var articles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
     var source = arguments[1];
 
-    var _toArticle = source === NEWS_SEARCH ? _toSearchArticle : _fToArticle(source);
+    var _toArticle = source === NEWS_SEARCH || source === NEWS_TOP ? _fToSearchArticle(source) : _fToArticle(source);
     return articles.map(_toArticle);
   },
 
   toNews: function toNews(json, option) {
     var source = option.source,
-        _json$articles = json.articles,
-        articles = _json$articles === undefined ? [] : _json$articles,
-        _json$sortBy = json.sortBy,
-        sortBy = _json$sortBy === undefined ? '' : _json$sortBy,
-        _sortBy = _toFirstUpper(sortBy),
+        articles = json.articles,
+        sortBy = json.sortBy,
+        _sortBy = toFirstUpperCase(sortBy),
         _articles = NewsApiAdapter.toArticles(articles, source);
 
     return {

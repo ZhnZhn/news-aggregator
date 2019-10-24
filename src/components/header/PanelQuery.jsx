@@ -24,7 +24,7 @@ class PanelQuery extends Component {
     const {
      className, paneStyle, isShow,
      onIex,
-     onNewsApi,
+     onNewsApi, onNewsTop,
      onStackTagged, onStackSearch,
      onWebhose, onWebhoseBrodcast,
      onClose
@@ -47,6 +47,12 @@ class PanelQuery extends Component {
             className={CL_ITEM}
             caption="NewsApi: Search"
             onClick={onNewsApi}
+            onClose={onClose}
+          />
+          <A.MenuItem
+            className={CL_ITEM}
+            caption="NewsApi: Top By"
+            onClick={onNewsTop}
             onClose={onClose}
           />
           <A.MenuItem

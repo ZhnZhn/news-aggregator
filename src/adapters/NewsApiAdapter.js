@@ -1,38 +1,39 @@
-import crId from '../utils/crId'
+import ut from '../utils/ut'
+
+const {
+  crId,
+  joinStrsBy, toFirstUpperCase
+} = ut;
 
 const NEWS_SEARCH = 'newsapi_search';
-
-const _toFirstUpper = (str) => typeof str !== 'string'
-  ? ''
-  : str.charAt(0).toUpperCase() + str.slice(1);
+const NEWS_TOP = 'newsapi_top';
 
 const _fToArticle = source => article => {
   article.articleId = crId()
   article.source = source
   return article;
 };
-const _toSearchArticle = article => {
+const _fToSearchArticle = source => article => {
   article.articleId = crId()
-  const { source } = article || {}
+  const { source, author } = article || {}
   , { name } = source || {}
-  , _source = name ? name+', ' : '';
-  article.source = NEWS_SEARCH
-  article.author = `${_source}${article.author}`
+  article.source = source
+  article.author = joinStrsBy([name, author])
   return article;
 };
 
 const NewsApiAdapter = {
   toArticles: (articles=[], source) => {
-    const _toArticle = source === NEWS_SEARCH
-      ? _toSearchArticle
+    const _toArticle = source === NEWS_SEARCH || source === NEWS_TOP
+      ? _fToSearchArticle(source)
       : _fToArticle(source);
     return articles.map(_toArticle);
   },
 
   toNews: (json, option) => {
     const { source } = option
-    , { articles=[], sortBy=''} = json
-    , _sortBy = _toFirstUpper(sortBy)
+    , { articles, sortBy } = json
+    , _sortBy = toFirstUpperCase(sortBy)
     , _articles = NewsApiAdapter.toArticles(articles, source);
     return {
       source: source,

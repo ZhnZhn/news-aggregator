@@ -35,6 +35,7 @@ class AppNewsAggregator extends Component {
     this.showStackSearch= _fShowDialog(QUERY.STACK_SEARCH)
     this.showIex= _fShowDialog(QUERY.IEX)
     this.showNewsSearch = _fShowDialog(QUERY.NEWS_SEARCH)
+    this.showNewsTop = _fShowDialog(QUERY.NEWS_TOP)
 
     this.showSettings = _fSettings()
     this.state = {
@@ -75,6 +76,7 @@ class AppNewsAggregator extends Component {
             onStackSearch={this.showStackSearch}
             onIex={this.showIex}
             onNewsSearch={this.showNewsSearch}
+            onNewsTop={this.showNewsTop}
             onSettings={this.showSettings}
             onAbout={Actions.showAbout}
           />

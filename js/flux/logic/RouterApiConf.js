@@ -38,6 +38,13 @@ var RouterApiConf = {
           adapter: _Adapters2.default.News,
           msgErr: 'NewsApi ' + MSG_ERR_TAIL
         };
+      case 'NT':
+        return {
+          apiKey: _Store2.default.getNewsKey(),
+          api: _Api2.default.NewsTop,
+          adapter: _Adapters2.default.News,
+          msgErr: 'NewsApi ' + MSG_ERR_TAIL
+        };
       case 'W':
         return {
           apiKey: _Store2.default.getWebhoseKey(),

@@ -1,0 +1,18 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/NewsApiTop.js"
+ ],
+ "file": "../../src/api/NewsApiTop.js",
+ "names": [
+  "C",
+  "ROOT_V2",
+  "TOPIC_TOP",
+  "NewsApiTop",
+  "getRequestUrl",
+  "category",
+  "option",
+  "country"
+ ],
+ "mappings": ";;;;;;;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,WAAS,yBADD;AAERC,aAAW;AAFH,CAAV;;AAKA,IAAMC;AACJC,iBAAe,+BAAU;AAAA,QACfC,QADe,GACOC,MADP,CACfD,QADe;AAAA,QACLE,OADK,GACOD,MADP,CACLC,OADK;;AAEvB,gBAAUP,EAAEC,OAAZ,GAAsBD,EAAEE,SAAxB,kBAA8CG,QAA9C,iBAAkEE,OAAlE;AACD;AAJG,wBAAN;;kBAQeJ,U"
+}

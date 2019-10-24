@@ -24,6 +24,13 @@ const RouterApiConf = {
           adapter: Adapter.News,
           msgErr: `NewsApi ${MSG_ERR_TAIL}`
         };
+      case 'NT':
+        return {
+          apiKey: Store.getNewsKey(),
+          api: Api.NewsTop,
+          adapter: Adapter.News,
+          msgErr: `NewsApi ${MSG_ERR_TAIL}`
+        };
       case 'W':
         return {
           apiKey: Store.getWebhoseKey(),

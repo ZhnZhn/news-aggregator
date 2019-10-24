@@ -1,1 +1,17 @@
-{"version":3,"sources":["../../src/api/Api.js"],"names":["Api","News","Webhose","StackOverflow","Iex","NewsSearch"],"mappings":";;;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,MAAM;AACVC,yBADU,EACJC,6BADI,EACKC,yCADL,EACoBC,qBADpB,EACyBC;AADzB,CAAZ;;kBAIeL,G","file":"Api.js","sourcesContent":["\r\nimport News from './NewsApi'\r\nimport Webhose from './WebhoseApi'\r\nimport StackOverflow from './StackOverflowApi'\r\nimport Iex from './IexApi'\r\nimport NewsSearch from './NewsSearchApi'\r\n\r\nconst Api = {\r\n  News, Webhose, StackOverflow, Iex, NewsSearch  \r\n};\r\n\r\nexport default Api\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/Api.js"
+ ],
+ "file": "../../src/api/Api.js",
+ "names": [
+  "Api",
+  "News",
+  "Webhose",
+  "StackOverflow",
+  "Iex",
+  "NewsSearch",
+  "NewsTop"
+ ],
+ "mappings": ";;;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,MAAM;AACVC,yBADU,EACJC,6BADI,EACKC,yCADL,EACoBC,qBADpB;AAEVC,qCAFU,EAEEC;AAFF,CAAZ;;kBAKeN,G"
+}

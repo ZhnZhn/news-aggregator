@@ -1,3 +1,12 @@
+.with-scroll {
+  scrollbar-color: #8bc34a #3f5178;
+  scrollbar-width: thin;
+}
+.with-scroll--sand,
+.with-scroll--white {
+  scrollbar-color: #8bc34a #0096c8;
+  scrollbar-width: thin;
+}
 
 .with-scroll::-webkit-scrollbar {
 	//background-color:black;

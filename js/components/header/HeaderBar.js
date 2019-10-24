@@ -118,6 +118,9 @@ var HeaderBar = function (_Component) {
         case 'NewsSearch':
           _this.props.onNewsSearch();
           break;
+        case 'NewsTop':
+          _this.props.onNewsTop();
+          break;
         default:
       }
       _this._hCloseQuery();
@@ -128,6 +131,7 @@ var HeaderBar = function (_Component) {
     _this._hStackSearch = _this._hClickSource.bind(null, 'StackSearch');
     _this._hIex = _this._hClickSource.bind(null, 'Iex');
     _this._hNewsApi = _this._hClickSource.bind(null, 'NewsSearch');
+    _this._hNewsTop = _this._hClickSource.bind(null, 'NewsTop');
 
     _this.state = {
       isQuery: false
@@ -184,7 +188,8 @@ var HeaderBar = function (_Component) {
           onStackTagged: this._hStackTagged,
           onStackSearch: this._hStackSearch,
           onIex: this._hIex,
-          onNewsApi: this._hNewsApi
+          onNewsApi: this._hNewsApi,
+          onNewsTop: this._hNewsTop
         }),
         _react2.default.createElement(_LoadingProgress2.default, {
           store: store,

@@ -32,6 +32,10 @@ var _NewsApiSearchDialog = require('./NewsApiSearchDialog');
 
 var _NewsApiSearchDialog2 = _interopRequireDefault(_NewsApiSearchDialog);
 
+var _NewsApiTopDialog = require('./NewsApiTopDialog');
+
+var _NewsApiTopDialog2 = _interopRequireDefault(_NewsApiTopDialog);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var R = {
@@ -40,7 +44,7 @@ var R = {
   WebhoseQuery: _WebhoseQueryDialog2.default, WebhoseBrodcast: _WebhoseBrodcastDialog2.default,
   StackTagged: _StackTaggedDialog2.default, StackSearch: _StackSearchDialog2.default,
   IexNews: _IexNewsDialog2.default,
-  NewsApiSearch: _NewsApiSearchDialog2.default
+  NewsApiSearch: _NewsApiSearchDialog2.default, NewsApiTop: _NewsApiTopDialog2.default
 };
 
 var RouterDialog = {

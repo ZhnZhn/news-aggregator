@@ -42,6 +42,7 @@ class HeaderBar extends Component {
     this._hStackSearch = this._hClickSource.bind(null, 'StackSearch')
     this._hIex = this._hClickSource.bind(null, 'Iex')
     this._hNewsApi = this._hClickSource.bind(null, 'NewsSearch')
+    this._hNewsTop = this._hClickSource.bind(null, 'NewsTop')
 
     this.state = {
       isQuery: false
@@ -84,6 +85,9 @@ class HeaderBar extends Component {
       case 'NewsSearch':
         this.props.onNewsSearch()
         break;
+      case 'NewsTop':
+        this.props.onNewsTop()
+        break;
       default:
     }
     this._hCloseQuery()
@@ -124,6 +128,7 @@ class HeaderBar extends Component {
           onStackSearch={this._hStackSearch}
           onIex={this._hIex}
           onNewsApi={this._hNewsApi}
+          onNewsTop={this._hNewsTop}
         />
         <LoadingProgress
            store={store}

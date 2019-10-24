@@ -74,6 +74,7 @@ var PanelQuery = function (_Component) {
           isShow = _props.isShow,
           onIex = _props.onIex,
           onNewsApi = _props.onNewsApi,
+          onNewsTop = _props.onNewsTop,
           onStackTagged = _props.onStackTagged,
           onStackSearch = _props.onStackSearch,
           onWebhose = _props.onWebhose,
@@ -99,6 +100,12 @@ var PanelQuery = function (_Component) {
           className: CL_ITEM,
           caption: 'NewsApi: Search',
           onClick: onNewsApi,
+          onClose: onClose
+        }),
+        _react2.default.createElement(_Comp2.default.MenuItem, {
+          className: CL_ITEM,
+          caption: 'NewsApi: Top By',
+          onClick: onNewsTop,
           onClose: onClose
         }),
         _react2.default.createElement(_Comp2.default.MenuItem, {

@@ -1,0 +1,20 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/NewsApiFns.js"
+ ],
+ "file": "../../src/api/NewsApiFns.js",
+ "names": [
+  "NewsApiFns",
+  "crOptionFetch",
+  "apiKey",
+  "option",
+  "headers",
+  "checkResponse",
+  "json",
+  "status",
+  "message",
+  "msg"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,aAAa;AACjBC,iBAAe,+BAAU;AAAA,QACfC,MADe,GACJC,MADI,CACfD,MADe;;AAEvBC,WAAOD,MAAP,GAAgB,KAAK,CAArB;AACA,WAAO;AACLE,eAAS;AACP,qBAAaF;AADN;AADJ,KAAP;AAKD,GATgB;;AAWjBG,iBAAe,uBAACC,IAAD,EAAOH,MAAP,EAAkB;AAAA,QACvBI,MADuB,GACHD,IADG,CACvBC,MADuB;AAAA,QACfC,OADe,GACHF,IADG,CACfE,OADe;;AAE/B,QAAID,WAAW,OAAf,EAAuB;AACrB,YAAM,EAAEE,KAAKD,OAAP,EAAN;AACD;AACD,WAAO,IAAP;AACD;AAjBgB,CAAnB;;kBAoBeR,U"
+}

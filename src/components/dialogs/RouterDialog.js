@@ -6,6 +6,7 @@ import StackTagged from './StackTaggedDialog'
 import StackSearch from './StackSearchDialog'
 import IexNews from './IexNewsDialog'
 import NewsApiSearch from './NewsApiSearchDialog'
+import NewsApiTop from './NewsApiTopDialog'
 
 const R = {
   DEFAULT: DialogType1,
@@ -13,7 +14,7 @@ const R = {
   WebhoseQuery, WebhoseBrodcast,
   StackTagged, StackSearch,
   IexNews,
-  NewsApiSearch
+  NewsApiSearch, NewsApiTop
 }
 
 const RouterDialog = {

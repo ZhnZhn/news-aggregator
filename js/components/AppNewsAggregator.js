@@ -117,6 +117,7 @@ var AppNewsAggregator = function (_Component) {
     _this.showStackSearch = _fShowDialog(_NewsQuery2.default.STACK_SEARCH);
     _this.showIex = _fShowDialog(_NewsQuery2.default.IEX);
     _this.showNewsSearch = _fShowDialog(_NewsQuery2.default.NEWS_SEARCH);
+    _this.showNewsTop = _fShowDialog(_NewsQuery2.default.NEWS_TOP);
 
     _this.showSettings = _fSettings();
     _this.state = {
@@ -157,6 +158,7 @@ var AppNewsAggregator = function (_Component) {
             onStackSearch: this.showStackSearch,
             onIex: this.showIex,
             onNewsSearch: this.showNewsSearch,
+            onNewsTop: this.showNewsTop,
             onSettings: this.showSettings,
             onAbout: _ComponentActions2.default.showAbout
           }),

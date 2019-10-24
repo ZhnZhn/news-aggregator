@@ -105,19 +105,17 @@ class NewsPane extends Component {
 
    _onStore = (actionType, option={}) => {
       const {
-              addAction, showAction, toggleAction,
-              id
-            } = this.props;
+        addAction, showAction, toggleAction,
+        id
+      } = this.props;
 
       if (option.id === id){
         switch(actionType){
           case addAction: {
-            const sortBy = (option.sortBy)
-                    ? option.sortBy : this.state.sortBy
             this.setState({
               isShow: true,
               articles: option.data,
-              sortBy
+              sortBy: option.sortBy || this.state.sortBy
             })
             break;
            }
@@ -125,13 +123,11 @@ class NewsPane extends Component {
             this.setState({ isShow: true })
             break;
           case toggleAction:
-            this.setState(prevState => {
-              return {
-                isShow: !prevState.isShow
-              };
-            })
+            this.setState(prevState => ({
+              isShow: !prevState.isShow
+            }))
             break;
-          default: return undefined;
+          default: return void 0;
         }
       }
    }
@@ -205,7 +201,8 @@ class NewsPane extends Component {
             } = this.props
           , TS = theme.createStyle(styleConfig)
           , { isShow, isMore, articles, sortBy } = this.state
-          , _paneCaption = `${paneCaption} : ${sortBy}`
+          , _sortBy = sortBy ? ': ' + sortBy : ''
+          , _paneCaption = `${paneCaption}${_sortBy}`
           , _styleIsShow = isShow
                ? styles.inlineBlock
                : styles.none
@@ -234,7 +231,7 @@ class NewsPane extends Component {
           >
             <CircleButton
               caption="R"
-              title="Remove Items"
+              title="Remove All Items"
               style={styles.btCircle}
               onClick={onRemoveItems}
             />
