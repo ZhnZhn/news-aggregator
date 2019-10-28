@@ -25,7 +25,7 @@ var _fToArticle = function _fToArticle(source) {
     return article;
   };
 };
-var _fToSearchArticle = function _fToSearchArticle(source) {
+var _fToSearchArticle = function _fToSearchArticle(paneId) {
   return function (article) {
     article.articleId = crId();
 
@@ -35,7 +35,7 @@ var _fToSearchArticle = function _fToSearchArticle(source) {
         _ref2 = source || {},
         name = _ref2.name;
 
-    article.source = source;
+    article.source = paneId;
     article.author = joinStrsBy([name, author]);
     return article;
   };

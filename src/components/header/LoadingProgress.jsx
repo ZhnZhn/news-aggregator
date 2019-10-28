@@ -3,17 +3,15 @@ import React, { Component } from 'react'
 import ProgressLine from '../zhn-atoms/ProgressLine'
 
 const COLOR = {
-  LOADING : '#2F7ED8',
+  LOADING : '#2f7ed8',
   FAILED : 'rgb(237, 88, 19)'
 };
 
 class LoadingProgress extends Component {
-  constructor(props){
-    super()
-    this.state = {
-      completed : 0,
-      color : COLOR.LOADING
-    }
+
+  state = {
+    completed : 0,
+    color : COLOR.LOADING
   }
 
   componentDidMount(){

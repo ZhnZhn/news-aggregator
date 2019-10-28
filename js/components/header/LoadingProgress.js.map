@@ -1,1 +1,29 @@
-{"version":3,"sources":["../../../src/components/header/LoadingProgress.jsx"],"names":["COLOR","LOADING","FAILED","LoadingProgress","props","_onStore","actionType","ACTIONS","setState","completed","color","LOADING_COMPLETE","LOADING_FAILED","state","unsubscribe","store","listenLoadingProgress","nextProps","nextState"],"mappings":";;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,QAAQ;AACZC,WAAU,SADE;AAEZC,UAAS;AAFG,CAAd;;IAKMC,e;;;AACJ,2BAAYC,KAAZ,EAAkB;AAAA;;AAAA;;AAAA,UAwBlBC,QAxBkB,GAwBP,UAACC,UAAD,EAAgB;AAAA,UACfC,OADe,GACH,MAAKH,KADF,CACfG,OADe;;AAEvB,UAAID,eAAeC,QAAQN,OAA3B,EAAmC;AACjC,cAAKO,QAAL,CAAc,EAAEC,WAAW,EAAb,EAAiBC,OAAOV,MAAMC,OAA9B,EAAd;AACD,OAFD,MAEO,IAAIK,eAAeC,QAAQI,gBAA3B,EAA4C;AACjD,cAAKH,QAAL,CAAc,EAAEC,WAAW,GAAb,EAAkBC,OAAOV,MAAMC,OAA/B,EAAd;AACD,OAFM,MAEA,IAAIK,eAAeC,QAAQK,cAA3B,EAA0C;AAC/C,cAAKJ,QAAL,CAAc,EAAEC,WAAW,GAAb,EAAkBC,OAAOV,MAAME,MAA/B,EAAd;AACD;AACJ,KAjCiB;;AAEhB,UAAKW,KAAL,GAAa;AACXJ,iBAAY,CADD;AAEXC,aAAQV,MAAMC;AAFH,KAAb;AAFgB;AAMjB;;;;wCAEkB;AACjB,WAAKa,WAAL,GAAmB,KAAKV,KAAL,CAAWW,KAAX,CAAiBC,qBAAjB,CAAuC,KAAKX,QAA5C,CAAnB;AACD;;;2CAEqB;AACpB,WAAKS,WAAL;AACD;;;0CAGqBG,S,EAAWC,S,EAAU;AACzC,UAAI,KAAKd,KAAL,KAAea,SAAnB,EAA6B;AAC3B,eAAO,KAAP;AACD;AACD,aAAO,IAAP;AACD;;;6BAaO;AAAA,mBACuB,KAAKJ,KAD5B;AAAA,UACEJ,SADF,UACEA,SADF;AAAA,UACaC,KADb,UACaA,KADb;;AAEN,aACE;AACG,gBAAQ,CADX;AAEG,eAAOA,KAFV;AAGG,mBAAWD;AAHd,QADF;AAOD;;;;;kBAGYN,e","file":"LoadingProgress.js","sourcesContent":["import React, { Component } from 'react'\r\n\r\nimport ProgressLine from '../zhn-atoms/ProgressLine'\r\n\r\nconst COLOR = {\r\n  LOADING : '#2F7ED8',\r\n  FAILED : 'rgb(237, 88, 19)'\r\n};\r\n\r\nclass LoadingProgress extends Component {\r\n  constructor(props){\r\n    super()\r\n    this.state = {\r\n      completed : 0,\r\n      color : COLOR.LOADING\r\n    }\r\n  }\r\n\r\n  componentDidMount(){\r\n    this.unsubscribe = this.props.store.listenLoadingProgress(this._onStore)\r\n  }\r\n\r\n  componentWillUnmount(){\r\n    this.unsubscribe()\r\n  }\r\n\r\n\r\n  shouldComponentUpdate(nextProps, nextState){\r\n    if (this.props !== nextProps){\r\n      return false;\r\n    }\r\n    return true;\r\n  }\r\n\r\n  _onStore = (actionType) => {\r\n      const { ACTIONS } = this.props;\r\n      if (actionType === ACTIONS.LOADING){\r\n        this.setState({ completed: 35, color: COLOR.LOADING })\r\n      } else if (actionType === ACTIONS.LOADING_COMPLETE){\r\n        this.setState({ completed: 100, color: COLOR.LOADING })\r\n      } else if (actionType === ACTIONS.LOADING_FAILED){\r\n        this.setState({ completed: 100, color: COLOR.FAILED })\r\n      }\r\n  }\r\n\r\n  render(){\r\n    const { completed, color } = this.state;\r\n    return (\r\n      <ProgressLine\r\n         height={3}\r\n         color={color}\r\n         completed={completed}\r\n      />\r\n    );\r\n  }\r\n}\r\n\r\nexport default LoadingProgress\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/header/LoadingProgress.js"
+ ],
+ "file": "../../../src/components/header/LoadingProgress.js",
+ "names": [
+  "COLOR",
+  "LOADING",
+  "FAILED",
+  "LoadingProgress",
+  "state",
+  "completed",
+  "color",
+  "_onStore",
+  "actionType",
+  "ACTIONS",
+  "props",
+  "setState",
+  "LOADING_COMPLETE",
+  "LOADING_FAILED",
+  "unsubscribe",
+  "store",
+  "listenLoadingProgress",
+  "nextProps",
+  "nextState"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAAA;;;;AAEA;;;;;;AAEA,IAAMA,QAAQ;AACZC,WAAU,SADE;AAEZC,UAAS;AAFG,CAAd;;IAKMC,e;;;;;;;;;;;;;;sNAEJC,K,GAAQ;AACNC,iBAAY,CADN;AAENC,aAAQN,MAAMC;AAFR,K,QAqBRM,Q,GAAW,UAACC,UAAD,EAAgB;AAAA,UACfC,OADe,GACH,MAAKC,KADF,CACfD,OADe;;AAEvB,UAAID,eAAeC,QAAQR,OAA3B,EAAmC;AACjC,cAAKU,QAAL,CAAc,EAAEN,WAAW,EAAb,EAAiBC,OAAON,MAAMC,OAA9B,EAAd;AACD,OAFD,MAEO,IAAIO,eAAeC,QAAQG,gBAA3B,EAA4C;AACjD,cAAKD,QAAL,CAAc,EAAEN,WAAW,GAAb,EAAkBC,OAAON,MAAMC,OAA/B,EAAd;AACD,OAFM,MAEA,IAAIO,eAAeC,QAAQI,cAA3B,EAA0C;AAC/C,cAAKF,QAAL,CAAc,EAAEN,WAAW,GAAb,EAAkBC,OAAON,MAAME,MAA/B,EAAd;AACD;AACJ,K;;;;;wCAzBkB;AACjB,WAAKY,WAAL,GAAmB,KAAKJ,KAAL,CAAWK,KAAX,CAAiBC,qBAAjB,CAAuC,KAAKT,QAA5C,CAAnB;AACD;;;2CAEqB;AACpB,WAAKO,WAAL;AACD;;;0CAGqBG,S,EAAWC,S,EAAU;AACzC,UAAI,KAAKR,KAAL,KAAeO,SAAnB,EAA6B;AAC3B,eAAO,KAAP;AACD;AACD,aAAO,IAAP;AACD;;;6BAaO;AAAA,mBACuB,KAAKb,KAD5B;AAAA,UACEC,SADF,UACEA,SADF;AAAA,UACaC,KADb,UACaA,KADb;;AAEN,aACE;AACG,gBAAQ,CADX;AAEG,eAAOA,KAFV;AAGG,mBAAWD;AAHd,QADF;AAOD;;;;;kBAGYF,e"
+}

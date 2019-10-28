@@ -13,11 +13,11 @@ const _fToArticle = source => article => {
   article.source = source
   return article;
 };
-const _fToSearchArticle = source => article => {
+const _fToSearchArticle = paneId => article => {
   article.articleId = crId()
   const { source, author } = article || {}
   , { name } = source || {}
-  article.source = source
+  article.source = paneId
   article.author = joinStrsBy([name, author])
   return article;
 };

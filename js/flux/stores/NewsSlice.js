@@ -81,6 +81,7 @@ var NewsSlice = {
   },
   onLoadNewsFailed: function onLoadNewsFailed(option) {
     _ComponentActions2.default.showModalDialog('ALERT_DIALOG', option);
+    //ComponentActions.showModalDialog('APIKEY_DIALOG', option)
     this.triggerLoadingProgress(_LoadingProgressActions.TYPES.LOADING_FAILED);
   },
   onRemoveNews: function onRemoveNews(item) {

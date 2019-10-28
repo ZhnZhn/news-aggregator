@@ -25,6 +25,9 @@ const S = {
   LINE_ERROR: {
     borderBottom: '2px solid #f44336'
   },
+  LINE_AFTER_ENTER: {
+    borderBottom: '2px solid greenyellow'
+  },
   MSG_ERROR: {
     position: 'absolute',
     bottom: -18,
@@ -85,11 +88,17 @@ class SecretField extends Component {
     }
   }
 
+  _clearWasEnter = () => {
+    this._wasEnter = false
+  }
+
   _handleKeyDown = (event) => {
     const { keyCode } = event;
     if (keyCode === 13) {
       event.preventDefault()
       this.props.onEnter(this.secret)
+      this._wasEnter = true
+      this.forceUpdate(this._clearWasEnter)
     } else if (keyCode === 46) {
       this.secret = ''
       this.setState(_crInitialState())
@@ -112,7 +121,9 @@ class SecretField extends Component {
             ? void 0
             : S.LABEL_ON_ERROR
         , _lineStyle = isPassTest
-            ? void 0
+            ? this._wasEnter
+                 ? S.LINE_AFTER_ENTER
+                 : void 0
             : S.LINE_ERROR;
 
     return (
@@ -147,7 +158,11 @@ class SecretField extends Component {
              onKeyDown={this._handleKeyDown}
           />
           <div style={{...S.LINE, ..._lineStyle}} />
-          { _lineStyle && <div style={S.MSG_ERROR}>{errorMsg}</div>}
+          {
+            !isPassTest && <div
+               style={S.MSG_ERROR}>{errorMsg}
+             </div>
+           }
         </div>
       </div>
     );

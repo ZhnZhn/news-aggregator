@@ -57,6 +57,9 @@ var S = {
   LINE_ERROR: {
     borderBottom: '2px solid #f44336'
   },
+  LINE_AFTER_ENTER: {
+    borderBottom: '2px solid greenyellow'
+  },
   MSG_ERROR: {
     position: 'absolute',
     bottom: -18,
@@ -119,12 +122,18 @@ var SecretField = (_temp = _class = function (_Component) {
       }
     };
 
+    _this._clearWasEnter = function () {
+      _this._wasEnter = false;
+    };
+
     _this._handleKeyDown = function (event) {
       var keyCode = event.keyCode;
 
       if (keyCode === 13) {
         event.preventDefault();
         _this.props.onEnter(_this.secret);
+        _this._wasEnter = true;
+        _this.forceUpdate(_this._clearWasEnter);
       } else if (keyCode === 46) {
         _this.secret = '';
         _this.setState(_crInitialState());
@@ -155,7 +164,7 @@ var SecretField = (_temp = _class = function (_Component) {
           isPassTest = _state.isPassTest,
           _labelStyle = value || this.isFocus ? void 0 : S.LABEL_TO_INPUT,
           _labelErrStyle = isPassTest ? void 0 : S.LABEL_ON_ERROR,
-          _lineStyle = isPassTest ? void 0 : S.LINE_ERROR;
+          _lineStyle = isPassTest ? this._wasEnter ? S.LINE_AFTER_ENTER : void 0 : S.LINE_ERROR;
 
       return _react2.default.createElement(
         'div',
@@ -194,9 +203,10 @@ var SecretField = (_temp = _class = function (_Component) {
             onKeyDown: this._handleKeyDown
           }),
           _react2.default.createElement('div', { style: (0, _extends3.default)({}, S.LINE, _lineStyle) }),
-          _lineStyle && _react2.default.createElement(
+          !isPassTest && _react2.default.createElement(
             'div',
-            { style: S.MSG_ERROR },
+            {
+              style: S.MSG_ERROR },
             errorMsg
           )
         )

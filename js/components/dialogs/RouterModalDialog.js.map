@@ -1,1 +1,14 @@
-{"version":3,"sources":["../../../src/components/dialogs/RouterModalDialog.js"],"names":["RouterModalDialog","SETTINGS_DIALOG","ALERT_DIALOG"],"mappings":";;;;;;AAAA;;;;AACA;;;;;;AAEA,IAAMA,oBAAoB;AACxBC,2CADwB;AAExBC;AAFwB,CAA1B;;kBAKeF,iB","file":"RouterModalDialog.js","sourcesContent":["import SettingsDialog from '../header/SettingsDialog'\r\nimport AlertDialog from './AlertDialog'\r\n\r\nconst RouterModalDialog = {\r\n  SETTINGS_DIALOG: SettingsDialog,\r\n  ALERT_DIALOG: AlertDialog\r\n}\r\n\r\nexport default RouterModalDialog\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/dialogs/RouterModalDialog.js"
+ ],
+ "file": "../../../src/components/dialogs/RouterModalDialog.js",
+ "names": [
+  "RouterModalDialog",
+  "SETTINGS_DIALOG",
+  "ALERT_DIALOG",
+  "APIKEY_DIALOG"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,oBAAoB;AACxBC,2CADwB;AAExBC,qCAFwB;AAGxBC;AAHwB,CAA1B;;kBAMeH,iB"
+}

@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 const TRANSITION = {
   WIDTH : 'width 500ms ease-out',
   OPACITY : 'opacity 400ms linear'
-}
+};
 
 class ProgressLine extends Component {
   /*
@@ -14,12 +14,13 @@ class ProgressLine extends Component {
   }
   */
   static defaultProps = {
-    color : '#2F7ED8',
-    height : 3
+    className: 'progress-line',
+    color: '#2f7ed8',
+    height: 3
   }
 
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.wasCompleted = false;
     this.idCompleted = null;
     this.wasOpacied = false;
@@ -51,7 +52,10 @@ class ProgressLine extends Component {
   }
 
   render(){
-    const { color, height } = this.props;
+    const {
+      className,
+      color, height
+    } = this.props;
     let _style;
 
     if (this.wasOpacied) {
@@ -73,7 +77,7 @@ class ProgressLine extends Component {
       this.wasCompleted = false;
       this.wasOpacied = true;
     } else {
-       let {completed} = this.props;
+       let { completed } = this.props;
        if (completed < 0) {
          completed = 0;
        } else if (completed >= 100) {
@@ -91,9 +95,8 @@ class ProgressLine extends Component {
     }
 
     return (
-      <div className="progress-line" style={_style}>
-      </div>
-    )
+      <div className={className} style={_style} />
+    );
   }
 }
 

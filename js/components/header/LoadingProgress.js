@@ -31,19 +31,28 @@ var _ProgressLine2 = _interopRequireDefault(_ProgressLine);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var COLOR = {
-  LOADING: '#2F7ED8',
+  LOADING: '#2f7ed8',
   FAILED: 'rgb(237, 88, 19)'
 };
 
 var LoadingProgress = function (_Component) {
   (0, _inherits3.default)(LoadingProgress, _Component);
 
-  function LoadingProgress(props) {
+  function LoadingProgress() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, LoadingProgress);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (LoadingProgress.__proto__ || Object.getPrototypeOf(LoadingProgress)).call(this));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this._onStore = function (actionType) {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = LoadingProgress.__proto__ || Object.getPrototypeOf(LoadingProgress)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      completed: 0,
+      color: COLOR.LOADING
+    }, _this._onStore = function (actionType) {
       var ACTIONS = _this.props.ACTIONS;
 
       if (actionType === ACTIONS.LOADING) {
@@ -53,13 +62,7 @@ var LoadingProgress = function (_Component) {
       } else if (actionType === ACTIONS.LOADING_FAILED) {
         _this.setState({ completed: 100, color: COLOR.FAILED });
       }
-    };
-
-    _this.state = {
-      completed: 0,
-      color: COLOR.LOADING
-    };
-    return _this;
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
   (0, _createClass3.default)(LoadingProgress, [{

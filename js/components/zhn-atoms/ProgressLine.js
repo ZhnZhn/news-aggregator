@@ -38,10 +38,10 @@ var TRANSITION = {
 var ProgressLine = (_temp = _class = function (_Component) {
   (0, _inherits3.default)(ProgressLine, _Component);
 
-  function ProgressLine() {
+  function ProgressLine(props) {
     (0, _classCallCheck3.default)(this, ProgressLine);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (ProgressLine.__proto__ || Object.getPrototypeOf(ProgressLine)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (ProgressLine.__proto__ || Object.getPrototypeOf(ProgressLine)).call(this, props));
 
     _this.wasCompleted = false;
     _this.idCompleted = null;
@@ -89,6 +89,7 @@ var ProgressLine = (_temp = _class = function (_Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
+          className = _props.className,
           color = _props.color,
           height = _props.height;
 
@@ -131,12 +132,13 @@ var ProgressLine = (_temp = _class = function (_Component) {
         };
       }
 
-      return _react2.default.createElement('div', { className: 'progress-line', style: _style });
+      return _react2.default.createElement('div', { className: className, style: _style });
     }
   }]);
   return ProgressLine;
 }(_react.Component), _class.defaultProps = {
-  color: '#2F7ED8',
+  className: 'progress-line',
+  color: '#2f7ed8',
   height: 3
 }, _temp);
 exports.default = ProgressLine;
