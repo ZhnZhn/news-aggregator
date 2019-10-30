@@ -23,6 +23,7 @@ class PanelQuery extends Component {
   render(){
     const {
      className, paneStyle, isShow,
+     onCryptoComapre,
      onIex,
      onNewsApi, onNewsTop,
      onStackTagged, onStackSearch,
@@ -38,6 +39,12 @@ class PanelQuery extends Component {
       >
           <A.MenuItem
             ref={this._refFirstItem}
+            className={CL_ITEM}
+            caption="CryptoCompare: News"
+            onClick={onCryptoComapre}
+            onClose={onClose}
+          />
+          <A.MenuItem
             className={CL_ITEM}
             caption="IEX Cloud: Stock News"
             onClick={onIex}

@@ -36,6 +36,10 @@ var _NewsApiTopDialog = require('./NewsApiTopDialog');
 
 var _NewsApiTopDialog2 = _interopRequireDefault(_NewsApiTopDialog);
 
+var _CryptoCompareNewsDialog = require('./CryptoCompareNewsDialog');
+
+var _CryptoCompareNewsDialog2 = _interopRequireDefault(_CryptoCompareNewsDialog);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var R = {
@@ -43,6 +47,7 @@ var R = {
   DialogType1: _DialogType2.default,
   WebhoseQuery: _WebhoseQueryDialog2.default, WebhoseBrodcast: _WebhoseBrodcastDialog2.default,
   StackTagged: _StackTaggedDialog2.default, StackSearch: _StackSearchDialog2.default,
+  CryptoCompareNews: _CryptoCompareNewsDialog2.default,
   IexNews: _IexNewsDialog2.default,
   NewsApiSearch: _NewsApiSearchDialog2.default, NewsApiTop: _NewsApiTopDialog2.default
 };

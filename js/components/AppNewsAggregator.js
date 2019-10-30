@@ -115,6 +115,7 @@ var AppNewsAggregator = function (_Component) {
     _this.showWebhoseBrodcast = _fShowDialog(_NewsQuery2.default.WEBHOSE_BRODCAST);
     _this.showStackTagged = _fShowDialog(_NewsQuery2.default.STACK_TAGGED);
     _this.showStackSearch = _fShowDialog(_NewsQuery2.default.STACK_SEARCH);
+    _this.showCryptoCompare = _fShowDialog(_NewsQuery2.default.CRYPTO_COMPARE);
     _this.showIex = _fShowDialog(_NewsQuery2.default.IEX);
     _this.showNewsSearch = _fShowDialog(_NewsQuery2.default.NEWS_SEARCH);
     _this.showNewsTop = _fShowDialog(_NewsQuery2.default.NEWS_TOP);
@@ -156,6 +157,7 @@ var AppNewsAggregator = function (_Component) {
             onWebhoseBrodcast: this.showWebhoseBrodcast,
             onStackTagged: this.showStackTagged,
             onStackSearch: this.showStackSearch,
+            onCryptoComapre: this.showCryptoCompare,
             onIex: this.showIex,
             onNewsSearch: this.showNewsSearch,
             onNewsTop: this.showNewsTop,

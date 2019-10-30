@@ -11,7 +11,8 @@
   "StackOverflow",
   "Iex",
   "NewsSearch",
-  "NewsTop"
+  "NewsTop",
+  "CryptoCompare"
  ],
- "mappings": ";;;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,MAAM;AACVC,yBADU,EACJC,6BADI,EACKC,yCADL,EACoBC,qBADpB;AAEVC,qCAFU,EAEEC;AAFF,CAAZ;;kBAKeN,G"
+ "mappings": ";;;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,MAAM;AACVC,yBADU,EACJC,6BADI,EACKC,yCADL,EACoBC,qBADpB;AAEVC,qCAFU,EAEEC,6BAFF;AAGVC;AAHU,CAAZ;;kBAMeP,G"
 }

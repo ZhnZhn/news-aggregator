@@ -77,11 +77,14 @@ class About extends Component {
                  </p>
                 <p>
                   <div>
+                    <A.Link.CryptoCompare />
+                  </div>
+                  <div>
                     <A.Link.IexApi />
                   </div>
-                   <div>
-                     <A.Link.NewsApi />
-                   </div>
+                  <div>
+                    <A.Link.NewsApi />
+                  </div>
                    <div>
                      <A.Link.StackOverflow />
                    </div>

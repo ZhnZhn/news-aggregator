@@ -19,27 +19,33 @@ var _PoweredBy2 = _interopRequireDefault(_PoweredBy);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var CryptoCompare = (0, _withProps2.default)({
+  title: "CryptoCompare",
+  href: "https://cryptocompare.com/",
+  tabIndex: "-1"
+})(_Link2.default);
+
 var NewsApi = exports.NewsApi = (0, _withProps2.default)({
   title: "NewsApi.org",
-  href: "https://newsapi.org",
+  href: "https://newsapi.org/",
   tabIndex: "-1"
 })(_Link2.default);
 
 var WebhoseIo = exports.WebhoseIo = (0, _withProps2.default)({
   title: "Webhose.io",
-  href: "https://webhose.io",
+  href: "https://webhose.io/",
   tabIndex: "-1"
 })(_Link2.default);
 
 var StackOverflow = exports.StackOverflow = (0, _withProps2.default)({
   title: "StackOverflow",
-  href: "https://stackoverflow.com",
+  href: "https://stackoverflow.com/",
   tabIndex: "-1"
 })(_Link2.default);
 
 var IexApi = exports.IexApi = (0, _withProps2.default)({
   title: "IEX Cloud",
-  href: "https://iexcloud.io",
+  href: "https://iexcloud.io/",
   tabIndex: "-1"
 })(_Link2.default);
 
@@ -48,6 +54,7 @@ var Link = {
   WebhoseIo: WebhoseIo,
   StackOverflow: StackOverflow,
   IexApi: IexApi,
+  CryptoCompare: CryptoCompare,
   PoweredBy: _PoweredBy2.default
 };
 

@@ -52,6 +52,16 @@ var NEWS_QUERY = {
     }
   },
 
+  CRYPTO_COMPARE: {
+    "type": "CRYPTO_COMPARE",
+    "dialogType": "CryptoCompareNews",
+    "paneCaption": "CryptoCompare News",
+    "paneId": "cryptocompare_news",
+    "paneType": "CRYPTO_COMPARE_NEWS",
+    "dialogProps": {
+      "caption": "CryptoCompare News"
+    }
+  },
   IEX: {
     "type": "IEX_NEWS",
     "dialogType": "IexNews",

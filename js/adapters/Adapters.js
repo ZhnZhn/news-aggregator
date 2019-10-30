@@ -20,10 +20,15 @@ var _IexAdapter = require('./IexAdapter');
 
 var _IexAdapter2 = _interopRequireDefault(_IexAdapter);
 
+var _CryptoCompareAdapter = require('./CryptoCompareAdapter');
+
+var _CryptoCompareAdapter2 = _interopRequireDefault(_CryptoCompareAdapter);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Adapters = {
-  News: _NewsApiAdapter2.default, Webhose: _WebhoseAdapter2.default, StackOverflow: _StackOverflowAdapter2.default, Iex: _IexAdapter2.default
+  News: _NewsApiAdapter2.default, Webhose: _WebhoseAdapter2.default, StackOverflow: _StackOverflowAdapter2.default, Iex: _IexAdapter2.default,
+  CryptoCompare: _CryptoCompareAdapter2.default
 };
 
 exports.default = Adapters;

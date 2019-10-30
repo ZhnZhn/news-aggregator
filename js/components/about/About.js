@@ -154,6 +154,11 @@ var About = function (_Component) {
                 _react2.default.createElement(
                   'div',
                   null,
+                  _react2.default.createElement(_Comp2.default.Link.CryptoCompare, null)
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
                   _react2.default.createElement(_Comp2.default.Link.IexApi, null)
                 ),
                 _react2.default.createElement(

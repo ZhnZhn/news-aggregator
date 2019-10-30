@@ -32,17 +32,33 @@ const STYLE = {
   }
 };
 
+const _ffClick = onClose => onClick => () => {
+  onClick()
+  onClose()
+};
+
 class HeaderBar extends Component {
 
   constructor(props){
     super(props)
 
-    this._hWebhose = this._hClickSource.bind(null, 'Webhose')
-    this._hStackTagged = this._hClickSource.bind(null, 'StackTagged')
-    this._hStackSearch = this._hClickSource.bind(null, 'StackSearch')
-    this._hIex = this._hClickSource.bind(null, 'Iex')
-    this._hNewsApi = this._hClickSource.bind(null, 'NewsSearch')
-    this._hNewsTop = this._hClickSource.bind(null, 'NewsTop')
+    const {
+      onQuery,
+      onStackTagged, onStackSearch,
+      onCryptoComapre,
+      onIex,
+      onNewsSearch, onNewsTop
+    } = props
+    , _fClick = _ffClick(this._hCloseQuery);
+
+
+    this._hWebhose = _fClick(onQuery)
+    this._hStackTagged = _fClick(onStackTagged)
+    this._hStackSearch = _fClick(onStackSearch)
+    this._hCryptoCompare = _fClick(onCryptoComapre)
+    this._hIex = _fClick(onIex)
+    this._hNewsApi = _fClick(onNewsSearch)
+    this._hNewsTop = _fClick(onNewsTop)
 
     this.state = {
       isQuery: false
@@ -67,32 +83,7 @@ class HeaderBar extends Component {
   _hCloseQuery = (event) => {
     this.setState({ isQuery: false })
   }
-
-  _hClickSource = (id) => {
-    switch(id){
-      case 'Webhose':
-        this.props.onQuery()
-        break;
-      case 'StackTagged':
-        this.props.onStackTagged()
-        break;
-      case 'StackSearch':
-        this.props.onStackSearch()
-        break;
-      case 'Iex':
-        this.props.onIex()
-        break;
-      case 'NewsSearch':
-        this.props.onNewsSearch()
-        break;
-      case 'NewsTop':
-        this.props.onNewsTop()
-        break;
-      default:
-    }
-    this._hCloseQuery()
-  }
-
+  
   /*
   _hChangeTheme = () => {
     const { theme, onChangeTheme } = this.props;
@@ -126,6 +117,7 @@ class HeaderBar extends Component {
           onWebhoseBrodcast={onWebhoseBrodcast}
           onStackTagged={this._hStackTagged}
           onStackSearch={this._hStackSearch}
+          onCryptoComapre={this._hCryptoCompare}
           onIex={this._hIex}
           onNewsApi={this._hNewsApi}
           onNewsTop={this._hNewsTop}

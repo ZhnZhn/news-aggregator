@@ -7,12 +7,14 @@ import StackSearch from './StackSearchDialog'
 import IexNews from './IexNewsDialog'
 import NewsApiSearch from './NewsApiSearchDialog'
 import NewsApiTop from './NewsApiTopDialog'
+import CryptoCompareNews from './CryptoCompareNewsDialog'
 
 const R = {
   DEFAULT: DialogType1,
   DialogType1,
   WebhoseQuery, WebhoseBrodcast,
   StackTagged, StackSearch,
+  CryptoCompareNews,
   IexNews,
   NewsApiSearch, NewsApiTop
 }

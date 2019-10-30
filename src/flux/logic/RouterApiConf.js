@@ -52,6 +52,13 @@ const RouterApiConf = {
            adapter: Adapter.Iex,
            msgErr: `IEX Cloud API ${MSG_ERR_TAIL}`
          };
+     case 'CCN':
+        return {
+          apiKey: true,
+          api: Api.CryptoCompare,
+          adapter: Adapter.CryptoCompare,
+          msgErr: `CryptoCompare News API ${MSG_ERR_TAIL}`
+        };
       default:
         return {
           msgErr: MSG_ERR_DF

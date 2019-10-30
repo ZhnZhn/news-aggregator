@@ -1,0 +1,42 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/adapters/CryptoCompareAdapter.js"
+ ],
+ "file": "../../src/adapters/CryptoCompareAdapter.js",
+ "names": [
+  "C",
+  "SOURCE",
+  "_toArticles",
+  "json",
+  "Array",
+  "isArray",
+  "Data",
+  "map",
+  "title",
+  "item",
+  "body",
+  "categories",
+  "url",
+  "source",
+  "source_info",
+  "published_on",
+  "_author",
+  "name",
+  "_publishedAt",
+  "Date",
+  "toISOString",
+  "articleId",
+  "description",
+  "related",
+  "author",
+  "publishedAt",
+  "CryptoCompareAdapter",
+  "toNews",
+  "option",
+  "sortOrder",
+  "articles",
+  "sortBy"
+ ],
+ "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,IAAI;AACRC,UAAQ;AADA,CAAV;;AAIA,IAAMC,cAAc,SAAdA,WAAc,OAAQ;AAC1B,MAAI,CAACC,IAAD,IAAS,CAACC,MAAMC,OAAN,CAAcF,KAAKG,IAAnB,CAAd,EAAwC;AACtC,WAAO,EAAP;AACD;AACD,SAAOH,KAAKG,IAAL,CAAUC,GAAV,CAAc,gBAAQ;AAAA,QAEzBC,KAFyB,GAIvBC,IAJuB,CAEzBD,KAFyB;AAAA,QAElBE,IAFkB,GAIvBD,IAJuB,CAElBC,IAFkB;AAAA,QAEZC,UAFY,GAIvBF,IAJuB,CAEZE,UAFY;AAAA,QAGzBC,GAHyB,GAIvBH,IAJuB,CAGzBG,GAHyB;AAAA,QAGpBC,MAHoB,GAIvBJ,IAJuB,CAGpBI,MAHoB;AAAA,4BAIvBJ,IAJuB,CAGZK,WAHY;AAAA,QAGZA,WAHY,qCAGA,EAHA;AAAA,QAGIC,YAHJ,GAIvBN,IAJuB,CAGIM,YAHJ;AAAA,QAKzBC,OALyB,GAKfF,YAAYG,IAAZ,IAAoBJ,MALL;AAAA,QAMzBK,YANyB,GAMT,IAAIC,IAAJ,CAASJ,eAAa,IAAtB,CAAD,CAA8BK,WAA9B,EANU;;AAO3B,WAAO;AACLP,cAAQb,EAAEC,MADL;AAELoB,iBAAW,qBAFN;AAGLb,aAAOA,KAHF;AAILc,mBAAaZ,IAJR;AAKLa,eAASZ,UALJ;AAMLa,cAAQR,OANH;AAOLS,mBAAaP,YAPR;AAQLN,WAAKA;AARA,KAAP;AAUD,GAjBM,CAAP;AAkBD,CAtBD;;AAwBA,IAAMc,uBAAuB;AAC3BC,QAD2B,kBACpBxB,IADoB,EACdyB,MADc,EACP;AACZ,QAAEC,SAAF,GAAgBD,MAAhB,CAAEC,SAAF;AAAA,QACJC,QADI,GACO5B,YAAYC,IAAZ,CADP;;AAEN,WAAO;AACLU,cAAQb,EAAEC,MADL;AAEL6B,gBAAUA,QAFL;AAGLC,cAAQF;AAHH,KAAP;AAKD;AAT0B,CAA7B;;kBAYeH,oB"
+}

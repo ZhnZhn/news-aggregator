@@ -72,6 +72,7 @@ var PanelQuery = function (_Component) {
           className = _props.className,
           paneStyle = _props.paneStyle,
           isShow = _props.isShow,
+          onCryptoComapre = _props.onCryptoComapre,
           onIex = _props.onIex,
           onNewsApi = _props.onNewsApi,
           onNewsTop = _props.onNewsTop,
@@ -91,6 +92,12 @@ var PanelQuery = function (_Component) {
         },
         _react2.default.createElement(_Comp2.default.MenuItem, {
           ref: this._refFirstItem,
+          className: CL_ITEM,
+          caption: 'CryptoCompare: News',
+          onClick: onCryptoComapre,
+          onClose: onClose
+        }),
+        _react2.default.createElement(_Comp2.default.MenuItem, {
           className: CL_ITEM,
           caption: 'IEX Cloud: Stock News',
           onClick: onIex,

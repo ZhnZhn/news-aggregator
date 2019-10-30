@@ -77,6 +77,15 @@ var STYLE = {
   }
 };
 
+var _ffClick = function _ffClick(onClose) {
+  return function (onClick) {
+    return function () {
+      onClick();
+      onClose();
+    };
+  };
+};
+
 var HeaderBar = function (_Component) {
   (0, _inherits3.default)(HeaderBar, _Component);
 
@@ -101,37 +110,22 @@ var HeaderBar = function (_Component) {
       _this.setState({ isQuery: false });
     };
 
-    _this._hClickSource = function (id) {
-      switch (id) {
-        case 'Webhose':
-          _this.props.onQuery();
-          break;
-        case 'StackTagged':
-          _this.props.onStackTagged();
-          break;
-        case 'StackSearch':
-          _this.props.onStackSearch();
-          break;
-        case 'Iex':
-          _this.props.onIex();
-          break;
-        case 'NewsSearch':
-          _this.props.onNewsSearch();
-          break;
-        case 'NewsTop':
-          _this.props.onNewsTop();
-          break;
-        default:
-      }
-      _this._hCloseQuery();
-    };
+    var onQuery = props.onQuery,
+        onStackTagged = props.onStackTagged,
+        onStackSearch = props.onStackSearch,
+        onCryptoComapre = props.onCryptoComapre,
+        onIex = props.onIex,
+        onNewsSearch = props.onNewsSearch,
+        onNewsTop = props.onNewsTop,
+        _fClick = _ffClick(_this._hCloseQuery);
 
-    _this._hWebhose = _this._hClickSource.bind(null, 'Webhose');
-    _this._hStackTagged = _this._hClickSource.bind(null, 'StackTagged');
-    _this._hStackSearch = _this._hClickSource.bind(null, 'StackSearch');
-    _this._hIex = _this._hClickSource.bind(null, 'Iex');
-    _this._hNewsApi = _this._hClickSource.bind(null, 'NewsSearch');
-    _this._hNewsTop = _this._hClickSource.bind(null, 'NewsTop');
+    _this._hWebhose = _fClick(onQuery);
+    _this._hStackTagged = _fClick(onStackTagged);
+    _this._hStackSearch = _fClick(onStackSearch);
+    _this._hCryptoCompare = _fClick(onCryptoComapre);
+    _this._hIex = _fClick(onIex);
+    _this._hNewsApi = _fClick(onNewsSearch);
+    _this._hNewsTop = _fClick(onNewsTop);
 
     _this.state = {
       isQuery: false
@@ -187,6 +181,7 @@ var HeaderBar = function (_Component) {
           onWebhoseBrodcast: onWebhoseBrodcast,
           onStackTagged: this._hStackTagged,
           onStackSearch: this._hStackSearch,
+          onCryptoComapre: this._hCryptoCompare,
           onIex: this._hIex,
           onNewsApi: this._hNewsApi,
           onNewsTop: this._hNewsTop
