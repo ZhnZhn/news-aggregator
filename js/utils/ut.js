@@ -16,12 +16,17 @@ var _toFirstUpperCase = require('./toFirstUpperCase');
 
 var _toFirstUpperCase2 = _interopRequireDefault(_toFirstUpperCase);
 
+var _replaceDecCodes = require('./replaceDecCodes');
+
+var _replaceDecCodes2 = _interopRequireDefault(_replaceDecCodes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ut = {
   crId: _crId2.default,
   joinStrsBy: _joinStrsBy2.default,
-  toFirstUpperCase: _toFirstUpperCase2.default
+  toFirstUpperCase: _toFirstUpperCase2.default,
+  replaceDecCodes: _replaceDecCodes2.default
 };
 
 exports.default = ut;

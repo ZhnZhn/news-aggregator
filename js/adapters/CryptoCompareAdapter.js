@@ -4,11 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _crId = require('../utils/crId');
+var _ut = require('../utils/ut');
 
-var _crId2 = _interopRequireDefault(_crId);
+var _ut2 = _interopRequireDefault(_ut);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var crId = _ut2.default.crId,
+    replaceDecCodes = _ut2.default.replaceDecCodes;
+
 
 var C = {
   SOURCE: 'cryptocompare_news'
@@ -28,13 +32,14 @@ var _toArticles = function _toArticles(json) {
         source_info = _item$source_info === undefined ? {} : _item$source_info,
         published_on = item.published_on,
         _author = source_info.name || source,
-        _publishedAt = new Date(published_on * 1000).toISOString();
+        _publishedAt = new Date(published_on * 1000).toISOString(),
+        _body = replaceDecCodes(body);
 
     return {
       source: C.SOURCE,
-      articleId: (0, _crId2.default)(),
+      articleId: crId(),
       title: title,
-      description: body,
+      description: _body,
       related: categories,
       author: _author,
       publishedAt: _publishedAt,
