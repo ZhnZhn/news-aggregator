@@ -12,6 +12,14 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _ThemeContext = require('../hoc/ThemeContext');
+
+var _ThemeContext2 = _interopRequireDefault(_ThemeContext);
+
+var _ScrollStyle = require('../styles/ScrollStyle');
+
+var _ScrollStyle2 = _interopRequireDefault(_ScrollStyle);
+
 var _ModalPane = require('../zhn-moleculs/ModalPane');
 
 var _ModalPane2 = _interopRequireDefault(_ModalPane);
@@ -45,15 +53,19 @@ var S = {
 
 var _renderOptions = function _renderOptions(options, currentItem, clItem, onSelect, isShow) {
   return options.map(function (item) {
-    var _style = item.value === currentItem.value ? S.ITEM : void 0;
+    var value = item.value,
+        caption = item.caption,
+        _style = value === currentItem.value ? S.ITEM : void 0;
+
     return _react2.default.createElement(
       'div',
       {
+        key: value,
         style: _style,
         className: clItem,
         onClick: onSelect.bind(null, item)
       },
-      item.caption
+      caption
     );
   });
 };
@@ -66,6 +78,9 @@ var OptionsPane = function OptionsPane(_ref) {
       clItem = _ref.clItem,
       onSelect = _ref.onSelect,
       onClose = _ref.onClose;
+
+  var _theme = (0, _react.useContext)(_ThemeContext2.default),
+      TS = _theme.createStyle(_ScrollStyle2.default);
   return _react2.default.createElement(
     _ModalPane2.default,
     {
@@ -77,7 +92,7 @@ var OptionsPane = function OptionsPane(_ref) {
       _ShowHide2.default,
       {
         isShow: isShow,
-        className: CL,
+        className: CL + ' ' + TS.CL_SCROLL,
         style: (0, _extends3.default)({}, S.PANE, rootStyle)
       },
       _renderOptions(options, item, clItem, onSelect, isShow)

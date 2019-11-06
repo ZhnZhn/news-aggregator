@@ -11,8 +11,8 @@ var _extends3 = _interopRequireDefault(_extends2);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var styleConfig = {
-  themeName: undefined,
-  style: undefined,
+  themeName: void 0,
+  style: void 0,
   createStyle: function createStyle(CSS_RULE, themeName) {
     var _paneRoot = void 0;
     switch (themeName) {

@@ -51,8 +51,20 @@ var S = {
   }
 };
 
-var SORTBY_OPTIONS = [{ caption: 'Latest', value: 'latest' }, { caption: 'Popular', value: 'popular' }],
-    DF_SORTBY = SORTBY_OPTIONS[0];
+var FEED_OPTIONS = [{ caption: 'All', value: 'ALL_NEWS_FEEDS' }, { caption: 'Decrypt', value: 'decrypt' }, { caption: 'CoinDesk', value: 'coindesk' }, { caption: 'CoinTelegraph', value: 'cointelegraph' }, { caption: 'CryptoCompare', value: 'cryptocompare' }],
+    DF_FEED = FEED_OPTIONS[0],
+    CATEGORY_OPTIONS = [{ caption: 'All', value: 'ALL_NEWS_CATEGORIES' }, { caption: 'Altcoin', value: 'Altcoin' }, { caption: 'Asia', value: 'Asia' }, { caption: 'Blockchain', value: 'Blockchain' }, { caption: 'Business', value: 'Business' }, { caption: 'Commodity', value: 'Commodity' }, { caption: 'Exchange', value: 'Exchange' }, { caption: 'Fiat', value: 'Fiat' }, { caption: 'ICO', value: 'ICO' }, { caption: 'Market', value: 'Market' }, { caption: 'Mining', value: 'Mining' }, { caption: 'Regulation', value: 'Regulation' }, { caption: 'Trading', value: 'Trading' }, { caption: 'Technology', value: 'Technology' }, { caption: 'Sponsored', value: 'Sponsored' }, { caption: 'Wallet', value: 'Wallet' }],
+    DF_CATEGORY = CATEGORY_OPTIONS[0],
+    SORTBY_OPTIONS = [{ caption: 'Latest', value: 'latest' }, { caption: 'Popular', value: 'popular' }],
+    DF_SORTBY = SORTBY_OPTIONS[0],
+    _getValue = function _getValue(item) {
+  return item.value;
+},
+    _fSelect = function _fSelect(comp, propName) {
+  return function (option) {
+    comp[propName] = option ? option.value : void 0;
+  };
+};
 
 var CryptoCompareNewsDialog = (0, _withKeyDown2.default)(_class = function (_Component) {
   (0, _inherits3.default)(CryptoCompareNewsDialog, _Component);
@@ -61,10 +73,6 @@ var CryptoCompareNewsDialog = (0, _withKeyDown2.default)(_class = function (_Com
     (0, _classCallCheck3.default)(this, CryptoCompareNewsDialog);
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (CryptoCompareNewsDialog.__proto__ || Object.getPrototypeOf(CryptoCompareNewsDialog)).call(this, props));
-
-    _this._selectSortBy = function (option) {
-      _this.sortBy = option ? option.value : void 0;
-    };
 
     _this._handleLoad = function () {
       var _this$props = _this.props,
@@ -77,8 +85,9 @@ var CryptoCompareNewsDialog = (0, _withKeyDown2.default)(_class = function (_Com
       onLoad({
         type: type, source: source, itemConf: itemConf,
         loadId: 'CCN',
+        feed: _this.feed,
+        category: _this.category,
         sortOrder: _this.sortBy
-
       });
     };
 
@@ -101,7 +110,12 @@ var CryptoCompareNewsDialog = (0, _withKeyDown2.default)(_class = function (_Com
       return _this.dialogComp = comp;
     };
 
-    _this.sortBy = DF_SORTBY.value;
+    _this.feed = _getValue(DF_FEED);
+    _this.category = _getValue(DF_CATEGORY);
+    _this.sortBy = _getValue(DF_SORTBY);
+    _this._selectFeed = _fSelect(_this, 'feed');
+    _this._selectCategory = _fSelect(_this, 'category');
+    _this._selectSortBy = _fSelect(_this, 'sortBy');
     _this._handleKeyDownWith = _this._handleKeyDownWith.bind(_this);
     return _this;
   }
@@ -130,6 +144,28 @@ var CryptoCompareNewsDialog = (0, _withKeyDown2.default)(_class = function (_Com
           onShowChart: onShow,
           onClose: this._handleClose
         },
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_Comp2.default.InputSelect, {
+            caption: 'Feed',
+            initItem: DF_FEED,
+            options: FEED_OPTIONS,
+            styleConfig: TS.SELECT,
+            onSelect: this._selectFeed
+          })
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_Comp2.default.InputSelect, {
+            caption: 'Category',
+            initItem: DF_CATEGORY,
+            options: CATEGORY_OPTIONS,
+            styleConfig: TS.SELECT,
+            onSelect: this._selectCategory
+          })
+        ),
         _react2.default.createElement(
           'div',
           null,

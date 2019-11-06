@@ -35,15 +35,14 @@ const styles = {
     overflowY: 'hidden',
     overflowX : 'hidden'
   },
-  brCaption: {
-    marginRight: -2
-  },
   hrzResize : {
     position : 'absolute',
     top : 30,
-    right: '0'
+    right: 0
   },
   btCircle: {
+    position: 'relative',
+    top: -3,
     marginLeft: 16,
     marginRight: 6
   },
@@ -224,7 +223,7 @@ class NewsPane extends Component {
             onClose={this._hToggleMore}
           />
           <BrowserCaption
-             rootStyle={{ ...styles.brCaption, ...TS.PANE_CAPTION }}
+             rootStyle={TS.PANE_CAPTION}
              caption={_paneCaption}
              onMore={this._showMore}
              onClose={this._handleHide}
@@ -235,7 +234,7 @@ class NewsPane extends Component {
               style={styles.btCircle}
               onClick={onRemoveItems}
             />
-            <SvgHrzResize
+            <SvgHrzResize              
               minWidth={RESIZE_MIN_WIDTH}
               maxWidth={RESIZE_MAX_WIDTH}
               getDomNode={this._getRootDiv}

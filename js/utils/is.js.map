@@ -1,0 +1,14 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/is.js"
+ ],
+ "file": "../../src/utils/is.js",
+ "names": [
+  "is",
+  "isTouchable",
+  "document",
+  "documentElement"
+ ],
+ "mappings": ";;;;;;AACA,IAAMA,KAAK;AACTC,eAAa;AAAA,WAAMC,YACf,kBAAkBA,SAASC,eADlB;AAAA;AADJ,CAAX;;kBAKeH,E"
+}

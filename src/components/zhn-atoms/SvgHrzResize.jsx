@@ -1,43 +1,76 @@
 import React, { Component } from 'react';
+//import PropTypes from "prop-types";
 
-const CL_RESIZE = 'svg-resize';
+import has from '../has'
+
+const CL = "svg-resize";
+
+const { HAS_TOUCH } = has;
+
+const _isFn = fn => typeof fn === 'function';
+const _isNaN = Number.isNaN || isNaN;
+
 const S = {
   ROOT_DIV : {
     display : 'inline-block',
-    lineHeight: '24px',
-    position: 'relative',
-    top: '2px'
+    lineHeight: '24px'
   },
-  LEFT_DIV : {
-    marginLeft : '10px'
+  BT_DIV : {
+    marginLeft : 10
   }
 };
 
 class SvgHrzResize extends Component {
+  /*
+  static propTypes = {
+    minWidth: PropTypes.number,
+    maxWidth: PropTypes.number,
+    getDomNode: PropTypes.func,
+    onResizeAfter: PropTypes.func
+  }
+  */
   static defaultProps = {
-    getDomNode: () => {}
+     getDomNode: () => {}
   }
 
   constructor(props){
-    super();
-    this.id = null;
-    this.domNode = null;
-    this.delta = 0;
-    this.step = 1;
-    this.countStep = 0;
-    this.isResizeAfter = (typeof props.onResizeAfter === 'function')
-           ? true
-           : false;
-    this.state = {};
+    super(props)
+    this.id = null
+    this.domNode = null
+    this.delta = 0
+    this.step = 1
+    this.countStep = 0
+    this.isResizeAfter = _isFn(props.onResizeAfter)
+
+    this._leftBtHandlers = HAS_TOUCH ? {
+      onTouchStart: this._hStartResize.bind(this, this._resizeLeft),
+      onTouchEnd: this._hStopResize.bind(this, true)
+    } : {
+      onMouseDown: this._hStartResize.bind(this, this._resizeLeft),
+      onMouseUp: this._hStopResize.bind(this, true),
+    }
+
+    this._rightBtHandlers = HAS_TOUCH ? {
+      onTouchStart: this._hStartResize.bind(this, this._resizeRight),
+      onTouchEnd: this._hStopResize.bind(this, true)
+    } : {
+      onMouseDown: this._hStartResize.bind(this, this._resizeRight),
+      onMouseUp: this._hStopResize.bind(this, true)
+    }
+
+
+    this.state = {}
   }
 
   _initDomNode = () => {
-    const { minWidth, maxWidth, getDomNode} = this.props;
-    this.domNode = getDomNode()
-    this.initWidth = this.domNode.getBoundingClientRect().width;
-    this.currentWidth = this.initWidth;
-    this.minDelta = minWidth - this.initWidth;
-    this.maxDelta = maxWidth - this.initWidth;
+    if (!this.domNode) {
+      const { minWidth, maxWidth, getDomNode } = this.props;
+      this.domNode = getDomNode();
+      this.initWidth = this.domNode.getBoundingClientRect().width;
+      this.currentWidth = this.initWidth;
+      this.minDelta = minWidth - this.initWidth;
+      this.maxDelta = maxWidth - this.initWidth;
+    }
   }
 
   _increaseStepValue = () => {
@@ -69,18 +102,26 @@ class SvgHrzResize extends Component {
       this._increaseStepValue();
     }
   }
-  _handlerStartResize = (fnResize) => {
-    if (!this.domNode){
-       this._initDomNode()
-    }
 
+  _updateDelta = () => {
+    const w = parseInt(this.domNode.style.width);
+    if (!_isNaN(w)) {
+      this.delta = w - this.initWidth
+    }
+  }
+  _hStartResize = (fnResize) => {
+    //evt.preventDefault()
+    this._initDomNode()
+    this._updateDelta()
     if (this.id !== null){
-      this._handlerStopResize(false);
+      this._hStopResize(false);
     }
     this.id = setInterval(fnResize, 5);
   }
-  _handlerStopResize = (isOnResizeAfter) => {
+  _hStopResize = (isOnResizeAfter, evt) => {
+    evt.preventDefault()
     clearInterval(this.id);
+    this._initDomNode()
     this.id = null;
     this.step = 1;
     this.countStep = 0;
@@ -94,13 +135,10 @@ class SvgHrzResize extends Component {
     return (
       <div style={S.ROOT_DIV}>
         <div
-           className={CL_RESIZE}
-           style={S.LEFT_DIV}
+           className={CL}
+           style={S.BT_DIV}
            title="Resize container horizontal left"
-           onMouseDown={this._handlerStartResize.bind(null, this._resizeLeft)}
-           onMouseUp={this._handlerStopResize.bind(null, true)}
-           onTouchStart={this._handlerStartResize.bind(null, this._resizeLeft)}
-           onTouchEnd={this._handlerStopResize.bind(null, true)}
+           {...this._leftBtHandlers}
         >
            <svg viewBox="0 0 12 12" width="100%" height="100%"
                preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -118,13 +156,10 @@ class SvgHrzResize extends Component {
           </svg>
       </div>
       <div
-         className={CL_RESIZE}
-         style={S.LEFT_DIV}
+         className={CL}
+         style={S.BT_DIV}
          title="Resize container horizontal right"
-         onMouseDown={this._handlerStartResize.bind(null, this._resizeRight)}
-         onMouseUp={this._handlerStopResize.bind(null, true)}
-         onTouchStart={this._handlerStartResize.bind(null, this._resizeRight)}
-         onTouchEnd={this._handlerStopResize.bind(null, true)}
+         {...this._rightBtHandlers}
       >
         <svg viewBox="0 0 12 12" width="100%" height="100%"
              preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -142,9 +177,8 @@ class SvgHrzResize extends Component {
         </svg>
       </div>
     </div>
-    )
+  );
   }
 }
-
 
 export default SvgHrzResize

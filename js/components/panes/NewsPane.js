@@ -87,15 +87,14 @@ var styles = {
     overflowY: 'hidden',
     overflowX: 'hidden'
   },
-  brCaption: {
-    marginRight: -2
-  },
   hrzResize: {
     position: 'absolute',
     top: 30,
-    right: '0'
+    right: 0
   },
   btCircle: {
+    position: 'relative',
+    top: -3,
     marginLeft: 16,
     marginRight: 6
   },
@@ -313,7 +312,7 @@ var NewsPane = function (_Component) {
         _react2.default.createElement(
           _BrowserCaption2.default,
           {
-            rootStyle: (0, _extends3.default)({}, styles.brCaption, TS.PANE_CAPTION),
+            rootStyle: TS.PANE_CAPTION,
             caption: _paneCaption,
             onMore: this._showMore,
             onClose: this._handleHide
