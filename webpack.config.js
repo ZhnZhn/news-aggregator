@@ -24,7 +24,7 @@ module.exports = {
       chunkFilename: "[chunkhash].js"
   },
   resolve: {
-    modulesDirectories: ['local_modules', 'node_modules']
+    modules: ['local_modules', 'node_modules']
   },
   plugins : [
     new webpack.DefinePlugin({
