@@ -2,31 +2,21 @@ import React, { Component } from 'react'
 
 import withTheme from '../hoc/withTheme'
 import styleConfig from './Dialog.Style'
-
-import DraggableDialog from '../zhn-moleculs/DraggableDialog'
-import TextField from '../zhn-m-input/TextField'
-import InputSelect from '../zhn-m-input/InputSelect'
-import PoweredBy from '../links/PoweredBy'
-import Link from '../links/Links'
-import RaisedButton from '../zhn-atoms/RaisedButton'
-
-import withKeyDown from './decorators/withKeyDown'
+import A from '../Comp'
+import Decors from './decorators/Decors'
 
 const S = {
   POWERED_BY: {
-    marginLeft: '16px',
-    marginBottom: '8px'
+    marginLeft: 16,
+    marginBottom: 8
   }
-}
-
-const DF_SITY_TYPE = {
-  caption: 'News', value: 'news'
 };
 
-const options = [
+const SITE_TYPE_OPTIONS = [
   { caption: 'News', value: 'news'},
   { caption: 'Blogs', value: 'blogs'}
-];
+]
+, DF_SITE_TYPE = SITE_TYPE_OPTIONS[0];
 
 const _onTestDaysBefore = (value) => {
   const _n = parseInt(value, 10)
@@ -37,18 +27,19 @@ const _onTestDaysBefore = (value) => {
   }
 }
 
-@withKeyDown
+
+@Decors.withDecors
 class WebhoseQueryDialog extends Component {
   constructor(props){
-    super()
-    this.siteType = undefined
-    this._handleKeyDownWith = this._handleKeyDownWith.bind(this)
+    super(props)
+    this.siteType = void 0
+    this._initWithDecors(this)
   }
 
   _selectSiteType = (option) => {
     this.siteType = (option)
        ? option.value
-       : undefined
+       : void 0
   }
 
   _handleLoad = () => {
@@ -67,24 +58,7 @@ class WebhoseQueryDialog extends Component {
       beforeDays: _beforeDays
     })
   }
-
-  _handleClose = () => {
-    this.dialogComp.focusPrevEl()
-    this.props.onClose()
-  }
-
-  _createCommandButtons = (S) => {
-    return [
-      <RaisedButton
-        rootStyle={S.RAISED_ROOT}
-        clDiv={S.CL_RAISED_DIV}
-        caption="Load"
-        isPrimary={true}
-        onClick={this._handleLoad}
-      />
-    ];
-  }
-
+  
   _refDialoComp = comp => this.dialogComp = comp
   _refInputTitle = comp => this.inputTitle = comp
   _refInputBeforeDays = comp => this.inputBeforeDays = comp
@@ -95,7 +69,7 @@ class WebhoseQueryDialog extends Component {
          , _commandButtons = this._createCommandButtons(TS.BT);
 
     return (
-      <DraggableDialog
+      <A.DraggableDialog
            ref={this._refDialoComp}
            rootStyle={TS.R_DIALOG}
            browserCaptionStyle={TS.BROWSER_CAPTION}
@@ -107,20 +81,20 @@ class WebhoseQueryDialog extends Component {
            onShowChart={onShow}
            onClose={this._handleClose}
        >
-        <TextField
+        <A.TextField
           rootStyle={TS.INPUT_ROOT}
           ref={this._refInputTitle}
           caption="In Title (Default: Weather)"
           initValue="Weather"
         />
-        <InputSelect
+        <A.InputSelect
           caption="Site Type"
-          initItem={DF_SITY_TYPE}
-          options={options}
+          initItem={DF_SITE_TYPE}
+          options={SITE_TYPE_OPTIONS}
           styleConfig={TS.SELECT}
           onSelect={this._selectSiteType}
         />
-        <TextField
+        <A.TextField
           rootStyle={TS.INPUT_ROOT}
           ref={this._refInputBeforeDays}
           caption="Before Days (Default: 2, Max 30)"
@@ -129,10 +103,10 @@ class WebhoseQueryDialog extends Component {
           onTest={_onTestDaysBefore}
         />
 
-        <PoweredBy rootStyle={S.POWERED_BY}>
-          <Link.WebhoseIo />
-        </PoweredBy>
-      </DraggableDialog>
+        <A.Link.PoweredBy rootStyle={S.POWERED_BY}>
+          <A.Link.WebhoseIo />
+        </A.Link.PoweredBy>
+      </A.DraggableDialog>
     );
   }
 }

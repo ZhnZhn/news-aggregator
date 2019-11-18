@@ -75,23 +75,22 @@ class About extends Component {
                  <p>
                    News headlines providers:&nbsp;
                  </p>
-                <p>
-                  <div>
-                    <A.Link.CryptoCompare />
-                  </div>
-                  <div>
-                    <A.Link.IexApi />
-                  </div>
-                  <div>
-                    <A.Link.NewsApi />
-                  </div>
-                   <div>
-                     <A.Link.StackOverflow />
-                   </div>
-                   <div>
-                     <A.Link.WebhoseIo />
-                   </div>
-                 </p>
+                 <div>
+                   <A.Link.CryptoCompare />
+                 </div>
+                 <div>
+                   <A.Link.IexApi />
+                 </div>
+                 <div>
+                   <A.Link.NewsApi />
+                 </div>
+                 <div>
+                   <A.Link.StackOverflow />
+                 </div>
+                 <div>
+                   <A.Link.WebhoseIo />
+                 </div>
+                
                  <p style={S.MARGIN_TOP}>
                    Personal API Keys from providers are required.
                  </p>

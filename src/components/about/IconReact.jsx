@@ -7,7 +7,11 @@ const IconReact = () => (
       href="https://reactjs.org"
       tabIndex="-1"
    >
-    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round">
+    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"
+         fillRule="evenodd"
+         clipRule="evenodd"
+         strokeLinejoin="round"
+    >
         <title>React Logo</title>
         <circle cx="299.529" cy="299.628" r="50.167"/>
         <path fill="none" d="M299.529,197.628

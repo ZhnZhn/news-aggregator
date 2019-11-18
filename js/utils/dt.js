@@ -14,6 +14,8 @@ var _pipe2 = _interopRequireDefault(_pipe);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var MIN_YEAR = 1999;
+
 var _isStr = function _isStr(str) {
   return typeof str === 'string';
 };
@@ -43,33 +45,27 @@ var _toDateTime = function _toDateTime(datetime) {
   return _tArr[0] + ' ' + _day + '-' + _m + '-' + _y;
 };
 
+var REG_DATE = /(\d{4})-(\d{2})-(\d{2})/;
+
 var DateUtil = {
   isValidDate: function isValidDate(str) {
     // STRING FORMAT yyyy-mm-dd
-    if (!str) {
-      return false;
-    }
-
-    if (str.trim().length !== 10) {
+    if (!_isStr(str) || str.trim().length !== 10) {
       return false;
     }
 
     // m[1] is year 'YYYY' * m[2] is month 'MM' * m[3] is day 'DD'
-    var m = str.match(/(\d{4})-(\d{2})-(\d{2})/);
+    var m = str.match(REG_DATE);
 
     // STR IS NOT FIT m IS NOT OBJECT
-    if (m === null || (typeof m === 'undefined' ? 'undefined' : (0, _typeof3.default)(m)) !== 'object' || m.size !== 4) {
+    if (m === null || (typeof m === 'undefined' ? 'undefined' : (0, _typeof3.default)(m)) !== 'object' || m.length !== 4) {
       return false;
     }
 
-    // CHECK m TYPE
-    //if (typeof m !== 'object' && m !== null && m.size!==3) { return false; }
-
     var thisYear = new Date().getFullYear();
-    var minYear = 1999;
 
     // YEAR CHECK
-    if (m[1].length < 4 || m[1] < minYear || m[1] > thisYear) {
+    if (m[1].length < 4 || m[1] < MIN_YEAR || m[1] > thisYear) {
       return false;
     }
     // MONTH CHECK
@@ -108,6 +104,10 @@ var DateUtil = {
     }
   },
 
+
+  toUTCSecond: function toUTCSecond(strDate) {
+    return DateUtil.toUTCMillis(strDate) / 1000;
+  },
 
   toTimeDate: function toTimeDate(publishedAt) {
     if (_isNum(publishedAt)) {

@@ -21,7 +21,11 @@ var IconReact = function IconReact() {
             },
             _react2.default.createElement(
                   "svg",
-                  { viewBox: "0 0 600 600", xmlns: "http://www.w3.org/2000/svg", "fill-rule": "evenodd", "clip-rule": "evenodd", "stroke-linejoin": "round" },
+                  { viewBox: "0 0 600 600", xmlns: "http://www.w3.org/2000/svg",
+                        fillRule: "evenodd",
+                        clipRule: "evenodd",
+                        strokeLinejoin: "round"
+                  },
                   _react2.default.createElement(
                         "title",
                         null,

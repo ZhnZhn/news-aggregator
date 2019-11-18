@@ -111,6 +111,7 @@ var HeaderBar = function (_Component) {
     };
 
     var onQuery = props.onQuery,
+        onWebhoseBrodcast = props.onWebhoseBrodcast,
         onStackTagged = props.onStackTagged,
         onStackSearch = props.onStackSearch,
         onCryptoComapre = props.onCryptoComapre,
@@ -120,6 +121,7 @@ var HeaderBar = function (_Component) {
         _fClick = _ffClick(_this._hCloseQuery);
 
     _this._hWebhose = _fClick(onQuery);
+    _this._hWebhoseBrodcast = _fClick(onWebhoseBrodcast);
     _this._hStackTagged = _fClick(onStackTagged);
     _this._hStackSearch = _fClick(onStackSearch);
     _this._hCryptoCompare = _fClick(onCryptoComapre);
@@ -132,31 +134,9 @@ var HeaderBar = function (_Component) {
     };
     return _this;
   }
-  /*
-  _hCloseQuery = (event) => {
-    if (!this.btQueryNode.contains(event.target)){
-      this.setState({ isQuery: false })
-    }
-  }
-  */
-
 
   (0, _createClass3.default)(HeaderBar, [{
     key: 'render',
-
-
-    /*
-    _hChangeTheme = () => {
-      const { theme, onChangeTheme } = this.props;
-      if (theme.themeName === 'GREY'){
-        theme.setThemeName('WHITE')
-      } else {
-        theme.setThemeName('GREY')
-      }
-      onChangeTheme()
-    }
-    */
-
     value: function render() {
       var _props = this.props,
           store = _props.store,
@@ -165,7 +145,6 @@ var HeaderBar = function (_Component) {
           onNewsSources = _props.onNewsSources,
           onSettings = _props.onSettings,
           onAbout = _props.onAbout,
-          onWebhoseBrodcast = _props.onWebhoseBrodcast,
           S = theme.createStyle(_HeaderBar2.default),
           isQuery = this.state.isQuery;
 
@@ -178,7 +157,7 @@ var HeaderBar = function (_Component) {
           isShow: isQuery,
           onClose: this._hToggleQuery,
           onWebhose: this._hWebhose,
-          onWebhoseBrodcast: onWebhoseBrodcast,
+          onWebhoseBrodcast: this._hWebhoseBrodcast,
           onStackTagged: this._hStackTagged,
           onStackSearch: this._hStackSearch,
           onCryptoComapre: this._hCryptoCompare,
@@ -193,13 +172,10 @@ var HeaderBar = function (_Component) {
         _react2.default.createElement(_IconAppLogo2.default, {
           className: CL.ICON_APP,
           title: TITLE
-          //onClick={this._hChangeTheme}
         }),
         _react2.default.createElement(_AppLabel2.default, {
           className: CL.LABEL_APP,
           caption: TITLE
-          //title="News Aggregator"
-          //onClick={this._hChangeTheme}
         }),
         _react2.default.createElement(
           'span',

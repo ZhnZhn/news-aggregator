@@ -1,60 +1,51 @@
 import React, { Component } from 'react'
 
+import DateUtil from '../../utils/dt'
 import withTheme from '../hoc/withTheme'
 import styleConfig from './Dialog.Style'
-
-import DateUtil from '../../utils/dt'
-
-import DraggableDialog from '../zhn-moleculs/DraggableDialog'
-import TextField from '../zhn-m-input/TextField'
-import InputSelect from '../zhn-m-input/InputSelect'
-import PoweredBy from '../links/PoweredBy'
-import Link from '../links/Links'
-import RaisedButton from '../zhn-atoms/RaisedButton'
-
-import withKeyDown from './decorators/withKeyDown'
+import A from '../Comp'
+import Decors from './decorators/Decors'
 
 const S = {
   POWERED_BY: {
-    marginLeft: '16px',
-    marginBottom: '8px'
+    marginLeft: 16,
+    marginBottom: 8
   }
 };
 
 const _initFromDate = DateUtil.getFromDate(1)
-    , _initToDate = DateUtil.getToDate()
-    , _onTestDate = DateUtil.isValidDate;
-
-const DF_SORT_BY = { caption: "Score", value: "votes" };
-const _sortByOptions = [
+, _initToDate = DateUtil.getToDate()
+, _onTestDate = DateUtil.isValidDate
+, _sortByOptions = [
   { caption: "Activity, Recent Day", value: "activity" },
   { caption: "Creation Date", value: "creation"},
   { caption: "Score", value: "votes" },
   { caption: "Relevance", value: "relevance" }
-];
+]
+, DF_SORT_BY = _sortByOptions[2];
 
-@withKeyDown
+@Decors.withDecors
 class StackSearchDialog extends Component {
   constructor(props){
-    super()
+    super(props)
     this.sortBy = DF_SORT_BY.value
-    this._handleKeyDownWith = this._handleKeyDownWith.bind(this)
+    this._initWithDecors(this)
   }
 
   _selectSortBy = (option) => {
-    this.sortBy = (option)
+    this.sortBy = option
        ? option.value
-       : undefined
+       : void 0
   }
 
   _handleLoad = () => {
     const { type, source, itemConf, onLoad } = this.props
-        , _tagged = this.inputTagged.getValue()
-        , _inTitle = this.inputInTitle.getValue()
-        , fromDate = this.fromDate.getValue()
-        , toDate = this.toDate.getValue()
-        , _fromDate = DateUtil.toUTCMillis(fromDate)/1000
-        , _toDate = DateUtil.toUTCMillis(toDate)/1000;
+    , _tagged = this.inputTagged.getValue()
+    , _inTitle = this.inputInTitle.getValue()
+    , fromDate = this.fromDate.getValue()
+    , toDate = this.toDate.getValue()
+    , _fromDate = DateUtil.toUTCSecond(fromDate)
+    , _toDate = DateUtil.toUTCSecond(toDate);
 
     onLoad({
       type,
@@ -69,23 +60,12 @@ class StackSearchDialog extends Component {
       toDate: _toDate
     })
   }
-
-  _handleClose = () => {
-    this.dialogComp.focusPrevEl()
-    this.props.onClose()
-  }
-
-  _createCommandButtons = (S) => {
-    return [
-      <RaisedButton
-        rootStyle={S.RAISED_ROOT}
-        clDiv={S.CL_RAISED_DIV}
-        caption="Load"
-        isPrimary={true}
-        onClick={this._handleLoad}
-      />
-    ];
-  }
+  
+  _refDialogComp = comp => this.dialogComp = comp
+  _refInputTagged = comp => this.inputTagged = comp
+  _refInputInTitle = comp => this.inputInTitle = comp
+  _refFromDate = comp => this.fromDate = comp
+  _refToDate = comp => this.toDate = comp
 
   render(){
     const { isShow, theme, onShow } = this.props
@@ -93,8 +73,8 @@ class StackSearchDialog extends Component {
          , _commandButtons = this._createCommandButtons(TS.BT);
 
     return (
-      <DraggableDialog
-           ref={comp => this.dialogComp = comp}
+      <A.DraggableDialog
+           ref={this._refDialogComp}
            rootStyle={TS.R_DIALOG}
            browserCaptionStyle={TS.BROWSER_CAPTION}
            styleButton={TS.BT}
@@ -105,46 +85,46 @@ class StackSearchDialog extends Component {
            onShowChart={onShow}
            onClose={this._handleClose}
        >
-         <TextField
+         <A.TextField
            rootStyle={TS.INPUT_ROOT}
-           ref={comp => this.inputTagged = comp}
+           ref={this._refInputTagged}
            caption="Tagged (Default: CSS)"
            initValue="CSS"
          />
-         <TextField
+         <A.TextField
            rootStyle={TS.INPUT_ROOT}
-           ref={comp => this.inputInTitle = comp}
+           ref={this._refInputInTitle}
            caption="In Title (Default: flexbox)"
            initValue="flexbox"
          />
-         <InputSelect
+         <A.InputSelect
            caption="SortBy"
            initItem={DF_SORT_BY}
            options={_sortByOptions}
            styleConfig={TS.SELECT}
            onSelect={this._selectSortBy}
          />
-        <TextField
+        <A.TextField
           rootStyle={TS.INPUT_ROOT}
-          ref={comp => this.fromDate = comp}
+          ref={this._refFromDate}
           caption="From Date"
           initValue={_initFromDate}
           errorMsg="YYYY-MM-DD format must be"
           onTest={_onTestDate}
         />
-        <TextField
+        <A.TextField
           rootStyle={TS.INPUT_ROOT}
-          ref={comp => this.toDate = comp}
+          ref={this._refToDate}
           caption="To Date"
           initValue={_initToDate}
           errorMsg="YYYY-MM-DD format must be"
           onTest={_onTestDate}
         />
 
-        <PoweredBy rootStyle={S.POWERED_BY}>
-          <Link.StackOverflow />
-        </PoweredBy>
-      </DraggableDialog>
+        <A.Link.PoweredBy rootStyle={S.POWERED_BY}>
+          <A.Link.StackOverflow />
+        </A.Link.PoweredBy>
+      </A.DraggableDialog>
     );
   }
 }

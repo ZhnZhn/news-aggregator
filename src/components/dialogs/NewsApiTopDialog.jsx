@@ -4,10 +4,8 @@ import toFirstUpperCase from '../../utils/toFirstUpperCase'
 
 import withTheme from '../hoc/withTheme'
 import styleConfig from './Dialog.Style'
-
 import A from '../Comp'
-
-import withKeyDown from './decorators/withKeyDown'
+import Decors from './decorators/Decors'
 
 const S = {
   POWERED_BY: {
@@ -77,18 +75,19 @@ const _CATEGORY = [
    { caption: "Ukraine", value: "ua" },
    { caption: "United Arab Emirates", value: "ae" },
    { caption: "United Kingdom", value: "gb" },
-   { caption: "United States of America", value: "us" },
+   { caption: "United States", value: "us" },
    { caption: "Venezuala", value: "ve" }
   ]
 , DF_COUNTRY = COUNTRY_OPTIONS[52];
 
-@withKeyDown
+
+@Decors.withDecors
 class NewsApiTopDialog extends Component {
   constructor(props){
     super(props)
     this.category = DF_CATEGORY.value
     this.country = DF_COUNTRY.value
-    this._handleKeyDownWith = this._handleKeyDownWith.bind(this)
+    this._initWithDecors(this)
   }
 
   _selectCategory = (option) => {
@@ -116,24 +115,7 @@ class NewsApiTopDialog extends Component {
       country: this.country
     })
   }
-
-  _handleClose = () => {
-    this.dialogComp.focusPrevEl()
-    this.props.onClose()
-  }
-
-  _createCommandButtons = (S) => {
-    return [
-      <A.RaisedButton
-        rootStyle={S.RAISED_ROOT}
-        clDiv={S.CL_RAISED_DIV}
-        caption="Load"
-        isPrimary={true}
-        onClick={this._handleLoad}
-      />
-    ];
-  }
-
+  
   _refDialogComp = comp => this.dialogComp = comp
 
   render(){

@@ -28,14 +28,15 @@ const _isFn = fn => typeof fn === 'function';
 class TextField extends Component {
   constructor(props){
     super(props)
-    this._id = props.id || crId()
+    const { id, initValue, onTest, onEnter } = props;
+    this._id = id || crId()
     this.isFocus = false;
-    this.isOnTest = _isFn(props.onTest)
-    this.isOnEnter = _isFn(props.onEnter)
-    const _value = props.initValue || '';
+    this.isOnTest = _isFn(onTest)
+    this.isOnEnter = _isFn(onEnter)
+    const _value = initValue || '';
     this.state = {
       value: _value,
-      isPassTest: this.isOnTest ? props.onTest(_value) : true
+      isPassTest: this.isOnTest ? onTest(_value) : true
     }
   }
 
@@ -100,8 +101,8 @@ class TextField extends Component {
             autoComplete="new-text"
             autoCorrect="off"
             autoCapitalize="off"
-            spellCheck={false}
-            translate={false}
+            spellCheck="false"
+            translate="false"
             onFocus={this._hFocusInput}
             onBlur={this._hBlurInput}
             onChange={this._hInputChange}

@@ -95,14 +95,19 @@ var TextField = function (_Component) {
       }
     };
 
-    _this._id = props.id || (0, _crId2.default)();
+    var id = props.id,
+        initValue = props.initValue,
+        onTest = props.onTest,
+        onEnter = props.onEnter;
+
+    _this._id = id || (0, _crId2.default)();
     _this.isFocus = false;
-    _this.isOnTest = _isFn(props.onTest);
-    _this.isOnEnter = _isFn(props.onEnter);
-    var _value = props.initValue || '';
+    _this.isOnTest = _isFn(onTest);
+    _this.isOnEnter = _isFn(onEnter);
+    var _value = initValue || '';
     _this.state = {
       value: _value,
-      isPassTest: _this.isOnTest ? props.onTest(_value) : true
+      isPassTest: _this.isOnTest ? onTest(_value) : true
     };
     return _this;
   }
@@ -148,8 +153,8 @@ var TextField = function (_Component) {
             autoComplete: 'new-text',
             autoCorrect: 'off',
             autoCapitalize: 'off',
-            spellCheck: false,
-            translate: false,
+            spellCheck: 'false',
+            translate: 'false',
             onFocus: this._hFocusInput,
             onBlur: this._hBlurInput,
             onChange: this._hInputChange,

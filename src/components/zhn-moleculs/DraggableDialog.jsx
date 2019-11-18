@@ -38,6 +38,8 @@ const styles = {
   }
 };
 
+const _isFn = fn => typeof fn === 'function';
+
 class DraggableDialog extends Component {
   /*
   static propTypes = {
@@ -84,7 +86,7 @@ class DraggableDialog extends Component {
     return (
       <div style={styles.commandDiv}>
         {commandButtons}
-        {typeof onShowChart === 'function' &&
+        {_isFn(onShowChart) &&
           <RaisedButton
              rootStyle={S.RAISED_ROOT}
              clDiv={S.CL_RAISED_DIV}
@@ -102,6 +104,8 @@ class DraggableDialog extends Component {
     );
   }
 
+  _refRootDiv = c => this.rootDiv = c
+
   render(){
     const {
            isShow, rootStyle,
@@ -114,9 +118,13 @@ class DraggableDialog extends Component {
         , _classShow = isShow ? CL_DIALOG_OPEN : CL_DIALOG;
     return (
       <div
-           ref={c => this.rootDiv = c}
+           ref={this._refRootDiv}
            className={_classShow}
-           style={Object.assign({}, styles.rootDiv, rootStyle, _styleShow)}
+           style={{
+             ...styles.rootDiv,
+             ...rootStyle,
+             ..._styleShow
+           }}
            tabIndex="0"
            onKeyDown={this._handleKeyDown}
       >

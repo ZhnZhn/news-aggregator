@@ -1,5 +1,7 @@
 import pipe from './pipe'
 
+const MIN_YEAR =  1999;
+
 const _isStr = str => typeof str === 'string';
 const _isNum = n => typeof n === 'number';
 
@@ -19,32 +21,38 @@ const _toDateTime = datetime => {
   return `${_tArr[0]} ${_day}-${_m}-${_y}`;
 };
 
+const REG_DATE = /(\d{4})-(\d{2})-(\d{2})/;
+
 const DateUtil = {
 
    isValidDate(str){
 	   // STRING FORMAT yyyy-mm-dd
-	   if (!str) { return false; }
-
-	   if (str.trim().length !== 10) { return false; }
+	   if (!_isStr(str) || str.trim().length !== 10 ) {
+       return false;
+     }
 
 	   // m[1] is year 'YYYY' * m[2] is month 'MM' * m[3] is day 'DD'
-	   const m = str.match(/(\d{4})-(\d{2})-(\d{2})/);
+	   const m = str.match(REG_DATE);
 
 	   // STR IS NOT FIT m IS NOT OBJECT
-	   if( m === null || typeof m !== 'object' || m.size !== 4 ) { return false; }
-
-	   // CHECK m TYPE
-	   //if (typeof m !== 'object' && m !== null && m.size!==3) { return false; }
+	   if( m === null || typeof m !== 'object' || m.length !== 4 ) {
+       return false;
+     }
 
 	   const thisYear = new Date().getFullYear();
-	   const minYear = 1999;
 
 	  // YEAR CHECK
-	   if( (m[1].length < 4) || m[1] < minYear || m[1] > thisYear) { return false; }
+	   if( (m[1].length < 4) || m[1] < MIN_YEAR || m[1] > thisYear) {
+       return false;
+     }
 	  // MONTH CHECK
-	   if( (m[2].length < 2) || m[2] < 1 || m[2] > 12) { return false;}
+	   if( (m[2].length < 2) || m[2] < 1 || m[2] > 12) {
+       return false;
+     }
 	  // DAY CHECK
-	   if( (m[3].length < 2) || m[3] < 1 || m[3] > 31) { return false;}
+	   if( (m[3].length < 2) || m[3] < 1 || m[3] > 31) {
+       return false;
+     }
 
 	   return true;
   },
@@ -75,6 +83,8 @@ const DateUtil = {
      return void 0;
    }
  },
+
+ toUTCSecond: (strDate) => DateUtil.toUTCMillis(strDate)/1000,
 
  toTimeDate: (publishedAt) => {
    if (_isNum(publishedAt)) {

@@ -2,32 +2,27 @@ import React, { Component } from 'react'
 
 import withTheme from '../hoc/withTheme'
 import styleConfig from './NewsPane.Style'
+import has from '../has'
 
 import crModelMore from './crModelMore'
-import ModalSlider from '../zhn-modal-slider/ModalSlider'
-import BrowserCaption from '../zhn-atoms/BrowserCaption'
-import CircleButton from '../zhn-atoms/CircleButton'
-import SvgHrzResize from '../zhn-atoms/SvgHrzResize'
-import ScrollPane from '../zhn-atoms/ScrollPane'
+import A from '../Comp'
 
-const SHOW_POPUP = "show-popup"
-    , CHILD_MARGIN = 36
-    , RESIZE_INIT_WIDTH = 635
-    , RESIZE_MIN_WIDTH = 395
-    , RESIZE_MAX_WIDTH = 1200
-    , DELTA = 10;
-
-const CL = {
+const CHILD_MARGIN = 36
+, RESIZE_INIT_WIDTH = 635
+, RESIZE_MIN_WIDTH = 395
+, RESIZE_MAX_WIDTH = 1200
+, RESIZE_DELTA = 10
+, CL = {
+  SHOW_POPUP: "show-popup",
   MENU_MORE: "popup-menu items__menu-more"
 };
 
-const styles = {
-  rootDiv : {
-    backgroundColor: '#4D4D4D',
+const S = {
+  ROOT_DIV : {
+    backgroundColor: '#4d4d4d',
     padding : '0px 0px 3px 0px',
     position: 'relative',
     borderRadius: 4,
-    width: 635,
     height: 'calc(100vh - 71px)',
     minHeight: 500,
     marginLeft: 16,
@@ -35,35 +30,21 @@ const styles = {
     overflowY: 'hidden',
     overflowX : 'hidden'
   },
-  hrzResize : {
-    position : 'absolute',
-    top : 30,
-    right: 0
-  },
-  btCircle: {
+  BT_REMOVE: {
     position: 'relative',
     top: -3,
     marginLeft: 16,
     marginRight: 6
   },
-  scrollDiv : {
+  SCROLL_DIV : {
     overflowY: 'auto',
     height: '92%',
     paddingRight: 10
   },
-  chartDiv : {
-    overflowY: 'auto',
-    height : 680
-  },
-  transitionOption : {
-    transitionName : "scaleY",
-    transitionEnterTimeout : 400,
-    transitionLeave : false
-  },
-  inlineBlock : {
+  INLINE_BLOCK : {
     display : 'inline-block'
   },
-  none : {
+  NONE : {
     display: 'none'
   }
 };
@@ -77,6 +58,7 @@ class NewsPane extends Component {
   constructor(props){
     super(props);
     this.childMargin = CHILD_MARGIN;
+    this._widthStyle = has.initWidthStyle()
 
     this._MODEL = crModelMore({
       onMinWidth: this._resizeTo.bind(this, RESIZE_MIN_WIDTH),
@@ -152,41 +134,35 @@ class NewsPane extends Component {
 
    _plusToWidth = () => {
      const style = this._getRootNodeStyle()
-         , w = _getWidth(style) + DELTA;
+         , w = _getWidth(style) + RESIZE_DELTA;
      if (w < RESIZE_MAX_WIDTH) {
         style.width = _toStyleWidth(w)
      }
    }
    _minusToWidth = () => {
      const style = this._getRootNodeStyle()
-         , w = _getWidth(style) - DELTA;
+         , w = _getWidth(style) - RESIZE_DELTA;
      if (w > RESIZE_MIN_WIDTH) {
        style.width = _toStyleWidth(w)
      }
    }
 
-   _handleHide = () => {
+   _hHide = () => {
       const { onClose } = this.props;
       onClose()
       this.setState({ isShow: false })
    }
 
-   _getRootDiv = () => {
-     return this.rootDiv;
-   }
-
   _renderArticles(articles=[], onCloseItem, onRemoveUnder){
      const { Item } = this.props;
-     return articles.map((article, index) => {
-        return (
-          <Item
-             key={article.articleId}
-             item={article}
-             onCloseItem={onCloseItem}
-             onRemoveUnder={onRemoveUnder}
-          />
-        );
-     })
+     return articles.map(article => (
+        <Item
+          key={article.articleId}
+          item={article}
+          onCloseItem={onCloseItem}
+          onRemoveUnder={onRemoveUnder}
+        />
+     ));
   }
 
   _refRootDiv = node => this.rootDiv = node
@@ -203,48 +179,57 @@ class NewsPane extends Component {
           , _sortBy = sortBy ? ': ' + sortBy : ''
           , _paneCaption = `${paneCaption}${_sortBy}`
           , _styleIsShow = isShow
-               ? styles.inlineBlock
-               : styles.none
+               ? S.INLINE_BLOCK
+               : S.NONE
          , _classIsShow = isShow
-               ? SHOW_POPUP
+               ? CL.SHOW_POPUP
                : void 0;
 
      return(
         <div
            ref={this._refRootDiv}
            className={_classIsShow}
-           style={{...styles.rootDiv, ...TS.PANE_ROOT, ..._styleIsShow}}
+           style={{
+             ...this._widthStyle,
+             ...S.ROOT_DIV,
+             ...TS.PANE_ROOT,
+             ..._styleIsShow
+           }}
         >
-          <ModalSlider
+          <A.ModalSlider
             isShow={isMore}
             className={CL.MENU_MORE}
             style={TS.EL_BORDER}
             model={this._MODEL}
             onClose={this._hToggleMore}
           />
-          <BrowserCaption
+          <A.BrowserCaption
              rootStyle={TS.PANE_CAPTION}
              caption={_paneCaption}
              onMore={this._showMore}
-             onClose={this._handleHide}
+             onClose={this._hHide}
           >
-            <CircleButton
+            <A.CircleButton
               caption="R"
               title="Remove All Items"
-              style={styles.btCircle}
+              style={S.BT_REMOVE}
               onClick={onRemoveItems}
             />
-            <SvgHrzResize              
+            <A.SvgHrzResize
               minWidth={RESIZE_MIN_WIDTH}
               maxWidth={RESIZE_MAX_WIDTH}
               getDomNode={this._getRootDiv}
             />
-          </BrowserCaption>
-          <ScrollPane className={TS.CL_SCROLL_PANE} style={styles.scrollDiv}>
+          </A.BrowserCaption>
+          <A.ScrollPane className={TS.CL_SCROLL_PANE} style={S.SCROLL_DIV}>
               { this._renderArticles(articles, onCloseItem, onRemoveUnder) }
-          </ScrollPane>
+          </A.ScrollPane>
         </div>
      )
+   }
+
+   _getRootDiv = () => {
+     return this.rootDiv;
    }
 }
 

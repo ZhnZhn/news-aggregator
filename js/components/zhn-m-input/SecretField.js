@@ -189,14 +189,11 @@ var SecretField = (_temp = _class = function (_Component) {
             autoComplete: 'new-secret',
             autoCorrect: 'off',
             autoCapitalize: 'off',
-            spellCheck: false,
+            spellCheck: 'false',
             type: 'password',
-            translate: false
-            //placeholder={placeholder}
-            , maxLength: maxLength,
+            translate: 'false',
+            maxLength: maxLength,
             value: value,
-            defaultValue: value,
-
             onChange: this._handleChangeInput,
             onFocus: this._handleFocusInput,
             onBlur: this._handleBlurInput,

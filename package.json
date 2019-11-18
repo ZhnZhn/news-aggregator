@@ -1,7 +1,7 @@
 {
   "name": "news-aggregator",
   "version": "0.4.0",
-  "description": "Web app New Aggregator",
+  "description": "Web app News Aggregator",
   "main": "index.js",
   "scripts": {
     "bundle": "jspm bundle js/**/* - [js/**/*] dependency-bundle.js",
@@ -13,7 +13,7 @@
     "build:dll-jsx": "webpack --colors --progress --config webpack.dll-jsx.js",
     "stats": "npm run stats:json && npm run stats:report",
     "stats:json": "webpack --profile --json > stats.json",
-    "stats:report": "webpack-bundle-analyzer stats.json --no-open --mode static",
+    "stats:report": "webpack-bundle-analyzer stats.json ./app --no-open --mode static",
     "stats:help": "webpack-bundle-analyzer --help > out.txt",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

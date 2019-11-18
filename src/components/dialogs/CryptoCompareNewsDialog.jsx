@@ -4,8 +4,7 @@ import withTheme from '../hoc/withTheme'
 import styleConfig from './Dialog.Style'
 
 import A from '../Comp'
-
-import withKeyDown from './decorators/withKeyDown'
+import Decors from './decorators/Decors'
 
 const S = {
   POWERED_BY: {
@@ -53,7 +52,7 @@ const FEED_OPTIONS = [
 };
 
 
-@withKeyDown
+@Decors.withDecors
 class CryptoCompareNewsDialog extends Component {
   constructor(props){
     super(props)
@@ -63,7 +62,7 @@ class CryptoCompareNewsDialog extends Component {
     this._selectFeed = _fSelect(this, 'feed')
     this._selectCategory = _fSelect(this, 'category')
     this._selectSortBy = _fSelect(this, 'sortBy')
-    this._handleKeyDownWith = this._handleKeyDownWith.bind(this)
+    this._initWithDecors(this)
   }
 
 
@@ -82,29 +81,12 @@ class CryptoCompareNewsDialog extends Component {
     })
   }
 
-  _handleClose = () => {
-    this.dialogComp.focusPrevEl()
-    this.props.onClose()
-  }
-
-  _createCommandButtons = (S) => {
-    return [
-      <A.RaisedButton
-        rootStyle={S.RAISED_ROOT}
-        clDiv={S.CL_RAISED_DIV}
-        caption="Load"
-        isPrimary={true}
-        onClick={this._handleLoad}
-      />
-    ];
-  }
-
   _refDialogComp = comp => this.dialogComp = comp
 
   render(){
     const { isShow, theme, onShow } = this.props
-         , TS = theme.createStyle(styleConfig)
-         , _commandButtons = this._createCommandButtons(TS.BT);
+    , TS = theme.createStyle(styleConfig)
+    , _commandButtons = this._createCommandButtons(TS.BT);
 
     return (
       <A.DraggableDialog

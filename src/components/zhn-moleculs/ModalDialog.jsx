@@ -27,23 +27,23 @@ const STYLE = {
     display: 'block',
     backgroundColor: '#4D4D4D',
     border: 'solid 2px #3f5178',
-    borderRadius: '5px',
+    borderRadius: 5,
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
     zIndex: 10
   },
   CAPTON_DIV:{
-    padding: '5px',
     color: '#9e9e9e',
     backgroundColor: '#3f5178',
+    padding: 5,
     textAlign: 'center',
     fontSize: '18px'
   },
   COMMAND_DIV : {
-     cursor: 'default',
      float: 'right',
-     marginTop: '16px',
-     marginBottom: '10px',
-     marginRight: '4px'
+     marginTop: 16,
+     marginBottom: 10,
+     marginRight: 4,
+     cursor: 'default'
   }
 };
 
@@ -71,10 +71,8 @@ class ModalDialog extends Component {
      }
    }
 
-   constructor(props) {
-     super()
-     this.wasClosing = false
-   }
+   wasClosing = false
+
    componentDidMount() {
      this.prevFocusedEl = document.activeElement
      this.rootDiv.focus()
@@ -122,6 +120,7 @@ class ModalDialog extends Component {
         {commandButtons}
         { !withoutClose &&
             <RaisedButton
+               key="_close"
                rootStyle={TS.RAISED_ROOT}
                clDiv={TS.CL_RAISED_DIV}
                caption="Close"
@@ -132,6 +131,8 @@ class ModalDialog extends Component {
       </div>
     );
   }
+
+  _refRootDiv = n => this.rootDiv = n
 
   render(){
     const {
@@ -156,7 +157,7 @@ class ModalDialog extends Component {
 
     return (
          <div
-             ref={n => this.rootDiv = n}
+             ref={this._refRootDiv}
              tabIndex="0"
              className={_className}
              style={{ ...STYLE.ROOT_DIV, ...style, ..._style}}

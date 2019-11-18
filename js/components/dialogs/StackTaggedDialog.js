@@ -20,11 +20,15 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class;
+var _dec, _class;
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _dt = require('../../utils/dt');
+
+var _dt2 = _interopRequireDefault(_dt);
 
 var _withTheme = require('../hoc/withTheme');
 
@@ -34,64 +38,39 @@ var _Dialog = require('./Dialog.Style');
 
 var _Dialog2 = _interopRequireDefault(_Dialog);
 
-var _dt = require('../../utils/dt');
+var _Comp = require('../Comp');
 
-var _dt2 = _interopRequireDefault(_dt);
+var _Comp2 = _interopRequireDefault(_Comp);
 
-var _DraggableDialog = require('../zhn-moleculs/DraggableDialog');
+var _Decors = require('./decorators/Decors');
 
-var _DraggableDialog2 = _interopRequireDefault(_DraggableDialog);
-
-var _TextField = require('../zhn-m-input/TextField');
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _InputSelect = require('../zhn-m-input/InputSelect');
-
-var _InputSelect2 = _interopRequireDefault(_InputSelect);
-
-var _PoweredBy = require('../links/PoweredBy');
-
-var _PoweredBy2 = _interopRequireDefault(_PoweredBy);
-
-var _Links = require('../links/Links');
-
-var _Links2 = _interopRequireDefault(_Links);
-
-var _RaisedButton = require('../zhn-atoms/RaisedButton');
-
-var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-var _withKeyDown = require('./decorators/withKeyDown');
-
-var _withKeyDown2 = _interopRequireDefault(_withKeyDown);
+var _Decors2 = _interopRequireDefault(_Decors);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var S = {
   POWERED_BY: {
-    marginLeft: '16px',
-    marginBottom: '8px'
+    marginLeft: 16,
+    marginBottom: 8
   }
 };
 
 var _initFromDate = _dt2.default.getFromDate(1),
     _initToDate = _dt2.default.getToDate(),
-    _onTestDate = _dt2.default.isValidDate;
+    _onTestDate = _dt2.default.isValidDate,
+    _sortByOptions = [{ caption: "Activity, Recent Day", value: "activity" }, { caption: "Creation Date", value: "creation" }, { caption: "Score", value: "votes" }, { caption: "Hot Tab", value: "hot" }, { caption: "Hot Week Tab", value: "week" }, { caption: "Hot Month Tab", value: "month" }],
+    DF_SORT_BY = _sortByOptions[4];
 
-var DF_SORT_BY = { caption: "Hot Week Tab", value: "week" };
-var _sortByOptions = [{ caption: "Activity, Recent Day", value: "activity" }, { caption: "Creation Date", value: "creation" }, { caption: "Score", value: "votes" }, { caption: "Hot Tab", value: "hot" }, { caption: "Hot Week Tab", value: "week" }, { caption: "Hot Month Tab", value: "month" }];
-
-var StackTaggedDialog = (0, _withKeyDown2.default)(_class = function (_Component) {
+var StackTaggedDialog = (_dec = _Decors2.default.withDecors, _dec(_class = function (_Component) {
   (0, _inherits3.default)(StackTaggedDialog, _Component);
 
   function StackTaggedDialog(props) {
     (0, _classCallCheck3.default)(this, StackTaggedDialog);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (StackTaggedDialog.__proto__ || Object.getPrototypeOf(StackTaggedDialog)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (StackTaggedDialog.__proto__ || Object.getPrototypeOf(StackTaggedDialog)).call(this, props));
 
     _this._selectSortBy = function (option) {
-      _this.sortBy = option ? option.value : undefined;
+      _this.sortBy = option ? option.value : void 0;
     };
 
     _this._handleLoad = function () {
@@ -103,8 +82,8 @@ var StackTaggedDialog = (0, _withKeyDown2.default)(_class = function (_Component
           _tag = _this.inputTag.getValue(),
           fromDate = _this.fromDate.getValue(),
           toDate = _this.toDate.getValue(),
-          _fromDate = _dt2.default.toUTCMillis(fromDate) / 1000,
-          _toDate = _dt2.default.toUTCMillis(toDate) / 1000;
+          _fromDate = _dt2.default.toUTCSecond(fromDate),
+          _toDate = _dt2.default.toUTCSecond(toDate);
 
       onLoad({
         type: type,
@@ -119,31 +98,30 @@ var StackTaggedDialog = (0, _withKeyDown2.default)(_class = function (_Component
       });
     };
 
-    _this._handleClose = function () {
-      _this.dialogComp.focusPrevEl();
-      _this.props.onClose();
+    _this._refDialogComp = function (comp) {
+      return _this.dialogComp = comp;
     };
 
-    _this._createCommandButtons = function (S) {
-      return [_react2.default.createElement(_RaisedButton2.default, {
-        rootStyle: S.RAISED_ROOT,
-        clDiv: S.CL_RAISED_DIV,
-        caption: 'Load',
-        isPrimary: true,
-        onClick: _this._handleLoad
-      })];
+    _this._refInputTag = function (comp) {
+      return _this.inputTag = comp;
+    };
+
+    _this._refFromDate = function (comp) {
+      return _this.fromDate = comp;
+    };
+
+    _this._refToDate = function (comp) {
+      return _this.toDate = comp;
     };
 
     _this.sortBy = DF_SORT_BY.value;
-    _this._handleKeyDownWith = _this._handleKeyDownWith.bind(_this);
+    _this._initWithDecors(_this);
     return _this;
   }
 
   (0, _createClass3.default)(StackTaggedDialog, [{
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       var _props = this.props,
           isShow = _props.isShow,
           theme = _props.theme,
@@ -152,11 +130,9 @@ var StackTaggedDialog = (0, _withKeyDown2.default)(_class = function (_Component
           _commandButtons = this._createCommandButtons(TS.BT);
 
       return _react2.default.createElement(
-        _DraggableDialog2.default,
+        _Comp2.default.DraggableDialog,
         {
-          ref: function ref(comp) {
-            return _this2.dialogComp = comp;
-          },
+          ref: this._refDialogComp,
           rootStyle: TS.R_DIALOG,
           browserCaptionStyle: TS.BROWSER_CAPTION,
           styleButton: TS.BT,
@@ -167,51 +143,44 @@ var StackTaggedDialog = (0, _withKeyDown2.default)(_class = function (_Component
           onShowChart: onShow,
           onClose: this._handleClose
         },
-        _react2.default.createElement(_TextField2.default, {
+        _react2.default.createElement(_Comp2.default.TextField, {
           rootStyle: TS.INPUT_ROOT,
-          ref: function ref(comp) {
-            return _this2.inputTag = comp;
-          },
+          ref: this._refInputTag,
           caption: 'Tag (Default: CSS)',
           initValue: 'CSS'
         }),
-        _react2.default.createElement(_InputSelect2.default, {
+        _react2.default.createElement(_Comp2.default.InputSelect, {
           caption: 'SortBy',
           initItem: DF_SORT_BY,
           options: _sortByOptions,
           styleConfig: TS.SELECT,
           onSelect: this._selectSortBy
         }),
-        _react2.default.createElement(_TextField2.default, {
+        _react2.default.createElement(_Comp2.default.TextField, {
           rootStyle: TS.INPUT_ROOT,
-          ref: function ref(comp) {
-            return _this2.fromDate = comp;
-          },
+          ref: this._refFromDate,
           caption: 'From Date',
           initValue: _initFromDate,
           errorMsg: 'YYYY-MM-DD format must be',
           onTest: _onTestDate
         }),
-        _react2.default.createElement(_TextField2.default, {
+        _react2.default.createElement(_Comp2.default.TextField, {
           rootStyle: TS.INPUT_ROOT,
-          ref: function ref(comp) {
-            return _this2.toDate = comp;
-          },
+          ref: this._refToDate,
           caption: 'To Date',
           initValue: _initToDate,
           errorMsg: 'YYYY-MM-DD format must be',
           onTest: _onTestDate
         }),
         _react2.default.createElement(
-          _PoweredBy2.default,
+          _Comp2.default.Link.PoweredBy,
           { rootStyle: S.POWERED_BY },
-          _react2.default.createElement(_Links2.default.StackOverflow, null)
+          _react2.default.createElement(_Comp2.default.Link.StackOverflow, null)
         )
       );
     }
   }]);
   return StackTaggedDialog;
-}(_react.Component)) || _class;
-
+}(_react.Component)) || _class);
 exports.default = (0, _withTheme2.default)(StackTaggedDialog);
 //# sourceMappingURL=StackTaggedDialog.js.map

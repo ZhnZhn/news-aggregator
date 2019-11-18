@@ -143,49 +143,53 @@ var AppNewsAggregator = function (_Component) {
       var theme = this.state.theme;
 
       return _react2.default.createElement(
-        _ThemeContext2.default.Provider,
-        { value: theme },
+        _react2.default.StrictMode,
+        null,
         _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(_HeaderBar2.default, {
-            store: _Store2.default,
-            LOADING_ACTIONS: _LoadingProgressActions.TYPES,
-            onChangeTheme: _ComponentActions2.default.changeTheme,
-            onNewsSources: this.showNewsBrowser,
-            onQuery: this.showWebhoseWeb,
-            onWebhoseBrodcast: this.showWebhoseBrodcast,
-            onStackTagged: this.showStackTagged,
-            onStackSearch: this.showStackSearch,
-            onCryptoComapre: this.showCryptoCompare,
-            onIex: this.showIex,
-            onNewsSearch: this.showNewsSearch,
-            onNewsTop: this.showNewsTop,
-            onSettings: this.showSettings,
-            onAbout: _ComponentActions2.default.showAbout
-          }),
+          _ThemeContext2.default.Provider,
+          { value: theme },
           _react2.default.createElement(
             'div',
-            { className: CL_COMP },
-            _react2.default.createElement(_BrowserContainer2.default, {
-              store: _Store2.default
-            }),
-            _react2.default.createElement(_About2.default, {
-              isInitShow: true,
+            null,
+            _react2.default.createElement(_HeaderBar2.default, {
               store: _Store2.default,
-              showAction: _ComponentActions.TYPES.SHOW_ABOUT,
-              hideAction: _ComponentActions.TYPES.SHOW_NEWS_PANE
+              LOADING_ACTIONS: _LoadingProgressActions.TYPES,
+              onChangeTheme: _ComponentActions2.default.changeTheme,
+              onNewsSources: this.showNewsBrowser,
+              onQuery: this.showWebhoseWeb,
+              onWebhoseBrodcast: this.showWebhoseBrodcast,
+              onStackTagged: this.showStackTagged,
+              onStackSearch: this.showStackSearch,
+              onCryptoComapre: this.showCryptoCompare,
+              onIex: this.showIex,
+              onNewsSearch: this.showNewsSearch,
+              onNewsTop: this.showNewsTop,
+              onSettings: this.showSettings,
+              onAbout: _ComponentActions2.default.showAbout
             }),
-            _react2.default.createElement(_ComponentHrzContainer2.default, {
+            _react2.default.createElement(
+              'div',
+              { className: CL_COMP },
+              _react2.default.createElement(_BrowserContainer2.default, {
+                store: _Store2.default
+              }),
+              _react2.default.createElement(_About2.default, {
+                isInitShow: true,
+                store: _Store2.default,
+                showAction: _ComponentActions.TYPES.SHOW_ABOUT,
+                hideAction: _ComponentActions.TYPES.SHOW_NEWS_PANE
+              }),
+              _react2.default.createElement(_ComponentHrzContainer2.default, {
+                store: _Store2.default,
+                addAction: _ComponentActions.TYPES.SHOW_NEWS_PANE
+              })
+            ),
+            _react2.default.createElement(_ModalDialogContainer2.default, {
               store: _Store2.default,
-              addAction: _ComponentActions.TYPES.SHOW_NEWS_PANE
+              router: _RouterModalDialog2.default,
+              showAction: _ComponentActions.TYPES.SHOW_MODAL_DIALOG
             })
-          ),
-          _react2.default.createElement(_ModalDialogContainer2.default, {
-            store: _Store2.default,
-            router: _RouterModalDialog2.default,
-            showAction: _ComponentActions.TYPES.SHOW_MODAL_DIALOG
-          })
+          )
         )
       );
     }

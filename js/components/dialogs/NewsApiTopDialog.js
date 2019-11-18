@@ -20,7 +20,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class;
+var _dec, _class;
 
 var _react = require('react');
 
@@ -42,9 +42,9 @@ var _Comp = require('../Comp');
 
 var _Comp2 = _interopRequireDefault(_Comp);
 
-var _withKeyDown = require('./decorators/withKeyDown');
+var _Decors = require('./decorators/Decors');
 
-var _withKeyDown2 = _interopRequireDefault(_withKeyDown);
+var _Decors2 = _interopRequireDefault(_Decors);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -63,10 +63,10 @@ var _CATEGORY = ['business', 'entertainment', 'general', 'health', 'science', 's
   };
 }),
     DF_CATEGORY = CATEGORY_OPTIONS[0],
-    COUNTRY_OPTIONS = [{ caption: "Argentina", value: "ar" }, { caption: "Australia", value: "au" }, { caption: "Austria", value: "at" }, { caption: "Belguim", value: "be" }, { caption: "Brazil", value: "br" }, { caption: "Bulgaria", value: "bg" }, { caption: "Canada", value: "ca" }, { caption: "China", value: "cn" }, { caption: "Colombia", value: "co" }, { caption: "Cuba", value: "cu" }, { caption: "Czechia", value: "cz" }, { caption: "Egypt", value: "eg" }, { caption: "France", value: "fr" }, { caption: "Germany", value: "de" }, { caption: "Greece", value: "gr" }, { caption: "Hong Kong", value: "hk" }, { caption: "Hungary", value: "hu" }, { caption: "India", value: "in" }, { caption: "Indonesia", value: "id" }, { caption: "Ireland", value: "ie" }, { caption: "Israel", value: "il" }, { caption: "Italy", value: "it" }, { caption: "Japan", value: "jp" }, { caption: "Latvia", value: "lv" }, { caption: "Lithuania", value: "lt" }, { caption: "Malaysia", value: "my" }, { caption: "Mexico", value: "mx" }, { caption: "Morocco", value: "ma" }, { caption: "Netherlands", value: "nl" }, { caption: "New Zealand", value: "nz" }, { caption: "Nigeria", value: "ng" }, { caption: "Norway", value: "no" }, { caption: "Phillipines", value: "ph" }, { caption: "Poland", value: "pl" }, { caption: "Portugal", value: "pt" }, { caption: "Romania", value: "ro" }, { caption: "Russian Federation", value: "ru" }, { caption: "Saudi Arabia", value: "sa" }, { caption: "Serbia", value: "rs" }, { caption: "Singapore", value: "sg" }, { caption: "Slovakia", value: "sk" }, { caption: "Slovenia", value: "si" }, { caption: "South Africa", value: "za" }, { caption: "South Korea", value: "kr" }, { caption: "Sweden", value: "se" }, { caption: "Switzerland", value: "ch" }, { caption: "Taiwan", value: "tw" }, { caption: "Thailand", value: "th" }, { caption: "Turkey", value: "tr" }, { caption: "Ukraine", value: "ua" }, { caption: "United Arab Emirates", value: "ae" }, { caption: "United Kingdom", value: "gb" }, { caption: "United States of America", value: "us" }, { caption: "Venezuala", value: "ve" }],
+    COUNTRY_OPTIONS = [{ caption: "Argentina", value: "ar" }, { caption: "Australia", value: "au" }, { caption: "Austria", value: "at" }, { caption: "Belguim", value: "be" }, { caption: "Brazil", value: "br" }, { caption: "Bulgaria", value: "bg" }, { caption: "Canada", value: "ca" }, { caption: "China", value: "cn" }, { caption: "Colombia", value: "co" }, { caption: "Cuba", value: "cu" }, { caption: "Czechia", value: "cz" }, { caption: "Egypt", value: "eg" }, { caption: "France", value: "fr" }, { caption: "Germany", value: "de" }, { caption: "Greece", value: "gr" }, { caption: "Hong Kong", value: "hk" }, { caption: "Hungary", value: "hu" }, { caption: "India", value: "in" }, { caption: "Indonesia", value: "id" }, { caption: "Ireland", value: "ie" }, { caption: "Israel", value: "il" }, { caption: "Italy", value: "it" }, { caption: "Japan", value: "jp" }, { caption: "Latvia", value: "lv" }, { caption: "Lithuania", value: "lt" }, { caption: "Malaysia", value: "my" }, { caption: "Mexico", value: "mx" }, { caption: "Morocco", value: "ma" }, { caption: "Netherlands", value: "nl" }, { caption: "New Zealand", value: "nz" }, { caption: "Nigeria", value: "ng" }, { caption: "Norway", value: "no" }, { caption: "Phillipines", value: "ph" }, { caption: "Poland", value: "pl" }, { caption: "Portugal", value: "pt" }, { caption: "Romania", value: "ro" }, { caption: "Russian Federation", value: "ru" }, { caption: "Saudi Arabia", value: "sa" }, { caption: "Serbia", value: "rs" }, { caption: "Singapore", value: "sg" }, { caption: "Slovakia", value: "sk" }, { caption: "Slovenia", value: "si" }, { caption: "South Africa", value: "za" }, { caption: "South Korea", value: "kr" }, { caption: "Sweden", value: "se" }, { caption: "Switzerland", value: "ch" }, { caption: "Taiwan", value: "tw" }, { caption: "Thailand", value: "th" }, { caption: "Turkey", value: "tr" }, { caption: "Ukraine", value: "ua" }, { caption: "United Arab Emirates", value: "ae" }, { caption: "United Kingdom", value: "gb" }, { caption: "United States", value: "us" }, { caption: "Venezuala", value: "ve" }],
     DF_COUNTRY = COUNTRY_OPTIONS[52];
 
-var NewsApiTopDialog = (0, _withKeyDown2.default)(_class = function (_Component) {
+var NewsApiTopDialog = (_dec = _Decors2.default.withDecors, _dec(_class = function (_Component) {
   (0, _inherits3.default)(NewsApiTopDialog, _Component);
 
   function NewsApiTopDialog(props) {
@@ -98,28 +98,13 @@ var NewsApiTopDialog = (0, _withKeyDown2.default)(_class = function (_Component)
       });
     };
 
-    _this._handleClose = function () {
-      _this.dialogComp.focusPrevEl();
-      _this.props.onClose();
-    };
-
-    _this._createCommandButtons = function (S) {
-      return [_react2.default.createElement(_Comp2.default.RaisedButton, {
-        rootStyle: S.RAISED_ROOT,
-        clDiv: S.CL_RAISED_DIV,
-        caption: 'Load',
-        isPrimary: true,
-        onClick: _this._handleLoad
-      })];
-    };
-
     _this._refDialogComp = function (comp) {
       return _this.dialogComp = comp;
     };
 
     _this.category = DF_CATEGORY.value;
     _this.country = DF_COUNTRY.value;
-    _this._handleKeyDownWith = _this._handleKeyDownWith.bind(_this);
+    _this._initWithDecors(_this);
     return _this;
   }
 
@@ -178,7 +163,6 @@ var NewsApiTopDialog = (0, _withKeyDown2.default)(_class = function (_Component)
     }
   }]);
   return NewsApiTopDialog;
-}(_react.Component)) || _class;
-
+}(_react.Component)) || _class);
 exports.default = (0, _withTheme2.default)(NewsApiTopDialog);
 //# sourceMappingURL=NewsApiTopDialog.js.map

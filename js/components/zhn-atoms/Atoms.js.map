@@ -8,11 +8,13 @@
   "Atoms",
   "ScrollPane",
   "BrowserCaption",
+  "SvgHrzResize",
+  "CircleButton",
   "FlatButton",
   "ModalButton",
   "RaisedButton",
   "MenuItem",
   "ShowHide"
  ],
- "mappings": ";;;;;;;;;;AAAA;;;;AAEA;;;;AACA;;;;AAEA;;;;AACA;;;;AACA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAMA;;AAGJC,kCAHI;AAIJC,0CAJI;;AAMJC,kCANI;AAOJC,oCAPI;AAQJC,sCARI;;AAUJC,8BAVI;AAWJC;AAXI,EAAN;;kBAceP,K"
+ "mappings": ";;;;;;;;;;AAAA;;;;AAEA;;;;AACA;;;;AAEA;;;;AAEA;;;;AACA;;;;AACA;;;;AACA;;;;AAEA;;;;AACA;;;;;;AAEA,IAAMA;;AAGJC,kCAHI;AAIJC,0CAJI;;AAMJC,sCANI;;AAQJC,sCARI;AASJC,kCATI;AAUJC,oCAVI;AAWJC,sCAXI;;AAaJC,8BAbI;AAcJC;AAdI,EAAN;;kBAiBeT,K"
 }

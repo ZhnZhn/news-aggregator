@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -72,6 +76,10 @@ var styles = {
   }
 };
 
+var _isFn = function _isFn(fn) {
+  return typeof fn === 'function';
+};
+
 var DraggableDialog = function (_Component) {
   (0, _inherits3.default)(DraggableDialog, _Component);
 
@@ -106,7 +114,7 @@ var DraggableDialog = function (_Component) {
         'div',
         { style: styles.commandDiv },
         commandButtons,
-        typeof onShowChart === 'function' && _react2.default.createElement(_RaisedButton2.default, {
+        _isFn(onShowChart) && _react2.default.createElement(_RaisedButton2.default, {
           rootStyle: S.RAISED_ROOT,
           clDiv: S.CL_RAISED_DIV,
           caption: 'Show',
@@ -119,6 +127,8 @@ var DraggableDialog = function (_Component) {
           onClick: _this._handleClose
         })
       );
+    }, _this._refRootDiv = function (c) {
+      return _this.rootDiv = c;
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
@@ -154,8 +164,6 @@ var DraggableDialog = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       var _props = this.props,
           isShow = _props.isShow,
           rootStyle = _props.rootStyle,
@@ -172,11 +180,9 @@ var DraggableDialog = function (_Component) {
       return _react2.default.createElement(
         'div',
         {
-          ref: function ref(c) {
-            return _this2.rootDiv = c;
-          },
+          ref: this._refRootDiv,
           className: _classShow,
-          style: Object.assign({}, styles.rootDiv, rootStyle, _styleShow),
+          style: (0, _extends3.default)({}, styles.rootDiv, rootStyle, _styleShow),
           tabIndex: '0',
           onKeyDown: this._handleKeyDown
         },

@@ -20,6 +20,14 @@ var _BrowserCaption = require('./BrowserCaption');
 
 var _BrowserCaption2 = _interopRequireDefault(_BrowserCaption);
 
+var _SvgHrzResize = require('./SvgHrzResize');
+
+var _SvgHrzResize2 = _interopRequireDefault(_SvgHrzResize);
+
+var _CircleButton = require('./CircleButton');
+
+var _CircleButton2 = _interopRequireDefault(_CircleButton);
+
 var _FlatButton = require('./FlatButton');
 
 var _FlatButton2 = _interopRequireDefault(_FlatButton);
@@ -47,6 +55,9 @@ var Atoms = (0, _extends3.default)({}, _SvgIcons2.default, {
   ScrollPane: _ScrollPane2.default,
   BrowserCaption: _BrowserCaption2.default,
 
+  SvgHrzResize: _SvgHrzResize2.default,
+
+  CircleButton: _CircleButton2.default,
   FlatButton: _FlatButton2.default,
   ModalButton: _ModalButton2.default,
   RaisedButton: _RaisedButton2.default,

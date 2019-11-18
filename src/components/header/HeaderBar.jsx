@@ -43,7 +43,7 @@ class HeaderBar extends Component {
     super(props)
 
     const {
-      onQuery,
+      onQuery, onWebhoseBrodcast,
       onStackTagged, onStackSearch,
       onCryptoComapre,
       onIex,
@@ -51,8 +51,8 @@ class HeaderBar extends Component {
     } = props
     , _fClick = _ffClick(this._hCloseQuery);
 
-
     this._hWebhose = _fClick(onQuery)
+    this._hWebhoseBrodcast = _fClick(onWebhoseBrodcast)
     this._hStackTagged = _fClick(onStackTagged)
     this._hStackSearch = _fClick(onStackSearch)
     this._hCryptoCompare = _fClick(onCryptoComapre)
@@ -73,36 +73,16 @@ class HeaderBar extends Component {
       isQuery: !prevState.isQuery
     }))
   }
-  /*
-  _hCloseQuery = (event) => {
-    if (!this.btQueryNode.contains(event.target)){
-      this.setState({ isQuery: false })
-    }
-  }
-  */
   _hCloseQuery = (event) => {
     this.setState({ isQuery: false })
   }
-  
-  /*
-  _hChangeTheme = () => {
-    const { theme, onChangeTheme } = this.props;
-    if (theme.themeName === 'GREY'){
-      theme.setThemeName('WHITE')
-    } else {
-      theme.setThemeName('GREY')
-    }
-    onChangeTheme()
-  }
-  */
 
   render() {
     const {
             store, LOADING_ACTIONS,
             theme,
             onNewsSources,
-            onSettings, onAbout,
-            onWebhoseBrodcast
+            onSettings, onAbout
           } = this.props
         , S = theme.createStyle(styleConfig)
         , { isQuery } = this.state;
@@ -114,7 +94,7 @@ class HeaderBar extends Component {
           isShow={isQuery}
           onClose={this._hToggleQuery}
           onWebhose={this._hWebhose}
-          onWebhoseBrodcast={onWebhoseBrodcast}
+          onWebhoseBrodcast={this._hWebhoseBrodcast}
           onStackTagged={this._hStackTagged}
           onStackSearch={this._hStackSearch}
           onCryptoComapre={this._hCryptoCompare}
@@ -129,13 +109,10 @@ class HeaderBar extends Component {
         <IconAppLogo
            className={CL.ICON_APP}
            title={TITLE}
-           //onClick={this._hChangeTheme}
         />
         <AppLabel
            className={CL.LABEL_APP}
            caption={TITLE}
-           //title="News Aggregator"
-           //onClick={this._hChangeTheme}
         />
         <span className={CL.BROWSER_BTS}>
           <A.FlatButton

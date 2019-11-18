@@ -4,13 +4,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _isFn = function _isFn(fn) {
+  return typeof fn === 'function';
+};
+
 var _handleKeyDown = function _handleKeyDown(event) {
   if (event.keyCode === 13) {
-    if (this && typeof this._handleLoad === 'function') {
+    if (this && _isFn(this._handleLoad)) {
       this._handleLoad();
     }
   } else if (event.keyCode === 27) {
-    if (this && typeof this._handleClose === 'function') {
+    if (this && _isFn(this._handleClose)) {
       this._handleClose();
     }
   }

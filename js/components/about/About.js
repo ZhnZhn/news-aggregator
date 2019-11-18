@@ -149,33 +149,29 @@ var About = function (_Component) {
                 'News headlines providers:\xA0'
               ),
               _react2.default.createElement(
-                'p',
+                'div',
                 null,
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(_Comp2.default.Link.CryptoCompare, null)
-                ),
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(_Comp2.default.Link.IexApi, null)
-                ),
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(_Comp2.default.Link.NewsApi, null)
-                ),
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(_Comp2.default.Link.StackOverflow, null)
-                ),
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  _react2.default.createElement(_Comp2.default.Link.WebhoseIo, null)
-                )
+                _react2.default.createElement(_Comp2.default.Link.CryptoCompare, null)
+              ),
+              _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_Comp2.default.Link.IexApi, null)
+              ),
+              _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_Comp2.default.Link.NewsApi, null)
+              ),
+              _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_Comp2.default.Link.StackOverflow, null)
+              ),
+              _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_Comp2.default.Link.WebhoseIo, null)
               ),
               _react2.default.createElement(
                 'p',

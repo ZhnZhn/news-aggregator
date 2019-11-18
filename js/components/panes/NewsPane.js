@@ -36,50 +36,36 @@ var _NewsPane = require('./NewsPane.Style');
 
 var _NewsPane2 = _interopRequireDefault(_NewsPane);
 
+var _has = require('../has');
+
+var _has2 = _interopRequireDefault(_has);
+
 var _crModelMore = require('./crModelMore');
 
 var _crModelMore2 = _interopRequireDefault(_crModelMore);
 
-var _ModalSlider = require('../zhn-modal-slider/ModalSlider');
+var _Comp = require('../Comp');
 
-var _ModalSlider2 = _interopRequireDefault(_ModalSlider);
-
-var _BrowserCaption = require('../zhn-atoms/BrowserCaption');
-
-var _BrowserCaption2 = _interopRequireDefault(_BrowserCaption);
-
-var _CircleButton = require('../zhn-atoms/CircleButton');
-
-var _CircleButton2 = _interopRequireDefault(_CircleButton);
-
-var _SvgHrzResize = require('../zhn-atoms/SvgHrzResize');
-
-var _SvgHrzResize2 = _interopRequireDefault(_SvgHrzResize);
-
-var _ScrollPane = require('../zhn-atoms/ScrollPane');
-
-var _ScrollPane2 = _interopRequireDefault(_ScrollPane);
+var _Comp2 = _interopRequireDefault(_Comp);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var SHOW_POPUP = "show-popup",
-    CHILD_MARGIN = 36,
+var CHILD_MARGIN = 36,
     RESIZE_INIT_WIDTH = 635,
     RESIZE_MIN_WIDTH = 395,
     RESIZE_MAX_WIDTH = 1200,
-    DELTA = 10;
-
-var CL = {
+    RESIZE_DELTA = 10,
+    CL = {
+  SHOW_POPUP: "show-popup",
   MENU_MORE: "popup-menu items__menu-more"
 };
 
-var styles = {
-  rootDiv: {
-    backgroundColor: '#4D4D4D',
+var S = {
+  ROOT_DIV: {
+    backgroundColor: '#4d4d4d',
     padding: '0px 0px 3px 0px',
     position: 'relative',
     borderRadius: 4,
-    width: 635,
     height: 'calc(100vh - 71px)',
     minHeight: 500,
     marginLeft: 16,
@@ -87,35 +73,21 @@ var styles = {
     overflowY: 'hidden',
     overflowX: 'hidden'
   },
-  hrzResize: {
-    position: 'absolute',
-    top: 30,
-    right: 0
-  },
-  btCircle: {
+  BT_REMOVE: {
     position: 'relative',
     top: -3,
     marginLeft: 16,
     marginRight: 6
   },
-  scrollDiv: {
+  SCROLL_DIV: {
     overflowY: 'auto',
     height: '92%',
     paddingRight: 10
   },
-  chartDiv: {
-    overflowY: 'auto',
-    height: 680
-  },
-  transitionOption: {
-    transitionName: "scaleY",
-    transitionEnterTimeout: 400,
-    transitionLeave: false
-  },
-  inlineBlock: {
+  INLINE_BLOCK: {
     display: 'inline-block'
   },
-  none: {
+  NONE: {
     display: 'none'
   }
 };
@@ -198,7 +170,7 @@ var NewsPane = function (_Component) {
 
     _this._plusToWidth = function () {
       var style = _this._getRootNodeStyle(),
-          w = _getWidth(style) + DELTA;
+          w = _getWidth(style) + RESIZE_DELTA;
       if (w < RESIZE_MAX_WIDTH) {
         style.width = _toStyleWidth(w);
       }
@@ -206,28 +178,29 @@ var NewsPane = function (_Component) {
 
     _this._minusToWidth = function () {
       var style = _this._getRootNodeStyle(),
-          w = _getWidth(style) - DELTA;
+          w = _getWidth(style) - RESIZE_DELTA;
       if (w > RESIZE_MIN_WIDTH) {
         style.width = _toStyleWidth(w);
       }
     };
 
-    _this._handleHide = function () {
+    _this._hHide = function () {
       var onClose = _this.props.onClose;
 
       onClose();
       _this.setState({ isShow: false });
     };
 
-    _this._getRootDiv = function () {
-      return _this.rootDiv;
-    };
-
     _this._refRootDiv = function (node) {
       return _this.rootDiv = node;
     };
 
+    _this._getRootDiv = function () {
+      return _this.rootDiv;
+    };
+
     _this.childMargin = CHILD_MARGIN;
+    _this._widthStyle = _has2.default.initWidthStyle();
 
     _this._MODEL = (0, _crModelMore2.default)({
       onMinWidth: _this._resizeTo.bind(_this, RESIZE_MIN_WIDTH),
@@ -266,7 +239,7 @@ var NewsPane = function (_Component) {
       var onRemoveUnder = arguments[2];
       var Item = this.props.Item;
 
-      return articles.map(function (article, index) {
+      return articles.map(function (article) {
         return _react2.default.createElement(Item, {
           key: article.articleId,
           item: article,
@@ -292,17 +265,17 @@ var NewsPane = function (_Component) {
           sortBy = _state.sortBy,
           _sortBy = sortBy ? ': ' + sortBy : '',
           _paneCaption = '' + paneCaption + _sortBy,
-          _styleIsShow = isShow ? styles.inlineBlock : styles.none,
-          _classIsShow = isShow ? SHOW_POPUP : void 0;
+          _styleIsShow = isShow ? S.INLINE_BLOCK : S.NONE,
+          _classIsShow = isShow ? CL.SHOW_POPUP : void 0;
 
       return _react2.default.createElement(
         'div',
         {
           ref: this._refRootDiv,
           className: _classIsShow,
-          style: (0, _extends3.default)({}, styles.rootDiv, TS.PANE_ROOT, _styleIsShow)
+          style: (0, _extends3.default)({}, this._widthStyle, S.ROOT_DIV, TS.PANE_ROOT, _styleIsShow)
         },
-        _react2.default.createElement(_ModalSlider2.default, {
+        _react2.default.createElement(_Comp2.default.ModalSlider, {
           isShow: isMore,
           className: CL.MENU_MORE,
           style: TS.EL_BORDER,
@@ -310,28 +283,28 @@ var NewsPane = function (_Component) {
           onClose: this._hToggleMore
         }),
         _react2.default.createElement(
-          _BrowserCaption2.default,
+          _Comp2.default.BrowserCaption,
           {
             rootStyle: TS.PANE_CAPTION,
             caption: _paneCaption,
             onMore: this._showMore,
-            onClose: this._handleHide
+            onClose: this._hHide
           },
-          _react2.default.createElement(_CircleButton2.default, {
+          _react2.default.createElement(_Comp2.default.CircleButton, {
             caption: 'R',
             title: 'Remove All Items',
-            style: styles.btCircle,
+            style: S.BT_REMOVE,
             onClick: onRemoveItems
           }),
-          _react2.default.createElement(_SvgHrzResize2.default, {
+          _react2.default.createElement(_Comp2.default.SvgHrzResize, {
             minWidth: RESIZE_MIN_WIDTH,
             maxWidth: RESIZE_MAX_WIDTH,
             getDomNode: this._getRootDiv
           })
         ),
         _react2.default.createElement(
-          _ScrollPane2.default,
-          { className: TS.CL_SCROLL_PANE, style: styles.scrollDiv },
+          _Comp2.default.ScrollPane,
+          { className: TS.CL_SCROLL_PANE, style: S.SCROLL_DIV },
           this._renderArticles(articles, onCloseItem, onRemoveUnder)
         )
       );

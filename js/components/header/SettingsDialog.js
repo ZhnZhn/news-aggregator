@@ -68,25 +68,19 @@ var SET_IEX_KEY = 'setIexKey';
 var SET_NEWS_KEY = 'setNewsKey';
 var SET_WEBHOSE_KEY = 'setWebhoseKey';
 
-var DF_THEME = { caption: "Dark", value: "GREY" };
-var _themeOptions = [{ caption: "Dark", value: "GREY" }, { caption: "Light", value: "WHITE" }, { caption: "Sand", value: "SAND" }];
+var _themeOptions = [{ caption: "Dark", value: "GREY" }, { caption: "Light", value: "WHITE" }, { caption: "Sand", value: "SAND" }],
+    DF_THEME = _themeOptions[0];
 
-var STR_EMPTY = '';
-var _onTestLengthOrEmpty = function _onTestLengthOrEmpty(length) {
+var STR_EMPTY = '',
+    _onTestLengthOrEmpty = function _onTestLengthOrEmpty(length) {
   return function (str) {
-    if (str.length === length || str === STR_EMPTY) {
-      return true;
-    } else {
-      return false;
-    }
+    return str.length === length || str === STR_EMPTY ? true : false;
   };
-};
-
-var _onTestIexApi = _onTestLengthOrEmpty(35);
-var _onTestNewsApi = _onTestLengthOrEmpty(32);
-var _onTestWebhose = _onTestLengthOrEmpty(36);
-
-var _getKeySetters = function _getKeySetters(data) {
+},
+    _onTestIexApi = _onTestLengthOrEmpty(35),
+    _onTestNewsApi = _onTestLengthOrEmpty(32),
+    _onTestWebhose = _onTestLengthOrEmpty(36),
+    _getKeySetters = function _getKeySetters(data) {
   return {
     setIexKey: (0, _safeFn2.default)(data, SET_IEX_KEY),
     setNewsKey: (0, _safeFn2.default)(data, SET_NEWS_KEY),
@@ -135,6 +129,7 @@ var SettingsDialog = function (_Component) {
       }
     }, _this._createCommandButtons = function (S) {
       return [_react2.default.createElement(_Comp2.default.RaisedButton, {
+        key: '_set',
         rootStyle: S.RAISED_ROOT,
         clDiv: S.CL_RAISED_DIV,
         caption: 'Set All & Close',

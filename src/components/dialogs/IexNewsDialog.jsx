@@ -2,10 +2,8 @@ import React, { Component } from 'react'
 
 import withTheme from '../hoc/withTheme'
 import styleConfig from './Dialog.Style'
-
 import A from '../Comp'
-
-import withKeyDown from './decorators/withKeyDown'
+import Decors from './decorators/Decors'
 
 const S = {
   POWERED_BY: {
@@ -20,15 +18,16 @@ const RECENT_OPTIONS = [
   { caption: "30 News", value: "30" },
   { caption: "40 News", value: "40" },
   { caption: "50 News", value: "50" }
-];
-const DF_RECENT = RECENT_OPTIONS[1];
+]
+, DF_RECENT = RECENT_OPTIONS[1];
 
-@withKeyDown
+
+@Decors.withDecors
 class IexNewsDialog extends Component {
   constructor(props){
     super(props)
     this.sortBy = DF_RECENT.value
-    this._handleKeyDownWith = this._handleKeyDownWith.bind(this)
+    this._initWithDecors(this)    
   }
 
   _selectRecent = (option) => {
@@ -47,23 +46,6 @@ class IexNewsDialog extends Component {
       symbol: _symbol,
       recent: this.recent
     })
-  }
-
-  _handleClose = () => {
-    this.dialogComp.focusPrevEl()
-    this.props.onClose()
-  }
-
-  _createCommandButtons = (S) => {
-    return [
-      <A.RaisedButton
-        rootStyle={S.RAISED_ROOT}
-        clDiv={S.CL_RAISED_DIV}
-        caption="Load"
-        isPrimary={true}
-        onClick={this._handleLoad}
-      />
-    ];
   }
 
   _refDialogComp = comp => this.dialogComp = comp

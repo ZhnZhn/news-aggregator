@@ -2,10 +2,8 @@ import React, { Component } from 'react'
 
 import withTheme from '../hoc/withTheme'
 import styleConfig from './Dialog.Style'
-
 import A from '../Comp'
-
-import withKeyDown from './decorators/withKeyDown'
+import Decors from './decorators/Decors'
 
 const S = {
   POWERED_BY: {
@@ -18,15 +16,16 @@ const SORT_BY_OPTIONS = [
   { caption: "Relevancy", value: "relevancy" },
   { caption: "Popularity", value: "popularity"},
   { caption: "PublishedAt", value: "publishedAt" }
-];
-const DF_SORT_BY = SORT_BY_OPTIONS[0];
+]
+, DF_SORT_BY = SORT_BY_OPTIONS[0];
 
-@withKeyDown
+
+@Decors.withDecors
 class NewsApiSearchDialog extends Component {
   constructor(props){
     super(props)
     this.sortBy = DF_SORT_BY.value
-    this._handleKeyDownWith = this._handleKeyDownWith.bind(this)
+    this._initWithDecors(this)
   }
 
   _selectSortBy = (option) => {
@@ -45,23 +44,6 @@ class NewsApiSearchDialog extends Component {
       symbol: _symbol,
       sortBy: this.sortBy
     })
-  }
-
-  _handleClose = () => {
-    this.dialogComp.focusPrevEl()
-    this.props.onClose()
-  }
-
-  _createCommandButtons = (S) => {
-    return [
-      <A.RaisedButton
-        rootStyle={S.RAISED_ROOT}
-        clDiv={S.CL_RAISED_DIV}
-        caption="Load"
-        isPrimary={true}
-        onClick={this._handleLoad}
-      />
-    ];
   }
 
   _refDialogComp = comp => this.dialogComp = comp

@@ -27,33 +27,26 @@ const SET_IEX_KEY = 'setIexKey';
 const SET_NEWS_KEY = 'setNewsKey';
 const SET_WEBHOSE_KEY = 'setWebhoseKey';
 
-const DF_THEME = { caption: "Dark", value: "GREY" };
+
 const _themeOptions = [
   { caption: "Dark", value: "GREY" },
   { caption: "Light", value: "WHITE" },
   { caption: "Sand", value: "SAND" }
-];
+], DF_THEME = _themeOptions[0];
 
-const STR_EMPTY = '';
-const _onTestLengthOrEmpty = (length) => (str) => {
-  if ( str.length === length || str === STR_EMPTY) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-const _onTestIexApi = _onTestLengthOrEmpty(35);
-const _onTestNewsApi = _onTestLengthOrEmpty(32);
-const _onTestWebhose = _onTestLengthOrEmpty(36);
-
-const _getKeySetters = (data) => {
-   return {
-     setIexKey: safeFn(data, SET_IEX_KEY),
-     setNewsKey: safeFn(data, SET_NEWS_KEY),
-     setWebhoseKey: safeFn(data, SET_WEBHOSE_KEY)
-   };
-};
+const STR_EMPTY = ''
+, _onTestLengthOrEmpty = (length) =>
+   (str) => str.length === length || str === STR_EMPTY
+     ? true
+     : false
+, _onTestIexApi = _onTestLengthOrEmpty(35)
+, _onTestNewsApi = _onTestLengthOrEmpty(32)
+, _onTestWebhose = _onTestLengthOrEmpty(36)
+, _getKeySetters = (data) => ({
+ setIexKey: safeFn(data, SET_IEX_KEY),
+ setNewsKey: safeFn(data, SET_NEWS_KEY),
+ setWebhoseKey: safeFn(data, SET_WEBHOSE_KEY)  
+});
 
 class SettingsDialog extends Component {
   /*
@@ -109,6 +102,7 @@ class SettingsDialog extends Component {
   _createCommandButtons = (S) => {
     return [
       <A.RaisedButton
+        key="_set"
         rootStyle={S.RAISED_ROOT}
         clDiv={S.CL_RAISED_DIV}
         caption="Set All & Close"

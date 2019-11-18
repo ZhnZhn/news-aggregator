@@ -144,14 +144,11 @@ class SecretField extends Component {
              autoComplete="new-secret"
              autoCorrect="off"
              autoCapitalize="off"
-             spellCheck={false}
+             spellCheck="false"
              type="password"
-             translate={false}
-             //placeholder={placeholder}
+             translate="false"
              maxLength={maxLength}
              value={value}
-             defaultValue={value}
-
              onChange={this._handleChangeInput}
              onFocus={this._handleFocusInput}
              onBlur={this._handleBlurInput}

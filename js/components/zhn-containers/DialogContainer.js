@@ -68,15 +68,37 @@ var _updateVisible = function _updateVisible(state, key, maxDialog) {
   }
 };
 
+var _isInCont = function _isInCont(arrComps, comp) {
+  var key = comp.key,
+      _max = arrComps.length;
+  var i = 0;
+  for (i; i < _max; i++) {
+    if (arrComps[i].key === key) {
+      return true;
+    }
+  }
+  return false;
+};
+
 var DialogContainer = function (_Component) {
   (0, _inherits3.default)(DialogContainer, _Component);
 
-  function DialogContainer(props) {
+  function DialogContainer() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, DialogContainer);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (DialogContainer.__proto__ || Object.getPrototypeOf(DialogContainer)).call(this));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this._onStore = function (actionType, option) {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = DialogContainer.__proto__ || Object.getPrototypeOf(DialogContainer)).call.apply(_ref, [this].concat(args))), _this), _this.elHtml = document.getElementsByTagName('html')[0], _this.state = {
+      hmIs: {},
+      compDialogs: [],
+      visibleDialogs: []
+    }, _this._onStore = function (actionType, option) {
       var showAction = _this.props.showAction;
 
       if (actionType === showAction) {
@@ -88,15 +110,13 @@ var DialogContainer = function (_Component) {
           _updateVisible(prevState, key, maxDialog);
           if (!Comp) {
             prevState.compDialogs = _doVisible(prevState.compDialogs, key);
-          } else {
+          } else if (!_isInCont(prevState.compDialogs, Comp)) {
             prevState.compDialogs.push(Comp);
           }
           return prevState;
         });
       }
-    };
-
-    _this._handleToggleDialog = function (key) {
+    }, _this._handleToggleDialog = function (key) {
       _this.setState(function (prevState) {
         var hmIs = prevState.hmIs;
 
@@ -109,9 +129,7 @@ var DialogContainer = function (_Component) {
         }
         return prevState;
       });
-    };
-
-    _this._renderDialogs = function () {
+    }, _this._renderDialogs = function () {
       var _this$state = _this.state,
           hmIs = _this$state.hmIs,
           compDialogs = _this$state.compDialogs;
@@ -124,15 +142,7 @@ var DialogContainer = function (_Component) {
           onClose: _this._handleToggleDialog.bind(_this, key)
         });
       });
-    };
-
-    _this.elHtml = document.getElementsByTagName('html')[0];
-    _this.state = {
-      hmIs: {},
-      compDialogs: [],
-      visibleDialogs: []
-    };
-    return _this;
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
   (0, _createClass3.default)(DialogContainer, [{

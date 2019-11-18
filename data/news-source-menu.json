@@ -30,14 +30,14 @@
     },{
       "caption": "Business",
       "items": [
-        { "id": "NS_AUSTRALIAN_FINANCIAL" },      
+        { "id": "NS_AUSTRALIAN_FINANCIAL" },
         { "id": "NS_BLOOMBERG" },
         { "id": "NS_BUSINESS_INSIDER" },
         { "id": "NS_CNBC" },
-        { "id": "NS_FINANCIAL_POST" },
-        { "id": "NS_FINANCIAL_TIMES" },
+        { "id": "NS_FINANCIAL_POST" },        
         { "id": "NS_FORTUNE_500" },
-        { "id": "NS_WALLSTREET_JOURNAL" }        
+        { "id": "NS_NEW_YORK_TIMES" },
+        { "id": "NS_WALLSTREET_JOURNAL" }
       ]
     },{
       "caption": "Technology",
@@ -198,7 +198,7 @@
         "caption": "New York Magazine",
         "source": "new-york-magazine"
       }
-    },    
+    },
     "NS_TIME": {
       "type": "NS_TIME",
       "menuTitle": "Time",
@@ -310,17 +310,6 @@
         "source": "bloomberg"
       }
     },
-    "NS_FINANCIAL_TIMES": {
-      "type": "NS_FINANCIAL_TIMES",
-      "menuTitle": "Financial Times",
-      "dialogType": "DialogType1",
-      "paneCaption": "FINANCIAL TIMES",
-      "paneId": "financial-times",
-      "dialogProps": {
-        "caption": "Financial Times",
-        "source": "financial-times"
-      }
-    },
     "NS_FORTUNE_500": {
       "type": "NS_FORTUNE_500",
       "menuTitle": "Fortune 500",
@@ -341,7 +330,7 @@
       "dialogProps": {
         "caption": "Australian Financial",
         "source": "australian-financial-review",
-        "v": 2        
+        "v": 2
       }
     },
     "NS_FINANCIAL_POST": {
@@ -353,7 +342,19 @@
       "dialogProps": {
         "caption": "Financial Post",
         "source": "financial-post",
-        "v": 2        
+        "v": 2
+      }
+    },
+    "NS_NEW_YORK_TIMES": {
+      "type": "NS_NEW_YORK_TIMES",
+      "menuTitle": "The New York Times",
+      "dialogType": "DialogType1",
+      "paneCaption": "THE NEW YORK TIMES",
+      "paneId": "the-new-york-times",
+      "dialogProps": {
+        "caption": "The New York Times",
+        "source": "the-new-york-times",
+        "v": 2
       }
     },
     "NS_WALLSTREET_JOURNAL": {
@@ -363,9 +364,9 @@
       "paneCaption": "THE WALL STREET JOURNAL",
       "paneId": "the-wall-street-journal",
       "dialogProps": {
-        "caption": "The Wall Street Joural",
+        "caption": "The Wall Street Journal",
         "source": "the-wall-street-journal",
-        "v": 2        
+        "v": 2
       }
     },
     "NS_CNBC": {

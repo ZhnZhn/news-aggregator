@@ -20,7 +20,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class;
+var _dec, _class;
 
 var _react = require('react');
 
@@ -38,9 +38,9 @@ var _Comp = require('../Comp');
 
 var _Comp2 = _interopRequireDefault(_Comp);
 
-var _withKeyDown = require('./decorators/withKeyDown');
+var _Decors = require('./decorators/Decors');
 
-var _withKeyDown2 = _interopRequireDefault(_withKeyDown);
+var _Decors2 = _interopRequireDefault(_Decors);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51,10 +51,10 @@ var S = {
   }
 };
 
-var SORT_BY_OPTIONS = [{ caption: "Relevancy", value: "relevancy" }, { caption: "Popularity", value: "popularity" }, { caption: "PublishedAt", value: "publishedAt" }];
-var DF_SORT_BY = SORT_BY_OPTIONS[0];
+var SORT_BY_OPTIONS = [{ caption: "Relevancy", value: "relevancy" }, { caption: "Popularity", value: "popularity" }, { caption: "PublishedAt", value: "publishedAt" }],
+    DF_SORT_BY = SORT_BY_OPTIONS[0];
 
-var NewsApiSearchDialog = (0, _withKeyDown2.default)(_class = function (_Component) {
+var NewsApiSearchDialog = (_dec = _Decors2.default.withDecors, _dec(_class = function (_Component) {
   (0, _inherits3.default)(NewsApiSearchDialog, _Component);
 
   function NewsApiSearchDialog(props) {
@@ -82,21 +82,6 @@ var NewsApiSearchDialog = (0, _withKeyDown2.default)(_class = function (_Compone
       });
     };
 
-    _this._handleClose = function () {
-      _this.dialogComp.focusPrevEl();
-      _this.props.onClose();
-    };
-
-    _this._createCommandButtons = function (S) {
-      return [_react2.default.createElement(_Comp2.default.RaisedButton, {
-        rootStyle: S.RAISED_ROOT,
-        clDiv: S.CL_RAISED_DIV,
-        caption: 'Load',
-        isPrimary: true,
-        onClick: _this._handleLoad
-      })];
-    };
-
     _this._refDialogComp = function (comp) {
       return _this.dialogComp = comp;
     };
@@ -106,7 +91,7 @@ var NewsApiSearchDialog = (0, _withKeyDown2.default)(_class = function (_Compone
     };
 
     _this.sortBy = DF_SORT_BY.value;
-    _this._handleKeyDownWith = _this._handleKeyDownWith.bind(_this);
+    _this._initWithDecors(_this);
     return _this;
   }
 
@@ -156,7 +141,6 @@ var NewsApiSearchDialog = (0, _withKeyDown2.default)(_class = function (_Compone
     }
   }]);
   return NewsApiSearchDialog;
-}(_react.Component)) || _class;
-
+}(_react.Component)) || _class);
 exports.default = (0, _withTheme2.default)(NewsApiSearchDialog);
 //# sourceMappingURL=NewsApiSearchDialog.js.map

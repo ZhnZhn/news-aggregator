@@ -64,6 +64,7 @@ class AppNewsAggregator extends Component {
   render(){
     const { theme } = this.state;
     return (
+      <React.StrictMode>
       <ThemeContext.Provider value={theme}>
         <div>
           <HeaderBar
@@ -104,6 +105,7 @@ class AppNewsAggregator extends Component {
           />
         </div>
       </ThemeContext.Provider>
+      </React.StrictMode>
     );
   }
 }

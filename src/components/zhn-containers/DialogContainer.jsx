@@ -36,16 +36,25 @@ const _updateVisible = (state, key, maxDialog) => {
   }
 }
 
+const _isInCont = (arrComps, comp) => {
+  const { key } = comp, _max = arrComps.length;
+  let i = 0;
+  for(i;i<_max;i++) {
+    if (arrComps[i].key === key) {
+      return true;
+    }
+  }
+  return false;
+};
+
 class DialogContainer extends Component {
-  constructor(props){
-    super()
-    this.elHtml = document.getElementsByTagName('html')[0]
-    this.state = {
+
+   elHtml = document.getElementsByTagName('html')[0]
+   state = {
       hmIs: {},
       compDialogs : [],
       visibleDialogs: []
     }
-  }
 
    componentDidMount(){
      this.unsubscribe = this.props.store.listen(this._onStore)
@@ -63,7 +72,7 @@ class DialogContainer extends Component {
            _updateVisible(prevState, key, maxDialog)
            if (!Comp){
               prevState.compDialogs = _doVisible(prevState.compDialogs, key)
-           } else {
+           } else if (!_isInCont(prevState.compDialogs, Comp)) {
               prevState.compDialogs.push(Comp)
            }
            return prevState;

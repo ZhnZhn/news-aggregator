@@ -24,7 +24,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class, _temp;
+var _class, _temp2;
 //import PropTypes from 'prop-types'
 
 var _react = require('react');
@@ -64,42 +64,46 @@ var STYLE = {
     display: 'block',
     backgroundColor: '#4D4D4D',
     border: 'solid 2px #3f5178',
-    borderRadius: '5px',
+    borderRadius: 5,
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
     zIndex: 10
   },
   CAPTON_DIV: {
-    padding: '5px',
     color: '#9e9e9e',
     backgroundColor: '#3f5178',
+    padding: 5,
     textAlign: 'center',
     fontSize: '18px'
   },
   COMMAND_DIV: {
-    cursor: 'default',
     float: 'right',
-    marginTop: '16px',
-    marginBottom: '10px',
-    marginRight: '4px'
+    marginTop: 16,
+    marginBottom: 10,
+    marginRight: 4,
+    cursor: 'default'
   }
 };
 
-var ModalDialog = (_temp = _class = function (_Component) {
+var ModalDialog = (_temp2 = _class = function (_Component) {
   (0, _inherits3.default)(ModalDialog, _Component);
 
-  function ModalDialog(props) {
+  function ModalDialog() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     (0, _classCallCheck3.default)(this, ModalDialog);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (ModalDialog.__proto__ || Object.getPrototypeOf(ModalDialog)).call(this));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this._handleKeyDown = function (event) {
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = ModalDialog.__proto__ || Object.getPrototypeOf(ModalDialog)).call.apply(_ref, [this].concat(args))), _this), _this.wasClosing = false, _this._handleKeyDown = function (event) {
       var focused = document.activeElement;
       if (focused == _this.rootDiv) {
         _this.props.onKeyDown(event);
       }
-    };
-
-    _this._renderCommandButton = function () {
+    }, _this._renderCommandButton = function () {
       var _this$props = _this.props,
           divBtStyle = _this$props.divBtStyle,
           commandButtons = _this$props.commandButtons,
@@ -114,6 +118,7 @@ var ModalDialog = (_temp = _class = function (_Component) {
         { style: (0, _extends3.default)({}, STYLE.COMMAND_DIV, divBtStyle) },
         commandButtons,
         !withoutClose && _react2.default.createElement(_RaisedButton2.default, {
+          key: '_close',
           rootStyle: TS.RAISED_ROOT,
           clDiv: TS.CL_RAISED_DIV,
           caption: 'Close',
@@ -121,10 +126,9 @@ var ModalDialog = (_temp = _class = function (_Component) {
           onClick: onClose
         })
       );
-    };
-
-    _this.wasClosing = false;
-    return _this;
+    }, _this._refRootDiv = function (n) {
+      return _this.rootDiv = n;
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
   /*
    static propTypes = {
@@ -182,8 +186,6 @@ var ModalDialog = (_temp = _class = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this3 = this;
-
       var _props = this.props,
           isShow = _props.isShow,
           isWithButton = _props.isWithButton,
@@ -211,9 +213,7 @@ var ModalDialog = (_temp = _class = function (_Component) {
       return _react2.default.createElement(
         'div',
         {
-          ref: function ref(n) {
-            return _this3.rootDiv = n;
-          },
+          ref: this._refRootDiv,
           tabIndex: '0',
           className: _className,
           style: (0, _extends3.default)({}, STYLE.ROOT_DIV, style, _style),
@@ -243,6 +243,6 @@ var ModalDialog = (_temp = _class = function (_Component) {
     RAISED_ROOT: undefined,
     CL_RAISED_DIV: undefined
   }
-}, _temp);
+}, _temp2);
 exports.default = ModalDialog;
 //# sourceMappingURL=ModalDialog.js.map

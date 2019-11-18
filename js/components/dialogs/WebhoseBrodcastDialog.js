@@ -20,7 +20,7 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _class;
+var _dec, _class;
 
 var _react = require('react');
 
@@ -34,36 +34,20 @@ var _Dialog = require('./Dialog.Style');
 
 var _Dialog2 = _interopRequireDefault(_Dialog);
 
-var _DraggableDialog = require('../zhn-moleculs/DraggableDialog');
+var _Comp = require('../Comp');
 
-var _DraggableDialog2 = _interopRequireDefault(_DraggableDialog);
+var _Comp2 = _interopRequireDefault(_Comp);
 
-var _TextField = require('../zhn-m-input/TextField');
+var _Decors = require('./decorators/Decors');
 
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _PoweredBy = require('../links/PoweredBy');
-
-var _PoweredBy2 = _interopRequireDefault(_PoweredBy);
-
-var _Links = require('../links/Links');
-
-var _Links2 = _interopRequireDefault(_Links);
-
-var _RaisedButton = require('../zhn-atoms/RaisedButton');
-
-var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-var _withKeyDown = require('./decorators/withKeyDown');
-
-var _withKeyDown2 = _interopRequireDefault(_withKeyDown);
+var _Decors2 = _interopRequireDefault(_Decors);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var S = {
   POWERED_BY: {
-    marginLeft: '16px',
-    marginBottom: '8px'
+    marginLeft: 16,
+    marginBottom: 8
   }
 };
 
@@ -76,16 +60,16 @@ var _onTestDaysBefore = function _onTestDaysBefore(value) {
   }
 };
 
-var WebhoseBrodcastDialog = (0, _withKeyDown2.default)(_class = function (_Component) {
+var WebhoseBrodcastDialog = (_dec = _Decors2.default.withDecors, _dec(_class = function (_Component) {
   (0, _inherits3.default)(WebhoseBrodcastDialog, _Component);
 
   function WebhoseBrodcastDialog(props) {
     (0, _classCallCheck3.default)(this, WebhoseBrodcastDialog);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (WebhoseBrodcastDialog.__proto__ || Object.getPrototypeOf(WebhoseBrodcastDialog)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (WebhoseBrodcastDialog.__proto__ || Object.getPrototypeOf(WebhoseBrodcastDialog)).call(this, props));
 
     _this._selectSiteType = function (option) {
-      _this.siteType = option ? option.value : undefined;
+      _this.siteType = option ? option.value : void 0;
     };
 
     _this._handleLoad = function () {
@@ -112,21 +96,6 @@ var WebhoseBrodcastDialog = (0, _withKeyDown2.default)(_class = function (_Compo
       });
     };
 
-    _this._handleClose = function () {
-      _this.dialogComp.focusPrevEl();
-      _this.props.onClose();
-    };
-
-    _this._createCommandButtons = function (S) {
-      return [_react2.default.createElement(_RaisedButton2.default, {
-        rootStyle: S.RAISED_ROOT,
-        clDiv: S.CL_RAISED_DIV,
-        caption: 'Load',
-        isPrimary: true,
-        onClick: _this._handleLoad
-      })];
-    };
-
     _this._refDialoComp = function (comp) {
       return _this.dialogComp = comp;
     };
@@ -139,8 +108,8 @@ var WebhoseBrodcastDialog = (0, _withKeyDown2.default)(_class = function (_Compo
       return _this.inputBeforeDays = comp;
     };
 
-    _this.siteType = undefined;
-    _this._handleKeyDownWith = _this._handleKeyDownWith.bind(_this);
+    _this.siteType = void 0;
+    _this._initWithDecors(_this);
     return _this;
   }
 
@@ -155,7 +124,7 @@ var WebhoseBrodcastDialog = (0, _withKeyDown2.default)(_class = function (_Compo
           _commandButtons = this._createCommandButtons(TS.BT);
 
       return _react2.default.createElement(
-        _DraggableDialog2.default,
+        _Comp2.default.DraggableDialog,
         {
           ref: this._refDialoComp,
           rootStyle: TS.R_DIALOG,
@@ -168,13 +137,13 @@ var WebhoseBrodcastDialog = (0, _withKeyDown2.default)(_class = function (_Compo
           onShowChart: onShow,
           onClose: this._handleClose
         },
-        _react2.default.createElement(_TextField2.default, {
+        _react2.default.createElement(_Comp2.default.TextField, {
           rootStyle: TS.INPUT_ROOT,
           ref: this._refInputTitle,
           caption: 'In Title (Default: Weather)',
           initValue: 'Weather'
         }),
-        _react2.default.createElement(_TextField2.default, {
+        _react2.default.createElement(_Comp2.default.TextField, {
           rootStyle: TS.INPUT_ROOT,
           ref: this._refInputBeforeDays,
           caption: 'Before Days (Default: 2, Max 30)',
@@ -183,15 +152,14 @@ var WebhoseBrodcastDialog = (0, _withKeyDown2.default)(_class = function (_Compo
           onTest: _onTestDaysBefore
         }),
         _react2.default.createElement(
-          _PoweredBy2.default,
+          _Comp2.default.Link.PoweredBy,
           { rootStyle: S.POWERED_BY },
-          _react2.default.createElement(_Links2.default.WebhoseIo, null)
+          _react2.default.createElement(_Comp2.default.Link.WebhoseIo, null)
         )
       );
     }
   }]);
   return WebhoseBrodcastDialog;
-}(_react.Component)) || _class;
-
+}(_react.Component)) || _class);
 exports.default = (0, _withTheme2.default)(WebhoseBrodcastDialog);
 //# sourceMappingURL=WebhoseBrodcastDialog.js.map

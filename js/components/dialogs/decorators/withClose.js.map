@@ -1,0 +1,22 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/dialogs/decorators/withClose.js"
+ ],
+ "file": "../../../../src/components/dialogs/decorators/withClose.js",
+ "names": [
+  "_isFn",
+  "fn",
+  "_handleClose",
+  "_d",
+  "dialogComp",
+  "focusPrevEl",
+  "props",
+  "onClose",
+  "withClose",
+  "target",
+  "prototype",
+  "_handleCloseWith"
+ ],
+ "mappings": ";;;;;AAAA,IAAMA,QAAQ,SAARA,KAAQ;AAAA,SAAM,OAAOC,EAAP,KAAc,UAApB;AAAA,CAAd;;AAEA,IAAMC,eAAe,SAAfA,YAAe,GAAU;AAC7B,MAAMC,KAAK,KAAKC,UAAhB;AACA,MAAID,MAAMH,MAAMG,GAAGE,WAAT,CAAV,EAAiC;AAC/BF,OAAGE,WAAH;AACD;AACD,MAAIL,MAAM,KAAKM,KAAL,CAAWC,OAAjB,CAAJ,EAA+B;AAC7B,SAAKD,KAAL,CAAWC,OAAX;AACD;AACF,CARD;;AAUA,IAAMC,YAAY,SAAZA,SAAY,SAAU;AAC1BC,SAAOC,SAAP,CAAiBC,gBAAjB,GAAoCT,YAApC;AACD,CAFD;;kBAIeM,S"
+}
