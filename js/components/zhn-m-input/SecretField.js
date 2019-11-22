@@ -32,178 +32,146 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var CL_SELECT = 'm-select';
-var CL_LABEL = 'm-select__label';
-var CL_DIV = 'm-textfield-input__div';
-var CL_INPUT = 'm-textfield-input';
+var CL = {
+  SELECT: 'm-select',
+  LABEL: 'm-select__label',
+  DIV: 'm-textfield-input__div',
+  INPUT: 'm-textfield-input',
+  INPUT_LINE: 'm-input__line',
+  INPUT_MSG_ERR: 'm-input__msg-err'
+};
 
 var S = {
-  ROOT: {
-    display: 'block',
-    width: 280
-  },
   LABEL_TO_INPUT: {
-    transform: 'scale(1) translate(0px, 0px)'
+    transform: 'scale(1) translate(0px, -6px)'
   },
   LABEL_ON_ERROR: {
     color: '#f44336'
-  },
-  LINE: {
-    position: 'absolute',
-    bottom: 6,
-    width: '100%',
-    borderBottom: '2px solid black'
   },
   LINE_ERROR: {
     borderBottom: '2px solid #f44336'
   },
   LINE_AFTER_ENTER: {
     borderBottom: '2px solid greenyellow'
-  },
-  MSG_ERROR: {
-    position: 'absolute',
-    bottom: -18,
-    left: 4,
-    color: '#f44336'
   }
 };
 
-var _isFn = function _isFn(fn) {
-  return typeof fn === 'function';
-};
+var TextField = (_temp = _class = function (_Component) {
+  (0, _inherits3.default)(TextField, _Component);
 
-var _maskValue = function _maskValue() {
-  var len = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+  function TextField(props) {
+    (0, _classCallCheck3.default)(this, TextField);
 
-  var i = 0,
-      str = '';
-  for (i; i < len; i++) {
-    str = str + 'X';
-  }
-  return str;
-};
+    var _this = (0, _possibleConstructorReturn3.default)(this, (TextField.__proto__ || Object.getPrototypeOf(TextField)).call(this, props));
 
-var _crInitialState = function _crInitialState() {
-  return {
-    value: '',
-    isPassTest: true
-  };
-};
-
-var SecretField = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(SecretField, _Component);
-
-  function SecretField(props) {
-    (0, _classCallCheck3.default)(this, SecretField);
-
-    var _this = (0, _possibleConstructorReturn3.default)(this, (SecretField.__proto__ || Object.getPrototypeOf(SecretField)).call(this, props));
-
-    _this._handleFocusInput = function () {
+    _this._hFocusInput = function () {
       _this.isFocus = true;
       _this.forceUpdate();
     };
 
-    _this._handleBlurInput = function () {
+    _this._hBlurInput = function () {
       _this.isFocus = false;
       _this.forceUpdate();
     };
 
-    _this._handleChangeInput = function (event) {
-      _this.secret = event.target.value;
-      var _value = _maskValue(_this.secret.length);
-      if (_this.isOnTest) {
-        var _isPassTest = _this.props.onTest(_value);
-        _this.setState({
-          value: _value,
-          isPassTest: _isPassTest
-        });
-      } else {
-        _this.setState({ value: _value });
-      }
+    _this._hInputChange = function (event) {
+      _this.setState({
+        value: event.target.value.trim()
+      });
     };
 
     _this._clearWasEnter = function () {
       _this._wasEnter = false;
     };
 
-    _this._handleKeyDown = function (event) {
-      var keyCode = event.keyCode;
-
-      if (keyCode === 13) {
+    _this._hKeyDown = function (event) {
+      if (event.keyCode === 46) {
+        _this.setState({ value: '' });
+      } else if (event.keyCode === 13) {
         event.preventDefault();
-        _this.props.onEnter(_this.secret);
+        _this.props.onEnter(event.target.value);
         _this._wasEnter = true;
         _this.forceUpdate(_this._clearWasEnter);
-      } else if (keyCode === 46) {
-        _this.secret = '';
-        _this.setState(_crInitialState());
-      } else if (keyCode === 27) {
-        _this.secret = '';
-        var _isPassTest = _this.isOnTest ? _this.props.onTest(_this.secret) : true;
-        _this.setState({ value: '', isPassTest: _isPassTest });
       }
     };
 
+    _this._isValue = function () {
+      return _this._input ? !!_this._input.value : false;
+    };
+
+    _this._refInput = function (node) {
+      return _this._input = node;
+    };
+
+    _this._wasEnter = false;
     _this.isFocus = false;
-    _this.isOnTest = _isFn(props.onTest) ? true : false;
-    _this.state = _crInitialState();
+    var name = props.name;
+
+    _this._id = name + '_sf';
+    _this.state = {
+      value: ''
+    };
     return _this;
   }
 
-  (0, _createClass3.default)(SecretField, [{
+  (0, _createClass3.default)(TextField, [{
     key: 'render',
     value: function render() {
       var _props = this.props,
           rootStyle = _props.rootStyle,
           caption = _props.caption,
+          name = _props.name,
+          maxLength = _props.maxLength,
           _props$errorMsg = _props.errorMsg,
           errorMsg = _props$errorMsg === undefined ? '' : _props$errorMsg,
-          maxLength = _props.maxLength,
-          _state = this.state,
-          value = _state.value,
-          isPassTest = _state.isPassTest,
-          _labelStyle = value || this.isFocus ? void 0 : S.LABEL_TO_INPUT,
-          _labelErrStyle = isPassTest ? void 0 : S.LABEL_ON_ERROR,
+          onTest = _props.onTest,
+          value = this.state.value,
+          isPassTest = onTest(value),
+          _labelStyle = this._isValue() || this.isFocus ? null : S.LABEL_TO_INPUT,
+          _labelErrStyle = isPassTest ? null : S.LABEL_ON_ERROR,
           _lineStyle = isPassTest ? this._wasEnter ? S.LINE_AFTER_ENTER : void 0 : S.LINE_ERROR;
 
       return _react2.default.createElement(
         'div',
         {
-          className: CL_SELECT,
+          className: CL.SELECT,
           style: rootStyle
         },
         _react2.default.createElement(
           'label',
           {
-            className: CL_LABEL,
-            style: (0, _extends3.default)({}, _labelStyle, _labelErrStyle)
+            className: CL.LABEL,
+            style: (0, _extends3.default)({}, _labelStyle, _labelErrStyle),
+            htmlFor: this._id
           },
           caption
         ),
         _react2.default.createElement(
           'div',
-          { className: CL_DIV },
+          { className: CL.DIV },
           _react2.default.createElement('input', {
-            className: CL_INPUT,
-            name: 'secret',
-            autoComplete: 'new-secret',
-            autoCorrect: 'off',
-            autoCapitalize: 'off',
-            spellCheck: 'false',
+            hidden: true,
+            autoComplete: 'username',
+            value: name,
+            readOnly: true
+          }),
+          _react2.default.createElement('input', {
+            ref: this._refInput,
+            id: this._id,
             type: 'password',
-            translate: 'false',
+            autoComplete: 'current-password',
+            className: CL.INPUT,
             maxLength: maxLength,
             value: value,
-            onChange: this._handleChangeInput,
-            onFocus: this._handleFocusInput,
-            onBlur: this._handleBlurInput,
-            onKeyDown: this._handleKeyDown
+            onChange: this._hInputChange,
+            onKeyDown: this._hKeyDown,
+            onFocus: this._hFocusInput,
+            onBlur: this._hBlurInput
           }),
-          _react2.default.createElement('div', { style: (0, _extends3.default)({}, S.LINE, _lineStyle) }),
+          _react2.default.createElement('div', { className: CL.INPUT_LINE, style: _lineStyle }),
           !isPassTest && _react2.default.createElement(
             'div',
-            {
-              style: S.MSG_ERROR },
+            { className: CL.INPUT_MSG_ERR },
             errorMsg
           )
         )
@@ -212,12 +180,17 @@ var SecretField = (_temp = _class = function (_Component) {
   }, {
     key: 'getValue',
     value: function getValue() {
-      return this.secret;
+      return this._input && this._input.value;
     }
   }]);
-  return SecretField;
+  return TextField;
 }(_react.Component), _class.defaultProps = {
+  name: 'pwd',
+  maxLength: "32",
+  onTest: function onTest() {
+    return true;
+  },
   onEnter: function onEnter() {}
 }, _temp);
-exports.default = SecretField;
+exports.default = TextField;
 //# sourceMappingURL=SecretField.js.map

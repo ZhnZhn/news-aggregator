@@ -21,7 +21,7 @@ class InputSelect extends Component {
   }
 
   constructor(props){
-    super()
+    super(props)
     this.state = {
       isShow: false,
       item: props.initItem

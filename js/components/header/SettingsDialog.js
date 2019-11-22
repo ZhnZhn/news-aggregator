@@ -28,10 +28,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _safeFn = require('../../utils/safeFn');
-
-var _safeFn2 = _interopRequireDefault(_safeFn);
-
 var _withTheme = require('../hoc/withTheme');
 
 var _withTheme2 = _interopRequireDefault(_withTheme);
@@ -48,7 +44,17 @@ var _Comp = require('../Comp');
 
 var _Comp2 = _interopRequireDefault(_Comp);
 
+var _CardApiKeys = require('./CardApiKeys');
+
+var _CardApiKeys2 = _interopRequireDefault(_CardApiKeys);
+
+var _CardUiTheme = require('./CardUiTheme');
+
+var _CardUiTheme2 = _interopRequireDefault(_CardUiTheme);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import PropTypes from 'prop-types'
 
 var S = {
   MODAL: {
@@ -60,32 +66,25 @@ var S = {
   DIV_BT: {
     marginTop: 26,
     marginBottom: 4
+  },
+
+  TABS: {
+    marginLeft: 24,
+    textAlign: 'left'
+  },
+  TAB_SELECTED: {
+    color: 'black'
+  },
+  CARD_ROOT: {
+    position: 'relative',
+    height: 280
+  },
+  CARD_BUTTONS: {
+    position: 'absolute',
+    right: 4,
+    bottom: 0,
+    cursor: 'default'
   }
-};
-//import PropTypes from 'prop-types'
-
-var SET_IEX_KEY = 'setIexKey';
-var SET_NEWS_KEY = 'setNewsKey';
-var SET_WEBHOSE_KEY = 'setWebhoseKey';
-
-var _themeOptions = [{ caption: "Dark", value: "GREY" }, { caption: "Light", value: "WHITE" }, { caption: "Sand", value: "SAND" }],
-    DF_THEME = _themeOptions[0];
-
-var STR_EMPTY = '',
-    _onTestLengthOrEmpty = function _onTestLengthOrEmpty(length) {
-  return function (str) {
-    return str.length === length || str === STR_EMPTY ? true : false;
-  };
-},
-    _onTestIexApi = _onTestLengthOrEmpty(35),
-    _onTestNewsApi = _onTestLengthOrEmpty(32),
-    _onTestWebhose = _onTestLengthOrEmpty(36),
-    _getKeySetters = function _getKeySetters(data) {
-  return {
-    setIexKey: (0, _safeFn2.default)(data, SET_IEX_KEY),
-    setNewsKey: (0, _safeFn2.default)(data, SET_NEWS_KEY),
-    setWebhoseKey: (0, _safeFn2.default)(data, SET_WEBHOSE_KEY)
-  };
 };
 
 var SettingsDialog = function (_Component) {
@@ -106,19 +105,6 @@ var SettingsDialog = function (_Component) {
       if (event.keyCode === 13 || event.keyCode === 27) {
         _this.props.onClose();
       }
-    }, _this._handleSet = function () {
-      var _this$props = _this.props,
-          data = _this$props.data,
-          onClose = _this$props.onClose,
-          _getKeySetters2 = _getKeySetters(data),
-          setIexKey = _getKeySetters2.setIexKey,
-          setNewsKey = _getKeySetters2.setNewsKey,
-          setWebhoseKey = _getKeySetters2.setWebhoseKey;
-
-      setIexKey(_this.inputIex.getValue());
-      setNewsKey(_this.inputNews.getValue());
-      setWebhoseKey(_this.inputWebhose.getValue());
-      onClose();
     }, _this._selectTheme = function (item) {
       var theme = _this.props.theme;
 
@@ -127,20 +113,6 @@ var SettingsDialog = function (_Component) {
         _ComponentActions2.default.changeTheme(item.value);
         _this.forceUpdate();
       }
-    }, _this._createCommandButtons = function (S) {
-      return [_react2.default.createElement(_Comp2.default.RaisedButton, {
-        key: '_set',
-        rootStyle: S.RAISED_ROOT,
-        clDiv: S.CL_RAISED_DIV,
-        caption: 'Set All & Close',
-        onClick: _this._handleSet
-      })];
-    }, _this._refInputIex = function (comp) {
-      return _this.inputIex = comp;
-    }, _this._refInputNews = function (comp) {
-      return _this.inputNews = comp;
-    }, _this._refInputWebhose = function (comp) {
-      return _this.inputWebhose = comp;
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
   }
 
@@ -172,12 +144,8 @@ var SettingsDialog = function (_Component) {
           theme = _props.theme,
           data = _props.data,
           onClose = _props.onClose,
-          _getKeySetters3 = _getKeySetters(data),
-          setIexKey = _getKeySetters3.setIexKey,
-          setNewsKey = _getKeySetters3.setNewsKey,
-          setWebhoseKey = _getKeySetters3.setWebhoseKey,
           TS = theme.createStyle(_Dialog2.default),
-          _commandButtons = this._createCommandButtons(TS.BT);
+          _themeName = theme.getThemeName();
 
       return _react2.default.createElement(
         _Comp2.default.ModalDialog,
@@ -187,58 +155,46 @@ var SettingsDialog = function (_Component) {
           styleCaption: TS.BROWSER_CAPTION,
           styleButton: TS.BT,
           caption: 'User Settings',
+          isWithButton: false,
           isShow: isShow,
-          isClosePrimary: true,
-          commandButtons: _commandButtons,
           onKeyDown: this._handleKeyDown,
           onClose: onClose
         },
         _react2.default.createElement(
-          'form',
-          null,
-          _react2.default.createElement(_Comp2.default.SecretField, {
-            rootStyle: TS.INPUT_ROOT,
-            ref: this._refInputIex,
-            caption: 'IEX Cloud API Key (35 Symbols)',
-            maxLength: 35,
-            errorMsg: '35 symbols must be',
-            onTest: _onTestIexApi,
-            onEnter: setIexKey
-          })
-        ),
-        _react2.default.createElement(
-          'form',
-          null,
-          _react2.default.createElement(_Comp2.default.SecretField, {
-            rootStyle: TS.INPUT_ROOT,
-            ref: this._refInputNews,
-            caption: 'NewsApi API Key (32 Symbols)',
-            maxLength: 32,
-            errorMsg: '32 symbols must be',
-            onTest: _onTestNewsApi,
-            onEnter: setNewsKey
-          })
-        ),
-        _react2.default.createElement(
-          'form',
-          null,
-          _react2.default.createElement(_Comp2.default.SecretField, {
-            rootStyle: TS.INPUT_ROOT,
-            ref: this._refInputWebhose,
-            caption: 'Webhose API Key (36 Symbols)',
-            maxLength: 36,
-            errorMsg: '36 symbols must be',
-            onTest: _onTestWebhose,
-            onEnter: setWebhoseKey
-          })
-        ),
-        _react2.default.createElement(_Comp2.default.InputSelect, {
-          styleConfig: TS.SELECT,
-          caption: 'Theme (Default: Dark)',
-          initItem: DF_THEME,
-          options: _themeOptions,
-          onSelect: this._selectTheme
-        })
+          _Comp2.default.TabPane,
+          {
+            width: '100%',
+            tabsStyle: S.TABS,
+            selectedStyle: S.TAB_SELECTED
+          },
+          _react2.default.createElement(
+            _Comp2.default.Tab,
+            { title: 'API Key' },
+            _react2.default.createElement(_CardApiKeys2.default, {
+              ref: this._refInput,
+              style: S.CARD_ROOT,
+              fieldStyle: TS.INPUT_ROOT,
+              themeName: _themeName,
+              buttonsStyle: S.CARD_BUTTONS,
+              TS: TS,
+              data: data,
+              onClose: onClose
+            })
+          ),
+          _react2.default.createElement(
+            _Comp2.default.Tab,
+            { title: 'UI Theme' },
+            _react2.default.createElement(_CardUiTheme2.default, {
+              style: S.CARD_ROOT,
+              styleConfig: TS.SELECT,
+              buttonsStyle: S.CARD_BUTTONS,
+              themeName: _themeName,
+              TS: TS,
+              onSetTheme: this._selectTheme,
+              onClose: onClose
+            })
+          )
+        )
       );
     }
   }]);

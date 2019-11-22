@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 //import PropTypes from 'prop-types'
 
-import safeFn from '../../utils/safeFn'
-
 import withTheme from '../hoc/withTheme'
 import styleConfig from '../dialogs/Dialog.Style'
 
 import Actions from '../../flux/actions/ComponentActions'
 
 import A from '../Comp'
+import CardApiKeys from './CardApiKeys'
+import CardUiTheme from './CardUiTheme'
 
 const S = {
   MODAL : {
@@ -20,33 +20,27 @@ const S = {
   DIV_BT: {
     marginTop: 26,
     marginBottom: 4
+  },
+
+
+  TABS: {
+    marginLeft: 24,
+    textAlign: 'left'
+  },
+  TAB_SELECTED: {
+    color: 'black'
+  },
+  CARD_ROOT: {
+    position: 'relative',
+    height: 280
+  },
+  CARD_BUTTONS: {
+    position: 'absolute',
+    right: 4,
+    bottom: 0,
+    cursor: 'default'
   }
 };
-
-const SET_IEX_KEY = 'setIexKey';
-const SET_NEWS_KEY = 'setNewsKey';
-const SET_WEBHOSE_KEY = 'setWebhoseKey';
-
-
-const _themeOptions = [
-  { caption: "Dark", value: "GREY" },
-  { caption: "Light", value: "WHITE" },
-  { caption: "Sand", value: "SAND" }
-], DF_THEME = _themeOptions[0];
-
-const STR_EMPTY = ''
-, _onTestLengthOrEmpty = (length) =>
-   (str) => str.length === length || str === STR_EMPTY
-     ? true
-     : false
-, _onTestIexApi = _onTestLengthOrEmpty(35)
-, _onTestNewsApi = _onTestLengthOrEmpty(32)
-, _onTestWebhose = _onTestLengthOrEmpty(36)
-, _getKeySetters = (data) => ({
- setIexKey: safeFn(data, SET_IEX_KEY),
- setNewsKey: safeFn(data, SET_NEWS_KEY),
- setWebhoseKey: safeFn(data, SET_WEBHOSE_KEY)  
-});
 
 class SettingsDialog extends Component {
   /*
@@ -59,6 +53,7 @@ class SettingsDialog extends Component {
     onClose: PropTypes.func
   }
   */
+
 
   shouldComponentUpdate(nextProps, nextState){
     if (nextProps !== this.props
@@ -75,18 +70,6 @@ class SettingsDialog extends Component {
     }
   }
 
-  _handleSet = () => {
-    const { data, onClose } = this.props
-    , { setIexKey,
-        setNewsKey,
-        setWebhoseKey
-    } = _getKeySetters(data);
-    setIexKey(this.inputIex.getValue())
-    setNewsKey(this.inputNews.getValue())
-    setWebhoseKey(this.inputWebhose.getValue())
-    onClose()
-  }
-
   _selectTheme = (item) => {
     const { theme } = this.props;
     if (
@@ -99,31 +82,10 @@ class SettingsDialog extends Component {
     }
   }
 
-  _createCommandButtons = (S) => {
-    return [
-      <A.RaisedButton
-        key="_set"
-        rootStyle={S.RAISED_ROOT}
-        clDiv={S.CL_RAISED_DIV}
-        caption="Set All & Close"
-        onClick={this._handleSet}
-      />
-    ];
-  }
-
-  _refInputIex = comp => this.inputIex = comp
-  _refInputNews = comp => this.inputNews = comp
-  _refInputWebhose = comp => this.inputWebhose = comp
-
   render(){
     const { isShow, theme, data, onClose } = this.props
-    , { setIexKey,
-        setNewsKey,
-        setWebhoseKey
-    } = _getKeySetters(data)
     , TS = theme.createStyle(styleConfig)
-    , _commandButtons = this._createCommandButtons(TS.BT);
-
+    , _themeName = theme.getThemeName();
     return (
         <A.ModalDialog
            style={{ ...S.MODAL, ...TS.R_DIALOG }}
@@ -131,52 +93,40 @@ class SettingsDialog extends Component {
            styleCaption={TS.BROWSER_CAPTION}
            styleButton={TS.BT}
            caption="User Settings"
+           isWithButton={false}
            isShow={isShow}
-           isClosePrimary={true}
-           commandButtons={_commandButtons}
            onKeyDown={this._handleKeyDown}
            onClose={onClose}
         >
-           <form>
-             <A.SecretField
-                rootStyle={TS.INPUT_ROOT}
-                ref={this._refInputIex}
-                caption="IEX Cloud API Key (35 Symbols)"
-                maxLength={35}
-                errorMsg="35 symbols must be"
-                onTest={_onTestIexApi}
-                onEnter={setIexKey}
-             />
-           </form>
-           <form>
-             <A.SecretField
-                rootStyle={TS.INPUT_ROOT}
-                ref={this._refInputNews}
-                caption="NewsApi API Key (32 Symbols)"
-                maxLength={32}
-                errorMsg="32 symbols must be"
-                onTest={_onTestNewsApi}
-                onEnter={setNewsKey}
-             />
-           </form>
-           <form>
-             <A.SecretField
-                rootStyle={TS.INPUT_ROOT}
-                ref={this._refInputWebhose}
-                caption="Webhose API Key (36 Symbols)"
-                maxLength={36}
-                errorMsg="36 symbols must be"
-                onTest={_onTestWebhose}
-                onEnter={setWebhoseKey}
-             />
-           </form>
-           <A.InputSelect
-             styleConfig={TS.SELECT}
-             caption="Theme (Default: Dark)"
-             initItem={DF_THEME}
-             options={_themeOptions}
-             onSelect={this._selectTheme}
-           />
+          <A.TabPane
+             width="100%"
+             tabsStyle={S.TABS}
+             selectedStyle={S.TAB_SELECTED}
+          >
+             <A.Tab title="API Key">
+                <CardApiKeys
+                  ref={this._refInput}
+                  style={S.CARD_ROOT}
+                  fieldStyle={TS.INPUT_ROOT}
+                  themeName={_themeName}
+                  buttonsStyle={S.CARD_BUTTONS}
+                  TS={TS}
+                  data={data}
+                  onClose={onClose}
+                />
+             </A.Tab>
+             <A.Tab title="UI Theme">
+                <CardUiTheme
+                  style={S.CARD_ROOT}
+                  styleConfig={TS.SELECT}
+                  buttonsStyle={S.CARD_BUTTONS}
+                  themeName={_themeName}
+                  TS={TS}
+                  onSetTheme={this._selectTheme}
+                  onClose={onClose}
+                />
+             </A.Tab>
+           </A.TabPane>
        </A.ModalDialog>
     );
   }

@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 
 import ThemeContext from '../hoc/ThemeContext'
 import styleConfig  from '../styles/ScrollStyle'
+import styleConfigD from '../dialogs/Dialog.Style'
 
 import ModalPane from '../zhn-moleculs/ModalPane'
 import ShowHide from '../zhn-atoms/ShowHide'
@@ -12,7 +13,7 @@ const S = {
   PANE: {
     position: 'absolute',
     top: 12,
-    zIndex: '20',
+    zIndex: 20,
     width: '100%',
     maxHeight: 300,
     overflowY: 'auto',
@@ -48,19 +49,23 @@ const _renderOptions = (options, currentItem, clItem, onSelect, isShow) => {
 
 const OptionsPane = ({ isShow, options, item, rootStyle, clItem, onSelect, onClose }) => {
   const _theme = useContext(ThemeContext)
-  , TS = _theme.createStyle(styleConfig);
+  , TS = _theme.createStyle(styleConfig)
+  , TS_D = _theme.createStyle(styleConfigD);
 return (
   <ModalPane
-     style={rootStyle}
+     //style={rootStyle}
+     style={TS_D.SELECT.MODAL_PANE}
      isShow={isShow}
      onClose={onClose}
   >
     <ShowHide
        isShow={isShow}
        className={`${CL} ${TS.CL_SCROLL}`}
-       style={{ ...S.PANE, ...rootStyle }}
+       //style={{ ...S.PANE, ...rootStyle }}
+       style={{ ...S.PANE, ...TS_D.SELECT.MODAL_PANE }}
     >
-      {_renderOptions(options, item, clItem, onSelect, isShow)}
+      {/*_renderOptions(options, item, clItem, onSelect, isShow)*/
+      _renderOptions(options, item, TS_D.SELECT.CL_ITEM, onSelect, isShow)}
     </ShowHide>
   </ModalPane>
 );

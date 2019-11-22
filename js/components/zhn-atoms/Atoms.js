@@ -48,6 +48,14 @@ var _ShowHide = require('./ShowHide');
 
 var _ShowHide2 = _interopRequireDefault(_ShowHide);
 
+var _Tab = require('./Tab');
+
+var _Tab2 = _interopRequireDefault(_Tab);
+
+var _TabPane = require('./TabPane');
+
+var _TabPane2 = _interopRequireDefault(_TabPane);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Atoms = (0, _extends3.default)({}, _SvgIcons2.default, {
@@ -63,7 +71,10 @@ var Atoms = (0, _extends3.default)({}, _SvgIcons2.default, {
   RaisedButton: _RaisedButton2.default,
 
   MenuItem: _MenuItem2.default,
-  ShowHide: _ShowHide2.default
+  ShowHide: _ShowHide2.default,
+
+  Tab: _Tab2.default,
+  TabPane: _TabPane2.default
 });
 
 exports.default = Atoms;

@@ -20,6 +20,10 @@ var _ScrollStyle = require('../styles/ScrollStyle');
 
 var _ScrollStyle2 = _interopRequireDefault(_ScrollStyle);
 
+var _Dialog = require('../dialogs/Dialog.Style');
+
+var _Dialog2 = _interopRequireDefault(_Dialog);
+
 var _ModalPane = require('../zhn-moleculs/ModalPane');
 
 var _ModalPane2 = _interopRequireDefault(_ModalPane);
@@ -36,7 +40,7 @@ var S = {
   PANE: {
     position: 'absolute',
     top: 12,
-    zIndex: '20',
+    zIndex: 20,
     width: '100%',
     maxHeight: 300,
     overflowY: 'auto',
@@ -80,11 +84,13 @@ var OptionsPane = function OptionsPane(_ref) {
       onClose = _ref.onClose;
 
   var _theme = (0, _react.useContext)(_ThemeContext2.default),
-      TS = _theme.createStyle(_ScrollStyle2.default);
+      TS = _theme.createStyle(_ScrollStyle2.default),
+      TS_D = _theme.createStyle(_Dialog2.default);
   return _react2.default.createElement(
-    _ModalPane2.default,
-    {
-      style: rootStyle,
+    _ModalPane2.default
+    //style={rootStyle}
+    ,
+    { style: TS_D.SELECT.MODAL_PANE,
       isShow: isShow,
       onClose: onClose
     },
@@ -92,10 +98,12 @@ var OptionsPane = function OptionsPane(_ref) {
       _ShowHide2.default,
       {
         isShow: isShow,
-        className: CL + ' ' + TS.CL_SCROLL,
-        style: (0, _extends3.default)({}, S.PANE, rootStyle)
+        className: CL + ' ' + TS.CL_SCROLL
+        //style={{ ...S.PANE, ...rootStyle }}
+        , style: (0, _extends3.default)({}, S.PANE, TS_D.SELECT.MODAL_PANE)
       },
-      _renderOptions(options, item, clItem, onSelect, isShow)
+      /*_renderOptions(options, item, clItem, onSelect, isShow)*/
+      _renderOptions(options, item, TS_D.SELECT.CL_ITEM, onSelect, isShow)
     )
   );
 };

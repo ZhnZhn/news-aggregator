@@ -13,6 +13,9 @@ import RaisedButton from './RaisedButton'
 import MenuItem from './MenuItem'
 import ShowHide from './ShowHide'
 
+import Tab from './Tab'
+import TabPane from './TabPane'
+
 const Atoms = {
   ...SvgIcons,
 
@@ -27,7 +30,10 @@ const Atoms = {
   RaisedButton,
 
   MenuItem,
-  ShowHide
+  ShowHide,
+
+  Tab,
+  TabPane
 };
 
 export default Atoms

@@ -51,7 +51,7 @@ var InputSelect = (_temp = _class = function (_Component) {
   function InputSelect(props) {
     (0, _classCallCheck3.default)(this, InputSelect);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (InputSelect.__proto__ || Object.getPrototypeOf(InputSelect)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (InputSelect.__proto__ || Object.getPrototypeOf(InputSelect)).call(this, props));
 
     _this._handleOpen = function () {
       _this.setState({ isShow: true });

@@ -1,6 +1,6 @@
 # [News Aggregator](https://zhnzhn.github.io/news-aggregator/)
 **News Agreggator** is web application for browsing news.  
-News headlines providers: [IEX Cloud](https://iexcloud.io), [NewsApi.org](https://newsapi.org), [Webhose.io](https://webhose.io).  
+News headlines providers: [CryptoCompare News](https://www.cryptocompare.com), [IEX Cloud](https://iexcloud.io), [NewsApi.org](https://newsapi.org), [Webhose.io](https://webhose.io).  
 Personal API Keys from providers are required for using web app News Aggregator.  
 
 ![alt text](screencast/news-aggregator.png?raw=true "News Aggregator")

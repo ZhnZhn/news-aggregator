@@ -1,173 +1,151 @@
 import React, { Component } from 'react'
 
-const CL_SELECT = 'm-select';
-const CL_LABEL = 'm-select__label';
-const CL_DIV = 'm-textfield-input__div';
-const CL_INPUT = 'm-textfield-input';
+const CL = {
+  SELECT: 'm-select',
+  LABEL: 'm-select__label',
+  DIV: 'm-textfield-input__div',
+  INPUT: 'm-textfield-input',
+  INPUT_LINE: 'm-input__line',
+  INPUT_MSG_ERR: 'm-input__msg-err'
+};
 
 const S = {
-  ROOT: {
-     display: 'block',
-     width: 280
-  },
   LABEL_TO_INPUT: {
-     transform: 'scale(1) translate(0px, 0px)'
+     transform: 'scale(1) translate(0px, -6px)'
   },
   LABEL_ON_ERROR: {
     color: '#f44336'
-  },
-  LINE: {
-    position: 'absolute',
-    bottom: 6,
-    width: '100%',
-    borderBottom: '2px solid black'
   },
   LINE_ERROR: {
     borderBottom: '2px solid #f44336'
   },
   LINE_AFTER_ENTER: {
     borderBottom: '2px solid greenyellow'
-  },
-  MSG_ERROR: {
-    position: 'absolute',
-    bottom: -18,
-    left: 4,
-    color: '#f44336'
   }
 };
 
-const _isFn = fn => typeof fn === 'function';
-
-const _maskValue = (len=0) => {
-  let i=0, str = '';
-  for (i; i<len; i++){
-    str = str + 'X'
-  }
-  return str;
-};
-
-
-const _crInitialState = () => ({
-  value: '',
-  isPassTest: true
-});
-
-class SecretField extends Component {
-
+class TextField extends Component {
   static defaultProps = {
+    name: 'pwd',
+    maxLength: "32",
+    onTest: () => true,
     onEnter: () => {}
   }
 
   constructor(props){
     super(props)
-    this.isFocus = false
-    this.isOnTest = _isFn(props.onTest) ? true : false
-    this.state = _crInitialState()
+    this._wasEnter = false
+    this.isFocus = false;
+    const { name } = props;
+    this._id = name + '_sf'
+    this.state = {
+      value: ''
+    }
   }
 
-  _handleFocusInput = () => {
+  _hFocusInput = () => {
     this.isFocus = true
     this.forceUpdate()
   }
-  _handleBlurInput = () => {
+  _hBlurInput = () => {
     this.isFocus = false
     this.forceUpdate()
   }
 
-  _handleChangeInput = (event) => {
-    this.secret = event.target.value
-    const _value = _maskValue(this.secret.length)
-    if (this.isOnTest) {
-      const _isPassTest = this.props.onTest(_value)
-      this.setState({
-        value : _value,
-        isPassTest: _isPassTest
-      })
-    } else {
-      this.setState({ value : _value })
-    }
+  _hInputChange = (event) => {
+    this.setState({
+      value: event.target.value.trim(),
+    })
   }
 
   _clearWasEnter = () => {
     this._wasEnter = false
   }
 
-  _handleKeyDown = (event) => {
-    const { keyCode } = event;
-    if (keyCode === 13) {
-      event.preventDefault()
-      this.props.onEnter(this.secret)
-      this._wasEnter = true
-      this.forceUpdate(this._clearWasEnter)
-    } else if (keyCode === 46) {
-      this.secret = ''
-      this.setState(_crInitialState())
-    } else if (keyCode === 27){
-      this.secret = ''
-      const _isPassTest = this.isOnTest
-        ? this.props.onTest(this.secret)
-        : true;
-      this.setState({ value: '', isPassTest: _isPassTest })
-    }
-  }
+ _hKeyDown = (event) => {
+   if (event.keyCode === 46){
+     this.setState({ value: '' })
+   } else if (event.keyCode === 13) {
+     event.preventDefault()
+     this.props.onEnter(event.target.value)
+     this._wasEnter = true
+     this.forceUpdate(this._clearWasEnter)
+   }
+ }
+ _isValue = () => {
+    return this._input
+       ? !!this._input.value
+       : false;
+ }
+
+ _refInput = node => this._input = node
 
   render(){
-    const { rootStyle, caption, errorMsg='', maxLength } = this.props
-        , { value, isPassTest } = this.state
-        , _labelStyle = (value || this.isFocus)
-            ? void 0
-            : S.LABEL_TO_INPUT
-        , _labelErrStyle = isPassTest
-            ? void 0
-            : S.LABEL_ON_ERROR
-        , _lineStyle = isPassTest
-            ? this._wasEnter
-                 ? S.LINE_AFTER_ENTER
-                 : void 0
-            : S.LINE_ERROR;
-
+    const {
+        rootStyle, caption,
+        name,
+        maxLength, errorMsg='',
+        onTest
+      } = this.props
+    , { value } = this.state
+    , isPassTest = onTest(value)
+    , _labelStyle = (this._isValue() || this.isFocus)
+        ? null
+        : S.LABEL_TO_INPUT
+    , _labelErrStyle = isPassTest
+        ? null
+        : S.LABEL_ON_ERROR
+    , _lineStyle = isPassTest
+        ? this._wasEnter
+             ? S.LINE_AFTER_ENTER
+             : void 0
+        : S.LINE_ERROR;
     return (
       <div
-        className={CL_SELECT}
+        className={CL.SELECT}
         style={rootStyle}
       >
         <label
-          className={CL_LABEL}
+          className={CL.LABEL}
           style={{..._labelStyle, ..._labelErrStyle}}
+          htmlFor={this._id}
          >
           {caption}
         </label>
-        <div className={CL_DIV}>
+        <div className={CL.DIV}>
           <input
-             className={CL_INPUT}
-             name="secret"
-             autoComplete="new-secret"
-             autoCorrect="off"
-             autoCapitalize="off"
-             spellCheck="false"
-             type="password"
-             translate="false"
-             maxLength={maxLength}
-             value={value}
-             onChange={this._handleChangeInput}
-             onFocus={this._handleFocusInput}
-             onBlur={this._handleBlurInput}
-             onKeyDown={this._handleKeyDown}
+            hidden={true}
+            autoComplete="username"
+            value={name}
+            readOnly={true}
           />
-          <div style={{...S.LINE, ..._lineStyle}} />
+          <input
+            ref = {this._refInput}
+            id={this._id}
+            type="password"
+            autoComplete="current-password"
+            className={CL.INPUT}
+            maxLength={maxLength}
+            value={value}
+            onChange={this._hInputChange}
+            onKeyDown={this._hKeyDown}
+            onFocus={this._hFocusInput}
+            onBlur={this._hBlurInput}
+          />
+          <div className={CL.INPUT_LINE} style={_lineStyle} />
           {
-            !isPassTest && <div
-               style={S.MSG_ERROR}>{errorMsg}
-             </div>
-           }
+             !isPassTest && <div className={CL.INPUT_MSG_ERR}>
+                 {errorMsg}
+               </div>
+          }
         </div>
       </div>
     );
   }
 
   getValue(){
-    return this.secret;
+    return this._input && this._input.value;
   }
 }
 
-export default SecretField
+export default TextField
