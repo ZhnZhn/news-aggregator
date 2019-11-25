@@ -1,1 +1,28 @@
-{"version":3,"sources":["../../../src/components/items/Article.Style.js"],"names":["styleConfig","themeName","undefined","style","createStyle","CSS_RULE","_header","_descr","backgroundColor","HEADER","DESCR"],"mappings":";;;;;;;;;;;;AACA;;AAEA,IAAMA,cAAc;AAClBC,aAAYC,SADM;AAElBC,SAAQD,SAFU;AAGlBE,eAAa,qBAACC,QAAD,EAAWJ,SAAX,EAAyB;AACpC,QAAIK,gBAAJ;AAAA,QAAaC,eAAb;AACA,YAAON,SAAP;AACE,WAAK,OAAL;AACEK,kBAAU;AACRE,2BAAiB;AADT,SAAV;AAGAD,iBAAS;AACPC,2BAAiB;AADV,SAAT;AAGA;AACF,WAAK,MAAL;AACEF,kBAAU;AACRE,2BAAiB;AADT,SAAV;AAGAD,iBAAS;AACPC,2BAAiB;AADV,SAAT;AAGA;AACF;AACEF,kBAAU;AACRE,2BAAiB;AADT,SAAV;AAlBJ;AAsBA,WAAO;AACJC,yCACKH,OADL,CADI;AAIJI,wCACKH,MADL;AAJI,KAAP;AAQD;AAnCiB,CAApB;;kBAsCeP,W","file":"Article.Style.js","sourcesContent":["\r\n//230, 236, 240\r\n\r\nconst styleConfig = {\r\n  themeName : undefined,\r\n  style : undefined,\r\n  createStyle: (CSS_RULE, themeName) => {\r\n    let _header, _descr\r\n    switch(themeName){\r\n      case 'WHITE':\r\n        _header = {\r\n          backgroundColor: '#dfe4e7'\r\n        }\r\n        _descr = {\r\n          backgroundColor: 'white'\r\n        }\r\n        break;\r\n      case 'SAND':\r\n        _header = {\r\n          backgroundColor: '#c6bda5'\r\n        }\r\n        _descr = {\r\n          backgroundColor: '#e8e0cb'\r\n        }\r\n        break;\r\n      default:\r\n        _header = {\r\n          backgroundColor: '#404040'\r\n        }\r\n    }\r\n    return {\r\n       HEADER: {\r\n         ..._header\r\n       },\r\n       DESCR: {\r\n         ..._descr\r\n       }\r\n    };\r\n  }\r\n}\r\n\r\nexport default styleConfig\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/items/Article.Style.js"
+ ],
+ "file": "../../../src/components/items/Article.Style.js",
+ "names": [
+  "_config",
+  "DF",
+  "h",
+  "WHITE",
+  "d",
+  "SAND",
+  "_crBg",
+  "backgroundColor",
+  "color",
+  "_crStyles",
+  "_S",
+  "HEADER",
+  "DESCR",
+  "styleConfig",
+  "themeName",
+  "style",
+  "createStyle",
+  "CSS_RULE"
+ ],
+ "mappings": ";;;;;;AACA;;AAEA,IAAMA,UAAU;AACdC,MAAI,EAAEC,GAAG,SAAL,EADU;AAEdC,SAAO,EAAED,GAAG,SAAL,EAAgBE,GAAG,OAAnB,EAFO;AAGdC,QAAM,EAAEH,GAAG,SAAL,EAAgBE,GAAG,SAAnB;AAHQ,CAAhB;AAAA,IAKEE,QAAQ,SAARA,KAAQ;AAAA,SAAU;AAClBC,qBAAiBC;AADC,GAAV;AAAA,CALV;AAAA,IAQEC,YAAY,SAAZA,SAAY,GAAe;AAAA,iFAAP,EAAO;AAAA,MAAbP,CAAa,QAAbA,CAAa;AAAA,MAAVE,CAAU,QAAVA,CAAU;;AAC3B,MAAMM,KAAK;AACTC,YAAQL,MAAMJ,CAAN;AADC,GAAX;AAGA,MAAIE,CAAJ,EAAO;AACLM,OAAGE,KAAH,GAAWN,MAAMF,CAAN,CAAX;AACD;AACD,SAAOM,EAAP;AACD,CAhBD;;AAkBA,IAAMG,cAAc;AAClBC,aAAW,KAAK,CADE;AAElBC,SAAO,KAAK,CAFM;AAGlBC,eAAa,qBAACC,QAAD,EAAWH,SAAX;AAAA,WAAyBL,UACpCT,QAAQc,SAAR,KAAsBd,QAAQC,EADM,CAAzB;AAAA;AAHK,CAApB;;kBAOeY,W"
+}

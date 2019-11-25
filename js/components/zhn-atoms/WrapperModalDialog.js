@@ -54,9 +54,16 @@ var WrapperModalDialog = (_temp = _class = function (_Component) {
   function WrapperModalDialog(props) {
     (0, _classCallCheck3.default)(this, WrapperModalDialog);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (WrapperModalDialog.__proto__ || Object.getPrototypeOf(WrapperModalDialog)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (WrapperModalDialog.__proto__ || Object.getPrototypeOf(WrapperModalDialog)).call(this, props));
 
-    _this.wasClosing = true;
+    _this._setNotWasClosing = function () {
+      _this.setState({}, function () {
+        _this._wasClosing = false;
+        _this._timeID = void 0;
+      });
+    };
+
+    _this._wasClosing = true;
     return _this;
   }
   /*
@@ -69,41 +76,52 @@ var WrapperModalDialog = (_temp = _class = function (_Component) {
 
 
   (0, _createClass3.default)(WrapperModalDialog, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this._wasClosing = false;
+    }
+  }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate(prevProps, prevState) {
-      var _this2 = this;
+      var _props = this.props,
+          timeout = _props.timeout,
+          isShow = _props.isShow;
 
-      if (this.wasClosing) {
-        setTimeout(function () {
-          _this2.setState({});
-        }, this.props.timeout);
+      if (this._wasClosing) {
+        if (!this._timeID) {
+          this._timeID = setTimeout(this._setNotWasClosing, timeout);
+        }
+      } else {
+        if (!isShow) {
+          this._wasClosing = true;
+        }
       }
     }
   }, {
     key: 'render',
     value: function render() {
-      var _props = this.props,
-          isShow = _props.isShow,
-          children = _props.children,
-          onClose = _props.onClose;
+      var _props2 = this.props,
+          isShow = _props2.isShow,
+          children = _props2.children,
+          onClose = _props2.onClose;
 
       var _className = void 0,
           _style = void 0;
-      if (this.wasClosing) {
+      if (this._wasClosing) {
         _className = CL.INIT;
         _style = STYLE.HIDE;
-        this.wasClosing = false;
       } else {
         _className = isShow ? CL.SHOWING : CL.HIDING;
         _style = isShow ? STYLE.SHOW : STYLE.HIDE_BACKGROUND;
-        if (!isShow) {
-          this.wasClosing = true;
-        }
       }
 
       return _react2.default.createElement(
         'div',
-        { className: _className, style: _style, onClick: onClose },
+        {
+          className: _className,
+          style: _style,
+          onClick: onClose
+        },
         children
       );
     }

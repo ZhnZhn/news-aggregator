@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 
+import utils from './utils'
+
 const S = {
   ROOT: {
     zIndex : 1030,
     position: 'absolute',
-    top: '70px',
-    left: '10px',
+    top: 70,
+    left: 10,
     width: '99%'
   }
 };
+
+const { isInCont } = utils;
 
 const _doVisible = function(arr, keyValue){
   let index
@@ -36,17 +40,6 @@ const _updateVisible = (state, key, maxDialog) => {
   }
 }
 
-const _isInCont = (arrComps, comp) => {
-  const { key } = comp, _max = arrComps.length;
-  let i = 0;
-  for(i;i<_max;i++) {
-    if (arrComps[i].key === key) {
-      return true;
-    }
-  }
-  return false;
-};
-
 class DialogContainer extends Component {
 
    elHtml = document.getElementsByTagName('html')[0]
@@ -72,7 +65,7 @@ class DialogContainer extends Component {
            _updateVisible(prevState, key, maxDialog)
            if (!Comp){
               prevState.compDialogs = _doVisible(prevState.compDialogs, key)
-           } else if (!_isInCont(prevState.compDialogs, Comp)) {
+           } else if (!isInCont(prevState.compDialogs, Comp)) {
               prevState.compDialogs.push(Comp)
            }
            return prevState;
@@ -80,28 +73,24 @@ class DialogContainer extends Component {
       }
    }
 
-  _handleToggleDialog = (key) => {
-    this.setState(prevState => {
-      const { hmIs } = prevState;
-      hmIs[key] = !hmIs[key]
-      if (!hmIs[key]) {
-        prevState.visibleDialogs = prevState.visibleDialogs.filter(value => {
-           return value !== key;
-        })
-        this.elHtml.style.cursor = ''
-      }
-      return prevState;
-    })
-  }
+   _hCloseDialog = (key) => {
+     this.setState(prevState => {
+       const { hmIs, visibleDialogs } = prevState;
+       hmIs[key] = false
+       prevState.visibleDialogs = visibleDialogs.filter(value => value !== key)
+       this.elHtml.style.cursor = ''
+       return prevState;
+     })
+   }
 
   _renderDialogs = () => {
     const { hmIs, compDialogs } = this.state;
     return compDialogs.map(Comp => {
        const key = Comp.key;
        return React.cloneElement(Comp, {
-             key : key,
-             isShow  : hmIs[key],
-             onClose : this._handleToggleDialog.bind(this, key)
+          key: key,
+          isShow: hmIs[key],
+          onClose: this._hCloseDialog.bind(this, key)
        });
     });
   }

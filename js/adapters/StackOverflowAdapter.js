@@ -8,6 +8,10 @@ var _Dom = require('../utils/Dom');
 
 var _Dom2 = _interopRequireDefault(_Dom);
 
+var _crId = require('../utils/crId');
+
+var _crId2 = _interopRequireDefault(_crId);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //const SOURCE_ID = "stack_tagged";
@@ -26,10 +30,12 @@ var StackOverflowAdapter = {
 
     var _items = items.map(function (item) {
       var title = item.title,
+          question_id = item.question_id,
           _item$owner = item.owner,
           owner = _item$owner === undefined ? {} : _item$owner;
 
       Object.assign(item, {
+        articleId: question_id || (0, _crId2.default)(),
         source: _sourceId,
         title: _Dom2.default.htmlDecode(title),
         owner: {

@@ -119,7 +119,9 @@ class SvgHrzResize extends Component {
     this.id = setInterval(fnResize, 5);
   }
   _hStopResize = (isOnResizeAfter, evt) => {
-    evt.preventDefault()
+    if (evt) {
+      evt.preventDefault()
+    }
     clearInterval(this.id);
     this._initDomNode()
     this.id = null;

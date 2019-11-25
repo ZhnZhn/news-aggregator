@@ -28,40 +28,62 @@ class WrapperModalDialog extends Component {
   }
   */
   static defaultProps = {
-    timeout : 450
+    timeout: 450
   }
 
   constructor(props){
-    super();
-    this.wasClosing = true;
+    super(props);
+    this._wasClosing = true;
+  }
+
+
+  componentDidMount(){
+    this._wasClosing = false
+  }
+
+  _setNotWasClosing = () => {
+    this.setState({},
+      () => {
+        this._wasClosing = false;
+        this._timeID = void 0;
+      }
+    )
   }
 
   componentDidUpdate(prevProps, prevState){
-    if (this.wasClosing){
-      setTimeout(
-        () => { this.setState({}) },
-        this.props.timeout
-      )
+    const { timeout, isShow } = this.props;
+    if (this._wasClosing){
+      if (!this._timeID) {
+        this._timeID = setTimeout(
+          this._setNotWasClosing,
+          timeout
+        )
+      }
+    } else {
+      if (!isShow) {
+        this._wasClosing = true
+      }
     }
   }
+
 
   render(){
     const { isShow, children, onClose } = this.props;
     let _className, _style;
-    if (this.wasClosing){
+    if (this._wasClosing){
        _className = CL.INIT;
        _style = STYLE.HIDE;
-       this.wasClosing = false;
     } else {
       _className = isShow ? CL.SHOWING : CL.HIDING;
       _style = isShow ? STYLE.SHOW : STYLE.HIDE_BACKGROUND;
-      if (!isShow){
-        this.wasClosing = true;
-      }
     }
 
     return (
-      <div className={_className} style={_style} onClick={onClose}>
+      <div
+        className={_className}
+        style={_style}
+        onClick={onClose}
+      >
         {children}
       </div>
     )

@@ -20,7 +20,7 @@ const options = [
 @withKeyDown
 class DialogType1 extends Component {
   constructor(props){
-    super()
+    super(props)
     this.sortBy = DF_SORTBY.value
     this._handleKeyDownWith = this._handleKeyDownWith.bind(this)
   }
@@ -37,9 +37,9 @@ class DialogType1 extends Component {
 
 
   _selectSortBy = (option) => {
-    this.sortBy = (option)
+    this.sortBy = option
        ? option.value
-       : undefined
+       : void 0
   }
 
   _handleLoad = () => {
@@ -48,7 +48,7 @@ class DialogType1 extends Component {
       type,
       source,
       itemConf,
-      sortBy: this.sortBy,
+      sortBy: this.sortBy
     })
   }
 
@@ -60,6 +60,7 @@ class DialogType1 extends Component {
   _createCommandButtons = (S) => {
     return [
       <RaisedButton
+        key="_load"
         rootStyle={S.RAISED_ROOT}
         clDiv={S.CL_RAISED_DIV}
         caption="Load"
@@ -68,6 +69,8 @@ class DialogType1 extends Component {
       />
     ];
   }
+
+  _refDialogComp = comp => this.dialogComp = comp
 
   render(){
     const { isShow, caption,
@@ -79,7 +82,7 @@ class DialogType1 extends Component {
 
     return (
       <DraggableDialog
-           ref={comp => this.dialogComp = comp}
+           ref={this._refDialogComp}
            rootStyle={S.R_DIALOG}
            browserCaptionStyle={S.BROWSER_CAPTION}
            styleButton={S.BT}

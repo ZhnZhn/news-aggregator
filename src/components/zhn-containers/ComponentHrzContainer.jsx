@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 //import PropTypes from 'prop-types'
 
+import utils from './utils'
+
+const CL = "hrz-container";
+const { isInCont } = utils;
+
 class ComponentHrzContainer extends Component {
   /*
   static propTypes = {
@@ -23,27 +28,24 @@ class ComponentHrzContainer extends Component {
   }
 
   _onStore = (actionType, option) => {
-     if (actionType === this.props.addAction && option.Comp){
+     const { Comp } = option || {};
+     if (actionType === this.props.addAction && Comp){
        this.setState(prevState => {
-         prevState.containers.unshift(option.Comp)
+         if (!isInCont(prevState.containers, Comp)) {
+           prevState.containers.unshift(Comp)
+         }
          return prevState;
        })
      }
   }
 
-  _renderContainers(containers){
-    return containers.map(container => {
-      return React.cloneElement(container);
-    });
-  }
-
   render(){
     const { containers } = this.state;
     return (
-       <div className="hrz-container">
-          {this._renderContainers(containers)}
+       <div className={CL}>
+         {containers}
        </div>
-    )
+    );
   }
 }
 

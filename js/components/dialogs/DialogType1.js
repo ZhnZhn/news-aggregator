@@ -62,10 +62,10 @@ var DialogType1 = (0, _withKeyDown2.default)(_class = function (_Component) {
   function DialogType1(props) {
     (0, _classCallCheck3.default)(this, DialogType1);
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (DialogType1.__proto__ || Object.getPrototypeOf(DialogType1)).call(this));
+    var _this = (0, _possibleConstructorReturn3.default)(this, (DialogType1.__proto__ || Object.getPrototypeOf(DialogType1)).call(this, props));
 
     _this._selectSortBy = function (option) {
-      _this.sortBy = option ? option.value : undefined;
+      _this.sortBy = option ? option.value : void 0;
     };
 
     _this._handleLoad = function () {
@@ -90,12 +90,17 @@ var DialogType1 = (0, _withKeyDown2.default)(_class = function (_Component) {
 
     _this._createCommandButtons = function (S) {
       return [_react2.default.createElement(_RaisedButton2.default, {
+        key: '_load',
         rootStyle: S.RAISED_ROOT,
         clDiv: S.CL_RAISED_DIV,
         caption: 'Load',
         isPrimary: true,
         onClick: _this._handleLoad
       })];
+    };
+
+    _this._refDialogComp = function (comp) {
+      return _this.dialogComp = comp;
     };
 
     _this.sortBy = DF_SORTBY.value;
@@ -116,8 +121,6 @@ var DialogType1 = (0, _withKeyDown2.default)(_class = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       var _props = this.props,
           isShow = _props.isShow,
           caption = _props.caption,
@@ -129,9 +132,7 @@ var DialogType1 = (0, _withKeyDown2.default)(_class = function (_Component) {
       return _react2.default.createElement(
         _DraggableDialog2.default,
         {
-          ref: function ref(comp) {
-            return _this2.dialogComp = comp;
-          },
+          ref: this._refDialogComp,
           rootStyle: S.R_DIALOG,
           browserCaptionStyle: S.BROWSER_CAPTION,
           styleButton: S.BT,

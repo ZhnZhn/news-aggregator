@@ -1,1 +1,37 @@
-{"version":3,"sources":["../../../src/components/zhn-atoms/WrapperModalDialog.jsx"],"names":["CL","INIT","SHOWING","HIDING","STYLE","SHOW","display","HIDE","HIDE_BACKGROUND","backgroundColor","WrapperModalDialog","props","wasClosing","prevProps","prevState","setTimeout","setState","timeout","isShow","children","onClose","_className","_style","defaultProps"],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;;;AACA;;AAEA,IAAMA,KAAK;AACTC,QAAO,YADE;AAETC,WAAU,uBAFD;AAGTC,UAAS;AAHA,CAAX;;AAMA,IAAMC,QAAQ;AACZC,QAAO;AACLC,aAAU;AADL,GADK;AAIZC,QAAO;AACLD,aAAU;AADL,GAJK;AAOZE,mBAAkB;AAChBC,qBAAkB;AADF;AAPN,CAAd;;IAYMC,kB;;;AAYJ,8BAAYC,KAAZ,EAAkB;AAAA;;AAAA;;AAEhB,UAAKC,UAAL,GAAkB,IAAlB;AAFgB;AAGjB;AAdD;;;;;;;;;;;uCAgBmBC,S,EAAWC,S,EAAU;AAAA;;AACtC,UAAI,KAAKF,UAAT,EAAoB;AAClBG,mBACE,YAAM;AAAE,iBAAKC,QAAL,CAAc,EAAd;AAAmB,SAD7B,EAEE,KAAKL,KAAL,CAAWM,OAFb;AAID;AACF;;;6BAEO;AAAA,mBACgC,KAAKN,KADrC;AAAA,UACEO,MADF,UACEA,MADF;AAAA,UACUC,QADV,UACUA,QADV;AAAA,UACoBC,OADpB,UACoBA,OADpB;;AAEN,UAAIC,mBAAJ;AAAA,UAAgBC,eAAhB;AACA,UAAI,KAAKV,UAAT,EAAoB;AACjBS,qBAAarB,GAAGC,IAAhB;AACAqB,iBAASlB,MAAMG,IAAf;AACA,aAAKK,UAAL,GAAkB,KAAlB;AACF,OAJD,MAIO;AACLS,qBAAaH,SAASlB,GAAGE,OAAZ,GAAsBF,GAAGG,MAAtC;AACAmB,iBAASJ,SAASd,MAAMC,IAAf,GAAsBD,MAAMI,eAArC;AACA,YAAI,CAACU,MAAL,EAAY;AACV,eAAKN,UAAL,GAAkB,IAAlB;AACD;AACF;;AAED,aACE;AAAA;AAAA,UAAK,WAAWS,UAAhB,EAA4B,OAAOC,MAAnC,EAA2C,SAASF,OAApD;AACGD;AADH,OADF;AAKD;;;4BAtCMI,Y,GAAe;AACpBN,WAAU;AADU,C;kBAyCTP,kB","file":"WrapperModalDialog.js","sourcesContent":["import React, { Component } from 'react'\r\n//import PropTypes from 'prop-types'\r\n\r\nconst CL = {\r\n  INIT : 'modal-root',\r\n  SHOWING : 'modal-root show-modal',\r\n  HIDING : 'modal-root hide-modal'\r\n};\r\n\r\nconst STYLE = {\r\n  SHOW : {\r\n    display : 'block'\r\n  },\r\n  HIDE : {\r\n    display : 'none'\r\n  },\r\n  HIDE_BACKGROUND : {\r\n    backgroundColor : 'rgba(0,0,0, 0)'\r\n  }\r\n}\r\n\r\nclass WrapperModalDialog extends Component {\r\n  /*\r\n  static propTypes = {\r\n    isShow  : PropTypes.bool,\r\n    timeout : PropTypes.number,\r\n    onClose : PropTypes.func\r\n  }\r\n  */\r\n  static defaultProps = {\r\n    timeout : 450\r\n  }\r\n\r\n  constructor(props){\r\n    super();\r\n    this.wasClosing = true;\r\n  }\r\n\r\n  componentDidUpdate(prevProps, prevState){\r\n    if (this.wasClosing){\r\n      setTimeout(\r\n        () => { this.setState({}) },\r\n        this.props.timeout\r\n      )\r\n    }\r\n  }\r\n\r\n  render(){\r\n    const { isShow, children, onClose } = this.props;\r\n    let _className, _style;\r\n    if (this.wasClosing){\r\n       _className = CL.INIT;\r\n       _style = STYLE.HIDE;\r\n       this.wasClosing = false;\r\n    } else {\r\n      _className = isShow ? CL.SHOWING : CL.HIDING;\r\n      _style = isShow ? STYLE.SHOW : STYLE.HIDE_BACKGROUND;\r\n      if (!isShow){\r\n        this.wasClosing = true;\r\n      }\r\n    }\r\n\r\n    return (\r\n      <div className={_className} style={_style} onClick={onClose}>\r\n        {children}\r\n      </div>\r\n    )\r\n  }\r\n}\r\n\r\nexport default WrapperModalDialog\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-atoms/WrapperModalDialog.js"
+ ],
+ "file": "../../../src/components/zhn-atoms/WrapperModalDialog.js",
+ "names": [
+  "CL",
+  "INIT",
+  "SHOWING",
+  "HIDING",
+  "STYLE",
+  "SHOW",
+  "display",
+  "HIDE",
+  "HIDE_BACKGROUND",
+  "backgroundColor",
+  "WrapperModalDialog",
+  "props",
+  "_setNotWasClosing",
+  "setState",
+  "_wasClosing",
+  "_timeID",
+  "prevProps",
+  "prevState",
+  "timeout",
+  "isShow",
+  "setTimeout",
+  "children",
+  "onClose",
+  "_className",
+  "_style",
+  "Component",
+  "defaultProps"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;;;AACA;;AAEA,IAAMA,KAAK;AACTC,QAAO,YADE;AAETC,WAAU,uBAFD;AAGTC,UAAS;AAHA,CAAX;;AAMA,IAAMC,QAAQ;AACZC,QAAO;AACLC,aAAU;AADL,GADK;AAIZC,QAAO;AACLD,aAAU;AADL,GAJK;AAOZE,mBAAkB;AAChBC,qBAAkB;AADF;AAPN,CAAd;;IAYMC,kB;;;AAYJ,8BAAYC,KAAZ,EAAkB;AAAA;;AAAA,sJACVA,KADU;;AAAA,UAUlBC,iBAVkB,GAUE,YAAM;AACxB,YAAKC,QAAL,CAAc,EAAd,EACE,YAAM;AACJ,cAAKC,WAAL,GAAmB,KAAnB;AACA,cAAKC,OAAL,GAAe,KAAK,CAApB;AACD,OAJH;AAMD,KAjBiB;;AAEhB,UAAKD,WAAL,GAAmB,IAAnB;AAFgB;AAGjB;AAdD;;;;;;;;;;;wCAiBmB;AACjB,WAAKA,WAAL,GAAmB,KAAnB;AACD;;;uCAWkBE,S,EAAWC,S,EAAU;AAAA,mBACV,KAAKN,KADK;AAAA,UAC9BO,OAD8B,UAC9BA,OAD8B;AAAA,UACrBC,MADqB,UACrBA,MADqB;;AAEtC,UAAI,KAAKL,WAAT,EAAqB;AACnB,YAAI,CAAC,KAAKC,OAAV,EAAmB;AACjB,eAAKA,OAAL,GAAeK,WACb,KAAKR,iBADQ,EAEbM,OAFa,CAAf;AAID;AACF,OAPD,MAOO;AACL,YAAI,CAACC,MAAL,EAAa;AACX,eAAKL,WAAL,GAAmB,IAAnB;AACD;AACF;AACF;;;6BAGO;AAAA,oBACgC,KAAKH,KADrC;AAAA,UACEQ,MADF,WACEA,MADF;AAAA,UACUE,QADV,WACUA,QADV;AAAA,UACoBC,OADpB,WACoBA,OADpB;;AAEN,UAAIC,mBAAJ;AAAA,UAAgBC,eAAhB;AACA,UAAI,KAAKV,WAAT,EAAqB;AAClBS,qBAAavB,GAAGC,IAAhB;AACAuB,iBAASpB,MAAMG,IAAf;AACF,OAHD,MAGO;AACLgB,qBAAaJ,SAASnB,GAAGE,OAAZ,GAAsBF,GAAGG,MAAtC;AACAqB,iBAASL,SAASf,MAAMC,IAAf,GAAsBD,MAAMI,eAArC;AACD;;AAED,aACE;AAAA;AAAA;AACE,qBAAWe,UADb;AAEE,iBAAOC,MAFT;AAGE,mBAASF;AAHX;AAKGD;AALH,OADF;AASD;;;EApE8BI,gB,UAQxBC,Y,GAAe;AACpBR,WAAS;AADW,C;kBA+DTR,kB"
+}

@@ -1,18 +1,14 @@
 import React, { Component } from 'react'
 
 import dt from '../../utils/dt'
-import has from '../has'
 
 import withTheme from '../hoc/withTheme'
 import styleConfig from './Article.Style'
 
 import ItemHeader from './ItemHeader'
 import ArticleDescr from './ArticleDescr'
+import withDnD from './decorators/withDnD'
 
-import withDnDStyle from './decorators/withDnDStyle'
-
-//const D_REMOVE_UNDER = 60;
-//const D_REMOVE_ITEM = 35;
 
 const CL_ITEM_HEADER = "article-header";
 
@@ -68,23 +64,7 @@ const S = {
   }
 }
 
-const { HAS_TOUCH } = has
-, DELTA = HAS_TOUCH ? {
-    MARK_REMOVE: 50,
-    REMOVE_ITEM: 90,
-    REMOVE_UNDER: 150
-  } : {
-    MARK_REMOVE: 25,
-    REMOVE_ITEM: 35,
-    REMOVE_UNDER: 150
-  };
-
-const _getTouchesClientX = (ev) =>
-  (((ev || {}).touches || [])[0] || {}).clientX || 0;
-const _getChangedTouches = (ev) =>
-  (((ev || {}).changedTouches || [])[0] || {}).clientX || 0;
-
-@withDnDStyle
+@withDnD
 class Article extends Component {
 
   static defaultProps = {
@@ -95,80 +75,12 @@ class Article extends Component {
   constructor(props) {
     super(props)
 
-    this._itemHandlers = HAS_TOUCH
-      ? {
-          onTouchStart: this._onTouchStart.bind(this),
-          onTouchMove: this._onTouchMove.bind(this),
-          onTouchEnd: this._onTouchEnd.bind(this)
-        }
-      : {
-          draggable: true,
-          onDragStart: this._dragStart.bind(this),
-          onDragEnd: this._dragEnd.bind(this),
-          onDrop: this._preventDefault,
-          onDragOver: this._preventDefault,
-          onDragEnter: this._preventDefault,
-          onDragLeave: this._preventDefault
-        }
+    this._itemHandlers = this._crDnDHandlers()
 
     this.state = {
       isClosed: false,
       isShow: false
     }
-  }
-
-  _dragStart = (ev) => {
-    ev.persist()
-    this.clientX = ev.clientX
-    this.dragStartWithDnDStyle(ev)
-    ev.dataTransfer.effectAllowed="move"
-    ev.dataTransfer.dropEffect="move"
-  }
-  _onTouchStart = (ev) => {
-    ev.persist()
-    const _clientX = _getTouchesClientX(ev);
-    if (_clientX) {
-      this._clientX = _clientX
-    }
-  }
-  _onTouchMove = (ev) => {
-    ev.persist()
-    const _clientX = _getTouchesClientX(ev);
-    if (_clientX
-       && Math.abs(this._clientX -  _clientX) > DELTA.MARK_REMOVE) {
-      this.dragStartWithDnDStyle(ev)
-    }
-  }
-
-  _dragEnd = (ev) => {
-    ev.preventDefault()
-    ev.persist()
-    this.dragEndWithDnDStyle()
-    const _deltaX = Math.abs(this.clientX - ev.clientX)
-        , { item, onRemoveUnder } = this.props;
-    if (_deltaX > DELTA.REMOVE_UNDER) {
-      onRemoveUnder(item)
-    } else if (_deltaX > DELTA.REMOVE_ITEM){
-      this._handleClose()
-    }
-  }
-  _onTouchEnd = (ev) => {
-    //ev.preventDefault()
-    ev.persist()
-    this.dragEndWithDnDStyle()
-    const _clientX = _getChangedTouches(ev);
-    if (_clientX) {
-      const _deltaX = Math.abs(this._clientX - _clientX)
-          , { item, onRemoveUnder } = this.props;
-      if (_deltaX > DELTA.REMOVE_UNDER) {
-        onRemoveUnder(item)
-      } else if (_deltaX > DELTA.REMOVE_ITEM){
-        this._handleClose()
-      }
-    }
-  }
-  _preventDefault(ev){
-    ev.preventDefault()
   }
 
   _handleToggle = () => {

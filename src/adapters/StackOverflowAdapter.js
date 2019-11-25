@@ -1,4 +1,5 @@
 import Dom from '../utils/Dom'
+import crId from '../utils/crId'
 
 //const SOURCE_ID = "stack_tagged";
 
@@ -14,8 +15,9 @@ const StackOverflowAdapter = {
         , _sourceId = _rSourceId[requestType];
 
     const _items = items.map(item => {
-      const { title, owner={} } = item;
+      const { title, question_id, owner={} } = item;
       Object.assign(item, {
+        articleId: question_id || crId(),
         source: _sourceId,
         title: Dom.htmlDecode(title),
         owner: {

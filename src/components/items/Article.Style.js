@@ -1,42 +1,29 @@
 
 //230, 236, 240
 
-const styleConfig = {
-  themeName : undefined,
-  style : undefined,
-  createStyle: (CSS_RULE, themeName) => {
-    let _header, _descr
-    switch(themeName){
-      case 'WHITE':
-        _header = {
-          backgroundColor: '#dfe4e7'
-        }
-        _descr = {
-          backgroundColor: 'white'
-        }
-        break;
-      case 'SAND':
-        _header = {
-          backgroundColor: '#c6bda5'
-        }
-        _descr = {
-          backgroundColor: '#e8e0cb'
-        }
-        break;
-      default:
-        _header = {
-          backgroundColor: '#404040'
-        }
-    }
-    return {
-       HEADER: {
-         ..._header
-       },
-       DESCR: {
-         ..._descr
-       }
-    };
-  }
+const _config = {
+  DF: { h: '#404040' },
+  WHITE: { h: '#dfe4e7', d: 'white' },
+  SAND: { h: '#c6bda5', d: '#e8e0cb' }
 }
+, _crBg = color => ({
+  backgroundColor: color
+})
+, _crStyles = ({h, d}={}) => {
+  const _S = {
+    HEADER: _crBg(h)
+  };
+  if (d) {
+    _S.DESCR = _crBg(d)
+  }
+  return _S;
+};
+
+const styleConfig = {
+  themeName: void 0,
+  style: void 0,
+  createStyle: (CSS_RULE, themeName) => _crStyles(
+    _config[themeName] || _config.DF)  
+};
 
 export default styleConfig

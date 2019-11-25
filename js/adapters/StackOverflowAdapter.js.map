@@ -1,1 +1,36 @@
-{"version":3,"sources":["../../src/adapters/StackOverflowAdapter.js"],"names":["_rSourceId","TAG","SEARCH","StackOverflowAdapter","toNews","json","option","items","requestType","_sourceId","_items","map","title","item","owner","Object","assign","source","htmlDecode","display_name","articles","sortBy","tag"],"mappings":";;;;;;AAAA;;;;;;AAEA;;AAEA,IAAMA,aAAa;AACjBC,OAAK,cADY;AAEjBC,UAAQ;AAFS,CAAnB;;AAKA,IAAMC,uBAAuB;AAC3BC,UAAQ,gBAACC,IAAD,EAAOC,MAAP,EAAkB;AAClB,QAAEC,KAAF,GAAYF,IAAZ,CAAEE,KAAF;AAAA,QACEC,WADF,GACkBF,MADlB,CACEE,WADF;AAAA,QAEAC,SAFA,GAEYT,WAAWQ,WAAX,CAFZ;;;AAIN,QAAME,SAASH,MAAMI,GAAN,CAAU,gBAAQ;AAAA,UACvBC,KADuB,GACHC,IADG,CACvBD,KADuB;AAAA,wBACHC,IADG,CAChBC,KADgB;AAAA,UAChBA,KADgB,+BACV,EADU;;AAE/BC,aAAOC,MAAP,CAAcH,IAAd,EAAoB;AAClBI,gBAAQR,SADU;AAElBG,eAAO,cAAIM,UAAJ,CAAeN,KAAf,CAFW;AAGlBE,eAAO;AACLK,wBAAc,cAAID,UAAJ,CAAeJ,MAAMK,YAArB;AADT;AAHW,OAApB;AAOA,aAAON,IAAP;AACD,KAVc,CAAf;AAWA,WAAO;AACLI,cAAQR,SADH;AAELW,gBAAUV,MAFL;AAGLW,cAAQf,OAAOgB;AAHV,KAAP;AAKD;AAtB0B,CAA7B;;kBAyBenB,oB","file":"StackOverflowAdapter.js","sourcesContent":["import Dom from '../utils/Dom'\r\n\r\n//const SOURCE_ID = \"stack_tagged\";\r\n\r\nconst _rSourceId = {\r\n  TAG: 'stack_tagged',\r\n  SEARCH: 'stack_search'\r\n}\r\n\r\nconst StackOverflowAdapter = {\r\n  toNews: (json, option) => {\r\n    const { items } = json\r\n        , { requestType } = option\r\n        , _sourceId = _rSourceId[requestType];\r\n\r\n    const _items = items.map(item => {\r\n      const { title, owner={} } = item;\r\n      Object.assign(item, {\r\n        source: _sourceId,\r\n        title: Dom.htmlDecode(title),\r\n        owner: {\r\n          display_name: Dom.htmlDecode(owner.display_name)\r\n        }\r\n      })\r\n      return item;\r\n    })\r\n    return {\r\n      source: _sourceId,\r\n      articles: _items,\r\n      sortBy: option.tag\r\n    };\r\n  }\r\n}\r\n\r\nexport default StackOverflowAdapter\r\n"]}
+{
+ "version": 3,
+ "sources": [
+  "../../src/adapters/StackOverflowAdapter.js"
+ ],
+ "file": "../../src/adapters/StackOverflowAdapter.js",
+ "names": [
+  "_rSourceId",
+  "TAG",
+  "SEARCH",
+  "StackOverflowAdapter",
+  "toNews",
+  "json",
+  "option",
+  "items",
+  "requestType",
+  "_sourceId",
+  "_items",
+  "map",
+  "title",
+  "item",
+  "question_id",
+  "owner",
+  "Object",
+  "assign",
+  "articleId",
+  "source",
+  "Dom",
+  "htmlDecode",
+  "display_name",
+  "articles",
+  "sortBy",
+  "tag"
+ ],
+ "mappings": ";;;;;;AAAA;;;;AACA;;;;;;AAEA;;AAEA,IAAMA,aAAa;AACjBC,OAAK,cADY;AAEjBC,UAAQ;AAFS,CAAnB;;AAKA,IAAMC,uBAAuB;AAC3BC,UAAQ,gBAACC,IAAD,EAAOC,MAAP,EAAkB;AAClB,QAAEC,KAAF,GAAYF,IAAZ,CAAEE,KAAF;AAAA,QACEC,WADF,GACkBF,MADlB,CACEE,WADF;AAAA,QAEAC,SAFA,GAEYT,WAAWQ,WAAX,CAFZ;;;AAIN,QAAME,SAASH,MAAMI,GAAN,CAAU,gBAAQ;AAAA,UACvBC,KADuB,GACUC,IADV,CACvBD,KADuB;AAAA,UAChBE,WADgB,GACUD,IADV,CAChBC,WADgB;AAAA,wBACUD,IADV,CACHE,KADG;AAAA,UACHA,KADG,+BACG,EADH;;AAE/BC,aAAOC,MAAP,CAAcJ,IAAd,EAAoB;AAClBK,mBAAWJ,eAAe,qBADR;AAElBK,gBAAQV,SAFU;AAGlBG,eAAOQ,cAAIC,UAAJ,CAAeT,KAAf,CAHW;AAIlBG,eAAO;AACLO,wBAAcF,cAAIC,UAAJ,CAAeN,MAAMO,YAArB;AADT;AAJW,OAApB;AAQA,aAAOT,IAAP;AACD,KAXc,CAAf;AAYA,WAAO;AACLM,cAAQV,SADH;AAELc,gBAAUb,MAFL;AAGLc,cAAQlB,OAAOmB;AAHV,KAAP;AAKD;AAvB0B,CAA7B;;kBA0BetB,oB"
+}

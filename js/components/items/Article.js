@@ -34,10 +34,6 @@ var _dt = require('../../utils/dt');
 
 var _dt2 = _interopRequireDefault(_dt);
 
-var _has = require('../has');
-
-var _has2 = _interopRequireDefault(_has);
-
 var _withTheme = require('../hoc/withTheme');
 
 var _withTheme2 = _interopRequireDefault(_withTheme);
@@ -54,14 +50,11 @@ var _ArticleDescr = require('./ArticleDescr');
 
 var _ArticleDescr2 = _interopRequireDefault(_ArticleDescr);
 
-var _withDnDStyle = require('./decorators/withDnDStyle');
+var _withDnD = require('./decorators/withDnD');
 
-var _withDnDStyle2 = _interopRequireDefault(_withDnDStyle);
+var _withDnD2 = _interopRequireDefault(_withDnD);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//const D_REMOVE_UNDER = 60;
-//const D_REMOVE_ITEM = 35;
 
 var CL_ITEM_HEADER = "article-header";
 
@@ -117,91 +110,13 @@ var S = {
   }
 };
 
-var HAS_TOUCH = _has2.default.HAS_TOUCH,
-    DELTA = HAS_TOUCH ? {
-  MARK_REMOVE: 50,
-  REMOVE_ITEM: 90,
-  REMOVE_UNDER: 150
-} : {
-  MARK_REMOVE: 25,
-  REMOVE_ITEM: 35,
-  REMOVE_UNDER: 150
-};
-
-
-var _getTouchesClientX = function _getTouchesClientX(ev) {
-  return (((ev || {}).touches || [])[0] || {}).clientX || 0;
-};
-var _getChangedTouches = function _getChangedTouches(ev) {
-  return (((ev || {}).changedTouches || [])[0] || {}).clientX || 0;
-};
-
-var Article = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (_Component) {
+var Article = (0, _withDnD2.default)(_class = (_temp = _class2 = function (_Component) {
   (0, _inherits3.default)(Article, _Component);
 
   function Article(props) {
     (0, _classCallCheck3.default)(this, Article);
 
     var _this = (0, _possibleConstructorReturn3.default)(this, (Article.__proto__ || Object.getPrototypeOf(Article)).call(this, props));
-
-    _this._dragStart = function (ev) {
-      ev.persist();
-      _this.clientX = ev.clientX;
-      _this.dragStartWithDnDStyle(ev);
-      ev.dataTransfer.effectAllowed = "move";
-      ev.dataTransfer.dropEffect = "move";
-    };
-
-    _this._onTouchStart = function (ev) {
-      ev.persist();
-      var _clientX = _getTouchesClientX(ev);
-      if (_clientX) {
-        _this._clientX = _clientX;
-      }
-    };
-
-    _this._onTouchMove = function (ev) {
-      ev.persist();
-      var _clientX = _getTouchesClientX(ev);
-      if (_clientX && Math.abs(_this._clientX - _clientX) > DELTA.MARK_REMOVE) {
-        _this.dragStartWithDnDStyle(ev);
-      }
-    };
-
-    _this._dragEnd = function (ev) {
-      ev.preventDefault();
-      ev.persist();
-      _this.dragEndWithDnDStyle();
-      var _deltaX = Math.abs(_this.clientX - ev.clientX),
-          _this$props = _this.props,
-          item = _this$props.item,
-          onRemoveUnder = _this$props.onRemoveUnder;
-
-      if (_deltaX > DELTA.REMOVE_UNDER) {
-        onRemoveUnder(item);
-      } else if (_deltaX > DELTA.REMOVE_ITEM) {
-        _this._handleClose();
-      }
-    };
-
-    _this._onTouchEnd = function (ev) {
-      //ev.preventDefault()
-      ev.persist();
-      _this.dragEndWithDnDStyle();
-      var _clientX = _getChangedTouches(ev);
-      if (_clientX) {
-        var _deltaX = Math.abs(_this._clientX - _clientX),
-            _this$props2 = _this.props,
-            item = _this$props2.item,
-            onRemoveUnder = _this$props2.onRemoveUnder;
-
-        if (_deltaX > DELTA.REMOVE_UNDER) {
-          onRemoveUnder(item);
-        } else if (_deltaX > DELTA.REMOVE_ITEM) {
-          _this._handleClose();
-        }
-      }
-    };
 
     _this._handleToggle = function () {
       _this.setState(function (prevState) {
@@ -212,9 +127,9 @@ var Article = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (
     };
 
     _this._handleClose = function () {
-      var _this$props3 = _this.props,
-          onCloseItem = _this$props3.onCloseItem,
-          item = _this$props3.item;
+      var _this$props = _this.props,
+          onCloseItem = _this$props.onCloseItem,
+          item = _this$props.item;
 
       onCloseItem(item);
       _this.setState({ isClosed: true });
@@ -229,19 +144,7 @@ var Article = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (
       _this.headerComp = comp;
     };
 
-    _this._itemHandlers = HAS_TOUCH ? {
-      onTouchStart: _this._onTouchStart.bind(_this),
-      onTouchMove: _this._onTouchMove.bind(_this),
-      onTouchEnd: _this._onTouchEnd.bind(_this)
-    } : {
-      draggable: true,
-      onDragStart: _this._dragStart.bind(_this),
-      onDragEnd: _this._dragEnd.bind(_this),
-      onDrop: _this._preventDefault,
-      onDragOver: _this._preventDefault,
-      onDragEnter: _this._preventDefault,
-      onDragLeave: _this._preventDefault
-    };
+    _this._itemHandlers = _this._crDnDHandlers();
 
     _this.state = {
       isClosed: false,
@@ -251,11 +154,6 @@ var Article = (0, _withDnDStyle2.default)(_class = (_temp = _class2 = function (
   }
 
   (0, _createClass3.default)(Article, [{
-    key: '_preventDefault',
-    value: function _preventDefault(ev) {
-      ev.preventDefault();
-    }
-  }, {
     key: 'render',
     value: function render() {
       var _props = this.props,

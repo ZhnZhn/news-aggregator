@@ -128,7 +128,9 @@ var SvgHrzResize = (_temp = _class = function (_Component) {
     };
 
     _this._hStopResize = function (isOnResizeAfter, evt) {
-      evt.preventDefault();
+      if (evt) {
+        evt.preventDefault();
+      }
       clearInterval(_this.id);
       _this._initDomNode();
       _this.id = null;

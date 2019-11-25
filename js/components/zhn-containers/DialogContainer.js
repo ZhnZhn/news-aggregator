@@ -28,17 +28,24 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _utils = require('./utils');
+
+var _utils2 = _interopRequireDefault(_utils);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var S = {
   ROOT: {
     zIndex: 1030,
     position: 'absolute',
-    top: '70px',
-    left: '10px',
+    top: 70,
+    left: 10,
     width: '99%'
   }
 };
+
+var isInCont = _utils2.default.isInCont;
+
 
 var _doVisible = function _doVisible(arr, keyValue) {
   var index = void 0,
@@ -66,18 +73,6 @@ var _updateVisible = function _updateVisible(state, key, maxDialog) {
       visibleDialogs = visibleDialogs.slice(1);
     }
   }
-};
-
-var _isInCont = function _isInCont(arrComps, comp) {
-  var key = comp.key,
-      _max = arrComps.length;
-  var i = 0;
-  for (i; i < _max; i++) {
-    if (arrComps[i].key === key) {
-      return true;
-    }
-  }
-  return false;
 };
 
 var DialogContainer = function (_Component) {
@@ -110,23 +105,22 @@ var DialogContainer = function (_Component) {
           _updateVisible(prevState, key, maxDialog);
           if (!Comp) {
             prevState.compDialogs = _doVisible(prevState.compDialogs, key);
-          } else if (!_isInCont(prevState.compDialogs, Comp)) {
+          } else if (!isInCont(prevState.compDialogs, Comp)) {
             prevState.compDialogs.push(Comp);
           }
           return prevState;
         });
       }
-    }, _this._handleToggleDialog = function (key) {
+    }, _this._hCloseDialog = function (key) {
       _this.setState(function (prevState) {
-        var hmIs = prevState.hmIs;
+        var hmIs = prevState.hmIs,
+            visibleDialogs = prevState.visibleDialogs;
 
-        hmIs[key] = !hmIs[key];
-        if (!hmIs[key]) {
-          prevState.visibleDialogs = prevState.visibleDialogs.filter(function (value) {
-            return value !== key;
-          });
-          _this.elHtml.style.cursor = '';
-        }
+        hmIs[key] = false;
+        prevState.visibleDialogs = visibleDialogs.filter(function (value) {
+          return value !== key;
+        });
+        _this.elHtml.style.cursor = '';
         return prevState;
       });
     }, _this._renderDialogs = function () {
@@ -139,7 +133,7 @@ var DialogContainer = function (_Component) {
         return _react2.default.cloneElement(Comp, {
           key: key,
           isShow: hmIs[key],
-          onClose: _this._handleToggleDialog.bind(_this, key)
+          onClose: _this._hCloseDialog.bind(_this, key)
         });
       });
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
