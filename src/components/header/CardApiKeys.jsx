@@ -25,9 +25,9 @@ const CardApiKeys = (props) => {
   const _refInputIex = useRef()
   , _refInputNews = useRef()
   , _refInputWebhose = useRef()
-  , {
+  , {    
     style, fieldStyle, buttonsStyle, TS,
-    data, onClose    
+    data, onClose
   } = props
   , { setIexKey,
       setNewsKey,
@@ -39,7 +39,6 @@ const CardApiKeys = (props) => {
       setWebhoseKey(_refInputWebhose.current.getValue())
       onClose()
   });
-
   return(
       <div style={style}>
         <form>

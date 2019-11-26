@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -42,15 +46,21 @@ var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var S = {
+  DIALOG: {
+    position: 'static',
+    width: 350,
+    height: 160,
+    margin: '70px auto 0px'
+  },
   CAPTION: {
     color: '#f44336',
     fontWeight: 'bold'
   },
   MSG: {
     color: 'black',
-    width: '400px',
-    paddingTop: '16px',
-    paddingLeft: '10px',
+    width: '100%',
+    paddingTop: 16,
+    paddingLeft: 10,
     fontWeight: 'bold',
     lineHeight: 1.4,
     whiteSpace: 'pre-line'
@@ -127,7 +137,7 @@ var AlertDialog = (_temp2 = _class = function (_Component) {
       return _react2.default.createElement(
         _ModalDialog2.default,
         {
-          style: TS.R_DIALOG,
+          style: (0, _extends3.default)({}, TS.R_DIALOG, S.DIALOG),
           styleCaption: TS.BROWSER_CAPTION,
           styleButton: TS.BT,
           caption: 'Exception',

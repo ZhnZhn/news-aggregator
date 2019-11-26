@@ -30,7 +30,6 @@ var THEME_OPTIONS = [{ caption: 'Grey', value: 'GREY' }, { caption: 'White', val
 var CardUiTheme = function CardUiTheme(_ref) {
   var style = _ref.style,
       buttonsStyle = _ref.buttonsStyle,
-      styleConfig = _ref.styleConfig,
       TS = _ref.TS,
       onSetTheme = _ref.onSetTheme,
       onClose = _ref.onClose;
@@ -38,7 +37,7 @@ var CardUiTheme = function CardUiTheme(_ref) {
     'div',
     { style: (0, _extends3.default)({}, S.ROOT_DIV, style) },
     _react2.default.createElement(_Comp2.default.InputSelect, {
-      styleConfig: styleConfig,
+      styleConfig: TS.SELECT,
       caption: 'Theme (Default: Grey)',
       initItem: DF_THEME,
       options: THEME_OPTIONS,

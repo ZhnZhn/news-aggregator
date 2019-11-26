@@ -15,14 +15,13 @@ const THEME_OPTIONS = [
 ], DF_THEME = THEME_OPTIONS[0];
 
 const CardUiTheme = ({
-  style, buttonsStyle,
-  styleConfig,
+  style, buttonsStyle,  
   TS,
   onSetTheme, onClose
 }) => (
     <div style={{...S.ROOT_DIV, ...style}}>
       <A.InputSelect
-        styleConfig={styleConfig}
+        styleConfig={TS.SELECT}
         caption="Theme (Default: Grey)"
         initItem={DF_THEME}
         options={THEME_OPTIONS}

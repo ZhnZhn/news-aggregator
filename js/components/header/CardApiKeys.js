@@ -59,7 +59,6 @@ var CardApiKeys = function CardApiKeys(props) {
     onClose();
   });
 
-
   return _react2.default.createElement(
     'div',
     { style: style },

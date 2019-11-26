@@ -5,13 +5,6 @@ import styleConfig from './Dialog.Style'
 import A from '../Comp'
 import Decors from './decorators/Decors'
 
-const S = {
-  POWERED_BY: {
-    marginLeft: 16,
-    marginBottom: 8
-  }
-};
-
 const SITE_TYPE_OPTIONS = [
   { caption: 'News', value: 'news'},
   { caption: 'Blogs', value: 'blogs'}
@@ -19,7 +12,7 @@ const SITE_TYPE_OPTIONS = [
 , DF_SITE_TYPE = SITE_TYPE_OPTIONS[0];
 
 const _onTestDaysBefore = (value) => {
-  const _n = parseInt(value, 10)
+  const _n = parseInt(value, 10);
   if ((!Number.isNaN(_n) && _n>0 && _n<31) || value === '') {
     return true;
   } else {
@@ -58,7 +51,7 @@ class WebhoseQueryDialog extends Component {
       beforeDays: _beforeDays
     })
   }
-  
+
   _refDialoComp = comp => this.dialogComp = comp
   _refInputTitle = comp => this.inputTitle = comp
   _refInputBeforeDays = comp => this.inputBeforeDays = comp
@@ -97,13 +90,13 @@ class WebhoseQueryDialog extends Component {
         <A.TextField
           rootStyle={TS.INPUT_ROOT}
           ref={this._refInputBeforeDays}
-          caption="Before Days (Default: 2, Max 30)"
+          caption="Before Days, Max 30"
           initValue={2}
           errorMsg="0<n<31 value must be"
           onTest={_onTestDaysBefore}
         />
 
-        <A.Link.PoweredBy rootStyle={S.POWERED_BY}>
+        <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
           <A.Link.WebhoseIo />
         </A.Link.PoweredBy>
       </A.DraggableDialog>

@@ -6,17 +6,13 @@ import styleConfig from './Dialog.Style'
 import A from '../Comp'
 import Decors from './decorators/Decors'
 
-const S = {
-  POWERED_BY: {
-    marginLeft: 16,
-    marginBottom: 8
-  }
-};
 
-const _initFromDate = DateUtil.getFromDate(1)
-, _initToDate = DateUtil.getToDate()
+const DATE_ERR_MSG = "YYYY-MM-DD";
+
+const INITIAL_FROM_DATE = DateUtil.getFromDate(1)
+, INITIAL_TO_DATE = DateUtil.getToDate()
 , _onTestDate = DateUtil.isValidDate
-,  _sortByOptions = [
+,  SORT_BY_OPTIONS = [
   { caption: "Activity, Recent Day", value: "activity" },
   { caption: "Creation Date", value: "creation"},
   { caption: "Score", value: "votes" },
@@ -24,7 +20,7 @@ const _initFromDate = DateUtil.getFromDate(1)
   { caption: "Hot Week Tab", value: "week" },
   { caption: "Hot Month Tab", value: "month" }
 ]
-, DF_SORT_BY = _sortByOptions[4];
+, DF_SORT_BY = SORT_BY_OPTIONS[4];
 
 
 @Decors.withDecors
@@ -61,7 +57,7 @@ class StackTaggedDialog extends Component {
       toDate: _toDate
     })
   }
-    
+
   _refDialogComp = comp => this.dialogComp = comp
   _refInputTag = comp => this.inputTag = comp
   _refFromDate = comp => this.fromDate = comp
@@ -94,28 +90,30 @@ class StackTaggedDialog extends Component {
          <A.InputSelect
            caption="SortBy"
            initItem={DF_SORT_BY}
-           options={_sortByOptions}
+           options={SORT_BY_OPTIONS}
            styleConfig={TS.SELECT}
            onSelect={this._selectSortBy}
          />
+        <div>
         <A.TextField
-          rootStyle={TS.INPUT_ROOT}
           ref={this._refFromDate}
           caption="From Date"
-          initValue={_initFromDate}
-          errorMsg="YYYY-MM-DD format must be"
+          rootStyle={TS.INPUT_DATE}
+          initValue={INITIAL_FROM_DATE}
+          errorMsg={DATE_ERR_MSG}
           onTest={_onTestDate}
         />
         <A.TextField
-          rootStyle={TS.INPUT_ROOT}
           ref={this._refToDate}
           caption="To Date"
-          initValue={_initToDate}
-          errorMsg="YYYY-MM-DD format must be"
+          rootStyle={TS.INPUT_DATE}
+          initValue={INITIAL_TO_DATE}
+          errorMsg={DATE_ERR_MSG}
           onTest={_onTestDate}
         />
+        </div>
 
-        <A.Link.PoweredBy rootStyle={S.POWERED_BY}>
+        <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
           <A.Link.StackOverflow />
         </A.Link.PoweredBy>
       </A.DraggableDialog>

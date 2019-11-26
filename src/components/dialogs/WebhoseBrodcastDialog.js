@@ -5,12 +5,6 @@ import styleConfig from './Dialog.Style'
 import A from '../Comp'
 import Decors from './decorators/Decors'
 
-const S = {
-  POWERED_BY: {
-    marginLeft: 16,
-    marginBottom: 8
-  }
-};
 
 const _onTestDaysBefore = (value) => {
   const _n = parseInt(value, 10)
@@ -84,13 +78,13 @@ class WebhoseBrodcastDialog extends Component {
         <A.TextField
           rootStyle={TS.INPUT_ROOT}
           ref={this._refInputBeforeDays}
-          caption="Before Days (Default: 2, Max 30)"
+          caption="Before Days, Max 30"
           initValue={2}
           errorMsg="0<n<31 value must be"
           onTest={_onTestDaysBefore}
         />
 
-        <A.Link.PoweredBy rootStyle={S.POWERED_BY}>
+        <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
           <A.Link.WebhoseIo />
         </A.Link.PoweredBy>
       </A.DraggableDialog>

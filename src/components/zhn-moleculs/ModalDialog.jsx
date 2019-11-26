@@ -153,8 +153,7 @@ class ModalDialog extends Component {
       if (!isShow){
         this.wasClosing = true
       }
-    }
-
+    }    
     return (
          <div
              ref={this._refRootDiv}

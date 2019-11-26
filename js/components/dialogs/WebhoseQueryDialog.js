@@ -44,13 +44,6 @@ var _Decors2 = _interopRequireDefault(_Decors);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var S = {
-  POWERED_BY: {
-    marginLeft: 16,
-    marginBottom: 8
-  }
-};
-
 var SITE_TYPE_OPTIONS = [{ caption: 'News', value: 'news' }, { caption: 'Blogs', value: 'blogs' }],
     DF_SITE_TYPE = SITE_TYPE_OPTIONS[0];
 
@@ -156,14 +149,14 @@ var WebhoseQueryDialog = (_dec = _Decors2.default.withDecors, _dec(_class = func
         _react2.default.createElement(_Comp2.default.TextField, {
           rootStyle: TS.INPUT_ROOT,
           ref: this._refInputBeforeDays,
-          caption: 'Before Days (Default: 2, Max 30)',
+          caption: 'Before Days, Max 30',
           initValue: 2,
           errorMsg: '0<n<31 value must be',
           onTest: _onTestDaysBefore
         }),
         _react2.default.createElement(
           _Comp2.default.Link.PoweredBy,
-          { rootStyle: S.POWERED_BY },
+          { rootStyle: TS.POWERED_BY },
           _react2.default.createElement(_Comp2.default.Link.WebhoseIo, null)
         )
       );

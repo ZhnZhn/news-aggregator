@@ -64,7 +64,6 @@ var ModalDialogContainer = function (_Component) {
             data = _this$state.data,
             dialogs = _this$state.dialogs;
 
-
         data[type] = option;
         shows[type] = true;
         if (inits[type]) {

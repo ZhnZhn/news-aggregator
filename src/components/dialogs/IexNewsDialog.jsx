@@ -5,13 +5,6 @@ import styleConfig from './Dialog.Style'
 import A from '../Comp'
 import Decors from './decorators/Decors'
 
-const S = {
-  POWERED_BY: {
-    marginLeft: 16,
-    marginBottom: 8
-  }
-};
-
 const RECENT_OPTIONS = [
   { caption: "10 News", value: "10" },
   { caption: "20 News", value: "20" },
@@ -27,7 +20,7 @@ class IexNewsDialog extends Component {
   constructor(props){
     super(props)
     this.sortBy = DF_RECENT.value
-    this._initWithDecors(this)    
+    this._initWithDecors(this)
   }
 
   _selectRecent = (option) => {
@@ -72,7 +65,7 @@ class IexNewsDialog extends Component {
          <A.TextField
            ref={this._refInputSymbol}
            rootStyle={TS.INPUT_ROOT}
-           caption="Stock Symbol (Default: AAPL)"
+           caption="Stock Symbol"
            initValue="AAPL"
          />
          <A.InputSelect
@@ -82,7 +75,7 @@ class IexNewsDialog extends Component {
            styleConfig={TS.SELECT}
            onSelect={this._selectRecent}
          />
-        <A.Link.PoweredBy rootStyle={S.POWERED_BY}>
+        <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
           <A.Link.IexApi />
         </A.Link.PoweredBy>
       </A.DraggableDialog>

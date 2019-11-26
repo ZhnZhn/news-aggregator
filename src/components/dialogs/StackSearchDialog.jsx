@@ -6,23 +6,18 @@ import styleConfig from './Dialog.Style'
 import A from '../Comp'
 import Decors from './decorators/Decors'
 
-const S = {
-  POWERED_BY: {
-    marginLeft: 16,
-    marginBottom: 8
-  }
-};
+const DATE_ERR_MSG = "YYYY-MM-DD";
 
-const _initFromDate = DateUtil.getFromDate(1)
-, _initToDate = DateUtil.getToDate()
+const INITIAL_FROM_DATE = DateUtil.getFromDate(1)
+, INITIAL_TO_DATE = DateUtil.getToDate()
 , _onTestDate = DateUtil.isValidDate
-, _sortByOptions = [
+, SORT_BY_OPTIONS = [
   { caption: "Activity, Recent Day", value: "activity" },
   { caption: "Creation Date", value: "creation"},
   { caption: "Score", value: "votes" },
   { caption: "Relevance", value: "relevance" }
 ]
-, DF_SORT_BY = _sortByOptions[2];
+, DF_SORT_BY = SORT_BY_OPTIONS[2];
 
 @Decors.withDecors
 class StackSearchDialog extends Component {
@@ -60,7 +55,7 @@ class StackSearchDialog extends Component {
       toDate: _toDate
     })
   }
-  
+
   _refDialogComp = comp => this.dialogComp = comp
   _refInputTagged = comp => this.inputTagged = comp
   _refInputInTitle = comp => this.inputInTitle = comp
@@ -100,28 +95,30 @@ class StackSearchDialog extends Component {
          <A.InputSelect
            caption="SortBy"
            initItem={DF_SORT_BY}
-           options={_sortByOptions}
+           options={SORT_BY_OPTIONS}
            styleConfig={TS.SELECT}
            onSelect={this._selectSortBy}
          />
-        <A.TextField
-          rootStyle={TS.INPUT_ROOT}
-          ref={this._refFromDate}
-          caption="From Date"
-          initValue={_initFromDate}
-          errorMsg="YYYY-MM-DD format must be"
-          onTest={_onTestDate}
-        />
-        <A.TextField
-          rootStyle={TS.INPUT_ROOT}
-          ref={this._refToDate}
-          caption="To Date"
-          initValue={_initToDate}
-          errorMsg="YYYY-MM-DD format must be"
-          onTest={_onTestDate}
-        />
+         <div>
+            <A.TextField              
+              ref={this._refFromDate}
+              caption="From Date"
+              rootStyle={TS.INPUT_DATE}
+              initValue={INITIAL_FROM_DATE}
+              errorMsg={DATE_ERR_MSG}
+              onTest={_onTestDate}
+            />
+            <A.TextField
+              ref={this._refToDate}
+              caption="To Date"
+              rootStyle={TS.INPUT_DATE}
+              initValue={INITIAL_TO_DATE}
+              errorMsg={DATE_ERR_MSG}
+              onTest={_onTestDate}
+            />
+        </div>
 
-        <A.Link.PoweredBy rootStyle={S.POWERED_BY}>
+        <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
           <A.Link.StackOverflow />
         </A.Link.PoweredBy>
       </A.DraggableDialog>

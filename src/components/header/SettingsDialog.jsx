@@ -39,6 +39,9 @@ const S = {
     right: 4,
     bottom: 0,
     cursor: 'default'
+  },
+  INPUT_WIDTH: {
+    width: 280
   }
 };
 
@@ -85,7 +88,8 @@ class SettingsDialog extends Component {
   render(){
     const { isShow, theme, data, onClose } = this.props
     , TS = theme.createStyle(styleConfig)
-    , _themeName = theme.getThemeName();
+    , _TS = JSON.parse(JSON.stringify(TS));
+    Object.assign(_TS.SELECT.ROOT, S.INPUT_WIDTH)
     return (
         <A.ModalDialog
            style={{ ...S.MODAL, ...TS.R_DIALOG }}
@@ -107,8 +111,7 @@ class SettingsDialog extends Component {
                 <CardApiKeys
                   ref={this._refInput}
                   style={S.CARD_ROOT}
-                  fieldStyle={TS.INPUT_ROOT}
-                  themeName={_themeName}
+                  fieldStyle={{...TS.INPUT_ROOT, ...S.INPUT_WIDTH}}
                   buttonsStyle={S.CARD_BUTTONS}
                   TS={TS}
                   data={data}
@@ -118,10 +121,8 @@ class SettingsDialog extends Component {
              <A.Tab title="UI Theme">
                 <CardUiTheme
                   style={S.CARD_ROOT}
-                  styleConfig={TS.SELECT}
                   buttonsStyle={S.CARD_BUTTONS}
-                  themeName={_themeName}
-                  TS={TS}
+                  TS={_TS}
                   onSetTheme={this._selectTheme}
                   onClose={onClose}
                 />

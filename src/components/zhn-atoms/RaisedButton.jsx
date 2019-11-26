@@ -7,10 +7,10 @@ const S = {
   PRIMARY_SPAN: {
     color: 'greenyellow'
   }
-}
+};
 
 const RaisedButton = ({ rootStyle, clDiv, caption, isPrimary, isSumbit, onClick }) => {
-  const _spanStyle = (isPrimary) ? S.PRIMARY_SPAN : undefined;
+  const _spanStyle = isPrimary ? S.PRIMARY_SPAN : void 0;
   return (
     <button
       className={CL_BT}

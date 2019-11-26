@@ -44,13 +44,6 @@ var _Decors2 = _interopRequireDefault(_Decors);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var S = {
-  POWERED_BY: {
-    marginLeft: 16,
-    marginBottom: 8
-  }
-};
-
 var RECENT_OPTIONS = [{ caption: "10 News", value: "10" }, { caption: "20 News", value: "20" }, { caption: "30 News", value: "30" }, { caption: "40 News", value: "40" }, { caption: "50 News", value: "50" }],
     DF_RECENT = RECENT_OPTIONS[1];
 
@@ -122,7 +115,7 @@ var IexNewsDialog = (_dec = _Decors2.default.withDecors, _dec(_class = function 
         _react2.default.createElement(_Comp2.default.TextField, {
           ref: this._refInputSymbol,
           rootStyle: TS.INPUT_ROOT,
-          caption: 'Stock Symbol (Default: AAPL)',
+          caption: 'Stock Symbol',
           initValue: 'AAPL'
         }),
         _react2.default.createElement(_Comp2.default.InputSelect, {
@@ -134,7 +127,7 @@ var IexNewsDialog = (_dec = _Decors2.default.withDecors, _dec(_class = function 
         }),
         _react2.default.createElement(
           _Comp2.default.Link.PoweredBy,
-          { rootStyle: S.POWERED_BY },
+          { rootStyle: TS.POWERED_BY },
           _react2.default.createElement(_Comp2.default.Link.IexApi, null)
         )
       );

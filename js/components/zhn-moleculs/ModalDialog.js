@@ -209,7 +209,6 @@ var ModalDialog = (_temp2 = _class = function (_Component) {
           this.wasClosing = true;
         }
       }
-
       return _react2.default.createElement(
         'div',
         {

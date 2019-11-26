@@ -84,6 +84,9 @@ var S = {
     right: 4,
     bottom: 0,
     cursor: 'default'
+  },
+  INPUT_WIDTH: {
+    width: 280
   }
 };
 
@@ -145,8 +148,9 @@ var SettingsDialog = function (_Component) {
           data = _props.data,
           onClose = _props.onClose,
           TS = theme.createStyle(_Dialog2.default),
-          _themeName = theme.getThemeName();
+          _TS = JSON.parse(JSON.stringify(TS));
 
+      Object.assign(_TS.SELECT.ROOT, S.INPUT_WIDTH);
       return _react2.default.createElement(
         _Comp2.default.ModalDialog,
         {
@@ -173,8 +177,7 @@ var SettingsDialog = function (_Component) {
             _react2.default.createElement(_CardApiKeys2.default, {
               ref: this._refInput,
               style: S.CARD_ROOT,
-              fieldStyle: TS.INPUT_ROOT,
-              themeName: _themeName,
+              fieldStyle: (0, _extends3.default)({}, TS.INPUT_ROOT, S.INPUT_WIDTH),
               buttonsStyle: S.CARD_BUTTONS,
               TS: TS,
               data: data,
@@ -186,10 +189,8 @@ var SettingsDialog = function (_Component) {
             { title: 'UI Theme' },
             _react2.default.createElement(_CardUiTheme2.default, {
               style: S.CARD_ROOT,
-              styleConfig: TS.SELECT,
               buttonsStyle: S.CARD_BUTTONS,
-              themeName: _themeName,
-              TS: TS,
+              TS: _TS,
               onSetTheme: this._selectTheme,
               onClose: onClose
             })

@@ -75,7 +75,7 @@ class WrapperModalDialog extends Component {
        _style = STYLE.HIDE;
     } else {
       _className = isShow ? CL.SHOWING : CL.HIDING;
-      _style = isShow ? STYLE.SHOW : STYLE.HIDE_BACKGROUND;
+      _style = isShow ? STYLE.SHOW : STYLE.HIDE_BACKGROUND;      
     }
 
     return (

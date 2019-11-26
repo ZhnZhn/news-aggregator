@@ -48,18 +48,13 @@ var _Decors2 = _interopRequireDefault(_Decors);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var S = {
-  POWERED_BY: {
-    marginLeft: 16,
-    marginBottom: 8
-  }
-};
+var DATE_ERR_MSG = "YYYY-MM-DD";
 
-var _initFromDate = _dt2.default.getFromDate(1),
-    _initToDate = _dt2.default.getToDate(),
+var INITIAL_FROM_DATE = _dt2.default.getFromDate(1),
+    INITIAL_TO_DATE = _dt2.default.getToDate(),
     _onTestDate = _dt2.default.isValidDate,
-    _sortByOptions = [{ caption: "Activity, Recent Day", value: "activity" }, { caption: "Creation Date", value: "creation" }, { caption: "Score", value: "votes" }, { caption: "Relevance", value: "relevance" }],
-    DF_SORT_BY = _sortByOptions[2];
+    SORT_BY_OPTIONS = [{ caption: "Activity, Recent Day", value: "activity" }, { caption: "Creation Date", value: "creation" }, { caption: "Score", value: "votes" }, { caption: "Relevance", value: "relevance" }],
+    DF_SORT_BY = SORT_BY_OPTIONS[2];
 
 var StackSearchDialog = (_dec = _Decors2.default.withDecors, _dec(_class = function (_Component) {
   (0, _inherits3.default)(StackSearchDialog, _Component);
@@ -164,29 +159,33 @@ var StackSearchDialog = (_dec = _Decors2.default.withDecors, _dec(_class = funct
         _react2.default.createElement(_Comp2.default.InputSelect, {
           caption: 'SortBy',
           initItem: DF_SORT_BY,
-          options: _sortByOptions,
+          options: SORT_BY_OPTIONS,
           styleConfig: TS.SELECT,
           onSelect: this._selectSortBy
         }),
-        _react2.default.createElement(_Comp2.default.TextField, {
-          rootStyle: TS.INPUT_ROOT,
-          ref: this._refFromDate,
-          caption: 'From Date',
-          initValue: _initFromDate,
-          errorMsg: 'YYYY-MM-DD format must be',
-          onTest: _onTestDate
-        }),
-        _react2.default.createElement(_Comp2.default.TextField, {
-          rootStyle: TS.INPUT_ROOT,
-          ref: this._refToDate,
-          caption: 'To Date',
-          initValue: _initToDate,
-          errorMsg: 'YYYY-MM-DD format must be',
-          onTest: _onTestDate
-        }),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_Comp2.default.TextField, {
+            ref: this._refFromDate,
+            caption: 'From Date',
+            rootStyle: TS.INPUT_DATE,
+            initValue: INITIAL_FROM_DATE,
+            errorMsg: DATE_ERR_MSG,
+            onTest: _onTestDate
+          }),
+          _react2.default.createElement(_Comp2.default.TextField, {
+            ref: this._refToDate,
+            caption: 'To Date',
+            rootStyle: TS.INPUT_DATE,
+            initValue: INITIAL_TO_DATE,
+            errorMsg: DATE_ERR_MSG,
+            onTest: _onTestDate
+          })
+        ),
         _react2.default.createElement(
           _Comp2.default.Link.PoweredBy,
-          { rootStyle: S.POWERED_BY },
+          { rootStyle: TS.POWERED_BY },
           _react2.default.createElement(_Comp2.default.Link.StackOverflow, null)
         )
       );

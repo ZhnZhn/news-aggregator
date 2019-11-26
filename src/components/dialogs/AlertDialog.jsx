@@ -7,20 +7,26 @@ import styleConfig from './Dialog.Style'
 import ModalDialog from '../zhn-moleculs/ModalDialog'
 
 const S = {
+  DIALOG: {
+    position: 'static',
+    width: 350,
+    height: 160,
+    margin: '70px auto 0px'
+  },
   CAPTION: {
     color: '#f44336',
     fontWeight: 'bold'
   },
   MSG: {
     color: 'black',
-    width : '400px',
-    paddingTop: '16px',
-    paddingLeft : '10px',
+    width: '100%',
+    paddingTop: 16,
+    paddingLeft: 10,
     fontWeight: 'bold',
-    lineHeight : 1.4,
+    lineHeight: 1.4,
     whiteSpace: 'pre-line'
   }
-}
+};
 
 const _toMsg = (data) => {
   if (data instanceof TypeError){
@@ -71,7 +77,7 @@ class AlertDialog extends Component{
         , _msg  = _toMsg(data);
     return (
       <ModalDialog
-         style={TS.R_DIALOG }
+         style={{...TS.R_DIALOG, ...S.DIALOG}}
          styleCaption={TS.BROWSER_CAPTION}
          styleButton={TS.BT}
          caption="Exception"

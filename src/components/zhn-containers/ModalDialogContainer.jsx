@@ -32,7 +32,6 @@ class ModalDialogContainer extends Component {
      if (actionType === showAction){
        const type = option.modalDialogType
            , { inits, shows, data, dialogs } = this.state;
-
        data[type] = option;
        shows[type] = true;
        if (inits[type]){
