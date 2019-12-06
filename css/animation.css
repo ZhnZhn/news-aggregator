@@ -3,9 +3,17 @@
   transform-origin: 50% 0;
   animation: showing-popup 400ms ease-out;
 }
+.hide-popup {
+  transform-origin: 50% 0;
+  animation: hiding-popup 400ms ease-out;  
+}
 @keyframes showing-popup{
   from { opacity: 0; transform: scaleY(0);}
   to   { opacity: 1; transform: scaleY(1);}
+}
+@keyframes hiding-popup {
+  from { opacity: 1; transform: scaleY(1);}
+  to   { opacity: 0; transform: scaleY(0);}
 }
 
 .show-modal {

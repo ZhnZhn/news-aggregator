@@ -1,0 +1,27 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-hooks/useClassAnimation.js"
+ ],
+ "file": "../../../src/components/zhn-hooks/useClassAnimation.js",
+ "names": [
+  "useClassAnimation",
+  "isShow",
+  "CL",
+  "S",
+  "initialWasClosed",
+  "timeout",
+  "_wasUpdated",
+  "_forceUpdate",
+  "_refWasClosed",
+  "_refPrevIsShow",
+  "current",
+  "setTimeout",
+  "className",
+  "style",
+  "INIT",
+  "SHOWING",
+  "HIDING"
+ ],
+ "mappings": ";;;;;;;;;;AAAA;;AAEA;;;;;;AAEA,IAAMA,oBAAoB,SAApBA,iBAAoB,OAIpB;AAAA,MAHJC,MAGI,QAHJA,MAGI;AAAA,MAHIC,EAGJ,QAHIA,EAGJ;AAAA,MAHQC,CAGR,QAHQA,CAGR;AAAA,mCAFJC,gBAEI;AAAA,MAFJA,gBAEI,yCAFa,IAEb;AAAA,0BADJC,OACI;AAAA,MADJA,OACI,gCADI,GACJ;;AAAA,wBACgC,+BADhC;AAAA;AAAA,MACGC,WADH;AAAA,MACgBC,YADhB;AAAA,MAEFC,aAFE,GAEc,mBAAOJ,gBAAP,CAFd;AAAA,MAGFK,cAHE,GAGe,mBAAOR,MAAP,CAHf;;AAIJ,wBAAW,YAAM;AACf,QAAIQ,eAAeC,OAAf,IAA0B,CAACT,MAA/B,EAAuC;AACrCU,iBACE,YAAM;AACJH,sBAAcE,OAAd,GAAwB,IAAxB;AACAH;AACD,OAJH,EAKEF,OALF;AAOD;AACDI,mBAAeC,OAAf,GAAyBT,MAAzB;AACAO,kBAAcE,OAAd,GAAwB,KAAxB;AACD,GAZD,EAYG,CAACT,MAAD,EAASK,WAAT,CAZH;AAaA,MAAIM,kBAAJ;AAAA,MAAeC,cAAf;AACA,MAAIL,cAAcE,OAAlB,EAA2B;AACzBE,gBAAYV,GAAGY,IAAf;AACAD,YAAQV,EAAEW,IAAV;AACD,GAHD,MAGO;AACLF,gBAAYX,SAASC,GAAGa,OAAZ,GAAsBb,GAAGc,MAArC;AACAH,YAAQZ,SAASE,EAAEY,OAAX,GAAqBZ,EAAEa,MAA/B;AACD;AACD,SAAO,EAAEJ,oBAAF,EAAaC,YAAb,EAAP;AACD,CA9BD;;kBAgCeb,iB"
+}

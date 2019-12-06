@@ -24,9 +24,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _WrapperModalDialog = require('../zhn-atoms/WrapperModalDialog');
+var _ModalContainer = require('./ModalContainer');
 
-var _WrapperModalDialog2 = _interopRequireDefault(_WrapperModalDialog);
+var _ModalContainer2 = _interopRequireDefault(_ModalContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -134,7 +134,7 @@ var ModalDialogContainer = function (_Component) {
           currentDialog = _state.currentDialog;
 
       return _react2.default.createElement(
-        _WrapperModalDialog2.default,
+        _ModalContainer2.default,
         {
           isShow: isShow,
           onClose: this._handleClose.bind(null, currentDialog)

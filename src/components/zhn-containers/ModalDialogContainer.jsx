@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 //import PropTypes from 'prop-types'
 
-import WrapperModalDialog from '../zhn-atoms/WrapperModalDialog';
+import ModalContainer from './ModalContainer'
 
 class ModalDialogContainer extends Component {
   /*
@@ -78,12 +78,12 @@ class ModalDialogContainer extends Component {
   render(){
     const { isShow, currentDialog } = this.state;
     return (
-      <WrapperModalDialog
+      <ModalContainer
           isShow={isShow}
           onClose={this._handleClose.bind(null, currentDialog)}
       >
          {this._renderDialogs()}
-     </WrapperModalDialog>
+     </ModalContainer>
     )
   }
 }
