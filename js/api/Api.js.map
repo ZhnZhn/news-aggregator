@@ -1,18 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../src/api/Api.js"
- ],
- "file": "../../src/api/Api.js",
- "names": [
-  "Api",
-  "News",
-  "Webhose",
-  "StackOverflow",
-  "Iex",
-  "NewsSearch",
-  "NewsTop",
-  "CryptoCompare"
- ],
- "mappings": ";;;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,MAAM;AACVC,yBADU,EACJC,6BADI,EACKC,yCADL,EACoBC,qBADpB;AAEVC,qCAFU,EAEEC,6BAFF;AAGVC;AAHU,CAAZ;;kBAMeP,G"
-}
+{"version":3,"sources":["../../src/api/Api.js"],"names":["Api","News","Webhose","StackOverflow","Iex","NewsSearch","NewsTop","CryptoCompare"],"mappings":";;;;;;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AAEA,IAAMA,GAAG,GAAG;AACVC,EAAAA,IAAI,EAAJA,mBADU;AACJC,EAAAA,OAAO,EAAPA,sBADI;AACKC,EAAAA,aAAa,EAAbA,4BADL;AACoBC,EAAAA,GAAG,EAAHA,kBADpB;AAEVC,EAAAA,UAAU,EAAVA,yBAFU;AAEEC,EAAAA,OAAO,EAAPA,sBAFF;AAGVC,EAAAA,aAAa,EAAbA;AAHU,CAAZ;eAMeP,G","sourcesContent":["\r\nimport News from './NewsApi'\r\nimport Webhose from './WebhoseApi'\r\nimport StackOverflow from './StackOverflowApi'\r\nimport Iex from './IexApi'\r\nimport NewsSearch from './NewsSearchApi'\r\nimport NewsTop from './NewsApiTop'\r\nimport CryptoCompare from './CryptoCompareApi'\r\n\r\nconst Api = {\r\n  News, Webhose, StackOverflow, Iex,\r\n  NewsSearch, NewsTop,\r\n  CryptoCompare\r\n};\r\n\r\nexport default Api\r\n"],"file":"Api.js"}

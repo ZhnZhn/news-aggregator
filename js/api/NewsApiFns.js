@@ -1,13 +1,10 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
+exports.__esModule = true;
+exports["default"] = void 0;
 var NewsApiFns = {
   crOptionFetch: function crOptionFetch(option) {
     var apiKey = option.apiKey;
-
     option.apiKey = void 0;
     return {
       headers: {
@@ -15,17 +12,19 @@ var NewsApiFns = {
       }
     };
   },
-
   checkResponse: function checkResponse(json, option) {
     var status = json.status,
         message = json.message;
 
     if (status === 'error') {
-      throw { msg: message };
+      throw {
+        msg: message
+      };
     }
+
     return true;
   }
 };
-
-exports.default = NewsApiFns;
+var _default = NewsApiFns;
+exports["default"] = _default;
 //# sourceMappingURL=NewsApiFns.js.map

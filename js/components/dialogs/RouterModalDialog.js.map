@@ -1,14 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/dialogs/RouterModalDialog.js"
- ],
- "file": "../../../src/components/dialogs/RouterModalDialog.js",
- "names": [
-  "RouterModalDialog",
-  "SETTINGS_DIALOG",
-  "ALERT_DIALOG",
-  "APIKEY_DIALOG"
- ],
- "mappings": ";;;;;;AAAA;;;;AACA;;;;AACA;;;;;;AAEA,IAAMA,oBAAoB;AACxBC,2CADwB;AAExBC,qCAFwB;AAGxBC;AAHwB,CAA1B;;kBAMeH,iB"
-}
+{"version":3,"sources":["../../../src/components/dialogs/RouterModalDialog.js"],"names":["RouterModalDialog","SETTINGS_DIALOG","SettingsDialog","ALERT_DIALOG","AlertDialog","APIKEY_DIALOG","ApiKeyDialog"],"mappings":";;;;;;;AAAA;;AACA;;AACA;;AAEA,IAAMA,iBAAiB,GAAG;AACxBC,EAAAA,eAAe,EAAEC,0BADO;AAExBC,EAAAA,YAAY,EAAEC,uBAFU;AAGxBC,EAAAA,aAAa,EAAEC;AAHS,CAA1B;eAMeN,iB","sourcesContent":["import SettingsDialog from '../header/SettingsDialog'\r\nimport AlertDialog from './AlertDialog'\r\nimport ApiKeyDialog from './ApiKeyDialog'\r\n\r\nconst RouterModalDialog = {\r\n  SETTINGS_DIALOG: SettingsDialog,\r\n  ALERT_DIALOG: AlertDialog,\r\n  APIKEY_DIALOG: ApiKeyDialog\r\n};\r\n\r\nexport default RouterModalDialog\r\n"],"file":"RouterModalDialog.js"}

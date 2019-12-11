@@ -1,18 +1,16 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _nanoid = require('nanoid');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _nanoid2 = _interopRequireDefault(_nanoid);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _nanoid = _interopRequireDefault(require("nanoid"));
 
 var crId = function crId() {
-  return (0, _nanoid2.default)();
+  return (0, _nanoid["default"])();
 };
 
-exports.default = crId;
+var _default = crId;
+exports["default"] = _default;
 //# sourceMappingURL=crId.js.map

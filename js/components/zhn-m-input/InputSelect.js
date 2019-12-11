@@ -1,40 +1,19 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _ArrowCell = _interopRequireDefault(require("./ArrowCell"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _ArrowCell = require('./ArrowCell');
-
-var _ArrowCell2 = _interopRequireDefault(_ArrowCell);
-
-var _OptionsPane = require('./OptionsPane');
-
-var _OptionsPane2 = _interopRequireDefault(_OptionsPane);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _OptionsPane = _interopRequireDefault(require("./OptionsPane"));
 
 var CL = {
   SELECT: 'm-select',
@@ -45,25 +24,33 @@ var CL = {
   INPUT_LINE: 'm-select__line'
 };
 
-var InputSelect = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(InputSelect, _Component);
+var InputSelect =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(InputSelect, _Component);
 
   function InputSelect(props) {
-    (0, _classCallCheck3.default)(this, InputSelect);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (InputSelect.__proto__ || Object.getPrototypeOf(InputSelect)).call(this, props));
+    _this = _Component.call(this, props) || this;
 
     _this._handleOpen = function () {
-      _this.setState({ isShow: true });
+      _this.setState({
+        isShow: true
+      });
     };
 
     _this._handleClose = function () {
-      _this.setState({ isShow: false });
+      _this.setState({
+        isShow: false
+      });
     };
 
     _this._handleSelect = function (item, event) {
       event.stopPropagation();
+
       _this.props.onSelect(item);
+
       _this.setState({
         isShow: false,
         item: item
@@ -77,67 +64,51 @@ var InputSelect = (_temp = _class = function (_Component) {
     return _this;
   }
 
-  (0, _createClass3.default)(InputSelect, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          caption = _props.caption,
-          options = _props.options,
-          TS = _props.styleConfig,
-          _state = this.state,
-          isShow = _state.isShow,
-          item = _state.item;
+  var _proto = InputSelect.prototype;
 
+  _proto.render = function render() {
+    var _this$props = this.props,
+        caption = _this$props.caption,
+        options = _this$props.options,
+        TS = _this$props.styleConfig,
+        _this$state = this.state,
+        isShow = _this$state.isShow,
+        item = _this$state.item;
+    return _react["default"].createElement("div", {
+      className: CL.SELECT,
+      style: TS.ROOT,
+      onClick: this._handleOpen
+    }, _react["default"].createElement(_OptionsPane["default"], {
+      rootStyle: TS.MODAL_PANE,
+      isShow: isShow,
+      item: item,
+      options: options,
+      clItem: TS.CL_ITEM,
+      onSelect: this._handleSelect,
+      onClose: this._handleClose
+    }), _react["default"].createElement("label", {
+      className: CL.LABEL
+    }, caption), _react["default"].createElement("div", {
+      className: CL.DIV
+    }, _react["default"].createElement("div", {
+      className: CL.DIV_VALUE
+    }, item.caption), _react["default"].createElement("button", {
+      className: CL.DIV_BT,
+      tabIndex: "0"
+    }, _react["default"].createElement("div", null, _react["default"].createElement(_ArrowCell["default"], null))), _react["default"].createElement("div", {
+      className: CL.INPUT_LINE
+    })));
+  };
 
-      return _react2.default.createElement(
-        'div',
-        {
-          className: CL.SELECT,
-          style: TS.ROOT,
-          onClick: this._handleOpen
-        },
-        _react2.default.createElement(_OptionsPane2.default, {
-          rootStyle: TS.MODAL_PANE,
-          isShow: isShow,
-          item: item,
-          options: options,
-          clItem: TS.CL_ITEM,
-          onSelect: this._handleSelect,
-          onClose: this._handleClose
-        }),
-        _react2.default.createElement(
-          'label',
-          { className: CL.LABEL },
-          caption
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: CL.DIV },
-          _react2.default.createElement(
-            'div',
-            { className: CL.DIV_VALUE },
-            item.caption
-          ),
-          _react2.default.createElement(
-            'button',
-            { className: CL.DIV_BT, tabIndex: '0' },
-            _react2.default.createElement(
-              'div',
-              null,
-              _react2.default.createElement(_ArrowCell2.default, null)
-            )
-          ),
-          _react2.default.createElement('div', { className: CL.INPUT_LINE })
-        )
-      );
-    }
-  }]);
   return InputSelect;
-}(_react.Component), _class.defaultProps = {
+}(_react.Component);
+
+InputSelect.defaultProps = {
   initItem: {
     caption: '',
     value: ''
   }
-}, _temp);
-exports.default = InputSelect;
+};
+var _default = InputSelect;
+exports["default"] = _default;
 //# sourceMappingURL=InputSelect.js.map

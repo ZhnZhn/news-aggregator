@@ -1,15 +1,7 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _slicedToArray2 = require('babel-runtime/helpers/slicedToArray');
-
-var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+exports.__esModule = true;
+exports["default"] = void 0;
 //const LIMIT_REMAINING = 'X-RateLimit-Remaining';
 
 /*
@@ -21,12 +13,13 @@ const _fnMsg400 = (option) => {
   }
 }
 */
-
 var FREQUENCY_RESTRICTION = 5000;
 var MSG_FREQUENCY_RESTRICTION = 'Time request frequency restriction.\n1 Request per 5 second.';
 var MSG_LOAD_RESTRICTION = 'Request has already loaded.\n1 Request per 5 second.';
-var _recentUri = void 0;
-var _msLastFetch = void 0;
+
+var _recentUri;
+
+var _msLastFetch;
 
 var fnFetch = function fnFetch(_ref) {
   var uri = _ref.uri,
@@ -39,12 +32,16 @@ var fnFetch = function fnFetch(_ref) {
       onCatch = _ref.onCatch;
 
   var _msNow = Date.now();
+
   if (_msNow - _msLastFetch < FREQUENCY_RESTRICTION) {
     if (_recentUri !== uri) {
-      onFailed({ msg: MSG_FREQUENCY_RESTRICTION });
+      onFailed({
+        msg: MSG_FREQUENCY_RESTRICTION
+      });
     } else {
-      onFailed({ msg: MSG_LOAD_RESTRICTION });
-      //onCompleted({ json: {}, option })
+      onFailed({
+        msg: MSG_LOAD_RESTRICTION
+      }); //onCompleted({ json: {}, option })
     }
   } else {
     _recentUri = uri;
@@ -55,29 +52,37 @@ var fnFetch = function fnFetch(_ref) {
 
       if (status === 404) {
         throw {
-          msg: 'Not Found ' + status
+          msg: "Not Found " + status
         };
       } else if (status >= 500 && status < 600) {
         throw {
-          msg: 'Response Error ' + status + ' : ' + statusText
+          msg: "Response Error " + status + " : " + statusText
         };
       } else {
         return Promise.all([Promise.resolve(status), response.json()]);
       }
     }).then(function (_ref2) {
-      var _ref3 = (0, _slicedToArray3.default)(_ref2, 2),
-          status = _ref3[0],
-          json = _ref3[1];
+      var status = _ref2[0],
+          json = _ref2[1];
 
       if (onCheckResponse(json, option)) {
         //option.limitRemaining = limitRemaining;
-        onFetch({ json: json, option: option, onCompleted: onCompleted });
+        onFetch({
+          json: json,
+          option: option,
+          onCompleted: onCompleted
+        });
       }
-    }).catch(function (error) {
-      onCatch({ error: error, option: option, onFailed: onFailed });
+    })["catch"](function (error) {
+      onCatch({
+        error: error,
+        option: option,
+        onFailed: onFailed
+      });
     });
   }
 };
 
-exports.default = fnFetch;
+var _default = fnFetch;
+exports["default"] = _default;
 //# sourceMappingURL=fn.js.map

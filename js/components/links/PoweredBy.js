@@ -1,18 +1,13 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireDefault(require("react"));
 
 var S = {
   ROOT: {
@@ -28,17 +23,13 @@ var PoweredBy = function PoweredBy(_ref) {
   var rootStyle = _ref.rootStyle,
       spanStyle = _ref.spanStyle,
       children = _ref.children;
-  return _react2.default.createElement(
-    'div',
-    { style: (0, _extends3.default)({}, S.ROOT, rootStyle) },
-    _react2.default.createElement(
-      'span',
-      { style: (0, _extends3.default)({}, S.SPAN, spanStyle) },
-      'Powered by\xA0\xA0'
-    ),
-    children
-  );
+  return _react["default"].createElement("div", {
+    style: (0, _extends2["default"])({}, S.ROOT, {}, rootStyle)
+  }, _react["default"].createElement("span", {
+    style: (0, _extends2["default"])({}, S.SPAN, {}, spanStyle)
+  }, "Powered by\xA0\xA0"), children);
 };
 
-exports.default = PoweredBy;
+var _default = PoweredBy;
+exports["default"] = _default;
 //# sourceMappingURL=PoweredBy.js.map

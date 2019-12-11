@@ -1,11 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../src/utils/crId.js"
- ],
- "file": "../../src/utils/crId.js",
- "names": [
-  "crId"
- ],
- "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,OAAO,SAAPA,IAAO;AAAA,SAAM,uBAAN;AAAA,CAAb;;kBAEeA,I"
-}
+{"version":3,"sources":["../../src/utils/crId.js"],"names":["crId"],"mappings":";;;;;;;AAAA;;AAEA,IAAMA,IAAI,GAAG,SAAPA,IAAO;AAAA,SAAM,yBAAN;AAAA,CAAb;;eAEeA,I","sourcesContent":["import nanoid from 'nanoid'\r\n\r\nconst crId = () => nanoid();\r\n\r\nexport default crId\r\n"],"file":"crId.js"}

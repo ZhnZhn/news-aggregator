@@ -1,14 +1,11 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireDefault(require("react"));
 
 var S = {
   STEP: {
@@ -31,24 +28,17 @@ var S = {
 var Step = function Step(_ref) {
   var styleRoot = _ref.styleRoot,
       _ref$step = _ref.step,
-      step = _ref$step === undefined ? '0' : _ref$step,
+      step = _ref$step === void 0 ? '0' : _ref$step,
       description = _ref.description;
-  return _react2.default.createElement(
-    'p',
-    { style: styleRoot },
-    _react2.default.createElement(
-      'span',
-      { style: S.STEP },
-      step
-    ),
-    _react2.default.createElement(
-      'span',
-      { style: S.DESCR },
-      '\xA0',
-      description
-    )
-  );
+  return _react["default"].createElement("p", {
+    style: styleRoot
+  }, _react["default"].createElement("span", {
+    style: S.STEP
+  }, step), _react["default"].createElement("span", {
+    style: S.DESCR
+  }, "\xA0", description));
 };
 
-exports.default = Step;
+var _default = Step;
+exports["default"] = _default;
 //# sourceMappingURL=Step.js.map

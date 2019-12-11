@@ -1,48 +1,36 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//import PropTypes from 'prop-types'
+var _react = _interopRequireWildcard(require("react"));
 
 var TRANSITION = {
   WIDTH: 'width 500ms ease-out',
   OPACITY: 'opacity 400ms linear'
 };
 
-var ProgressLine = (_temp = _class = function (_Component) {
-  (0, _inherits3.default)(ProgressLine, _Component);
+var ProgressLine =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(ProgressLine, _Component);
 
+  /*
+  static propTypes = {
+    color: PropTypes.string,
+    height: PropTypes.number
+  }
+  */
   function ProgressLine(props) {
-    (0, _classCallCheck3.default)(this, ProgressLine);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (ProgressLine.__proto__ || Object.getPrototypeOf(ProgressLine)).call(this, props));
-
+    _this = _Component.call(this, props) || this;
     _this.wasCompleted = false;
     _this.idCompleted = null;
     _this.wasOpacied = false;
@@ -50,96 +38,96 @@ var ProgressLine = (_temp = _class = function (_Component) {
     _this.state = {};
     return _this;
   }
-  /*
-  static propTypes = {
-    color: PropTypes.string,
-    height: PropTypes.number
-  }
-  */
 
+  var _proto = ProgressLine.prototype;
 
-  (0, _createClass3.default)(ProgressLine, [{
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      if (this.idCompleted) {
-        clearTimeout(this.idCompleted);
-      }
-      if (this.idOpacied) {
-        clearTimeout(this.idOpacied);
-      }
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    if (this.idCompleted) {
+      clearTimeout(this.idCompleted);
     }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      var _this2 = this;
 
-      if (this.wasCompleted) {
-        this.idCompleted = setTimeout(function () {
-          _this2.idCompleted = null;
-          _this2.forceUpdate();
-        }, 800);
-      } else if (this.wasOpacied) {
-        this.idOpacied = setTimeout(function () {
-          _this2.idOpacied = null;
-          _this2.forceUpdate();
-        }, 800);
-      }
+    if (this.idOpacied) {
+      clearTimeout(this.idOpacied);
     }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          className = _props.className,
-          color = _props.color,
-          height = _props.height;
+  };
 
-      var _style = void 0;
+  _proto.componentDidUpdate = function componentDidUpdate() {
+    var _this2 = this;
 
-      if (this.wasOpacied) {
-        _style = {
-          backgroundColor: color,
-          width: 0,
-          opacity: 1,
-          height: height
-        };
-        this.wasOpacied = false;
-      } else if (this.wasCompleted) {
-        _style = {
-          backgroundColor: color,
-          width: '100%',
-          opacity: 0,
-          transition: TRANSITION.OPACITY,
-          height: height
-        };
-        this.wasCompleted = false;
-        this.wasOpacied = true;
-      } else {
-        var completed = this.props.completed;
+    if (this.wasCompleted) {
+      this.idCompleted = setTimeout(function () {
+        _this2.idCompleted = null;
 
-        if (completed < 0) {
-          completed = 0;
-        } else if (completed >= 100) {
-          completed = 100;
-          this.wasCompleted = true;
-        }
+        _this2.forceUpdate();
+      }, 800);
+    } else if (this.wasOpacied) {
+      this.idOpacied = setTimeout(function () {
+        _this2.idOpacied = null;
 
-        _style = {
-          backgroundColor: color,
-          opacity: 1,
-          width: completed + '%',
-          transition: TRANSITION.WIDTH,
-          height: height
-        };
+        _this2.forceUpdate();
+      }, 800);
+    }
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        className = _this$props.className,
+        color = _this$props.color,
+        height = _this$props.height;
+
+    var _style;
+
+    if (this.wasOpacied) {
+      _style = {
+        backgroundColor: color,
+        width: 0,
+        opacity: 1,
+        height: height
+      };
+      this.wasOpacied = false;
+    } else if (this.wasCompleted) {
+      _style = {
+        backgroundColor: color,
+        width: '100%',
+        opacity: 0,
+        transition: TRANSITION.OPACITY,
+        height: height
+      };
+      this.wasCompleted = false;
+      this.wasOpacied = true;
+    } else {
+      var completed = this.props.completed;
+
+      if (completed < 0) {
+        completed = 0;
+      } else if (completed >= 100) {
+        completed = 100;
+        this.wasCompleted = true;
       }
 
-      return _react2.default.createElement('div', { className: className, style: _style });
+      _style = {
+        backgroundColor: color,
+        opacity: 1,
+        width: completed + '%',
+        transition: TRANSITION.WIDTH,
+        height: height
+      };
     }
-  }]);
+
+    return _react["default"].createElement("div", {
+      className: className,
+      style: _style
+    });
+  };
+
   return ProgressLine;
-}(_react.Component), _class.defaultProps = {
+}(_react.Component);
+
+ProgressLine.defaultProps = {
   className: 'progress-line',
   color: '#2f7ed8',
   height: 3
-}, _temp);
-exports.default = ProgressLine;
+};
+var _default = ProgressLine;
+exports["default"] = _default;
 //# sourceMappingURL=ProgressLine.js.map

@@ -1,49 +1,23 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _class, _temp2;
-//import PropTypes from 'prop-types'
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _withTheme = require('../hoc/withTheme');
-
-var _withTheme2 = _interopRequireDefault(_withTheme);
-
-var _Dialog = require('./Dialog.Style');
-
-var _Dialog2 = _interopRequireDefault(_Dialog);
-
-var _ModalDialog = require('../zhn-moleculs/ModalDialog');
-
-var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 
 var S = {
   DIALOG: {
@@ -71,96 +45,84 @@ var _toMsg = function _toMsg(data) {
   if (data instanceof TypeError) {
     return data.message;
   }
+
   var status = data.status,
       url = data.url,
       msg = data.msg;
 
   if (status) {
-    return url + '\ncode:' + status + '\nNetwork exception';
+    return url + "\ncode:" + status + "\nNetwork exception";
   } else if (msg) {
     return msg;
   }
+
   return 'Exception Message';
 };
 
-var AlertDialog = (_temp2 = _class = function (_Component) {
-  (0, _inherits3.default)(AlertDialog, _Component);
+var AlertDialog =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(AlertDialog, _Component);
 
   function AlertDialog() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, AlertDialog);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = AlertDialog.__proto__ || Object.getPrototypeOf(AlertDialog)).call.apply(_ref, [this].concat(args))), _this), _this._handleKeyDown = function (event) {
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+    _this._handleKeyDown = function (event) {
       if (event.keyCode === 27 || event.keyCode === 13) {
         _this.props.onClose();
       }
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
-  }
-  /*
-  static propTypes = {
-    isShow: PropTypes.bool,
-    data: PropTypes.shape({
-      alertCaption: PropTypes.string,
-      alertItemId: PropTypes.string,
-      alertDescr: PropTypes.string
-    }),
-    onClose: PropTypes.func
-  }
-  */
+    };
 
-  (0, _createClass3.default)(AlertDialog, [{
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-        return false;
-      }
-      return true;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          isShow = _props.isShow,
-          data = _props.data,
-          theme = _props.theme,
-          onClose = _props.onClose,
-          TS = theme.createStyle(_Dialog2.default),
-          _msg = _toMsg(data);
+    return _this;
+  }
 
-      return _react2.default.createElement(
-        _ModalDialog2.default,
-        {
-          style: (0, _extends3.default)({}, TS.R_DIALOG, S.DIALOG),
-          styleCaption: TS.BROWSER_CAPTION,
-          styleButton: TS.BT,
-          caption: 'Exception',
-          isShow: isShow,
-          isClosePrimary: true,
-          onKeyDown: this._handleKeyDown,
-          onClose: onClose
-        },
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(
-            'p',
-            { style: S.MSG },
-            _msg
-          )
-        )
-      );
+  var _proto = AlertDialog.prototype;
+
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
+      return false;
     }
-  }]);
+
+    return true;
+  };
+
+  _proto.render = function render() {
+    var _this$props = this.props,
+        isShow = _this$props.isShow,
+        data = _this$props.data,
+        theme = _this$props.theme,
+        onClose = _this$props.onClose,
+        TS = theme.createStyle(_Dialog["default"]),
+        _msg = _toMsg(data);
+
+    return _react["default"].createElement(_ModalDialog["default"], {
+      style: (0, _extends2["default"])({}, TS.R_DIALOG, {}, S.DIALOG),
+      styleCaption: TS.BROWSER_CAPTION,
+      styleButton: TS.BT,
+      caption: "Exception",
+      isShow: isShow,
+      isClosePrimary: true,
+      onKeyDown: this._handleKeyDown,
+      onClose: onClose
+    }, _react["default"].createElement("div", null, _react["default"].createElement("p", {
+      style: S.MSG
+    }, _msg)));
+  };
+
   return AlertDialog;
-}(_react.Component), _class.defaultProps = {
+}(_react.Component);
+
+AlertDialog.defaultProps = {
   data: {}
-}, _temp2);
-exports.default = (0, _withTheme2.default)(AlertDialog);
+};
+
+var _default = (0, _withTheme["default"])(AlertDialog);
+
+exports["default"] = _default;
 //# sourceMappingURL=AlertDialog.js.map

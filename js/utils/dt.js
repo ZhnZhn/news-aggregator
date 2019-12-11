@@ -1,24 +1,18 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _typeof2 = require('babel-runtime/helpers/typeof');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _typeof3 = _interopRequireDefault(_typeof2);
-
-var _pipe = require('./pipe');
-
-var _pipe2 = _interopRequireDefault(_pipe);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _pipe = _interopRequireDefault(require("./pipe"));
 
 var MIN_YEAR = 1999;
 
 var _isStr = function _isStr(str) {
   return typeof str === 'string';
 };
+
 var _isNum = function _isNum(n) {
   return typeof n === 'number';
 };
@@ -32,8 +26,8 @@ var _toTwoChars = function _toTwoChars(n) {
     _toUTCDay = function _toUTCDay(d) {
   return d.getUTCDate();
 },
-    _toTwoCharsMonth = (0, _pipe2.default)(_toUTCMonth, _toTwoChars),
-    _toTwoCharsDay = (0, _pipe2.default)(_toUTCDay, _toTwoChars);
+    _toTwoCharsMonth = (0, _pipe["default"])(_toUTCMonth, _toTwoChars),
+    _toTwoCharsDay = (0, _pipe["default"])(_toUTCDay, _toTwoChars);
 
 var _toDateTime = function _toDateTime(datetime) {
   var _d = new Date(datetime),
@@ -42,37 +36,37 @@ var _toDateTime = function _toDateTime(datetime) {
       _y = _d.getUTCFullYear(),
       _m = _toTwoCharsMonth(_d),
       _day = _toTwoCharsDay(_d);
-  return _tArr[0] + ' ' + _day + '-' + _m + '-' + _y;
+
+  return _tArr[0] + " " + _day + "-" + _m + "-" + _y;
 };
 
 var REG_DATE = /(\d{4})-(\d{2})-(\d{2})/;
-
 var DateUtil = {
   isValidDate: function isValidDate(str) {
     // STRING FORMAT yyyy-mm-dd
     if (!_isStr(str) || str.trim().length !== 10) {
       return false;
-    }
+    } // m[1] is year 'YYYY' * m[2] is month 'MM' * m[3] is day 'DD'
 
-    // m[1] is year 'YYYY' * m[2] is month 'MM' * m[3] is day 'DD'
-    var m = str.match(REG_DATE);
 
-    // STR IS NOT FIT m IS NOT OBJECT
-    if (m === null || (typeof m === 'undefined' ? 'undefined' : (0, _typeof3.default)(m)) !== 'object' || m.length !== 4) {
+    var m = str.match(REG_DATE); // STR IS NOT FIT m IS NOT OBJECT
+
+    if (m === null || typeof m !== 'object' || m.length !== 4) {
       return false;
     }
 
-    var thisYear = new Date().getFullYear();
+    var thisYear = new Date().getFullYear(); // YEAR CHECK
 
-    // YEAR CHECK
     if (m[1].length < 4 || m[1] < MIN_YEAR || m[1] > thisYear) {
       return false;
-    }
-    // MONTH CHECK
+    } // MONTH CHECK
+
+
     if (m[2].length < 2 || m[2] < 1 || m[2] > 12) {
       return false;
-    }
-    // DAY CHECK
+    } // DAY CHECK
+
+
     if (m[3].length < 2 || m[3] < 1 || m[3] > 31) {
       return false;
     }
@@ -103,25 +97,23 @@ var DateUtil = {
       return void 0;
     }
   },
-
-
   toUTCSecond: function toUTCSecond(strDate) {
     return DateUtil.toUTCMillis(strDate) / 1000;
   },
-
   toTimeDate: function toTimeDate(publishedAt) {
     if (_isNum(publishedAt)) {
       return _toDateTime(publishedAt);
-    }
-    //yyyy-MM-ddTHH:mm:ssZ
+    } //yyyy-MM-ddTHH:mm:ssZ
+
+
     var _arr = _isStr(publishedAt) ? publishedAt.split('T') : [''],
         _arrDate = _arr[0].split('-'),
-        _date = _arrDate.length === 3 ? _arrDate[2] + '-' + _arrDate[1] + '-' + _arrDate[0] : '',
+        _date = _arrDate.length === 3 ? _arrDate[2] + "-" + _arrDate[1] + "-" + _arrDate[0] : '',
         _time = _arr[1] ? _arr[1].replace('Z', '').substring(0, 8) : 'No Time';
-    return _time + ' ' + _date;
+
+    return _time + " " + _date;
   }
-
 };
-
-exports.default = DateUtil;
+var _default = DateUtil;
+exports["default"] = _default;
 //# sourceMappingURL=dt.js.map

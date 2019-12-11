@@ -1,36 +1,41 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var styleConfig = {
   themeName: void 0,
   style: void 0,
   createStyle: function createStyle(CSS_RULE, themeName) {
-    var _paneRoot = void 0;
+    var _paneRoot;
+
     switch (themeName) {
       case 'WHITE':
-        _paneRoot = { backgroundColor: 'rgb(235, 241, 245)' };
+        _paneRoot = {
+          backgroundColor: 'rgb(235, 241, 245)'
+        };
         break;
+
       case 'SAND':
-        _paneRoot = { backgroundColor: '#e8e0cb' };
+        _paneRoot = {
+          backgroundColor: '#e8e0cb'
+        };
         break;
+
       default:
     }
+
     return {
       CL_SCROLL_PANE: CSS_RULE.CL_SCROLL_PANE,
-      PANE_CAPTION: (0, _extends3.default)({}, CSS_RULE.BG_HEADER),
-      PANE_ROOT: (0, _extends3.default)({}, _paneRoot)
+      PANE_CAPTION: (0, _extends2["default"])({}, CSS_RULE.BG_HEADER),
+      PANE_ROOT: (0, _extends2["default"])({}, _paneRoot)
     };
   }
 };
-
-exports.default = styleConfig;
+var _default = styleConfig;
+exports["default"] = _default;
 //# sourceMappingURL=NewsPane.Style.js.map

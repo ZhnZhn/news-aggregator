@@ -1,51 +1,32 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _reflux = require('reflux');
+var _reflux = _interopRequireDefault(require("reflux"));
 
-var _reflux2 = _interopRequireDefault(_reflux);
+var _ComponentActions = _interopRequireDefault(require("../actions/ComponentActions"));
 
-var _ComponentActions = require('../actions/ComponentActions');
+var _NewsActions = _interopRequireDefault(require("../actions/NewsActions"));
 
-var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
+var _LoadingProgressActions = _interopRequireDefault(require("../actions/LoadingProgressActions"));
 
-var _NewsActions = require('../actions/NewsActions');
+var _ComponentSlice = _interopRequireDefault(require("./ComponentSlice"));
 
-var _NewsActions2 = _interopRequireDefault(_NewsActions);
+var _NewsSlice = _interopRequireDefault(require("./NewsSlice"));
 
-var _LoadingProgressActions = require('../actions/LoadingProgressActions');
+var _SettingSlice = _interopRequireDefault(require("./SettingSlice"));
 
-var _LoadingProgressActions2 = _interopRequireDefault(_LoadingProgressActions);
+var _WithLoadingProgress = _interopRequireDefault(require("./WithLoadingProgress"));
 
-var _ComponentSlice = require('./ComponentSlice');
+var Store = _reflux["default"].createStore((0, _extends2["default"])({
+  listenables: [_ComponentActions["default"], _NewsActions["default"], _LoadingProgressActions["default"]]
+}, _ComponentSlice["default"], {}, _NewsSlice["default"], {}, _SettingSlice["default"], {}, _WithLoadingProgress["default"]));
 
-var _ComponentSlice2 = _interopRequireDefault(_ComponentSlice);
-
-var _NewsSlice = require('./NewsSlice');
-
-var _NewsSlice2 = _interopRequireDefault(_NewsSlice);
-
-var _SettingSlice = require('./SettingSlice');
-
-var _SettingSlice2 = _interopRequireDefault(_SettingSlice);
-
-var _WithLoadingProgress = require('./WithLoadingProgress');
-
-var _WithLoadingProgress2 = _interopRequireDefault(_WithLoadingProgress);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Store = _reflux2.default.createStore((0, _extends3.default)({
-  listenables: [_ComponentActions2.default, _NewsActions2.default, _LoadingProgressActions2.default]
-
-}, _ComponentSlice2.default, _NewsSlice2.default, _SettingSlice2.default, _WithLoadingProgress2.default));
-
-exports.default = Store;
+var _default = Store;
+exports["default"] = _default;
 //# sourceMappingURL=Store.js.map

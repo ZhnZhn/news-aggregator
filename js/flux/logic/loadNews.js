@@ -1,14 +1,11 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _fn = require("../../utils/fn");
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _fn2 = _interopRequireDefault(_fn);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _fn = _interopRequireDefault(require("../../utils/fn"));
 
 var _isFn = function _isFn(fn) {
   return typeof fn === "function";
@@ -17,7 +14,6 @@ var _isFn = function _isFn(fn) {
 var _fnCatch = function _fnCatch(_ref) {
   var error = _ref.error,
       onFailed = _ref.onFailed;
-
   onFailed(error);
 };
 
@@ -26,19 +22,19 @@ var _fFetch = function _fFetch(adapter) {
     var json = _ref2.json,
         option = _ref2.option,
         onCompleted = _ref2.onCompleted;
-
     var news = adapter.toNews(json, option);
     var itemConf = option.itemConf;
-    onCompleted({ news: news, itemConf: itemConf });
+    onCompleted({
+      news: news,
+      itemConf: itemConf
+    });
   };
 };
 
 var loadNews = function loadNews(option, onCompleted, onFailed) {
   var api = option.api,
       adapter = option.adapter;
-
-
-  (0, _fn2.default)({
+  (0, _fn["default"])({
     uri: api.getRequestUrl(option),
     optionFetch: _isFn(api.crOptionFetch) ? api.crOptionFetch(option) : void 0,
     option: option,
@@ -50,5 +46,6 @@ var loadNews = function loadNews(option, onCompleted, onFailed) {
   });
 };
 
-exports.default = loadNews;
+var _default = loadNews;
+exports["default"] = _default;
 //# sourceMappingURL=loadNews.js.map

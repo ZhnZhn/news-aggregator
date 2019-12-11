@@ -1,41 +1,48 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _ComponentActions = require('../actions/ComponentActions');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _Factory = require('../logic/Factory');
+var _ComponentActions = require("../actions/ComponentActions");
 
-var _Factory2 = _interopRequireDefault(_Factory);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Factory = _interopRequireDefault(require("../logic/Factory"));
 
 var NewsDialogLogic = {
   showNewsDialog: function showNewsDialog(slice, itemConf) {
     var type = itemConf.type;
 
     if (slice[type]) {
-      return { key: type };
+      return {
+        key: type
+      };
     } else {
-      var Comp = _Factory2.default.createDialog(itemConf);
+      var Comp = _Factory["default"].createDialog(itemConf);
+
       slice[type] = true;
-      return { key: type, Comp: Comp };
+      return {
+        key: type,
+        Comp: Comp
+      };
     }
   }
 };
-
 var NewsPaneLogic = {
   showNewsPane: function showNewsPane(slice, itemConf, store) {
     var type = itemConf.type;
 
     if (slice[type]) {
-      return { id: itemConf.paneId };
+      return {
+        id: itemConf.paneId
+      };
     } else {
-      var Comp = _Factory2.default.createNewsPane(itemConf, store);
+      var Comp = _Factory["default"].createNewsPane(itemConf, store);
+
       slice[type] = true;
-      return { Comp: Comp };
+      return {
+        Comp: Comp
+      };
     }
   },
   toggleNewsPane: function toggleNewsPane(itemConf) {
@@ -44,24 +51,28 @@ var NewsPaneLogic = {
     };
   }
 };
-
 var BrowserLogic = {
   createResult: function createResult(slice, itemConf) {
     var browserId = itemConf.browserId;
-
     return {
       id: browserId,
       data: slice[browserId]
     };
   },
-  updateBadge: function updateBadge(slice, itemConf) {
-    var option = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : { isOpen: true };
+  updateBadge: function updateBadge(slice, itemConf, option) {
+    if (option === void 0) {
+      option = {
+        isOpen: true
+      };
+    }
+
     var browserId = itemConf.browserId,
         type = itemConf.type;
 
     if (!slice[browserId]) {
       slice[browserId] = {};
     }
+
     slice[browserId][type] = Object.assign({}, slice[browserId][type], option);
     return {
       id: browserId,
@@ -71,7 +82,6 @@ var BrowserLogic = {
   toggleBadge: function toggleBadge(slice, itemConf) {
     var browserId = itemConf.browserId,
         type = itemConf.type;
-
     slice[browserId][type].isOpen = !slice[browserId][type].isOpen;
     return {
       id: browserId,
@@ -79,18 +89,18 @@ var BrowserLogic = {
     };
   }
 };
-
 var ComponentSlice = {
   dialogInit: {},
   newsPaneInit: {},
   hmBrowser: {},
-
   onShowNewsDialog: function onShowNewsDialog(itemConf, event) {
     var r = NewsDialogLogic.showNewsDialog(this.dialogInit, itemConf);
     this.trigger(_ComponentActions.TYPES.SHOW_NEWS_DIALOG, r);
   },
-  onShowModalDialog: function onShowModalDialog(type) {
-    var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  onShowModalDialog: function onShowModalDialog(type, option) {
+    if (option === void 0) {
+      option = {};
+    }
 
     option.modalDialogType = type;
     this.trigger(_ComponentActions.TYPES.SHOW_MODAL_DIALOG, option);
@@ -108,7 +118,9 @@ var ComponentSlice = {
     this.trigger(_ComponentActions.TYPES.UPDATE_BROWSER, browser);
   },
   onCloseNewsPane: function onCloseNewsPane(itemConf) {
-    var r = BrowserLogic.updateBadge(this.hmBrowser, itemConf, { isOpen: false });
+    var r = BrowserLogic.updateBadge(this.hmBrowser, itemConf, {
+      isOpen: false
+    });
     this.trigger(_ComponentActions.TYPES.UPDATE_BROWSER, r);
   },
   onShowAbout: function onShowAbout() {
@@ -125,6 +137,6 @@ var ComponentSlice = {
     this.trigger(_ComponentActions.TYPES.CHANGE_THEME, themeName);
   }
 };
-
-exports.default = ComponentSlice;
+var _default = ComponentSlice;
+exports["default"] = _default;
 //# sourceMappingURL=ComponentSlice.js.map

@@ -1,20 +1,15 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _has = require('../../has');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _has2 = _interopRequireDefault(_has);
+var _has = _interopRequireDefault(require("../../has"));
 
-var _withDnDStyle = require('./withDnDStyle');
+var _withDnDStyle = _interopRequireDefault(require("./withDnDStyle"));
 
-var _withDnDStyle2 = _interopRequireDefault(_withDnDStyle);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var HAS_TOUCH = _has2.default.HAS_TOUCH,
+var HAS_TOUCH = _has["default"].HAS_TOUCH,
     DELTA = HAS_TOUCH ? {
   MARK_REMOVE: 50,
   REMOVE_ITEM: 90,
@@ -25,10 +20,10 @@ var HAS_TOUCH = _has2.default.HAS_TOUCH,
   REMOVE_UNDER: 150
 };
 
-
 var _getTouchesClientX = function _getTouchesClientX(ev) {
   return (((ev || {}).touches || [])[0] || {}).clientX || 0;
 };
+
 var _getChangedTouches = function _getChangedTouches(ev) {
   return (((ev || {}).changedTouches || [])[0] || {}).clientX || 0;
 };
@@ -40,16 +35,22 @@ var _dragStart = function _dragStart(ev) {
   ev.dataTransfer.effectAllowed = "move";
   ev.dataTransfer.dropEffect = "move";
 };
+
 var _onTouchStart = function _onTouchStart(ev) {
   ev.persist();
+
   var _clientX = _getTouchesClientX(ev);
+
   if (_clientX) {
     this._clientX = _clientX;
   }
 };
+
 var _onTouchMove = function _onTouchMove(ev) {
   ev.persist();
+
   var _clientX = _getTouchesClientX(ev);
+
   if (_clientX && Math.abs(this._clientX - _clientX) > DELTA.MARK_REMOVE) {
     this.dragStartWithDnDStyle(ev);
   }
@@ -59,10 +60,11 @@ var _dragEnd = function _dragEnd(ev) {
   ev.preventDefault();
   ev.persist();
   this.dragEndWithDnDStyle();
+
   var _deltaX = Math.abs(this.clientX - ev.clientX),
-      _props = this.props,
-      item = _props.item,
-      onRemoveUnder = _props.onRemoveUnder;
+      _this$props = this.props,
+      item = _this$props.item,
+      onRemoveUnder = _this$props.onRemoveUnder;
 
   if (_deltaX > DELTA.REMOVE_UNDER) {
     onRemoveUnder(item);
@@ -70,16 +72,19 @@ var _dragEnd = function _dragEnd(ev) {
     this._handleClose();
   }
 };
+
 var _onTouchEnd = function _onTouchEnd(ev) {
   //ev.preventDefault()
   ev.persist();
   this.dragEndWithDnDStyle();
+
   var _clientX = _getChangedTouches(ev);
+
   if (_clientX) {
     var _deltaX = Math.abs(this._clientX - _clientX),
-        _props2 = this.props,
-        item = _props2.item,
-        onRemoveUnder = _props2.onRemoveUnder;
+        _this$props2 = this.props,
+        item = _this$props2.item,
+        onRemoveUnder = _this$props2.onRemoveUnder;
 
     if (_deltaX > DELTA.REMOVE_UNDER) {
       onRemoveUnder(item);
@@ -88,6 +93,7 @@ var _onTouchEnd = function _onTouchEnd(ev) {
     }
   }
 };
+
 var _preventDefault = function _preventDefault(ev) {
   ev.preventDefault();
 };
@@ -109,7 +115,7 @@ var _crDnDHandlers = function _crDnDHandlers() {
 };
 
 var withDnD = function withDnD(target) {
-  (0, _withDnDStyle2.default)(target);
+  (0, _withDnDStyle["default"])(target);
   Object.assign(target.prototype, {
     _dragStart: _dragStart,
     _onTouchStart: _onTouchStart,
@@ -121,5 +127,6 @@ var withDnD = function withDnD(target) {
   });
 };
 
-exports.default = withDnD;
+var _default = withDnD;
+exports["default"] = _default;
 //# sourceMappingURL=withDnD.js.map

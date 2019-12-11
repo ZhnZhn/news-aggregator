@@ -1,9 +1,7 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
+exports.__esModule = true;
+exports["default"] = void 0;
 var C = {
   ROOT_URL: 'https://webhose.io',
   W: 'webhose',
@@ -13,13 +11,12 @@ var C = {
 var _toNews = function _toNews(json) {
   var posts = json.posts,
       _json$requestsLeft = json.requestsLeft,
-      requestsLeft = _json$requestsLeft === undefined ? '' : _json$requestsLeft;
-
+      requestsLeft = _json$requestsLeft === void 0 ? '' : _json$requestsLeft;
   var arr = [],
       _hm = {};
   posts.forEach(function (post) {
     var _post$title = post.title,
-        title = _post$title === undefined ? '' : _post$title,
+        title = _post$title === void 0 ? '' : _post$title,
         _title = title.trim();
 
     if (_title && !_hm[_title]) {
@@ -31,7 +28,6 @@ var _toNews = function _toNews(json) {
       _hm[_title] = true;
     }
   });
-
   return {
     source: C.W,
     articles: arr,
@@ -43,7 +39,6 @@ var _toBroadcast = function _toBroadcast(json, option) {
   var items = json.items,
       requestsLeft = json.requestsLeft,
       articles = [];
-
   items.forEach(function (post) {
     post.articleId = post.uuid;
     post.source = C.W_B;
@@ -65,17 +60,17 @@ var _rToArticles = {
   NEWS: _toNews,
   BRODCAST: _toBroadcast
 };
-
 var WebhoseAdapter = {
-  toArticles: function toArticles() {
-    var posts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    var source = arguments[1];
+  toArticles: function toArticles(posts, source) {
+    if (posts === void 0) {
+      posts = [];
+    }
 
     var arr = [],
         _hm = {};
     posts.forEach(function (post) {
       var _post$title2 = post.title,
-          title = _post$title2 === undefined ? '' : _post$title2,
+          title = _post$title2 === void 0 ? '' : _post$title2,
           _title = title.trim();
 
       if (_title && !_hm[_title]) {
@@ -87,18 +82,14 @@ var WebhoseAdapter = {
         _hm[_title] = true;
       }
     });
-
     return arr;
   },
-
   toNews: function toNews(json, option) {
     var requestType = option.requestType,
         toArticles = _rToArticles[requestType];
-
-
     return toArticles(json, option);
   }
 };
-
-exports.default = WebhoseAdapter;
+var _default = WebhoseAdapter;
+exports["default"] = _default;
 //# sourceMappingURL=WebhoseAdapter.js.map

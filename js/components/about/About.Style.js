@@ -1,14 +1,11 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var S = {
   SCROLL_DIV: {
@@ -48,18 +45,17 @@ var S = {
     color: '#009AE5'
   }
 };
-
 var styleConfig = {
   themeName: undefined,
   style: undefined,
   createStyle: function createStyle(CSS_RULE) {
-    return (0, _extends3.default)({
+    return (0, _extends2["default"])({
       CL_SCROLL_PANE: CSS_RULE.CL_SCROLL_PANE,
-      ROOT: (0, _extends3.default)({}, CSS_RULE.BG),
-      BROWSER_CAPTION: (0, _extends3.default)({}, CSS_RULE.BG_HEADER)
+      ROOT: (0, _extends2["default"])({}, CSS_RULE.BG),
+      BROWSER_CAPTION: (0, _extends2["default"])({}, CSS_RULE.BG_HEADER)
     }, S);
   }
 };
-
-exports.default = styleConfig;
+var _default = styleConfig;
+exports["default"] = _default;
 //# sourceMappingURL=About.Style.js.map

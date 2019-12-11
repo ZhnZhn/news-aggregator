@@ -1,10 +1,9 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react = require('react');
+var _react = require("react");
 
 var useForceUpdate = function useForceUpdate() {
   return (0, _react.useReducer)(function (_) {
@@ -12,5 +11,6 @@ var useForceUpdate = function useForceUpdate() {
   });
 };
 
-exports.default = useForceUpdate;
+var _default = useForceUpdate;
+exports["default"] = _default;
 //# sourceMappingURL=useForceUpdate.js.map

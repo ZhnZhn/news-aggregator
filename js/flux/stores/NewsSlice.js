@@ -1,26 +1,22 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _NewsActions = require('../actions/NewsActions');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _ComponentActions = require('../actions/ComponentActions');
+var _NewsActions = require("../actions/NewsActions");
 
-var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
+var _ComponentActions = _interopRequireDefault(require("../actions/ComponentActions"));
 
-var _LoadingProgressActions = require('../actions/LoadingProgressActions');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _LoadingProgressActions = require("../actions/LoadingProgressActions");
 
 var Logic = {
   loadNewsCompleted: function loadNewsCompleted(slice, news) {
     var source = news.source,
         _news$articles = news.articles,
-        articles = _news$articles === undefined ? [] : _news$articles,
+        articles = _news$articles === void 0 ? [] : _news$articles,
         sortBy = news.sortBy;
-
     slice[source] = slice[source] ? articles.concat(slice[source]) : articles;
     return {
       id: source,
@@ -39,7 +35,6 @@ var Logic = {
   removeNews: function removeNews(slice, item) {
     var id = item.id,
         source = item.source;
-
     slice[source] = slice[source].filter(function (article) {
       return article.articleId !== id;
     });
@@ -59,14 +54,15 @@ var Logic = {
     };
   }
 };
-
 var NewsSlice = {
   news: {},
+  onLoadNews: function onLoadNews(option) {
+    if (option === void 0) {
+      option = {};
+    }
 
-  onLoadNews: function onLoadNews() {
-    var option = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    _ComponentActions["default"].showNewsPane(option.itemConf);
 
-    _ComponentActions2.default.showNewsPane(option.itemConf);
     this.triggerLoadingProgress(_LoadingProgressActions.TYPES.LOADING);
   },
   onLoadNewsCompleted: function onLoadNewsCompleted(_ref) {
@@ -77,11 +73,13 @@ var NewsSlice = {
       var r = Logic.loadNewsCompleted(this.news, news);
       this.trigger(_NewsActions.TYPES.LOAD_NEWS_COMPLETED, r);
     }
+
     this.triggerLoadingProgress(_LoadingProgressActions.TYPES.LOADING_COMPLETE);
   },
   onLoadNewsFailed: function onLoadNewsFailed(option) {
-    _ComponentActions2.default.showModalDialog('ALERT_DIALOG', option);
-    //ComponentActions.showModalDialog('APIKEY_DIALOG', option)
+    _ComponentActions["default"].showModalDialog('ALERT_DIALOG', option); //ComponentActions.showModalDialog('APIKEY_DIALOG', option)
+
+
     this.triggerLoadingProgress(_LoadingProgressActions.TYPES.LOADING_FAILED);
   },
   onRemoveNews: function onRemoveNews(item) {
@@ -96,6 +94,6 @@ var NewsSlice = {
     this.trigger(_NewsActions.TYPES.LOAD_NEWS_COMPLETED, r);
   }
 };
-
-exports.default = NewsSlice;
+var _default = NewsSlice;
+exports["default"] = _default;
 //# sourceMappingURL=NewsSlice.js.map

@@ -1,62 +1,45 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _DialogType = require('./DialogType1');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _DialogType2 = _interopRequireDefault(_DialogType);
+var _DialogType = _interopRequireDefault(require("./DialogType1"));
 
-var _WebhoseQueryDialog = require('./WebhoseQueryDialog');
+var _WebhoseQueryDialog = _interopRequireDefault(require("./WebhoseQueryDialog"));
 
-var _WebhoseQueryDialog2 = _interopRequireDefault(_WebhoseQueryDialog);
+var _WebhoseBrodcastDialog = _interopRequireDefault(require("./WebhoseBrodcastDialog"));
 
-var _WebhoseBrodcastDialog = require('./WebhoseBrodcastDialog');
+var _StackTaggedDialog = _interopRequireDefault(require("./StackTaggedDialog"));
 
-var _WebhoseBrodcastDialog2 = _interopRequireDefault(_WebhoseBrodcastDialog);
+var _StackSearchDialog = _interopRequireDefault(require("./StackSearchDialog"));
 
-var _StackTaggedDialog = require('./StackTaggedDialog');
+var _IexNewsDialog = _interopRequireDefault(require("./IexNewsDialog"));
 
-var _StackTaggedDialog2 = _interopRequireDefault(_StackTaggedDialog);
+var _NewsApiSearchDialog = _interopRequireDefault(require("./NewsApiSearchDialog"));
 
-var _StackSearchDialog = require('./StackSearchDialog');
+var _NewsApiTopDialog = _interopRequireDefault(require("./NewsApiTopDialog"));
 
-var _StackSearchDialog2 = _interopRequireDefault(_StackSearchDialog);
-
-var _IexNewsDialog = require('./IexNewsDialog');
-
-var _IexNewsDialog2 = _interopRequireDefault(_IexNewsDialog);
-
-var _NewsApiSearchDialog = require('./NewsApiSearchDialog');
-
-var _NewsApiSearchDialog2 = _interopRequireDefault(_NewsApiSearchDialog);
-
-var _NewsApiTopDialog = require('./NewsApiTopDialog');
-
-var _NewsApiTopDialog2 = _interopRequireDefault(_NewsApiTopDialog);
-
-var _CryptoCompareNewsDialog = require('./CryptoCompareNewsDialog');
-
-var _CryptoCompareNewsDialog2 = _interopRequireDefault(_CryptoCompareNewsDialog);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _CryptoCompareNewsDialog = _interopRequireDefault(require("./CryptoCompareNewsDialog"));
 
 var R = {
-  DEFAULT: _DialogType2.default,
-  DialogType1: _DialogType2.default,
-  WebhoseQuery: _WebhoseQueryDialog2.default, WebhoseBrodcast: _WebhoseBrodcastDialog2.default,
-  StackTagged: _StackTaggedDialog2.default, StackSearch: _StackSearchDialog2.default,
-  CryptoCompareNews: _CryptoCompareNewsDialog2.default,
-  IexNews: _IexNewsDialog2.default,
-  NewsApiSearch: _NewsApiSearchDialog2.default, NewsApiTop: _NewsApiTopDialog2.default
+  DEFAULT: _DialogType["default"],
+  DialogType1: _DialogType["default"],
+  WebhoseQuery: _WebhoseQueryDialog["default"],
+  WebhoseBrodcast: _WebhoseBrodcastDialog["default"],
+  StackTagged: _StackTaggedDialog["default"],
+  StackSearch: _StackSearchDialog["default"],
+  CryptoCompareNews: _CryptoCompareNewsDialog["default"],
+  IexNews: _IexNewsDialog["default"],
+  NewsApiSearch: _NewsApiSearchDialog["default"],
+  NewsApiTop: _NewsApiTopDialog["default"]
 };
-
 var RouterDialog = {
   getElement: function getElement(type) {
     return R[type] || R.DEFAULT;
   }
 };
-
-exports.default = RouterDialog;
+var _default = RouterDialog;
+exports["default"] = _default;
 //# sourceMappingURL=RouterDialog.js.map

@@ -1,11 +1,10 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
 
 var pipe = function pipe() {
-  for (var _len = arguments.length, fns = Array(_len), _key = 0; _key < _len; _key++) {
+  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
     fns[_key] = arguments[_key];
   }
 
@@ -14,9 +13,11 @@ var pipe = function pipe() {
       return arg;
     };
   }
+
   if (fns.length === 1) {
     return fns[0];
   }
+
   return function (x) {
     return fns.reduce(function (v, fn) {
       return fn(v);
@@ -24,5 +25,6 @@ var pipe = function pipe() {
   };
 };
 
-exports.default = pipe;
+var _default = pipe;
+exports["default"] = _default;
 //# sourceMappingURL=pipe.js.map

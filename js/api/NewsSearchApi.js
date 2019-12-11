@@ -1,30 +1,24 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _NewsApiFns = require('./NewsApiFns');
-
-var _NewsApiFns2 = _interopRequireDefault(_NewsApiFns);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _NewsApiFns = _interopRequireDefault(require("./NewsApiFns"));
 
 var ROOT = 'https://newsapi.org/v2/everything';
-
-var NewsApi = (0, _extends3.default)({
+var NewsApi = (0, _extends2["default"])({
   getRequestUrl: function getRequestUrl(_ref) {
     var _ref$symbol = _ref.symbol,
-        symbol = _ref$symbol === undefined ? 'Weather' : _ref$symbol,
+        symbol = _ref$symbol === void 0 ? 'Weather' : _ref$symbol,
         _ref$sortBy = _ref.sortBy,
-        sortBy = _ref$sortBy === undefined ? 'relevancy' : _ref$sortBy;
-    return ROOT + '?q=' + symbol + '&sortBy=' + sortBy;
+        sortBy = _ref$sortBy === void 0 ? 'relevancy' : _ref$sortBy;
+    return ROOT + "?q=" + symbol + "&sortBy=" + sortBy;
   }
-}, _NewsApiFns2.default);
-
-exports.default = NewsApi;
+}, _NewsApiFns["default"]);
+var _default = NewsApi;
+exports["default"] = _default;
 //# sourceMappingURL=NewsSearchApi.js.map

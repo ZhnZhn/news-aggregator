@@ -1,24 +1,20 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require("babel-runtime/helpers/extends");
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var styleConfig = {
   themeName: undefined,
   style: undefined,
-
   createStyle: function createStyle(CSS_RULE) {
     return {
       CL_QUERY_ITEM: CSS_RULE.CL_QUERY_ITEM,
-      HEADER: (0, _extends3.default)({}, CSS_RULE.BG),
-      PANE: (0, _extends3.default)({}, CSS_RULE.BG),
+      HEADER: (0, _extends2["default"])({}, CSS_RULE.BG),
+      PANE: (0, _extends2["default"])({}, CSS_RULE.BG),
       BT: {
         FLAT_ROOT: {
           color: CSS_RULE.BG_HEADER.backgroundColor
@@ -28,6 +24,6 @@ var styleConfig = {
     };
   }
 };
-
-exports.default = styleConfig;
+var _default = styleConfig;
+exports["default"] = _default;
 //# sourceMappingURL=HeaderBar.Style.js.map

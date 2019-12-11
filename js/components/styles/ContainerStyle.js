@@ -1,9 +1,7 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
+exports.__esModule = true;
+exports["default"] = void 0;
 var ContainerStyle = {
   browserRootDiv: {
     flexShrink: 0,
@@ -35,6 +33,6 @@ var ContainerStyle = {
     borderRadius: '4px'
   }
 };
-
-exports.default = ContainerStyle;
+var _default = ContainerStyle;
+exports["default"] = _default;
 //# sourceMappingURL=ContainerStyle.js.map

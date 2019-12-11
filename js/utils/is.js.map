@@ -1,14 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../src/utils/is.js"
- ],
- "file": "../../src/utils/is.js",
- "names": [
-  "is",
-  "isTouchable",
-  "document",
-  "documentElement"
- ],
- "mappings": ";;;;;;AACA,IAAMA,KAAK;AACTC,eAAa;AAAA,WAAMC,YACf,kBAAkBA,SAASC,eADlB;AAAA;AADJ,CAAX;;kBAKeH,E"
-}
+{"version":3,"sources":["../../src/utils/is.js"],"names":["is","isTouchable","document","documentElement"],"mappings":";;;;AACA,IAAMA,EAAE,GAAG;AACTC,EAAAA,WAAW,EAAE;AAAA,WAAMC,QAAQ,IACvB,kBAAkBA,QAAQ,CAACC,eADlB;AAAA;AADJ,CAAX;eAKeH,E","sourcesContent":["\r\nconst is = {\r\n  isTouchable: () => document\r\n   && 'ontouchstart' in document.documentElement\r\n};\r\n\r\nexport default is\r\n"],"file":"is.js"}

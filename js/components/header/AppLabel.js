@@ -1,14 +1,11 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireDefault(require("react"));
 
 var AppLabel = function AppLabel(_ref) {
   var className = _ref.className,
@@ -16,17 +13,14 @@ var AppLabel = function AppLabel(_ref) {
       caption = _ref.caption,
       title = _ref.title,
       onClick = _ref.onClick;
-  return _react2.default.createElement(
-    'span',
-    {
-      className: className,
-      style: style,
-      title: title,
-      onClick: onClick
-    },
-    caption
-  );
+  return _react["default"].createElement("span", {
+    className: className,
+    style: style,
+    title: title,
+    onClick: onClick
+  }, caption);
 };
 
-exports.default = AppLabel;
+var _default = AppLabel;
+exports["default"] = _default;
 //# sourceMappingURL=AppLabel.js.map

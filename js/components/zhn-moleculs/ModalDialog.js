@@ -1,37 +1,26 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react = require('react');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireWildcard(require("react"));
 
-var _useClassAnimation2 = require('../zhn-hooks/useClassAnimation');
+var _useClassAnimation2 = _interopRequireDefault(require("../zhn-hooks/useClassAnimation"));
 
-var _useClassAnimation3 = _interopRequireDefault(_useClassAnimation2);
+var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
 
-var _BrowserCaption = require('../zhn-atoms/BrowserCaption');
-
-var _BrowserCaption2 = _interopRequireDefault(_BrowserCaption);
-
-var _RaisedButton = require('../zhn-atoms/RaisedButton');
-
-var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _RaisedButton = _interopRequireDefault(require("../zhn-atoms/RaisedButton"));
 
 var CL = {
   SHOWING: 'dialog show-popup',
   HIDING: 'hide-popup'
 };
-//import PropTypes from 'prop-types'
-
 var S2 = {
   INIT: {
     display: 'none'
@@ -44,7 +33,6 @@ var S2 = {
     transform: 'scaleY(0)'
   }
 };
-
 var S = {
   ROOT_DIV: {
     position: 'absolute',
@@ -57,7 +45,7 @@ var S = {
     zIndex: 10
   },
   COMMAND_DIV: {
-    float: 'right',
+    "float": 'right',
     marginTop: 16,
     marginBottom: 10,
     marginRight: 4,
@@ -87,11 +75,14 @@ var ModalDialog = function ModalDialog(_ref) {
       TS = _ref.styleButton,
       withoutClose = _ref.withoutClose,
       _ref$isClosePrimary = _ref.isClosePrimary,
-      isClosePrimary = _ref$isClosePrimary === undefined ? false : _ref$isClosePrimary;
+      isClosePrimary = _ref$isClosePrimary === void 0 ? false : _ref$isClosePrimary;
+
   var _refRootDiv = (0, _react.useRef)(),
       _refPrevFocused = (0, _react.useRef)(),
-      _useClassAnimation = (0, _useClassAnimation3.default)({
-    isShow: isShow, CL: CL, S: S2,
+      _useClassAnimation = (0, _useClassAnimation2["default"])({
+    isShow: isShow,
+    CL: CL,
+    S: S2,
     initialWasClosed: false
   }),
       _className = _useClassAnimation.className,
@@ -101,7 +92,6 @@ var ModalDialog = function ModalDialog(_ref) {
       onKeyDown(event);
     }
   });
-
 
   (0, _react.useEffect)(function () {
     _refPrevFocused.current = document.activeElement;
@@ -116,42 +106,29 @@ var ModalDialog = function ModalDialog(_ref) {
       _refPrevFocused.current.focus();
     }
   });
-
-  return _react2.default.createElement(
-    'div',
-    {
-      ref: _refRootDiv,
-      tabIndex: '0',
-      className: _className,
-      style: (0, _extends3.default)({}, S.ROOT_DIV, style, _style),
-      onClick: _hClickDialog,
-      onKeyDown: _hKeyDown
-    },
-    _react2.default.createElement(_BrowserCaption2.default, {
-      rootStyle: styleCaption,
-      caption: caption,
-      onClose: onClose
-    }),
-    _react2.default.createElement(
-      'div',
-      null,
-      children
-    ),
-    isWithButton && _react2.default.createElement(
-      'div',
-      { style: (0, _extends3.default)({}, S.COMMAND_DIV, divBtStyle) },
-      commandButtons,
-      !withoutClose && _react2.default.createElement(_RaisedButton2.default, {
-        key: '_close',
-        rootStyle: TS.RAISED_ROOT,
-        clDiv: TS.CL_RAISED_DIV,
-        caption: 'Close',
-        isPrimary: isClosePrimary,
-        onClick: onClose
-      })
-    )
-  );
+  return _react["default"].createElement("div", {
+    ref: _refRootDiv,
+    tabIndex: "0",
+    className: _className,
+    style: (0, _extends2["default"])({}, S.ROOT_DIV, {}, style, {}, _style),
+    onClick: _hClickDialog,
+    onKeyDown: _hKeyDown
+  }, _react["default"].createElement(_BrowserCaption["default"], {
+    rootStyle: styleCaption,
+    caption: caption,
+    onClose: onClose
+  }), _react["default"].createElement("div", null, children), isWithButton && _react["default"].createElement("div", {
+    style: (0, _extends2["default"])({}, S.COMMAND_DIV, {}, divBtStyle)
+  }, commandButtons, !withoutClose && _react["default"].createElement(_RaisedButton["default"], {
+    key: "_close",
+    rootStyle: TS.RAISED_ROOT,
+    clDiv: TS.CL_RAISED_DIV,
+    caption: "Close",
+    isPrimary: isClosePrimary,
+    onClick: onClose
+  })));
 };
 
-exports.default = ModalDialog;
+var _default = ModalDialog;
+exports["default"] = _default;
 //# sourceMappingURL=ModalDialog.js.map

@@ -1,28 +1,21 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _SettingsDialog = require('../header/SettingsDialog');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _SettingsDialog2 = _interopRequireDefault(_SettingsDialog);
+var _SettingsDialog = _interopRequireDefault(require("../header/SettingsDialog"));
 
-var _AlertDialog = require('./AlertDialog');
+var _AlertDialog = _interopRequireDefault(require("./AlertDialog"));
 
-var _AlertDialog2 = _interopRequireDefault(_AlertDialog);
-
-var _ApiKeyDialog = require('./ApiKeyDialog');
-
-var _ApiKeyDialog2 = _interopRequireDefault(_ApiKeyDialog);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _ApiKeyDialog = _interopRequireDefault(require("./ApiKeyDialog"));
 
 var RouterModalDialog = {
-  SETTINGS_DIALOG: _SettingsDialog2.default,
-  ALERT_DIALOG: _AlertDialog2.default,
-  APIKEY_DIALOG: _ApiKeyDialog2.default
+  SETTINGS_DIALOG: _SettingsDialog["default"],
+  ALERT_DIALOG: _AlertDialog["default"],
+  APIKEY_DIALOG: _ApiKeyDialog["default"]
 };
-
-exports.default = RouterModalDialog;
+var _default = RouterModalDialog;
+exports["default"] = _default;
 //# sourceMappingURL=RouterModalDialog.js.map

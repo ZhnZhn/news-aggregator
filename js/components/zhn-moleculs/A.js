@@ -1,33 +1,24 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _DraggableDialog = require('./DraggableDialog');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _DraggableDialog2 = _interopRequireDefault(_DraggableDialog);
+var _DraggableDialog = _interopRequireDefault(require("./DraggableDialog"));
 
-var _ModalDialog = require('./ModalDialog');
+var _ModalDialog = _interopRequireDefault(require("./ModalDialog"));
 
-var _ModalDialog2 = _interopRequireDefault(_ModalDialog);
+var _ModalPane = _interopRequireDefault(require("./ModalPane"));
 
-var _ModalPane = require('./ModalPane');
-
-var _ModalPane2 = _interopRequireDefault(_ModalPane);
-
-var _ModalPopup = require('./ModalPopup');
-
-var _ModalPopup2 = _interopRequireDefault(_ModalPopup);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _ModalPopup = _interopRequireDefault(require("./ModalPopup"));
 
 var A = {
-  DraggableDialog: _DraggableDialog2.default,
-  ModalDialog: _ModalDialog2.default,
-  ModalPane: _ModalPane2.default,
-  ModalPopup: _ModalPopup2.default
+  DraggableDialog: _DraggableDialog["default"],
+  ModalDialog: _ModalDialog["default"],
+  ModalPane: _ModalPane["default"],
+  ModalPopup: _ModalPopup["default"]
 };
-
-exports.default = A;
+var _default = A;
+exports["default"] = _default;
 //# sourceMappingURL=A.js.map

@@ -1,18 +1,14 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireDefault(require("react"));
 
 var CL_BT = 'bt-raised';
 var CL_BT_SPAN = 'bt-raised__span';
-
 var S = {
   PRIMARY_SPAN: {
     color: 'greenyellow'
@@ -28,29 +24,21 @@ var RaisedButton = function RaisedButton(_ref) {
       onClick = _ref.onClick;
 
   var _spanStyle = isPrimary ? S.PRIMARY_SPAN : void 0;
-  return _react2.default.createElement(
-    'button',
-    {
-      className: CL_BT,
-      style: rootStyle,
-      type: 'button',
-      tabIndex: 0,
-      onClick: onClick
-    },
-    _react2.default.createElement(
-      'div',
-      { className: clDiv },
-      _react2.default.createElement(
-        'span',
-        {
-          className: CL_BT_SPAN,
-          style: _spanStyle
-        },
-        caption
-      )
-    )
-  );
+
+  return _react["default"].createElement("button", {
+    className: CL_BT,
+    style: rootStyle,
+    type: "button",
+    tabIndex: 0,
+    onClick: onClick
+  }, _react["default"].createElement("div", {
+    className: clDiv
+  }, _react["default"].createElement("span", {
+    className: CL_BT_SPAN,
+    style: _spanStyle
+  }, caption)));
 };
 
-exports.default = RaisedButton;
+var _default = RaisedButton;
+exports["default"] = _default;
 //# sourceMappingURL=RaisedButton.js.map

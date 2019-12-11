@@ -1,10 +1,9 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _Type = require('../../conf/Type');
+var _Type = require("../../conf/Type");
 
 var _settings = {};
 
@@ -32,6 +31,6 @@ var SettingSlice = {
     return _settings[_Type.LoadType.WEBHOSE];
   }
 };
-
-exports.default = SettingSlice;
+var _default = SettingSlice;
+exports["default"] = _default;
 //# sourceMappingURL=SettingSlice.js.map

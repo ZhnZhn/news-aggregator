@@ -1,53 +1,39 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _SvgClose = _interopRequireDefault(require("../zhn-atoms/SvgClose"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _SvgClose = require('../zhn-atoms/SvgClose');
-
-var _SvgClose2 = _interopRequireDefault(_SvgClose);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var ItemHeader = function (_Component) {
-  (0, _inherits3.default)(ItemHeader, _Component);
+var ItemHeader =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(ItemHeader, _Component);
 
   function ItemHeader() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, ItemHeader);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = ItemHeader.__proto__ || Object.getPrototypeOf(ItemHeader)).call.apply(_ref, [this].concat(args))), _this), _this._handleClose = function (event) {
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+    _this._handleClose = function (event) {
       event.stopPropagation();
+
       _this.props.onClose();
-    }, _this._handleKeyDown = function (event) {
+    };
+
+    _this._handleKeyDown = function (event) {
       var keyCode = event.keyCode;
       var _this$props = _this.props,
           isShow = _this$props.isShow,
@@ -66,56 +52,50 @@ var ItemHeader = function (_Component) {
       } else if (keyCode === 8 || keyCode === 46) {
         onClose();
       }
-    }, _this._refRoot = function (node) {
+    };
+
+    _this._refRoot = function (node) {
       return _this.rootNode = node;
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    return _this;
   }
 
-  (0, _createClass3.default)(ItemHeader, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          className = _props.className,
-          style = _props.style,
-          captionStyle = _props.captionStyle,
-          svgCloseStyle = _props.svgCloseStyle,
-          title = _props.title,
-          onClick = _props.onClick;
+  var _proto = ItemHeader.prototype;
 
-      return _react2.default.createElement(
-        'div',
-        {
-          ref: this._refRoot,
-          tabIndex: '0',
-          className: className,
-          style: style,
-          onClick: onClick,
-          onKeyDown: this._handleKeyDown
-        },
-        _react2.default.createElement(
-          'span',
-          {
-            className: 'not-selected',
-            style: captionStyle
-          },
-          title
-        ),
-        _react2.default.createElement(_SvgClose2.default, {
-          style: svgCloseStyle,
-          onClose: this._handleClose
-        })
-      );
+  _proto.render = function render() {
+    var _this$props2 = this.props,
+        className = _this$props2.className,
+        style = _this$props2.style,
+        captionStyle = _this$props2.captionStyle,
+        svgCloseStyle = _this$props2.svgCloseStyle,
+        title = _this$props2.title,
+        onClick = _this$props2.onClick;
+    return _react["default"].createElement("div", {
+      ref: this._refRoot,
+      tabIndex: "0",
+      className: className,
+      style: style,
+      onClick: onClick,
+      onKeyDown: this._handleKeyDown
+    }, _react["default"].createElement("span", {
+      className: "not-selected",
+      style: captionStyle
+    }, title), _react["default"].createElement(_SvgClose["default"], {
+      style: svgCloseStyle,
+      onClose: this._handleClose
+    }));
+  };
+
+  _proto.focus = function focus() {
+    if (this.rootNode && this.rootNode.focus) {
+      this.rootNode.focus();
     }
-  }, {
-    key: 'focus',
-    value: function focus() {
-      if (this.rootNode && this.rootNode.focus) {
-        this.rootNode.focus();
-      }
-    }
-  }]);
+  };
+
   return ItemHeader;
 }(_react.Component);
 
-exports.default = ItemHeader;
+var _default = ItemHeader;
+exports["default"] = _default;
 //# sourceMappingURL=ItemHeader.js.map

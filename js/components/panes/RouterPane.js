@@ -1,46 +1,38 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _NewsPane = require('./NewsPane');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _NewsPane2 = _interopRequireDefault(_NewsPane);
+var _NewsPane = _interopRequireDefault(require("./NewsPane"));
 
-var _Article = require('../items/Article');
+var _Article = _interopRequireDefault(require("../items/Article"));
 
-var _Article2 = _interopRequireDefault(_Article);
-
-var _StackItem = require('../items/StackItem');
-
-var _StackItem2 = _interopRequireDefault(_StackItem);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _StackItem = _interopRequireDefault(require("../items/StackItem"));
 
 var R = {
   DEFAULT: {
-    Pane: _NewsPane2.default,
-    Item: _Article2.default
+    Pane: _NewsPane["default"],
+    Item: _Article["default"]
   },
   SO_TAGGED: {
-    Pane: _NewsPane2.default,
-    Item: _StackItem2.default
+    Pane: _NewsPane["default"],
+    Item: _StackItem["default"]
   },
   SO_SEARCH: {
-    Pane: _NewsPane2.default,
-    Item: _StackItem2.default
+    Pane: _NewsPane["default"],
+    Item: _StackItem["default"]
   },
   IEX: {
-    Pane: _NewsPane2.default,
-    Item: _Article2.default
+    Pane: _NewsPane["default"],
+    Item: _Article["default"]
   }
-
 };
-
 var RouterPane = {
   getElement: function getElement(type) {
     var El = R[type];
+
     if (El) {
       return R[type];
     } else {
@@ -48,6 +40,6 @@ var RouterPane = {
     }
   }
 };
-
-exports.default = RouterPane;
+var _default = RouterPane;
+exports["default"] = _default;
 //# sourceMappingURL=RouterPane.js.map

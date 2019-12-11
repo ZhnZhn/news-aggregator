@@ -1,68 +1,59 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _dt = _interopRequireDefault(require("../../utils/dt"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
-var _dec, _class;
+var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _react = require('react');
+var _Decors = _interopRequireDefault(require("./decorators/Decors"));
 
-var _react2 = _interopRequireDefault(_react);
-
-var _dt = require('../../utils/dt');
-
-var _dt2 = _interopRequireDefault(_dt);
-
-var _withTheme = require('../hoc/withTheme');
-
-var _withTheme2 = _interopRequireDefault(_withTheme);
-
-var _Dialog = require('./Dialog.Style');
-
-var _Dialog2 = _interopRequireDefault(_Dialog);
-
-var _Comp = require('../Comp');
-
-var _Comp2 = _interopRequireDefault(_Comp);
-
-var _Decors = require('./decorators/Decors');
-
-var _Decors2 = _interopRequireDefault(_Decors);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _dec, _class, _temp;
 
 var DATE_ERR_MSG = "YYYY-MM-DD";
 
-var INITIAL_FROM_DATE = _dt2.default.getFromDate(1),
-    INITIAL_TO_DATE = _dt2.default.getToDate(),
-    _onTestDate = _dt2.default.isValidDate,
-    SORT_BY_OPTIONS = [{ caption: "Activity, Recent Day", value: "activity" }, { caption: "Creation Date", value: "creation" }, { caption: "Score", value: "votes" }, { caption: "Relevance", value: "relevance" }],
+var INITIAL_FROM_DATE = _dt["default"].getFromDate(1),
+    INITIAL_TO_DATE = _dt["default"].getToDate(),
+    _onTestDate = _dt["default"].isValidDate,
+    SORT_BY_OPTIONS = [{
+  caption: "Activity, Recent Day",
+  value: "activity"
+}, {
+  caption: "Creation Date",
+  value: "creation"
+}, {
+  caption: "Score",
+  value: "votes"
+}, {
+  caption: "Relevance",
+  value: "relevance"
+}],
     DF_SORT_BY = SORT_BY_OPTIONS[2];
 
-var StackSearchDialog = (_dec = _Decors2.default.withDecors, _dec(_class = function (_Component) {
-  (0, _inherits3.default)(StackSearchDialog, _Component);
+var StackSearchDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_temp =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(StackSearchDialog, _Component);
 
   function StackSearchDialog(props) {
-    (0, _classCallCheck3.default)(this, StackSearchDialog);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (StackSearchDialog.__proto__ || Object.getPrototypeOf(StackSearchDialog)).call(this, props));
+    _this = _Component.call(this, props) || this;
 
     _this._selectSortBy = function (option) {
       _this.sortBy = option ? option.value : void 0;
@@ -78,8 +69,8 @@ var StackSearchDialog = (_dec = _Decors2.default.withDecors, _dec(_class = funct
           _inTitle = _this.inputInTitle.getValue(),
           fromDate = _this.fromDate.getValue(),
           toDate = _this.toDate.getValue(),
-          _fromDate = _dt2.default.toUTCSecond(fromDate),
-          _toDate = _dt2.default.toUTCSecond(toDate);
+          _fromDate = _dt["default"].toUTCSecond(fromDate),
+          _toDate = _dt["default"].toUTCSecond(toDate);
 
       onLoad({
         type: type,
@@ -116,82 +107,72 @@ var StackSearchDialog = (_dec = _Decors2.default.withDecors, _dec(_class = funct
     };
 
     _this.sortBy = DF_SORT_BY.value;
-    _this._initWithDecors(_this);
+
+    _this._initWithDecors((0, _assertThisInitialized2["default"])(_this));
+
     return _this;
   }
 
-  (0, _createClass3.default)(StackSearchDialog, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          isShow = _props.isShow,
-          theme = _props.theme,
-          onShow = _props.onShow,
-          TS = theme.createStyle(_Dialog2.default),
-          _commandButtons = this._createCommandButtons(TS.BT);
+  var _proto = StackSearchDialog.prototype;
 
-      return _react2.default.createElement(
-        _Comp2.default.DraggableDialog,
-        {
-          ref: this._refDialogComp,
-          rootStyle: TS.R_DIALOG,
-          browserCaptionStyle: TS.BROWSER_CAPTION,
-          styleButton: TS.BT,
-          caption: 'Search Questions',
-          isShow: isShow,
-          commandButtons: _commandButtons,
-          onKeyDown: this._handleKeyDownWith,
-          onShowChart: onShow,
-          onClose: this._handleClose
-        },
-        _react2.default.createElement(_Comp2.default.TextField, {
-          rootStyle: TS.INPUT_ROOT,
-          ref: this._refInputTagged,
-          caption: 'Tagged (Default: CSS)',
-          initValue: 'CSS'
-        }),
-        _react2.default.createElement(_Comp2.default.TextField, {
-          rootStyle: TS.INPUT_ROOT,
-          ref: this._refInputInTitle,
-          caption: 'In Title (Default: flexbox)',
-          initValue: 'flexbox'
-        }),
-        _react2.default.createElement(_Comp2.default.InputSelect, {
-          caption: 'SortBy',
-          initItem: DF_SORT_BY,
-          options: SORT_BY_OPTIONS,
-          styleConfig: TS.SELECT,
-          onSelect: this._selectSortBy
-        }),
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(_Comp2.default.TextField, {
-            ref: this._refFromDate,
-            caption: 'From Date',
-            rootStyle: TS.INPUT_DATE,
-            initValue: INITIAL_FROM_DATE,
-            errorMsg: DATE_ERR_MSG,
-            onTest: _onTestDate
-          }),
-          _react2.default.createElement(_Comp2.default.TextField, {
-            ref: this._refToDate,
-            caption: 'To Date',
-            rootStyle: TS.INPUT_DATE,
-            initValue: INITIAL_TO_DATE,
-            errorMsg: DATE_ERR_MSG,
-            onTest: _onTestDate
-          })
-        ),
-        _react2.default.createElement(
-          _Comp2.default.Link.PoweredBy,
-          { rootStyle: TS.POWERED_BY },
-          _react2.default.createElement(_Comp2.default.Link.StackOverflow, null)
-        )
-      );
-    }
-  }]);
+  _proto.render = function render() {
+    var _this$props2 = this.props,
+        isShow = _this$props2.isShow,
+        theme = _this$props2.theme,
+        onShow = _this$props2.onShow,
+        TS = theme.createStyle(_Dialog["default"]),
+        _commandButtons = this._createCommandButtons(TS.BT);
+
+    return _react["default"].createElement(_Comp["default"].DraggableDialog, {
+      ref: this._refDialogComp,
+      rootStyle: TS.R_DIALOG,
+      browserCaptionStyle: TS.BROWSER_CAPTION,
+      styleButton: TS.BT,
+      caption: "Search Questions",
+      isShow: isShow,
+      commandButtons: _commandButtons,
+      onKeyDown: this._handleKeyDownWith,
+      onShowChart: onShow,
+      onClose: this._handleClose
+    }, _react["default"].createElement(_Comp["default"].TextField, {
+      rootStyle: TS.INPUT_ROOT,
+      ref: this._refInputTagged,
+      caption: "Tagged (Default: CSS)",
+      initValue: "CSS"
+    }), _react["default"].createElement(_Comp["default"].TextField, {
+      rootStyle: TS.INPUT_ROOT,
+      ref: this._refInputInTitle,
+      caption: "In Title (Default: flexbox)",
+      initValue: "flexbox"
+    }), _react["default"].createElement(_Comp["default"].InputSelect, {
+      caption: "SortBy",
+      initItem: DF_SORT_BY,
+      options: SORT_BY_OPTIONS,
+      styleConfig: TS.SELECT,
+      onSelect: this._selectSortBy
+    }), _react["default"].createElement("div", null, _react["default"].createElement(_Comp["default"].TextField, {
+      ref: this._refFromDate,
+      caption: "From Date",
+      rootStyle: TS.INPUT_DATE,
+      initValue: INITIAL_FROM_DATE,
+      errorMsg: DATE_ERR_MSG,
+      onTest: _onTestDate
+    }), _react["default"].createElement(_Comp["default"].TextField, {
+      ref: this._refToDate,
+      caption: "To Date",
+      rootStyle: TS.INPUT_DATE,
+      initValue: INITIAL_TO_DATE,
+      errorMsg: DATE_ERR_MSG,
+      onTest: _onTestDate
+    })), _react["default"].createElement(_Comp["default"].Link.PoweredBy, {
+      rootStyle: TS.POWERED_BY
+    }, _react["default"].createElement(_Comp["default"].Link.StackOverflow, null)));
+  };
+
   return StackSearchDialog;
-}(_react.Component)) || _class);
-exports.default = (0, _withTheme2.default)(StackSearchDialog);
+}(_react.Component), _temp)) || _class);
+
+var _default = (0, _withTheme["default"])(StackSearchDialog);
+
+exports["default"] = _default;
 //# sourceMappingURL=StackSearchDialog.js.map

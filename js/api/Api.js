@@ -1,44 +1,33 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _NewsApi = require('./NewsApi');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _NewsApi2 = _interopRequireDefault(_NewsApi);
+var _NewsApi = _interopRequireDefault(require("./NewsApi"));
 
-var _WebhoseApi = require('./WebhoseApi');
+var _WebhoseApi = _interopRequireDefault(require("./WebhoseApi"));
 
-var _WebhoseApi2 = _interopRequireDefault(_WebhoseApi);
+var _StackOverflowApi = _interopRequireDefault(require("./StackOverflowApi"));
 
-var _StackOverflowApi = require('./StackOverflowApi');
+var _IexApi = _interopRequireDefault(require("./IexApi"));
 
-var _StackOverflowApi2 = _interopRequireDefault(_StackOverflowApi);
+var _NewsSearchApi = _interopRequireDefault(require("./NewsSearchApi"));
 
-var _IexApi = require('./IexApi');
+var _NewsApiTop = _interopRequireDefault(require("./NewsApiTop"));
 
-var _IexApi2 = _interopRequireDefault(_IexApi);
-
-var _NewsSearchApi = require('./NewsSearchApi');
-
-var _NewsSearchApi2 = _interopRequireDefault(_NewsSearchApi);
-
-var _NewsApiTop = require('./NewsApiTop');
-
-var _NewsApiTop2 = _interopRequireDefault(_NewsApiTop);
-
-var _CryptoCompareApi = require('./CryptoCompareApi');
-
-var _CryptoCompareApi2 = _interopRequireDefault(_CryptoCompareApi);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _CryptoCompareApi = _interopRequireDefault(require("./CryptoCompareApi"));
 
 var Api = {
-  News: _NewsApi2.default, Webhose: _WebhoseApi2.default, StackOverflow: _StackOverflowApi2.default, Iex: _IexApi2.default,
-  NewsSearch: _NewsSearchApi2.default, NewsTop: _NewsApiTop2.default,
-  CryptoCompare: _CryptoCompareApi2.default
+  News: _NewsApi["default"],
+  Webhose: _WebhoseApi["default"],
+  StackOverflow: _StackOverflowApi["default"],
+  Iex: _IexApi["default"],
+  NewsSearch: _NewsSearchApi["default"],
+  NewsTop: _NewsApiTop["default"],
+  CryptoCompare: _CryptoCompareApi["default"]
 };
-
-exports.default = Api;
+var _default = Api;
+exports["default"] = _default;
 //# sourceMappingURL=Api.js.map

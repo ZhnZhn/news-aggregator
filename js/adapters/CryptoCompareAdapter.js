@@ -1,19 +1,14 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _ut = require('../utils/ut');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _ut2 = _interopRequireDefault(_ut);
+var _ut = _interopRequireDefault(require("../utils/ut"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var crId = _ut2.default.crId,
-    replaceDecCodes = _ut2.default.replaceDecCodes;
-
-
+var crId = _ut["default"].crId,
+    replaceDecCodes = _ut["default"].replaceDecCodes;
 var C = {
   SOURCE: 'cryptocompare_news'
 };
@@ -22,6 +17,7 @@ var _toArticles = function _toArticles(json) {
   if (!json || !Array.isArray(json.Data)) {
     return [];
   }
+
   return json.Data.map(function (item) {
     var title = item.title,
         body = item.body,
@@ -29,7 +25,7 @@ var _toArticles = function _toArticles(json) {
         url = item.url,
         source = item.source,
         _item$source_info = item.source_info,
-        source_info = _item$source_info === undefined ? {} : _item$source_info,
+        source_info = _item$source_info === void 0 ? {} : _item$source_info,
         published_on = item.published_on,
         _author = source_info.name || source,
         _publishedAt = new Date(published_on * 1000).toISOString(),
@@ -60,6 +56,6 @@ var CryptoCompareAdapter = {
     };
   }
 };
-
-exports.default = CryptoCompareAdapter;
+var _default = CryptoCompareAdapter;
+exports["default"] = _default;
 //# sourceMappingURL=CryptoCompareAdapter.js.map

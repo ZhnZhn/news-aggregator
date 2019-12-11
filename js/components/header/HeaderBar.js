@@ -1,61 +1,31 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _HeaderBar = _interopRequireDefault(require("./HeaderBar.Style"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _LoadingProgress = _interopRequireDefault(require("./LoadingProgress"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _IconAppLogo = _interopRequireDefault(require("./IconAppLogo"));
 
-var _react = require('react');
+var _AppLabel = _interopRequireDefault(require("./AppLabel"));
 
-var _react2 = _interopRequireDefault(_react);
+var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
 
-var _withTheme = require('../hoc/withTheme');
-
-var _withTheme2 = _interopRequireDefault(_withTheme);
-
-var _HeaderBar = require('./HeaderBar.Style');
-
-var _HeaderBar2 = _interopRequireDefault(_HeaderBar);
-
-var _LoadingProgress = require('./LoadingProgress');
-
-var _LoadingProgress2 = _interopRequireDefault(_LoadingProgress);
-
-var _IconAppLogo = require('./IconAppLogo');
-
-var _IconAppLogo2 = _interopRequireDefault(_IconAppLogo);
-
-var _AppLabel = require('./AppLabel');
-
-var _AppLabel2 = _interopRequireDefault(_AppLabel);
-
-var _Atoms = require('../zhn-atoms/Atoms');
-
-var _Atoms2 = _interopRequireDefault(_Atoms);
-
-var _PanelQuery = require('./PanelQuery');
-
-var _PanelQuery2 = _interopRequireDefault(_PanelQuery);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _PanelQuery = _interopRequireDefault(require("./PanelQuery"));
 
 var TITLE = "News Aggregator v0.4.0";
-
 var CL = {
   HEADER: "header",
   PANEL_BROWSER: "header__panel-browser",
@@ -66,7 +36,6 @@ var CL = {
   BTS: "header__bts",
   BT_ABOUT: "header__bt-about"
 };
-
 var STYLE = {
   SVG_ICON: {
     position: 'relative',
@@ -86,13 +55,15 @@ var _ffClick = function _ffClick(onClose) {
   };
 };
 
-var HeaderBar = function (_Component) {
-  (0, _inherits3.default)(HeaderBar, _Component);
+var HeaderBar =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(HeaderBar, _Component);
 
   function HeaderBar(props) {
-    (0, _classCallCheck3.default)(this, HeaderBar);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (HeaderBar.__proto__ || Object.getPrototypeOf(HeaderBar)).call(this, props));
+    _this = _Component.call(this, props) || this;
 
     _this._onRegQuery = function (node) {
       _this.btQueryNode = node;
@@ -107,7 +78,9 @@ var HeaderBar = function (_Component) {
     };
 
     _this._hCloseQuery = function (event) {
-      _this.setState({ isQuery: false });
+      _this.setState({
+        isQuery: false
+      });
     };
 
     var onQuery = props.onQuery,
@@ -128,112 +101,94 @@ var HeaderBar = function (_Component) {
     _this._hIex = _fClick(onIex);
     _this._hNewsApi = _fClick(onNewsSearch);
     _this._hNewsTop = _fClick(onNewsTop);
-
     _this.state = {
       isQuery: false
     };
     return _this;
   }
 
-  (0, _createClass3.default)(HeaderBar, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          store = _props.store,
-          LOADING_ACTIONS = _props.LOADING_ACTIONS,
-          theme = _props.theme,
-          onNewsSources = _props.onNewsSources,
-          onSettings = _props.onSettings,
-          onAbout = _props.onAbout,
-          S = theme.createStyle(_HeaderBar2.default),
-          isQuery = this.state.isQuery;
+  var _proto = HeaderBar.prototype;
 
-      return _react2.default.createElement(
-        'div',
-        { className: CL.HEADER, style: S.HEADER },
-        _react2.default.createElement(_PanelQuery2.default, {
-          paneStyle: S.PANE,
-          className: CL.PANEL_BROWSER,
-          isShow: isQuery,
-          onClose: this._hToggleQuery,
-          onWebhose: this._hWebhose,
-          onWebhoseBrodcast: this._hWebhoseBrodcast,
-          onStackTagged: this._hStackTagged,
-          onStackSearch: this._hStackSearch,
-          onCryptoComapre: this._hCryptoCompare,
-          onIex: this._hIex,
-          onNewsApi: this._hNewsApi,
-          onNewsTop: this._hNewsTop
-        }),
-        _react2.default.createElement(_LoadingProgress2.default, {
-          store: store,
-          ACTIONS: LOADING_ACTIONS
-        }),
-        _react2.default.createElement(_IconAppLogo2.default, {
-          className: CL.ICON_APP,
-          title: TITLE
-        }),
-        _react2.default.createElement(_AppLabel2.default, {
-          className: CL.LABEL_APP,
-          caption: TITLE
-        }),
-        _react2.default.createElement(
-          'span',
-          { className: CL.BROWSER_BTS },
-          _react2.default.createElement(_Atoms2.default.FlatButton, {
-            rootStyle: S.BT.FLAT_ROOT,
-            clDiv: S.BT.CL_FLAT_DIV,
-            caption: 'News',
-            title: 'Open News Sources Browser',
-            accessKey: 'n',
-            onClick: onNewsSources
-          }),
-          _react2.default.createElement(
-            _Atoms2.default.ModalButton,
-            {
-              rootStyle: S.BT.FLAT_ROOT,
-              clDiv: S.BT.CL_FLAT_DIV,
-              caption: 'Query',
-              title: 'Panel Query Source',
-              accessKey: 'q',
-              onClick: this._hToggleQuery,
-              onReg: this._onRegQuery
-            },
-            _react2.default.createElement('span', { className: CL.ARROW_DOWN })
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: CL.BTS },
-          _react2.default.createElement(
-            _Atoms2.default.FlatButton,
-            {
-              rootStyle: S.BT.FLAT_ROOT,
-              clDiv: S.BT.CL_FLAT_DIV,
-              title: 'Open Settings Dialog',
-              accessKey: 's',
-              onClick: onSettings
-            },
-            _react2.default.createElement(_Atoms2.default.SvgSettings, { style: STYLE.SVG_ICON })
-          ),
-          _react2.default.createElement(
-            _Atoms2.default.FlatButton,
-            {
-              className: CL.BT_ABOUT,
-              rootStyle: S.BT.FLAT_ROOT,
-              clDiv: S.BT.CL_FLAT_DIV,
-              title: 'About News Aggregator',
-              accessKey: 'a',
-              onClick: onAbout
-            },
-            _react2.default.createElement(_Atoms2.default.SvgInfo, { style: STYLE.SVG_ICON })
-          )
-        )
-      );
-    }
-  }]);
+  _proto.render = function render() {
+    var _this$props = this.props,
+        store = _this$props.store,
+        LOADING_ACTIONS = _this$props.LOADING_ACTIONS,
+        theme = _this$props.theme,
+        onNewsSources = _this$props.onNewsSources,
+        onSettings = _this$props.onSettings,
+        onAbout = _this$props.onAbout,
+        S = theme.createStyle(_HeaderBar["default"]),
+        isQuery = this.state.isQuery;
+    return _react["default"].createElement("div", {
+      className: CL.HEADER,
+      style: S.HEADER
+    }, _react["default"].createElement(_PanelQuery["default"], {
+      paneStyle: S.PANE,
+      className: CL.PANEL_BROWSER,
+      isShow: isQuery,
+      onClose: this._hToggleQuery,
+      onWebhose: this._hWebhose,
+      onWebhoseBrodcast: this._hWebhoseBrodcast,
+      onStackTagged: this._hStackTagged,
+      onStackSearch: this._hStackSearch,
+      onCryptoComapre: this._hCryptoCompare,
+      onIex: this._hIex,
+      onNewsApi: this._hNewsApi,
+      onNewsTop: this._hNewsTop
+    }), _react["default"].createElement(_LoadingProgress["default"], {
+      store: store,
+      ACTIONS: LOADING_ACTIONS
+    }), _react["default"].createElement(_IconAppLogo["default"], {
+      className: CL.ICON_APP,
+      title: TITLE
+    }), _react["default"].createElement(_AppLabel["default"], {
+      className: CL.LABEL_APP,
+      caption: TITLE
+    }), _react["default"].createElement("span", {
+      className: CL.BROWSER_BTS
+    }, _react["default"].createElement(_Atoms["default"].FlatButton, {
+      rootStyle: S.BT.FLAT_ROOT,
+      clDiv: S.BT.CL_FLAT_DIV,
+      caption: "News",
+      title: "Open News Sources Browser",
+      accessKey: "n",
+      onClick: onNewsSources
+    }), _react["default"].createElement(_Atoms["default"].ModalButton, {
+      rootStyle: S.BT.FLAT_ROOT,
+      clDiv: S.BT.CL_FLAT_DIV,
+      caption: "Query",
+      title: "Panel Query Source",
+      accessKey: "q",
+      onClick: this._hToggleQuery,
+      onReg: this._onRegQuery
+    }, _react["default"].createElement("span", {
+      className: CL.ARROW_DOWN
+    }))), _react["default"].createElement("div", {
+      className: CL.BTS
+    }, _react["default"].createElement(_Atoms["default"].FlatButton, {
+      rootStyle: S.BT.FLAT_ROOT,
+      clDiv: S.BT.CL_FLAT_DIV,
+      title: "Open Settings Dialog",
+      accessKey: "s",
+      onClick: onSettings
+    }, _react["default"].createElement(_Atoms["default"].SvgSettings, {
+      style: STYLE.SVG_ICON
+    })), _react["default"].createElement(_Atoms["default"].FlatButton, {
+      className: CL.BT_ABOUT,
+      rootStyle: S.BT.FLAT_ROOT,
+      clDiv: S.BT.CL_FLAT_DIV,
+      title: "About News Aggregator",
+      accessKey: "a",
+      onClick: onAbout
+    }, _react["default"].createElement(_Atoms["default"].SvgInfo, {
+      style: STYLE.SVG_ICON
+    }))));
+  };
+
   return HeaderBar;
 }(_react.Component);
 
-exports.default = (0, _withTheme2.default)(HeaderBar);
+var _default = (0, _withTheme["default"])(HeaderBar);
+
+exports["default"] = _default;
 //# sourceMappingURL=HeaderBar.js.map

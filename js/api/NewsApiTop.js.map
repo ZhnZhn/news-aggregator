@@ -1,18 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../src/api/NewsApiTop.js"
- ],
- "file": "../../src/api/NewsApiTop.js",
- "names": [
-  "C",
-  "ROOT_V2",
-  "TOPIC_TOP",
-  "NewsApiTop",
-  "getRequestUrl",
-  "category",
-  "option",
-  "country"
- ],
- "mappings": ";;;;;;;;;;AACA;;;;;;AAEA,IAAMA,IAAI;AACRC,WAAS,yBADD;AAERC,aAAW;AAFH,CAAV;;AAKA,IAAMC;AACJC,iBAAe,+BAAU;AAAA,QACfC,QADe,GACOC,MADP,CACfD,QADe;AAAA,QACLE,OADK,GACOD,MADP,CACLC,OADK;;AAEvB,gBAAUP,EAAEC,OAAZ,GAAsBD,EAAEE,SAAxB,kBAA8CG,QAA9C,iBAAkEE,OAAlE;AACD;AAJG,wBAAN;;kBAQeJ,U"
-}
+{"version":3,"sources":["../../src/api/NewsApiTop.js"],"names":["C","ROOT_V2","TOPIC_TOP","NewsApiTop","getRequestUrl","option","category","country","NewsApiFns"],"mappings":";;;;;;;;;AACA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,OAAO,EAAE,yBADD;AAERC,EAAAA,SAAS,EAAE;AAFH,CAAV;AAKA,IAAMC,UAAU;AACdC,EAAAA,aAAa,EAAE,uBAAAC,MAAM,EAAI;AAAA,QACfC,QADe,GACOD,MADP,CACfC,QADe;AAAA,QACLC,OADK,GACOF,MADP,CACLE,OADK;AAEvB,gBAAUP,CAAC,CAACC,OAAZ,GAAsBD,CAAC,CAACE,SAAxB,kBAA8CI,QAA9C,iBAAkEC,OAAlE;AACD;AAJa,GAKXC,sBALW,CAAhB;eAQeL,U","sourcesContent":["\r\nimport NewsApiFns from './NewsApiFns'\r\n\r\nconst C = {\r\n  ROOT_V2: 'https://newsapi.org/v2/',\r\n  TOPIC_TOP: 'top-headlines'\r\n};\r\n\r\nconst NewsApiTop = {\r\n  getRequestUrl: option => {\r\n    const { category, country } = option;\r\n    return `${C.ROOT_V2}${C.TOPIC_TOP}?category=${category}&country=${country}`;\r\n  },\r\n  ...NewsApiFns\r\n};\r\n\r\nexport default NewsApiTop\r\n"],"file":"NewsApiTop.js"}

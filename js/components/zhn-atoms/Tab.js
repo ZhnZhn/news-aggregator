@@ -1,34 +1,17 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireWildcard(require("react"));
 
 var S = {
   LI: {
@@ -48,40 +31,35 @@ var S = {
   }
 };
 
-var Tab = function (_Component) {
-  (0, _inherits3.default)(Tab, _Component);
+var Tab =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(Tab, _Component);
 
   function Tab() {
-    (0, _classCallCheck3.default)(this, Tab);
-    return (0, _possibleConstructorReturn3.default)(this, (Tab.__proto__ || Object.getPrototypeOf(Tab)).apply(this, arguments));
+    return _Component.apply(this, arguments) || this;
   }
 
-  (0, _createClass3.default)(Tab, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          title = _props.title,
-          isSelected = _props.isSelected,
-          selectedStyle = _props.selectedStyle,
-          onClick = _props.onClick;
+  var _proto = Tab.prototype;
 
-      var _selectedStyle = isSelected ? (0, _extends3.default)({}, S.SELECTED, selectedStyle) : null;
-      return _react2.default.createElement(
-        'li',
-        {
-          style: (0, _extends3.default)({}, S.LI, _selectedStyle),
-          onClick: onClick
-        },
-        _react2.default.createElement(
-          'span',
-          null,
-          title
-        )
-      );
-    }
-  }]);
+  _proto.render = function render() {
+    var _this$props = this.props,
+        title = _this$props.title,
+        isSelected = _this$props.isSelected,
+        selectedStyle = _this$props.selectedStyle,
+        onClick = _this$props.onClick;
+
+    var _selectedStyle = isSelected ? (0, _extends2["default"])({}, S.SELECTED, {}, selectedStyle) : null;
+
+    return _react["default"].createElement("li", {
+      style: (0, _extends2["default"])({}, S.LI, {}, _selectedStyle),
+      onClick: onClick
+    }, _react["default"].createElement("span", null, title));
+  };
+
   return Tab;
 }(_react.Component);
 
-exports.default = Tab;
+var _default = Tab;
+exports["default"] = _default;
 //# sourceMappingURL=Tab.js.map

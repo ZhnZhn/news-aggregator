@@ -1,104 +1,97 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _ProgressLine = require('../zhn-atoms/ProgressLine');
-
-var _ProgressLine2 = _interopRequireDefault(_ProgressLine);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _ProgressLine = _interopRequireDefault(require("../zhn-atoms/ProgressLine"));
 
 var COLOR = {
   LOADING: '#2f7ed8',
   FAILED: 'rgb(237, 88, 19)'
 };
 
-var LoadingProgress = function (_Component) {
-  (0, _inherits3.default)(LoadingProgress, _Component);
+var LoadingProgress =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(LoadingProgress, _Component);
 
   function LoadingProgress() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, LoadingProgress);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = LoadingProgress.__proto__ || Object.getPrototypeOf(LoadingProgress)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+    _this.state = {
       completed: 0,
       color: COLOR.LOADING
-    }, _this._onStore = function (actionType) {
+    };
+
+    _this._onStore = function (actionType) {
       var ACTIONS = _this.props.ACTIONS;
 
       if (actionType === ACTIONS.LOADING) {
-        _this.setState({ completed: 35, color: COLOR.LOADING });
+        _this.setState({
+          completed: 35,
+          color: COLOR.LOADING
+        });
       } else if (actionType === ACTIONS.LOADING_COMPLETE) {
-        _this.setState({ completed: 100, color: COLOR.LOADING });
+        _this.setState({
+          completed: 100,
+          color: COLOR.LOADING
+        });
       } else if (actionType === ACTIONS.LOADING_FAILED) {
-        _this.setState({ completed: 100, color: COLOR.FAILED });
+        _this.setState({
+          completed: 100,
+          color: COLOR.FAILED
+        });
       }
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    return _this;
   }
 
-  (0, _createClass3.default)(LoadingProgress, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.unsubscribe = this.props.store.listenLoadingProgress(this._onStore);
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.unsubscribe();
-    }
-  }, {
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      if (this.props !== nextProps) {
-        return false;
-      }
-      return true;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _state = this.state,
-          completed = _state.completed,
-          color = _state.color;
+  var _proto = LoadingProgress.prototype;
 
-      return _react2.default.createElement(_ProgressLine2.default, {
-        height: 3,
-        color: color,
-        completed: completed
-      });
+  _proto.componentDidMount = function componentDidMount() {
+    this.unsubscribe = this.props.store.listenLoadingProgress(this._onStore);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.unsubscribe();
+  };
+
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
+    if (this.props !== nextProps) {
+      return false;
     }
-  }]);
+
+    return true;
+  };
+
+  _proto.render = function render() {
+    var _this$state = this.state,
+        completed = _this$state.completed,
+        color = _this$state.color;
+    return _react["default"].createElement(_ProgressLine["default"], {
+      height: 3,
+      color: color,
+      completed: completed
+    });
+  };
+
   return LoadingProgress;
 }(_react.Component);
 
-exports.default = LoadingProgress;
+var _default = LoadingProgress;
+exports["default"] = _default;
 //# sourceMappingURL=LoadingProgress.js.map

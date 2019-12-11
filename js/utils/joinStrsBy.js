@@ -1,14 +1,20 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var joinStrsBy = function joinStrsBy() {
-  var arr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  var delimeter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ', ';
+var joinStrsBy = function joinStrsBy(arr, delimeter) {
+  if (arr === void 0) {
+    arr = [];
+  }
+
+  if (delimeter === void 0) {
+    delimeter = ', ';
+  }
+
   return arr.filter(Boolean).join(delimeter);
 };
 
-exports.default = joinStrsBy;
+var _default = joinStrsBy;
+exports["default"] = _default;
 //# sourceMappingURL=joinStrsBy.js.map

@@ -1,37 +1,19 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireDefault(require("react"));
 
 var SpanKey = function SpanKey(_ref) {
   var style = _ref.style;
-  return _react2.default.createElement(
-    'span',
-    null,
-    _react2.default.createElement(
-      'span',
-      null,
-      '\xA0('
-    ),
-    _react2.default.createElement(
-      'span',
-      { style: style },
-      'Key'
-    ),
-    _react2.default.createElement(
-      'span',
-      null,
-      '),\xA0'
-    )
-  );
+  return _react["default"].createElement("span", null, _react["default"].createElement("span", null, "\xA0("), _react["default"].createElement("span", {
+    style: style
+  }, "Key"), _react["default"].createElement("span", null, "),\xA0"));
 };
 
-exports.default = SpanKey;
+var _default = SpanKey;
+exports["default"] = _default;
 //# sourceMappingURL=SpanKey.js.map

@@ -1,28 +1,21 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _TextField = require('./TextField');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _TextField2 = _interopRequireDefault(_TextField);
+var _TextField = _interopRequireDefault(require("./TextField"));
 
-var _SecretField = require('./SecretField');
+var _SecretField = _interopRequireDefault(require("./SecretField"));
 
-var _SecretField2 = _interopRequireDefault(_SecretField);
-
-var _InputSelect = require('./InputSelect');
-
-var _InputSelect2 = _interopRequireDefault(_InputSelect);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _InputSelect = _interopRequireDefault(require("./InputSelect"));
 
 var A = {
-  TextField: _TextField2.default,
-  SecretField: _SecretField2.default,
-  InputSelect: _InputSelect2.default
+  TextField: _TextField["default"],
+  SecretField: _SecretField["default"],
+  InputSelect: _InputSelect["default"]
 };
-
-exports.default = A;
+var _default = A;
+exports["default"] = _default;
 //# sourceMappingURL=A.js.map

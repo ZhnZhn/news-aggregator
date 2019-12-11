@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var LoadType = exports.LoadType = {
+exports.__esModule = true;
+exports.LoadType = void 0;
+var LoadType = {
   IEX: 'IEX',
   NEWS: 'NEWS',
   WEBHOSE: 'WEBHOSE'
 };
+exports.LoadType = LoadType;
 //# sourceMappingURL=Type.js.map

@@ -1,126 +1,97 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _NewsBrowser = _interopRequireDefault(require("./NewsBrowser.Style"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _DynamicMenuBrowser = _interopRequireDefault(require("../zhn-moleculs/DynamicMenuBrowser"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
 
-var _react = require('react');
+var _Links = _interopRequireDefault(require("../links/Links"));
 
-var _react2 = _interopRequireDefault(_react);
-
-var _withTheme = require('../hoc/withTheme');
-
-var _withTheme2 = _interopRequireDefault(_withTheme);
-
-var _NewsBrowser = require('./NewsBrowser.Style');
-
-var _NewsBrowser2 = _interopRequireDefault(_NewsBrowser);
-
-var _DynamicMenuBrowser = require('../zhn-moleculs/DynamicMenuBrowser');
-
-var _DynamicMenuBrowser2 = _interopRequireDefault(_DynamicMenuBrowser);
-
-var _PoweredBy = require('../links/PoweredBy');
-
-var _PoweredBy2 = _interopRequireDefault(_PoweredBy);
-
-var _Links = require('../links/Links');
-
-var _Links2 = _interopRequireDefault(_Links);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var NewsBrowser = function (_Component) {
-  (0, _inherits3.default)(NewsBrowser, _Component);
+var NewsBrowser =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(NewsBrowser, _Component);
 
   function NewsBrowser() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, NewsBrowser);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = NewsBrowser.__proto__ || Object.getPrototypeOf(NewsBrowser)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+    _this.state = {
       itemData: {}
-    }, _this._onStore = function (actionType, option) {
+    };
+
+    _this._onStore = function (actionType, option) {
       var _this$props = _this.props,
           updateAction = _this$props.updateAction,
           browserId = _this$props.browserId;
 
       if (actionType === updateAction && option.id === browserId) {
-        _this.setState({ itemData: option.data });
+        _this.setState({
+          itemData: option.data
+        });
       }
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    return _this;
   }
 
-  (0, _createClass3.default)(NewsBrowser, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.unsubscribe = this.props.store.listen(this._onStore);
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.unsubscribe();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          store = _props.store,
-          showAction = _props.showAction,
-          browserId = _props.browserId,
-          theme = _props.theme,
-          onClick = _props.onClick,
-          onError = _props.onError,
-          onClickBadge = _props.onClickBadge,
-          S = theme.createStyle(_NewsBrowser2.default);
-      var itemData = this.state.itemData;
+  var _proto = NewsBrowser.prototype;
 
-      return _react2.default.createElement(
-        _DynamicMenuBrowser2.default,
-        {
-          styleConfig: S,
-          caption: 'News Sources',
-          url: 'data/news-source-menu.json',
-          store: store,
-          browserId: browserId,
-          itemData: itemData,
-          showAction: showAction,
-          onClick: onClick,
-          onError: onError,
-          onClickBadge: onClickBadge
-        },
-        _react2.default.createElement(
-          _PoweredBy2.default,
-          null,
-          _react2.default.createElement(_Links2.default.NewsApi, null)
-        )
-      );
-    }
-  }]);
+  _proto.componentDidMount = function componentDidMount() {
+    this.unsubscribe = this.props.store.listen(this._onStore);
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.unsubscribe();
+  };
+
+  _proto.render = function render() {
+    var _this$props2 = this.props,
+        store = _this$props2.store,
+        showAction = _this$props2.showAction,
+        browserId = _this$props2.browserId,
+        theme = _this$props2.theme,
+        onClick = _this$props2.onClick,
+        onError = _this$props2.onError,
+        onClickBadge = _this$props2.onClickBadge,
+        S = theme.createStyle(_NewsBrowser["default"]);
+    var itemData = this.state.itemData;
+    return _react["default"].createElement(_DynamicMenuBrowser["default"], {
+      styleConfig: S,
+      caption: "News Sources",
+      url: "data/news-source-menu.json",
+      store: store,
+      browserId: browserId,
+      itemData: itemData,
+      showAction: showAction,
+      onClick: onClick,
+      onError: onError,
+      onClickBadge: onClickBadge
+    }, _react["default"].createElement(_PoweredBy["default"], null, _react["default"].createElement(_Links["default"].NewsApi, null)));
+  };
+
   return NewsBrowser;
 }(_react.Component);
 
-exports.default = (0, _withTheme2.default)(NewsBrowser);
+var _default = (0, _withTheme["default"])(NewsBrowser);
+
+exports["default"] = _default;
 //# sourceMappingURL=NewsBrowser.js.map

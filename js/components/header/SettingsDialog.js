@@ -1,60 +1,29 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _react = _interopRequireWildcard(require("react"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _Dialog = _interopRequireDefault(require("../dialogs/Dialog.Style"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _ComponentActions = _interopRequireDefault(require("../../flux/actions/ComponentActions"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _CardApiKeys = _interopRequireDefault(require("./CardApiKeys"));
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _withTheme = require('../hoc/withTheme');
-
-var _withTheme2 = _interopRequireDefault(_withTheme);
-
-var _Dialog = require('../dialogs/Dialog.Style');
-
-var _Dialog2 = _interopRequireDefault(_Dialog);
-
-var _ComponentActions = require('../../flux/actions/ComponentActions');
-
-var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
-
-var _Comp = require('../Comp');
-
-var _Comp2 = _interopRequireDefault(_Comp);
-
-var _CardApiKeys = require('./CardApiKeys');
-
-var _CardApiKeys2 = _interopRequireDefault(_CardApiKeys);
-
-var _CardUiTheme = require('./CardUiTheme');
-
-var _CardUiTheme2 = _interopRequireDefault(_CardUiTheme);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//import PropTypes from 'prop-types'
+var _CardUiTheme = _interopRequireDefault(require("./CardUiTheme"));
 
 var S = {
   MODAL: {
@@ -67,7 +36,6 @@ var S = {
     marginTop: 26,
     marginBottom: 4
   },
-
   TABS: {
     marginLeft: 24,
     textAlign: 'left'
@@ -90,117 +58,110 @@ var S = {
   }
 };
 
-var SettingsDialog = function (_Component) {
-  (0, _inherits3.default)(SettingsDialog, _Component);
+var SettingsDialog =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(SettingsDialog, _Component);
 
   function SettingsDialog() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, SettingsDialog);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = SettingsDialog.__proto__ || Object.getPrototypeOf(SettingsDialog)).call.apply(_ref, [this].concat(args))), _this), _this._handleKeyDown = function (event) {
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+    _this._handleKeyDown = function (event) {
       if (event.keyCode === 13 || event.keyCode === 27) {
         _this.props.onClose();
       }
-    }, _this._selectTheme = function (item) {
+    };
+
+    _this._selectTheme = function (item) {
       var theme = _this.props.theme;
 
       if (item && theme.getThemeName() !== item.value) {
         theme.setThemeName(item.value);
-        _ComponentActions2.default.changeTheme(item.value);
+
+        _ComponentActions["default"].changeTheme(item.value);
+
         _this.forceUpdate();
       }
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    return _this;
   }
 
-  (0, _createClass3.default)(SettingsDialog, [{
-    key: 'shouldComponentUpdate',
+  var _proto = SettingsDialog.prototype;
 
-    /*
-    static propTypes = {
-      isShow: PropTypes.bool,
-      data: PropTypes.shape({
-        setNewsKey: PropTypes.func,
-        setWebhoseKey: PropTypes.func,
-      }),
-      onClose: PropTypes.func
+  /*
+  static propTypes = {
+    isShow: PropTypes.bool,
+    data: PropTypes.shape({
+      setNewsKey: PropTypes.func,
+      setWebhoseKey: PropTypes.func,
+    }),
+    onClose: PropTypes.func
+  }
+  */
+  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
+      return false;
     }
-    */
 
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-        return false;
-      }
-      return true;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          isShow = _props.isShow,
-          theme = _props.theme,
-          data = _props.data,
-          onClose = _props.onClose,
-          TS = theme.createStyle(_Dialog2.default),
-          _TS = JSON.parse(JSON.stringify(TS));
+    return true;
+  };
 
-      Object.assign(_TS.SELECT.ROOT, S.INPUT_WIDTH);
-      return _react2.default.createElement(
-        _Comp2.default.ModalDialog,
-        {
-          style: (0, _extends3.default)({}, S.MODAL, TS.R_DIALOG),
-          divBtStyle: S.DIV_BT,
-          styleCaption: TS.BROWSER_CAPTION,
-          styleButton: TS.BT,
-          caption: 'User Settings',
-          isWithButton: false,
-          isShow: isShow,
-          onKeyDown: this._handleKeyDown,
-          onClose: onClose
-        },
-        _react2.default.createElement(
-          _Comp2.default.TabPane,
-          {
-            width: '100%',
-            tabsStyle: S.TABS,
-            selectedStyle: S.TAB_SELECTED
-          },
-          _react2.default.createElement(
-            _Comp2.default.Tab,
-            { title: 'API Key' },
-            _react2.default.createElement(_CardApiKeys2.default, {
-              ref: this._refInput,
-              style: S.CARD_ROOT,
-              fieldStyle: (0, _extends3.default)({}, TS.INPUT_ROOT, S.INPUT_WIDTH),
-              buttonsStyle: S.CARD_BUTTONS,
-              TS: TS,
-              data: data,
-              onClose: onClose
-            })
-          ),
-          _react2.default.createElement(
-            _Comp2.default.Tab,
-            { title: 'UI Theme' },
-            _react2.default.createElement(_CardUiTheme2.default, {
-              style: S.CARD_ROOT,
-              buttonsStyle: S.CARD_BUTTONS,
-              TS: _TS,
-              onSetTheme: this._selectTheme,
-              onClose: onClose
-            })
-          )
-        )
-      );
-    }
-  }]);
+  _proto.render = function render() {
+    var _this$props = this.props,
+        isShow = _this$props.isShow,
+        theme = _this$props.theme,
+        data = _this$props.data,
+        onClose = _this$props.onClose,
+        TS = theme.createStyle(_Dialog["default"]),
+        _TS = JSON.parse(JSON.stringify(TS));
+
+    Object.assign(_TS.SELECT.ROOT, S.INPUT_WIDTH);
+    return _react["default"].createElement(_Comp["default"].ModalDialog, {
+      style: (0, _extends2["default"])({}, S.MODAL, {}, TS.R_DIALOG),
+      divBtStyle: S.DIV_BT,
+      styleCaption: TS.BROWSER_CAPTION,
+      styleButton: TS.BT,
+      caption: "User Settings",
+      isWithButton: false,
+      isShow: isShow,
+      onKeyDown: this._handleKeyDown,
+      onClose: onClose
+    }, _react["default"].createElement(_Comp["default"].TabPane, {
+      width: "100%",
+      tabsStyle: S.TABS,
+      selectedStyle: S.TAB_SELECTED
+    }, _react["default"].createElement(_Comp["default"].Tab, {
+      title: "API Key"
+    }, _react["default"].createElement(_CardApiKeys["default"], {
+      ref: this._refInput,
+      style: S.CARD_ROOT,
+      fieldStyle: (0, _extends2["default"])({}, TS.INPUT_ROOT, {}, S.INPUT_WIDTH),
+      buttonsStyle: S.CARD_BUTTONS,
+      TS: TS,
+      data: data,
+      onClose: onClose
+    })), _react["default"].createElement(_Comp["default"].Tab, {
+      title: "UI Theme"
+    }, _react["default"].createElement(_CardUiTheme["default"], {
+      style: S.CARD_ROOT,
+      buttonsStyle: S.CARD_BUTTONS,
+      TS: _TS,
+      onSetTheme: this._selectTheme,
+      onClose: onClose
+    }))));
+  };
+
   return SettingsDialog;
 }(_react.Component);
 
-exports.default = (0, _withTheme2.default)(SettingsDialog);
+var _default = (0, _withTheme["default"])(SettingsDialog);
+
+exports["default"] = _default;
 //# sourceMappingURL=SettingsDialog.js.map

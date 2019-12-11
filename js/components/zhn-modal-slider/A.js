@@ -1,18 +1,15 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _ModalSlider = require('./ModalSlider');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _ModalSlider2 = _interopRequireDefault(_ModalSlider);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _ModalSlider = _interopRequireDefault(require("./ModalSlider"));
 
 var A = {
-  ModalSlider: _ModalSlider2.default
+  ModalSlider: _ModalSlider["default"]
 };
-
-exports.default = A;
+var _default = A;
+exports["default"] = _default;
 //# sourceMappingURL=A.js.map

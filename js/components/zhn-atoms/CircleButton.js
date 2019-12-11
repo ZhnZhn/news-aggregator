@@ -1,18 +1,13 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireDefault(require("react"));
 
 var CL_NOT_SELECTED = 'not-selected';
 var S = {
@@ -31,26 +26,23 @@ var S = {
 
 var CircleButton = function CircleButton(props) {
   var _props$caption = props.caption,
-      caption = _props$caption === undefined ? '' : _props$caption,
+      caption = _props$caption === void 0 ? '' : _props$caption,
       className = props.className,
       style = props.style,
       title = props.title,
       isWithoutDefault = props.isWithoutDefault,
       onClick = props.onClick,
-      _className = className ? className + ' ' + CL_NOT_SELECTED : CL_NOT_SELECTED,
-      _style = isWithoutDefault ? style : (0, _extends3.default)({}, S.ROOT, style);
+      _className = className ? className + " " + CL_NOT_SELECTED : CL_NOT_SELECTED,
+      _style = isWithoutDefault ? style : (0, _extends2["default"])({}, S.ROOT, {}, style);
 
-  return _react2.default.createElement(
-    'button',
-    {
-      className: _className,
-      style: _style,
-      title: title,
-      onClick: onClick
-    },
-    caption
-  );
+  return _react["default"].createElement("button", {
+    className: _className,
+    style: _style,
+    title: title,
+    onClick: onClick
+  }, caption);
 };
 
-exports.default = CircleButton;
+var _default = CircleButton;
+exports["default"] = _default;
 //# sourceMappingURL=CircleButton.js.map

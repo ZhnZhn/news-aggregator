@@ -1,9 +1,7 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
+exports.__esModule = true;
+exports["default"] = void 0;
 var NEWS_QUERY = {
   WEBHOSE_WEB: {
     "type": "W_WEBHOSE_WEB",
@@ -36,8 +34,8 @@ var NEWS_QUERY = {
     "paneId": "stack_tagged",
     "paneType": "SO_TAGGED",
     "dialogProps": {
-      "caption": "Tagged Questions"
-      //"source": "webhose"
+      "caption": "Tagged Questions" //"source": "webhose"
+
     }
   },
   STACK_SEARCH: {
@@ -47,11 +45,10 @@ var NEWS_QUERY = {
     "paneId": "stack_search",
     "paneType": "SO_SEARCH",
     "dialogProps": {
-      "caption": "Search Questions"
-      //"source": "webhose"
+      "caption": "Search Questions" //"source": "webhose"
+
     }
   },
-
   CRYPTO_COMPARE: {
     "type": "CRYPTO_COMPARE",
     "dialogType": "CryptoCompareNews",
@@ -69,8 +66,8 @@ var NEWS_QUERY = {
     "paneId": "iex_news",
     "paneType": "IEX_NEWS",
     "dialogProps": {
-      "caption": "IEX Cloud: Stock News"
-      //"source": "iex_news"
+      "caption": "IEX Cloud: Stock News" //"source": "iex_news"
+
     }
   },
   NEWS_SEARCH: {
@@ -92,6 +89,6 @@ var NEWS_QUERY = {
     }
   }
 };
-
-exports.default = NEWS_QUERY;
+var _default = NEWS_QUERY;
+exports["default"] = _default;
 //# sourceMappingURL=NewsQuery.js.map

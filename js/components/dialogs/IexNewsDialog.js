@@ -1,59 +1,54 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _dec, _class;
+var _Decors = _interopRequireDefault(require("./decorators/Decors"));
 
-var _react = require('react');
+var _dec, _class, _temp;
 
-var _react2 = _interopRequireDefault(_react);
-
-var _withTheme = require('../hoc/withTheme');
-
-var _withTheme2 = _interopRequireDefault(_withTheme);
-
-var _Dialog = require('./Dialog.Style');
-
-var _Dialog2 = _interopRequireDefault(_Dialog);
-
-var _Comp = require('../Comp');
-
-var _Comp2 = _interopRequireDefault(_Comp);
-
-var _Decors = require('./decorators/Decors');
-
-var _Decors2 = _interopRequireDefault(_Decors);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var RECENT_OPTIONS = [{ caption: "10 News", value: "10" }, { caption: "20 News", value: "20" }, { caption: "30 News", value: "30" }, { caption: "40 News", value: "40" }, { caption: "50 News", value: "50" }],
+var RECENT_OPTIONS = [{
+  caption: "10 News",
+  value: "10"
+}, {
+  caption: "20 News",
+  value: "20"
+}, {
+  caption: "30 News",
+  value: "30"
+}, {
+  caption: "40 News",
+  value: "40"
+}, {
+  caption: "50 News",
+  value: "50"
+}],
     DF_RECENT = RECENT_OPTIONS[1];
-
-var IexNewsDialog = (_dec = _Decors2.default.withDecors, _dec(_class = function (_Component) {
-  (0, _inherits3.default)(IexNewsDialog, _Component);
+var IexNewsDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_temp =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(IexNewsDialog, _Component);
 
   function IexNewsDialog(props) {
-    (0, _classCallCheck3.default)(this, IexNewsDialog);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (IexNewsDialog.__proto__ || Object.getPrototypeOf(IexNewsDialog)).call(this, props));
+    _this = _Component.call(this, props) || this;
 
     _this._selectRecent = function (option) {
       _this.recent = option ? option.value : void 0;
@@ -68,7 +63,9 @@ var IexNewsDialog = (_dec = _Decors2.default.withDecors, _dec(_class = function 
           _symbol = _this.inputSymbol.getValue();
 
       onLoad({
-        type: type, source: source, itemConf: itemConf,
+        type: type,
+        source: source,
+        itemConf: itemConf,
         loadId: 'IEX',
         symbol: _symbol,
         recent: _this.recent
@@ -84,56 +81,53 @@ var IexNewsDialog = (_dec = _Decors2.default.withDecors, _dec(_class = function 
     };
 
     _this.sortBy = DF_RECENT.value;
-    _this._initWithDecors(_this);
+
+    _this._initWithDecors((0, _assertThisInitialized2["default"])(_this));
+
     return _this;
   }
 
-  (0, _createClass3.default)(IexNewsDialog, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          isShow = _props.isShow,
-          theme = _props.theme,
-          onShow = _props.onShow,
-          TS = theme.createStyle(_Dialog2.default),
-          _commandButtons = this._createCommandButtons(TS.BT);
+  var _proto = IexNewsDialog.prototype;
 
-      return _react2.default.createElement(
-        _Comp2.default.DraggableDialog,
-        {
-          ref: this._refDialogComp,
-          rootStyle: TS.R_DIALOG,
-          browserCaptionStyle: TS.BROWSER_CAPTION,
-          styleButton: TS.BT,
-          caption: 'IEX Cloud: Stock News',
-          isShow: isShow,
-          commandButtons: _commandButtons,
-          onKeyDown: this._handleKeyDownWith,
-          onShowChart: onShow,
-          onClose: this._handleClose
-        },
-        _react2.default.createElement(_Comp2.default.TextField, {
-          ref: this._refInputSymbol,
-          rootStyle: TS.INPUT_ROOT,
-          caption: 'Stock Symbol',
-          initValue: 'AAPL'
-        }),
-        _react2.default.createElement(_Comp2.default.InputSelect, {
-          caption: 'Recent',
-          initItem: DF_RECENT,
-          options: RECENT_OPTIONS,
-          styleConfig: TS.SELECT,
-          onSelect: this._selectRecent
-        }),
-        _react2.default.createElement(
-          _Comp2.default.Link.PoweredBy,
-          { rootStyle: TS.POWERED_BY },
-          _react2.default.createElement(_Comp2.default.Link.IexApi, null)
-        )
-      );
-    }
-  }]);
+  _proto.render = function render() {
+    var _this$props2 = this.props,
+        isShow = _this$props2.isShow,
+        theme = _this$props2.theme,
+        onShow = _this$props2.onShow,
+        TS = theme.createStyle(_Dialog["default"]),
+        _commandButtons = this._createCommandButtons(TS.BT);
+
+    return _react["default"].createElement(_Comp["default"].DraggableDialog, {
+      ref: this._refDialogComp,
+      rootStyle: TS.R_DIALOG,
+      browserCaptionStyle: TS.BROWSER_CAPTION,
+      styleButton: TS.BT,
+      caption: "IEX Cloud: Stock News",
+      isShow: isShow,
+      commandButtons: _commandButtons,
+      onKeyDown: this._handleKeyDownWith,
+      onShowChart: onShow,
+      onClose: this._handleClose
+    }, _react["default"].createElement(_Comp["default"].TextField, {
+      ref: this._refInputSymbol,
+      rootStyle: TS.INPUT_ROOT,
+      caption: "Stock Symbol",
+      initValue: "AAPL"
+    }), _react["default"].createElement(_Comp["default"].InputSelect, {
+      caption: "Recent",
+      initItem: DF_RECENT,
+      options: RECENT_OPTIONS,
+      styleConfig: TS.SELECT,
+      onSelect: this._selectRecent
+    }), _react["default"].createElement(_Comp["default"].Link.PoweredBy, {
+      rootStyle: TS.POWERED_BY
+    }, _react["default"].createElement(_Comp["default"].Link.IexApi, null)));
+  };
+
   return IexNewsDialog;
-}(_react.Component)) || _class);
-exports.default = (0, _withTheme2.default)(IexNewsDialog);
+}(_react.Component), _temp)) || _class);
+
+var _default = (0, _withTheme["default"])(IexNewsDialog);
+
+exports["default"] = _default;
 //# sourceMappingURL=IexNewsDialog.js.map

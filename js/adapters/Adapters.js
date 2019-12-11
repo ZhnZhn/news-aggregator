@@ -1,35 +1,27 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _NewsApiAdapter = require('./NewsApiAdapter');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _NewsApiAdapter2 = _interopRequireDefault(_NewsApiAdapter);
+var _NewsApiAdapter = _interopRequireDefault(require("./NewsApiAdapter"));
 
-var _WebhoseAdapter = require('./WebhoseAdapter');
+var _WebhoseAdapter = _interopRequireDefault(require("./WebhoseAdapter"));
 
-var _WebhoseAdapter2 = _interopRequireDefault(_WebhoseAdapter);
+var _StackOverflowAdapter = _interopRequireDefault(require("./StackOverflowAdapter"));
 
-var _StackOverflowAdapter = require('./StackOverflowAdapter');
+var _IexAdapter = _interopRequireDefault(require("./IexAdapter"));
 
-var _StackOverflowAdapter2 = _interopRequireDefault(_StackOverflowAdapter);
-
-var _IexAdapter = require('./IexAdapter');
-
-var _IexAdapter2 = _interopRequireDefault(_IexAdapter);
-
-var _CryptoCompareAdapter = require('./CryptoCompareAdapter');
-
-var _CryptoCompareAdapter2 = _interopRequireDefault(_CryptoCompareAdapter);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _CryptoCompareAdapter = _interopRequireDefault(require("./CryptoCompareAdapter"));
 
 var Adapters = {
-  News: _NewsApiAdapter2.default, Webhose: _WebhoseAdapter2.default, StackOverflow: _StackOverflowAdapter2.default, Iex: _IexAdapter2.default,
-  CryptoCompare: _CryptoCompareAdapter2.default
+  News: _NewsApiAdapter["default"],
+  Webhose: _WebhoseAdapter["default"],
+  StackOverflow: _StackOverflowAdapter["default"],
+  Iex: _IexAdapter["default"],
+  CryptoCompare: _CryptoCompareAdapter["default"]
 };
-
-exports.default = Adapters;
+var _default = Adapters;
+exports["default"] = _default;
 //# sourceMappingURL=Adapters.js.map

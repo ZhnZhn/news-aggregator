@@ -1,8 +1,7 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
+exports["default"] = void 0;
 
 var _hm = {
   '&#8217;': "'",
@@ -22,5 +21,6 @@ var _hm = {
   return (typeof str === 'string' && str || '').replace(_regDecCodes, _onMatch);
 };
 
-exports.default = replaceDecCodes;
+var _default = replaceDecCodes;
+exports["default"] = _default;
 //# sourceMappingURL=replaceDecCodes.js.map

@@ -1,30 +1,31 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _extends3 = _interopRequireDefault(_extends2);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require('react');
+var _react = _interopRequireDefault(require("react"));
 
-var _react2 = _interopRequireDefault(_react);
-
-var _Comp = require('../Comp');
-
-var _Comp2 = _interopRequireDefault(_Comp);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Comp = _interopRequireDefault(require("../Comp"));
 
 var S = {
   ROOT_DIV: {
     paddingTop: 16
   }
 };
-
-var THEME_OPTIONS = [{ caption: 'Grey', value: 'GREY' }, { caption: 'White', value: 'WHITE' }, { caption: 'Sand', value: 'SAND' }],
+var THEME_OPTIONS = [{
+  caption: 'Grey',
+  value: 'GREY'
+}, {
+  caption: 'White',
+  value: 'WHITE'
+}, {
+  caption: 'Sand',
+  value: 'SAND'
+}],
     DF_THEME = THEME_OPTIONS[0];
 
 var CardUiTheme = function CardUiTheme(_ref) {
@@ -33,29 +34,25 @@ var CardUiTheme = function CardUiTheme(_ref) {
       TS = _ref.TS,
       onSetTheme = _ref.onSetTheme,
       onClose = _ref.onClose;
-  return _react2.default.createElement(
-    'div',
-    { style: (0, _extends3.default)({}, S.ROOT_DIV, style) },
-    _react2.default.createElement(_Comp2.default.InputSelect, {
-      styleConfig: TS.SELECT,
-      caption: 'Theme (Default: Grey)',
-      initItem: DF_THEME,
-      options: THEME_OPTIONS,
-      onSelect: onSetTheme
-    }),
-    _react2.default.createElement(
-      'div',
-      { style: buttonsStyle },
-      _react2.default.createElement(_Comp2.default.RaisedButton, {
-        rootStyle: TS.BT.RAISED_ROOT,
-        clDiv: TS.BT.CL_RAISED_DIV,
-        isPrimary: true,
-        caption: 'Close',
-        onClick: onClose
-      })
-    )
-  );
+  return _react["default"].createElement("div", {
+    style: (0, _extends2["default"])({}, S.ROOT_DIV, {}, style)
+  }, _react["default"].createElement(_Comp["default"].InputSelect, {
+    styleConfig: TS.SELECT,
+    caption: "Theme (Default: Grey)",
+    initItem: DF_THEME,
+    options: THEME_OPTIONS,
+    onSelect: onSetTheme
+  }), _react["default"].createElement("div", {
+    style: buttonsStyle
+  }, _react["default"].createElement(_Comp["default"].RaisedButton, {
+    rootStyle: TS.BT.RAISED_ROOT,
+    clDiv: TS.BT.CL_RAISED_DIV,
+    isPrimary: true,
+    caption: "Close",
+    onClick: onClose
+  })));
 };
 
-exports.default = CardUiTheme;
+var _default = CardUiTheme;
+exports["default"] = _default;
 //# sourceMappingURL=CardUiTheme.js.map

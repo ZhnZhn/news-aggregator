@@ -1,15 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../src/utils/toFirstUpperCase.js"
- ],
- "file": "../../src/utils/toFirstUpperCase.js",
- "names": [
-  "toFirstUpperCase",
-  "str",
-  "charAt",
-  "toUpperCase",
-  "slice"
- ],
- "mappings": ";;;;;;AACA,IAAMA,mBAAmB,SAAnBA,gBAAmB;AAAA,SAAO,OAAOC,GAAP,KAAe,QAAf,GAC5B,EAD4B,GAE5BA,IAAIC,MAAJ,CAAW,CAAX,EAAcC,WAAd,KAA8BF,IAAIG,KAAJ,CAAU,CAAV,CAFT;AAAA,CAAzB;;kBAIeJ,gB"
-}
+{"version":3,"sources":["../../src/utils/toFirstUpperCase.js"],"names":["toFirstUpperCase","str","charAt","toUpperCase","slice"],"mappings":";;;;;AACA,IAAMA,gBAAgB,GAAG,SAAnBA,gBAAmB,CAAAC,GAAG;AAAA,SAAI,OAAOA,GAAP,KAAe,QAAf,GAC5B,EAD4B,GAE5BA,GAAG,CAACC,MAAJ,CAAW,CAAX,EAAcC,WAAd,KAA8BF,GAAG,CAACG,KAAJ,CAAU,CAAV,CAFN;AAAA,CAA5B;;eAIeJ,gB","sourcesContent":["\r\nconst toFirstUpperCase = str => typeof str !== 'string'\r\n  ? ''\r\n  : str.charAt(0).toUpperCase() + str.slice(1);\r\n\r\nexport default toFirstUpperCase\r\n"],"file":"toFirstUpperCase.js"}

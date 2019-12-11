@@ -1,12 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/zhn-modal-slider/A.js"
- ],
- "file": "../../../src/components/zhn-modal-slider/A.js",
- "names": [
-  "A",
-  "ModalSlider"
- ],
- "mappings": ";;;;;;AAAA;;;;;;AAEA,IAAMA,IAAI;AACRC;AADQ,CAAV;;kBAIeD,C"
-}
+{"version":3,"sources":["../../../src/components/zhn-modal-slider/A.js"],"names":["A","ModalSlider"],"mappings":";;;;;;;AAAA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,WAAW,EAAXA;AADQ,CAAV;eAIeD,C","sourcesContent":["import ModalSlider from './ModalSlider'\r\n\r\nconst A = {\r\n  ModalSlider\r\n};\r\n\r\nexport default A\r\n"],"file":"A.js"}

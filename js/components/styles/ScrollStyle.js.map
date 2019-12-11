@@ -1,16 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/styles/ScrollStyle.js"
- ],
- "file": "../../../src/components/styles/ScrollStyle.js",
- "names": [
-  "styleConfig",
-  "createStyle",
-  "CSS_RULE",
-  "themeName",
-  "CL_SCROLL",
-  "CL_SCROLL_PANE"
- ],
- "mappings": ";;;;;;AACA,IAAMA,cAAc;AAClB;AACA;AACAC,eAAc,qBAACC,QAAD,EAAWC,SAAX,EAAyB;AACrC,WAAO;AACLC,iBAAWF,SAASG;AADf,KAAP;AAGD;AAPiB,CAApB;;kBAUeL,W"
-}
+{"version":3,"sources":["../../../src/components/styles/ScrollStyle.js"],"names":["styleConfig","createStyle","CSS_RULE","themeName","CL_SCROLL","CL_SCROLL_PANE"],"mappings":";;;;AACA,IAAMA,WAAW,GAAG;AAClB;AACA;AACAC,EAAAA,WAAW,EAAG,qBAACC,QAAD,EAAWC,SAAX,EAAyB;AACrC,WAAO;AACLC,MAAAA,SAAS,EAAEF,QAAQ,CAACG;AADf,KAAP;AAGD;AAPiB,CAApB;eAUeL,W","sourcesContent":["\r\nconst styleConfig = {\r\n  //themeName : void 0,\r\n  //style : void 0,\r\n  createStyle : (CSS_RULE, themeName) => {\r\n    return {\r\n      CL_SCROLL: CSS_RULE.CL_SCROLL_PANE\r\n    };\r\n  }\r\n}\r\n\r\nexport default styleConfig\r\n"],"file":"ScrollStyle.js"}

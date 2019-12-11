@@ -1,9 +1,7 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
+exports.__esModule = true;
+exports["default"] = void 0;
 var CL_ROW = 'menu-more__item not-selected';
 
 var crModelMore = function crModelMore(_ref) {
@@ -12,7 +10,6 @@ var crModelMore = function crModelMore(_ref) {
       onPlusWidth = _ref.onPlusWidth,
       onMinusWidth = _ref.onMinusWidth,
       onRemoveItems = _ref.onRemoveItems;
-
   return {
     baseTitleCl: CL_ROW,
     pageWidth: 180,
@@ -48,5 +45,6 @@ var crModelMore = function crModelMore(_ref) {
   };
 };
 
-exports.default = crModelMore;
+var _default = crModelMore;
+exports["default"] = _default;
 //# sourceMappingURL=crModelMore.js.map

@@ -1,52 +1,29 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _toFirstUpperCase = _interopRequireDefault(require("../../utils/toFirstUpperCase"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
-var _dec, _class;
+var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _react = require('react');
+var _Decors = _interopRequireDefault(require("./decorators/Decors"));
 
-var _react2 = _interopRequireDefault(_react);
-
-var _toFirstUpperCase = require('../../utils/toFirstUpperCase');
-
-var _toFirstUpperCase2 = _interopRequireDefault(_toFirstUpperCase);
-
-var _withTheme = require('../hoc/withTheme');
-
-var _withTheme2 = _interopRequireDefault(_withTheme);
-
-var _Dialog = require('./Dialog.Style');
-
-var _Dialog2 = _interopRequireDefault(_Dialog);
-
-var _Comp = require('../Comp');
-
-var _Comp2 = _interopRequireDefault(_Comp);
-
-var _Decors = require('./decorators/Decors');
-
-var _Decors2 = _interopRequireDefault(_Decors);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _dec, _class, _temp;
 
 var S = {
   POWERED_BY: {
@@ -58,21 +35,185 @@ var S = {
 var _CATEGORY = ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'],
     CATEGORY_OPTIONS = _CATEGORY.map(function (str) {
   return {
-    caption: (0, _toFirstUpperCase2.default)(str),
+    caption: (0, _toFirstUpperCase["default"])(str),
     value: str
   };
 }),
     DF_CATEGORY = CATEGORY_OPTIONS[0],
-    COUNTRY_OPTIONS = [{ caption: "Argentina", value: "ar" }, { caption: "Australia", value: "au" }, { caption: "Austria", value: "at" }, { caption: "Belguim", value: "be" }, { caption: "Brazil", value: "br" }, { caption: "Bulgaria", value: "bg" }, { caption: "Canada", value: "ca" }, { caption: "China", value: "cn" }, { caption: "Colombia", value: "co" }, { caption: "Cuba", value: "cu" }, { caption: "Czechia", value: "cz" }, { caption: "Egypt", value: "eg" }, { caption: "France", value: "fr" }, { caption: "Germany", value: "de" }, { caption: "Greece", value: "gr" }, { caption: "Hong Kong", value: "hk" }, { caption: "Hungary", value: "hu" }, { caption: "India", value: "in" }, { caption: "Indonesia", value: "id" }, { caption: "Ireland", value: "ie" }, { caption: "Israel", value: "il" }, { caption: "Italy", value: "it" }, { caption: "Japan", value: "jp" }, { caption: "Latvia", value: "lv" }, { caption: "Lithuania", value: "lt" }, { caption: "Malaysia", value: "my" }, { caption: "Mexico", value: "mx" }, { caption: "Morocco", value: "ma" }, { caption: "Netherlands", value: "nl" }, { caption: "New Zealand", value: "nz" }, { caption: "Nigeria", value: "ng" }, { caption: "Norway", value: "no" }, { caption: "Phillipines", value: "ph" }, { caption: "Poland", value: "pl" }, { caption: "Portugal", value: "pt" }, { caption: "Romania", value: "ro" }, { caption: "Russian Federation", value: "ru" }, { caption: "Saudi Arabia", value: "sa" }, { caption: "Serbia", value: "rs" }, { caption: "Singapore", value: "sg" }, { caption: "Slovakia", value: "sk" }, { caption: "Slovenia", value: "si" }, { caption: "South Africa", value: "za" }, { caption: "South Korea", value: "kr" }, { caption: "Sweden", value: "se" }, { caption: "Switzerland", value: "ch" }, { caption: "Taiwan", value: "tw" }, { caption: "Thailand", value: "th" }, { caption: "Turkey", value: "tr" }, { caption: "Ukraine", value: "ua" }, { caption: "United Arab Emirates", value: "ae" }, { caption: "United Kingdom", value: "gb" }, { caption: "United States", value: "us" }, { caption: "Venezuala", value: "ve" }],
+    COUNTRY_OPTIONS = [{
+  caption: "Argentina",
+  value: "ar"
+}, {
+  caption: "Australia",
+  value: "au"
+}, {
+  caption: "Austria",
+  value: "at"
+}, {
+  caption: "Belguim",
+  value: "be"
+}, {
+  caption: "Brazil",
+  value: "br"
+}, {
+  caption: "Bulgaria",
+  value: "bg"
+}, {
+  caption: "Canada",
+  value: "ca"
+}, {
+  caption: "China",
+  value: "cn"
+}, {
+  caption: "Colombia",
+  value: "co"
+}, {
+  caption: "Cuba",
+  value: "cu"
+}, {
+  caption: "Czechia",
+  value: "cz"
+}, {
+  caption: "Egypt",
+  value: "eg"
+}, {
+  caption: "France",
+  value: "fr"
+}, {
+  caption: "Germany",
+  value: "de"
+}, {
+  caption: "Greece",
+  value: "gr"
+}, {
+  caption: "Hong Kong",
+  value: "hk"
+}, {
+  caption: "Hungary",
+  value: "hu"
+}, {
+  caption: "India",
+  value: "in"
+}, {
+  caption: "Indonesia",
+  value: "id"
+}, {
+  caption: "Ireland",
+  value: "ie"
+}, {
+  caption: "Israel",
+  value: "il"
+}, {
+  caption: "Italy",
+  value: "it"
+}, {
+  caption: "Japan",
+  value: "jp"
+}, {
+  caption: "Latvia",
+  value: "lv"
+}, {
+  caption: "Lithuania",
+  value: "lt"
+}, {
+  caption: "Malaysia",
+  value: "my"
+}, {
+  caption: "Mexico",
+  value: "mx"
+}, {
+  caption: "Morocco",
+  value: "ma"
+}, {
+  caption: "Netherlands",
+  value: "nl"
+}, {
+  caption: "New Zealand",
+  value: "nz"
+}, {
+  caption: "Nigeria",
+  value: "ng"
+}, {
+  caption: "Norway",
+  value: "no"
+}, {
+  caption: "Phillipines",
+  value: "ph"
+}, {
+  caption: "Poland",
+  value: "pl"
+}, {
+  caption: "Portugal",
+  value: "pt"
+}, {
+  caption: "Romania",
+  value: "ro"
+}, {
+  caption: "Russian Federation",
+  value: "ru"
+}, {
+  caption: "Saudi Arabia",
+  value: "sa"
+}, {
+  caption: "Serbia",
+  value: "rs"
+}, {
+  caption: "Singapore",
+  value: "sg"
+}, {
+  caption: "Slovakia",
+  value: "sk"
+}, {
+  caption: "Slovenia",
+  value: "si"
+}, {
+  caption: "South Africa",
+  value: "za"
+}, {
+  caption: "South Korea",
+  value: "kr"
+}, {
+  caption: "Sweden",
+  value: "se"
+}, {
+  caption: "Switzerland",
+  value: "ch"
+}, {
+  caption: "Taiwan",
+  value: "tw"
+}, {
+  caption: "Thailand",
+  value: "th"
+}, {
+  caption: "Turkey",
+  value: "tr"
+}, {
+  caption: "Ukraine",
+  value: "ua"
+}, {
+  caption: "United Arab Emirates",
+  value: "ae"
+}, {
+  caption: "United Kingdom",
+  value: "gb"
+}, {
+  caption: "United States",
+  value: "us"
+}, {
+  caption: "Venezuala",
+  value: "ve"
+}],
     DF_COUNTRY = COUNTRY_OPTIONS[52];
 
-var NewsApiTopDialog = (_dec = _Decors2.default.withDecors, _dec(_class = function (_Component) {
-  (0, _inherits3.default)(NewsApiTopDialog, _Component);
+var NewsApiTopDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_temp =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(NewsApiTopDialog, _Component);
 
   function NewsApiTopDialog(props) {
-    (0, _classCallCheck3.default)(this, NewsApiTopDialog);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (NewsApiTopDialog.__proto__ || Object.getPrototypeOf(NewsApiTopDialog)).call(this, props));
+    _this = _Component.call(this, props) || this;
 
     _this._selectCategory = function (option) {
       _this.category = option ? option.value : void 0;
@@ -88,10 +229,10 @@ var NewsApiTopDialog = (_dec = _Decors2.default.withDecors, _dec(_class = functi
           source = _this$props.source,
           itemConf = _this$props.itemConf,
           onLoad = _this$props.onLoad;
-
-
       onLoad({
-        type: type, source: source, itemConf: itemConf,
+        type: type,
+        source: source,
+        itemConf: itemConf,
         loadId: 'NT',
         category: _this.category,
         country: _this.country
@@ -104,65 +245,54 @@ var NewsApiTopDialog = (_dec = _Decors2.default.withDecors, _dec(_class = functi
 
     _this.category = DF_CATEGORY.value;
     _this.country = DF_COUNTRY.value;
-    _this._initWithDecors(_this);
+
+    _this._initWithDecors((0, _assertThisInitialized2["default"])(_this));
+
     return _this;
   }
 
-  (0, _createClass3.default)(NewsApiTopDialog, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          isShow = _props.isShow,
-          theme = _props.theme,
-          onShow = _props.onShow,
-          TS = theme.createStyle(_Dialog2.default),
-          _commandButtons = this._createCommandButtons(TS.BT);
+  var _proto = NewsApiTopDialog.prototype;
 
-      return _react2.default.createElement(
-        _Comp2.default.DraggableDialog,
-        {
-          ref: this._refDialogComp,
-          rootStyle: TS.R_DIALOG,
-          browserCaptionStyle: TS.BROWSER_CAPTION,
-          styleButton: TS.BT,
-          caption: 'NewsApi Top By',
-          isShow: isShow,
-          commandButtons: _commandButtons,
-          onKeyDown: this._handleKeyDownWith,
-          onShowChart: onShow,
-          onClose: this._handleClose
-        },
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(_Comp2.default.InputSelect, {
-            caption: 'Category',
-            initItem: DF_CATEGORY,
-            options: CATEGORY_OPTIONS,
-            styleConfig: TS.SELECT,
-            onSelect: this._selectCategory
-          })
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(_Comp2.default.InputSelect, {
-            caption: 'Country',
-            initItem: DF_COUNTRY,
-            options: COUNTRY_OPTIONS,
-            styleConfig: TS.SELECT,
-            onSelect: this._selectCountry
-          })
-        ),
-        _react2.default.createElement(
-          _Comp2.default.Link.PoweredBy,
-          { rootStyle: S.POWERED_BY },
-          _react2.default.createElement(_Comp2.default.Link.NewsApi, null)
-        )
-      );
-    }
-  }]);
+  _proto.render = function render() {
+    var _this$props2 = this.props,
+        isShow = _this$props2.isShow,
+        theme = _this$props2.theme,
+        onShow = _this$props2.onShow,
+        TS = theme.createStyle(_Dialog["default"]),
+        _commandButtons = this._createCommandButtons(TS.BT);
+
+    return _react["default"].createElement(_Comp["default"].DraggableDialog, {
+      ref: this._refDialogComp,
+      rootStyle: TS.R_DIALOG,
+      browserCaptionStyle: TS.BROWSER_CAPTION,
+      styleButton: TS.BT,
+      caption: "NewsApi Top By",
+      isShow: isShow,
+      commandButtons: _commandButtons,
+      onKeyDown: this._handleKeyDownWith,
+      onShowChart: onShow,
+      onClose: this._handleClose
+    }, _react["default"].createElement("div", null, _react["default"].createElement(_Comp["default"].InputSelect, {
+      caption: "Category",
+      initItem: DF_CATEGORY,
+      options: CATEGORY_OPTIONS,
+      styleConfig: TS.SELECT,
+      onSelect: this._selectCategory
+    })), _react["default"].createElement("div", null, _react["default"].createElement(_Comp["default"].InputSelect, {
+      caption: "Country",
+      initItem: DF_COUNTRY,
+      options: COUNTRY_OPTIONS,
+      styleConfig: TS.SELECT,
+      onSelect: this._selectCountry
+    })), _react["default"].createElement(_Comp["default"].Link.PoweredBy, {
+      rootStyle: S.POWERED_BY
+    }, _react["default"].createElement(_Comp["default"].Link.NewsApi, null)));
+  };
+
   return NewsApiTopDialog;
-}(_react.Component)) || _class);
-exports.default = (0, _withTheme2.default)(NewsApiTopDialog);
+}(_react.Component), _temp)) || _class);
+
+var _default = (0, _withTheme["default"])(NewsApiTopDialog);
+
+exports["default"] = _default;
 //# sourceMappingURL=NewsApiTopDialog.js.map

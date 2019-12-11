@@ -1,34 +1,17 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _react = _interopRequireWildcard(require("react"));
 
 var S = {
   BADGE: {
@@ -36,7 +19,7 @@ var S = {
     color: 'grey',
     //backgroundColor: 'rgb(63, 81, 181)',
     backgroundColor: '#3f5178',
-    float: 'right',
+    "float": 'right',
     width: '32px',
     paddingRight: '5px',
     paddingLeft: '5px',
@@ -48,49 +31,50 @@ var S = {
   }
 };
 
-var MenuItemBadge = function (_Component) {
-  (0, _inherits3.default)(MenuItemBadge, _Component);
+var MenuItemBadge =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(MenuItemBadge, _Component);
 
   function MenuItemBadge() {
-    var _ref;
+    var _this;
 
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, MenuItemBadge);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = MenuItemBadge.__proto__ || Object.getPrototypeOf(MenuItemBadge)).call.apply(_ref, [this].concat(args))), _this), _this._handleClick = function (event) {
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+
+    _this._handleClick = function (event) {
       event.stopPropagation();
       var _this$props = _this.props,
           itemConf = _this$props.itemConf,
           onClick = _this$props.onClick;
-
       onClick(itemConf);
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    };
+
+    return _this;
   }
 
-  (0, _createClass3.default)(MenuItemBadge, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          style = _props.style,
-          _props$itemBadge = _props.itemBadge,
-          itemBadge = _props$itemBadge === undefined ? {} : _props$itemBadge,
-          isOpen = itemBadge.isOpen,
-          _badgeStyle = isOpen ? S.BADGE : (0, _extends3.default)({}, S.BADGE, S.CLOSE);
+  var _proto = MenuItemBadge.prototype;
 
-      return _react2.default.createElement(
-        'span',
-        { style: (0, _extends3.default)({}, _badgeStyle, style), onClick: this._handleClick },
-        'V'
-      );
-    }
-  }]);
+  _proto.render = function render() {
+    var _this$props2 = this.props,
+        style = _this$props2.style,
+        _this$props2$itemBadg = _this$props2.itemBadge,
+        itemBadge = _this$props2$itemBadg === void 0 ? {} : _this$props2$itemBadg,
+        isOpen = itemBadge.isOpen,
+        _badgeStyle = isOpen ? S.BADGE : (0, _extends2["default"])({}, S.BADGE, {}, S.CLOSE);
+
+    return _react["default"].createElement("span", {
+      style: (0, _extends2["default"])({}, _badgeStyle, {}, style),
+      onClick: this._handleClick
+    }, "V");
+  };
+
   return MenuItemBadge;
 }(_react.Component);
 
-exports.default = MenuItemBadge;
+var _default = MenuItemBadge;
+exports["default"] = _default;
 //# sourceMappingURL=MenuItemBadge.js.map

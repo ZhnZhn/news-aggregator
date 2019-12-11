@@ -1,19 +1,16 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _crId = require('../utils/crId');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _crId2 = _interopRequireDefault(_crId);
+var _crId = _interopRequireDefault(require("../utils/crId"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+//import shortid from 'shortid'
 var C = {
   SOURCE: 'iex_news'
-}; //import shortid from 'shortid'
-
+};
 
 var _toArticles = function _toArticles(json) {
   if (!Array.isArray(json)) {
@@ -31,7 +28,7 @@ var _toArticles = function _toArticles(json) {
 
     return {
       source: C.SOURCE,
-      articleId: (0, _crId2.default)(),
+      articleId: (0, _crId["default"])(),
       title: headline,
       description: summary,
       related: _related,
@@ -47,16 +44,16 @@ var IexAdapter = {
   toNews: function toNews(json, option) {
     var symbol = option.symbol,
         _option$recent = option.recent,
-        recent = _option$recent === undefined ? '' : _option$recent,
+        recent = _option$recent === void 0 ? '' : _option$recent,
         articles = _toArticles(json);
 
     return {
       source: C.SOURCE,
       articles: articles,
-      sortBy: symbol.toUpperCase() + ' ' + recent
+      sortBy: symbol.toUpperCase() + " " + recent
     };
   }
 };
-
-exports.default = IexAdapter;
+var _default = IexAdapter;
+exports["default"] = _default;
 //# sourceMappingURL=IexAdapter.js.map

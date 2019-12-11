@@ -1,85 +1,63 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _ComponentActions = _interopRequireWildcard(require("../../flux/actions/ComponentActions"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _NewsBrowser = _interopRequireDefault(require("../source-browsers/NewsBrowser"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _ComponentActions = require('../../flux/actions/ComponentActions');
-
-var _ComponentActions2 = _interopRequireDefault(_ComponentActions);
-
-var _NewsBrowser = require('../source-browsers/NewsBrowser');
-
-var _NewsBrowser2 = _interopRequireDefault(_NewsBrowser);
-
-var _DialogContainer = require('./DialogContainer');
-
-var _DialogContainer2 = _interopRequireDefault(_DialogContainer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _DialogContainer = _interopRequireDefault(require("./DialogContainer"));
 
 //const CL_MENU_ITEM = "row__news-source";
+var onClick = _ComponentActions["default"].showNewsDialog;
 
-var onClick = _ComponentActions2.default.showNewsDialog;
-var onError = _ComponentActions2.default.showModalDialog.bind(null, 'ALERT_DIALOG');
-var onClickBadge = _ComponentActions2.default.toggleNewsPane;
+var onError = _ComponentActions["default"].showModalDialog.bind(null, 'ALERT_DIALOG');
 
-var BrowserContainer = function (_Component) {
-  (0, _inherits3.default)(BrowserContainer, _Component);
+var onClickBadge = _ComponentActions["default"].toggleNewsPane;
+
+var BrowserContainer =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(BrowserContainer, _Component);
 
   function BrowserContainer() {
-    (0, _classCallCheck3.default)(this, BrowserContainer);
-    return (0, _possibleConstructorReturn3.default)(this, (BrowserContainer.__proto__ || Object.getPrototypeOf(BrowserContainer)).apply(this, arguments));
+    return _Component.apply(this, arguments) || this;
   }
 
-  (0, _createClass3.default)(BrowserContainer, [{
-    key: 'render',
-    value: function render() {
-      var store = this.props.store;
+  var _proto = BrowserContainer.prototype;
 
-      return _react2.default.createElement(
-        'div',
-        { className: 'hrz-container' },
-        _react2.default.createElement(_NewsBrowser2.default, {
-          store: store,
-          showAction: _ComponentActions.TYPES.SHOW_BROWSER,
-          updateAction: _ComponentActions.TYPES.UPDATE_BROWSER,
-          browserId: 'NEWS_API_ORG'
-          //rowClass={CL_MENU_ITEM}
-          , onClick: onClick,
-          onError: onError,
-          onClickBadge: onClickBadge
-        }),
-        _react2.default.createElement(_DialogContainer2.default, {
-          maxDialog: 3,
-          store: store,
-          showAction: _ComponentActions.TYPES.SHOW_NEWS_DIALOG
-        })
-      );
-    }
-  }]);
+  _proto.render = function render() {
+    var store = this.props.store;
+    return _react["default"].createElement("div", {
+      className: "hrz-container"
+    }, _react["default"].createElement(_NewsBrowser["default"], {
+      store: store,
+      showAction: _ComponentActions.TYPES.SHOW_BROWSER,
+      updateAction: _ComponentActions.TYPES.UPDATE_BROWSER,
+      browserId: "NEWS_API_ORG" //rowClass={CL_MENU_ITEM}
+      ,
+      onClick: onClick,
+      onError: onError,
+      onClickBadge: onClickBadge
+    }), _react["default"].createElement(_DialogContainer["default"], {
+      maxDialog: 3,
+      store: store,
+      showAction: _ComponentActions.TYPES.SHOW_NEWS_DIALOG
+    }));
+  };
+
   return BrowserContainer;
 }(_react.Component);
 
-exports.default = BrowserContainer;
+var _default = BrowserContainer;
+exports["default"] = _default;
 //# sourceMappingURL=BrowserContainer.js.map

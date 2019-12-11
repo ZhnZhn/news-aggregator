@@ -1,18 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../src/utils/pipe.js"
- ],
- "file": "../../src/utils/pipe.js",
- "names": [
-  "pipe",
-  "fns",
-  "length",
-  "arg",
-  "x",
-  "reduce",
-  "v",
-  "fn"
- ],
- "mappings": ";;;;;;AACA,IAAMA,OAAO,SAAPA,IAAO,GAAY;AAAA,oCAARC,GAAQ;AAARA,OAAQ;AAAA;;AACvB,MAAIA,IAAIC,MAAJ,KAAe,CAAnB,EAAsB;AACpB,WAAO;AAAA,aAAOC,GAAP;AAAA,KAAP;AACD;AACD,MAAIF,IAAIC,MAAJ,KAAe,CAAnB,EAAsB;AACpB,WAAOD,IAAI,CAAJ,CAAP;AACD;AACD,SAAO,UAACG,CAAD;AAAA,WAAOH,IAAII,MAAJ,CAAW,UAACC,CAAD,EAAIC,EAAJ;AAAA,aAAWA,GAAGD,CAAH,CAAX;AAAA,KAAX,EAA6BF,CAA7B,CAAP;AAAA,GAAP;AACD,CARD;;kBAUeJ,I"
-}
+{"version":3,"sources":["../../src/utils/pipe.js"],"names":["pipe","fns","length","arg","x","reduce","v","fn"],"mappings":";;;;;AACA,IAAMA,IAAI,GAAG,SAAPA,IAAO,GAAY;AAAA,oCAARC,GAAQ;AAARA,IAAAA,GAAQ;AAAA;;AACvB,MAAIA,GAAG,CAACC,MAAJ,KAAe,CAAnB,EAAsB;AACpB,WAAO,UAAAC,GAAG;AAAA,aAAIA,GAAJ;AAAA,KAAV;AACD;;AACD,MAAIF,GAAG,CAACC,MAAJ,KAAe,CAAnB,EAAsB;AACpB,WAAOD,GAAG,CAAC,CAAD,CAAV;AACD;;AACD,SAAO,UAACG,CAAD;AAAA,WAAOH,GAAG,CAACI,MAAJ,CAAW,UAACC,CAAD,EAAIC,EAAJ;AAAA,aAAWA,EAAE,CAACD,CAAD,CAAb;AAAA,KAAX,EAA6BF,CAA7B,CAAP;AAAA,GAAP;AACD,CARD;;eAUeJ,I","sourcesContent":["\r\nconst pipe = (...fns) => {\r\n  if (fns.length === 0) {\r\n    return arg => arg;\r\n  }\r\n  if (fns.length === 1) {\r\n    return fns[0];\r\n  }\r\n  return (x) => fns.reduce((v, fn) => fn(v), x);\r\n};\r\n\r\nexport default pipe\r\n"],"file":"pipe.js"}

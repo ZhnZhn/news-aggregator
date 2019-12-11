@@ -1,25 +1,20 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _react = require('react');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _Comp = require('../../Comp');
-
-var _Comp2 = _interopRequireDefault(_Comp);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Comp = _interopRequireDefault(require("../../Comp"));
 
 var _createCommandButtons = function _createCommandButtons(S) {
-  return [_react2.default.createElement(_Comp2.default.RaisedButton, {
-    key: '_load',
+  return [_react["default"].createElement(_Comp["default"].RaisedButton, {
+    key: "_load",
     rootStyle: S.RAISED_ROOT,
     clDiv: S.CL_RAISED_DIV,
-    caption: 'Load',
+    caption: "Load",
     isPrimary: true,
     onClick: this._handleLoad
   })];
@@ -29,5 +24,6 @@ var withBtLoad = function withBtLoad(target) {
   target.prototype._createWithBtLoad = _createCommandButtons;
 };
 
-exports.default = withBtLoad;
+var _default = withBtLoad;
+exports["default"] = _default;
 //# sourceMappingURL=withBtLoad.js.map

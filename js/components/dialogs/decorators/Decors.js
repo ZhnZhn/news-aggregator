@@ -1,22 +1,15 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _withBtLoad = require('./withBtLoad');
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _withBtLoad2 = _interopRequireDefault(_withBtLoad);
+var _withBtLoad = _interopRequireDefault(require("./withBtLoad"));
 
-var _withClose = require('./withClose');
+var _withClose = _interopRequireDefault(require("./withClose"));
 
-var _withClose2 = _interopRequireDefault(_withClose);
-
-var _withKeyDown = require('./withKeyDown');
-
-var _withKeyDown2 = _interopRequireDefault(_withKeyDown);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _withKeyDown = _interopRequireDefault(require("./withKeyDown"));
 
 var _initWithDecors = function _initWithDecors(instComp) {
   instComp._createCommandButtons = instComp._createWithBtLoad.bind(instComp);
@@ -26,15 +19,15 @@ var _initWithDecors = function _initWithDecors(instComp) {
 
 var Decors = {
   withDecors: function withDecors(target) {
-    (0, _withBtLoad2.default)(target);
-    (0, _withClose2.default)(target);
-    (0, _withKeyDown2.default)(target);
+    (0, _withBtLoad["default"])(target);
+    (0, _withClose["default"])(target);
+    (0, _withKeyDown["default"])(target);
     target.prototype._initWithDecors = _initWithDecors;
   },
-  withBtLoad: _withBtLoad2.default,
-  withClose: _withClose2.default,
-  withKeyDown: _withKeyDown2.default
+  withBtLoad: _withBtLoad["default"],
+  withClose: _withClose["default"],
+  withKeyDown: _withKeyDown["default"]
 };
-
-exports.default = Decors;
+var _default = Decors;
+exports["default"] = _default;
 //# sourceMappingURL=Decors.js.map

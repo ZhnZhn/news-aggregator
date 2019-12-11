@@ -1,54 +1,29 @@
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _extends3 = _interopRequireDefault(_extends2);
+exports.__esModule = true;
+exports["default"] = void 0;
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _react = _interopRequireWildcard(require("react"));
 
-var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+var _NewsPane = _interopRequireDefault(require("./NewsPane.Style"));
 
-var _inherits2 = require('babel-runtime/helpers/inherits');
+var _has = _interopRequireDefault(require("../has"));
 
-var _inherits3 = _interopRequireDefault(_inherits2);
+var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _withTheme = require('../hoc/withTheme');
-
-var _withTheme2 = _interopRequireDefault(_withTheme);
-
-var _NewsPane = require('./NewsPane.Style');
-
-var _NewsPane2 = _interopRequireDefault(_NewsPane);
-
-var _has = require('../has');
-
-var _has2 = _interopRequireDefault(_has);
-
-var _crModelMore = require('./crModelMore');
-
-var _crModelMore2 = _interopRequireDefault(_crModelMore);
-
-var _Comp = require('../Comp');
-
-var _Comp2 = _interopRequireDefault(_Comp);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Comp = _interopRequireDefault(require("../Comp"));
 
 var CHILD_MARGIN = 36,
     RESIZE_INIT_WIDTH = 635,
@@ -59,7 +34,6 @@ var CHILD_MARGIN = 36,
   SHOW_POPUP: "show-popup",
   MENU_MORE: "popup-menu items__menu-more"
 };
-
 var S = {
   ROOT_DIV: {
     backgroundColor: '#4d4d4d',
@@ -95,26 +69,31 @@ var S = {
 var _getWidth = function _getWidth(style) {
   return parseInt(style.width, 10) || RESIZE_INIT_WIDTH;
 };
+
 var _toStyleWidth = function _toStyleWidth(width) {
   return width + 'px';
 };
 
-var NewsPane = function (_Component) {
-  (0, _inherits3.default)(NewsPane, _Component);
+var NewsPane =
+/*#__PURE__*/
+function (_Component) {
+  (0, _inheritsLoose2["default"])(NewsPane, _Component);
 
   function NewsPane(props) {
-    (0, _classCallCheck3.default)(this, NewsPane);
+    var _this;
 
-    var _this = (0, _possibleConstructorReturn3.default)(this, (NewsPane.__proto__ || Object.getPrototypeOf(NewsPane)).call(this, props));
+    _this = _Component.call(this, props) || this;
 
-    _this._onStore = function (actionType) {
-      var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    _this._onStore = function (actionType, option) {
+      if (option === void 0) {
+        option = {};
+      }
+
       var _this$props = _this.props,
           addAction = _this$props.addAction,
           showAction = _this$props.showAction,
           toggleAction = _this$props.toggleAction,
           id = _this$props.id;
-
 
       if (option.id === id) {
         switch (actionType) {
@@ -125,18 +104,26 @@ var NewsPane = function (_Component) {
                 articles: option.data,
                 sortBy: option.sortBy || _this.state.sortBy
               });
+
               break;
             }
+
           case showAction:
-            _this.setState({ isShow: true });
+            _this.setState({
+              isShow: true
+            });
+
             break;
+
           case toggleAction:
             _this.setState(function (prevState) {
               return {
                 isShow: !prevState.isShow
               };
             });
+
             break;
+
           default:
             return void 0;
         }
@@ -144,7 +131,9 @@ var NewsPane = function (_Component) {
     };
 
     _this._showMore = function () {
-      _this.setState({ isMore: true });
+      _this.setState({
+        isMore: true
+      });
     };
 
     _this._hToggleMore = function () {
@@ -156,10 +145,11 @@ var NewsPane = function (_Component) {
     };
 
     _this._getRootNodeStyle = function () {
-      var rootDiv = _this.rootDiv,
+      var _assertThisInitialize = (0, _assertThisInitialized2["default"])(_this),
+          rootDiv = _assertThisInitialize.rootDiv,
           _ref = rootDiv || {},
           _ref$style = _ref.style,
-          style = _ref$style === undefined ? {} : _ref$style;
+          style = _ref$style === void 0 ? {} : _ref$style;
 
       return style;
     };
@@ -171,6 +161,7 @@ var NewsPane = function (_Component) {
     _this._plusToWidth = function () {
       var style = _this._getRootNodeStyle(),
           w = _getWidth(style) + RESIZE_DELTA;
+
       if (w < RESIZE_MAX_WIDTH) {
         style.width = _toStyleWidth(w);
       }
@@ -179,6 +170,7 @@ var NewsPane = function (_Component) {
     _this._minusToWidth = function () {
       var style = _this._getRootNodeStyle(),
           w = _getWidth(style) - RESIZE_DELTA;
+
       if (w > RESIZE_MIN_WIDTH) {
         style.width = _toStyleWidth(w);
       }
@@ -186,9 +178,11 @@ var NewsPane = function (_Component) {
 
     _this._hHide = function () {
       var onClose = _this.props.onClose;
-
       onClose();
-      _this.setState({ isShow: false });
+
+      _this.setState({
+        isShow: false
+      });
     };
 
     _this._refRootDiv = function (node) {
@@ -200,16 +194,14 @@ var NewsPane = function (_Component) {
     };
 
     _this.childMargin = CHILD_MARGIN;
-    _this._widthStyle = _has2.default.initWidthStyle();
-
-    _this._MODEL = (0, _crModelMore2.default)({
-      onMinWidth: _this._resizeTo.bind(_this, RESIZE_MIN_WIDTH),
-      onInitWidth: _this._resizeTo.bind(_this, RESIZE_INIT_WIDTH),
+    _this._widthStyle = _has["default"].initWidthStyle();
+    _this._MODEL = (0, _crModelMore["default"])({
+      onMinWidth: _this._resizeTo.bind((0, _assertThisInitialized2["default"])(_this), RESIZE_MIN_WIDTH),
+      onInitWidth: _this._resizeTo.bind((0, _assertThisInitialized2["default"])(_this), RESIZE_INIT_WIDTH),
       onPlusWidth: _this._plusToWidth,
       onMinusWidth: _this._minusToWidth,
       onRemoveItems: props.onRemoveItems
     });
-
     _this.state = {
       isShow: true,
       isMore: false,
@@ -219,99 +211,85 @@ var NewsPane = function (_Component) {
     return _this;
   }
 
-  (0, _createClass3.default)(NewsPane, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var store = this.props.store;
+  var _proto = NewsPane.prototype;
 
-      this.unsubscribe = store.listen(this._onStore);
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.unsubscribe();
-    }
-  }, {
-    key: '_renderArticles',
-    value: function _renderArticles() {
-      var articles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-      var onCloseItem = arguments[1];
-      var onRemoveUnder = arguments[2];
-      var Item = this.props.Item;
+  _proto.componentDidMount = function componentDidMount() {
+    var store = this.props.store;
+    this.unsubscribe = store.listen(this._onStore);
+  };
 
-      return articles.map(function (article) {
-        return _react2.default.createElement(Item, {
-          key: article.articleId,
-          item: article,
-          onCloseItem: onCloseItem,
-          onRemoveUnder: onRemoveUnder
-        });
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.unsubscribe();
+  };
+
+  _proto._renderArticles = function _renderArticles(articles, onCloseItem, onRemoveUnder) {
+    if (articles === void 0) {
+      articles = [];
+    }
+
+    var Item = this.props.Item;
+    return articles.map(function (article) {
+      return _react["default"].createElement(Item, {
+        key: article.articleId,
+        item: article,
+        onCloseItem: onCloseItem,
+        onRemoveUnder: onRemoveUnder
       });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          paneCaption = _props.paneCaption,
-          theme = _props.theme,
-          onRemoveItems = _props.onRemoveItems,
-          onRemoveUnder = _props.onRemoveUnder,
-          onCloseItem = _props.onCloseItem,
-          TS = theme.createStyle(_NewsPane2.default),
-          _state = this.state,
-          isShow = _state.isShow,
-          isMore = _state.isMore,
-          articles = _state.articles,
-          sortBy = _state.sortBy,
-          _sortBy = sortBy ? ': ' + sortBy : '',
-          _paneCaption = '' + paneCaption + _sortBy,
-          _styleIsShow = isShow ? S.INLINE_BLOCK : S.NONE,
-          _classIsShow = isShow ? CL.SHOW_POPUP : void 0;
+    });
+  };
 
-      return _react2.default.createElement(
-        'div',
-        {
-          ref: this._refRootDiv,
-          className: _classIsShow,
-          style: (0, _extends3.default)({}, this._widthStyle, S.ROOT_DIV, TS.PANE_ROOT, _styleIsShow)
-        },
-        _react2.default.createElement(_Comp2.default.ModalSlider, {
-          isShow: isMore,
-          className: CL.MENU_MORE,
-          style: TS.EL_BORDER,
-          model: this._MODEL,
-          onClose: this._hToggleMore
-        }),
-        _react2.default.createElement(
-          _Comp2.default.BrowserCaption,
-          {
-            rootStyle: TS.PANE_CAPTION,
-            caption: _paneCaption,
-            onMore: this._showMore,
-            onClose: this._hHide
-          },
-          _react2.default.createElement(_Comp2.default.CircleButton, {
-            caption: 'R',
-            title: 'Remove All Items',
-            style: S.BT_REMOVE,
-            onClick: onRemoveItems
-          }),
-          _react2.default.createElement(_Comp2.default.SvgHrzResize, {
-            minWidth: RESIZE_MIN_WIDTH,
-            maxWidth: RESIZE_MAX_WIDTH,
-            getDomNode: this._getRootDiv
-          })
-        ),
-        _react2.default.createElement(
-          _Comp2.default.ScrollPane,
-          { className: TS.CL_SCROLL_PANE, style: S.SCROLL_DIV },
-          this._renderArticles(articles, onCloseItem, onRemoveUnder)
-        )
-      );
-    }
-  }]);
+  _proto.render = function render() {
+    var _this$props2 = this.props,
+        paneCaption = _this$props2.paneCaption,
+        theme = _this$props2.theme,
+        onRemoveItems = _this$props2.onRemoveItems,
+        onRemoveUnder = _this$props2.onRemoveUnder,
+        onCloseItem = _this$props2.onCloseItem,
+        TS = theme.createStyle(_NewsPane["default"]),
+        _this$state = this.state,
+        isShow = _this$state.isShow,
+        isMore = _this$state.isMore,
+        articles = _this$state.articles,
+        sortBy = _this$state.sortBy,
+        _sortBy = sortBy ? ': ' + sortBy : '',
+        _paneCaption = "" + paneCaption + _sortBy,
+        _styleIsShow = isShow ? S.INLINE_BLOCK : S.NONE,
+        _classIsShow = isShow ? CL.SHOW_POPUP : void 0;
+
+    return _react["default"].createElement("div", {
+      ref: this._refRootDiv,
+      className: _classIsShow,
+      style: (0, _extends2["default"])({}, this._widthStyle, {}, S.ROOT_DIV, {}, TS.PANE_ROOT, {}, _styleIsShow)
+    }, _react["default"].createElement(_Comp["default"].ModalSlider, {
+      isShow: isMore,
+      className: CL.MENU_MORE,
+      style: TS.EL_BORDER,
+      model: this._MODEL,
+      onClose: this._hToggleMore
+    }), _react["default"].createElement(_Comp["default"].BrowserCaption, {
+      rootStyle: TS.PANE_CAPTION,
+      caption: _paneCaption,
+      onMore: this._showMore,
+      onClose: this._hHide
+    }, _react["default"].createElement(_Comp["default"].CircleButton, {
+      caption: "R",
+      title: "Remove All Items",
+      style: S.BT_REMOVE,
+      onClick: onRemoveItems
+    }), _react["default"].createElement(_Comp["default"].SvgHrzResize, {
+      minWidth: RESIZE_MIN_WIDTH,
+      maxWidth: RESIZE_MAX_WIDTH,
+      getDomNode: this._getRootDiv
+    })), _react["default"].createElement(_Comp["default"].ScrollPane, {
+      className: TS.CL_SCROLL_PANE,
+      style: S.SCROLL_DIV
+    }, this._renderArticles(articles, onCloseItem, onRemoveUnder)));
+  };
+
   return NewsPane;
 }(_react.Component);
 
-exports.default = (0, _withTheme2.default)(NewsPane);
+var _default = (0, _withTheme["default"])(NewsPane);
+
+exports["default"] = _default;
 //# sourceMappingURL=NewsPane.js.map
