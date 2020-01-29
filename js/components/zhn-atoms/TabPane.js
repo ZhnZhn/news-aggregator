@@ -69,6 +69,7 @@ function (_Component) {
       return children.map(function (tab, index) {
         return _react["default"].cloneElement(tab, {
           key: index,
+          id: index,
           onClick: _this._hClickTab.bind((0, _assertThisInitialized2["default"])(_this), index, tab),
           isSelected: index === selectedTabIndex,
           selectedStyle: selectedStyle
@@ -84,7 +85,10 @@ function (_Component) {
         var divStyle = index === selectedTabIndex ? S.TAB_SELECTED : S.NONE;
         return _react["default"].createElement("div", {
           style: divStyle,
-          key: 'a' + index
+          key: 'a' + index,
+          role: "tabpanel",
+          id: "tabpanel-" + index,
+          "aria-labelledby": "tab-" + index
         }, comp);
       });
     };

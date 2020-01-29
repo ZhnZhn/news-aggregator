@@ -107,7 +107,7 @@ class SettingsDialog extends Component {
              tabsStyle={S.TABS}
              selectedStyle={S.TAB_SELECTED}
           >
-             <A.Tab title="API Key">
+             <A.Tab title="API Keys">
                 <CardApiKeys
                   ref={this._refInput}
                   style={S.CARD_ROOT}

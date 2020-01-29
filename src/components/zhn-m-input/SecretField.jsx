@@ -24,6 +24,8 @@ const S = {
   }
 };
 
+const _crId = ({ name }) => name + '_sf';
+
 class TextField extends Component {
   static defaultProps = {
     name: 'pwd',
@@ -35,12 +37,15 @@ class TextField extends Component {
   constructor(props){
     super(props)
     this._wasEnter = false
-    this.isFocus = false;
-    const { name } = props;
-    this._id = name + '_sf'
+    this.isFocus = false
+    this._id = _crId(props)
     this.state = {
       value: ''
     }
+  }
+
+  componentWillUnmound() {
+    clearTimeout(this._clearId)
   }
 
   _hFocusInput = () => {
@@ -55,6 +60,15 @@ class TextField extends Component {
   _hInputChange = (event) => {
     this.setState({
       value: event.target.value.trim(),
+    })
+  }
+
+  _clearAttrValue = () => {
+    this._clearId = setTimeout(() => {
+      const _input = this._input;
+      if (_input && _input.hasAttribute('value')) {
+        _input.removeAttribute('value')
+      }
     })
   }
 
@@ -141,6 +155,10 @@ class TextField extends Component {
         </div>
       </div>
     );
+  }
+
+  componentDidUpdate() {
+    this._clearAttrValue()
   }
 
   getValue(){

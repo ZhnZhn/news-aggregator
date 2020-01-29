@@ -57,6 +57,7 @@ class TabPane extends Component {
        return children.map((tab, index) => {
           return React.cloneElement(tab, {
              key: index,
+             id: index,
              onClick: this._hClickTab.bind(this, index, tab),
              isSelected: (index === selectedTabIndex),
              selectedStyle
@@ -69,11 +70,17 @@ class TabPane extends Component {
   _renderComponents = () => {
       const { selectedTabIndex, components } = this.state;
       return components.map((comp, index) => {
-         const divStyle = (index === selectedTabIndex)
+         const divStyle = index === selectedTabIndex
             ? S.TAB_SELECTED
             : S.NONE;
           return (
-             <div style={divStyle} key={'a'+index}>
+             <div
+               style={divStyle}
+               key={'a'+index}
+               role="tabpanel"
+               id={`tabpanel-${index}`}
+               aria-labelledby={`tab-${index}`}
+             >
                 {comp}
              </div>
            );

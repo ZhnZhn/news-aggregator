@@ -3,6 +3,7 @@
       "caption": "Sport",
       "items": [
         { "id": "NS_BBC_SPORT" },
+        { "id": "NS_BLEARCHER_REPORT" },
         { "id": "NS_ESPN" },
         { "id": "NS_FOX_SPORTS" },
         { "id": "NS_FOUR_FOUR_TWO" },
@@ -17,13 +18,13 @@
         { "id": "NS_ASSOCIATED_PRESS" },
         { "id": "NS_AXIOS" },
         { "id": "NS_BBC_NEWS" },
+        { "id": "NS_CBC_NEWS" },
+        { "id": "NS_CBS_NEWS" },
         { "id": "NS_INDEPENDENT" },
         { "id": "NS_GOOGLE_NEWS" },
-        { "id": "NS_METRO" },
         { "id": "NS_NEW_YORK_MAGAZINE" },
         { "id": "NS_NEWSWEEK" },
         { "id": "NS_TIME" },
-        { "id": "NS_THE_TELEGRAPH" },
         { "id": "NS_REDDIT_R_ALL" },
         { "id": "NS_REUTERS" }
       ]
@@ -34,7 +35,7 @@
         { "id": "NS_BLOOMBERG" },
         { "id": "NS_BUSINESS_INSIDER" },
         { "id": "NS_CNBC" },
-        { "id": "NS_FINANCIAL_POST" },        
+        { "id": "NS_FINANCIAL_POST" },
         { "id": "NS_FORTUNE_500" },
         { "id": "NS_NEW_YORK_TIMES" },
         { "id": "NS_WALLSTREET_JOURNAL" }
@@ -75,6 +76,17 @@
       "dialogProps": {
         "caption": "BBC Sport",
         "source": "bbc-sport"
+      }
+    },
+    "NS_BLEARCHER_REPORT": {
+      "type": "NS_BLEARCHER_REPORT",
+      "menuTitle": "Blearcher Report",
+      "dialogType": "DialogType1",
+      "paneCaption": "BLEARCHER REPORT",
+      "paneId": "bleacher-report",
+      "dialogProps": {
+        "caption": "Blearcher Report",
+        "source": "bleacher-report"
       }
     },
     "NS_ESPN": {
@@ -164,6 +176,28 @@
       "dialogProps": {
         "caption": "BBC News",
         "source": "bbc-news"
+      }
+    },
+    "NS_CBC_NEWS": {
+      "type": "NS_CBC_NEWS",
+      "menuTitle": "CBC News",
+      "dialogType": "DialogType1",
+      "paneCaption":"CBC NEWS",
+      "paneId": "cbc-news",
+      "dialogProps": {
+        "caption": "CBC News",
+        "source": "cbc-news"
+      }
+    },
+    "NS_CBS_NEWS": {
+      "type": "NS_CBS_NEWS",
+      "menuTitle": "CBS News",
+      "dialogType": "DialogType1",
+      "paneCaption":"CBS NEWS",
+      "paneId": "cbs-news",
+      "dialogProps": {
+        "caption": "CBS News",
+        "source": "cbs-news"
       }
     },
     "NS_GOOGLE_NEWS": {
@@ -263,28 +297,6 @@
       "dialogProps": {
         "caption": "Independent",
         "source": "independent"
-      }
-    },
-    "NS_THE_TELEGRAPH": {
-      "type": "NS_THE_TELEGRAPH",
-      "menuTitle": "The Telegraph",
-      "dialogType": "DialogType1",
-      "paneCaption":"THE TELEGRAPH",
-      "paneId": "the-telegraph",
-      "dialogProps": {
-        "caption": "The Telegraph",
-        "source": "the-telegraph"
-      }
-    },
-    "NS_METRO": {
-      "type": "NS_METRO",
-      "menuTitle": "Metro",
-      "dialogType": "DialogType1",
-      "paneCaption":"METRO",
-      "paneId": "metro",
-      "dialogProps": {
-        "caption": "Metro",
-        "source": "metro"
       }
     },
 

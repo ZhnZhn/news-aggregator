@@ -138,7 +138,7 @@ function (_Component) {
       tabsStyle: S.TABS,
       selectedStyle: S.TAB_SELECTED
     }, _react["default"].createElement(_Comp["default"].Tab, {
-      title: "API Key"
+      title: "API Keys"
     }, _react["default"].createElement(_CardApiKeys["default"], {
       ref: this._refInput,
       style: S.CARD_ROOT,

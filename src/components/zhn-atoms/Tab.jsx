@@ -1,42 +1,35 @@
-import React, { Component } from 'react';
+import React from 'react';
 
+const CL = "tab";
 const S = {
-  LI : {
-    display : 'inline-block',
-    color : '#9e9e9e',
-    paddingLeft : 10,
-    paddingRight : 10,
-    paddingTop : 6,
-    paddingBottom : 6,
-    fontWeight : 'bold',
-    borderBottom : '3px solid #9e9e9e',
-    cursor : 'pointer'
-  },
-  SELECTED : {
-    color : '#434348',
+  BT : {
+    color: '#2f7ed8',
     borderBottom : '3px solid #2f7ed8'
+  },
+  TITLE: {
+    color: '#2f7ed8'
   }
 };
 
-class Tab extends Component {
-    render(){
-    const {
-            title,
-            isSelected, selectedStyle,
-            onClick
-          } = this.props;
-    const _selectedStyle = isSelected
-             ? { ...S.SELECTED, ...selectedStyle }
-             : null;
-    return (
-       <li
-          style={{ ...S.LI, ..._selectedStyle }}
-          onClick={onClick}
-       >
-          <span>{title}</span>
-       </li>
-    );
-  }
+const Tab = ({ id, title, isSelected, onClick }) => {
+  const _btStyle = isSelected ? S.BT : null
+  , _titleStyle = isSelected ? S.TITLE : null;
+  return (
+    <button
+       className={CL}
+       style={_btStyle}
+       id={`tab-${id}`}
+       role="tab"
+       aria-selected={isSelected}
+       aria-controls={`tabpanel-${id}`}
+       tabIndex="0"
+       onClick={onClick}
+    >
+       <span style={_titleStyle}>{title}</span>
+    </button>
+  );
 }
+
+
 
 export default Tab

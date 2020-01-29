@@ -36,6 +36,11 @@ var S = {
   }
 };
 
+var _crId = function _crId(_ref) {
+  var name = _ref.name;
+  return name + '_sf';
+};
+
 var TextField =
 /*#__PURE__*/
 function (_Component) {
@@ -61,6 +66,16 @@ function (_Component) {
     _this._hInputChange = function (event) {
       _this.setState({
         value: event.target.value.trim()
+      });
+    };
+
+    _this._clearAttrValue = function () {
+      _this._clearId = setTimeout(function () {
+        var _input = _this._input;
+
+        if (_input && _input.hasAttribute('value')) {
+          _input.removeAttribute('value');
+        }
       });
     };
 
@@ -94,8 +109,7 @@ function (_Component) {
 
     _this._wasEnter = false;
     _this.isFocus = false;
-    var name = props.name;
-    _this._id = name + '_sf';
+    _this._id = _crId(props);
     _this.state = {
       value: ''
     };
@@ -103,6 +117,10 @@ function (_Component) {
   }
 
   var _proto = TextField.prototype;
+
+  _proto.componentWillUnmound = function componentWillUnmound() {
+    clearTimeout(this._clearId);
+  };
 
   _proto.render = function render() {
     var _this$props = this.props,
@@ -151,6 +169,10 @@ function (_Component) {
     }), !isPassTest && _react["default"].createElement("div", {
       className: CL.INPUT_MSG_ERR
     }, errorMsg)));
+  };
+
+  _proto.componentDidUpdate = function componentDidUpdate() {
+    this._clearAttrValue();
   };
 
   _proto.getValue = function getValue() {
