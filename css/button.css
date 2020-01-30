@@ -10,14 +10,6 @@
   cursor: pointer;  
   outline: 0;
 }
-/*
-.tab > span {
-  display: inline-block;
-}
-.tab:focus > span:first-letter {
-  color: #2f7ed8;
-}
-*/
 .tab:focus > span {
   color: #81a5ce;
 }
@@ -74,21 +66,25 @@
   border-left-color: transparent;
   border-right-color: transparent; }
 
-.button-circle {
+.bt-circle {
   display: inline-block;
-  position: relative;
-  top: 4px;
+  color: #80c040;
+  width: 26px;
+  height: 26px;
+  line-height: 24px;
+  text-align: center;
   border-radius: 50%;
-  border: 2px solid gray;
-  width: 24px;
-  height: 24px;
-  padding: 0;
-  stroke: gray;
-  cursor: pointer; }
+  border: 2px solid #80c040;
+  cursor: pointer;
+  background-color: transparent;
+  transition: background-color 200ms ease-out;
+}
 
-.button-circle:hover {
-  border: 2px solid #a487d4;
-  stroke: #a487d4; }
+.bt-circle:hover,
+.bt-circle:focus {
+  background-color: rgba(0, 0, 0, 0.3);
+  outline: 0;
+}
 
 .svg-resize {
   width: 26px;
@@ -143,30 +139,19 @@
   border-top-color: transparent;
   border-radius: 100%; }
 
-button::-moz-focus-inner {
-  border: 0;
-  outline: 0; }
-
-.bt-twitter {
-  background-color: #1b95e0; }
-
-.bt-twitter:hover {
-  background-color: #0c7abf; }
-
-.bt-twitter span {
-  border-bottom: thin solid; }
-
-.bt-twitter:hover span {
-  border-bottom-width: medium; }
-
 .link {
   color: #009AE5;
   font-weight: bold;
-  border-bottom: thin solid;
-  text-decoration: none; }
+  padding: 3px 6px 3px 6px;
+  text-decoration: none; 
+  background-color: transparent;
+  transition: background-color 200ms ease-out;
+}
 
-.link:hover {
-  border-bottom-width: medium; }
+.link:hover,
+.link:focus {
+  background-color: rgba(0, 0, 0, 0.3);
+}
 
 .bt-raised {
   border: 10px;

@@ -44,6 +44,29 @@
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
+  .m-textfield__bt-clear {
+    display: inline-block;
+    position: absolute;
+    top: 22px;
+    right: 12px;    
+    color: #f44336;
+    width: 26px;
+    height: 26px;    
+    text-align: center;
+    font-weight: bold;
+    border-radius: 50%;
+    border: 2px solid #f44336;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 200ms ease-out;
+  }
+  .m-textfield__bt-clear:hover,
+  .m-textfield__bt-clear:focus {
+    background-color: rgba(0, 0, 0, 0.3);
+    outline: 0;
+  }
+
+
   .m-input__line {
     position: absolute;
     bottom: 12px;

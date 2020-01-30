@@ -7,13 +7,13 @@ exports["default"] = void 0;
 
 var _TextField = _interopRequireDefault(require("./TextField"));
 
-var _SecretField = _interopRequireDefault(require("./SecretField"));
+var _PasswordField = _interopRequireDefault(require("./PasswordField"));
 
 var _InputSelect = _interopRequireDefault(require("./InputSelect"));
 
 var A = {
   TextField: _TextField["default"],
-  SecretField: _SecretField["default"],
+  PasswordField: _PasswordField["default"],
   InputSelect: _InputSelect["default"]
 };
 var _default = A;

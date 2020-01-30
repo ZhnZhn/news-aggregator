@@ -136,7 +136,8 @@ function (_Component) {
     }, _react["default"].createElement(_Comp["default"].TabPane, {
       width: "100%",
       tabsStyle: S.TABS,
-      selectedStyle: S.TAB_SELECTED
+      selectedStyle: S.TAB_SELECTED,
+      isShow: isShow
     }, _react["default"].createElement(_Comp["default"].Tab, {
       title: "API Keys"
     }, _react["default"].createElement(_CardApiKeys["default"], {

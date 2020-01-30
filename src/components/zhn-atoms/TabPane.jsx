@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-const CL = "tabpane__tabs";
-
 const S = {
   UL: {
     listStyle: 'outside none none',
@@ -30,18 +28,8 @@ const _isFn = fn => typeof fn === 'function';
 
 class TabPane extends Component {
 
-  constructor(props){
-    super(props);
-
-    const components = props.children.map((tab, index) => {
-       return  React.cloneElement(tab.props.children, {
-          key: 'comp' + index
-        });
-    })
-    this.state = {
-      selectedTabIndex : 0,
-      components
-    }
+  state = {
+    selectedTabIndex: 0
   }
 
   _hClickTab = (index, tabEl) => {
@@ -52,27 +40,29 @@ class TabPane extends Component {
   }
 
   _renderTabs = (children) => {
-       const { selectedStyle } = this.props;
-       const { selectedTabIndex } = this.state;
-       return children.map((tab, index) => {
-          return React.cloneElement(tab, {
-             key: index,
-             id: index,
-             onClick: this._hClickTab.bind(this, index, tab),
-             isSelected: (index === selectedTabIndex),
-             selectedStyle
-           }
-         );
-       });
+      const { selectedStyle } = this.props
+      , { selectedTabIndex } = this.state;
+      return children.map((tab, index) => {
+        return React.cloneElement(tab, {
+            key: index,
+            id: index,
+            onClick: this._hClickTab.bind(this, index, tab),
+            isSelected: (index === selectedTabIndex),
+            selectedStyle
+          }
+        );
+      });
   }
 
 
   _renderComponents = () => {
-      const { selectedTabIndex, components } = this.state;
-      return components.map((comp, index) => {
-         const divStyle = index === selectedTabIndex
-            ? S.TAB_SELECTED
-            : S.NONE;
+      const { isShow, children } = this.props
+      , { selectedTabIndex } = this.state;
+      return children.map((tab, index) => {
+         const _isSelected = index === selectedTabIndex
+         , divStyle = _isSelected
+             ? S.TAB_SELECTED
+             : S.NONE;
           return (
              <div
                style={divStyle}
@@ -81,7 +71,11 @@ class TabPane extends Component {
                id={`tabpanel-${index}`}
                aria-labelledby={`tab-${index}`}
              >
-                {comp}
+                {React.cloneElement(tab.props.children, {
+                   key: 'comp' + index,
+                   isShow: isShow,
+                   isSelected: _isSelected
+                })}
              </div>
            );
       });
@@ -89,23 +83,20 @@ class TabPane extends Component {
 
   render(){
     const {
-            width, height,
-            tabsStyle,
-            children
-          } = this.props;
+      width, height,
+      tabsStyle,
+      children
+    } = this.props;
     return (
       <div style={{ width, height }}>
-        <ul
-          className={CL}
-          style={{...S.UL, ...tabsStyle }}
-        >
+        <div style={{...S.UL, ...tabsStyle }}>
            {this._renderTabs(children)}
-        </ul>
+        </div>
         <div style={S.TABS}>
            {this._renderComponents()}
         </div>
       </div>
-    )
+    );
   }
 
   getSelectedTabIndex() {

@@ -1,10 +1,10 @@
 import TextField from './TextField'
-import SecretField from './SecretField'
+import PasswordField from './PasswordField'
 import InputSelect from './InputSelect'
 
 const A = {
   TextField,
-  SecretField,
+  PasswordField,
   InputSelect
 };
 

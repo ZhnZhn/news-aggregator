@@ -2,18 +2,21 @@ import React from 'react'
 
 const S = {
   ROOT: {
-    marginTop: '16px',
-    marginLeft: '8px'
+    marginTop: 16,
+    marginLeft: 8
   },
   SPAN: {
     color: 'black'
   }
-}
+};
 
-const PoweredBy = ({ rootStyle, spanStyle, children }) =>
+const PoweredBy = ({ rootStyle, spanStyle, children }) => (
   <div style={{...S.ROOT, ...rootStyle}}>
-    <span style={{...S.SPAN, ...spanStyle}}>Powered by&nbsp;&nbsp;</span>
+    <span style={{...S.SPAN, ...spanStyle}}>
+        Powered by
+    </span>
       {children}
   </div>
+);
 
 export default PoweredBy

@@ -11,8 +11,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var S = {
   ROOT: {
-    marginTop: '16px',
-    marginLeft: '8px'
+    marginTop: 16,
+    marginLeft: 8
   },
   SPAN: {
     color: 'black'
@@ -27,7 +27,7 @@ var PoweredBy = function PoweredBy(_ref) {
     style: (0, _extends2["default"])({}, S.ROOT, {}, rootStyle)
   }, _react["default"].createElement("span", {
     style: (0, _extends2["default"])({}, S.SPAN, {}, spanStyle)
-  }, "Powered by\xA0\xA0"), children);
+  }, "Powered by"), children);
 };
 
 var _default = PoweredBy;

@@ -13,17 +13,27 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _has = _interopRequireDefault(require("../has"));
+
 var CL = {
   SELECT: 'm-select',
   LABEL: 'm-select__label',
   DIV: 'm-textfield-input__div',
   INPUT: 'm-textfield-input',
+  BT_CLEAR: 'm-textfield__bt-clear',
   INPUT_LINE: 'm-input__line',
   INPUT_MSG_ERR: 'm-input__msg-err'
 };
 var S = {
   LABEL_TO_INPUT: {
     transform: 'scale(1) translate(0px, -6px)'
+  },
+  BT_CLEAR: {
+    position: 'absolute',
+    top: 28,
+    right: 12,
+    color: '#2f7ed8',
+    fontWeight: 'bold'
   },
   LABEL_ON_ERROR: {
     color: '#f44336'
@@ -38,15 +48,15 @@ var S = {
 
 var _crId = function _crId(_ref) {
   var name = _ref.name;
-  return name + '_sf';
+  return name + '_' + Math.random().toString(36).substr(2, 6);
 };
 
-var TextField =
+var PasswordField =
 /*#__PURE__*/
 function (_Component) {
-  (0, _inheritsLoose2["default"])(TextField, _Component);
+  (0, _inheritsLoose2["default"])(PasswordField, _Component);
 
-  function TextField(props) {
+  function PasswordField(props) {
     var _this;
 
     _this = _Component.call(this, props) || this;
@@ -66,6 +76,12 @@ function (_Component) {
     _this._hInputChange = function (event) {
       _this.setState({
         value: event.target.value.trim()
+      });
+    };
+
+    _this._hClear = function () {
+      _this.setState({
+        value: ''
       });
     };
 
@@ -89,6 +105,7 @@ function (_Component) {
           value: ''
         });
       } else if (event.keyCode === 13) {
+        event.stopPropagation();
         event.preventDefault();
 
         _this.props.onEnter(event.target.value);
@@ -116,7 +133,7 @@ function (_Component) {
     return _this;
   }
 
-  var _proto = TextField.prototype;
+  var _proto = PasswordField.prototype;
 
   _proto.componentWillUnmound = function componentWillUnmound() {
     clearTimeout(this._clearId);
@@ -128,14 +145,13 @@ function (_Component) {
         caption = _this$props.caption,
         name = _this$props.name,
         maxLength = _this$props.maxLength,
-        _this$props$errorMsg = _this$props.errorMsg,
-        errorMsg = _this$props$errorMsg === void 0 ? '' : _this$props$errorMsg,
+        errorMsg = _this$props.errorMsg,
         onTest = _this$props.onTest,
         value = this.state.value,
-        isPassTest = onTest(value),
+        _isPassTest = onTest(value),
         _labelStyle = this._isValue() || this.isFocus ? null : S.LABEL_TO_INPUT,
-        _labelErrStyle = isPassTest ? null : S.LABEL_ON_ERROR,
-        _lineStyle = isPassTest ? this._wasEnter ? S.LINE_AFTER_ENTER : void 0 : S.LINE_ERROR;
+        _labelErrStyle = _isPassTest ? null : S.LABEL_ON_ERROR,
+        _lineStyle = _isPassTest ? this._wasEnter ? S.LINE_AFTER_ENTER : void 0 : S.LINE_ERROR;
 
     return _react["default"].createElement("div", {
       className: CL.SELECT,
@@ -163,10 +179,13 @@ function (_Component) {
       onKeyDown: this._hKeyDown,
       onFocus: this._hFocusInput,
       onBlur: this._hBlurInput
-    }), _react["default"].createElement("div", {
+    }), _has["default"].HAS_TOUCH && value && _react["default"].createElement("button", {
+      className: CL.BT_CLEAR,
+      onClick: this._hClear
+    }, "x"), _react["default"].createElement("div", {
       className: CL.INPUT_LINE,
       style: _lineStyle
-    }), !isPassTest && _react["default"].createElement("div", {
+    }), !_isPassTest && _react["default"].createElement("div", {
       className: CL.INPUT_MSG_ERR
     }, errorMsg)));
   };
@@ -175,21 +194,33 @@ function (_Component) {
     this._clearAttrValue();
   };
 
+  _proto.setWasEnter = function setWasEnter() {
+    this._wasEnter = true;
+    this.forceUpdate(this._clearWasEnter);
+  };
+
   _proto.getValue = function getValue() {
     return this._input && this._input.value;
   };
 
-  return TextField;
+  _proto.clear = function clear() {
+    this.setState({
+      value: ''
+    }, this.setWasEnter);
+  };
+
+  return PasswordField;
 }(_react.Component);
 
-TextField.defaultProps = {
+PasswordField.defaultProps = {
   name: 'pwd',
   maxLength: "32",
+  errorMsg: '',
   onTest: function onTest() {
     return true;
   },
   onEnter: function onEnter() {}
 };
-var _default = TextField;
+var _default = PasswordField;
 exports["default"] = _default;
-//# sourceMappingURL=SecretField.js.map
+//# sourceMappingURL=PasswordField.js.map

@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 
+import has from '../has'
+
 const CL = {
   SELECT: 'm-select',
   LABEL: 'm-select__label',
   DIV: 'm-textfield-input__div',
   INPUT: 'm-textfield-input',
+  BT_CLEAR: 'm-textfield__bt-clear',
   INPUT_LINE: 'm-input__line',
   INPUT_MSG_ERR: 'm-input__msg-err'
 };
@@ -12,6 +15,13 @@ const CL = {
 const S = {
   LABEL_TO_INPUT: {
      transform: 'scale(1) translate(0px, -6px)'
+  },
+  BT_CLEAR: {
+    position: 'absolute',
+    top: 28,
+    right: 12,
+    color: '#2f7ed8',
+    fontWeight: 'bold'
   },
   LABEL_ON_ERROR: {
     color: '#f44336'
@@ -24,12 +34,15 @@ const S = {
   }
 };
 
-const _crId = ({ name }) => name + '_sf';
+const _crId = ({ name }) => name
+  + '_'
+  + Math.random().toString(36).substr(2, 6);
 
-class TextField extends Component {
+class PasswordField extends Component {
   static defaultProps = {
     name: 'pwd',
     maxLength: "32",
+    errorMsg: '',
     onTest: () => true,
     onEnter: () => {}
   }
@@ -62,6 +75,9 @@ class TextField extends Component {
       value: event.target.value.trim(),
     })
   }
+  _hClear = () => {
+    this.setState({ value: '' })
+  }
 
   _clearAttrValue = () => {
     this._clearId = setTimeout(() => {
@@ -80,6 +96,7 @@ class TextField extends Component {
    if (event.keyCode === 46){
      this.setState({ value: '' })
    } else if (event.keyCode === 13) {
+     event.stopPropagation()
      event.preventDefault()
      this.props.onEnter(event.target.value)
      this._wasEnter = true
@@ -98,18 +115,18 @@ class TextField extends Component {
     const {
         rootStyle, caption,
         name,
-        maxLength, errorMsg='',
+        maxLength, errorMsg,
         onTest
       } = this.props
     , { value } = this.state
-    , isPassTest = onTest(value)
+    , _isPassTest = onTest(value)
     , _labelStyle = (this._isValue() || this.isFocus)
         ? null
         : S.LABEL_TO_INPUT
-    , _labelErrStyle = isPassTest
+    , _labelErrStyle = _isPassTest
         ? null
         : S.LABEL_ON_ERROR
-    , _lineStyle = isPassTest
+    , _lineStyle = _isPassTest
         ? this._wasEnter
              ? S.LINE_AFTER_ENTER
              : void 0
@@ -146,9 +163,15 @@ class TextField extends Component {
             onFocus={this._hFocusInput}
             onBlur={this._hBlurInput}
           />
+          {
+            has.HAS_TOUCH && value && <button
+             className={CL.BT_CLEAR}
+             onClick={this._hClear}
+            >x</button>
+          }
           <div className={CL.INPUT_LINE} style={_lineStyle} />
           {
-             !isPassTest && <div className={CL.INPUT_MSG_ERR}>
+             !_isPassTest && <div className={CL.INPUT_MSG_ERR}>
                  {errorMsg}
                </div>
           }
@@ -161,9 +184,18 @@ class TextField extends Component {
     this._clearAttrValue()
   }
 
+  setWasEnter(){
+    this._wasEnter = true
+    this.forceUpdate(this._clearWasEnter)
+  }
+
   getValue(){
     return this._input && this._input.value;
   }
+
+  clear(){
+    this.setState({ value: ''}, this.setWasEnter)
+  }
 }
 
-export default TextField
+export default PasswordField

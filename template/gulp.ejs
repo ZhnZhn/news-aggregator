@@ -46,7 +46,7 @@
   </script>
 
   <!-- inject:css -->
-  <link rel="stylesheet" href="/css/app-5153831821.min.css">
+  <link rel="stylesheet" href="/css/app-8f0d8f78b2.min.css">
   <!-- endinject  -->
 
 </head>
@@ -79,11 +79,11 @@
  for (var index in htmlWebpackPlugin.files.js ) {
     var fileName = htmlWebpackPlugin.files.js[index];
     if (fileName.indexOf('manifest_') !== -1){ %>
-      <script src="<%=fileName %>" ></script>
+      <script src="<%=fileName %>"></script>
     <% } else if (fileName.indexOf('lib_') !== -1) { %>
-      <script src="<%=fileName %>" ></script>
+      <script src="<%=fileName %>"></script>
     <% } else if (fileName.indexOf('app_') !== -1) { %>
-      <script src="<%=fileName %>" ></script>
+      <script src="<%=fileName %>"></script>
     <% }
  } %>
 

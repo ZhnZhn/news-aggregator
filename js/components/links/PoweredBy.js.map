@@ -1,1 +1,20 @@
-{"version":3,"sources":["../../../src/components/links/PoweredBy.jsx"],"names":["S","ROOT","marginTop","marginLeft","SPAN","color","PoweredBy","rootStyle","spanStyle","children"],"mappings":";;;;;;;;;AAAA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAE;AACJC,IAAAA,SAAS,EAAE,MADP;AAEJC,IAAAA,UAAU,EAAE;AAFR,GADE;AAKRC,EAAAA,IAAI,EAAE;AACJC,IAAAA,KAAK,EAAE;AADH;AALE,CAAV;;AAUA,IAAMC,SAAS,GAAG,SAAZA,SAAY;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,SAAd,QAAcA,SAAd;AAAA,MAAyBC,QAAzB,QAAyBA,QAAzB;AAAA,SAChB;AAAK,IAAA,KAAK,gCAAMT,CAAC,CAACC,IAAR,MAAiBM,SAAjB;AAAV,KACE;AAAM,IAAA,KAAK,gCAAMP,CAAC,CAACI,IAAR,MAAiBI,SAAjB;AAAX,0BADF,EAEKC,QAFL,CADgB;AAAA,CAAlB;;eAMeH,S","sourcesContent":["import React from 'react'\r\n\r\nconst S = {\r\n  ROOT: {\r\n    marginTop: '16px',\r\n    marginLeft: '8px'\r\n  },\r\n  SPAN: {\r\n    color: 'black'\r\n  }\r\n}\r\n\r\nconst PoweredBy = ({ rootStyle, spanStyle, children }) =>\r\n  <div style={{...S.ROOT, ...rootStyle}}>\r\n    <span style={{...S.SPAN, ...spanStyle}}>Powered by&nbsp;&nbsp;</span>\r\n      {children}\r\n  </div>\r\n\r\nexport default PoweredBy\r\n"],"file":"PoweredBy.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/links/PoweredBy.js"
+ ],
+ "file": "../../../src/components/links/PoweredBy.js",
+ "names": [
+  "S",
+  "ROOT",
+  "marginTop",
+  "marginLeft",
+  "SPAN",
+  "color",
+  "PoweredBy",
+  "rootStyle",
+  "spanStyle",
+  "children"
+ ],
+ "mappings": ";;;;;;;;;AAAA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAE;AACJC,IAAAA,SAAS,EAAE,EADP;AAEJC,IAAAA,UAAU,EAAE;AAFR,GADE;AAKRC,EAAAA,IAAI,EAAE;AACJC,IAAAA,KAAK,EAAE;AADH;AALE,CAAV;;AAUA,IAAMC,SAAS,GAAG,SAAZA,SAAY;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,SAAd,QAAcA,SAAd;AAAA,MAAyBC,QAAzB,QAAyBA,QAAzB;AAAA,SAChB;AAAK,IAAA,KAAK,gCAAMT,CAAC,CAACC,IAAR,MAAiBM,SAAjB;AAAV,KACE;AAAM,IAAA,KAAK,gCAAMP,CAAC,CAACI,IAAR,MAAiBI,SAAjB;AAAX,kBADF,EAIKC,QAJL,CADgB;AAAA,CAAlB;;eASeH,S"
+}

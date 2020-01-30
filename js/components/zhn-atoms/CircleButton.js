@@ -5,39 +5,23 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
 var _react = _interopRequireDefault(require("react"));
 
-var CL_NOT_SELECTED = 'not-selected';
-var S = {
-  ROOT: {
-    display: 'inline-block',
-    color: '#80c040',
-    border: '2px solid #80c040',
-    borderRadius: '50%',
-    lineHeight: '24px',
-    width: 26,
-    height: 26,
-    textAlign: 'center',
-    cursor: 'pointer'
-  }
-};
+var CL_BT = 'bt-circle not-selected';
 
-var CircleButton = function CircleButton(props) {
-  var _props$caption = props.caption,
-      caption = _props$caption === void 0 ? '' : _props$caption,
-      className = props.className,
-      style = props.style,
-      title = props.title,
-      isWithoutDefault = props.isWithoutDefault,
-      onClick = props.onClick,
-      _className = className ? className + " " + CL_NOT_SELECTED : CL_NOT_SELECTED,
-      _style = isWithoutDefault ? style : (0, _extends2["default"])({}, S.ROOT, {}, style);
+var CircleButton = function CircleButton(_ref) {
+  var _ref$caption = _ref.caption,
+      caption = _ref$caption === void 0 ? '' : _ref$caption,
+      title = _ref.title,
+      className = _ref.className,
+      style = _ref.style,
+      onClick = _ref.onClick;
+
+  var _className = className ? CL_BT + " " + className : CL_BT;
 
   return _react["default"].createElement("button", {
     className: _className,
-    style: _style,
+    style: style,
     title: title,
     onClick: onClick
   }, caption);
