@@ -6,7 +6,6 @@
   float: right;
   margin-right: 10px;
   cursor: pointer;
-
   -webkit-transition: -webkit-transform 0.3s ease-out;
   -ms-transition: -ms-transform 0.3s ease-out;
   transition: transform 0.3s ease-out;

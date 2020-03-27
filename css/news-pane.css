@@ -1,0 +1,16 @@
+.news-pane {
+  position: relative;
+  background-color: #4d4d4d;
+  padding: 0 0 3px 0;
+  height: calc(100vh - 71px);
+  min-height: 500px;
+  margin-left: 16px;
+  border-radius: 4px;
+  box-shadow: 1px 4px 6px 1px rgba(0,0,0,0.6);
+  overflow: hidden;
+}
+@media screen and (max-width: 600px) {
+  .news-pane {
+     margin-left: 8px;
+  }
+}

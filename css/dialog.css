@@ -1,4 +1,5 @@
 .dialog:focus {
-  /*outline: -webkit-focus-ring-color auto 5px;*/
+  /* outline: -webkit-focus-ring-color auto 5px; */
+
   outline: greenyellow auto 2px;
 }

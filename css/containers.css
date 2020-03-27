@@ -7,8 +7,8 @@
 }
 
 .hrz-container {
-  display : flex;
-  flex-direction : row;
+  display: flex;
+  flex-direction: row;
   flex-shrink: 0;
 }
 
@@ -24,13 +24,14 @@
   overflow-y: hidden;
   opacity: 1;
   background: rgba(0,0,0, 0.35) none repeat scroll 0% 0%;
-  outline: 0px none;
+  outline: 0 none;
 }
-
 
 .popup-menu {
   position: absolute;
-  /*background-color: rgba(77, 77, 77, 1);*/
+
+  /* background-color: rgba(77, 77, 77, 1); */
+
   background-color: inherit;
   border-bottom: 4px solid #80c040;
   border-radius: 5px;
@@ -41,5 +42,6 @@
   top: 36px;
   left: 8px;
   z-index: 2000;
-  /*border: 2px solid rgb(27, 40, 54);*/
+
+  /* border: 2px solid rgb(27, 40, 54); */
 }

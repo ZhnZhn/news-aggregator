@@ -3,12 +3,12 @@
   outline: 5px auto -webkit-focus-ring-color;
 }
 
-.gap-right:before {
+.gap-right::before {
    content: '';
    position: absolute;
    right: 0;
    top: 0;
    width: 38px;
-   height: 100%;   
+   height: 100%;
    background: inherit;
 }
