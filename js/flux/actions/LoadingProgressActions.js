@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = exports.TYPES = void 0;
 
-var _reflux = _interopRequireDefault(require("reflux"));
+var _refluxCore = _interopRequireDefault(require("reflux-core"));
 
 var _Reflux$createActions;
 
@@ -16,7 +16,7 @@ var TYPES = {
 };
 exports.TYPES = TYPES;
 
-var LoadingProgressActions = _reflux["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[TYPES.LOADING] = {}, _Reflux$createActions[TYPES.LOADING_COMPLETE] = {}, _Reflux$createActions[TYPES.LOADING_FAILED] = {}, _Reflux$createActions));
+var LoadingProgressActions = _refluxCore["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[TYPES.LOADING] = {}, _Reflux$createActions[TYPES.LOADING_COMPLETE] = {}, _Reflux$createActions[TYPES.LOADING_FAILED] = {}, _Reflux$createActions));
 
 var _default = LoadingProgressActions;
 exports["default"] = _default;

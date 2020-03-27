@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = exports.TYPES = void 0;
 
-var _reflux = _interopRequireDefault(require("reflux"));
+var _refluxCore = _interopRequireDefault(require("reflux-core"));
 
 var _RouterApiConf = _interopRequireDefault(require("../logic/RouterApiConf"));
 
@@ -23,7 +23,7 @@ var TYPES = {
 };
 exports.TYPES = TYPES;
 
-var NewsActions = _reflux["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[TYPES.LOAD_NEWS] = {
+var NewsActions = _refluxCore["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[TYPES.LOAD_NEWS] = {
   children: ['completed', 'failed']
 }, _Reflux$createActions[TYPES.REMOVE_NEWS] = {}, _Reflux$createActions[TYPES.REMOVE_ALL_NEWS] = {}, _Reflux$createActions[TYPES.REMOVE_UNDER_NEWS] = {}, _Reflux$createActions));
 

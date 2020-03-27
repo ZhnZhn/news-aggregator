@@ -1,4 +1,4 @@
-import Reflux from 'reflux'
+import Reflux from 'reflux-core'
 
 export const TYPES = {
   SHOW_NEWS_DIALOG: 'showNewsDialog',

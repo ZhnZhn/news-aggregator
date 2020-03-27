@@ -1,4 +1,4 @@
-import Reflux from 'reflux'
+import Reflux from 'reflux-core'
 
 import RouterApiConf from '../logic/RouterApiConf'
 import loadNews from '../logic/loadNews'
@@ -26,7 +26,7 @@ NewsActions[TYPES.LOAD_NEWS].listen(function(option={}){
   const { loadId='N' } = option
       , _conf = RouterApiConf.getApiConf(loadId)
       , { apiKey, adapter, api } = _conf;
-  if (apiKey){    
+  if (apiKey){
     Object.assign(option, { apiKey, adapter, api })
     loadNews(option, this.completed, this.failed)
   } else {

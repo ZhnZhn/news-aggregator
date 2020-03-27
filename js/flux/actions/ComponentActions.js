@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = exports.TYPES = void 0;
 
-var _reflux = _interopRequireDefault(require("reflux"));
+var _refluxCore = _interopRequireDefault(require("reflux-core"));
 
 var _Reflux$createActions;
 
@@ -22,7 +22,7 @@ var TYPES = {
 };
 exports.TYPES = TYPES;
 
-var Actions = _reflux["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[TYPES.SHOW_NEWS_DIALOG] = {}, _Reflux$createActions[TYPES.SHOW_MODAL_DIALOG] = {}, _Reflux$createActions[TYPES.SHOW_NEWS_PANE] = {}, _Reflux$createActions[TYPES.TOGGLE_NEWS_PANE] = {}, _Reflux$createActions[TYPES.CLOSE_NEWS_PANE] = {}, _Reflux$createActions[TYPES.SHOW_ABOUT] = {}, _Reflux$createActions[TYPES.SHOW_BROWSER] = {}, _Reflux$createActions[TYPES.UPDATE_BROWSER] = {}, _Reflux$createActions[TYPES.CHANGE_THEME] = {}, _Reflux$createActions));
+var Actions = _refluxCore["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[TYPES.SHOW_NEWS_DIALOG] = {}, _Reflux$createActions[TYPES.SHOW_MODAL_DIALOG] = {}, _Reflux$createActions[TYPES.SHOW_NEWS_PANE] = {}, _Reflux$createActions[TYPES.TOGGLE_NEWS_PANE] = {}, _Reflux$createActions[TYPES.CLOSE_NEWS_PANE] = {}, _Reflux$createActions[TYPES.SHOW_ABOUT] = {}, _Reflux$createActions[TYPES.SHOW_BROWSER] = {}, _Reflux$createActions[TYPES.UPDATE_BROWSER] = {}, _Reflux$createActions[TYPES.CHANGE_THEME] = {}, _Reflux$createActions));
 
 var _default = Actions;
 exports["default"] = _default;

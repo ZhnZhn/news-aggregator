@@ -1,4 +1,4 @@
-import Reflux from 'reflux'
+import Reflux from 'reflux-core'
 
 import ComponentActions from '../actions/ComponentActions'
 import NewsActions from '../actions/NewsActions'
