@@ -21,16 +21,14 @@ var ProgressLine =
 function (_Component) {
   (0, _inheritsLoose2["default"])(ProgressLine, _Component);
 
-  /*
-  static propTypes = {
-    color: PropTypes.string,
-    height: PropTypes.number
-  }
-  */
-  function ProgressLine(props) {
+  function ProgressLine() {
     var _this;
 
-    _this = _Component.call(this, props) || this;
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
     _this.wasCompleted = false;
     _this.idCompleted = null;
     _this.wasOpacied = false;
@@ -72,8 +70,7 @@ function (_Component) {
   _proto.render = function render() {
     var _this$props = this.props,
         className = _this$props.className,
-        color = _this$props.color,
-        height = _this$props.height;
+        color = _this$props.color;
 
     var _style;
 
@@ -81,8 +78,7 @@ function (_Component) {
       _style = {
         backgroundColor: color,
         width: 0,
-        opacity: 1,
-        height: height
+        opacity: 1
       };
       this.wasOpacied = false;
     } else if (this.wasCompleted) {
@@ -90,8 +86,7 @@ function (_Component) {
         backgroundColor: color,
         width: '100%',
         opacity: 0,
-        transition: TRANSITION.OPACITY,
-        height: height
+        transition: TRANSITION.OPACITY
       };
       this.wasCompleted = false;
       this.wasOpacied = true;
@@ -109,8 +104,7 @@ function (_Component) {
         backgroundColor: color,
         opacity: 1,
         width: completed + '%',
-        transition: TRANSITION.WIDTH,
-        height: height
+        transition: TRANSITION.WIDTH
       };
     }
 
@@ -125,8 +119,7 @@ function (_Component) {
 
 ProgressLine.defaultProps = {
   className: 'progress-line',
-  color: '#2f7ed8',
-  height: 3
+  color: '#2f7ed8'
 };
 var _default = ProgressLine;
 exports["default"] = _default;

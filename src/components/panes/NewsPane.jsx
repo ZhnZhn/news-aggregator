@@ -13,23 +13,12 @@ const CHILD_MARGIN = 36
 , RESIZE_MAX_WIDTH = 1200
 , RESIZE_DELTA = 10
 , CL = {
+  NEWS_PANE: "news-pane",
   SHOW_POPUP: "show-popup",
   MENU_MORE: "popup-menu items__menu-more"
 };
 
-const S = {
-  ROOT_DIV : {
-    backgroundColor: '#4d4d4d',
-    padding : '0px 0px 3px 0px',
-    position: 'relative',
-    borderRadius: 4,
-    height: 'calc(100vh - 71px)',
-    minHeight: 500,
-    marginLeft: 16,
-    boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
-    overflowY: 'hidden',
-    overflowX : 'hidden'
-  },
+const S = {  
   BT_REMOVE: {
     position: 'relative',
     top: -3,
@@ -181,17 +170,16 @@ class NewsPane extends Component {
           , _styleIsShow = isShow
                ? S.INLINE_BLOCK
                : S.NONE
-         , _classIsShow = isShow
-               ? CL.SHOW_POPUP
-               : void 0;
+         , _className = isShow
+             ? `${CL.NEWS_PANE} ${CL.SHOW_POPUP}`
+             : CL.NEWS_PANE;
 
      return(
         <div
            ref={this._refRootDiv}
-           className={_classIsShow}
+           className={_className}
            style={{
              ...this._widthStyle,
-             ...S.ROOT_DIV,
              ...TS.PANE_ROOT,
              ..._styleIsShow
            }}

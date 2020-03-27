@@ -15,18 +15,14 @@ class ProgressLine extends Component {
   */
   static defaultProps = {
     className: 'progress-line',
-    color: '#2f7ed8',
-    height: 3
+    color: '#2f7ed8'
   }
 
-  constructor(props){
-    super(props)
-    this.wasCompleted = false;
-    this.idCompleted = null;
-    this.wasOpacied = false;
-    this.idOpacied = null;
-    this.state = {}
-  }
+  wasCompleted = false;
+  idCompleted = null;
+  wasOpacied = false;
+  idOpacied = null;
+  state = {}
 
   componentWillUnmount(){
     if (this.idCompleted){
@@ -52,18 +48,14 @@ class ProgressLine extends Component {
   }
 
   render(){
-    const {
-      className,
-      color, height
-    } = this.props;
+    const { className, color } = this.props;
     let _style;
 
     if (this.wasOpacied) {
       _style = {
           backgroundColor: color,
           width: 0,
-          opacity : 1,
-          height: height
+          opacity : 1
       };
       this.wasOpacied = false;
     } else if (this.wasCompleted) {
@@ -71,8 +63,7 @@ class ProgressLine extends Component {
           backgroundColor: color,
           width: '100%',
           opacity : 0,
-          transition: TRANSITION.OPACITY,
-          height: height
+          transition: TRANSITION.OPACITY
       };
       this.wasCompleted = false;
       this.wasOpacied = true;
@@ -89,8 +80,7 @@ class ProgressLine extends Component {
          backgroundColor: color,
          opacity: 1,
          width: completed + '%',
-         transition: TRANSITION.WIDTH,
-         height: height
+         transition: TRANSITION.WIDTH
        };
     }
 

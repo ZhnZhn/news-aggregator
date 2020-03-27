@@ -1,1 +1,34 @@
-{"version":3,"sources":["../../../src/components/header/LoadingProgress.jsx"],"names":["COLOR","LOADING","FAILED","LoadingProgress","state","completed","color","_onStore","actionType","ACTIONS","props","setState","LOADING_COMPLETE","LOADING_FAILED","componentDidMount","unsubscribe","store","listenLoadingProgress","componentWillUnmount","shouldComponentUpdate","nextProps","nextState","render","Component"],"mappings":";;;;;;;;;;;AAAA;;AAEA;;AAEA,IAAMA,KAAK,GAAG;AACZC,EAAAA,OAAO,EAAG,SADE;AAEZC,EAAAA,MAAM,EAAG;AAFG,CAAd;;IAKMC,e;;;;;;;;;;;;;UAEJC,K,GAAQ;AACNC,MAAAA,SAAS,EAAG,CADN;AAENC,MAAAA,KAAK,EAAGN,KAAK,CAACC;AAFR,K;;UAqBRM,Q,GAAW,UAACC,UAAD,EAAgB;AAAA,UACfC,OADe,GACH,MAAKC,KADF,CACfD,OADe;;AAEvB,UAAID,UAAU,KAAKC,OAAO,CAACR,OAA3B,EAAmC;AACjC,cAAKU,QAAL,CAAc;AAAEN,UAAAA,SAAS,EAAE,EAAb;AAAiBC,UAAAA,KAAK,EAAEN,KAAK,CAACC;AAA9B,SAAd;AACD,OAFD,MAEO,IAAIO,UAAU,KAAKC,OAAO,CAACG,gBAA3B,EAA4C;AACjD,cAAKD,QAAL,CAAc;AAAEN,UAAAA,SAAS,EAAE,GAAb;AAAkBC,UAAAA,KAAK,EAAEN,KAAK,CAACC;AAA/B,SAAd;AACD,OAFM,MAEA,IAAIO,UAAU,KAAKC,OAAO,CAACI,cAA3B,EAA0C;AAC/C,cAAKF,QAAL,CAAc;AAAEN,UAAAA,SAAS,EAAE,GAAb;AAAkBC,UAAAA,KAAK,EAAEN,KAAK,CAACE;AAA/B,SAAd;AACD;AACJ,K;;;;;;;SAzBDY,iB,GAAA,6BAAmB;AACjB,SAAKC,WAAL,GAAmB,KAAKL,KAAL,CAAWM,KAAX,CAAiBC,qBAAjB,CAAuC,KAAKV,QAA5C,CAAnB;AACD,G;;SAEDW,oB,GAAA,gCAAsB;AACpB,SAAKH,WAAL;AACD,G;;SAGDI,qB,GAAA,+BAAsBC,SAAtB,EAAiCC,SAAjC,EAA2C;AACzC,QAAI,KAAKX,KAAL,KAAeU,SAAnB,EAA6B;AAC3B,aAAO,KAAP;AACD;;AACD,WAAO,IAAP;AACD,G;;SAaDE,M,GAAA,kBAAQ;AAAA,sBACuB,KAAKlB,KAD5B;AAAA,QACEC,SADF,eACEA,SADF;AAAA,QACaC,KADb,eACaA,KADb;AAEN,WACE,gCAAC,wBAAD;AACG,MAAA,MAAM,EAAE,CADX;AAEG,MAAA,KAAK,EAAEA,KAFV;AAGG,MAAA,SAAS,EAAED;AAHd,MADF;AAOD,G;;;EA3C2BkB,gB;;eA8CfpB,e","sourcesContent":["import React, { Component } from 'react'\r\n\r\nimport ProgressLine from '../zhn-atoms/ProgressLine'\r\n\r\nconst COLOR = {\r\n  LOADING : '#2f7ed8',\r\n  FAILED : 'rgb(237, 88, 19)'\r\n};\r\n\r\nclass LoadingProgress extends Component {\r\n\r\n  state = {\r\n    completed : 0,\r\n    color : COLOR.LOADING\r\n  }\r\n\r\n  componentDidMount(){\r\n    this.unsubscribe = this.props.store.listenLoadingProgress(this._onStore)\r\n  }\r\n\r\n  componentWillUnmount(){\r\n    this.unsubscribe()\r\n  }\r\n\r\n\r\n  shouldComponentUpdate(nextProps, nextState){\r\n    if (this.props !== nextProps){\r\n      return false;\r\n    }\r\n    return true;\r\n  }\r\n\r\n  _onStore = (actionType) => {\r\n      const { ACTIONS } = this.props;\r\n      if (actionType === ACTIONS.LOADING){\r\n        this.setState({ completed: 35, color: COLOR.LOADING })\r\n      } else if (actionType === ACTIONS.LOADING_COMPLETE){\r\n        this.setState({ completed: 100, color: COLOR.LOADING })\r\n      } else if (actionType === ACTIONS.LOADING_FAILED){\r\n        this.setState({ completed: 100, color: COLOR.FAILED })\r\n      }\r\n  }\r\n\r\n  render(){\r\n    const { completed, color } = this.state;\r\n    return (\r\n      <ProgressLine\r\n         height={3}\r\n         color={color}\r\n         completed={completed}\r\n      />\r\n    );\r\n  }\r\n}\r\n\r\nexport default LoadingProgress\r\n"],"file":"LoadingProgress.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/header/LoadingProgress.js"
+ ],
+ "file": "../../../src/components/header/LoadingProgress.js",
+ "names": [
+  "COLOR",
+  "LOADING",
+  "FAILED",
+  "LoadingProgress",
+  "state",
+  "completed",
+  "color",
+  "_onStore",
+  "actionType",
+  "ACTIONS",
+  "props",
+  "setState",
+  "LOADING_COMPLETE",
+  "LOADING_FAILED",
+  "componentDidMount",
+  "unsubscribe",
+  "store",
+  "listenLoadingProgress",
+  "componentWillUnmount",
+  "shouldComponentUpdate",
+  "nextProps",
+  "nextState",
+  "render",
+  "Component"
+ ],
+ "mappings": ";;;;;;;;;;;AAAA;;AAEA;;AAEA,IAAMA,KAAK,GAAG;AACZC,EAAAA,OAAO,EAAG,SADE;AAEZC,EAAAA,MAAM,EAAG;AAFG,CAAd;;IAKMC,e;;;;;;;;;;;;;UAEJC,K,GAAQ;AACNC,MAAAA,SAAS,EAAG,CADN;AAENC,MAAAA,KAAK,EAAGN,KAAK,CAACC;AAFR,K;;UAqBRM,Q,GAAW,UAACC,UAAD,EAAgB;AAAA,UACfC,OADe,GACH,MAAKC,KADF,CACfD,OADe;;AAEvB,UAAID,UAAU,KAAKC,OAAO,CAACR,OAA3B,EAAmC;AACjC,cAAKU,QAAL,CAAc;AAAEN,UAAAA,SAAS,EAAE,EAAb;AAAiBC,UAAAA,KAAK,EAAEN,KAAK,CAACC;AAA9B,SAAd;AACD,OAFD,MAEO,IAAIO,UAAU,KAAKC,OAAO,CAACG,gBAA3B,EAA4C;AACjD,cAAKD,QAAL,CAAc;AAAEN,UAAAA,SAAS,EAAE,GAAb;AAAkBC,UAAAA,KAAK,EAAEN,KAAK,CAACC;AAA/B,SAAd;AACD,OAFM,MAEA,IAAIO,UAAU,KAAKC,OAAO,CAACI,cAA3B,EAA0C;AAC/C,cAAKF,QAAL,CAAc;AAAEN,UAAAA,SAAS,EAAE,GAAb;AAAkBC,UAAAA,KAAK,EAAEN,KAAK,CAACE;AAA/B,SAAd;AACD;AACJ,K;;;;;;;SAzBDY,iB,GAAA,6BAAmB;AACjB,SAAKC,WAAL,GAAmB,KAAKL,KAAL,CAAWM,KAAX,CAAiBC,qBAAjB,CAAuC,KAAKV,QAA5C,CAAnB;AACD,G;;SAEDW,oB,GAAA,gCAAsB;AACpB,SAAKH,WAAL;AACD,G;;SAGDI,qB,GAAA,+BAAsBC,SAAtB,EAAiCC,SAAjC,EAA2C;AACzC,QAAI,KAAKX,KAAL,KAAeU,SAAnB,EAA6B;AAC3B,aAAO,KAAP;AACD;;AACD,WAAO,IAAP;AACD,G;;SAaDE,M,GAAA,kBAAQ;AAAA,sBACuB,KAAKlB,KAD5B;AAAA,QACEC,SADF,eACEA,SADF;AAAA,QACaC,KADb,eACaA,KADb;AAEN,WACE,gCAAC,wBAAD;AACG,MAAA,KAAK,EAAEA,KADV;AAEG,MAAA,SAAS,EAAED;AAFd,MADF;AAMD,G;;;EA1C2BkB,gB;;eA6CfpB,e"
+}

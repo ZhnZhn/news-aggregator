@@ -15,7 +15,7 @@ var _ProgressLine = _interopRequireDefault(require("../zhn-atoms/ProgressLine"))
 
 var COLOR = {
   LOADING: '#2f7ed8',
-  FAILED: 'rgb(237, 88, 19)'
+  FAILED: '#ed5813'
 };
 
 var LoadingProgress =
@@ -83,7 +83,6 @@ function (_Component) {
         completed = _this$state.completed,
         color = _this$state.color;
     return _react["default"].createElement(_ProgressLine["default"], {
-      height: 3,
       color: color,
       completed: completed
     });
