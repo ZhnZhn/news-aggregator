@@ -56,9 +56,9 @@
     "dependencies": {
       "@babel/runtime": "npm:@babel/runtime@^7.7.6",
       "interactjs": "npm:interactjs@1.3.4",
-      "nanoid": "npm:nanoid@^2.1.6",
-      "react": "npm:react@^16.12.0",
-      "react-dom": "npm:react-dom@^16.12.0",
+      "nanoid": "npm:nanoid@2.1.7",
+      "react": "npm:react@^16.13.1",
+      "react-dom": "npm:react-dom@^16.13.1",
       "reflux-core": "npm:reflux-core@^1.0.0"
     },
     "devDependencies": {
@@ -71,8 +71,8 @@
     "@babel/runtime": "^7.7.6",
     "interactjs": "^1.3.4",
     "nanoid": "^2.1.7",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "reflux-core": "^1.0.0"
   }
 }

@@ -11,7 +11,7 @@ module.exports = {
      lib: [
             "react", "react-dom",
             "interactjs",         
-            "reflux", "nanoid",                                        
+            "reflux-core", "nanoid",                                        
           ]
   },
   output: {
