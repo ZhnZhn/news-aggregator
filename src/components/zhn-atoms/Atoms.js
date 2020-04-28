@@ -1,7 +1,11 @@
 import SvgIcons from './svg/SvgIcons'
 
-import ScrollPane from './ScrollPane'
+
+import Browser from './Browser'
 import BrowserCaption from './BrowserCaption'
+import ScrollPane from './ScrollPane'
+import SpinnerLoading from './SpinnerLoading'
+
 
 import SvgHrzResize from './SvgHrzResize'
 
@@ -19,8 +23,10 @@ import TabPane from './TabPane'
 const Atoms = {
   ...SvgIcons,
 
-  ScrollPane,
+  Browser,
   BrowserCaption,
+  ScrollPane,
+  SpinnerLoading,
 
   SvgHrzResize,
 

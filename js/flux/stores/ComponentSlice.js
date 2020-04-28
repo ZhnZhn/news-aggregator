@@ -5,6 +5,8 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
 var _ComponentActions = require("../actions/ComponentActions");
 
 var _Factory = _interopRequireDefault(require("../logic/Factory"));
@@ -73,7 +75,7 @@ var BrowserLogic = {
       slice[browserId] = {};
     }
 
-    slice[browserId][type] = Object.assign({}, slice[browserId][type], option);
+    slice[browserId][type] = (0, _extends2["default"])({}, slice[browserId][type], {}, option);
     return {
       id: browserId,
       data: slice[browserId]
@@ -83,6 +85,14 @@ var BrowserLogic = {
     var browserId = itemConf.browserId,
         type = itemConf.type;
     slice[browserId][type].isOpen = !slice[browserId][type].isOpen;
+    return {
+      id: browserId,
+      data: slice[browserId]
+    };
+  },
+  removeBadges: function removeBadges(slice, itemConf) {
+    var browserId = itemConf.browserId;
+    slice[browserId] = {};
     return {
       id: browserId,
       data: slice[browserId]
@@ -121,6 +131,10 @@ var ComponentSlice = {
     var r = BrowserLogic.updateBadge(this.hmBrowser, itemConf, {
       isOpen: false
     });
+    this.trigger(_ComponentActions.TYPES.UPDATE_BROWSER, r);
+  },
+  onRemoveNewsBadges: function onRemoveNewsBadges(itemConf) {
+    var r = BrowserLogic.removeBadges(this.hmBrowser, itemConf);
     this.trigger(_ComponentActions.TYPES.UPDATE_BROWSER, r);
   },
   onShowAbout: function onShowAbout() {

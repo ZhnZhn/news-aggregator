@@ -37,6 +37,8 @@ var _RouterModalDialog = _interopRequireDefault(require("./dialogs/RouterModalDi
 
 var _NewsQuery = _interopRequireDefault(require("../conf/NewsQuery"));
 
+var _NewsMenu = _interopRequireDefault(require("../conf/NewsMenu"));
+
 var CL_COMP = "component-container";
 
 var _fShowBrowser = function _fShowBrowser(id) {
@@ -73,7 +75,7 @@ function (_Component) {
       }
     };
 
-    _this.showNewsBrowser = _fShowBrowser('NEWS_API_ORG');
+    _this.showNewsBrowser = _fShowBrowser(_NewsMenu["default"].NEWS);
     _this.showWebhoseWeb = _fShowDialog(_NewsQuery["default"].WEBHOSE_WEB);
     _this.showWebhoseBrodcast = _fShowDialog(_NewsQuery["default"].WEBHOSE_BRODCAST);
     _this.showStackTagged = _fShowDialog(_NewsQuery["default"].STACK_TAGGED);

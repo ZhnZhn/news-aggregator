@@ -9,9 +9,13 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _SvgIcons = _interopRequireDefault(require("./svg/SvgIcons"));
 
-var _ScrollPane = _interopRequireDefault(require("./ScrollPane"));
+var _Browser = _interopRequireDefault(require("./Browser"));
 
 var _BrowserCaption = _interopRequireDefault(require("./BrowserCaption"));
+
+var _ScrollPane = _interopRequireDefault(require("./ScrollPane"));
+
+var _SpinnerLoading = _interopRequireDefault(require("./SpinnerLoading"));
 
 var _SvgHrzResize = _interopRequireDefault(require("./SvgHrzResize"));
 
@@ -32,8 +36,10 @@ var _Tab = _interopRequireDefault(require("./Tab"));
 var _TabPane = _interopRequireDefault(require("./TabPane"));
 
 var Atoms = (0, _extends2["default"])({}, _SvgIcons["default"], {
-  ScrollPane: _ScrollPane["default"],
+  Browser: _Browser["default"],
   BrowserCaption: _BrowserCaption["default"],
+  ScrollPane: _ScrollPane["default"],
+  SpinnerLoading: _SpinnerLoading["default"],
   SvgHrzResize: _SvgHrzResize["default"],
   CircleButton: _CircleButton["default"],
   FlatButton: _FlatButton["default"],

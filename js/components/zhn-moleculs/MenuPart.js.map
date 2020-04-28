@@ -1,1 +1,44 @@
-{"version":3,"sources":["../../../src/components/zhn-moleculs/MenuPart.jsx"],"names":["CL_NOT_S","_createOnKeyDown","onClick","event","keyCode","_renderMenuItems","TS","option","items","hmItems","itemData","onClickBadge","rest","map","item","index","_className","CL_ROW","_itemConf","id","menuTitle","badgeEl","BADGE","undefined","Object","assign","_onClick","bind","MenuPart","styleConfig","caption","isInitClose","restProps","OPEN_CLOSE","ITEM"],"mappings":";;;;;;;;;AAAA;;AAGA;;AACA;;AAHA;AAKA,IAAMA,QAAQ,GAAG,cAAjB;;AAEA,IAAMC,gBAAgB,GAAG,SAAnBA,gBAAmB,CAACC,OAAD;AAAA,SAAa,UAACC,KAAD,EAAW;AAC/C,QAAIA,KAAK,CAACC,OAAN,KAAkB,EAAtB,EAAyB;AACvBF,MAAAA,OAAO;AACR;AACF,GAJwB;AAAA,CAAzB;;AAMA,IAAMG,gBAAgB,GAAG,SAAnBA,gBAAmB,CAASC,EAAT,EAAaC,MAAb,EAAoB;AAAA,sBACgCA,MADhC,CACnCC,KADmC;AAAA,MACnCA,KADmC,8BAC7B,EAD6B;AAAA,wBACgCD,MADhC,CACzBE,OADyB;AAAA,MACzBA,OADyB,gCACjB,EADiB;AAAA,MACbC,QADa,GACgCH,MADhC,CACbG,QADa;AAAA,MACHR,OADG,GACgCK,MADhC,CACHL,OADG;AAAA,MACMS,YADN,GACgCJ,MADhC,CACMI,YADN;AAAA,MACuBC,IADvB,kDACgCL,MADhC;AAE3C,SAAOC,KAAK,CAACK,GAAN,CAAU,UAACC,IAAD,EAAOC,KAAP,EAAiB;AAC1B,QAAAC,UAAU,GAAIV,EAAE,CAACW,MAAJ,GACLX,EAAE,CAACW,MADE,SACQjB,QADR,GAEPA,QAFN;AAAA,QAGEkB,SAHF,GAGcT,OAAO,CAACK,IAAI,CAACK,EAAN,CAHrB;AAAA,QAIIC,SAJJ,GAIiBF,SAJjB,CAIIE,SAJJ;AAAA,QAKEC,OALF,GAKYX,QAAQ,CAACI,IAAI,CAACK,EAAN,CAAR,GACL,gCAAC,yBAAD;AACG,MAAA,KAAK,EAAEb,EAAE,CAACgB,KADb;AAEG,MAAA,SAAS,EAAEZ,QAAQ,CAACI,IAAI,CAACK,EAAN,CAFtB;AAGG,MAAA,QAAQ,EAAED,SAHb;AAIG,MAAA,OAAO,EAAEP;AAJZ,MADK,GAOLY,SAZP;;AAcNC,IAAAA,MAAM,CAACC,MAAP,CAAcP,SAAd,EAAyBN,IAAzB;;AACA,QAAMc,QAAQ,GAAGxB,OAAO,CAACyB,IAAR,CAAa,IAAb,EAAmBT,SAAnB,CAAjB;;AACA,WACG;AACI,MAAA,QAAQ,EAAC,GADb;AAEI,MAAA,GAAG,EAAEH,KAFT;AAGI,MAAA,SAAS,EAAEC,UAHf;AAII,MAAA,OAAO,EAAEU,QAJb;AAKI,MAAA,SAAS,EAAEzB,gBAAgB,CAACyB,QAAD;AAL/B,OAOIN,SAPJ,EAQIC,OARJ,CADH;AAYD,GA7BM,CAAP;AA8BD,CAhCD;;AAkCA,IAAMO,QAAQ,GAAG,SAAXA,QAAW;AAAA,MACHtB,EADG,QACfuB,WADe;AAAA,MAEfC,OAFe,QAEfA,OAFe;AAAA,MAENC,WAFM,QAENA,WAFM;AAAA,MAEUC,SAFV;AAAA,SAIf,gCAAC,qBAAD;AACG,IAAA,KAAK,EAAE1B,EAAE,CAAC2B,UADb;AAEG,IAAA,OAAO,EAAEH,OAFZ;AAGG,IAAA,OAAO,EAAEC,WAHZ;AAIG,IAAA,SAAS,EAAEzB,EAAE,CAAC4B;AAJjB,KAMI7B,gBAAgB,CAACC,EAAD,EAAK0B,SAAL,CANpB,CAJe;AAAA,CAAjB;AAcA;;;;;;;;;eAQeJ,Q","sourcesContent":["import React from 'react'\r\n//import PropTypes from 'prop-types'\r\n\r\nimport OpenClose from '../zhn-atoms/OpenClose'\r\nimport MenuItemBadge from './MenuItemBadge'\r\n\r\nconst CL_NOT_S = 'not-selected';\r\n\r\nconst _createOnKeyDown = (onClick) => (event) => {\r\n  if (event.keyCode === 13){\r\n    onClick()\r\n  }\r\n}\r\n\r\nconst _renderMenuItems = function(TS, option){\r\n  const { items=[], hmItems={}, itemData, onClick, onClickBadge, ...rest } = option\r\n  return items.map((item, index) => {\r\n    const _className = (TS.CL_ROW)\r\n             ? `${TS.CL_ROW} ${CL_NOT_S}`\r\n             :  CL_NOT_S\r\n          , _itemConf = hmItems[item.id]\r\n          , { menuTitle} = _itemConf\r\n          , badgeEl = itemData[item.id]\r\n               ? <MenuItemBadge\r\n                    style={TS.BADGE}\r\n                    itemBadge={itemData[item.id]}\r\n                    itemConf={_itemConf}\r\n                    onClick={onClickBadge}\r\n                 />\r\n               : undefined;\r\n\r\n    Object.assign(_itemConf, rest)\r\n    const _onClick = onClick.bind(null, _itemConf);\r\n    return (\r\n       <div\r\n           tabIndex=\"0\"\r\n           key={index}\r\n           className={_className}\r\n           onClick={_onClick}\r\n           onKeyDown={_createOnKeyDown(_onClick)}\r\n        >\r\n          {menuTitle}\r\n          {badgeEl}\r\n       </div>\r\n    )\r\n  })\r\n}\r\n\r\nconst MenuPart = ({\r\n  styleConfig:TS,\r\n  caption, isInitClose, ...restProps\r\n}) => (\r\n  <OpenClose\r\n     style={TS.OPEN_CLOSE}\r\n     caption={caption}\r\n     isClose={isInitClose}\r\n     itemStyle={TS.ITEM}\r\n  >\r\n     {_renderMenuItems(TS, restProps)}\r\n  </OpenClose>\r\n)\r\n\r\n/*\r\nMenuPart.propTypes = {\r\n  caption: PropTypes.string,\r\n  items: PropTypes.arrayOf(PropTypes.object),\r\n  isInitClose: PropTypes.bool\r\n}\r\n*/\r\n\r\nexport default MenuPart\r\n"],"file":"MenuPart.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-moleculs/MenuPart.js"
+ ],
+ "file": "../../../src/components/zhn-moleculs/MenuPart.js",
+ "names": [
+  "CL_NOT_S",
+  "_createOnKeyDown",
+  "onClick",
+  "event",
+  "keyCode",
+  "_renderMenuItems",
+  "TS",
+  "option",
+  "items",
+  "hmItems",
+  "itemData",
+  "onClickBadge",
+  "rest",
+  "map",
+  "item",
+  "index",
+  "_className",
+  "CL_ROW",
+  "_itemConf",
+  "id",
+  "menuTitle",
+  "badgeEl",
+  "BADGE",
+  "Object",
+  "assign",
+  "_onClick",
+  "bind",
+  "MenuPart",
+  "styleConfig",
+  "caption",
+  "isInitClose",
+  "restProps",
+  "OPEN_CLOSE",
+  "ITEM"
+ ],
+ "mappings": ";;;;;;;;;AAAA;;AAGA;;AACA;;AAHA;AAKA,IAAMA,QAAQ,GAAG,cAAjB;;AAEA,IAAMC,gBAAgB,GAAG,SAAnBA,gBAAmB,CAACC,OAAD;AAAA,SAAa,UAACC,KAAD,EAAW;AAC/C,QAAIA,KAAK,CAACC,OAAN,KAAkB,EAAtB,EAAyB;AACvBF,MAAAA,OAAO;AACR;AACF,GAJwB;AAAA,CAAzB;;AAMA,IAAMG,gBAAgB,GAAG,SAAnBA,gBAAmB,CAASC,EAAT,EAAaC,MAAb,EAAoB;AAAA,sBACgCA,MADhC,CACnCC,KADmC;AAAA,MACnCA,KADmC,8BAC7B,EAD6B;AAAA,wBACgCD,MADhC,CACzBE,OADyB;AAAA,MACzBA,OADyB,gCACjB,EADiB;AAAA,MACbC,QADa,GACgCH,MADhC,CACbG,QADa;AAAA,MACHR,OADG,GACgCK,MADhC,CACHL,OADG;AAAA,MACMS,YADN,GACgCJ,MADhC,CACMI,YADN;AAAA,MACuBC,IADvB,kDACgCL,MADhC;AAE3C,SAAOC,KAAK,CAACK,GAAN,CAAU,UAACC,IAAD,EAAOC,KAAP,EAAiB;AAC1B,QAAAC,UAAU,GAAIV,EAAE,CAACW,MAAJ,GACLX,EAAE,CAACW,MADE,SACQjB,QADR,GAEPA,QAFN;AAAA,QAGEkB,SAHF,GAGcT,OAAO,CAACK,IAAI,CAACK,EAAN,CAHrB;AAAA,QAIIC,SAJJ,GAIiBF,SAJjB,CAIIE,SAJJ;AAAA,QAKEC,OALF,GAKYX,QAAQ,CAACI,IAAI,CAACK,EAAN,CAAR,GACL,gCAAC,yBAAD;AACG,MAAA,KAAK,EAAEb,EAAE,CAACgB,KADb;AAEG,MAAA,SAAS,EAAEZ,QAAQ,CAACI,IAAI,CAACK,EAAN,CAFtB;AAGG,MAAA,QAAQ,EAAED,SAHb;AAIG,MAAA,OAAO,EAAEP;AAJZ,MADK,GAOL,IAZP;;AAcNY,IAAAA,MAAM,CAACC,MAAP,CAAcN,SAAd,EAAyBN,IAAzB;;AACA,QAAMa,QAAQ,GAAGvB,OAAO,CAACwB,IAAR,CAAa,IAAb,EAAmBR,SAAnB,CAAjB;;AACA,WACG;AACI,MAAA,IAAI,EAAC,UADT;AAEI,MAAA,QAAQ,EAAC,GAFb;AAGI,MAAA,GAAG,EAAEH,KAHT;AAII,MAAA,SAAS,EAAEC,UAJf;AAKI,MAAA,OAAO,EAAES,QALb;AAMI,MAAA,SAAS,EAAExB,gBAAgB,CAACwB,QAAD;AAN/B,OAQIL,SARJ,EASIC,OATJ,CADH;AAaD,GA9BM,CAAP;AA+BD,CAjCD;;AAmCA,IAAMM,QAAQ,GAAG,SAAXA,QAAW;AAAA,MACHrB,EADG,QACfsB,WADe;AAAA,MAEfC,OAFe,QAEfA,OAFe;AAAA,MAENC,WAFM,QAENA,WAFM;AAAA,MAEUC,SAFV;AAAA,SAIf,gCAAC,qBAAD;AACG,IAAA,KAAK,EAAEzB,EAAE,CAAC0B,UADb;AAEG,IAAA,OAAO,EAAEH,OAFZ;AAGG,IAAA,OAAO,EAAEC,WAHZ;AAIG,IAAA,SAAS,EAAExB,EAAE,CAAC2B;AAJjB,KAMI5B,gBAAgB,CAACC,EAAD,EAAKyB,SAAL,CANpB,CAJe;AAAA,CAAjB;AAcA;;;;;;;;;eAQeJ,Q"
+}

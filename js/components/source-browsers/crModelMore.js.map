@@ -1,0 +1,21 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/source-browsers/crModelMore.js"
+ ],
+ "file": "../../../src/components/source-browsers/crModelMore.js",
+ "names": [
+  "CL_ROW",
+  "crModelMore",
+  "onRemoveBadges",
+  "baseTitleCl",
+  "pageWidth",
+  "maxPages",
+  "p0",
+  "cn",
+  "name",
+  "onClick",
+  "isClose"
+ ],
+ "mappings": ";;;;AAAA,IAAMA,MAAM,GAAG,8BAAf;;AAEA,IAAMC,WAAW,GAAG,SAAdA,WAAc;AAAA,MAClBC,cADkB,QAClBA,cADkB;AAAA,SAEb;AACLC,IAAAA,WAAW,EAAEH,MADR;AAELI,IAAAA,SAAS,EAAE,GAFN;AAGLC,IAAAA,QAAQ,EAAE,CAHL;AAILC,IAAAA,EAAE,EAAE,CAAC;AACHC,MAAAA,EAAE,EAAEP,MADD;AAEHQ,MAAAA,IAAI,EAAE,mBAFH;AAGHC,MAAAA,OAAO,EAAEP,cAHN;AAIHQ,MAAAA,OAAO,EAAE;AAJN,KAAD;AAJC,GAFa;AAAA,CAApB;;eAceT,W"
+}

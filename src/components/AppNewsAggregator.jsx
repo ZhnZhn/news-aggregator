@@ -15,6 +15,7 @@ import ModalDialogContainer from './zhn-containers/ModalDialogContainer'
 import RouterModalDialog from './dialogs/RouterModalDialog'
 
 import QUERY from '../conf/NewsQuery'
+import MENU from '../conf/NewsMenu'
 
 const CL_COMP = "component-container";
 
@@ -27,7 +28,7 @@ const _fSettings = () => Actions.showModalDialog.bind(
 class AppNewsAggregator extends Component {
   constructor(props){
     super(props)
-    this.showNewsBrowser = _fShowBrowser('NEWS_API_ORG')
+    this.showNewsBrowser = _fShowBrowser(MENU.NEWS)
 
     this.showWebhoseWeb = _fShowDialog(QUERY.WEBHOSE_WEB)
     this.showWebhoseBrodcast = _fShowDialog(QUERY.WEBHOSE_BRODCAST)

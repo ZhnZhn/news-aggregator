@@ -1,32 +1,37 @@
 import React, { Component } from 'react'
 
-import Browser from '../zhn-atoms/Browser'
-import BrowserCaption from '../zhn-atoms/BrowserCaption'
-import ScrollPane from '../zhn-atoms/ScrollPane'
-import SpinnerLoading from '../zhn-atoms/SpinnerLoading'
+import Comp from '../Comp'
 import MenuPart from './MenuPart'
+
+const {
+   Browser, BrowserCaption, ModalSlider,
+   ScrollPane, SpinnerLoading
+} = Comp;
+
+const CL = {
+  MENU_MORE: "popup-menu items__menu-more"
+};
 
 const S = {
   BROWSER: {
-    paddingRight: '0px'
+    paddingRight: 0
   },
   SCROLL_PANE: {
-    overflowY: 'auto',
     height: '92%',
-    paddingRight: '10px',
-    //paddingLeft: '4px'
+    paddingRight: 10,
+    overflowY: 'auto'
   },
   SPINNER_LOADING: {
     position: 'relative',
     display: 'block',
-    textAlign: 'middle',
+    width: 32,
+    height: 32,
     margin: '0 auto',
-    marginTop: '32px',
-    width: '32px',
-    height: '32px'
+    marginTop: 32,
+    textAlign: 'middle'
   },
   ROOT_MENU: {
-    paddingLeft: '4px'
+    paddingLeft: 4
   }
 }
 
@@ -36,14 +41,12 @@ class DynamicMenuBrowser extends Component {
     onError: ()=>{}
   }
 
-  constructor(props){
-    super()
-    this.state = {
-      isShow: true,
-      isLoading: true,
-      isLoadingFailed: false,
-      menuModel: {}
-    }
+  state = {
+    isShow: true,
+    isLoading: true,
+    isLoadingFailed: false,
+    isMore: false,
+    menuModel: {}
   }
 
   componentDidMount(){
@@ -73,16 +76,29 @@ class DynamicMenuBrowser extends Component {
           }
       })
       .then(json => {
-         this.setState({ isLoading: false, menuModel: json })
+         this.setState({
+           isLoading: false,
+           menuModel: json
+         })
       })
       .catch(err => {
-          this.setState({ isLoadingFailed: true, isLoading: false })
+          this.setState({
+            isLoadingFailed: true,
+            isLoading: false
+          })
           onError(err)
       })
   }
 
   _handleHide = () => {
     this.setState({ isShow: false })
+  }
+
+  _showMore = () => {
+    this.setState({ isMore: true })
+  }
+  _closeMore = () => {
+    this.setState({ isMore: false })
   }
 
   _renderMenuParts({ styleConfig, menuModel, restProps }){
@@ -101,15 +117,33 @@ class DynamicMenuBrowser extends Component {
   }
 
   render(){
-    const { styleConfig:TS,
-            caption,
-            children, ...restProps } = this.props
-        , { isShow, isLoading, isLoadingFailed, menuModel } = this.state;
+    const {
+      styleConfig:TS,
+      caption,
+      menuMore,
+      children, ...restProps
+    } = this.props
+    , {
+      isShow, isLoading, isLoadingFailed,
+      isMore,
+      menuModel
+    } = this.state
+    , _onMore = menuMore ? this._showMore : void 0;
     return (
       <Browser isShow={isShow} style={{...S.BROWSER, ...TS.BROWSER}}>
+        {
+          menuMore && <ModalSlider
+            isShow={isMore}
+            className={CL.MENU_MORE}
+            style={TS.EL_BORDER}
+            model={menuMore}
+            onClose={this._closeMore}
+          />
+        }
         <BrowserCaption
           rootStyle={TS.BROWSER_CAPTION}
           caption={caption}
+          onMore={_onMore}
           onClose={this._handleHide}
         />
         { isLoading && <SpinnerLoading style={S.SPINNER_LOADING} />}
@@ -118,7 +152,7 @@ class DynamicMenuBrowser extends Component {
            className={TS.CL_SCROLL_PANE}
            style={S.SCROLL_PANE}
         >
-          {this._renderMenuParts({ styleConfig: TS, menuModel, restProps})}
+          {this._renderMenuParts({ styleConfig: TS, menuModel, restProps })}
           {children}
         </ScrollPane>
       </Browser>

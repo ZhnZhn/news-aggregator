@@ -42,13 +42,14 @@ var _renderMenuItems = function _renderMenuItems(TS, option) {
       itemBadge: itemData[item.id],
       itemConf: _itemConf,
       onClick: onClickBadge
-    }) : undefined;
+    }) : null;
 
     Object.assign(_itemConf, rest);
 
     var _onClick = onClick.bind(null, _itemConf);
 
     return _react["default"].createElement("div", {
+      role: "menuitem",
       tabIndex: "0",
       key: index,
       className: _className,

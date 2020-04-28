@@ -1,1 +1,29 @@
-{"version":3,"sources":["../../../src/components/zhn-containers/BrowserContainer.jsx"],"names":["onClick","ComponentActions","showNewsDialog","onError","showModalDialog","bind","onClickBadge","toggleNewsPane","BrowserContainer","render","store","props","TYPES","SHOW_BROWSER","UPDATE_BROWSER","SHOW_NEWS_DIALOG","Component"],"mappings":";;;;;;;;;;;AAAA;;AAEA;;AAEA;;AACA;;AAEA;AAEA,IAAMA,OAAO,GAAGC,6BAAiBC,cAAjC;;AACA,IAAMC,OAAO,GAAGF,6BAAiBG,eAAjB,CAAiCC,IAAjC,CAAsC,IAAtC,EAA4C,cAA5C,CAAhB;;AACA,IAAMC,YAAY,GAAGL,6BAAiBM,cAAtC;;IAEMC,gB;;;;;;;;;;;SACJC,M,GAAA,kBAAQ;AAAA,QACEC,KADF,GACY,KAAKC,KADjB,CACED,KADF;AAEN,WACE;AAAK,MAAA,SAAS,EAAC;AAAf,OACE,gCAAC,uBAAD;AACG,MAAA,KAAK,EAAEA,KADV;AAEG,MAAA,UAAU,EAAEE,wBAAMC,YAFrB;AAGG,MAAA,YAAY,EAAED,wBAAME,cAHvB;AAIG,MAAA,SAAS,EAAC,cAJb,CAKG;AALH;AAMG,MAAA,OAAO,EAAEd,OANZ;AAOG,MAAA,OAAO,EAAEG,OAPZ;AAQG,MAAA,YAAY,EAAEG;AARjB,MADF,EAWE,gCAAC,2BAAD;AACG,MAAA,SAAS,EAAE,CADd;AAEG,MAAA,KAAK,EAAEI,KAFV;AAGG,MAAA,UAAU,EAAEE,wBAAMG;AAHrB,MAXF,CADF;AAmBD,G;;;EAtB4BC,gB;;eAyBhBR,gB","sourcesContent":["import React, { Component } from 'react'\r\n\r\nimport ComponentActions, { TYPES } from '../../flux/actions/ComponentActions'\r\n\r\nimport NewsBrowser from '../source-browsers/NewsBrowser'\r\nimport DialogContainer from './DialogContainer'\r\n\r\n//const CL_MENU_ITEM = \"row__news-source\";\r\n\r\nconst onClick = ComponentActions.showNewsDialog;\r\nconst onError = ComponentActions.showModalDialog.bind(null, 'ALERT_DIALOG');\r\nconst onClickBadge = ComponentActions.toggleNewsPane;\r\n\r\nclass BrowserContainer extends Component {\r\n  render(){\r\n    const { store } = this.props;\r\n    return (\r\n      <div className=\"hrz-container\">\r\n        <NewsBrowser\r\n           store={store}\r\n           showAction={TYPES.SHOW_BROWSER}\r\n           updateAction={TYPES.UPDATE_BROWSER}\r\n           browserId=\"NEWS_API_ORG\"\r\n           //rowClass={CL_MENU_ITEM}\r\n           onClick={onClick}\r\n           onError={onError}\r\n           onClickBadge={onClickBadge}\r\n        />\r\n        <DialogContainer\r\n           maxDialog={3}\r\n           store={store}\r\n           showAction={TYPES.SHOW_NEWS_DIALOG}\r\n        />\r\n      </div>\r\n    );\r\n  }\r\n}\r\n\r\nexport default BrowserContainer\r\n"],"file":"BrowserContainer.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-containers/BrowserContainer.js"
+ ],
+ "file": "../../../src/components/zhn-containers/BrowserContainer.js",
+ "names": [
+  "onClick",
+  "ComponentActions",
+  "showNewsDialog",
+  "onError",
+  "showModalDialog",
+  "bind",
+  "onClickBadge",
+  "toggleNewsPane",
+  "onRemoveBadges",
+  "removeNewsBadges",
+  "browserId",
+  "MENU",
+  "NEWS",
+  "BrowserContainer",
+  "store",
+  "TYPES",
+  "SHOW_BROWSER",
+  "UPDATE_BROWSER",
+  "SHOW_NEWS_DIALOG"
+ ],
+ "mappings": ";;;;;;;;;AAAA;;AAEA;;AACA;;AAEA;;AACA;;AAEA,IAAMA,OAAO,GAAGC,6BAAiBC,cAAjC;;AACA,IAAMC,OAAO,GAAGF,6BAAiBG,eAAjB,CAAiCC,IAAjC,CAAsC,IAAtC,EAA4C,cAA5C,CAAhB;;AACA,IAAMC,YAAY,GAAGL,6BAAiBM,cAAtC;;AACA,IAAMC,cAAc,GAAGP,6BAAiBQ,gBAAjB,CAAkCJ,IAAlC,CAAuC,IAAvC,EAA6C;AAAEK,EAAAA,SAAS,EAAEC,qBAAKC;AAAlB,CAA7C,CAAvB;;AAEA,IAAMC,gBAAgB,GAAG,SAAnBA,gBAAmB;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,SACvB;AAAK,IAAA,SAAS,EAAC;AAAf,KACE,gCAAC,uBAAD;AACG,IAAA,KAAK,EAAEA,KADV;AAEG,IAAA,UAAU,EAAEC,wBAAMC,YAFrB;AAGG,IAAA,YAAY,EAAED,wBAAME,cAHvB;AAIG,IAAA,SAAS,EAAEN,qBAAKC,IAJnB;AAKG,IAAA,OAAO,EAAEZ,OALZ;AAMG,IAAA,OAAO,EAAEG,OANZ;AAOG,IAAA,YAAY,EAAEG,YAPjB;AAQG,IAAA,cAAc,EAAEE;AARnB,IADF,EAWE,gCAAC,2BAAD;AACG,IAAA,SAAS,EAAE,CADd;AAEG,IAAA,KAAK,EAAEM,KAFV;AAGG,IAAA,UAAU,EAAEC,wBAAMG;AAHrB,IAXF,CADuB;AAAA,CAAzB;;eAqBeL,gB"
+}

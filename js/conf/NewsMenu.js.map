@@ -1,0 +1,12 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/conf/NewsMenu.js"
+ ],
+ "file": "../../src/conf/NewsMenu.js",
+ "names": [
+  "NewsMenu",
+  "NEWS"
+ ],
+ "mappings": ";;;;AACA,IAAMA,QAAQ,GAAG;AACfC,EAAAA,IAAI,EAAE;AADS,CAAjB;eAIeD,Q"
+}

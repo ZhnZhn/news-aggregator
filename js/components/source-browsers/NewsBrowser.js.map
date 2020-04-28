@@ -1,1 +1,39 @@
-{"version":3,"sources":["../../../src/components/source-browsers/NewsBrowser.jsx"],"names":["NewsBrowser","state","itemData","_onStore","actionType","option","props","updateAction","browserId","id","setState","data","componentDidMount","unsubscribe","store","listen","componentWillUnmount","render","showAction","theme","onClick","onError","onClickBadge","S","createStyle","styleConfig","Component"],"mappings":";;;;;;;;;;;AAAA;;AAEA;;AACA;;AAEA;;AACA;;AACA;;IAEMA,W;;;;;;;;;;;;;UAEJC,K,GAAQ;AACNC,MAAAA,QAAQ,EAAE;AADJ,K;;UAWRC,Q,GAAW,UAACC,UAAD,EAAaC,MAAb,EAAwB;AAAA,wBACK,MAAKC,KADV;AAAA,UACvBC,YADuB,eACvBA,YADuB;AAAA,UACTC,SADS,eACTA,SADS;;AAE/B,UAAIJ,UAAU,KAAKG,YAAf,IAA+BF,MAAM,CAACI,EAAP,KAAcD,SAAjD,EAA4D;AAC1D,cAAKE,QAAL,CAAc;AAAER,UAAAA,QAAQ,EAAEG,MAAM,CAACM;AAAnB,SAAd;AACD;AACJ,K;;;;;;;SAZDC,iB,GAAA,6BAAmB;AACjB,SAAKC,WAAL,GAAmB,KAAKP,KAAL,CAAWQ,KAAX,CAAiBC,MAAjB,CAAwB,KAAKZ,QAA7B,CAAnB;AACD,G;;SACDa,oB,GAAA,gCAAsB;AACpB,SAAKH,WAAL;AACD,G;;SASDI,M,GAAA,kBAAQ;AAAA,uBAMI,KAAKX,KANT;AAAA,QAEEQ,KAFF,gBAEEA,KAFF;AAAA,QAESI,UAFT,gBAESA,UAFT;AAAA,QAEqBV,SAFrB,gBAEqBA,SAFrB;AAAA,QAGEW,KAHF,gBAGEA,KAHF;AAAA,QAIEC,OAJF,gBAIEA,OAJF;AAAA,QAIWC,OAJX,gBAIWA,OAJX;AAAA,QAKEC,YALF,gBAKEA,YALF;AAAA,QAOAC,CAPA,GAOIJ,KAAK,CAACK,WAAN,CAAkBC,uBAAlB,CAPJ;AAAA,QAQEvB,QARF,GAQe,KAAKD,KARpB,CAQEC,QARF;AASN,WACE,gCAAC,8BAAD;AACG,MAAA,WAAW,EAAEqB,CADhB;AAEG,MAAA,OAAO,EAAC,cAFX;AAGG,MAAA,GAAG,EAAC,4BAHP;AAIG,MAAA,KAAK,EAAET,KAJV;AAKG,MAAA,SAAS,EAAEN,SALd;AAMG,MAAA,QAAQ,EAAEN,QANb;AAOG,MAAA,UAAU,EAAEgB,UAPf;AAQG,MAAA,OAAO,EAAEE,OARZ;AASG,MAAA,OAAO,EAAEC,OATZ;AAUG,MAAA,YAAY,EAAEC;AAVjB,OAYG,gCAAC,qBAAD,QACE,gCAAC,iBAAD,CAAM,OAAN,OADF,CAZH,CADF;AAkBD,G;;;EA/CuBI,gB;;eAkDX,2BAAU1B,WAAV,C","sourcesContent":["import React, { Component } from 'react'\r\n\r\nimport withTheme from '../hoc/withTheme'\r\nimport styleConfig from './NewsBrowser.Style'\r\n\r\nimport DynamicMenuBrowser from '../zhn-moleculs/DynamicMenuBrowser'\r\nimport PoweredBy from '../links/PoweredBy'\r\nimport Link from '../links/Links'\r\n\r\nclass NewsBrowser extends Component {\r\n\r\n  state = {\r\n    itemData: {}\r\n  }\r\n  \r\n  componentDidMount(){\r\n    this.unsubscribe = this.props.store.listen(this._onStore)\r\n  }\r\n  componentWillUnmount(){\r\n    this.unsubscribe()\r\n  }\r\n\r\n  _onStore = (actionType, option) => {\r\n      const { updateAction, browserId } = this.props;\r\n      if (actionType === updateAction && option.id === browserId ){\r\n        this.setState({ itemData: option.data })\r\n      }\r\n  }\r\n\r\n  render(){\r\n    const {\r\n            store, showAction, browserId,\r\n            theme,\r\n            onClick, onError,\r\n            onClickBadge\r\n          } = this.props\r\n        , S = theme.createStyle(styleConfig)\r\n    const { itemData } = this.state;\r\n    return (\r\n      <DynamicMenuBrowser\r\n         styleConfig={S}\r\n         caption=\"News Sources\"\r\n         url=\"data/news-source-menu.json\"\r\n         store={store}\r\n         browserId={browserId}\r\n         itemData={itemData}\r\n         showAction={showAction}\r\n         onClick={onClick}\r\n         onError={onError}\r\n         onClickBadge={onClickBadge}\r\n      >\r\n         <PoweredBy>\r\n           <Link.NewsApi />\r\n         </PoweredBy>\r\n      </DynamicMenuBrowser>\r\n    );\r\n  }\r\n}\r\n\r\nexport default withTheme(NewsBrowser)\r\n"],"file":"NewsBrowser.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/source-browsers/NewsBrowser.js"
+ ],
+ "file": "../../../src/components/source-browsers/NewsBrowser.js",
+ "names": [
+  "NewsBrowser",
+  "props",
+  "_onStore",
+  "actionType",
+  "option",
+  "updateAction",
+  "browserId",
+  "id",
+  "setState",
+  "itemData",
+  "data",
+  "_menuMore",
+  "onRemoveBadges",
+  "state",
+  "componentDidMount",
+  "unsubscribe",
+  "store",
+  "listen",
+  "componentWillUnmount",
+  "render",
+  "showAction",
+  "theme",
+  "onClick",
+  "onError",
+  "onClickBadge",
+  "S",
+  "createStyle",
+  "styleConfig",
+  "Component"
+ ],
+ "mappings": ";;;;;;;;;;;AAAA;;AAEA;;AACA;;AAEA;;AACA;;AACA;;AACA;;IAEMA,W;;;;;AAEJ,uBAAYC,KAAZ,EAAkB;AAAA;;AAChB,kCAAMA,KAAN;;AADgB,UAkBlBC,QAlBkB,GAkBP,UAACC,UAAD,EAAaC,MAAb,EAAwB;AAAA,wBACK,MAAKH,KADV;AAAA,UACvBI,YADuB,eACvBA,YADuB;AAAA,UACTC,SADS,eACTA,SADS;;AAE/B,UAAIH,UAAU,KAAKE,YAAf,IAA+BD,MAAM,CAACG,EAAP,KAAcD,SAAjD,EAA4D;AAC1D,cAAKE,QAAL,CAAc;AAAEC,UAAAA,QAAQ,EAAEL,MAAM,CAACM;AAAnB,SAAd;AACD;AACJ,KAvBiB;;AAEhB,UAAKC,SAAL,GAAiB,6BAAY;AAC3BC,MAAAA,cAAc,EAAEX,KAAK,CAACW;AADK,KAAZ,CAAjB;AAGA,UAAKC,KAAL,GAAa;AACXJ,MAAAA,QAAQ,EAAE;AADC,KAAb;AALgB;AAQjB;;;;SAGDK,iB,GAAA,6BAAmB;AACjB,SAAKC,WAAL,GAAmB,KAAKd,KAAL,CAAWe,KAAX,CAAiBC,MAAjB,CAAwB,KAAKf,QAA7B,CAAnB;AACD,G;;SACDgB,oB,GAAA,gCAAsB;AACpB,SAAKH,WAAL;AACD,G;;SASDI,M,GAAA,kBAAQ;AAAA,uBAMA,KAAKlB,KANL;AAAA,QAEFe,KAFE,gBAEFA,KAFE;AAAA,QAEKI,UAFL,gBAEKA,UAFL;AAAA,QAEiBd,SAFjB,gBAEiBA,SAFjB;AAAA,QAGFe,KAHE,gBAGFA,KAHE;AAAA,QAIFC,OAJE,gBAIFA,OAJE;AAAA,QAIOC,OAJP,gBAIOA,OAJP;AAAA,QAKFC,YALE,gBAKFA,YALE;AAAA,QAOJC,CAPI,GAOAJ,KAAK,CAACK,WAAN,CAAkBC,uBAAlB,CAPA;AAAA,QAQFlB,QARE,GAQW,KAAKI,KARhB,CAQFJ,QARE;AASN,WACE,gCAAC,8BAAD;AACG,MAAA,WAAW,EAAEgB,CADhB;AAEG,MAAA,OAAO,EAAC,cAFX;AAGG,MAAA,GAAG,EAAC,4BAHP;AAIG,MAAA,KAAK,EAAET,KAJV;AAKG,MAAA,SAAS,EAAEV,SALd;AAMG,MAAA,QAAQ,EAAEG,QANb;AAOG,MAAA,UAAU,EAAEW,UAPf;AAQG,MAAA,QAAQ,EAAE,KAAKT,SARlB;AASG,MAAA,OAAO,EAAEW,OATZ;AAUG,MAAA,OAAO,EAAEC,OAVZ;AAWG,MAAA,YAAY,EAAEC;AAXjB,OAaG,gCAAC,qBAAD,QACE,gCAAC,iBAAD,CAAM,OAAN,OADF,CAbH,CADF;AAmBD,G;;;EAvDuBI,gB;;eA0DX,2BAAU5B,WAAV,C"
+}

@@ -15,37 +15,38 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _Browser = _interopRequireDefault(require("../zhn-atoms/Browser"));
-
-var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
-
-var _ScrollPane = _interopRequireDefault(require("../zhn-atoms/ScrollPane"));
-
-var _SpinnerLoading = _interopRequireDefault(require("../zhn-atoms/SpinnerLoading"));
+var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _MenuPart = _interopRequireDefault(require("./MenuPart"));
 
+var Browser = _Comp["default"].Browser,
+    BrowserCaption = _Comp["default"].BrowserCaption,
+    ModalSlider = _Comp["default"].ModalSlider,
+    ScrollPane = _Comp["default"].ScrollPane,
+    SpinnerLoading = _Comp["default"].SpinnerLoading;
+var CL = {
+  MENU_MORE: "popup-menu items__menu-more"
+};
 var S = {
   BROWSER: {
-    paddingRight: '0px'
+    paddingRight: 0
   },
   SCROLL_PANE: {
-    overflowY: 'auto',
     height: '92%',
-    paddingRight: '10px' //paddingLeft: '4px'
-
+    paddingRight: 10,
+    overflowY: 'auto'
   },
   SPINNER_LOADING: {
     position: 'relative',
     display: 'block',
-    textAlign: 'middle',
+    width: 32,
+    height: 32,
     margin: '0 auto',
-    marginTop: '32px',
-    width: '32px',
-    height: '32px'
+    marginTop: 32,
+    textAlign: 'middle'
   },
   ROOT_MENU: {
-    paddingLeft: '4px'
+    paddingLeft: 4
   }
 };
 
@@ -54,10 +55,21 @@ var DynamicMenuBrowser =
 function (_Component) {
   (0, _inheritsLoose2["default"])(DynamicMenuBrowser, _Component);
 
-  function DynamicMenuBrowser(props) {
+  function DynamicMenuBrowser() {
     var _this;
 
-    _this = _Component.call(this) || this;
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+    _this.state = {
+      isShow: true,
+      isLoading: true,
+      isLoadingFailed: false,
+      isMore: false,
+      menuModel: {}
+    };
 
     _this._onStore = function (actionType, id) {
       var _this$props = _this.props,
@@ -107,12 +119,18 @@ function (_Component) {
       });
     };
 
-    _this.state = {
-      isShow: true,
-      isLoading: true,
-      isLoadingFailed: false,
-      menuModel: {}
+    _this._showMore = function () {
+      _this.setState({
+        isMore: true
+      });
     };
+
+    _this._closeMore = function () {
+      _this.setState({
+        isMore: false
+      });
+    };
+
     return _this;
   }
 
@@ -149,26 +167,37 @@ function (_Component) {
     var _this$props3 = this.props,
         TS = _this$props3.styleConfig,
         caption = _this$props3.caption,
+        menuMore = _this$props3.menuMore,
         children = _this$props3.children,
-        restProps = (0, _objectWithoutPropertiesLoose2["default"])(_this$props3, ["styleConfig", "caption", "children"]),
+        restProps = (0, _objectWithoutPropertiesLoose2["default"])(_this$props3, ["styleConfig", "caption", "menuMore", "children"]),
         _this$state = this.state,
         isShow = _this$state.isShow,
         isLoading = _this$state.isLoading,
         isLoadingFailed = _this$state.isLoadingFailed,
-        menuModel = _this$state.menuModel;
-    return _react["default"].createElement(_Browser["default"], {
+        isMore = _this$state.isMore,
+        menuModel = _this$state.menuModel,
+        _onMore = menuMore ? this._showMore : void 0;
+
+    return _react["default"].createElement(Browser, {
       isShow: isShow,
       style: (0, _extends2["default"])({}, S.BROWSER, {}, TS.BROWSER)
-    }, _react["default"].createElement(_BrowserCaption["default"], {
+    }, menuMore && _react["default"].createElement(ModalSlider, {
+      isShow: isMore,
+      className: CL.MENU_MORE,
+      style: TS.EL_BORDER,
+      model: menuMore,
+      onClose: this._closeMore
+    }), _react["default"].createElement(BrowserCaption, {
       rootStyle: TS.BROWSER_CAPTION,
       caption: caption,
+      onMore: _onMore,
       onClose: this._handleHide
-    }), isLoading && _react["default"].createElement(_SpinnerLoading["default"], {
+    }), isLoading && _react["default"].createElement(SpinnerLoading, {
       style: S.SPINNER_LOADING
-    }), isLoadingFailed && _react["default"].createElement(_SpinnerLoading["default"], {
+    }), isLoadingFailed && _react["default"].createElement(SpinnerLoading, {
       style: S.SPINNER_LOADING,
       isFailed: true
-    }), _react["default"].createElement(_ScrollPane["default"], {
+    }), _react["default"].createElement(ScrollPane, {
       className: TS.CL_SCROLL_PANE,
       style: S.SCROLL_PANE
     }, this._renderMenuParts({

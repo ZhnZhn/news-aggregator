@@ -6,13 +6,21 @@ import styleConfig from './NewsBrowser.Style'
 import DynamicMenuBrowser from '../zhn-moleculs/DynamicMenuBrowser'
 import PoweredBy from '../links/PoweredBy'
 import Link from '../links/Links'
+import crModelMore from './crModelMore'
 
 class NewsBrowser extends Component {
 
-  state = {
-    itemData: {}
+  constructor(props){
+    super(props)
+    this._menuMore = crModelMore({
+      onRemoveBadges: props.onRemoveBadges
+    })
+    this.state = {
+      itemData: {}
+    }
   }
-  
+
+
   componentDidMount(){
     this.unsubscribe = this.props.store.listen(this._onStore)
   }
@@ -29,13 +37,13 @@ class NewsBrowser extends Component {
 
   render(){
     const {
-            store, showAction, browserId,
-            theme,
-            onClick, onError,
-            onClickBadge
-          } = this.props
-        , S = theme.createStyle(styleConfig)
-    const { itemData } = this.state;
+        store, showAction, browserId,
+        theme,
+        onClick, onError,
+        onClickBadge
+      } = this.props
+    , S = theme.createStyle(styleConfig)
+    , { itemData } = this.state;
     return (
       <DynamicMenuBrowser
          styleConfig={S}
@@ -45,6 +53,7 @@ class NewsBrowser extends Component {
          browserId={browserId}
          itemData={itemData}
          showAction={showAction}
+         menuMore={this._menuMore}
          onClick={onClick}
          onError={onError}
          onClickBadge={onClickBadge}

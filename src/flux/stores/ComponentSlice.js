@@ -49,7 +49,10 @@ const BrowserLogic = {
     if (!slice[browserId]){
       slice[browserId] = {}
     }
-    slice[browserId][type] = Object.assign({}, slice[browserId][type], option)
+    slice[browserId][type] = {
+      ...slice[browserId][type],
+      ...option
+    }
     return {
       id: browserId,
       data: slice[browserId]
@@ -63,6 +66,15 @@ const BrowserLogic = {
        id: browserId,
        data: slice[browserId]
      };
+  },
+
+  removeBadges(slice, itemConf){
+    const { browserId } = itemConf;
+    slice[browserId] = {}
+    return {
+      id: browserId,
+      data: slice[browserId]
+    };
   }
 }
 
@@ -95,6 +107,10 @@ const ComponentSlice = {
   },
   onCloseNewsPane(itemConf){
     const r = BrowserLogic.updateBadge(this.hmBrowser, itemConf, {isOpen:false});
+    this.trigger(TYPES.UPDATE_BROWSER, r)
+  },
+  onRemoveNewsBadges(itemConf){
+    const r = BrowserLogic.removeBadges(this.hmBrowser, itemConf)
     this.trigger(TYPES.UPDATE_BROWSER, r)
   },
 

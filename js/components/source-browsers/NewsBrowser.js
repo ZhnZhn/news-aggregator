@@ -21,22 +21,17 @@ var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
 
 var _Links = _interopRequireDefault(require("../links/Links"));
 
+var _crModelMore = _interopRequireDefault(require("./crModelMore"));
+
 var NewsBrowser =
 /*#__PURE__*/
 function (_Component) {
   (0, _inheritsLoose2["default"])(NewsBrowser, _Component);
 
-  function NewsBrowser() {
+  function NewsBrowser(props) {
     var _this;
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-    _this.state = {
-      itemData: {}
-    };
+    _this = _Component.call(this, props) || this;
 
     _this._onStore = function (actionType, option) {
       var _this$props = _this.props,
@@ -50,6 +45,12 @@ function (_Component) {
       }
     };
 
+    _this._menuMore = (0, _crModelMore["default"])({
+      onRemoveBadges: props.onRemoveBadges
+    });
+    _this.state = {
+      itemData: {}
+    };
     return _this;
   }
 
@@ -72,8 +73,8 @@ function (_Component) {
         onClick = _this$props2.onClick,
         onError = _this$props2.onError,
         onClickBadge = _this$props2.onClickBadge,
-        S = theme.createStyle(_NewsBrowser["default"]);
-    var itemData = this.state.itemData;
+        S = theme.createStyle(_NewsBrowser["default"]),
+        itemData = this.state.itemData;
     return _react["default"].createElement(_DynamicMenuBrowser["default"], {
       styleConfig: S,
       caption: "News Sources",
@@ -82,6 +83,7 @@ function (_Component) {
       browserId: browserId,
       itemData: itemData,
       showAction: showAction,
+      menuMore: this._menuMore,
       onClick: onClick,
       onError: onError,
       onClickBadge: onClickBadge

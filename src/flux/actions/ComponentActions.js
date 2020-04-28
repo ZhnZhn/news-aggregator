@@ -7,6 +7,7 @@ export const TYPES = {
   SHOW_NEWS_PANE: 'showNewsPane',
   TOGGLE_NEWS_PANE: 'toggleNewsPane',
   CLOSE_NEWS_PANE: 'closeNewsPane',
+  REMOVE_NEWS_BADGES: 'removeNewsBadges',
 
   SHOW_ABOUT: 'showAbout',
 
@@ -23,6 +24,7 @@ const Actions = Reflux.createActions({
   [TYPES.SHOW_NEWS_PANE]: {},
   [TYPES.TOGGLE_NEWS_PANE]: {},
   [TYPES.CLOSE_NEWS_PANE]: {},
+  [TYPES.REMOVE_NEWS_BADGES]: {},
 
   [TYPES.SHOW_ABOUT]: {},
   [TYPES.SHOW_BROWSER]: {},

@@ -27,12 +27,13 @@ const _renderMenuItems = function(TS, option){
                     itemConf={_itemConf}
                     onClick={onClickBadge}
                  />
-               : undefined;
+               : null;
 
     Object.assign(_itemConf, rest)
     const _onClick = onClick.bind(null, _itemConf);
     return (
        <div
+           role="menuitem"
            tabIndex="0"
            key={index}
            className={_className}
