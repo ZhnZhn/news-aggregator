@@ -104,7 +104,8 @@ function (_Component) {
 
   _proto.render = function render() {
     var _this$props = this.props,
-        rootStyle = _this$props.rootStyle,
+        style = _this$props.style,
+        maxLength = _this$props.maxLength,
         caption = _this$props.caption,
         _this$props$errorMsg = _this$props.errorMsg,
         errorMsg = _this$props$errorMsg === void 0 ? '' : _this$props$errorMsg,
@@ -117,7 +118,7 @@ function (_Component) {
 
     return _react["default"].createElement("div", {
       className: CL.SELECT,
-      style: rootStyle
+      style: style
     }, _react["default"].createElement("label", {
       className: CL.LABEL,
       style: (0, _extends2["default"])({}, _labelStyle, {}, _labelErrStyle),
@@ -134,6 +135,7 @@ function (_Component) {
       autoCapitalize: "off",
       spellCheck: "false",
       translate: "false",
+      maxLength: maxLength,
       onFocus: this._hFocusInput,
       onBlur: this._hBlurInput,
       onChange: this._hInputChange,
@@ -153,6 +155,9 @@ function (_Component) {
   return TextField;
 }(_react.Component);
 
+TextField.defaultProps = {
+  maxLength: "20"
+};
 var _default = TextField;
 exports["default"] = _default;
 //# sourceMappingURL=TextField.js.map

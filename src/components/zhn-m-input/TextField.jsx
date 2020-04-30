@@ -26,6 +26,10 @@ const S = {
 const _isFn = fn => typeof fn === 'function';
 
 class TextField extends Component {
+  static defaultProps = {
+    maxLength: "20"
+  }
+
   constructor(props){
     super(props)
     const { id, initValue, onTest, onEnter } = props;
@@ -68,22 +72,25 @@ class TextField extends Component {
  }
 
   render(){
-    const { rootStyle, caption, errorMsg='' } = this.props
-        , { value, isPassTest } = this.state
-        , _labelStyle = (value || this.isFocus)
-            ? void 0
-            : S.LABEL_TO_INPUT
-        , _labelErrStyle = isPassTest
-            ? void 0
-            : S.LABEL_ON_ERROR
-        , _lineStyle = isPassTest
-            ? void 0
-            : S.LINE_ERROR;
+    const {
+      style, maxLength,
+      caption, errorMsg=''
+    } = this.props
+    , { value, isPassTest } = this.state
+    , _labelStyle = (value || this.isFocus)
+        ? void 0
+        : S.LABEL_TO_INPUT
+    , _labelErrStyle = isPassTest
+        ? void 0
+        : S.LABEL_ON_ERROR
+    , _lineStyle = isPassTest
+        ? void 0
+        : S.LINE_ERROR;
 
     return (
       <div
         className={CL.SELECT}
-        style={rootStyle}
+        style={style}
       >
         <label
           className={CL.LABEL}
@@ -103,6 +110,7 @@ class TextField extends Component {
             autoCapitalize="off"
             spellCheck="false"
             translate="false"
+            maxLength={maxLength}
             onFocus={this._hFocusInput}
             onBlur={this._hBlurInput}
             onChange={this._hInputChange}
