@@ -1,29 +1,17 @@
-.button-tab{
-  position: absolute;
-  z-index: 10;
-  top: 0;
-  left: 300px;
-  color: gray;
-  line-height: 1.3;
-  background-color: #232f3b;
-  padding-left: 8px;
-  padding-right: 8px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+.tab {
+  display: inline-block;
+  color: #9e9e9e;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  font-weight: bold;
+  border-bottom: 3px solid #9e9e9e;
   cursor: pointer;
+  outline: 0;
 }
-.button-tab:hover{
-  color: rgba(164, 135, 212, 1);
-  font-weight: bold;
-}
-.button-tab--show{
-  color: rgba(164, 135, 212, 1);
-}
-.button-tab--show:hover{
-  color: #a487d4;
-  font-weight: bold;
+.tab:focus > span {
+  color: #81a5ce;
 }
 
 .bt-sub-item {
@@ -53,21 +41,24 @@
   border-right-color: transparent;
 }
 
-.button-circle {
-    display : inline-block;
-    position : relative;
-    top : 4px;
-    border-radius: 50%;
-    border : 2px solid gray;
-    width : 24px;
-    height : 24px;
-    padding : 0;
-    stroke : gray;
-    cursor: pointer;
+.bt-circle {
+  display: inline-block;
+  color: #80c040;
+  width: 26px;
+  height: 26px;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 50%;
+  border: 2px solid #80c040;
+  cursor: pointer;
+  background-color: transparent;
+  transition: background-color 200ms ease-out;
 }
-.button-circle:hover{
-  border : 2px solid rgba(164, 135, 212, 1);
-  stroke : rgba(164, 135, 212, 1);
+
+.bt-circle:hover,
+.bt-circle:focus {
+  background-color: rgba(0, 0, 0, 0.3);
+  outline: 0;
 }
 
 .svg-resize{
@@ -106,22 +97,17 @@
 
 .not-selected {
   /* iOS Safari */
-  -webkit-touch-callout: none; 
-
+  -webkit-touch-callout: none;
   /* Chrome all / Safari all / Opera */
-  -webkit-user-select: none;   
-
+  -webkit-user-select: none;
   /* Konqueror */
   -khtml-user-select: none;
-
-  /* Firefox all */    
-  -moz-user-select: none;      
-
+  /* Firefox all */
+  -moz-user-select: none;
   /* IE 10+ */
-  -ms-user-select: none;       
-
+  -ms-user-select: none;
   /* Likely future */
-  user-select: none;           
+  user-select: none;
 }
 
 [data-loader='circle-failed']{
@@ -132,32 +118,17 @@
   border-radius: 100%;
 }
 
-button::-moz-focus-inner {
-  border: 0;
-  outline: 0;
-}
-
-.bt-twitter {
-  background-color: #1b95e0;
-}
-.bt-twitter:hover {
-  background-color: #0c7abf;
-}
-.bt-twitter span {
-  border-bottom: thin solid;
-}
-.bt-twitter:hover span {
-  border-bottom-width: medium;
-}
-
 .link {
   color: #009ae5;
   font-weight: bold;
-  border-bottom: thin solid;
+  margin-left: 6px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid;
   text-decoration: none;
 }
-.link:hover{
-  border-bottom-width: medium;
+.link:hover,
+.link:focus {
+  border-bottom-width: 3px;
 }
 
 .bt-raised {
@@ -196,7 +167,7 @@ button::-moz-focus-inner {
   text-transform: uppercase;
   /* font-weight: 500; */
   font-weight: bold;
-  margin: 0px;
+  margin: 0;
   user-select: none;
   padding-left: 16px;
   padding-right: 16px;
@@ -238,8 +209,6 @@ button::-moz-focus-inner {
   font-size: 16px;
   letter-spacing: 0;
   text-transform: uppercase;
-
-  /* font-weight: 500; */
   font-weight: bold;
   margin: 0;
   user-select: none;

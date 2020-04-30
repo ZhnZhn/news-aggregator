@@ -3,8 +3,8 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 .open-close:focus {
-  outline: none;
-  background-color: rgba(0, 0, 0, 0.15); }
+  background-color: rgba(0, 0, 0, 0.15);
+  outline: 0; }
 
 .row__news-source {
   font-size: 16px;
@@ -13,16 +13,17 @@
   line-height: 2;
   padding-top: 1px;
   padding-bottom: 1px;
-  padding-left: 16px;
-  border-bottom: 1px solid transparent;
+  padding-left: 12px;
+  border-left: 4px solid transparent;
   cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 .row__news-source:hover {
-  border-bottom: 1px solid #1b75bb; }
+  border-left: 4px solid #1b75bb; }
 
-.row__news-source:focus {
-  border-bottom: 1px solid #1b75bb; }
+.row__news-source:focus, .row__news-source:active {
+  background-color: rgba(0, 0, 0, 0.15);
+  outline: 0; }
 
 .row__news-source--white {
   font-size: 16px;
@@ -31,16 +32,17 @@
   line-height: 2;
   padding-top: 1px;
   padding-bottom: 1px;
-  padding-left: 16px;
-  border-bottom: 1px solid transparent;
+  padding-left: 12px;
+  border-left: 4px solid transparent;
   cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 .row__news-source--white:hover {
-  border-bottom: 1px solid #1b75bb; }
+  border-left: 4px solid #1b75bb; }
 
-.row__news-source--white:focus {
-  border-bottom: 1px solid #1b75bb; }
+.row__news-source--white:focus, .row__news-source--white:active {
+  background-color: rgba(0, 0, 0, 0.15);
+  outline: 0; }
 
 .row__news-source--sand {
   font-size: 16px;
@@ -49,13 +51,14 @@
   line-height: 2;
   padding-top: 1px;
   padding-bottom: 1px;
-  padding-left: 16px;
-  border-bottom: 1px solid transparent;
+  padding-left: 12px;
+  border-left: 4px solid transparent;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 .row__news-source--sand:hover {
-  border-bottom: 1px solid #1b75bb; }
+  border-left: 4px solid #1b75bb; }
 
-.row__news-source--sand:focus {
-  border-bottom: 1px solid #1b75bb; }
+.row__news-source--sand:focus, .row__news-source--sand:active {
+  background-color: rgba(0, 0, 0, 0.15);
+  outline: 0; }

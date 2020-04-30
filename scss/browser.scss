@@ -11,16 +11,18 @@
       line-height: 2;
       padding-top: 1px;
       padding-bottom: 1px;
-      padding-left: 16px;
-      border-bottom: 1px solid transparent;
+      padding-left: 12px;
+      border-left: 4px solid transparent;
       cursor: pointer;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
     &#{$suffix}:hover {
-      border-bottom: 1px solid $cBorderHover;
+      border-left: 4px solid $cBlSourceHover;
     }
-    &#{$suffix}:focus {
-      border-bottom: 1px solid $cBorderHover;
+    &#{$suffix}:focus,
+    &#{$suffix}:active {
+      background-color: $bgItemFocus;
+      outline: 0;
     }
   }
 }
@@ -30,8 +32,8 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 .open-close:focus {
-  outline: none;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: $bgItemFocus;
+  outline: 0;
 }
 
 @include row__news-source($thGreySuffix)
