@@ -12,7 +12,8 @@ const RECENT_OPTIONS = [
   { caption: "40 News", value: "40" },
   { caption: "50 News", value: "50" }
 ]
-, DF_RECENT = RECENT_OPTIONS[1];
+, DF_RECENT = RECENT_OPTIONS[1]
+, DF_SYMBOL = "AAPL";
 
 
 @Decors.withDecors
@@ -31,7 +32,7 @@ class IexNewsDialog extends Component {
 
   _handleLoad = () => {
     const { type, source, itemConf, onLoad } = this.props
-        , _symbol = this.inputSymbol.getValue();
+    , _symbol = this.inputSymbol.getValue() || DF_SYMBOL;
 
     onLoad({
       type, source, itemConf,
@@ -64,9 +65,11 @@ class IexNewsDialog extends Component {
        >
          <A.TextField
            ref={this._refInputSymbol}
-           rootStyle={TS.INPUT_ROOT}
+           style={TS.INPUT_ROOT}
+           maxLength="10"
            caption="Stock Symbol"
-           initValue="AAPL"
+           initValue={DF_SYMBOL}
+           onEnter={this._handleLoad}        
          />
          <A.InputSelect
            caption="Recent"

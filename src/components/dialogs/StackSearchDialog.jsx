@@ -81,13 +81,13 @@ class StackSearchDialog extends Component {
            onClose={this._handleClose}
        >
          <A.TextField
-           rootStyle={TS.INPUT_ROOT}
+           style={TS.INPUT_ROOT}
            ref={this._refInputTagged}
            caption="Tagged (Default: CSS)"
            initValue="CSS"
          />
          <A.TextField
-           rootStyle={TS.INPUT_ROOT}
+           style={TS.INPUT_ROOT}
            ref={this._refInputInTitle}
            caption="In Title (Default: flexbox)"
            initValue="flexbox"
@@ -100,10 +100,10 @@ class StackSearchDialog extends Component {
            onSelect={this._selectSortBy}
          />
          <div>
-            <A.TextField              
+            <A.TextField
               ref={this._refFromDate}
               caption="From Date"
-              rootStyle={TS.INPUT_DATE}
+              style={TS.INPUT_DATE}
               initValue={INITIAL_FROM_DATE}
               errorMsg={DATE_ERR_MSG}
               onTest={_onTestDate}
@@ -111,7 +111,7 @@ class StackSearchDialog extends Component {
             <A.TextField
               ref={this._refToDate}
               caption="To Date"
-              rootStyle={TS.INPUT_DATE}
+              style={TS.INPUT_DATE}
               initValue={INITIAL_TO_DATE}
               errorMsg={DATE_ERR_MSG}
               onTest={_onTestDate}

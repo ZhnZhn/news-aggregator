@@ -39,7 +39,8 @@ var RECENT_OPTIONS = [{
   caption: "50 News",
   value: "50"
 }],
-    DF_RECENT = RECENT_OPTIONS[1];
+    DF_RECENT = RECENT_OPTIONS[1],
+    DF_SYMBOL = "AAPL";
 var IexNewsDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_temp =
 /*#__PURE__*/
 function (_Component) {
@@ -60,7 +61,7 @@ function (_Component) {
           source = _this$props.source,
           itemConf = _this$props.itemConf,
           onLoad = _this$props.onLoad,
-          _symbol = _this.inputSymbol.getValue();
+          _symbol = _this.inputSymbol.getValue() || DF_SYMBOL;
 
       onLoad({
         type: type,
@@ -110,9 +111,11 @@ function (_Component) {
       onClose: this._handleClose
     }, _react["default"].createElement(_Comp["default"].TextField, {
       ref: this._refInputSymbol,
-      rootStyle: TS.INPUT_ROOT,
+      style: TS.INPUT_ROOT,
+      maxLength: "10",
       caption: "Stock Symbol",
-      initValue: "AAPL"
+      initValue: DF_SYMBOL,
+      onEnter: this._handleLoad
     }), _react["default"].createElement(_Comp["default"].InputSelect, {
       caption: "Recent",
       initItem: DF_RECENT,

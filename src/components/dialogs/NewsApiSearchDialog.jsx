@@ -17,7 +17,8 @@ const SORT_BY_OPTIONS = [
   { caption: "Popularity", value: "popularity"},
   { caption: "PublishedAt", value: "publishedAt" }
 ]
-, DF_SORT_BY = SORT_BY_OPTIONS[0];
+, DF_SORT_BY = SORT_BY_OPTIONS[0]
+, DF_TERM = "Weather";
 
 
 @Decors.withDecors
@@ -36,7 +37,7 @@ class NewsApiSearchDialog extends Component {
 
   _handleLoad = () => {
     const { type, source, itemConf, onLoad } = this.props
-        , _symbol = this.inputSymbol.getValue();
+    , _symbol = this.inputSymbol.getValue() || DF_TERM;
 
     onLoad({
       type, source, itemConf,
@@ -51,9 +52,9 @@ class NewsApiSearchDialog extends Component {
 
   render(){
     const { isShow, theme, onShow } = this.props
-         , TS = theme.createStyle(styleConfig)
-         , _commandButtons = this._createCommandButtons(TS.BT);
-
+    , TS = theme.createStyle(styleConfig)
+    , _commandButtons = this._createCommandButtons(TS.BT)
+    , _termCaption = `Term (Default: ${DF_TERM})`;
     return (
       <A.DraggableDialog
            ref={this._refDialogComp}
@@ -68,10 +69,11 @@ class NewsApiSearchDialog extends Component {
            onClose={this._handleClose}
        >
          <A.TextField
-           rootStyle={TS.INPUT_ROOT}
+           style={TS.INPUT_ROOT}
            ref={this._refInputSymbol}
-           caption="Term (Default: Weather)"
-           initValue="Weather"
+           caption={_termCaption}
+           initValue={DF_TERM}
+           onEnter={this._handleLoad}
          />
          <A.InputSelect
            caption="SortBy"

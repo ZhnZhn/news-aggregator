@@ -75,7 +75,7 @@ class WebhoseQueryDialog extends Component {
            onClose={this._handleClose}
        >
         <A.TextField
-          rootStyle={TS.INPUT_ROOT}
+          style={TS.INPUT_ROOT}
           ref={this._refInputTitle}
           caption="In Title (Default: Weather)"
           initValue="Weather"
@@ -88,7 +88,7 @@ class WebhoseQueryDialog extends Component {
           onSelect={this._selectSiteType}
         />
         <A.TextField
-          rootStyle={TS.INPUT_ROOT}
+          style={TS.INPUT_ROOT}
           ref={this._refInputBeforeDays}
           caption="Before Days, Max 30"
           initValue={2}

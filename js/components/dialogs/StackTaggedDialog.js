@@ -49,7 +49,8 @@ var INITIAL_FROM_DATE = _dt["default"].getFromDate(1),
   caption: "Hot Month Tab",
   value: "month"
 }],
-    DF_SORT_BY = SORT_BY_OPTIONS[4];
+    DF_SORT_BY = SORT_BY_OPTIONS[4],
+    DF_TAG = "CSS";
 
 var StackTaggedDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_temp =
 /*#__PURE__*/
@@ -71,7 +72,7 @@ function (_Component) {
           source = _this$props.source,
           itemConf = _this$props.itemConf,
           onLoad = _this$props.onLoad,
-          _tag = _this.inputTag.getValue(),
+          _tag = _this.inputTag.getValue() || DF_TAG,
           fromDate = _this.fromDate.getValue(),
           toDate = _this.toDate.getValue(),
           _fromDate = _dt["default"].toUTCSecond(fromDate),
@@ -121,7 +122,8 @@ function (_Component) {
         theme = _this$props2.theme,
         onShow = _this$props2.onShow,
         TS = theme.createStyle(_Dialog["default"]),
-        _commandButtons = this._createCommandButtons(TS.BT);
+        _commandButtons = this._createCommandButtons(TS.BT),
+        _tagCaption = "Tag (Default: " + DF_TAG + ")";
 
     return _react["default"].createElement(_Comp["default"].DraggableDialog, {
       ref: this._refDialogComp,
@@ -135,10 +137,11 @@ function (_Component) {
       onShowChart: onShow,
       onClose: this._handleClose
     }, _react["default"].createElement(_Comp["default"].TextField, {
-      rootStyle: TS.INPUT_ROOT,
+      style: TS.INPUT_ROOT,
       ref: this._refInputTag,
-      caption: "Tag (Default: CSS)",
-      initValue: "CSS"
+      caption: _tagCaption,
+      initValue: DF_TAG,
+      onEnter: this._handleLoad
     }), _react["default"].createElement(_Comp["default"].InputSelect, {
       caption: "SortBy",
       initItem: DF_SORT_BY,
@@ -148,14 +151,14 @@ function (_Component) {
     }), _react["default"].createElement("div", null, _react["default"].createElement(_Comp["default"].TextField, {
       ref: this._refFromDate,
       caption: "From Date",
-      rootStyle: TS.INPUT_DATE,
+      style: TS.INPUT_DATE,
       initValue: INITIAL_FROM_DATE,
       errorMsg: DATE_ERR_MSG,
       onTest: _onTestDate
     }), _react["default"].createElement(_Comp["default"].TextField, {
       ref: this._refToDate,
       caption: "To Date",
-      rootStyle: TS.INPUT_DATE,
+      style: TS.INPUT_DATE,
       initValue: INITIAL_TO_DATE,
       errorMsg: DATE_ERR_MSG,
       onTest: _onTestDate

@@ -20,7 +20,8 @@ const INITIAL_FROM_DATE = DateUtil.getFromDate(1)
   { caption: "Hot Week Tab", value: "week" },
   { caption: "Hot Month Tab", value: "month" }
 ]
-, DF_SORT_BY = SORT_BY_OPTIONS[4];
+, DF_SORT_BY = SORT_BY_OPTIONS[4]
+, DF_TAG = "CSS";
 
 
 @Decors.withDecors
@@ -39,11 +40,11 @@ class StackTaggedDialog extends Component {
 
   _handleLoad = () => {
     const { type, source, itemConf, onLoad } = this.props
-        , _tag = this.inputTag.getValue()
-        , fromDate = this.fromDate.getValue()
-        , toDate = this.toDate.getValue()
-        , _fromDate = DateUtil.toUTCSecond(fromDate)
-        , _toDate = DateUtil.toUTCSecond(toDate);
+    , _tag = this.inputTag.getValue() || DF_TAG
+    , fromDate = this.fromDate.getValue()
+    , toDate = this.toDate.getValue()
+    , _fromDate = DateUtil.toUTCSecond(fromDate)
+    , _toDate = DateUtil.toUTCSecond(toDate);
 
     onLoad({
       type,
@@ -65,8 +66,9 @@ class StackTaggedDialog extends Component {
 
   render(){
     const { isShow, theme, onShow } = this.props
-         , TS = theme.createStyle(styleConfig)
-         , _commandButtons = this._createCommandButtons(TS.BT);
+    , TS = theme.createStyle(styleConfig)
+    , _commandButtons = this._createCommandButtons(TS.BT)
+    , _tagCaption = `Tag (Default: ${DF_TAG})`;
 
     return (
       <A.DraggableDialog
@@ -82,10 +84,11 @@ class StackTaggedDialog extends Component {
            onClose={this._handleClose}
        >
          <A.TextField
-           rootStyle={TS.INPUT_ROOT}
+           style={TS.INPUT_ROOT}
            ref={this._refInputTag}
-           caption="Tag (Default: CSS)"
-           initValue="CSS"
+           caption={_tagCaption}
+           initValue={DF_TAG}
+           onEnter={this._handleLoad}
          />
          <A.InputSelect
            caption="SortBy"
@@ -98,7 +101,7 @@ class StackTaggedDialog extends Component {
         <A.TextField
           ref={this._refFromDate}
           caption="From Date"
-          rootStyle={TS.INPUT_DATE}
+          style={TS.INPUT_DATE}
           initValue={INITIAL_FROM_DATE}
           errorMsg={DATE_ERR_MSG}
           onTest={_onTestDate}
@@ -106,7 +109,7 @@ class StackTaggedDialog extends Component {
         <A.TextField
           ref={this._refToDate}
           caption="To Date"
-          rootStyle={TS.INPUT_DATE}
+          style={TS.INPUT_DATE}
           initValue={INITIAL_TO_DATE}
           errorMsg={DATE_ERR_MSG}
           onTest={_onTestDate}

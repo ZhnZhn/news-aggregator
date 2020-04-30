@@ -121,7 +121,7 @@ function (_Component) {
       onShowChart: onShow,
       onClose: this._handleClose
     }, _react["default"].createElement(_Comp["default"].TextField, {
-      rootStyle: TS.INPUT_ROOT,
+      style: TS.INPUT_ROOT,
       ref: this._refInputTitle,
       caption: "In Title (Default: Weather)",
       initValue: "Weather"
@@ -132,7 +132,7 @@ function (_Component) {
       styleConfig: TS.SELECT,
       onSelect: this._selectSiteType
     }), _react["default"].createElement(_Comp["default"].TextField, {
-      rootStyle: TS.INPUT_ROOT,
+      style: TS.INPUT_ROOT,
       ref: this._refInputBeforeDays,
       caption: "Before Days, Max 30",
       initValue: 2,

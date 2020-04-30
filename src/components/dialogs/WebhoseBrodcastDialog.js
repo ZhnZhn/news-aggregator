@@ -70,13 +70,13 @@ class WebhoseBrodcastDialog extends Component {
            onClose={this._handleClose}
        >
         <A.TextField
-          rootStyle={TS.INPUT_ROOT}
+          style={TS.INPUT_ROOT}
           ref={this._refInputTitle}
           caption="In Title (Default: Weather)"
           initValue="Weather"
         />
         <A.TextField
-          rootStyle={TS.INPUT_ROOT}
+          style={TS.INPUT_ROOT}
           ref={this._refInputBeforeDays}
           caption="Before Days, Max 30"
           initValue={2}

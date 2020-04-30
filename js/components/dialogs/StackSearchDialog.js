@@ -135,12 +135,12 @@ function (_Component) {
       onShowChart: onShow,
       onClose: this._handleClose
     }, _react["default"].createElement(_Comp["default"].TextField, {
-      rootStyle: TS.INPUT_ROOT,
+      style: TS.INPUT_ROOT,
       ref: this._refInputTagged,
       caption: "Tagged (Default: CSS)",
       initValue: "CSS"
     }), _react["default"].createElement(_Comp["default"].TextField, {
-      rootStyle: TS.INPUT_ROOT,
+      style: TS.INPUT_ROOT,
       ref: this._refInputInTitle,
       caption: "In Title (Default: flexbox)",
       initValue: "flexbox"
@@ -153,14 +153,14 @@ function (_Component) {
     }), _react["default"].createElement("div", null, _react["default"].createElement(_Comp["default"].TextField, {
       ref: this._refFromDate,
       caption: "From Date",
-      rootStyle: TS.INPUT_DATE,
+      style: TS.INPUT_DATE,
       initValue: INITIAL_FROM_DATE,
       errorMsg: DATE_ERR_MSG,
       onTest: _onTestDate
     }), _react["default"].createElement(_Comp["default"].TextField, {
       ref: this._refToDate,
       caption: "To Date",
-      rootStyle: TS.INPUT_DATE,
+      style: TS.INPUT_DATE,
       initValue: INITIAL_TO_DATE,
       errorMsg: DATE_ERR_MSG,
       onTest: _onTestDate

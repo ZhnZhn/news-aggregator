@@ -39,7 +39,8 @@ var SORT_BY_OPTIONS = [{
   caption: "PublishedAt",
   value: "publishedAt"
 }],
-    DF_SORT_BY = SORT_BY_OPTIONS[0];
+    DF_SORT_BY = SORT_BY_OPTIONS[0],
+    DF_TERM = "Weather";
 var NewsApiSearchDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_temp =
 /*#__PURE__*/
 function (_Component) {
@@ -60,7 +61,7 @@ function (_Component) {
           source = _this$props.source,
           itemConf = _this$props.itemConf,
           onLoad = _this$props.onLoad,
-          _symbol = _this.inputSymbol.getValue();
+          _symbol = _this.inputSymbol.getValue() || DF_TERM;
 
       onLoad({
         type: type,
@@ -95,7 +96,8 @@ function (_Component) {
         theme = _this$props2.theme,
         onShow = _this$props2.onShow,
         TS = theme.createStyle(_Dialog["default"]),
-        _commandButtons = this._createCommandButtons(TS.BT);
+        _commandButtons = this._createCommandButtons(TS.BT),
+        _termCaption = "Term (Default: " + DF_TERM + ")";
 
     return _react["default"].createElement(_Comp["default"].DraggableDialog, {
       ref: this._refDialogComp,
@@ -109,10 +111,11 @@ function (_Component) {
       onShowChart: onShow,
       onClose: this._handleClose
     }, _react["default"].createElement(_Comp["default"].TextField, {
-      rootStyle: TS.INPUT_ROOT,
+      style: TS.INPUT_ROOT,
       ref: this._refInputSymbol,
-      caption: "Term (Default: Weather)",
-      initValue: "Weather"
+      caption: _termCaption,
+      initValue: DF_TERM,
+      onEnter: this._handleLoad
     }), _react["default"].createElement(_Comp["default"].InputSelect, {
       caption: "SortBy",
       initItem: DF_SORT_BY,
