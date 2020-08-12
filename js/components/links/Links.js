@@ -16,6 +16,11 @@ var CryptoCompare = (0, _withProps["default"])({
   href: "https://cryptocompare.com/",
   tabIndex: "-1"
 })(_Link["default"]);
+var Messari = (0, _withProps["default"])({
+  title: "Messari",
+  href: "https://messari.io",
+  tabIndex: "-1"
+})(_Link["default"]);
 var NewsApi = (0, _withProps["default"])({
   title: "NewsApi.org",
   href: "https://newsapi.org/",
@@ -46,6 +51,7 @@ var Link = {
   StackOverflow: StackOverflow,
   IexApi: IexApi,
   CryptoCompare: CryptoCompare,
+  Messari: Messari,
   PoweredBy: _PoweredBy["default"]
 };
 var _default = Link;

@@ -59,6 +59,16 @@ var NEWS_QUERY = {
       "caption": "CryptoCompare News"
     }
   },
+  MESSARI: {
+    "type": "MESSARI",
+    "dialogType": "MessariNews",
+    "paneCaption": "Messari Blockchain News",
+    "paneId": "messari_news",
+    "paneType": "MESSARI_NEWS",
+    "dialogProps": {
+      "caption": "Messari Blockchain News"
+    }
+  },
   IEX: {
     "type": "IEX_NEWS",
     "dialogType": "IexNews",

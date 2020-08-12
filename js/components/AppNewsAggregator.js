@@ -81,6 +81,7 @@ function (_Component) {
     _this.showStackTagged = _fShowDialog(_NewsQuery["default"].STACK_TAGGED);
     _this.showStackSearch = _fShowDialog(_NewsQuery["default"].STACK_SEARCH);
     _this.showCryptoCompare = _fShowDialog(_NewsQuery["default"].CRYPTO_COMPARE);
+    _this.showMessari = _fShowDialog(_NewsQuery["default"].MESSARI);
     _this.showIex = _fShowDialog(_NewsQuery["default"].IEX);
     _this.showNewsSearch = _fShowDialog(_NewsQuery["default"].NEWS_SEARCH);
     _this.showNewsTop = _fShowDialog(_NewsQuery["default"].NEWS_TOP);
@@ -115,6 +116,7 @@ function (_Component) {
       onStackTagged: this.showStackTagged,
       onStackSearch: this.showStackSearch,
       onCryptoComapre: this.showCryptoCompare,
+      onMessari: this.showMessari,
       onIex: this.showIex,
       onNewsSearch: this.showNewsSearch,
       onNewsTop: this.showNewsTop,

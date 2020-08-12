@@ -23,6 +23,8 @@ var _NewsApiTopDialog = _interopRequireDefault(require("./NewsApiTopDialog"));
 
 var _CryptoCompareNewsDialog = _interopRequireDefault(require("./CryptoCompareNewsDialog"));
 
+var _MessariDialog = _interopRequireDefault(require("./MessariDialog"));
+
 var R = {
   DEFAULT: _DialogType["default"],
   DialogType1: _DialogType["default"],
@@ -31,6 +33,7 @@ var R = {
   StackTagged: _StackTaggedDialog["default"],
   StackSearch: _StackSearchDialog["default"],
   CryptoCompareNews: _CryptoCompareNewsDialog["default"],
+  MessariNews: _MessariDialog["default"],
   IexNews: _IexNewsDialog["default"],
   NewsApiSearch: _NewsApiSearchDialog["default"],
   NewsApiTop: _NewsApiTopDialog["default"]

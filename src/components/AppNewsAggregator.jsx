@@ -35,6 +35,7 @@ class AppNewsAggregator extends Component {
     this.showStackTagged = _fShowDialog(QUERY.STACK_TAGGED)
     this.showStackSearch= _fShowDialog(QUERY.STACK_SEARCH)
     this.showCryptoCompare = _fShowDialog(QUERY.CRYPTO_COMPARE)
+    this.showMessari = _fShowDialog(QUERY.MESSARI)
     this.showIex= _fShowDialog(QUERY.IEX)
     this.showNewsSearch = _fShowDialog(QUERY.NEWS_SEARCH)
     this.showNewsTop = _fShowDialog(QUERY.NEWS_TOP)
@@ -78,6 +79,7 @@ class AppNewsAggregator extends Component {
             onStackTagged={this.showStackTagged}
             onStackSearch={this.showStackSearch}
             onCryptoComapre={this.showCryptoCompare}
+            onMessari={this.showMessari}
             onIex={this.showIex}
             onNewsSearch={this.showNewsSearch}
             onNewsTop={this.showNewsTop}

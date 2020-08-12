@@ -72,6 +72,14 @@ var RouterApiConf = {
           msgErr: "CryptoCompare News API " + MSG_ERR_TAIL
         };
 
+      case 'MS':
+        return {
+          apiKey: true,
+          api: _Api["default"].Messari,
+          adapter: _Adapters["default"].Messari,
+          msgErr: "Messari Blockchain News API " + MSG_ERR_TAIL
+        };
+
       default:
         return {
           msgErr: MSG_ERR_DF

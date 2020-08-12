@@ -57,6 +57,7 @@ function (_Component) {
         paneStyle = _this$props.paneStyle,
         isShow = _this$props.isShow,
         onCryptoComapre = _this$props.onCryptoComapre,
+        onMessari = _this$props.onMessari,
         onIex = _this$props.onIex,
         onNewsApi = _this$props.onNewsApi,
         onNewsTop = _this$props.onNewsTop,
@@ -78,7 +79,12 @@ function (_Component) {
       onClose: onClose
     }), _react["default"].createElement(_Comp["default"].MenuItem, {
       className: CL_ITEM,
-      caption: "IEX Cloud: Stock News",
+      caption: "Messari: Blockchain News",
+      onClick: onMessari,
+      onClose: onClose
+    }), _react["default"].createElement(_Comp["default"].MenuItem, {
+      className: CL_ITEM,
+      caption: "IEX Cloud: Stock Market News",
       onClick: onIex,
       onClose: onClose
     }), _react["default"].createElement(_Comp["default"].MenuItem, {

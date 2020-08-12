@@ -9,17 +9,16 @@
       color: black;
       font-size: 16px;
       font-weight: bold;
-      padding-top: 1px;
-      padding-bottom: 1px;
+      padding-top: 2px;
       padding-left: 16px;
-      border-bottom: 1px solid transparent;
+      border-left: 4px solid transparent;
       cursor: pointer;
     }
-    &#{$suffix}:hover {
-      border-bottom: 1px solid $cBorderHover;
-    }
     &#{$suffix}:focus {
-      border-bottom: 1px solid $cBorderHover;
+      background-color: $bgItemFocus;
+    }
+    &#{$suffix}:hover {
+      border-left: 4px solid $cBorderHover;
     }
   }
 }

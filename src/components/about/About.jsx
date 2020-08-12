@@ -79,6 +79,9 @@ class About extends Component {
                    <A.Link.CryptoCompare />
                  </div>
                  <div>
+                   <A.Link.Messari />
+                 </div>
+                 <div>
                    <A.Link.IexApi />
                  </div>
                  <div>
@@ -90,7 +93,7 @@ class About extends Component {
                  <div>
                    <A.Link.WebhoseIo />
                  </div>
-                
+
                  <p style={S.MARGIN_TOP}>
                    Personal API Keys from providers are required.
                  </p>

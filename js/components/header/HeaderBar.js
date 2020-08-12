@@ -88,6 +88,7 @@ function (_Component) {
         onStackTagged = props.onStackTagged,
         onStackSearch = props.onStackSearch,
         onCryptoComapre = props.onCryptoComapre,
+        onMessari = props.onMessari,
         onIex = props.onIex,
         onNewsSearch = props.onNewsSearch,
         onNewsTop = props.onNewsTop,
@@ -98,6 +99,7 @@ function (_Component) {
     _this._hStackTagged = _fClick(onStackTagged);
     _this._hStackSearch = _fClick(onStackSearch);
     _this._hCryptoCompare = _fClick(onCryptoComapre);
+    _this._hMessari = _fClick(onMessari);
     _this._hIex = _fClick(onIex);
     _this._hNewsApi = _fClick(onNewsSearch);
     _this._hNewsTop = _fClick(onNewsTop);
@@ -132,6 +134,7 @@ function (_Component) {
       onStackTagged: this._hStackTagged,
       onStackSearch: this._hStackSearch,
       onCryptoComapre: this._hCryptoCompare,
+      onMessari: this._hMessari,
       onIex: this._hIex,
       onNewsApi: this._hNewsApi,
       onNewsTop: this._hNewsTop

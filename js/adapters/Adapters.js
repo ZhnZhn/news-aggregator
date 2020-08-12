@@ -15,12 +15,15 @@ var _IexAdapter = _interopRequireDefault(require("./IexAdapter"));
 
 var _CryptoCompareAdapter = _interopRequireDefault(require("./CryptoCompareAdapter"));
 
+var _MessariAdapter = _interopRequireDefault(require("./MessariAdapter"));
+
 var Adapters = {
   News: _NewsApiAdapter["default"],
   Webhose: _WebhoseAdapter["default"],
   StackOverflow: _StackOverflowAdapter["default"],
   Iex: _IexAdapter["default"],
-  CryptoCompare: _CryptoCompareAdapter["default"]
+  CryptoCompare: _CryptoCompareAdapter["default"],
+  Messari: _MessariAdapter["default"]
 };
 var _default = Adapters;
 exports["default"] = _default;

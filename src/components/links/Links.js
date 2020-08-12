@@ -9,6 +9,12 @@ const CryptoCompare = withProps({
   tabIndex: "-1"
 })(BaseComp)
 
+const Messari = withProps({
+  title: "Messari",
+  href: "https://messari.io",
+  tabIndex: "-1"
+})(BaseComp)
+
 export const NewsApi = withProps({
   title: "NewsApi.org",
   href: "https://newsapi.org/",
@@ -39,6 +45,7 @@ const Link = {
   StackOverflow,
   IexApi,
   CryptoCompare,
+  Messari,
   PoweredBy
 };
 

@@ -1,1 +1,25 @@
-{"version":3,"sources":["../../../src/components/dialogs/RouterDialog.js"],"names":["R","DEFAULT","DialogType1","WebhoseQuery","WebhoseBrodcast","StackTagged","StackSearch","CryptoCompareNews","IexNews","NewsApiSearch","NewsApiTop","RouterDialog","getElement","type"],"mappings":";;;;;;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,OAAO,EAAEC,sBADD;AAERA,EAAAA,WAAW,EAAXA,sBAFQ;AAGRC,EAAAA,YAAY,EAAZA,8BAHQ;AAGMC,EAAAA,eAAe,EAAfA,iCAHN;AAIRC,EAAAA,WAAW,EAAXA,6BAJQ;AAIKC,EAAAA,WAAW,EAAXA,6BAJL;AAKRC,EAAAA,iBAAiB,EAAjBA,mCALQ;AAMRC,EAAAA,OAAO,EAAPA,yBANQ;AAORC,EAAAA,aAAa,EAAbA,+BAPQ;AAOOC,EAAAA,UAAU,EAAVA;AAPP,CAAV;AAUA,IAAMC,YAAY,GAAG;AACnBC,EAAAA,UAAU,EAAE,oBAACC,IAAD,EAAU;AACrB,WAAOb,CAAC,CAACa,IAAD,CAAD,IAAWb,CAAC,CAACC,OAApB;AACA;AAHkB,CAArB;eAMeU,Y","sourcesContent":["\r\nimport DialogType1 from './DialogType1'\r\nimport WebhoseQuery from './WebhoseQueryDialog'\r\nimport WebhoseBrodcast from './WebhoseBrodcastDialog'\r\nimport StackTagged from './StackTaggedDialog'\r\nimport StackSearch from './StackSearchDialog'\r\nimport IexNews from './IexNewsDialog'\r\nimport NewsApiSearch from './NewsApiSearchDialog'\r\nimport NewsApiTop from './NewsApiTopDialog'\r\nimport CryptoCompareNews from './CryptoCompareNewsDialog'\r\n\r\nconst R = {\r\n  DEFAULT: DialogType1,\r\n  DialogType1,\r\n  WebhoseQuery, WebhoseBrodcast,\r\n  StackTagged, StackSearch,\r\n  CryptoCompareNews,\r\n  IexNews,\r\n  NewsApiSearch, NewsApiTop\r\n}\r\n\r\nconst RouterDialog = {\r\n  getElement: (type) => {\r\n   return R[type] || R.DEFAULT;\r\n  }\r\n}\r\n\r\nexport default RouterDialog\r\n"],"file":"RouterDialog.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/dialogs/RouterDialog.js"
+ ],
+ "file": "../../../src/components/dialogs/RouterDialog.js",
+ "names": [
+  "R",
+  "DEFAULT",
+  "DialogType1",
+  "WebhoseQuery",
+  "WebhoseBrodcast",
+  "StackTagged",
+  "StackSearch",
+  "CryptoCompareNews",
+  "MessariNews",
+  "IexNews",
+  "NewsApiSearch",
+  "NewsApiTop",
+  "RouterDialog",
+  "getElement",
+  "type"
+ ],
+ "mappings": ";;;;;;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,OAAO,EAAEC,sBADD;AAERA,EAAAA,WAAW,EAAXA,sBAFQ;AAGRC,EAAAA,YAAY,EAAZA,8BAHQ;AAGMC,EAAAA,eAAe,EAAfA,iCAHN;AAIRC,EAAAA,WAAW,EAAXA,6BAJQ;AAIKC,EAAAA,WAAW,EAAXA,6BAJL;AAKRC,EAAAA,iBAAiB,EAAjBA,mCALQ;AAMRC,EAAAA,WAAW,EAAXA,yBANQ;AAORC,EAAAA,OAAO,EAAPA,yBAPQ;AAQRC,EAAAA,aAAa,EAAbA,+BARQ;AAQOC,EAAAA,UAAU,EAAVA;AARP,CAAV;AAWA,IAAMC,YAAY,GAAG;AACnBC,EAAAA,UAAU,EAAE,oBAACC,IAAD,EAAU;AACrB,WAAOd,CAAC,CAACc,IAAD,CAAD,IAAWd,CAAC,CAACC,OAApB;AACA;AAHkB,CAArB;eAMeW,Y"
+}

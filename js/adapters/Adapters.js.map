@@ -1,1 +1,17 @@
-{"version":3,"sources":["../../src/adapters/Adapters.js"],"names":["Adapters","News","Webhose","StackOverflow","Iex","CryptoCompare"],"mappings":";;;;;;;AACA;;AACA;;AACA;;AACA;;AACA;;AAEA,IAAMA,QAAQ,GAAG;AACfC,EAAAA,IAAI,EAAJA,0BADe;AACTC,EAAAA,OAAO,EAAPA,0BADS;AACAC,EAAAA,aAAa,EAAbA,gCADA;AACeC,EAAAA,GAAG,EAAHA,sBADf;AAEfC,EAAAA,aAAa,EAAbA;AAFe,CAAjB;eAKeL,Q","sourcesContent":["\r\nimport News from './NewsApiAdapter'\r\nimport Webhose from './WebhoseAdapter'\r\nimport StackOverflow from './StackOverflowAdapter'\r\nimport Iex from './IexAdapter'\r\nimport CryptoCompare from './CryptoCompareAdapter'\r\n\r\nconst Adapters = {\r\n  News, Webhose, StackOverflow, Iex,\r\n  CryptoCompare\r\n};\r\n\r\nexport default Adapters\r\n"],"file":"Adapters.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/adapters/Adapters.js"
+ ],
+ "file": "../../src/adapters/Adapters.js",
+ "names": [
+  "Adapters",
+  "News",
+  "Webhose",
+  "StackOverflow",
+  "Iex",
+  "CryptoCompare",
+  "Messari"
+ ],
+ "mappings": ";;;;;;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AAEA,IAAMA,QAAQ,GAAG;AACfC,EAAAA,IAAI,EAAJA,0BADe;AACTC,EAAAA,OAAO,EAAPA,0BADS;AACAC,EAAAA,aAAa,EAAbA,gCADA;AACeC,EAAAA,GAAG,EAAHA,sBADf;AAEfC,EAAAA,aAAa,EAAbA,gCAFe;AAEAC,EAAAA,OAAO,EAAPA;AAFA,CAAjB;eAKeN,Q"
+}
