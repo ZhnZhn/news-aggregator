@@ -9,10 +9,10 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _react = _interopRequireDefault(require("react"));
 
-var CL = 'focusable';
+var CL = 'bt-more';
 var S = {
   BT: {
-    verticalAlign: 'middle',
+    verticalAlign: 'sub',
     paddingLeft: 6,
     paddingRight: 6,
     cursor: 'pointer'

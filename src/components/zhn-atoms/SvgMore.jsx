@@ -1,10 +1,10 @@
 import React from 'react'
 
-const CL = 'focusable';
+const CL = 'bt-more';
 
 const S = {
   BT: {
-    verticalAlign: 'middle',
+    verticalAlign: 'sub',
     paddingLeft: 6,
     paddingRight: 6,
     cursor: 'pointer'
