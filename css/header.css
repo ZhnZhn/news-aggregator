@@ -78,14 +78,13 @@
   color: black;
   font-size: 16px;
   font-weight: bold;
-  padding-top: 1px;
-  padding-bottom: 1px;
+  padding-top: 2px;
   padding-left: 16px;
-  border-bottom: 1px solid transparent;
+  border-left: 4px solid transparent;
   cursor: pointer; }
 
-.row__topic:hover {
-  border-bottom: 1px solid #1b75bb; }
-
 .row__topic:focus {
-  border-bottom: 1px solid #1b75bb; }
+  background-color: rgba(0, 0, 0, 0.15); }
+
+.row__topic:hover {
+  border-left: 4px solid #1b75bb; }

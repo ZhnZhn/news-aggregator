@@ -5,10 +5,15 @@
   font-weight: bold;
   padding-left: 16px;
   padding-right: 16px;
-  border-bottom: 1px solid transparent;
+  border-left: 4px solid transparent;
   outline: none;
   user-select: none;
   cursor: pointer; }
 
 .menu-more__item:focus {
-  border-bottom: 1px solid #1b75bb; }
+  background-color: rgba(0, 0, 0, 0.15); }
+
+.menu-more__item:hover {
+  border-left: 4px solid #1b75bb; }
+
+
