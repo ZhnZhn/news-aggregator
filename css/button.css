@@ -150,7 +150,7 @@
 .bt-raised__span {
   position: relative;
   opacity: 1;
-  font-size: 14px;
+  font-size: 0.875rem;
   letter-spacing: 0;
   text-transform: uppercase;
   /* font-weight: 500; */
@@ -190,7 +190,7 @@
 .bt-flat__span {
   position: relative;
   opacity: 1;
-  font-size: 16px;
+  font-size: 1rem;
   letter-spacing: 0;
   text-transform: uppercase;
   font-weight: bold;

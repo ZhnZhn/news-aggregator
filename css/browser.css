@@ -7,7 +7,7 @@
   outline: 0; }
 
 .row__news-source {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
   color: black;
   line-height: 2;
@@ -26,7 +26,7 @@
   outline: 0; }
 
 .row__news-source--white {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
   color: black;
   line-height: 2;
@@ -45,7 +45,7 @@
   outline: 0; }
 
 .row__news-source--sand {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
   color: black;
   line-height: 2;
