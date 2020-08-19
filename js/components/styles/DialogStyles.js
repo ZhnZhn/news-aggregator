@@ -6,35 +6,32 @@ var DialogStyles = {
   //Dialogs, DatesFragments
   rowDiv: {
     display: 'block',
-    margin: '5px'
+    margin: 5
   },
   labelSpan: {
-    //color: '#1B75BB',
-    //color: '#009688',
     color: 'black',
     display: 'inline-block',
-    //verticalAlign: 'top',
+    width: 110,
+    paddingRight: 5,
     textAlign: 'right',
-    width: '110px',
-    paddingRight: '5px',
-    fontSize: '16px',
+    fontSize: '1rem',
     fontWeight: 'bold',
     userSelect: 'none'
   },
   //ValidationMessagesFragment
   validationContainer: {
-    paddingLeft: '10px',
-    paddingTop: '5px',
-    color: '#F44336'
+    paddingLeft: 10,
+    paddingTop: 5,
+    color: '#f44336'
   },
   validationMessageNumber: {
     display: 'inline-block',
-    width: '22px',
-    height: '22px',
-    border: 'solid 2px #F44336',
-    borderRadius: '50%',
+    width: 22,
+    height: 22,
+    marginRight: 5,
     textAlign: 'center',
-    marginRight: '5px'
+    border: 'solid 2px #F44336',
+    borderRadius: '50%'
   }
 };
 var _default = DialogStyles;

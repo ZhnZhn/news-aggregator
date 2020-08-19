@@ -1,31 +1,31 @@
 
 const ContainerStyle = {
-  browserRootDiv : {
-    flexShrink : 0,
+  browserRootDiv: {
+    flexShrink: 0,
     zIndex: 20,
-    backgroundColor: '#4D4D4D',
-    padding: '0px 3px 35px 0px',
+    backgroundColor: '#4d4d4d',
     position: 'relative',
     height: 'calc(100vh - 71px)',
-    minHeight: '500px',
-    minWidth: '270px',
-    maxWidth: '400px',
-    marginLeft: '10px',
+    minHeight: 500,
+    minWidth: 270,
+    maxWidth: 400,
+    marginLeft: 10,
+    padding: '0px 3px 35px 0px',
     boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
     borderRadius: '4px'
   },
-  aboutRootDiv : {
+  aboutRootDiv: {
     zIndex: 20,
-    backgroundColor: '#4D4D4D',
-    padding: '0px',
-    paddingBottom: '35px',
+    backgroundColor: '#4d4d4d',
     position: 'relative',
-    width: '450px',
+    width: 450,
     height: 'calc(100vh - 71px)',
-    minHeight: '500px',
-    minWidth: '300px',
-    maxWidth: '700px',
-    marginLeft: '16px',
+    minHeight: 500,
+    minWidth: 300,
+    maxWidth: 700,
+    padding: 0,
+    paddingBottom: 35,
+    marginLeft: 16,
     boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
     borderRadius: '4px'
   }

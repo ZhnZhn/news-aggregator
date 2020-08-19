@@ -9,16 +9,16 @@ var _react = _interopRequireDefault(require("react"));
 
 var S = {
   STEP: {
-    display: 'inline-block',
     color: '#80c040',
+    display: 'inline-block',
+    width: 26,
+    height: 26,
+    lineHeight: '24px',
+    textAlign: 'center',
+    textTransform: 'uppercase',
     border: '2px solid #80c040',
     borderRadius: '50%',
-    textTransform: 'uppercase',
-    fontSize: '18px',
-    lineHeight: '24px',
-    width: '26px',
-    height: '26px',
-    textAlign: 'center'
+    fontSize: '1.125rem'
   },
   DESCR: {
     color: 'black'

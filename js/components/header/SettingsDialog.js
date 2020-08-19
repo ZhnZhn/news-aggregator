@@ -28,7 +28,7 @@ var _CardUiTheme = _interopRequireDefault(require("./CardUiTheme"));
 var S = {
   MODAL: {
     position: 'static',
-    width: 320,
+    width: 340,
     height: 370,
     margin: '70px auto 0px'
   },
@@ -50,12 +50,26 @@ var S = {
   CARD_BUTTONS: {
     position: 'absolute',
     right: 4,
-    bottom: 0,
+    bottom: 4,
     cursor: 'default'
   },
+  SELECT_WIDTH: {
+    width: 300
+  },
   INPUT_WIDTH: {
-    width: 280
+    width: 315,
+    marginLeft: 8
   }
+};
+var MIN_FS = 15;
+var MAX_FS = 18;
+
+var _isNumber = function _isNumber(n) {
+  return typeof n === 'number' && n - n === 0;
+};
+
+var _inRange = function _inRange(min, max, v) {
+  return _isNumber(v) && v >= min && v <= max;
 };
 
 var SettingsDialog =
@@ -87,6 +101,15 @@ function (_Component) {
         _ComponentActions["default"].changeTheme(item.value);
 
         _this.forceUpdate();
+      }
+    };
+
+    _this._selectFontSize = function (item) {
+      var _ref = item || {},
+          value = _ref.value;
+
+      if (_inRange(MIN_FS, MAX_FS, value)) {
+        document.documentElement.style.fontSize = value + "px";
       }
     };
 
@@ -122,7 +145,7 @@ function (_Component) {
         TS = theme.createStyle(_Dialog["default"]),
         _TS = JSON.parse(JSON.stringify(TS));
 
-    Object.assign(_TS.SELECT.ROOT, S.INPUT_WIDTH);
+    Object.assign(_TS.SELECT.ROOT, S.SELECT_WIDTH);
     return _react["default"].createElement(_Comp["default"].ModalDialog, {
       style: (0, _extends2["default"])({}, S.MODAL, {}, TS.R_DIALOG),
       divBtStyle: S.DIV_BT,
@@ -155,6 +178,7 @@ function (_Component) {
       buttonsStyle: S.CARD_BUTTONS,
       TS: _TS,
       onSetTheme: this._selectTheme,
+      onSetFontSize: this._selectFontSize,
       onClose: onClose
     }))));
   };

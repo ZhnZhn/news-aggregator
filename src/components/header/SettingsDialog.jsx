@@ -11,9 +11,9 @@ import CardApiKeys from './CardApiKeys'
 import CardUiTheme from './CardUiTheme'
 
 const S = {
-  MODAL : {
-    position : 'static',
-    width: 320,
+  MODAL: {
+    position: 'static',
+    width: 340,
     height: 370,
     margin: '70px auto 0px'
   },
@@ -21,7 +21,6 @@ const S = {
     marginTop: 26,
     marginBottom: 4
   },
-
 
   TABS: {
     marginLeft: 24,
@@ -37,13 +36,25 @@ const S = {
   CARD_BUTTONS: {
     position: 'absolute',
     right: 4,
-    bottom: 0,
+    bottom: 4,
     cursor: 'default'
   },
+  SELECT_WIDTH: {
+    width: 300
+  },
   INPUT_WIDTH: {
-    width: 280
+    width: 315,
+    marginLeft: 8
   }
 };
+
+const MIN_FS = 15
+const MAX_FS = 18
+
+const _isNumber = n => typeof n === 'number'
+ && (n-n===0);
+const _inRange = (min, max, v) => _isNumber(v)
+ && v>=min && v<=max;
 
 class SettingsDialog extends Component {
   /*
@@ -85,11 +96,18 @@ class SettingsDialog extends Component {
     }
   }
 
+  _selectFontSize = (item) => {
+    const { value } = item || {}
+    if ( _inRange(MIN_FS, MAX_FS, value)) {
+      document.documentElement.style.fontSize = `${value}px`
+    }
+  }
+
   render(){
     const { isShow, theme, data, onClose } = this.props
     , TS = theme.createStyle(styleConfig)
     , _TS = JSON.parse(JSON.stringify(TS));
-    Object.assign(_TS.SELECT.ROOT, S.INPUT_WIDTH)
+    Object.assign(_TS.SELECT.ROOT, S.SELECT_WIDTH)
     return (
         <A.ModalDialog
            style={{ ...S.MODAL, ...TS.R_DIALOG }}
@@ -125,6 +143,7 @@ class SettingsDialog extends Component {
                   buttonsStyle={S.CARD_BUTTONS}
                   TS={_TS}
                   onSetTheme={this._selectTheme}
+                  onSetFontSize={this._selectFontSize}
                   onClose={onClose}
                 />
              </A.Tab>

@@ -14,10 +14,9 @@ const CL_ITEM_HEADER = "article-header";
 
 const S = {
   ROOT: {
-    position : 'relative',
+    position: 'relative',
     marginBottom: 5,
-    marginRight: 25,
-    lineHeight : 1.5,
+    lineHeight: 1.5,
     borderBottomRightRadius: 2,
     boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
   },
@@ -34,7 +33,7 @@ const S = {
     backgroundColor: '#404040',
     paddingTop: 8,
     paddingLeft: 16,
-    paddingBottom: 16,
+    paddingBottom: 8,
     lineHeight: 1.5,
     borderTopRightRadius: 2,
     borderBottomRightRadius: 2
@@ -46,7 +45,7 @@ const S = {
     display : 'inline-block',
     paddingRight: 32,
     color: 'black',
-    fontSize: '18px',
+    fontSize: '1.125rem',
     fontWeight : 'bold',
     cursor: 'pointer'
   },
@@ -100,9 +99,7 @@ class Article extends Component {
     this.setState({ isShow: false })
   }
 
-  _refItemHeader = (comp) => {
-    this.headerComp = comp
-  }
+  _refItemHeader = comp => this.headerComp = comp
 
   render() {
     const { item, theme } = this.props

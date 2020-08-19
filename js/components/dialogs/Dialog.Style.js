@@ -15,7 +15,7 @@ var S = {
     paddingTop: 5,
     marginBottom: 0,
     textAlign: 'center',
-    fontSize: '18px'
+    fontSize: '1.125rem'
   },
   BT_RAISED_ROOT: {
     marginRight: 2,

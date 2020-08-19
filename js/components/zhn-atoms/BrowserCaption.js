@@ -19,11 +19,11 @@ var S = {
     position: 'relative',
     backgroundColor: '#3f5178',
     color: 'rgba(164, 135, 212, 1)',
-    lineHeight: '1.8',
-    paddingTop: '4px',
-    paddingLeft: '10px',
-    paddingRight: '42px',
-    marginBottom: '10px',
+    lineHeight: 1.8,
+    paddingTop: 4,
+    paddingLeft: 10,
+    paddingRight: 42,
+    marginBottom: 10,
     borderTopLeftRadius: '4px',
     borderTopRightRadius: '4px',
     overflow: 'hidden',
@@ -31,26 +31,22 @@ var S = {
     textOverflow: 'clip'
   },
   CAPTION: {
-    //color: '#9e9e9e',
-    //color: '#8a8a8a',
-    fontSize: '18px',
+    fontSize: '1.125rem',
     fontWeight: 'bold'
   },
   BT_MORE: {
-    marginRight: '6px'
+    marginRight: 6
   },
   SVG_MORE: {
     fill: 'inherit',
-    stroke: 'inherit' //fill: 'silver',
-    //stroke: 'silver'
-
+    stroke: 'inherit'
   },
   SVG_CLOSE: {
     position: 'absolute',
-    top: '6px',
+    top: 6,
     right: 0,
-    width: '24px',
-    height: '24px'
+    width: 24,
+    height: 24
   }
 };
 

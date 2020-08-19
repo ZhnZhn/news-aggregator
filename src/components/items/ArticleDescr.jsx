@@ -14,7 +14,7 @@ const S = {
     paddingBottom: 4,
     color: '#121212',
     fontFamily: 'Verdana, Arial, sans-serif',
-    fontSize: '16px',
+    fontSize: '1rem',
     fontWeight: 'bold'
     //fontFamily: '"Open sans", "Helvetica Neue", Helvetica, Arial, sans-serif'
   },
@@ -22,13 +22,8 @@ const S = {
     display: 'flex',
     justifyContent: 'space-between',
     padding: '6px 8px 6px 16px',
-    /*paddingTop: 6,
-    paddingLeft: 16,
-    paddingRight: 8,
-    paddingBottom: 6*/
   },
   AUTHOR: {
-    //float: 'right',
     color: 'gray',
     paddingRight: 16,
     fontWeight: 'bold'

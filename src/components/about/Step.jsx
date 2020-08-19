@@ -2,23 +2,23 @@ import React from 'react';
 
 const S = {
   STEP : {
-    display : 'inline-block',
     color: '#80c040',
-    border : '2px solid #80c040',
-    borderRadius : '50%',
-    textTransform: 'uppercase',
-    fontSize: '18px',
+    display: 'inline-block',
+    width: 26,
+    height: 26,
     lineHeight: '24px',
-    width : '26px',
-    height : '26px',
-    textAlign: 'center'
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    border: '2px solid #80c040',
+    borderRadius: '50%',
+    fontSize: '1.125rem'
   },
   DESCR: {
     color: 'black'
   }
 }
 
-const Step = ({ styleRoot, step='0', description }) =>
+const Step = ({ styleRoot, step='0', description }) => (
   <p style={styleRoot}>
     <span style={S.STEP}>
         {step}
@@ -27,5 +27,6 @@ const Step = ({ styleRoot, step='0', description }) =>
       &nbsp;{description}
     </span>
  </p>
+);
 
 export default Step

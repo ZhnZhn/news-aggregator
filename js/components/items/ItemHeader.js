@@ -72,6 +72,7 @@ function (_Component) {
         title = _this$props2.title,
         onClick = _this$props2.onClick;
     return _react["default"].createElement("div", {
+      role: "button",
       ref: this._refRoot,
       tabIndex: "0",
       className: className,

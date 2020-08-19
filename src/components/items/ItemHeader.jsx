@@ -34,7 +34,8 @@ class ItemHeader extends Component {
             onClick
           } = this.props;
     return (
-      <div                
+      <div
+        role="button"       
         ref={this._refRoot}
         tabIndex="0"
         className={className}

@@ -16,7 +16,7 @@ const _S = {
   BADGE: {
     display: 'inline-block',
     paddingRight: 8,
-    fontSize: '18px',
+    fontSize: '1.125rem',
   }
 };
 const S = {

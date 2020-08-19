@@ -32,7 +32,6 @@ var S = {
   ROOT: {
     position: 'relative',
     marginBottom: 5,
-    marginRight: 25,
     lineHeight: 1.5,
     borderBottomRightRadius: 2,
     boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)'
@@ -50,7 +49,7 @@ var S = {
     backgroundColor: '#404040',
     paddingTop: 8,
     paddingLeft: 16,
-    paddingBottom: 16,
+    paddingBottom: 8,
     lineHeight: 1.5,
     borderTopRightRadius: 2,
     borderBottomRightRadius: 2
@@ -62,7 +61,7 @@ var S = {
     display: 'inline-block',
     paddingRight: 32,
     color: 'black',
-    fontSize: '18px',
+    fontSize: '1.125rem',
     fontWeight: 'bold',
     cursor: 'pointer'
   },
@@ -118,7 +117,7 @@ function (_Component) {
     };
 
     _this._refItemHeader = function (comp) {
-      _this.headerComp = comp;
+      return _this.headerComp = comp;
     };
 
     _this._itemHandlers = _this._crDnDHandlers();

@@ -24,7 +24,7 @@ const STYLE = {
     //color: 'rgba(164, 135, 212, 1)',
     fontFamily: 'Roboto, Arial Unicode MS, Arial, sans-serif',
     fontWeight: 'bold',
-    fontSize: '16px',
+    fontSize: '1rem',
     cursor: 'pointer'
   },
   INLINE : {
@@ -129,6 +129,7 @@ class OpenClose extends Component {
     return (
       <div style={{...STYLE.ROOT, ...style}}>
         <div
+           role="button"
            className={CL_CAPTION}
            tabIndex="0"
            style={{...STYLE.ROOT_CAPTION, ..._itemStyle }}
@@ -146,8 +147,7 @@ class OpenClose extends Component {
                 d={_pathV}
                 fill={_fillV}
                 strokeWidth="1" stroke={fillOpen}
-             >
-             </path>
+             />
              </svg>
          </div>
          <span style={{...STYLE.CAPTION, ...styleCaption}} >

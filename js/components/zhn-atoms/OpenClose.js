@@ -35,7 +35,7 @@ var STYLE = {
     //color: 'rgba(164, 135, 212, 1)',
     fontFamily: 'Roboto, Arial Unicode MS, Arial, sans-serif',
     fontWeight: 'bold',
-    fontSize: '16px',
+    fontSize: '1rem',
     cursor: 'pointer'
   },
   INLINE: {
@@ -149,6 +149,7 @@ function (_Component) {
     return _react["default"].createElement("div", {
       style: (0, _extends2["default"])({}, STYLE.ROOT, {}, style)
     }, _react["default"].createElement("div", (0, _extends2["default"])({
+      role: "button",
       className: CL_CAPTION,
       tabIndex: "0",
       style: (0, _extends2["default"])({}, STYLE.ROOT_CAPTION, {}, _itemStyle),
