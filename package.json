@@ -47,10 +47,10 @@
     "gulp-sass": "^4.0.2",
     "html-webpack-plugin": "^4.4.1",
     "jspm": "^0.16.55",
-    "terser-webpack-plugin": "^2.3.5",
-    "webpack": "^4.42.0",
-    "webpack-bundle-analyzer": "^3.6.1",
-    "webpack-cli": "^3.3.11"
+    "terser-webpack-plugin": "^4.1.0",
+    "webpack": "^4.44.1",
+    "webpack-bundle-analyzer": "^3.8.0",
+    "webpack-cli": "^3.3.12"
   },
   "jspm": {
     "dependencies": {
