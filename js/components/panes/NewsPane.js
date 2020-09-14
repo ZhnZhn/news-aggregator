@@ -63,6 +63,14 @@ var _toStyleWidth = function _toStyleWidth(width) {
   return width + 'px';
 };
 
+var _focusFirstItem = function _focusFirstItem(ref) {
+  setTimeout(function () {
+    if (ref && ref.current && ref.current.focus) {
+      ref.current.focus();
+    }
+  }, 1000);
+};
+
 var NewsPane =
 /*#__PURE__*/
 function (_Component) {
@@ -182,6 +190,7 @@ function (_Component) {
       return _this.rootDiv;
     };
 
+    _this._refFirstItem = _react["default"].createRef();
     _this.childMargin = CHILD_MARGIN;
     _this._widthStyle = _has["default"].initWidthStyle();
     _this._MODEL = (0, _crModelMore["default"])({
@@ -205,6 +214,8 @@ function (_Component) {
   _proto.componentDidMount = function componentDidMount() {
     var store = this.props.store;
     this.unsubscribe = store.listen(this._onStore);
+
+    _focusFirstItem(this._refFirstItem);
   };
 
   _proto.componentWillUnmount = function componentWillUnmount() {
@@ -212,13 +223,16 @@ function (_Component) {
   };
 
   _proto._renderArticles = function _renderArticles(articles, onCloseItem, onRemoveUnder) {
+    var _this2 = this;
+
     if (articles === void 0) {
       articles = [];
     }
 
     var Item = this.props.Item;
-    return articles.map(function (article) {
+    return articles.map(function (article, index) {
       return _react["default"].createElement(Item, {
+        ref: index === 0 ? _this2._refFirstItem : void 0,
         key: article.articleId,
         item: article,
         onCloseItem: onCloseItem,

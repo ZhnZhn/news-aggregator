@@ -18,7 +18,7 @@ const CHILD_MARGIN = 36
   MENU_MORE: "popup-menu items__menu-more"
 };
 
-const S = {  
+const S = {
   BT_REMOVE: {
     position: 'relative',
     top: -3,
@@ -42,10 +42,20 @@ const _getWidth = style => parseInt(style.width, 10)
   || RESIZE_INIT_WIDTH;
 const _toStyleWidth = width => width + 'px';
 
+const _focusFirstItem = ref => {
+  setTimeout( () => {
+    if (ref && ref.current && ref.current.focus) {
+      ref.current.focus()
+    }
+  }, 1000)
+};
+
 class NewsPane extends Component {
 
   constructor(props){
     super(props);
+
+    this._refFirstItem = React.createRef()
     this.childMargin = CHILD_MARGIN;
     this._widthStyle = has.initWidthStyle()
 
@@ -68,6 +78,7 @@ class NewsPane extends Component {
   componentDidMount(){
     const { store } = this.props;
     this.unsubscribe = store.listen(this._onStore)
+    _focusFirstItem(this._refFirstItem)
   }
   componentWillUnmount(){
     this.unsubscribe()
@@ -144,8 +155,9 @@ class NewsPane extends Component {
 
   _renderArticles(articles=[], onCloseItem, onRemoveUnder){
      const { Item } = this.props;
-     return articles.map(article => (
+     return articles.map((article, index) => (
         <Item
+          ref={index === 0 ? this._refFirstItem : void 0}
           key={article.articleId}
           item={article}
           onCloseItem={onCloseItem}
@@ -153,7 +165,7 @@ class NewsPane extends Component {
         />
      ));
   }
-
+  
   _refRootDiv = node => this.rootDiv = node
 
    render(){
