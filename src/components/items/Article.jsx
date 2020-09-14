@@ -63,6 +63,15 @@ const S = {
   }
 }
 
+
+const _focusNextArticle = (nodeArticle) => {
+  const { nextElementSibling } = nodeArticle || {}
+  , { firstElementChild } = nextElementSibling || {};
+  if (firstElementChild) {
+    firstElementChild.focus()
+  }
+};
+
 @withDnD
 class Article extends Component {
 
@@ -89,7 +98,8 @@ class Article extends Component {
   }
 
   _handleClose = () => {
-    const { onCloseItem, item } = this.props;
+    const { onCloseItem, item } = this.props
+    _focusNextArticle(this._articleNode)
     onCloseItem(item)
     this.setState({ isClosed: true })
   }
@@ -99,12 +109,14 @@ class Article extends Component {
     this.setState({ isShow: false })
   }
 
+  _refItem = node => this._articleNode = node
   _refItemHeader = comp => this.headerComp = comp
 
   render() {
     const { item, theme } = this.props
         , TS = theme.createStyle(styleConfig)
-        , { title, author, publishedAt,
+        , { title, author,
+            publishedDate, publishedAt,
             url, related
             //, urlToImage
           } = item
@@ -116,12 +128,14 @@ class Article extends Component {
         , _captionStyle = isShow
              ? {...S.CAPTION, ...S.CAPTION_OPEN}
              : S.CAPTION
-        , _publishedAt = dt.toTimeDate(publishedAt)
+        , _publishedAt = publishedDate
+             || dt.toTimeDate(publishedAt)
         , _rootStyle = isClosed
              ? S.NONE
              : void 0;
     return (
         <div
+          ref={this._refItem}
           style={{...S.ROOT, ..._rootStyle}}
           {...this._itemHandlers}
         >
@@ -150,6 +164,12 @@ class Article extends Component {
           />
         </div>
       );
+    }
+
+    focus = () => {
+      if (this.headerComp) {
+        this.headerComp.focus()
+      }
     }
 }
 

@@ -79,6 +79,17 @@ var S = {
   }
 };
 
+var _focusNextArticle = function _focusNextArticle(nodeArticle) {
+  var _ref = nodeArticle || {},
+      nextElementSibling = _ref.nextElementSibling,
+      _ref2 = nextElementSibling || {},
+      firstElementChild = _ref2.firstElementChild;
+
+  if (firstElementChild) {
+    firstElementChild.focus();
+  }
+};
+
 var Article = (0, _withDnD["default"])(_class = (_temp = _class2 =
 /*#__PURE__*/
 function (_Component) {
@@ -101,6 +112,9 @@ function (_Component) {
       var _this$props = _this.props,
           onCloseItem = _this$props.onCloseItem,
           item = _this$props.item;
+
+      _focusNextArticle(_this._articleNode);
+
       onCloseItem(item);
 
       _this.setState({
@@ -116,8 +130,18 @@ function (_Component) {
       });
     };
 
+    _this._refItem = function (node) {
+      return _this._articleNode = node;
+    };
+
     _this._refItemHeader = function (comp) {
       return _this.headerComp = comp;
+    };
+
+    _this.focus = function () {
+      if (_this.headerComp) {
+        _this.headerComp.focus();
+      }
     };
 
     _this._itemHandlers = _this._crDnDHandlers();
@@ -137,6 +161,7 @@ function (_Component) {
         TS = theme.createStyle(_Article["default"]),
         title = item.title,
         author = item.author,
+        publishedDate = item.publishedDate,
         publishedAt = item.publishedAt,
         url = item.url,
         related = item.related,
@@ -146,10 +171,11 @@ function (_Component) {
         isShow = _this$state.isShow,
         _headerStyle = isShow ? (0, _extends2["default"])({}, S.HEADER, {}, S.HEADER_OPEN) : S.HEADER,
         _captionStyle = isShow ? (0, _extends2["default"])({}, S.CAPTION, {}, S.CAPTION_OPEN) : S.CAPTION,
-        _publishedAt = _dt["default"].toTimeDate(publishedAt),
+        _publishedAt = publishedDate || _dt["default"].toTimeDate(publishedAt),
         _rootStyle = isClosed ? S.NONE : void 0;
 
     return _react["default"].createElement("div", (0, _extends2["default"])({
+      ref: this._refItem,
       style: (0, _extends2["default"])({}, S.ROOT, {}, _rootStyle)
     }, this._itemHandlers), _react["default"].createElement(_ItemHeader["default"], {
       ref: this._refItemHeader,
