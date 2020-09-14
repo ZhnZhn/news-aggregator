@@ -85,6 +85,11 @@ class About extends Component {
                    <A.Link.IexApi />
                  </div>
                  <div>
+                   <A.Link.FmpApi
+                      title="Financial Modeling Prep"
+                    />
+                 </div>
+                 <div>
                    <A.Link.NewsApi />
                  </div>
                  <div>

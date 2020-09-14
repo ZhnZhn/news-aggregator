@@ -10,13 +10,16 @@ const STR_EMPTY = ''
      ? true
      : false
 , _onTestIex = _hasLengthOrEmpty(35)
+, _onTestFmp = _hasLengthOrEmpty(32)
 , _onTestNews = _hasLengthOrEmpty(32)
 , _onTestWebhose = _hasLengthOrEmpty(36)
 , SET_IEX_KEY = 'setIexKey'
+, SET_FMP_KEY = 'setFmpKey'
 , SET_NEWS_KEY = 'setNewsKey'
 , SET_WEBHOSE_KEY = 'setWebhoseKey'
 , _getKeySetters = (data) => ({
  setIex: safeFn(data, SET_IEX_KEY),
+ setFmp: safeFn(data, SET_FMP_KEY),
  setNews: safeFn(data, SET_NEWS_KEY),
  setWebhose: safeFn(data, SET_WEBHOSE_KEY)
 });
@@ -25,11 +28,8 @@ const _isVisible = ({ isSelected, isShow }) => isShow
   && isSelected;
 
 const CardApiKeys = (props) => {
-  if (!_isVisible(props)) {
-    return null;
-  }
-
   const _refInputIex = useRef()
+  , _refInputFmp = useRef()
   , _refInputNews = useRef()
   , _refInputWebhose = useRef()
   , {
@@ -37,14 +37,17 @@ const CardApiKeys = (props) => {
     data, onClose
   } = props
   , { setIex,
+      setFmp,
       setNews,
       setWebhose
   } = _getKeySetters(data)
   , _hClearAll = useCallback(() => {
       setIex('')
+      setFmp('')
       setNews('')
       setWebhose('')
       _refInputIex.current.clear()
+      _refInputFmp.current.clear()
       _refInputNews.current.clear()
       _refInputWebhose.current.clear()
   }, [])
@@ -56,6 +59,10 @@ const CardApiKeys = (props) => {
       _refInputNews.current.setWasEnter()
       _refInputWebhose.current.setWasEnter()
   }, []);
+
+  if (!_isVisible(props)) {
+    return null;
+  }
   return(
       <div style={style}>
         <form>
@@ -68,6 +75,16 @@ const CardApiKeys = (props) => {
              //errorMsg="35 symbols must be"
              onTest={_onTestIex}
              onEnter={setIex}
+          />
+          <A.PasswordField
+             ref={_refInputFmp}
+             rootStyle={fieldStyle}
+             name="fmp-api"
+             caption="FMP API Key (32 Symbols)"
+             maxLength={32}
+             //errorMsg="35 symbols must be"
+             onTest={_onTestFmp}
+             onEnter={setFmp}
           />
         </form>
         <form>

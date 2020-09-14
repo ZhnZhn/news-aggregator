@@ -5,6 +5,7 @@ import WebhoseBrodcast from './WebhoseBrodcastDialog'
 import StackTagged from './StackTaggedDialog'
 import StackSearch from './StackSearchDialog'
 import IexNews from './IexNewsDialog'
+import FmpNews from './FmpNewsDialog'
 import NewsApiSearch from './NewsApiSearchDialog'
 import NewsApiTop from './NewsApiTopDialog'
 import CryptoCompareNews from './CryptoCompareNewsDialog'
@@ -18,6 +19,7 @@ const R = {
   CryptoCompareNews,
   MessariNews,
   IexNews,
+  FmpNews,
   NewsApiSearch, NewsApiTop
 }
 

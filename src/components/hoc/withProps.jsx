@@ -1,6 +1,6 @@
 import React from 'react'
 
-const withProps = overrideProps => BaseComponent => props =>
-  <BaseComponent {...props} {...overrideProps} />
+const withProps = confProps => BaseComponent => props =>
+  <BaseComponent {...confProps} {...props}  />
 
 export default withProps

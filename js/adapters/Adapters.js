@@ -13,6 +13,8 @@ var _StackOverflowAdapter = _interopRequireDefault(require("./StackOverflowAdapt
 
 var _IexAdapter = _interopRequireDefault(require("./IexAdapter"));
 
+var _FmpAdapter = _interopRequireDefault(require("./FmpAdapter"));
+
 var _CryptoCompareAdapter = _interopRequireDefault(require("./CryptoCompareAdapter"));
 
 var _MessariAdapter = _interopRequireDefault(require("./MessariAdapter"));
@@ -22,6 +24,7 @@ var Adapters = {
   Webhose: _WebhoseAdapter["default"],
   StackOverflow: _StackOverflowAdapter["default"],
   Iex: _IexAdapter["default"],
+  Fmp: _FmpAdapter["default"],
   CryptoCompare: _CryptoCompareAdapter["default"],
   Messari: _MessariAdapter["default"]
 };

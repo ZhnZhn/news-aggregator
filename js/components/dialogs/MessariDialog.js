@@ -115,6 +115,8 @@ function (_Component) {
         loadId: 'MS',
         assetKey: _this.assetKey
       });
+
+      _this._handleClose();
     };
 
     _this._refDialogComp = function (comp) {

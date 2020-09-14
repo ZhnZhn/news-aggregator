@@ -29,7 +29,7 @@ var S = {
   MODAL: {
     position: 'static',
     width: 340,
-    height: 370,
+    height: 410,
     margin: '70px auto 0px'
   },
   DIV_BT: {
@@ -45,12 +45,12 @@ var S = {
   },
   CARD_ROOT: {
     position: 'relative',
-    height: 280
+    height: 315
   },
   CARD_BUTTONS: {
     position: 'absolute',
     right: 4,
-    bottom: 4,
+    bottom: 0,
     cursor: 'default'
   },
   SELECT_WIDTH: {

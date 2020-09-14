@@ -45,6 +45,7 @@ class NewsApiSearchDialog extends Component {
       symbol: _symbol,
       sortBy: this.sortBy
     })
+    this._handleClose()
   }
 
   _refDialogComp = comp => this.dialogComp = comp

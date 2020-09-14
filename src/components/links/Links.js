@@ -39,11 +39,18 @@ export const IexApi = withProps({
   tabIndex: "-1"
 })(BaseComp)
 
+const FmpApi = withProps({
+  title: "FMP",
+  href: "https://financialmodelingprep.com/",
+  tabIndex: "-1"
+})(BaseComp)
+
 const Link = {
   NewsApi,
   WebhoseIo,
   StackOverflow,
   IexApi,
+  FmpApi,
   CryptoCompare,
   Messari,
   PoweredBy

@@ -54,6 +54,7 @@ class MessariDialog extends Component {
       loadId: 'MS',
       assetKey: this.assetKey
     })
+    this._handleClose()
   }
 
   _refDialogComp = comp => this.dialogComp = comp

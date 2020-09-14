@@ -78,6 +78,8 @@ function (_Component) {
         siteType: _this.siteType,
         beforeDays: _beforeDays
       });
+
+      _this._handleClose();
     };
 
     _this._refDialoComp = function (comp) {

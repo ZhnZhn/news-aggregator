@@ -45,11 +45,17 @@ var IexApi = (0, _withProps["default"])({
   tabIndex: "-1"
 })(_Link["default"]);
 exports.IexApi = IexApi;
+var FmpApi = (0, _withProps["default"])({
+  title: "FMP",
+  href: "https://financialmodelingprep.com/",
+  tabIndex: "-1"
+})(_Link["default"]);
 var Link = {
   NewsApi: NewsApi,
   WebhoseIo: WebhoseIo,
   StackOverflow: StackOverflow,
   IexApi: IexApi,
+  FmpApi: FmpApi,
   CryptoCompare: CryptoCompare,
   Messari: Messari,
   PoweredBy: _PoweredBy["default"]

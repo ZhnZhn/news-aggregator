@@ -45,6 +45,7 @@ class WebhoseBrodcastDialog extends Component {
       siteType: this.siteType,
       beforeDays: _beforeDays
     })
+    this._handleClose()
   }
 
   _refDialoComp = comp => this.dialogComp = comp

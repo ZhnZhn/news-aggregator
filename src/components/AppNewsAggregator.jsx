@@ -37,6 +37,7 @@ class AppNewsAggregator extends Component {
     this.showCryptoCompare = _fShowDialog(QUERY.CRYPTO_COMPARE)
     this.showMessari = _fShowDialog(QUERY.MESSARI)
     this.showIex= _fShowDialog(QUERY.IEX)
+    this.showFmp= _fShowDialog(QUERY.FMP)
     this.showNewsSearch = _fShowDialog(QUERY.NEWS_SEARCH)
     this.showNewsTop = _fShowDialog(QUERY.NEWS_TOP)
 
@@ -81,6 +82,7 @@ class AppNewsAggregator extends Component {
             onCryptoComapre={this.showCryptoCompare}
             onMessari={this.showMessari}
             onIex={this.showIex}
+            onFmp={this.showFmp}
             onNewsSearch={this.showNewsSearch}
             onNewsTop={this.showNewsTop}
             onSettings={this.showSettings}

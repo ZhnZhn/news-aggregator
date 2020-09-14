@@ -1,1 +1,17 @@
-{"version":3,"sources":["../../../src/components/hoc/withTheme.jsx"],"names":["withTheme","Wrapper","render","theme","props","Component"],"mappings":";;;;;;;;;;;;;AAAA;;AACA;;AAEA,IAAMA,SAAS,GAAG,SAAZA,SAAY,CAACC,OAAD;AAAA;AAAA;AAAA;AAAA;;AAAA;AAAA;AAAA;;AAAA;;AAAA,aAChBC,MADgB,GAChB,kBAAQ;AAAA;;AACN,eACE,gCAAC,wBAAD,CAAc,QAAd,QACI,UAAAC,KAAK;AAAA,iBAAI,gCAAC,OAAD,gCAAa,KAAI,CAACC,KAAlB;AAAyB,YAAA,KAAK,EAAED;AAAhC,aAAJ;AAAA,SADT,CADF;AAKD,OAPe;;AAAA;AAAA,MAA2BE,gBAA3B;AAAA;AAAA,CAAlB;;eAUeL,S","sourcesContent":["import React, { Component } from 'react'\r\nimport ThemeContext from './ThemeContext'\r\n\r\nconst withTheme = (Wrapper) => class extends Component {\r\n  render(){\r\n    return (\r\n      <ThemeContext.Consumer>\r\n        { theme => <Wrapper {...this.props} theme={theme} />}\r\n      </ThemeContext.Consumer>\r\n    );\r\n  }\r\n}\r\n\r\nexport default withTheme\r\n"],"file":"withTheme.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hoc/withTheme.js"
+ ],
+ "file": "../../../src/components/hoc/withTheme.js",
+ "names": [
+  "withTheme",
+  "Wrapper",
+  "React",
+  "forwardRef",
+  "props",
+  "ref",
+  "theme"
+ ],
+ "mappings": ";;;;;;;;;AAAA;;AACA;;AAEA,IAAMA,SAAS,GAAG,SAAZA,SAAY,CAACC,OAAD;AAAA,SAAaC,kBAAMC,UAAN,CAAiB,UAACC,KAAD,EAAQC,GAAR;AAAA,WAC9C,gCAAC,wBAAD,CAAc,QAAd,QACI,UAAAC,KAAK;AAAA,aAAI,gCAAC,OAAD,gCAAaF,KAAb;AAAoB,QAAA,KAAK,EAAEE,KAA3B;AAAkC,QAAA,GAAG,EAAED;AAAvC,SAAJ;AAAA,KADT,CAD8C;AAAA,GAAjB,CAAb;AAAA,CAAlB;;eAMeL,S"
+}

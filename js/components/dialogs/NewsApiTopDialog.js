@@ -237,6 +237,8 @@ function (_Component) {
         category: _this.category,
         country: _this.country
       });
+
+      _this._handleClose();
     };
 
     _this._refDialogComp = function (comp) {

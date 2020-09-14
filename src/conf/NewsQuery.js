@@ -70,11 +70,22 @@ const NEWS_QUERY = {
   IEX: {
     "type": "IEX_NEWS",
     "dialogType": "IexNews",
-    "paneCaption": "IEX Cloud: Stock News",
+    "paneCaption": "IEX Cloud: Stock Market News",
     "paneId": "iex_news",
     "paneType": "IEX_NEWS",
     "dialogProps": {
        "caption": "IEX Cloud: Stock News",
+       //"source": "iex_news"
+     }
+  },
+  FMP: {
+    "type": "FMP",
+    "dialogType": "FmpNews",
+    "paneCaption": "Financial Modeling Prep: Stock Market News",
+    "paneId": "fmp_news",
+    "paneType": "FMP_NEWS",
+    "dialogProps": {
+       "caption": "FMP: Stock News",
        //"source": "iex_news"
      }
   },

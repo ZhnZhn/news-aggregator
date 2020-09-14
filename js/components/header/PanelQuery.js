@@ -59,6 +59,7 @@ function (_Component) {
         onCryptoComapre = _this$props.onCryptoComapre,
         onMessari = _this$props.onMessari,
         onIex = _this$props.onIex,
+        onFmp = _this$props.onFmp,
         onNewsApi = _this$props.onNewsApi,
         onNewsTop = _this$props.onNewsTop,
         onStackTagged = _this$props.onStackTagged,
@@ -86,6 +87,11 @@ function (_Component) {
       className: CL_ITEM,
       caption: "IEX Cloud: Stock Market News",
       onClick: onIex,
+      onClose: onClose
+    }), _react["default"].createElement(_Comp["default"].MenuItem, {
+      className: CL_ITEM,
+      caption: "FMP: Stock Market News",
+      onClick: onFmp,
       onClose: onClose
     }), _react["default"].createElement(_Comp["default"].MenuItem, {
       className: CL_ITEM,

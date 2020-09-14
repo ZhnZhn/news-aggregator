@@ -114,8 +114,9 @@ class NewsApiTopDialog extends Component {
       category: this.category,
       country: this.country
     })
+    this._handleClose()
   }
-  
+
   _refDialogComp = comp => this.dialogComp = comp
 
   render(){

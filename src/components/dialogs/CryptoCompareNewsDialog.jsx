@@ -79,6 +79,7 @@ class CryptoCompareNewsDialog extends Component {
       category: this.category,
       sortOrder: this.sortBy
     })
+    this._handleClose()
   }
 
   _refDialogComp = comp => this.dialogComp = comp

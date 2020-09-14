@@ -71,6 +71,8 @@ function (_Component) {
         symbol: _symbol,
         sortBy: _this.sortBy
       });
+
+      _this._handleClose();
     };
 
     _this._refDialogComp = function (comp) {

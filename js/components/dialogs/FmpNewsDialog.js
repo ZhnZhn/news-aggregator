@@ -23,37 +23,16 @@ var _Decors = _interopRequireDefault(require("./decorators/Decors"));
 
 var _dec, _class, _temp;
 
-var RECENT_OPTIONS = [{
-  caption: "10 News",
-  value: "10"
-}, {
-  caption: "20 News",
-  value: "20"
-}, {
-  caption: "30 News",
-  value: "30"
-}, {
-  caption: "40 News",
-  value: "40"
-}, {
-  caption: "50 News",
-  value: "50"
-}],
-    DF_RECENT = RECENT_OPTIONS[1],
-    DF_SYMBOL = "AAPL";
-var IexNewsDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_temp =
+var DF_SYMBOL = "AAPL";
+var FmpNewsDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_temp =
 /*#__PURE__*/
 function (_Component) {
-  (0, _inheritsLoose2["default"])(IexNewsDialog, _Component);
+  (0, _inheritsLoose2["default"])(FmpNewsDialog, _Component);
 
-  function IexNewsDialog(props) {
+  function FmpNewsDialog(props) {
     var _this;
 
     _this = _Component.call(this, props) || this;
-
-    _this._selectRecent = function (option) {
-      _this.recent = option ? option.value : void 0;
-    };
 
     _this._handleLoad = function () {
       var _this$props = _this.props,
@@ -61,18 +40,15 @@ function (_Component) {
           source = _this$props.source,
           itemConf = _this$props.itemConf,
           onLoad = _this$props.onLoad,
-          _symbol = _this.inputSymbol.getValue() || DF_SYMBOL;
+          _symbol = _this.inputSymbol.getValue();
 
       onLoad({
         type: type,
         source: source,
         itemConf: itemConf,
-        loadId: 'IEX',
-        symbol: _symbol,
-        recent: _this.recent
+        loadId: 'FMP',
+        symbol: _symbol
       });
-
-      _this._handleClose();
     };
 
     _this._refDialogComp = function (comp) {
@@ -83,14 +59,12 @@ function (_Component) {
       return _this.inputSymbol = comp;
     };
 
-    _this.sortBy = DF_RECENT.value;
-
     _this._initWithDecors((0, _assertThisInitialized2["default"])(_this));
 
     return _this;
   }
 
-  var _proto = IexNewsDialog.prototype;
+  var _proto = FmpNewsDialog.prototype;
 
   _proto.render = function render() {
     var _this$props2 = this.props,
@@ -105,7 +79,7 @@ function (_Component) {
       rootStyle: TS.R_DIALOG,
       browserCaptionStyle: TS.BROWSER_CAPTION,
       styleButton: TS.BT,
-      caption: "IEX Cloud: Stock News",
+      caption: "FMP: Stock News",
       isShow: isShow,
       commandButtons: _commandButtons,
       onKeyDown: this._handleKeyDownWith,
@@ -118,21 +92,15 @@ function (_Component) {
       caption: "Stock Symbol",
       initValue: DF_SYMBOL,
       onEnter: this._handleLoad
-    }), _react["default"].createElement(_Comp["default"].InputSelect, {
-      caption: "Recent",
-      initItem: DF_RECENT,
-      options: RECENT_OPTIONS,
-      styleConfig: TS.SELECT,
-      onSelect: this._selectRecent
     }), _react["default"].createElement(_Comp["default"].Link.PoweredBy, {
       rootStyle: TS.POWERED_BY
-    }, _react["default"].createElement(_Comp["default"].Link.IexApi, null)));
+    }, _react["default"].createElement(_Comp["default"].Link.FmpApi, null)));
   };
 
-  return IexNewsDialog;
+  return FmpNewsDialog;
 }(_react.Component), _temp)) || _class);
 
-var _default = (0, _withTheme["default"])(IexNewsDialog);
+var _default = (0, _withTheme["default"])(FmpNewsDialog);
 
 exports["default"] = _default;
-//# sourceMappingURL=IexNewsDialog.js.map
+//# sourceMappingURL=FmpNewsDialog.js.map

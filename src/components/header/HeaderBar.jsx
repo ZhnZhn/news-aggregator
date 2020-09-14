@@ -46,7 +46,7 @@ class HeaderBar extends Component {
       onQuery, onWebhoseBrodcast,
       onStackTagged, onStackSearch,
       onCryptoComapre, onMessari,
-      onIex,
+      onIex, onFmp,
       onNewsSearch, onNewsTop
     } = props
     , _fClick = _ffClick(this._hCloseQuery);
@@ -58,6 +58,7 @@ class HeaderBar extends Component {
     this._hCryptoCompare = _fClick(onCryptoComapre)
     this._hMessari = _fClick(onMessari)
     this._hIex = _fClick(onIex)
+    this._hFmp = _fClick(onFmp)
     this._hNewsApi = _fClick(onNewsSearch)
     this._hNewsTop = _fClick(onNewsTop)
 
@@ -101,6 +102,7 @@ class HeaderBar extends Component {
           onCryptoComapre={this._hCryptoCompare}
           onMessari={this._hMessari}
           onIex={this._hIex}
+          onFmp={this._hFmp}
           onNewsApi={this._hNewsApi}
           onNewsTop={this._hNewsTop}
         />

@@ -139,6 +139,8 @@ function (_Component) {
         category: _this.category,
         sortOrder: _this.sortBy
       });
+
+      _this._handleClose();
     };
 
     _this._refDialogComp = function (comp) {

@@ -17,12 +17,16 @@ var SettingSlice = {
   exportSettingsFn: function exportSettingsFn() {
     return {
       setIexKey: _fSetKey(_Type.LoadType.IEX),
+      setFmpKey: _fSetKey(_Type.LoadType.FMP),
       setNewsKey: _fSetKey(_Type.LoadType.NEWS),
       setWebhoseKey: _fSetKey(_Type.LoadType.WEBHOSE)
     };
   },
   getIexKey: function getIexKey() {
     return _settings[_Type.LoadType.IEX];
+  },
+  getFmpKey: function getFmpKey() {
+    return _settings[_Type.LoadType.FMP];
   },
   getNewsKey: function getNewsKey() {
     return _settings[_Type.LoadType.NEWS];

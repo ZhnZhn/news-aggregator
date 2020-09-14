@@ -10,12 +10,16 @@ const SettingSlice = {
   exportSettingsFn(){
     return {
       setIexKey: _fSetKey(LT.IEX),
+      setFmpKey: _fSetKey(LT.FMP),
       setNewsKey: _fSetKey(LT.NEWS),
       setWebhoseKey: _fSetKey(LT.WEBHOSE)
     };
   },
   getIexKey(){
     return _settings[LT.IEX];
+  },
+  getFmpKey(){
+    return _settings[LT.FMP];
   },
   getNewsKey(){
     return _settings[LT.NEWS];

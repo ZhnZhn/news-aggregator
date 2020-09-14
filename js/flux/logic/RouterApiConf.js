@@ -64,6 +64,14 @@ var RouterApiConf = {
           msgErr: "IEX Cloud API " + MSG_ERR_TAIL
         };
 
+      case 'FMP':
+        return {
+          apiKey: _Store["default"].getFmpKey(),
+          api: _Api["default"].Fmp,
+          adapter: _Adapters["default"].Fmp,
+          msgErr: "FMP API " + MSG_ERR_TAIL
+        };
+
       case 'CCN':
         return {
           apiKey: true,

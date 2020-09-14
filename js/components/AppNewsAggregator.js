@@ -83,6 +83,7 @@ function (_Component) {
     _this.showCryptoCompare = _fShowDialog(_NewsQuery["default"].CRYPTO_COMPARE);
     _this.showMessari = _fShowDialog(_NewsQuery["default"].MESSARI);
     _this.showIex = _fShowDialog(_NewsQuery["default"].IEX);
+    _this.showFmp = _fShowDialog(_NewsQuery["default"].FMP);
     _this.showNewsSearch = _fShowDialog(_NewsQuery["default"].NEWS_SEARCH);
     _this.showNewsTop = _fShowDialog(_NewsQuery["default"].NEWS_TOP);
     _this.showSettings = _fSettings();
@@ -118,6 +119,7 @@ function (_Component) {
       onCryptoComapre: this.showCryptoCompare,
       onMessari: this.showMessari,
       onIex: this.showIex,
+      onFmp: this.showFmp,
       onNewsSearch: this.showNewsSearch,
       onNewsTop: this.showNewsTop,
       onSettings: this.showSettings,

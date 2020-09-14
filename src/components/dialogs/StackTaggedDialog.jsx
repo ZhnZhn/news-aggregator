@@ -57,6 +57,7 @@ class StackTaggedDialog extends Component {
       fromDate: _fromDate,
       toDate: _toDate
     })
+    this._handleClose()
   }
 
   _refDialogComp = comp => this.dialogComp = comp

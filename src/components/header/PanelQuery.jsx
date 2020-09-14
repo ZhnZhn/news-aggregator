@@ -24,7 +24,7 @@ class PanelQuery extends Component {
     const {
      className, paneStyle, isShow,
      onCryptoComapre, onMessari,
-     onIex,
+     onIex, onFmp,
      onNewsApi, onNewsTop,
      onStackTagged, onStackSearch,
      onWebhose, onWebhoseBrodcast,
@@ -54,6 +54,12 @@ class PanelQuery extends Component {
             className={CL_ITEM}
             caption="IEX Cloud: Stock Market News"
             onClick={onIex}
+            onClose={onClose}
+          />
+          <A.MenuItem
+            className={CL_ITEM}
+            caption="FMP: Stock Market News"
+            onClick={onFmp}
             onClose={onClose}
           />
           <A.MenuItem

@@ -52,6 +52,13 @@ const RouterApiConf = {
            adapter: Adapter.Iex,
            msgErr: `IEX Cloud API ${MSG_ERR_TAIL}`
          };
+     case 'FMP':
+        return {
+          apiKey: Store.getFmpKey(),
+          api: Api.Fmp,
+          adapter: Adapter.Fmp,
+          msgErr: `FMP API ${MSG_ERR_TAIL}`
+        };   
      case 'CCN':
         return {
           apiKey: true,

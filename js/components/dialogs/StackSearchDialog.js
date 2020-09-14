@@ -84,6 +84,8 @@ function (_Component) {
         fromDate: _fromDate,
         toDate: _toDate
       });
+
+      _this._handleClose();
     };
 
     _this._refDialogComp = function (comp) {

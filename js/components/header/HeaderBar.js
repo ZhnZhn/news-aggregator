@@ -90,6 +90,7 @@ function (_Component) {
         onCryptoComapre = props.onCryptoComapre,
         onMessari = props.onMessari,
         onIex = props.onIex,
+        onFmp = props.onFmp,
         onNewsSearch = props.onNewsSearch,
         onNewsTop = props.onNewsTop,
         _fClick = _ffClick(_this._hCloseQuery);
@@ -101,6 +102,7 @@ function (_Component) {
     _this._hCryptoCompare = _fClick(onCryptoComapre);
     _this._hMessari = _fClick(onMessari);
     _this._hIex = _fClick(onIex);
+    _this._hFmp = _fClick(onFmp);
     _this._hNewsApi = _fClick(onNewsSearch);
     _this._hNewsTop = _fClick(onNewsTop);
     _this.state = {
@@ -136,6 +138,7 @@ function (_Component) {
       onCryptoComapre: this._hCryptoCompare,
       onMessari: this._hMessari,
       onIex: this._hIex,
+      onFmp: this._hFmp,
       onNewsApi: this._hNewsApi,
       onNewsTop: this._hNewsTop
     }), _react["default"].createElement(_LoadingProgress["default"], {

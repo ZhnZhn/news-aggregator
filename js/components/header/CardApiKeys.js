@@ -20,14 +20,17 @@ var STR_EMPTY = '',
   };
 },
     _onTestIex = _hasLengthOrEmpty(35),
+    _onTestFmp = _hasLengthOrEmpty(32),
     _onTestNews = _hasLengthOrEmpty(32),
     _onTestWebhose = _hasLengthOrEmpty(36),
     SET_IEX_KEY = 'setIexKey',
+    SET_FMP_KEY = 'setFmpKey',
     SET_NEWS_KEY = 'setNewsKey',
     SET_WEBHOSE_KEY = 'setWebhoseKey',
     _getKeySetters = function _getKeySetters(data) {
   return {
     setIex: (0, _safeFn["default"])(data, SET_IEX_KEY),
+    setFmp: (0, _safeFn["default"])(data, SET_FMP_KEY),
     setNews: (0, _safeFn["default"])(data, SET_NEWS_KEY),
     setWebhose: (0, _safeFn["default"])(data, SET_WEBHOSE_KEY)
   };
@@ -40,11 +43,8 @@ var _isVisible = function _isVisible(_ref) {
 };
 
 var CardApiKeys = function CardApiKeys(props) {
-  if (!_isVisible(props)) {
-    return null;
-  }
-
   var _refInputIex = (0, _react.useRef)(),
+      _refInputFmp = (0, _react.useRef)(),
       _refInputNews = (0, _react.useRef)(),
       _refInputWebhose = (0, _react.useRef)(),
       style = props.style,
@@ -55,14 +55,18 @@ var CardApiKeys = function CardApiKeys(props) {
       onClose = props.onClose,
       _getKeySetters2 = _getKeySetters(data),
       setIex = _getKeySetters2.setIex,
+      setFmp = _getKeySetters2.setFmp,
       setNews = _getKeySetters2.setNews,
       setWebhose = _getKeySetters2.setWebhose,
       _hClearAll = (0, _react.useCallback)(function () {
     setIex('');
+    setFmp('');
     setNews('');
     setWebhose('');
 
     _refInputIex.current.clear();
+
+    _refInputFmp.current.clear();
 
     _refInputNews.current.clear();
 
@@ -80,6 +84,10 @@ var CardApiKeys = function CardApiKeys(props) {
     _refInputWebhose.current.setWasEnter();
   }, []);
 
+  if (!_isVisible(props)) {
+    return null;
+  }
+
   return _react["default"].createElement("div", {
     style: style
   }, _react["default"].createElement("form", null, _react["default"].createElement(_Comp["default"].PasswordField, {
@@ -91,6 +99,15 @@ var CardApiKeys = function CardApiKeys(props) {
     ,
     onTest: _onTestIex,
     onEnter: setIex
+  }), _react["default"].createElement(_Comp["default"].PasswordField, {
+    ref: _refInputFmp,
+    rootStyle: fieldStyle,
+    name: "fmp-api",
+    caption: "FMP API Key (32 Symbols)",
+    maxLength: 32 //errorMsg="35 symbols must be"
+    ,
+    onTest: _onTestFmp,
+    onEnter: setFmp
   })), _react["default"].createElement("form", null, _react["default"].createElement(_Comp["default"].PasswordField, {
     ref: _refInputNews,
     rootStyle: fieldStyle,
