@@ -46,7 +46,7 @@
   </script>
 
   <!-- inject:css -->
-  <link rel="stylesheet" href="/css/app-494c37f12f.min.css">
+  <link rel="stylesheet" href="/css/app-3cddb7ad39.min.css">
   <!-- endinject  -->
 
 </head>
@@ -81,7 +81,7 @@
     if (fileName.indexOf('manifest_') !== -1){ %>
       <script src="<%=fileName %>"></script>
     <% } else if (fileName.indexOf('app_') !== -1) { %>
-      <script src="<%=fileName %>"></script>
+      <script src="<%=fileName %>" defer></script>
     <% }
  } %>
 
