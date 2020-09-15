@@ -10,6 +10,7 @@ const useClassAnimation = ({
   const [_wasUpdated, _forceUpdate] = useForceUpdate()
   , _refWasClosed = useRef(initialWasClosed)
   , _refPrevIsShow = useRef(isShow);
+  /*eslint-disable react-hooks/exhaustive-deps */
   useEffect( () => {
     if (_refPrevIsShow.current && !isShow) {
       setTimeout(
@@ -23,6 +24,7 @@ const useClassAnimation = ({
     _refPrevIsShow.current = isShow
     _refWasClosed.current = false
   }, [isShow, _wasUpdated]);
+  /*eslint-enable react-hooks/exhaustive-deps */
   let className, style;
   if (_refWasClosed.current) {
     className = CL.INIT;

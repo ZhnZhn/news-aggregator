@@ -23,6 +23,8 @@ var useClassAnimation = function useClassAnimation(_ref) {
       _forceUpdate = _useForceUpdate[1],
       _refWasClosed = (0, _react.useRef)(initialWasClosed),
       _refPrevIsShow = (0, _react.useRef)(isShow);
+  /*eslint-disable react-hooks/exhaustive-deps */
+
 
   (0, _react.useEffect)(function () {
     if (_refPrevIsShow.current && !isShow) {
@@ -36,6 +38,8 @@ var useClassAnimation = function useClassAnimation(_ref) {
     _refPrevIsShow.current = isShow;
     _refWasClosed.current = false;
   }, [isShow, _wasUpdated]);
+  /*eslint-enable react-hooks/exhaustive-deps */
+
   var className, style;
 
   if (_refWasClosed.current) {

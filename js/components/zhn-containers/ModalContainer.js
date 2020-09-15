@@ -9,7 +9,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _react = _interopRequireDefault(require("react"));
 
-var _useClassAnimation = _interopRequireDefault(require("../zhn-hooks/useClassAnimation"));
+var _useClassAnimation = _interopRequireDefault(require("../hooks/useClassAnimation"));
 
 //import PropTypes from 'prop-types'
 var CL = {

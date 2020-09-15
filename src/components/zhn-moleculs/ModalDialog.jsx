@@ -1,7 +1,7 @@
-import React, { useRef, useEffect, useCallback } from 'react'
+import React, { useRef, useEffect } from 'react'
 //import PropTypes from 'prop-types'
 
-import useClassAnimation from '../zhn-hooks/useClassAnimation'
+import useClassAnimation from '../hooks/useClassAnimation'
 
 import BrowserCaption from '../zhn-atoms/BrowserCaption'
 import RaisedButton from '../zhn-atoms/RaisedButton'
@@ -69,11 +69,12 @@ const ModalDialog = ({
     isShow, CL, S: S2,
     initialWasClosed: false
   })
-  , _hKeyDown = useCallback((event) => {
-     if (document.activeElement == _refRootDiv.current){
+  , _hKeyDown = event => {
+    const { current } = _refRootDiv;
+     if (document.activeElement == current){
        onKeyDown(event)
      }
-  })
+  };
 
   useEffect(() => {
     _refPrevFocused.current = document.activeElement
@@ -90,9 +91,14 @@ const ModalDialog = ({
   })
 
   return (
+    /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
+    /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
     <div
         ref={_refRootDiv}
         tabIndex="0"
+        role="dialog"
+        aria-label={caption}
+        aria-hidden={!isShow}
         className={_className}
         style={{
           ...S.ROOT_DIV,
@@ -102,6 +108,10 @@ const ModalDialog = ({
         onClick={_hClickDialog}
         onKeyDown={_hKeyDown}
     >
+    {
+     /*eslint-enable jsx-a11y/no-noninteractive-element-interactions*/
+     /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
+    }
         <BrowserCaption
           rootStyle={styleCaption}
           caption={caption}

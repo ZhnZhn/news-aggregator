@@ -11,7 +11,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _useClassAnimation2 = _interopRequireDefault(require("../zhn-hooks/useClassAnimation"));
+var _useClassAnimation2 = _interopRequireDefault(require("../hooks/useClassAnimation"));
 
 var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
 
@@ -87,11 +87,13 @@ var ModalDialog = function ModalDialog(_ref) {
   }),
       _className = _useClassAnimation.className,
       _style = _useClassAnimation.style,
-      _hKeyDown = (0, _react.useCallback)(function (event) {
-    if (document.activeElement == _refRootDiv.current) {
+      _hKeyDown = function _hKeyDown(event) {
+    var current = _refRootDiv.current;
+
+    if (document.activeElement == current) {
       onKeyDown(event);
     }
-  });
+  };
 
   (0, _react.useEffect)(function () {
     _refPrevFocused.current = document.activeElement;
@@ -106,27 +108,35 @@ var ModalDialog = function ModalDialog(_ref) {
       _refPrevFocused.current.focus();
     }
   });
-  return _react["default"].createElement("div", {
-    ref: _refRootDiv,
-    tabIndex: "0",
-    className: _className,
-    style: (0, _extends2["default"])({}, S.ROOT_DIV, {}, style, {}, _style),
-    onClick: _hClickDialog,
-    onKeyDown: _hKeyDown
-  }, _react["default"].createElement(_BrowserCaption["default"], {
-    rootStyle: styleCaption,
-    caption: caption,
-    onClose: onClose
-  }), _react["default"].createElement("div", null, children), isWithButton && _react["default"].createElement("div", {
-    style: (0, _extends2["default"])({}, S.COMMAND_DIV, {}, divBtStyle)
-  }, commandButtons, !withoutClose && _react["default"].createElement(_RaisedButton["default"], {
-    key: "_close",
-    rootStyle: TS.RAISED_ROOT,
-    clDiv: TS.CL_RAISED_DIV,
-    caption: "Close",
-    isPrimary: isClosePrimary,
-    onClick: onClose
-  })));
+  return (
+    /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
+
+    /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
+    _react["default"].createElement("div", {
+      ref: _refRootDiv,
+      tabIndex: "0",
+      role: "dialog",
+      "aria-label": caption,
+      "aria-hidden": !isShow,
+      className: _className,
+      style: (0, _extends2["default"])({}, S.ROOT_DIV, {}, style, {}, _style),
+      onClick: _hClickDialog,
+      onKeyDown: _hKeyDown
+    }, _react["default"].createElement(_BrowserCaption["default"], {
+      rootStyle: styleCaption,
+      caption: caption,
+      onClose: onClose
+    }), _react["default"].createElement("div", null, children), isWithButton && _react["default"].createElement("div", {
+      style: (0, _extends2["default"])({}, S.COMMAND_DIV, {}, divBtStyle)
+    }, commandButtons, !withoutClose && _react["default"].createElement(_RaisedButton["default"], {
+      key: "_close",
+      rootStyle: TS.RAISED_ROOT,
+      clDiv: TS.CL_RAISED_DIV,
+      caption: "Close",
+      isPrimary: isClosePrimary,
+      onClick: onClose
+    })))
+  );
 };
 
 var _default = ModalDialog;

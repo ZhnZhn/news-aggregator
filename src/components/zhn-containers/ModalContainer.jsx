@@ -1,7 +1,7 @@
 import React from 'react';
 //import PropTypes from 'prop-types'
 
-import useClassAnimation from '../zhn-hooks/useClassAnimation'
+import useClassAnimation from '../hooks/useClassAnimation'
 
 const CL = {
   INIT: 'modal-root',
