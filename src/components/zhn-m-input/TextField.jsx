@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 
+import has from '../has'
+import SvgX from '../zhn-atoms/SvgX'
+
 import crId from '../../utils/crId'
+
+const { HAS_TOUCH } = has
 
 const CL = {
   SELECT: 'm-select',
@@ -15,6 +20,11 @@ const S = {
   LABEL_TO_INPUT: {
      transform: 'scale(1) translate(0px, -6px)'
   },
+  BT_CLEAR: {
+    position: 'absolute',
+    top: 25,
+    right: 12
+  },
   LABEL_ON_ERROR: {
     color: '#f44336'
   },
@@ -27,7 +37,9 @@ const _isFn = fn => typeof fn === 'function';
 
 class TextField extends Component {
   static defaultProps = {
-    maxLength: "20"
+    maxLength: "20",
+    autoCapitalize: "off",
+    hasClear: true
   }
 
   constructor(props){
@@ -71,9 +83,14 @@ class TextField extends Component {
    }
  }
 
+ _hClear = () => {
+   this.setState({ value: '' })
+ }
+
   render(){
     const {
-      style, maxLength,
+      style, maxLength, hasClear,
+      autoCapitalize,
       caption, errorMsg=''
     } = this.props
     , { value, isPassTest } = this.state
@@ -105,9 +122,9 @@ class TextField extends Component {
             type="text"
             className={CL.INPUT}
             value={value}
-            autoComplete="new-text"
+            autoComplete="off"
             autoCorrect="off"
-            autoCapitalize="off"
+            autoCapitalize={autoCapitalize}
             spellCheck="false"
             translate="false"
             maxLength={maxLength}
@@ -116,6 +133,12 @@ class TextField extends Component {
             onChange={this._hInputChange}
             onKeyDown={this._hKeyDown}
           />
+          {HAS_TOUCH && hasClear && value && <SvgX
+             color="black"
+             className="svg-clear"
+             style={S.BT_CLEAR}
+             onClick={this._hClear}
+          />}
           <div className={CL.INPUT_LINE} style={_lineStyle} />
           { _lineStyle && <div className={CL.INPUT_MSG_ERR}>{errorMsg}</div>}
         </div>

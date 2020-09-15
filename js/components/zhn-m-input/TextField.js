@@ -13,8 +13,13 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _has = _interopRequireDefault(require("../has"));
+
+var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
+
 var _crId = _interopRequireDefault(require("../../utils/crId"));
 
+var HAS_TOUCH = _has["default"].HAS_TOUCH;
 var CL = {
   SELECT: 'm-select',
   LABEL: 'm-select__label',
@@ -26,6 +31,11 @@ var CL = {
 var S = {
   LABEL_TO_INPUT: {
     transform: 'scale(1) translate(0px, -6px)'
+  },
+  BT_CLEAR: {
+    position: 'absolute',
+    top: 25,
+    right: 12
   },
   LABEL_ON_ERROR: {
     color: '#f44336'
@@ -82,6 +92,12 @@ function (_Component) {
       }
     };
 
+    _this._hClear = function () {
+      _this.setState({
+        value: ''
+      });
+    };
+
     var id = props.id,
         initValue = props.initValue,
         onTest = props.onTest,
@@ -106,6 +122,8 @@ function (_Component) {
     var _this$props = this.props,
         style = _this$props.style,
         maxLength = _this$props.maxLength,
+        hasClear = _this$props.hasClear,
+        autoCapitalize = _this$props.autoCapitalize,
         caption = _this$props.caption,
         _this$props$errorMsg = _this$props.errorMsg,
         errorMsg = _this$props$errorMsg === void 0 ? '' : _this$props$errorMsg,
@@ -130,9 +148,9 @@ function (_Component) {
       type: "text",
       className: CL.INPUT,
       value: value,
-      autoComplete: "new-text",
+      autoComplete: "off",
       autoCorrect: "off",
-      autoCapitalize: "off",
+      autoCapitalize: autoCapitalize,
       spellCheck: "false",
       translate: "false",
       maxLength: maxLength,
@@ -140,6 +158,11 @@ function (_Component) {
       onBlur: this._hBlurInput,
       onChange: this._hInputChange,
       onKeyDown: this._hKeyDown
+    }), HAS_TOUCH && hasClear && value && _react["default"].createElement(_SvgX["default"], {
+      color: "black",
+      className: "svg-clear",
+      style: S.BT_CLEAR,
+      onClick: this._hClear
     }), _react["default"].createElement("div", {
       className: CL.INPUT_LINE,
       style: _lineStyle
@@ -156,7 +179,9 @@ function (_Component) {
 }(_react.Component);
 
 TextField.defaultProps = {
-  maxLength: "20"
+  maxLength: "20",
+  autoCapitalize: "off",
+  hasClear: true
 };
 var _default = TextField;
 exports["default"] = _default;
