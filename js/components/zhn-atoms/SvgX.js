@@ -9,30 +9,34 @@ var _react = _interopRequireDefault(require("react"));
 
 //import PropTypes from 'prop-types'
 var CL_ROOT = "svg-close";
-var STYLE = {
-  //COLOR : '#F44336',
-  COLOR: '#D64336',
+var S = {
+  COLOR: '#d64336',
   SVG: {
-    padding: '3px'
+    padding: 3
   }
 };
 
-var SvgClose = function SvgClose(_ref) {
-  var style = _ref.style,
-      onClose = _ref.onClose;
-  return _react["default"].createElement("div", {
-    className: CL_ROOT,
+var SvgX = function SvgX(_ref) {
+  var _ref$className = _ref.className,
+      className = _ref$className === void 0 ? CL_ROOT : _ref$className,
+      style = _ref.style,
+      _ref$color = _ref.color,
+      color = _ref$color === void 0 ? S.COLOR : _ref$color,
+      onClick = _ref.onClick;
+  return _react["default"].createElement("button", {
+    tabIndex: "-1",
+    className: className,
     style: style,
-    onClick: onClose
+    onClick: onClick
   }, _react["default"].createElement("svg", {
     viewBox: "0 0 12 12",
     width: "100%",
     height: "100%",
-    style: STYLE.SVG,
+    style: S.SVG,
     preserveAspectRatio: "none",
     xmlns: "http://www.w3.org/2000/svg",
     strokeWidth: "2",
-    stroke: STYLE.COLOR,
+    stroke: color,
     strokeLinecap: "round"
   }, _react["default"].createElement("path", {
     d: "M 0,0 L 12,12"
@@ -41,16 +45,15 @@ var SvgClose = function SvgClose(_ref) {
   })));
 };
 /*
-SvgClose.propTypes = {
+SvgX.propTypes = {
+  color: PropTypes.string,
+  className: PropTypes.string,
   style: PropTypes.object,
-  onClose: PropTypes.func
+  onClick: PropTypes.func
 }
 */
 
 
-SvgClose.defaultProps = {
-  onClose: function onClose() {}
-};
-var _default = SvgClose;
+var _default = SvgX;
 exports["default"] = _default;
-//# sourceMappingURL=SvgClose.js.map
+//# sourceMappingURL=SvgX.js.map

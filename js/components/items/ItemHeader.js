@@ -11,7 +11,7 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _SvgClose = _interopRequireDefault(require("../zhn-atoms/SvgClose"));
+var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
 
 var ItemHeader =
 /*#__PURE__*/
@@ -68,7 +68,7 @@ function (_Component) {
         className = _this$props2.className,
         style = _this$props2.style,
         captionStyle = _this$props2.captionStyle,
-        svgCloseStyle = _this$props2.svgCloseStyle,
+        btCloseStyle = _this$props2.btCloseStyle,
         title = _this$props2.title,
         onClick = _this$props2.onClick;
     return _react["default"].createElement("div", {
@@ -82,9 +82,9 @@ function (_Component) {
     }, _react["default"].createElement("span", {
       className: "not-selected",
       style: captionStyle
-    }, title), _react["default"].createElement(_SvgClose["default"], {
-      style: svgCloseStyle,
-      onClose: this._handleClose
+    }, title), _react["default"].createElement(_SvgX["default"], {
+      style: btCloseStyle,
+      onClick: this._handleClose
     }));
   };
 

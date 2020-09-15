@@ -19,7 +19,7 @@ var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
 var _Article = _interopRequireDefault(require("./Article.Style"));
 
-var _SvgClose = _interopRequireDefault(require("../zhn-atoms/SvgClose"));
+var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
 
 var _withDnD = _interopRequireDefault(require("./decorators/withDnD"));
 
@@ -185,9 +185,9 @@ function (_Component) {
       style: S.GREEN_BADGE
     }, TOKEN_REPUTATION, "\xA0", reputation), _react["default"].createElement("span", {
       style: S.BLACK_BADGE
-    }, display_name), _react["default"].createElement(_SvgClose["default"], {
+    }, display_name), _react["default"].createElement(_SvgX["default"], {
       style: S.SVG_CLOSE,
-      onClose: this._handleClose
+      onClick: this._handleClose
     })), _react["default"].createElement("a", {
       className: CL_WRAPPER,
       style: S.LINK,

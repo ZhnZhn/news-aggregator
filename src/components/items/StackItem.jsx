@@ -5,7 +5,7 @@ import has from '../has'
 import withTheme from '../hoc/withTheme'
 import styleConfig from './Article.Style'
 
-import SvgClose from '../zhn-atoms/SvgClose'
+import SvgX from '../zhn-atoms/SvgX'
 import withDnD from './decorators/withDnD'
 
 const CL_WRAPPER = "link-wrapper";
@@ -175,9 +175,9 @@ class StackItem extends Component {
                date={""}
             />
            */}
-           <SvgClose
+           <SvgX
               style={S.SVG_CLOSE}
-              onClose={this._handleClose}
+              onClick={this._handleClose}
            />
           </div>
           <a

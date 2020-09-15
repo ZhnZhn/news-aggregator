@@ -182,7 +182,7 @@ function (_Component) {
       className: CL_ITEM_HEADER,
       style: (0, _extends2["default"])({}, _headerStyle, {}, TS.HEADER),
       captionStyle: _captionStyle,
-      svgCloseStyle: S.SVG_CLOSE,
+      btCloseStyle: S.SVG_CLOSE,
       title: title,
       url: url,
       isShow: isShow,

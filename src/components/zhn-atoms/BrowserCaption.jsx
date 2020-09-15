@@ -1,7 +1,7 @@
 import React from 'react'
 
 import SvgMore from './SvgMore'
-import SvgClose from './SvgClose'
+import SvgX from './SvgX'
 
 const CL_GAP = "gap-right";
 
@@ -60,9 +60,9 @@ const BrowserCaption = ({ rootStyle, caption, children, onMore, onClose }) => (
        {caption}
     </span>
     {children}
-    <SvgClose
+    <SvgX
       style={S.SVG_CLOSE}
-      onClose={onClose}
+      onClick={onClose}
     />
   </div>
 );

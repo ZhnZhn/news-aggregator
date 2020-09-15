@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import SvgClose from '../zhn-atoms/SvgClose'
+import SvgX from '../zhn-atoms/SvgX'
 
 class ItemHeader extends Component {
   _handleClose = (event) => {
@@ -29,13 +29,13 @@ class ItemHeader extends Component {
   render(){
     const {
             className,
-            style, captionStyle, svgCloseStyle,
+            style, captionStyle, btCloseStyle,
             title,
             onClick
           } = this.props;
     return (
       <div
-        role="button"       
+        role="button"
         ref={this._refRoot}
         tabIndex="0"
         className={className}
@@ -49,9 +49,9 @@ class ItemHeader extends Component {
         >
            {title}
         </span>
-        <SvgClose
-            style={svgCloseStyle}
-            onClose={this._handleClose}
+        <SvgX
+            style={btCloseStyle}
+            onClick={this._handleClose}
         />
       </div>
     );

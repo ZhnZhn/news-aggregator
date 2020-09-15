@@ -11,7 +11,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _SvgMore = _interopRequireDefault(require("./SvgMore"));
 
-var _SvgClose = _interopRequireDefault(require("./SvgClose"));
+var _SvgX = _interopRequireDefault(require("./SvgX"));
 
 var CL_GAP = "gap-right";
 var S = {
@@ -70,9 +70,9 @@ var BrowserCaption = function BrowserCaption(_ref) {
   }), _react["default"].createElement("span", {
     className: "not-selected",
     style: S.CAPTION
-  }, caption), children, _react["default"].createElement(_SvgClose["default"], {
+  }, caption), children, _react["default"].createElement(_SvgX["default"], {
     style: S.SVG_CLOSE,
-    onClose: onClose
+    onClick: onClose
   }));
 };
 
