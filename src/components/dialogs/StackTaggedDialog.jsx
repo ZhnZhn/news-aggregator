@@ -101,6 +101,7 @@ class StackTaggedDialog extends Component {
         <div>
         <A.TextField
           ref={this._refFromDate}
+          hasClear={false}
           caption="From Date"
           style={TS.INPUT_DATE}
           initValue={INITIAL_FROM_DATE}
@@ -109,6 +110,7 @@ class StackTaggedDialog extends Component {
         />
         <A.TextField
           ref={this._refToDate}
+          hasClear={false}
           caption="To Date"
           style={TS.INPUT_DATE}
           initValue={INITIAL_TO_DATE}

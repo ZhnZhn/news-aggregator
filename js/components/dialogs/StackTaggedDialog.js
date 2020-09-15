@@ -152,6 +152,7 @@ function (_Component) {
       onSelect: this._selectSortBy
     }), _react["default"].createElement("div", null, _react["default"].createElement(_Comp["default"].TextField, {
       ref: this._refFromDate,
+      hasClear: false,
       caption: "From Date",
       style: TS.INPUT_DATE,
       initValue: INITIAL_FROM_DATE,
@@ -159,6 +160,7 @@ function (_Component) {
       onTest: _onTestDate
     }), _react["default"].createElement(_Comp["default"].TextField, {
       ref: this._refToDate,
+      hasClear: false,
       caption: "To Date",
       style: TS.INPUT_DATE,
       initValue: INITIAL_TO_DATE,

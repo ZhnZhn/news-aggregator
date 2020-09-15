@@ -23,6 +23,7 @@ class FmpNewsDialog extends Component {
       loadId: 'FMP',
       symbol: _symbol,
     })
+    this._handleClose()
   }
 
   _refDialogComp = comp => this.dialogComp = comp
@@ -52,6 +53,7 @@ class FmpNewsDialog extends Component {
            maxLength="10"
            caption="Stock Symbol"
            initValue={DF_SYMBOL}
+           autoCapitalize="on"
            onEnter={this._handleLoad}
          />
         <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>

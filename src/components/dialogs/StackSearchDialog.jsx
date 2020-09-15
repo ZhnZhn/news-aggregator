@@ -104,6 +104,7 @@ class StackSearchDialog extends Component {
             <A.TextField
               ref={this._refFromDate}
               caption="From Date"
+              hasClear={false}
               style={TS.INPUT_DATE}
               initValue={INITIAL_FROM_DATE}
               errorMsg={DATE_ERR_MSG}
@@ -112,6 +113,7 @@ class StackSearchDialog extends Component {
             <A.TextField
               ref={this._refToDate}
               caption="To Date"
+              hasClear={false}
               style={TS.INPUT_DATE}
               initValue={INITIAL_TO_DATE}
               errorMsg={DATE_ERR_MSG}

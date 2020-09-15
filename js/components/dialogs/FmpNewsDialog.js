@@ -49,6 +49,8 @@ function (_Component) {
         loadId: 'FMP',
         symbol: _symbol
       });
+
+      _this._handleClose();
     };
 
     _this._refDialogComp = function (comp) {
@@ -91,6 +93,7 @@ function (_Component) {
       maxLength: "10",
       caption: "Stock Symbol",
       initValue: DF_SYMBOL,
+      autoCapitalize: "on",
       onEnter: this._handleLoad
     }), _react["default"].createElement(_Comp["default"].Link.PoweredBy, {
       rootStyle: TS.POWERED_BY

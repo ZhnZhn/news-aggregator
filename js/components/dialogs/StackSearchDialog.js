@@ -155,6 +155,7 @@ function (_Component) {
     }), _react["default"].createElement("div", null, _react["default"].createElement(_Comp["default"].TextField, {
       ref: this._refFromDate,
       caption: "From Date",
+      hasClear: false,
       style: TS.INPUT_DATE,
       initValue: INITIAL_FROM_DATE,
       errorMsg: DATE_ERR_MSG,
@@ -162,6 +163,7 @@ function (_Component) {
     }), _react["default"].createElement(_Comp["default"].TextField, {
       ref: this._refToDate,
       caption: "To Date",
+      hasClear: false,
       style: TS.INPUT_DATE,
       initValue: INITIAL_TO_DATE,
       errorMsg: DATE_ERR_MSG,

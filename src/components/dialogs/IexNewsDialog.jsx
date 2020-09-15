@@ -70,6 +70,7 @@ class IexNewsDialog extends Component {
            maxLength="10"
            caption="Stock Symbol"
            initValue={DF_SYMBOL}
+           autoCapitalize="on"
            onEnter={this._handleLoad}
          />
          <A.InputSelect

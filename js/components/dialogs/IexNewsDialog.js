@@ -117,6 +117,7 @@ function (_Component) {
       maxLength: "10",
       caption: "Stock Symbol",
       initValue: DF_SYMBOL,
+      autoCapitalize: "on",
       onEnter: this._handleLoad
     }), _react["default"].createElement(_Comp["default"].InputSelect, {
       caption: "Recent",
