@@ -30,7 +30,7 @@ const S = {
   },
   DATE: {
     color: 'gray',
-    flexShrink: 0,
+    //flexShrink: 0,
     paddingRight: 32,
     fontWeight: 'bold'
   }
