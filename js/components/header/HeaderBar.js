@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -55,9 +55,7 @@ var _ffClick = function _ffClick(onClose) {
   };
 };
 
-var HeaderBar =
-/*#__PURE__*/
-function (_Component) {
+var HeaderBar = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(HeaderBar, _Component);
 
   function HeaderBar(props) {
@@ -123,72 +121,78 @@ function (_Component) {
         onAbout = _this$props.onAbout,
         S = theme.createStyle(_HeaderBar["default"]),
         isQuery = this.state.isQuery;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: CL.HEADER,
-      style: S.HEADER
-    }, _react["default"].createElement(_PanelQuery["default"], {
-      paneStyle: S.PANE,
-      className: CL.PANEL_BROWSER,
-      isShow: isQuery,
-      onClose: this._hToggleQuery,
-      onWebhose: this._hWebhose,
-      onWebhoseBrodcast: this._hWebhoseBrodcast,
-      onStackTagged: this._hStackTagged,
-      onStackSearch: this._hStackSearch,
-      onCryptoComapre: this._hCryptoCompare,
-      onMessari: this._hMessari,
-      onIex: this._hIex,
-      onFmp: this._hFmp,
-      onNewsApi: this._hNewsApi,
-      onNewsTop: this._hNewsTop
-    }), _react["default"].createElement(_LoadingProgress["default"], {
-      store: store,
-      ACTIONS: LOADING_ACTIONS
-    }), _react["default"].createElement(_IconAppLogo["default"], {
-      className: CL.ICON_APP,
-      title: TITLE
-    }), _react["default"].createElement(_AppLabel["default"], {
-      className: CL.LABEL_APP,
-      caption: TITLE
-    }), _react["default"].createElement("span", {
-      className: CL.BROWSER_BTS
-    }, _react["default"].createElement(_Atoms["default"].FlatButton, {
-      rootStyle: S.BT.FLAT_ROOT,
-      clDiv: S.BT.CL_FLAT_DIV,
-      caption: "News",
-      title: "Open News Sources Browser",
-      accessKey: "n",
-      onClick: onNewsSources
-    }), _react["default"].createElement(_Atoms["default"].ModalButton, {
-      rootStyle: S.BT.FLAT_ROOT,
-      clDiv: S.BT.CL_FLAT_DIV,
-      caption: "Query",
-      title: "Panel Query Source",
-      accessKey: "q",
-      onClick: this._hToggleQuery,
-      onReg: this._onRegQuery
-    }, _react["default"].createElement("span", {
-      className: CL.ARROW_DOWN
-    }))), _react["default"].createElement("div", {
-      className: CL.BTS
-    }, _react["default"].createElement(_Atoms["default"].FlatButton, {
-      rootStyle: S.BT.FLAT_ROOT,
-      clDiv: S.BT.CL_FLAT_DIV,
-      title: "Open Settings Dialog",
-      accessKey: "s",
-      onClick: onSettings
-    }, _react["default"].createElement(_Atoms["default"].SvgSettings, {
-      style: STYLE.SVG_ICON
-    })), _react["default"].createElement(_Atoms["default"].FlatButton, {
-      className: CL.BT_ABOUT,
-      rootStyle: S.BT.FLAT_ROOT,
-      clDiv: S.BT.CL_FLAT_DIV,
-      title: "About News Aggregator",
-      accessKey: "a",
-      onClick: onAbout
-    }, _react["default"].createElement(_Atoms["default"].SvgInfo, {
-      style: STYLE.SVG_ICON
-    }))));
+      style: S.HEADER,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_PanelQuery["default"], {
+        paneStyle: S.PANE,
+        className: CL.PANEL_BROWSER,
+        isShow: isQuery,
+        onClose: this._hToggleQuery,
+        onWebhose: this._hWebhose,
+        onWebhoseBrodcast: this._hWebhoseBrodcast,
+        onStackTagged: this._hStackTagged,
+        onStackSearch: this._hStackSearch,
+        onCryptoComapre: this._hCryptoCompare,
+        onMessari: this._hMessari,
+        onIex: this._hIex,
+        onFmp: this._hFmp,
+        onNewsApi: this._hNewsApi,
+        onNewsTop: this._hNewsTop
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_LoadingProgress["default"], {
+        store: store,
+        ACTIONS: LOADING_ACTIONS
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconAppLogo["default"], {
+        className: CL.ICON_APP,
+        title: TITLE
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_AppLabel["default"], {
+        className: CL.LABEL_APP,
+        caption: TITLE
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+        className: CL.BROWSER_BTS,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FlatButton, {
+          rootStyle: S.BT.FLAT_ROOT,
+          clDiv: S.BT.CL_FLAT_DIV,
+          caption: "News",
+          title: "Open News Sources Browser",
+          accessKey: "n",
+          onClick: onNewsSources
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].ModalButton, {
+          rootStyle: S.BT.FLAT_ROOT,
+          clDiv: S.BT.CL_FLAT_DIV,
+          caption: "Query",
+          title: "Panel Query Source",
+          accessKey: "q",
+          onClick: this._hToggleQuery,
+          onReg: this._onRegQuery,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            className: CL.ARROW_DOWN
+          })
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        className: CL.BTS,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FlatButton, {
+          rootStyle: S.BT.FLAT_ROOT,
+          clDiv: S.BT.CL_FLAT_DIV,
+          title: "Open Settings Dialog",
+          accessKey: "s",
+          onClick: onSettings,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SvgSettings, {
+            style: STYLE.SVG_ICON
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FlatButton, {
+          className: CL.BT_ABOUT,
+          rootStyle: S.BT.FLAT_ROOT,
+          clDiv: S.BT.CL_FLAT_DIV,
+          title: "About News Aggregator",
+          accessKey: "a",
+          onClick: onAbout,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SvgInfo, {
+            style: STYLE.SVG_ICON
+          })
+        })]
+      })]
+    });
   };
 
   return HeaderBar;

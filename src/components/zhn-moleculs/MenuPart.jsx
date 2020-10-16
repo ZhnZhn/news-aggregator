@@ -1,4 +1,3 @@
-import React from 'react'
 //import PropTypes from 'prop-types'
 
 import OpenClose from '../zhn-atoms/OpenClose'
@@ -21,12 +20,12 @@ const _renderMenuItems = function(TS, option){
           , _itemConf = hmItems[item.id]
           , { menuTitle} = _itemConf
           , badgeEl = itemData[item.id]
-               ? <MenuItemBadge
+               ? (<MenuItemBadge
                     style={TS.BADGE}
                     itemBadge={itemData[item.id]}
                     itemConf={_itemConf}
                     onClick={onClickBadge}
-                 />
+                 />)
                : null;
 
     Object.assign(_itemConf, rest)

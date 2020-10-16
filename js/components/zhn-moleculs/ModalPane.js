@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,16 +9,17 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
 var _ModalPane = _interopRequireDefault(require("./ModalPane.Style"));
 
+//import PropTypes from 'prop-types'
 //const TH_ID = 'MODAL_PANE';
-var ModalPane =
-/*#__PURE__*/
-function (_Component) {
+var ModalPane = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ModalPane, _Component);
 
   function ModalPane() {
@@ -84,10 +83,11 @@ function (_Component) {
         children = _this$props.children,
         TS = theme.createStyle(_ModalPane["default"]); //, TS = theme.getStyle(TH_ID);
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       ref: this._refRootNode,
-      style: (0, _extends2["default"])({}, style, {}, TS.ROOT)
-    }, children);
+      style: (0, _extends2["default"])({}, style, TS.ROOT),
+      children: children
+    });
   };
 
   return ModalPane;

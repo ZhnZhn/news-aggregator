@@ -2,8 +2,6 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
@@ -11,7 +9,9 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -33,9 +33,7 @@ var _onTestDaysBefore = function _onTestDaysBefore(value) {
   }
 };
 
-var WebhoseBrodcastDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_temp =
-/*#__PURE__*/
-function (_Component) {
+var WebhoseBrodcastDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_temp = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(WebhoseBrodcastDialog, _Component);
 
   function WebhoseBrodcastDialog(props) {
@@ -102,7 +100,7 @@ function (_Component) {
         TS = theme.createStyle(_Dialog["default"]),
         _commandButtons = this._createCommandButtons(TS.BT);
 
-    return _react["default"].createElement(_Comp["default"].DraggableDialog, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
       ref: this._refDialoComp,
       rootStyle: TS.R_DIALOG,
       browserCaptionStyle: TS.BROWSER_CAPTION,
@@ -112,22 +110,24 @@ function (_Component) {
       commandButtons: _commandButtons,
       onKeyDown: this._handleKeyDownWith,
       onShowChart: onShow,
-      onClose: this._handleClose
-    }, _react["default"].createElement(_Comp["default"].TextField, {
-      style: TS.INPUT_ROOT,
-      ref: this._refInputTitle,
-      caption: "In Title (Default: Weather)",
-      initValue: "Weather"
-    }), _react["default"].createElement(_Comp["default"].TextField, {
-      style: TS.INPUT_ROOT,
-      ref: this._refInputBeforeDays,
-      caption: "Before Days, Max 30",
-      initValue: 2,
-      errorMsg: "0<n<31 value must be",
-      onTest: _onTestDaysBefore
-    }), _react["default"].createElement(_Comp["default"].Link.PoweredBy, {
-      rootStyle: TS.POWERED_BY
-    }, _react["default"].createElement(_Comp["default"].Link.WebhoseIo, null)));
+      onClose: this._handleClose,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
+        style: TS.INPUT_ROOT,
+        ref: this._refInputTitle,
+        caption: "In Title (Default: Weather)",
+        initValue: "Weather"
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
+        style: TS.INPUT_ROOT,
+        ref: this._refInputBeforeDays,
+        caption: "Before Days, Max 30",
+        initValue: 2,
+        errorMsg: "0<n<31 value must be",
+        onTest: _onTestDaysBefore
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
+        rootStyle: TS.POWERED_BY,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.WebhoseIo, {})
+      })]
+    });
   };
 
   return WebhoseBrodcastDialog;

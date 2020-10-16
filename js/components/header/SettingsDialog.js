@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -25,6 +25,7 @@ var _CardApiKeys = _interopRequireDefault(require("./CardApiKeys"));
 
 var _CardUiTheme = _interopRequireDefault(require("./CardUiTheme"));
 
+//import PropTypes from 'prop-types'
 var S = {
   MODAL: {
     position: 'static',
@@ -72,9 +73,7 @@ var _inRange = function _inRange(min, max, v) {
   return _isNumber(v) && v >= min && v <= max;
 };
 
-var SettingsDialog =
-/*#__PURE__*/
-function (_Component) {
+var SettingsDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(SettingsDialog, _Component);
 
   function SettingsDialog() {
@@ -146,8 +145,8 @@ function (_Component) {
         _TS = JSON.parse(JSON.stringify(TS));
 
     Object.assign(_TS.SELECT.ROOT, S.SELECT_WIDTH);
-    return _react["default"].createElement(_Comp["default"].ModalDialog, {
-      style: (0, _extends2["default"])({}, S.MODAL, {}, TS.R_DIALOG),
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ModalDialog, {
+      style: (0, _extends2["default"])({}, S.MODAL, TS.R_DIALOG),
       divBtStyle: S.DIV_BT,
       styleCaption: TS.BROWSER_CAPTION,
       styleButton: TS.BT,
@@ -155,32 +154,36 @@ function (_Component) {
       isWithButton: false,
       isShow: isShow,
       onKeyDown: this._handleKeyDown,
-      onClose: onClose
-    }, _react["default"].createElement(_Comp["default"].TabPane, {
-      width: "100%",
-      tabsStyle: S.TABS,
-      selectedStyle: S.TAB_SELECTED,
-      isShow: isShow
-    }, _react["default"].createElement(_Comp["default"].Tab, {
-      title: "API Keys"
-    }, _react["default"].createElement(_CardApiKeys["default"], {
-      ref: this._refInput,
-      style: S.CARD_ROOT,
-      fieldStyle: (0, _extends2["default"])({}, TS.INPUT_ROOT, {}, S.INPUT_WIDTH),
-      buttonsStyle: S.CARD_BUTTONS,
-      TS: TS,
-      data: data,
-      onClose: onClose
-    })), _react["default"].createElement(_Comp["default"].Tab, {
-      title: "UI Theme"
-    }, _react["default"].createElement(_CardUiTheme["default"], {
-      style: S.CARD_ROOT,
-      buttonsStyle: S.CARD_BUTTONS,
-      TS: _TS,
-      onSetTheme: this._selectTheme,
-      onSetFontSize: this._selectFontSize,
-      onClose: onClose
-    }))));
+      onClose: onClose,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].TabPane, {
+        width: "100%",
+        tabsStyle: S.TABS,
+        selectedStyle: S.TAB_SELECTED,
+        isShow: isShow,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Tab, {
+          title: "API Keys",
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_CardApiKeys["default"], {
+            ref: this._refInput,
+            style: S.CARD_ROOT,
+            fieldStyle: (0, _extends2["default"])({}, TS.INPUT_ROOT, S.INPUT_WIDTH),
+            buttonsStyle: S.CARD_BUTTONS,
+            TS: TS,
+            data: data,
+            onClose: onClose
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Tab, {
+          title: "UI Theme",
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_CardUiTheme["default"], {
+            style: S.CARD_ROOT,
+            buttonsStyle: S.CARD_BUTTONS,
+            TS: _TS,
+            onSetTheme: this._selectTheme,
+            onSetFontSize: this._selectFontSize,
+            onClose: onClose
+          })
+        })]
+      })
+    });
   };
 
   return SettingsDialog;

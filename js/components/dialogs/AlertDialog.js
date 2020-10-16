@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -19,6 +19,7 @@ var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 
+//import PropTypes from 'prop-types'
 var S = {
   DIALOG: {
     position: 'static',
@@ -59,9 +60,7 @@ var _toMsg = function _toMsg(data) {
   return 'Exception Message';
 };
 
-var AlertDialog =
-/*#__PURE__*/
-function (_Component) {
+var AlertDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(AlertDialog, _Component);
 
   function AlertDialog() {
@@ -101,18 +100,22 @@ function (_Component) {
         TS = theme.createStyle(_Dialog["default"]),
         _msg = _toMsg(data);
 
-    return _react["default"].createElement(_ModalDialog["default"], {
-      style: (0, _extends2["default"])({}, TS.R_DIALOG, {}, S.DIALOG),
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialog["default"], {
+      style: (0, _extends2["default"])({}, TS.R_DIALOG, S.DIALOG),
       styleCaption: TS.BROWSER_CAPTION,
       styleButton: TS.BT,
       caption: "Exception",
       isShow: isShow,
       isClosePrimary: true,
       onKeyDown: this._handleKeyDown,
-      onClose: onClose
-    }, _react["default"].createElement("div", null, _react["default"].createElement("p", {
-      style: S.MSG
-    }, _msg)));
+      onClose: onClose,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+          style: S.MSG,
+          children: _msg
+        })
+      })
+    });
   };
 
   return AlertDialog;

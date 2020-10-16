@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -32,9 +32,7 @@ var S = {
   }
 };
 
-var ApiKeyDialog =
-/*#__PURE__*/
-function (_Component) {
+var ApiKeyDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ApiKeyDialog, _Component);
 
   function ApiKeyDialog() {
@@ -74,8 +72,8 @@ function (_Component) {
         data = _this$props.data,
         onClose = _this$props.onClose,
         TS = theme.createStyle(_Dialog["default"]);
-    return _react["default"].createElement(_Comp["default"].ModalDialog, {
-      style: (0, _extends2["default"])({}, S.MODAL, {}, TS.R_DIALOG),
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ModalDialog, {
+      style: (0, _extends2["default"])({}, S.MODAL, TS.R_DIALOG),
       divBtStyle: S.DIV_BT,
       styleCaption: TS.BROWSER_CAPTION,
       styleButton: TS.BT,
@@ -84,16 +82,19 @@ function (_Component) {
       isClosePrimary: true //commandButtons={_commandButtons}
       ,
       onKeyDown: this._hKeyDown,
-      onClose: onClose
-    }, _react["default"].createElement("form", null, _react["default"].createElement(_Comp["default"].SecretField, {
-      rootStyle: TS.INPUT_ROOT //ref={this._refInputIex}
-      ,
-      caption: "API Key (35 Symbols)",
-      maxLength: 35,
-      errorMsg: "35 symbols must be" //onTest={_onTestIexApi}
-      //onEnter={setIexKey}
+      onClose: onClose,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("form", {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].SecretField, {
+          rootStyle: TS.INPUT_ROOT //ref={this._refInputIex}
+          ,
+          caption: "API Key (35 Symbols)",
+          maxLength: 35,
+          errorMsg: "35 symbols must be" //onTest={_onTestIexApi}
+          //onEnter={setIexKey}
 
-    })));
+        })
+      })
+    });
   };
 
   return ApiKeyDialog;

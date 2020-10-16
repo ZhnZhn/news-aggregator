@@ -1,4 +1,3 @@
-import React from 'react'
 //import PropTypes from 'prop-types'
 
 const SHOW_POPUP = 'show-popup'
@@ -19,11 +18,11 @@ const ShowHide = (props) => {
               ? `${className} ${_classShow}`
               : (_classShow !== '')
                    ? _classShow
-                   : undefined;
+                   : void 0;
     return (
       <div
         className={_className}
-        style={Object.assign({}, style, _styleShow)}
+        style={{...style, ..._styleShow}}
       >
         {children}
       </div>

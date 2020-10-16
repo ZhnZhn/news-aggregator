@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component, createRef } from 'react'
 
 import withTheme from '../hoc/withTheme'
 import styleConfig from './NewsPane.Style'
@@ -55,7 +55,7 @@ class NewsPane extends Component {
   constructor(props){
     super(props);
 
-    this._refFirstItem = React.createRef()
+    this._refFirstItem = createRef()
     this.childMargin = CHILD_MARGIN;
     this._widthStyle = has.initWidthStyle()
 
@@ -165,7 +165,7 @@ class NewsPane extends Component {
         />
      ));
   }
-  
+
   _refRootDiv = node => this.rootDiv = node
 
    render(){

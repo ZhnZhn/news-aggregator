@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var S = {
   TABS: {
@@ -52,17 +52,18 @@ var _Tabs = function _Tabs(_ref) {
     }
   };
 
-  return _react["default"].createElement("div", {
-    style: style
-  }, children.map(function (tabEl, index) {
-    return _react["default"].cloneElement(tabEl, {
-      key: index,
-      id: index,
-      onClick: _hClick.bind(null, index, tabEl),
-      isSelected: index === selectedTabIndex,
-      selectedStyle: selectedStyle
-    });
-  }));
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    style: style,
+    children: children.map(function (tabEl, index) {
+      return /*#__PURE__*/(0, _react.cloneElement)(tabEl, {
+        key: index,
+        id: index,
+        onClick: _hClick.bind(null, index, tabEl),
+        isSelected: index === selectedTabIndex,
+        selectedStyle: selectedStyle
+      });
+    })
+  });
 };
 
 var _Panes = function _Panes(_ref2) {
@@ -70,26 +71,27 @@ var _Panes = function _Panes(_ref2) {
       isShow = _ref2.isShow,
       selectedTabIndex = _ref2.selectedTabIndex,
       children = _ref2.children;
-  return _react["default"].createElement("div", {
-    style: style
-  }, children.map(function (tab, index) {
-    var _isSelected = index === selectedTabIndex;
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    style: style,
+    children: children.map(function (tab, index) {
+      var _isSelected = index === selectedTabIndex;
 
-    return _react["default"].createElement("div", {
-      style: _isSelected ? S.TAB_SELECTED : S.NONE,
-      key: 'a' + index,
-      role: "tabpanel",
-      id: "tabpanel-" + index,
-      "aria-labelledby": "tab-" + index
-    }, _react["default"].cloneElement(tab.props.children, {
-      key: 'comp' + index,
-      isShow: isShow,
-      isSelected: _isSelected
-    }));
-  }));
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: _isSelected ? S.TAB_SELECTED : S.NONE,
+        role: "tabpanel",
+        id: "tabpanel-" + index,
+        "aria-labelledby": "tab-" + index,
+        children: /*#__PURE__*/(0, _react.cloneElement)(tab.props.children, {
+          key: 'comp' + index,
+          isShow: isShow,
+          isSelected: _isSelected
+        })
+      }, 'a' + index);
+    })
+  });
 };
 
-var TabPane = _react["default"].forwardRef(function (_ref3, ref) {
+var TabPane = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
   var isShow = _ref3.isShow,
       width = _ref3.width,
       height = _ref3.height,
@@ -108,23 +110,24 @@ var TabPane = _react["default"].forwardRef(function (_ref3, ref) {
       }
     };
   }, [selectedTabIndex]);
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: {
       width: width,
       height: height
-    }
-  }, _react["default"].createElement(_Tabs, {
-    style: (0, _extends2["default"])({}, S.TABS, {}, tabsStyle),
-    selectedStyle: selectedStyle,
-    selectedTabIndex: selectedTabIndex,
-    setTabIndex: setTabIndex,
-    children: children
-  }), _react["default"].createElement(_Panes, {
-    style: S.PANES,
-    isShow: isShow,
-    selectedTabIndex: selectedTabIndex,
-    children: children
-  }));
+    },
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Tabs, {
+      style: (0, _extends2["default"])({}, S.TABS, tabsStyle),
+      selectedStyle: selectedStyle,
+      selectedTabIndex: selectedTabIndex,
+      setTabIndex: setTabIndex,
+      children: children
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Panes, {
+      style: S.PANES,
+      isShow: isShow,
+      selectedTabIndex: selectedTabIndex,
+      children: children
+    })]
+  });
 });
 /*
 TabPane.propTypes = {
@@ -135,7 +138,6 @@ TabPane.propTypes = {
   selectedStyle: PropTypes.object
 }
 */
-
 
 var _default = TabPane;
 exports["default"] = _default;

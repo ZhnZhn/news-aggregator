@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { cloneElement, Component } from 'react';
 
 import utils from './utils'
 
@@ -87,7 +87,7 @@ class DialogContainer extends Component {
     const { hmIs, compDialogs } = this.state;
     return compDialogs.map(Comp => {
        const key = Comp.key;
-       return React.cloneElement(Comp, {
+       return cloneElement(Comp, {
           key: key,
           isShow: hmIs[key],
           onClose: this._hCloseDialog.bind(this, key)

@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _has = _interopRequireDefault(require("../has"));
 
@@ -49,9 +49,7 @@ var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
 };
 
-var TextField =
-/*#__PURE__*/
-function (_Component) {
+var TextField = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(TextField, _Component);
 
   function TextField(props) {
@@ -134,41 +132,45 @@ function (_Component) {
         _labelErrStyle = isPassTest ? void 0 : S.LABEL_ON_ERROR,
         _lineStyle = isPassTest ? void 0 : S.LINE_ERROR;
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: CL.SELECT,
-      style: style
-    }, _react["default"].createElement("label", {
-      className: CL.LABEL,
-      style: (0, _extends2["default"])({}, _labelStyle, {}, _labelErrStyle),
-      htmlFor: this._id
-    }, caption), _react["default"].createElement("div", {
-      className: CL.DIV
-    }, _react["default"].createElement("input", {
-      id: this._id,
-      type: "text",
-      className: CL.INPUT,
-      value: value,
-      autoComplete: "off",
-      autoCorrect: "off",
-      autoCapitalize: autoCapitalize,
-      spellCheck: "false",
-      translate: "false",
-      maxLength: maxLength,
-      onFocus: this._hFocusInput,
-      onBlur: this._hBlurInput,
-      onChange: this._hInputChange,
-      onKeyDown: this._hKeyDown
-    }), HAS_TOUCH && hasClear && value && _react["default"].createElement(_SvgX["default"], {
-      color: "black",
-      className: "svg-clear",
-      style: S.BT_CLEAR,
-      onClick: this._hClear
-    }), _react["default"].createElement("div", {
-      className: CL.INPUT_LINE,
-      style: _lineStyle
-    }), _lineStyle && _react["default"].createElement("div", {
-      className: CL.INPUT_MSG_ERR
-    }, errorMsg)));
+      style: style,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+        className: CL.LABEL,
+        style: (0, _extends2["default"])({}, _labelStyle, _labelErrStyle),
+        htmlFor: this._id,
+        children: caption
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        className: CL.DIV,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+          id: this._id,
+          type: "text",
+          className: CL.INPUT,
+          value: value,
+          autoComplete: "off",
+          autoCorrect: "off",
+          autoCapitalize: autoCapitalize,
+          spellCheck: "false",
+          translate: "false",
+          maxLength: maxLength,
+          onFocus: this._hFocusInput,
+          onBlur: this._hBlurInput,
+          onChange: this._hInputChange,
+          onKeyDown: this._hKeyDown
+        }), HAS_TOUCH && hasClear && value && /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgX["default"], {
+          color: "black",
+          className: "svg-clear",
+          style: S.BT_CLEAR,
+          onClick: this._hClear
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: CL.INPUT_LINE,
+          style: _lineStyle
+        }), _lineStyle && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: CL.INPUT_MSG_ERR,
+          children: errorMsg
+        })]
+      })]
+    });
   };
 
   _proto.getValue = function getValue() {

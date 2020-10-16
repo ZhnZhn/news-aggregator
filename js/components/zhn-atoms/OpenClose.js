@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,8 +9,11 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
 
+var _react = require("react");
+
+//import PropTypes from 'prop-types'
 var CL_CAPTION = 'open-close not-selected';
 var STYLE = {
   ROOT: {
@@ -53,9 +54,7 @@ var FILL_OPEN = '#9e9e9e',
     PATH_OPEN = "M 2,14 L 14,14 14,2 2,14",
     PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 
-var OpenClose =
-/*#__PURE__*/
-function (_Component) {
+var OpenClose = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(OpenClose, _Component);
 
   /*
@@ -146,35 +145,42 @@ function (_Component) {
       _itemStyle = itemStyle;
     }
 
-    return _react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, STYLE.ROOT, {}, style)
-    }, _react["default"].createElement("div", (0, _extends2["default"])({
-      role: "button",
-      className: CL_CAPTION,
-      tabIndex: "0",
-      style: (0, _extends2["default"])({}, STYLE.ROOT_CAPTION, {}, _itemStyle),
-      onClick: this._handleToggle,
-      onKeyDown: this._handleKeyDown
-    }, _dragOption), _react["default"].createElement("div", {
-      style: STYLE.SVG
-    }, _react["default"].createElement("svg", {
-      viewBox: "0 0 16 16",
-      width: "100%",
-      height: "100%",
-      preserveAspectRatio: "none",
-      xmlns: "http://www.w3.org/2000/svg",
-      style: STYLE.INLINE
-    }, _react["default"].createElement("path", {
-      d: _pathV,
-      fill: _fillV,
-      strokeWidth: "1",
-      stroke: fillOpen
-    }))), _react["default"].createElement("span", {
-      style: (0, _extends2["default"])({}, STYLE.CAPTION, {}, styleCaption)
-    }, caption)), _react["default"].createElement("div", {
-      className: _classShow,
-      style: _styleCollapse
-    }, children));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: (0, _extends2["default"])({}, STYLE.ROOT, style),
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", (0, _extends2["default"])({
+        role: "button",
+        className: CL_CAPTION,
+        tabIndex: "0",
+        style: (0, _extends2["default"])({}, STYLE.ROOT_CAPTION, _itemStyle),
+        onClick: this._handleToggle,
+        onKeyDown: this._handleKeyDown
+      }, _dragOption, {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          style: STYLE.SVG,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
+            viewBox: "0 0 16 16",
+            width: "100%",
+            height: "100%",
+            preserveAspectRatio: "none",
+            xmlns: "http://www.w3.org/2000/svg",
+            style: STYLE.INLINE,
+            children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
+              d: _pathV,
+              fill: _fillV,
+              strokeWidth: "1",
+              stroke: fillOpen
+            })
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: (0, _extends2["default"])({}, STYLE.CAPTION, styleCaption),
+          children: caption
+        })]
+      })), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        className: _classShow,
+        style: _styleCollapse,
+        children: children
+      })]
+    });
   };
 
   return OpenClose;

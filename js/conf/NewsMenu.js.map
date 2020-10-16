@@ -1,12 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../src/conf/NewsMenu.js"
- ],
- "file": "../../src/conf/NewsMenu.js",
- "names": [
-  "NewsMenu",
-  "NEWS"
- ],
- "mappings": ";;;;AACA,IAAMA,QAAQ,GAAG;AACfC,EAAAA,IAAI,EAAE;AADS,CAAjB;eAIeD,Q"
-}
+{"version":3,"sources":["../../src/conf/NewsMenu.js"],"names":["NewsMenu","NEWS"],"mappings":";;;;AACA,IAAMA,QAAQ,GAAG;AACfC,EAAAA,IAAI,EAAE;AADS,CAAjB;eAIeD,Q","sourcesContent":["\r\nconst NewsMenu = {\r\n  NEWS: 'NEWS_API_ORG'\r\n};\r\n\r\nexport default NewsMenu\r\n"],"file":"NewsMenu.js"}

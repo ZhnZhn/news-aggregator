@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { createElement, Component } from 'react'
 //import PropTypes from 'prop-types'
 
 import ModalContainer from './ModalContainer'
@@ -66,7 +66,7 @@ class ModalDialogContainer extends Component {
 
     return dialogs.map(dialog => {
       const { type, comp } = dialog;
-      return React.createElement(comp, {
+      return createElement(comp, {
            key: type,
            isShow: shows[type],
            data: data[type],

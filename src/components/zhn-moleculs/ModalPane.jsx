@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 //import PropTypes from 'prop-types'
 
 import withTheme from '../hoc/withTheme'
@@ -26,7 +26,7 @@ class ModalPane extends Component {
       && this.rootNode.contains
       && !this.rootNode.contains(event.target)
     ){
-      event.stopPropagation()      
+      event.stopPropagation()
       this.props.onClose(event)
     }
   }

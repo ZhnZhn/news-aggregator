@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,11 +7,11 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
 
-var MenuItem =
-/*#__PURE__*/
-function (_Component) {
+var _react = require("react");
+
+var MenuItem = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(MenuItem, _Component);
 
   function MenuItem() {
@@ -51,14 +49,15 @@ function (_Component) {
         className = _this$props.className,
         caption = _this$props.caption,
         onClick = _this$props.onClick;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       ref: this._refDivNode,
       role: "menuitem",
       className: className,
       tabIndex: "0",
       onClick: onClick,
-      onKeyDown: this._hKeyDown
-    }, caption);
+      onKeyDown: this._hKeyDown,
+      children: caption
+    });
   };
 
   _proto.focus = function focus() {

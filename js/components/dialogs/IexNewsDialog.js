@@ -2,8 +2,6 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
@@ -11,7 +9,9 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -41,9 +41,7 @@ var RECENT_OPTIONS = [{
 }],
     DF_RECENT = RECENT_OPTIONS[1],
     DF_SYMBOL = "AAPL";
-var IexNewsDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_temp =
-/*#__PURE__*/
-function (_Component) {
+var IexNewsDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_temp = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(IexNewsDialog, _Component);
 
   function IexNewsDialog(props) {
@@ -100,7 +98,7 @@ function (_Component) {
         TS = theme.createStyle(_Dialog["default"]),
         _commandButtons = this._createCommandButtons(TS.BT);
 
-    return _react["default"].createElement(_Comp["default"].DraggableDialog, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
       ref: this._refDialogComp,
       rootStyle: TS.R_DIALOG,
       browserCaptionStyle: TS.BROWSER_CAPTION,
@@ -110,24 +108,26 @@ function (_Component) {
       commandButtons: _commandButtons,
       onKeyDown: this._handleKeyDownWith,
       onShowChart: onShow,
-      onClose: this._handleClose
-    }, _react["default"].createElement(_Comp["default"].TextField, {
-      ref: this._refInputSymbol,
-      style: TS.INPUT_ROOT,
-      maxLength: "10",
-      caption: "Stock Symbol",
-      initValue: DF_SYMBOL,
-      autoCapitalize: "on",
-      onEnter: this._handleLoad
-    }), _react["default"].createElement(_Comp["default"].InputSelect, {
-      caption: "Recent",
-      initItem: DF_RECENT,
-      options: RECENT_OPTIONS,
-      styleConfig: TS.SELECT,
-      onSelect: this._selectRecent
-    }), _react["default"].createElement(_Comp["default"].Link.PoweredBy, {
-      rootStyle: TS.POWERED_BY
-    }, _react["default"].createElement(_Comp["default"].Link.IexApi, null)));
+      onClose: this._handleClose,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
+        ref: this._refInputSymbol,
+        style: TS.INPUT_ROOT,
+        maxLength: "10",
+        caption: "Stock Symbol",
+        initValue: DF_SYMBOL,
+        autoCapitalize: "on",
+        onEnter: this._handleLoad
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+        caption: "Recent",
+        initItem: DF_RECENT,
+        options: RECENT_OPTIONS,
+        styleConfig: TS.SELECT,
+        onSelect: this._selectRecent
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
+        rootStyle: TS.POWERED_BY,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.IexApi, {})
+      })]
+    });
   };
 
   return IexNewsDialog;

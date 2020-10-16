@@ -5,7 +5,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _jsxRuntime = require("react/jsx-runtime.js");
 
 //import PropTypes from 'prop-types'
 var SHOW_POPUP = 'show-popup';
@@ -25,12 +27,13 @@ var ShowHide = function ShowHide(props) {
       children = props.children,
       _styleShow = isShow ? S.SHOW : S.HIDE,
       _classShow = isShow ? SHOW_POPUP : '',
-      _className = className ? className + " " + _classShow : _classShow !== '' ? _classShow : undefined;
+      _className = className ? className + " " + _classShow : _classShow !== '' ? _classShow : void 0;
 
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     className: _className,
-    style: Object.assign({}, style, _styleShow)
-  }, children);
+    style: (0, _extends2["default"])({}, style, _styleShow),
+    children: children
+  });
 };
 /*
 ShowHide.propTypes = {

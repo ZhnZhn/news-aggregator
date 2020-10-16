@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -27,9 +27,7 @@ var _ContainerStyle = _interopRequireDefault(require("../styles/ContainerStyle")
 
 var CL_SHOW = "show-popup";
 
-var About =
-/*#__PURE__*/
-function (_Component) {
+var About = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(About, _Component);
 
   function About(props) {
@@ -91,63 +89,97 @@ function (_Component) {
         _rootClass = isShow ? CL_SHOW : null,
         _rootStyle = isShow ? S.BLOCK : S.NONE;
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: _rootClass,
-      style: (0, _extends2["default"])({}, _ContainerStyle["default"].aboutRootDiv, {}, _rootStyle, {}, S.ROOT)
-    }, _react["default"].createElement(_Comp["default"].BrowserCaption, {
-      rootStyle: S.BROWSER_CAPTION,
-      caption: "About News Aggregator",
-      onClose: this._handleClose
-    }), _react["default"].createElement(_Comp["default"].ScrollPane, {
-      className: S.CL_SCROLL_PANE,
-      style: S.SCROLL_DIV
-    }, _react["default"].createElement("div", {
-      style: S.DIV_WRAPPER
-    }, _react["default"].createElement("div", {
-      style: S.DIV_TEXT
-    }, _react["default"].createElement("p", null, _react["default"].createElement("span", {
-      style: S.APP_TITLE
-    }, "News Agreggator"), " is web app for browsing news."), _react["default"].createElement("p", null, "News headlines providers:\xA0"), _react["default"].createElement("div", null, _react["default"].createElement(_Comp["default"].Link.CryptoCompare, null)), _react["default"].createElement("div", null, _react["default"].createElement(_Comp["default"].Link.Messari, null)), _react["default"].createElement("div", null, _react["default"].createElement(_Comp["default"].Link.IexApi, null)), _react["default"].createElement("div", null, _react["default"].createElement(_Comp["default"].Link.FmpApi, {
-      title: "Financial Modeling Prep"
-    })), _react["default"].createElement("div", null, _react["default"].createElement(_Comp["default"].Link.NewsApi, null)), _react["default"].createElement("div", null, _react["default"].createElement(_Comp["default"].Link.StackOverflow, null)), _react["default"].createElement("div", null, _react["default"].createElement(_Comp["default"].Link.WebhoseIo, null)), _react["default"].createElement("p", {
-      style: S.MARGIN_TOP
-    }, "Personal API Keys from providers are required."), _react["default"].createElement("p", null, "API Keys can be set by means off Settings Dialog.")), _react["default"].createElement("p", {
-      style: S.MARGIN_TOP
-    }, _react["default"].createElement("span", {
-      style: S.BLACK
-    }, "Browsing by new source:")), _react["default"].createElement(_Step["default"], {
-      styleRoot: S.STEP,
-      step: "1",
-      description: "Please, click button News in header."
-    }), _react["default"].createElement(_Step["default"], {
-      styleRoot: S.STEP,
-      step: "2",
-      description: "Choose a topic and news source."
-    }), _react["default"].createElement(_Step["default"], {
-      styleRoot: S.STEP,
-      step: "3",
-      description: "Click a button Load in dialog."
-    }), _react["default"].createElement("p", {
-      style: S.MARGIN_TOP
-    }, "Not all news source support all sortBy values."), _react["default"].createElement("p", {
-      style: S.MARGIN_TOP
-    }, _react["default"].createElement("span", {
-      style: S.BLACK
-    }, "Browsing by search terms:")), _react["default"].createElement(_Step["default"], {
-      styleRoot: S.STEP,
-      step: "1",
-      description: "Please, click button Query in header."
-    }), _react["default"].createElement(_Step["default"], {
-      styleRoot: S.STEP,
-      step: "2",
-      description: "Choose news source in modal pane."
-    }), _react["default"].createElement(_Step["default"], {
-      styleRoot: S.STEP,
-      step: "3",
-      description: "Click a button Load in dialog."
-    }), _react["default"].createElement(_IconLogoBar["default"], null), _react["default"].createElement("p", null, _react["default"].createElement("span", {
-      style: S.BLACK
-    }, "*Logos Fair Use.")))));
+      style: (0, _extends2["default"])({}, _ContainerStyle["default"].aboutRootDiv, _rootStyle, S.ROOT),
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].BrowserCaption, {
+        rootStyle: S.BROWSER_CAPTION,
+        caption: "About News Aggregator",
+        onClose: this._handleClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
+        className: S.CL_SCROLL_PANE,
+        style: S.SCROLL_DIV,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+          style: S.DIV_WRAPPER,
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+            style: S.DIV_TEXT,
+            children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("p", {
+              children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+                style: S.APP_TITLE,
+                children: "News Agreggator"
+              }), " is web app for browsing news."]
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+              children: "News headlines providers:\xA0"
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+              children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.CryptoCompare, {})
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+              children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.Messari, {})
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+              children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.IexApi, {})
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+              children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.FmpApi, {
+                title: "Financial Modeling Prep"
+              })
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+              children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.NewsApi, {})
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+              children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.StackOverflow, {})
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+              children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.WebhoseIo, {})
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+              style: S.MARGIN_TOP,
+              children: "Personal API Keys from providers are required."
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+              children: "API Keys can be set by means off Settings Dialog."
+            })]
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+            style: S.MARGIN_TOP,
+            children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+              style: S.BLACK,
+              children: "Browsing by new source:"
+            })
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Step["default"], {
+            styleRoot: S.STEP,
+            step: "1",
+            description: "Please, click button News in header."
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Step["default"], {
+            styleRoot: S.STEP,
+            step: "2",
+            description: "Choose a topic and news source."
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Step["default"], {
+            styleRoot: S.STEP,
+            step: "3",
+            description: "Click a button Load in dialog."
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+            style: S.MARGIN_TOP,
+            children: "Not all news source support all sortBy values."
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+            style: S.MARGIN_TOP,
+            children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+              style: S.BLACK,
+              children: "Browsing by search terms:"
+            })
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Step["default"], {
+            styleRoot: S.STEP,
+            step: "1",
+            description: "Please, click button Query in header."
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Step["default"], {
+            styleRoot: S.STEP,
+            step: "2",
+            description: "Choose news source in modal pane."
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Step["default"], {
+            styleRoot: S.STEP,
+            step: "3",
+            description: "Click a button Load in dialog."
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconLogoBar["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+            children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+              style: S.BLACK,
+              children: "*Logos Fair Use."
+            })
+          })]
+        })
+      })]
+    });
   };
 
   return About;

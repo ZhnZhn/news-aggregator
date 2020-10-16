@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 import DateUtil from '../../utils/dt'
 import withTheme from '../hoc/withTheme'

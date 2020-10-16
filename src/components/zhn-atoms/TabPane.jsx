@@ -1,4 +1,4 @@
-import React, { useState, useImperativeHandle } from 'react';
+import { forwardRef, cloneElement, useState, useImperativeHandle } from 'react';
 
 const S = {
   TABS: {
@@ -40,7 +40,7 @@ const _Tabs = ({
   return (
     <div style={style}>
       {children.map((tabEl, index) => {
-        return React.cloneElement(tabEl, {
+        return cloneElement(tabEl, {
           key: index,
           id: index,
           onClick: _hClick.bind(null, index, tabEl),
@@ -70,7 +70,7 @@ const _Panes = ({
          id={`tabpanel-${index}`}
          aria-labelledby={`tab-${index}`}
        >
-         {React.cloneElement(tab.props.children, {
+         {cloneElement(tab.props.children, {
            key: 'comp' + index,
            isShow: isShow,
            isSelected: _isSelected
@@ -82,7 +82,7 @@ const _Panes = ({
 );
 
 
-const TabPane = React.forwardRef(({
+const TabPane = forwardRef(({
   isShow,
   width, height,
   tabsStyle, selectedStyle,

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 import MenuTitle from './MenuTitle'
 import MenuItemList from './MenuItemList'

@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,16 +7,17 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _utils = _interopRequireDefault(require("./utils"));
 
+//import PropTypes from 'prop-types'
 var CL = "hrz-container";
 var isInCont = _utils["default"].isInCont;
 
-var ComponentHrzContainer =
-/*#__PURE__*/
-function (_Component) {
+var ComponentHrzContainer = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ComponentHrzContainer, _Component);
 
   function ComponentHrzContainer() {
@@ -64,9 +63,10 @@ function (_Component) {
 
   _proto.render = function render() {
     var containers = this.state.containers;
-    return _react["default"].createElement("div", {
-      className: CL
-    }, containers);
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: CL,
+      children: containers
+    });
   };
 
   return ComponentHrzContainer;

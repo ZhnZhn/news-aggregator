@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,16 +7,16 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _CaptionInput = _interopRequireDefault(require("./CaptionInput"));
 
 var CL_BT = 'bt-flat';
 var CL_BT_SPAN = 'bt-flat__span';
 
-var ModalButton =
-/*#__PURE__*/
-function (_Component) {
+var ModalButton = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ModalButton, _Component);
 
   function ModalButton() {
@@ -46,7 +44,7 @@ function (_Component) {
         accessKey = _this$props.accessKey,
         children = _this$props.children,
         onClick = _this$props.onClick;
-    return _react["default"].createElement("button", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
       ref: function ref(n) {
         return _this.rootNode = n;
       },
@@ -56,14 +54,17 @@ function (_Component) {
       tabIndex: 0,
       title: title,
       accessKey: accessKey,
-      onClick: onClick
-    }, _react["default"].createElement("div", {
-      className: clDiv
-    }, _react["default"].createElement(_CaptionInput["default"], {
-      className: CL_BT_SPAN,
-      caption: caption,
-      accessKey: accessKey
-    }, children)));
+      onClick: onClick,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        className: clDiv,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_CaptionInput["default"], {
+          className: CL_BT_SPAN,
+          caption: caption,
+          accessKey: accessKey,
+          children: children
+        })
+      })
+    });
   };
 
   return ModalButton;

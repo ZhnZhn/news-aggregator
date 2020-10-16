@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
 
 var _ContainerStyle = _interopRequireDefault(require("../styles/ContainerStyle"));
 
@@ -30,10 +30,11 @@ var Browser = function Browser(_ref) {
   var _styleOpen = isShow ? S.BLOCK : S.NONE,
       _classOpen = isShow ? CL_SHOW : null;
 
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     className: _classOpen,
-    style: (0, _extends2["default"])({}, _ContainerStyle["default"].browserRootDiv, {}, style, {}, _styleOpen)
-  }, children);
+    style: (0, _extends2["default"])({}, _ContainerStyle["default"].browserRootDiv, style, _styleOpen),
+    children: children
+  });
 };
 /*
 Browser.propTypes = {

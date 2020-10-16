@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import { Component } from 'react'
 
 import MenuAriaItem from './MenuAriaItem'
 
@@ -78,9 +78,9 @@ class MenuItemList extends Component {
 
   render(){
     return (
-      <Fragment>
+      <>
         {this._renderItems()}
-      </Fragment>
+      </>
     );
   }
 }

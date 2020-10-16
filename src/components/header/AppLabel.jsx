@@ -1,4 +1,3 @@
-import React from 'react';
 
 const AppLabel = ({ className, style, caption, title, onClick }) => (
   <span

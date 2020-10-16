@@ -1,5 +1,3 @@
-import React from 'react'
-
 const CL_BT = 'bt-circle not-selected';
 
 const CircleButton = ({

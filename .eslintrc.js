@@ -57,6 +57,9 @@ module.exports = {
        "arrow": true
     }],
 
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+
     //set react-hooks rules
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",

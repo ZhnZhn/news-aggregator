@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 import ArrowCell from './ArrowCell'
 import OptionsPane from './OptionsPane'

@@ -2,8 +2,6 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
@@ -11,7 +9,9 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _dt = _interopRequireDefault(require("../../utils/dt"));
 
@@ -52,9 +52,7 @@ var INITIAL_FROM_DATE = _dt["default"].getFromDate(1),
     DF_SORT_BY = SORT_BY_OPTIONS[4],
     DF_TAG = "CSS";
 
-var StackTaggedDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_temp =
-/*#__PURE__*/
-function (_Component) {
+var StackTaggedDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_temp = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(StackTaggedDialog, _Component);
 
   function StackTaggedDialog(props) {
@@ -127,7 +125,7 @@ function (_Component) {
         _commandButtons = this._createCommandButtons(TS.BT),
         _tagCaption = "Tag (Default: " + DF_TAG + ")";
 
-    return _react["default"].createElement(_Comp["default"].DraggableDialog, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
       ref: this._refDialogComp,
       rootStyle: TS.R_DIALOG,
       browserCaptionStyle: TS.BROWSER_CAPTION,
@@ -137,38 +135,42 @@ function (_Component) {
       commandButtons: _commandButtons,
       onKeyDown: this._handleKeyDownWith,
       onShowChart: onShow,
-      onClose: this._handleClose
-    }, _react["default"].createElement(_Comp["default"].TextField, {
-      style: TS.INPUT_ROOT,
-      ref: this._refInputTag,
-      caption: _tagCaption,
-      initValue: DF_TAG,
-      onEnter: this._handleLoad
-    }), _react["default"].createElement(_Comp["default"].InputSelect, {
-      caption: "SortBy",
-      initItem: DF_SORT_BY,
-      options: SORT_BY_OPTIONS,
-      styleConfig: TS.SELECT,
-      onSelect: this._selectSortBy
-    }), _react["default"].createElement("div", null, _react["default"].createElement(_Comp["default"].TextField, {
-      ref: this._refFromDate,
-      hasClear: false,
-      caption: "From Date",
-      style: TS.INPUT_DATE,
-      initValue: INITIAL_FROM_DATE,
-      errorMsg: DATE_ERR_MSG,
-      onTest: _onTestDate
-    }), _react["default"].createElement(_Comp["default"].TextField, {
-      ref: this._refToDate,
-      hasClear: false,
-      caption: "To Date",
-      style: TS.INPUT_DATE,
-      initValue: INITIAL_TO_DATE,
-      errorMsg: DATE_ERR_MSG,
-      onTest: _onTestDate
-    })), _react["default"].createElement(_Comp["default"].Link.PoweredBy, {
-      rootStyle: TS.POWERED_BY
-    }, _react["default"].createElement(_Comp["default"].Link.StackOverflow, null)));
+      onClose: this._handleClose,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
+        style: TS.INPUT_ROOT,
+        ref: this._refInputTag,
+        caption: _tagCaption,
+        initValue: DF_TAG,
+        onEnter: this._handleLoad
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+        caption: "SortBy",
+        initItem: DF_SORT_BY,
+        options: SORT_BY_OPTIONS,
+        styleConfig: TS.SELECT,
+        onSelect: this._selectSortBy
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
+          ref: this._refFromDate,
+          hasClear: false,
+          caption: "From Date",
+          style: TS.INPUT_DATE,
+          initValue: INITIAL_FROM_DATE,
+          errorMsg: DATE_ERR_MSG,
+          onTest: _onTestDate
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
+          ref: this._refToDate,
+          hasClear: false,
+          caption: "To Date",
+          style: TS.INPUT_DATE,
+          initValue: INITIAL_TO_DATE,
+          errorMsg: DATE_ERR_MSG,
+          onTest: _onTestDate
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
+        rootStyle: TS.POWERED_BY,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.StackOverflow, {})
+      })]
+    });
   };
 
   return StackTaggedDialog;

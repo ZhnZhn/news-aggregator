@@ -1,5 +1,3 @@
-import React from 'react'
-
 import ComponentActions, { TYPES } from '../../flux/actions/ComponentActions'
 import MENU from '../../conf/NewsMenu'
 

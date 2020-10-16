@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _useClassAnimation2 = _interopRequireDefault(require("../hooks/useClassAnimation"));
 
@@ -17,6 +17,7 @@ var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaptio
 
 var _RaisedButton = _interopRequireDefault(require("../zhn-atoms/RaisedButton"));
 
+//import PropTypes from 'prop-types'
 var CL = {
   SHOWING: 'dialog show-popup',
   HIDING: 'hide-popup'
@@ -109,33 +110,38 @@ var ModalDialog = function ModalDialog(_ref) {
     }
   });
   return (
+    /*#__PURE__*/
+
     /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
 
     /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
-    _react["default"].createElement("div", {
+    (0, _jsxRuntime.jsxs)("div", {
       ref: _refRootDiv,
       tabIndex: "0",
       role: "dialog",
       "aria-label": caption,
       "aria-hidden": !isShow,
       className: _className,
-      style: (0, _extends2["default"])({}, S.ROOT_DIV, {}, style, {}, _style),
+      style: (0, _extends2["default"])({}, S.ROOT_DIV, style, _style),
       onClick: _hClickDialog,
-      onKeyDown: _hKeyDown
-    }, _react["default"].createElement(_BrowserCaption["default"], {
-      rootStyle: styleCaption,
-      caption: caption,
-      onClose: onClose
-    }), _react["default"].createElement("div", null, children), isWithButton && _react["default"].createElement("div", {
-      style: (0, _extends2["default"])({}, S.COMMAND_DIV, {}, divBtStyle)
-    }, commandButtons, !withoutClose && _react["default"].createElement(_RaisedButton["default"], {
-      key: "_close",
-      rootStyle: TS.RAISED_ROOT,
-      clDiv: TS.CL_RAISED_DIV,
-      caption: "Close",
-      isPrimary: isClosePrimary,
-      onClick: onClose
-    })))
+      onKeyDown: _hKeyDown,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserCaption["default"], {
+        rootStyle: styleCaption,
+        caption: caption,
+        onClose: onClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        children: children
+      }), isWithButton && /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: (0, _extends2["default"])({}, S.COMMAND_DIV, divBtStyle),
+        children: [commandButtons, !withoutClose && /*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
+          rootStyle: TS.RAISED_ROOT,
+          clDiv: TS.CL_RAISED_DIV,
+          caption: "Close",
+          isPrimary: isClosePrimary,
+          onClick: onClose
+        }, "_close")]
+      })]
+    })
   );
 };
 

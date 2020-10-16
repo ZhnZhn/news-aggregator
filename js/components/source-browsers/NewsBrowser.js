@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -23,9 +23,7 @@ var _Links = _interopRequireDefault(require("../links/Links"));
 
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 
-var NewsBrowser =
-/*#__PURE__*/
-function (_Component) {
+var NewsBrowser = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(NewsBrowser, _Component);
 
   function NewsBrowser(props) {
@@ -75,7 +73,7 @@ function (_Component) {
         onClickBadge = _this$props2.onClickBadge,
         S = theme.createStyle(_NewsBrowser["default"]),
         itemData = this.state.itemData;
-    return _react["default"].createElement(_DynamicMenuBrowser["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_DynamicMenuBrowser["default"], {
       styleConfig: S,
       caption: "News Sources",
       url: "data/news-source-menu.json",
@@ -86,8 +84,11 @@ function (_Component) {
       menuMore: this._menuMore,
       onClick: onClick,
       onError: onError,
-      onClickBadge: onClickBadge
-    }, _react["default"].createElement(_PoweredBy["default"], null, _react["default"].createElement(_Links["default"].NewsApi, null)));
+      onClickBadge: onClickBadge,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_PoweredBy["default"], {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Links["default"].NewsApi, {})
+      })
+    });
   };
 
   return NewsBrowser;

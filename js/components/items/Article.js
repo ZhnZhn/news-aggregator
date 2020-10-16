@@ -2,8 +2,6 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _dt = _interopRequireDefault(require("../../utils/dt"));
 
@@ -90,9 +90,7 @@ var _focusNextArticle = function _focusNextArticle(nodeArticle) {
   }
 };
 
-var Article = (0, _withDnD["default"])(_class = (_temp = _class2 =
-/*#__PURE__*/
-function (_Component) {
+var Article = (0, _withDnD["default"])(_class = (_temp = _class2 = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(Article, _Component);
 
   function Article(props) {
@@ -169,35 +167,37 @@ function (_Component) {
         _this$state = this.state,
         isClosed = _this$state.isClosed,
         isShow = _this$state.isShow,
-        _headerStyle = isShow ? (0, _extends2["default"])({}, S.HEADER, {}, S.HEADER_OPEN) : S.HEADER,
-        _captionStyle = isShow ? (0, _extends2["default"])({}, S.CAPTION, {}, S.CAPTION_OPEN) : S.CAPTION,
+        _headerStyle = isShow ? (0, _extends2["default"])({}, S.HEADER, S.HEADER_OPEN) : S.HEADER,
+        _captionStyle = isShow ? (0, _extends2["default"])({}, S.CAPTION, S.CAPTION_OPEN) : S.CAPTION,
         _publishedAt = publishedDate || _dt["default"].toTimeDate(publishedAt),
         _rootStyle = isClosed ? S.NONE : void 0;
 
-    return _react["default"].createElement("div", (0, _extends2["default"])({
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", (0, _extends2["default"])({
       ref: this._refItem,
-      style: (0, _extends2["default"])({}, S.ROOT, {}, _rootStyle)
-    }, this._itemHandlers), _react["default"].createElement(_ItemHeader["default"], {
-      ref: this._refItemHeader,
-      className: CL_ITEM_HEADER,
-      style: (0, _extends2["default"])({}, _headerStyle, {}, TS.HEADER),
-      captionStyle: _captionStyle,
-      btCloseStyle: S.SVG_CLOSE,
-      title: title,
-      url: url,
-      isShow: isShow,
-      onClick: this._handleToggle,
-      onClose: this._handleClose,
-      onHide: this._handleHide
-    }), _react["default"].createElement(_ArticleDescr["default"], {
-      style: TS.DESCR,
-      isShow: isShow,
-      url: url,
-      description: description,
-      related: related,
-      publishedAt: _publishedAt,
-      author: author,
-      onHide: this._handleHide
+      style: (0, _extends2["default"])({}, S.ROOT, _rootStyle)
+    }, this._itemHandlers, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemHeader["default"], {
+        ref: this._refItemHeader,
+        className: CL_ITEM_HEADER,
+        style: (0, _extends2["default"])({}, _headerStyle, TS.HEADER),
+        captionStyle: _captionStyle,
+        btCloseStyle: S.SVG_CLOSE,
+        title: title,
+        url: url,
+        isShow: isShow,
+        onClick: this._handleToggle,
+        onClose: this._handleClose,
+        onHide: this._handleHide
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ArticleDescr["default"], {
+        style: TS.DESCR,
+        isShow: isShow,
+        url: url,
+        description: description,
+        related: related,
+        publishedAt: _publishedAt,
+        author: author,
+        onHide: this._handleHide
+      })]
     }));
   };
 

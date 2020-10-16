@@ -1,5 +1,3 @@
-import React from 'react';
-
 const IconGitHub = ({ className, title, uri }) => (
   <a
     className={className}

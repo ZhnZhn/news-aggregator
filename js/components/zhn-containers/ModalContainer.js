@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
 
 var _useClassAnimation = _interopRequireDefault(require("../hooks/useClassAnimation"));
 
@@ -34,14 +34,15 @@ var ModalContainer = function ModalContainer(_ref) {
       timeout = _ref.timeout,
       children = _ref.children,
       onClose = _ref.onClose;
-  return _react["default"].createElement("div", (0, _extends2["default"])({}, (0, _useClassAnimation["default"])({
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", (0, _extends2["default"])({}, (0, _useClassAnimation["default"])({
     isShow: isShow,
     CL: CL,
     S: S,
     timeout: timeout
   }), {
-    onClick: onClose
-  }), children);
+    onClick: onClose,
+    children: children
+  }));
 };
 
 var _default = ModalContainer;

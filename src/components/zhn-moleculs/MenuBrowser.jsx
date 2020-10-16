@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 import Browser from '../zhn-atoms/Browser'
 import BrowserCaption from '../zhn-atoms/BrowserCaption'

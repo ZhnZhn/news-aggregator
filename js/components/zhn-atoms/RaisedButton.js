@@ -1,11 +1,9 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
 
 var CL_BT = 'bt-raised';
 var CL_BT_SPAN = 'bt-raised__span';
@@ -25,18 +23,21 @@ var RaisedButton = function RaisedButton(_ref) {
 
   var _spanStyle = isPrimary ? S.PRIMARY_SPAN : void 0;
 
-  return _react["default"].createElement("button", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     className: CL_BT,
     style: rootStyle,
     type: "button",
     tabIndex: 0,
-    onClick: onClick
-  }, _react["default"].createElement("div", {
-    className: clDiv
-  }, _react["default"].createElement("span", {
-    className: CL_BT_SPAN,
-    style: _spanStyle
-  }, caption)));
+    onClick: onClick,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: clDiv,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        className: CL_BT_SPAN,
+        style: _spanStyle,
+        children: caption
+      })
+    })
+  });
 };
 
 var _default = RaisedButton;

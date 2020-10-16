@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var S = {
   BADGE: {
@@ -31,9 +31,7 @@ var S = {
   }
 };
 
-var MenuItemBadge =
-/*#__PURE__*/
-function (_Component) {
+var MenuItemBadge = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(MenuItemBadge, _Component);
 
   function MenuItemBadge() {
@@ -64,12 +62,13 @@ function (_Component) {
         _this$props2$itemBadg = _this$props2.itemBadge,
         itemBadge = _this$props2$itemBadg === void 0 ? {} : _this$props2$itemBadg,
         isOpen = itemBadge.isOpen,
-        _badgeStyle = isOpen ? S.BADGE : (0, _extends2["default"])({}, S.BADGE, {}, S.CLOSE);
+        _badgeStyle = isOpen ? S.BADGE : (0, _extends2["default"])({}, S.BADGE, S.CLOSE);
 
-    return _react["default"].createElement("span", {
-      style: (0, _extends2["default"])({}, _badgeStyle, {}, style),
-      onClick: this._handleClick
-    }, "V");
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      style: (0, _extends2["default"])({}, _badgeStyle, style),
+      onClick: this._handleClick,
+      children: "V"
+    });
   };
 
   return MenuItemBadge;

@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
 
 var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose"));
 
@@ -37,7 +37,7 @@ var _renderMenuItems = function _renderMenuItems(TS, option) {
     var _className = TS.CL_ROW ? TS.CL_ROW + " " + CL_NOT_S : CL_NOT_S,
         _itemConf = hmItems[item.id],
         menuTitle = _itemConf.menuTitle,
-        badgeEl = itemData[item.id] ? _react["default"].createElement(_MenuItemBadge["default"], {
+        badgeEl = itemData[item.id] ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuItemBadge["default"], {
       style: TS.BADGE,
       itemBadge: itemData[item.id],
       itemConf: _itemConf,
@@ -48,14 +48,14 @@ var _renderMenuItems = function _renderMenuItems(TS, option) {
 
     var _onClick = onClick.bind(null, _itemConf);
 
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       role: "menuitem",
       tabIndex: "0",
-      key: index,
       className: _className,
       onClick: _onClick,
-      onKeyDown: _createOnKeyDown(_onClick)
-    }, menuTitle, badgeEl);
+      onKeyDown: _createOnKeyDown(_onClick),
+      children: [menuTitle, badgeEl]
+    }, index);
   });
 };
 
@@ -64,12 +64,13 @@ var MenuPart = function MenuPart(_ref) {
       caption = _ref.caption,
       isInitClose = _ref.isInitClose,
       restProps = (0, _objectWithoutPropertiesLoose2["default"])(_ref, ["styleConfig", "caption", "isInitClose"]);
-  return _react["default"].createElement(_OpenClose["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_OpenClose["default"], {
     style: TS.OPEN_CLOSE,
     caption: caption,
     isClose: isInitClose,
-    itemStyle: TS.ITEM
-  }, _renderMenuItems(TS, restProps));
+    itemStyle: TS.ITEM,
+    children: _renderMenuItems(TS, restProps)
+  });
 };
 /*
 MenuPart.propTypes = {

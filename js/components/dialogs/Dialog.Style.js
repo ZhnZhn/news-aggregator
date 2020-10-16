@@ -40,13 +40,13 @@ var styleConfig = {
   createStyle: function createStyle(CSS_RULE, themeName) {
     return {
       R_DIALOG: (0, _extends2["default"])({}, CSS_RULE.R_DIALOG),
-      BROWSER_CAPTION: (0, _extends2["default"])({}, S.BROWSER_CAPTION, {}, CSS_RULE.BG_HEADER),
+      BROWSER_CAPTION: (0, _extends2["default"])({}, S.BROWSER_CAPTION, CSS_RULE.BG_HEADER),
       INPUT_ROOT: (0, _extends2["default"])({}, S.INPUT_ROOT),
       INPUT_DATE: (0, _extends2["default"])({}, S.INPUT_DATE),
       POWERED_BY: (0, _extends2["default"])({}, S.POWERED_BY),
       BT: {
         CL_RAISED_DIV: CSS_RULE.CL_BT_RAISED_DIV,
-        RAISED_ROOT: (0, _extends2["default"])({}, S.BT_RAISED_ROOT, {}, CSS_RULE.BG_HEADER)
+        RAISED_ROOT: (0, _extends2["default"])({}, S.BT_RAISED_ROOT, CSS_RULE.BG_HEADER)
       },
       SELECT: {
         CL_ITEM: CSS_RULE.CL_SELECT_ITEM,

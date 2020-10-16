@@ -75,7 +75,7 @@ var BrowserLogic = {
       slice[browserId] = {};
     }
 
-    slice[browserId][type] = (0, _extends2["default"])({}, slice[browserId][type], {}, option);
+    slice[browserId][type] = (0, _extends2["default"])({}, slice[browserId][type], option);
     return {
       id: browserId,
       data: slice[browserId]

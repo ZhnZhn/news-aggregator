@@ -1,5 +1,3 @@
-import React from 'react';
-
 const S = {
   STEP : {
     color: '#80c040',

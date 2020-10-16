@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,13 +7,14 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _ModalContainer = _interopRequireDefault(require("./ModalContainer"));
 
-var ModalDialogContainer =
-/*#__PURE__*/
-function (_Component) {
+//import PropTypes from 'prop-types'
+var ModalDialogContainer = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ModalDialogContainer, _Component);
 
   function ModalDialogContainer() {
@@ -94,7 +93,7 @@ function (_Component) {
       return dialogs.map(function (dialog) {
         var type = dialog.type,
             comp = dialog.comp;
-        return _react["default"].createElement(comp, {
+        return /*#__PURE__*/(0, _react.createElement)(comp, {
           key: type,
           isShow: shows[type],
           data: data[type],
@@ -121,10 +120,11 @@ function (_Component) {
     var _this$state3 = this.state,
         isShow = _this$state3.isShow,
         currentDialog = _this$state3.currentDialog;
-    return _react["default"].createElement(_ModalContainer["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalContainer["default"], {
       isShow: isShow,
-      onClose: this._handleClose.bind(null, currentDialog)
-    }, this._renderDialogs());
+      onClose: this._handleClose.bind(null, currentDialog),
+      children: this._renderDialogs()
+    });
   };
 
   return ModalDialogContainer;

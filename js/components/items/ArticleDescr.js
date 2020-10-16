@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
 
@@ -46,9 +46,7 @@ var S = {
   }
 };
 
-var ArticleDescr =
-/*#__PURE__*/
-function (_Component) {
+var ArticleDescr = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ArticleDescr, _Component);
 
   function ArticleDescr() {
@@ -84,28 +82,36 @@ function (_Component) {
         related = _this$props.related,
         publishedAt = _this$props.publishedAt,
         author = _this$props.author;
-    return _react["default"].createElement(_ShowHide["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ShowHide["default"], {
       style: style,
-      isShow: isShow
-    }, _react["default"].createElement("div", {
-      role: "link",
-      tabIndex: "0",
-      className: CL_DIV,
-      onKeyDown: this._hKeyDown
-    }, _react["default"].createElement("a", {
-      href: url,
-      tabIndex: "-1"
-    }, _react["default"].createElement("span", {
-      style: S.DESCR
-    }, description))), related && _react["default"].createElement("div", {
-      style: S.DESCR
-    }, related), _react["default"].createElement("div", {
-      style: S.AUTHOR_ROOT
-    }, _react["default"].createElement("span", {
-      style: S.DATE
-    }, publishedAt), _react["default"].createElement("span", {
-      style: S.AUTHOR
-    }, author)));
+      isShow: isShow,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        role: "link",
+        tabIndex: "0",
+        className: CL_DIV,
+        onKeyDown: this._hKeyDown,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+          href: url,
+          tabIndex: "-1",
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            style: S.DESCR,
+            children: description
+          })
+        })
+      }), related && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: S.DESCR,
+        children: related
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: S.AUTHOR_ROOT,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: S.DATE,
+          children: publishedAt
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: S.AUTHOR,
+          children: author
+        })]
+      })]
+    });
   };
 
   return ArticleDescr;

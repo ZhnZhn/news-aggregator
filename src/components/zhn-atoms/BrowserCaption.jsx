@@ -1,5 +1,3 @@
-import React from 'react'
-
 import SvgMore from './SvgMore'
 import SvgX from './SvgX'
 

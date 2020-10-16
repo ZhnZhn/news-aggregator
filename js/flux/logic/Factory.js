@@ -29,7 +29,7 @@ var Factory = {
         dialogProps = itemConf.dialogProps,
         El = _RouterDialog["default"].getElement(dialogType);
 
-    return _react["default"].createElement(El, (0, _extends2["default"])({
+    return /*#__PURE__*/_react["default"].createElement(El, (0, _extends2["default"])({
       key: type,
       type: type,
       itemConf: itemConf
@@ -47,7 +47,7 @@ var Factory = {
         Pane = _RouterPane$getElemen.Pane,
         Item = _RouterPane$getElemen.Item;
 
-    return _react["default"].createElement(Pane, {
+    return /*#__PURE__*/_react["default"].createElement(Pane, {
       key: type,
       id: paneId,
       paneCaption: paneCaption,

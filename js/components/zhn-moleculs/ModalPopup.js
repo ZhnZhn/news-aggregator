@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
 
 var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
 
@@ -17,14 +17,16 @@ var ModalPopup = function ModalPopup(_ref) {
       style = _ref.style,
       onClose = _ref.onClose,
       children = _ref.children;
-  return _react["default"].createElement(_ModalPane["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalPane["default"], {
     isShow: isShow,
-    onClose: onClose
-  }, _react["default"].createElement(_ShowHide["default"], {
-    className: className,
-    style: style,
-    isShow: isShow
-  }, children));
+    onClose: onClose,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ShowHide["default"], {
+      className: className,
+      style: style,
+      isShow: isShow,
+      children: children
+    })
+  });
 };
 
 var _default = ModalPopup;

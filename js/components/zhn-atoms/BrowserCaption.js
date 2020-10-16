@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
 
 var _SvgMore = _interopRequireDefault(require("./SvgMore"));
 
@@ -60,20 +60,22 @@ var BrowserCaption = function BrowserCaption(_ref) {
       children = _ref.children,
       onMore = _ref.onMore,
       onClose = _ref.onClose;
-  return _react["default"].createElement("div", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: CL_GAP,
-    style: (0, _extends2["default"])({}, S.ROOT, {}, rootStyle)
-  }, _isFn(onMore) && _react["default"].createElement(_SvgMore["default"], {
-    style: S.BT_MORE,
-    svgStyle: S.SVG_MORE,
-    onClick: onMore
-  }), _react["default"].createElement("span", {
-    className: "not-selected",
-    style: S.CAPTION
-  }, caption), children, _react["default"].createElement(_SvgX["default"], {
-    style: S.SVG_CLOSE,
-    onClick: onClose
-  }));
+    style: (0, _extends2["default"])({}, S.ROOT, rootStyle),
+    children: [_isFn(onMore) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore["default"], {
+      style: S.BT_MORE,
+      svgStyle: S.SVG_MORE,
+      onClick: onMore
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      className: "not-selected",
+      style: S.CAPTION,
+      children: caption
+    }), children, /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgX["default"], {
+      style: S.SVG_CLOSE,
+      onClick: onClose
+    })]
+  });
 };
 
 var _default = BrowserCaption;

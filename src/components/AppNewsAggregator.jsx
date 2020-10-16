@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { StrictMode, Component } from 'react'
 
 import Store from '../flux/stores/Store'
 import Actions, { TYPES } from '../flux/actions/ComponentActions'
@@ -67,7 +67,7 @@ class AppNewsAggregator extends Component {
   render(){
     const { theme } = this.state;
     return (
-      <React.StrictMode>
+      <StrictMode>
       <ThemeContext.Provider value={theme}>
         <div>
           <HeaderBar
@@ -110,7 +110,7 @@ class AppNewsAggregator extends Component {
           />
         </div>
       </ThemeContext.Provider>
-      </React.StrictMode>
+      </StrictMode>
     );
   }
 }

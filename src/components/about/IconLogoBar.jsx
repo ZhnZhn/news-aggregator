@@ -1,5 +1,3 @@
-import React from 'react'
-
 import IconGitHub from './IconGitHub'
 import IconReact from './IconReact'
 

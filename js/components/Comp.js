@@ -17,7 +17,7 @@ var _A3 = _interopRequireDefault(require("./zhn-moleculs/A"));
 
 var _Links = _interopRequireDefault(require("./links/Links"));
 
-var Comp = (0, _extends2["default"])({}, _Atoms["default"], {}, _A["default"], {}, _A2["default"], {}, _A3["default"], {
+var Comp = (0, _extends2["default"])({}, _Atoms["default"], _A["default"], _A2["default"], _A3["default"], {
   Link: _Links["default"]
 });
 var _default = Comp;

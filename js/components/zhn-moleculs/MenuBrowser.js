@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -13,7 +11,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _Browser = _interopRequireDefault(require("../zhn-atoms/Browser"));
 
@@ -38,9 +38,7 @@ var S = {
   }
 };
 
-var MenuBrowser =
-/*#__PURE__*/
-function (_Component) {
+var MenuBrowser = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(MenuBrowser, _Component);
 
   function MenuBrowser() {
@@ -58,7 +56,7 @@ function (_Component) {
         _menuModel$items = menuModel.items,
         items = _menuModel$items === void 0 ? {} : _menuModel$items;
     return menu.map(function (menuPart, index) {
-      return _react["default"].createElement(_MenuPart["default"], (0, _extends2["default"])({}, menuPart, {
+      return /*#__PURE__*/(0, _react.createElement)(_MenuPart["default"], (0, _extends2["default"])({}, menuPart, {
         key: index,
         rowClass: rowClass,
         hmItems: items,
@@ -71,14 +69,16 @@ function (_Component) {
     var _this$props = this.props,
         caption = _this$props.caption,
         restProps = (0, _objectWithoutPropertiesLoose2["default"])(_this$props, ["caption"]);
-    return _react["default"].createElement(_Browser["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Browser["default"], {
       isShow: true,
-      style: S.BROWSER
-    }, _react["default"].createElement(_BrowserCaption["default"], {
-      caption: caption
-    }), _react["default"].createElement(_ScrollPane["default"], {
-      style: S.SCROLL_PANE
-    }, this._renderMenuParts(restProps)));
+      style: S.BROWSER,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserCaption["default"], {
+        caption: caption
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ScrollPane["default"], {
+        style: S.SCROLL_PANE,
+        children: this._renderMenuParts(restProps)
+      })]
+    });
   };
 
   return MenuBrowser;

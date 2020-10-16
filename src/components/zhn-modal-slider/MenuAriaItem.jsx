@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 const _fKeyPressed = (onClick) => (evt) => {
   evt.preventDefault()

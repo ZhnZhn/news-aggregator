@@ -9,15 +9,17 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
 
 var Link = function Link(_ref) {
   var title = _ref.title,
       rest = (0, _objectWithoutPropertiesLoose2["default"])(_ref, ["title"]);
-  return _react["default"].createElement("a", (0, _extends2["default"])({
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("a", (0, _extends2["default"])({
     target: "_blank",
     className: "link"
-  }, rest), title);
+  }, rest, {
+    children: title
+  }));
 };
 
 var _default = Link;

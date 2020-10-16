@@ -2,8 +2,6 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
@@ -11,7 +9,9 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -114,9 +114,7 @@ var FEED_OPTIONS = [{
   };
 };
 
-var CryptoCompareNewsDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_temp =
-/*#__PURE__*/
-function (_Component) {
+var CryptoCompareNewsDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_temp = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(CryptoCompareNewsDialog, _Component);
 
   function CryptoCompareNewsDialog(props) {
@@ -169,7 +167,7 @@ function (_Component) {
         TS = theme.createStyle(_Dialog["default"]),
         _commandButtons = this._createCommandButtons(TS.BT);
 
-    return _react["default"].createElement(_Comp["default"].DraggableDialog, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
       ref: this._refDialogComp,
       rootStyle: TS.R_DIALOG,
       browserCaptionStyle: TS.BROWSER_CAPTION,
@@ -179,28 +177,36 @@ function (_Component) {
       commandButtons: _commandButtons,
       onKeyDown: this._handleKeyDownWith,
       onShowChart: onShow,
-      onClose: this._handleClose
-    }, _react["default"].createElement("div", null, _react["default"].createElement(_Comp["default"].InputSelect, {
-      caption: "Feed",
-      initItem: DF_FEED,
-      options: FEED_OPTIONS,
-      styleConfig: TS.SELECT,
-      onSelect: this._selectFeed
-    })), _react["default"].createElement("div", null, _react["default"].createElement(_Comp["default"].InputSelect, {
-      caption: "Category",
-      initItem: DF_CATEGORY,
-      options: CATEGORY_OPTIONS,
-      styleConfig: TS.SELECT,
-      onSelect: this._selectCategory
-    })), _react["default"].createElement("div", null, _react["default"].createElement(_Comp["default"].InputSelect, {
-      caption: "SortBy",
-      initItem: DF_SORTBY,
-      options: SORTBY_OPTIONS,
-      styleConfig: TS.SELECT,
-      onSelect: this._selectSortBy
-    })), _react["default"].createElement(_Comp["default"].Link.PoweredBy, {
-      rootStyle: S.POWERED_BY
-    }, _react["default"].createElement(_Comp["default"].Link.CryptoCompare, null)));
+      onClose: this._handleClose,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+          caption: "Feed",
+          initItem: DF_FEED,
+          options: FEED_OPTIONS,
+          styleConfig: TS.SELECT,
+          onSelect: this._selectFeed
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+          caption: "Category",
+          initItem: DF_CATEGORY,
+          options: CATEGORY_OPTIONS,
+          styleConfig: TS.SELECT,
+          onSelect: this._selectCategory
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+          caption: "SortBy",
+          initItem: DF_SORTBY,
+          options: SORTBY_OPTIONS,
+          styleConfig: TS.SELECT,
+          onSelect: this._selectSortBy
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
+        rootStyle: S.POWERED_BY,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.CryptoCompare, {})
+      })]
+    });
   };
 
   return CryptoCompareNewsDialog;

@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -13,7 +11,9 @@ var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runt
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _fKeyPressed = function _fKeyPressed(onClick) {
   return function (evt) {
@@ -26,9 +26,7 @@ var _fKeyPressed = function _fKeyPressed(onClick) {
   };
 };
 
-var MenuAriaItem =
-/*#__PURE__*/
-function (_Component) {
+var MenuAriaItem = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(MenuAriaItem, _Component);
 
   function MenuAriaItem() {
@@ -69,13 +67,14 @@ function (_Component) {
         onClick = _this$props.onClick,
         onReg = _this$props.onReg,
         rest = (0, _objectWithoutPropertiesLoose2["default"])(_this$props, ["children", "onClick", "onReg"]);
-    return _react["default"].createElement("div", (0, _extends2["default"])({}, rest, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", (0, _extends2["default"])({}, rest, {
       ref: onReg ? this._ref : void 0,
       role: "menuitem",
       tabIndex: "0",
       onClick: onClick,
-      onKeyPress: _fKeyPressed(onClick)
-    }), children);
+      onKeyPress: _fKeyPressed(onClick),
+      children: children
+    }));
   };
 
   return MenuAriaItem;

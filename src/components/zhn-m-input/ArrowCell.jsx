@@ -1,5 +1,3 @@
-import React from 'react'
-
 const S = {
   SVG: {
     display: 'inline-block',
@@ -14,10 +12,10 @@ const S = {
   }
 }
 
-const ArrowCell = () =>
+const ArrowCell = () => (
   <svg viewBox="0 0 24 24" style={S.ROOT}>
-    <path d="M7 10l5 5 5-5z">
-    </path>
+    <path d="M7 10l5 5 5-5z" />    
   </svg>
+);
 
 export default ArrowCell

@@ -2,8 +2,6 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
@@ -11,7 +9,9 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
@@ -42,9 +42,7 @@ var options = [{
   value: 'publishedAt'
 }];
 
-var DialogType1 = (0, _withKeyDown["default"])(_class = (_temp =
-/*#__PURE__*/
-function (_Component) {
+var DialogType1 = (0, _withKeyDown["default"])(_class = (_temp = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DialogType1, _Component);
 
   function DialogType1(props) {
@@ -77,14 +75,13 @@ function (_Component) {
     };
 
     _this._createCommandButtons = function (S) {
-      return [_react["default"].createElement(_RaisedButton["default"], {
-        key: "_load",
+      return [/*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
         rootStyle: S.RAISED_ROOT,
         clDiv: S.CL_RAISED_DIV,
         caption: "Load",
         isPrimary: true,
         onClick: _this._handleLoad
-      })];
+      }, "_load")];
     };
 
     _this._refDialogComp = function (comp) {
@@ -117,7 +114,7 @@ function (_Component) {
         S = theme.createStyle(_Dialog["default"]),
         _commandButtons = this._createCommandButtons(S.BT);
 
-    return _react["default"].createElement(_DraggableDialog["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_DraggableDialog["default"], {
       ref: this._refDialogComp,
       rootStyle: S.R_DIALOG,
       browserCaptionStyle: S.BROWSER_CAPTION,
@@ -127,14 +124,15 @@ function (_Component) {
       commandButtons: _commandButtons,
       onKeyDown: this._handleKeyDownWith,
       onShowChart: onShow,
-      onClose: this._handleClose
-    }, _react["default"].createElement(_InputSelect["default"], {
-      caption: "SortBy",
-      initItem: DF_SORTBY,
-      options: options,
-      styleConfig: S.SELECT,
-      onSelect: this._selectSortBy
-    }));
+      onClose: this._handleClose,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputSelect["default"], {
+        caption: "SortBy",
+        initItem: DF_SORTBY,
+        options: options,
+        styleConfig: S.SELECT,
+        onSelect: this._selectSortBy
+      })
+    });
   };
 
   return DialogType1;

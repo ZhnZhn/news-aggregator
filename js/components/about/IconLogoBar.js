@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
 
 var _IconGitHub = _interopRequireDefault(require("./IconGitHub"));
 
@@ -19,13 +19,14 @@ var S = {
 };
 
 var IconLogoBar = function IconLogoBar() {
-  return _react["default"].createElement("div", {
-    style: S.ROOT
-  }, _react["default"].createElement(_IconGitHub["default"], {
-    className: "icon__github",
-    title: "GitHub: Repo News Aggregator",
-    uri: "https://github.com/zhnzhn/news-aggregator"
-  }), _react["default"].createElement(_IconReact["default"], null));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: S.ROOT,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_IconGitHub["default"], {
+      className: "icon__github",
+      title: "GitHub: Repo News Aggregator",
+      uri: "https://github.com/zhnzhn/news-aggregator"
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconReact["default"], {})]
+  });
 };
 
 var _default = IconLogoBar;

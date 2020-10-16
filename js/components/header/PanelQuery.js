@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,15 +7,15 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
 var CL_ITEM = 'row__topic';
 
-var PanelQuery =
-/*#__PURE__*/
-function (_Component) {
+var PanelQuery = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(PanelQuery, _Component);
 
   function PanelQuery() {
@@ -67,63 +65,64 @@ function (_Component) {
         onWebhose = _this$props.onWebhose,
         onWebhoseBrodcast = _this$props.onWebhoseBrodcast,
         onClose = _this$props.onClose;
-    return _react["default"].createElement(_Comp["default"].ModalPopup, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].ModalPopup, {
       isShow: isShow,
       className: className,
       style: paneStyle,
-      onClose: onClose
-    }, _react["default"].createElement(_Comp["default"].MenuItem, {
-      ref: this._refFirstItem,
-      className: CL_ITEM,
-      caption: "CryptoCompare: News",
-      onClick: onCryptoComapre,
-      onClose: onClose
-    }), _react["default"].createElement(_Comp["default"].MenuItem, {
-      className: CL_ITEM,
-      caption: "Messari: Blockchain News",
-      onClick: onMessari,
-      onClose: onClose
-    }), _react["default"].createElement(_Comp["default"].MenuItem, {
-      className: CL_ITEM,
-      caption: "IEX Cloud: Stock Market News",
-      onClick: onIex,
-      onClose: onClose
-    }), _react["default"].createElement(_Comp["default"].MenuItem, {
-      className: CL_ITEM,
-      caption: "FMP: Stock Market News",
-      onClick: onFmp,
-      onClose: onClose
-    }), _react["default"].createElement(_Comp["default"].MenuItem, {
-      className: CL_ITEM,
-      caption: "NewsApi: Search",
-      onClick: onNewsApi,
-      onClose: onClose
-    }), _react["default"].createElement(_Comp["default"].MenuItem, {
-      className: CL_ITEM,
-      caption: "NewsApi: Top By",
-      onClick: onNewsTop,
-      onClose: onClose
-    }), _react["default"].createElement(_Comp["default"].MenuItem, {
-      className: CL_ITEM,
-      caption: "StackOverflow: Tagged Questions",
-      onClick: onStackTagged,
-      onClose: onClose
-    }), _react["default"].createElement(_Comp["default"].MenuItem, {
-      className: CL_ITEM,
-      caption: "StackOverflow: Search Questions",
-      onClick: onStackSearch,
-      onClose: onClose
-    }), _react["default"].createElement(_Comp["default"].MenuItem, {
-      className: CL_ITEM,
-      caption: "Webhose: Broadcast",
-      onClick: onWebhoseBrodcast,
-      onClose: onClose
-    }), _react["default"].createElement(_Comp["default"].MenuItem, {
-      className: CL_ITEM,
-      caption: "Webhose: News, Blogs",
-      onClick: onWebhose,
-      onClose: onClose
-    }));
+      onClose: onClose,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+        ref: this._refFirstItem,
+        className: CL_ITEM,
+        caption: "CryptoCompare: News",
+        onClick: onCryptoComapre,
+        onClose: onClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+        className: CL_ITEM,
+        caption: "Messari: Blockchain News",
+        onClick: onMessari,
+        onClose: onClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+        className: CL_ITEM,
+        caption: "IEX Cloud: Stock Market News",
+        onClick: onIex,
+        onClose: onClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+        className: CL_ITEM,
+        caption: "FMP: Stock Market News",
+        onClick: onFmp,
+        onClose: onClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+        className: CL_ITEM,
+        caption: "NewsApi: Search",
+        onClick: onNewsApi,
+        onClose: onClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+        className: CL_ITEM,
+        caption: "NewsApi: Top By",
+        onClick: onNewsTop,
+        onClose: onClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+        className: CL_ITEM,
+        caption: "StackOverflow: Tagged Questions",
+        onClick: onStackTagged,
+        onClose: onClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+        className: CL_ITEM,
+        caption: "StackOverflow: Search Questions",
+        onClick: onStackSearch,
+        onClose: onClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+        className: CL_ITEM,
+        caption: "Webhose: Broadcast",
+        onClick: onWebhoseBrodcast,
+        onClose: onClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+        className: CL_ITEM,
+        caption: "Webhose: News, Blogs",
+        onClick: onWebhose,
+        onClose: onClose
+      })]
+    });
   };
 
   return PanelQuery;

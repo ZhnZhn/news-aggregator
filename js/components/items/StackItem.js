@@ -2,8 +2,6 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
@@ -11,7 +9,9 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _has = _interopRequireDefault(require("../has"));
 
@@ -97,26 +97,28 @@ var S = {
     color: 'black'
   })
 };
-var TOKEN_ANSWER = HAS_TOUCH ? 'A' : _react["default"].createElement("span", {
+var TOKEN_ANSWER = HAS_TOUCH ? 'A' : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
   role: "img",
-  "arial-label": "hammer and pick"
-}, "\u2692");
-var TOKEN_SCORE = HAS_TOUCH ? 'S' : _react["default"].createElement("span", {
+  "arial-label": "hammer and pick",
+  children: "\u2692"
+});
+var TOKEN_SCORE = HAS_TOUCH ? 'S' : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
   role: "img",
-  "aria-label": "fish"
-}, "\uD83D\uDC1F");
-var TOKEN_VIEW = HAS_TOUCH ? 'V' : _react["default"].createElement("span", {
+  "aria-label": "fish",
+  children: "\uD83D\uDC1F"
+});
+var TOKEN_VIEW = HAS_TOUCH ? 'V' : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
   role: "img",
-  "aria-label": "wheel of dharma"
-}, "\u2638");
-var TOKEN_REPUTATION = HAS_TOUCH ? 'R' : _react["default"].createElement("span", {
+  "aria-label": "wheel of dharma",
+  children: "\u2638"
+});
+var TOKEN_REPUTATION = HAS_TOUCH ? 'R' : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
   role: "img",
-  "arial-label": "shamrock"
-}, "\u2618");
+  "arial-label": "shamrock",
+  children: "\u2618"
+});
 
-var StackItem = (0, _withDnD["default"])(_class = (_temp = _class2 =
-/*#__PURE__*/
-function (_Component) {
+var StackItem = (0, _withDnD["default"])(_class = (_temp = _class2 = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(StackItem, _Component);
 
   function StackItem(props) {
@@ -146,10 +148,10 @@ function (_Component) {
 
   _proto._renderTags = function _renderTags(tags, TS) {
     return tags.map(function (tag, index) {
-      return _react["default"].createElement("span", {
-        key: index,
-        style: (0, _extends2["default"])({}, S.SPAN_TAG, {}, TS.DESCR)
-      }, tag);
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        style: (0, _extends2["default"])({}, S.SPAN_TAG, TS.DESCR),
+        children: tag
+      }, index);
     });
   };
 
@@ -171,28 +173,41 @@ function (_Component) {
         isClosed = this.state.isClosed,
         _rootStyle = isClosed ? S.NONE : void 0;
 
-    return _react["default"].createElement("div", (0, _extends2["default"])({
-      style: (0, _extends2["default"])({}, S.ROOT, {}, _rootStyle, {}, TS.HEADER)
-    }, this._itemHandlers), _react["default"].createElement("div", {
-      style: S.ITEM_CAPTION
-    }, _react["default"].createElement("span", {
-      style: is_answered ? S.GREEN_BADGE : S.FISH_BADGE
-    }, TOKEN_ANSWER, "\xA0", answer_count), _react["default"].createElement("span", {
-      style: S.FISH_BADGE
-    }, TOKEN_SCORE, "\xA0", score), _react["default"].createElement("span", {
-      style: S.BLACK_BADGE
-    }, TOKEN_VIEW, "\xA0", view_count), _react["default"].createElement("span", {
-      style: S.GREEN_BADGE
-    }, TOKEN_REPUTATION, "\xA0", reputation), _react["default"].createElement("span", {
-      style: S.BLACK_BADGE
-    }, display_name), _react["default"].createElement(_SvgX["default"], {
-      style: S.SVG_CLOSE,
-      onClick: this._handleClose
-    })), _react["default"].createElement("a", {
-      className: CL_WRAPPER,
-      style: S.LINK,
-      href: link
-    }, _react["default"].createElement("div", null, title), _react["default"].createElement("div", null, this._renderTags(tags, TS))));
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", (0, _extends2["default"])({
+      style: (0, _extends2["default"])({}, S.ROOT, _rootStyle, TS.HEADER)
+    }, this._itemHandlers, {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: S.ITEM_CAPTION,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+          style: is_answered ? S.GREEN_BADGE : S.FISH_BADGE,
+          children: [TOKEN_ANSWER, "\xA0", answer_count]
+        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+          style: S.FISH_BADGE,
+          children: [TOKEN_SCORE, "\xA0", score]
+        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+          style: S.BLACK_BADGE,
+          children: [TOKEN_VIEW, "\xA0", view_count]
+        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+          style: S.GREEN_BADGE,
+          children: [TOKEN_REPUTATION, "\xA0", reputation]
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: S.BLACK_BADGE,
+          children: display_name
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgX["default"], {
+          style: S.SVG_CLOSE,
+          onClick: this._handleClose
+        })]
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("a", {
+        className: CL_WRAPPER,
+        style: S.LINK,
+        href: link,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          children: title
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          children: this._renderTags(tags, TS)
+        })]
+      })]
+    }));
   };
 
   return StackItem;

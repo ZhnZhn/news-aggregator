@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,13 +7,13 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
 
-var ItemHeader =
-/*#__PURE__*/
-function (_Component) {
+var ItemHeader = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ItemHeader, _Component);
 
   function ItemHeader() {
@@ -71,21 +69,23 @@ function (_Component) {
         btCloseStyle = _this$props2.btCloseStyle,
         title = _this$props2.title,
         onClick = _this$props2.onClick;
-    return _react["default"].createElement("div", {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       role: "button",
       ref: this._refRoot,
       tabIndex: "0",
       className: className,
       style: style,
       onClick: onClick,
-      onKeyDown: this._handleKeyDown
-    }, _react["default"].createElement("span", {
-      className: "not-selected",
-      style: captionStyle
-    }, title), _react["default"].createElement(_SvgX["default"], {
-      style: btCloseStyle,
-      onClick: this._handleClose
-    }));
+      onKeyDown: this._handleKeyDown,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        className: "not-selected",
+        style: captionStyle,
+        children: title
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgX["default"], {
+        style: btCloseStyle,
+        onClick: this._handleClose
+      })]
+    });
   };
 
   _proto.focus = function focus() {

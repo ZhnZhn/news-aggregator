@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,7 +7,9 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _ProgressLine = _interopRequireDefault(require("../zhn-atoms/ProgressLine"));
 
@@ -18,9 +18,7 @@ var COLOR = {
   FAILED: '#ed5813'
 };
 
-var LoadingProgress =
-/*#__PURE__*/
-function (_Component) {
+var LoadingProgress = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(LoadingProgress, _Component);
 
   function LoadingProgress() {
@@ -82,7 +80,7 @@ function (_Component) {
     var _this$state = this.state,
         completed = _this$state.completed,
         color = _this$state.color;
-    return _react["default"].createElement(_ProgressLine["default"], {
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ProgressLine["default"], {
       color: color,
       completed: completed
     });

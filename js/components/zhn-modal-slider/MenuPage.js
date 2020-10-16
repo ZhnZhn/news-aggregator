@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -9,15 +7,15 @@ exports["default"] = void 0;
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _MenuTitle = _interopRequireDefault(require("./MenuTitle"));
 
 var _MenuItemList = _interopRequireDefault(require("./MenuItemList"));
 
-var MenuPage =
-/*#__PURE__*/
-function (_Component) {
+var MenuPage = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(MenuPage, _Component);
 
   function MenuPage() {
@@ -80,22 +78,23 @@ function (_Component) {
         onPrevPage = _this$props2.onPrevPage,
         onClose = _this$props2.onClose,
         children = _this$props2.children;
-    return _react["default"].createElement("div", {
-      style: style
-    }, _react["default"].createElement(_MenuTitle["default"], {
-      baseTitleCl: baseTitleCl,
-      title: title,
-      pageNumber: pageNumber,
-      onPrevPage: onPrevPage,
-      onReg: this._onRegTitle
-    }), _react["default"].createElement(_MenuItemList["default"], {
-      items: items,
-      itemCl: itemCl || baseTitleCl,
-      pageNumber: pageNumber,
-      onNextPage: onNextPage,
-      onReg: this._onRegFirst,
-      onClose: onClose
-    }), children);
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: style,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuTitle["default"], {
+        baseTitleCl: baseTitleCl,
+        title: title,
+        pageNumber: pageNumber,
+        onPrevPage: onPrevPage,
+        onReg: this._onRegTitle
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuItemList["default"], {
+        items: items,
+        itemCl: itemCl || baseTitleCl,
+        pageNumber: pageNumber,
+        onNextPage: onNextPage,
+        onReg: this._onRegFirst,
+        onClose: onClose
+      }), children]
+    });
   };
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {

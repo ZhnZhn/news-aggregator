@@ -1,5 +1,3 @@
-import React from 'react'
-
 const CL_BT = 'bt-raised';
 const CL_BT_SPAN = 'bt-raised__span';
 

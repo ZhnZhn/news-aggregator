@@ -1,17 +1,22 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
 
 var SpanKey = function SpanKey(_ref) {
   var style = _ref.style;
-  return _react["default"].createElement("span", null, _react["default"].createElement("span", null, "\xA0("), _react["default"].createElement("span", {
-    style: style
-  }, "Key"), _react["default"].createElement("span", null, "),\xA0"));
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      children: "\xA0("
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      style: style,
+      children: "Key"
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      children: "),\xA0"
+    })]
+  });
 };
 
 var _default = SpanKey;

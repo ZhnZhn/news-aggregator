@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { cloneElement, Component } from 'react'
 
 import throttleOnce from '../../utils/throttleOnce'
 
@@ -177,7 +177,7 @@ class ModalSlider extends Component {
   _renderPages = () => {
     const { pages, pageCurrent } = this.state;
     return pages.map((Page, index) => {
-      return React.cloneElement(Page, {
+      return cloneElement(Page, {
         pageCurrent,
         //pageNumber: index,
         pageNumber: index + 1,

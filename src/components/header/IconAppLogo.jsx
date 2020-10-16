@@ -1,4 +1,3 @@
-import React from 'react';
 
 const IconAppLogo = ({ className, title, onClick }) => (
     <span

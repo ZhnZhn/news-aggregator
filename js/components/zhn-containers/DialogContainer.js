@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
@@ -11,7 +9,9 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
+
+var _react = require("react");
 
 var _utils = _interopRequireDefault(require("./utils"));
 
@@ -56,9 +56,7 @@ var _updateVisible = function _updateVisible(state, key, maxDialog) {
   }
 };
 
-var DialogContainer =
-/*#__PURE__*/
-function (_Component) {
+var DialogContainer = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(DialogContainer, _Component);
 
   function DialogContainer() {
@@ -117,7 +115,7 @@ function (_Component) {
           compDialogs = _this$state.compDialogs;
       return compDialogs.map(function (Comp) {
         var key = Comp.key;
-        return _react["default"].cloneElement(Comp, {
+        return /*#__PURE__*/(0, _react.cloneElement)(Comp, {
           key: key,
           isShow: hmIs[key],
           onClose: _this._hCloseDialog.bind((0, _assertThisInitialized2["default"])(_this), key)
@@ -139,9 +137,10 @@ function (_Component) {
   };
 
   _proto.render = function render() {
-    return _react["default"].createElement("div", {
-      style: S.ROOT
-    }, this._renderDialogs());
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      style: S.ROOT,
+      children: this._renderDialogs()
+    });
   };
 
   return DialogContainer;

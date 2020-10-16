@@ -1,11 +1,9 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
 
 var AppLabel = function AppLabel(_ref) {
   var className = _ref.className,
@@ -13,12 +11,13 @@ var AppLabel = function AppLabel(_ref) {
       caption = _ref.caption,
       title = _ref.title,
       onClick = _ref.onClick;
-  return _react["default"].createElement("span", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
     className: className,
     style: style,
     title: title,
-    onClick: onClick
-  }, caption);
+    onClick: onClick,
+    children: caption
+  });
 };
 
 var _default = AppLabel;

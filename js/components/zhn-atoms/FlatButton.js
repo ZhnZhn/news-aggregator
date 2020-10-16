@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _jsxRuntime = require("react/jsx-runtime.js");
 
 var _CaptionInput = _interopRequireDefault(require("./CaptionInput"));
 
@@ -23,21 +23,23 @@ var FlatButton = function FlatButton(_ref) {
       accessKey = _ref.accessKey,
       children = _ref.children,
       onClick = _ref.onClick;
-  return _react["default"].createElement("button", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     className: CL_BT + " " + className,
     style: rootStyle,
     type: "button",
     tabIndex: 0,
     title: title,
     accessKey: accessKey,
-    onClick: onClick
-  }, _react["default"].createElement("div", {
-    className: clDiv
-  }, caption ? _react["default"].createElement(_CaptionInput["default"], {
-    className: CL_BT_SPAN,
-    caption: caption,
-    accessKey: accessKey
-  }) : null, children));
+    onClick: onClick,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      className: clDiv,
+      children: [caption ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_CaptionInput["default"], {
+        className: CL_BT_SPAN,
+        caption: caption,
+        accessKey: accessKey
+      }) : null, children]
+    })
+  });
 };
 
 var _default = FlatButton;

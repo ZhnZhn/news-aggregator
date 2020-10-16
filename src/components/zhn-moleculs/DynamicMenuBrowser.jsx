@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 import Comp from '../Comp'
 import MenuPart from './MenuPart'

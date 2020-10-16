@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 import has from '../has'
 import SvgX from '../zhn-atoms/SvgX'
