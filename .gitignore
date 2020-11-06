@@ -1,15 +1,7 @@
-jspm_packages
 node_modules
 npm-debug.log
 _init_source.bat
 _start_server.bat
-bundle.min.js
-bundle.min.js.map
-config.js
-dependency-bundle.js
-dependency-bundle.js.map
-news-aggregator.html
-news-aggregator-hot.html
 lint.txt
 lib-dev
 stats.json

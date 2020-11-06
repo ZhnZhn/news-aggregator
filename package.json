@@ -4,7 +4,7 @@
   "description": "Web app News Aggregator",
   "main": "index.js",
   "scripts": {
-    "bundle": "jspm bundle js/**/* - [js/**/*] dependency-bundle.js",
+    "dev": "webpack-dev-server --config webpack.dev.js",
     "transpile": "babel ./src --out-dir ./js --source-maps --ignore test.js",
     "transpile:all": "babel ./src --out-dir ./js --source-maps",
     "css:sass": "gulp sass",
@@ -31,6 +31,7 @@
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "del": "^6.0.0",
@@ -47,26 +48,12 @@
     "gulp-rev": "^9.0.0",
     "gulp-sass": "^4.0.2",
     "html-webpack-plugin": "^4.5.0",
-    "jspm": "^0.16.55",
+    "react-refresh": "^0.9.0",
     "terser-webpack-plugin": "^5.0.3",
     "webpack": "^5.4.0",
     "webpack-bundle-analyzer": "^4.0.0",
-    "webpack-cli": "^3.3.12"
-  },
-  "jspm": {
-    "dependencies": {
-      "@babel/runtime": "npm:@babel/runtime@^7.12.1",
-      "interactjs": "npm:interactjs@1.3.4",
-      "nanoid": "npm:nanoid@2.1.11",
-      "react": "npm:react@^16.14.0",
-      "react-dom": "npm:react-dom@^16.14.0",
-      "reflux-core": "npm:reflux-core@^1.0.0"
-    },
-    "devDependencies": {
-      "babel": "npm:babel-core@^5.8.24",
-      "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^1.1.4"
-    }
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.1",
