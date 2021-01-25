@@ -45,7 +45,7 @@ class HeaderBar extends Component {
     const {
       onQuery, onWebhoseBrodcast,
       onStackTagged, onStackSearch,
-      onCryptoComapre, onMessari,
+      onCryptoCompare, onCoinStats, onMessari,
       onIex, onFmp,
       onNewsSearch, onNewsTop
     } = props
@@ -55,7 +55,8 @@ class HeaderBar extends Component {
     this._hWebhoseBrodcast = _fClick(onWebhoseBrodcast)
     this._hStackTagged = _fClick(onStackTagged)
     this._hStackSearch = _fClick(onStackSearch)
-    this._hCryptoCompare = _fClick(onCryptoComapre)
+    this._hCryptoCompare = _fClick(onCryptoCompare)
+    this._hCoinStats = _fClick(onCoinStats)
     this._hMessari = _fClick(onMessari)
     this._hIex = _fClick(onIex)
     this._hFmp = _fClick(onFmp)
@@ -99,7 +100,8 @@ class HeaderBar extends Component {
           onWebhoseBrodcast={this._hWebhoseBrodcast}
           onStackTagged={this._hStackTagged}
           onStackSearch={this._hStackSearch}
-          onCryptoComapre={this._hCryptoCompare}
+          onCryptoCompare={this._hCryptoCompare}
+          onCoinStats={this._hCoinStats}
           onMessari={this._hMessari}
           onIex={this._hIex}
           onFmp={this._hFmp}

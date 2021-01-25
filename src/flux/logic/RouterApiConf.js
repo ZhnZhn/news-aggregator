@@ -58,13 +58,20 @@ const RouterApiConf = {
           api: Api.Fmp,
           adapter: Adapter.Fmp,
           msgErr: `FMP API ${MSG_ERR_TAIL}`
-        };   
+        };
      case 'CCN':
         return {
           apiKey: true,
           api: Api.CryptoCompare,
           adapter: Adapter.CryptoCompare,
           msgErr: `CryptoCompare News API ${MSG_ERR_TAIL}`
+        };
+      case 'CS':
+        return {
+          apiKey: true,
+          api: Api.CoinStats,
+          adapter: Adapter.CoinStats,
+          msgErr: `CoinStats API ${MSG_ERR_TAIL}`
         };
       case 'MS':
         return {

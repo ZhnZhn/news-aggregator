@@ -79,6 +79,9 @@ class About extends Component {
                    <A.Link.CryptoCompare />
                  </div>
                  <div>
+                   <A.Link.CoinStats />
+                 </div>
+                 <div>
                    <A.Link.Messari />
                  </div>
                  <div>

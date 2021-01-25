@@ -9,6 +9,12 @@ const CryptoCompare = withProps({
   tabIndex: "-1"
 })(BaseComp)
 
+const CoinStats = withProps({
+  title: "CoinStats",
+  href: "https://coinstats.app/",
+  tabIndex: "-1"
+})(BaseComp)
+
 const Messari = withProps({
   title: "Messari",
   href: "https://messari.io",
@@ -52,6 +58,7 @@ const Link = {
   IexApi,
   FmpApi,
   CryptoCompare,
+  CoinStats,
   Messari,
   PoweredBy
 };

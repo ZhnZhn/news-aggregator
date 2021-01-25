@@ -9,6 +9,7 @@ import FmpNews from './FmpNewsDialog'
 import NewsApiSearch from './NewsApiSearchDialog'
 import NewsApiTop from './NewsApiTopDialog'
 import CryptoCompareNews from './CryptoCompareNewsDialog'
+import CoinStatsNews from './CoinStatsDialog'
 import MessariNews from './MessariDialog'
 
 const R = {
@@ -17,6 +18,7 @@ const R = {
   WebhoseQuery, WebhoseBrodcast,
   StackTagged, StackSearch,
   CryptoCompareNews,
+  CoinStatsNews,
   MessariNews,
   IexNews,
   FmpNews,
