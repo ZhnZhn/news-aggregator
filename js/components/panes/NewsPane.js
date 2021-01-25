@@ -11,11 +11,13 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime.js");
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
+
+var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 
 var _NewsPane = _interopRequireDefault(require("./NewsPane.Style"));
 
@@ -69,6 +71,14 @@ var _focusFirstItem = function _focusFirstItem(ref) {
       ref.current.focus();
     }
   }, 1000);
+};
+
+var _crPaneCaption = function _crPaneCaption() {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  return args.filter(Boolean).join(': ');
 };
 
 var NewsPane = /*#__PURE__*/function (_Component) {
@@ -251,10 +261,9 @@ var NewsPane = /*#__PURE__*/function (_Component) {
         isMore = _this$state.isMore,
         articles = _this$state.articles,
         sortBy = _this$state.sortBy,
-        _sortBy = sortBy ? ': ' + sortBy : '',
-        _paneCaption = "" + paneCaption + _sortBy,
-        _styleIsShow = isShow ? S.INLINE_BLOCK : S.NONE,
-        _className = isShow ? CL.NEWS_PANE + " " + CL.SHOW_POPUP : CL.NEWS_PANE;
+        _paneCaption = _crPaneCaption(paneCaption, sortBy),
+        _className = (0, _crCn["default"])(CL.NEWS_PANE, [isShow, CL.SHOW_POPUP]),
+        _styleIsShow = isShow ? S.INLINE_BLOCK : S.NONE;
 
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       ref: this._refRootDiv,

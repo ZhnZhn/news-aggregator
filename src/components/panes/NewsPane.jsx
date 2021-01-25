@@ -1,6 +1,7 @@
 import { Component, createRef } from 'react'
 
 import withTheme from '../hoc/withTheme'
+import crCn from '../zhn-utils/crCn'
 import styleConfig from './NewsPane.Style'
 import has from '../has'
 
@@ -49,6 +50,10 @@ const _focusFirstItem = ref => {
     }
   }, 1000)
 };
+
+const _crPaneCaption = (...args) => args
+  .filter(Boolean)
+  .join(': ');
 
 class NewsPane extends Component {
 
@@ -170,21 +175,16 @@ class NewsPane extends Component {
 
    render(){
       const {
-              paneCaption,
-              theme,
-              onRemoveItems,
-              onRemoveUnder, onCloseItem
-            } = this.props
-          , TS = theme.createStyle(styleConfig)
-          , { isShow, isMore, articles, sortBy } = this.state
-          , _sortBy = sortBy ? ': ' + sortBy : ''
-          , _paneCaption = `${paneCaption}${_sortBy}`
-          , _styleIsShow = isShow
-               ? S.INLINE_BLOCK
-               : S.NONE
-         , _className = isShow
-             ? `${CL.NEWS_PANE} ${CL.SHOW_POPUP}`
-             : CL.NEWS_PANE;
+          paneCaption,
+          theme,
+          onRemoveItems,
+          onRemoveUnder, onCloseItem
+        } = this.props
+      , TS = theme.createStyle(styleConfig)
+      , { isShow, isMore, articles, sortBy } = this.state
+      , _paneCaption = _crPaneCaption(paneCaption, sortBy)
+      , _className = crCn(CL.NEWS_PANE, [isShow,  CL.SHOW_POPUP])
+      , _styleIsShow = isShow ? S.INLINE_BLOCK : S.NONE;
 
      return(
         <div
