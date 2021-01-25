@@ -1,16 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/zhn-moleculs/ModalPopup.js"
- ],
- "file": "../../../src/components/zhn-moleculs/ModalPopup.js",
- "names": [
-  "ModalPopup",
-  "isShow",
-  "className",
-  "style",
-  "onClose",
-  "children"
- ],
- "mappings": ";;;;;;;;;AAAA;;AACA;;AAEA,IAAMA,UAAU,GAAG,SAAbA,UAAa;AAAA,MACjBC,MADiB,QACjBA,MADiB;AAAA,MAEjBC,SAFiB,QAEjBA,SAFiB;AAAA,MAENC,KAFM,QAENA,KAFM;AAAA,MAGjBC,OAHiB,QAGjBA,OAHiB;AAAA,MAIjBC,QAJiB,QAIjBA,QAJiB;AAAA,sBAMjB,qBAAC,qBAAD;AACE,IAAA,MAAM,EAAEJ,MADV;AAEE,IAAA,OAAO,EAAEG,OAFX;AAAA,2BAIE,qBAAC,oBAAD;AACE,MAAA,SAAS,EAAEF,SADb;AAEE,MAAA,KAAK,EAAEC,KAFT;AAGE,MAAA,MAAM,EAAEF,MAHV;AAAA,gBAKGI;AALH;AAJF,IANiB;AAAA,CAAnB;;eAoBeL,U"
-}
+{"version":3,"sources":["../../../src/components/zhn-moleculs/ModalPopup.jsx"],"names":["ModalPopup","isShow","className","style","onClose","children"],"mappings":";;;;;;;;;AAAA;;AACA;;AAEA,IAAMA,UAAU,GAAG,SAAbA,UAAa;AAAA,MACjBC,MADiB,QACjBA,MADiB;AAAA,MAEjBC,SAFiB,QAEjBA,SAFiB;AAAA,MAENC,KAFM,QAENA,KAFM;AAAA,MAGjBC,OAHiB,QAGjBA,OAHiB;AAAA,MAIjBC,QAJiB,QAIjBA,QAJiB;AAAA,sBAMjB,qBAAC,qBAAD;AACE,IAAA,MAAM,EAAEJ,MADV;AAEE,IAAA,OAAO,EAAEG,OAFX;AAAA,2BAIE,qBAAC,oBAAD;AACE,MAAA,SAAS,EAAEF,SADb;AAEE,MAAA,KAAK,EAAEC,KAFT;AAGE,MAAA,MAAM,EAAEF,MAHV;AAAA,gBAKGI;AALH;AAJF,IANiB;AAAA,CAAnB;;eAoBeL,U","sourcesContent":["import ShowHide from '../zhn-atoms/ShowHide'\r\nimport ModalPane from './ModalPane'\r\n\r\nconst ModalPopup = ({\r\n  isShow,\r\n  className, style,\r\n  onClose,\r\n  children\r\n}) => (\r\n  <ModalPane\r\n    isShow={isShow}\r\n    onClose={onClose}\r\n  >\r\n    <ShowHide\r\n      className={className}\r\n      style={style}\r\n      isShow={isShow}\r\n    >\r\n      {children}\r\n    </ShowHide>\r\n  </ModalPane>\r\n);\r\n\r\nexport default ModalPopup\r\n"],"file":"ModalPopup.js"}

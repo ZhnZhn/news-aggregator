@@ -59,6 +59,16 @@ var NEWS_QUERY = {
       "caption": "CryptoCompare News"
     }
   },
+  COIN_STATS: {
+    "type": "COIN_STATS",
+    "dialogType": "CoinStatsNews",
+    "paneCaption": "CoinStats News",
+    "paneId": "coinstats_news",
+    "paneType": "COIN_STATS_NEWS",
+    "dialogProps": {
+      "caption": "CoinStats News"
+    }
+  },
   MESSARI: {
     "type": "MESSARI",
     "dialogType": "MessariNews",

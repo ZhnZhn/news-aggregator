@@ -1,11 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/hoc/ThemeContext.js"
- ],
- "file": "../../../src/components/hoc/ThemeContext.js",
- "names": [
-  "ThemeContext"
- ],
- "mappings": ";;;;;AAAA;;AAEA,IAAMA,YAAY,gBAAG,2BAArB;eAEeA,Y"
-}
+{"version":3,"sources":["../../../src/components/hoc/ThemeContext.js"],"names":["ThemeContext"],"mappings":";;;;;AAAA;;AAEA,IAAMA,YAAY,gBAAG,2BAArB;eAEeA,Y","sourcesContent":["import { createContext } from 'react'\r\n\r\nconst ThemeContext = createContext();\r\n\r\nexport default ThemeContext\r\n"],"file":"ThemeContext.js"}

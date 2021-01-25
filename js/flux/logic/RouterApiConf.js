@@ -80,6 +80,14 @@ var RouterApiConf = {
           msgErr: "CryptoCompare News API " + MSG_ERR_TAIL
         };
 
+      case 'CS':
+        return {
+          apiKey: true,
+          api: _Api["default"].CoinStats,
+          adapter: _Adapters["default"].CoinStats,
+          msgErr: "CoinStats API " + MSG_ERR_TAIL
+        };
+
       case 'MS':
         return {
           apiKey: true,

@@ -5,9 +5,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
+var _jsxRuntime = require("react/jsx-runtime");
 
-var _jsxRuntime = require("react/jsx-runtime.js");
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
 
 var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose"));
 

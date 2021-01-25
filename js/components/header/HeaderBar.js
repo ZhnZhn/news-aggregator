@@ -5,9 +5,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+var _jsxRuntime = require("react/jsx-runtime");
 
-var _jsxRuntime = require("react/jsx-runtime.js");
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
 var _react = require("react");
 
@@ -85,7 +85,8 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
         onWebhoseBrodcast = props.onWebhoseBrodcast,
         onStackTagged = props.onStackTagged,
         onStackSearch = props.onStackSearch,
-        onCryptoComapre = props.onCryptoComapre,
+        onCryptoCompare = props.onCryptoCompare,
+        onCoinStats = props.onCoinStats,
         onMessari = props.onMessari,
         onIex = props.onIex,
         onFmp = props.onFmp,
@@ -97,7 +98,8 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
     _this._hWebhoseBrodcast = _fClick(onWebhoseBrodcast);
     _this._hStackTagged = _fClick(onStackTagged);
     _this._hStackSearch = _fClick(onStackSearch);
-    _this._hCryptoCompare = _fClick(onCryptoComapre);
+    _this._hCryptoCompare = _fClick(onCryptoCompare);
+    _this._hCoinStats = _fClick(onCoinStats);
     _this._hMessari = _fClick(onMessari);
     _this._hIex = _fClick(onIex);
     _this._hFmp = _fClick(onFmp);
@@ -133,7 +135,8 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
         onWebhoseBrodcast: this._hWebhoseBrodcast,
         onStackTagged: this._hStackTagged,
         onStackSearch: this._hStackSearch,
-        onCryptoComapre: this._hCryptoCompare,
+        onCryptoCompare: this._hCryptoCompare,
+        onCoinStats: this._hCoinStats,
         onMessari: this._hMessari,
         onIex: this._hIex,
         onFmp: this._hFmp,

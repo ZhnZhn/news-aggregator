@@ -1,15 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/hoc/withTheme.js"
- ],
- "file": "../../../src/components/hoc/withTheme.js",
- "names": [
-  "withTheme",
-  "Wrapper",
-  "props",
-  "ref",
-  "theme"
- ],
- "mappings": ";;;;;;;;;;;AAAA;;AACA;;AAEA,IAAMA,SAAS,GAAG,SAAZA,SAAY,CAACC,OAAD;AAAA,sBAAa,uBAAW,UAACC,KAAD,EAAQC,GAAR;AAAA,wBACxC,qBAAC,wBAAD,CAAc,QAAd;AAAA,gBACI,kBAAAC,KAAK;AAAA,4BAAI,qBAAC,OAAD,gCAAaF,KAAb;AAAoB,UAAA,KAAK,EAAEE,KAA3B;AAAkC,UAAA,GAAG,EAAED;AAAvC,WAAJ;AAAA;AADT,MADwC;AAAA,GAAX,CAAb;AAAA,CAAlB;;eAMeH,S"
-}
+{"version":3,"sources":["../../../src/components/hoc/withTheme.jsx"],"names":["withTheme","Wrapper","props","ref","theme"],"mappings":";;;;;;;;;;;AAAA;;AACA;;AAEA,IAAMA,SAAS,GAAG,SAAZA,SAAY,CAACC,OAAD;AAAA,sBAAa,uBAAW,UAACC,KAAD,EAAQC,GAAR;AAAA,wBACxC,qBAAC,wBAAD,CAAc,QAAd;AAAA,gBACI,kBAAAC,KAAK;AAAA,4BAAI,qBAAC,OAAD,gCAAaF,KAAb;AAAoB,UAAA,KAAK,EAAEE,KAA3B;AAAkC,UAAA,GAAG,EAAED;AAAvC,WAAJ;AAAA;AADT,MADwC;AAAA,GAAX,CAAb;AAAA,CAAlB;;eAMeH,S","sourcesContent":["import { forwardRef } from 'react'\r\nimport ThemeContext from './ThemeContext'\r\n\r\nconst withTheme = (Wrapper) => forwardRef((props, ref) => (\r\n  <ThemeContext.Consumer>\r\n    { theme => <Wrapper {...props} theme={theme} ref={ref} />}\r\n  </ThemeContext.Consumer>\r\n))\r\n\r\nexport default withTheme\r\n"],"file":"withTheme.js"}

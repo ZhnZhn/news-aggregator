@@ -1,0 +1,20 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/CoinStatsApi.js"
+ ],
+ "file": "../../src/api/CoinStatsApi.js",
+ "names": [
+  "C",
+  "URL",
+  "QUERY_TAIL",
+  "DF_FILTER",
+  "CoinStatsApi",
+  "getRequestUrl",
+  "option",
+  "filter",
+  "checkResponse",
+  "json"
+ ],
+ "mappings": ";;;;AAAA,IAAMA,CAAC,GAAG;AACRC,EAAAA,GAAG,EAAE,0CADG;AAERC,EAAAA,UAAU,EAAE,iBAFJ;AAGRC,EAAAA,SAAS,EAAE;AAHH,CAAV;AAMA,IAAMC,YAAY,GAAG;AACnBC,EAAAA,aADmB,yBACLC,MADK,EACE;AAAA,yBACYA,MADZ,CACXC,MADW;AAAA,QACXA,MADW,+BACJP,CAAC,CAACG,SADE;AAEnBG,IAAAA,MAAM,CAACC,MAAP,GAAgBA,MAAhB;AACA,WAAUP,CAAC,CAACC,GAAZ,SAAmBM,MAAnB,UAA8BP,CAAC,CAACE,UAAhC;AACD,GALkB;AAMnBM,EAAAA,aANmB,yBAMLC,IANK,EAMCH,MAND,EAMQ;AACzB,WAAO,IAAP;AACD;AARkB,CAArB;eAWeF,Y"
+}

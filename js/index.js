@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _jsxRuntime = require("react/jsx-runtime.js");
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _reactDom = require("react-dom");
 

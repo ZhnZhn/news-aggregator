@@ -3,7 +3,7 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime.js");
+var _jsxRuntime = require("react/jsx-runtime");
 
 var IconReact = function IconReact() {
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {

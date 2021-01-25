@@ -3,7 +3,7 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime.js");
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL_BT = 'bt-raised';
 var CL_BT_SPAN = 'bt-raised__span';

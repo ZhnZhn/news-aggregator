@@ -7,11 +7,11 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
-var _jsxRuntime = require("react/jsx-runtime.js");
 
 var _react = require("react");
 
@@ -81,6 +81,7 @@ var AppNewsAggregator = /*#__PURE__*/function (_Component) {
     _this.showStackTagged = _fShowDialog(_NewsQuery["default"].STACK_TAGGED);
     _this.showStackSearch = _fShowDialog(_NewsQuery["default"].STACK_SEARCH);
     _this.showCryptoCompare = _fShowDialog(_NewsQuery["default"].CRYPTO_COMPARE);
+    _this.showCoinStats = _fShowDialog(_NewsQuery["default"].COIN_STATS);
     _this.showMessari = _fShowDialog(_NewsQuery["default"].MESSARI);
     _this.showIex = _fShowDialog(_NewsQuery["default"].IEX);
     _this.showFmp = _fShowDialog(_NewsQuery["default"].FMP);
@@ -118,7 +119,8 @@ var AppNewsAggregator = /*#__PURE__*/function (_Component) {
             onWebhoseBrodcast: this.showWebhoseBrodcast,
             onStackTagged: this.showStackTagged,
             onStackSearch: this.showStackSearch,
-            onCryptoComapre: this.showCryptoCompare,
+            onCryptoCompare: this.showCryptoCompare,
+            onCoinStats: this.showCoinStats,
             onMessari: this.showMessari,
             onIex: this.showIex,
             onFmp: this.showFmp,

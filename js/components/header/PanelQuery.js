@@ -5,9 +5,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+var _jsxRuntime = require("react/jsx-runtime");
 
-var _jsxRuntime = require("react/jsx-runtime.js");
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
 var _react = require("react");
 
@@ -54,7 +54,8 @@ var PanelQuery = /*#__PURE__*/function (_Component) {
         className = _this$props.className,
         paneStyle = _this$props.paneStyle,
         isShow = _this$props.isShow,
-        onCryptoComapre = _this$props.onCryptoComapre,
+        onCryptoCompare = _this$props.onCryptoCompare,
+        onCoinStats = _this$props.onCoinStats,
         onMessari = _this$props.onMessari,
         onIex = _this$props.onIex,
         onFmp = _this$props.onFmp,
@@ -74,7 +75,13 @@ var PanelQuery = /*#__PURE__*/function (_Component) {
         ref: this._refFirstItem,
         className: CL_ITEM,
         caption: "CryptoCompare: News",
-        onClick: onCryptoComapre,
+        onClick: onCryptoCompare,
+        onClose: onClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+        ref: this._refFirstItem,
+        className: CL_ITEM,
+        caption: "CoinStats: News",
+        onClick: onCoinStats,
         onClose: onClose
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
         className: CL_ITEM,

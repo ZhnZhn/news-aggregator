@@ -5,11 +5,11 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
-var _jsxRuntime = require("react/jsx-runtime.js");
 
 var _react = require("react");
 
@@ -112,6 +112,8 @@ var About = /*#__PURE__*/function (_Component) {
               children: "News headlines providers:\xA0"
             }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
               children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.CryptoCompare, {})
+            }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+              children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.CoinStats, {})
             }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
               children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.Messari, {})
             }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {

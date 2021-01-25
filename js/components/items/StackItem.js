@@ -5,11 +5,11 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
+var _jsxRuntime = require("react/jsx-runtime");
+
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
-var _jsxRuntime = require("react/jsx-runtime.js");
 
 var _react = require("react");
 

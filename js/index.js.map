@@ -1,12 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../src/index.js"
- ],
- "file": "../src/index.js",
- "names": [
-  "document",
-  "getElementById"
- ],
- "mappings": ";;;;;;AAAA;;AAEA;;AAEA,oCAAO,qBAAC,6BAAD,KAAP,EAA8BA,QAAQ,CAACC,cAAT,CAAwB,KAAxB,CAA9B"
-}
+{"version":3,"sources":["../src/index.jsx"],"names":["document","getElementById"],"mappings":";;;;;;AAAA;;AAEA;;AAEA,oCAAO,qBAAC,6BAAD,KAAP,EAA8BA,QAAQ,CAACC,cAAT,CAAwB,KAAxB,CAA9B","sourcesContent":["import { render } from 'react-dom'\r\n\r\nimport AppNewsAggregator from './components/AppNewsAggregator'\r\n\r\nrender(<AppNewsAggregator />, document.getElementById('app'))\r\n"],"file":"index.js"}

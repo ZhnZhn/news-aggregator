@@ -7,7 +7,7 @@ var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWild
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime.js");
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _ComponentActions = _interopRequireWildcard(require("../../flux/actions/ComponentActions"));
 

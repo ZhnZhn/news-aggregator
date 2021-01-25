@@ -1,14 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../../src/components/hoc/withProps.js"
- ],
- "file": "../../../src/components/hoc/withProps.js",
- "names": [
-  "withProps",
-  "confProps",
-  "BaseComponent",
-  "props"
- ],
- "mappings": ";;;;;;;;;;;AAAA,IAAMA,SAAS,GAAG,SAAZA,SAAY,CAAAC,SAAS;AAAA,SAAI,UAAAC,aAAa;AAAA,WAAI,UAAAC,KAAK;AAAA,0BACnD,qBAAC,aAAD,gCAAmBF,SAAnB,EAAkCE,KAAlC,EADmD;AAAA,KAAT;AAAA,GAAjB;AAAA,CAA3B;;eAGeH,S"
-}
+{"version":3,"sources":["../../../src/components/hoc/withProps.jsx"],"names":["withProps","confProps","BaseComponent","props"],"mappings":";;;;;;;;;;;AAAA,IAAMA,SAAS,GAAG,SAAZA,SAAY,CAAAC,SAAS;AAAA,SAAI,UAAAC,aAAa;AAAA,WAAI,UAAAC,KAAK;AAAA,0BACnD,qBAAC,aAAD,gCAAmBF,SAAnB,EAAkCE,KAAlC,EADmD;AAAA,KAAT;AAAA,GAAjB;AAAA,CAA3B;;eAGeH,S","sourcesContent":["const withProps = confProps => BaseComponent => props =>\r\n  <BaseComponent {...confProps} {...props}  />\r\n\r\nexport default withProps\r\n"],"file":"withProps.js"}

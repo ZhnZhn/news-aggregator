@@ -16,6 +16,11 @@ var CryptoCompare = (0, _withProps["default"])({
   href: "https://cryptocompare.com/",
   tabIndex: "-1"
 })(_Link["default"]);
+var CoinStats = (0, _withProps["default"])({
+  title: "CoinStats",
+  href: "https://coinstats.app/",
+  tabIndex: "-1"
+})(_Link["default"]);
 var Messari = (0, _withProps["default"])({
   title: "Messari",
   href: "https://messari.io",
@@ -57,6 +62,7 @@ var Link = {
   IexApi: IexApi,
   FmpApi: FmpApi,
   CryptoCompare: CryptoCompare,
+  CoinStats: CoinStats,
   Messari: Messari,
   PoweredBy: _PoweredBy["default"]
 };

@@ -17,6 +17,8 @@ var _FmpAdapter = _interopRequireDefault(require("./FmpAdapter"));
 
 var _CryptoCompareAdapter = _interopRequireDefault(require("./CryptoCompareAdapter"));
 
+var _CoinStatsAdapter = _interopRequireDefault(require("./CoinStatsAdapter"));
+
 var _MessariAdapter = _interopRequireDefault(require("./MessariAdapter"));
 
 var Adapters = {
@@ -26,6 +28,7 @@ var Adapters = {
   Iex: _IexAdapter["default"],
   Fmp: _FmpAdapter["default"],
   CryptoCompare: _CryptoCompareAdapter["default"],
+  CoinStats: _CoinStatsAdapter["default"],
   Messari: _MessariAdapter["default"]
 };
 var _default = Adapters;
