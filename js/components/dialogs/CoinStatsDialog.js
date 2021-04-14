@@ -9,8 +9,6 @@ var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/hel
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = require("react");
 
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
@@ -21,7 +19,9 @@ var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _Decors = _interopRequireDefault(require("./decorators/Decors"));
 
-var _dec, _class, _temp;
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _dec, _class;
 
 var NEWS_FOR_OPTIONS = [{
   caption: "Latest",
@@ -40,7 +40,7 @@ var NEWS_FOR_OPTIONS = [{
   value: "bearish"
 }],
     DF_FILTER = NEWS_FOR_OPTIONS[0];
-var CoinStatsDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_temp = /*#__PURE__*/function (_Component) {
+var CoinStatsDialog = (_dec = _Decors["default"].withDecors, _dec(_class = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(CoinStatsDialog, _Component);
 
   function CoinStatsDialog(props) {
@@ -113,7 +113,7 @@ var CoinStatsDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_tem
   };
 
   return CoinStatsDialog;
-}(_react.Component), _temp)) || _class);
+}(_react.Component)) || _class);
 
 var _default = (0, _withTheme["default"])(CoinStatsDialog);
 

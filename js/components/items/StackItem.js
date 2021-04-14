@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
@@ -22,6 +20,8 @@ var _Article = _interopRequireDefault(require("./Article.Style"));
 var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
 
 var _withDnD = _interopRequireDefault(require("./decorators/withDnD"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _class, _class2, _temp;
 

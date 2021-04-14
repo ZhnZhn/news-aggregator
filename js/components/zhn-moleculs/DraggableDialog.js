@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
 var _react = require("react");
@@ -18,6 +16,8 @@ var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaptio
 var _RaisedButton = _interopRequireDefault(require("../zhn-atoms/RaisedButton"));
 
 var _Interact = _interopRequireDefault(require("../../utils/Interact"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
 var CL_DIALOG = 'dialog';

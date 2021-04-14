@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
@@ -26,6 +24,8 @@ var _has = _interopRequireDefault(require("../has"));
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 
 var _Comp = _interopRequireDefault(require("../Comp"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CHILD_MARGIN = 36,
     RESIZE_INIT_WIDTH = 635,

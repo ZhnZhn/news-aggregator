@@ -1,11 +1,1 @@
-{
- "version": 3,
- "sources": [
-  "../../src/utils/crId.js"
- ],
- "file": "../../src/utils/crId.js",
- "names": [
-  "nanoid"
- ],
- "mappings": ";;;;;AAAA;;eAEeA,c"
-}
+{"version":3,"sources":["../../src/utils/crId.js"],"names":["nanoid"],"mappings":";;;;;AAAA;;eAEeA,c","sourcesContent":["import { nanoid } from 'nanoid';\r\n\r\nexport default nanoid\r\n"],"file":"crId.js"}

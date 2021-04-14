@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
 var _react = require("react");
@@ -22,6 +20,8 @@ var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
 var _Links = _interopRequireDefault(require("../links/Links"));
 
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var NewsBrowser = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(NewsBrowser, _Component);

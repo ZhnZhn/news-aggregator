@@ -5,9 +5,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _CaptionInput = _interopRequireDefault(require("./CaptionInput"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL_BT = 'bt-flat';
 var CL_BT_SPAN = 'bt-flat__span';

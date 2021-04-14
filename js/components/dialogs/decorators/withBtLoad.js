@@ -5,11 +5,11 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _react = _interopRequireDefault(require("react"));
 
 var _Comp = _interopRequireDefault(require("../../Comp"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _createCommandButtons = function _createCommandButtons(S) {
   return [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].RaisedButton, {

@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
@@ -24,6 +22,8 @@ var _Comp = _interopRequireDefault(require("../Comp"));
 var _CardApiKeys = _interopRequireDefault(require("./CardApiKeys"));
 
 var _CardUiTheme = _interopRequireDefault(require("./CardUiTheme"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
 var S = {

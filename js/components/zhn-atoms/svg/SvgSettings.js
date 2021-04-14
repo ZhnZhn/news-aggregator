@@ -7,9 +7,9 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _SvgIcon = _interopRequireDefault(require("./SvgIcon"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var SvgSettings = function SvgSettings(props) {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_SvgIcon["default"], (0, _extends2["default"])({}, props, {

@@ -5,13 +5,13 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
 
 var _react = require("react");
 
 var _Comp = _interopRequireDefault(require("../Comp"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL_ITEM = 'row__topic';
 

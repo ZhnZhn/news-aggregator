@@ -7,8 +7,6 @@ var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWild
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _ComponentActions = _interopRequireWildcard(require("../../flux/actions/ComponentActions"));
 
 var _NewsMenu = _interopRequireDefault(require("../../conf/NewsMenu"));
@@ -16,6 +14,8 @@ var _NewsMenu = _interopRequireDefault(require("../../conf/NewsMenu"));
 var _NewsBrowser = _interopRequireDefault(require("../source-browsers/NewsBrowser"));
 
 var _DialogContainer = _interopRequireDefault(require("./DialogContainer"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var onClick = _ComponentActions["default"].showNewsDialog;
 

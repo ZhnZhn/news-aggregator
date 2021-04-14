@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
@@ -23,7 +21,9 @@ var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _Decors = _interopRequireDefault(require("./decorators/Decors"));
 
-var _dec, _class, _temp;
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _dec, _class;
 
 var DATE_ERR_MSG = "YYYY-MM-DD";
 
@@ -52,7 +52,7 @@ var INITIAL_FROM_DATE = _dt["default"].getFromDate(1),
     DF_SORT_BY = SORT_BY_OPTIONS[4],
     DF_TAG = "CSS";
 
-var StackTaggedDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_temp = /*#__PURE__*/function (_Component) {
+var StackTaggedDialog = (_dec = _Decors["default"].withDecors, _dec(_class = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(StackTaggedDialog, _Component);
 
   function StackTaggedDialog(props) {
@@ -174,7 +174,7 @@ var StackTaggedDialog = (_dec = _Decors["default"].withDecors, _dec(_class = (_t
   };
 
   return StackTaggedDialog;
-}(_react.Component), _temp)) || _class);
+}(_react.Component)) || _class);
 
 var _default = (0, _withTheme["default"])(StackTaggedDialog);
 

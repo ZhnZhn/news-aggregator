@@ -7,8 +7,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
@@ -40,6 +38,8 @@ var _RouterModalDialog = _interopRequireDefault(require("./dialogs/RouterModalDi
 var _NewsQuery = _interopRequireDefault(require("../conf/NewsQuery"));
 
 var _NewsMenu = _interopRequireDefault(require("../conf/NewsMenu"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var CL_COMP = "component-container";
 

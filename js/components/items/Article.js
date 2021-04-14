@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
@@ -24,6 +22,8 @@ var _ItemHeader = _interopRequireDefault(require("./ItemHeader"));
 var _ArticleDescr = _interopRequireDefault(require("./ArticleDescr"));
 
 var _withDnD = _interopRequireDefault(require("./decorators/withDnD"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var _class, _class2, _temp;
 

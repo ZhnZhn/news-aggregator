@@ -5,11 +5,11 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _IconGitHub = _interopRequireDefault(require("./IconGitHub"));
 
 var _IconReact = _interopRequireDefault(require("./IconReact"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var S = {
   ROOT: {

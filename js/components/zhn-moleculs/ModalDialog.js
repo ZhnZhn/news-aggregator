@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _react = require("react");
@@ -16,6 +14,8 @@ var _useClassAnimation2 = _interopRequireDefault(require("../hooks/useClassAnima
 var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
 
 var _RaisedButton = _interopRequireDefault(require("../zhn-atoms/RaisedButton"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
 var CL = {

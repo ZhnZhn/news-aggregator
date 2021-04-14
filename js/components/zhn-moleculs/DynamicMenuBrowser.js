@@ -5,19 +5,19 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
-
 var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
-
 var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
+
+var _react = require("react");
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _MenuPart = _interopRequireDefault(require("./MenuPart"));
+
+var _jsxRuntime = require("react/jsx-runtime");
 
 var Browser = _Comp["default"].Browser,
     BrowserCaption = _Comp["default"].BrowserCaption,
