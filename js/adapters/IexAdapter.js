@@ -7,13 +7,18 @@ exports["default"] = void 0;
 
 var _crId = _interopRequireDefault(require("../utils/crId"));
 
-//import shortid from 'shortid'
+var _isArr = Array.isArray;
 var C = {
-  SOURCE: 'iex_news'
+  SOURCE: 'iex_news',
+  DF_SYMBOL: 'AAPL'
+};
+
+var _crAuthor = function _crAuthor(hasPaywall, source) {
+  return hasPaywall ? "$ " + source : source;
 };
 
 var _toArticles = function _toArticles(json) {
-  if (!Array.isArray(json)) {
+  if (!_isArr(json)) {
     return [];
   }
 
@@ -24,6 +29,7 @@ var _toArticles = function _toArticles(json) {
         summary = item.summary,
         related = item.related,
         url = item.url,
+        hasPaywall = item.hasPaywall,
         _related = related ? related.split(',').join(', ') : void 0;
 
     return {
@@ -32,7 +38,7 @@ var _toArticles = function _toArticles(json) {
       title: headline,
       description: summary,
       related: _related,
-      author: source,
+      author: _crAuthor(hasPaywall, source),
       publishedAt: datetime,
       url: url
     };
@@ -42,7 +48,8 @@ var _toArticles = function _toArticles(json) {
 
 var IexAdapter = {
   toNews: function toNews(json, option) {
-    var symbol = option.symbol,
+    var _option$symbol = option.symbol,
+        symbol = _option$symbol === void 0 ? C.DF_SYMBOL : _option$symbol,
         _option$recent = option.recent,
         recent = _option$recent === void 0 ? '' : _option$recent,
         articles = _toArticles(json);

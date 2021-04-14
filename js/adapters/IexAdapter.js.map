@@ -1,1 +1,44 @@
-{"version":3,"sources":["../../src/adapters/IexAdapter.js"],"names":["C","SOURCE","_toArticles","json","Array","isArray","articles","map","item","headline","source","datetime","summary","related","url","_related","split","join","articleId","title","description","author","publishedAt","IexAdapter","toNews","option","symbol","recent","sortBy","toUpperCase"],"mappings":";;;;;;;AACA;;AADA;AAGA,IAAMA,CAAC,GAAG;AACRC,EAAAA,MAAM,EAAE;AADA,CAAV;;AAIA,IAAMC,WAAW,GAAG,SAAdA,WAAc,CAACC,IAAD,EAAU;AAC5B,MAAI,CAACC,KAAK,CAACC,OAAN,CAAcF,IAAd,CAAL,EAA0B;AACxB,WAAO,EAAP;AACD;;AAED,MAAMG,QAAQ,GAAGH,IAAI,CAACI,GAAL,CAAS,UAAAC,IAAI,EAAI;AAAA,QAEtBC,QAFsB,GAMpBD,IANoB,CAEtBC,QAFsB;AAAA,QAEZC,MAFY,GAMpBF,IANoB,CAEZE,MAFY;AAAA,QAGtBC,QAHsB,GAMpBH,IANoB,CAGtBG,QAHsB;AAAA,QAItBC,OAJsB,GAMpBJ,IANoB,CAItBI,OAJsB;AAAA,QAIbC,OAJa,GAMpBL,IANoB,CAIbK,OAJa;AAAA,QAKtBC,GALsB,GAMpBN,IANoB,CAKtBM,GALsB;AAAA,QAOvBC,QAPuB,GAOZF,OAAO,GACbA,OAAO,CAACG,KAAR,CAAc,GAAd,EAAmBC,IAAnB,CAAwB,IAAxB,CADa,GAEb,KAAK,CATa;;AAU9B,WAAO;AACLP,MAAAA,MAAM,EAAEV,CAAC,CAACC,MADL;AAELiB,MAAAA,SAAS,EAAE,uBAFN;AAGLC,MAAAA,KAAK,EAAEV,QAHF;AAILW,MAAAA,WAAW,EAAER,OAJR;AAKLC,MAAAA,OAAO,EAAEE,QALJ;AAMLM,MAAAA,MAAM,EAAEX,MANH;AAOLY,MAAAA,WAAW,EAAEX,QAPR;AAQLG,MAAAA,GAAG,EAAEA;AARA,KAAP;AAUH,GApBgB,CAAjB;AAqBA,SAAOR,QAAP;AACD,CA3BD;;AA6BA,IAAMiB,UAAU,GAAG;AACjBC,EAAAA,MADiB,kBACVrB,IADU,EACJsB,MADI,EACI;AAAA,QACXC,MADW,GACWD,MADX,CACXC,MADW;AAAA,yBACWD,MADX,CACHE,MADG;AAAA,QACHA,MADG,+BACI,EADJ;AAAA,QAEbrB,QAFa,GAEFJ,WAAW,CAACC,IAAD,CAFT;;AAInB,WAAO;AACLO,MAAAA,MAAM,EAAEV,CAAC,CAACC,MADL;AAELK,MAAAA,QAAQ,EAAEA,QAFL;AAGLsB,MAAAA,MAAM,EAAKF,MAAM,CAACG,WAAP,EAAL,SAA6BF;AAH9B,KAAP;AAKD;AAVgB,CAAnB;eAaeJ,U","sourcesContent":["//import shortid from 'shortid'\r\nimport crId from '../utils/crId'\r\n\r\nconst C = {\r\n  SOURCE: 'iex_news'\r\n};\r\n\r\nconst _toArticles = (json) => {\r\n  if (!Array.isArray(json)) {\r\n    return [];\r\n  }\r\n\r\n  const articles = json.map(item => {\r\n      const {\r\n              headline, source,\r\n              datetime,\r\n              summary, related,\r\n              url\r\n            } = item\r\n           , _related = related\r\n                ? related.split(',').join(', ')\r\n                : void 0;\r\n      return {\r\n        source: C.SOURCE,\r\n        articleId: crId(),\r\n        title: headline,\r\n        description: summary,\r\n        related: _related,\r\n        author: source,\r\n        publishedAt: datetime,\r\n        url: url\r\n      };\r\n  });\r\n  return articles;\r\n}\r\n\r\nconst IexAdapter = {\r\n  toNews(json, option) {\r\n    const { symbol, recent='' } = option\r\n        , articles = _toArticles(json);\r\n\r\n    return {\r\n      source: C.SOURCE,\r\n      articles: articles,\r\n      sortBy: `${symbol.toUpperCase()} ${recent}`\r\n    };\r\n  }\r\n}\r\n\r\nexport default IexAdapter\r\n"],"file":"IexAdapter.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/adapters/IexAdapter.js"
+ ],
+ "file": "../../src/adapters/IexAdapter.js",
+ "names": [
+  "_isArr",
+  "Array",
+  "isArray",
+  "C",
+  "SOURCE",
+  "DF_SYMBOL",
+  "_crAuthor",
+  "hasPaywall",
+  "source",
+  "_toArticles",
+  "json",
+  "articles",
+  "map",
+  "item",
+  "headline",
+  "datetime",
+  "summary",
+  "related",
+  "url",
+  "_related",
+  "split",
+  "join",
+  "articleId",
+  "title",
+  "description",
+  "author",
+  "publishedAt",
+  "IexAdapter",
+  "toNews",
+  "option",
+  "symbol",
+  "recent",
+  "sortBy",
+  "toUpperCase"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAEA,IAAMA,MAAM,GAAGC,KAAK,CAACC,OAArB;AAEA,IAAMC,CAAC,GAAG;AACRC,EAAAA,MAAM,EAAE,UADA;AAERC,EAAAA,SAAS,EAAE;AAFH,CAAV;;AAKA,IAAMC,SAAS,GAAG,SAAZA,SAAY,CAACC,UAAD,EAAaC,MAAb;AAAA,SAAwBD,UAAU,UAC5CC,MAD4C,GAEjDA,MAFe;AAAA,CAAlB;;AAIA,IAAMC,WAAW,GAAG,SAAdA,WAAc,CAACC,IAAD,EAAU;AAC5B,MAAI,CAACV,MAAM,CAACU,IAAD,CAAX,EAAmB;AACjB,WAAO,EAAP;AACD;;AAED,MAAMC,QAAQ,GAAGD,IAAI,CAACE,GAAL,CAAS,UAAAC,IAAI,EAAI;AAAA,QAE5BC,QAF4B,GAM1BD,IAN0B,CAE5BC,QAF4B;AAAA,QAElBN,MAFkB,GAM1BK,IAN0B,CAElBL,MAFkB;AAAA,QAG5BO,QAH4B,GAM1BF,IAN0B,CAG5BE,QAH4B;AAAA,QAI5BC,OAJ4B,GAM1BH,IAN0B,CAI5BG,OAJ4B;AAAA,QAInBC,OAJmB,GAM1BJ,IAN0B,CAInBI,OAJmB;AAAA,QAK5BC,GAL4B,GAM1BL,IAN0B,CAK5BK,GAL4B;AAAA,QAKvBX,UALuB,GAM1BM,IAN0B,CAKvBN,UALuB;AAAA,QAO5BY,QAP4B,GAOjBF,OAAO,GACdA,OAAO,CAACG,KAAR,CAAc,GAAd,EAAmBC,IAAnB,CAAwB,IAAxB,CADc,GAEd,KAAK,CATmB;;AAU9B,WAAO;AACLb,MAAAA,MAAM,EAAEL,CAAC,CAACC,MADL;AAELkB,MAAAA,SAAS,EAAE,uBAFN;AAGLC,MAAAA,KAAK,EAAET,QAHF;AAILU,MAAAA,WAAW,EAAER,OAJR;AAKLC,MAAAA,OAAO,EAAEE,QALJ;AAMLM,MAAAA,MAAM,EAAEnB,SAAS,CAACC,UAAD,EAAaC,MAAb,CANZ;AAOLkB,MAAAA,WAAW,EAAEX,QAPR;AAQLG,MAAAA,GAAG,EAAEA;AARA,KAAP;AAUH,GApBgB,CAAjB;AAqBA,SAAOP,QAAP;AACD,CA3BD;;AA6BA,IAAMgB,UAAU,GAAG;AACjBC,EAAAA,MADiB,kBACVlB,IADU,EACJmB,MADI,EACI;AAAA,yBACuBA,MADvB,CACXC,MADW;AAAA,QACXA,MADW,+BACJ3B,CAAC,CAACE,SADE;AAAA,yBACuBwB,MADvB,CACSE,MADT;AAAA,QACSA,MADT,+BACgB,EADhB;AAAA,QAEjBpB,QAFiB,GAENF,WAAW,CAACC,IAAD,CAFL;;AAInB,WAAO;AACLF,MAAAA,MAAM,EAAEL,CAAC,CAACC,MADL;AAELO,MAAAA,QAAQ,EAAEA,QAFL;AAGLqB,MAAAA,MAAM,EAAKF,MAAM,CAACG,WAAP,EAAL,SAA6BF;AAH9B,KAAP;AAKD;AAVgB,CAAnB;eAaeJ,U"
+}
