@@ -44,11 +44,11 @@ $_bgc-r-h-l: rgba(255,255,255, 0.4);
 $_bgc-f-h-l: rgba(153,153,153, 0.2);
 
 
-@include bt-raise__div($thGreySuffix, rgb(48, 48, 48), $_bgc-r-h-d)
-@include bt-flat__div($thGreySuffix, $_bgc-f-h-d)
+@include bt-raise__div($thGreySuffix, rgb(48, 48, 48), $_bgc-r-h-d);
+@include bt-flat__div($thGreySuffix, $_bgc-f-h-d);
 
-@include bt-raise__div($thWhiteSuffix, rgb(255,255,255), $_bgc-r-h-l)
-@include bt-flat__div($thWhiteSuffix, $_bgc-f-h-l)
+@include bt-raise__div($thWhiteSuffix, rgb(255,255,255), $_bgc-r-h-l);
+@include bt-flat__div($thWhiteSuffix, $_bgc-f-h-l);
 
-@include bt-raise__div($thSandSuffix, #e8e0cb, $_bgc-r-h-l)
-@include bt-flat__div($thSandSuffix, $_bgc-f-h-l)
+@include bt-raise__div($thSandSuffix, #e8e0cb, $_bgc-r-h-l);
+@include bt-flat__div($thSandSuffix, $_bgc-f-h-l);

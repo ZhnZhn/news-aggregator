@@ -36,6 +36,6 @@
   outline: 0;
 }
 
-@include row__news-source($thGreySuffix)
-@include row__news-source($thWhiteSuffix)
-@include row__news-source($thSandSuffix)
+@include row__news-source($thGreySuffix);
+@include row__news-source($thWhiteSuffix);
+@include row__news-source($thSandSuffix);

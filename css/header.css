@@ -7,7 +7,8 @@
   padding-top: 8px;
   padding-left: 12px;
   box-shadow: rgba(0, 0, 0, 0.14) 0 0 4px, rgba(0, 0, 0, 0.6) 0 4px 8px;
-  z-index: 50; }
+  z-index: 50;
+}
 
 .header__icon-app {
   display: inline-block;
@@ -15,7 +16,8 @@
   top: 7px;
   left: 16px;
   width: 32px;
-  height: 32px; }
+  height: 32px;
+}
 
 .header__label-app {
   display: inline-block;
@@ -25,37 +27,48 @@
   padding-left: 10px;
   padding-right: 10px;
   font-size: 1.125rem;
-  font-weight: bold; }
+  font-weight: bold;
+}
 
 .header__browser-bts {
-  display: inline-block; }
+  display: inline-block;
+}
 
 @media only screen and (max-width: 680px) {
   .header__label-app {
-    display: none; }
+    display: none;
+  }
+
   .header__browser-bts {
     display: inline-block;
-    margin-left: 45px; } }
-
+    margin-left: 45px;
+  }
+}
 @media only screen and (max-width: 375px) {
   .header__icon-app {
-    display: none; }
-  .header__browser-bts {
-    margin-left: 8px; } }
+    display: none;
+  }
 
+  .header__browser-bts {
+    margin-left: 8px;
+  }
+}
 @media only screen and (max-width: 300px) {
   .header__bt-about {
-    display: none; } }
-
+    display: none;
+  }
+}
 .header__bts {
   position: relative;
   float: right;
-  margin-right: 16px; }
+  margin-right: 16px;
+}
 
 @media only screen and (max-width: 740px) {
   .header__bts {
-    margin-right: 0; } }
-
+    margin-right: 0;
+  }
+}
 .header__panel-browser {
   position: absolute;
   z-index: 1010;
@@ -67,12 +80,14 @@
   background-color: #4d4d4d;
   border-bottom: 4px solid #80c040;
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 5px; }
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 5px;
+}
 
 @media only screen and (max-width: 680px) {
   .header__panel-browser {
-    left: 10px; } }
-
+    left: 10px;
+  }
+}
 .row__topic {
   line-height: 2;
   color: black;
@@ -81,10 +96,11 @@
   padding-top: 2px;
   padding-left: 16px;
   border-left: 4px solid transparent;
-  cursor: pointer; }
-
+  cursor: pointer;
+}
 .row__topic:focus {
-  background-color: rgba(0, 0, 0, 0.15); }
-
+  background-color: rgba(0, 0, 0, 0.15);
+}
 .row__topic:hover {
-  border-left: 4px solid #1b75bb; }
+  border-left: 4px solid #1b75bb;
+}

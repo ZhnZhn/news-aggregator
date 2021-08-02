@@ -50,7 +50,7 @@
       -moz-animation: circle infinite 0.75s linear;
         -o-animation: circle infinite 1.25s linear;
            animation: circle infinite 1.25s linear;
-   border: 3px solid rgba(164, 135, 212, 1);
+   border: 3px solid #a487d4;
    border-top-color: transparent;
    border-radius: 100%;
 }

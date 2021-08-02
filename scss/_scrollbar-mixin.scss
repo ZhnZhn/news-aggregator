@@ -10,6 +10,6 @@
   }
 }
 
-@include with-scroll($thGreySuffix, $bgcTrackPieceGrey)
-@include with-scroll($thWhiteSuffix, $bgcTrackPieceWhite)
-@include with-scroll($thSandSuffix, $bgcTrackPieceSand)
+@include with-scroll($thGreySuffix, $bgcTrackPieceGrey);
+@include with-scroll($thWhiteSuffix, $bgcTrackPieceWhite);
+@include with-scroll($thSandSuffix, $bgcTrackPieceSand);
