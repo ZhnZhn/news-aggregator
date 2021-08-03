@@ -1,43 +1,37 @@
-import { Component } from 'react'
+import React, { useCallback } from 'react';
 
-class MenuItem extends Component {
-   static defaultProps = {
-     onClick: () => {},
-     onClose: () => {}
-   }
+const _fnNoop = () => {};
 
-  _hKeyDown = (event) => {
-    const { keyCode } = event
-    if (keyCode === 13 ) {
-      this.props.onClick()
-    } else if (keyCode === 27 ) {
-      this.props.onClose({ target: this.divNode })
+const MenuItem = React.forwardRef(({
+  className,
+  caption,
+  onClick=_fnNoop,
+  onClose=_fnNoop
+}, ref) => {
+  /*eslint-disable react-hooks/exhaustive-deps */
+  const _hKeyDown = useCallback((event) => {
+    const { keyCode } = event;
+    if (keyCode === 13) {
+      onClick()
+    } else if (keyCode === 27) {
+      onClose({ target: ref.current })
     }
-  }
+  }, []);
+  //oncLick, onClose
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  _refDivNode = node => this.divNode = node
-
-  render(){
-    const { className, caption, onClick } = this.props;
-    return (
-      <div
-        ref={this._refDivNode}
-        role="menuitem"
-        className={className}
-        tabIndex="0"
-        onClick={onClick}
-        onKeyDown={this._hKeyDown}
-      >
-        {caption}
-      </div>
-    );
-  }
-
-  focus(){
-    if (this.divNode) {
-       this.divNode.focus()
-    }
-  }
-}
+  return (
+    <div
+      ref={ref}
+      role="menuitem"
+      className={className}
+      tabIndex="0"
+      onClick={onClick}
+      onKeyDown={_hKeyDown}
+    >
+      {caption}
+    </div>
+  );
+});
 
 export default MenuItem

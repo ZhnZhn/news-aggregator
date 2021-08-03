@@ -78,7 +78,6 @@ var PanelQuery = /*#__PURE__*/function (_Component) {
         onClick: onCryptoCompare,
         onClose: onClose
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
-        ref: this._refFirstItem,
         className: CL_ITEM,
         caption: "CoinStats: News",
         onClick: onCoinStats,

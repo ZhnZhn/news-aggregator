@@ -44,8 +44,7 @@ class PanelQuery extends Component {
             onClick={onCryptoCompare}
             onClose={onClose}
           />
-          <A.MenuItem
-            ref={this._refFirstItem}
+          <A.MenuItem            
             className={CL_ITEM}
             caption="CoinStats: News"
             onClick={onCoinStats}
