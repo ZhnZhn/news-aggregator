@@ -8,17 +8,14 @@ const MenuAriaItem = ({
   onReg,
   onClick
 }) => {
-  const _ref = useRef(null)
-  /*eslint-disable react-hooks/exhaustive-deps */
+  const _ref = useRef(null)  
   , _hKeyPress = useCallback((evt)=>{
     evt.preventDefault()
     const { which } = evt;
     if (which === 13 || which === 32) {
       onClick()
     }
-  }, []);
-  //onClick
-  /*eslint-enable react-hooks/exhaustive-deps */
+  }, [onClick]);
 
   useRegRef(onReg, _ref)
 
@@ -26,7 +23,7 @@ const MenuAriaItem = ({
     <div
       ref={onReg ? _ref : void 0}
       className={className}
-      style={style}      
+      style={style}
       role="menuitem"
       tabIndex="0"
       onClick={onClick}

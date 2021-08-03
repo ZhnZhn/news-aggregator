@@ -18,9 +18,7 @@ var MenuAriaItem = function MenuAriaItem(_ref2) {
       onReg = _ref2.onReg,
       onClick = _ref2.onClick;
 
-  var _ref = (0, _react.useRef)(null)
-  /*eslint-disable react-hooks/exhaustive-deps */
-  ,
+  var _ref = (0, _react.useRef)(null),
       _hKeyPress = (0, _react.useCallback)(function (evt) {
     evt.preventDefault();
     var which = evt.which;
@@ -28,10 +26,7 @@ var MenuAriaItem = function MenuAriaItem(_ref2) {
     if (which === 13 || which === 32) {
       onClick();
     }
-  }, []); //onClick
-
-  /*eslint-enable react-hooks/exhaustive-deps */
-
+  }, [onClick]);
 
   (0, _useRegRef["default"])(onReg, _ref);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
