@@ -1,4 +1,5 @@
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
+import useRegRef from '../hooks/useRegRef';
 
 import CaptionInput from './CaptionInput';
 
@@ -14,22 +15,13 @@ const ModalButton = ({
   onClick
 }) => {
   const _refBtNode = useRef(null);
-
-  /*eslint-disable react-hooks/exhaustive-deps */
-  useEffect(()=>{
-    if (typeof onReg == 'function'){
-      onReg(_refBtNode.current)
-    }
-    return () => { _refBtNode.current = null };
-  }, [])
-  //onReg
-  /*eslint-enable react-hooks/exhaustive-deps */
+  useRegRef(onReg, _refBtNode)
 
   return (
     <button
       ref={_refBtNode}
       className={CL_BT}
-      style={style}            
+      style={style}
       title={title}
       accessKey={accessKey}
       onClick={onClick}

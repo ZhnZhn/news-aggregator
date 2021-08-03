@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _react = require("react");
 
+var _useRegRef = _interopRequireDefault(require("../hooks/useRegRef"));
+
 var _CaptionInput = _interopRequireDefault(require("./CaptionInput"));
 
 var _jsxRuntime = require("react/jsx-runtime");
@@ -25,21 +27,8 @@ var ModalButton = function ModalButton(_ref) {
       onClick = _ref.onClick;
 
   var _refBtNode = (0, _react.useRef)(null);
-  /*eslint-disable react-hooks/exhaustive-deps */
 
-
-  (0, _react.useEffect)(function () {
-    if (typeof onReg == 'function') {
-      onReg(_refBtNode.current);
-    }
-
-    return function () {
-      _refBtNode.current = null;
-    };
-  }, []); //onReg
-
-  /*eslint-enable react-hooks/exhaustive-deps */
-
+  (0, _useRegRef["default"])(onReg, _refBtNode);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     ref: _refBtNode,
     className: CL_BT,
