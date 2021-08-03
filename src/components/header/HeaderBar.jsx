@@ -130,7 +130,7 @@ class HeaderBar extends Component {
             onClick={onNewsSources}
           />
           <A.ModalButton
-             rootStyle={S.BT.FLAT_ROOT}
+             style={S.BT.FLAT_ROOT}
              clDiv={S.BT.CL_FLAT_DIV}
              caption="Query"
              title="Panel Query Source"

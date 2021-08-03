@@ -161,7 +161,7 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
           accessKey: "n",
           onClick: onNewsSources
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].ModalButton, {
-          rootStyle: S.BT.FLAT_ROOT,
+          style: S.BT.FLAT_ROOT,
           clDiv: S.BT.CL_FLAT_DIV,
           caption: "Query",
           title: "Panel Query Source",
