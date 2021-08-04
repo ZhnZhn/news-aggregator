@@ -7,39 +7,38 @@ exports["default"] = void 0;
 
 var _react = require("react");
 
-var _useRegRef = _interopRequireDefault(require("../hooks/useRegRef"));
+var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var MenuAriaItem = function MenuAriaItem(_ref2) {
-  var className = _ref2.className,
-      style = _ref2.style,
-      children = _ref2.children,
-      onReg = _ref2.onReg,
-      onClick = _ref2.onClick;
+var MenuAriaItem = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
+  var className = _ref.className,
+      style = _ref.style,
+      children = _ref.children,
+      onClick = _ref.onClick,
+      onReg = _ref.onReg;
 
-  var _ref = (0, _react.useRef)(null),
-      _hKeyPress = (0, _react.useCallback)(function (evt) {
-    evt.preventDefault();
-    var which = evt.which;
+  var _hKeyDown = (0, _useKeyEnter["default"])(onClick);
 
-    if (which === 13 || which === 32) {
-      onClick();
-    }
-  }, [onClick]);
-
-  (0, _useRegRef["default"])(onReg, _ref);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    ref: onReg ? _ref : void 0,
+    ref: ref,
     className: className,
     style: style,
     role: "menuitem",
     tabIndex: "0",
     onClick: onClick,
-    onKeyPress: _hKeyPress,
+    onKeyDown: _hKeyDown,
     children: children
   });
-};
+});
+/*
+MenuAriaItem.propTypes = {
+  className: PropTypes.string,
+  style: PropTypes.string,
+  onClick: PropTypes.func,
+  onReg: PropTypes.func
+}
+*/
 
 var _default = MenuAriaItem;
 exports["default"] = _default;

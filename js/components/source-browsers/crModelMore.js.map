@@ -1,1 +1,21 @@
-{"version":3,"sources":["../../../src/components/source-browsers/crModelMore.js"],"names":["CL_ROW","crModelMore","onRemoveBadges","baseTitleCl","pageWidth","maxPages","p0","cn","name","onClick","isClose"],"mappings":";;;;AAAA,IAAMA,MAAM,GAAG,8BAAf;;AAEA,IAAMC,WAAW,GAAG,SAAdA,WAAc;AAAA,MAClBC,cADkB,QAClBA,cADkB;AAAA,SAEb;AACLC,IAAAA,WAAW,EAAEH,MADR;AAELI,IAAAA,SAAS,EAAE,GAFN;AAGLC,IAAAA,QAAQ,EAAE,CAHL;AAILC,IAAAA,EAAE,EAAE,CAAC;AACHC,MAAAA,EAAE,EAAEP,MADD;AAEHQ,MAAAA,IAAI,EAAE,mBAFH;AAGHC,MAAAA,OAAO,EAAEP,cAHN;AAIHQ,MAAAA,OAAO,EAAE;AAJN,KAAD;AAJC,GAFa;AAAA,CAApB;;eAceT,W","sourcesContent":["const CL_ROW = 'menu-more__item not-selected';\r\n\r\nconst crModelMore = ({\r\n  onRemoveBadges\r\n}) => ({\r\n  baseTitleCl: CL_ROW,\r\n  pageWidth: 186,\r\n  maxPages: 1,\r\n  p0: [{\r\n    cn: CL_ROW,\r\n    name: 'Remove All Badges',\r\n    onClick: onRemoveBadges,\r\n    isClose: true\r\n  }]\r\n})\r\n\r\nexport default crModelMore\r\n"],"file":"crModelMore.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/source-browsers/crModelMore.js"
+ ],
+ "file": "../../../src/components/source-browsers/crModelMore.js",
+ "names": [
+  "CL_ROW",
+  "crModelMore",
+  "onRemoveBadges",
+  "titleCl",
+  "pageWidth",
+  "maxPages",
+  "p0",
+  "cn",
+  "name",
+  "onClick",
+  "isClose"
+ ],
+ "mappings": ";;;;AAAA,IAAMA,MAAM,GAAG,8BAAf;;AAEA,IAAMC,WAAW,GAAG,SAAdA,WAAc;AAAA,MAClBC,cADkB,QAClBA,cADkB;AAAA,SAEb;AACLC,IAAAA,OAAO,EAAEH,MADJ;AAELI,IAAAA,SAAS,EAAE,GAFN;AAGLC,IAAAA,QAAQ,EAAE,CAHL;AAILC,IAAAA,EAAE,EAAE,CAAC;AACHC,MAAAA,EAAE,EAAEP,MADD;AAEHQ,MAAAA,IAAI,EAAE,mBAFH;AAGHC,MAAAA,OAAO,EAAEP,cAHN;AAIHQ,MAAAA,OAAO,EAAE;AAJN,KAAD;AAJC,GAFa;AAAA,CAApB;;eAceT,W"
+}

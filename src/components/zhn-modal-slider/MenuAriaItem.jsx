@@ -1,37 +1,38 @@
-import { useRef, useCallback } from 'react';
-import useRegRef from '../hooks/useRegRef';
+import { forwardRef } from 'react';
 
-const MenuAriaItem = ({
+import useKeyEnter from '../hooks/useKeyEnter';
+
+const MenuAriaItem = forwardRef(({
   className,
   style,
   children,
-  onReg,
-  onClick
-}) => {
-  const _ref = useRef(null)  
-  , _hKeyPress = useCallback((evt)=>{
-    evt.preventDefault()
-    const { which } = evt;
-    if (which === 13 || which === 32) {
-      onClick()
-    }
-  }, [onClick]);
-
-  useRegRef(onReg, _ref)
+  onClick,
+  onReg
+}, ref) => {
+  const _hKeyDown = useKeyEnter(onClick);
 
   return (
     <div
-      ref={onReg ? _ref : void 0}
+      ref={ref}
       className={className}
       style={style}
       role="menuitem"
       tabIndex="0"
       onClick={onClick}
-      onKeyPress={_hKeyPress}
+      onKeyDown={_hKeyDown}
     >
       {children}
     </div>
   );
-};
+})
+
+/*
+MenuAriaItem.propTypes = {
+  className: PropTypes.string,
+  style: PropTypes.string,
+  onClick: PropTypes.func,
+  onReg: PropTypes.func
+}
+*/
 
 export default MenuAriaItem

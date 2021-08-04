@@ -2,8 +2,8 @@ const CL_ROW = 'menu-more__item not-selected';
 
 const crModelMore = ({
   onRemoveBadges
-}) => ({
-  baseTitleCl: CL_ROW,
+}) => ({  
+  titleCl: CL_ROW,
   pageWidth: 186,
   maxPages: 1,
   p0: [{

@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import {  forwardRef } from 'react';
 
 import MenuAriaItem from './MenuAriaItem';
 
@@ -16,32 +16,35 @@ const S = {
   }
 };
 
-const MenuTitle = ({
-  baseTitleCl,
-  title, pageNumber,
-  onPrevPage,
-  onReg
-}) => {
-  const _hClick = useCallback(
-    () => onPrevPage(pageNumber),
-    [onPrevPage, pageNumber]
-  );
+const MenuTitle = forwardRef(({
+  titleCl,
+  title,
+  onClick
+}, ref) => {
   if (!title) { return null; }
   return (
-    <MenuAriaItem
-      className={baseTitleCl}
-      style={S.ITEM}
-      onClick={_hClick}
-      onReg={onReg}
-    >
-      <span style={S.PREV_PAGE}>
-        {'<'}
-      </span>
-      <span style={S.TITLE}>
-        {title}
-      </span>
-    </MenuAriaItem>
-  );
+      <MenuAriaItem
+        ref={ref}
+        className={titleCl}
+        style={S.ITEM}
+        onClick={onClick}
+      >
+        <span style={S.PREV_PAGE}>
+          {"<"}
+        </span>
+        <span style={S.TITLE}>
+          {title}
+        </span>
+      </MenuAriaItem>
+  )
+});
+
+/*
+MenuTitle.propTypes = {
+  titleCl: PropTypes.string,
+  title: PropTypes.string,
+  onClick: PropTypes.func
 }
+*/
 
 export default MenuTitle

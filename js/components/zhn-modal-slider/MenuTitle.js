@@ -24,36 +24,36 @@ var S = {
     paddingLeft: 16
   }
 };
-
-var MenuTitle = function MenuTitle(_ref) {
-  var baseTitleCl = _ref.baseTitleCl,
+var MenuTitle = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
+  var titleCl = _ref.titleCl,
       title = _ref.title,
-      pageNumber = _ref.pageNumber,
-      onPrevPage = _ref.onPrevPage,
-      onReg = _ref.onReg;
-
-  var _hClick = (0, _react.useCallback)(function () {
-    return onPrevPage(pageNumber);
-  }, [onPrevPage, pageNumber]);
+      onClick = _ref.onClick;
 
   if (!title) {
     return null;
   }
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_MenuAriaItem["default"], {
-    className: baseTitleCl,
+    ref: ref,
+    className: titleCl,
     style: S.ITEM,
-    onClick: _hClick,
-    onReg: onReg,
+    onClick: onClick,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       style: S.PREV_PAGE,
-      children: '<'
+      children: "<"
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       style: S.TITLE,
       children: title
     })]
   });
-};
+});
+/*
+MenuTitle.propTypes = {
+  titleCl: PropTypes.string,
+  title: PropTypes.string,
+  onClick: PropTypes.func
+}
+*/
 
 var _default = MenuTitle;
 exports["default"] = _default;

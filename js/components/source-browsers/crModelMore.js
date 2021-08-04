@@ -7,7 +7,7 @@ var CL_ROW = 'menu-more__item not-selected';
 var crModelMore = function crModelMore(_ref) {
   var onRemoveBadges = _ref.onRemoveBadges;
   return {
-    baseTitleCl: CL_ROW,
+    titleCl: CL_ROW,
     pageWidth: 186,
     maxPages: 1,
     p0: [{

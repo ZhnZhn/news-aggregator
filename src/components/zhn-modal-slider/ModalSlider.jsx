@@ -1,13 +1,12 @@
-import { cloneElement, Component } from 'react'
+import { useState, useCallback, useEffect } from 'react';
 
-import throttleOnce from '../../utils/throttleOnce'
+import useHasMounted from '../hooks/useHasMounted';
+import throttleOnce from '../../utils/throttleOnce';
 
-import ModalPane from '../zhn-moleculs/ModalPane'
-import ShowHide from '../zhn-atoms/ShowHide'
-
-import MenuPage from './MenuPage'
-
-const PERIOD_MS = 750;
+import ModalPane from '../zhn-moleculs/ModalPane';
+import ShowHide from '../zhn-atoms/ShowHide';
+import MenuPage from './MenuPage';
+import MenuPages from './MenuPages';
 
 const S = {
   SHOW_HIDE: {
@@ -19,120 +18,97 @@ const S = {
     flexFlow: 'row nowrap',
     alignItems: 'flex-start',
     overflowX: 'hidden',
-    transition: `all ${PERIOD_MS}ms ease-out`
+    transition: 'all 750ms ease-out'
   }
 };
 
-const _getTranslateX = (node) => {
-  const _prevStr = node
-    .style.transform
-    .substr(11)
-    .replace('px', '')
-    .replace(')', '');
-  return parseInt(_prevStr, 10);
+/*
+static propTypes = {
+  rootStyle: PropTypes.object,
+  className: PropTypes.string,
+  style: PropTypes.object,
+
+  pageWidth: PropTypes.number,
+  maxPages: PropTypes.number,
+  model: PropTypes.object,
+
+  onClose: PropTypes.func
+}
+*/
+
+
+const DF_INIT_ID = 'p0'
+const DF_MODEL = {
+  pageWidth: 100,
+  maxPages: 2,
+  initId: DF_INIT_ID,
+  p0: []
+};
+
+const _initState = model => {
+  const _pW = model.pageWidth
+  , _maxP = model.maxPages
+  , _initId = model.initId || DF_INIT_ID;
+
+  return {
+    pageWidth: _pW,
+    pagesStyle: {
+      width: `${_maxP*_pW}px`
+    },
+    pageStyle: {
+      width: `${_pW}px`
+    },
+    pageCurrent: 1,
+    pages: [
+      <MenuPage
+        key={_initId}
+        items={model[_initId]}
+        titleCl={model.titleCl}
+        itemCl={model.itemCl}
+      />
+    ]
+  };
 }
 
-class ModalSlider extends Component {
-  /*
-  static propTypes = {
-    rootStyle: PropTypes.object,
-    className: PropTypes.string,
-    style: PropTypes.object,
 
-    pageWidth: PropTypes.number,
-    maxPages: PropTypes.number,
-    model: PropTypes.object,
+const _addPage = (pages, id, title, model) => {
+  pages.push((
+    <MenuPage
+      key={id}
+      title={title}
+      items={model[id]}
+      titleCl={model.titleCl}
+      itemCl={model.itemCl}
+    />
+  ))
+};
 
-    onClose: PropTypes.func
-  }
-  */
+const _crTransform = (pageWidth, pageCurrent) => {
+  const _dX = -1*pageWidth*(pageCurrent - 1)+0;
+  return { transform: `translateX(${_dX}px)` };
+};
 
-  static defaultProps = {
-    INIT_ID: 'p0',
-    model: {
-      pageWidth: 100,
-      maxPages: 2,
-      p0: []
-    }
-  }
+const ModalSlider = ({
+  model=DF_MODEL,
+  isShow, className,
+  rootStyle, style,
+  onClose
+}) => {
+  const [state, setState] = useState(() => _initState(model))
+  , {
+     pageWidth, pagesStyle, pageStyle,
+     pageCurrent, pages
+   } = state
+   /*eslint-disable react-hooks/exhaustive-deps */
+  , hPrevPage = useCallback(throttleOnce((pageNumber) => {
+     setState(prevState => {
+       prevState.pageCurrent = pageNumber - 1
+       return {...prevState};
+     })
+  }), [])
 
-  constructor(props){
-    super()
-    const {
-            INIT_ID,
-            pageWidth, maxPages,
-            model,
-            onClose
-          } = props
-          , _pW = model.pageWidth || pageWidth
-          , _maxP = model.maxPages || maxPages
-          , pages = [];
-
-    this.hNextPage = throttleOnce(
-      this.hNextPage.bind(this)
-    )
-    this.hPrevPage = throttleOnce(
-      this.hPrevPage.bind(this)
-    )
-
-    this._PAGE_WIDTH = _pW
-    this._pagesStyle = {
-      width: `${_maxP*_pW}px`
-    }
-    this._pageStyle = {
-      width: `${_pW}px`,
-    }
-
-    pages.push((
-      <MenuPage
-        key={INIT_ID}
-        style={this._pageStyle}
-        items={model[INIT_ID]}
-        baseTitleCl={model.baseTitleCl}
-        itemCl={model.itemCl}
-        onNextPage={this.hNextPage}
-        onClose={onClose}
-      />
-    ))
-
-    this._direction = 0
-
-    this.state = {
-      pageCurrent: 1,
-      pages
-    }
-  }
-
-
-  hPrevPage = (pageNumber) => {
-    this.setState(prevState => {
-      prevState.pageCurrent = pageNumber - 1
-      this._direction = -1
-      return prevState;
-    })
-  }
-
-  _addPage = (pages, id, title) => {
-    const {
-            model,
-            onClose
-          } = this.props;
-    pages.push((
-      <MenuPage
-        key={id}
-        style={this._pageStyle}
-        title={title}
-        items={model[id]}
-        baseTitleCl={model.baseTitleCl}
-        itemCl={model.itemCl}
-        onPrevPage={this.hPrevPage}
-        onClose={onClose}
-      />
-    ))
-  }
-
-  hNextPage = (id, title, pageNumber) => {
-    this.setState(prevState => {
+  , hNextPage = useCallback(throttleOnce((id, title, pageNumber)=>{
+     setState(prevState => {
        const { pages } = prevState
           , _max = pages.length-1;
 
@@ -143,63 +119,41 @@ class ModalSlider extends Component {
            } else {
              prevState.pages = []
            }
-           this._addPage(prevState.pages, id, title)
+           _addPage(prevState.pages, id, title, model)
         }
       } else {
-        this._addPage(pages, id, title)
+        _addPage(pages, id, title, model)
       }
 
       prevState.pageCurrent = pageNumber + 1
-      //prevState.direction = 1
-      this._direction = 1
-      return prevState;
-    })
-  }
+      return {...prevState};
+     })
+  }), [model])
+  /*eslint-enable react-hooks/exhaustive-deps */
+  , _hasMounted = useHasMounted();
 
-  _crTransform = () => {
-    const _WIDTH = this._PAGE_WIDTH;
-    let dX = '0';
-    if (this._direction !== 0 && this._pagesNode) {
-      const _prevInt = _getTranslateX(this._pagesNode);
-      dX = this._direction === 1
-         ? _prevInt-_WIDTH
-         : _prevInt+_WIDTH
-      this._direction = 0
-    } else if ( this._direction === 0 && this._pagesNode) {
-      dX = _getTranslateX(this._pagesNode)
+  /*eslint-disable react-hooks/exhaustive-deps */
+  useEffect(() => {
+    if (!_hasMounted) {
+      setState(_initState(model))
     }
+  }, [model])
+  // _hasMounted
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-    return { transform: `translateX(${dX}px)` };
-  }
 
-  _refPages = n => this._pagesNode = n
+  const _showHideStyle = {
+    ...style,
+    ...S.SHOW_HIDE,
+    ...pageStyle
+  }, _divStyle = {
+    ...S.PAGES,
+    ...pagesStyle,
+    ..._crTransform(pageWidth, pageCurrent)
+  };
 
-  _renderPages = () => {
-    const { pages, pageCurrent } = this.state;
-    return pages.map((Page, index) => {
-      return cloneElement(Page, {
-        pageCurrent,
-        //pageNumber: index,
-        pageNumber: index + 1,
-      });
-    })
-  }
 
-  render(){
-    const { _pagesStyle, _pageStyle } = this
-        , { isShow, className, rootStyle, style, onClose } = this.props
-        , _transform = this._crTransform()
-        , _showHideStyle = {
-            ...style,
-            ...S.SHOW_HIDE,
-            ..._pageStyle
-          }
-        , _divStyle = {
-             ...S.PAGES,
-             ..._pagesStyle,
-             ..._transform
-           };
-    return (
+  return (
       <ModalPane
         isShow={isShow}
         style={rootStyle}
@@ -210,16 +164,20 @@ class ModalSlider extends Component {
           style={_showHideStyle}
           isShow={isShow}
         >
-          <div
-            ref={this._refPages}
-            style={_divStyle}
-          >
-            {this._renderPages()}
+          <div style={_divStyle}>
+            <MenuPages
+              isShow={isShow}
+              style={pageStyle}
+              pages={pages}
+              pageCurrent={pageCurrent}
+              onNextPage={hNextPage}
+              onPrevPage={hPrevPage}
+              onClose={onClose}
+            />
           </div>
         </ShowHide>
       </ModalPane>
-    );
-  }
-}
+  );
+};
 
 export default ModalSlider

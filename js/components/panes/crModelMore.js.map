@@ -1,1 +1,28 @@
-{"version":3,"sources":["../../../src/components/panes/crModelMore.js"],"names":["CL_ROW","crModelMore","onMinWidth","onInitWidth","onPlusWidth","onMinusWidth","onRemoveItems","baseTitleCl","pageWidth","maxPages","p0","id","type","cn","name","onClick","isClose","p1"],"mappings":";;;;AACA,IAAMA,MAAM,GAAG,8BAAf;;AAEA,IAAMC,WAAW,GAAG,SAAdA,WAAc,OAId;AAAA,MAHJC,UAGI,QAHJA,UAGI;AAAA,MAHQC,WAGR,QAHQA,WAGR;AAAA,MAFJC,WAEI,QAFJA,WAEI;AAAA,MAFSC,YAET,QAFSA,YAET;AAAA,MADJC,aACI,QADJA,aACI;AACJ,SAAO;AACLC,IAAAA,WAAW,EAAEP,MADR;AAELQ,IAAAA,SAAS,EAAE,GAFN;AAGLC,IAAAA,QAAQ,EAAE,CAHL;AAILC,IAAAA,EAAE,EAAE,CACF;AACEC,MAAAA,EAAE,EAAE,IADN;AAEEC,MAAAA,IAAI,EAAE,KAFR;AAGEC,MAAAA,EAAE,EAAEb,MAHN;AAIEc,MAAAA,IAAI,EAAE;AAJR,KADE,EAMA;AACAD,MAAAA,EAAE,EAAEb,MADJ;AAEAc,MAAAA,IAAI,EAAE,kBAFN;AAGAC,MAAAA,OAAO,EAAET,aAHT;AAIAU,MAAAA,OAAO,EAAE;AAJT,KANA,CAJC;AAiBLC,IAAAA,EAAE,EAAE,CACF;AACEJ,MAAAA,EAAE,EAAEb,MADN;AAEEc,MAAAA,IAAI,EAAE,aAFR;AAGEC,MAAAA,OAAO,EAAEb;AAHX,KADE,EAKA;AACAW,MAAAA,EAAE,EAAEb,MADJ;AAEAc,MAAAA,IAAI,EAAE,cAFN;AAGAC,MAAAA,OAAO,EAAEZ;AAHT,KALA,EASA;AACAU,MAAAA,EAAE,EAAEb,MADJ;AAEAc,MAAAA,IAAI,EAAE,gBAFN;AAGAC,MAAAA,OAAO,EAAEX;AAHT,KATA,EAaA;AACAS,MAAAA,EAAE,EAAEb,MADJ;AAEAc,MAAAA,IAAI,EAAE,gBAFN;AAGAC,MAAAA,OAAO,EAAEV;AAHT,KAbA;AAjBC,GAAP;AAqCD,CA1CD;;eA4CeJ,W","sourcesContent":["\r\nconst CL_ROW = 'menu-more__item not-selected';\r\n\r\nconst crModelMore = ({\r\n  onMinWidth, onInitWidth,\r\n  onPlusWidth, onMinusWidth,\r\n  onRemoveItems\r\n}) => {\r\n  return {\r\n    baseTitleCl: CL_ROW,\r\n    pageWidth: 180,\r\n    maxPages: 2,\r\n    p0: [\r\n      {\r\n        id: 'p1',\r\n        type: 'sub',\r\n        cn: CL_ROW,\r\n        name: 'Resize'\r\n      },{\r\n        cn: CL_ROW,\r\n        name: 'Remove All Items',\r\n        onClick: onRemoveItems,\r\n        isClose: true\r\n      }\r\n    ],\r\n    p1: [\r\n      {\r\n        cn: CL_ROW,\r\n        name: 'to MinWidth',\r\n        onClick: onMinWidth\r\n      },{\r\n        cn: CL_ROW,\r\n        name: 'to InitWidth',\r\n        onClick: onInitWidth\r\n      },{\r\n        cn: CL_ROW,\r\n        name: '+10px to Width',\r\n        onClick: onPlusWidth\r\n      },{\r\n        cn: CL_ROW,\r\n        name: '-10px to Width',\r\n        onClick: onMinusWidth\r\n      }\r\n    ]\r\n  };\r\n}\r\n\r\nexport default crModelMore\r\n"],"file":"crModelMore.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/panes/crModelMore.js"
+ ],
+ "file": "../../../src/components/panes/crModelMore.js",
+ "names": [
+  "CL_ROW",
+  "crModelMore",
+  "onMinWidth",
+  "onInitWidth",
+  "onPlusWidth",
+  "onMinusWidth",
+  "onRemoveItems",
+  "titleCl",
+  "pageWidth",
+  "maxPages",
+  "p0",
+  "id",
+  "type",
+  "cn",
+  "name",
+  "onClick",
+  "isClose",
+  "p1"
+ ],
+ "mappings": ";;;;AACA,IAAMA,MAAM,GAAG,8BAAf;;AAEA,IAAMC,WAAW,GAAG,SAAdA,WAAc,OAId;AAAA,MAHJC,UAGI,QAHJA,UAGI;AAAA,MAHQC,WAGR,QAHQA,WAGR;AAAA,MAFJC,WAEI,QAFJA,WAEI;AAAA,MAFSC,YAET,QAFSA,YAET;AAAA,MADJC,aACI,QADJA,aACI;AACJ,SAAO;AACLC,IAAAA,OAAO,EAAEP,MADJ;AAELQ,IAAAA,SAAS,EAAE,GAFN;AAGLC,IAAAA,QAAQ,EAAE,CAHL;AAILC,IAAAA,EAAE,EAAE,CACF;AACEC,MAAAA,EAAE,EAAE,IADN;AAEEC,MAAAA,IAAI,EAAE,KAFR;AAGEC,MAAAA,EAAE,EAAEb,MAHN;AAIEc,MAAAA,IAAI,EAAE;AAJR,KADE,EAMA;AACAD,MAAAA,EAAE,EAAEb,MADJ;AAEAc,MAAAA,IAAI,EAAE,kBAFN;AAGAC,MAAAA,OAAO,EAAET,aAHT;AAIAU,MAAAA,OAAO,EAAE;AAJT,KANA,CAJC;AAiBLC,IAAAA,EAAE,EAAE,CACF;AACEJ,MAAAA,EAAE,EAAEb,MADN;AAEEc,MAAAA,IAAI,EAAE,aAFR;AAGEC,MAAAA,OAAO,EAAEb;AAHX,KADE,EAKA;AACAW,MAAAA,EAAE,EAAEb,MADJ;AAEAc,MAAAA,IAAI,EAAE,cAFN;AAGAC,MAAAA,OAAO,EAAEZ;AAHT,KALA,EASA;AACAU,MAAAA,EAAE,EAAEb,MADJ;AAEAc,MAAAA,IAAI,EAAE,gBAFN;AAGAC,MAAAA,OAAO,EAAEX;AAHT,KATA,EAaA;AACAS,MAAAA,EAAE,EAAEb,MADJ;AAEAc,MAAAA,IAAI,EAAE,gBAFN;AAGAC,MAAAA,OAAO,EAAEV;AAHT,KAbA;AAjBC,GAAP;AAqCD,CA1CD;;eA4CeJ,W"
+}

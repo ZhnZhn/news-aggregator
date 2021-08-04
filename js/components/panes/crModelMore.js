@@ -11,7 +11,7 @@ var crModelMore = function crModelMore(_ref) {
       onMinusWidth = _ref.onMinusWidth,
       onRemoveItems = _ref.onRemoveItems;
   return {
-    baseTitleCl: CL_ROW,
+    titleCl: CL_ROW,
     pageWidth: 180,
     maxPages: 2,
     p0: [{
