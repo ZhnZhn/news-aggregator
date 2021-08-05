@@ -1,69 +1,60 @@
-import { Component } from 'react'
+import { useState, useMemo } from 'react';
 
-import withTheme from '../hoc/withTheme'
-import styleConfig from './NewsBrowser.Style'
+import useListen from '../hooks/useListen';
+import useTheme from '../hooks/useTheme';
 
-import DynamicMenuBrowser from '../zhn-moleculs/DynamicMenuBrowser'
-import PoweredBy from '../links/PoweredBy'
-import Link from '../links/Links'
-import crModelMore from './crModelMore'
+import styleConfig from './NewsBrowser.Style';
 
-class NewsBrowser extends Component {
+import DynamicMenuBrowser from '../zhn-moleculs/DynamicMenuBrowser';
+import PoweredBy from '../links/PoweredBy';
+import Link from '../links/Links';
+import crModelMore from './crModelMore';
 
-  constructor(props){
-    super(props)
-    this._menuMore = crModelMore({
-      onRemoveBadges: props.onRemoveBadges
-    })
-    this.state = {
-      itemData: {}
+const NewsBrowser = ({
+  store,
+  browserId,
+  showAction,
+  updateAction,
+  onClick,
+  onError,
+  onClickBadge,
+  onRemoveBadges
+}) => {
+  const TS = useTheme(styleConfig)
+  , [itemData, setItemData] = useState({})
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _menuMore = useMemo(
+      () => crModelMore({ onRemoveBadges }),
+      []);
+  //onRemoveBadges
+  /*eslint-enable react-hooks/exhaustive-deps */
+
+
+  useListen(store, (actionType, option) => {
+    if (actionType === updateAction && option.id === browserId ){
+      setItemData({...option.data})
     }
-  }
+  })
 
-
-  componentDidMount(){
-    this.unsubscribe = this.props.store.listen(this._onStore)
-  }
-  componentWillUnmount(){
-    this.unsubscribe()
-  }
-
-  _onStore = (actionType, option) => {
-      const { updateAction, browserId } = this.props;
-      if (actionType === updateAction && option.id === browserId ){
-        this.setState({ itemData: option.data })
-      }
-  }
-
-  render(){
-    const {
-        store, showAction, browserId,
-        theme,
-        onClick, onError,
-        onClickBadge
-      } = this.props
-    , S = theme.createStyle(styleConfig)
-    , { itemData } = this.state;
-    return (
-      <DynamicMenuBrowser
-         styleConfig={S}
-         caption="News Sources"
-         url="data/news-source-menu.json"
-         store={store}
-         browserId={browserId}
-         itemData={itemData}
-         showAction={showAction}
-         menuMore={this._menuMore}
-         onClick={onClick}
-         onError={onError}
-         onClickBadge={onClickBadge}
-      >
-         <PoweredBy>
-           <Link.NewsApi />
-         </PoweredBy>
-      </DynamicMenuBrowser>
-    );
-  }
+  return (
+    <DynamicMenuBrowser
+       styleConfig={TS}
+       caption="News Sources"
+       url="data/news-source-menu.json"
+       store={store}
+       browserId={browserId}
+       itemData={itemData}
+       showAction={showAction}
+       menuMore={_menuMore}
+       onClick={onClick}
+       onError={onError}
+       onClickBadge={onClickBadge}
+    >
+       <PoweredBy>
+         <Link.NewsApi />
+       </PoweredBy>
+    </DynamicMenuBrowser>
+  );
 }
 
-export default withTheme(NewsBrowser)
+export default NewsBrowser
