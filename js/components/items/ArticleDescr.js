@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _react = require("react");
 
 var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
@@ -46,76 +44,61 @@ var S = {
   }
 };
 
-var ArticleDescr = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(ArticleDescr, _Component);
+var ArticleDescr = function ArticleDescr(_ref) {
+  var style = _ref.style,
+      isShow = _ref.isShow,
+      url = _ref.url,
+      description = _ref.description,
+      related = _ref.related,
+      publishedAt = _ref.publishedAt,
+      author = _ref.author,
+      onHide = _ref.onHide;
 
-  function ArticleDescr() {
-    var _this;
+  /*eslint-disable react-hooks/exhaustive-deps */
+  var _hKeyDown = (0, _react.useCallback)(function (evt) {
+    var keyCode = evt.keyCode;
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
+    if (keyCode === 13) {
+      window.open(url, '_blank');
+    } else if (keyCode === 27) {
+      onHide();
     }
+  }, []); //url, onHide
 
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-    _this._hKeyDown = function (event) {
-      var keyCode = event.keyCode;
 
-      if (keyCode === 13) {
-        window.open(_this.props.url, '_blank');
-      } else if (keyCode === 27) {
-        _this.props.onHide();
-      }
-    };
-
-    return _this;
-  }
-
-  var _proto = ArticleDescr.prototype;
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        style = _this$props.style,
-        isShow = _this$props.isShow,
-        url = _this$props.url,
-        description = _this$props.description,
-        related = _this$props.related,
-        publishedAt = _this$props.publishedAt,
-        author = _this$props.author;
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ShowHide["default"], {
-      style: style,
-      isShow: isShow,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        role: "link",
-        tabIndex: "0",
-        className: CL_DIV,
-        onKeyDown: this._hKeyDown,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
-          href: url,
-          tabIndex: "-1",
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-            style: S.DESCR,
-            children: description
-          })
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ShowHide["default"], {
+    style: style,
+    isShow: isShow,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      role: "link",
+      tabIndex: "0",
+      className: CL_DIV,
+      onKeyDown: _hKeyDown,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+        href: url,
+        tabIndex: "-1",
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: S.DESCR,
+          children: description
         })
-      }), related && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        style: S.DESCR,
-        children: related
-      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-        style: S.AUTHOR_ROOT,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-          style: S.DATE,
-          children: publishedAt
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-          style: S.AUTHOR,
-          children: author
-        })]
+      })
+    }), related && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      style: S.DESCR,
+      children: related
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: S.AUTHOR_ROOT,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        style: S.DATE,
+        children: publishedAt
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        style: S.AUTHOR,
+        children: author
       })]
-    });
-  };
-
-  return ArticleDescr;
-}(_react.Component);
+    })]
+  });
+};
 
 var _default = ArticleDescr;
 exports["default"] = _default;

@@ -1,6 +1,6 @@
-import { Component } from 'react'
+import { useCallback } from 'react';
 
-import ShowHide from '../zhn-atoms/ShowHide'
+import ShowHide from '../zhn-atoms/ShowHide';
 
 const CL_DIV = "link-wrapper";
 
@@ -36,57 +36,58 @@ const S = {
   }
 }
 
-class ArticleDescr extends Component {
-
-  _hKeyDown = (event) => {
-    const keyCode = event.keyCode;
+const ArticleDescr = ({
+  style, isShow,
+  url, description, related,
+  publishedAt, author,
+  onHide
+}) => {
+  /*eslint-disable react-hooks/exhaustive-deps */
+  const _hKeyDown = useCallback(evt => {
+    const { keyCode } = evt
     if (keyCode === 13) {
-      window.open(this.props.url, '_blank')
+      window.open(url, '_blank')
     } else if (keyCode === 27) {
-      this.props.onHide()
+      onHide()
     }
-  }
-
-  render(){
-    const {
-      style, isShow,
-      url, description, related,
-      publishedAt, author
-    } = this.props;
-    return (
-      <ShowHide
-        style={style}
-        isShow={isShow}
-      >
-          <div
-            role="link"
-            tabIndex="0"
-            className={CL_DIV}
-            onKeyDown={this._hKeyDown}
-          >
-            <a href={url} tabIndex="-1">
-              <span style={S.DESCR}>
-                 {description}
-              </span>
-            </a>
-          </div>
-          {
-            related &&
-            <div style={S.DESCR}>
-              {related}
-            </div>
-          }
-          <div style={S.AUTHOR_ROOT}>
-            <span style={S.DATE}>
-               {publishedAt}
+  }, [])
+  //url, onHide
+  /*eslint-enable react-hooks/exhaustive-deps */
+  return (
+    <ShowHide
+      style={style}
+      isShow={isShow}
+    >
+        <div
+          role="link"
+          tabIndex="0"
+          className={CL_DIV}
+          onKeyDown={_hKeyDown}
+        >
+          <a href={url} tabIndex="-1">
+            <span style={S.DESCR}>
+               {description}
             </span>
-            <span style={S.AUTHOR}>
-              {author}
-            </span>
+          </a>
+        </div>
+        {
+          related &&
+          <div style={S.DESCR}>
+            {related}
           </div>
-      </ShowHide>
-    );
-  }
+        }
+        <div style={S.AUTHOR_ROOT}>
+          <span style={S.DATE}>
+             {publishedAt}
+          </span>
+          <span style={S.AUTHOR}>
+            {author}
+          </span>
+        </div>
+    </ShowHide>
+  );
 }
+
+
 
 export default ArticleDescr
