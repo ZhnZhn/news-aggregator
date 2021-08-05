@@ -1,0 +1,15 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/useListen.js"
+ ],
+ "file": "../../../src/components/hooks/useListen.js",
+ "names": [
+  "useListen",
+  "store",
+  "onStore",
+  "propNameListen",
+  "unsubscribe"
+ ],
+ "mappings": ";;;;;AAAA;;AAEA;AACA,IAAMA,SAAS,GAAG,SAAZA,SAAY,CAACC,KAAD,EAAQC,OAAR,EAAiBC,cAAjB,EAA6C;AAAA,MAA5BA,cAA4B;AAA5BA,IAAAA,cAA4B,GAAb,QAAa;AAAA;;AAC7D,wBAAU,YAAM;AACd,QAAMC,WAAW,GAAGH,KAAK,CAACE,cAAD,CAAL,CAAsBD,OAAtB,CAApB;AACA,WAAOE,WAAP;AACD,GAHD,EAGG,EAHH,EAD6D,CAK7D;AACD,CAND;AAOA;;;eAEeJ,S"
+}
