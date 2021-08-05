@@ -1,16 +1,24 @@
-import { Component } from 'react'
+import { forwardRef, useCallback } from 'react';
 
-import SvgX from '../zhn-atoms/SvgX'
+import SvgX from '../zhn-atoms/SvgX';
 
-class ItemHeader extends Component {
-  _handleClose = (event) => {
-    event.stopPropagation()
-    this.props.onClose()
-  }
-
-  _handleKeyDown = (event) => {
-    const keyCode = event.keyCode;
-    const { isShow, onClick, onClose, onHide } = this.props;
+const ItemHeader = forwardRef(({
+  isShow,
+  className,
+  style, captionStyle, btCloseStyle,
+  title,
+  onClick,
+  onHide,
+  onClose
+}, ref) => {
+  /*eslint-disable react-hooks/exhaustive-deps */
+  const _hClose = useCallback(evt => {
+    evt.stopPropagation()
+    onClose()
+  }, [])
+  //onClose
+  , _hKeyDown = useCallback(evt => {
+    const { keyCode } = evt;
     if (keyCode === 13) {
       if (!isShow) {
         onClick()
@@ -22,46 +30,32 @@ class ItemHeader extends Component {
     } else if (keyCode === 8 || keyCode === 46) {
       onClose()
     }
-  }
+  }, [isShow])
+  //onClick, onHide, onClose
+  /*eslint-enable react-hooks/exhaustive-deps */
 
- _refRoot = node => this.rootNode = node
-
-  render(){
-    const {
-            className,
-            style, captionStyle, btCloseStyle,
-            title,
-            onClick
-          } = this.props;
-    return (
-      <div
-        role="button"
-        ref={this._refRoot}
-        tabIndex="0"
-        className={className}
-        style={style}
-        onClick={onClick}
-        onKeyDown={this._handleKeyDown}
+  return (
+    <div
+      role="button"
+      ref={ref}
+      tabIndex="0"
+      className={className}
+      style={style}
+      onClick={onClick}
+      onKeyDown={_hKeyDown}
+    >
+      <span
+         className="not-selected"
+         style={captionStyle}
       >
-        <span
-           className="not-selected"
-           style={captionStyle}
-        >
-           {title}
-        </span>
-        <SvgX
-            style={btCloseStyle}
-            onClick={this._handleClose}
-        />
-      </div>
-    );
-  }
-
-  focus() {
-    if (this.rootNode && this.rootNode.focus) {
-      this.rootNode.focus()
-    }
-  }
-}
+         {title}
+      </span>
+      <SvgX
+          style={btCloseStyle}
+          onClick={_hClose}
+      />
+    </div>
+  );
+});
 
 export default ItemHeader
