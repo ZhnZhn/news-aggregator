@@ -1,15 +1,13 @@
-import { createRef, Component } from 'react';
+import { forwardRef, useRef, useState, useCallback } from 'react';
+
+import useTheme from '../hooks/useTheme'
+import styleConfig from './Article.Style';
 
 import dt from '../../utils/dt';
-
-import withTheme from '../hoc/withTheme';
-import styleConfig from './Article.Style';
 
 import GestureSwipeX from '../zhn-gesture/GestureSwipeX';
 import ItemHeader from './ItemHeader';
 import ArticleDescr from './ArticleDescr';
-
-
 
 const CL_ITEM_HEADER = "article-header";
 
@@ -76,126 +74,109 @@ const _focusNextArticle = (nodeArticle) => {
   }
 };
 
+const _fnNoop = () => {};
 
-class Article extends Component {
+const Article = forwardRef(({
+  item,
+  onCloseItem,
+  onRemoveUnder=_fnNoop,
+  onRemoveItem=_fnNoop
+}, ref) => {
+  const _refArticle = useRef(null)
+  , _refTimeStamp = useRef(null)
+ , [isClosed, setIsClosed] = useState(false)
+ , [isShow, setIsShow] = useState(false)
+ , _hToggle = useCallback(evt => {
+   const { timeStamp } = evt || {}
+   , _timeStamp = _refTimeStamp.current
+   if (timeStamp && _timeStamp
+       && timeStamp - _timeStamp < 200) {
+      return;
+   }
+   _refTimeStamp.current = timeStamp
+   setIsShow(is => !is)
+ }, [])
+ , _hClose = useCallback(() => {
+   _focusNextArticle(_refArticle.current)
+   onCloseItem(item)
+   setIsClosed(true)
+ }, [])
+ //item, onCloseItem
+ , _hHide = useCallback(()=>{
+   const _node = (ref || {}).current;
+   if (_node) {
+     _node.focus()
+   }
+   setIsShow(false)
+ }, [])
+ // ref
+ , _setTimeStamp = useCallback(timeStamp => {
+   _refTimeStamp.current = timeStamp
+ }, [])
+ , _onGestureSwipeX = useCallback(dX => {
+   if (dX > DX_REMOVE_UNDER) {
+     onRemoveUnder(item)
+     return false;
+   } else if (dX > DX_REMOVE_ITEM){
+     _hClose()
+     return false;
+   }
+   return true;
+ }, [])
+ // _hClose, item, omRemoveUnder
+ , TS = useTheme(styleConfig)
 
-  static defaultProps = {
-    onRemoveUnder: () => {},
-    onRemoveItem: () => {}
-  }
+  const { title, author,
+      publishedDate, publishedAt,
+      url, related
+      //, urlToImage
+    } = item
+  , description = item.description || 'More...'
+  , _headerStyle = isShow
+       ? {...S.HEADER, ...S.HEADER_OPEN}
+       : S.HEADER
+  , _captionStyle = isShow
+       ? {...S.CAPTION, ...S.CAPTION_OPEN}
+       : S.CAPTION
+  , _publishedAt = publishedDate
+       || dt.toTimeDate(publishedAt)
+  , _rootStyle = isClosed
+       ? S.NONE
+       : void 0;
 
-  constructor(props) {
-    super(props)
 
-    this._refArticle = createRef()
-    
-    this.state = {
-      isClosed: false,
-      isShow: false
-    }
-  }
+  return (
+    <GestureSwipeX
+      divRef={_refArticle}
+      style={{...S.ROOT, ..._rootStyle}}
+      setTimeStamp={_setTimeStamp}
+      onGesture={_onGestureSwipeX}
+    >
+      <ItemHeader
+         ref={ref}
+         className={CL_ITEM_HEADER}
+         style={{ ..._headerStyle, ...TS.HEADER }}
+         captionStyle={_captionStyle}
+         btCloseStyle={S.SVG_CLOSE}
+         title={title}
+         url={url}
+         isShow={isShow}
+         onClick={_hToggle}
+         onClose={_hClose}
+         onHide={_hHide}
+      />
+      <ArticleDescr
+         style={TS.DESCR}
+         isShow={isShow}
+         url={url}
+         description={description}
+         related={related}
+         publishedAt={_publishedAt}
+         author={author}
+         onHide={_hHide}
+      />
+    </GestureSwipeX>
+  );
+});
 
-  _handleToggle = (evt) => {
-    const { timeStamp } = evt || {};
-    if (timeStamp && this._toggleTimeStamp
-        && timeStamp - this._toggleTimeStamp < 200) {
-       return;
-    }
-    this._toggleTimeStamp = timeStamp
-    this.setState(prevState => ({
-      isShow: !prevState.isShow
-    }))
-  }
-
-  _handleClose = () => {
-    const { onCloseItem, item } = this.props
-    _focusNextArticle(this._refArticle.current)
-    onCloseItem(item)
-    this.setState({ isClosed: true })
-  }
-
-  _handleHide = () => {
-    this.headerComp.focus()
-    this.setState({ isShow: false })
-  }
-
-  _setTimeStamp = (timeStamp) => {
-    this._toggleTimeStamp = timeStamp
-  }
-  _onGestureSwipeX = dX => {
-    const { item, onRemoveUnder } = this.props;
-    if (dX > DX_REMOVE_UNDER) {
-      onRemoveUnder(item)
-      return false;
-    } else if (dX > DX_REMOVE_ITEM){
-      this._handleClose()
-      return false;
-    }
-    return true;
-  }
-
-  _refItemHeader = comp => this.headerComp = comp
-
-  render() {
-    const { item, theme } = this.props
-        , TS = theme.createStyle(styleConfig)
-        , { title, author,
-            publishedDate, publishedAt,
-            url, related
-            //, urlToImage
-          } = item
-        , description = item.description || 'More...'
-        , { isClosed, isShow } = this.state
-        , _headerStyle = isShow
-             ? { ...S.HEADER, ...S.HEADER_OPEN }
-             : S.HEADER
-        , _captionStyle = isShow
-             ? {...S.CAPTION, ...S.CAPTION_OPEN}
-             : S.CAPTION
-        , _publishedAt = publishedDate
-             || dt.toTimeDate(publishedAt)
-        , _rootStyle = isClosed
-             ? S.NONE
-             : void 0;
-    return (
-        <GestureSwipeX
-          divRef={this._refArticle}
-          style={{...S.ROOT, ..._rootStyle}}
-          setTimeStamp={this._setTimeStamp}
-          onGesture={this._onGestureSwipeX}
-        >
-          <ItemHeader
-             ref={this._refItemHeader}
-             className={CL_ITEM_HEADER}
-             style={{ ..._headerStyle, ...TS.HEADER }}
-             captionStyle={_captionStyle}
-             btCloseStyle={S.SVG_CLOSE}
-             title={title}
-             url={url}
-             isShow={isShow}
-             onClick={this._handleToggle}
-             onClose={this._handleClose}
-             onHide={this._handleHide}
-          />
-          <ArticleDescr
-             style={TS.DESCR}
-             isShow={isShow}
-             url={url}
-             description={description}
-             related={related}
-             publishedAt={_publishedAt}
-             author={author}
-             onHide={this._handleHide}
-          />
-        </GestureSwipeX>
-      );
-    }
-
-    focus = () => {
-      if (this.headerComp) {
-        this.headerComp.focus()
-      }
-    }
-}
-
-export default withTheme(Article)
+export default Article
