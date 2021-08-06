@@ -98,6 +98,8 @@ var GestureSwipeX = /*#__PURE__*/function (_Component) {
     };
 
     _this._gestureMove = function (ev) {
+      ev.preventDefault();
+
       if (_this._isGestureStart) {
         var _clientX = _getClientX(ev);
 

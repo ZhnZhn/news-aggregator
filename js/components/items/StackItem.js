@@ -17,13 +17,11 @@ var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
 var _Article = _interopRequireDefault(require("./Article.Style"));
 
+var _GestureSwipeX = _interopRequireDefault(require("../zhn-gesture/GestureSwipeX"));
+
 var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
 
-var _withDnD = _interopRequireDefault(require("./decorators/withDnD"));
-
 var _jsxRuntime = require("react/jsx-runtime");
-
-var _class, _class2, _temp;
 
 var CL_WRAPPER = "link-wrapper";
 var HAS_TOUCH = _has["default"].HAS_TOUCH;
@@ -117,8 +115,10 @@ var TOKEN_REPUTATION = HAS_TOUCH ? 'R' : /*#__PURE__*/(0, _jsxRuntime.jsx)("span
   "arial-label": "shamrock",
   children: "\u2618"
 });
+var DX_REMOVE_UNDER = 90,
+    DX_REMOVE_ITEM = 40;
 
-var StackItem = (0, _withDnD["default"])(_class = (_temp = _class2 = /*#__PURE__*/function (_Component) {
+var StackItem = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(StackItem, _Component);
 
   function StackItem(props) {
@@ -137,7 +137,23 @@ var StackItem = (0, _withDnD["default"])(_class = (_temp = _class2 = /*#__PURE__
       });
     };
 
-    _this._itemHandlers = _this._crDnDHandlers();
+    _this._onGestureSwipeX = function (dX) {
+      var _this$props2 = _this.props,
+          item = _this$props2.item,
+          onRemoveUnder = _this$props2.onRemoveUnder;
+
+      if (dX > DX_REMOVE_UNDER) {
+        onRemoveUnder(item);
+        return false;
+      } else if (dX > DX_REMOVE_ITEM) {
+        _this._handleClose();
+
+        return false;
+      }
+
+      return true;
+    };
+
     _this.state = {
       isClosed: false
     };
@@ -156,9 +172,9 @@ var StackItem = (0, _withDnD["default"])(_class = (_temp = _class2 = /*#__PURE__
   };
 
   _proto.render = function render() {
-    var _this$props2 = this.props,
-        item = _this$props2.item,
-        theme = _this$props2.theme,
+    var _this$props3 = this.props,
+        item = _this$props3.item,
+        theme = _this$props3.theme,
         TS = theme.createStyle(_Article["default"]),
         is_answered = item.is_answered,
         answer_count = item.answer_count,
@@ -173,9 +189,9 @@ var StackItem = (0, _withDnD["default"])(_class = (_temp = _class2 = /*#__PURE__
         isClosed = this.state.isClosed,
         _rootStyle = isClosed ? S.NONE : void 0;
 
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", (0, _extends2["default"])({
-      style: (0, _extends2["default"])({}, S.ROOT, _rootStyle, TS.HEADER)
-    }, this._itemHandlers, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_GestureSwipeX["default"], {
+      style: (0, _extends2["default"])({}, S.ROOT, _rootStyle, TS.HEADER),
+      onGesture: this._onGestureSwipeX,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         style: S.ITEM_CAPTION,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
@@ -197,24 +213,24 @@ var StackItem = (0, _withDnD["default"])(_class = (_temp = _class2 = /*#__PURE__
           style: S.SVG_CLOSE,
           onClick: this._handleClose
         })]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("a", {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        children: title
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
         className: CL_WRAPPER,
         style: S.LINK,
         href: link,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-          children: title
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-          children: this._renderTags(tags, TS)
-        })]
+        children: this._renderTags(tags, TS)
       })]
-    }));
+    });
   };
 
   return StackItem;
-}(_react.Component), _class2.defaultProps = {
+}(_react.Component);
+
+StackItem.defaultProps = {
   onRemoveUnder: function onRemoveUnder() {},
   onRemoveItem: function onRemoveItem() {}
-}, _temp)) || _class;
+};
 
 var _default = (0, _withTheme["default"])(StackItem);
 

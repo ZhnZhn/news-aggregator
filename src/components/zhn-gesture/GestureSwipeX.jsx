@@ -91,6 +91,7 @@ class GestureSwipeX extends Component {
    }
 
    _gestureMove = (ev) => {
+     ev.preventDefault()
      if (this._isGestureStart) {
        const _clientX = _getClientX(ev);
        if (_clientX) {

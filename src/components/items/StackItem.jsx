@@ -1,12 +1,12 @@
-import { Component } from 'react'
+import { Component } from 'react';
 
-import has from '../has'
+import has from '../has';
 
-import withTheme from '../hoc/withTheme'
-import styleConfig from './Article.Style'
+import withTheme from '../hoc/withTheme';
+import styleConfig from './Article.Style';
 
-import SvgX from '../zhn-atoms/SvgX'
-import withDnD from './decorators/withDnD'
+import GestureSwipeX from '../zhn-gesture/GestureSwipeX';
+import SvgX from '../zhn-atoms/SvgX';
 
 const CL_WRAPPER = "link-wrapper";
 
@@ -99,7 +99,9 @@ const TOKEN_REPUTATION = HAS_TOUCH ? 'R' : (
   <span role="img" arial-label="shamrock">&#x2618;</span>
 );
 
-@withDnD
+const DX_REMOVE_UNDER = 90
+, DX_REMOVE_ITEM = 40;
+
 class StackItem extends Component {
 
   static defaultProps = {
@@ -109,8 +111,6 @@ class StackItem extends Component {
 
   constructor(props){
     super(props)
-
-    this._itemHandlers = this._crDnDHandlers()
 
     this.state = {
       isClosed: false
@@ -133,6 +133,18 @@ class StackItem extends Component {
     })
   }
 
+  _onGestureSwipeX = dX => {
+    const { item, onRemoveUnder } = this.props;
+    if (dX > DX_REMOVE_UNDER) {
+      onRemoveUnder(item)
+      return false;
+    } else if (dX > DX_REMOVE_ITEM){
+      this._handleClose()
+      return false;
+    }
+    return true;
+  }
+
   render(){
     const { item, theme } = this.props
         , TS = theme.createStyle(styleConfig)
@@ -149,9 +161,9 @@ class StackItem extends Component {
               ? S.NONE
               : void 0;
     return (
-      <div
+      <GestureSwipeX
         style={{ ...S.ROOT, ..._rootStyle, ...TS.HEADER }}
-        {...this._itemHandlers}
+        onGesture={this._onGestureSwipeX}
       >
         <div style={S.ITEM_CAPTION}>
             <span style={is_answered ? S.GREEN_BADGE : S.FISH_BADGE}>
@@ -169,30 +181,22 @@ class StackItem extends Component {
             <span style={S.BLACK_BADGE}>
               {display_name}
             </span>
-            {/*
-            <DateAgo
-               dateAgo={dateAgo}
-               date={""}
-            />
-           */}
            <SvgX
               style={S.SVG_CLOSE}
               onClick={this._handleClose}
            />
-          </div>
-          <a
-            className={CL_WRAPPER}
-            style={S.LINK}
-            href={link}
-          >
-            <div>
-              {title}
-            </div>
-            <div>
-              {this._renderTags(tags, TS)}
-            </div>
-          </a>
-      </div>
+        </div>
+        <div>
+          {title}
+        </div>
+        <a
+          className={CL_WRAPPER}
+          style={S.LINK}
+          href={link}
+        >
+          {this._renderTags(tags, TS)}
+        </a>
+      </GestureSwipeX>
     );
   }
 }
