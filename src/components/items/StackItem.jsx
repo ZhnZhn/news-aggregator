@@ -4,6 +4,8 @@ import useTheme from '../hooks/useTheme'
 import styleConfig from './Article.Style';
 
 import has from '../has';
+import crStyle from '../zhn-utils/crStyle';
+
 import useItemGestureSwipeX from './useItemGestureSwipeX';
 import GestureSwipeX from '../zhn-gesture/GestureSwipeX';
 import SvgX from '../zhn-atoms/SvgX';
@@ -122,7 +124,7 @@ const StackItem = forwardRef(({
   }, [])
   //item, onCloseItem
   /*eslint-enable react-hooks/exhaustive-deps */
-  , _onGestureSwipeX = useItemGestureSwipeX(item, onRemoveItem, _hClose)    
+  , _onGestureSwipeX = useItemGestureSwipeX(item, onRemoveItem, _hClose)
   , TS = useTheme(styleConfig)
   , _crItem = useMemo(() => _fTagItem(TS), [TS]);
 
@@ -133,11 +135,11 @@ const StackItem = forwardRef(({
     link, owner, tags
   } = item || {}
   , { reputation, display_name } = owner || {}
-  , _rootStyle = isClosed ? S.NONE : void 0;
+  , _rootStyle = crStyle([isClosed, S.NONE]);
 
   return (
     <GestureSwipeX
-      style={{ ...S.ROOT, ..._rootStyle, ...TS.HEADER }}
+      style={{...S.ROOT, ..._rootStyle, ...TS.HEADER}}
       onGesture={_onGestureSwipeX}
     >
       <div style={S.ITEM_CAPTION}>

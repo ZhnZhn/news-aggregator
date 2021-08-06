@@ -15,6 +15,8 @@ var _Article = _interopRequireDefault(require("./Article.Style"));
 
 var _dt = _interopRequireDefault(require("../../utils/dt"));
 
+var _crStyle = _interopRequireDefault(require("../zhn-utils/crStyle"));
+
 var _useItemGestureSwipeX = _interopRequireDefault(require("./useItemGestureSwipeX"));
 
 var _GestureSwipeX = _interopRequireDefault(require("../zhn-gesture/GestureSwipeX"));
@@ -148,10 +150,10 @@ var Article = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
       url = item.url,
       related = item.related,
       description = item.description || 'More...',
-      _headerStyle = isShow ? (0, _extends2["default"])({}, S.HEADER, S.HEADER_OPEN) : S.HEADER,
-      _captionStyle = isShow ? (0, _extends2["default"])({}, S.CAPTION, S.CAPTION_OPEN) : S.CAPTION,
-      _publishedAt = publishedDate || _dt["default"].toTimeDate(publishedAt),
-      _rootStyle = isClosed ? S.NONE : void 0;
+      _rootStyle = (0, _crStyle["default"])([isClosed, S.NONE]),
+      _headerStyle = (0, _crStyle["default"])(S.HEADER, [isShow, S.HEADER_OPEN]),
+      _captionStyle = (0, _crStyle["default"])(S.CAPTION, [isShow, S.CAPTION_OPEN]),
+      _publishedAt = publishedDate || _dt["default"].toTimeDate(publishedAt);
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_GestureSwipeX["default"], {
     divRef: _refArticle,

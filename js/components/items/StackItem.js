@@ -15,6 +15,8 @@ var _Article = _interopRequireDefault(require("./Article.Style"));
 
 var _has = _interopRequireDefault(require("../has"));
 
+var _crStyle = _interopRequireDefault(require("../zhn-utils/crStyle"));
+
 var _useItemGestureSwipeX = _interopRequireDefault(require("./useItemGestureSwipeX"));
 
 var _GestureSwipeX = _interopRequireDefault(require("../zhn-gesture/GestureSwipeX"));
@@ -162,7 +164,7 @@ var StackItem = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
       _ref3 = owner || {},
       reputation = _ref3.reputation,
       display_name = _ref3.display_name,
-      _rootStyle = isClosed ? S.NONE : void 0;
+      _rootStyle = (0, _crStyle["default"])([isClosed, S.NONE]);
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_GestureSwipeX["default"], {
     style: (0, _extends2["default"])({}, S.ROOT, _rootStyle, TS.HEADER),

@@ -5,6 +5,8 @@ import styleConfig from './Article.Style';
 
 import dt from '../../utils/dt';
 
+import crStyle from '../zhn-utils/crStyle';
+
 import useItemGestureSwipeX from './useItemGestureSwipeX';
 import GestureSwipeX from '../zhn-gesture/GestureSwipeX';
 import ItemHeader from './ItemHeader';
@@ -120,18 +122,11 @@ const Article = forwardRef(({
     //, urlToImage
   } = item
   , description = item.description || 'More...'
-  , _headerStyle = isShow
-       ? {...S.HEADER, ...S.HEADER_OPEN}
-       : S.HEADER
-  , _captionStyle = isShow
-       ? {...S.CAPTION, ...S.CAPTION_OPEN}
-       : S.CAPTION
-  , _publishedAt = publishedDate
-       || dt.toTimeDate(publishedAt)
-  , _rootStyle = isClosed
-       ? S.NONE
-       : void 0;
-
+  , _rootStyle = crStyle([isClosed, S.NONE])
+  , _headerStyle = crStyle(S.HEADER, [isShow, S.HEADER_OPEN])
+  , _captionStyle = crStyle(S.CAPTION, [isShow, S.CAPTION_OPEN])
+  , _publishedAt = publishedDate || dt.toTimeDate(publishedAt);
+    
   return (
     <GestureSwipeX
       divRef={_refArticle}
