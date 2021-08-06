@@ -17,15 +17,13 @@ var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
 var _Article = _interopRequireDefault(require("./Article.Style"));
 
+var _GestureSwipeX = _interopRequireDefault(require("../zhn-gesture/GestureSwipeX"));
+
 var _ItemHeader = _interopRequireDefault(require("./ItemHeader"));
 
 var _ArticleDescr = _interopRequireDefault(require("./ArticleDescr"));
 
-var _withDnD = _interopRequireDefault(require("./decorators/withDnD"));
-
 var _jsxRuntime = require("react/jsx-runtime");
-
-var _class, _class2, _temp;
 
 var CL_ITEM_HEADER = "article-header";
 var S = {
@@ -78,6 +76,8 @@ var S = {
     display: 'none'
   }
 };
+var DX_REMOVE_UNDER = 90,
+    DX_REMOVE_ITEM = 40;
 
 var _focusNextArticle = function _focusNextArticle(nodeArticle) {
   var _ref = nodeArticle || {},
@@ -90,7 +90,7 @@ var _focusNextArticle = function _focusNextArticle(nodeArticle) {
   }
 };
 
-var Article = (0, _withDnD["default"])(_class = (_temp = _class2 = /*#__PURE__*/function (_Component) {
+var Article = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(Article, _Component);
 
   function Article(props) {
@@ -98,7 +98,16 @@ var Article = (0, _withDnD["default"])(_class = (_temp = _class2 = /*#__PURE__*/
 
     _this = _Component.call(this, props) || this;
 
-    _this._handleToggle = function () {
+    _this._handleToggle = function (evt) {
+      var _ref3 = evt || {},
+          timeStamp = _ref3.timeStamp;
+
+      if (timeStamp && _this._toggleTimeStamp && timeStamp - _this._toggleTimeStamp < 200) {
+        return;
+      }
+
+      _this._toggleTimeStamp = timeStamp;
+
       _this.setState(function (prevState) {
         return {
           isShow: !prevState.isShow
@@ -111,7 +120,7 @@ var Article = (0, _withDnD["default"])(_class = (_temp = _class2 = /*#__PURE__*/
           onCloseItem = _this$props.onCloseItem,
           item = _this$props.item;
 
-      _focusNextArticle(_this._articleNode);
+      _focusNextArticle(_this._refArticle.current);
 
       onCloseItem(item);
 
@@ -128,8 +137,25 @@ var Article = (0, _withDnD["default"])(_class = (_temp = _class2 = /*#__PURE__*/
       });
     };
 
-    _this._refItem = function (node) {
-      return _this._articleNode = node;
+    _this._setTimeStamp = function (timeStamp) {
+      _this._toggleTimeStamp = timeStamp;
+    };
+
+    _this._onGestureSwipeX = function (dX) {
+      var _this$props2 = _this.props,
+          item = _this$props2.item,
+          onRemoveUnder = _this$props2.onRemoveUnder;
+
+      if (dX > DX_REMOVE_UNDER) {
+        onRemoveUnder(item);
+        return false;
+      } else if (dX > DX_REMOVE_ITEM) {
+        _this._handleClose();
+
+        return false;
+      }
+
+      return true;
     };
 
     _this._refItemHeader = function (comp) {
@@ -142,7 +168,7 @@ var Article = (0, _withDnD["default"])(_class = (_temp = _class2 = /*#__PURE__*/
       }
     };
 
-    _this._itemHandlers = _this._crDnDHandlers();
+    _this._refArticle = /*#__PURE__*/(0, _react.createRef)();
     _this.state = {
       isClosed: false,
       isShow: false
@@ -153,9 +179,9 @@ var Article = (0, _withDnD["default"])(_class = (_temp = _class2 = /*#__PURE__*/
   var _proto = Article.prototype;
 
   _proto.render = function render() {
-    var _this$props2 = this.props,
-        item = _this$props2.item,
-        theme = _this$props2.theme,
+    var _this$props3 = this.props,
+        item = _this$props3.item,
+        theme = _this$props3.theme,
         TS = theme.createStyle(_Article["default"]),
         title = item.title,
         author = item.author,
@@ -172,10 +198,11 @@ var Article = (0, _withDnD["default"])(_class = (_temp = _class2 = /*#__PURE__*/
         _publishedAt = publishedDate || _dt["default"].toTimeDate(publishedAt),
         _rootStyle = isClosed ? S.NONE : void 0;
 
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", (0, _extends2["default"])({
-      ref: this._refItem,
-      style: (0, _extends2["default"])({}, S.ROOT, _rootStyle)
-    }, this._itemHandlers, {
+    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_GestureSwipeX["default"], {
+      divRef: this._refArticle,
+      style: (0, _extends2["default"])({}, S.ROOT, _rootStyle),
+      setTimeStamp: this._setTimeStamp,
+      onGesture: this._onGestureSwipeX,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemHeader["default"], {
         ref: this._refItemHeader,
         className: CL_ITEM_HEADER,
@@ -198,14 +225,16 @@ var Article = (0, _withDnD["default"])(_class = (_temp = _class2 = /*#__PURE__*/
         author: author,
         onHide: this._handleHide
       })]
-    }));
+    });
   };
 
   return Article;
-}(_react.Component), _class2.defaultProps = {
+}(_react.Component);
+
+Article.defaultProps = {
   onRemoveUnder: function onRemoveUnder() {},
   onRemoveItem: function onRemoveItem() {}
-}, _temp)) || _class;
+};
 
 var _default = (0, _withTheme["default"])(Article);
 

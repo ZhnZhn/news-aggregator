@@ -1,13 +1,14 @@
-import { Component } from 'react'
+import { createRef, Component } from 'react';
 
-import dt from '../../utils/dt'
+import dt from '../../utils/dt';
 
-import withTheme from '../hoc/withTheme'
-import styleConfig from './Article.Style'
+import withTheme from '../hoc/withTheme';
+import styleConfig from './Article.Style';
 
-import ItemHeader from './ItemHeader'
-import ArticleDescr from './ArticleDescr'
-import withDnD from './decorators/withDnD'
+import GestureSwipeX from '../zhn-gesture/GestureSwipeX';
+import ItemHeader from './ItemHeader';
+import ArticleDescr from './ArticleDescr';
+
 
 
 const CL_ITEM_HEADER = "article-header";
@@ -64,6 +65,9 @@ const S = {
 }
 
 
+const DX_REMOVE_UNDER = 90
+, DX_REMOVE_ITEM = 40;
+
 const _focusNextArticle = (nodeArticle) => {
   const { nextElementSibling } = nodeArticle || {}
   , { firstElementChild } = nextElementSibling || {};
@@ -72,7 +76,7 @@ const _focusNextArticle = (nodeArticle) => {
   }
 };
 
-@withDnD
+
 class Article extends Component {
 
   static defaultProps = {
@@ -83,15 +87,21 @@ class Article extends Component {
   constructor(props) {
     super(props)
 
-    this._itemHandlers = this._crDnDHandlers()
-
+    this._refArticle = createRef()
+    
     this.state = {
       isClosed: false,
       isShow: false
     }
   }
 
-  _handleToggle = () => {
+  _handleToggle = (evt) => {
+    const { timeStamp } = evt || {};
+    if (timeStamp && this._toggleTimeStamp
+        && timeStamp - this._toggleTimeStamp < 200) {
+       return;
+    }
+    this._toggleTimeStamp = timeStamp
     this.setState(prevState => ({
       isShow: !prevState.isShow
     }))
@@ -99,7 +109,7 @@ class Article extends Component {
 
   _handleClose = () => {
     const { onCloseItem, item } = this.props
-    _focusNextArticle(this._articleNode)
+    _focusNextArticle(this._refArticle.current)
     onCloseItem(item)
     this.setState({ isClosed: true })
   }
@@ -109,7 +119,21 @@ class Article extends Component {
     this.setState({ isShow: false })
   }
 
-  _refItem = node => this._articleNode = node
+  _setTimeStamp = (timeStamp) => {
+    this._toggleTimeStamp = timeStamp
+  }
+  _onGestureSwipeX = dX => {
+    const { item, onRemoveUnder } = this.props;
+    if (dX > DX_REMOVE_UNDER) {
+      onRemoveUnder(item)
+      return false;
+    } else if (dX > DX_REMOVE_ITEM){
+      this._handleClose()
+      return false;
+    }
+    return true;
+  }
+
   _refItemHeader = comp => this.headerComp = comp
 
   render() {
@@ -134,10 +158,11 @@ class Article extends Component {
              ? S.NONE
              : void 0;
     return (
-        <div
-          ref={this._refItem}
+        <GestureSwipeX
+          divRef={this._refArticle}
           style={{...S.ROOT, ..._rootStyle}}
-          {...this._itemHandlers}
+          setTimeStamp={this._setTimeStamp}
+          onGesture={this._onGestureSwipeX}
         >
           <ItemHeader
              ref={this._refItemHeader}
@@ -162,7 +187,7 @@ class Article extends Component {
              author={author}
              onHide={this._handleHide}
           />
-        </div>
+        </GestureSwipeX>
       );
     }
 

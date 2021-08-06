@@ -27,7 +27,8 @@ const S = {
     marginRight: 6
   },
   SCROLL_DIV : {
-    overflowY: 'auto',
+    //overflowY: 'auto',
+    overflow: 'hidden auto',
     height: '92%',
     paddingRight: 10
   },
