@@ -15,6 +15,8 @@ var _Article = _interopRequireDefault(require("./Article.Style"));
 
 var _dt = _interopRequireDefault(require("../../utils/dt"));
 
+var _useItemGestureSwipeX = _interopRequireDefault(require("./useItemGestureSwipeX"));
+
 var _GestureSwipeX = _interopRequireDefault(require("../zhn-gesture/GestureSwipeX"));
 
 var _ItemHeader = _interopRequireDefault(require("./ItemHeader"));
@@ -74,8 +76,6 @@ var S = {
     display: 'none'
   }
 };
-var DX_REMOVE_UNDER = 90,
-    DX_REMOVE_ITEM = 40;
 
 var _focusNextArticle = function _focusNextArticle(nodeArticle) {
   var _ref = nodeArticle || {},
@@ -138,18 +138,7 @@ var Article = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
       _setTimeStamp = (0, _react.useCallback)(function (timeStamp) {
     _refTimeStamp.current = timeStamp;
   }, []),
-      _onGestureSwipeX = (0, _react.useCallback)(function (dX) {
-    if (dX > DX_REMOVE_UNDER) {
-      onRemoveUnder(item);
-      return false;
-    } else if (dX > DX_REMOVE_ITEM) {
-      _hClose();
-
-      return false;
-    }
-
-    return true;
-  }, []),
+      _onGestureSwipeX = (0, _useItemGestureSwipeX["default"])(item, onRemoveItem, _hClose),
       TS = (0, _useTheme["default"])(_Article["default"]);
 
   var title = item.title,

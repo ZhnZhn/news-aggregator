@@ -11,9 +11,11 @@ var _react = require("react");
 
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 
+var _Article = _interopRequireDefault(require("./Article.Style"));
+
 var _has = _interopRequireDefault(require("../has"));
 
-var _Article = _interopRequireDefault(require("./Article.Style"));
+var _useItemGestureSwipeX = _interopRequireDefault(require("./useItemGestureSwipeX"));
 
 var _GestureSwipeX = _interopRequireDefault(require("../zhn-gesture/GestureSwipeX"));
 
@@ -23,7 +25,6 @@ var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-//import withTheme from '../hoc/withTheme';
 var CL_WRAPPER = "link-wrapper";
 var HAS_TOUCH = _has["default"].HAS_TOUCH;
 var _S = {
@@ -116,8 +117,6 @@ var TOKEN_REPUTATION = HAS_TOUCH ? 'R' : /*#__PURE__*/(0, _jsxRuntime.jsx)("span
   "arial-label": "shamrock",
   children: "\u2618"
 });
-var DX_REMOVE_UNDER = 90,
-    DX_REMOVE_ITEM = 40;
 
 var _fTagItem = function _fTagItem(TS) {
   return function (tag, index) {
@@ -141,22 +140,11 @@ var StackItem = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
   var _useState = (0, _react.useState)(false),
       isClosed = _useState[0],
       setIsClosed = _useState[1],
-      _handleClose = (0, _react.useCallback)(function () {
+      _hClose = (0, _react.useCallback)(function () {
     onCloseItem(item);
     setIsClosed(true);
   }, []),
-      _onGestureSwipeX = (0, _react.useCallback)(function (dX) {
-    if (dX > DX_REMOVE_UNDER) {
-      onRemoveUnder(item);
-      return false;
-    } else if (dX > DX_REMOVE_ITEM) {
-      _handleClose();
-
-      return false;
-    }
-
-    return true;
-  }, []),
+      _onGestureSwipeX = (0, _useItemGestureSwipeX["default"])(item, onRemoveItem, _hClose),
       TS = (0, _useTheme["default"])(_Article["default"]),
       _crItem = (0, _react.useMemo)(function () {
     return _fTagItem(TS);
@@ -198,7 +186,7 @@ var StackItem = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
         children: display_name
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgX["default"], {
         style: S.SVG_CLOSE,
-        onClick: _handleClose
+        onClick: _hClose
       })]
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       children: title
@@ -214,108 +202,5 @@ var StackItem = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
   });
 });
 var _default = StackItem;
-/*
-class StackItem extends Component {
-
-  static defaultProps = {
-    onRemoveUnder: () => {},
-    onRemoveItem: () => {}
-  }
-
-  constructor(props){
-    super(props)
-
-    this.state = {
-      isClosed: false
-    }
-  }
-
-  _handleClose = () => {
-    const { onCloseItem, item } = this.props;
-    onCloseItem(item)
-    this.setState({ isClosed: true })
-  }
-
-  _renderTags(tags, TS){
-    return tags.map((tag, index) => {
-       return (
-         <span key={index} style={{ ...S.SPAN_TAG, ...TS.DESCR }}>
-            {tag}
-         </span>
-       );
-    })
-  }
-
-  _onGestureSwipeX = dX => {
-    const { item, onRemoveUnder } = this.props;
-    if (dX > DX_REMOVE_UNDER) {
-      onRemoveUnder(item)
-      return false;
-    } else if (dX > DX_REMOVE_ITEM){
-      this._handleClose()
-      return false;
-    }
-    return true;
-  }
-
-  render(){
-    const { item, theme } = this.props
-        , TS = theme.createStyle(styleConfig)
-        , {
-            is_answered,
-            answer_count, score, view_count,
-            title,
-            //dateAgo,
-            link, owner, tags
-          } = item
-        , { reputation, display_name } = owner
-        , { isClosed } = this.state
-        , _rootStyle = isClosed
-              ? S.NONE
-              : void 0;
-    return (
-      <GestureSwipeX
-        style={{ ...S.ROOT, ..._rootStyle, ...TS.HEADER }}
-        onGesture={this._onGestureSwipeX}
-      >
-        <div style={S.ITEM_CAPTION}>
-            <span style={is_answered ? S.GREEN_BADGE : S.FISH_BADGE}>
-              {TOKEN_ANSWER}&nbsp;{answer_count}
-            </span>
-            <span style={S.FISH_BADGE}>
-              {TOKEN_SCORE}&nbsp;{score}
-            </span>
-            <span style={S.BLACK_BADGE}>
-              {TOKEN_VIEW}&nbsp;{view_count}
-            </span>
-            <span style={S.GREEN_BADGE}>
-              {TOKEN_REPUTATION}&nbsp;{reputation}
-            </span>
-            <span style={S.BLACK_BADGE}>
-              {display_name}
-            </span>
-           <SvgX
-              style={S.SVG_CLOSE}
-              onClick={this._handleClose}
-           />
-        </div>
-        <div>
-          {title}
-        </div>
-        <a
-          className={CL_WRAPPER}
-          style={S.LINK}
-          href={link}
-        >
-          {this._renderTags(tags, TS)}
-        </a>
-      </GestureSwipeX>
-    );
-  }
-}
-
-export default withTheme(StackItem)
-*/
-
 exports["default"] = _default;
 //# sourceMappingURL=StackItem.js.map

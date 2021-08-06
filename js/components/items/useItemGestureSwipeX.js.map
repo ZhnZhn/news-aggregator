@@ -1,0 +1,17 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/items/useItemGestureSwipeX.js"
+ ],
+ "file": "../../../src/components/items/useItemGestureSwipeX.js",
+ "names": [
+  "DX_REMOVE_UNDER",
+  "DX_REMOVE_ITEM",
+  "useItemGestureSwipeX",
+  "item",
+  "onRemoveUnder",
+  "hClose",
+  "dX"
+ ],
+ "mappings": ";;;;;AAAA;;AAEA,IAAMA,eAAe,GAAG,EAAxB;AAAA,IACEC,cAAc,GAAG,EADnB;AAGA;;AACA,IAAMC,oBAAoB,GAAG,SAAvBA,oBAAuB,CAC3BC,IAD2B,EAE3BC,aAF2B,EAG3BC,MAH2B;AAAA,SAIxB,wBAAY,UAAAC,EAAE,EAAI;AACrB,QAAIA,EAAE,GAAGN,eAAT,EAA0B;AACxBI,MAAAA,aAAa,CAACD,IAAD,CAAb;AACA,aAAO,KAAP;AACD,KAHD,MAGO,IAAIG,EAAE,GAAGL,cAAT,EAAwB;AAC7BI,MAAAA,MAAM;AACN,aAAO,KAAP;AACD;;AACD,WAAO,IAAP;AACD,GATI,EASF,EATE,CAJwB;AAAA,CAA7B,C,CAcA;;AACA;;;eAEeH,oB"
+}

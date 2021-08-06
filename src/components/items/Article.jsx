@@ -5,6 +5,7 @@ import styleConfig from './Article.Style';
 
 import dt from '../../utils/dt';
 
+import useItemGestureSwipeX from './useItemGestureSwipeX';
 import GestureSwipeX from '../zhn-gesture/GestureSwipeX';
 import ItemHeader from './ItemHeader';
 import ArticleDescr from './ArticleDescr';
@@ -62,10 +63,6 @@ const S = {
   }
 }
 
-
-const DX_REMOVE_UNDER = 90
-, DX_REMOVE_ITEM = 40;
-
 const _focusNextArticle = (nodeArticle) => {
   const { nextElementSibling } = nodeArticle || {}
   , { firstElementChild } = nextElementSibling || {};
@@ -96,6 +93,7 @@ const Article = forwardRef(({
    _refTimeStamp.current = timeStamp
    setIsShow(is => !is)
  }, [])
+ /*eslint-disable react-hooks/exhaustive-deps */
  , _hClose = useCallback(() => {
    _focusNextArticle(_refArticle.current)
    onCloseItem(item)
@@ -104,33 +102,23 @@ const Article = forwardRef(({
  //item, onCloseItem
  , _hHide = useCallback(()=>{
    const _node = (ref || {}).current;
-   if (_node) {
-     _node.focus()
-   }
+   if (_node) {_node.focus()}
    setIsShow(false)
  }, [])
  // ref
+ /*eslint-enable react-hooks/exhaustive-deps */
  , _setTimeStamp = useCallback(timeStamp => {
    _refTimeStamp.current = timeStamp
  }, [])
- , _onGestureSwipeX = useCallback(dX => {
-   if (dX > DX_REMOVE_UNDER) {
-     onRemoveUnder(item)
-     return false;
-   } else if (dX > DX_REMOVE_ITEM){
-     _hClose()
-     return false;
-   }
-   return true;
- }, [])
- // _hClose, item, omRemoveUnder
- , TS = useTheme(styleConfig)
+ , _onGestureSwipeX = useItemGestureSwipeX(item, onRemoveItem, _hClose)
+ , TS = useTheme(styleConfig);
 
-  const { title, author,
-      publishedDate, publishedAt,
-      url, related
-      //, urlToImage
-    } = item
+  const {
+    title, author,
+    publishedDate, publishedAt,
+    url, related
+    //, urlToImage
+  } = item
   , description = item.description || 'More...'
   , _headerStyle = isShow
        ? {...S.HEADER, ...S.HEADER_OPEN}
@@ -143,7 +131,6 @@ const Article = forwardRef(({
   , _rootStyle = isClosed
        ? S.NONE
        : void 0;
-
 
   return (
     <GestureSwipeX
