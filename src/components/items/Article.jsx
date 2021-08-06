@@ -112,7 +112,7 @@ const Article = forwardRef(({
  , _setTimeStamp = useCallback(timeStamp => {
    _refTimeStamp.current = timeStamp
  }, [])
- , _onGestureSwipeX = useItemGestureSwipeX(item, onRemoveItem, _hClose)
+ , _onGestureSwipeX = useItemGestureSwipeX(item, onRemoveUnder, _hClose)
  , TS = useTheme(styleConfig);
 
   const {
@@ -126,7 +126,7 @@ const Article = forwardRef(({
   , _headerStyle = crStyle(S.HEADER, [isShow, S.HEADER_OPEN])
   , _captionStyle = crStyle(S.CAPTION, [isShow, S.CAPTION_OPEN])
   , _publishedAt = publishedDate || dt.toTimeDate(publishedAt);
-    
+
   return (
     <GestureSwipeX
       divRef={_refArticle}

@@ -140,7 +140,7 @@ var Article = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
       _setTimeStamp = (0, _react.useCallback)(function (timeStamp) {
     _refTimeStamp.current = timeStamp;
   }, []),
-      _onGestureSwipeX = (0, _useItemGestureSwipeX["default"])(item, onRemoveItem, _hClose),
+      _onGestureSwipeX = (0, _useItemGestureSwipeX["default"])(item, onRemoveUnder, _hClose),
       TS = (0, _useTheme["default"])(_Article["default"]);
 
   var title = item.title,

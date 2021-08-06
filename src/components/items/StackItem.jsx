@@ -124,7 +124,7 @@ const StackItem = forwardRef(({
   }, [])
   //item, onCloseItem
   /*eslint-enable react-hooks/exhaustive-deps */
-  , _onGestureSwipeX = useItemGestureSwipeX(item, onRemoveItem, _hClose)
+  , _onGestureSwipeX = useItemGestureSwipeX(item, onRemoveUnder, _hClose)
   , TS = useTheme(styleConfig)
   , _crItem = useMemo(() => _fTagItem(TS), [TS]);
 

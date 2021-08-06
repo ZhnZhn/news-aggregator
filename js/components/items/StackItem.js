@@ -146,7 +146,7 @@ var StackItem = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
     onCloseItem(item);
     setIsClosed(true);
   }, []),
-      _onGestureSwipeX = (0, _useItemGestureSwipeX["default"])(item, onRemoveItem, _hClose),
+      _onGestureSwipeX = (0, _useItemGestureSwipeX["default"])(item, onRemoveUnder, _hClose),
       TS = (0, _useTheme["default"])(_Article["default"]),
       _crItem = (0, _react.useMemo)(function () {
     return _fTagItem(TS);
