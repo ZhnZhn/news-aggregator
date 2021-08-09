@@ -36,14 +36,6 @@ var S = {
     borderBottomRightRadius: 2,
     boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)'
   },
-  LEFT_LINE: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: 3,
-    height: 8,
-    backgroundColor: '#3f51b5'
-  },
   HEADER: {
     width: '100%',
     backgroundColor: '#404040',
@@ -53,9 +45,6 @@ var S = {
     lineHeight: 1.5,
     borderTopRightRadius: 2,
     borderBottomRightRadius: 2
-  },
-  HEADER_OPEN: {
-    borderLeft: '6px solid #607d8b'
   },
   CAPTION: {
     display: 'inline-block',
@@ -150,21 +139,19 @@ var Article = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
       url = item.url,
       related = item.related,
       description = item.description || 'More...',
-      _rootStyle = (0, _crStyle["default"])([isClosed, S.NONE]),
-      _headerStyle = (0, _crStyle["default"])(S.HEADER, [isShow, S.HEADER_OPEN]),
+      _style = (0, _crStyle["default"])([isClosed, S.NONE]),
       _captionStyle = (0, _crStyle["default"])(S.CAPTION, [isShow, S.CAPTION_OPEN]),
       _publishedAt = publishedDate || _dt["default"].toTimeDate(publishedAt);
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_GestureSwipeX["default"] //divRef={_refArticle}
-  , {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_GestureSwipeX["default"], {
     ref: _refArticle,
-    style: (0, _extends2["default"])({}, S.ROOT, _rootStyle),
+    style: (0, _extends2["default"])({}, S.ROOT, _style),
     setTimeStamp: _setTimeStamp,
     onGesture: _onGestureSwipeX,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemHeader["default"], {
       ref: ref,
       className: CL_ITEM_HEADER,
-      style: (0, _extends2["default"])({}, _headerStyle, TS.HEADER),
+      style: (0, _extends2["default"])({}, S.HEADER, TS.HEADER),
       captionStyle: _captionStyle,
       btCloseStyle: S.SVG_CLOSE,
       title: title,

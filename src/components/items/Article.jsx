@@ -22,14 +22,6 @@ const S = {
     borderBottomRightRadius: 2,
     boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
   },
-  LEFT_LINE: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: 3,
-    height: 8,
-    backgroundColor: '#3f51b5'
-  },
   HEADER: {
     width: '100%',
     backgroundColor: '#404040',
@@ -40,15 +32,12 @@ const S = {
     borderTopRightRadius: 2,
     borderBottomRightRadius: 2
   },
-  HEADER_OPEN: {
-    borderLeft: '6px solid #607d8b'
-  },
   CAPTION: {
     display : 'inline-block',
     paddingRight: 32,
     color: 'black',
     fontSize: '1.125rem',
-    fontWeight : 'bold',
+    fontWeight: 'bold',
     cursor: 'pointer'
   },
   CAPTION_OPEN: {
@@ -63,7 +52,7 @@ const S = {
   NONE: {
     display: 'none'
   }
-}
+};
 
 const _focusNextArticle = (nodeArticle) => {
   const { nextElementSibling } = nodeArticle || {}
@@ -122,23 +111,21 @@ const Article = forwardRef(({
     //, urlToImage
   } = item
   , description = item.description || 'More...'
-  , _rootStyle = crStyle([isClosed, S.NONE])
-  , _headerStyle = crStyle(S.HEADER, [isShow, S.HEADER_OPEN])
+  , _style = crStyle([isClosed, S.NONE])
   , _captionStyle = crStyle(S.CAPTION, [isShow, S.CAPTION_OPEN])
   , _publishedAt = publishedDate || dt.toTimeDate(publishedAt);
 
   return (
     <GestureSwipeX
-      //divRef={_refArticle}
       ref={_refArticle}
-      style={{...S.ROOT, ..._rootStyle}}
+      style={{...S.ROOT, ..._style}}
       setTimeStamp={_setTimeStamp}
       onGesture={_onGestureSwipeX}
     >
       <ItemHeader
          ref={ref}
          className={CL_ITEM_HEADER}
-         style={{ ..._headerStyle, ...TS.HEADER }}
+         style={{...S.HEADER, ...TS.HEADER}}
          captionStyle={_captionStyle}
          btCloseStyle={S.SVG_CLOSE}
          title={title}
