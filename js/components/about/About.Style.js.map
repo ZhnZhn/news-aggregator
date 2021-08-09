@@ -1,1 +1,38 @@
-{"version":3,"sources":["../../../src/components/about/About.Style.js"],"names":["S","SCROLL_DIV","overflowY","height","paddingRight","DIV_WRAPPER","paddingLeft","lineHeight","color","fontWeight","DIV_TEXT","BLOCK","display","NONE","APP_TITLE","STEP","marginTop","BLACK","MARGIN_TOP","PROVIDER","styleConfig","themeName","undefined","style","createStyle","CSS_RULE","CL_SCROLL_PANE","ROOT","BG","BROWSER_CAPTION","BG_HEADER"],"mappings":";;;;;;;;;AACA,IAAMA,CAAC,GAAG;AACRC,EAAAA,UAAU,EAAG;AACXC,IAAAA,SAAS,EAAE,MADA;AAEXC,IAAAA,MAAM,EAAE,KAFG;AAGXC,IAAAA,YAAY,EAAE;AAHH,GADL;AAMRC,EAAAA,WAAW,EAAG;AACZC,IAAAA,WAAW,EAAE,MADD;AAEZF,IAAAA,YAAY,EAAE,KAFF;AAGZG,IAAAA,UAAU,EAAG,GAHD;AAIZC,IAAAA,KAAK,EAAE,MAJK;AAKZC,IAAAA,UAAU,EAAE;AALA,GANN;AAaRC,EAAAA,QAAQ,EAAE;AACRH,IAAAA,UAAU,EAAE;AADJ,GAbF;AAgBRI,EAAAA,KAAK,EAAE;AACLC,IAAAA,OAAO,EAAE;AADJ,GAhBC;AAmBRC,EAAAA,IAAI,EAAE;AACJD,IAAAA,OAAO,EAAE;AADL,GAnBE;AAsBRE,EAAAA,SAAS,EAAE;AACTN,IAAAA,KAAK,EAAE;AADE,GAtBH;AAyBRO,EAAAA,IAAI,EAAE;AACJC,IAAAA,SAAS,EAAE;AADP,GAzBE;AA4BRC,EAAAA,KAAK,EAAE;AACLT,IAAAA,KAAK,EAAE;AADF,GA5BC;AA+BRU,EAAAA,UAAU,EAAE;AACVF,IAAAA,SAAS,EAAE;AADD,GA/BJ;AAkCRG,EAAAA,QAAQ,EAAE;AACRX,IAAAA,KAAK,EAAE;AADC;AAlCF,CAAV;AAuCA,IAAMY,WAAW,GAAG;AAClBC,EAAAA,SAAS,EAAGC,SADM;AAElBC,EAAAA,KAAK,EAAGD,SAFU;AAGlBE,EAAAA,WAAW,EAAG,qBAACC,QAAD,EAAc;AAC1B;AACEC,MAAAA,cAAc,EAAED,QAAQ,CAACC,cAD3B;AAEEC,MAAAA,IAAI,gCACCF,QAAQ,CAACG,EADV,CAFN;AAKEC,MAAAA,eAAe,gCACVJ,QAAQ,CAACK,SADC;AALjB,OAQK9B,CARL;AAUD;AAdiB,CAApB;eAiBeoB,W","sourcesContent":["\r\nconst S = {\r\n  SCROLL_DIV : {\r\n    overflowY: 'auto',\r\n    height: '92%',\r\n    paddingRight: '10px'\r\n  },\r\n  DIV_WRAPPER : {\r\n    paddingLeft: '12px',\r\n    paddingRight: '5px',\r\n    lineHeight : 1.4,\r\n    color: 'gray',\r\n    fontWeight: 'bold'\r\n  },\r\n  DIV_TEXT: {\r\n    lineHeight: 1.8\r\n  },\r\n  BLOCK: {\r\n    display: 'block'\r\n  },\r\n  NONE: {\r\n    display: 'none'\r\n  },\r\n  APP_TITLE: {\r\n    color: '#80c040'\r\n  },\r\n  STEP: {\r\n    marginTop: '3px'\r\n  },\r\n  BLACK: {\r\n    color: 'black'\r\n  },\r\n  MARGIN_TOP: {\r\n    marginTop: '8px'\r\n  },\r\n  PROVIDER: {\r\n    color: '#009AE5'\r\n  }\r\n}\r\n\r\nconst styleConfig = {\r\n  themeName : undefined,\r\n  style : undefined,\r\n  createStyle : (CSS_RULE) => {\r\n    return {\r\n      CL_SCROLL_PANE: CSS_RULE.CL_SCROLL_PANE,      \r\n      ROOT : {\r\n        ...CSS_RULE.BG\r\n      },\r\n      BROWSER_CAPTION: {\r\n        ...CSS_RULE.BG_HEADER\r\n      },\r\n      ...S\r\n    }\r\n  }\r\n}\r\n\r\nexport default styleConfig\r\n"],"file":"About.Style.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/about/About.Style.js"
+ ],
+ "file": "../../../src/components/about/About.Style.js",
+ "names": [
+  "S",
+  "SCROLL_DIV",
+  "overflowY",
+  "height",
+  "paddingRight",
+  "DIV_WRAPPER",
+  "paddingLeft",
+  "lineHeight",
+  "color",
+  "fontWeight",
+  "DIV_TEXT",
+  "BLOCK",
+  "display",
+  "NONE",
+  "APP_TITLE",
+  "STEP",
+  "marginTop",
+  "BLACK",
+  "MARGIN_TOP",
+  "PROVIDER",
+  "styleConfig",
+  "createStyle",
+  "CSS_RULE",
+  "CL_SCROLL_PANE",
+  "ROOT",
+  "BG",
+  "BROWSER_CAPTION",
+  "BG_HEADER"
+ ],
+ "mappings": ";;;;;;;;;AACA,IAAMA,CAAC,GAAG;AACRC,EAAAA,UAAU,EAAG;AACXC,IAAAA,SAAS,EAAE,MADA;AAEXC,IAAAA,MAAM,EAAE,KAFG;AAGXC,IAAAA,YAAY,EAAE;AAHH,GADL;AAMRC,EAAAA,WAAW,EAAG;AACZC,IAAAA,WAAW,EAAE,EADD;AAEZF,IAAAA,YAAY,EAAE,CAFF;AAGZG,IAAAA,UAAU,EAAG,GAHD;AAIZC,IAAAA,KAAK,EAAE,MAJK;AAKZC,IAAAA,UAAU,EAAE;AALA,GANN;AAaRC,EAAAA,QAAQ,EAAE;AACRH,IAAAA,UAAU,EAAE;AADJ,GAbF;AAgBRI,EAAAA,KAAK,EAAE;AACLC,IAAAA,OAAO,EAAE;AADJ,GAhBC;AAmBRC,EAAAA,IAAI,EAAE;AACJD,IAAAA,OAAO,EAAE;AADL,GAnBE;AAsBRE,EAAAA,SAAS,EAAE;AACTN,IAAAA,KAAK,EAAE;AADE,GAtBH;AAyBRO,EAAAA,IAAI,EAAE;AACJC,IAAAA,SAAS,EAAE;AADP,GAzBE;AA4BRC,EAAAA,KAAK,EAAE;AACLT,IAAAA,KAAK,EAAE;AADF,GA5BC;AA+BRU,EAAAA,UAAU,EAAE;AACVF,IAAAA,SAAS,EAAE;AADD,GA/BJ;AAkCRG,EAAAA,QAAQ,EAAE;AACRX,IAAAA,KAAK,EAAE;AADC;AAlCF,CAAV;AAuCA,IAAMY,WAAW,GAAG;AAClB;AACA;AACAC,EAAAA,WAAW,EAAG,qBAACC,QAAD,EAAc;AAC1B;AACEC,MAAAA,cAAc,EAAED,QAAQ,CAACC,cAD3B;AAEEC,MAAAA,IAAI,gCACCF,QAAQ,CAACG,EADV,CAFN;AAKEC,MAAAA,eAAe,gCACVJ,QAAQ,CAACK,SADC;AALjB,OAQK3B,CARL;AAUD;AAdiB,CAApB;eAiBeoB,W"
+}

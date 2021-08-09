@@ -1,3 +1,18 @@
+.about-pane {  
+  position: relative;
+  background-color: #4d4d4d;
+  width: 450px;
+  min-width: 300px;
+  max-width: 700px;
+  min-height: 500px;
+  padding: 0;
+  padding-bottom: 35px;
+  margin-left: 16px;
+  height: calc(100vh - 71px);
+  border-radius: 4px;
+  box-shadow: 1px 4px 6px 1px rgba(0,0,0,0.6);
+}
+
 .news-pane {
   position: relative;
   background-color: #4d4d4d;
@@ -10,7 +25,7 @@
   overflow: hidden;
 }
 @media screen and (max-width: 600px) {
-  .news-pane {
+  .news-pane, .about-pane {
      margin-left: 8px;
   }
 }
