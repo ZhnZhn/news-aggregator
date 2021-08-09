@@ -129,7 +129,8 @@ const Article = forwardRef(({
 
   return (
     <GestureSwipeX
-      divRef={_refArticle}
+      //divRef={_refArticle}
+      ref={_refArticle}
       style={{...S.ROOT, ..._rootStyle}}
       setTimeStamp={_setTimeStamp}
       onGesture={_onGestureSwipeX}

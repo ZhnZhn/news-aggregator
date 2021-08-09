@@ -1,10 +1,15 @@
-import { Component } from 'react';
+import { forwardRef, useRef, useCallback, useMemo } from 'react';
 import has from '../has';
 
 const BORDER_LEFT = 'border-left';
 const DRAG_START_BORDER_LEFT = "4px solid #d64336";
 
 const LONG_TOUCH = 1000;
+
+const { HAS_TOUCH } = has;
+const _preventDefault = evt => {
+  if (!HAS_TOUCH) { evt.preventDefault() }
+};
 
 const _assign = Object.assign;
 
@@ -41,105 +46,97 @@ const _setEndStyle = (node, isInitialStyle) => {
 
 const _noopFn = () => {};
 
-class GestureSwipeX extends Component {
-  /*
-  static propTypes = {
-    style: PropTypes.object,
-    setTimeStamp: PropTypes.func,
-    onGesture: PropTypes.func
-  }
-  */
+const _setRefValue = (ref, value) => ref.current = value;
+const _getRefValue = ref => ref.current;
 
-  static defaultProps = {
-    setTimeStamp: _noopFn
-  }
-
-  //_clientX = 0
-  //_isGestureStart = false
-  //_isMoveStart = false
-
-  constructor(props){
-    super(props)
-    this._handlers = has.HAS_TOUCH ? {
-        onTouchStart: this._gestureStart,
-        onTouchMove: this._gestureMove,
-        onTouchEnd: this._gestureEnd
-      } : {
-        onMouseDown: this._gestureStart,
-        onMouseMove: this._gestureMove,
-        onMouseUp: this._gestureEnd
-     }
-  }
-
-
-  _gestureStartImpl = (node) => {
-    this._isGestureStart = true
+const GestureSwipeX = forwardRef(({
+  style,
+  children,
+  setTimeStamp=_noopFn,
+  onGesture
+}, ref) => {
+  const _refClientX = useRef(0)
+  , _refIsGestureStart = useRef(false)
+  , _refIsMoveStart = useRef(false)
+  , _refGestureId = useRef()
+  , _gestureStartImpl = useCallback(node => {
+    _setRefValue(_refIsGestureStart, true)
     _styleNode(node)
-  }
-   _gestureStart = (ev) => {
-     const node = ev.currentTarget;
-     if (!this._isGestureStart) {
-      this._gestureId = setTimeout(
-        () => this._gestureStartImpl(node),
-        LONG_TOUCH
-      )
+  }, [])
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _gestureStart = useCallback(evt => {
+     const node = evt.currentTarget;
+     if (!_getRefValue(_refIsGestureStart)){
+       _setRefValue(_refGestureId, setTimeout(
+         () => _gestureStartImpl(node),
+         LONG_TOUCH
+       ))
      } else {
-       clearTimeout(this._gestureId)
-       this._isGestureStart = false
+       clearTimeout(_getRefValue(_refGestureId))
+       _setRefValue(_refIsGestureStart, false)
        _setEndStyle(node, true)
      }
-   }
+  }, [])
+  //_gestureStartImpl
+  /*eslint-enable react-hooks/exhaustive-deps */
+  , _gestureMove = useCallback(evt => {
+    _preventDefault(evt)
+    if (_getRefValue(_refIsGestureStart)) {
+      const _clientX = _getClientX(evt);
+      if (_clientX) {
+        if (!_getRefValue(_refIsMoveStart)) {
+          _setRefValue(_refClientX, _clientX)
+          _setRefValue(_refIsMoveStart, true)
+        } else {
+          const _dX = _getRefValue(_refClientX) - _clientX;
+          if (_dX < 0) {
+            _setMoveStyle(evt.currentTarget, _dX)
+          }
+        }
+      }
+    }
+  }, [])
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _gestureEnd = useCallback(evt => {
+    if (_getRefValue(_refIsGestureStart)) {
+      let _isInitialStyle = false;
+      if (_getRefValue(_refIsMoveStart)) {
+        _preventDefault(evt)
+        setTimeStamp(evt.timeStamp)
+        const _clientX = _getClientX(evt)
+        , _dX = _getRefValue(_refClientX) - _clientX;
+        _isInitialStyle = _dX < 0 && onGesture(Math.abs(_dX));
+        _setRefValue(_refIsMoveStart, false)
+      }
+      _setRefValue(_refIsGestureStart, false)
+      _setEndStyle(evt.currentTarget, _isInitialStyle)
+    } else {
+      clearTimeout(_getRefValue(_refGestureId))
+    }
+  }, [])
+  // setTimeStamp, onGesture
+  , _handlers = useMemo(() => HAS_TOUCH ? {
+      onTouchStart: _gestureStart,
+      onTouchMove: _gestureMove,
+      onTouchEnd: _gestureEnd
+    } : {
+      onMouseDown: _gestureStart,
+      onMouseMove: _gestureMove,
+      onMouseUp: _gestureEnd
+   }, []);
+   // _gestureStart, _gestureMove, _gestureEnd
+   /*eslint-enable react-hooks/exhaustive-deps */
 
-   _gestureMove = (ev) => {
-     ev.preventDefault()
-     if (this._isGestureStart) {
-       const _clientX = _getClientX(ev);
-       if (_clientX) {
-         if (!this._isMoveStart){
-           this._clientX = _clientX
-           this._isMoveStart = true
-         } else {
-           const _dX = this._clientX - _clientX;
-           if (_dX < 0) {
-             _setMoveStyle(ev.currentTarget, _dX)
-           }
-         }
-       }
-     }
-   }
-
-   _gestureEnd = (ev) => {
-     const { setTimeStamp, onGesture } = this.props;
-     if (this._isGestureStart) {
-       let _isInitialStyle = false;
-       if (this._isMoveStart) {
-         ev.preventDefault()
-         setTimeStamp(ev.timeStamp)
-         const _clientX = _getClientX(ev)
-         , _dX = this._clientX - _clientX;
-         _isInitialStyle = _dX < 0 && onGesture(Math.abs(_dX));
-         this._isMoveStart = false
-       }
-       this._isGestureStart = false
-       _setEndStyle(ev.currentTarget, _isInitialStyle)
-     } else {
-       clearTimeout(this._gestureId)
-     }
-   }
-
-  render(){
-    const { divRef, style, children } = this.props;
-    return (
-      <div
-        ref={divRef}
-        role="presentation"
-        style={style}
-        {...this._handlers}
-      >
-        {children}
-      </div>
-    );
-  }
-}
+  return (
+    <div
+      ref={ref}
+      role="presentation"
+      style={style}
+      {..._handlers}
+    >
+      {children}
+    </div>
+  );
+})
 
 export default GestureSwipeX

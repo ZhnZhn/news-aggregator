@@ -155,8 +155,9 @@ var Article = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
       _captionStyle = (0, _crStyle["default"])(S.CAPTION, [isShow, S.CAPTION_OPEN]),
       _publishedAt = publishedDate || _dt["default"].toTimeDate(publishedAt);
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_GestureSwipeX["default"], {
-    divRef: _refArticle,
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_GestureSwipeX["default"] //divRef={_refArticle}
+  , {
+    ref: _refArticle,
     style: (0, _extends2["default"])({}, S.ROOT, _rootStyle),
     setTimeStamp: _setTimeStamp,
     onGesture: _onGestureSwipeX,
