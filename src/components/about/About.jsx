@@ -13,6 +13,45 @@ import IconLogoBar from './IconLogoBar';
 const CL_ABOUT_PANE = "about-pane";
 const CL_SHOW = "show-popup";
 
+const { Link, ItemStack } = A;
+
+const PROVIDER_LINKS = [
+  [Link.CryptoCompare],
+  [Link.CoinStats],
+  [Link.Messari],
+  [Link.IexApi],
+  [Link.FmpApi, { title: "Financial Modeling Prep"}],
+  [Link.NewsApi],
+  [Link.StackOverflow],
+  [Link.WebhoseIo]
+];
+
+const _crLinkItem = ([Comp, props], index) => (
+  <div key={index}>
+    <Comp {...props} />
+  </div>
+);
+
+const NEWS_SOURCE_STEP_DESCRIPTIONS = [
+  "Please, click button News in header.",
+  "Choose a topic and news source.",
+  "Click a button Load in dialog.",
+];
+
+const SEARCH_TERM_STEP_DESCRIPTIONS = [
+  "Please, click button Query in header.",
+  "Choose news source in modal pane.",
+  "Click a button Load in dialog."
+];
+
+const _crStepItem = (descr, index) => (
+  <Step
+    key={index}
+    step={index+1}
+    description={descr}
+  />
+);
+
 const About = ({
   isInitShow,
   store,
@@ -48,7 +87,6 @@ const About = ({
           caption="About News Aggregator"
           onClose={_hClose}
        />
-
        <A.ScrollPane
           className={S.CL_SCROLL_PANE}
           style={S.SCROLL_DIV}
@@ -61,79 +99,34 @@ const About = ({
                <p>
                  News headlines providers:&nbsp;
                </p>
-               <div>
-                 <A.Link.CryptoCompare />
-               </div>
-               <div>
-                 <A.Link.CoinStats />
-               </div>
-               <div>
-                 <A.Link.Messari />
-               </div>
-               <div>
-                 <A.Link.IexApi />
-               </div>
-               <div>
-                 <A.Link.FmpApi
-                    title="Financial Modeling Prep"
-                  />
-               </div>
-               <div>
-                 <A.Link.NewsApi />
-               </div>
-               <div>
-                 <A.Link.StackOverflow />
-               </div>
-               <div>
-                 <A.Link.WebhoseIo />
-               </div>
-
-               <p style={S.MARGIN_TOP}>
+               <ItemStack
+                  items={PROVIDER_LINKS}
+                  crItem={_crLinkItem}
+               />
+               <p style={S.MT_8}>
                  Personal API Keys from providers are required.
                </p>
                <p>
                  API Keys can be set by means off Settings Dialog.
                </p>
            </div>
-           <p style={S.MARGIN_TOP}>
-             <span style={S.BLACK}>Browsing by new source:</span>
+           <p style={S.MT_8}>
+             <span style={S.BLACK}>Browsing by news source:</span>
            </p>
-           <Step
-              styleRoot={S.STEP}
-              step="1"
-              description="Please, click button News in header."
+           <ItemStack
+             items={NEWS_SOURCE_STEP_DESCRIPTIONS}
+             crItem={_crStepItem}
            />
-           <Step
-              styleRoot={S.STEP}
-              step="2"
-              description="Choose a topic and news source."
-           />
-           <Step
-              styleRoot={S.STEP}
-              step="3"
-              description="Click a button Load in dialog."
-           />
-           <p style={S.MARGIN_TOP}>
+           <p style={S.MT_8}>
              Not all news source support all sortBy values.
            </p>
 
-           <p style={S.MARGIN_TOP}>
+           <p style={S.MT_8}>
              <span style={S.BLACK}>Browsing by search terms:</span>
            </p>
-           <Step
-              styleRoot={S.STEP}
-              step="1"
-              description="Please, click button Query in header."
-           />
-           <Step
-              styleRoot={S.STEP}
-              step="2"
-              description="Choose news source in modal pane."
-           />
-           <Step
-              styleRoot={S.STEP}
-              step="3"
-              description="Click a button Load in dialog."
+           <ItemStack
+             items={SEARCH_TERM_STEP_DESCRIPTIONS}
+             crItem={_crStepItem}
            />
            <IconLogoBar />
            <p>

@@ -27,12 +27,35 @@ var _jsxRuntime = require("react/jsx-runtime");
 
 var CL_ABOUT_PANE = "about-pane";
 var CL_SHOW = "show-popup";
+var Link = _Comp["default"].Link,
+    ItemStack = _Comp["default"].ItemStack;
+var PROVIDER_LINKS = [[Link.CryptoCompare], [Link.CoinStats], [Link.Messari], [Link.IexApi], [Link.FmpApi, {
+  title: "Financial Modeling Prep"
+}], [Link.NewsApi], [Link.StackOverflow], [Link.WebhoseIo]];
 
-var About = function About(_ref) {
-  var isInitShow = _ref.isInitShow,
-      store = _ref.store,
-      showAction = _ref.showAction,
-      hideAction = _ref.hideAction;
+var _crLinkItem = function _crLinkItem(_ref, index) {
+  var Comp = _ref[0],
+      props = _ref[1];
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(Comp, (0, _extends2["default"])({}, props))
+  }, index);
+};
+
+var NEWS_SOURCE_STEP_DESCRIPTIONS = ["Please, click button News in header.", "Choose a topic and news source.", "Click a button Load in dialog."];
+var SEARCH_TERM_STEP_DESCRIPTIONS = ["Please, click button Query in header.", "Choose news source in modal pane.", "Click a button Load in dialog."];
+
+var _crStepItem = function _crStepItem(descr, index) {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Step["default"], {
+    step: index + 1,
+    description: descr
+  }, index);
+};
+
+var About = function About(_ref2) {
+  var isInitShow = _ref2.isInitShow,
+      store = _ref2.store,
+      showAction = _ref2.showAction,
+      hideAction = _ref2.hideAction;
 
   var _useState = (0, _react.useState)(isInitShow),
       isShow = _useState[0],
@@ -81,69 +104,36 @@ var About = function About(_ref) {
             }), " is web app for browsing news."]
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
             children: "News headlines providers:\xA0"
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-            children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.CryptoCompare, {})
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-            children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.CoinStats, {})
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-            children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.Messari, {})
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-            children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.IexApi, {})
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-            children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.FmpApi, {
-              title: "Financial Modeling Prep"
-            })
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-            children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.NewsApi, {})
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-            children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.StackOverflow, {})
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-            children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.WebhoseIo, {})
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(ItemStack, {
+            items: PROVIDER_LINKS,
+            crItem: _crLinkItem
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
-            style: S.MARGIN_TOP,
+            style: S.MT_8,
             children: "Personal API Keys from providers are required."
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
             children: "API Keys can be set by means off Settings Dialog."
           })]
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
-          style: S.MARGIN_TOP,
+          style: S.MT_8,
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
             style: S.BLACK,
-            children: "Browsing by new source:"
+            children: "Browsing by news source:"
           })
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Step["default"], {
-          styleRoot: S.STEP,
-          step: "1",
-          description: "Please, click button News in header."
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Step["default"], {
-          styleRoot: S.STEP,
-          step: "2",
-          description: "Choose a topic and news source."
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Step["default"], {
-          styleRoot: S.STEP,
-          step: "3",
-          description: "Click a button Load in dialog."
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(ItemStack, {
+          items: NEWS_SOURCE_STEP_DESCRIPTIONS,
+          crItem: _crStepItem
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
-          style: S.MARGIN_TOP,
+          style: S.MT_8,
           children: "Not all news source support all sortBy values."
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
-          style: S.MARGIN_TOP,
+          style: S.MT_8,
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
             style: S.BLACK,
             children: "Browsing by search terms:"
           })
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Step["default"], {
-          styleRoot: S.STEP,
-          step: "1",
-          description: "Please, click button Query in header."
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Step["default"], {
-          styleRoot: S.STEP,
-          step: "2",
-          description: "Choose news source in modal pane."
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Step["default"], {
-          styleRoot: S.STEP,
-          step: "3",
-          description: "Click a button Load in dialog."
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(ItemStack, {
+          items: SEARCH_TERM_STEP_DESCRIPTIONS,
+          crItem: _crStepItem
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconLogoBar["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
             style: S.BLACK,

@@ -1,24 +1,24 @@
-import SvgIcons from './svg/SvgIcons'
+import SvgIcons from './svg/SvgIcons';
 
+import Browser from './Browser';
+import BrowserCaption from './BrowserCaption';
+import ScrollPane from './ScrollPane';
+import SpinnerLoading from './SpinnerLoading';
 
-import Browser from './Browser'
-import BrowserCaption from './BrowserCaption'
-import ScrollPane from './ScrollPane'
-import SpinnerLoading from './SpinnerLoading'
+import SvgHrzResize from './SvgHrzResize';
 
+import CircleButton from './CircleButton';
+import FlatButton from './FlatButton';
+import ModalButton from './ModalButton';
+import RaisedButton from './RaisedButton';
 
-import SvgHrzResize from './SvgHrzResize'
+import MenuItem from './MenuItem';
+import ShowHide from './ShowHide';
 
-import CircleButton from './CircleButton'
-import FlatButton from './FlatButton'
-import ModalButton from './ModalButton'
-import RaisedButton from './RaisedButton'
+import Tab from './Tab';
+import TabPane from './TabPane';
 
-import MenuItem from './MenuItem'
-import ShowHide from './ShowHide'
-
-import Tab from './Tab'
-import TabPane from './TabPane'
+import ItemStack from './ItemStack';
 
 const Atoms = {
   ...SvgIcons,
@@ -39,7 +39,9 @@ const Atoms = {
   ShowHide,
 
   Tab,
-  TabPane
+  TabPane,
+
+  ItemStack
 };
 
 export default Atoms

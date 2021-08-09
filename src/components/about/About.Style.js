@@ -1,15 +1,15 @@
 
 const S = {
-  SCROLL_DIV : {
-    overflowY: 'auto',
+  SCROLL_DIV: {
     height: '92%',
-    paddingRight: 10
+    paddingRight: 10,
+    overflowY: 'auto'
   },
-  DIV_WRAPPER : {
+  DIV_WRAPPER: {
+    color: 'gray',
     paddingLeft: 12,
     paddingRight: 5,
     lineHeight : 1.4,
-    color: 'gray',
     fontWeight: 'bold'
   },
   DIV_TEXT: {
@@ -24,17 +24,11 @@ const S = {
   APP_TITLE: {
     color: '#80c040'
   },
-  STEP: {
-    marginTop: 3
-  },
   BLACK: {
     color: 'black'
   },
-  MARGIN_TOP: {
+  MT_8: {
     marginTop: 8
-  },
-  PROVIDER: {
-    color: '#009ae5'
   }
 };
 
@@ -44,14 +38,14 @@ const styleConfig = {
   createStyle : (CSS_RULE) => {
     return {
       CL_SCROLL_PANE: CSS_RULE.CL_SCROLL_PANE,
-      ROOT : {
+      ROOT: {
         ...CSS_RULE.BG
       },
       BROWSER_CAPTION: {
         ...CSS_RULE.BG_HEADER
       },
       ...S
-    }
+    };
   }
 }
 

@@ -1,7 +1,10 @@
 const S = {
-  STEP : {
-    color: '#80c040',
+  P: {
+    marginTop: 3,
+  },
+  STEP: {
     display: 'inline-block',
+    color: '#80c040',
     width: 26,
     height: 26,
     lineHeight: '24px',
@@ -14,12 +17,15 @@ const S = {
   DESCR: {
     color: 'black'
   }
-}
+};
 
-const Step = ({ styleRoot, step='0', description }) => (
-  <p style={styleRoot}>
+const Step = ({
+  step,
+  description
+}) => (
+  <p style={S.P}>
     <span style={S.STEP}>
-        {step}
+      {step}
     </span>
     <span style={S.DESCR}>
       &nbsp;{description}

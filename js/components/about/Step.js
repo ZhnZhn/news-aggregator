@@ -6,9 +6,12 @@ exports["default"] = void 0;
 var _jsxRuntime = require("react/jsx-runtime");
 
 var S = {
+  P: {
+    marginTop: 3
+  },
   STEP: {
-    color: '#80c040',
     display: 'inline-block',
+    color: '#80c040',
     width: 26,
     height: 26,
     lineHeight: '24px',
@@ -24,12 +27,10 @@ var S = {
 };
 
 var Step = function Step(_ref) {
-  var styleRoot = _ref.styleRoot,
-      _ref$step = _ref.step,
-      step = _ref$step === void 0 ? '0' : _ref$step,
+  var step = _ref.step,
       description = _ref.description;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("p", {
-    style: styleRoot,
+    style: S.P,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
       style: S.STEP,
       children: step

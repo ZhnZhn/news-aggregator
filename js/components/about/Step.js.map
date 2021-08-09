@@ -1,1 +1,28 @@
-{"version":3,"sources":["../../../src/components/about/Step.jsx"],"names":["S","STEP","color","display","width","height","lineHeight","textAlign","textTransform","border","borderRadius","fontSize","DESCR","Step","styleRoot","step","description"],"mappings":";;;;;;;AAAA,IAAMA,CAAC,GAAG;AACRC,EAAAA,IAAI,EAAG;AACLC,IAAAA,KAAK,EAAE,SADF;AAELC,IAAAA,OAAO,EAAE,cAFJ;AAGLC,IAAAA,KAAK,EAAE,EAHF;AAILC,IAAAA,MAAM,EAAE,EAJH;AAKLC,IAAAA,UAAU,EAAE,MALP;AAMLC,IAAAA,SAAS,EAAE,QANN;AAOLC,IAAAA,aAAa,EAAE,WAPV;AAQLC,IAAAA,MAAM,EAAE,mBARH;AASLC,IAAAA,YAAY,EAAE,KATT;AAULC,IAAAA,QAAQ,EAAE;AAVL,GADC;AAaRC,EAAAA,KAAK,EAAE;AACLV,IAAAA,KAAK,EAAE;AADF;AAbC,CAAV;;AAkBA,IAAMW,IAAI,GAAG,SAAPA,IAAO;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,uBAAcC,IAAd;AAAA,MAAcA,IAAd,0BAAmB,GAAnB;AAAA,MAAwBC,WAAxB,QAAwBA,WAAxB;AAAA,sBACX;AAAG,IAAA,KAAK,EAAEF,SAAV;AAAA,4BACE;AAAM,MAAA,KAAK,EAAEd,CAAC,CAACC,IAAf;AAAA,gBACKc;AADL,MADF,eAIE;AAAM,MAAA,KAAK,EAAEf,CAAC,CAACY,KAAf;AAAA,yBACSI,WADT;AAAA,MAJF;AAAA,IADW;AAAA,CAAb;;eAWeH,I","sourcesContent":["const S = {\r\n  STEP : {\r\n    color: '#80c040',\r\n    display: 'inline-block',\r\n    width: 26,\r\n    height: 26,\r\n    lineHeight: '24px',\r\n    textAlign: 'center',\r\n    textTransform: 'uppercase',\r\n    border: '2px solid #80c040',\r\n    borderRadius: '50%',\r\n    fontSize: '1.125rem'\r\n  },\r\n  DESCR: {\r\n    color: 'black'\r\n  }\r\n}\r\n\r\nconst Step = ({ styleRoot, step='0', description }) => (\r\n  <p style={styleRoot}>\r\n    <span style={S.STEP}>\r\n        {step}\r\n    </span>\r\n    <span style={S.DESCR}>\r\n      &nbsp;{description}\r\n    </span>\r\n </p>\r\n);\r\n\r\nexport default Step\r\n"],"file":"Step.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/about/Step.js"
+ ],
+ "file": "../../../src/components/about/Step.js",
+ "names": [
+  "S",
+  "P",
+  "marginTop",
+  "STEP",
+  "display",
+  "color",
+  "width",
+  "height",
+  "lineHeight",
+  "textAlign",
+  "textTransform",
+  "border",
+  "borderRadius",
+  "fontSize",
+  "DESCR",
+  "Step",
+  "step",
+  "description"
+ ],
+ "mappings": ";;;;;;;AAAA,IAAMA,CAAC,GAAG;AACRC,EAAAA,CAAC,EAAE;AACDC,IAAAA,SAAS,EAAE;AADV,GADK;AAIRC,EAAAA,IAAI,EAAE;AACJC,IAAAA,OAAO,EAAE,cADL;AAEJC,IAAAA,KAAK,EAAE,SAFH;AAGJC,IAAAA,KAAK,EAAE,EAHH;AAIJC,IAAAA,MAAM,EAAE,EAJJ;AAKJC,IAAAA,UAAU,EAAE,MALR;AAMJC,IAAAA,SAAS,EAAE,QANP;AAOJC,IAAAA,aAAa,EAAE,WAPX;AAQJC,IAAAA,MAAM,EAAE,mBARJ;AASJC,IAAAA,YAAY,EAAE,KATV;AAUJC,IAAAA,QAAQ,EAAE;AAVN,GAJE;AAgBRC,EAAAA,KAAK,EAAE;AACLT,IAAAA,KAAK,EAAE;AADF;AAhBC,CAAV;;AAqBA,IAAMU,IAAI,GAAG,SAAPA,IAAO;AAAA,MACXC,IADW,QACXA,IADW;AAAA,MAEXC,WAFW,QAEXA,WAFW;AAAA,sBAIX;AAAG,IAAA,KAAK,EAAEjB,CAAC,CAACC,CAAZ;AAAA,4BACE;AAAM,MAAA,KAAK,EAAED,CAAC,CAACG,IAAf;AAAA,gBACGa;AADH,MADF,eAIE;AAAM,MAAA,KAAK,EAAEhB,CAAC,CAACc,KAAf;AAAA,yBACSG,WADT;AAAA,MAJF;AAAA,IAJW;AAAA,CAAb;;eAceF,I"
+}

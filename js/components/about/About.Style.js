@@ -9,15 +9,15 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var S = {
   SCROLL_DIV: {
-    overflowY: 'auto',
     height: '92%',
-    paddingRight: 10
+    paddingRight: 10,
+    overflowY: 'auto'
   },
   DIV_WRAPPER: {
+    color: 'gray',
     paddingLeft: 12,
     paddingRight: 5,
     lineHeight: 1.4,
-    color: 'gray',
     fontWeight: 'bold'
   },
   DIV_TEXT: {
@@ -32,17 +32,11 @@ var S = {
   APP_TITLE: {
     color: '#80c040'
   },
-  STEP: {
-    marginTop: 3
-  },
   BLACK: {
     color: 'black'
   },
-  MARGIN_TOP: {
+  MT_8: {
     marginTop: 8
-  },
-  PROVIDER: {
-    color: '#009ae5'
   }
 };
 var styleConfig = {
