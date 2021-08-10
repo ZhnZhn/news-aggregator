@@ -143,7 +143,8 @@ const Article = forwardRef(({
          related={related}
          publishedAt={_publishedAt}
          author={author}
-         onHide={_hHide}
+         onClose={_hClose}
+         onHide={_hHide}         
       />
     </GestureSwipeX>
   );

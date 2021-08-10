@@ -91,18 +91,20 @@ var GestureSwipeX = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
   /*eslint-disable react-hooks/exhaustive-deps */
   ,
       _gestureStart = (0, _react.useCallback)(function (evt) {
-    var node = evt.currentTarget;
+    if (evt.target.tagName !== 'A') {
+      var node = evt.currentTarget;
 
-    if (!_getRefValue(_refIsGestureStart)) {
-      _setRefValue(_refGestureId, setTimeout(function () {
-        return _gestureStartImpl(node);
-      }, LONG_TOUCH));
-    } else {
-      clearTimeout(_getRefValue(_refGestureId));
+      if (!_getRefValue(_refIsGestureStart)) {
+        _setRefValue(_refGestureId, setTimeout(function () {
+          return _gestureStartImpl(node);
+        }, LONG_TOUCH));
+      } else {
+        clearTimeout(_getRefValue(_refGestureId));
 
-      _setRefValue(_refIsGestureStart, false);
+        _setRefValue(_refIsGestureStart, false);
 
-      _setEndStyle(node, true);
+        _setEndStyle(node, true);
+      }
     }
   }, []) //_gestureStartImpl
 

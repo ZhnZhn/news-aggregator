@@ -52,7 +52,8 @@ var ArticleDescr = function ArticleDescr(_ref) {
       related = _ref.related,
       publishedAt = _ref.publishedAt,
       author = _ref.author,
-      onHide = _ref.onHide;
+      onHide = _ref.onHide,
+      onClose = _ref.onClose;
 
   /*eslint-disable react-hooks/exhaustive-deps */
   var _hKeyDown = (0, _react.useCallback)(function (evt) {
@@ -62,8 +63,10 @@ var ArticleDescr = function ArticleDescr(_ref) {
       window.open(url, '_blank');
     } else if (keyCode === 27) {
       onHide();
+    } else if (keyCode === 46) {
+      onClose();
     }
-  }, []); //url, onHide
+  }, []); //url, onHide, onClose
 
   /*eslint-enable react-hooks/exhaustive-deps */
 
@@ -71,19 +74,12 @@ var ArticleDescr = function ArticleDescr(_ref) {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ShowHide["default"], {
     style: style,
     isShow: isShow,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      role: "link",
-      tabIndex: "0",
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
       className: CL_DIV,
+      style: S.DESCR,
+      href: url,
       onKeyDown: _hKeyDown,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
-        href: url,
-        tabIndex: "-1",
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-          style: S.DESCR,
-          children: description
-        })
-      })
+      children: description
     }), related && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       style: S.DESCR,
       children: related
@@ -99,6 +95,19 @@ var ArticleDescr = function ArticleDescr(_ref) {
     })]
   });
 };
+/*
+<div
+  role="link"
+  tabIndex="0"
+  className={CL_DIV}
+  onKeyDown={_hKeyDown}
+>
+  <a style={S.DESCR} href={url} tabIndex="-1">
+    {description}
+  </a>
+</div>
+*/
+
 
 var _default = ArticleDescr;
 exports["default"] = _default;

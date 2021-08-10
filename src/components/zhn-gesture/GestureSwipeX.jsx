@@ -65,16 +65,18 @@ const GestureSwipeX = forwardRef(({
   }, [])
   /*eslint-disable react-hooks/exhaustive-deps */
   , _gestureStart = useCallback(evt => {
-     const node = evt.currentTarget;
-     if (!_getRefValue(_refIsGestureStart)){
-       _setRefValue(_refGestureId, setTimeout(
-         () => _gestureStartImpl(node),
-         LONG_TOUCH
-       ))
-     } else {
-       clearTimeout(_getRefValue(_refGestureId))
-       _setRefValue(_refIsGestureStart, false)
-       _setEndStyle(node, true)
+     if (evt.target.tagName !== 'A') {
+       const node = evt.currentTarget;
+       if (!_getRefValue(_refIsGestureStart)){
+         _setRefValue(_refGestureId, setTimeout(
+           () => _gestureStartImpl(node),
+           LONG_TOUCH
+         ))
+       } else {
+         clearTimeout(_getRefValue(_refGestureId))
+         _setRefValue(_refIsGestureStart, false)
+         _setEndStyle(node, true)
+       }
      }
   }, [])
   //_gestureStartImpl

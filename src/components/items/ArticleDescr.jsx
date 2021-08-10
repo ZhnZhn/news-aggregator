@@ -40,36 +40,35 @@ const ArticleDescr = ({
   style, isShow,
   url, description, related,
   publishedAt, author,
-  onHide
+  onHide,
+  onClose
 }) => {
   /*eslint-disable react-hooks/exhaustive-deps */
   const _hKeyDown = useCallback(evt => {
-    const { keyCode } = evt
+    const { keyCode } = evt;
     if (keyCode === 13) {
       window.open(url, '_blank')
     } else if (keyCode === 27) {
       onHide()
+    } else if (keyCode === 46) {
+      onClose()
     }
   }, [])
-  //url, onHide
+  //url, onHide, onClose
   /*eslint-enable react-hooks/exhaustive-deps */
   return (
     <ShowHide
       style={style}
       isShow={isShow}
     >
-        <div
-          role="link"
-          tabIndex="0"
+        <a
           className={CL_DIV}
+          style={S.DESCR}
+          href={url}
           onKeyDown={_hKeyDown}
         >
-          <a href={url} tabIndex="-1">
-            <span style={S.DESCR}>
-               {description}
-            </span>
-          </a>
-        </div>
+          {description}
+        </a>
         {
           related &&
           <div style={S.DESCR}>
@@ -88,6 +87,17 @@ const ArticleDescr = ({
   );
 }
 
-
+/*
+<div
+  role="link"
+  tabIndex="0"
+  className={CL_DIV}
+  onKeyDown={_hKeyDown}
+>
+  <a style={S.DESCR} href={url} tabIndex="-1">
+    {description}
+  </a>
+</div>
+*/
 
 export default ArticleDescr

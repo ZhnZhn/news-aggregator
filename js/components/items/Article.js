@@ -168,6 +168,7 @@ var Article = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
       related: related,
       publishedAt: _publishedAt,
       author: author,
+      onClose: _hClose,
       onHide: _hHide
     })]
   });
