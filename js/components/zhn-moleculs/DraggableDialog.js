@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _react = require("react");
 
 var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
@@ -22,26 +20,26 @@ var _jsxRuntime = require("react/jsx-runtime");
 //import PropTypes from 'prop-types'
 var CL_DIALOG = 'dialog';
 var CL_DIALOG_OPEN = 'dialog show-popup';
-var styles = {
-  rootDiv: {
+var S = {
+  DIV: {
     position: 'absolute',
-    top: '30px',
-    left: '50px',
-    backgroundColor: '#4D4D4D',
+    top: 30,
+    left: 50,
+    backgroundColor: '#4d4d4d',
     border: 'solid 2px #3f5178',
     borderRadius: '5px',
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
     zIndex: 10
   },
-  childrenDiv: {
+  CHL_DIV: {
     cursor: 'default'
   },
-  commandDiv: {
-    cursor: 'default',
+  BTS: {
+    marginTop: 16,
+    marginBottom: 10,
+    marginRight: 4,
     "float": 'right',
-    marginTop: '16px',
-    marginBottom: '10px',
-    marginRight: '4px'
+    cursor: 'default'
   },
   BLOCK: {
     display: 'block'
@@ -55,134 +53,159 @@ var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
 };
 
-var DraggableDialog = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(DraggableDialog, _Component);
+var DialogButtons = function DialogButtons(_ref) {
+  var TS = _ref.TS,
+      buttons = _ref.buttons,
+      onShow = _ref.onShow,
+      onClose = _ref.onClose;
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: S.BTS,
+    children: [buttons, _isFn(onShow) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
+      rootStyle: TS.RAISED_ROOT,
+      clDiv: TS.CL_RAISED_DIV,
+      caption: "Show",
+      onClick: onShow
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
+      rootStyle: TS.RAISED_ROOT,
+      clDiv: TS.CL_RAISED_DIV,
+      caption: "Close",
+      onClick: onClose
+    })]
+  });
+};
 
-  function DraggableDialog() {
-    var _this;
+var _getRefValue = function _getRefValue(ref) {
+  return ref.current;
+};
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
+var _setRefValue = function _setRefValue(ref, value) {
+  return ref.current = value;
+};
+/*eslint-disable react-hooks/exhaustive-deps */
+
+
+var useFocusByRef = function useFocusByRef(ref) {
+  return (0, _react.useCallback)(function () {
+    var _node = _getRefValue(ref);
+
+    if (_node) {
+      _node.focus();
+    }
+  }, []);
+}; //ref
+
+/*eslint-enable react-hooks/exhaustive-deps */
+
+
+var DraggableDialog = /*#__PURE__*/(0, _react.forwardRef)(function (_ref2, ref) {
+  var isShow = _ref2.isShow,
+      rootStyle = _ref2.rootStyle,
+      browserCaptionStyle = _ref2.browserCaptionStyle,
+      styleButton = _ref2.styleButton,
+      caption = _ref2.caption,
+      commandButtons = _ref2.commandButtons,
+      children = _ref2.children,
+      onKeyDown = _ref2.onKeyDown,
+      onShowChart = _ref2.onShowChart,
+      onClose = _ref2.onClose;
+
+  var _refDiv = (0, _react.useRef)(null),
+      _refIsShow = (0, _react.useRef)(isShow),
+      _refPrevFocused = (0, _react.useRef)(null),
+      focusPrevEl = useFocusByRef(_refPrevFocused),
+      focus = useFocusByRef(_refDiv)
+  /*eslint-disable react-hooks/exhaustive-deps */
+  ,
+      _hKeyDown = (0, _react.useCallback)(function (evt) {
+    if (document.activeElement == _getRefValue(_refDiv)) {
+      onKeyDown(evt);
+    }
+  }, []) //onKeyDown
+  ,
+      _hClose = (0, _react.useCallback)(function (evt) {
+    focusPrevEl();
+    onClose();
+  }, []); //_focusPrevEl, onClose
+
+  /*eslint-enable react-hooks/exhaustive-deps */
+
+
+  (0, _react.useEffect)(function () {
+    var _divNode = _getRefValue(_refDiv);
+
+    _Interact["default"].makeDragable(_divNode);
+
+    _setRefValue(_refPrevFocused, document.activeElement);
+
+    _divNode.focus();
+  }, []);
+  /*eslint-disable react-hooks/exhaustive-deps */
+
+  (0, _react.useEffect)(function () {
+    if (isShow && !_getRefValue(_refIsShow)) {
+      focus();
     }
 
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+    _setRefValue(_refIsShow, isShow);
+  }, [isShow]); // focus
 
-    _this._handleKeyDown = function (event) {
-      var focused = document.activeElement;
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-      if (focused == _this.rootDiv) {
-        _this.props.onKeyDown(event);
-      }
+  (0, _react.useImperativeHandle)(ref, function () {
+    return {
+      focusPrevEl: focusPrevEl
     };
+  });
 
-    _this._handleClose = function (event) {
-      if (_this.prevFocusedEl) {
-        _this.prevFocusedEl.focus();
-      }
+  var _styleShow = isShow ? S.BLOCK : S.NONE,
+      _classShow = isShow ? CL_DIALOG_OPEN : CL_DIALOG;
 
-      _this.props.onClose();
-    };
+  return (
+    /*#__PURE__*/
 
-    _this._renderCommandButton = function (_ref) {
-      var commandButtons = _ref.commandButtons,
-          S = _ref.styleButton,
-          onShowChart = _ref.onShowChart,
-          onClose = _ref.onClose;
-      return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-        style: styles.commandDiv,
-        children: [commandButtons, _isFn(onShowChart) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
-          rootStyle: S.RAISED_ROOT,
-          clDiv: S.CL_RAISED_DIV,
-          caption: "Show",
-          onClick: onShowChart
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
-          rootStyle: S.RAISED_ROOT,
-          clDiv: S.CL_RAISED_DIV,
-          caption: "Close",
-          onClick: _this._handleClose
-        })]
-      });
-    };
+    /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
 
-    _this._refRootDiv = function (c) {
-      return _this.rootDiv = c;
-    };
-
-    return _this;
-  }
-
-  var _proto = DraggableDialog.prototype;
-
-  /*
-  static propTypes = {
-    isShow: PropTypes.bool,
-    caption: PropTypes.string,
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node
-    ]),
-    commandButtons: PropTypes.arrayOf(PropTypes.element),
-    onShowChart: PropTypes.func,
-    onClose: PropTypes.func
-  }
-  */
-  _proto.componentDidMount = function componentDidMount() {
-    _Interact["default"].makeDragable(this.rootDiv);
-
-    this.prevFocusedEl = document.activeElement;
-    this.rootDiv.focus();
-  };
-
-  _proto.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
-    if (this.props.isShow && !prevProps.isShow) {
-      this.rootDiv.focus();
-    }
-  };
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        isShow = _this$props.isShow,
-        rootStyle = _this$props.rootStyle,
-        caption = _this$props.caption,
-        browserCaptionStyle = _this$props.browserCaptionStyle,
-        commandButtons = _this$props.commandButtons,
-        styleButton = _this$props.styleButton,
-        children = _this$props.children,
-        onShowChart = _this$props.onShowChart,
-        onClose = _this$props.onClose,
-        _styleShow = isShow ? styles.BLOCK : styles.NONE,
-        _classShow = isShow ? CL_DIALOG_OPEN : CL_DIALOG;
-
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      ref: this._refRootDiv,
+    /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
+    (0, _jsxRuntime.jsxs)("div", {
+      ref: _refDiv,
+      role: "dialog",
       className: _classShow,
-      style: (0, _extends2["default"])({}, styles.rootDiv, rootStyle, _styleShow),
+      style: (0, _extends2["default"])({}, S.DIV, rootStyle, _styleShow),
       tabIndex: "0",
-      onKeyDown: this._handleKeyDown,
+      onKeyDown: _hKeyDown,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserCaption["default"], {
         rootStyle: browserCaptionStyle,
         caption: caption,
         onClose: onClose
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        style: styles.childrenDiv,
+        style: S.CHL_DIV,
         children: children
-      }), this._renderCommandButton({
-        commandButtons: commandButtons,
-        styleButton: styleButton,
-        onShowChart: onShowChart,
-        onClose: onClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(DialogButtons, {
+        TS: styleButton,
+        buttons: commandButtons,
+        onShow: onShowChart,
+        onClose: _hClose
       })]
-    });
-  };
-
-  _proto.focusPrevEl = function focusPrevEl() {
-    if (this.prevFocusedEl) {
-      this.prevFocusedEl.focus();
-    }
-  };
-
-  return DraggableDialog;
-}(_react.Component);
+    })
+  );
+});
+/*
+DraggableDialog.propTypes = {
+  isShow: PropTypes.bool,
+  rootStyle: PropTypes.object,
+  browserCaptionStyle: PropTypes.object,
+  styleButton: PropTypes.object,
+  caption: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  commandButtons: PropTypes.arrayOf(PropTypes.element),
+  onKeyDown: PropTypes.func,
+  onShowChart: PropTypes.func,
+  onClose: PropTypes.func
+}
+*/
 
 var _default = DraggableDialog;
 exports["default"] = _default;

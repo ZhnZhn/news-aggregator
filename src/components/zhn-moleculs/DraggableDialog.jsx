@@ -1,34 +1,34 @@
-import { Component } from 'react'
+import { forwardRef, useRef, useCallback, useEffect, useImperativeHandle } from 'react';
 //import PropTypes from 'prop-types'
 
-import BrowserCaption from '../zhn-atoms/BrowserCaption'
-import RaisedButton from '../zhn-atoms/RaisedButton'
+import BrowserCaption from '../zhn-atoms/BrowserCaption';
+import RaisedButton from '../zhn-atoms/RaisedButton';
 
-import Interact from '../../utils/Interact'
+import Interact from '../../utils/Interact';
 
 const CL_DIALOG = 'dialog';
 const CL_DIALOG_OPEN = 'dialog show-popup';
 
-const styles = {
-  rootDiv: {
+const S = {
+  DIV: {
     position: 'absolute',
-    top: '30px',
-    left: '50px',
-    backgroundColor: '#4D4D4D',
+    top: 30,
+    left: 50,
+    backgroundColor: '#4d4d4d',
     border: 'solid 2px #3f5178',
     borderRadius: '5px',
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
     zIndex: 10
   },
-  childrenDiv: {
+  CHL_DIV: {
     cursor: 'default'
   },
-  commandDiv : {
-     cursor: 'default',
+  BTS: {
+     marginTop: 16,
+     marginBottom: 10,
+     marginRight: 4,
      float: 'right',
-     marginTop: '16px',
-     marginBottom: '10px',
-     marginRight: '4px'
+     cursor: 'default'
   },
   BLOCK: {
     display: 'block'
@@ -40,113 +40,151 @@ const styles = {
 
 const _isFn = fn => typeof fn === 'function';
 
-class DraggableDialog extends Component {
-  /*
-  static propTypes = {
-    isShow: PropTypes.bool,
-    caption: PropTypes.string,
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node
-    ]),
-    commandButtons: PropTypes.arrayOf(PropTypes.element),
-    onShowChart: PropTypes.func,
-    onClose: PropTypes.func
-  }
-  */
-
-  componentDidMount(){
-     Interact.makeDragable(this.rootDiv)
-     this.prevFocusedEl = document.activeElement
-     this.rootDiv.focus()
-  }
-  componentDidUpdate(prevProps, prevState){
-    if (this.props.isShow && !prevProps.isShow) {
-      this.rootDiv.focus()
+const DialogButtons = ({
+  TS,
+  buttons,
+  onShow,
+  onClose
+}) => (
+  <div style={S.BTS}>
+    {buttons}
+    {_isFn(onShow) &&
+      <RaisedButton
+         rootStyle={TS.RAISED_ROOT}
+         clDiv={TS.CL_RAISED_DIV}
+         caption="Show"
+         onClick={onShow}
+      />
     }
-  }
+    <RaisedButton
+       rootStyle={TS.RAISED_ROOT}
+       clDiv={TS.CL_RAISED_DIV}
+       caption="Close"
+       onClick={onClose}
+    />
+  </div>
+);
 
-  _handleKeyDown = (event) => {
-    const focused = document.activeElement;
-     if (focused == this.rootDiv){
-       this.props.onKeyDown(event)
-     }
-  }
+const _getRefValue = ref => ref.current
+const _setRefValue = (ref, value) => ref.current = value
 
-  _handleClose = (event) => {
-    if (this.prevFocusedEl) {
-      this.prevFocusedEl.focus()
+/*eslint-disable react-hooks/exhaustive-deps */
+const useFocusByRef = ref => useCallback(() => {
+  const _node = _getRefValue(ref);
+  if (_node) {
+    _node.focus()
+  }
+}, [])
+//ref
+/*eslint-enable react-hooks/exhaustive-deps */
+
+const DraggableDialog = forwardRef(({
+  isShow,
+  rootStyle,
+  browserCaptionStyle,
+  styleButton,
+  caption,
+  commandButtons,
+  children,
+  onKeyDown,
+  onShowChart,
+  onClose
+}, ref) => {
+  const _refDiv = useRef(null)
+  , _refIsShow = useRef(isShow)
+  , _refPrevFocused = useRef(null)
+  , focusPrevEl = useFocusByRef(_refPrevFocused)
+  , focus = useFocusByRef(_refDiv)
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hKeyDown = useCallback(evt => {
+    if (document.activeElement == _getRefValue(_refDiv)) {
+      onKeyDown(evt)
     }
-    this.props.onClose()
-  }
+  }, [])
+  //onKeyDown
+  , _hClose = useCallback(evt => {
+    focusPrevEl()
+    onClose()
+  }, [])
+  //_focusPrevEl, onClose
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  _renderCommandButton = ({
-    commandButtons, styleButton:S, onShowChart, onClose
-  }) => {
-    return (
-      <div style={styles.commandDiv}>
-        {commandButtons}
-        {_isFn(onShowChart) &&
-          <RaisedButton
-             rootStyle={S.RAISED_ROOT}
-             clDiv={S.CL_RAISED_DIV}
-             caption="Show"
-             onClick={onShowChart}
-          />
-        }
-        <RaisedButton
-           rootStyle={S.RAISED_ROOT}
-           clDiv={S.CL_RAISED_DIV}
-           caption="Close"
-           onClick={this._handleClose}
-        />
+
+  useEffect(() => {
+    const _divNode = _getRefValue(_refDiv);
+    Interact.makeDragable(_divNode)
+    _setRefValue(_refPrevFocused, document.activeElement)
+    _divNode.focus()
+  }, [])
+
+  /*eslint-disable react-hooks/exhaustive-deps */
+  useEffect(() => {
+    if (isShow && !_getRefValue(_refIsShow)) {
+      focus()
+    }
+    _setRefValue(_refIsShow, isShow)
+  }, [isShow])
+  // focus
+  /*eslint-enable react-hooks/exhaustive-deps */
+
+  useImperativeHandle(ref, () => ({ focusPrevEl }))
+
+  const _styleShow = isShow ? S.BLOCK : S.NONE
+  , _classShow = isShow ? CL_DIALOG_OPEN : CL_DIALOG;
+
+  return (
+    /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
+    /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
+    <div
+         ref={_refDiv}
+         role="dialog"
+         className={_classShow}
+         style={{
+           ...S.DIV,
+           ...rootStyle,
+           ..._styleShow
+         }}
+         tabIndex="0"
+         onKeyDown={_hKeyDown}
+    >
+    {
+      /*eslint-enable jsx-a11y/no-noninteractive-element-interactions*/
+      /*eslint-enable jsx-a11y/no-noninteractive-tabindex*/
+    }
+      <BrowserCaption
+         rootStyle={browserCaptionStyle}
+         caption={caption}
+         onClose={onClose}
+      />
+      <div style={S.CHL_DIV}>
+         {children}
       </div>
-    );
-  }
+      <DialogButtons
+        TS={styleButton}
+        buttons={commandButtons}
+        onShow={onShowChart}
+        onClose={_hClose}
+      />
+    </div>
+  );
+});
 
-  _refRootDiv = c => this.rootDiv = c
-
-  render(){
-    const {
-           isShow, rootStyle,
-           caption, browserCaptionStyle,
-           commandButtons, styleButton,
-           children,
-           onShowChart, onClose
-         } = this.props
-        , _styleShow = isShow ? styles.BLOCK : styles.NONE
-        , _classShow = isShow ? CL_DIALOG_OPEN : CL_DIALOG;
-    return (
-      <div
-           ref={this._refRootDiv}
-           className={_classShow}
-           style={{
-             ...styles.rootDiv,
-             ...rootStyle,
-             ..._styleShow
-           }}
-           tabIndex="0"
-           onKeyDown={this._handleKeyDown}
-      >
-        <BrowserCaption
-           rootStyle={browserCaptionStyle}
-           caption={caption}
-           onClose={onClose}
-        />
-        <div style={styles.childrenDiv}>
-           {children}
-        </div>
-        {this._renderCommandButton({ commandButtons, styleButton, onShowChart, onClose })}
-      </div>
-    );
-  }
-
-  focusPrevEl(){
-    if (this.prevFocusedEl){
-      this.prevFocusedEl.focus()
-    }
-  }
-
+/*
+DraggableDialog.propTypes = {
+  isShow: PropTypes.bool,
+  rootStyle: PropTypes.object,
+  browserCaptionStyle: PropTypes.object,
+  styleButton: PropTypes.object,
+  caption: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  commandButtons: PropTypes.arrayOf(PropTypes.element),
+  onKeyDown: PropTypes.func,
+  onShowChart: PropTypes.func,
+  onClose: PropTypes.func
 }
+*/
 
 export default DraggableDialog
