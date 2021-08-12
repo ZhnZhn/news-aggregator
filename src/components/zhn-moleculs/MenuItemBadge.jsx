@@ -1,44 +1,40 @@
-import { Component } from 'react'
+import crStyle from '../zhn-utils/crStyle';
 
 const S = {
   BADGE: {
     display: 'inline-block',
     color: 'grey',
-    //backgroundColor: 'rgb(63, 81, 181)',
     backgroundColor: '#3f5178',
     float: 'right',
-    width: '32px',
-    paddingRight: '5px',
-    paddingLeft: '5px',
+    width: 32,
+    paddingRight: 5,
+    paddingLeft: 5,
     borderRadius: '30%',
     textAlign: 'center'
   },
   CLOSE: {
     color: 'black'
   }
-}
+};
 
-
-class MenuItemBadge extends Component {
-
-  _handleClick = (event) => {
-     event.stopPropagation()
-     const { itemConf, onClick } = this.props;
-     onClick(itemConf)
+const MenuItemBadge = ({
+  style,
+  itemBadge,
+  itemConf,
+  onClick
+}) => {
+  const _hClick = (event) => {
+    event.stopPropagation()
+    onClick(itemConf)
   }
+  , { isOpen } = itemBadge || {}
+  , _badgeStyle = crStyle(S.BADGE, [!isOpen, S.CLOSE]);
 
-  render(){
-    const { style, itemBadge={} } = this.props
-        , { isOpen } = itemBadge
-        , _badgeStyle = isOpen
-             ? S.BADGE
-             : { ...S.BADGE, ...S.CLOSE }
-    return (
-      <span style={{ ..._badgeStyle, ...style }} onClick={this._handleClick}>
-        V
-      </span>
-    );
-  }
-}
+  return (
+    <span style={{..._badgeStyle, ...style}} onClick={_hClick}>
+      V
+    </span>
+  );
+};
 
 export default MenuItemBadge
