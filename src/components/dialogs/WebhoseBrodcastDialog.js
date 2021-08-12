@@ -7,14 +7,10 @@ import useRefInput from './hooks/useRefInput';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import InputBeforeDays from './InputBeforeDays';
 
 const DF_IN_TITLE = 'Weather'
 , DF_BEFORE_DAYS = 2;
-
-const _onTestDaysBefore = (value) => {
-  const _n = parseInt(value, 10);
-  return (!Number.isNaN(_n) && _n>0 && _n<31) || value === '';
-};
 
 const WebhoseBrodcastDialog = ({
   isShow,
@@ -66,13 +62,10 @@ const WebhoseBrodcastDialog = ({
         caption="In Title (Default: Weather)"
         initValue={DF_IN_TITLE}
       />
-      <A.TextField
-        style={TS.INPUT_ROOT}
+      <InputBeforeDays
         ref={_refInputBeforeDays}
-        caption="Before Days, Max 30"
+        style={TS.INPUT_ROOT}
         initValue={DF_BEFORE_DAYS}
-        errorMsg="0<n<31 value must be"
-        onTest={_onTestDaysBefore}
       />
       <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
         <A.Link.WebhoseIo />

@@ -17,18 +17,14 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
+var _InputBeforeDays = _interopRequireDefault(require("./InputBeforeDays"));
+
 var _jsxRuntime = require("react/jsx-runtime");
 
 var _this = void 0;
 
 var DF_IN_TITLE = 'Weather',
     DF_BEFORE_DAYS = 2;
-
-var _onTestDaysBefore = function _onTestDaysBefore(value) {
-  var _n = parseInt(value, 10);
-
-  return !Number.isNaN(_n) && _n > 0 && _n < 31 || value === '';
-};
 
 var WebhoseBrodcastDialog = function WebhoseBrodcastDialog(_ref) {
   var isShow = _ref.isShow,
@@ -87,13 +83,10 @@ var WebhoseBrodcastDialog = function WebhoseBrodcastDialog(_ref) {
       ref: _refInputInTitle,
       caption: "In Title (Default: Weather)",
       initValue: DF_IN_TITLE
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
-      style: TS.INPUT_ROOT,
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputBeforeDays["default"], {
       ref: _refInputBeforeDays,
-      caption: "Before Days, Max 30",
-      initValue: DF_BEFORE_DAYS,
-      errorMsg: "0<n<31 value must be",
-      onTest: _onTestDaysBefore
+      style: TS.INPUT_ROOT,
+      initValue: DF_BEFORE_DAYS
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
       rootStyle: TS.POWERED_BY,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.WebhoseIo, {})

@@ -8,6 +8,7 @@ import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import InputBeforeDays from './InputBeforeDays';
 
 const SITE_TYPE_OPTIONS = [
   { caption: 'News', value: 'news'},
@@ -16,11 +17,6 @@ const SITE_TYPE_OPTIONS = [
 , DF_SITE_TYPE = SITE_TYPE_OPTIONS[0]
 , DF_IN_TITLE = 'Weather'
 , DF_BEFORE_DAYS = 2;
-
-const _onTestDaysBefore = (value) => {
-  const _n = parseInt(value, 10);
-  return (!Number.isNaN(_n) && _n>0 && _n<31) || value === '';
-};
 
 const _getRefValue = ref => ref.value;
 
@@ -82,13 +78,10 @@ const WebhoseQueryDialog = ({
         styleConfig={TS.SELECT}
         onSelect={_selectSiteType}
       />
-      <A.TextField
-        style={TS.INPUT_ROOT}
+      <InputBeforeDays
         ref={_refInputBeforeDays}
-        caption="Before Days, Max 30"
+        style={TS.INPUT_ROOT}
         initValue={DF_BEFORE_DAYS}
-        errorMsg="0<n<31 value must be"
-        onTest={_onTestDaysBefore}
       />
       <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
         <A.Link.WebhoseIo />
