@@ -42,6 +42,22 @@ var _isVisible = function _isVisible(_ref) {
   return isShow && isSelected;
 };
 
+var _getRefCompValue = function _getRefCompValue(ref) {
+  return ref.current.getValue();
+};
+
+var _clearInputRefs = function _clearInputRefs(refs) {
+  return refs.forEach(function (ref) {
+    return ref.current.clear();
+  });
+};
+
+var _setWasEnterRefs = function _setWasEnterRefs(refs) {
+  return refs.forEach(function (ref) {
+    return ref.current.setWasEnter();
+  });
+};
+
 var CardApiKeys = function CardApiKeys(props) {
   var _refInputIex = (0, _react.useRef)(),
       _refInputFmp = (0, _react.useRef)(),
@@ -64,24 +80,15 @@ var CardApiKeys = function CardApiKeys(props) {
     setNews('');
     setWebhose('');
 
-    _refInputIex.current.clear();
-
-    _refInputFmp.current.clear();
-
-    _refInputNews.current.clear();
-
-    _refInputWebhose.current.clear();
+    _clearInputRefs([_refInputIex, _refInputFmp, _refInputNews, _refInputWebhose]);
   }, []),
       _hSetAll = (0, _react.useCallback)(function () {
-    setIex(_refInputIex.current.getValue());
-    setNews(_refInputNews.current.getValue());
-    setWebhose(_refInputWebhose.current.getValue());
+    setIex(_getRefCompValue(_refInputIex));
+    setFmp(_getRefCompValue(_refInputFmp));
+    setNews(_getRefCompValue(_refInputNews));
+    setWebhose(_getRefCompValue(_refInputWebhose));
 
-    _refInputIex.current.setWasEnter();
-
-    _refInputNews.current.setWasEnter();
-
-    _refInputWebhose.current.setWasEnter();
+    _setWasEnterRefs([_refInputIex, _refInputFmp, _refInputNews, _refInputWebhose]);
   }, []);
 
   if (!_isVisible(props)) {
@@ -90,45 +97,43 @@ var CardApiKeys = function CardApiKeys(props) {
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: style,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("form", {
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].PasswordField, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("form", {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].PasswordField, {
         ref: _refInputIex,
-        rootStyle: fieldStyle,
+        style: fieldStyle,
         name: "iex-cloud",
         caption: "IEX Cloud API Key (35 Symbols)",
-        maxLength: 35 //errorMsg="35 symbols must be"
-        ,
+        maxLength: 35,
         onTest: _onTestIex,
         onEnter: setIex
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].PasswordField, {
+      })
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("form", {
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].PasswordField, {
         ref: _refInputFmp,
-        rootStyle: fieldStyle,
+        style: fieldStyle,
         name: "fmp-api",
         caption: "FMP API Key (32 Symbols)",
-        maxLength: 32 //errorMsg="35 symbols must be"
-        ,
+        maxLength: 32,
         onTest: _onTestFmp,
         onEnter: setFmp
-      })]
+      })
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("form", {
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].PasswordField, {
         ref: _refInputNews,
-        rootStyle: fieldStyle,
+        style: fieldStyle,
         name: "newsapi",
         caption: "NewsApi API Key (32 Symbols)",
-        maxLength: 32 //errorMsg="32 symbols must be"
-        ,
+        maxLength: 32,
         onTest: _onTestNews,
         onEnter: setNews
       })
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("form", {
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].PasswordField, {
         ref: _refInputWebhose,
-        rootStyle: fieldStyle,
+        style: fieldStyle,
         name: "webhose",
         caption: "Webhose API Key (36 Symbols)",
-        maxLength: 36 //errorMsg="36 symbols must be"
-        ,
+        maxLength: 36,
         onTest: _onTestWebhose,
         onEnter: setWebhose
       })

@@ -139,7 +139,7 @@ var PasswordField = /*#__PURE__*/function (_Component) {
 
   _proto.render = function render() {
     var _this$props = this.props,
-        rootStyle = _this$props.rootStyle,
+        style = _this$props.style,
         caption = _this$props.caption,
         name = _this$props.name,
         maxLength = _this$props.maxLength,
@@ -153,7 +153,7 @@ var PasswordField = /*#__PURE__*/function (_Component) {
 
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: CL.SELECT,
-      style: rootStyle,
+      style: style,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
         className: CL.LABEL,
         style: (0, _extends2["default"])({}, _labelStyle, _labelErrStyle),

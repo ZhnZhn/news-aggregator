@@ -113,7 +113,7 @@ class PasswordField extends Component {
 
   render(){
     const {
-        rootStyle, caption,
+        style, caption,
         name,
         maxLength, errorMsg,
         onTest
@@ -134,7 +134,7 @@ class PasswordField extends Component {
     return (
       <div
         className={CL.SELECT}
-        style={rootStyle}
+        style={style}
       >
         <label
           className={CL.LABEL}
