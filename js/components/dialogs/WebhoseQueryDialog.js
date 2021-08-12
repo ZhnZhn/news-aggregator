@@ -5,23 +5,21 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _react = require("react");
-
-var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
+var _useRefClose2 = _interopRequireDefault(require("./hooks/useRefClose"));
+
+var _useRefInput3 = _interopRequireDefault(require("./hooks/useRefInput"));
+
+var _useRefSelectOption2 = _interopRequireDefault(require("./hooks/useRefSelectOption"));
+
+var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"));
+
 var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _Decors = _interopRequireDefault(require("./decorators/Decors"));
-
 var _jsxRuntime = require("react/jsx-runtime");
-
-var _dec, _class;
 
 var SITE_TYPE_OPTIONS = [{
   caption: 'News',
@@ -30,125 +28,100 @@ var SITE_TYPE_OPTIONS = [{
   caption: 'Blogs',
   value: 'blogs'
 }],
-    DF_SITE_TYPE = SITE_TYPE_OPTIONS[0];
+    DF_SITE_TYPE = SITE_TYPE_OPTIONS[0],
+    DF_IN_TITLE = 'Weather',
+    DF_BEFORE_DAYS = 2;
 
 var _onTestDaysBefore = function _onTestDaysBefore(value) {
   var _n = parseInt(value, 10);
 
-  if (!Number.isNaN(_n) && _n > 0 && _n < 31 || value === '') {
-    return true;
-  } else {
-    return false;
-  }
+  return !Number.isNaN(_n) && _n > 0 && _n < 31 || value === '';
 };
 
-var WebhoseQueryDialog = (_dec = _Decors["default"].withDecors, _dec(_class = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(WebhoseQueryDialog, _Component);
+var _getRefValue = function _getRefValue(ref) {
+  return ref.value;
+};
 
-  function WebhoseQueryDialog(props) {
-    var _this;
+var WebhoseQueryDialog = function WebhoseQueryDialog(_ref) {
+  var isShow = _ref.isShow,
+      type = _ref.type,
+      source = _ref.source,
+      itemConf = _ref.itemConf,
+      onLoad = _ref.onLoad,
+      onShow = _ref.onShow,
+      onClose = _ref.onClose;
 
-    _this = _Component.call(this, props) || this;
+  var _useRefClose = (0, _useRefClose2["default"])(onClose),
+      _refDialog = _useRefClose[0],
+      _hClose = _useRefClose[1],
+      _useRefInput = (0, _useRefInput3["default"])(DF_IN_TITLE),
+      _refInputInTitle = _useRefInput[0],
+      _getInputInTitle = _useRefInput[1],
+      _useRefSelectOption = (0, _useRefSelectOption2["default"])(DF_SITE_TYPE.value),
+      _refSiteType = _useRefSelectOption[0],
+      _selectSiteType = _useRefSelectOption[1],
+      _useRefInput2 = (0, _useRefInput3["default"])(DF_BEFORE_DAYS),
+      _refInputBeforeDays = _useRefInput2[0],
+      _getInputBeforeDays = _useRefInput2[1],
+      _hLoad = (0, _react.useCallback)(function () {
+    var _ref2 = itemConf || {},
+        requestType = _ref2.requestType,
+        loadId = _ref2.loadId;
 
-    _this._selectSiteType = function (option) {
-      _this.siteType = option ? option.value : void 0;
-    };
-
-    _this._handleLoad = function () {
-      var _this$props = _this.props,
-          type = _this$props.type,
-          source = _this$props.source,
-          _this$props$itemConf = _this$props.itemConf,
-          itemConf = _this$props$itemConf === void 0 ? {} : _this$props$itemConf,
-          onLoad = _this$props.onLoad,
-          requestType = itemConf.requestType,
-          loadId = itemConf.loadId,
-          _inTitle = _this.inputTitle.getValue(),
-          _beforeDays = _this.inputBeforeDays.getValue();
-
-      onLoad({
-        type: type,
-        source: source,
-        requestType: requestType,
-        itemConf: itemConf,
-        loadId: loadId,
-        inTitle: _inTitle,
-        siteType: _this.siteType,
-        beforeDays: _beforeDays
-      });
-
-      _this._handleClose();
-    };
-
-    _this._refDialoComp = function (comp) {
-      return _this.dialogComp = comp;
-    };
-
-    _this._refInputTitle = function (comp) {
-      return _this.inputTitle = comp;
-    };
-
-    _this._refInputBeforeDays = function (comp) {
-      return _this.inputBeforeDays = comp;
-    };
-
-    _this.siteType = void 0;
-
-    _this._initWithDecors((0, _assertThisInitialized2["default"])(_this));
-
-    return _this;
-  }
-
-  var _proto = WebhoseQueryDialog.prototype;
-
-  _proto.render = function render() {
-    var _this$props2 = this.props,
-        isShow = _this$props2.isShow,
-        theme = _this$props2.theme,
-        onShow = _this$props2.onShow,
-        TS = theme.createStyle(_Dialog["default"]),
-        _commandButtons = this._createCommandButtons(TS.BT);
-
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
-      ref: this._refDialoComp,
-      rootStyle: TS.R_DIALOG,
-      browserCaptionStyle: TS.BROWSER_CAPTION,
-      styleButton: TS.BT,
-      caption: "Webhose: News, Blogs",
-      isShow: isShow,
-      commandButtons: _commandButtons,
-      onKeyDown: this._handleKeyDownWith,
-      onShowChart: onShow,
-      onClose: this._handleClose,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
-        style: TS.INPUT_ROOT,
-        ref: this._refInputTitle,
-        caption: "In Title (Default: Weather)",
-        initValue: "Weather"
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
-        caption: "Site Type",
-        initItem: DF_SITE_TYPE,
-        options: SITE_TYPE_OPTIONS,
-        styleConfig: TS.SELECT,
-        onSelect: this._selectSiteType
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
-        style: TS.INPUT_ROOT,
-        ref: this._refInputBeforeDays,
-        caption: "Before Days, Max 30",
-        initValue: 2,
-        errorMsg: "0<n<31 value must be",
-        onTest: _onTestDaysBefore
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
-        rootStyle: TS.POWERED_BY,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.WebhoseIo, {})
-      })]
+    onLoad({
+      type: type,
+      source: source,
+      requestType: requestType,
+      itemConf: itemConf,
+      loadId: loadId,
+      inTitle: _getInputInTitle(),
+      siteType: _getRefValue(_refSiteType),
+      beforeDays: _getInputBeforeDays()
     });
-  };
 
-  return WebhoseQueryDialog;
-}(_react.Component)) || _class);
+    _hClose();
+  }, []),
+      _useDecorDialog = (0, _useDecorDialog2["default"])(_Dialog["default"], _hLoad, _hClose),
+      TS = _useDecorDialog[0],
+      _commandButtons = _useDecorDialog[1],
+      _hKeyDown = _useDecorDialog[2];
 
-var _default = (0, _withTheme["default"])(WebhoseQueryDialog);
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
+    ref: _refDialog,
+    rootStyle: TS.R_DIALOG,
+    browserCaptionStyle: TS.BROWSER_CAPTION,
+    styleButton: TS.BT,
+    caption: "Webhose: News, Blogs",
+    isShow: isShow,
+    commandButtons: _commandButtons,
+    onKeyDown: _hKeyDown,
+    onShowChart: onShow,
+    onClose: _hClose,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
+      style: TS.INPUT_ROOT,
+      ref: _refInputInTitle,
+      caption: "In Title (Default: Weather)",
+      initValue: DF_IN_TITLE
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+      caption: "Site Type",
+      initItem: DF_SITE_TYPE,
+      options: SITE_TYPE_OPTIONS,
+      styleConfig: TS.SELECT,
+      onSelect: _selectSiteType
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
+      style: TS.INPUT_ROOT,
+      ref: _refInputBeforeDays,
+      caption: "Before Days, Max 30",
+      initValue: DF_BEFORE_DAYS,
+      errorMsg: "0<n<31 value must be",
+      onTest: _onTestDaysBefore
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
+      rootStyle: TS.POWERED_BY,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.WebhoseIo, {})
+    })]
+  });
+};
 
+var _default = WebhoseQueryDialog;
 exports["default"] = _default;
 //# sourceMappingURL=WebhoseQueryDialog.js.map

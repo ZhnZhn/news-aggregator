@@ -1,9 +1,12 @@
-import { Component } from 'react'
+import { useCallback } from 'react';
 
-import withTheme from '../hoc/withTheme'
-import styleConfig from './Dialog.Style'
-import A from '../Comp'
-import Decors from './decorators/Decors'
+import styleConfig from './Dialog.Style';
+
+import useRefClose from './hooks/useRefClose';
+import useRefSelectOption from './hooks/useRefSelectOption';
+import useDecorDialog from './hooks/useDecorDialog';
+
+import A from '../Comp';
 
 const NEWS_FOR_OPTIONS = [
 {caption: "All", value: "all"},
@@ -28,69 +31,59 @@ const NEWS_FOR_OPTIONS = [
 { caption: "Vechain", value: "VET"},
 { caption: "Cosmos", value: "ATOM"}
 ]
-, DF_RECENT = NEWS_FOR_OPTIONS[0]
+, DF_ASSET_KEY = NEWS_FOR_OPTIONS[0];
 
+const _getRefValue = ref => ref.current;
 
-
-@Decors.withDecors
-class MessariDialog extends Component {
-  constructor(props){
-    super(props)
-    this._initWithDecors(this)
-  }
-
-  _selectNewsAbout = (option) => {
-    this.assetKey = option
-       ? option.value
-       : void 0
-  }
-
-  _handleLoad = () => {
-    const { type, source, itemConf, onLoad } = this.props
-
+const MessariDialog = ({
+  isShow,
+  type,
+  source,
+  itemConf,
+  onLoad,
+  onShow,
+  onClose
+ }) => {
+  const [_refDialog, _hClose] = useRefClose(onClose)
+  , [_refAssetKey, _selectAssetKey] = useRefSelectOption(DF_ASSET_KEY.value)
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hLoad = useCallback(()=>{
     onLoad({
       type, source, itemConf,
       loadId: 'MS',
-      assetKey: this.assetKey
+      assetKey: _getRefValue(_refAssetKey)
     })
-    this._handleClose()
-  }
+    _hClose()
+  }, [])
+  // type, source, itemConf, onLoad, _refAssetKey, _hClose
+  /*eslint-enable react-hooks/exhaustive-deps */
+  , [TS, _commandButtons, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose);
 
-  _refDialogComp = comp => this.dialogComp = comp
+  return (
+    <A.DraggableDialog
+         ref={_refDialog}
+         rootStyle={TS.R_DIALOG}
+         browserCaptionStyle={TS.BROWSER_CAPTION}
+         styleButton={TS.BT}
+         caption="Messari: Blockchain News"
+         isShow={isShow}
+         commandButtons={_commandButtons}
+         onKeyDown={_hKeyDown}
+         onShowChart={onShow}
+         onClose={_hClose}
+     >
+       <A.InputSelect
+         caption="News about"
+         initItem={DF_ASSET_KEY}
+         options={NEWS_FOR_OPTIONS}
+         styleConfig={TS.SELECT}
+         onSelect={_selectAssetKey}
+       />
+      <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
+        <A.Link.Messari />
+      </A.Link.PoweredBy>
+    </A.DraggableDialog>
+  );
+};
 
-
-  render(){
-    const { isShow, theme, onShow } = this.props
-         , TS = theme.createStyle(styleConfig)
-         , _commandButtons = this._createCommandButtons(TS.BT);
-
-    return (
-      <A.DraggableDialog
-           ref={this._refDialogComp}
-           rootStyle={TS.R_DIALOG}
-           browserCaptionStyle={TS.BROWSER_CAPTION}
-           styleButton={TS.BT}
-           caption="Messari: Blockchain News"
-           isShow={isShow}
-           commandButtons={_commandButtons}
-           onKeyDown={this._handleKeyDownWith}
-           onShowChart={onShow}
-           onClose={this._handleClose}
-       >
-
-         <A.InputSelect
-           caption="News about"
-           initItem={DF_RECENT}
-           options={NEWS_FOR_OPTIONS}
-           styleConfig={TS.SELECT}
-           onSelect={this._selectNewsAbout}
-         />
-        <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
-          <A.Link.Messari />
-        </A.Link.PoweredBy>
-      </A.DraggableDialog>
-    );
-  }
-}
-
-export default withTheme(MessariDialog)
+export default MessariDialog

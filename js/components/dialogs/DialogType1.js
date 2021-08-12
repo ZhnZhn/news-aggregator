@@ -5,33 +5,21 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _react = require("react");
-
-var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
-var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/DraggableDialog"));
+var _useRefClose2 = _interopRequireDefault(require("./hooks/useRefClose"));
 
-var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
+var _useRefSelectOption2 = _interopRequireDefault(require("./hooks/useRefSelectOption"));
 
-var _RaisedButton = _interopRequireDefault(require("../zhn-atoms/RaisedButton"));
+var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"));
 
-var _withKeyDown = _interopRequireDefault(require("./decorators/withKeyDown"));
+var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var _class;
-
-var DF_SORTBY = {
-  caption: 'Top',
-  value: 'top'
-};
-var options = [{
+var SORT_BY_OPTIONS = [{
   caption: 'Top',
   value: 'top'
 }, {
@@ -40,105 +28,64 @@ var options = [{
 }, {
   caption: 'Newest',
   value: 'publishedAt'
-}];
+}],
+    DF_SORT_BY = SORT_BY_OPTIONS[0],
+    _getRefValue = function _getRefValue(ref) {
+  return ref.current;
+};
 
-var DialogType1 = (0, _withKeyDown["default"])(_class = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(DialogType1, _Component);
+var DialogType1 = function DialogType1(_ref) {
+  var isShow = _ref.isShow,
+      caption = _ref.caption,
+      type = _ref.type,
+      source = _ref.source,
+      itemConf = _ref.itemConf,
+      onLoad = _ref.onLoad,
+      onShow = _ref.onShow,
+      onClose = _ref.onClose;
 
-  function DialogType1(props) {
-    var _this;
-
-    _this = _Component.call(this, props) || this;
-
-    _this._selectSortBy = function (option) {
-      _this.sortBy = option ? option.value : void 0;
-    };
-
-    _this._handleLoad = function () {
-      var _this$props = _this.props,
-          type = _this$props.type,
-          source = _this$props.source,
-          itemConf = _this$props.itemConf,
-          onLoad = _this$props.onLoad;
-      onLoad({
-        type: type,
-        source: source,
-        itemConf: itemConf,
-        sortBy: _this.sortBy
-      });
-    };
-
-    _this._handleClose = function () {
-      _this.dialogComp.focusPrevEl();
-
-      _this.props.onClose();
-    };
-
-    _this._createCommandButtons = function (S) {
-      return [/*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
-        rootStyle: S.RAISED_ROOT,
-        clDiv: S.CL_RAISED_DIV,
-        caption: "Load",
-        isPrimary: true,
-        onClick: _this._handleLoad
-      }, "_load")];
-    };
-
-    _this._refDialogComp = function (comp) {
-      return _this.dialogComp = comp;
-    };
-
-    _this.sortBy = DF_SORTBY.value;
-    _this._handleKeyDownWith = _this._handleKeyDownWith.bind((0, _assertThisInitialized2["default"])(_this));
-    return _this;
-  }
-
-  var _proto = DialogType1.prototype;
-
-  _proto.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
-    if (this.props !== nextProps) {
-      if (!this.props.isShow && !nextProps.isShow) {
-        return false;
-      }
-    }
-
-    return true;
-  };
-
-  _proto.render = function render() {
-    var _this$props2 = this.props,
-        isShow = _this$props2.isShow,
-        caption = _this$props2.caption,
-        theme = _this$props2.theme,
-        onShow = _this$props2.onShow,
-        S = theme.createStyle(_Dialog["default"]),
-        _commandButtons = this._createCommandButtons(S.BT);
-
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_DraggableDialog["default"], {
-      ref: this._refDialogComp,
-      rootStyle: S.R_DIALOG,
-      browserCaptionStyle: S.BROWSER_CAPTION,
-      styleButton: S.BT,
-      caption: caption,
-      isShow: isShow,
-      commandButtons: _commandButtons,
-      onKeyDown: this._handleKeyDownWith,
-      onShowChart: onShow,
-      onClose: this._handleClose,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputSelect["default"], {
-        caption: "SortBy",
-        initItem: DF_SORTBY,
-        options: options,
-        styleConfig: S.SELECT,
-        onSelect: this._selectSortBy
-      })
+  var _useRefClose = (0, _useRefClose2["default"])(onClose),
+      _refDialog = _useRefClose[0],
+      _hClose = _useRefClose[1],
+      _useRefSelectOption = (0, _useRefSelectOption2["default"])(DF_SORT_BY.value),
+      _refSortBy = _useRefSelectOption[0],
+      _selectSortBy = _useRefSelectOption[1],
+      _hLoad = (0, _react.useCallback)(function () {
+    onLoad({
+      type: type,
+      source: source,
+      itemConf: itemConf,
+      sortBy: _getRefValue(_refSortBy)
     });
-  };
 
-  return DialogType1;
-}(_react.Component)) || _class;
+    _hClose();
+  }, []),
+      _useDecorDialog = (0, _useDecorDialog2["default"])(_Dialog["default"], _hLoad, _hClose),
+      TS = _useDecorDialog[0],
+      _commandButtons = _useDecorDialog[1],
+      _hKeyDown = _useDecorDialog[2];
 
-var _default = (0, _withTheme["default"])(DialogType1);
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].DraggableDialog, {
+    ref: _refDialog,
+    isShow: isShow,
+    rootStyle: TS.R_DIALOG,
+    browserCaptionStyle: TS.BROWSER_CAPTION,
+    styleButton: TS.BT,
+    caption: caption,
+    commandButtons: _commandButtons,
+    onKeyDown: _hKeyDown,
+    onShowChart: onShow,
+    onClose: _hClose,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+      caption: "SortBy",
+      initItem: DF_SORT_BY,
+      options: SORT_BY_OPTIONS,
+      styleConfig: TS.SELECT,
+      onSelect: _selectSortBy
+    })
+  });
+};
 
+var _default = DialogType1;
 exports["default"] = _default;
 //# sourceMappingURL=DialogType1.js.map

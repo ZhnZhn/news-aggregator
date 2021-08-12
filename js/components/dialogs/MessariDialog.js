@@ -5,23 +5,19 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _react = require("react");
-
-var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
+var _useRefClose2 = _interopRequireDefault(require("./hooks/useRefClose"));
+
+var _useRefSelectOption2 = _interopRequireDefault(require("./hooks/useRefSelectOption"));
+
+var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"));
+
 var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _Decors = _interopRequireDefault(require("./decorators/Decors"));
-
 var _jsxRuntime = require("react/jsx-runtime");
-
-var _dec, _class;
 
 var NEWS_FOR_OPTIONS = [{
   caption: "All",
@@ -87,83 +83,67 @@ var NEWS_FOR_OPTIONS = [{
   caption: "Cosmos",
   value: "ATOM"
 }],
-    DF_RECENT = NEWS_FOR_OPTIONS[0];
-var MessariDialog = (_dec = _Decors["default"].withDecors, _dec(_class = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(MessariDialog, _Component);
+    DF_ASSET_KEY = NEWS_FOR_OPTIONS[0];
 
-  function MessariDialog(props) {
-    var _this;
+var _getRefValue = function _getRefValue(ref) {
+  return ref.current;
+};
 
-    _this = _Component.call(this, props) || this;
+var MessariDialog = function MessariDialog(_ref) {
+  var isShow = _ref.isShow,
+      type = _ref.type,
+      source = _ref.source,
+      itemConf = _ref.itemConf,
+      onLoad = _ref.onLoad,
+      onShow = _ref.onShow,
+      onClose = _ref.onClose;
 
-    _this._selectNewsAbout = function (option) {
-      _this.assetKey = option ? option.value : void 0;
-    };
-
-    _this._handleLoad = function () {
-      var _this$props = _this.props,
-          type = _this$props.type,
-          source = _this$props.source,
-          itemConf = _this$props.itemConf,
-          onLoad = _this$props.onLoad;
-      onLoad({
-        type: type,
-        source: source,
-        itemConf: itemConf,
-        loadId: 'MS',
-        assetKey: _this.assetKey
-      });
-
-      _this._handleClose();
-    };
-
-    _this._refDialogComp = function (comp) {
-      return _this.dialogComp = comp;
-    };
-
-    _this._initWithDecors((0, _assertThisInitialized2["default"])(_this));
-
-    return _this;
-  }
-
-  var _proto = MessariDialog.prototype;
-
-  _proto.render = function render() {
-    var _this$props2 = this.props,
-        isShow = _this$props2.isShow,
-        theme = _this$props2.theme,
-        onShow = _this$props2.onShow,
-        TS = theme.createStyle(_Dialog["default"]),
-        _commandButtons = this._createCommandButtons(TS.BT);
-
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
-      ref: this._refDialogComp,
-      rootStyle: TS.R_DIALOG,
-      browserCaptionStyle: TS.BROWSER_CAPTION,
-      styleButton: TS.BT,
-      caption: "Messari: Blockchain News",
-      isShow: isShow,
-      commandButtons: _commandButtons,
-      onKeyDown: this._handleKeyDownWith,
-      onShowChart: onShow,
-      onClose: this._handleClose,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
-        caption: "News about",
-        initItem: DF_RECENT,
-        options: NEWS_FOR_OPTIONS,
-        styleConfig: TS.SELECT,
-        onSelect: this._selectNewsAbout
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
-        rootStyle: TS.POWERED_BY,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.Messari, {})
-      })]
+  var _useRefClose = (0, _useRefClose2["default"])(onClose),
+      _refDialog = _useRefClose[0],
+      _hClose = _useRefClose[1],
+      _useRefSelectOption = (0, _useRefSelectOption2["default"])(DF_ASSET_KEY.value),
+      _refAssetKey = _useRefSelectOption[0],
+      _selectAssetKey = _useRefSelectOption[1],
+      _hLoad = (0, _react.useCallback)(function () {
+    onLoad({
+      type: type,
+      source: source,
+      itemConf: itemConf,
+      loadId: 'MS',
+      assetKey: _getRefValue(_refAssetKey)
     });
-  };
 
-  return MessariDialog;
-}(_react.Component)) || _class);
+    _hClose();
+  }, []),
+      _useDecorDialog = (0, _useDecorDialog2["default"])(_Dialog["default"], _hLoad, _hClose),
+      TS = _useDecorDialog[0],
+      _commandButtons = _useDecorDialog[1],
+      _hKeyDown = _useDecorDialog[2];
 
-var _default = (0, _withTheme["default"])(MessariDialog);
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
+    ref: _refDialog,
+    rootStyle: TS.R_DIALOG,
+    browserCaptionStyle: TS.BROWSER_CAPTION,
+    styleButton: TS.BT,
+    caption: "Messari: Blockchain News",
+    isShow: isShow,
+    commandButtons: _commandButtons,
+    onKeyDown: _hKeyDown,
+    onShowChart: onShow,
+    onClose: _hClose,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+      caption: "News about",
+      initItem: DF_ASSET_KEY,
+      options: NEWS_FOR_OPTIONS,
+      styleConfig: TS.SELECT,
+      onSelect: _selectAssetKey
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
+      rootStyle: TS.POWERED_BY,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.Messari, {})
+    })]
+  });
+};
 
+var _default = MessariDialog;
 exports["default"] = _default;
 //# sourceMappingURL=MessariDialog.js.map

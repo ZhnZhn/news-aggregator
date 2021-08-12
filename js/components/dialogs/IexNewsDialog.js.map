@@ -1,1 +1,46 @@
-{"version":3,"sources":["../../../src/components/dialogs/IexNewsDialog.jsx"],"names":["RECENT_OPTIONS","caption","value","DF_RECENT","DF_SYMBOL","IexNewsDialog","Decors","withDecors","props","_selectRecent","option","recent","_handleLoad","type","source","itemConf","onLoad","_symbol","inputSymbol","getValue","loadId","symbol","_handleClose","_refDialogComp","comp","dialogComp","_refInputSymbol","sortBy","_initWithDecors","render","isShow","theme","onShow","TS","createStyle","styleConfig","_commandButtons","_createCommandButtons","BT","R_DIALOG","BROWSER_CAPTION","_handleKeyDownWith","INPUT_ROOT","SELECT","POWERED_BY","Component"],"mappings":"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","sourcesContent":["import { Component } from 'react'\r\n\r\nimport withTheme from '../hoc/withTheme'\r\nimport styleConfig from './Dialog.Style'\r\nimport A from '../Comp'\r\nimport Decors from './decorators/Decors'\r\n\r\nconst RECENT_OPTIONS = [\r\n  { caption: \"10 News\", value: \"10\" },\r\n  { caption: \"20 News\", value: \"20\" },\r\n  { caption: \"30 News\", value: \"30\" },\r\n  { caption: \"40 News\", value: \"40\" },\r\n  { caption: \"50 News\", value: \"50\" }\r\n]\r\n, DF_RECENT = RECENT_OPTIONS[1]\r\n, DF_SYMBOL = \"AAPL\";\r\n\r\n\r\n@Decors.withDecors\r\nclass IexNewsDialog extends Component {\r\n  constructor(props){\r\n    super(props)\r\n    this.sortBy = DF_RECENT.value\r\n    this._initWithDecors(this)\r\n  }\r\n\r\n  _selectRecent = (option) => {\r\n    this.recent = option\r\n       ? option.value\r\n       : void 0\r\n  }\r\n\r\n  _handleLoad = () => {\r\n    const { type, source, itemConf, onLoad } = this.props\r\n    , _symbol = this.inputSymbol.getValue() || DF_SYMBOL;\r\n\r\n    onLoad({\r\n      type, source, itemConf,\r\n      loadId: 'IEX',\r\n      symbol: _symbol,\r\n      recent: this.recent\r\n    })\r\n    this._handleClose()\r\n  }\r\n\r\n  _refDialogComp = comp => this.dialogComp = comp\r\n  _refInputSymbol = comp => this.inputSymbol = comp\r\n\r\n  render(){\r\n    const { isShow, theme, onShow } = this.props\r\n         , TS = theme.createStyle(styleConfig)\r\n         , _commandButtons = this._createCommandButtons(TS.BT);\r\n\r\n    return (\r\n      <A.DraggableDialog\r\n           ref={this._refDialogComp}\r\n           rootStyle={TS.R_DIALOG}\r\n           browserCaptionStyle={TS.BROWSER_CAPTION}\r\n           styleButton={TS.BT}\r\n           caption=\"IEX Cloud: Stock News\"\r\n           isShow={isShow}\r\n           commandButtons={_commandButtons}\r\n           onKeyDown={this._handleKeyDownWith}\r\n           onShowChart={onShow}\r\n           onClose={this._handleClose}\r\n       >\r\n         <A.TextField\r\n           ref={this._refInputSymbol}\r\n           style={TS.INPUT_ROOT}\r\n           maxLength=\"10\"\r\n           caption=\"Stock Symbol\"\r\n           initValue={DF_SYMBOL}\r\n           autoCapitalize=\"on\"\r\n           onEnter={this._handleLoad}\r\n         />\r\n         <A.InputSelect\r\n           caption=\"Recent\"\r\n           initItem={DF_RECENT}\r\n           options={RECENT_OPTIONS}\r\n           styleConfig={TS.SELECT}\r\n           onSelect={this._selectRecent}\r\n         />\r\n        <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>\r\n          <A.Link.IexApi />\r\n        </A.Link.PoweredBy>\r\n      </A.DraggableDialog>\r\n    );\r\n  }\r\n}\r\n\r\nexport default withTheme(IexNewsDialog)\r\n"],"file":"IexNewsDialog.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/dialogs/IexNewsDialog.js"
+ ],
+ "file": "../../../src/components/dialogs/IexNewsDialog.js",
+ "names": [
+  "RECENT_OPTIONS",
+  "caption",
+  "value",
+  "DF_RECENT",
+  "DF_SYMBOL",
+  "_getRefValue",
+  "ref",
+  "current",
+  "IexNewsDialog",
+  "isShow",
+  "type",
+  "source",
+  "itemConf",
+  "onLoad",
+  "onShow",
+  "onClose",
+  "_refDialog",
+  "_hClose",
+  "_refInputSymbol",
+  "_getInputSymbol",
+  "_refRecent",
+  "_selectRecent",
+  "_hLoad",
+  "loadId",
+  "symbol",
+  "recent",
+  "styleConfig",
+  "TS",
+  "_commandButtons",
+  "_hKeyDown",
+  "R_DIALOG",
+  "BROWSER_CAPTION",
+  "BT",
+  "INPUT_ROOT",
+  "SELECT",
+  "POWERED_BY"
+ ],
+ "mappings": "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"
+}

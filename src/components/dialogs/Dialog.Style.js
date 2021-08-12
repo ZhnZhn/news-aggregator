@@ -59,7 +59,7 @@ const styleConfig = {
       SELECT: {
         CL_ITEM: CSS_RULE.CL_SELECT_ITEM,
         ROOT: {
-          width: INPUT_WIDTH
+          width: INPUT_WIDTH          
         },
         MODAL_PANE: {
           ...CSS_RULE.BG,

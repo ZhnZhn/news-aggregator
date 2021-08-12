@@ -1,108 +1,100 @@
-import { Component } from 'react'
+import { useCallback } from 'react';
 
-import withTheme from '../hoc/withTheme'
-import styleConfig from './Dialog.Style'
-import A from '../Comp'
-import Decors from './decorators/Decors'
+import styleConfig from './Dialog.Style';
+
+import useRefClose from './hooks/useRefClose';
+import useRefInput from './hooks/useRefInput';
+import useRefSelectOption from './hooks/useRefSelectOption';
+import useDecorDialog from './hooks/useDecorDialog';
+
+import A from '../Comp';
 
 const SITE_TYPE_OPTIONS = [
   { caption: 'News', value: 'news'},
   { caption: 'Blogs', value: 'blogs'}
 ]
-, DF_SITE_TYPE = SITE_TYPE_OPTIONS[0];
+, DF_SITE_TYPE = SITE_TYPE_OPTIONS[0]
+, DF_IN_TITLE = 'Weather'
+, DF_BEFORE_DAYS = 2;
 
 const _onTestDaysBefore = (value) => {
   const _n = parseInt(value, 10);
-  if ((!Number.isNaN(_n) && _n>0 && _n<31) || value === '') {
-    return true;
-  } else {
-    return false;
-  }
-}
+  return (!Number.isNaN(_n) && _n>0 && _n<31) || value === '';
+};
 
+const _getRefValue = ref => ref.value;
 
-@Decors.withDecors
-class WebhoseQueryDialog extends Component {
-  constructor(props){
-    super(props)
-    this.siteType = void 0
-    this._initWithDecors(this)
-  }
-
-  _selectSiteType = (option) => {
-    this.siteType = (option)
-       ? option.value
-       : void 0
-  }
-
-  _handleLoad = () => {
-    const { type, source, itemConf={}, onLoad } = this.props
-        , { requestType, loadId } = itemConf
-        , _inTitle = this.inputTitle.getValue()
-        , _beforeDays = this.inputBeforeDays.getValue();
+const WebhoseQueryDialog = ({
+  isShow,
+  type,
+  source,
+  itemConf,
+  onLoad,
+  onShow,
+  onClose
+}) => {
+  const [_refDialog, _hClose] = useRefClose(onClose)
+  , [_refInputInTitle, _getInputInTitle] = useRefInput(DF_IN_TITLE)
+  , [_refSiteType, _selectSiteType] = useRefSelectOption(DF_SITE_TYPE.value)
+  , [_refInputBeforeDays, _getInputBeforeDays] = useRefInput(DF_BEFORE_DAYS)
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hLoad = useCallback(()=>{
+    const { requestType, loadId } = itemConf || {};
     onLoad({
       type,
       source,
       requestType,
       itemConf,
       loadId,
-      inTitle: _inTitle,
-      siteType: this.siteType,
-      beforeDays: _beforeDays
+      inTitle: _getInputInTitle(),
+      siteType: _getRefValue(_refSiteType),
+      beforeDays: _getInputBeforeDays()
     })
-    this._handleClose()
-  }
+    _hClose()
+  }, [])
+  //type, source, itemConf, onLoad
+  /*eslint-enable react-hooks/exhaustive-deps */
+  , [TS, _commandButtons, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose);
 
-  _refDialoComp = comp => this.dialogComp = comp
-  _refInputTitle = comp => this.inputTitle = comp
-  _refInputBeforeDays = comp => this.inputBeforeDays = comp
+  return (
+    <A.DraggableDialog
+         ref={_refDialog}
+         rootStyle={TS.R_DIALOG}
+         browserCaptionStyle={TS.BROWSER_CAPTION}
+         styleButton={TS.BT}
+         caption="Webhose: News, Blogs"
+         isShow={isShow}
+         commandButtons={_commandButtons}
+         onKeyDown={_hKeyDown}
+         onShowChart={onShow}
+         onClose={_hClose}
+     >
+      <A.TextField
+        style={TS.INPUT_ROOT}
+        ref={_refInputInTitle}
+        caption="In Title (Default: Weather)"
+        initValue={DF_IN_TITLE}
+      />
+      <A.InputSelect
+        caption="Site Type"
+        initItem={DF_SITE_TYPE}
+        options={SITE_TYPE_OPTIONS}
+        styleConfig={TS.SELECT}
+        onSelect={_selectSiteType}
+      />
+      <A.TextField
+        style={TS.INPUT_ROOT}
+        ref={_refInputBeforeDays}
+        caption="Before Days, Max 30"
+        initValue={DF_BEFORE_DAYS}
+        errorMsg="0<n<31 value must be"
+        onTest={_onTestDaysBefore}
+      />
+      <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
+        <A.Link.WebhoseIo />
+      </A.Link.PoweredBy>
+    </A.DraggableDialog>
+  );
+};
 
-  render(){
-    const { isShow, theme, onShow } = this.props
-         , TS = theme.createStyle(styleConfig)
-         , _commandButtons = this._createCommandButtons(TS.BT);
-
-    return (
-      <A.DraggableDialog
-           ref={this._refDialoComp}
-           rootStyle={TS.R_DIALOG}
-           browserCaptionStyle={TS.BROWSER_CAPTION}
-           styleButton={TS.BT}
-           caption="Webhose: News, Blogs"
-           isShow={isShow}
-           commandButtons={_commandButtons}
-           onKeyDown={this._handleKeyDownWith}
-           onShowChart={onShow}
-           onClose={this._handleClose}
-       >
-        <A.TextField
-          style={TS.INPUT_ROOT}
-          ref={this._refInputTitle}
-          caption="In Title (Default: Weather)"
-          initValue="Weather"
-        />
-        <A.InputSelect
-          caption="Site Type"
-          initItem={DF_SITE_TYPE}
-          options={SITE_TYPE_OPTIONS}
-          styleConfig={TS.SELECT}
-          onSelect={this._selectSiteType}
-        />
-        <A.TextField
-          style={TS.INPUT_ROOT}
-          ref={this._refInputBeforeDays}
-          caption="Before Days, Max 30"
-          initValue={2}
-          errorMsg="0<n<31 value must be"
-          onTest={_onTestDaysBefore}
-        />
-
-        <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
-          <A.Link.WebhoseIo />
-        </A.Link.PoweredBy>
-      </A.DraggableDialog>
-    );
-  }
-}
-
-export default withTheme(WebhoseQueryDialog)
+export default WebhoseQueryDialog

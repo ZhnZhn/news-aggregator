@@ -1,108 +1,70 @@
-import { Component } from 'react'
+import { useCallback } from 'react';
 
-import withTheme from '../hoc/withTheme'
-import styleConfig from './Dialog.Style'
+import styleConfig from './Dialog.Style';
 
-import DraggableDialog from '../zhn-moleculs/DraggableDialog'
-import InputSelect from '../zhn-m-input/InputSelect'
-import RaisedButton from '../zhn-atoms/RaisedButton'
+import useRefClose from './hooks/useRefClose';
+import useRefSelectOption from './hooks/useRefSelectOption';
+import useDecorDialog from './hooks/useDecorDialog';
 
-import withKeyDown from './decorators/withKeyDown'
+import A from '../Comp';
 
-const DF_SORTBY =   { caption: 'Top', value: 'top'};
-
-const options = [
+const SORT_BY_OPTIONS = [
   { caption: 'Top', value: 'top'},
   { caption: 'Popular', value: 'popularity'},
   { caption: 'Newest', value: 'publishedAt' }
-];
-
-@withKeyDown
-class DialogType1 extends Component {
-  constructor(props){
-    super(props)
-    this.sortBy = DF_SORTBY.value
-    this._handleKeyDownWith = this._handleKeyDownWith.bind(this)
-  }
+]
+, DF_SORT_BY = SORT_BY_OPTIONS[0]
+, _getRefValue = ref => ref.current;
 
 
-  shouldComponentUpdate(nextProps, nextState){
-    if (this.props !== nextProps){
-       if (!this.props.isShow && !nextProps.isShow){
-          return false;
-       }
-    }
-    return true;
-  }
-
-
-  _selectSortBy = (option) => {
-    this.sortBy = option
-       ? option.value
-       : void 0
-  }
-
-  _handleLoad = () => {
-    const { type, source, itemConf, onLoad } = this.props;
+const DialogType1 = ({
+  isShow,
+  caption,
+  type,
+  source,
+  itemConf,
+  onLoad,
+  onShow,
+  onClose
+}) => {
+  const [_refDialog, _hClose] = useRefClose(onClose)
+  , [_refSortBy, _selectSortBy] = useRefSelectOption(DF_SORT_BY.value)
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hLoad = useCallback(()=>{
     onLoad({
       type,
       source,
       itemConf,
-      sortBy: this.sortBy
+      sortBy: _getRefValue(_refSortBy)
     })
-  }
+    _hClose()
+  }, [])
+  // type, source, itemConf, onLoad
+  /*eslint-enable react-hooks/exhaustive-deps */
+  , [TS, _commandButtons, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose);
 
-  _handleClose = () => {
-    this.dialogComp.focusPrevEl()
-    this.props.onClose()
-  }
-
-  _createCommandButtons = (S) => {
-    return [
-      <RaisedButton
-        key="_load"
-        rootStyle={S.RAISED_ROOT}
-        clDiv={S.CL_RAISED_DIV}
-        caption="Load"
-        isPrimary={true}
-        onClick={this._handleLoad}
+  return (
+    <A.DraggableDialog
+       ref={_refDialog}
+       isShow={isShow}
+       rootStyle={TS.R_DIALOG}
+       browserCaptionStyle={TS.BROWSER_CAPTION}
+       styleButton={TS.BT}
+       caption={caption}
+       commandButtons={_commandButtons}
+       onKeyDown={_hKeyDown}
+       onShowChart={onShow}
+       onClose={_hClose}
+    >
+      <A.InputSelect
+        caption="SortBy"
+        initItem={DF_SORT_BY}
+        options={SORT_BY_OPTIONS}
+        styleConfig={TS.SELECT}
+        onSelect={_selectSortBy}
       />
-    ];
-  }
+    </A.DraggableDialog>
+  );
+};
 
-  _refDialogComp = comp => this.dialogComp = comp
-
-  render(){
-    const { isShow, caption,
-            theme,
-            onShow
-          } = this.props
-        , S = theme.createStyle(styleConfig)
-        , _commandButtons = this._createCommandButtons(S.BT);
-
-    return (
-      <DraggableDialog
-           ref={this._refDialogComp}
-           rootStyle={S.R_DIALOG}
-           browserCaptionStyle={S.BROWSER_CAPTION}
-           styleButton={S.BT}
-           caption={caption}
-           isShow={isShow}
-           commandButtons={_commandButtons}
-           onKeyDown={this._handleKeyDownWith}
-           onShowChart={onShow}
-           onClose={this._handleClose}
-       >
-        <InputSelect
-          caption="SortBy"
-          initItem={DF_SORTBY}
-          options={options}
-          styleConfig={S.SELECT}
-          onSelect={this._selectSortBy}
-        />
-      </DraggableDialog>
-    );
-  }
-}
-
-export default withTheme(DialogType1)
+export default DialogType1

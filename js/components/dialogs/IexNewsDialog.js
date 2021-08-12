@@ -5,23 +5,21 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _react = require("react");
-
-var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
+var _useRefClose2 = _interopRequireDefault(require("./hooks/useRefClose"));
+
+var _useRefInput2 = _interopRequireDefault(require("./hooks/useRefInput"));
+
+var _useRefSelectOption2 = _interopRequireDefault(require("./hooks/useRefSelectOption"));
+
+var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"));
+
 var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _Decors = _interopRequireDefault(require("./decorators/Decors"));
-
 var _jsxRuntime = require("react/jsx-runtime");
-
-var _dec, _class;
 
 var RECENT_OPTIONS = [{
   caption: "10 News",
@@ -41,99 +39,78 @@ var RECENT_OPTIONS = [{
 }],
     DF_RECENT = RECENT_OPTIONS[1],
     DF_SYMBOL = "AAPL";
-var IexNewsDialog = (_dec = _Decors["default"].withDecors, _dec(_class = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(IexNewsDialog, _Component);
 
-  function IexNewsDialog(props) {
-    var _this;
+var _getRefValue = function _getRefValue(ref) {
+  return ref.current;
+};
 
-    _this = _Component.call(this, props) || this;
+var IexNewsDialog = function IexNewsDialog(_ref) {
+  var isShow = _ref.isShow,
+      type = _ref.type,
+      source = _ref.source,
+      itemConf = _ref.itemConf,
+      onLoad = _ref.onLoad,
+      onShow = _ref.onShow,
+      onClose = _ref.onClose;
 
-    _this._selectRecent = function (option) {
-      _this.recent = option ? option.value : void 0;
-    };
-
-    _this._handleLoad = function () {
-      var _this$props = _this.props,
-          type = _this$props.type,
-          source = _this$props.source,
-          itemConf = _this$props.itemConf,
-          onLoad = _this$props.onLoad,
-          _symbol = _this.inputSymbol.getValue() || DF_SYMBOL;
-
-      onLoad({
-        type: type,
-        source: source,
-        itemConf: itemConf,
-        loadId: 'IEX',
-        symbol: _symbol,
-        recent: _this.recent
-      });
-
-      _this._handleClose();
-    };
-
-    _this._refDialogComp = function (comp) {
-      return _this.dialogComp = comp;
-    };
-
-    _this._refInputSymbol = function (comp) {
-      return _this.inputSymbol = comp;
-    };
-
-    _this.sortBy = DF_RECENT.value;
-
-    _this._initWithDecors((0, _assertThisInitialized2["default"])(_this));
-
-    return _this;
-  }
-
-  var _proto = IexNewsDialog.prototype;
-
-  _proto.render = function render() {
-    var _this$props2 = this.props,
-        isShow = _this$props2.isShow,
-        theme = _this$props2.theme,
-        onShow = _this$props2.onShow,
-        TS = theme.createStyle(_Dialog["default"]),
-        _commandButtons = this._createCommandButtons(TS.BT);
-
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
-      ref: this._refDialogComp,
-      rootStyle: TS.R_DIALOG,
-      browserCaptionStyle: TS.BROWSER_CAPTION,
-      styleButton: TS.BT,
-      caption: "IEX Cloud: Stock News",
-      isShow: isShow,
-      commandButtons: _commandButtons,
-      onKeyDown: this._handleKeyDownWith,
-      onShowChart: onShow,
-      onClose: this._handleClose,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
-        ref: this._refInputSymbol,
-        style: TS.INPUT_ROOT,
-        maxLength: "10",
-        caption: "Stock Symbol",
-        initValue: DF_SYMBOL,
-        autoCapitalize: "on",
-        onEnter: this._handleLoad
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
-        caption: "Recent",
-        initItem: DF_RECENT,
-        options: RECENT_OPTIONS,
-        styleConfig: TS.SELECT,
-        onSelect: this._selectRecent
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
-        rootStyle: TS.POWERED_BY,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.IexApi, {})
-      })]
+  var _useRefClose = (0, _useRefClose2["default"])(onClose),
+      _refDialog = _useRefClose[0],
+      _hClose = _useRefClose[1],
+      _useRefInput = (0, _useRefInput2["default"])(DF_SYMBOL),
+      _refInputSymbol = _useRefInput[0],
+      _getInputSymbol = _useRefInput[1],
+      _useRefSelectOption = (0, _useRefSelectOption2["default"])(DF_RECENT.value),
+      _refRecent = _useRefSelectOption[0],
+      _selectRecent = _useRefSelectOption[1],
+      _hLoad = (0, _react.useCallback)(function () {
+    onLoad({
+      type: type,
+      source: source,
+      itemConf: itemConf,
+      loadId: 'IEX',
+      symbol: _getInputSymbol(),
+      recent: _getRefValue(_refRecent)
     });
-  };
 
-  return IexNewsDialog;
-}(_react.Component)) || _class);
+    _hClose();
+  }, []),
+      _useDecorDialog = (0, _useDecorDialog2["default"])(_Dialog["default"], _hLoad, _hClose),
+      TS = _useDecorDialog[0],
+      _commandButtons = _useDecorDialog[1],
+      _hKeyDown = _useDecorDialog[2];
 
-var _default = (0, _withTheme["default"])(IexNewsDialog);
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
+    ref: _refDialog,
+    rootStyle: TS.R_DIALOG,
+    browserCaptionStyle: TS.BROWSER_CAPTION,
+    styleButton: TS.BT,
+    caption: "IEX Cloud: Stock News",
+    isShow: isShow,
+    commandButtons: _commandButtons,
+    onKeyDown: _hKeyDown,
+    onShowChart: onShow,
+    onClose: _hClose,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
+      ref: _refInputSymbol,
+      style: TS.INPUT_ROOT,
+      maxLength: "10",
+      caption: "Stock Symbol",
+      initValue: DF_SYMBOL,
+      autoCapitalize: "on",
+      onEnter: _hLoad
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+      caption: "Recent",
+      initItem: DF_RECENT,
+      options: RECENT_OPTIONS,
+      styleConfig: TS.SELECT,
+      onSelect: _selectRecent
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
+      rootStyle: TS.POWERED_BY,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.IexApi, {})
+    })]
+  });
+};
 
+var _default = IexNewsDialog;
 exports["default"] = _default;
 //# sourceMappingURL=IexNewsDialog.js.map

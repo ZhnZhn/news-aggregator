@@ -1,10 +1,12 @@
-import { Component } from 'react'
+import { useCallback } from 'react';
 
-import withTheme from '../hoc/withTheme'
-import styleConfig from './Dialog.Style'
+import styleConfig from './Dialog.Style';
 
-import A from '../Comp'
-import Decors from './decorators/Decors'
+import useRefClose from './hooks/useRefClose';
+import useRefSelectOption from './hooks/useRefSelectOption';
+import useDecorDialog from './hooks/useDecorDialog';
+
+import A from '../Comp';
 
 const S = {
   POWERED_BY: {
@@ -44,97 +46,82 @@ const FEED_OPTIONS = [
   {caption: 'Latest', value: 'latest'},
   {caption: 'Popular', value: 'popular'},
 ], DF_SORTBY = SORTBY_OPTIONS[0]
-, _getValue = item => item.value
-, _fSelect = (comp, propName) => (option) => {
-    comp[propName] = option
-      ? option.value
-      : void 0
-};
 
+const _getRefValue = ref => ref.current;
 
-@Decors.withDecors
-class CryptoCompareNewsDialog extends Component {
-  constructor(props){
-    super(props)
-    this.feed = _getValue(DF_FEED)
-    this.category = _getValue(DF_CATEGORY)
-    this.sortBy = _getValue(DF_SORTBY)
-    this._selectFeed = _fSelect(this, 'feed')
-    this._selectCategory = _fSelect(this, 'category')
-    this._selectSortBy = _fSelect(this, 'sortBy')
-    this._initWithDecors(this)
-  }
-
-
-  _handleLoad = () => {
-    const {
-      type, source, itemConf,
-      onLoad
-    } = this.props;
-
+const CryptoCompareNewsDialog = ({
+  isShow,
+  type,
+  source,
+  itemConf,
+  onLoad,
+  onShow,
+  onClose
+}) => {
+  const [_refDialog, _hClose] = useRefClose(onClose)
+  , [_refFeed, _selectFeed] = useRefSelectOption(DF_FEED.value)
+  , [_refCategory, _selectCategory] = useRefSelectOption(DF_CATEGORY.value)
+  , [_refSortBy, _selectSortBy] = useRefSelectOption(DF_SORTBY.value)
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hLoad = useCallback(() => {
     onLoad({
       type, source, itemConf,
       loadId: 'CCN',
-      feed: this.feed,
-      category: this.category,
-      sortOrder: this.sortBy
+      feed: _getRefValue(_refFeed),
+      category: _getRefValue(_refCategory),
+      sortOrder: _getRefValue(_refSortBy)
     })
-    this._handleClose()
-  }
+    _hClose()
+  }, [])
+  //type, source, itemConf, onLoad
+  /*eslint-enable react-hooks/exhaustive-deps */
+  , [TS, _commandButtons, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose);
 
-  _refDialogComp = comp => this.dialogComp = comp
+  return (
+    <A.DraggableDialog
+      ref={_refDialog}
+      rootStyle={TS.R_DIALOG}
+      browserCaptionStyle={TS.BROWSER_CAPTION}
+      styleButton={TS.BT}
+      caption="CryptoCompare News"
+      isShow={isShow}
+      commandButtons={_commandButtons}
+      onKeyDown={_hKeyDown}
+      onShowChart={onShow}
+      onClose={_hClose}
+    >
+      <div>
+        <A.InputSelect
+          caption="Feed"
+          initItem={DF_FEED}
+          options={FEED_OPTIONS}
+          styleConfig={TS.SELECT}
+          onSelect={_selectFeed}
+        />
+      </div>
+      <div>
+        <A.InputSelect
+          caption="Category"
+          initItem={DF_CATEGORY}
+          options={CATEGORY_OPTIONS}
+          styleConfig={TS.SELECT}
+          onSelect={_selectCategory}
+        />
+      </div>
+      <div>
+       <A.InputSelect
+         caption="SortBy"
+         initItem={DF_SORTBY}
+         options={SORTBY_OPTIONS}
+         styleConfig={TS.SELECT}
+         onSelect={_selectSortBy}
+       />
+      </div>
+      <A.Link.PoweredBy rootStyle={S.POWERED_BY}>
+        <A.Link.CryptoCompare />
+      </A.Link.PoweredBy>
+    </A.DraggableDialog>
+  );
+};
 
-  render(){
-    const { isShow, theme, onShow } = this.props
-    , TS = theme.createStyle(styleConfig)
-    , _commandButtons = this._createCommandButtons(TS.BT);
-
-    return (
-      <A.DraggableDialog
-           ref={this._refDialogComp}
-           rootStyle={TS.R_DIALOG}
-           browserCaptionStyle={TS.BROWSER_CAPTION}
-           styleButton={TS.BT}
-           caption="CryptoCompare News"
-           isShow={isShow}
-           commandButtons={_commandButtons}
-           onKeyDown={this._handleKeyDownWith}
-           onShowChart={onShow}
-           onClose={this._handleClose}
-       >
-         <div>
-           <A.InputSelect
-             caption="Feed"
-             initItem={DF_FEED}
-             options={FEED_OPTIONS}
-             styleConfig={TS.SELECT}
-             onSelect={this._selectFeed}
-           />
-         </div>
-         <div>
-           <A.InputSelect
-             caption="Category"
-             initItem={DF_CATEGORY}
-             options={CATEGORY_OPTIONS}
-             styleConfig={TS.SELECT}
-             onSelect={this._selectCategory}
-           />
-         </div>
-         <div>
-           <A.InputSelect
-             caption="SortBy"
-             initItem={DF_SORTBY}
-             options={SORTBY_OPTIONS}
-             styleConfig={TS.SELECT}
-             onSelect={this._selectSortBy}
-           />
-         </div>
-        <A.Link.PoweredBy rootStyle={S.POWERED_BY}>
-          <A.Link.CryptoCompare />
-        </A.Link.PoweredBy>
-      </A.DraggableDialog>
-    );
-  }
-}
-
-export default withTheme(CryptoCompareNewsDialog)
+export default CryptoCompareNewsDialog

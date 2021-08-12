@@ -1,11 +1,14 @@
-import { Component } from 'react'
+import { useCallback } from 'react';
 
-import toFirstUpperCase from '../../utils/toFirstUpperCase'
+import toFirstUpperCase from '../../utils/toFirstUpperCase';
 
-import withTheme from '../hoc/withTheme'
-import styleConfig from './Dialog.Style'
-import A from '../Comp'
-import Decors from './decorators/Decors'
+import styleConfig from './Dialog.Style';
+
+import useRefClose from './hooks/useRefClose';
+import useRefSelectOption from './hooks/useRefSelectOption';
+import useDecorDialog from './hooks/useDecorDialog';
+
+import A from '../Comp';
 
 const S = {
   POWERED_BY: {
@@ -78,89 +81,71 @@ const _CATEGORY = [
    { caption: "United States", value: "us" },
    { caption: "Venezuala", value: "ve" }
   ]
-, DF_COUNTRY = COUNTRY_OPTIONS[52];
+, DF_COUNTRY = COUNTRY_OPTIONS[52]
+, _getRefValue = ref => ref.current;
 
-
-@Decors.withDecors
-class NewsApiTopDialog extends Component {
-  constructor(props){
-    super(props)
-    this.category = DF_CATEGORY.value
-    this.country = DF_COUNTRY.value
-    this._initWithDecors(this)
-  }
-
-  _selectCategory = (option) => {
-    this.category = option
-       ? option.value
-       : void 0
-  }
-
-  _selectCountry = (option) => {
-    this.country = option
-       ? option.value
-       : void 0
-  }
-
-  _handleLoad = () => {
-    const {
-      type, source, itemConf,
-      onLoad
-    } = this.props;
-
+const NewsApiTopDialog = ({
+  isShow,
+  type,
+  source,
+  itemConf,
+  onLoad,
+  onShow,
+  onClose
+}) => {
+  const [_refDialog, _hClose] = useRefClose(onClose)
+  , [_refCategory, _selectCategory] = useRefSelectOption(DF_CATEGORY.value)
+  , [_refCountry, _selectCountry] = useRefSelectOption(DF_COUNTRY.value)
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hLoad = useCallback(()=>{
     onLoad({
       type, source, itemConf,
       loadId: 'NT',
-      category: this.category,
-      country: this.country
+      category: _getRefValue(_refCategory),
+      country: _getRefValue(_refCountry)
     })
     this._handleClose()
-  }
+  }, [])
+  //type, source, itemConf, onLoad,
+  /*eslint-enable react-hooks/exhaustive-deps */
+  , [TS, _commandButtons, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose);
 
-  _refDialogComp = comp => this.dialogComp = comp
+  return (
+    <A.DraggableDialog
+         ref={_refDialog}
+         rootStyle={TS.R_DIALOG}
+         browserCaptionStyle={TS.BROWSER_CAPTION}
+         styleButton={TS.BT}
+         caption="NewsApi Top By"
+         isShow={isShow}
+         commandButtons={_commandButtons}
+         onKeyDown={_hKeyDown}
+         onShowChart={onShow}
+         onClose={_hClose}
+     >
+       <div>
+         <A.InputSelect
+           caption="Category"
+           initItem={DF_CATEGORY}
+           options={CATEGORY_OPTIONS}
+           styleConfig={TS.SELECT}
+           onSelect={_selectCategory}
+         />
+       </div>
+       <div>
+         <A.InputSelect
+           caption="Country"
+           initItem={DF_COUNTRY}
+           options={COUNTRY_OPTIONS}
+           styleConfig={TS.SELECT}
+           onSelect={_selectCountry}
+         />
+       </div>
+      <A.Link.PoweredBy rootStyle={S.POWERED_BY}>
+        <A.Link.NewsApi />
+      </A.Link.PoweredBy>
+    </A.DraggableDialog>
+  );
+};
 
-  render(){
-    const { isShow, theme, onShow } = this.props
-         , TS = theme.createStyle(styleConfig)
-         , _commandButtons = this._createCommandButtons(TS.BT);
-
-    return (
-      <A.DraggableDialog
-           ref={this._refDialogComp}
-           rootStyle={TS.R_DIALOG}
-           browserCaptionStyle={TS.BROWSER_CAPTION}
-           styleButton={TS.BT}
-           caption="NewsApi Top By"
-           isShow={isShow}
-           commandButtons={_commandButtons}
-           onKeyDown={this._handleKeyDownWith}
-           onShowChart={onShow}
-           onClose={this._handleClose}
-       >
-         <div>
-           <A.InputSelect
-             caption="Category"
-             initItem={DF_CATEGORY}
-             options={CATEGORY_OPTIONS}
-             styleConfig={TS.SELECT}
-             onSelect={this._selectCategory}
-           />
-         </div>
-         <div>
-           <A.InputSelect
-             caption="Country"
-             initItem={DF_COUNTRY}
-             options={COUNTRY_OPTIONS}
-             styleConfig={TS.SELECT}
-             onSelect={this._selectCountry}
-           />
-         </div>
-        <A.Link.PoweredBy rootStyle={S.POWERED_BY}>
-          <A.Link.NewsApi />
-        </A.Link.PoweredBy>
-      </A.DraggableDialog>
-    );
-  }
-}
-
-export default withTheme(NewsApiTopDialog)
+export default NewsApiTopDialog
