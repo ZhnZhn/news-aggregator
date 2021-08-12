@@ -1,7 +1,7 @@
-import { Component } from 'react'
+import { memo, useCallback } from 'react';
 //import PropTypes from 'prop-types'
 
-import withTheme from '../hoc/withTheme'
+import useTheme from '../hooks/useTheme'
 import styleConfig from './Dialog.Style'
 
 import ModalDialog from '../zhn-moleculs/ModalDialog'
@@ -32,7 +32,7 @@ const _toMsg = (data) => {
   if (data instanceof TypeError){
     return data.message;
   }
-  const { status, url, msg } = data;
+  const { status, url, msg } = data || {};
   if (status){
     return `${url}\ncode:${status}\nNetwork exception`;
   } else if (msg){
@@ -41,59 +41,53 @@ const _toMsg = (data) => {
   return 'Exception Message';
 }
 
-class AlertDialog extends Component{
-  /*
-  static propTypes = {
-    isShow: PropTypes.bool,
-    data: PropTypes.shape({
-      alertCaption: PropTypes.string,
-      alertItemId: PropTypes.string,
-      alertDescr: PropTypes.string
-    }),
-    onClose: PropTypes.func
-  }
-  */
+const _isNotShouldUpdate = (prevProp, nextProp) => prevProp.isShow === nextProp.isShow
 
-  static defaultProps = {
-    data: {}
-  }
-
-  shouldComponentUpdate(nextProps, nextState){
-    if (nextProps !== this.props && nextProps.isShow === this.props.isShow) {
-      return false;
+const AlertDialog = memo(({
+  isShow,
+  data,
+  onClose
+}) => {
+  /*eslint-disable react-hooks/exhaustive-deps */
+  const _hKeyDown = useCallback(evt => {
+    const { keyCode } = evt;
+    if (keyCode === 27 || keyCode === 13){
+      onClose()
     }
-    return true;
-  }
+  }, [])
+  //onClose
+  /*eslint-enable react-hooks/exhaustive-deps */
+  , TS = useTheme(styleConfig)
+  , _msg  = _toMsg(data);
 
-  _handleKeyDown = (event) => {
-    if (event.keyCode === 27 || event.keyCode === 13){
-      this.props.onClose()
-    }
-  }
+  return (
+    <ModalDialog
+       isShow={isShow}
+       isClosePrimary={true}
+       style={{...TS.R_DIALOG, ...S.DIALOG}}
+       styleCaption={TS.BROWSER_CAPTION}
+       styleButton={TS.BT}
+       caption="Exception"
+       onKeyDown={_hKeyDown}
+       onClose={onClose}
+    >
+      <p style={S.MSG}>
+         {_msg}
+      </p>
+    </ModalDialog>
+  );
+}, _isNotShouldUpdate);
 
-  render(){
-    const { isShow, data, theme, onClose } = this.props
-        , TS = theme.createStyle(styleConfig)
-        , _msg  = _toMsg(data);
-    return (
-      <ModalDialog
-         style={{...TS.R_DIALOG, ...S.DIALOG}}
-         styleCaption={TS.BROWSER_CAPTION}
-         styleButton={TS.BT}
-         caption="Exception"
-         isShow={isShow}
-         isClosePrimary={true}
-         onKeyDown={this._handleKeyDown}
-         onClose={onClose}
-      >
-         <div>
-            <p style={S.MSG}>
-              {_msg}
-            </p>
-         </div>
-      </ModalDialog>
-    );
-  }
+/*
+AlertDialog.propTypes = {
+  isShow: PropTypes.bool,
+  data: PropTypes.shape({
+    alertCaption: PropTypes.string,
+    alertItemId: PropTypes.string,
+    alertDescr: PropTypes.string
+  }),
+  onClose: PropTypes.func
 }
+*/
 
-export default withTheme(AlertDialog)
+export default AlertDialog
