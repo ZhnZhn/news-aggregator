@@ -9,7 +9,8 @@ import useDecorDialog from './hooks/useDecorDialog';
 import A from '../Comp';
 
 const NEWS_FOR_OPTIONS = [
-{caption: "All", value: "all"},
+{caption: "All", value: "all"}
+/*,
 {caption: "Bitcoin", value: "BTC"},
 {caption: "Ethereum", value: "ETH"},
 {caption: "Tether", value: "USDT"},
@@ -30,7 +31,7 @@ const NEWS_FOR_OPTIONS = [
 { caption: "USD-Coin", value: "USDC"},
 { caption: "Vechain", value: "VET"},
 { caption: "Cosmos", value: "ATOM"}
-]
+*/]
 , DF_ASSET_KEY = NEWS_FOR_OPTIONS[0];
 
 const _getRefValue = ref => ref.current;

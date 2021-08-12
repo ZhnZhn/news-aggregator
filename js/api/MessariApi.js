@@ -10,7 +10,7 @@ var C = {
 var MessariApi = {
   getRequestUrl: function getRequestUrl(_ref) {
     var assetKey = _ref.assetKey;
-    return assetKey && assetKey !== 'all' ? C.URL + "/" + assetKey + "?fileds=" + C.FIELDS : C.URL + "?fileds=" + C.FIELDS;
+    return assetKey && assetKey !== 'all' ? C.URL + "/" + assetKey + "?fields=" + C.FIELDS : C.URL + "?fields=" + C.FIELDS;
   },
   checkResponse: function checkResponse(json, option) {
     return true;

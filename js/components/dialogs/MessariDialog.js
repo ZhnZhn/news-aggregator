@@ -22,67 +22,30 @@ var _jsxRuntime = require("react/jsx-runtime");
 var NEWS_FOR_OPTIONS = [{
   caption: "All",
   value: "all"
-}, {
-  caption: "Bitcoin",
-  value: "BTC"
-}, {
-  caption: "Ethereum",
-  value: "ETH"
-}, {
-  caption: "Tether",
-  value: "USDT"
-}, {
-  caption: "XRP",
-  value: "XRP"
-}, {
-  caption: "Bitcoin-Cash",
-  value: "BCH"
-}, {
-  caption: "Chainlink",
-  value: "LINK"
-}, {
-  caption: "Cardano",
-  value: "ADA"
-}, {
-  caption: "Bitcoin-SV",
-  value: "BSV"
-}, {
-  caption: "Litecoin",
-  value: "LTC"
-}, {
-  caption: "Binance-Coin",
-  value: "BNB"
-}, {
-  caption: "Crypto-Com-Chain",
-  value: "CRO"
-}, {
-  caption: "Tezos",
-  value: "XTZ"
-}, {
-  caption: "EOS",
-  value: "EOS"
-}, {
-  caption: "Stellar",
-  value: "XLM"
-}, {
-  caption: "Monero",
-  value: "XMR"
-}, {
-  caption: "Tron",
-  value: "TRX"
-}, {
-  caption: "Unus-Sed-Leo",
-  value: "LEO"
-}, {
-  caption: "USD-Coin",
-  value: "USDC"
-}, {
-  caption: "Vechain",
-  value: "VET"
-}, {
-  caption: "Cosmos",
-  value: "ATOM"
-}],
+}
+/*,
+{caption: "Bitcoin", value: "BTC"},
+{caption: "Ethereum", value: "ETH"},
+{caption: "Tether", value: "USDT"},
+{caption: "XRP", value: "XRP"},
+{caption: "Bitcoin-Cash", value: "BCH"},
+{ caption: "Chainlink", value: "LINK"},
+{ caption: "Cardano", value: "ADA"},
+{ caption: "Bitcoin-SV", value: "BSV"},
+{ caption: "Litecoin", value: "LTC"},
+{ caption: "Binance-Coin", value: "BNB"},
+{ caption: "Crypto-Com-Chain", value: "CRO"},
+{ caption: "Tezos", value: "XTZ"},
+{ caption: "EOS", value: "EOS"},
+{ caption: "Stellar", value: "XLM"},
+{ caption: "Monero", value: "XMR"},
+{ caption: "Tron", value: "TRX"},
+{ caption: "Unus-Sed-Leo", value: "LEO"},
+{ caption: "USD-Coin", value: "USDC"},
+{ caption: "Vechain", value: "VET"},
+{ caption: "Cosmos", value: "ATOM"}
+*/
+],
     DF_ASSET_KEY = NEWS_FOR_OPTIONS[0];
 
 var _getRefValue = function _getRefValue(ref) {

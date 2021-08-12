@@ -9,8 +9,8 @@ const C = {
 const MessariApi = {
   getRequestUrl({ assetKey }){
     return assetKey && assetKey !== 'all'
-      ? `${C.URL}/${assetKey}?fileds=${C.FIELDS}`
-      : `${C.URL}?fileds=${C.FIELDS}`;
+      ? `${C.URL}/${assetKey}?fields=${C.FIELDS}`
+      : `${C.URL}?fields=${C.FIELDS}`;
   },
   checkResponse(json, option){
     return true;

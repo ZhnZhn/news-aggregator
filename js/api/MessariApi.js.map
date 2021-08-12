@@ -1,1 +1,19 @@
-{"version":3,"sources":["../../src/api/MessariApi.js"],"names":["C","URL","FIELDS","MessariApi","getRequestUrl","assetKey","checkResponse","json","option"],"mappings":";;;;AACA;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,GAAG,EAAE,qCADG;AAERC,EAAAA,MAAM,EAAE;AAFA,CAAV;AAKA,IAAMC,UAAU,GAAG;AACjBC,EAAAA,aADiB,+BACU;AAAA,QAAXC,QAAW,QAAXA,QAAW;AACzB,WAAOA,QAAQ,IAAIA,QAAQ,KAAK,KAAzB,GACAL,CAAC,CAACC,GADF,SACSI,QADT,gBAC4BL,CAAC,CAACE,MAD9B,GAEAF,CAAC,CAACC,GAFF,gBAEgBD,CAAC,CAACE,MAFzB;AAGD,GALgB;AAMjBI,EAAAA,aANiB,yBAMHC,IANG,EAMGC,MANH,EAMU;AACzB,WAAO,IAAP;AACD;AARgB,CAAnB;eAWeL,U","sourcesContent":["\r\n//as-markdown\r\n\r\nconst C = {\r\n  URL: 'https://data.messari.io/api/v1/news',\r\n  FIELDS: 'title,tags,published_at,url,author/name'\r\n};\r\n\r\nconst MessariApi = {\r\n  getRequestUrl({ assetKey }){\r\n    return assetKey && assetKey !== 'all'\r\n      ? `${C.URL}/${assetKey}?fileds=${C.FIELDS}`\r\n      : `${C.URL}?fileds=${C.FIELDS}`;\r\n  },\r\n  checkResponse(json, option){\r\n    return true;\r\n  }\r\n}\r\n\r\nexport default MessariApi\r\n"],"file":"MessariApi.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/MessariApi.js"
+ ],
+ "file": "../../src/api/MessariApi.js",
+ "names": [
+  "C",
+  "URL",
+  "FIELDS",
+  "MessariApi",
+  "getRequestUrl",
+  "assetKey",
+  "checkResponse",
+  "json",
+  "option"
+ ],
+ "mappings": ";;;;AACA;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,GAAG,EAAE,qCADG;AAERC,EAAAA,MAAM,EAAE;AAFA,CAAV;AAKA,IAAMC,UAAU,GAAG;AACjBC,EAAAA,aADiB,+BACU;AAAA,QAAXC,QAAW,QAAXA,QAAW;AACzB,WAAOA,QAAQ,IAAIA,QAAQ,KAAK,KAAzB,GACAL,CAAC,CAACC,GADF,SACSI,QADT,gBAC4BL,CAAC,CAACE,MAD9B,GAEAF,CAAC,CAACC,GAFF,gBAEgBD,CAAC,CAACE,MAFzB;AAGD,GALgB;AAMjBI,EAAAA,aANiB,yBAMHC,IANG,EAMGC,MANH,EAMU;AACzB,WAAO,IAAP;AACD;AARgB,CAAnB;eAWeL,U"
+}
