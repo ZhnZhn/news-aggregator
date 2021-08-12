@@ -1,0 +1,16 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/dialogs/hooks/useDecorDialog.js"
+ ],
+ "file": "../../../../src/components/dialogs/hooks/useDecorDialog.js",
+ "names": [
+  "useDecorDialog",
+  "styleConfig",
+  "hLoad",
+  "hClose",
+  "TS",
+  "BT"
+ ],
+ "mappings": ";;;;;;;AACA;;AAEA;;AACA;;AAEA,IAAMA,cAAc,GAAG,SAAjBA,cAAiB,CACrBC,WADqB,EAErBC,KAFqB,EAGrBC,MAHqB,EAIlB;AACH,MAAMC,EAAE,GAAG,0BAASH,WAAT,CAAX;AACA,SAAO,CACLG,EADK,EAEL,2BAAUA,EAAE,CAACC,EAAb,EAAiBH,KAAjB,CAFK,EAGL,4BAAWA,KAAX,EAAkBC,MAAlB,CAHK,CAAP;AAKD,CAXD;;eAaeH,c"
+}

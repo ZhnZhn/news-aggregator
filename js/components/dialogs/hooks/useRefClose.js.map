@@ -1,0 +1,16 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/dialogs/hooks/useRefClose.js"
+ ],
+ "file": "../../../../src/components/dialogs/hooks/useRefClose.js",
+ "names": [
+  "_fnNoop",
+  "useRefClose",
+  "onClose",
+  "_refDialog",
+  "current",
+  "focusPrevEl"
+ ],
+ "mappings": ";;;;;AAAA;;AAEA,IAAMA,OAAO,GAAG,SAAVA,OAAU,GAAM,CAAE,CAAxB;;AAEA,IAAMC,WAAW,GAAG,SAAdA,WAAc,CAACC,OAAD,EAAqB;AAAA,MAApBA,OAAoB;AAApBA,IAAAA,OAAoB,GAAZF,OAAY;AAAA;;AACvC,MAAMG,UAAU,GAAG,mBAAO,IAAP,CAAnB;;AACA,SAAO,CACLA,UADK;AAEL;AACA,0BAAY,YAAM;AAChB,QAAQC,OAAR,GAAoBD,UAApB,CAAQC,OAAR;;AACA,QAAIA,OAAO,IAAIA,OAAO,CAACC,WAAvB,EAAoC;AAClCD,MAAAA,OAAO,CAACC,WAAR;AACD;;AACDH,IAAAA,OAAO;AACR,GAND,EAMG,EANH,CAHK,CAUN;;AACA;AAXM,GAAP;AAaD,CAfD;;eAiBeD,W"
+}
