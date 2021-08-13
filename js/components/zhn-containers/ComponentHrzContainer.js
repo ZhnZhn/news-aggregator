@@ -5,72 +5,49 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _react = require("react");
 
-var _utils = _interopRequireDefault(require("./utils"));
+var _useListen = _interopRequireDefault(require("../hooks/useListen"));
+
+var _isInCont = _interopRequireDefault(require("./isInCont"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
 var CL = "hrz-container";
-var isInCont = _utils["default"].isInCont;
 
-var ComponentHrzContainer = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(ComponentHrzContainer, _Component);
+var ComponentHrzContainer = function ComponentHrzContainer(_ref) {
+  var store = _ref.store,
+      addAction = _ref.addAction;
 
-  function ComponentHrzContainer() {
-    var _this;
+  var _useState = (0, _react.useState)([]),
+      containers = _useState[0],
+      setContainers = _useState[1];
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
+  (0, _useListen["default"])(store, function (actionType, option) {
+    var _ref2 = option || {},
+        Comp = _ref2.Comp;
+
+    if (actionType === addAction && Comp) {
+      setContainers(function (prevContainers) {
+        return (0, _isInCont["default"])(prevContainers, Comp) ? prevContainers : [Comp].concat(prevContainers);
+      });
     }
+  });
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    className: CL,
+    children: containers
+  });
+};
+/*
+ComponentHrzContainer.propTypes = {
+  store: PropTypes.shape({
+    listen: PropTypes.func
+  }),
+  addAction: PropTypes.string
+}
+*/
 
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-    _this.state = {
-      containers: []
-    };
-
-    _this._onStore = function (actionType, option) {
-      var _ref = option || {},
-          Comp = _ref.Comp;
-
-      if (actionType === _this.props.addAction && Comp) {
-        _this.setState(function (prevState) {
-          if (!isInCont(prevState.containers, Comp)) {
-            prevState.containers.unshift(Comp);
-          }
-
-          return prevState;
-        });
-      }
-    };
-
-    return _this;
-  }
-
-  var _proto = ComponentHrzContainer.prototype;
-
-  _proto.componentDidMount = function componentDidMount() {
-    var store = this.props.store;
-    this.unsubscribe = store.listen(this._onStore);
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.unsubscribe();
-  };
-
-  _proto.render = function render() {
-    var containers = this.state.containers;
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      className: CL,
-      children: containers
-    });
-  };
-
-  return ComponentHrzContainer;
-}(_react.Component);
 
 var _default = ComponentHrzContainer;
 exports["default"] = _default;

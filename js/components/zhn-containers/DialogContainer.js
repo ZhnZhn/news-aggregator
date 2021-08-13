@@ -11,7 +11,7 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = require("react");
 
-var _utils = _interopRequireDefault(require("./utils"));
+var _isInCont = _interopRequireDefault(require("./isInCont"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -24,7 +24,6 @@ var S = {
     width: '99%'
   }
 };
-var isInCont = _utils["default"].isInCont;
 
 var _doVisible = function _doVisible(arr, keyValue) {
   var index,
@@ -87,7 +86,7 @@ var DialogContainer = /*#__PURE__*/function (_Component) {
 
           if (!Comp) {
             prevState.compDialogs = _doVisible(prevState.compDialogs, key);
-          } else if (!isInCont(prevState.compDialogs, Comp)) {
+          } else if (!(0, _isInCont["default"])(prevState.compDialogs, Comp)) {
             prevState.compDialogs.push(Comp);
           }
 

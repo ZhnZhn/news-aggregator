@@ -1,6 +1,6 @@
 import { cloneElement, Component } from 'react';
 
-import utils from './utils'
+import isInCont from './isInCont';
 
 const S = {
   ROOT: {
@@ -11,8 +11,6 @@ const S = {
     width: '99%'
   }
 };
-
-const { isInCont } = utils;
 
 const _doVisible = function(arr, keyValue){
   let index
