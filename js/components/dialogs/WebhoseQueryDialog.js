@@ -60,16 +60,11 @@ var WebhoseQueryDialog = function WebhoseQueryDialog(_ref) {
       _refInputBeforeDays = _useRefInput2[0],
       _getInputBeforeDays = _useRefInput2[1],
       _hLoad = (0, _react.useCallback)(function () {
-    var _ref2 = itemConf || {},
-        requestType = _ref2.requestType,
-        loadId = _ref2.loadId;
-
     onLoad({
       type: type,
       source: source,
-      requestType: requestType,
       itemConf: itemConf,
-      loadId: loadId,
+      loadId: "W",
       inTitle: _getInputInTitle(),
       siteType: _getRefValue(_refSiteType),
       beforeDays: _getInputBeforeDays()

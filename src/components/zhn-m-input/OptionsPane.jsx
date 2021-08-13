@@ -23,8 +23,8 @@ const S = {
     borderRadius: 2,
     boxShadow: 'rgba(0, 0, 0, 0.3) 0px 2px 2px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px'
   },
-  ITEM: {
-    color: 'greenyellow'
+  ITEM: {    
+    color: '#80c040'
   }
 };
 

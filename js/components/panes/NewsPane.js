@@ -13,6 +13,8 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = require("react");
 
+var _toFirstUpperCase = _interopRequireDefault(require("../../utils/toFirstUpperCase"));
+
 var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
 
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
@@ -79,7 +81,7 @@ var _crPaneCaption = function _crPaneCaption() {
     args[_key] = arguments[_key];
   }
 
-  return args.filter(Boolean).join(': ');
+  return args.filter(Boolean).map(_toFirstUpperCase["default"]).join(': ');
 };
 
 var NewsPane = /*#__PURE__*/function (_Component) {
@@ -262,7 +264,7 @@ var NewsPane = /*#__PURE__*/function (_Component) {
         isMore = _this$state.isMore,
         articles = _this$state.articles,
         sortBy = _this$state.sortBy,
-        _paneCaption = _crPaneCaption(paneCaption, sortBy),
+        _paneCaption = _crPaneCaption(paneCaption, '' + sortBy),
         _className = (0, _crCn["default"])(CL.NEWS_PANE, [isShow, CL.SHOW_POPUP]),
         _styleIsShow = isShow ? S.INLINE_BLOCK : S.NONE;
 

@@ -35,13 +35,11 @@ const WebhoseQueryDialog = ({
   , [_refInputBeforeDays, _getInputBeforeDays] = useRefInput(DF_BEFORE_DAYS)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(()=>{
-    const { requestType, loadId } = itemConf || {};
     onLoad({
       type,
       source,
-      requestType,
       itemConf,
-      loadId,
+      loadId: "W",
       inTitle: _getInputInTitle(),
       siteType: _getRefValue(_refSiteType),
       beforeDays: _getInputBeforeDays()

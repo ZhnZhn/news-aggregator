@@ -9,13 +9,6 @@ import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
 
-const S = {
-  POWERED_BY: {
-    marginLeft: 16,
-    marginBottom: 8
-  }
-};
-
 const SORT_BY_OPTIONS = [
   { caption: "Relevancy", value: "relevancy" },
   { caption: "Popularity", value: "popularity"},
@@ -79,7 +72,7 @@ const NewsApiSearchDialog = ({
          styleConfig={TS.SELECT}
          onSelect={_selectSortBy}
        />
-      <A.Link.PoweredBy rootStyle={S.POWERED_BY}>
+      <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
         <A.Link.NewsApi />
       </A.Link.PoweredBy>
     </A.DraggableDialog>

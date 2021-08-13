@@ -1,6 +1,6 @@
-import { Component } from 'react'
+import { Component } from 'react';
 
-import has from '../has'
+import has from '../has';
 
 const CL = {
   SELECT: 'm-select',
@@ -30,7 +30,7 @@ const S = {
     borderBottom: '2px solid #f44336'
   },
   LINE_AFTER_ENTER: {
-    borderBottom: '2px solid greenyellow'
+    borderBottom: '2px solid #80c040'
   }
 };
 
@@ -38,13 +38,17 @@ const _crId = ({ name }) => name
   + '_'
   + Math.random().toString(36).substr(2, 6);
 
+
+const _fnNoop = () => {};
+const _fnTrue = () => true;
+
 class PasswordField extends Component {
   static defaultProps = {
     name: 'pwd',
     maxLength: "32",
     errorMsg: '',
-    onTest: () => true,
-    onEnter: () => {}
+    onTest: _fnTrue,
+    onEnter: _fnNoop
   }
 
   constructor(props){
@@ -120,11 +124,11 @@ class PasswordField extends Component {
       } = this.props
     , { value } = this.state
     , _isPassTest = onTest(value)
-    , _labelStyle = (this._isValue() || this.isFocus)
-        ? null
+    , _labelStyle = this._isValue() || this.isFocus
+        ? void 0
         : S.LABEL_TO_INPUT
     , _labelErrStyle = _isPassTest
-        ? null
+        ? void 0
         : S.LABEL_ON_ERROR
     , _lineStyle = _isPassTest
         ? this._wasEnter

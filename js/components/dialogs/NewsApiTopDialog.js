@@ -23,13 +23,6 @@ var _jsxRuntime = require("react/jsx-runtime");
 
 var _this = void 0;
 
-var S = {
-  POWERED_BY: {
-    marginLeft: 16,
-    marginBottom: 8
-  }
-};
-
 var _CATEGORY = ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'],
     CATEGORY_OPTIONS = _CATEGORY.map(function (str) {
   return {
@@ -269,7 +262,7 @@ var NewsApiTopDialog = function NewsApiTopDialog(_ref) {
         onSelect: _selectCountry
       })
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
-      rootStyle: S.POWERED_BY,
+      rootStyle: TS.POWERED_BY,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.NewsApi, {})
     })]
   });

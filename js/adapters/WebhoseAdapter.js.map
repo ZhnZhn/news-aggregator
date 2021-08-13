@@ -1,1 +1,37 @@
-{"version":3,"sources":["../../src/adapters/WebhoseAdapter.js"],"names":["C","ROOT_URL","W","W_B","_toNews","json","posts","requestsLeft","arr","_hm","forEach","post","title","_title","trim","articleId","uuid","source","description","text","publishedAt","published","push","articles","sortBy","_toBroadcast","option","items","broadcast_at","author","show","name","undefined","url","full_show","_rToArticles","NEWS","BRODCAST","WebhoseAdapter","toArticles","toNews","requestType"],"mappings":"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","sourcesContent":["\r\nconst C = {\r\n  ROOT_URL: 'https://webhose.io',\r\n  W: 'webhose',\r\n  W_B: 'webhose_brodcast'\r\n};\r\n\r\nconst _toNews = (json) => {\r\n  const { posts, requestsLeft='' } = json;\r\n  const arr = []\r\n      , _hm = {};\r\n  posts.forEach(post => {\r\n    const { title='' } = post\r\n         , _title = title.trim();\r\n    if (_title && !_hm[_title] ){\r\n      post.articleId = post.uuid\r\n      post.source = C.W\r\n      post.description = post.text\r\n      post.publishedAt = post.published\r\n      arr.push(post)\r\n      _hm[_title] = true;\r\n    }\r\n  })\r\n\r\n  return {\r\n    source: C.W,\r\n    articles: arr,\r\n    sortBy: requestsLeft\r\n  };\r\n}\r\n\r\nconst _toBroadcast = (json, option) => {\r\n  const { items, requestsLeft } = json\r\n      , articles = [];  \r\n  items.forEach(post => {\r\n    post.articleId = post.uuid\r\n    post.source = C.W_B\r\n    post.title = post.text\r\n    post.description = post.text\r\n    post.publishedAt = post.broadcast_at\r\n    post.author = post.show\r\n          ? post.show.name\r\n          : undefined\r\n    post.url = C.ROOT_URL + post.full_show\r\n    articles.push(post)\r\n  })\r\n  return {\r\n    source: C.W_B,\r\n    articles: articles,\r\n    sortBy: requestsLeft\r\n  };\r\n}\r\n\r\nconst _rToArticles = {\r\n   NEWS: _toNews,\r\n   BRODCAST: _toBroadcast\r\n};\r\n\r\nconst WebhoseAdapter = {\r\n  toArticles: (posts=[], source) => {\r\n    const arr = []\r\n        , _hm = {};\r\n    posts.forEach(post => {\r\n      const { title='' } = post\r\n           , _title = title.trim();\r\n      if (_title && !_hm[_title] ){\r\n        post.articleId = post.uuid\r\n        post.source = \"webhose\"\r\n        post.description = post.text\r\n        post.publishedAt = post.published\r\n        arr.push(post)\r\n        _hm[_title] = true;\r\n      }\r\n    })\r\n\r\n    return arr;\r\n  },\r\n\r\n  toNews: (json, option) => {\r\n    const { requestType } = option\r\n        , toArticles = _rToArticles[requestType];\r\n\r\n    return toArticles(json, option);\r\n  }\r\n}\r\n\r\nexport default WebhoseAdapter\r\n"],"file":"WebhoseAdapter.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/adapters/WebhoseAdapter.js"
+ ],
+ "file": "../../src/adapters/WebhoseAdapter.js",
+ "names": [
+  "C",
+  "W",
+  "_toNews",
+  "json",
+  "posts",
+  "requestsLeft",
+  "arr",
+  "_hm",
+  "forEach",
+  "post",
+  "title",
+  "_title",
+  "trim",
+  "articleId",
+  "uuid",
+  "source",
+  "description",
+  "text",
+  "publishedAt",
+  "published",
+  "push",
+  "articles",
+  "sortBy",
+  "WebhoseAdapter",
+  "toArticles",
+  "toNews",
+  "option"
+ ],
+ "mappings": ";;;;AACA,IAAMA,CAAC,GAAG;AACRC,EAAAA,CAAC,EAAE;AADK,CAAV;;AAIA,IAAMC,OAAO,GAAG,SAAVA,OAAU,CAACC,IAAD,EAAU;AACxB,MAAQC,KAAR,GAAmCD,IAAnC,CAAQC,KAAR;AAAA,2BAAmCD,IAAnC,CAAeE,YAAf;AAAA,MAAeA,YAAf,mCAA4B,EAA5B;AACA,MAAMC,GAAG,GAAG,EAAZ;AAAA,MAAgBC,GAAG,GAAG,EAAtB;AACAH,EAAAA,KAAK,CAACI,OAAN,CAAc,UAAAC,IAAI,EAAI;AACpB,sBAAqBA,IAArB,CAAQC,KAAR;AAAA,QAAQA,KAAR,4BAAc,EAAd;AAAA,QACEC,MADF,GACWD,KAAK,CAACE,IAAN,EADX;;AAEA,QAAID,MAAM,IAAI,CAACJ,GAAG,CAACI,MAAD,CAAlB,EAA4B;AAC1BF,MAAAA,IAAI,CAACI,SAAL,GAAiBJ,IAAI,CAACK,IAAtB;AACAL,MAAAA,IAAI,CAACM,MAAL,GAAcf,CAAC,CAACC,CAAhB;AACAQ,MAAAA,IAAI,CAACO,WAAL,GAAmBP,IAAI,CAACQ,IAAxB;AACAR,MAAAA,IAAI,CAACS,WAAL,GAAmBT,IAAI,CAACU,SAAxB;AACAb,MAAAA,GAAG,CAACc,IAAJ,CAASX,IAAT;AACAF,MAAAA,GAAG,CAACI,MAAD,CAAH,GAAc,IAAd;AACD;AACF,GAXD;AAaA,SAAO;AACLI,IAAAA,MAAM,EAAEf,CAAC,CAACC,CADL;AAELoB,IAAAA,QAAQ,EAAEf,GAFL;AAGLgB,IAAAA,MAAM,EAAEjB;AAHH,GAAP;AAKD,CArBD;;AAuBA,IAAMkB,cAAc,GAAG;AACrBC,EAAAA,UAAU,EAAE,oBAACpB,KAAD,EAAWW,MAAX,EAAsB;AAAA,QAArBX,KAAqB;AAArBA,MAAAA,KAAqB,GAAf,EAAe;AAAA;;AAChC,QAAME,GAAG,GAAG,EAAZ;AAAA,QACMC,GAAG,GAAG,EADZ;AAEAH,IAAAA,KAAK,CAACI,OAAN,CAAc,UAAAC,IAAI,EAAI;AACpB,yBAAqBA,IAArB,CAAQC,KAAR;AAAA,UAAQA,KAAR,6BAAc,EAAd;AAAA,UACOC,MADP,GACgBD,KAAK,CAACE,IAAN,EADhB;;AAEA,UAAID,MAAM,IAAI,CAACJ,GAAG,CAACI,MAAD,CAAlB,EAA4B;AAC1BF,QAAAA,IAAI,CAACI,SAAL,GAAiBJ,IAAI,CAACK,IAAtB;AACAL,QAAAA,IAAI,CAACM,MAAL,GAAc,SAAd;AACAN,QAAAA,IAAI,CAACO,WAAL,GAAmBP,IAAI,CAACQ,IAAxB;AACAR,QAAAA,IAAI,CAACS,WAAL,GAAmBT,IAAI,CAACU,SAAxB;AACAb,QAAAA,GAAG,CAACc,IAAJ,CAASX,IAAT;AACAF,QAAAA,GAAG,CAACI,MAAD,CAAH,GAAc,IAAd;AACD;AACF,KAXD;AAaA,WAAOL,GAAP;AACD,GAlBoB;AAoBrBmB,EAAAA,MAAM,EAAE,gBAACtB,IAAD,EAAOuB,MAAP,EAAkB;AACxB,WAAOxB,OAAO,CAACC,IAAD,EAAOuB,MAAP,CAAd;AACD;AAtBoB,CAAvB;eAyBeH,c"
+}

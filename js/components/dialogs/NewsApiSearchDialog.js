@@ -21,13 +21,6 @@ var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S = {
-  POWERED_BY: {
-    marginLeft: 16,
-    marginBottom: 8
-  }
-};
-
 var SORT_BY_OPTIONS = [{
   caption: "Relevancy",
   value: "relevancy"
@@ -104,7 +97,7 @@ var NewsApiSearchDialog = function NewsApiSearchDialog(_ref) {
       styleConfig: TS.SELECT,
       onSelect: _selectSortBy
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
-      rootStyle: S.POWERED_BY,
+      rootStyle: TS.POWERED_BY,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.NewsApi, {})
     })]
   });

@@ -5,12 +5,14 @@ const S = {
     display: 'inline-block',
     color: 'grey',
     backgroundColor: '#3f5178',
-    float: 'right',
     width: 32,
+    height: 32,
     paddingRight: 5,
     paddingLeft: 5,
     borderRadius: '30%',
-    textAlign: 'center'
+    textAlign: 'center',
+    float: 'right',
+    cursor: 'pointer'
   },
   CLOSE: {
     color: 'black'
@@ -31,9 +33,13 @@ const MenuItemBadge = ({
   , _badgeStyle = crStyle(S.BADGE, [!isOpen, S.CLOSE]);
 
   return (
-    <span style={{..._badgeStyle, ...style}} onClick={_hClick}>
+    <button
+      tabIndex="-1"
+      style={{..._badgeStyle, ...style}}
+      onClick={_hClick}
+    >
       V
-    </span>
+    </button>
   );
 };
 

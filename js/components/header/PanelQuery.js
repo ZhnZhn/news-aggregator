@@ -64,7 +64,6 @@ var PanelQuery = /*#__PURE__*/function (_Component) {
         onStackTagged = _this$props.onStackTagged,
         onStackSearch = _this$props.onStackSearch,
         onWebhose = _this$props.onWebhose,
-        onWebhoseBrodcast = _this$props.onWebhoseBrodcast,
         onClose = _this$props.onClose;
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].ModalPopup, {
       isShow: isShow,
@@ -116,11 +115,6 @@ var PanelQuery = /*#__PURE__*/function (_Component) {
         className: CL_ITEM,
         caption: "StackOverflow: Search Questions",
         onClick: onStackSearch,
-        onClose: onClose
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
-        className: CL_ITEM,
-        caption: "Webhose: Broadcast",
-        onClick: onWebhoseBrodcast,
         onClose: onClose
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
         className: CL_ITEM,

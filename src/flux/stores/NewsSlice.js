@@ -60,8 +60,7 @@ const NewsSlice = {
     this.triggerLoadingProgress(LP.LOADING_COMPLETE)
   },
   onLoadNewsFailed(option){
-    ComponentActions.showModalDialog('ALERT_DIALOG', option)
-    //ComponentActions.showModalDialog('APIKEY_DIALOG', option)
+    ComponentActions.showModalDialog('ALERT_DIALOG', option)    
     this.triggerLoadingProgress(LP.LOADING_FAILED)
   },
 

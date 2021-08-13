@@ -10,13 +10,6 @@ import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
 
-const S = {
-  POWERED_BY: {
-    marginLeft: 16,
-    marginBottom: 8
-  }
-};
-
 const _CATEGORY = [
   'business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'
 ]
@@ -141,7 +134,7 @@ const NewsApiTopDialog = ({
            onSelect={_selectCountry}
          />
        </div>
-      <A.Link.PoweredBy rootStyle={S.POWERED_BY}>
+      <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
         <A.Link.NewsApi />
       </A.Link.PoweredBy>
     </A.DraggableDialog>

@@ -42,13 +42,19 @@ var S = {
     borderBottom: '2px solid #f44336'
   },
   LINE_AFTER_ENTER: {
-    borderBottom: '2px solid greenyellow'
+    borderBottom: '2px solid #80c040'
   }
 };
 
 var _crId = function _crId(_ref) {
   var name = _ref.name;
   return name + '_' + Math.random().toString(36).substr(2, 6);
+};
+
+var _fnNoop = function _fnNoop() {};
+
+var _fnTrue = function _fnTrue() {
+  return true;
 };
 
 var PasswordField = /*#__PURE__*/function (_Component) {
@@ -147,8 +153,8 @@ var PasswordField = /*#__PURE__*/function (_Component) {
         onTest = _this$props.onTest,
         value = this.state.value,
         _isPassTest = onTest(value),
-        _labelStyle = this._isValue() || this.isFocus ? null : S.LABEL_TO_INPUT,
-        _labelErrStyle = _isPassTest ? null : S.LABEL_ON_ERROR,
+        _labelStyle = this._isValue() || this.isFocus ? void 0 : S.LABEL_TO_INPUT,
+        _labelErrStyle = _isPassTest ? void 0 : S.LABEL_ON_ERROR,
         _lineStyle = _isPassTest ? this._wasEnter ? S.LINE_AFTER_ENTER : void 0 : S.LINE_ERROR;
 
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
@@ -219,10 +225,8 @@ PasswordField.defaultProps = {
   name: 'pwd',
   maxLength: "32",
   errorMsg: '',
-  onTest: function onTest() {
-    return true;
-  },
-  onEnter: function onEnter() {}
+  onTest: _fnTrue,
+  onEnter: _fnNoop
 };
 var _default = PasswordField;
 exports["default"] = _default;

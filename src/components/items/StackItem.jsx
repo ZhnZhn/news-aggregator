@@ -123,6 +123,12 @@ const StackItem = forwardRef(({
     setIsClosed(true)
   }, [])
   //item, onCloseItem
+  , _hKeyDown = useCallback(evt => {
+     if (evt.keyCode === 46) {
+       _hClose()
+     }
+  }, [])
+  // _hClose
   /*eslint-enable react-hooks/exhaustive-deps */
   , _onGestureSwipeX = useItemGestureSwipeX(item, onRemoveUnder, _hClose)
   , TS = useTheme(styleConfig)
@@ -170,6 +176,7 @@ const StackItem = forwardRef(({
         className={CL_WRAPPER}
         style={S.LINK}
         href={link}
+        onKeyDown={_hKeyDown}
       >
         <ItemStack items={tags} crItem={_crItem} />
       </a>

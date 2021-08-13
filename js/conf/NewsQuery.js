@@ -15,18 +15,6 @@ var NEWS_QUERY = {
       "source": "webhose"
     }
   },
-  WEBHOSE_BRODCAST: {
-    "type": "W_WEBHOSE_BRODCAST",
-    "dialogType": "WebhoseBrodcast",
-    "paneCaption": "Webhose.Io Broadcast",
-    "paneId": "webhose_brodcast",
-    "loadId": "W",
-    "requestType": "BRODCAST",
-    "dialogProps": {
-      "caption": "Webhose Broadcast",
-      "source": "webhose"
-    }
-  },
   STACK_TAGGED: {
     "type": "SO_TAGGED",
     "dialogType": "StackTagged",

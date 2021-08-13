@@ -1,5 +1,7 @@
 import { Component, createRef } from 'react'
 
+import toFirstUpperCase from '../../utils/toFirstUpperCase'
+
 import withTheme from '../hoc/withTheme'
 import crCn from '../zhn-utils/crCn'
 import styleConfig from './NewsPane.Style'
@@ -54,6 +56,7 @@ const _focusFirstItem = ref => {
 
 const _crPaneCaption = (...args) => args
   .filter(Boolean)
+  .map(toFirstUpperCase)
   .join(': ');
 
 class NewsPane extends Component {
@@ -183,7 +186,7 @@ class NewsPane extends Component {
         } = this.props
       , TS = theme.createStyle(styleConfig)
       , { isShow, isMore, articles, sortBy } = this.state
-      , _paneCaption = _crPaneCaption(paneCaption, sortBy)
+      , _paneCaption = _crPaneCaption(paneCaption, ''+sortBy)
       , _className = crCn(CL.NEWS_PANE, [isShow,  CL.SHOW_POPUP])
       , _styleIsShow = isShow ? S.INLINE_BLOCK : S.NONE;
 

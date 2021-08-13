@@ -21,8 +21,6 @@ var _InputBeforeDays = _interopRequireDefault(require("./InputBeforeDays"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var _this = void 0;
-
 var DF_IN_TITLE = 'Weather',
     DF_BEFORE_DAYS = 2;
 
@@ -60,7 +58,7 @@ var WebhoseBrodcastDialog = function WebhoseBrodcastDialog(_ref) {
       beforeDays: _getInputBeforeDays()
     });
 
-    _this._handleClose();
+    _hClose();
   }, []),
       _useDecorDialog = (0, _useDecorDialog2["default"])(_Dialog["default"], _hLoad, _hClose),
       TS = _useDecorDialog[0],

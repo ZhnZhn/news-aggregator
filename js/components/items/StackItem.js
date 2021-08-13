@@ -146,6 +146,11 @@ var StackItem = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
     onCloseItem(item);
     setIsClosed(true);
   }, []),
+      _hKeyDown = (0, _react.useCallback)(function (evt) {
+    if (evt.keyCode === 46) {
+      _hClose();
+    }
+  }, []),
       _onGestureSwipeX = (0, _useItemGestureSwipeX["default"])(item, onRemoveUnder, _hClose),
       TS = (0, _useTheme["default"])(_Article["default"]),
       _crItem = (0, _react.useMemo)(function () {
@@ -196,6 +201,7 @@ var StackItem = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
       className: CL_WRAPPER,
       style: S.LINK,
       href: link,
+      onKeyDown: _hKeyDown,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemStack["default"], {
         items: tags,
         crItem: _crItem

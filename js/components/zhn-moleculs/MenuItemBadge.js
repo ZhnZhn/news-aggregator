@@ -16,12 +16,14 @@ var S = {
     display: 'inline-block',
     color: 'grey',
     backgroundColor: '#3f5178',
-    "float": 'right',
     width: 32,
+    height: 32,
     paddingRight: 5,
     paddingLeft: 5,
     borderRadius: '30%',
-    textAlign: 'center'
+    textAlign: 'center',
+    "float": 'right',
+    cursor: 'pointer'
   },
   CLOSE: {
     color: 'black'
@@ -42,7 +44,8 @@ var MenuItemBadge = function MenuItemBadge(_ref) {
       isOpen = _ref2.isOpen,
       _badgeStyle = (0, _crStyle["default"])(S.BADGE, [!isOpen, S.CLOSE]);
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+    tabIndex: "-1",
     style: (0, _extends2["default"])({}, _badgeStyle, style),
     onClick: _hClick,
     children: "V"

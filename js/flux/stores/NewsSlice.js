@@ -77,8 +77,7 @@ var NewsSlice = {
     this.triggerLoadingProgress(_LoadingProgressActions.TYPES.LOADING_COMPLETE);
   },
   onLoadNewsFailed: function onLoadNewsFailed(option) {
-    _ComponentActions["default"].showModalDialog('ALERT_DIALOG', option); //ComponentActions.showModalDialog('APIKEY_DIALOG', option)
-
+    _ComponentActions["default"].showModalDialog('ALERT_DIALOG', option);
 
     this.triggerLoadingProgress(_LoadingProgressActions.TYPES.LOADING_FAILED);
   },

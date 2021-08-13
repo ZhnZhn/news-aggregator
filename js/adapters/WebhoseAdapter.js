@@ -3,9 +3,7 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 var C = {
-  ROOT_URL: 'https://webhose.io',
-  W: 'webhose',
-  W_B: 'webhose_brodcast'
+  W: 'webhose'
 };
 
 var _toNews = function _toNews(json) {
@@ -35,31 +33,6 @@ var _toNews = function _toNews(json) {
   };
 };
 
-var _toBroadcast = function _toBroadcast(json, option) {
-  var items = json.items,
-      requestsLeft = json.requestsLeft,
-      articles = [];
-  items.forEach(function (post) {
-    post.articleId = post.uuid;
-    post.source = C.W_B;
-    post.title = post.text;
-    post.description = post.text;
-    post.publishedAt = post.broadcast_at;
-    post.author = post.show ? post.show.name : undefined;
-    post.url = C.ROOT_URL + post.full_show;
-    articles.push(post);
-  });
-  return {
-    source: C.W_B,
-    articles: articles,
-    sortBy: requestsLeft
-  };
-};
-
-var _rToArticles = {
-  NEWS: _toNews,
-  BRODCAST: _toBroadcast
-};
 var WebhoseAdapter = {
   toArticles: function toArticles(posts, source) {
     if (posts === void 0) {
@@ -85,9 +58,7 @@ var WebhoseAdapter = {
     return arr;
   },
   toNews: function toNews(json, option) {
-    var requestType = option.requestType,
-        toArticles = _rToArticles[requestType];
-    return toArticles(json, option);
+    return _toNews(json, option);
   }
 };
 var _default = WebhoseAdapter;

@@ -81,8 +81,7 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
       });
     };
 
-    var onQuery = props.onQuery,
-        onWebhoseBrodcast = props.onWebhoseBrodcast,
+    var onWebhose = props.onWebhose,
         onStackTagged = props.onStackTagged,
         onStackSearch = props.onStackSearch,
         onCryptoCompare = props.onCryptoCompare,
@@ -94,8 +93,7 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
         onNewsTop = props.onNewsTop,
         _fClick = _ffClick(_this._hCloseQuery);
 
-    _this._hWebhose = _fClick(onQuery);
-    _this._hWebhoseBrodcast = _fClick(onWebhoseBrodcast);
+    _this._hWebhose = _fClick(onWebhose);
     _this._hStackTagged = _fClick(onStackTagged);
     _this._hStackSearch = _fClick(onStackSearch);
     _this._hCryptoCompare = _fClick(onCryptoCompare);

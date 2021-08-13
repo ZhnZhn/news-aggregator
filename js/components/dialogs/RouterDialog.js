@@ -9,8 +9,6 @@ var _DialogType = _interopRequireDefault(require("./DialogType1"));
 
 var _WebhoseQueryDialog = _interopRequireDefault(require("./WebhoseQueryDialog"));
 
-var _WebhoseBrodcastDialog = _interopRequireDefault(require("./WebhoseBrodcastDialog"));
-
 var _StackTaggedDialog = _interopRequireDefault(require("./StackTaggedDialog"));
 
 var _StackSearchDialog = _interopRequireDefault(require("./StackSearchDialog"));
@@ -33,7 +31,6 @@ var R = {
   DEFAULT: _DialogType["default"],
   DialogType1: _DialogType["default"],
   WebhoseQuery: _WebhoseQueryDialog["default"],
-  WebhoseBrodcast: _WebhoseBrodcastDialog["default"],
   StackTagged: _StackTaggedDialog["default"],
   StackSearch: _StackSearchDialog["default"],
   CryptoCompareNews: _CryptoCompareNewsDialog["default"],

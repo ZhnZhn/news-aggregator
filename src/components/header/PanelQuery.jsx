@@ -27,7 +27,7 @@ class PanelQuery extends Component {
      onIex, onFmp,
      onNewsApi, onNewsTop,
      onStackTagged, onStackSearch,
-     onWebhose, onWebhoseBrodcast,
+     onWebhose, 
      onClose
    } = this.props;
     return (
@@ -44,7 +44,7 @@ class PanelQuery extends Component {
             onClick={onCryptoCompare}
             onClose={onClose}
           />
-          <A.MenuItem            
+          <A.MenuItem
             className={CL_ITEM}
             caption="CoinStats: News"
             onClick={onCoinStats}
@@ -90,12 +90,6 @@ class PanelQuery extends Component {
             className={CL_ITEM}
             caption="StackOverflow: Search Questions"
             onClick={onStackSearch}
-            onClose={onClose}
-          />
-          <A.MenuItem
-            className={CL_ITEM}
-            caption="Webhose: Broadcast"
-            onClick={onWebhoseBrodcast}
             onClose={onClose}
           />
           <A.MenuItem
