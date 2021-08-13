@@ -9,25 +9,23 @@ var CL_BT = 'bt-raised';
 var CL_BT_SPAN = 'bt-raised__span';
 var S = {
   PRIMARY_SPAN: {
-    color: 'greenyellow'
+    color: '#80c040'
   }
 };
 
 var RaisedButton = function RaisedButton(_ref) {
-  var rootStyle = _ref.rootStyle,
+  var isPrimary = _ref.isPrimary,
+      style = _ref.style,
       clDiv = _ref.clDiv,
       caption = _ref.caption,
-      isPrimary = _ref.isPrimary,
-      isSumbit = _ref.isSumbit,
       onClick = _ref.onClick;
 
   var _spanStyle = isPrimary ? S.PRIMARY_SPAN : void 0;
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     className: CL_BT,
-    style: rootStyle,
+    style: style,
     type: "button",
-    tabIndex: 0,
     onClick: onClick,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: clDiv,

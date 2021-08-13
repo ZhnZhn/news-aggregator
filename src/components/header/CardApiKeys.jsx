@@ -113,19 +113,19 @@ const CardApiKeys = (props) => {
         </form>
         <div style={buttonsStyle}>
           <A.RaisedButton
-            rootStyle={TS.BT.RAISED_ROOT}
+            style={TS.BT.RAISED}
             clDiv={TS.BT.CL_RAISED_DIV}
             caption="Clear All"
             onClick={_hClearAll}
           />
           <A.RaisedButton
-            rootStyle={TS.BT.RAISED_ROOT}
+            style={TS.BT.RAISED}
             clDiv={TS.BT.CL_RAISED_DIV}
             caption="Set All"
             onClick={_hSetAll}
           />
           <A.RaisedButton
-            rootStyle={TS.BT.RAISED_ROOT}
+            style={TS.BT.RAISED}
             clDiv={TS.BT.CL_RAISED_DIV}
             isPrimary={true}
             caption="Close"

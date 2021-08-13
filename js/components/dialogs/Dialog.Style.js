@@ -17,7 +17,7 @@ var S = {
     textAlign: 'center',
     fontSize: '1.125rem'
   },
-  BT_RAISED_ROOT: {
+  BT_RAISED: {
     marginRight: 2,
     marginLeft: 2
   },
@@ -46,7 +46,7 @@ var styleConfig = {
       POWERED_BY: (0, _extends2["default"])({}, S.POWERED_BY),
       BT: {
         CL_RAISED_DIV: CSS_RULE.CL_BT_RAISED_DIV,
-        RAISED_ROOT: (0, _extends2["default"])({}, S.BT_RAISED_ROOT, CSS_RULE.BG_HEADER)
+        RAISED: (0, _extends2["default"])({}, S.BT_RAISED, CSS_RULE.BG_HEADER)
       },
       SELECT: {
         CL_ITEM: CSS_RULE.CL_SELECT_ITEM,

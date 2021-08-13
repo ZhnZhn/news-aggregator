@@ -140,17 +140,17 @@ var CardApiKeys = function CardApiKeys(props) {
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       style: buttonsStyle,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].RaisedButton, {
-        rootStyle: TS.BT.RAISED_ROOT,
+        style: TS.BT.RAISED,
         clDiv: TS.BT.CL_RAISED_DIV,
         caption: "Clear All",
         onClick: _hClearAll
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].RaisedButton, {
-        rootStyle: TS.BT.RAISED_ROOT,
+        style: TS.BT.RAISED,
         clDiv: TS.BT.CL_RAISED_DIV,
         caption: "Set All",
         onClick: _hSetAll
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].RaisedButton, {
-        rootStyle: TS.BT.RAISED_ROOT,
+        style: TS.BT.RAISED,
         clDiv: TS.BT.CL_RAISED_DIV,
         isPrimary: true,
         caption: "Close",

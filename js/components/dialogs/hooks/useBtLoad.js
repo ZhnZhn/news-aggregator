@@ -16,7 +16,7 @@ var useBtLoad = function useBtLoad(TS, hLoad) {
   return (0, _react.useMemo)(function () {
     return [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].RaisedButton, {
       isPrimary: true,
-      rootStyle: TS.RAISED_ROOT,
+      style: TS.RAISED,
       clDiv: TS.CL_RAISED_DIV,
       caption: "Load",
       onClick: hLoad

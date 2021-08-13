@@ -66,7 +66,7 @@ var CardUiTheme = function CardUiTheme(_ref) {
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       style: buttonsStyle,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].RaisedButton, {
-        rootStyle: TS.BT.RAISED_ROOT,
+        style: TS.BT.RAISED,
         clDiv: TS.BT.CL_RAISED_DIV,
         isPrimary: true,
         caption: "Close",

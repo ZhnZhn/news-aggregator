@@ -134,7 +134,7 @@ var ModalDialog = function ModalDialog(_ref) {
       }), isWithButton && /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         style: (0, _extends2["default"])({}, S.COMMAND_DIV, divBtStyle),
         children: [commandButtons, !withoutClose && /*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
-          rootStyle: TS.RAISED_ROOT,
+          style: TS.RAISED,
           clDiv: TS.CL_RAISED_DIV,
           caption: "Close",
           isPrimary: isClosePrimary,

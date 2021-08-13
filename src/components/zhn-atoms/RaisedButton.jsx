@@ -3,18 +3,22 @@ const CL_BT_SPAN = 'bt-raised__span';
 
 const S = {
   PRIMARY_SPAN: {
-    color: 'greenyellow'
+    color: '#80c040'
   }
 };
 
-const RaisedButton = ({ rootStyle, clDiv, caption, isPrimary, isSumbit, onClick }) => {
+const RaisedButton = ({
+  isPrimary,
+  style, clDiv,
+  caption,
+  onClick
+}) => {
   const _spanStyle = isPrimary ? S.PRIMARY_SPAN : void 0;
   return (
     <button
       className={CL_BT}
-      style={rootStyle}
+      style={style}
       type="button"
-      tabIndex={0}
       onClick={onClick}
     >
       <div className={clDiv}>

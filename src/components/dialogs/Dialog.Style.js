@@ -10,7 +10,7 @@ const S = {
     textAlign: 'center',
     fontSize: '1.125rem'
   },
-  BT_RAISED_ROOT: {
+  BT_RAISED: {
     marginRight: 2,
     marginLeft: 2
   },
@@ -51,8 +51,8 @@ const styleConfig = {
       },
       BT: {
         CL_RAISED_DIV: CSS_RULE.CL_BT_RAISED_DIV,
-        RAISED_ROOT: {
-          ...S.BT_RAISED_ROOT,
+        RAISED: {
+          ...S.BT_RAISED,
           ...CSS_RULE.BG_HEADER
         }
       },
@@ -62,7 +62,7 @@ const styleConfig = {
           width: INPUT_WIDTH
         },
         MODAL_PANE: {
-          ...CSS_RULE.BG_OPTIONS          
+          ...CSS_RULE.BG_OPTIONS
         }
       }
     };

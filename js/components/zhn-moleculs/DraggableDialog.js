@@ -61,12 +61,12 @@ var DialogButtons = function DialogButtons(_ref) {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: S.BTS,
     children: [buttons, _isFn(onShow) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
-      rootStyle: TS.RAISED_ROOT,
+      style: TS.RAISED,
       clDiv: TS.CL_RAISED_DIV,
       caption: "Show",
       onClick: onShow
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
-      rootStyle: TS.RAISED_ROOT,
+      style: TS.RAISED,
       clDiv: TS.CL_RAISED_DIV,
       caption: "Close",
       onClick: onClose

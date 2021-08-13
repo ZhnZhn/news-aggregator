@@ -7,7 +7,7 @@ const useBtLoad = (TS, hLoad) => useMemo(()=>[
   <A.RaisedButton
     key="_load"
     isPrimary={true}
-    rootStyle={TS.RAISED_ROOT}
+    style={TS.RAISED}
     clDiv={TS.CL_RAISED_DIV}
     caption="Load"
     onClick={hLoad}

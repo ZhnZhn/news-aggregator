@@ -125,7 +125,7 @@ const ModalDialog = ({
          {!withoutClose &&
              <RaisedButton
                 key="_close"
-                rootStyle={TS.RAISED_ROOT}
+                style={TS.RAISED}
                 clDiv={TS.CL_RAISED_DIV}
                 caption="Close"
                 isPrimary={isClosePrimary}

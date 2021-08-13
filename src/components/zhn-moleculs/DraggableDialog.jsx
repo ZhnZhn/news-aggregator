@@ -50,14 +50,14 @@ const DialogButtons = ({
     {buttons}
     {_isFn(onShow) &&
       <RaisedButton
-         rootStyle={TS.RAISED_ROOT}
+         style={TS.RAISED}
          clDiv={TS.CL_RAISED_DIV}
          caption="Show"
          onClick={onShow}
       />
     }
     <RaisedButton
-       rootStyle={TS.RAISED_ROOT}
+       style={TS.RAISED}
        clDiv={TS.CL_RAISED_DIV}
        caption="Close"
        onClick={onClose}

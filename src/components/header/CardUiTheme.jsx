@@ -44,7 +44,7 @@ const CardUiTheme = ({
       />
       <div style={buttonsStyle}>
         <A.RaisedButton
-          rootStyle={TS.BT.RAISED_ROOT}
+          style={TS.BT.RAISED}
           clDiv={TS.BT.CL_RAISED_DIV}
           isPrimary={true}
           caption="Close"
