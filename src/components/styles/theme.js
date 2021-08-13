@@ -3,24 +3,28 @@
 const P_GREY = {
   BG_BODY: '#5f5f5f',
   BG: '#4d4d4d',
+  BG_OPTIONS: '#404040',
   BG_HEADER: '#3a6799',
   C_HEADER: '#8a8a8a'
 };
 const P_WHITE = {
   BG_BODY: 'darkgrey',
   BG: '#ebf1f5',
-  BG_HEADER: 'rgb(0, 150, 200)',
+  BG_OPTIONS: '#dfe4e7', 
+  BG_HEADER: '#0096c8',
   C_HEADER: '#4d4d4d'
 };
 const P_SAND = {
   BG_BODY: 'darkgrey',
   BG: '#e8e0cb',
-  BG_HEADER: 'rgb(0, 150, 200)',
+  BG_OPTIONS: '#c6bda5',
+  BG_HEADER: '#0096c8',
   C_HEADER: '#4d4d4d'
 };
 
 const CSS_RULE = {
   BG: {},
+  BG_OPTIONS: {},
   BG_HEADER: {},
   R_DIALOG: {}
 };
@@ -32,6 +36,11 @@ const _setBodyBg = (conf, P) => {
 const _crBg = (conf, P) => {
   _assign(conf.BG, {
     backgroundColor: P.BG
+  })
+}
+const _crBgOption = (conf, P) => {
+  _assign(conf.BG_OPTIONS, {
+    backgroundColor: P.BG_OPTIONS
   })
 }
 const _crBgHeader = (conf, P) => {
@@ -49,7 +58,7 @@ const _crRDialog = (conf, P) => {
 
 const _FN_STYLES = [
   _setBodyBg,
-  _crBg, _crBgHeader, _crRDialog
+  _crBg, _crBgOption, _crBgHeader, _crRDialog
 ];
 const _setStyleTo = (conf, pallete) => {
   _FN_STYLES.forEach(fn => fn(conf, pallete))

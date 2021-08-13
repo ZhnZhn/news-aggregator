@@ -53,7 +53,7 @@ var styleConfig = {
         ROOT: {
           width: INPUT_WIDTH
         },
-        MODAL_PANE: (0, _extends2["default"])({}, CSS_RULE.BG)
+        MODAL_PANE: (0, _extends2["default"])({}, CSS_RULE.BG_OPTIONS)
       }
     };
   }

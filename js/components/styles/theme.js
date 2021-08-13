@@ -8,23 +8,27 @@ var _THEME_CONFIG;
 var P_GREY = {
   BG_BODY: '#5f5f5f',
   BG: '#4d4d4d',
+  BG_OPTIONS: '#404040',
   BG_HEADER: '#3a6799',
   C_HEADER: '#8a8a8a'
 };
 var P_WHITE = {
   BG_BODY: 'darkgrey',
   BG: '#ebf1f5',
-  BG_HEADER: 'rgb(0, 150, 200)',
+  BG_OPTIONS: '#dfe4e7',
+  BG_HEADER: '#0096c8',
   C_HEADER: '#4d4d4d'
 };
 var P_SAND = {
   BG_BODY: 'darkgrey',
   BG: '#e8e0cb',
-  BG_HEADER: 'rgb(0, 150, 200)',
+  BG_OPTIONS: '#c6bda5',
+  BG_HEADER: '#0096c8',
   C_HEADER: '#4d4d4d'
 };
 var CSS_RULE = {
   BG: {},
+  BG_OPTIONS: {},
   BG_HEADER: {},
   R_DIALOG: {}
 };
@@ -37,6 +41,12 @@ var _setBodyBg = function _setBodyBg(conf, P) {
 var _crBg = function _crBg(conf, P) {
   _assign(conf.BG, {
     backgroundColor: P.BG
+  });
+};
+
+var _crBgOption = function _crBgOption(conf, P) {
+  _assign(conf.BG_OPTIONS, {
+    backgroundColor: P.BG_OPTIONS
   });
 };
 
@@ -54,7 +64,7 @@ var _crRDialog = function _crRDialog(conf, P) {
   });
 };
 
-var _FN_STYLES = [_setBodyBg, _crBg, _crBgHeader, _crRDialog];
+var _FN_STYLES = [_setBodyBg, _crBg, _crBgOption, _crBgHeader, _crRDialog];
 
 var _setStyleTo = function _setStyleTo(conf, pallete) {
   _FN_STYLES.forEach(function (fn) {
