@@ -1,11 +1,11 @@
 
 .article-header {
-  border-bottom: 2px solid transparent;
+  border-bottom: medium solid transparent;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .article-header:focus {
-  border-bottom: 2px solid greenyellow;
+  border-bottom: medium solid #80c040;
 }
 
 .link-wrapper {

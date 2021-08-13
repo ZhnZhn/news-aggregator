@@ -56,7 +56,7 @@
 
 .m-select__div__value {
   position: relative;
-  color: greenyellow;
+  color: #80c040;
   opacity: 1;
   line-height: 48px;
   padding-left: 4px;
@@ -94,7 +94,7 @@
 }
 
 .m-select__div__bt:focus {
-  fill: greenyellow;
+  fill: #80c040;
 }
 
 .m-select__line {

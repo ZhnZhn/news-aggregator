@@ -161,7 +161,7 @@
 }
 
 .bt-raised:focus {
-  outline: greenyellow auto 2px;
+  outline: #80c040 auto 2px;
 }
 
 .bt-raised__span {
