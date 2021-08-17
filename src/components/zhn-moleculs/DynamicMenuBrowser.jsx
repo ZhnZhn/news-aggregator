@@ -1,16 +1,16 @@
-import { Component } from 'react'
+import { useState, useCallback, useEffect, useMemo } from 'react';
 
-import Comp from '../Comp'
-import MenuPart from './MenuPart'
+import useListen from '../hooks/useListen';
+
+import Comp from '../Comp';
+import MenuPart from './MenuPart';
 
 const {
-   Browser, BrowserCaption, ModalSlider,
-   ScrollPane, SpinnerLoading
+  Browser, BrowserCaption, ModalSlider,
+  ScrollPane, SpinnerLoading, ItemStack
 } = Comp;
 
-const CL = {
-  MENU_MORE: "popup-menu items__menu-more"
-};
+const CL_MENU_MORE = "popup-menu items__menu-more";
 
 const S = {
   BROWSER: {
@@ -35,37 +35,53 @@ const S = {
   }
 }
 
-class DynamicMenuBrowser extends Component {
 
-  static defaultProps = {
-    onError: ()=>{}
-  }
+const _fnNoop = () => {};
+/*
+const INITIAL_MENU_MODEL = {
+  menu: [],
+  items: {}
+};
+*/
 
-  state = {
-    isShow: true,
-    isLoading: true,
-    isLoadingFailed: false,
-    isMore: false,
-    menuModel: {}
-  }
+const _fCrMenuPart = (menuPartProps, items) => (menuPart, index) => (
+  <MenuPart
+    {...menuPart}
+    {...menuPartProps}
+    hmItems={items}
+    key={index}
+  />
+);
 
-  componentDidMount(){
-    this.unsubscribe = this.props.store.listen(this._onStore)
-    this._loadMenu()
-  }
-  componetWillUnmaount(){
-    this.unsubscribe()
-  }
+const DynamicMenuBrowser = ({
+  styleConfig,
+  caption,
+  menuMore,
+  store,
+  showAction, browserId,
+  url, onError=_fnNoop,
+  children,
+  itemData,
+  onClick,
+  onClickBadge
+}) => {
+  const [isShow, setIsShow] = useState(true)
+  , [isMore, setIsMore] = useState(false)
+  , [isLoading, setIsLoading] = useState(true)
+  , [isLoadingFailed, setIsLoadingFailed] = useState(false)
+  , [menuModel, setMenuModel] = useState()
+  , _hHide = useCallback(()=>setIsShow(false), [])
+  , _hShowMore = useCallback(() => setIsMore(true), [])
+  , _hCloseMore = useCallback(()=> setIsMore(false), []);
 
-  _onStore = (actionType, id) => {
-    const { showAction, browserId } = this.props;
-     if (actionType === showAction && id === browserId ){
-       this.setState({ isShow: true })
+  useListen(store, (actionType, id)=>{
+     if (actionType === showAction && id === browserId) {
+       setIsShow(true)
      }
-  }
+  })
 
-  _loadMenu = () => {
-    const { url, onError } = this.props;
+  /*eslint-disable react-hooks/exhaustive-deps*/
+  useEffect(()=>{
     fetch(url)
       .then(response => {
           const { status } = response;
@@ -76,88 +92,56 @@ class DynamicMenuBrowser extends Component {
           }
       })
       .then(json => {
-         this.setState({
-           isLoading: false,
-           menuModel: json
-         })
+         setIsLoading(false)
+         setMenuModel(json)
       })
       .catch(err => {
-          this.setState({
-            isLoadingFailed: true,
-            isLoading: false
-          })
-          onError(err)
+         setIsLoading(false)
+         setIsLoadingFailed(true)
+         onError(err)
       })
-  }
+  }, [])
+  //url, onError
+  /*eslint-enable react-hooks/exhaustive-deps*/
 
-  _handleHide = () => {
-    this.setState({ isShow: false })
-  }
+  const {menu, items} = menuModel || {}
+  /*eslint-disable react-hooks/exhaustive-deps*/
+  , _crItem = useMemo(()=>_fCrMenuPart({
+    styleConfig, itemData, browserId, onClick, onClickBadge
+  }, items), [styleConfig, itemData, items])
+  //itemData, onClick, onClickBadge
+  /*eslint-enable react-hooks/exhaustive-deps*/
+  , _onMore = menuMore ? _hShowMore : void 0
+  , TS = styleConfig;
 
-  _showMore = () => {
-    this.setState({ isMore: true })
-  }
-  _closeMore = () => {
-    this.setState({ isMore: false })
-  }
-
-  _renderMenuParts({ styleConfig, menuModel, restProps }){
-    const { menu=[], items={} } = menuModel;
-    return menu.map((menuPart, index) => {
-      return (
-        <MenuPart
-          {...menuPart}
-          key={index}
-          hmItems={items}
-          styleConfig={styleConfig}
-          {...restProps}
+  return (
+    <Browser isShow={isShow} style={{...S.BROWSER, ...TS.BROWSER}}>
+      {
+        menuMore && <ModalSlider
+          isShow={isMore}
+          className={CL_MENU_MORE}
+          style={TS.EL_BORDER}
+          model={menuMore}
+          onClose={_hCloseMore}
         />
-      );
-    })
-  }
-
-  render(){
-    const {
-      styleConfig:TS,
-      caption,
-      menuMore,
-      children, ...restProps
-    } = this.props
-    , {
-      isShow, isLoading, isLoadingFailed,
-      isMore,
-      menuModel
-    } = this.state
-    , _onMore = menuMore ? this._showMore : void 0;
-    return (
-      <Browser isShow={isShow} style={{...S.BROWSER, ...TS.BROWSER}}>
-        {
-          menuMore && <ModalSlider
-            isShow={isMore}
-            className={CL.MENU_MORE}
-            style={TS.EL_BORDER}
-            model={menuMore}
-            onClose={this._closeMore}
-          />
-        }
-        <BrowserCaption
-          rootStyle={TS.BROWSER_CAPTION}
-          caption={caption}
-          onMore={_onMore}
-          onClose={this._handleHide}
-        />
-        { isLoading && <SpinnerLoading style={S.SPINNER_LOADING} />}
-        { isLoadingFailed && <SpinnerLoading style={S.SPINNER_LOADING} isFailed={true} />}
-        <ScrollPane
-           className={TS.CL_SCROLL_PANE}
-           style={S.SCROLL_PANE}
-        >
-          {this._renderMenuParts({ styleConfig: TS, menuModel, restProps })}
-          {children}
-        </ScrollPane>
-      </Browser>
-    );
-  }
-}
+      }
+      <BrowserCaption
+        rootStyle={TS.BROWSER_CAPTION}
+        caption={caption}
+        onMore={_onMore}
+        onClose={_hHide}
+      />
+      { isLoading && <SpinnerLoading style={S.SPINNER_LOADING} />}
+      { isLoadingFailed && <SpinnerLoading style={S.SPINNER_LOADING} isFailed={true} />}
+      <ScrollPane
+         className={TS.CL_SCROLL_PANE}
+         style={S.SCROLL_PANE}
+      >
+        <ItemStack items={menu} crItem={_crItem} />
+        {children}
+      </ScrollPane>
+    </Browser>
+  );
+};
 
 export default DynamicMenuBrowser
