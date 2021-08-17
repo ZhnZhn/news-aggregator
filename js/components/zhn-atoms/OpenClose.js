@@ -7,33 +7,30 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _react = require("react");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
 var CL_CAPTION = 'open-close not-selected';
-var STYLE = {
+var CL_SHOW_POPUP = 'show-popup';
+var S = {
   ROOT: {
-    backgroundColor: '#4D4D4D',
+    backgroundColor: '#4d4d4d',
     lineHeight: 2.5
   },
   SVG: {
-    width: '16px',
-    height: '16px',
-    display: 'inline-block'
+    display: 'inline-block',
+    width: 16,
+    height: 16
   },
   ROOT_CAPTION: {
-    paddingLeft: '12px'
+    paddingLeft: 12
   },
   CAPTION: {
-    paddingLeft: '4px',
-    verticalAlign: 'top',
     color: '#9e9e9e',
-    //color: '#8a8a8a',
-    //color: 'rgba(164, 135, 212, 1)',
+    paddingLeft: 4,
+    verticalAlign: 'top',
     fontFamily: 'Roboto, Arial Unicode MS, Arial, sans-serif',
     fontWeight: 'bold',
     fontSize: '1rem',
@@ -54,143 +51,108 @@ var FILL_OPEN = '#9e9e9e',
     PATH_OPEN = "M 2,14 L 14,14 14,2 2,14",
     PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 
-var OpenClose = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(OpenClose, _Component);
+var OpenClose = function OpenClose(_ref) {
+  var _ref$isClose = _ref.isClose,
+      isClose = _ref$isClose === void 0 ? true : _ref$isClose,
+      style = _ref.style,
+      itemStyle = _ref.itemStyle,
+      captionStyle = _ref.captionStyle,
+      caption = _ref.caption,
+      _ref$fillOpen = _ref.fillOpen,
+      fillOpen = _ref$fillOpen === void 0 ? FILL_OPEN : _ref$fillOpen,
+      _ref$fillClose = _ref.fillClose,
+      fillClose = _ref$fillClose === void 0 ? FILL_CLOSE : _ref$fillClose,
+      children = _ref.children;
 
-  /*
-  static propTypes = {
-    isClose: PropTypes.bool,
-      style: PropTypes.object,
-    styleNotSelected: PropTypes.object,
-    styleCaption: PropTypes.object,
-      caption: PropTypes.string,
-    fillOpen: PropTypes.string,
-    fillClose: PropTypes.string,
-      isDraggable: PropTypes.bool,
-    option: PropTypes.object,
-    onDragStart: PropTypes.func,
-    onDragEnter: PropTypes.func,
-    onDragOver: PropTypes.func,
-    onDragLeave: PropTypes.func,
-    onDrop: PropTypes.func,
-      children: PropTypes.oneOfType([
-       PropTypes.arrayOf(PropTypes.node),
-       PropTypes.node
-    ])
-  }
-  */
-  function OpenClose(props) {
-    var _this;
-
-    _this = _Component.call(this) || this;
-
-    _this._handleToggle = function () {
-      _this.setState({
-        isOpen: !_this.state.isOpen
-      });
-    };
-
-    _this._handleKeyDown = function (event) {
-      if (event.keyCode === 13 || event.keyCode === 27) {
-        _this._handleToggle();
-      }
-    };
-
-    _this.state = {
-      isOpen: !props.isClose
-    };
-    return _this;
-  }
-
-  var _proto = OpenClose.prototype;
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        style = _this$props.style,
-        itemStyle = _this$props.itemStyle,
-        styleCaption = _this$props.styleCaption,
-        caption = _this$props.caption,
-        fillOpen = _this$props.fillOpen,
-        fillClose = _this$props.fillClose,
-        isDraggable = _this$props.isDraggable,
-        option = _this$props.option,
-        onDragStart = _this$props.onDragStart,
-        onDragEnter = _this$props.onDragEnter,
-        onDragOver = _this$props.onDragOver,
-        onDragLeave = _this$props.onDragLeave,
-        onDrop = _this$props.onDrop,
-        children = _this$props.children,
-        _dragOption = isDraggable ? {
-      draggable: true,
-      onDragStart: onDragStart.bind(null, option),
-      onDrop: onDrop.bind(null, option),
-      onDragEnter: onDragEnter,
-      onDragOver: onDragOver,
-      onDragLeave: onDragLeave
-    } : undefined;
-
-    var _pathV, _fillV, _styleCollapse, _classShow, _itemStyle;
-
-    if (this.state.isOpen) {
-      _pathV = PATH_OPEN;
-      _fillV = fillOpen;
-      _styleCollapse = STYLE.BLOCK;
-      _classShow = 'show-popup';
-      _itemStyle = null;
-    } else {
-      _pathV = PATH_CLOSE;
-      _fillV = fillClose;
-      _styleCollapse = STYLE.NONE;
-      _classShow = null;
-      _itemStyle = itemStyle;
-    }
-
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      style: (0, _extends2["default"])({}, STYLE.ROOT, style),
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", (0, _extends2["default"])({
-        role: "button",
-        className: CL_CAPTION,
-        tabIndex: "0",
-        style: (0, _extends2["default"])({}, STYLE.ROOT_CAPTION, _itemStyle),
-        onClick: this._handleToggle,
-        onKeyDown: this._handleKeyDown
-      }, _dragOption, {
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-          style: STYLE.SVG,
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
-            viewBox: "0 0 16 16",
-            width: "100%",
-            height: "100%",
-            preserveAspectRatio: "none",
-            xmlns: "http://www.w3.org/2000/svg",
-            style: STYLE.INLINE,
-            children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
-              d: _pathV,
-              fill: _fillV,
-              strokeWidth: "1",
-              stroke: fillOpen
-            })
-          })
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-          style: (0, _extends2["default"])({}, STYLE.CAPTION, styleCaption),
-          children: caption
-        })]
-      })), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        className: _classShow,
-        style: _styleCollapse,
-        children: children
-      })]
+  var _useState = (0, _react.useState)(!isClose),
+      isOpen = _useState[0],
+      setIsOpen = _useState[1],
+      _hToggle = (0, _react.useCallback)(function () {
+    return setIsOpen(function (is) {
+      return !is;
     });
-  };
+  }, []),
+      _hKeyDown = (0, _react.useCallback)(function (evt) {
+    if (event.keyCode === 13 || event.keyCode === 27) {
+      _hToggle();
+    }
+  }, []); //_hToggle
 
-  return OpenClose;
-}(_react.Component);
+  /*esline-enable react-hooks/exhaustive-deps */
 
-OpenClose.defaultProps = {
-  isClose: true,
-  fillOpen: FILL_OPEN,
-  fillClose: FILL_CLOSE
+
+  var _pathV, _fillV, _styleCollapse, _classShow, _itemStyle;
+
+  if (isOpen) {
+    _pathV = PATH_OPEN;
+    _fillV = fillOpen;
+    _styleCollapse = S.BLOCK;
+    _classShow = CL_SHOW_POPUP;
+    _itemStyle = null;
+  } else {
+    _pathV = PATH_CLOSE;
+    _fillV = fillClose;
+    _styleCollapse = S.NONE;
+    _classShow = null;
+    _itemStyle = itemStyle;
+  }
+
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    style: (0, _extends2["default"])({}, S.ROOT, style),
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      role: "button",
+      className: CL_CAPTION,
+      tabIndex: "0",
+      style: (0, _extends2["default"])({}, S.ROOT_CAPTION, _itemStyle),
+      onClick: _hToggle,
+      onKeyDown: _hKeyDown,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: S.SVG,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
+          viewBox: "0 0 16 16",
+          width: "100%",
+          height: "100%",
+          preserveAspectRatio: "none",
+          xmlns: "http://www.w3.org/2000/svg",
+          style: S.INLINE,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
+            d: _pathV,
+            fill: _fillV,
+            strokeWidth: "1",
+            stroke: fillOpen
+          })
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        style: (0, _extends2["default"])({}, S.CAPTION, captionStyle),
+        children: caption
+      })]
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: _classShow,
+      style: _styleCollapse,
+      children: children
+    })]
+  });
 };
+/*
+ OpenClose.propTypes = {
+  isClose: PropTypes.bool,
+
+  style: PropTypes.object,
+  captionStyle: PropTypes.object,
+  itemStyle: PropTypes.object,
+
+  caption: PropTypes.string,
+  fillOpen: PropTypes.string,
+  fillClose: PropTypes.string,
+
+  children: PropTypes.oneOfType([
+     PropTypes.arrayOf(PropTypes.node),
+     PropTypes.node
+  ])
+}
+*/
+
+
 var _default = OpenClose;
 exports["default"] = _default;
 //# sourceMappingURL=OpenClose.js.map
