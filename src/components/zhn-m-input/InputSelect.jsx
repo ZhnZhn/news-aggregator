@@ -1,7 +1,7 @@
-import { Component } from 'react'
+import { useState, useCallback } from 'react';
 
-import ArrowCell from './ArrowCell'
-import OptionsPane from './OptionsPane'
+import ArrowCell from './ArrowCell';
+import OptionsPane from './OptionsPane';
 
 const CL = {
   SELECT: 'm-select',
@@ -12,74 +12,59 @@ const CL = {
   INPUT_LINE: 'm-select__line'
 };
 
-class InputSelect extends Component {
-  static defaultProps = {
-    initItem: {
-      caption: '',
-      value: ''
-    }
-  }
+const DF_INIT_ITEM = {
+  caption: '',
+  value: ''
+};
 
-  constructor(props){
-    super(props)
-    this.state = {
-      isShow: false,
-      item: props.initItem
-    }
-  }
+const InputSelect = ({
+  initItem,
+  caption, options, styleConfig:TS,
+  onSelect
+}) => {
+  const [item, setItem] = useState(initItem || DF_INIT_ITEM)
+  , [isShow, setIsShow] = useState(false)
+  , _hOpen = useCallback(()=> setIsShow(true), [])
+  , _hClose = useCallback(() => setIsShow(false), [])
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hSelect = useCallback((item, event) => {
+      event.stopPropagation()
+      onSelect(item)
+      setIsShow(false)
+      setItem(item)
+  }, [])
+  // onSelect
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  _handleOpen = () => {
-    this.setState({ isShow: true })
-  }
-  _handleClose = () => {
-    this.setState({ isShow: false })
-  }
-  _handleSelect = (item, event) => {
-    event.stopPropagation()
-    this.props.onSelect(item)
-    this.setState({
-      isShow: false,
-      item: item
-    })
-  }
-
-
-  render(){
-    const { caption, options, styleConfig:TS } = this.props
-        , { isShow, item } = this.state;
-
-    return (
-      <div
-        className={CL.SELECT}
-        style={TS.ROOT}
-        onClick={this._handleOpen}
-      >
-        <OptionsPane
-           rootStyle={TS.MODAL_PANE}
-           isShow={isShow}
-           item={item}
-           options={options}
-           clItem={TS.CL_ITEM}
-           onSelect={this._handleSelect}
-           onClose={this._handleClose}
-         />
-        <label className={CL.LABEL}>
-          {caption}
-        </label>
-        <div className={CL.DIV}>
-          <div className={CL.DIV_VALUE}>
-             {item.caption}
-          </div>
-          <button className={CL.DIV_BT} tabIndex="0">
-            <div>
-              <ArrowCell />
-            </div>
-          </button>
-          <div className={CL.INPUT_LINE} />
+  return (
+    <div
+      role="presentation"
+      className={CL.SELECT}
+      style={TS.ROOT}
+      onClick={_hOpen}
+    >
+      <label className={CL.LABEL}>
+        {caption}
+      </label>
+      <OptionsPane
+         isShow={isShow}
+         item={item}
+         options={options}
+         clItem={TS.CL_ITEM}
+         onSelect={_hSelect}
+         onClose={_hClose}
+       />
+      <div className={CL.DIV}>
+        <div className={CL.DIV_VALUE}>
+           {item.caption}
         </div>
+        <button className={CL.DIV_BT}>
+           <ArrowCell />
+        </button>
+        <div className={CL.INPUT_LINE} />
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default InputSelect
