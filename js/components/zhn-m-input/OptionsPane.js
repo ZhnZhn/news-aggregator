@@ -9,15 +9,17 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _react = require("react");
 
-var _ThemeContext = _interopRequireDefault(require("../hoc/ThemeContext"));
+var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 
 var _ScrollStyle = _interopRequireDefault(require("../styles/ScrollStyle"));
 
 var _Dialog = _interopRequireDefault(require("../dialogs/Dialog.Style"));
 
-var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
-
 var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
+
+var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
+
+var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -40,48 +42,120 @@ var S = {
     color: '#80c040'
   }
 };
+var SCROLL_OPTIONS = {
+  block: 'center',
+  behaviour: 'smooth'
+};
 
-var _renderOptions = function _renderOptions(options, currentItem, clItem, onSelect, isShow) {
-  return options.map(function (item) {
+var _preventStopEvent = function _preventStopEvent(evt) {
+  evt.preventDefault();
+  evt.stopPropagation();
+};
+
+var _fFocusItem = function _fFocusItem(propName) {
+  return function (ref) {
+    var _elItem = (ref.current || {})[propName];
+
+    if (_elItem) {
+      _elItem.scrollIntoView(SCROLL_OPTIONS);
+
+      _elItem.focus();
+
+      ref.current = _elItem;
+    }
+  };
+};
+
+var _focusNextItem = _fFocusItem('nextSibling');
+
+var _focusPrevItem = _fFocusItem('previousSibling');
+
+var _fCrItem = function _fCrItem(ref, currentItem, clItem, onSelect) {
+  return function (item) {
     var value = item.value,
         caption = item.caption,
-        _style = value === currentItem.value ? S.ITEM : void 0;
+        _style = value === currentItem.value ? S.ITEM : void 0,
+        _hKeyDown = function _hKeyDown(evt) {
+      if (evt.key === 'Enter') {
+        onSelect(item, evt);
+      }
+    };
 
     return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      role: "option",
+      ref: _style ? ref : void 0,
+      "aria-selected": _style ? 'true' : void 0,
+      tabIndex: _style ? "0" : "-1",
       style: _style,
       className: clItem,
-      onClick: onSelect.bind(null, item),
+      onClick: function onClick(evt) {
+        return onSelect(item, evt);
+      },
+      onKeyDown: _hKeyDown,
       children: caption
     }, value);
-  });
+  };
 };
 
 var OptionsPane = function OptionsPane(_ref) {
   var isShow = _ref.isShow,
       options = _ref.options,
       item = _ref.item,
-      rootStyle = _ref.rootStyle,
       clItem = _ref.clItem,
       onSelect = _ref.onSelect,
       onClose = _ref.onClose;
 
-  var _theme = (0, _react.useContext)(_ThemeContext["default"]),
-      TS = _theme.createStyle(_ScrollStyle["default"]),
-      TS_D = _theme.createStyle(_Dialog["default"]);
+  var _refItem = (0, _react.useRef)(null),
+      _refFocus = (0, _react.useRef)(null),
+      TS = (0, _useTheme["default"])(_ScrollStyle["default"]),
+      TS_D = (0, _useTheme["default"])(_Dialog["default"]),
+      _crItem = (0, _react.useMemo)(function () {
+    return _fCrItem(_refItem, item, TS_D.SELECT.CL_ITEM, onSelect);
+  }, [item, TS_D.SELECT.CL_ITEM, onSelect])
+  /*eslint-disable react-hooks/exhaustive-deps */
+  ,
+      _hKeyDown = (0, _react.useCallback)(function (evt) {
+    if (evt.key === 'ArrowDown') {
+      _preventStopEvent(evt);
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalPane["default"] //style={rootStyle}
-  , {
-    style: TS_D.SELECT.MODAL_PANE,
+      _focusNextItem(_refFocus);
+    } else if (evt.key === 'ArrowUp') {
+      _preventStopEvent(evt);
+
+      _focusPrevItem(_refFocus);
+    } else if (evt.key === 'Escape') {
+      _preventStopEvent(evt);
+
+      onClose();
+    }
+  }, []); //onClose
+
+  /*eslint-enable react-hooks/exhaustive-deps */
+
+
+  (0, _react.useEffect)(function () {
+    if (isShow && _refItem.current) {
+      _refItem.current.focus();
+
+      _refFocus.current = _refItem.current;
+    }
+  }, [isShow]);
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalPane["default"], {
     isShow: isShow,
+    style: TS_D.SELECT.MODAL_PANE,
     onClose: onClose,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ShowHide["default"], {
       isShow: isShow,
-      className: CL + " " + TS.CL_SCROLL //style={{ ...S.PANE, ...rootStyle }}
-      ,
+      className: CL + " " + TS.CL_SCROLL,
       style: (0, _extends2["default"])({}, S.PANE, TS_D.SELECT.MODAL_PANE),
-      children:
-      /*_renderOptions(options, item, clItem, onSelect, isShow)*/
-      _renderOptions(options, item, TS_D.SELECT.CL_ITEM, onSelect, isShow)
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        role: "presentation",
+        onKeyDown: _hKeyDown,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemStack["default"], {
+          items: options,
+          crItem: _crItem
+        })
+      })
     })
   });
 };
