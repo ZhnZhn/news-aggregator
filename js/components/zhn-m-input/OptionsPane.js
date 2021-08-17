@@ -44,7 +44,7 @@ var S = {
 };
 var SCROLL_OPTIONS = {
   block: 'center',
-  behaviour: 'smooth'
+  behavior: 'smooth'
 };
 
 var _preventStopEvent = function _preventStopEvent(evt) {

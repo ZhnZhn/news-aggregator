@@ -31,7 +31,7 @@ const S = {
 
 const SCROLL_OPTIONS = {
   block: 'center',
-  behaviour: 'smooth'
+  behavior: 'smooth'
 };
 
 const _preventStopEvent = evt => {
