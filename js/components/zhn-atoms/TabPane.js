@@ -9,6 +9,8 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _react = require("react");
 
+var _ItemStack = _interopRequireDefault(require("./ItemStack"));
+
 var _jsxRuntime = require("react/jsx-runtime");
 
 var S = {
@@ -37,56 +39,82 @@ var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
 };
 
-var _Tabs = function _Tabs(_ref) {
+var _fCrItemTab = function _fCrItemTab(selectedTabIndex, selectedStyle, hClick) {
+  return function (tabEl, index) {
+    return /*#__PURE__*/(0, _react.cloneElement)(tabEl, {
+      key: index,
+      id: index,
+      onClick: hClick.bind(null, index, tabEl),
+      isSelected: index === selectedTabIndex,
+      selectedStyle: selectedStyle
+    });
+  };
+};
+
+var TabStack = function TabStack(_ref) {
   var style = _ref.style,
       selectedStyle = _ref.selectedStyle,
       selectedTabIndex = _ref.selectedTabIndex,
       setTabIndex = _ref.setTabIndex,
       children = _ref.children;
 
-  var _hClick = function _hClick(index, tabEl) {
+  /*eslint-disable react-hooks/exhaustive-deps */
+  var _hClick = (0, _react.useCallback)(function (index, tabEl) {
     setTabIndex(index);
 
     if (_isFn(tabEl.props.onClick)) {
       tabEl.props.onClick();
     }
-  };
+  }, []) //setTabIndex
+  ,
+      _crItemTab = (0, _react.useMemo)(function () {
+    return _fCrItemTab(selectedTabIndex, selectedStyle, _hClick);
+  }, [selectedTabIndex]); //selectedStyle, _hClick
+
+  /*eslint-enable react-hooks/exhaustive-deps */
+
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     style: style,
-    children: children.map(function (tabEl, index) {
-      return /*#__PURE__*/(0, _react.cloneElement)(tabEl, {
-        key: index,
-        id: index,
-        onClick: _hClick.bind(null, index, tabEl),
-        isSelected: index === selectedTabIndex,
-        selectedStyle: selectedStyle
-      });
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemStack["default"], {
+      items: children,
+      crItem: _crItemTab
     })
   });
 };
 
-var _Panes = function _Panes(_ref2) {
+var _fCrItemPane = function _fCrItemPane(isShow, selectedTabIndex) {
+  return function (tab, index) {
+    var isSelected = index === selectedTabIndex;
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      style: isSelected ? S.TAB_SELECTED : S.NONE,
+      role: "tabpanel",
+      id: "tabpanel-" + index,
+      "aria-labelledby": "tab-" + index,
+      children: /*#__PURE__*/(0, _react.cloneElement)(tab.props.children, {
+        key: 'comp' + index,
+        isShow: isShow,
+        isSelected: isSelected
+      })
+    }, 'a' + index);
+  };
+};
+
+var PaneStack = function PaneStack(_ref2) {
   var style = _ref2.style,
       isShow = _ref2.isShow,
       selectedTabIndex = _ref2.selectedTabIndex,
       children = _ref2.children;
+
+  var _crItem = (0, _react.useMemo)(function () {
+    return _fCrItemPane(isShow, selectedTabIndex);
+  }, [isShow, selectedTabIndex]);
+
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     style: style,
-    children: children.map(function (tab, index) {
-      var _isSelected = index === selectedTabIndex;
-
-      return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        style: _isSelected ? S.TAB_SELECTED : S.NONE,
-        role: "tabpanel",
-        id: "tabpanel-" + index,
-        "aria-labelledby": "tab-" + index,
-        children: /*#__PURE__*/(0, _react.cloneElement)(tab.props.children, {
-          key: 'comp' + index,
-          isShow: isShow,
-          isSelected: _isSelected
-        })
-      }, 'a' + index);
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemStack["default"], {
+      items: children,
+      crItem: _crItem
     })
   });
 };
@@ -115,13 +143,13 @@ var TabPane = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
       width: width,
       height: height
     },
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Tabs, {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(TabStack, {
       style: (0, _extends2["default"])({}, S.TABS, tabsStyle),
       selectedStyle: selectedStyle,
       selectedTabIndex: selectedTabIndex,
       setTabIndex: setTabIndex,
       children: children
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Panes, {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(PaneStack, {
       style: S.PANES,
       isShow: isShow,
       selectedTabIndex: selectedTabIndex,

@@ -1,4 +1,10 @@
-import { forwardRef, cloneElement, useState, useImperativeHandle } from 'react';
+import {
+  forwardRef, cloneElement,
+  useState, useCallback, useMemo,
+  useImperativeHandle
+} from 'react';
+
+import ItemStack from './ItemStack';
 
 const S = {
   TABS: {
@@ -24,63 +30,76 @@ const S = {
 
 const _isFn = fn => typeof fn === 'function';
 
-const _Tabs = ({
+const _fCrItemTab = (selectedTabIndex, selectedStyle, hClick) =>
+  (tabEl, index) => cloneElement(tabEl, {
+     key: index,
+     id: index,
+     onClick: hClick.bind(null, index, tabEl),
+     isSelected: index === selectedTabIndex,
+     selectedStyle
+  });
+
+const TabStack = ({
   style,
   selectedStyle,
   selectedTabIndex,
   setTabIndex,
   children
 }) => {
-  const _hClick = (index, tabEl) => {
+  /*eslint-disable react-hooks/exhaustive-deps */
+  const _hClick = useCallback((index, tabEl) => {
     setTabIndex(index);
     if ( _isFn(tabEl.props.onClick)){
       tabEl.props.onClick();
     }
-  };
+  }, [])
+  //setTabIndex
+  , _crItemTab = useMemo(() => _fCrItemTab(selectedTabIndex, selectedStyle, _hClick), [selectedTabIndex])
+  //selectedStyle, _hClick
+  /*eslint-enable react-hooks/exhaustive-deps */
+
   return (
     <div style={style}>
-      {children.map((tabEl, index) => {
-        return cloneElement(tabEl, {
-          key: index,
-          id: index,
-          onClick: _hClick.bind(null, index, tabEl),
-          isSelected: (index === selectedTabIndex),
-          selectedStyle
-        });
-       })
-      }
+      <ItemStack items={children} crItem={_crItemTab} />
     </div>
  );
 }
 
-const _Panes = ({
+const _fCrItemPane = (isShow, selectedTabIndex) =>
+ (tab, index) => {
+  const isSelected = index === selectedTabIndex;
+  return (
+    <div
+      style={isSelected ? S.TAB_SELECTED : S.NONE}
+      key={'a'+index}
+      role="tabpanel"
+      id={`tabpanel-${index}`}
+      aria-labelledby={`tab-${index}`}
+    >
+      {cloneElement(tab.props.children, {
+        key: 'comp' + index,
+        isShow, isSelected
+      })}
+    </div>
+  );
+};
+
+const PaneStack = ({
   style,
   isShow,
   selectedTabIndex,
   children
-}) => (
- <div style={style}>
-    {children.map((tab, index) => {
-     const _isSelected = index === selectedTabIndex
-     return (
-       <div
-         style={_isSelected ? S.TAB_SELECTED : S.NONE}
-         key={'a'+index}
-         role="tabpanel"
-         id={`tabpanel-${index}`}
-         aria-labelledby={`tab-${index}`}
-       >
-         {cloneElement(tab.props.children, {
-           key: 'comp' + index,
-           isShow: isShow,
-           isSelected: _isSelected
-         })}
-       </div>
-    );
-    })}
-  </div>
-);
-
+}) => {
+  const _crItem = useMemo(
+    () => _fCrItemPane(isShow, selectedTabIndex),
+    [isShow, selectedTabIndex]
+  );
+  return (
+   <div style={style}>
+     <ItemStack items={children} crItem={_crItem} />
+   </div>
+  );
+};
 
 const TabPane = forwardRef(({
   isShow,
@@ -96,14 +115,14 @@ const TabPane = forwardRef(({
 
   return (
     <div style={{ width, height }}>
-      <_Tabs
+      <TabStack
         style={{...S.TABS, ...tabsStyle}}
         selectedStyle={selectedStyle}
         selectedTabIndex={selectedTabIndex}
         setTabIndex={setTabIndex}
         children={children}
       />
-      <_Panes
+      <PaneStack
         style={S.PANES}
         isShow={isShow}
         selectedTabIndex={selectedTabIndex}
