@@ -1,7 +1,11 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 exports.__esModule = true;
 exports["default"] = void 0;
+
+var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -15,7 +19,7 @@ var CircleButton = function CircleButton(_ref) {
       style = _ref.style,
       onClick = _ref.onClick;
 
-  var _className = className ? CL_BT + " " + className : CL_BT;
+  var _className = (0, _crCn["default"])(CL_BT, className);
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     className: _className,
