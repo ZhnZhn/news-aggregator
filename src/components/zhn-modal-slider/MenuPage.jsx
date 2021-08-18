@@ -9,9 +9,15 @@ const _fFocus = ref => () => {
   }
 };
 
+const _focusAsyncRefElement = ref => {
+  setTimeout(_fFocus(ref), 1000)
+};
+
+const DF_ITEMS = [];
+
 const MenuPage = ({
   isShow,
-  items=[],
+  items=DF_ITEMS,
   style,
   title,
   titleCl, itemCl,
@@ -32,12 +38,12 @@ const MenuPage = ({
  useEffect(() => {
    if (_isFocus) {
      if (_refTitle.current) {
-        setTimeout(_fFocus(_refTitle), 1000)
+       _focusAsyncRefElement(_refTitle)
      } else if (_refFirst.current) {
-        setTimeout(_fFocus(_refFirst), 1000)
+       _focusAsyncRefElement(_refFirst)
      }
    }
- })
+ }, [_isFocus])
 
  return (
     <div style={style}>

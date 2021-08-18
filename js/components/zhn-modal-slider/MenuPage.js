@@ -21,10 +21,16 @@ var _fFocus = function _fFocus(ref) {
   };
 };
 
+var _focusAsyncRefElement = function _focusAsyncRefElement(ref) {
+  setTimeout(_fFocus(ref), 1000);
+};
+
+var DF_ITEMS = [];
+
 var MenuPage = function MenuPage(_ref) {
   var isShow = _ref.isShow,
       _ref$items = _ref.items,
-      items = _ref$items === void 0 ? [] : _ref$items,
+      items = _ref$items === void 0 ? DF_ITEMS : _ref$items,
       style = _ref.style,
       title = _ref.title,
       titleCl = _ref.titleCl,
@@ -46,12 +52,12 @@ var MenuPage = function MenuPage(_ref) {
   (0, _react.useEffect)(function () {
     if (_isFocus) {
       if (_refTitle.current) {
-        setTimeout(_fFocus(_refTitle), 1000);
+        _focusAsyncRefElement(_refTitle);
       } else if (_refFirst.current) {
-        setTimeout(_fFocus(_refFirst), 1000);
+        _focusAsyncRefElement(_refFirst);
       }
     }
-  });
+  }, [_isFocus]);
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     style: style,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuTitle["default"], {
