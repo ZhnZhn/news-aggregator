@@ -70,48 +70,48 @@ var _focusNextItem = _fFocusItem('nextSibling');
 
 var _focusPrevItem = _fFocusItem('previousSibling');
 
-var _fCrItem = function _fCrItem(ref, currentItem, clItem, onSelect) {
-  return function (item) {
-    var value = item.value,
-        caption = item.caption,
-        _style = value === currentItem.value ? S.ITEM : void 0,
-        _hKeyDown = function _hKeyDown(evt) {
-      if (evt.key === 'Enter') {
-        onSelect(item, evt);
-      }
-    };
+var _crItem = function _crItem(item, index, _ref) {
+  var refItem = _ref.refItem,
+      currentItem = _ref.currentItem,
+      clItem = _ref.clItem,
+      onSelect = _ref.onSelect;
 
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      role: "option",
-      ref: _style ? ref : void 0,
-      "aria-selected": _style ? 'true' : void 0,
-      tabIndex: _style ? "0" : "-1",
-      style: _style,
-      className: clItem,
-      onClick: function onClick(evt) {
-        return onSelect(item, evt);
-      },
-      onKeyDown: _hKeyDown,
-      children: caption
-    }, value);
+  var value = item.value,
+      caption = item.caption,
+      _style = value === currentItem.value ? S.ITEM : void 0,
+      _hKeyDown = function _hKeyDown(evt) {
+    if (evt.key === 'Enter') {
+      onSelect(item, evt);
+    }
   };
+
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    role: "option",
+    ref: _style ? refItem : void 0,
+    "aria-selected": _style ? 'true' : void 0,
+    tabIndex: _style ? "0" : "-1",
+    style: _style,
+    className: clItem,
+    onClick: function onClick(evt) {
+      return onSelect(item, evt);
+    },
+    onKeyDown: _hKeyDown,
+    children: caption
+  }, value);
 };
 
-var OptionsPane = function OptionsPane(_ref) {
-  var isShow = _ref.isShow,
-      options = _ref.options,
-      item = _ref.item,
-      clItem = _ref.clItem,
-      onSelect = _ref.onSelect,
-      onClose = _ref.onClose;
+var OptionsPane = function OptionsPane(_ref2) {
+  var isShow = _ref2.isShow,
+      options = _ref2.options,
+      item = _ref2.item,
+      clItem = _ref2.clItem,
+      onSelect = _ref2.onSelect,
+      onClose = _ref2.onClose;
 
   var _refItem = (0, _react.useRef)(null),
       _refFocus = (0, _react.useRef)(null),
       TS = (0, _useTheme["default"])(_ScrollStyle["default"]),
-      TS_D = (0, _useTheme["default"])(_Dialog["default"]),
-      _crItem = (0, _react.useMemo)(function () {
-    return _fCrItem(_refItem, item, TS_D.SELECT.CL_ITEM, onSelect);
-  }, [item, TS_D.SELECT.CL_ITEM, onSelect])
+      TS_D = (0, _useTheme["default"])(_Dialog["default"])
   /*eslint-disable react-hooks/exhaustive-deps */
   ,
       _hKeyDown = (0, _react.useCallback)(function (evt) {
@@ -153,7 +153,11 @@ var OptionsPane = function OptionsPane(_ref) {
         onKeyDown: _hKeyDown,
         children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemStack["default"], {
           items: options,
-          crItem: _crItem
+          crItem: _crItem,
+          refItem: _refItem,
+          currentItem: item,
+          clItem: TS_D.SELECT.CL_ITEM,
+          onSelect: onSelect
         })
       })
     })

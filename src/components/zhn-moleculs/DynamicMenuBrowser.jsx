@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useMemo } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 
 import useListen from '../hooks/useListen';
 
@@ -33,7 +33,7 @@ const S = {
   ROOT_MENU: {
     paddingLeft: 4
   }
-}
+};
 
 
 const _fnNoop = () => {};
@@ -44,11 +44,10 @@ const INITIAL_MENU_MODEL = {
 };
 */
 
-const _fCrMenuPart = (menuPartProps, items) => (menuPart, index) => (
+const _crItemMenuPart = (menuPart, index, propOptions) => (
   <MenuPart
     {...menuPart}
-    {...menuPartProps}
-    hmItems={items}
+    {...propOptions}
     key={index}
   />
 );
@@ -105,12 +104,6 @@ const DynamicMenuBrowser = ({
   /*eslint-enable react-hooks/exhaustive-deps*/
 
   const {menu, items} = menuModel || {}
-  /*eslint-disable react-hooks/exhaustive-deps*/
-  , _crItem = useMemo(()=>_fCrMenuPart({
-    styleConfig, itemData, browserId, onClick, onClickBadge
-  }, items), [styleConfig, itemData, items])
-  //itemData, onClick, onClickBadge
-  /*eslint-enable react-hooks/exhaustive-deps*/
   , _onMore = menuMore ? _hShowMore : void 0
   , TS = styleConfig;
 
@@ -137,7 +130,16 @@ const DynamicMenuBrowser = ({
          className={TS.CL_SCROLL_PANE}
          style={S.SCROLL_PANE}
       >
-        <ItemStack items={menu} crItem={_crItem} />
+        <ItemStack
+          items={menu}
+          crItem={_crItemMenuPart}
+          styleConfig={styleConfig}
+          itemData={itemData}
+          browserId={browserId}
+          hmItems={items}
+          onClick={onClick}
+          onClickBadge={onClickBadge}
+        />
         {children}
       </ScrollPane>
     </Browser>

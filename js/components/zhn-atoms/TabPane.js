@@ -39,24 +39,25 @@ var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
 };
 
-var _fCrItemTab = function _fCrItemTab(selectedTabIndex, selectedStyle, hClick) {
-  return function (tabEl, index) {
-    return /*#__PURE__*/(0, _react.cloneElement)(tabEl, {
-      key: index,
-      id: index,
-      onClick: hClick.bind(null, index, tabEl),
-      isSelected: index === selectedTabIndex,
-      selectedStyle: selectedStyle
-    });
-  };
+var _crItemTab = function _crItemTab(tabEl, index, _ref) {
+  var selectedTabIndex = _ref.selectedTabIndex,
+      selectedStyle = _ref.selectedStyle,
+      hClick = _ref.hClick;
+  return /*#__PURE__*/(0, _react.cloneElement)(tabEl, {
+    key: index,
+    id: index,
+    onClick: hClick.bind(null, index, tabEl),
+    isSelected: index === selectedTabIndex,
+    selectedStyle: selectedStyle
+  });
 };
 
-var TabStack = function TabStack(_ref) {
-  var style = _ref.style,
-      selectedStyle = _ref.selectedStyle,
-      selectedTabIndex = _ref.selectedTabIndex,
-      setTabIndex = _ref.setTabIndex,
-      children = _ref.children;
+var TabStack = function TabStack(_ref2) {
+  var style = _ref2.style,
+      selectedStyle = _ref2.selectedStyle,
+      selectedTabIndex = _ref2.selectedTabIndex,
+      setTabIndex = _ref2.setTabIndex,
+      children = _ref2.children;
 
   /*eslint-disable react-hooks/exhaustive-deps */
   var _hClick = (0, _react.useCallback)(function (index, tabEl) {
@@ -65,11 +66,7 @@ var TabStack = function TabStack(_ref) {
     if (_isFn(tabEl.props.onClick)) {
       tabEl.props.onClick();
     }
-  }, []) //setTabIndex
-  ,
-      _crItemTab = (0, _react.useMemo)(function () {
-    return _fCrItemTab(selectedTabIndex, selectedStyle, _hClick);
-  }, [selectedTabIndex]); //selectedStyle, _hClick
+  }, []); //setTabIndex
 
   /*eslint-enable react-hooks/exhaustive-deps */
 
@@ -78,54 +75,54 @@ var TabStack = function TabStack(_ref) {
     style: style,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemStack["default"], {
       items: children,
-      crItem: _crItemTab
+      crItem: _crItemTab,
+      selectedTabIndex: selectedTabIndex,
+      selectedStyle: selectedStyle,
+      hClick: _hClick
     })
   });
 };
 
-var _fCrItemPane = function _fCrItemPane(isShow, selectedTabIndex) {
-  return function (tab, index) {
-    var isSelected = index === selectedTabIndex;
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      style: isSelected ? S.TAB_SELECTED : S.NONE,
-      role: "tabpanel",
-      id: "tabpanel-" + index,
-      "aria-labelledby": "tab-" + index,
-      children: /*#__PURE__*/(0, _react.cloneElement)(tab.props.children, {
-        key: 'comp' + index,
-        isShow: isShow,
-        isSelected: isSelected
-      })
-    }, 'a' + index);
-  };
+var _crItemPane = function _crItemPane(tab, index, _ref3) {
+  var isShow = _ref3.isShow,
+      selectedTabIndex = _ref3.selectedTabIndex;
+  var isSelected = index === selectedTabIndex;
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    style: isSelected ? S.TAB_SELECTED : S.NONE,
+    role: "tabpanel",
+    id: "tabpanel-" + index,
+    "aria-labelledby": "tab-" + index,
+    children: /*#__PURE__*/(0, _react.cloneElement)(tab.props.children, {
+      key: 'comp' + index,
+      isShow: isShow,
+      isSelected: isSelected
+    })
+  }, 'a' + index);
 };
 
-var PaneStack = function PaneStack(_ref2) {
-  var style = _ref2.style,
-      isShow = _ref2.isShow,
-      selectedTabIndex = _ref2.selectedTabIndex,
-      children = _ref2.children;
-
-  var _crItem = (0, _react.useMemo)(function () {
-    return _fCrItemPane(isShow, selectedTabIndex);
-  }, [isShow, selectedTabIndex]);
-
+var PaneStack = function PaneStack(_ref4) {
+  var style = _ref4.style,
+      isShow = _ref4.isShow,
+      selectedTabIndex = _ref4.selectedTabIndex,
+      children = _ref4.children;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     style: style,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemStack["default"], {
       items: children,
-      crItem: _crItem
+      crItem: _crItemPane,
+      isShow: isShow,
+      selectedTabIndex: selectedTabIndex
     })
   });
 };
 
-var TabPane = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
-  var isShow = _ref3.isShow,
-      width = _ref3.width,
-      height = _ref3.height,
-      tabsStyle = _ref3.tabsStyle,
-      selectedStyle = _ref3.selectedStyle,
-      children = _ref3.children;
+var TabPane = /*#__PURE__*/(0, _react.forwardRef)(function (_ref5, ref) {
+  var isShow = _ref5.isShow,
+      width = _ref5.width,
+      height = _ref5.height,
+      tabsStyle = _ref5.tabsStyle,
+      selectedStyle = _ref5.selectedStyle,
+      children = _ref5.children;
 
   var _useState = (0, _react.useState)(0),
       selectedTabIndex = _useState[0],

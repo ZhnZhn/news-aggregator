@@ -56,13 +56,10 @@ const INITIAL_MENU_MODEL = {
 */
 
 
-var _fCrMenuPart = function _fCrMenuPart(menuPartProps, items) {
-  return function (menuPart, index) {
-    return /*#__PURE__*/(0, _react.createElement)(_MenuPart["default"], (0, _extends2["default"])({}, menuPart, menuPartProps, {
-      hmItems: items,
-      key: index
-    }));
-  };
+var _crItemMenuPart = function _crItemMenuPart(menuPart, index, propOptions) {
+  return /*#__PURE__*/(0, _react.createElement)(_MenuPart["default"], (0, _extends2["default"])({}, menuPart, propOptions, {
+    key: index
+  }));
 };
 
 var DynamicMenuBrowser = function DynamicMenuBrowser(_ref) {
@@ -139,15 +136,6 @@ var DynamicMenuBrowser = function DynamicMenuBrowser(_ref) {
   var _ref2 = menuModel || {},
       menu = _ref2.menu,
       items = _ref2.items,
-      _crItem = (0, _react.useMemo)(function () {
-    return _fCrMenuPart({
-      styleConfig: styleConfig,
-      itemData: itemData,
-      browserId: browserId,
-      onClick: onClick,
-      onClickBadge: onClickBadge
-    }, items);
-  }, [styleConfig, itemData, items]),
       _onMore = menuMore ? _hShowMore : void 0,
       TS = styleConfig;
 
@@ -175,7 +163,13 @@ var DynamicMenuBrowser = function DynamicMenuBrowser(_ref) {
       style: S.SCROLL_PANE,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(ItemStack, {
         items: menu,
-        crItem: _crItem
+        crItem: _crItemMenuPart,
+        styleConfig: styleConfig,
+        itemData: itemData,
+        browserId: browserId,
+        hmItems: items,
+        onClick: onClick,
+        onClickBadge: onClickBadge
       }), children]
     })]
   });

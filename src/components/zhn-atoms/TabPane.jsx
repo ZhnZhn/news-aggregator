@@ -1,6 +1,6 @@
 import {
   forwardRef, cloneElement,
-  useState, useCallback, useMemo,
+  useState, useCallback,
   useImperativeHandle
 } from 'react';
 
@@ -30,14 +30,16 @@ const S = {
 
 const _isFn = fn => typeof fn === 'function';
 
-const _fCrItemTab = (selectedTabIndex, selectedStyle, hClick) =>
-  (tabEl, index) => cloneElement(tabEl, {
-     key: index,
-     id: index,
-     onClick: hClick.bind(null, index, tabEl),
-     isSelected: index === selectedTabIndex,
-     selectedStyle
-  });
+const _crItemTab = (
+  tabEl, index,
+  { selectedTabIndex, selectedStyle, hClick }
+) => cloneElement(tabEl, {
+   key: index,
+   id: index,
+   onClick: hClick.bind(null, index, tabEl),
+   isSelected: index === selectedTabIndex,
+   selectedStyle
+});
 
 const TabStack = ({
   style,
@@ -54,19 +56,25 @@ const TabStack = ({
     }
   }, [])
   //setTabIndex
-  , _crItemTab = useMemo(() => _fCrItemTab(selectedTabIndex, selectedStyle, _hClick), [selectedTabIndex])
-  //selectedStyle, _hClick
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (
     <div style={style}>
-      <ItemStack items={children} crItem={_crItemTab} />
+      <ItemStack
+        items={children}
+        crItem={_crItemTab}
+        selectedTabIndex={selectedTabIndex}
+        selectedStyle={selectedStyle}
+        hClick={_hClick}
+      />
     </div>
  );
 }
 
-const _fCrItemPane = (isShow, selectedTabIndex) =>
- (tab, index) => {
+const _crItemPane = (
+  tab, index,
+  { isShow, selectedTabIndex }
+) => {
   const isSelected = index === selectedTabIndex;
   return (
     <div
@@ -89,17 +97,16 @@ const PaneStack = ({
   isShow,
   selectedTabIndex,
   children
-}) => {
-  const _crItem = useMemo(
-    () => _fCrItemPane(isShow, selectedTabIndex),
-    [isShow, selectedTabIndex]
-  );
-  return (
+}) => (
    <div style={style}>
-     <ItemStack items={children} crItem={_crItem} />
+    <ItemStack
+       items={children}
+       crItem={_crItemPane}
+       isShow={isShow}
+       selectedTabIndex={selectedTabIndex}
+     />
    </div>
-  );
-};
+);
 
 const TabPane = forwardRef(({
   isShow,

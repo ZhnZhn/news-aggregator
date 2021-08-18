@@ -1,4 +1,4 @@
-import { useRef, useMemo, useCallback, useEffect } from 'react';
+import { useRef, useCallback, useEffect } from 'react';
 
 import useTheme from '../hooks/useTheme';
 import styleConfig  from '../styles/ScrollStyle';
@@ -51,7 +51,10 @@ const _fFocusItem = propName => ref => {
 const _focusNextItem = _fFocusItem('nextSibling');
 const _focusPrevItem = _fFocusItem('previousSibling');
 
-const _fCrItem = (ref, currentItem, clItem, onSelect) => item => {
+const _crItem = (
+  item, index,
+  { refItem, currentItem, clItem, onSelect }
+) => {
   const { value, caption } = item
   , _style = value === currentItem.value
        ? S.ITEM
@@ -65,7 +68,7 @@ const _fCrItem = (ref, currentItem, clItem, onSelect) => item => {
     <div
       key={value}
       role="option"
-      ref={_style ? ref : void 0}
+      ref={_style ? refItem : void 0}
       aria-selected={_style ? 'true' : void 0}
       tabIndex={_style ? "0" : "-1"}
       style={_style}
@@ -90,9 +93,6 @@ const OptionsPane = ({
   , _refFocus = useRef(null)
   , TS = useTheme(styleConfig)
   , TS_D = useTheme(styleConfigD)
-  , _crItem = useMemo(() => _fCrItem(_refItem, item, TS_D.SELECT.CL_ITEM, onSelect)
-     , [item, TS_D.SELECT.CL_ITEM, onSelect]
-  )
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hKeyDown = useCallback((evt) => {
     if (evt.key === 'ArrowDown') {
@@ -130,7 +130,14 @@ return (
          role="presentation"
          onKeyDown={_hKeyDown}
        >
-         <ItemStack items={options} crItem={_crItem} />
+         <ItemStack
+           items={options}
+           crItem={_crItem}
+           refItem={_refItem}
+           currentItem={item}
+           clItem={TS_D.SELECT.CL_ITEM}
+           onSelect={onSelect}
+         />
       </div>
     </ShowHide>
   </ModalPane>
