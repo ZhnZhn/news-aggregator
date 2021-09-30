@@ -9,18 +9,15 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var CL = 'bt-more';
-var S = {
-  BT: {
-    verticalAlign: 'sub',
-    paddingLeft: 6,
-    paddingRight: 6,
-    cursor: 'pointer'
-  },
-  SVG: {
-    fill: 'black',
-    stroke: 'black'
-  }
+var CL_BT_MORE = 'bt-more',
+    S_BT = {
+  verticalAlign: 'sub',
+  padding: '0 6px',
+  cursor: 'pointer'
+},
+    S_SVG = {
+  fill: 'black',
+  stroke: 'black'
 };
 
 var SvgMore = function SvgMore(_ref) {
@@ -32,12 +29,12 @@ var SvgMore = function SvgMore(_ref) {
       onClick = _ref.onClick;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     ref: btRef,
-    className: CL,
-    style: (0, _extends2["default"])({}, S.BT, style),
+    className: CL_BT_MORE,
+    style: (0, _extends2["default"])({}, S_BT, style),
     title: title,
     onClick: onClick,
     children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("svg", {
-      style: (0, _extends2["default"])({}, S.SVG, svgStyle),
+      style: (0, _extends2["default"])({}, S_SVG, svgStyle),
       width: "6px",
       height: "22px",
       viewBox: "0 0 6 22",
