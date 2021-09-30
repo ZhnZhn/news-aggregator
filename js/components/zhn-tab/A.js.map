@@ -1,0 +1,13 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-tab/A.js"
+ ],
+ "file": "../../../src/components/zhn-tab/A.js",
+ "names": [
+  "A",
+  "Tab",
+  "TabPane"
+ ],
+ "mappings": ";;;;;;;AAAA;;AACA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,GAAG,EAAHA,eADQ;AAERC,EAAAA,OAAO,EAAPA;AAFQ,CAAV;eAKeF,C"
+}

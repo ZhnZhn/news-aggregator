@@ -31,10 +31,6 @@ var _MenuItem = _interopRequireDefault(require("./MenuItem"));
 
 var _ShowHide = _interopRequireDefault(require("./ShowHide"));
 
-var _Tab = _interopRequireDefault(require("./Tab"));
-
-var _TabPane = _interopRequireDefault(require("./TabPane"));
-
 var _ItemStack = _interopRequireDefault(require("./ItemStack"));
 
 var Atoms = (0, _extends2["default"])({}, _SvgIcons["default"], {
@@ -49,8 +45,6 @@ var Atoms = (0, _extends2["default"])({}, _SvgIcons["default"], {
   RaisedButton: _RaisedButton["default"],
   MenuItem: _MenuItem["default"],
   ShowHide: _ShowHide["default"],
-  Tab: _Tab["default"],
-  TabPane: _TabPane["default"],
   ItemStack: _ItemStack["default"]
 });
 var _default = Atoms;

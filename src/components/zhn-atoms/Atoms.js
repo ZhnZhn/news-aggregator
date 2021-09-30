@@ -15,9 +15,6 @@ import RaisedButton from './RaisedButton';
 import MenuItem from './MenuItem';
 import ShowHide from './ShowHide';
 
-import Tab from './Tab';
-import TabPane from './TabPane';
-
 import ItemStack from './ItemStack';
 
 const Atoms = {
@@ -37,9 +34,6 @@ const Atoms = {
 
   MenuItem,
   ShowHide,
-
-  Tab,
-  TabPane,
 
   ItemStack
 };

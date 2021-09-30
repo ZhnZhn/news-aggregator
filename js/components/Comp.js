@@ -15,9 +15,11 @@ var _A2 = _interopRequireDefault(require("./zhn-modal-slider/A"));
 
 var _A3 = _interopRequireDefault(require("./zhn-moleculs/A"));
 
+var _A4 = _interopRequireDefault(require("./zhn-tab/A"));
+
 var _Links = _interopRequireDefault(require("./links/Links"));
 
-var Comp = (0, _extends2["default"])({}, _Atoms["default"], _A["default"], _A2["default"], _A3["default"], {
+var Comp = (0, _extends2["default"])({}, _Atoms["default"], _A["default"], _A2["default"], _A3["default"], _A4["default"], {
   Link: _Links["default"]
 });
 var _default = Comp;
