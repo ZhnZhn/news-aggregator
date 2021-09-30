@@ -12,14 +12,12 @@ var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
-var SHOW_POPUP = 'show-popup';
-var S = {
-  SHOW: {
-    display: 'block'
-  },
-  HIDE: {
-    display: 'none'
-  }
+var CL_SHOW_POPUP = 'show-popup',
+    S_SHOW = {
+  display: 'block'
+},
+    S_HIDE = {
+  display: 'none'
 };
 
 var ShowHide = function ShowHide(_ref) {
@@ -28,8 +26,8 @@ var ShowHide = function ShowHide(_ref) {
       style = _ref.style,
       children = _ref.children;
 
-  var _className = (0, _crCn["default"])(className, [isShow, SHOW_POPUP]),
-      _styleShow = isShow ? S.SHOW : S.HIDE;
+  var _className = (0, _crCn["default"])(className, [isShow, CL_SHOW_POPUP]),
+      _styleShow = isShow ? S_SHOW : S_HIDE;
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
     className: _className,

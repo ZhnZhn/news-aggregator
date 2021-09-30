@@ -1,15 +1,9 @@
 import crCn from '../zhn-utils/crCn';
 //import PropTypes from 'prop-types'
 
-const SHOW_POPUP = 'show-popup'
-const S = {
-  SHOW: {
-    display: 'block'
-  },
-  HIDE: {
-    display : 'none'
-  }
-};
+const CL_SHOW_POPUP = 'show-popup'
+, S_SHOW = { display: 'block' }
+, S_HIDE = { display : 'none' };
 
 const ShowHide = ({
   isShow,
@@ -17,8 +11,8 @@ const ShowHide = ({
   style,
   children
 }) => {
-  const _className = crCn(className, [isShow, SHOW_POPUP])
-  , _styleShow = isShow ? S.SHOW : S.HIDE;
+  const _className = crCn(className, [isShow, CL_SHOW_POPUP])
+  , _styleShow = isShow ? S_SHOW : S_HIDE;
 
   return (
     <div
