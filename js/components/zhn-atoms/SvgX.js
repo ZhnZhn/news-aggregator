@@ -6,20 +6,18 @@ exports["default"] = void 0;
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
-var CL_ROOT = "svg-close";
-var S = {
-  COLOR: '#d64336',
-  SVG: {
-    padding: 3
-  }
+var CL_SVG_CLOSE = "svg-close",
+    DF_COLOR = '#d64336',
+    S_SVG = {
+  padding: 3
 };
 
 var SvgX = function SvgX(_ref) {
   var _ref$className = _ref.className,
-      className = _ref$className === void 0 ? CL_ROOT : _ref$className,
+      className = _ref$className === void 0 ? CL_SVG_CLOSE : _ref$className,
       style = _ref.style,
       _ref$color = _ref.color,
-      color = _ref$color === void 0 ? S.COLOR : _ref$color,
+      color = _ref$color === void 0 ? DF_COLOR : _ref$color,
       onClick = _ref.onClick;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     tabIndex: "-1",
@@ -30,12 +28,12 @@ var SvgX = function SvgX(_ref) {
       viewBox: "0 0 12 12",
       width: "100%",
       height: "100%",
-      style: S.SVG,
       preserveAspectRatio: "none",
       xmlns: "http://www.w3.org/2000/svg",
+      style: S_SVG,
+      strokeLinecap: "round",
       strokeWidth: "2",
       stroke: color,
-      strokeLinecap: "round",
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
         d: "M 0,0 L 12,12"
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {

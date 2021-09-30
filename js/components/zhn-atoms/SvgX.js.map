@@ -1,1 +1,19 @@
-{"version":3,"sources":["../../../src/components/zhn-atoms/SvgX.jsx"],"names":["CL_ROOT","S","COLOR","SVG","padding","SvgX","className","style","color","onClick"],"mappings":";;;;;;;AAAA;AAEA,IAAMA,OAAO,GAAG,WAAhB;AACA,IAAMC,CAAC,GAAG;AACRC,EAAAA,KAAK,EAAE,SADC;AAERC,EAAAA,GAAG,EAAE;AACHC,IAAAA,OAAO,EAAE;AADN;AAFG,CAAV;;AAOA,IAAMC,IAAI,GAAG,SAAPA,IAAO;AAAA,4BACXC,SADW;AAAA,MACXA,SADW,+BACDN,OADC;AAAA,MAEXO,KAFW,QAEXA,KAFW;AAAA,wBAGXC,KAHW;AAAA,MAGXA,KAHW,2BAGLP,CAAC,CAACC,KAHG;AAAA,MAIXO,OAJW,QAIXA,OAJW;AAAA,sBAMV;AACG,IAAA,QAAQ,EAAC,IADZ;AAEG,IAAA,SAAS,EAAEH,SAFd;AAGG,IAAA,KAAK,EAAEC,KAHV;AAIG,IAAA,OAAO,EAAEE,OAJZ;AAAA,2BAME;AAAK,MAAA,OAAO,EAAC,WAAb;AAAyB,MAAA,KAAK,EAAC,MAA/B;AAAsC,MAAA,MAAM,EAAC,MAA7C;AACK,MAAA,KAAK,EAAER,CAAC,CAACE,GADd;AACmB,MAAA,mBAAmB,EAAC,MADvC;AAC8C,MAAA,KAAK,EAAC,4BADpD;AAEK,MAAA,WAAW,EAAC,GAFjB;AAGK,MAAA,MAAM,EAAEK,KAHb;AAIK,MAAA,aAAa,EAAC,OAJnB;AAAA,8BAMG;AAAM,QAAA,CAAC,EAAC;AAAR,QANH,eAOG;AAAM,QAAA,CAAC,EAAC;AAAR,QAPH;AAAA;AANF,IANU;AAAA,CAAb;AAwBA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;;eAEeH,I","sourcesContent":["//import PropTypes from 'prop-types'\r\n\r\nconst CL_ROOT = \"svg-close\"\r\nconst S = {\r\n  COLOR: '#d64336',\r\n  SVG: {\r\n    padding: 3,\r\n  }\r\n};\r\n\r\nconst SvgX = ({\r\n  className=CL_ROOT,\r\n  style,\r\n  color=S.COLOR,\r\n  onClick\r\n}) => (\r\n   <button\r\n      tabIndex=\"-1\"\r\n      className={className}\r\n      style={style}\r\n      onClick={onClick}\r\n   >\r\n     <svg viewBox=\"0 0 12 12\" width=\"100%\" height=\"100%\"\r\n          style={S.SVG} preserveAspectRatio=\"none\" xmlns=\"http://www.w3.org/2000/svg\"\r\n          strokeWidth=\"2\"\r\n          stroke={color}\r\n          strokeLinecap=\"round\"\r\n      >\r\n        <path d=\"M 0,0 L 12,12\" />\r\n        <path d=\"M 12,0 L 0,12\" />\r\n     </svg>\r\n   </button>\r\n)\r\n\r\n/*\r\nSvgX.propTypes = {\r\n  color: PropTypes.string,\r\n  className: PropTypes.string,\r\n  style: PropTypes.object,\r\n  onClick: PropTypes.func\r\n}\r\n*/\r\n\r\nexport default SvgX\r\n"],"file":"SvgX.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-atoms/SvgX.js"
+ ],
+ "file": "../../../src/components/zhn-atoms/SvgX.js",
+ "names": [
+  "CL_SVG_CLOSE",
+  "DF_COLOR",
+  "S_SVG",
+  "padding",
+  "SvgX",
+  "className",
+  "style",
+  "color",
+  "onClick"
+ ],
+ "mappings": ";;;;;;;AAAA;AAEA,IAAMA,YAAY,GAAG,WAArB;AAAA,IACEC,QAAQ,GAAG,SADb;AAAA,IAEEC,KAAK,GAAG;AAAEC,EAAAA,OAAO,EAAE;AAAX,CAFV;;AAIA,IAAMC,IAAI,GAAG,SAAPA,IAAO;AAAA,4BACXC,SADW;AAAA,MACXA,SADW,+BACDL,YADC;AAAA,MAEXM,KAFW,QAEXA,KAFW;AAAA,wBAGXC,KAHW;AAAA,MAGXA,KAHW,2BAGLN,QAHK;AAAA,MAIXO,OAJW,QAIXA,OAJW;AAAA,sBAMV;AACG,IAAA,QAAQ,EAAC,IADZ;AAEG,IAAA,SAAS,EAAEH,SAFd;AAGG,IAAA,KAAK,EAAEC,KAHV;AAIG,IAAA,OAAO,EAAEE,OAJZ;AAAA,2BAME;AAAK,MAAA,OAAO,EAAC,WAAb;AAAyB,MAAA,KAAK,EAAC,MAA/B;AAAsC,MAAA,MAAM,EAAC,MAA7C;AACK,MAAA,mBAAmB,EAAC,MADzB;AACgC,MAAA,KAAK,EAAC,4BADtC;AAEK,MAAA,KAAK,EAAEN,KAFZ;AAGK,MAAA,aAAa,EAAC,OAHnB;AAIK,MAAA,WAAW,EAAC,GAJjB;AAKK,MAAA,MAAM,EAAEK,KALb;AAAA,8BAOG;AAAM,QAAA,CAAC,EAAC;AAAR,QAPH,eAQG;AAAM,QAAA,CAAC,EAAC;AAAR,QARH;AAAA;AANF,IANU;AAAA,CAAb;AAyBA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;;eAEeH,I"
+}
