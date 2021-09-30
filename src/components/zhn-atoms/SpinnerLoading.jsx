@@ -1,5 +1,8 @@
-const SpinnerLoading = ({ style, isFailed }) => {
-  const _dataLoader = (isFailed)
+const SpinnerLoading = ({
+  style,
+  isFailed
+}) => {
+  const _dataLoader = isFailed
     ? "circle-failed"
     : "circle";
   return (
