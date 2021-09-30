@@ -208,7 +208,7 @@ class NewsPane extends Component {
             onClose={this._hToggleMore}
           />
           <A.BrowserCaption
-             rootStyle={TS.PANE_CAPTION}
+             style={TS.PANE_CAPTION}
              caption={_paneCaption}
              onMore={this._showMore}
              onClose={this._hHide}

@@ -113,7 +113,7 @@ const ModalDialog = ({
      /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
     }
         <BrowserCaption
-          rootStyle={styleCaption}
+          style={styleCaption}
           caption={caption}
           onClose={onClose}
         />

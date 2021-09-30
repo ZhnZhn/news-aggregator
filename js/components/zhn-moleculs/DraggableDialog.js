@@ -174,7 +174,7 @@ var DraggableDialog = /*#__PURE__*/(0, _react.forwardRef)(function (_ref2, ref) 
       tabIndex: "0",
       onKeyDown: _hKeyDown,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserCaption["default"], {
-        rootStyle: browserCaptionStyle,
+        style: browserCaptionStyle,
         caption: caption,
         onClose: onClose
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {

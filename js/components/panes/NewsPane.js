@@ -279,7 +279,7 @@ var NewsPane = /*#__PURE__*/function (_Component) {
         model: this._MODEL,
         onClose: this._hToggleMore
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].BrowserCaption, {
-        rootStyle: TS.PANE_CAPTION,
+        style: TS.PANE_CAPTION,
         caption: _paneCaption,
         onMore: this._showMore,
         onClose: this._hHide,

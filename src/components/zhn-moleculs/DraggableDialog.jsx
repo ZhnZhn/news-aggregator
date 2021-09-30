@@ -152,7 +152,7 @@ const DraggableDialog = forwardRef(({
       /*eslint-enable jsx-a11y/no-noninteractive-tabindex*/
     }
       <BrowserCaption
-         rootStyle={browserCaptionStyle}
+         style={browserCaptionStyle}
          caption={caption}
          onClose={onClose}
       />

@@ -87,7 +87,7 @@ var About = function About(_ref2) {
     className: _className,
     style: (0, _extends2["default"])({}, _style, S.ROOT),
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].BrowserCaption, {
-      rootStyle: S.BROWSER_CAPTION,
+      style: S.BROWSER_CAPTION,
       caption: "About News Aggregator",
       onClose: _hClose
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {

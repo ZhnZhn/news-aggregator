@@ -126,7 +126,7 @@ var ModalDialog = function ModalDialog(_ref) {
       onClick: _hClickDialog,
       onKeyDown: _hKeyDown,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserCaption["default"], {
-        rootStyle: styleCaption,
+        style: styleCaption,
         caption: caption,
         onClose: onClose
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {

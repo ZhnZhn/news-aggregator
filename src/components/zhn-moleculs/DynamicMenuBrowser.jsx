@@ -119,7 +119,7 @@ const DynamicMenuBrowser = ({
         />
       }
       <BrowserCaption
-        rootStyle={TS.BROWSER_CAPTION}
+        style={TS.BROWSER_CAPTION}
         caption={caption}
         onMore={_onMore}
         onClose={_hHide}

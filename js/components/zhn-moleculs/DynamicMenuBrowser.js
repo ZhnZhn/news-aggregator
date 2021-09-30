@@ -149,7 +149,7 @@ var DynamicMenuBrowser = function DynamicMenuBrowser(_ref) {
       model: menuMore,
       onClose: _hCloseMore
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(BrowserCaption, {
-      rootStyle: TS.BROWSER_CAPTION,
+      style: TS.BROWSER_CAPTION,
       caption: caption,
       onMore: _onMore,
       onClose: _hHide

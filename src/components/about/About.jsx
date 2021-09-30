@@ -83,7 +83,7 @@ const About = ({
       style={{..._style, ...S.ROOT}}
      >
        <A.BrowserCaption
-          rootStyle={S.BROWSER_CAPTION}
+          style={S.BROWSER_CAPTION}
           caption="About News Aggregator"
           onClose={_hClose}
        />
