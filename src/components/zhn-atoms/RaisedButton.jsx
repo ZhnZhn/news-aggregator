@@ -1,11 +1,6 @@
-const CL_BT = 'bt-raised';
-const CL_BT_SPAN = 'bt-raised__span';
-
-const S = {
-  PRIMARY_SPAN: {
-    color: '#80c040'
-  }
-};
+const CL_BT_RAISED = 'bt-raised'
+, CL_BT_RAISED_SPAN = 'bt-raised__span'
+, S_PRIMARY_SPAN = { color: '#80c040' };
 
 const RaisedButton = ({
   isPrimary,
@@ -13,17 +8,17 @@ const RaisedButton = ({
   caption,
   onClick
 }) => {
-  const _spanStyle = isPrimary ? S.PRIMARY_SPAN : void 0;
+  const _spanStyle = isPrimary
+    ? S_PRIMARY_SPAN : void 0;
   return (
     <button
-      className={CL_BT}
+      className={CL_BT_RAISED}
       style={style}
-      type="button"
       onClick={onClick}
     >
       <div className={clDiv}>
         <span
-           className={CL_BT_SPAN}
+           className={CL_BT_RAISED_SPAN}
            style={_spanStyle}
         >
           {caption}
@@ -31,6 +26,6 @@ const RaisedButton = ({
       </div>
     </button>
   );
-}
+};
 
 export default RaisedButton

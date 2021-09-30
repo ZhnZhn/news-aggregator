@@ -5,12 +5,10 @@ exports["default"] = void 0;
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var CL_BT = 'bt-raised';
-var CL_BT_SPAN = 'bt-raised__span';
-var S = {
-  PRIMARY_SPAN: {
-    color: '#80c040'
-  }
+var CL_BT_RAISED = 'bt-raised',
+    CL_BT_RAISED_SPAN = 'bt-raised__span',
+    S_PRIMARY_SPAN = {
+  color: '#80c040'
 };
 
 var RaisedButton = function RaisedButton(_ref) {
@@ -20,17 +18,16 @@ var RaisedButton = function RaisedButton(_ref) {
       caption = _ref.caption,
       onClick = _ref.onClick;
 
-  var _spanStyle = isPrimary ? S.PRIMARY_SPAN : void 0;
+  var _spanStyle = isPrimary ? S_PRIMARY_SPAN : void 0;
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
-    className: CL_BT,
+    className: CL_BT_RAISED,
     style: style,
-    type: "button",
     onClick: onClick,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: clDiv,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-        className: CL_BT_SPAN,
+        className: CL_BT_RAISED_SPAN,
         style: _spanStyle,
         children: caption
       })
