@@ -121,7 +121,7 @@ class HeaderBar extends Component {
         />
         <span className={CL.BROWSER_BTS}>
           <A.FlatButton
-            rootStyle={S.BT.FLAT_ROOT}
+            style={S.BT.FLAT_ROOT}
             clDiv={S.BT.CL_FLAT_DIV}
             caption="News"
             title="Open News Sources Browser"
@@ -142,7 +142,7 @@ class HeaderBar extends Component {
         </span>
         <div className={CL.BTS}>
             <A.FlatButton
-              rootStyle={S.BT.FLAT_ROOT}
+              style={S.BT.FLAT_ROOT}
               clDiv={S.BT.CL_FLAT_DIV}
               title="Open Settings Dialog"
               accessKey="s"
@@ -152,7 +152,7 @@ class HeaderBar extends Component {
             </A.FlatButton>
             <A.FlatButton
               className={CL.BT_ABOUT}
-              rootStyle={S.BT.FLAT_ROOT}
+              style={S.BT.FLAT_ROOT}
               clDiv={S.BT.CL_FLAT_DIV}
               title="About News Aggregator"
               accessKey="a"

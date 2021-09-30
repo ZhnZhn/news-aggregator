@@ -152,7 +152,7 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
         className: CL.BROWSER_BTS,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FlatButton, {
-          rootStyle: S.BT.FLAT_ROOT,
+          style: S.BT.FLAT_ROOT,
           clDiv: S.BT.CL_FLAT_DIV,
           caption: "News",
           title: "Open News Sources Browser",
@@ -173,7 +173,7 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         className: CL.BTS,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FlatButton, {
-          rootStyle: S.BT.FLAT_ROOT,
+          style: S.BT.FLAT_ROOT,
           clDiv: S.BT.CL_FLAT_DIV,
           title: "Open Settings Dialog",
           accessKey: "s",
@@ -183,7 +183,7 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
           })
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FlatButton, {
           className: CL.BT_ABOUT,
-          rootStyle: S.BT.FLAT_ROOT,
+          style: S.BT.FLAT_ROOT,
           clDiv: S.BT.CL_FLAT_DIV,
           title: "About News Aggregator",
           accessKey: "a",
