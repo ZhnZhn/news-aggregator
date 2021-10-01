@@ -9,42 +9,33 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _react = require("react");
 
+var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
+
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
 var CL_CAPTION = 'open-close not-selected';
 var CL_SHOW_POPUP = 'show-popup';
-var S = {
-  ROOT: {
-    backgroundColor: '#4d4d4d',
-    lineHeight: 2.5
-  },
-  SVG: {
-    display: 'inline-block',
-    width: 16,
-    height: 16
-  },
-  ROOT_CAPTION: {
-    paddingLeft: 12
-  },
-  CAPTION: {
-    color: '#9e9e9e',
-    paddingLeft: 4,
-    verticalAlign: 'top',
-    fontFamily: 'Roboto, Arial Unicode MS, Arial, sans-serif',
-    fontWeight: 'bold',
-    fontSize: '1rem',
-    cursor: 'pointer'
-  },
-  INLINE: {
-    display: 'inline-block'
-  },
-  BLOCK: {
-    display: 'block'
-  },
-  NONE: {
-    display: 'none'
-  }
+var S_ROOT = {
+  backgroundColor: '#4d4d4d',
+  lineHeight: 2.5
+},
+    S_ROOT_CAPTION = {
+  paddingLeft: 12
+},
+    S_CAPTION = {
+  color: '#9e9e9e',
+  paddingLeft: 4,
+  verticalAlign: 'top',
+  fontWeight: 'bold',
+  fontSize: '1rem',
+  cursor: 'pointer'
+},
+    S_BLOCK = {
+  display: 'block'
+},
+    S_NONE = {
+  display: 'none'
 };
 var FILL_OPEN = '#9e9e9e',
     FILL_CLOSE = 'transparent',
@@ -64,19 +55,14 @@ var OpenClose = function OpenClose(_ref) {
       fillClose = _ref$fillClose === void 0 ? FILL_CLOSE : _ref$fillClose,
       children = _ref.children;
 
-  var _useState = (0, _react.useState)(!isClose),
-      isOpen = _useState[0],
-      setIsOpen = _useState[1],
-      _hToggle = (0, _react.useCallback)(function () {
-    return setIsOpen(function (is) {
-      return !is;
-    });
-  }, []),
+  var _useToggle = (0, _useToggle2["default"])(!isClose),
+      isOpen = _useToggle[0],
+      toggleIsOpen = _useToggle[1],
       _hKeyDown = (0, _react.useCallback)(function (evt) {
     if (event.keyCode === 13 || event.keyCode === 27) {
-      _hToggle();
+      toggleIsOpen();
     }
-  }, []); //_hToggle
+  }, []); //toggleIsOpen
 
   /*esline-enable react-hooks/exhaustive-deps */
 
@@ -86,44 +72,40 @@ var OpenClose = function OpenClose(_ref) {
   if (isOpen) {
     _pathV = PATH_OPEN;
     _fillV = fillOpen;
-    _styleCollapse = S.BLOCK;
+    _styleCollapse = S_BLOCK;
     _classShow = CL_SHOW_POPUP;
     _itemStyle = null;
   } else {
     _pathV = PATH_CLOSE;
     _fillV = fillClose;
-    _styleCollapse = S.NONE;
+    _styleCollapse = S_NONE;
     _classShow = null;
     _itemStyle = itemStyle;
   }
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    style: (0, _extends2["default"])({}, S.ROOT, style),
+    style: (0, _extends2["default"])({}, S_ROOT, style),
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       role: "button",
       className: CL_CAPTION,
       tabIndex: "0",
-      style: (0, _extends2["default"])({}, S.ROOT_CAPTION, _itemStyle),
-      onClick: _hToggle,
+      style: (0, _extends2["default"])({}, S_ROOT_CAPTION, _itemStyle),
+      onClick: toggleIsOpen,
       onKeyDown: _hKeyDown,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        style: S.SVG,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
-          viewBox: "0 0 16 16",
-          width: "100%",
-          height: "100%",
-          preserveAspectRatio: "none",
-          xmlns: "http://www.w3.org/2000/svg",
-          style: S.INLINE,
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
-            d: _pathV,
-            fill: _fillV,
-            strokeWidth: "1",
-            stroke: fillOpen
-          })
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
+        viewBox: "0 0 16 16",
+        width: "16",
+        height: "16",
+        preserveAspectRatio: "none",
+        xmlns: "http://www.w3.org/2000/svg",
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
+          d: _pathV,
+          fill: _fillV,
+          strokeWidth: "1",
+          stroke: fillOpen
         })
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-        style: (0, _extends2["default"])({}, S.CAPTION, captionStyle),
+        style: (0, _extends2["default"])({}, S_CAPTION, captionStyle),
         children: caption
       })]
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
