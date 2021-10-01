@@ -1,0 +1,28 @@
+.tab {
+  color: #9e9e9e;
+  padding: 6px 10px;
+  border-bottom: 3px solid #9e9e9e;
+  font-weight: bold;
+  cursor: pointer;
+  outline: 0;
+}
+.tab:focus > .tab_t,
+.tab:hover > .tab_t {
+  color: #81a5ce;
+}
+.tab.active {
+  border-bottom: 3px solid #2f7ed8;
+}
+.tab.active > .tab_t {
+  color: #2f7ed8;
+}
+
+.tabs {
+  margin: 5px 5px 5px 10px;
+  text-align: center;
+}
+
+.panes {
+  width: 100%;
+  height: 100%;
+}

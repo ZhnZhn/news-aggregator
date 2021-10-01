@@ -2,22 +2,22 @@ import { cloneElement, useCallback } from 'react';
 
 import ItemStack from '../zhn-atoms/ItemStack';
 
+const CL_TABS = "tabs";
+
 const _isFn = fn => typeof fn === 'function';
 
 const _crItemTab = (
   tabEl, index,
-  { selectedTabIndex, selectedStyle, hClick }
+  { selectedTabIndex, hClick }
 ) => cloneElement(tabEl, {
    key: index,
    id: index,
    onClick: hClick.bind(null, index, tabEl),
-   isSelected: index === selectedTabIndex,
-   selectedStyle
+   isSelected: index === selectedTabIndex   
 });
 
 const TabStack = ({
   style,
-  selectedStyle,
   selectedTabIndex,
   setTabIndex,
   children
@@ -33,12 +33,14 @@ const TabStack = ({
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (
-    <div style={style}>
+    <div
+      className={CL_TABS}
+      style={style}
+    >
       <ItemStack
         items={children}
         crItem={_crItemTab}
         selectedTabIndex={selectedTabIndex}
-        selectedStyle={selectedStyle}
         hClick={_hClick}
       />
     </div>

@@ -2,11 +2,9 @@ import { cloneElement } from 'react';
 
 import ItemStack from '../zhn-atoms/ItemStack';
 
-const S_TAB_SELECTED = {
-  display: 'block',
-  width: "100%",
-  height: "100%"
-}, S_NONE = { display: 'none' };
+const CL_PANES = "panes"
+, S_BLOCK = { display: 'block'}
+, S_NONE = { display: 'none' };
 
 const _crItemPane = (
   tab, index,
@@ -15,14 +13,13 @@ const _crItemPane = (
   const isSelected = index === selectedTabIndex;
   return (
     <div
-      style={isSelected ? S_TAB_SELECTED : S_NONE}
-      key={'a'+index}
+      style={isSelected ? S_BLOCK : S_NONE}
+      key={index}
       role="tabpanel"
       id={`tabpanel-${index}`}
       aria-labelledby={`tab-${index}`}
     >
       {cloneElement(tab.props.children, {
-        key: 'comp' + index,
         isShow, isSelected
       })}
     </div>
@@ -35,7 +32,7 @@ const PaneStack = ({
   selectedTabIndex,
   children
 }) => (
-   <div style={style}>
+   <div className={CL_PANES}>
     <ItemStack
        items={children}
        crItem={_crItemPane}

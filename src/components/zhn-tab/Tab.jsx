@@ -1,32 +1,27 @@
+import crCn from '../zhn-utils/crCn';
+
 const CL_TAB = "tab"
-, DF_COLOR = '#2f7ed8'
-, S_BT = {
-  borderBottom : `3px solid ${DF_COLOR}`
-}
-, S_TITLE = {
-  color: DF_COLOR
-};
+, CL_ACTIVE = "active"
+, CL_TAB_TITLE = "tab_t";
 
 const Tab = ({
   isSelected,
   id, title,
   onClick
-}) => {
-  const [_btStyle, _titleStyle] = isSelected
-    ? [S_BT, S_TITLE] : [];
-  return (
-    <button
-       className={CL_TAB}
-       style={_btStyle}
-       id={`tab-${id}`}
-       role="tab"
-       aria-selected={isSelected}
-       aria-controls={`tabpanel-${id}`}
-       onClick={onClick}
-    >
-       <span style={_titleStyle}>{title}</span>
-    </button>
-  );
-};
+}) => (
+  <button
+     className={crCn(CL_TAB, [isSelected, CL_ACTIVE])}
+     id={`tab-${id}`}
+     role="tab"
+     aria-selected={isSelected}
+     aria-controls={`tabpanel-${id}`}
+     onClick={onClick}
+  >
+     <span className={CL_TAB_TITLE}>
+        {title}
+     </span>
+  </button>
+);
+
 
 export default Tab

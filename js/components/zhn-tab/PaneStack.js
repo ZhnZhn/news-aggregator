@@ -11,10 +11,9 @@ var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S_TAB_SELECTED = {
-  display: 'block',
-  width: "100%",
-  height: "100%"
+var CL_PANES = "panes",
+    S_BLOCK = {
+  display: 'block'
 },
     S_NONE = {
   display: 'none'
@@ -25,16 +24,15 @@ var _crItemPane = function _crItemPane(tab, index, _ref) {
       selectedTabIndex = _ref.selectedTabIndex;
   var isSelected = index === selectedTabIndex;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    style: isSelected ? S_TAB_SELECTED : S_NONE,
+    style: isSelected ? S_BLOCK : S_NONE,
     role: "tabpanel",
     id: "tabpanel-" + index,
     "aria-labelledby": "tab-" + index,
     children: /*#__PURE__*/(0, _react.cloneElement)(tab.props.children, {
-      key: 'comp' + index,
       isShow: isShow,
       isSelected: isSelected
     })
-  }, 'a' + index);
+  }, index);
 };
 
 var PaneStack = function PaneStack(_ref2) {
@@ -43,7 +41,7 @@ var PaneStack = function PaneStack(_ref2) {
       selectedTabIndex = _ref2.selectedTabIndex,
       children = _ref2.children;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    style: style,
+    className: CL_PANES,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemStack["default"], {
       items: children,
       crItem: _crItemPane,

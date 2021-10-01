@@ -41,9 +41,6 @@ var S = {
     marginLeft: 24,
     textAlign: 'left'
   },
-  TAB_SELECTED: {
-    color: 'black'
-  },
   CARD_ROOT: {
     position: 'relative',
     height: 315
@@ -158,7 +155,6 @@ var SettingsDialog = /*#__PURE__*/function (_Component) {
       children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].TabPane, {
         width: "100%",
         tabsStyle: S.TABS,
-        selectedStyle: S.TAB_SELECTED,
         isShow: isShow,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Tab, {
           title: "API Keys",

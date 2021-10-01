@@ -25,10 +25,7 @@ const S = {
   TABS: {
     marginLeft: 24,
     textAlign: 'left'
-  },
-  TAB_SELECTED: {
-    color: 'black'
-  },
+  },  
   CARD_ROOT: {
     position: 'relative',
     height: 315
@@ -123,7 +120,6 @@ class SettingsDialog extends Component {
           <A.TabPane
              width="100%"
              tabsStyle={S.TABS}
-             selectedStyle={S.TAB_SELECTED}
              isShow={isShow}
           >
              <A.Tab title="API Keys">
