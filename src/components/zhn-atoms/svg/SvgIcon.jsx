@@ -1,9 +1,16 @@
-const SvgIcon = ({ color, size, children, ...restProps }) => (
+const _crViewBox = size => `0 0 ${size} ${size}`;
+
+const SvgIcon = ({
+  color='currentColor',
+  size='24',
+  children,
+  ...restProps
+}) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
-      viewBox="0 0 24 24"
+      viewBox={_crViewBox(size)}
       fill="none"
       stroke={color}
       strokeWidth="2"
@@ -14,10 +21,5 @@ const SvgIcon = ({ color, size, children, ...restProps }) => (
       {children}
     </svg>
 );
-
-SvgIcon.defaultProps = {
-  color: 'currentColor',
-  size: '24',
-};
 
 export default SvgIcon
