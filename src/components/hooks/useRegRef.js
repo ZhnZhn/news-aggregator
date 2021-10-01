@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
-const useRegRef = (onReg, ref) => {
+const useRegRef = (onReg) => {
+  const ref = useRef(null)
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(()=>{
     const _node = ref.current;
@@ -11,6 +12,7 @@ const useRegRef = (onReg, ref) => {
   }, [])
   //onReg, ref
   /*eslint-enable react-hooks/exhaustive-deps */
+  return ref;
 };
 
 export default useRegRef
