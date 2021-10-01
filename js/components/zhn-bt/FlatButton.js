@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 
-var _CaptionInput = _interopRequireDefault(require("./CaptionInput"));
+var _BtCaption = _interopRequireDefault(require("./BtCaption"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -31,7 +31,7 @@ var FlatButton = function FlatButton(_ref) {
     onClick: onClick,
     children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: clDiv,
-      children: [caption ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_CaptionInput["default"], {
+      children: [caption ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_BtCaption["default"], {
         className: CL_BT_FLAT_SPAN,
         caption: caption,
         accessKey: accessKey

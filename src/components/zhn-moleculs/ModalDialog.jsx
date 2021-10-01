@@ -4,7 +4,7 @@ import { useRef, useEffect } from 'react'
 import useClassAnimation from '../hooks/useClassAnimation'
 
 import BrowserCaption from '../zhn-atoms/BrowserCaption'
-import RaisedButton from '../zhn-atoms/RaisedButton'
+import RaisedButton from '../zhn-bt/RaisedButton'
 
 const CL = {
   SHOWING : 'dialog show-popup',

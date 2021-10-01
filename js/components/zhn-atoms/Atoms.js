@@ -19,14 +19,6 @@ var _SpinnerLoading = _interopRequireDefault(require("./SpinnerLoading"));
 
 var _SvgHrzResize = _interopRequireDefault(require("./SvgHrzResize"));
 
-var _CircleButton = _interopRequireDefault(require("./CircleButton"));
-
-var _FlatButton = _interopRequireDefault(require("./FlatButton"));
-
-var _ModalButton = _interopRequireDefault(require("./ModalButton"));
-
-var _RaisedButton = _interopRequireDefault(require("./RaisedButton"));
-
 var _MenuItem = _interopRequireDefault(require("./MenuItem"));
 
 var _ShowHide = _interopRequireDefault(require("./ShowHide"));
@@ -39,10 +31,6 @@ var Atoms = (0, _extends2["default"])({}, _SvgIcons["default"], {
   ScrollPane: _ScrollPane["default"],
   SpinnerLoading: _SpinnerLoading["default"],
   SvgHrzResize: _SvgHrzResize["default"],
-  CircleButton: _CircleButton["default"],
-  FlatButton: _FlatButton["default"],
-  ModalButton: _ModalButton["default"],
-  RaisedButton: _RaisedButton["default"],
   MenuItem: _MenuItem["default"],
   ShowHide: _ShowHide["default"],
   ItemStack: _ItemStack["default"]

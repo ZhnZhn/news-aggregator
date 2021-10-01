@@ -6,7 +6,7 @@ import styleConfig from './HeaderBar.Style'
 import LoadingProgress from './LoadingProgress'
 import IconAppLogo from './IconAppLogo'
 import AppLabel from './AppLabel'
-import A from '../zhn-atoms/Atoms'
+import A from '../Comp'
 import PanelQuery from './PanelQuery'
 
 const TITLE = "News Aggregator v0.4.0";

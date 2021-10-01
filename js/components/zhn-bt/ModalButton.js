@@ -5,16 +5,14 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
-
 var _useRegRef = _interopRequireDefault(require("../hooks/useRegRef"));
 
-var _CaptionInput = _interopRequireDefault(require("./CaptionInput"));
+var _BtCaption = _interopRequireDefault(require("./BtCaption"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var CL_BT = 'bt-flat';
-var CL_BT_SPAN = 'bt-flat__span';
+var CL_BT_FLAT = 'bt-flat';
+var CL_BT_FLAT_SPAN = 'bt-flat__span';
 
 var ModalButton = function ModalButton(_ref) {
   var style = _ref.style,
@@ -26,20 +24,19 @@ var ModalButton = function ModalButton(_ref) {
       onReg = _ref.onReg,
       onClick = _ref.onClick;
 
-  var _refBtNode = (0, _react.useRef)(null);
+  var _refBtNode = (0, _useRegRef["default"])(onReg);
 
-  (0, _useRegRef["default"])(onReg, _refBtNode);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     ref: _refBtNode,
-    className: CL_BT,
+    className: CL_BT_FLAT,
     style: style,
     title: title,
     accessKey: accessKey,
     onClick: onClick,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: clDiv,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_CaptionInput["default"], {
-        className: CL_BT_SPAN,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_BtCaption["default"], {
+        className: CL_BT_FLAT_SPAN,
         caption: caption,
         accessKey: accessKey,
         children: children

@@ -13,7 +13,7 @@ var _useClassAnimation2 = _interopRequireDefault(require("../hooks/useClassAnima
 
 var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
 
-var _RaisedButton = _interopRequireDefault(require("../zhn-atoms/RaisedButton"));
+var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 

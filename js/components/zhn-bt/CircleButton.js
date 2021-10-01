@@ -18,11 +18,8 @@ var CircleButton = function CircleButton(_ref) {
       className = _ref.className,
       style = _ref.style,
       onClick = _ref.onClick;
-
-  var _className = (0, _crCn["default"])(CL_BT, className);
-
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
-    className: _className,
+    className: (0, _crCn["default"])(CL_BT, className),
     style: style,
     title: title,
     onClick: onClick,

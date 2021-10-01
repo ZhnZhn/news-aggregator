@@ -1,5 +1,5 @@
 import crCn from '../zhn-utils/crCn';
-import CaptionInput from './CaptionInput';
+import BtCaption from './BtCaption';
 
 const CL_BT_FLAT = 'bt-flat';
 const CL_BT_FLAT_SPAN = 'bt-flat__span';
@@ -21,7 +21,7 @@ const FlatButton = ({
   >
     <div className={clDiv}>
       { caption
-         ? <CaptionInput
+         ? <BtCaption
              className={CL_BT_FLAT_SPAN}
              caption={caption}
              accessKey={accessKey}

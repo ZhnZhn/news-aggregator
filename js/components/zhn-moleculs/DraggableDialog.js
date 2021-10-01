@@ -11,7 +11,7 @@ var _react = require("react");
 
 var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
 
-var _RaisedButton = _interopRequireDefault(require("../zhn-atoms/RaisedButton"));
+var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
 
 var _Interact = _interopRequireDefault(require("../../utils/Interact"));
 

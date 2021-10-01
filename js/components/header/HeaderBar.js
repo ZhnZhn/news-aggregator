@@ -19,7 +19,7 @@ var _IconAppLogo = _interopRequireDefault(require("./IconAppLogo"));
 
 var _AppLabel = _interopRequireDefault(require("./AppLabel"));
 
-var _Atoms = _interopRequireDefault(require("../zhn-atoms/Atoms"));
+var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _PanelQuery = _interopRequireDefault(require("./PanelQuery"));
 
@@ -151,14 +151,14 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
         caption: TITLE
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
         className: CL.BROWSER_BTS,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FlatButton, {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
           style: S.BT.FLAT_ROOT,
           clDiv: S.BT.CL_FLAT_DIV,
           caption: "News",
           title: "Open News Sources Browser",
           accessKey: "n",
           onClick: onNewsSources
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].ModalButton, {
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ModalButton, {
           style: S.BT.FLAT_ROOT,
           clDiv: S.BT.CL_FLAT_DIV,
           caption: "Query",
@@ -172,23 +172,23 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
         })]
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         className: CL.BTS,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FlatButton, {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
           style: S.BT.FLAT_ROOT,
           clDiv: S.BT.CL_FLAT_DIV,
           title: "Open Settings Dialog",
           accessKey: "s",
           onClick: onSettings,
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SvgSettings, {
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].SvgSettings, {
             style: STYLE.SVG_ICON
           })
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].FlatButton, {
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
           className: CL.BT_ABOUT,
           style: S.BT.FLAT_ROOT,
           clDiv: S.BT.CL_FLAT_DIV,
           title: "About News Aggregator",
           accessKey: "a",
           onClick: onAbout,
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Atoms["default"].SvgInfo, {
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].SvgInfo, {
             style: STYLE.SVG_ICON
           })
         })]

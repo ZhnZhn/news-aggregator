@@ -1,10 +1,9 @@
-import { useRef } from 'react';
 import useRegRef from '../hooks/useRegRef';
 
-import CaptionInput from './CaptionInput';
+import BtCaption from './BtCaption';
 
-const CL_BT = 'bt-flat';
-const CL_BT_SPAN = 'bt-flat__span';
+const CL_BT_FLAT = 'bt-flat';
+const CL_BT_FLAT_SPAN = 'bt-flat__span';
 
 const ModalButton = ({
   style, clDiv,
@@ -14,26 +13,25 @@ const ModalButton = ({
   onReg,
   onClick
 }) => {
-  const _refBtNode = useRef(null);
-  useRegRef(onReg, _refBtNode)
+  const _refBtNode = useRegRef(onReg);
 
   return (
     <button
       ref={_refBtNode}
-      className={CL_BT}
+      className={CL_BT_FLAT}
       style={style}
       title={title}
       accessKey={accessKey}
       onClick={onClick}
     >
       <div className={clDiv}>
-        <CaptionInput
-          className={CL_BT_SPAN}
+        <BtCaption
+          className={CL_BT_FLAT_SPAN}
           caption={caption}
           accessKey={accessKey}
         >
            {children}
-        </CaptionInput>
+        </BtCaption>
       </div>
     </button>
   );
