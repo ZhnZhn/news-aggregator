@@ -15,11 +15,8 @@ var ScrollPane = function ScrollPane(_ref) {
   var style = _ref.style,
       className = _ref.className,
       children = _ref.children;
-
-  var _cn = (0, _crCn["default"])(CL_WITH_SCROLL, className);
-
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    className: _cn,
+    className: (0, _crCn["default"])(CL_WITH_SCROLL, className),
     style: style,
     children: children
   });

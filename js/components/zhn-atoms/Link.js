@@ -11,13 +11,15 @@ var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runt
 
 var _jsxRuntime = require("react/jsx-runtime");
 
+var _excluded = ["title"];
+
 var Link = function Link(_ref) {
   var title = _ref.title,
-      rest = (0, _objectWithoutPropertiesLoose2["default"])(_ref, ["title"]);
+      restProps = (0, _objectWithoutPropertiesLoose2["default"])(_ref, _excluded);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("a", (0, _extends2["default"])({
-    target: "_blank",
     className: "link"
-  }, rest, {
+  }, restProps, {
+    target: "_blank",
     children: title
   }));
 };

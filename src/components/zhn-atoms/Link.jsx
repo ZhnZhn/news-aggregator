@@ -1,6 +1,6 @@
 
-const Link = ({ title, ...rest }) => (
- <a target="_blank" className="link" {...rest}>
+const Link = ({ title, ...restProps }) => (
+ <a className="link" {...restProps} target="_blank">
     {title}
  </a>
 );

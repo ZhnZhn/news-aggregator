@@ -6,13 +6,14 @@ const ScrollPane = ({
   style,
   className,
   children
-}) => {
-  const _cn = crCn(CL_WITH_SCROLL, className);
-  return (
-     <div className={_cn} style={style}>
-        {children}
-     </div>
-  );
-};
+}) => (
+  <div
+    className={crCn(CL_WITH_SCROLL, className)}
+    style={style}
+  >
+    {children}
+  </div>
+);
+
 
 export default ScrollPane

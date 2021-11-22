@@ -1,1 +1,13 @@
-{"version":3,"sources":["../../../src/components/zhn-atoms/Link.jsx"],"names":["Link","title","rest"],"mappings":";;;;;;;;;;;;;AACA,IAAMA,IAAI,GAAG,SAAPA,IAAO;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,MAAaC,IAAb;AAAA,sBACZ;AAAG,IAAA,MAAM,EAAC,QAAV;AAAmB,IAAA,SAAS,EAAC;AAA7B,KAAwCA,IAAxC;AAAA,cACID;AADJ,KADY;AAAA,CAAb;;eAMeD,I","sourcesContent":["\r\nconst Link = ({ title, ...rest }) => (\r\n <a target=\"_blank\" className=\"link\" {...rest}>\r\n    {title}\r\n </a>\r\n);\r\n\r\nexport default Link\r\n"],"file":"Link.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-atoms/Link.js"
+ ],
+ "file": "../../../src/components/zhn-atoms/Link.js",
+ "names": [
+  "Link",
+  "title",
+  "restProps"
+ ],
+ "mappings": ";;;;;;;;;;;;;;;AACA,IAAMA,IAAI,GAAG,SAAPA,IAAO;AAAA,MAAGC,KAAH,QAAGA,KAAH;AAAA,MAAaC,SAAb;AAAA,sBACZ;AAAG,IAAA,SAAS,EAAC;AAAb,KAAwBA,SAAxB;AAAmC,IAAA,MAAM,EAAC,QAA1C;AAAA,cACID;AADJ,KADY;AAAA,CAAb;;eAMeD,I"
+}
