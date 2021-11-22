@@ -25,25 +25,20 @@ var _PanelQuery = _interopRequireDefault(require("./PanelQuery"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var TITLE = "News Aggregator v0.4.0";
-var CL = {
-  HEADER: "header",
-  PANEL_BROWSER: "header__panel-browser",
-  ICON_APP: "header__icon-app",
-  LABEL_APP: "header__label-app",
-  BROWSER_BTS: "header__browser-bts",
-  ARROW_DOWN: "arrow-down",
-  BTS: "header__bts",
-  BT_ABOUT: "header__bt-about"
-};
-var STYLE = {
-  SVG_ICON: {
-    position: 'relative',
-    top: -1,
-    verticalAlign: 'middle',
-    marginLeft: 8,
-    marginRight: 8
-  }
+var TITLE = "News Aggregator v0.4.0",
+    CL_HEADER = "header",
+    CL_PANEL_BROWSER = "header__panel-browser",
+    CL_ICON_APP = "header__icon-app",
+    CL_LABEL_APP = "header__label-app",
+    CL_BROWSER_BTS = "header__browser-bts",
+    CL_ARROW_DOWN = "arrow-down",
+    CL_BTS = "header__bts",
+    CL_BT_ABOUT = "header__bt-about",
+    S_SVG_ICON = {
+  position: 'relative',
+  top: -1,
+  verticalAlign: 'middle',
+  margin: '0 8px'
 };
 
 var _ffClick = function _ffClick(onClose) {
@@ -119,14 +114,14 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
         onNewsSources = _this$props.onNewsSources,
         onSettings = _this$props.onSettings,
         onAbout = _this$props.onAbout,
-        S = theme.createStyle(_HeaderBar["default"]),
+        TS = theme.createStyle(_HeaderBar["default"]),
         isQuery = this.state.isQuery;
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      className: CL.HEADER,
-      style: S.HEADER,
+      className: CL_HEADER,
+      style: TS.HEADER,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_PanelQuery["default"], {
-        paneStyle: S.PANE,
-        className: CL.PANEL_BROWSER,
+        paneStyle: TS.PANE,
+        className: CL_PANEL_BROWSER,
         isShow: isQuery,
         onClose: this._hToggleQuery,
         onWebhose: this._hWebhose,
@@ -144,52 +139,52 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
         store: store,
         ACTIONS: LOADING_ACTIONS
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconAppLogo["default"], {
-        className: CL.ICON_APP,
+        className: CL_ICON_APP,
         title: TITLE
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_AppLabel["default"], {
-        className: CL.LABEL_APP,
+        className: CL_LABEL_APP,
         caption: TITLE
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
-        className: CL.BROWSER_BTS,
+        className: CL_BROWSER_BTS,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
-          style: S.BT.FLAT_ROOT,
-          clDiv: S.BT.CL_FLAT_DIV,
+          style: TS.BT.FLAT_ROOT,
+          clDiv: TS.BT.CL_FLAT_DIV,
           caption: "News",
           title: "Open News Sources Browser",
           accessKey: "n",
           onClick: onNewsSources
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ModalButton, {
-          style: S.BT.FLAT_ROOT,
-          clDiv: S.BT.CL_FLAT_DIV,
+          style: TS.BT.FLAT_ROOT,
+          clDiv: TS.BT.CL_FLAT_DIV,
           caption: "Query",
           title: "Panel Query Source",
           accessKey: "q",
           onClick: this._hToggleQuery,
           onReg: this._onRegQuery,
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-            className: CL.ARROW_DOWN
+            className: CL_ARROW_DOWN
           })
         })]
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-        className: CL.BTS,
+        className: CL_BTS,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
-          style: S.BT.FLAT_ROOT,
-          clDiv: S.BT.CL_FLAT_DIV,
-          title: "Open Settings Dialog",
-          accessKey: "s",
-          onClick: onSettings,
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].SvgSettings, {
-            style: STYLE.SVG_ICON
-          })
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
-          className: CL.BT_ABOUT,
-          style: S.BT.FLAT_ROOT,
-          clDiv: S.BT.CL_FLAT_DIV,
+          className: CL_BT_ABOUT,
+          style: TS.BT.FLAT_ROOT,
+          clDiv: TS.BT.CL_FLAT_DIV,
           title: "About News Aggregator",
           accessKey: "a",
           onClick: onAbout,
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].SvgInfo, {
-            style: STYLE.SVG_ICON
+            style: S_SVG_ICON
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
+          style: TS.BT.FLAT_ROOT,
+          clDiv: TS.BT.CL_FLAT_DIV,
+          title: "Open Settings Dialog",
+          accessKey: "s",
+          onClick: onSettings,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].SvgSettings, {
+            style: S_SVG_ICON
           })
         })]
       })]
