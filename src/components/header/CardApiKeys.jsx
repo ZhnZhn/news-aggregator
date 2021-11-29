@@ -12,16 +12,16 @@ const STR_EMPTY = ''
 , _onTestIex = _hasLengthOrEmpty(35)
 , _onTestFmp = _hasLengthOrEmpty(32)
 , _onTestNews = _hasLengthOrEmpty(32)
-, _onTestWebhose = _hasLengthOrEmpty(36)
+, _onTestWebz = _hasLengthOrEmpty(36)
 , SET_IEX_KEY = 'setIexKey'
 , SET_FMP_KEY = 'setFmpKey'
 , SET_NEWS_KEY = 'setNewsKey'
-, SET_WEBHOSE_KEY = 'setWebhoseKey'
+, SET_WEBZ_KEY = 'setWebzKey'
 , _getKeySetters = (data) => ({
  setIex: safeFn(data, SET_IEX_KEY),
  setFmp: safeFn(data, SET_FMP_KEY),
  setNews: safeFn(data, SET_NEWS_KEY),
- setWebhose: safeFn(data, SET_WEBHOSE_KEY)
+ setWebz: safeFn(data, SET_WEBZ_KEY)
 });
 
 const _isVisible = ({ isSelected, isShow }) => isShow
@@ -37,7 +37,7 @@ const CardApiKeys = (props) => {
   const _refInputIex = useRef()
   , _refInputFmp = useRef()
   , _refInputNews = useRef()
-  , _refInputWebhose = useRef()
+  , _refInputWebz = useRef()
   , {
     style, fieldStyle, buttonsStyle, TS,
     data, onClose
@@ -45,21 +45,21 @@ const CardApiKeys = (props) => {
   , { setIex,
       setFmp,
       setNews,
-      setWebhose
+      setWebz
   } = _getKeySetters(data)
   , _hClearAll = useCallback(() => {
       setIex('')
       setFmp('')
       setNews('')
-      setWebhose('')
-      _clearInputRefs([_refInputIex, _refInputFmp, _refInputNews, _refInputWebhose])
+      setWebz('')
+      _clearInputRefs([_refInputIex, _refInputFmp, _refInputNews, _refInputWebz])
   }, [])
   , _hSetAll = useCallback(() => {
       setIex(_getRefCompValue(_refInputIex))
       setFmp(_getRefCompValue(_refInputFmp))
       setNews(_getRefCompValue(_refInputNews))
-      setWebhose(_getRefCompValue(_refInputWebhose))
-      _setWasEnterRefs([_refInputIex, _refInputFmp, _refInputNews, _refInputWebhose])
+      setWebz(_getRefCompValue(_refInputWebz))
+      _setWasEnterRefs([_refInputIex, _refInputFmp, _refInputNews, _refInputWebz])
   }, []);
 
   if (!_isVisible(props)) {
@@ -102,13 +102,13 @@ const CardApiKeys = (props) => {
         </form>
         <form>
           <A.PasswordField
-             ref={_refInputWebhose}
+             ref={_refInputWebz}
              style={fieldStyle}
-             name="webhose"
-             caption="Webhose API Key (36 Symbols)"
+             name="webz.io"
+             caption="Webz.IO API Key (36 Symbols)"
              maxLength={36}
-             onTest={_onTestWebhose}
-             onEnter={setWebhose}
+             onTest={_onTestWebz}
+             onEnter={setWebz}
           />
         </form>
         <div style={buttonsStyle}>

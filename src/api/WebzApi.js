@@ -1,8 +1,6 @@
 
-const C = {
-  ROOT_URL: 'https://webhose.io/',
-  NEWS_SLICE: 'filterWebContent'
-};
+const ROOT_URL = 'https://api.webz.io/'
+, NEWS_SLICE = 'filterWebContent'
 
 const DF_SITE_TYPE = 'news';
 const DF_IN_TITLE = 'Weather';
@@ -26,11 +24,11 @@ const _crNewsUrl = (option) => {
   , _ts = _crTs(beforeDays || DF_BEFORE_DAYS)
   , _inTitle = inTitle || DF_IN_TITLE;
   option.apiKey = void 0
-  return `${C.ROOT_URL}${C.NEWS_SLICE}?token=${apiKey}&format=json&sort=crawled&ts=${_ts}&q=language:english thread.title:${_inTitle} site_type:${siteType}`;
+  return `${ROOT_URL}${NEWS_SLICE}?token=${apiKey}&format=json&sort=crawled&ts=${_ts}&q=language:english thread.title:${_inTitle} site_type:${siteType}`;
 };
 
 
-const WebhoseApi = {
+const WebzApi = {
   getRequestUrl(option){
     return _crNewsUrl(option);
   },
@@ -44,4 +42,4 @@ const WebhoseApi = {
   }
 };
 
-export default WebhoseApi
+export default WebzApi

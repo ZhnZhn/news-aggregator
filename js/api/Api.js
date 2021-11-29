@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _NewsApi = _interopRequireDefault(require("./NewsApi"));
 
-var _WebhoseApi = _interopRequireDefault(require("./WebhoseApi"));
+var _WebzApi = _interopRequireDefault(require("./WebzApi"));
 
 var _StackOverflowApi = _interopRequireDefault(require("./StackOverflowApi"));
 
@@ -27,7 +27,7 @@ var _MessariApi = _interopRequireDefault(require("./MessariApi"));
 
 var Api = {
   News: _NewsApi["default"],
-  Webhose: _WebhoseApi["default"],
+  Webz: _WebzApi["default"],
   StackOverflow: _StackOverflowApi["default"],
   Iex: _IexApi["default"],
   Fmp: _FmpApi["default"],

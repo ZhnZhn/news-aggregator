@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _NewsApiAdapter = _interopRequireDefault(require("./NewsApiAdapter"));
 
-var _WebhoseAdapter = _interopRequireDefault(require("./WebhoseAdapter"));
+var _WebzAdapter = _interopRequireDefault(require("./WebzAdapter"));
 
 var _StackOverflowAdapter = _interopRequireDefault(require("./StackOverflowAdapter"));
 
@@ -23,7 +23,7 @@ var _MessariAdapter = _interopRequireDefault(require("./MessariAdapter"));
 
 var Adapters = {
   News: _NewsApiAdapter["default"],
-  Webhose: _WebhoseAdapter["default"],
+  Webz: _WebzAdapter["default"],
   StackOverflow: _StackOverflowAdapter["default"],
   Iex: _IexAdapter["default"],
   Fmp: _FmpAdapter["default"],

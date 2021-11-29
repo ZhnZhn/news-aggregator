@@ -3,6 +3,8 @@ import Reflux from 'reflux-core'
 import RouterApiConf from '../logic/RouterApiConf'
 import loadNews from '../logic/loadNews'
 
+const _assign = Object.assign;
+
 export const TYPES = {
   LOAD_NEWS: 'loadNews',
   LOAD_NEWS_COMPLETED: 'loadNewsCompleted',
@@ -23,14 +25,17 @@ const NewsActions = Reflux.createActions({
 })
 
 NewsActions[TYPES.LOAD_NEWS].listen(function(option={}){
-  const { loadId='N' } = option
-      , _conf = RouterApiConf.getApiConf(loadId)
-      , { apiKey, adapter, api } = _conf;
+  const {
+    apiKey,
+    adapter,
+    api,
+    msgErr
+  } = RouterApiConf.getApiConf(option.loadId || 'N');
   if (apiKey){
-    Object.assign(option, { apiKey, adapter, api })
+    _assign(option, { apiKey, adapter, api })
     loadNews(option, this.completed, this.failed)
   } else {
-    this.failed({ msg: _conf.msgErr })
+    this.failed({ msg: msgErr })
   }
 })
 

@@ -1,6 +1,6 @@
 
 import News from './NewsApiAdapter'
-import Webhose from './WebhoseAdapter'
+import Webz from './WebzAdapter'
 import StackOverflow from './StackOverflowAdapter'
 import Iex from './IexAdapter'
 import Fmp from './FmpAdapter'
@@ -9,7 +9,7 @@ import CoinStats from './CoinStatsAdapter'
 import Messari from './MessariAdapter'
 
 const Adapters = {
-  News, Webhose, StackOverflow,
+  News, Webz, StackOverflow,
   Iex, Fmp,
   CryptoCompare, CoinStats, Messari
 };

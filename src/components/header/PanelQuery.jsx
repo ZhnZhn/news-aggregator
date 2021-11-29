@@ -22,12 +22,19 @@ class PanelQuery extends Component {
 
   render(){
     const {
-     className, paneStyle, isShow,
-     onCryptoCompare, onCoinStats, onMessari,
-     onIex, onFmp,
-     onNewsApi, onNewsTop,
-     onStackTagged, onStackSearch,
-     onWebhose, 
+     className,
+     paneStyle,
+     isShow,
+     onCryptoCompare,
+     onCoinStats,
+     onMessari,
+     onIex,
+     onFmp,
+     onNewsApi,
+     onNewsTop,
+     onStackTagged,
+     onStackSearch,
+     onWebz,
      onClose
    } = this.props;
     return (
@@ -94,8 +101,8 @@ class PanelQuery extends Component {
           />
           <A.MenuItem
             className={CL_ITEM}
-            caption="Webhose: News, Blogs"
-            onClick={onWebhose}
+            caption="Webz.io: News, Blogs"
+            onClick={onWebz}
             onClose={onClose}
           />
        </A.ModalPopup>

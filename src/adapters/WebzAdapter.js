@@ -1,7 +1,5 @@
 
-const C = {
-  W: 'webhose'
-};
+const WEBZ_ID = "webz";
 
 const _toNews = (json) => {
   const { posts, requestsLeft='' } = json;
@@ -11,7 +9,7 @@ const _toNews = (json) => {
     , _title = title.trim();
     if (_title && !_hm[_title]) {
       post.articleId = post.uuid
-      post.source = C.W
+      post.source = WEBZ_ID
       post.description = post.text
       post.publishedAt = post.published
       arr.push(post)
@@ -20,13 +18,13 @@ const _toNews = (json) => {
   })
 
   return {
-    source: C.W,
+    source: WEBZ_ID,
     articles: arr,
     sortBy: requestsLeft
   };
 };
 
-const WebhoseAdapter = {
+const WebzAdapter = {
   toArticles: (posts=[], source) => {
     const arr = []
         , _hm = {};
@@ -35,7 +33,7 @@ const WebhoseAdapter = {
            , _title = title.trim();
       if (_title && !_hm[_title] ){
         post.articleId = post.uuid
-        post.source = "webhose"
+        post.source = WEBZ_ID
         post.description = post.text
         post.publishedAt = post.published
         arr.push(post)
@@ -51,4 +49,4 @@ const WebhoseAdapter = {
   }
 };
 
-export default WebhoseAdapter
+export default WebzAdapter

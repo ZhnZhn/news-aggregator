@@ -20,7 +20,7 @@ const SITE_TYPE_OPTIONS = [
 
 const _getRefValue = ref => ref.value;
 
-const WebhoseQueryDialog = ({
+const WebzQueryDialog = ({
   isShow,
   type,
   source,
@@ -56,7 +56,7 @@ const WebhoseQueryDialog = ({
          rootStyle={TS.R_DIALOG}
          browserCaptionStyle={TS.BROWSER_CAPTION}
          styleButton={TS.BT}
-         caption="Webhose: News, Blogs"
+         caption="Webz.io: News, Blogs"
          isShow={isShow}
          commandButtons={_commandButtons}
          onKeyDown={_hKeyDown}
@@ -82,10 +82,10 @@ const WebhoseQueryDialog = ({
         initValue={DF_BEFORE_DAYS}
       />
       <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
-        <A.Link.WebhoseIo />
+        <A.Link.Webz />
       </A.Link.PoweredBy>
     </A.DraggableDialog>
   );
 };
 
-export default WebhoseQueryDialog
+export default WebzQueryDialog

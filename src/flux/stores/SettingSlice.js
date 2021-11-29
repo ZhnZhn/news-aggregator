@@ -12,7 +12,7 @@ const SettingSlice = {
       setIexKey: _fSetKey(LT.IEX),
       setFmpKey: _fSetKey(LT.FMP),
       setNewsKey: _fSetKey(LT.NEWS),
-      setWebhoseKey: _fSetKey(LT.WEBHOSE)
+      setWebzKey: _fSetKey(LT.WEBZ)
     };
   },
   getIexKey(){
@@ -24,8 +24,8 @@ const SettingSlice = {
   getNewsKey(){
     return _settings[LT.NEWS];
   },
-  getWebhoseKey(){
-    return _settings[LT.WEBHOSE];
+  getWebzKey(){
+    return _settings[LT.WEBZ];
   }
 }
 

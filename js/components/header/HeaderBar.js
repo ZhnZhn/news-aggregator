@@ -76,7 +76,7 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
       });
     };
 
-    var onWebhose = props.onWebhose,
+    var onWebz = props.onWebz,
         onStackTagged = props.onStackTagged,
         onStackSearch = props.onStackSearch,
         onCryptoCompare = props.onCryptoCompare,
@@ -88,7 +88,7 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
         onNewsTop = props.onNewsTop,
         _fClick = _ffClick(_this._hCloseQuery);
 
-    _this._hWebhose = _fClick(onWebhose);
+    _this._hWebz = _fClick(onWebz);
     _this._hStackTagged = _fClick(onStackTagged);
     _this._hStackSearch = _fClick(onStackSearch);
     _this._hCryptoCompare = _fClick(onCryptoCompare);
@@ -124,8 +124,7 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
         className: CL_PANEL_BROWSER,
         isShow: isQuery,
         onClose: this._hToggleQuery,
-        onWebhose: this._hWebhose,
-        onWebhoseBrodcast: this._hWebhoseBrodcast,
+        onWebz: this._hWebz,
         onStackTagged: this._hStackTagged,
         onStackSearch: this._hStackSearch,
         onCryptoCompare: this._hCryptoCompare,

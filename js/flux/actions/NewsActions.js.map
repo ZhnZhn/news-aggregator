@@ -1,1 +1,36 @@
-{"version":3,"sources":["../../../src/flux/actions/NewsActions.js"],"names":["TYPES","LOAD_NEWS","LOAD_NEWS_COMPLETED","LOAD_NEWS_FAILED","REMOVE_NEWS","REMOVE_ALL_NEWS","REMOVE_UNDER_NEWS","NewsActions","Reflux","createActions","children","listen","option","loadId","_conf","RouterApiConf","getApiConf","apiKey","adapter","api","Object","assign","completed","failed","msg","msgErr"],"mappings":";;;;;;;AAAA;;AAEA;;AACA;;;;AAEO,IAAMA,KAAK,GAAG;AACnBC,EAAAA,SAAS,EAAE,UADQ;AAEnBC,EAAAA,mBAAmB,EAAE,mBAFF;AAGnBC,EAAAA,gBAAgB,EAAE,gBAHC;AAKnBC,EAAAA,WAAW,EAAE,YALM;AAMnBC,EAAAA,eAAe,EAAE,eANE;AAOnBC,EAAAA,iBAAiB,EAAE;AAPA,CAAd;;;AAUP,IAAMC,WAAW,GAAGC,uBAAOC,aAAP,oDACjBT,KAAK,CAACC,SADW,IACE;AAClBS,EAAAA,QAAQ,EAAE,CAAC,WAAD,EAAc,QAAd;AADQ,CADF,wBAIjBV,KAAK,CAACI,WAJW,IAIG,EAJH,wBAKjBJ,KAAK,CAACK,eALW,IAKO,EALP,wBAMjBL,KAAK,CAACM,iBANW,IAMS,EANT,yBAApB;;AASAC,WAAW,CAACP,KAAK,CAACC,SAAP,CAAX,CAA6BU,MAA7B,CAAoC,UAASC,MAAT,EAAmB;AAAA,MAAVA,MAAU;AAAVA,IAAAA,MAAU,GAAH,EAAG;AAAA;;AAAA,gBAC9BA,MAD8B;AAAA,+BAC7CC,MAD6C;AAAA,MAC7CA,MAD6C,+BACtC,GADsC;AAAA,MAE/CC,KAF+C,GAEvCC,0BAAcC,UAAd,CAAyBH,MAAzB,CAFuC;AAAA,MAG7CI,MAH6C,GAGpBH,KAHoB,CAG7CG,MAH6C;AAAA,MAGrCC,OAHqC,GAGpBJ,KAHoB,CAGrCI,OAHqC;AAAA,MAG5BC,GAH4B,GAGpBL,KAHoB,CAG5BK,GAH4B;;AAIrD,MAAIF,MAAJ,EAAW;AACTG,IAAAA,MAAM,CAACC,MAAP,CAAcT,MAAd,EAAsB;AAAEK,MAAAA,MAAM,EAANA,MAAF;AAAUC,MAAAA,OAAO,EAAPA,OAAV;AAAmBC,MAAAA,GAAG,EAAHA;AAAnB,KAAtB;AACA,8BAASP,MAAT,EAAiB,KAAKU,SAAtB,EAAiC,KAAKC,MAAtC;AACD,GAHD,MAGO;AACL,SAAKA,MAAL,CAAY;AAAEC,MAAAA,GAAG,EAAEV,KAAK,CAACW;AAAb,KAAZ;AACD;AACF,CAVD;eAYelB,W","sourcesContent":["import Reflux from 'reflux-core'\r\n\r\nimport RouterApiConf from '../logic/RouterApiConf'\r\nimport loadNews from '../logic/loadNews'\r\n\r\nexport const TYPES = {\r\n  LOAD_NEWS: 'loadNews',\r\n  LOAD_NEWS_COMPLETED: 'loadNewsCompleted',\r\n  LOAD_NEWS_FAILED: 'loadNewsFailed',\r\n\r\n  REMOVE_NEWS: 'removeNews',\r\n  REMOVE_ALL_NEWS: 'removeAllNews',\r\n  REMOVE_UNDER_NEWS: 'removeUnderNews'\r\n}\r\n\r\nconst NewsActions = Reflux.createActions({\r\n  [TYPES.LOAD_NEWS] : {\r\n    children: ['completed', 'failed']\r\n  },\r\n  [TYPES.REMOVE_NEWS]: {},\r\n  [TYPES.REMOVE_ALL_NEWS]: {},\r\n  [TYPES.REMOVE_UNDER_NEWS]: {}\r\n})\r\n\r\nNewsActions[TYPES.LOAD_NEWS].listen(function(option={}){\r\n  const { loadId='N' } = option\r\n      , _conf = RouterApiConf.getApiConf(loadId)\r\n      , { apiKey, adapter, api } = _conf;\r\n  if (apiKey){\r\n    Object.assign(option, { apiKey, adapter, api })\r\n    loadNews(option, this.completed, this.failed)\r\n  } else {\r\n    this.failed({ msg: _conf.msgErr })\r\n  }\r\n})\r\n\r\nexport default NewsActions\r\n"],"file":"NewsActions.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/actions/NewsActions.js"
+ ],
+ "file": "../../../src/flux/actions/NewsActions.js",
+ "names": [
+  "_assign",
+  "Object",
+  "assign",
+  "TYPES",
+  "LOAD_NEWS",
+  "LOAD_NEWS_COMPLETED",
+  "LOAD_NEWS_FAILED",
+  "REMOVE_NEWS",
+  "REMOVE_ALL_NEWS",
+  "REMOVE_UNDER_NEWS",
+  "NewsActions",
+  "Reflux",
+  "createActions",
+  "children",
+  "listen",
+  "option",
+  "RouterApiConf",
+  "getApiConf",
+  "loadId",
+  "apiKey",
+  "adapter",
+  "api",
+  "msgErr",
+  "completed",
+  "failed",
+  "msg"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAEA;;AACA;;;;AAEA,IAAMA,OAAO,GAAGC,MAAM,CAACC,MAAvB;AAEO,IAAMC,KAAK,GAAG;AACnBC,EAAAA,SAAS,EAAE,UADQ;AAEnBC,EAAAA,mBAAmB,EAAE,mBAFF;AAGnBC,EAAAA,gBAAgB,EAAE,gBAHC;AAKnBC,EAAAA,WAAW,EAAE,YALM;AAMnBC,EAAAA,eAAe,EAAE,eANE;AAOnBC,EAAAA,iBAAiB,EAAE;AAPA,CAAd;;;AAUP,IAAMC,WAAW,GAAGC,uBAAOC,aAAP,oDACjBT,KAAK,CAACC,SADW,IACE;AAClBS,EAAAA,QAAQ,EAAE,CAAC,WAAD,EAAc,QAAd;AADQ,CADF,wBAIjBV,KAAK,CAACI,WAJW,IAIG,EAJH,wBAKjBJ,KAAK,CAACK,eALW,IAKO,EALP,wBAMjBL,KAAK,CAACM,iBANW,IAMS,EANT,yBAApB;;AASAC,WAAW,CAACP,KAAK,CAACC,SAAP,CAAX,CAA6BU,MAA7B,CAAoC,UAASC,MAAT,EAAmB;AAAA,MAAVA,MAAU;AAAVA,IAAAA,MAAU,GAAH,EAAG;AAAA;;AACrD,8BAKIC,0BAAcC,UAAd,CAAyBF,MAAM,CAACG,MAAP,IAAiB,GAA1C,CALJ;AAAA,MACEC,MADF,yBACEA,MADF;AAAA,MAEEC,OAFF,yBAEEA,OAFF;AAAA,MAGEC,GAHF,yBAGEA,GAHF;AAAA,MAIEC,MAJF,yBAIEA,MAJF;;AAMA,MAAIH,MAAJ,EAAW;AACTnB,IAAAA,OAAO,CAACe,MAAD,EAAS;AAAEI,MAAAA,MAAM,EAANA,MAAF;AAAUC,MAAAA,OAAO,EAAPA,OAAV;AAAmBC,MAAAA,GAAG,EAAHA;AAAnB,KAAT,CAAP;;AACA,8BAASN,MAAT,EAAiB,KAAKQ,SAAtB,EAAiC,KAAKC,MAAtC;AACD,GAHD,MAGO;AACL,SAAKA,MAAL,CAAY;AAAEC,MAAAA,GAAG,EAAEH;AAAP,KAAZ;AACD;AACF,CAbD;eAeeZ,W"
+}

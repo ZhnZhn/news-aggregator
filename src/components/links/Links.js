@@ -5,13 +5,13 @@ import PoweredBy from './PoweredBy'
 
 const CryptoCompare = withProps({
   title: "CryptoCompare",
-  href: "https://cryptocompare.com/",
+  href: "https://cryptocompare.com",
   tabIndex: "-1"
 })(BaseComp)
 
 const CoinStats = withProps({
   title: "CoinStats",
-  href: "https://coinstats.app/",
+  href: "https://coinstats.app",
   tabIndex: "-1"
 })(BaseComp)
 
@@ -23,37 +23,37 @@ const Messari = withProps({
 
 export const NewsApi = withProps({
   title: "NewsApi.org",
-  href: "https://newsapi.org/",
+  href: "https://newsapi.org",
   tabIndex: "-1"
 })(BaseComp)
 
-export const WebhoseIo = withProps({
-  title: "Webhose.io",
-  href: "https://webhose.io/",
+export const Webz = withProps({
+  title: "Webz.io",
+  href: "https://webz.io",
   tabIndex: "-1"
 })(BaseComp)
 
 export const StackOverflow = withProps({
   title: "StackOverflow",
-  href: "https://stackoverflow.com/",
+  href: "https://stackoverflow.com",
   tabIndex: "-1"
 })(BaseComp)
 
 export const IexApi = withProps({
   title: "IEX Cloud",
-  href: "https://iexcloud.io/",
+  href: "https://iexcloud.io",
   tabIndex: "-1"
 })(BaseComp)
 
 const FmpApi = withProps({
   title: "FMP",
-  href: "https://financialmodelingprep.com/",
+  href: "https://financialmodelingprep.com",
   tabIndex: "-1"
 })(BaseComp)
 
 const Link = {
   NewsApi,
-  WebhoseIo,
+  Webz,
   StackOverflow,
   IexApi,
   FmpApi,

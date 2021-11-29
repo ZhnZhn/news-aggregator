@@ -6,7 +6,7 @@ var LoadType = {
   IEX: 'IEX',
   FMP: 'FMP',
   NEWS: 'NEWS',
-  WEBHOSE: 'WEBHOSE'
+  WEBZ: 'WEBZ'
 };
 exports.LoadType = LoadType;
 //# sourceMappingURL=Type.js.map

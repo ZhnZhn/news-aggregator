@@ -26,38 +26,36 @@ var _CardUiTheme = _interopRequireDefault(require("./CardUiTheme"));
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
-var S = {
-  MODAL: {
-    position: 'static',
-    width: 340,
-    height: 410,
-    margin: '70px auto 0px'
-  },
-  DIV_BT: {
-    marginTop: 26,
-    marginBottom: 4
-  },
-  TABS: {
-    marginLeft: 24,
-    textAlign: 'left'
-  },
-  CARD_ROOT: {
-    position: 'relative',
-    height: 315
-  },
-  CARD_BUTTONS: {
-    position: 'absolute',
-    right: 4,
-    bottom: 0,
-    cursor: 'default'
-  },
-  SELECT_WIDTH: {
-    width: 300
-  },
-  INPUT_WIDTH: {
-    width: 315,
-    marginLeft: 8
-  }
+var _assign = Object.assign;
+var S_MODAL = {
+  position: 'static',
+  width: 340,
+  height: 410,
+  margin: '70px auto 0px'
+},
+    S_DIV_BT = {
+  margin: '26px 0 4px 0'
+},
+    S_TABS = {
+  marginLeft: 24,
+  textAlign: 'left'
+},
+    S_CARD_ROOT = {
+  position: 'relative',
+  height: 315
+},
+    S_CARD_BUTTONS = {
+  position: 'absolute',
+  right: 4,
+  bottom: 0,
+  cursor: 'default'
+},
+    S_SELECT_WIDTH = {
+  width: 300
+},
+    S_INPUT_WIDTH = {
+  width: 315,
+  marginLeft: 8
 };
 var MIN_FS = 15;
 var MAX_FS = 18;
@@ -119,7 +117,7 @@ var SettingsDialog = /*#__PURE__*/function (_Component) {
     isShow: PropTypes.bool,
     data: PropTypes.shape({
       setNewsKey: PropTypes.func,
-      setWebhoseKey: PropTypes.func,
+      setWebzKey: PropTypes.func,
     }),
     onClose: PropTypes.func
   }
@@ -141,10 +139,11 @@ var SettingsDialog = /*#__PURE__*/function (_Component) {
         TS = theme.createStyle(_Dialog["default"]),
         _TS = JSON.parse(JSON.stringify(TS));
 
-    Object.assign(_TS.SELECT.ROOT, S.SELECT_WIDTH);
+    _assign(_TS.SELECT.ROOT, S_SELECT_WIDTH);
+
     return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ModalDialog, {
-      style: (0, _extends2["default"])({}, S.MODAL, TS.R_DIALOG),
-      divBtStyle: S.DIV_BT,
+      style: (0, _extends2["default"])({}, S_MODAL, TS.R_DIALOG),
+      divBtStyle: S_DIV_BT,
       styleCaption: TS.BROWSER_CAPTION,
       styleButton: TS.BT,
       caption: "User Settings",
@@ -154,15 +153,15 @@ var SettingsDialog = /*#__PURE__*/function (_Component) {
       onClose: onClose,
       children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].TabPane, {
         width: "100%",
-        tabsStyle: S.TABS,
+        tabsStyle: S_TABS,
         isShow: isShow,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Tab, {
           title: "API Keys",
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_CardApiKeys["default"], {
             ref: this._refInput,
-            style: S.CARD_ROOT,
-            fieldStyle: (0, _extends2["default"])({}, TS.INPUT_ROOT, S.INPUT_WIDTH),
-            buttonsStyle: S.CARD_BUTTONS,
+            style: S_CARD_ROOT,
+            fieldStyle: (0, _extends2["default"])({}, TS.INPUT_ROOT, S_INPUT_WIDTH),
+            buttonsStyle: S_CARD_BUTTONS,
             TS: TS,
             data: data,
             onClose: onClose
@@ -170,8 +169,8 @@ var SettingsDialog = /*#__PURE__*/function (_Component) {
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Tab, {
           title: "UI Theme",
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_CardUiTheme["default"], {
-            style: S.CARD_ROOT,
-            buttonsStyle: S.CARD_BUTTONS,
+            style: S_CARD_ROOT,
+            buttonsStyle: S_CARD_BUTTONS,
             TS: _TS,
             onSetTheme: this._selectTheme,
             onSetFontSize: this._selectFontSize,

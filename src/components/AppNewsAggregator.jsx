@@ -30,7 +30,7 @@ class AppNewsAggregator extends Component {
     super(props)
     this.showNewsBrowser = _fShowBrowser(MENU.NEWS)
 
-    this.showWebhoseWeb = _fShowDialog(QUERY.WEBHOSE_WEB)
+    this.showWebz = _fShowDialog(QUERY.WEBZ)
     this.showStackTagged = _fShowDialog(QUERY.STACK_TAGGED)
     this.showStackSearch= _fShowDialog(QUERY.STACK_SEARCH)
     this.showCryptoCompare = _fShowDialog(QUERY.CRYPTO_COMPARE)
@@ -75,7 +75,7 @@ class AppNewsAggregator extends Component {
             LOADING_ACTIONS={LOADING_ACTIONS}
             onChangeTheme={Actions.changeTheme}
             onNewsSources={this.showNewsBrowser}
-            onWebhose={this.showWebhoseWeb}            
+            onWebz={this.showWebz}
             onStackTagged={this.showStackTagged}
             onStackSearch={this.showStackSearch}
             onCryptoCompare={this.showCryptoCompare}

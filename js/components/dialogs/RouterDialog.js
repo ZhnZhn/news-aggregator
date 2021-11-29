@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _DialogType = _interopRequireDefault(require("./DialogType1"));
 
-var _WebhoseQueryDialog = _interopRequireDefault(require("./WebhoseQueryDialog"));
+var _WebzQueryDialog = _interopRequireDefault(require("./WebzQueryDialog"));
 
 var _StackTaggedDialog = _interopRequireDefault(require("./StackTaggedDialog"));
 
@@ -30,7 +30,7 @@ var _MessariDialog = _interopRequireDefault(require("./MessariDialog"));
 var R = {
   DEFAULT: _DialogType["default"],
   DialogType1: _DialogType["default"],
-  WebhoseQuery: _WebhoseQueryDialog["default"],
+  WebzQuery: _WebzQueryDialog["default"],
   StackTagged: _StackTaggedDialog["default"],
   StackSearch: _StackSearchDialog["default"],
   CryptoCompareNews: _CryptoCompareNewsDialog["default"],

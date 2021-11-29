@@ -1,6 +1,6 @@
 
 import DialogType1 from './DialogType1';
-import WebhoseQuery from './WebhoseQueryDialog';
+import WebzQuery from './WebzQueryDialog';
 import StackTagged from './StackTaggedDialog';
 import StackSearch from './StackSearchDialog';
 import IexNews from './IexNewsDialog';
@@ -14,7 +14,7 @@ import MessariNews from './MessariDialog';
 const R = {
   DEFAULT: DialogType1,
   DialogType1,
-  WebhoseQuery,
+  WebzQuery,
   StackTagged, StackSearch,
   CryptoCompareNews,
   CoinStatsNews,

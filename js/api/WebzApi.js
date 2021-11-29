@@ -2,10 +2,8 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
-var C = {
-  ROOT_URL: 'https://webhose.io/',
-  NEWS_SLICE: 'filterWebContent'
-};
+var ROOT_URL = 'https://api.webz.io/',
+    NEWS_SLICE = 'filterWebContent';
 var DF_SITE_TYPE = 'news';
 var DF_IN_TITLE = 'Weather';
 var DF_BEFORE_DAYS = 2;
@@ -28,10 +26,10 @@ var _crNewsUrl = function _crNewsUrl(option) {
       _inTitle = inTitle || DF_IN_TITLE;
 
   option.apiKey = void 0;
-  return "" + C.ROOT_URL + C.NEWS_SLICE + "?token=" + apiKey + "&format=json&sort=crawled&ts=" + _ts + "&q=language:english thread.title:" + _inTitle + " site_type:" + siteType;
+  return "" + ROOT_URL + NEWS_SLICE + "?token=" + apiKey + "&format=json&sort=crawled&ts=" + _ts + "&q=language:english thread.title:" + _inTitle + " site_type:" + siteType;
 };
 
-var WebhoseApi = {
+var WebzApi = {
   getRequestUrl: function getRequestUrl(option) {
     return _crNewsUrl(option);
   },
@@ -48,6 +46,6 @@ var WebhoseApi = {
     return true;
   }
 };
-var _default = WebhoseApi;
+var _default = WebzApi;
 exports["default"] = _default;
-//# sourceMappingURL=WebhoseApi.js.map
+//# sourceMappingURL=WebzApi.js.map

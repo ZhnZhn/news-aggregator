@@ -22,17 +22,17 @@ var STR_EMPTY = '',
     _onTestIex = _hasLengthOrEmpty(35),
     _onTestFmp = _hasLengthOrEmpty(32),
     _onTestNews = _hasLengthOrEmpty(32),
-    _onTestWebhose = _hasLengthOrEmpty(36),
+    _onTestWebz = _hasLengthOrEmpty(36),
     SET_IEX_KEY = 'setIexKey',
     SET_FMP_KEY = 'setFmpKey',
     SET_NEWS_KEY = 'setNewsKey',
-    SET_WEBHOSE_KEY = 'setWebhoseKey',
+    SET_WEBZ_KEY = 'setWebzKey',
     _getKeySetters = function _getKeySetters(data) {
   return {
     setIex: (0, _safeFn["default"])(data, SET_IEX_KEY),
     setFmp: (0, _safeFn["default"])(data, SET_FMP_KEY),
     setNews: (0, _safeFn["default"])(data, SET_NEWS_KEY),
-    setWebhose: (0, _safeFn["default"])(data, SET_WEBHOSE_KEY)
+    setWebz: (0, _safeFn["default"])(data, SET_WEBZ_KEY)
   };
 };
 
@@ -62,7 +62,7 @@ var CardApiKeys = function CardApiKeys(props) {
   var _refInputIex = (0, _react.useRef)(),
       _refInputFmp = (0, _react.useRef)(),
       _refInputNews = (0, _react.useRef)(),
-      _refInputWebhose = (0, _react.useRef)(),
+      _refInputWebz = (0, _react.useRef)(),
       style = props.style,
       fieldStyle = props.fieldStyle,
       buttonsStyle = props.buttonsStyle,
@@ -73,22 +73,22 @@ var CardApiKeys = function CardApiKeys(props) {
       setIex = _getKeySetters2.setIex,
       setFmp = _getKeySetters2.setFmp,
       setNews = _getKeySetters2.setNews,
-      setWebhose = _getKeySetters2.setWebhose,
+      setWebz = _getKeySetters2.setWebz,
       _hClearAll = (0, _react.useCallback)(function () {
     setIex('');
     setFmp('');
     setNews('');
-    setWebhose('');
+    setWebz('');
 
-    _clearInputRefs([_refInputIex, _refInputFmp, _refInputNews, _refInputWebhose]);
+    _clearInputRefs([_refInputIex, _refInputFmp, _refInputNews, _refInputWebz]);
   }, []),
       _hSetAll = (0, _react.useCallback)(function () {
     setIex(_getRefCompValue(_refInputIex));
     setFmp(_getRefCompValue(_refInputFmp));
     setNews(_getRefCompValue(_refInputNews));
-    setWebhose(_getRefCompValue(_refInputWebhose));
+    setWebz(_getRefCompValue(_refInputWebz));
 
-    _setWasEnterRefs([_refInputIex, _refInputFmp, _refInputNews, _refInputWebhose]);
+    _setWasEnterRefs([_refInputIex, _refInputFmp, _refInputNews, _refInputWebz]);
   }, []);
 
   if (!_isVisible(props)) {
@@ -129,13 +129,13 @@ var CardApiKeys = function CardApiKeys(props) {
       })
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("form", {
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].PasswordField, {
-        ref: _refInputWebhose,
+        ref: _refInputWebz,
         style: fieldStyle,
-        name: "webhose",
-        caption: "Webhose API Key (36 Symbols)",
+        name: "webz.io",
+        caption: "Webz.IO API Key (36 Symbols)",
         maxLength: 36,
-        onTest: _onTestWebhose,
-        onEnter: setWebhose
+        onTest: _onTestWebz,
+        onEnter: setWebz
       })
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       style: buttonsStyle,

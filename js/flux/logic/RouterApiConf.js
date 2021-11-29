@@ -42,10 +42,10 @@ var RouterApiConf = {
 
       case 'W':
         return {
-          apiKey: _Store["default"].getWebhoseKey(),
-          api: _Api["default"].Webhose,
-          adapter: _Adapters["default"].Webhose,
-          msgErr: "Webhose.io API " + MSG_ERR_TAIL
+          apiKey: _Store["default"].getWebzKey(),
+          api: _Api["default"].Webz,
+          adapter: _Adapters["default"].Webz,
+          msgErr: "Webz.io API " + MSG_ERR_TAIL
         };
 
       case 'SO':

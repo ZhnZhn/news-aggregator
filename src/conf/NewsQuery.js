@@ -1,17 +1,17 @@
 
 const NEWS_QUERY = {
-  WEBHOSE_WEB: {
-    "type": "W_WEBHOSE_WEB",
-    "dialogType": "WebhoseQuery",
-    "paneCaption": "Webhose Query",
-    "paneId": "webhose",
+  WEBZ: {
+    "type": "W_WEBZ_QUERY",
+    "dialogType": "WebzQuery",
+    "paneCaption": "Webz.io Query",
+    "paneId": "webz",
     "loadId": "W",
     "requestType": "NEWS",
     "dialogProps": {
-       "caption": "Webhose Query",
-       "source": "webhose"
+       "caption": "Webz.io Query",
+       "source": "webz"
      }
-  },  
+  },
   STACK_TAGGED: {
     "type": "SO_TAGGED",
     "dialogType": "StackTagged",
@@ -19,8 +19,7 @@ const NEWS_QUERY = {
     "paneId": "stack_tagged",
     "paneType": "SO_TAGGED",
     "dialogProps": {
-       "caption": "Tagged Questions",
-       //"source": "webhose"
+       "caption": "Tagged Questions"
      }
   },
   STACK_SEARCH: {
@@ -30,8 +29,7 @@ const NEWS_QUERY = {
     "paneId": "stack_search",
     "paneType": "SO_SEARCH",
     "dialogProps": {
-       "caption": "Search Questions",
-       //"source": "webhose"
+       "caption": "Search Questions"
      }
   },
 
@@ -72,8 +70,7 @@ const NEWS_QUERY = {
     "paneId": "iex_news",
     "paneType": "IEX_NEWS",
     "dialogProps": {
-       "caption": "IEX Cloud: Stock News",
-       //"source": "iex_news"
+       "caption": "IEX Cloud: Stock News"
      }
   },
   FMP: {
@@ -83,8 +80,7 @@ const NEWS_QUERY = {
     "paneId": "fmp_news",
     "paneType": "FMP_NEWS",
     "dialogProps": {
-       "caption": "FMP: Stock News",
-       //"source": "iex_news"
+       "caption": "FMP: Stock News"
      }
   },
   NEWS_SEARCH: {

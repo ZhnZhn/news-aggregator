@@ -13,6 +13,7 @@ var _loadNews = _interopRequireDefault(require("../logic/loadNews"));
 
 var _Reflux$createActions;
 
+var _assign = Object.assign;
 var TYPES = {
   LOAD_NEWS: 'loadNews',
   LOAD_NEWS_COMPLETED: 'loadNewsCompleted',
@@ -32,24 +33,23 @@ NewsActions[TYPES.LOAD_NEWS].listen(function (option) {
     option = {};
   }
 
-  var _option = option,
-      _option$loadId = _option.loadId,
-      loadId = _option$loadId === void 0 ? 'N' : _option$loadId,
-      _conf = _RouterApiConf["default"].getApiConf(loadId),
-      apiKey = _conf.apiKey,
-      adapter = _conf.adapter,
-      api = _conf.api;
+  var _RouterApiConf$getApi = _RouterApiConf["default"].getApiConf(option.loadId || 'N'),
+      apiKey = _RouterApiConf$getApi.apiKey,
+      adapter = _RouterApiConf$getApi.adapter,
+      api = _RouterApiConf$getApi.api,
+      msgErr = _RouterApiConf$getApi.msgErr;
 
   if (apiKey) {
-    Object.assign(option, {
+    _assign(option, {
       apiKey: apiKey,
       adapter: adapter,
       api: api
     });
+
     (0, _loadNews["default"])(option, this.completed, this.failed);
   } else {
     this.failed({
-      msg: _conf.msgErr
+      msg: msgErr
     });
   }
 });

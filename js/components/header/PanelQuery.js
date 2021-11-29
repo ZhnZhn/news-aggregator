@@ -63,7 +63,7 @@ var PanelQuery = /*#__PURE__*/function (_Component) {
         onNewsTop = _this$props.onNewsTop,
         onStackTagged = _this$props.onStackTagged,
         onStackSearch = _this$props.onStackSearch,
-        onWebhose = _this$props.onWebhose,
+        onWebz = _this$props.onWebz,
         onClose = _this$props.onClose;
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].ModalPopup, {
       isShow: isShow,
@@ -118,8 +118,8 @@ var PanelQuery = /*#__PURE__*/function (_Component) {
         onClose: onClose
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
         className: CL_ITEM,
-        caption: "Webhose: News, Blogs",
-        onClick: onWebhose,
+        caption: "Webz.io: News, Blogs",
+        onClick: onWebz,
         onClose: onClose
       })]
     });

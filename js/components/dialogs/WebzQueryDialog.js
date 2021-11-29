@@ -13,6 +13,8 @@ var _useRefClose2 = _interopRequireDefault(require("./hooks/useRefClose"));
 
 var _useRefInput3 = _interopRequireDefault(require("./hooks/useRefInput"));
 
+var _useRefSelectOption2 = _interopRequireDefault(require("./hooks/useRefSelectOption"));
+
 var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"));
 
 var _Comp = _interopRequireDefault(require("../Comp"));
@@ -21,10 +23,22 @@ var _InputBeforeDays = _interopRequireDefault(require("./InputBeforeDays"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var DF_IN_TITLE = 'Weather',
+var SITE_TYPE_OPTIONS = [{
+  caption: 'News',
+  value: 'news'
+}, {
+  caption: 'Blogs',
+  value: 'blogs'
+}],
+    DF_SITE_TYPE = SITE_TYPE_OPTIONS[0],
+    DF_IN_TITLE = 'Weather',
     DF_BEFORE_DAYS = 2;
 
-var WebhoseBrodcastDialog = function WebhoseBrodcastDialog(_ref) {
+var _getRefValue = function _getRefValue(ref) {
+  return ref.value;
+};
+
+var WebzQueryDialog = function WebzQueryDialog(_ref) {
   var isShow = _ref.isShow,
       type = _ref.type,
       source = _ref.source,
@@ -39,22 +53,20 @@ var WebhoseBrodcastDialog = function WebhoseBrodcastDialog(_ref) {
       _useRefInput = (0, _useRefInput3["default"])(DF_IN_TITLE),
       _refInputInTitle = _useRefInput[0],
       _getInputInTitle = _useRefInput[1],
+      _useRefSelectOption = (0, _useRefSelectOption2["default"])(DF_SITE_TYPE.value),
+      _refSiteType = _useRefSelectOption[0],
+      _selectSiteType = _useRefSelectOption[1],
       _useRefInput2 = (0, _useRefInput3["default"])(DF_BEFORE_DAYS),
       _refInputBeforeDays = _useRefInput2[0],
       _getInputBeforeDays = _useRefInput2[1],
       _hLoad = (0, _react.useCallback)(function () {
-    var _ref2 = itemConf || {},
-        requestType = _ref2.requestType,
-        loadId = _ref2.loadId;
-
     onLoad({
       type: type,
       source: source,
-      requestType: requestType,
       itemConf: itemConf,
-      loadId: loadId,
-      query: _getInputInTitle(),
-      //siteType: siteType,
+      loadId: "W",
+      inTitle: _getInputInTitle(),
+      siteType: _getRefValue(_refSiteType),
       beforeDays: _getInputBeforeDays()
     });
 
@@ -70,7 +82,7 @@ var WebhoseBrodcastDialog = function WebhoseBrodcastDialog(_ref) {
     rootStyle: TS.R_DIALOG,
     browserCaptionStyle: TS.BROWSER_CAPTION,
     styleButton: TS.BT,
-    caption: "Webhose: Broadcast",
+    caption: "Webz.io: News, Blogs",
     isShow: isShow,
     commandButtons: _commandButtons,
     onKeyDown: _hKeyDown,
@@ -81,17 +93,23 @@ var WebhoseBrodcastDialog = function WebhoseBrodcastDialog(_ref) {
       ref: _refInputInTitle,
       caption: "In Title (Default: Weather)",
       initValue: DF_IN_TITLE
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+      caption: "Site Type",
+      initItem: DF_SITE_TYPE,
+      options: SITE_TYPE_OPTIONS,
+      styleConfig: TS.SELECT,
+      onSelect: _selectSiteType
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputBeforeDays["default"], {
       ref: _refInputBeforeDays,
       style: TS.INPUT_ROOT,
       initValue: DF_BEFORE_DAYS
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
       rootStyle: TS.POWERED_BY,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.WebhoseIo, {})
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.Webz, {})
     })]
   });
 };
 
-var _default = WebhoseBrodcastDialog;
+var _default = WebzQueryDialog;
 exports["default"] = _default;
-//# sourceMappingURL=WebhoseBrodcastDialog.js.map
+//# sourceMappingURL=WebzQueryDialog.js.map

@@ -2,9 +2,7 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
-var C = {
-  W: 'webhose'
-};
+var WEBZ_ID = "webz";
 
 var _toNews = function _toNews(json) {
   var posts = json.posts,
@@ -19,7 +17,7 @@ var _toNews = function _toNews(json) {
 
     if (_title && !_hm[_title]) {
       post.articleId = post.uuid;
-      post.source = C.W;
+      post.source = WEBZ_ID;
       post.description = post.text;
       post.publishedAt = post.published;
       arr.push(post);
@@ -27,13 +25,13 @@ var _toNews = function _toNews(json) {
     }
   });
   return {
-    source: C.W,
+    source: WEBZ_ID,
     articles: arr,
     sortBy: requestsLeft
   };
 };
 
-var WebhoseAdapter = {
+var WebzAdapter = {
   toArticles: function toArticles(posts, source) {
     if (posts === void 0) {
       posts = [];
@@ -48,7 +46,7 @@ var WebhoseAdapter = {
 
       if (_title && !_hm[_title]) {
         post.articleId = post.uuid;
-        post.source = "webhose";
+        post.source = WEBZ_ID;
         post.description = post.text;
         post.publishedAt = post.published;
         arr.push(post);
@@ -61,6 +59,6 @@ var WebhoseAdapter = {
     return _toNews(json, option);
   }
 };
-var _default = WebhoseAdapter;
+var _default = WebzAdapter;
 exports["default"] = _default;
-//# sourceMappingURL=WebhoseAdapter.js.map
+//# sourceMappingURL=WebzAdapter.js.map

@@ -1,1 +1,15 @@
-{"version":3,"sources":["../../src/conf/Type.js"],"names":["LoadType","IEX","FMP","NEWS","WEBHOSE"],"mappings":";;;;AACO,IAAMA,QAAQ,GAAG;AACtBC,EAAAA,GAAG,EAAE,KADiB;AAEtBC,EAAAA,GAAG,EAAE,KAFiB;AAGtBC,EAAAA,IAAI,EAAE,MAHgB;AAItBC,EAAAA,OAAO,EAAE;AAJa,CAAjB","sourcesContent":["\r\nexport const LoadType = {\r\n  IEX: 'IEX',\r\n  FMP: 'FMP',\r\n  NEWS: 'NEWS',\r\n  WEBHOSE: 'WEBHOSE'\r\n};\r\n"],"file":"Type.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/conf/Type.js"
+ ],
+ "file": "../../src/conf/Type.js",
+ "names": [
+  "LoadType",
+  "IEX",
+  "FMP",
+  "NEWS",
+  "WEBZ"
+ ],
+ "mappings": ";;;;AACO,IAAMA,QAAQ,GAAG;AACtBC,EAAAA,GAAG,EAAE,KADiB;AAEtBC,EAAAA,GAAG,EAAE,KAFiB;AAGtBC,EAAAA,IAAI,EAAE,MAHgB;AAItBC,EAAAA,IAAI,EAAE;AAJgB,CAAjB"
+}

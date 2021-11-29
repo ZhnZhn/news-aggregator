@@ -1,1 +1,24 @@
-{"version":3,"sources":["../../../src/components/links/Links.js"],"names":["CryptoCompare","title","href","tabIndex","BaseComp","CoinStats","Messari","NewsApi","WebhoseIo","StackOverflow","IexApi","FmpApi","Link","PoweredBy"],"mappings":";;;;;;;AAAA;;AAEA;;AACA;;AAEA,IAAMA,aAAa,GAAG,2BAAU;AAC9BC,EAAAA,KAAK,EAAE,eADuB;AAE9BC,EAAAA,IAAI,EAAE,4BAFwB;AAG9BC,EAAAA,QAAQ,EAAE;AAHoB,CAAV,EAInBC,gBAJmB,CAAtB;AAMA,IAAMC,SAAS,GAAG,2BAAU;AAC1BJ,EAAAA,KAAK,EAAE,WADmB;AAE1BC,EAAAA,IAAI,EAAE,wBAFoB;AAG1BC,EAAAA,QAAQ,EAAE;AAHgB,CAAV,EAIfC,gBAJe,CAAlB;AAMA,IAAME,OAAO,GAAG,2BAAU;AACxBL,EAAAA,KAAK,EAAE,SADiB;AAExBC,EAAAA,IAAI,EAAE,oBAFkB;AAGxBC,EAAAA,QAAQ,EAAE;AAHc,CAAV,EAIbC,gBAJa,CAAhB;AAMO,IAAMG,OAAO,GAAG,2BAAU;AAC/BN,EAAAA,KAAK,EAAE,aADwB;AAE/BC,EAAAA,IAAI,EAAE,sBAFyB;AAG/BC,EAAAA,QAAQ,EAAE;AAHqB,CAAV,EAIpBC,gBAJoB,CAAhB;;AAMA,IAAMI,SAAS,GAAG,2BAAU;AACjCP,EAAAA,KAAK,EAAE,YAD0B;AAEjCC,EAAAA,IAAI,EAAE,qBAF2B;AAGjCC,EAAAA,QAAQ,EAAE;AAHuB,CAAV,EAItBC,gBAJsB,CAAlB;;AAMA,IAAMK,aAAa,GAAG,2BAAU;AACrCR,EAAAA,KAAK,EAAE,eAD8B;AAErCC,EAAAA,IAAI,EAAE,4BAF+B;AAGrCC,EAAAA,QAAQ,EAAE;AAH2B,CAAV,EAI1BC,gBAJ0B,CAAtB;;AAMA,IAAMM,MAAM,GAAG,2BAAU;AAC9BT,EAAAA,KAAK,EAAE,WADuB;AAE9BC,EAAAA,IAAI,EAAE,sBAFwB;AAG9BC,EAAAA,QAAQ,EAAE;AAHoB,CAAV,EAInBC,gBAJmB,CAAf;;AAMP,IAAMO,MAAM,GAAG,2BAAU;AACvBV,EAAAA,KAAK,EAAE,KADgB;AAEvBC,EAAAA,IAAI,EAAE,oCAFiB;AAGvBC,EAAAA,QAAQ,EAAE;AAHa,CAAV,EAIZC,gBAJY,CAAf;AAMA,IAAMQ,IAAI,GAAG;AACXL,EAAAA,OAAO,EAAPA,OADW;AAEXC,EAAAA,SAAS,EAATA,SAFW;AAGXC,EAAAA,aAAa,EAAbA,aAHW;AAIXC,EAAAA,MAAM,EAANA,MAJW;AAKXC,EAAAA,MAAM,EAANA,MALW;AAMXX,EAAAA,aAAa,EAAbA,aANW;AAOXK,EAAAA,SAAS,EAATA,SAPW;AAQXC,EAAAA,OAAO,EAAPA,OARW;AASXO,EAAAA,SAAS,EAATA;AATW,CAAb;eAYeD,I","sourcesContent":["import withProps from '../hoc/withProps'\r\n\r\nimport BaseComp from '../zhn-atoms/Link'\r\nimport PoweredBy from './PoweredBy'\r\n\r\nconst CryptoCompare = withProps({\r\n  title: \"CryptoCompare\",\r\n  href: \"https://cryptocompare.com/\",\r\n  tabIndex: \"-1\"\r\n})(BaseComp)\r\n\r\nconst CoinStats = withProps({\r\n  title: \"CoinStats\",\r\n  href: \"https://coinstats.app/\",\r\n  tabIndex: \"-1\"\r\n})(BaseComp)\r\n\r\nconst Messari = withProps({\r\n  title: \"Messari\",\r\n  href: \"https://messari.io\",\r\n  tabIndex: \"-1\"\r\n})(BaseComp)\r\n\r\nexport const NewsApi = withProps({\r\n  title: \"NewsApi.org\",\r\n  href: \"https://newsapi.org/\",\r\n  tabIndex: \"-1\"\r\n})(BaseComp)\r\n\r\nexport const WebhoseIo = withProps({\r\n  title: \"Webhose.io\",\r\n  href: \"https://webhose.io/\",\r\n  tabIndex: \"-1\"\r\n})(BaseComp)\r\n\r\nexport const StackOverflow = withProps({\r\n  title: \"StackOverflow\",\r\n  href: \"https://stackoverflow.com/\",\r\n  tabIndex: \"-1\"\r\n})(BaseComp)\r\n\r\nexport const IexApi = withProps({\r\n  title: \"IEX Cloud\",\r\n  href: \"https://iexcloud.io/\",\r\n  tabIndex: \"-1\"\r\n})(BaseComp)\r\n\r\nconst FmpApi = withProps({\r\n  title: \"FMP\",\r\n  href: \"https://financialmodelingprep.com/\",\r\n  tabIndex: \"-1\"\r\n})(BaseComp)\r\n\r\nconst Link = {\r\n  NewsApi,\r\n  WebhoseIo,\r\n  StackOverflow,\r\n  IexApi,\r\n  FmpApi,\r\n  CryptoCompare,\r\n  CoinStats,\r\n  Messari,\r\n  PoweredBy\r\n};\r\n\r\nexport default Link\r\n"],"file":"Links.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/links/Links.js"
+ ],
+ "file": "../../../src/components/links/Links.js",
+ "names": [
+  "CryptoCompare",
+  "title",
+  "href",
+  "tabIndex",
+  "BaseComp",
+  "CoinStats",
+  "Messari",
+  "NewsApi",
+  "Webz",
+  "StackOverflow",
+  "IexApi",
+  "FmpApi",
+  "Link",
+  "PoweredBy"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAEA;;AACA;;AAEA,IAAMA,aAAa,GAAG,2BAAU;AAC9BC,EAAAA,KAAK,EAAE,eADuB;AAE9BC,EAAAA,IAAI,EAAE,2BAFwB;AAG9BC,EAAAA,QAAQ,EAAE;AAHoB,CAAV,EAInBC,gBAJmB,CAAtB;AAMA,IAAMC,SAAS,GAAG,2BAAU;AAC1BJ,EAAAA,KAAK,EAAE,WADmB;AAE1BC,EAAAA,IAAI,EAAE,uBAFoB;AAG1BC,EAAAA,QAAQ,EAAE;AAHgB,CAAV,EAIfC,gBAJe,CAAlB;AAMA,IAAME,OAAO,GAAG,2BAAU;AACxBL,EAAAA,KAAK,EAAE,SADiB;AAExBC,EAAAA,IAAI,EAAE,oBAFkB;AAGxBC,EAAAA,QAAQ,EAAE;AAHc,CAAV,EAIbC,gBAJa,CAAhB;AAMO,IAAMG,OAAO,GAAG,2BAAU;AAC/BN,EAAAA,KAAK,EAAE,aADwB;AAE/BC,EAAAA,IAAI,EAAE,qBAFyB;AAG/BC,EAAAA,QAAQ,EAAE;AAHqB,CAAV,EAIpBC,gBAJoB,CAAhB;;AAMA,IAAMI,IAAI,GAAG,2BAAU;AAC5BP,EAAAA,KAAK,EAAE,SADqB;AAE5BC,EAAAA,IAAI,EAAE,iBAFsB;AAG5BC,EAAAA,QAAQ,EAAE;AAHkB,CAAV,EAIjBC,gBAJiB,CAAb;;AAMA,IAAMK,aAAa,GAAG,2BAAU;AACrCR,EAAAA,KAAK,EAAE,eAD8B;AAErCC,EAAAA,IAAI,EAAE,2BAF+B;AAGrCC,EAAAA,QAAQ,EAAE;AAH2B,CAAV,EAI1BC,gBAJ0B,CAAtB;;AAMA,IAAMM,MAAM,GAAG,2BAAU;AAC9BT,EAAAA,KAAK,EAAE,WADuB;AAE9BC,EAAAA,IAAI,EAAE,qBAFwB;AAG9BC,EAAAA,QAAQ,EAAE;AAHoB,CAAV,EAInBC,gBAJmB,CAAf;;AAMP,IAAMO,MAAM,GAAG,2BAAU;AACvBV,EAAAA,KAAK,EAAE,KADgB;AAEvBC,EAAAA,IAAI,EAAE,mCAFiB;AAGvBC,EAAAA,QAAQ,EAAE;AAHa,CAAV,EAIZC,gBAJY,CAAf;AAMA,IAAMQ,IAAI,GAAG;AACXL,EAAAA,OAAO,EAAPA,OADW;AAEXC,EAAAA,IAAI,EAAJA,IAFW;AAGXC,EAAAA,aAAa,EAAbA,aAHW;AAIXC,EAAAA,MAAM,EAANA,MAJW;AAKXC,EAAAA,MAAM,EAANA,MALW;AAMXX,EAAAA,aAAa,EAAbA,aANW;AAOXK,EAAAA,SAAS,EAATA,SAPW;AAQXC,EAAAA,OAAO,EAAPA,OARW;AASXO,EAAAA,SAAS,EAATA;AATW,CAAb;eAYeD,I"
+}

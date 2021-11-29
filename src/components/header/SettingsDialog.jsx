@@ -10,40 +10,39 @@ import A from '../Comp'
 import CardApiKeys from './CardApiKeys'
 import CardUiTheme from './CardUiTheme'
 
-const S = {
-  MODAL: {
-    position: 'static',
-    width: 340,
-    height: 410,
-    margin: '70px auto 0px'
-  },
-  DIV_BT: {
-    marginTop: 26,
-    marginBottom: 4
-  },
+const _assign = Object.assign;
 
-  TABS: {
-    marginLeft: 24,
-    textAlign: 'left'
-  },  
-  CARD_ROOT: {
-    position: 'relative',
-    height: 315
-  },
-  CARD_BUTTONS: {
-    position: 'absolute',
-    right: 4,
-    bottom: 0,
-    cursor: 'default'
-  },
-  SELECT_WIDTH: {
-    width: 300
-  },
-  INPUT_WIDTH: {
-    width: 315,
-    marginLeft: 8
-  }
+const S_MODAL = {
+  position: 'static',
+  width: 340,
+  height: 410,
+  margin: '70px auto 0px'
+}
+, S_DIV_BT = {
+  margin: '26px 0 4px 0'
+}
+, S_TABS = {
+  marginLeft: 24,
+  textAlign: 'left'
+}
+, S_CARD_ROOT = {
+  position: 'relative',
+  height: 315
+}
+, S_CARD_BUTTONS = {
+  position: 'absolute',
+  right: 4,
+  bottom: 0,
+  cursor: 'default'
+}
+, S_SELECT_WIDTH = {
+  width: 300
+}
+, S_INPUT_WIDTH = {
+  width: 315,
+  marginLeft: 8
 };
+
 
 const MIN_FS = 15
 const MAX_FS = 18
@@ -59,7 +58,7 @@ class SettingsDialog extends Component {
     isShow: PropTypes.bool,
     data: PropTypes.shape({
       setNewsKey: PropTypes.func,
-      setWebhoseKey: PropTypes.func,
+      setWebzKey: PropTypes.func,
     }),
     onClose: PropTypes.func
   }
@@ -104,11 +103,11 @@ class SettingsDialog extends Component {
     const { isShow, theme, data, onClose } = this.props
     , TS = theme.createStyle(styleConfig)
     , _TS = JSON.parse(JSON.stringify(TS));
-    Object.assign(_TS.SELECT.ROOT, S.SELECT_WIDTH)
+    _assign(_TS.SELECT.ROOT, S_SELECT_WIDTH)
     return (
         <A.ModalDialog
-           style={{ ...S.MODAL, ...TS.R_DIALOG }}
-           divBtStyle={S.DIV_BT}
+           style={{...S_MODAL, ...TS.R_DIALOG }}
+           divBtStyle={S_DIV_BT}
            styleCaption={TS.BROWSER_CAPTION}
            styleButton={TS.BT}
            caption="User Settings"
@@ -119,15 +118,15 @@ class SettingsDialog extends Component {
         >
           <A.TabPane
              width="100%"
-             tabsStyle={S.TABS}
+             tabsStyle={S_TABS}
              isShow={isShow}
           >
              <A.Tab title="API Keys">
                 <CardApiKeys
                   ref={this._refInput}
-                  style={S.CARD_ROOT}
-                  fieldStyle={{...TS.INPUT_ROOT, ...S.INPUT_WIDTH}}
-                  buttonsStyle={S.CARD_BUTTONS}
+                  style={S_CARD_ROOT}
+                  fieldStyle={{...TS.INPUT_ROOT, ...S_INPUT_WIDTH}}
+                  buttonsStyle={S_CARD_BUTTONS}
                   TS={TS}
                   data={data}
                   onClose={onClose}
@@ -135,8 +134,8 @@ class SettingsDialog extends Component {
              </A.Tab>
              <A.Tab title="UI Theme">
                 <CardUiTheme
-                  style={S.CARD_ROOT}
-                  buttonsStyle={S.CARD_BUTTONS}
+                  style={S_CARD_ROOT}
+                  buttonsStyle={S_CARD_BUTTONS}
                   TS={_TS}
                   onSetTheme={this._selectTheme}
                   onSetFontSize={this._selectFontSize}

@@ -78,7 +78,7 @@ var AppNewsAggregator = /*#__PURE__*/function (_Component) {
     };
 
     _this.showNewsBrowser = _fShowBrowser(_NewsMenu["default"].NEWS);
-    _this.showWebhoseWeb = _fShowDialog(_NewsQuery["default"].WEBHOSE_WEB);
+    _this.showWebz = _fShowDialog(_NewsQuery["default"].WEBZ);
     _this.showStackTagged = _fShowDialog(_NewsQuery["default"].STACK_TAGGED);
     _this.showStackSearch = _fShowDialog(_NewsQuery["default"].STACK_SEARCH);
     _this.showCryptoCompare = _fShowDialog(_NewsQuery["default"].CRYPTO_COMPARE);
@@ -116,7 +116,7 @@ var AppNewsAggregator = /*#__PURE__*/function (_Component) {
             LOADING_ACTIONS: _LoadingProgressActions.TYPES,
             onChangeTheme: _ComponentActions["default"].changeTheme,
             onNewsSources: this.showNewsBrowser,
-            onWebhose: this.showWebhoseWeb,
+            onWebz: this.showWebz,
             onStackTagged: this.showStackTagged,
             onStackSearch: this.showStackSearch,
             onCryptoCompare: this.showCryptoCompare,

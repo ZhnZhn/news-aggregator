@@ -1,1 +1,21 @@
-{"version":3,"sources":["../../src/api/Api.js"],"names":["Api","News","Webhose","StackOverflow","Iex","Fmp","NewsSearch","NewsTop","CryptoCompare","CoinStats","Messari"],"mappings":";;;;;;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AAEA,IAAMA,GAAG,GAAG;AACVC,EAAAA,IAAI,EAAJA,mBADU;AACJC,EAAAA,OAAO,EAAPA,sBADI;AACKC,EAAAA,aAAa,EAAbA,4BADL;AAEVC,EAAAA,GAAG,EAAHA,kBAFU;AAELC,EAAAA,GAAG,EAAHA,kBAFK;AAGVC,EAAAA,UAAU,EAAVA,yBAHU;AAGEC,EAAAA,OAAO,EAAPA,sBAHF;AAIVC,EAAAA,aAAa,EAAbA,4BAJU;AAKVC,EAAAA,SAAS,EAATA,wBALU;AAMVC,EAAAA,OAAO,EAAPA;AANU,CAAZ;eASeV,G","sourcesContent":["\r\nimport News from './NewsApi'\r\nimport Webhose from './WebhoseApi'\r\nimport StackOverflow from './StackOverflowApi'\r\nimport Iex from './IexApi'\r\nimport Fmp from './FmpApi'\r\nimport NewsSearch from './NewsSearchApi'\r\nimport NewsTop from './NewsApiTop'\r\nimport CryptoCompare from './CryptoCompareApi'\r\nimport CoinStats from './CoinStatsApi'\r\nimport Messari from './MessariApi'\r\n\r\nconst Api = {\r\n  News, Webhose, StackOverflow,\r\n  Iex, Fmp,\r\n  NewsSearch, NewsTop,\r\n  CryptoCompare,\r\n  CoinStats,\r\n  Messari\r\n};\r\n\r\nexport default Api\r\n"],"file":"Api.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/Api.js"
+ ],
+ "file": "../../src/api/Api.js",
+ "names": [
+  "Api",
+  "News",
+  "Webz",
+  "StackOverflow",
+  "Iex",
+  "Fmp",
+  "NewsSearch",
+  "NewsTop",
+  "CryptoCompare",
+  "CoinStats",
+  "Messari"
+ ],
+ "mappings": ";;;;;;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AACA;;AAEA,IAAMA,GAAG,GAAG;AACVC,EAAAA,IAAI,EAAJA,mBADU;AACJC,EAAAA,IAAI,EAAJA,mBADI;AACEC,EAAAA,aAAa,EAAbA,4BADF;AAEVC,EAAAA,GAAG,EAAHA,kBAFU;AAELC,EAAAA,GAAG,EAAHA,kBAFK;AAGVC,EAAAA,UAAU,EAAVA,yBAHU;AAGEC,EAAAA,OAAO,EAAPA,sBAHF;AAIVC,EAAAA,aAAa,EAAbA,4BAJU;AAKVC,EAAAA,SAAS,EAATA,wBALU;AAMVC,EAAAA,OAAO,EAAPA;AANU,CAAZ;eASeV,G"
+}

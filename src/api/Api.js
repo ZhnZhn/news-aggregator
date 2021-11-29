@@ -1,6 +1,6 @@
 
 import News from './NewsApi'
-import Webhose from './WebhoseApi'
+import Webz from './WebzApi'
 import StackOverflow from './StackOverflowApi'
 import Iex from './IexApi'
 import Fmp from './FmpApi'
@@ -11,7 +11,7 @@ import CoinStats from './CoinStatsApi'
 import Messari from './MessariApi'
 
 const Api = {
-  News, Webhose, StackOverflow,
+  News, Webz, StackOverflow,
   Iex, Fmp,
   NewsSearch, NewsTop,
   CryptoCompare,

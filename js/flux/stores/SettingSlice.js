@@ -19,7 +19,7 @@ var SettingSlice = {
       setIexKey: _fSetKey(_Type.LoadType.IEX),
       setFmpKey: _fSetKey(_Type.LoadType.FMP),
       setNewsKey: _fSetKey(_Type.LoadType.NEWS),
-      setWebhoseKey: _fSetKey(_Type.LoadType.WEBHOSE)
+      setWebzKey: _fSetKey(_Type.LoadType.WEBZ)
     };
   },
   getIexKey: function getIexKey() {
@@ -31,8 +31,8 @@ var SettingSlice = {
   getNewsKey: function getNewsKey() {
     return _settings[_Type.LoadType.NEWS];
   },
-  getWebhoseKey: function getWebhoseKey() {
-    return _settings[_Type.LoadType.WEBHOSE];
+  getWebzKey: function getWebzKey() {
+    return _settings[_Type.LoadType.WEBZ];
   }
 };
 var _default = SettingSlice;

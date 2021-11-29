@@ -33,10 +33,10 @@ const RouterApiConf = {
         };
       case 'W':
         return {
-          apiKey: Store.getWebhoseKey(),
-          api: Api.Webhose,
-          adapter: Adapter.Webhose,
-          msgErr: `Webhose.io API ${MSG_ERR_TAIL}`
+          apiKey: Store.getWebzKey(),
+          api: Api.Webz,
+          adapter: Adapter.Webz,
+          msgErr: `Webz.io API ${MSG_ERR_TAIL}`
         };
       case 'SO':
         return {
