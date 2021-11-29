@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
 
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 
@@ -31,7 +31,7 @@ var Link = _Comp["default"].Link,
     ItemStack = _Comp["default"].ItemStack;
 var PROVIDER_LINKS = [[Link.CryptoCompare], [Link.CoinStats], [Link.Messari], [Link.IexApi], [Link.FmpApi, {
   title: "Financial Modeling Prep"
-}], [Link.NewsApi], [Link.StackOverflow], [Link.WebhoseIo]];
+}], [Link.NewsApi], [Link.StackOverflow], [Link.Webz]];
 
 var _crLinkItem = function _crLinkItem(_ref, index) {
   var Comp = _ref[0],
@@ -57,49 +57,40 @@ var About = function About(_ref2) {
       showAction = _ref2.showAction,
       hideAction = _ref2.hideAction;
 
-  var _useState = (0, _react.useState)(isInitShow),
-      isShow = _useState[0],
-      setIsShow = _useState[1],
-      _hClose = (0, _react.useCallback)(function () {
-    return setIsShow(false);
-  }, []),
-      S = (0, _useTheme["default"])(_About["default"]);
+  var _useBool = (0, _useBool2["default"])(isInitShow),
+      isShow = _useBool[0],
+      setIsShowTrue = _useBool[1],
+      setIsShowFalse = _useBool[2],
+      TS = (0, _useTheme["default"])(_About["default"]);
 
   (0, _useListen["default"])(store, function (actionType) {
-    switch (actionType) {
-      case showAction:
-        setIsShow(true);
-        break;
-
-      case hideAction:
-        setIsShow(false);
-        break;
-
-      default:
-        return;
+    if (actionType === showAction) {
+      setIsShowTrue();
+    } else if (actionType === hideAction) {
+      setIsShowFalse();
     }
   });
 
   var _className = (0, _crCn["default"])(CL_ABOUT_PANE, [isShow, CL_SHOW]),
-      _style = isShow ? S.BLOCK : S.NONE;
+      _style = isShow ? TS.BLOCK : TS.NONE;
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: _className,
-    style: (0, _extends2["default"])({}, _style, S.ROOT),
+    style: (0, _extends2["default"])({}, _style, TS.ROOT),
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].BrowserCaption, {
-      style: S.BROWSER_CAPTION,
+      style: TS.BROWSER_CAPTION,
       caption: "About News Aggregator",
-      onClose: _hClose
+      onClose: setIsShowFalse
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
-      className: S.CL_SCROLL_PANE,
-      style: S.SCROLL_DIV,
+      className: TS.CL_SCROLL_PANE,
+      style: TS.SCROLL_DIV,
       children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-        style: S.DIV_WRAPPER,
+        style: TS.DIV_WRAPPER,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-          style: S.DIV_TEXT,
+          style: TS.DIV_TEXT,
           children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("p", {
             children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-              style: S.APP_TITLE,
+              style: TS.APP_TITLE,
               children: "News Agreggator"
             }), " is web app for browsing news."]
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
@@ -108,27 +99,27 @@ var About = function About(_ref2) {
             items: PROVIDER_LINKS,
             crItem: _crLinkItem
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
-            style: S.MT_8,
+            style: TS.MT_8,
             children: "Personal API Keys from providers are required."
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
             children: "API Keys can be set by means off Settings Dialog."
           })]
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
-          style: S.MT_8,
+          style: TS.MT_8,
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-            style: S.BLACK,
+            style: TS.BLACK,
             children: "Browsing by news source:"
           })
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(ItemStack, {
           items: NEWS_SOURCE_STEP_DESCRIPTIONS,
           crItem: _crStepItem
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
-          style: S.MT_8,
+          style: TS.MT_8,
           children: "Not all news source support all sortBy values."
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
-          style: S.MT_8,
+          style: TS.MT_8,
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-            style: S.BLACK,
+            style: TS.BLACK,
             children: "Browsing by search terms:"
           })
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(ItemStack, {
@@ -136,7 +127,7 @@ var About = function About(_ref2) {
           crItem: _crStepItem
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconLogoBar["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-            style: S.BLACK,
+            style: TS.BLACK,
             children: "*Logos Fair Use."
           })
         })]

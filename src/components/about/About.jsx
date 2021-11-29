@@ -1,5 +1,4 @@
-import { useState, useCallback } from 'react';
-
+import useBool from '../hooks/useBool';
 import useTheme from '../hooks/useTheme';
 import useListen from '../hooks/useListen';
 
@@ -23,7 +22,7 @@ const PROVIDER_LINKS = [
   [Link.FmpApi, { title: "Financial Modeling Prep"}],
   [Link.NewsApi],
   [Link.StackOverflow],
-  [Link.WebhoseIo]
+  [Link.Webz]
 ];
 
 const _crLinkItem = ([Comp, props], index) => (
@@ -58,43 +57,42 @@ const About = ({
   showAction,
   hideAction
 }) => {
-  const [isShow, setIsShow] = useState(isInitShow)
-  , _hClose = useCallback(() => setIsShow(false), [])
-  , S = useTheme(styleConfig);
+  const [
+    isShow,
+    setIsShowTrue,
+    setIsShowFalse
+  ] = useBool(isInitShow)
+  , TS = useTheme(styleConfig);
 
   useListen(store, actionType=>{
-    switch(actionType){
-      case showAction:
-         setIsShow(true);
-         break;
-      case hideAction:
-         setIsShow(false)
-         break;
-      default: return;
+    if (actionType === showAction) {
+      setIsShowTrue()
+    } else if (actionType === hideAction) {
+      setIsShowFalse()
     }
   })
 
   const _className = crCn(CL_ABOUT_PANE, [isShow, CL_SHOW])
-  , _style = isShow ? S.BLOCK : S.NONE;
+  , _style = isShow ? TS.BLOCK : TS.NONE;
 
   return (
     <div
       className={_className}
-      style={{..._style, ...S.ROOT}}
+      style={{..._style, ...TS.ROOT}}
      >
        <A.BrowserCaption
-          style={S.BROWSER_CAPTION}
+          style={TS.BROWSER_CAPTION}
           caption="About News Aggregator"
-          onClose={_hClose}
+          onClose={setIsShowFalse}
        />
        <A.ScrollPane
-          className={S.CL_SCROLL_PANE}
-          style={S.SCROLL_DIV}
+          className={TS.CL_SCROLL_PANE}
+          style={TS.SCROLL_DIV}
        >
-         <div style={S.DIV_WRAPPER}>
-            <div style={S.DIV_TEXT}>
+         <div style={TS.DIV_WRAPPER}>
+            <div style={TS.DIV_TEXT}>
                <p>
-                 <span style={S.APP_TITLE}>News Agreggator</span> is web app for browsing news.
+                 <span style={TS.APP_TITLE}>News Agreggator</span> is web app for browsing news.
                </p>
                <p>
                  News headlines providers:&nbsp;
@@ -103,26 +101,26 @@ const About = ({
                   items={PROVIDER_LINKS}
                   crItem={_crLinkItem}
                />
-               <p style={S.MT_8}>
+               <p style={TS.MT_8}>
                  Personal API Keys from providers are required.
                </p>
                <p>
                  API Keys can be set by means off Settings Dialog.
                </p>
            </div>
-           <p style={S.MT_8}>
-             <span style={S.BLACK}>Browsing by news source:</span>
+           <p style={TS.MT_8}>
+             <span style={TS.BLACK}>Browsing by news source:</span>
            </p>
            <ItemStack
              items={NEWS_SOURCE_STEP_DESCRIPTIONS}
              crItem={_crStepItem}
            />
-           <p style={S.MT_8}>
+           <p style={TS.MT_8}>
              Not all news source support all sortBy values.
            </p>
 
-           <p style={S.MT_8}>
-             <span style={S.BLACK}>Browsing by search terms:</span>
+           <p style={TS.MT_8}>
+             <span style={TS.BLACK}>Browsing by search terms:</span>
            </p>
            <ItemStack
              items={SEARCH_TERM_STEP_DESCRIPTIONS}
@@ -130,7 +128,7 @@ const About = ({
            />
            <IconLogoBar />
            <p>
-             <span style={S.BLACK}>
+             <span style={TS.BLACK}>
                *Logos Fair Use.
              </span>
           </p>
