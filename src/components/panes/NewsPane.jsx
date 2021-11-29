@@ -15,32 +15,25 @@ const CHILD_MARGIN = 36
 , RESIZE_MIN_WIDTH = 395
 , RESIZE_MAX_WIDTH = 1200
 , RESIZE_DELTA = 10
-, CL = {
-  NEWS_PANE: "news-pane",
-  SHOW_POPUP: "show-popup",
-  MENU_MORE: "popup-menu items__menu-more"
-};
 
-const S = {
-  BT_REMOVE: {
-    position: 'relative',
-    top: -3,
-    marginLeft: 16,
-    marginRight: 6
-  },
-  SCROLL_DIV : {
-    //overflowY: 'auto',
-    overflow: 'hidden auto',
-    height: '92%',
-    paddingRight: 10
-  },
-  INLINE_BLOCK : {
-    display : 'inline-block'
-  },
-  NONE : {
-    display: 'none'
-  }
-};
+, CL_NEWS_PANE = "news-pane"
+, CL_SHOW_POPUP = "show-popup"
+, CL_MENU_MORE = "popup-menu items__menu-more"
+
+, S_BT_REMOVE = {
+  position: 'relative',
+  top: -3,
+  marginLeft: 16,
+  marginRight: 6
+}
+, S_SCROLL_DIV = {
+  overflow: 'hidden auto',
+  height: '92%',
+  paddingRight: 10
+}
+, S_INLINE_BLOCK = { display : 'inline-block' }
+, S_NONE = { display: 'none' };
+
 
 const _getWidth = style => parseInt(style.width, 10)
   || RESIZE_INIT_WIDTH;
@@ -98,7 +91,6 @@ class NewsPane extends Component {
         addAction, showAction, toggleAction,
         id
       } = this.props;
-
       if (option.id === id){
         switch(actionType){
           case addAction: {
@@ -187,8 +179,8 @@ class NewsPane extends Component {
       , TS = theme.createStyle(styleConfig)
       , { isShow, isMore, articles, sortBy } = this.state
       , _paneCaption = _crPaneCaption(paneCaption, ''+sortBy)
-      , _className = crCn(CL.NEWS_PANE, [isShow,  CL.SHOW_POPUP])
-      , _styleIsShow = isShow ? S.INLINE_BLOCK : S.NONE;
+      , _className = crCn(CL_NEWS_PANE, [isShow,  CL_SHOW_POPUP])
+      , _styleIsShow = isShow ? S_INLINE_BLOCK : S_NONE;
 
      return(
         <div
@@ -202,7 +194,7 @@ class NewsPane extends Component {
         >
           <A.ModalSlider
             isShow={isMore}
-            className={CL.MENU_MORE}
+            className={CL_MENU_MORE}
             style={TS.EL_BORDER}
             model={this._MODEL}
             onClose={this._hToggleMore}
@@ -216,7 +208,7 @@ class NewsPane extends Component {
             <A.CircleButton
               caption="R"
               title="Remove All Items"
-              style={S.BT_REMOVE}
+              style={S_BT_REMOVE}
               onClick={onRemoveItems}
             />
             <A.SvgHrzResize
@@ -225,7 +217,7 @@ class NewsPane extends Component {
               getDomNode={this._getRootDiv}
             />
           </A.BrowserCaption>
-          <A.ScrollPane className={TS.CL_SCROLL_PANE} style={S.SCROLL_DIV}>
+          <A.ScrollPane className={TS.CL_SCROLL_PANE} style={S_SCROLL_DIV}>
               { this._renderArticles(articles, onCloseItem, onRemoveUnder) }
           </A.ScrollPane>
         </div>

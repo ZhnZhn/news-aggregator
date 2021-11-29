@@ -34,30 +34,25 @@ var CHILD_MARGIN = 36,
     RESIZE_MIN_WIDTH = 395,
     RESIZE_MAX_WIDTH = 1200,
     RESIZE_DELTA = 10,
-    CL = {
-  NEWS_PANE: "news-pane",
-  SHOW_POPUP: "show-popup",
-  MENU_MORE: "popup-menu items__menu-more"
-};
-var S = {
-  BT_REMOVE: {
-    position: 'relative',
-    top: -3,
-    marginLeft: 16,
-    marginRight: 6
-  },
-  SCROLL_DIV: {
-    //overflowY: 'auto',
-    overflow: 'hidden auto',
-    height: '92%',
-    paddingRight: 10
-  },
-  INLINE_BLOCK: {
-    display: 'inline-block'
-  },
-  NONE: {
-    display: 'none'
-  }
+    CL_NEWS_PANE = "news-pane",
+    CL_SHOW_POPUP = "show-popup",
+    CL_MENU_MORE = "popup-menu items__menu-more",
+    S_BT_REMOVE = {
+  position: 'relative',
+  top: -3,
+  marginLeft: 16,
+  marginRight: 6
+},
+    S_SCROLL_DIV = {
+  overflow: 'hidden auto',
+  height: '92%',
+  paddingRight: 10
+},
+    S_INLINE_BLOCK = {
+  display: 'inline-block'
+},
+    S_NONE = {
+  display: 'none'
 };
 
 var _getWidth = function _getWidth(style) {
@@ -265,8 +260,8 @@ var NewsPane = /*#__PURE__*/function (_Component) {
         articles = _this$state.articles,
         sortBy = _this$state.sortBy,
         _paneCaption = _crPaneCaption(paneCaption, '' + sortBy),
-        _className = (0, _crCn["default"])(CL.NEWS_PANE, [isShow, CL.SHOW_POPUP]),
-        _styleIsShow = isShow ? S.INLINE_BLOCK : S.NONE;
+        _className = (0, _crCn["default"])(CL_NEWS_PANE, [isShow, CL_SHOW_POPUP]),
+        _styleIsShow = isShow ? S_INLINE_BLOCK : S_NONE;
 
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       ref: this._refRootDiv,
@@ -274,7 +269,7 @@ var NewsPane = /*#__PURE__*/function (_Component) {
       style: (0, _extends2["default"])({}, this._widthStyle, TS.PANE_ROOT, _styleIsShow),
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ModalSlider, {
         isShow: isMore,
-        className: CL.MENU_MORE,
+        className: CL_MENU_MORE,
         style: TS.EL_BORDER,
         model: this._MODEL,
         onClose: this._hToggleMore
@@ -286,7 +281,7 @@ var NewsPane = /*#__PURE__*/function (_Component) {
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].CircleButton, {
           caption: "R",
           title: "Remove All Items",
-          style: S.BT_REMOVE,
+          style: S_BT_REMOVE,
           onClick: onRemoveItems
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].SvgHrzResize, {
           minWidth: RESIZE_MIN_WIDTH,
@@ -295,7 +290,7 @@ var NewsPane = /*#__PURE__*/function (_Component) {
         })]
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
         className: TS.CL_SCROLL_PANE,
-        style: S.SCROLL_DIV,
+        style: S_SCROLL_DIV,
         children: this._renderArticles(articles, onCloseItem, onRemoveUnder)
       })]
     });
