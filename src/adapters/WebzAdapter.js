@@ -1,15 +1,23 @@
 
-const WEBZ_ID = "webz";
+//const WEBZ_ID = "webz";
 
-const _toNews = (json) => {
-  const { posts, requestsLeft='' } = json;
-  const arr = [], _hm = {};
+const _hmSourceId = {
+  W_WEBZ_QUERY: "webz",
+  W_WEBZ_COUNTRY: "webz_country"
+};
+
+const _toNews = (json, option) => {
+  const { posts, requestsLeft='' } = json
+  , arr = [], _hm = {}
+  , { type } = option
+  , _sourceId = _hmSourceId[type];
+  
   posts.forEach(post => {
     const { title='' } = post
     , _title = title.trim();
     if (_title && !_hm[_title]) {
       post.articleId = post.uuid
-      post.source = WEBZ_ID
+      post.source = _sourceId
       post.description = post.text
       post.publishedAt = post.published
       arr.push(post)
@@ -18,7 +26,7 @@ const _toNews = (json) => {
   })
 
   return {
-    source: WEBZ_ID,
+    source: _sourceId,
     articles: arr,
     sortBy: requestsLeft
   };
@@ -33,7 +41,7 @@ const WebzAdapter = {
            , _title = title.trim();
       if (_title && !_hm[_title] ){
         post.articleId = post.uuid
-        post.source = WEBZ_ID
+        //post.source = WEBZ_ID
         post.description = post.text
         post.publishedAt = post.published
         arr.push(post)

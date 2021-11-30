@@ -2,14 +2,20 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
-var WEBZ_ID = "webz";
+//const WEBZ_ID = "webz";
+var _hmSourceId = {
+  W_WEBZ_QUERY: "webz",
+  W_WEBZ_COUNTRY: "webz_country"
+};
 
-var _toNews = function _toNews(json) {
+var _toNews = function _toNews(json, option) {
   var posts = json.posts,
       _json$requestsLeft = json.requestsLeft,
-      requestsLeft = _json$requestsLeft === void 0 ? '' : _json$requestsLeft;
-  var arr = [],
-      _hm = {};
+      requestsLeft = _json$requestsLeft === void 0 ? '' : _json$requestsLeft,
+      arr = [],
+      _hm = {},
+      type = option.type,
+      _sourceId = _hmSourceId[type];
   posts.forEach(function (post) {
     var _post$title = post.title,
         title = _post$title === void 0 ? '' : _post$title,
@@ -17,7 +23,7 @@ var _toNews = function _toNews(json) {
 
     if (_title && !_hm[_title]) {
       post.articleId = post.uuid;
-      post.source = WEBZ_ID;
+      post.source = _sourceId;
       post.description = post.text;
       post.publishedAt = post.published;
       arr.push(post);
@@ -25,7 +31,7 @@ var _toNews = function _toNews(json) {
     }
   });
   return {
-    source: WEBZ_ID,
+    source: _sourceId,
     articles: arr,
     sortBy: requestsLeft
   };
@@ -45,8 +51,8 @@ var WebzAdapter = {
           _title = title.trim();
 
       if (_title && !_hm[_title]) {
-        post.articleId = post.uuid;
-        post.source = WEBZ_ID;
+        post.articleId = post.uuid; //post.source = WEBZ_ID
+
         post.description = post.text;
         post.publishedAt = post.published;
         arr.push(post);

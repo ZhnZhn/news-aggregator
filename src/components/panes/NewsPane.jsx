@@ -90,7 +90,7 @@ class NewsPane extends Component {
       const {
         addAction, showAction, toggleAction,
         id
-      } = this.props;
+      } = this.props;      
       if (option.id === id){
         switch(actionType){
           case addAction: {

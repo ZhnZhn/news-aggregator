@@ -35,6 +35,7 @@ class PanelQuery extends Component {
      onStackTagged,
      onStackSearch,
      onWebz,
+     onWebzCountry,
      onClose
    } = this.props;
     return (
@@ -103,6 +104,12 @@ class PanelQuery extends Component {
             className={CL_ITEM}
             caption="Webz.io: News, Blogs"
             onClick={onWebz}
+            onClose={onClose}
+          />
+          <A.MenuItem
+            className={CL_ITEM}
+            caption="Webz.io: By Country, Topic"
+            onClick={onWebzCountry}
             onClose={onClose}
           />
        </A.ModalPopup>

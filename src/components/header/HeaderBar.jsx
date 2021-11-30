@@ -38,7 +38,7 @@ class HeaderBar extends Component {
     super(props)
 
     const {
-      onWebz,
+      onWebz, onWebzCountry,
       onStackTagged, onStackSearch,
       onCryptoCompare, onCoinStats, onMessari,
       onIex, onFmp,
@@ -47,6 +47,7 @@ class HeaderBar extends Component {
     , _fClick = _ffClick(this._hCloseQuery);
 
     this._hWebz = _fClick(onWebz)
+    this._hWebzCountry = _fClick(onWebzCountry)
     this._hStackTagged = _fClick(onStackTagged)
     this._hStackSearch = _fClick(onStackSearch)
     this._hCryptoCompare = _fClick(onCryptoCompare)
@@ -90,7 +91,8 @@ class HeaderBar extends Component {
           className={CL_PANEL_BROWSER}
           isShow={isQuery}
           onClose={this._hToggleQuery}
-          onWebz={this._hWebz}          
+          onWebz={this._hWebz}
+          onWebzCountry={this._hWebzCountry}
           onStackTagged={this._hStackTagged}
           onStackSearch={this._hStackSearch}
           onCryptoCompare={this._hCryptoCompare}

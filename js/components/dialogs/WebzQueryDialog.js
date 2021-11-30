@@ -35,7 +35,7 @@ var SITE_TYPE_OPTIONS = [{
     DF_BEFORE_DAYS = 2;
 
 var _getRefValue = function _getRefValue(ref) {
-  return ref.value;
+  return ref.current;
 };
 
 var WebzQueryDialog = function WebzQueryDialog(_ref) {

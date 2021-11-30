@@ -15,6 +15,14 @@ var NEWS_QUERY = {
       "source": "webz"
     }
   },
+  WEBZ_COUNTRY: {
+    "type": "W_WEBZ_COUNTRY",
+    "dialogType": "WebzCountry",
+    "paneCaption": "Webz.io: By Country",
+    "paneId": "webz_country",
+    "loadId": "W",
+    "requestType": "NEWS"
+  },
   STACK_TAGGED: {
     "type": "SO_TAGGED",
     "dialogType": "StackTagged",

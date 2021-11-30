@@ -64,6 +64,7 @@ var PanelQuery = /*#__PURE__*/function (_Component) {
         onStackTagged = _this$props.onStackTagged,
         onStackSearch = _this$props.onStackSearch,
         onWebz = _this$props.onWebz,
+        onWebzCountry = _this$props.onWebzCountry,
         onClose = _this$props.onClose;
     return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].ModalPopup, {
       isShow: isShow,
@@ -120,6 +121,11 @@ var PanelQuery = /*#__PURE__*/function (_Component) {
         className: CL_ITEM,
         caption: "Webz.io: News, Blogs",
         onClick: onWebz,
+        onClose: onClose
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+        className: CL_ITEM,
+        caption: "Webz.io: By Country, Topic",
+        onClick: onWebzCountry,
         onClose: onClose
       })]
     });

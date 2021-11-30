@@ -77,6 +77,7 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
     };
 
     var onWebz = props.onWebz,
+        onWebzCountry = props.onWebzCountry,
         onStackTagged = props.onStackTagged,
         onStackSearch = props.onStackSearch,
         onCryptoCompare = props.onCryptoCompare,
@@ -89,6 +90,7 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
         _fClick = _ffClick(_this._hCloseQuery);
 
     _this._hWebz = _fClick(onWebz);
+    _this._hWebzCountry = _fClick(onWebzCountry);
     _this._hStackTagged = _fClick(onStackTagged);
     _this._hStackSearch = _fClick(onStackSearch);
     _this._hCryptoCompare = _fClick(onCryptoCompare);
@@ -125,6 +127,7 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
         isShow: isQuery,
         onClose: this._hToggleQuery,
         onWebz: this._hWebz,
+        onWebzCountry: this._hWebzCountry,
         onStackTagged: this._hStackTagged,
         onStackSearch: this._hStackSearch,
         onCryptoCompare: this._hCryptoCompare,

@@ -18,7 +18,7 @@ const SITE_TYPE_OPTIONS = [
 , DF_IN_TITLE = 'Weather'
 , DF_BEFORE_DAYS = 2;
 
-const _getRefValue = ref => ref.value;
+const _getRefValue = ref => ref.current;
 
 const WebzQueryDialog = ({
   isShow,

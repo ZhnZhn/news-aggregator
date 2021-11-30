@@ -9,6 +9,8 @@ var _DialogType = _interopRequireDefault(require("./DialogType1"));
 
 var _WebzQueryDialog = _interopRequireDefault(require("./WebzQueryDialog"));
 
+var _WebzCountryDialog = _interopRequireDefault(require("./WebzCountryDialog"));
+
 var _StackTaggedDialog = _interopRequireDefault(require("./StackTaggedDialog"));
 
 var _StackSearchDialog = _interopRequireDefault(require("./StackSearchDialog"));
@@ -31,6 +33,7 @@ var R = {
   DEFAULT: _DialogType["default"],
   DialogType1: _DialogType["default"],
   WebzQuery: _WebzQueryDialog["default"],
+  WebzCountry: _WebzCountryDialog["default"],
   StackTagged: _StackTaggedDialog["default"],
   StackSearch: _StackSearchDialog["default"],
   CryptoCompareNews: _CryptoCompareNewsDialog["default"],
