@@ -31,8 +31,8 @@ const S_MODAL = {
 }
 , S_CARD_BUTTONS = {
   position: 'absolute',
-  right: 4,
-  bottom: 0,
+  right: 10,
+  bottom: 4,
   cursor: 'default'
 }
 , S_SELECT_WIDTH = {

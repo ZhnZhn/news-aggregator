@@ -11,10 +11,8 @@ var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S = {
-  ROOT_DIV: {
-    paddingTop: 16
-  }
+var S_DIV = {
+  paddingTop: 16
 };
 var THEME_OPTIONS = [{
   caption: 'Grey',
@@ -50,7 +48,7 @@ var CardUiTheme = function CardUiTheme(_ref) {
       onSetFontSize = _ref.onSetFontSize,
       onClose = _ref.onClose;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    style: (0, _extends2["default"])({}, S.ROOT_DIV, style),
+    style: (0, _extends2["default"])({}, S_DIV, style),
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
       styleConfig: TS.SELECT,
       caption: "UI Theme",

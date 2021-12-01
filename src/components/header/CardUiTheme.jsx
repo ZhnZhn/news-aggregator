@@ -1,10 +1,6 @@
 import A from '../Comp'
 
-const S = {
-  ROOT_DIV: {
-    paddingTop: 16
-  }
-};
+const S_DIV = { paddingTop: 16 };
 
 const THEME_OPTIONS = [
   { caption: 'Grey', value: 'GREY' },
@@ -27,7 +23,7 @@ const CardUiTheme = ({
   onSetFontSize,
   onClose
 }) => (
-    <div style={{...S.ROOT_DIV, ...style}}>
+    <div style={{...S_DIV, ...style}}>
       <A.InputSelect
         styleConfig={TS.SELECT}
         caption="UI Theme"
