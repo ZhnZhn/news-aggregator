@@ -6,6 +6,7 @@ import styleConfig from './Article.Style';
 import dt from '../../utils/dt';
 
 import crStyle from '../zhn-utils/crStyle';
+import toLink from '../zhn-utils/toLink';
 
 import useItemGestureSwipeX from './useItemGestureSwipeX';
 import GestureSwipeX from '../zhn-gesture/GestureSwipeX';
@@ -14,45 +15,38 @@ import ArticleDescr from './ArticleDescr';
 
 const CL_ITEM_HEADER = "article-header";
 
-const S = {
-  ROOT: {
-    position: 'relative',
-    marginBottom: 5,
-    lineHeight: 1.5,
-    borderBottomRightRadius: 2,
-    boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
-  },
-  HEADER: {
-    width: '100%',
-    backgroundColor: '#404040',
-    paddingTop: 8,
-    paddingLeft: 16,
-    paddingBottom: 8,
-    lineHeight: 1.5,
-    borderTopRightRadius: 2,
-    borderBottomRightRadius: 2
-  },
-  CAPTION: {
-    display : 'inline-block',
-    paddingRight: 32,
-    color: 'black',
-    fontSize: '1.125rem',
-    fontWeight: 'bold',
-    cursor: 'pointer'
-  },
-  CAPTION_OPEN: {
-    color: '#607d8b',
-  },
-  SVG_CLOSE: {
-    float: 'none',
-    position: 'absolute',
-    top: 8,
-    right: 0
-  },
-  NONE: {
-    display: 'none'
-  }
-};
+const S_ROOT = {
+  position: 'relative',
+  marginBottom: 5,
+  lineHeight: 1.5,
+  borderBottomRightRadius: 2,
+  boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
+}
+, S_HEADER = {
+  width: '100%',
+  backgroundColor: '#404040',
+  padding: '8px 0 8px 16px',  
+  lineHeight: 1.5,
+  borderTopRightRadius: 2,
+  borderBottomRightRadius: 2
+}
+, S_CAPTION = {
+  display : 'inline-block',
+  paddingRight: 32,
+  color: 'black',
+  fontSize: '1.125rem',
+  fontWeight: 'bold',
+  cursor: 'pointer'
+}
+, S_CAPTION_OPEN = { color: '#607d8b' }
+, S_SVG_CLOSE = {
+  float: 'none',
+  position: 'absolute',
+  top: 8,
+  right: 0
+}
+, S_NONE = { display: 'none' };
+
 
 const _focusNextArticle = (nodeArticle) => {
   const { nextElementSibling } = nodeArticle || {}
@@ -105,29 +99,35 @@ const Article = forwardRef(({
  , TS = useTheme(styleConfig);
 
   const {
-    title, author,
-    publishedDate, publishedAt,
-    url, related
+    title,
+    author,
+    publishedDate,
+    publishedAt,
+    url,
+    related
     //, urlToImage
   } = item
   , description = item.description || 'More...'
-  , _style = crStyle([isClosed, S.NONE])
-  , _captionStyle = crStyle(S.CAPTION, [isShow, S.CAPTION_OPEN])
-  , _publishedAt = publishedDate || dt.toTimeDate(publishedAt);
+  , _style = crStyle([isClosed, S_NONE])
+  , _captionStyle = crStyle(S_CAPTION, [isShow, S_CAPTION_OPEN])
+  , _publishedAt = publishedDate || dt.toTimeDate(publishedAt)
+  , _href = toLink(url);
+
+  if (!_href) { return null; }
 
   return (
     <GestureSwipeX
       ref={_refArticle}
-      style={{...S.ROOT, ..._style}}
+      style={{...S_ROOT, ..._style}}
       setTimeStamp={_setTimeStamp}
       onGesture={_onGestureSwipeX}
     >
       <ItemHeader
          ref={ref}
          className={CL_ITEM_HEADER}
-         style={{...S.HEADER, ...TS.HEADER}}
+         style={{...S_HEADER, ...TS.HEADER}}
          captionStyle={_captionStyle}
-         btCloseStyle={S.SVG_CLOSE}
+         btCloseStyle={S_SVG_CLOSE}
          title={title}
          url={url}
          isShow={isShow}
@@ -138,13 +138,13 @@ const Article = forwardRef(({
       <ArticleDescr
          style={TS.DESCR}
          isShow={isShow}
-         url={url}
+         href={_href}
          description={description}
          related={related}
          publishedAt={_publishedAt}
          author={author}
          onClose={_hClose}
-         onHide={_hHide}         
+         onHide={_hHide}
       />
     </GestureSwipeX>
   );

@@ -17,6 +17,8 @@ var _dt = _interopRequireDefault(require("../../utils/dt"));
 
 var _crStyle = _interopRequireDefault(require("../zhn-utils/crStyle"));
 
+var _toLink = _interopRequireDefault(require("../zhn-utils/toLink"));
+
 var _useItemGestureSwipeX = _interopRequireDefault(require("./useItemGestureSwipeX"));
 
 var _GestureSwipeX = _interopRequireDefault(require("../zhn-gesture/GestureSwipeX"));
@@ -28,44 +30,40 @@ var _ArticleDescr = _interopRequireDefault(require("./ArticleDescr"));
 var _jsxRuntime = require("react/jsx-runtime");
 
 var CL_ITEM_HEADER = "article-header";
-var S = {
-  ROOT: {
-    position: 'relative',
-    marginBottom: 5,
-    lineHeight: 1.5,
-    borderBottomRightRadius: 2,
-    boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)'
-  },
-  HEADER: {
-    width: '100%',
-    backgroundColor: '#404040',
-    paddingTop: 8,
-    paddingLeft: 16,
-    paddingBottom: 8,
-    lineHeight: 1.5,
-    borderTopRightRadius: 2,
-    borderBottomRightRadius: 2
-  },
-  CAPTION: {
-    display: 'inline-block',
-    paddingRight: 32,
-    color: 'black',
-    fontSize: '1.125rem',
-    fontWeight: 'bold',
-    cursor: 'pointer'
-  },
-  CAPTION_OPEN: {
-    color: '#607d8b'
-  },
-  SVG_CLOSE: {
-    "float": 'none',
-    position: 'absolute',
-    top: 8,
-    right: 0
-  },
-  NONE: {
-    display: 'none'
-  }
+var S_ROOT = {
+  position: 'relative',
+  marginBottom: 5,
+  lineHeight: 1.5,
+  borderBottomRightRadius: 2,
+  boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)'
+},
+    S_HEADER = {
+  width: '100%',
+  backgroundColor: '#404040',
+  padding: '8px 0 8px 16px',
+  lineHeight: 1.5,
+  borderTopRightRadius: 2,
+  borderBottomRightRadius: 2
+},
+    S_CAPTION = {
+  display: 'inline-block',
+  paddingRight: 32,
+  color: 'black',
+  fontSize: '1.125rem',
+  fontWeight: 'bold',
+  cursor: 'pointer'
+},
+    S_CAPTION_OPEN = {
+  color: '#607d8b'
+},
+    S_SVG_CLOSE = {
+  "float": 'none',
+  position: 'absolute',
+  top: 8,
+  right: 0
+},
+    S_NONE = {
+  display: 'none'
 };
 
 var _focusNextArticle = function _focusNextArticle(nodeArticle) {
@@ -139,21 +137,26 @@ var Article = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
       url = item.url,
       related = item.related,
       description = item.description || 'More...',
-      _style = (0, _crStyle["default"])([isClosed, S.NONE]),
-      _captionStyle = (0, _crStyle["default"])(S.CAPTION, [isShow, S.CAPTION_OPEN]),
-      _publishedAt = publishedDate || _dt["default"].toTimeDate(publishedAt);
+      _style = (0, _crStyle["default"])([isClosed, S_NONE]),
+      _captionStyle = (0, _crStyle["default"])(S_CAPTION, [isShow, S_CAPTION_OPEN]),
+      _publishedAt = publishedDate || _dt["default"].toTimeDate(publishedAt),
+      _href = (0, _toLink["default"])(url);
+
+  if (!_href) {
+    return null;
+  }
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_GestureSwipeX["default"], {
     ref: _refArticle,
-    style: (0, _extends2["default"])({}, S.ROOT, _style),
+    style: (0, _extends2["default"])({}, S_ROOT, _style),
     setTimeStamp: _setTimeStamp,
     onGesture: _onGestureSwipeX,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemHeader["default"], {
       ref: ref,
       className: CL_ITEM_HEADER,
-      style: (0, _extends2["default"])({}, S.HEADER, TS.HEADER),
+      style: (0, _extends2["default"])({}, S_HEADER, TS.HEADER),
       captionStyle: _captionStyle,
-      btCloseStyle: S.SVG_CLOSE,
+      btCloseStyle: S_SVG_CLOSE,
       title: title,
       url: url,
       isShow: isShow,
@@ -163,7 +166,7 @@ var Article = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ArticleDescr["default"], {
       style: TS.DESCR,
       isShow: isShow,
-      url: url,
+      href: _href,
       description: description,
       related: related,
       publishedAt: _publishedAt,
