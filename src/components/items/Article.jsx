@@ -25,7 +25,7 @@ const S_ROOT = {
 , S_HEADER = {
   width: '100%',
   backgroundColor: '#404040',
-  padding: '8px 0 8px 16px',  
+  padding: '8px 0 8px 16px',
   lineHeight: 1.5,
   borderTopRightRadius: 2,
   borderBottomRightRadius: 2
@@ -40,10 +40,8 @@ const S_ROOT = {
 }
 , S_CAPTION_OPEN = { color: '#607d8b' }
 , S_SVG_CLOSE = {
-  float: 'none',
   position: 'absolute',
-  top: 8,
-  right: 0
+  right: -4
 }
 , S_NONE = { display: 'none' };
 

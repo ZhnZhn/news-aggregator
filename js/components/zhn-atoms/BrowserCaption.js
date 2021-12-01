@@ -42,8 +42,8 @@ var CL_GAP = "gap-right",
   position: 'absolute',
   top: 6,
   right: 0,
-  width: 24,
-  height: 24
+  width: '1.5rem',
+  height: '1.5rem'
 };
 
 var _isFn = function _isFn(fn) {

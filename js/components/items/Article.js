@@ -57,10 +57,8 @@ var S_ROOT = {
   color: '#607d8b'
 },
     S_SVG_CLOSE = {
-  "float": 'none',
   position: 'absolute',
-  top: 8,
-  right: 0
+  right: -4
 },
     S_NONE = {
   display: 'none'
