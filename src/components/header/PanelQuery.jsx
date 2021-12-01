@@ -1,120 +1,124 @@
-import { Component } from 'react'
+import { useRef, useEffect } from 'react';
 
-import A from '../Comp'
+import A from '../Comp';
 
 const CL_ITEM = 'row__topic';
 
-class PanelQuery extends Component {
-  componentDidUpdate(prevProps, prevState){
-    if (this.props !== prevProps){
-      if (this.props.isShow && !prevProps.isShow) {
-        this.prevFocused = document.activeElement
-        this.firstItem.focus()
-      } else if ( !this.props.isShow && prevProps.isShow) {
-        if (this.prevFocused) {
-          this.prevFocused.focus()
-        }
-      }
+const _isFn = fn => typeof fn === 'function';
+
+const _focusRefElement = ref => {
+  const _el = ref.current;
+  if (_el && _isFn(_el.focus)) {
+    _el.focus()
+  }
+};
+
+const PanelQuery = ({
+  className,
+  paneStyle,
+  isShow,
+  onCryptoCompare,
+  onCoinStats,
+  onMessari,
+  onIex,
+  onFmp,
+  onNewsApi,
+  onNewsTop,
+  onStackTagged,
+  onStackSearch,
+  onWebz,
+  onWebzCountry,
+  onClose
+}) => {
+  const _refFirstItem = useRef()
+  , _refPrevEl = useRef();
+
+  useEffect(()=>{
+    if (isShow && !_refPrevEl.current) {
+      _refPrevEl.current = document.activeElement
+      _focusRefElement(_refFirstItem)
+    } else if (!isShow) {
+      _focusRefElement(_refPrevEl)
+      _refPrevEl.current = null
     }
-  }
+  }, [isShow])
 
-  _refFirstItem = comp => this.firstItem = comp
-
-  render(){
-    const {
-     className,
-     paneStyle,
-     isShow,
-     onCryptoCompare,
-     onCoinStats,
-     onMessari,
-     onIex,
-     onFmp,
-     onNewsApi,
-     onNewsTop,
-     onStackTagged,
-     onStackSearch,
-     onWebz,
-     onWebzCountry,
-     onClose
-   } = this.props;
-    return (
-      <A.ModalPopup
-        isShow={isShow}
-        className={className}
-        style={paneStyle}
-        onClose={onClose}
-      >
-          <A.MenuItem
-            ref={this._refFirstItem}
-            className={CL_ITEM}
-            caption="CryptoCompare: News"
-            onClick={onCryptoCompare}
-            onClose={onClose}
-          />
-          <A.MenuItem
-            className={CL_ITEM}
-            caption="CoinStats: News"
-            onClick={onCoinStats}
-            onClose={onClose}
-          />
-          <A.MenuItem
-            className={CL_ITEM}
-            caption="Messari: Blockchain News"
-            onClick={onMessari}
-            onClose={onClose}
-          />
-          <A.MenuItem
-            className={CL_ITEM}
-            caption="IEX Cloud: Stock Market News"
-            onClick={onIex}
-            onClose={onClose}
-          />
-          <A.MenuItem
-            className={CL_ITEM}
-            caption="FMP: Stock Market News"
-            onClick={onFmp}
-            onClose={onClose}
-          />
-          <A.MenuItem
-            className={CL_ITEM}
-            caption="NewsApi: Search"
-            onClick={onNewsApi}
-            onClose={onClose}
-          />
-          <A.MenuItem
-            className={CL_ITEM}
-            caption="NewsApi: Top By"
-            onClick={onNewsTop}
-            onClose={onClose}
-          />
-          <A.MenuItem
-            className={CL_ITEM}
-            caption="StackOverflow: Tagged Questions"
-            onClick={onStackTagged}
-            onClose={onClose}
-          />
-          <A.MenuItem
-            className={CL_ITEM}
-            caption="StackOverflow: Search Questions"
-            onClick={onStackSearch}
-            onClose={onClose}
-          />
-          <A.MenuItem
-            className={CL_ITEM}
-            caption="Webz.io: News, Blogs"
-            onClick={onWebz}
-            onClose={onClose}
-          />
-          <A.MenuItem
-            className={CL_ITEM}
-            caption="Webz.io: By Country, Topic"
-            onClick={onWebzCountry}
-            onClose={onClose}
-          />
-       </A.ModalPopup>
-    );
-  }
-}
+  return (
+    <A.ModalPopup
+      isShow={isShow}
+      className={className}
+      style={paneStyle}
+      onClose={onClose}
+    >
+        <A.MenuItem
+          ref={_refFirstItem}
+          className={CL_ITEM}
+          caption="CryptoCompare: News"
+          onClick={onCryptoCompare}
+          onClose={onClose}
+        />
+        <A.MenuItem
+          className={CL_ITEM}
+          caption="CoinStats: News"
+          onClick={onCoinStats}
+          onClose={onClose}
+        />
+        <A.MenuItem
+          className={CL_ITEM}
+          caption="Messari: Blockchain News"
+          onClick={onMessari}
+          onClose={onClose}
+        />
+        <A.MenuItem
+          className={CL_ITEM}
+          caption="IEX Cloud: Stock Market News"
+          onClick={onIex}
+          onClose={onClose}
+        />
+        <A.MenuItem
+          className={CL_ITEM}
+          caption="FMP: Stock Market News"
+          onClick={onFmp}
+          onClose={onClose}
+        />
+        <A.MenuItem
+          className={CL_ITEM}
+          caption="NewsApi: Search"
+          onClick={onNewsApi}
+          onClose={onClose}
+        />
+        <A.MenuItem
+          className={CL_ITEM}
+          caption="NewsApi: Top By"
+          onClick={onNewsTop}
+          onClose={onClose}
+        />
+        <A.MenuItem
+          className={CL_ITEM}
+          caption="StackOverflow: Tagged Questions"
+          onClick={onStackTagged}
+          onClose={onClose}
+        />
+        <A.MenuItem
+          className={CL_ITEM}
+          caption="StackOverflow: Search Questions"
+          onClick={onStackSearch}
+          onClose={onClose}
+        />
+        <A.MenuItem
+          className={CL_ITEM}
+          caption="Webz.io: News, Blogs"
+          onClick={onWebz}
+          onClose={onClose}
+        />
+        <A.MenuItem
+          className={CL_ITEM}
+          caption="Webz.io: By Country, Topic"
+          onClick={onWebzCountry}
+          onClose={onClose}
+        />
+     </A.ModalPopup>
+  );
+};
 
 export default PanelQuery

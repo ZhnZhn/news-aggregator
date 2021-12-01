@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _react = require("react");
 
 var _Comp = _interopRequireDefault(require("../Comp"));
@@ -15,124 +13,113 @@ var _jsxRuntime = require("react/jsx-runtime");
 
 var CL_ITEM = 'row__topic';
 
-var PanelQuery = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(PanelQuery, _Component);
+var _isFn = function _isFn(fn) {
+  return typeof fn === 'function';
+};
 
-  function PanelQuery() {
-    var _this;
+var _focusRefElement = function _focusRefElement(ref) {
+  var _el = ref.current;
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-
-    _this._refFirstItem = function (comp) {
-      return _this.firstItem = comp;
-    };
-
-    return _this;
+  if (_el && _isFn(_el.focus)) {
+    _el.focus();
   }
+};
 
-  var _proto = PanelQuery.prototype;
+var PanelQuery = function PanelQuery(_ref) {
+  var className = _ref.className,
+      paneStyle = _ref.paneStyle,
+      isShow = _ref.isShow,
+      onCryptoCompare = _ref.onCryptoCompare,
+      onCoinStats = _ref.onCoinStats,
+      onMessari = _ref.onMessari,
+      onIex = _ref.onIex,
+      onFmp = _ref.onFmp,
+      onNewsApi = _ref.onNewsApi,
+      onNewsTop = _ref.onNewsTop,
+      onStackTagged = _ref.onStackTagged,
+      onStackSearch = _ref.onStackSearch,
+      onWebz = _ref.onWebz,
+      onWebzCountry = _ref.onWebzCountry,
+      onClose = _ref.onClose;
 
-  _proto.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
-    if (this.props !== prevProps) {
-      if (this.props.isShow && !prevProps.isShow) {
-        this.prevFocused = document.activeElement;
-        this.firstItem.focus();
-      } else if (!this.props.isShow && prevProps.isShow) {
-        if (this.prevFocused) {
-          this.prevFocused.focus();
-        }
-      }
+  var _refFirstItem = (0, _react.useRef)(),
+      _refPrevEl = (0, _react.useRef)();
+
+  (0, _react.useEffect)(function () {
+    if (isShow && !_refPrevEl.current) {
+      _refPrevEl.current = document.activeElement;
+
+      _focusRefElement(_refFirstItem);
+    } else if (!isShow) {
+      _focusRefElement(_refPrevEl);
+
+      _refPrevEl.current = null;
     }
-  };
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        className = _this$props.className,
-        paneStyle = _this$props.paneStyle,
-        isShow = _this$props.isShow,
-        onCryptoCompare = _this$props.onCryptoCompare,
-        onCoinStats = _this$props.onCoinStats,
-        onMessari = _this$props.onMessari,
-        onIex = _this$props.onIex,
-        onFmp = _this$props.onFmp,
-        onNewsApi = _this$props.onNewsApi,
-        onNewsTop = _this$props.onNewsTop,
-        onStackTagged = _this$props.onStackTagged,
-        onStackSearch = _this$props.onStackSearch,
-        onWebz = _this$props.onWebz,
-        onWebzCountry = _this$props.onWebzCountry,
-        onClose = _this$props.onClose;
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].ModalPopup, {
-      isShow: isShow,
-      className: className,
-      style: paneStyle,
-      onClose: onClose,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
-        ref: this._refFirstItem,
-        className: CL_ITEM,
-        caption: "CryptoCompare: News",
-        onClick: onCryptoCompare,
-        onClose: onClose
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
-        className: CL_ITEM,
-        caption: "CoinStats: News",
-        onClick: onCoinStats,
-        onClose: onClose
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
-        className: CL_ITEM,
-        caption: "Messari: Blockchain News",
-        onClick: onMessari,
-        onClose: onClose
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
-        className: CL_ITEM,
-        caption: "IEX Cloud: Stock Market News",
-        onClick: onIex,
-        onClose: onClose
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
-        className: CL_ITEM,
-        caption: "FMP: Stock Market News",
-        onClick: onFmp,
-        onClose: onClose
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
-        className: CL_ITEM,
-        caption: "NewsApi: Search",
-        onClick: onNewsApi,
-        onClose: onClose
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
-        className: CL_ITEM,
-        caption: "NewsApi: Top By",
-        onClick: onNewsTop,
-        onClose: onClose
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
-        className: CL_ITEM,
-        caption: "StackOverflow: Tagged Questions",
-        onClick: onStackTagged,
-        onClose: onClose
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
-        className: CL_ITEM,
-        caption: "StackOverflow: Search Questions",
-        onClick: onStackSearch,
-        onClose: onClose
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
-        className: CL_ITEM,
-        caption: "Webz.io: News, Blogs",
-        onClick: onWebz,
-        onClose: onClose
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
-        className: CL_ITEM,
-        caption: "Webz.io: By Country, Topic",
-        onClick: onWebzCountry,
-        onClose: onClose
-      })]
-    });
-  };
-
-  return PanelQuery;
-}(_react.Component);
+  }, [isShow]);
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].ModalPopup, {
+    isShow: isShow,
+    className: className,
+    style: paneStyle,
+    onClose: onClose,
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+      ref: _refFirstItem,
+      className: CL_ITEM,
+      caption: "CryptoCompare: News",
+      onClick: onCryptoCompare,
+      onClose: onClose
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+      className: CL_ITEM,
+      caption: "CoinStats: News",
+      onClick: onCoinStats,
+      onClose: onClose
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+      className: CL_ITEM,
+      caption: "Messari: Blockchain News",
+      onClick: onMessari,
+      onClose: onClose
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+      className: CL_ITEM,
+      caption: "IEX Cloud: Stock Market News",
+      onClick: onIex,
+      onClose: onClose
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+      className: CL_ITEM,
+      caption: "FMP: Stock Market News",
+      onClick: onFmp,
+      onClose: onClose
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+      className: CL_ITEM,
+      caption: "NewsApi: Search",
+      onClick: onNewsApi,
+      onClose: onClose
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+      className: CL_ITEM,
+      caption: "NewsApi: Top By",
+      onClick: onNewsTop,
+      onClose: onClose
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+      className: CL_ITEM,
+      caption: "StackOverflow: Tagged Questions",
+      onClick: onStackTagged,
+      onClose: onClose
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+      className: CL_ITEM,
+      caption: "StackOverflow: Search Questions",
+      onClick: onStackSearch,
+      onClose: onClose
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+      className: CL_ITEM,
+      caption: "Webz.io: News, Blogs",
+      onClick: onWebz,
+      onClose: onClose
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+      className: CL_ITEM,
+      caption: "Webz.io: By Country, Topic",
+      onClick: onWebzCountry,
+      onClose: onClose
+    })]
+  });
+};
 
 var _default = PanelQuery;
 exports["default"] = _default;
