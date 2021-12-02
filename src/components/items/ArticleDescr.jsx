@@ -9,7 +9,6 @@ const S_DESCR = {
   lineHeight: 1.8,
   padding: '8px 16px 4px 16px',
   color: '#121212',
-  //fontFamily: 'Verdana, Arial, sans-serif',
   fontSize: '1rem',
   fontWeight: 'bold'
 },
