@@ -76,7 +76,9 @@ const OPTION_COUNTRIES = [
   {"caption": "Technology", "value": "tech"},
   {"caption": "Real Estate", "value": "real_estate"},
   {"caption": "Education", "value": "education"},
-  {"caption": "Fashion", "value": "fashion"}
+  {"caption": "Fashion", "value": "fashion"},
+  {"caption": "Science", "value": "science"},
+  {"caption": "Architects", "value": "architects"}
 ]
 , OPTION_LANGUAGES = [
   { "caption": "All", "value": "" },
@@ -85,7 +87,6 @@ const OPTION_COUNTRIES = [
 , DF_COUNTRY = OPTION_COUNTRIES[0]
 , DF_TOPIC = OPTION_TOPICS[0]
 , DF_LANGUAGE = OPTION_LANGUAGES[0];
-
 
 
 const _getRefValue = ref => ref.current;

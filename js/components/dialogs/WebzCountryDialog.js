@@ -215,6 +215,12 @@ var OPTION_COUNTRIES = [{
 }, {
   "caption": "Fashion",
   "value": "fashion"
+}, {
+  "caption": "Science",
+  "value": "science"
+}, {
+  "caption": "Architects",
+  "value": "architects"
 }],
     OPTION_LANGUAGES = [{
   "caption": "All",
