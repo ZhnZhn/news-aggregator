@@ -3,19 +3,23 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 var ROOT_URL = 'https://api.webz.io/',
-    NEWS_SLICE = 'filterWebContent';
-var DF_SITE_TYPE = 'news';
-var DF_IN_TITLE = 'Weather';
-var DF_BEFORE_DAYS = 2;
-var MS_DAY = 24 * 60 * 60 * 1000;
-var MAX_BEFORE_DAYS = 30;
-var DF_COUNTRY = "AU",
+    NEWS_SLICE = 'filterWebContent',
+    DF_SITE_TYPE = 'news',
+    DF_IN_TITLE = 'Weather',
+    DF_BEFORE_DAYS = 2,
+    MS_DAY = 24 * 60 * 60 * 1000,
+    MAX_BEFORE_DAYS = 30,
+    DF_COUNTRY = "AU",
     DF_TOPIC = "business";
 
 var _crTs = function _crTs(beforeDays) {
   var _ = parseInt(beforeDays, 10);
 
   return !Number.isNaN(_) && _ < MAX_BEFORE_DAYS ? Date.now() - _ * MS_DAY : Date.now() - DF_BEFORE_DAYS * MS_DAY;
+};
+
+var _crRootUrl = function _crRootUrl(apiKey) {
+  return "" + ROOT_URL + NEWS_SLICE + "?token=" + apiKey + "&order=desc&format=json";
 };
 
 var _crNewsUrl = function _crNewsUrl(option) {
@@ -28,7 +32,7 @@ var _crNewsUrl = function _crNewsUrl(option) {
       _inTitle = inTitle || DF_IN_TITLE;
 
   option.apiKey = void 0;
-  return "" + ROOT_URL + NEWS_SLICE + "?token=" + apiKey + "&format=json&sort=crawled&ts=" + _ts + "&q=language:english thread.title:" + _inTitle + " site_type:" + siteType;
+  return _crRootUrl(apiKey) + "&sort=crawled&ts=" + _ts + "&q=language:english AND thread.title:" + _inTitle + " AND site_type:" + siteType;
 };
 
 var _crCountryUrl = function _crCountryUrl(option) {
@@ -38,10 +42,10 @@ var _crCountryUrl = function _crCountryUrl(option) {
       _option$topic = option.topic,
       topic = _option$topic === void 0 ? DF_TOPIC : _option$topic,
       lang = option.lang,
-      _qLangToken = lang ? "language:" + lang + " " : '';
+      _qLangToken = lang ? "language:" + lang + " AND " : '';
 
   option.apiKey = void 0;
-  return "" + ROOT_URL + NEWS_SLICE + "?token=" + apiKey + "&order=desc&format=json&q=" + _qLangToken + "site_type:news country:" + country + " site_category:" + topic;
+  return _crRootUrl(apiKey) + "&q=" + _qLangToken + "site_type:news AND country:" + country + " AND site_category:" + topic;
 };
 
 var WebzApi = {

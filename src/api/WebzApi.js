@@ -2,14 +2,14 @@
 const ROOT_URL = 'https://api.webz.io/'
 , NEWS_SLICE = 'filterWebContent'
 
-const DF_SITE_TYPE = 'news';
-const DF_IN_TITLE = 'Weather';
-const DF_BEFORE_DAYS = 2;
-const MS_DAY = 24*60*60*1000;
-const MAX_BEFORE_DAYS = 30;
+, DF_SITE_TYPE = 'news'
+, DF_IN_TITLE = 'Weather'
+, DF_BEFORE_DAYS = 2
+, MS_DAY = 24*60*60*1000
+, MAX_BEFORE_DAYS = 30
 
-const DF_COUNTRY = "AU"
-, DF_TOPIC = "business"
+, DF_COUNTRY = "AU"
+, DF_TOPIC = "business";
 
 const _crTs = (beforeDays) => {
   const _ = parseInt(beforeDays, 10);
@@ -18,6 +18,9 @@ const _crTs = (beforeDays) => {
     : Date.now() - DF_BEFORE_DAYS*MS_DAY;
 };
 
+
+const _crRootUrl = apiKey =>
+  `${ROOT_URL}${NEWS_SLICE}?token=${apiKey}&order=desc&format=json`;
 
 const _crNewsUrl = (option) => {
   const {
@@ -28,7 +31,7 @@ const _crNewsUrl = (option) => {
   , _ts = _crTs(beforeDays || DF_BEFORE_DAYS)
   , _inTitle = inTitle || DF_IN_TITLE;
   option.apiKey = void 0
-  return `${ROOT_URL}${NEWS_SLICE}?token=${apiKey}&format=json&sort=crawled&ts=${_ts}&q=language:english thread.title:${_inTitle} site_type:${siteType}`;
+  return `${_crRootUrl(apiKey)}&sort=crawled&ts=${_ts}&q=language:english AND thread.title:${_inTitle} AND site_type:${siteType}`;
 };
 
 const _crCountryUrl = option => {
@@ -39,10 +42,10 @@ const _crCountryUrl = option => {
      lang
   } = option
   , _qLangToken = lang
-      ? `language:${lang} `
+      ? `language:${lang} AND `
       : '';
   option.apiKey = void 0
-  return `${ROOT_URL}${NEWS_SLICE}?token=${apiKey}&order=desc&format=json&q=${_qLangToken}site_type:news country:${country} site_category:${topic}`;
+  return `${_crRootUrl(apiKey)}&q=${_qLangToken}site_type:news AND country:${country} AND site_category:${topic}`;
 };
 
 
