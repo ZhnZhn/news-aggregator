@@ -1,1 +1,24 @@
-{"version":3,"sources":["../../src/components/has.js"],"names":["INITIAL_WIDTH","_isInnerWidth","window","innerWidth","has","HAS_TOUCH","is","isTouchable","wideWidth","getWidth","initWidthStyle","initialWidth","width"],"mappings":";;;;;;;AAAA;;AAEA,IAAMA,aAAa,GAAG,GAAtB;AAAA,IACEC,aAAa,GAAG,SAAhBA,aAAgB;AAAA,SAAMC,MAAM,IAAIA,MAAM,CAACC,UAAvB;AAAA,CADlB;;AAGA,IAAMC,GAAG,GAAG;AACVC,EAAAA,SAAS,EAAEC,eAAGC,WAAH,EADD;AAGVC,EAAAA,SAAS,EAAE;AAAA,WAAMP,aAAa,KAC1BC,MAAM,CAACC,UAAP,GAAoB,GADM,GAE1B,IAFO;AAAA,GAHD;AAMVM,EAAAA,QAAQ,EAAE;AAAA,WAAMR,aAAa,KACzBC,MAAM,CAACC,UAAP,GAAoB,EADK,GAEzBH,aAFM;AAAA,GANA;AASVU,EAAAA,cAAc,EAAE,wBAACC,YAAD;AAAA,QAACA,YAAD;AAACA,MAAAA,YAAD,GAAcX,aAAd;AAAA;;AAAA,WAAiC;AAC9CY,MAAAA,KAAK,EAAE,CAACR,GAAG,CAACI,SAAJ,EAAD,GACFJ,GAAG,CAACK,QAAJ,EADE,GAEFE;AAHyC,KAAjC;AAAA;AATN,CAAZ;eAgBeP,G","sourcesContent":["import is from '../utils/is'\r\n\r\nconst INITIAL_WIDTH = 635\r\n, _isInnerWidth = () => window && window.innerWidth;\r\n\r\nconst has = {\r\n  HAS_TOUCH: is.isTouchable(),\r\n\r\n  wideWidth: () => _isInnerWidth()\r\n    ? window.innerWidth > 700\r\n    : true,\r\n  getWidth: () => _isInnerWidth()\r\n    ? window.innerWidth - 16\r\n    : INITIAL_WIDTH,\r\n  initWidthStyle: (initialWidth=INITIAL_WIDTH) => ({\r\n     width: !has.wideWidth()\r\n        ? has.getWidth()\r\n        : initialWidth\r\n    })\r\n};\r\n\r\nexport default has\r\n"],"file":"has.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/components/has.js"
+ ],
+ "file": "../../src/components/has.js",
+ "names": [
+  "INITIAL_WIDTH",
+  "_isInnerWidth",
+  "window",
+  "innerWidth",
+  "_isTouchable",
+  "document",
+  "documentElement",
+  "has",
+  "HAS_TOUCH",
+  "wideWidth",
+  "getWidth",
+  "initWidthStyle",
+  "initialWidth",
+  "width"
+ ],
+ "mappings": ";;;;;AAAA,IAAMA,aAAa,GAAG,GAAtB;AAAA,IACEC,aAAa,GAAG,SAAhBA,aAAgB;AAAA,SAAMC,MAAM,IAAIA,MAAM,CAACC,UAAvB;AAAA,CADlB;AAAA,IAEEC,YAAY,GAAG,SAAfA,YAAe;AAAA,SAAMC,QAAQ,IACvB,kBAAkBA,QAAQ,CAACC,eADlB;AAAA,CAFjB;;AAKA,IAAMC,GAAG,GAAG;AACVC,EAAAA,SAAS,EAAEJ,YAAY,EADb;AAGVK,EAAAA,SAAS,EAAE;AAAA,WAAMR,aAAa,KAC1BC,MAAM,CAACC,UAAP,GAAoB,GADM,GAE1B,IAFO;AAAA,GAHD;AAMVO,EAAAA,QAAQ,EAAE;AAAA,WAAMT,aAAa,KACzBC,MAAM,CAACC,UAAP,GAAoB,EADK,GAEzBH,aAFM;AAAA,GANA;AASVW,EAAAA,cAAc,EAAE,wBAACC,YAAD;AAAA,QAACA,YAAD;AAACA,MAAAA,YAAD,GAAcZ,aAAd;AAAA;;AAAA,WAAiC;AAC9Ca,MAAAA,KAAK,EAAE,CAACN,GAAG,CAACE,SAAJ,EAAD,GACFF,GAAG,CAACG,QAAJ,EADE,GAEFE;AAHyC,KAAjC;AAAA;AATN,CAAZ;eAgBeL,G"
+}

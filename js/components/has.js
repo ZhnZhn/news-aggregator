@@ -1,19 +1,18 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
-
-var _is = _interopRequireDefault(require("../utils/is"));
 
 var INITIAL_WIDTH = 635,
     _isInnerWidth = function _isInnerWidth() {
   return window && window.innerWidth;
+},
+    _isTouchable = function _isTouchable() {
+  return document && 'ontouchstart' in document.documentElement;
 };
 
 var has = {
-  HAS_TOUCH: _is["default"].isTouchable(),
+  HAS_TOUCH: _isTouchable(),
   wideWidth: function wideWidth() {
     return _isInnerWidth() ? window.innerWidth > 700 : true;
   },
