@@ -2,7 +2,6 @@ import { StrictMode, Component } from 'react'
 
 import Store from '../flux/stores/Store'
 import Actions, { TYPES } from '../flux/actions/ComponentActions'
-import { TYPES as LOADING_ACTIONS } from '../flux/actions/LoadingProgressActions'
 
 import initTheme  from './styles/theme'
 import ThemeContext from './hoc/ThemeContext'
@@ -73,7 +72,6 @@ class AppNewsAggregator extends Component {
         <div>
           <HeaderBar
             store={Store}
-            LOADING_ACTIONS={LOADING_ACTIONS}
             onChangeTheme={Actions.changeTheme}
             onNewsSources={this.showNewsBrowser}
             onWebz={this.showWebz}

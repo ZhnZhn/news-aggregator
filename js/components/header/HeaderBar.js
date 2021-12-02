@@ -111,7 +111,6 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
   _proto.render = function render() {
     var _this$props = this.props,
         store = _this$props.store,
-        LOADING_ACTIONS = _this$props.LOADING_ACTIONS,
         theme = _this$props.theme,
         onNewsSources = _this$props.onNewsSources,
         onSettings = _this$props.onSettings,
@@ -138,8 +137,7 @@ var HeaderBar = /*#__PURE__*/function (_Component) {
         onNewsApi: this._hNewsApi,
         onNewsTop: this._hNewsTop
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_LoadingProgress["default"], {
-        store: store,
-        ACTIONS: LOADING_ACTIONS
+        store: store
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconAppLogo["default"], {
         className: CL_ICON_APP,
         title: TITLE

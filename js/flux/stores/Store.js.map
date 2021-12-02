@@ -1,1 +1,20 @@
-{"version":3,"sources":["../../../src/flux/stores/Store.js"],"names":["Store","Reflux","createStore","listenables","ComponentActions","NewsActions","LoadingProgressActions","ComponentSlice","NewsSlice","SettingSlice","WithLoadingProgress"],"mappings":";;;;;;;;;AAAA;;AAEA;;AACA;;AACA;;AAEA;;AACA;;AACA;;AACA;;AAEA,IAAMA,KAAK,GAAGC,uBAAOC,WAAP;AACZC,EAAAA,WAAW,EAAE,CACRC,4BADQ,EAERC,uBAFQ,EAGRC,kCAHQ;AADD,GAOTC,0BAPS,EAQTC,qBARS,EASTC,wBATS,EAUTC,+BAVS,EAAd;;eAaeV,K","sourcesContent":["import Reflux from 'reflux-core'\r\n\r\nimport ComponentActions from '../actions/ComponentActions'\r\nimport NewsActions from '../actions/NewsActions'\r\nimport LoadingProgressActions from '../actions/LoadingProgressActions'\r\n\r\nimport ComponentSlice from './ComponentSlice'\r\nimport NewsSlice from './NewsSlice'\r\nimport SettingSlice from './SettingSlice'\r\nimport WithLoadingProgress from './WithLoadingProgress'\r\n\r\nconst Store = Reflux.createStore({\r\n  listenables: [\r\n       ComponentActions,\r\n       NewsActions,\r\n       LoadingProgressActions\r\n  ],\r\n\r\n  ...ComponentSlice,\r\n  ...NewsSlice,\r\n  ...SettingSlice,\r\n  ...WithLoadingProgress\r\n})\r\n\r\nexport default Store\r\n"],"file":"Store.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/flux/stores/Store.js"
+ ],
+ "file": "../../../src/flux/stores/Store.js",
+ "names": [
+  "Store",
+  "Reflux",
+  "createStore",
+  "listenables",
+  "ComponentActions",
+  "NewsActions",
+  "ComponentSlice",
+  "NewsSlice",
+  "SettingSlice",
+  "WithLoadingProgress"
+ ],
+ "mappings": ";;;;;;;;;AAAA;;AAEA;;AACA;;AAEA;;AACA;;AACA;;AACA;;AAEA,IAAMA,KAAK,GAAGC,uBAAOC,WAAP;AACZC,EAAAA,WAAW,EAAE,CACRC,4BADQ,EAERC,uBAFQ;AADD,GAMTC,0BANS,EAOTC,qBAPS,EAQTC,wBARS,EASTC,+BATS,EAAd;;eAYeT,K"
+}

@@ -63,7 +63,7 @@ var NewsSlice = {
 
     _ComponentActions["default"].showNewsPane(option.itemConf);
 
-    this.triggerLoadingProgress(_LoadingProgressActions.TYPES.LOADING);
+    this.triggerLoadingProgress(_LoadingProgressActions.LPAT_LOADING);
   },
   onLoadNewsCompleted: function onLoadNewsCompleted(_ref) {
     var news = _ref.news,
@@ -74,12 +74,12 @@ var NewsSlice = {
       this.trigger(_NewsActions.TYPES.LOAD_NEWS_COMPLETED, r);
     }
 
-    this.triggerLoadingProgress(_LoadingProgressActions.TYPES.LOADING_COMPLETE);
+    this.triggerLoadingProgress(_LoadingProgressActions.LPAT_LOADING_COMPLETE);
   },
   onLoadNewsFailed: function onLoadNewsFailed(option) {
     _ComponentActions["default"].showModalDialog('ALERT_DIALOG', option);
 
-    this.triggerLoadingProgress(_LoadingProgressActions.TYPES.LOADING_FAILED);
+    this.triggerLoadingProgress(_LoadingProgressActions.LPAT_LOADING_FAILED);
   },
   onRemoveNews: function onRemoveNews(item) {
     Logic.removeNews(this.news, item);

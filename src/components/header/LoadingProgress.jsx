@@ -1,55 +1,50 @@
-import { Component } from 'react'
+import { memo, useState } from 'react';
+import useListen from '../hooks/useListen';
 
-import ProgressLine from '../zhn-atoms/ProgressLine'
+import {
+  LPAT_LOADING,
+  LPAT_LOADING_COMPLETE,
+  LPAT_LOADING_FAILED
+} from '../../flux/actions/LoadingProgressActions';
 
-const COLOR = {
-  LOADING : '#2f7ed8',
-  FAILED : '#ed5813'
+import ProgressLine from '../zhn-atoms/ProgressLine';
+
+const COLOR_LOADING = '#2f7ed8'
+, COLOR_FAILED = '#ed5813'
+, COMPLETE_TIMEOUT_MLS = 450;
+
+const _crState = (completed, color) => [
+  completed,
+  color
+];
+
+const ProgressLoading = ({
+  store
+}) => {
+  const [state, setState] = useState(
+    ()=>_crState(0, COLOR_LOADING)
+  )
+  , [completed, color] = state;
+
+  useListen(store, (actionType)=>{
+    if (actionType === LPAT_LOADING){
+      setState(_crState(35, COLOR_LOADING))
+    } else if (actionType === LPAT_LOADING_COMPLETE){
+      setTimeout(
+        () => setState(_crState(100, COLOR_LOADING))
+      , COMPLETE_TIMEOUT_MLS)
+    } else if (actionType === LPAT_LOADING_FAILED){
+      setState(_crState(100, COLOR_FAILED))
+    }
+  }, 'listenLoadingProgress')
+
+  return (
+    <ProgressLine
+       height={3}
+       color={color}
+       completed={completed}
+    />
+  );
 };
 
-class LoadingProgress extends Component {
-
-  state = {
-    completed : 0,
-    color : COLOR.LOADING
-  }
-
-  componentDidMount(){
-    this.unsubscribe = this.props.store.listenLoadingProgress(this._onStore)
-  }
-
-  componentWillUnmount(){
-    this.unsubscribe()
-  }
-
-
-  shouldComponentUpdate(nextProps, nextState){
-    if (this.props !== nextProps){
-      return false;
-    }
-    return true;
-  }
-
-  _onStore = (actionType) => {
-      const { ACTIONS } = this.props;
-      if (actionType === ACTIONS.LOADING){
-        this.setState({ completed: 35, color: COLOR.LOADING })
-      } else if (actionType === ACTIONS.LOADING_COMPLETE){
-        this.setState({ completed: 100, color: COLOR.LOADING })
-      } else if (actionType === ACTIONS.LOADING_FAILED){
-        this.setState({ completed: 100, color: COLOR.FAILED })
-      }
-  }
-
-  render(){
-    const { completed, color } = this.state;
-    return (
-      <ProgressLine
-         color={color}
-         completed={completed}
-      />
-    );
-  }
-}
-
-export default LoadingProgress
+export default memo(ProgressLoading)

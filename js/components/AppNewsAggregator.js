@@ -15,8 +15,6 @@ var _Store = _interopRequireDefault(require("../flux/stores/Store"));
 
 var _ComponentActions = _interopRequireWildcard(require("../flux/actions/ComponentActions"));
 
-var _LoadingProgressActions = require("../flux/actions/LoadingProgressActions");
-
 var _theme = _interopRequireDefault(require("./styles/theme"));
 
 var _ThemeContext = _interopRequireDefault(require("./hoc/ThemeContext"));
@@ -114,7 +112,6 @@ var AppNewsAggregator = /*#__PURE__*/function (_Component) {
         children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
           children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_HeaderBar["default"], {
             store: _Store["default"],
-            LOADING_ACTIONS: _LoadingProgressActions.TYPES,
             onChangeTheme: _ComponentActions["default"].changeTheme,
             onNewsSources: this.showNewsBrowser,
             onWebz: this.showWebz,

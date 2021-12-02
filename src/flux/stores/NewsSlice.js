@@ -1,7 +1,11 @@
 
 import { TYPES } from '../actions/NewsActions'
 import ComponentActions from '../actions/ComponentActions'
-import {TYPES as LP} from '../actions/LoadingProgressActions'
+import {
+  LPAT_LOADING,
+  LPAT_LOADING_COMPLETE,
+  LPAT_LOADING_FAILED
+} from '../actions/LoadingProgressActions'
 
 const Logic = {
   loadNewsCompleted(slice, news){
@@ -50,18 +54,18 @@ const NewsSlice = {
 
   onLoadNews(option={}){
     ComponentActions.showNewsPane(option.itemConf)
-    this.triggerLoadingProgress(LP.LOADING)
+    this.triggerLoadingProgress(LPAT_LOADING)
   },
   onLoadNewsCompleted({ news, itemConf }){
     if (news) {
       const r = Logic.loadNewsCompleted(this.news, news);
       this.trigger(TYPES.LOAD_NEWS_COMPLETED, r)
     }
-    this.triggerLoadingProgress(LP.LOADING_COMPLETE)
+    this.triggerLoadingProgress(LPAT_LOADING_COMPLETE)
   },
   onLoadNewsFailed(option){
-    ComponentActions.showModalDialog('ALERT_DIALOG', option)    
-    this.triggerLoadingProgress(LP.LOADING_FAILED)
+    ComponentActions.showModalDialog('ALERT_DIALOG', option)
+    this.triggerLoadingProgress(LPAT_LOADING_FAILED)
   },
 
 

@@ -77,7 +77,7 @@ class HeaderBar extends Component {
 
   render() {
     const {
-        store, LOADING_ACTIONS,
+        store,
         theme,
         onNewsSources,
         onSettings, onAbout
@@ -104,8 +104,7 @@ class HeaderBar extends Component {
           onNewsTop={this._hNewsTop}
         />
         <LoadingProgress
-           store={store}
-           ACTIONS={LOADING_ACTIONS}
+           store={store}           
         />
         <IconAppLogo
            className={CL_ICON_APP}

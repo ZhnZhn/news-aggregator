@@ -1,5 +1,3 @@
-//import { TYPES } from '../actions/LoadingProgressActions'
-
 const CHANNEL = 'WITH_LOADING_PROGRESS';
 
 const WithLoadingProgress = {
@@ -13,20 +11,7 @@ const WithLoadingProgress = {
 
   triggerLoadingProgress(actionType){
     this.emitter.emit(CHANNEL, actionType);
-  },
-
-  /*
-  onLoadingProgress(){
-    this.triggerLoadingProgress(TYPES.LOADING);
-  },
-  onLoadingProgressComplete(){
-    this.triggerLoadingProgress(TYPES.LOADING_COMPLETE);
-  },
-  onLoadingProgressFailed(){
-    this.triggerLoadingProgress(TYPES.LOADING_FAILED);
   }
-  */
-
 };
 
 export default WithLoadingProgress

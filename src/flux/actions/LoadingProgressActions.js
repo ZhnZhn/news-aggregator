@@ -1,15 +1,4 @@
-import Reflux from 'reflux-core';
 
-export const TYPES = {
-  LOADING : 'loadingProgress',
-  LOADING_COMPLETE : 'loadingProgressComplete',
-  LOADING_FAILED : 'loadingProgressFailed'
-}
-
-const LoadingProgressActions = Reflux.createActions({
-  [TYPES.LOADING] : {},
-  [TYPES.LOADING_COMPLETE] : {},
-  [TYPES.LOADING_FAILED] : {}
-})
-
-export default LoadingProgressActions
+export const LPAT_LOADING = 'LOADING'
+export const LPAT_LOADING_COMPLETE = 'LOADING_COMPLETE'
+export const LPAT_LOADING_FAILED = 'LOADING_FAILED'
