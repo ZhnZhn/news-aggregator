@@ -35,7 +35,7 @@ var ProgressLine = function ProgressLine(_ref) {
       color = _ref$color === void 0 ? DF_COLOR : _ref$color,
       completed = _ref.completed;
 
-  var forceUpdate = (0, _useForceUpdate["default"])(),
+  var forceUpdate = (0, _useForceUpdate["default"])()[1],
       _refWasCompleted = (0, _react.useRef)(false),
       _refIdCompleted = (0, _react.useRef)(null),
       _refWasOpacied = (0, _react.useRef)(false),

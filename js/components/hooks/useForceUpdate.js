@@ -10,7 +10,7 @@ var _reducer = function _reducer() {
 };
 
 var useForceUpdate = function useForceUpdate() {
-  return (0, _react.useReducer)(_reducer)[1];
+  return (0, _react.useReducer)(_reducer);
 };
 
 var _default = useForceUpdate;

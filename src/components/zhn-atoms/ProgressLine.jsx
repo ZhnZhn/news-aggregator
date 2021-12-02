@@ -26,7 +26,7 @@ const ProgressLine = ({
   color=DF_COLOR,
   completed
 }) => {
-  const forceUpdate = useForceUpdate()
+  const forceUpdate = useForceUpdate()[1]
   , _refWasCompleted = useRef(false)
   , _refIdCompleted = useRef(null)
   , _refWasOpacied = useRef(false)
