@@ -1,11 +1,16 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 exports.__esModule = true;
 exports["default"] = void 0;
 
+var _has = _interopRequireDefault(require("../has"));
+
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S_KEY = {
+var HAS_TOUCH = _has["default"].HAS_TOUCH,
+    S_KEY = {
   textDecoration: 'underline'
 };
 
@@ -46,7 +51,7 @@ var BtCaption = function BtCaption(_ref2) {
       children = _ref2.children;
 
   var _keyIndex = _findKeyIndex(caption, accessKey),
-      _caption = _keyIndex === -1 ? caption || '' : /*#__PURE__*/(0, _jsxRuntime.jsx)(CaptionToken, {
+      _caption = HAS_TOUCH || _keyIndex === -1 ? caption || '' : /*#__PURE__*/(0, _jsxRuntime.jsx)(CaptionToken, {
     caption: caption,
     keyIndex: _keyIndex
   });

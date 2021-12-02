@@ -1,4 +1,7 @@
-const S_KEY = { textDecoration: 'underline' };
+import has from '../has';
+
+const { HAS_TOUCH } = has
+, S_KEY = { textDecoration: 'underline' };
 
 const _crCaptionToken = (caption, keyIndex) => [
   caption.substring(0, keyIndex),
@@ -35,7 +38,7 @@ const BtCaption = ({
   children
 }) => {
   const _keyIndex = _findKeyIndex(caption, accessKey)
-  , _caption = _keyIndex === -1
+  , _caption = HAS_TOUCH || _keyIndex === -1
        ? caption || ''
        : <CaptionToken caption={caption} keyIndex={_keyIndex} />;
   return (
