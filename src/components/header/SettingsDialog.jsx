@@ -52,6 +52,13 @@ const _isNumber = n => typeof n === 'number'
 const _inRange = (min, max, v) => _isNumber(v)
  && v>=min && v<=max;
 
+ const _selectFontSize = (item) => {
+   const { value } = item || {}
+   if (_inRange(MIN_FS, MAX_FS, value)) {
+     document.documentElement.style.fontSize = `${value}px`
+   }
+ };
+
 class SettingsDialog extends Component {
   /*
   static propTypes = {
@@ -74,12 +81,6 @@ class SettingsDialog extends Component {
     return true;
   }
 
-  _handleKeyDown = (event) => {
-    if (event.keyCode === 13 || event.keyCode === 27) {
-      this.props.onClose()
-    }
-  }
-
   _selectTheme = (item) => {
     const { theme } = this.props;
     if (
@@ -92,15 +93,14 @@ class SettingsDialog extends Component {
     }
   }
 
-  _selectFontSize = (item) => {
-    const { value } = item || {}
-    if ( _inRange(MIN_FS, MAX_FS, value)) {
-      document.documentElement.style.fontSize = `${value}px`
-    }
-  }
 
   render(){
-    const { isShow, theme, data, onClose } = this.props
+    const {
+      isShow,
+      theme,
+      data,
+      onClose
+    } = this.props
     , TS = theme.createStyle(styleConfig)
     , _TS = JSON.parse(JSON.stringify(TS));
     _assign(_TS.SELECT.ROOT, S_SELECT_WIDTH)
@@ -108,12 +108,10 @@ class SettingsDialog extends Component {
         <A.ModalDialog
            style={{...S_MODAL, ...TS.R_DIALOG }}
            divBtStyle={S_DIV_BT}
-           styleCaption={TS.BROWSER_CAPTION}
-           styleButton={TS.BT}
+           captionStyle={TS.BROWSER_CAPTION}
+           buttonStyle={TS.BT}
            caption="User Settings"
-           isWithButton={false}
            isShow={isShow}
-           onKeyDown={this._handleKeyDown}
            onClose={onClose}
         >
           <A.TabPane
@@ -138,7 +136,7 @@ class SettingsDialog extends Component {
                   buttonsStyle={S_CARD_BUTTONS}
                   TS={_TS}
                   onSetTheme={this._selectTheme}
-                  onSetFontSize={this._selectFontSize}
+                  onSetFontSize={_selectFontSize}
                   onClose={onClose}
                 />
              </A.Tab>

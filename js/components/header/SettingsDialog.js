@@ -68,6 +68,15 @@ var _inRange = function _inRange(min, max, v) {
   return _isNumber(v) && v >= min && v <= max;
 };
 
+var _selectFontSize = function _selectFontSize(item) {
+  var _ref = item || {},
+      value = _ref.value;
+
+  if (_inRange(MIN_FS, MAX_FS, value)) {
+    document.documentElement.style.fontSize = value + "px";
+  }
+};
+
 var SettingsDialog = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(SettingsDialog, _Component);
 
@@ -80,12 +89,6 @@ var SettingsDialog = /*#__PURE__*/function (_Component) {
 
     _this = _Component.call.apply(_Component, [this].concat(args)) || this;
 
-    _this._handleKeyDown = function (event) {
-      if (event.keyCode === 13 || event.keyCode === 27) {
-        _this.props.onClose();
-      }
-    };
-
     _this._selectTheme = function (item) {
       var theme = _this.props.theme;
 
@@ -95,15 +98,6 @@ var SettingsDialog = /*#__PURE__*/function (_Component) {
         _ComponentActions["default"].changeTheme(item.value);
 
         _this.forceUpdate();
-      }
-    };
-
-    _this._selectFontSize = function (item) {
-      var _ref = item || {},
-          value = _ref.value;
-
-      if (_inRange(MIN_FS, MAX_FS, value)) {
-        document.documentElement.style.fontSize = value + "px";
       }
     };
 
@@ -144,12 +138,10 @@ var SettingsDialog = /*#__PURE__*/function (_Component) {
     return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ModalDialog, {
       style: (0, _extends2["default"])({}, S_MODAL, TS.R_DIALOG),
       divBtStyle: S_DIV_BT,
-      styleCaption: TS.BROWSER_CAPTION,
-      styleButton: TS.BT,
+      captionStyle: TS.BROWSER_CAPTION,
+      buttonStyle: TS.BT,
       caption: "User Settings",
-      isWithButton: false,
       isShow: isShow,
-      onKeyDown: this._handleKeyDown,
       onClose: onClose,
       children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].TabPane, {
         width: "100%",
@@ -173,7 +165,7 @@ var SettingsDialog = /*#__PURE__*/function (_Component) {
             buttonsStyle: S_CARD_BUTTONS,
             TS: _TS,
             onSetTheme: this._selectTheme,
-            onSetFontSize: this._selectFontSize,
+            onSetFontSize: _selectFontSize,
             onClose: onClose
           })
         })]

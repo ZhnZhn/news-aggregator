@@ -18,26 +18,19 @@ var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog")
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
-var S = {
-  DIALOG: {
-    position: 'static',
-    width: 350,
-    height: 160,
-    margin: '70px auto 0px'
-  },
-  CAPTION: {
-    color: '#f44336',
-    fontWeight: 'bold'
-  },
-  MSG: {
-    color: 'black',
-    width: '100%',
-    paddingTop: 16,
-    paddingLeft: 10,
-    fontWeight: 'bold',
-    lineHeight: 1.4,
-    whiteSpace: 'pre-line'
-  }
+var S_DIALOG = {
+  position: 'static',
+  width: 350,
+  height: 160,
+  margin: '70px auto 0px'
+},
+    S_MSG = {
+  color: 'black',
+  width: '100%',
+  padding: '16px 0 0 16px',
+  fontWeight: 'bold',
+  lineHeight: 1.4,
+  whiteSpace: 'pre-line'
 };
 
 var _toMsg = function _toMsg(data) {
@@ -68,31 +61,19 @@ var AlertDialog = /*#__PURE__*/(0, _react.memo)(function (_ref2) {
       data = _ref2.data,
       onClose = _ref2.onClose;
 
-  /*eslint-disable react-hooks/exhaustive-deps */
-  var _hKeyDown = (0, _react.useCallback)(function (evt) {
-    var keyCode = evt.keyCode;
-
-    if (keyCode === 27 || keyCode === 13) {
-      onClose();
-    }
-  }, []) //onClose
-
-  /*eslint-enable react-hooks/exhaustive-deps */
-  ,
-      TS = (0, _useTheme["default"])(_Dialog["default"]),
+  var TS = (0, _useTheme["default"])(_Dialog["default"]),
       _msg = _toMsg(data);
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialog["default"], {
     isShow: isShow,
     isClosePrimary: true,
-    style: (0, _extends2["default"])({}, TS.R_DIALOG, S.DIALOG),
-    styleCaption: TS.BROWSER_CAPTION,
-    styleButton: TS.BT,
+    style: (0, _extends2["default"])({}, TS.R_DIALOG, S_DIALOG),
+    captionStyle: TS.BROWSER_CAPTION,
+    buttonStyle: TS.BT,
     caption: "Exception",
-    onKeyDown: _hKeyDown,
     onClose: onClose,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
-      style: S.MSG,
+      style: S_MSG,
       children: _msg
     })
   });

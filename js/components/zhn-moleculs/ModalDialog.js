@@ -9,7 +9,9 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _react = require("react");
 
-var _useClassAnimation2 = _interopRequireDefault(require("../hooks/useClassAnimation"));
+var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
+
+var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
 
 var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
 
@@ -18,97 +20,70 @@ var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
-var CL = {
-  SHOWING: 'dialog show-popup',
-  HIDING: 'hide-popup'
-};
-var S2 = {
-  INIT: {
-    display: 'none'
-  },
-  SHOWING: {
-    display: 'block'
-  },
-  HIDING: {
-    opacity: 0,
-    transform: 'scaleY(0)'
-  }
-};
-var S = {
-  ROOT_DIV: {
-    position: 'absolute',
-    top: '20%',
-    display: 'block',
-    backgroundColor: '#4d4d4d',
-    border: 'solid 2px #3f5178',
-    borderRadius: 5,
-    boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
-    zIndex: 10
-  },
-  COMMAND_DIV: {
-    "float": 'right',
-    marginTop: 16,
-    marginBottom: 10,
-    marginRight: 4,
-    cursor: 'default'
-  }
+var CL_SHOWING = 'dialog show-popup',
+    S_ROOT_DIV = {
+  position: 'absolute',
+  top: '20%',
+  backgroundColor: '#4d4d4d',
+  border: 'solid 2px #3f5178',
+  borderRadius: 5,
+  boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
+  zIndex: 10
+},
+    S_COMMAND_DIV = {
+  "float": 'right',
+  margin: '16px 4px 10px 0'
+},
+    S_BLOCK = {
+  display: 'block'
+},
+    S_NONE = {
+  display: 'none'
 };
 
-var _hasFocusFn = function _hasFocusFn(ref) {
-  return typeof ((ref || {}).current || {}).focus === 'function';
+var _focusRefElement = function _focusRefElement(ref) {
+  var _ref = ref || {},
+      current = _ref.current;
+
+  if (typeof (current || {}).focus === 'function') {
+    current.focus();
+  }
 };
 
 var _hClickDialog = function _hClickDialog(event) {
   event.stopPropagation();
 };
 
-var ModalDialog = function ModalDialog(_ref) {
-  var isShow = _ref.isShow,
-      isWithButton = _ref.isWithButton,
-      style = _ref.style,
-      caption = _ref.caption,
-      styleCaption = _ref.styleCaption,
-      children = _ref.children,
-      onKeyDown = _ref.onKeyDown,
-      onClose = _ref.onClose,
-      divBtStyle = _ref.divBtStyle,
-      commandButtons = _ref.commandButtons,
-      TS = _ref.styleButton,
-      withoutClose = _ref.withoutClose,
-      _ref$isClosePrimary = _ref.isClosePrimary,
-      isClosePrimary = _ref$isClosePrimary === void 0 ? false : _ref$isClosePrimary;
+var ModalDialog = function ModalDialog(_ref2) {
+  var isShow = _ref2.isShow,
+      isWithButton = _ref2.isWithButton,
+      style = _ref2.style,
+      caption = _ref2.caption,
+      captionStyle = _ref2.captionStyle,
+      children = _ref2.children,
+      onKeyDown = _ref2.onKeyDown,
+      onClose = _ref2.onClose,
+      divBtStyle = _ref2.divBtStyle,
+      commandButtons = _ref2.commandButtons,
+      TS = _ref2.buttonStyle,
+      withoutClose = _ref2.withoutClose,
+      _ref2$isClosePrimary = _ref2.isClosePrimary,
+      isClosePrimary = _ref2$isClosePrimary === void 0 ? false : _ref2$isClosePrimary;
 
   var _refRootDiv = (0, _react.useRef)(),
       _refPrevFocused = (0, _react.useRef)(),
-      _useClassAnimation = (0, _useClassAnimation2["default"])({
-    isShow: isShow,
-    CL: CL,
-    S: S2,
-    initialWasClosed: false
-  }),
-      _className = _useClassAnimation.className,
-      _style = _useClassAnimation.style,
-      _hKeyDown = function _hKeyDown(event) {
-    var current = _refRootDiv.current;
-
-    if (document.activeElement == current) {
-      onKeyDown(event);
-    }
-  };
+      _hKeyDown = (0, _useKeyEscape["default"])(onClose),
+      _className = (0, _crCn["default"])([isShow, CL_SHOWING]),
+      _style = isShow ? S_BLOCK : S_NONE;
 
   (0, _react.useEffect)(function () {
-    _refPrevFocused.current = document.activeElement;
+    _refPrevFocused.current = (document || {}).activeElement;
   }, []);
   (0, _react.useEffect)(function () {
-    if (isShow && _refRootDiv) {
-      _refRootDiv.current.focus();
-    }
+    var _refEl = isShow ? _refRootDiv : _refPrevFocused;
+
+    _focusRefElement(_refEl);
   }, [isShow]);
-  (0, _react.useEffect)(function () {
-    if (_style === S2.HIDING && _hasFocusFn(_refPrevFocused)) {
-      _refPrevFocused.current.focus();
-    }
-  });
   return (
     /*#__PURE__*/
 
@@ -122,17 +97,17 @@ var ModalDialog = function ModalDialog(_ref) {
       "aria-label": caption,
       "aria-hidden": !isShow,
       className: _className,
-      style: (0, _extends2["default"])({}, S.ROOT_DIV, style, _style),
+      style: (0, _extends2["default"])({}, S_ROOT_DIV, style, _style),
       onClick: _hClickDialog,
       onKeyDown: _hKeyDown,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserCaption["default"], {
-        style: styleCaption,
+        style: captionStyle,
         caption: caption,
         onClose: onClose
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         children: children
       }), isWithButton && /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-        style: (0, _extends2["default"])({}, S.COMMAND_DIV, divBtStyle),
+        style: (0, _extends2["default"])({}, S_COMMAND_DIV, divBtStyle),
         children: [commandButtons, !withoutClose && /*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
           style: TS.RAISED,
           clDiv: TS.CL_RAISED_DIV,
