@@ -50,7 +50,6 @@
   text-align: center;
   border-radius: 50%;
   border: 2px solid #80c040;
-  cursor: pointer;
   background-color: transparent;
   transition: background-color 200ms ease-out;
 }
@@ -58,7 +57,6 @@
 .bt-circle:hover,
 .bt-circle:focus {
   background-color: rgba(0, 0, 0, 0.3);
-  outline: 0;
 }
 
 .svg-resize{
@@ -136,8 +134,7 @@
   box-sizing: border-box;
   display: inline-block;
   font-family: Roboto, sans-serif;
-  -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;  
   text-decoration: none;
   margin: 0;
   padding: 0;
@@ -180,7 +177,6 @@
   display: inline-block;
   font-family: Roboto, sans-serif;
   -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
   text-decoration: none;
   margin: 0;
   padding: 0;
