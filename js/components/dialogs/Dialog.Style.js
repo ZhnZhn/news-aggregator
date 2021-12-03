@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var INPUT_WIDTH = 240;
+var INPUT_WIDTH = 250;
 var S = {
   BROWSER_CAPTION: {
     color: '#9e9e9e',

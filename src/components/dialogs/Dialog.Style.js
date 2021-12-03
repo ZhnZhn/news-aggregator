@@ -1,5 +1,5 @@
 
-const INPUT_WIDTH = 240;
+const INPUT_WIDTH = 250;
 
 const S = {
   BROWSER_CAPTION: {
