@@ -97,7 +97,7 @@ const NewsApiTopDialog = ({
       category: _getRefValue(_refCategory),
       country: _getRefValue(_refCountry)
     })
-    this._handleClose()
+    _hClose()
   }, [])
   //type, source, itemConf, onLoad,
   /*eslint-enable react-hooks/exhaustive-deps */

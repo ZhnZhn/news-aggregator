@@ -21,8 +21,6 @@ var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var _this = void 0;
-
 var _CATEGORY = ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'],
     CATEGORY_OPTIONS = _CATEGORY.map(function (str) {
   return {
@@ -227,7 +225,7 @@ var NewsApiTopDialog = function NewsApiTopDialog(_ref) {
       country: _getRefValue(_refCountry)
     });
 
-    _this._handleClose();
+    _hClose();
   }, []),
       _useDecorDialog = (0, _useDecorDialog2["default"])(_Dialog["default"], _hLoad, _hClose),
       TS = _useDecorDialog[0],
