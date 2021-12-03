@@ -10,7 +10,7 @@ var _config = {
   },
   WHITE: {
     h: '#dfe4e7',
-    d: 'white'
+    d: '#eaeaea'
   },
   SAND: {
     h: '#c6bda5',

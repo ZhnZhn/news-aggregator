@@ -14,7 +14,8 @@ var P_GREY = {
 };
 var P_WHITE = {
   BG_BODY: 'darkgrey',
-  BG: '#ebf1f5',
+  //BG: '#ebf1f5',
+  BG: '#eaeaea',
   BG_OPTIONS: '#dfe4e7',
   BG_HEADER: '#0096c8',
   C_HEADER: '#4d4d4d'

@@ -3,7 +3,7 @@
 
 const _config = {
   DF: { h: '#404040' },
-  WHITE: { h: '#dfe4e7', d: 'white' },
+  WHITE: { h: '#dfe4e7', d: '#eaeaea' },
   SAND: { h: '#c6bda5', d: '#e8e0cb' }
 }
 , _crBg = color => ({
@@ -23,7 +23,7 @@ const styleConfig = {
   themeName: void 0,
   style: void 0,
   createStyle: (CSS_RULE, themeName) => _crStyles(
-    _config[themeName] || _config.DF)  
+    _config[themeName] || _config.DF)
 };
 
 export default styleConfig

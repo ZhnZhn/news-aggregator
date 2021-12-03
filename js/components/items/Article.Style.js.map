@@ -1,1 +1,28 @@
-{"version":3,"sources":["../../../src/components/items/Article.Style.js"],"names":["_config","DF","h","WHITE","d","SAND","_crBg","color","backgroundColor","_crStyles","_S","HEADER","DESCR","styleConfig","themeName","style","createStyle","CSS_RULE"],"mappings":";;;;;AACA;AAEA,IAAMA,OAAO,GAAG;AACdC,EAAAA,EAAE,EAAE;AAAEC,IAAAA,CAAC,EAAE;AAAL,GADU;AAEdC,EAAAA,KAAK,EAAE;AAAED,IAAAA,CAAC,EAAE,SAAL;AAAgBE,IAAAA,CAAC,EAAE;AAAnB,GAFO;AAGdC,EAAAA,IAAI,EAAE;AAAEH,IAAAA,CAAC,EAAE,SAAL;AAAgBE,IAAAA,CAAC,EAAE;AAAnB;AAHQ,CAAhB;AAAA,IAKEE,KAAK,GAAG,SAARA,KAAQ,CAAAC,KAAK;AAAA,SAAK;AAClBC,IAAAA,eAAe,EAAED;AADC,GAAL;AAAA,CALf;AAAA,IAQEE,SAAS,GAAG,SAAZA,SAAY,QAAe;AAAA,gCAAP,EAAO;AAAA,MAAbP,CAAa,QAAbA,CAAa;AAAA,MAAVE,CAAU,QAAVA,CAAU;;AAC3B,MAAMM,EAAE,GAAG;AACTC,IAAAA,MAAM,EAAEL,KAAK,CAACJ,CAAD;AADJ,GAAX;;AAGA,MAAIE,CAAJ,EAAO;AACLM,IAAAA,EAAE,CAACE,KAAH,GAAWN,KAAK,CAACF,CAAD,CAAhB;AACD;;AACD,SAAOM,EAAP;AACD,CAhBD;;AAkBA,IAAMG,WAAW,GAAG;AAClBC,EAAAA,SAAS,EAAE,KAAK,CADE;AAElBC,EAAAA,KAAK,EAAE,KAAK,CAFM;AAGlBC,EAAAA,WAAW,EAAE,qBAACC,QAAD,EAAWH,SAAX;AAAA,WAAyBL,SAAS,CAC7CT,OAAO,CAACc,SAAD,CAAP,IAAsBd,OAAO,CAACC,EADe,CAAlC;AAAA;AAHK,CAApB;eAOeY,W","sourcesContent":["\r\n//230, 236, 240\r\n\r\nconst _config = {\r\n  DF: { h: '#404040' },\r\n  WHITE: { h: '#dfe4e7', d: 'white' },\r\n  SAND: { h: '#c6bda5', d: '#e8e0cb' }\r\n}\r\n, _crBg = color => ({\r\n  backgroundColor: color\r\n})\r\n, _crStyles = ({h, d}={}) => {\r\n  const _S = {\r\n    HEADER: _crBg(h)\r\n  };\r\n  if (d) {\r\n    _S.DESCR = _crBg(d)\r\n  }\r\n  return _S;\r\n};\r\n\r\nconst styleConfig = {\r\n  themeName: void 0,\r\n  style: void 0,\r\n  createStyle: (CSS_RULE, themeName) => _crStyles(\r\n    _config[themeName] || _config.DF)  \r\n};\r\n\r\nexport default styleConfig\r\n"],"file":"Article.Style.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/items/Article.Style.js"
+ ],
+ "file": "../../../src/components/items/Article.Style.js",
+ "names": [
+  "_config",
+  "DF",
+  "h",
+  "WHITE",
+  "d",
+  "SAND",
+  "_crBg",
+  "color",
+  "backgroundColor",
+  "_crStyles",
+  "_S",
+  "HEADER",
+  "DESCR",
+  "styleConfig",
+  "themeName",
+  "style",
+  "createStyle",
+  "CSS_RULE"
+ ],
+ "mappings": ";;;;;AACA;AAEA,IAAMA,OAAO,GAAG;AACdC,EAAAA,EAAE,EAAE;AAAEC,IAAAA,CAAC,EAAE;AAAL,GADU;AAEdC,EAAAA,KAAK,EAAE;AAAED,IAAAA,CAAC,EAAE,SAAL;AAAgBE,IAAAA,CAAC,EAAE;AAAnB,GAFO;AAGdC,EAAAA,IAAI,EAAE;AAAEH,IAAAA,CAAC,EAAE,SAAL;AAAgBE,IAAAA,CAAC,EAAE;AAAnB;AAHQ,CAAhB;AAAA,IAKEE,KAAK,GAAG,SAARA,KAAQ,CAAAC,KAAK;AAAA,SAAK;AAClBC,IAAAA,eAAe,EAAED;AADC,GAAL;AAAA,CALf;AAAA,IAQEE,SAAS,GAAG,SAAZA,SAAY,QAAe;AAAA,gCAAP,EAAO;AAAA,MAAbP,CAAa,QAAbA,CAAa;AAAA,MAAVE,CAAU,QAAVA,CAAU;;AAC3B,MAAMM,EAAE,GAAG;AACTC,IAAAA,MAAM,EAAEL,KAAK,CAACJ,CAAD;AADJ,GAAX;;AAGA,MAAIE,CAAJ,EAAO;AACLM,IAAAA,EAAE,CAACE,KAAH,GAAWN,KAAK,CAACF,CAAD,CAAhB;AACD;;AACD,SAAOM,EAAP;AACD,CAhBD;;AAkBA,IAAMG,WAAW,GAAG;AAClBC,EAAAA,SAAS,EAAE,KAAK,CADE;AAElBC,EAAAA,KAAK,EAAE,KAAK,CAFM;AAGlBC,EAAAA,WAAW,EAAE,qBAACC,QAAD,EAAWH,SAAX;AAAA,WAAyBL,SAAS,CAC7CT,OAAO,CAACc,SAAD,CAAP,IAAsBd,OAAO,CAACC,EADe,CAAlC;AAAA;AAHK,CAApB;eAOeY,W"
+}
