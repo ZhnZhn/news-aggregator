@@ -1,6 +1,7 @@
 import { forwardRef, useRef, useState, useCallback } from 'react';
 
-import useTheme from '../hooks/useTheme'
+import useRefSet from '../hooks/useRefSet';
+import useTheme from '../hooks/useTheme';
 import styleConfig from './Article.Style';
 
 import dt from '../../utils/dt';
@@ -22,21 +23,12 @@ const S_ROOT = {
   borderBottomRightRadius: 2,
   boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
 }
-, S_HEADER = {
-  width: '100%',
-  backgroundColor: '#404040',
-  padding: '8px 0 8px 16px',
-  lineHeight: 1.5,
-  borderTopRightRadius: 2,
-  borderBottomRightRadius: 2
-}
 , S_CAPTION = {
-  display : 'inline-block',
+  display: 'inline-block',
   paddingRight: 32,
   color: 'black',
   fontSize: '1.125rem',
-  fontWeight: 'bold',
-  cursor: 'pointer'
+  fontWeight: 'bold'
 }
 , S_CAPTION_OPEN = { color: '#607d8b' }
 , S_SVG_CLOSE = {
@@ -56,6 +48,8 @@ const _focusNextArticle = (nodeArticle) => {
 
 const _fnNoop = () => {};
 
+const _getRefValue = ref => (ref || {}).current;
+
 const Article = forwardRef(({
   item,
   onCloseItem,
@@ -63,36 +57,34 @@ const Article = forwardRef(({
   onRemoveItem=_fnNoop
 }, ref) => {
   const _refArticle = useRef(null)
-  , _refTimeStamp = useRef(null)
+ , [refTimeStamp, setTimeStamp] = useRefSet(null)
  , [isClosed, setIsClosed] = useState(false)
  , [isShow, setIsShow] = useState(false)
+ /*eslint-disable react-hooks/exhaustive-deps */
  , _hToggle = useCallback(evt => {
    const { timeStamp } = evt || {}
-   , _timeStamp = _refTimeStamp.current
+   , _timeStamp = _getRefValue(refTimeStamp)
    if (timeStamp && _timeStamp
        && timeStamp - _timeStamp < 200) {
       return;
    }
-   _refTimeStamp.current = timeStamp
+   setTimeStamp(timeStamp)
    setIsShow(is => !is)
  }, [])
- /*eslint-disable react-hooks/exhaustive-deps */
+ // refTimeStamp, setTimeStamp
  , _hClose = useCallback(() => {
-   _focusNextArticle(_refArticle.current)
+   _focusNextArticle(_getRefValue(_refArticle))
    onCloseItem(item)
    setIsClosed(true)
  }, [])
  //item, onCloseItem
  , _hHide = useCallback(()=>{
-   const _node = (ref || {}).current;
+   const _node = _getRefValue(ref);
    if (_node) {_node.focus()}
    setIsShow(false)
  }, [])
  // ref
  /*eslint-enable react-hooks/exhaustive-deps */
- , _setTimeStamp = useCallback(timeStamp => {
-   _refTimeStamp.current = timeStamp
- }, [])
  , _onGestureSwipeX = useItemGestureSwipeX(item, onRemoveUnder, _hClose)
  , TS = useTheme(styleConfig);
 
@@ -117,13 +109,13 @@ const Article = forwardRef(({
     <GestureSwipeX
       ref={_refArticle}
       style={{...S_ROOT, ..._style}}
-      setTimeStamp={_setTimeStamp}
+      setTimeStamp={setTimeStamp}
       onGesture={_onGestureSwipeX}
     >
       <ItemHeader
          ref={ref}
          className={CL_ITEM_HEADER}
-         style={{...S_HEADER, ...TS.HEADER}}
+         style={TS.HEADER}
          captionStyle={_captionStyle}
          btCloseStyle={S_SVG_CLOSE}
          title={title}

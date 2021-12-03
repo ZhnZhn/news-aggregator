@@ -9,6 +9,8 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _react = require("react");
 
+var _useRefSet2 = _interopRequireDefault(require("../hooks/useRefSet"));
+
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 
 var _Article = _interopRequireDefault(require("./Article.Style"));
@@ -37,21 +39,12 @@ var S_ROOT = {
   borderBottomRightRadius: 2,
   boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)'
 },
-    S_HEADER = {
-  width: '100%',
-  backgroundColor: '#404040',
-  padding: '8px 0 8px 16px',
-  lineHeight: 1.5,
-  borderTopRightRadius: 2,
-  borderBottomRightRadius: 2
-},
     S_CAPTION = {
   display: 'inline-block',
   paddingRight: 32,
   color: 'black',
   fontSize: '1.125rem',
-  fontWeight: 'bold',
-  cursor: 'pointer'
+  fontWeight: 'bold'
 },
     S_CAPTION_OPEN = {
   color: '#607d8b'
@@ -77,6 +70,10 @@ var _focusNextArticle = function _focusNextArticle(nodeArticle) {
 
 var _fnNoop = function _fnNoop() {};
 
+var _getRefValue = function _getRefValue(ref) {
+  return (ref || {}).current;
+};
+
 var Article = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
   var item = _ref3.item,
       onCloseItem = _ref3.onCloseItem,
@@ -86,7 +83,9 @@ var Article = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
       onRemoveItem = _ref3$onRemoveItem === void 0 ? _fnNoop : _ref3$onRemoveItem;
 
   var _refArticle = (0, _react.useRef)(null),
-      _refTimeStamp = (0, _react.useRef)(null),
+      _useRefSet = (0, _useRefSet2["default"])(null),
+      refTimeStamp = _useRefSet[0],
+      setTimeStamp = _useRefSet[1],
       _useState = (0, _react.useState)(false),
       isClosed = _useState[0],
       setIsClosed = _useState[1],
@@ -96,34 +95,31 @@ var Article = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
       _hToggle = (0, _react.useCallback)(function (evt) {
     var _ref4 = evt || {},
         timeStamp = _ref4.timeStamp,
-        _timeStamp = _refTimeStamp.current;
+        _timeStamp = _getRefValue(refTimeStamp);
 
     if (timeStamp && _timeStamp && timeStamp - _timeStamp < 200) {
       return;
     }
 
-    _refTimeStamp.current = timeStamp;
+    setTimeStamp(timeStamp);
     setIsShow(function (is) {
       return !is;
     });
   }, []),
       _hClose = (0, _react.useCallback)(function () {
-    _focusNextArticle(_refArticle.current);
+    _focusNextArticle(_getRefValue(_refArticle));
 
     onCloseItem(item);
     setIsClosed(true);
   }, []),
       _hHide = (0, _react.useCallback)(function () {
-    var _node = (ref || {}).current;
+    var _node = _getRefValue(ref);
 
     if (_node) {
       _node.focus();
     }
 
     setIsShow(false);
-  }, []),
-      _setTimeStamp = (0, _react.useCallback)(function (timeStamp) {
-    _refTimeStamp.current = timeStamp;
   }, []),
       _onGestureSwipeX = (0, _useItemGestureSwipeX["default"])(item, onRemoveUnder, _hClose),
       TS = (0, _useTheme["default"])(_Article["default"]);
@@ -147,12 +143,12 @@ var Article = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_GestureSwipeX["default"], {
     ref: _refArticle,
     style: (0, _extends2["default"])({}, S_ROOT, _style),
-    setTimeStamp: _setTimeStamp,
+    setTimeStamp: setTimeStamp,
     onGesture: _onGestureSwipeX,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemHeader["default"], {
       ref: ref,
       className: CL_ITEM_HEADER,
-      style: (0, _extends2["default"])({}, S_HEADER, TS.HEADER),
+      style: TS.HEADER,
       captionStyle: _captionStyle,
       btCloseStyle: S_SVG_CLOSE,
       title: title,
