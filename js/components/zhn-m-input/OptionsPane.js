@@ -23,24 +23,21 @@ var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var CL = "with-scroll";
-var S = {
-  PANE: {
-    position: 'absolute',
-    top: 12,
-    zIndex: 20,
-    width: '100%',
-    maxHeight: 300,
-    overflowY: 'auto',
-    paddingTop: 12,
-    paddingBottom: 12,
-    backgroundColor: 'rgb(77, 77, 77)',
-    borderRadius: 2,
-    boxShadow: 'rgba(0, 0, 0, 0.3) 0px 2px 2px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px'
-  },
-  ITEM: {
-    color: '#80c040'
-  }
+var CL = "with-scroll",
+    S_PANE = {
+  position: 'absolute',
+  top: 12,
+  zIndex: 20,
+  width: '100%',
+  maxHeight: 300,
+  overflowY: 'auto',
+  padding: '12px 0',
+  backgroundColor: 'rgb(77, 77, 77)',
+  borderRadius: 2,
+  boxShadow: 'rgba(0, 0, 0, 0.3) 0px 2px 2px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px'
+},
+    S_ITEM = {
+  color: '#80c040'
 };
 var SCROLL_OPTIONS = {
   block: 'center',
@@ -78,7 +75,7 @@ var _crItem = function _crItem(item, index, _ref) {
 
   var value = item.value,
       caption = item.caption,
-      _style = value === currentItem.value ? S.ITEM : void 0,
+      _style = value === currentItem.value ? S_ITEM : void 0,
       _hKeyDown = function _hKeyDown(evt) {
     if (evt.key === 'Enter') {
       onSelect(item, evt);
@@ -146,8 +143,9 @@ var OptionsPane = function OptionsPane(_ref2) {
     onClose: onClose,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ShowHide["default"], {
       isShow: isShow,
+      isScrollable: true,
       className: CL + " " + TS.CL_SCROLL,
-      style: (0, _extends2["default"])({}, S.PANE, TS_D.SELECT.MODAL_PANE),
+      style: (0, _extends2["default"])({}, S_PANE, TS_D.SELECT.MODAL_PANE),
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         role: "presentation",
         onKeyDown: _hKeyDown,

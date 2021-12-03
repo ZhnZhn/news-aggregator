@@ -51,6 +51,7 @@ var Interact = {
   },
   makeDragable: function makeDragable(domNode) {
     (0, _interactjs["default"])(domNode).draggable({
+      ignoreFrom: '[data-scrollable]',
       inertia: true,
       restrict: {
         restriction: document.getElementById('app'),

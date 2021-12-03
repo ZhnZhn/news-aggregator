@@ -8,26 +8,20 @@ import ShowHide from '../zhn-atoms/ShowHide';
 import ItemStack from '../zhn-atoms/ItemStack';
 import ModalPane from '../zhn-moleculs/ModalPane';
 
-const CL = "with-scroll";
-
-const S = {
-  PANE: {
-    position: 'absolute',
-    top: 12,
-    zIndex: 20,
-    width: '100%',
-    maxHeight: 300,
-    overflowY: 'auto',
-    paddingTop: 12,
-    paddingBottom: 12,
-    backgroundColor: 'rgb(77, 77, 77)',
-    borderRadius: 2,
-    boxShadow: 'rgba(0, 0, 0, 0.3) 0px 2px 2px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px'
-  },
-  ITEM: {
-    color: '#80c040'
-  }
-};
+const CL = "with-scroll"
+, S_PANE = {
+  position: 'absolute',
+  top: 12,
+  zIndex: 20,
+  width: '100%',
+  maxHeight: 300,
+  overflowY: 'auto',
+  padding: '12px 0',
+  backgroundColor: 'rgb(77, 77, 77)',
+  borderRadius: 2,
+  boxShadow: 'rgba(0, 0, 0, 0.3) 0px 2px 2px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px'
+}
+, S_ITEM = { color: '#80c040' };
 
 const SCROLL_OPTIONS = {
   block: 'center',
@@ -57,7 +51,7 @@ const _crItem = (
 ) => {
   const { value, caption } = item
   , _style = value === currentItem.value
-       ? S.ITEM
+       ? S_ITEM
        : void 0
   , _hKeyDown = evt => {
     if (evt.key === 'Enter') {
@@ -123,8 +117,9 @@ return (
   >
      <ShowHide
         isShow={isShow}
+        isScrollable={true}
         className={`${CL} ${TS.CL_SCROLL}`}
-        style={{...S.PANE, ...TS_D.SELECT.MODAL_PANE}}
+        style={{...S_PANE, ...TS_D.SELECT.MODAL_PANE}}
      >
        <div
          role="presentation"
