@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _ut = _interopRequireDefault(require("../utils/ut"));
 
-var _formatTimeAgo = require("../utils/formatTimeAgo");
+var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
 
 var crId = _ut["default"].crId,
     replaceDecCodes = _ut["default"].replaceDecCodes;
@@ -20,15 +20,10 @@ var _toMls = function _toMls(sec) {
 
 var _toArticles = function _toArticles(json) {
   var _ref = json || {},
-      Data = _ref.Data;
+      Data = _ref.Data,
+      _timeAgoOptions = _formatTimeAgo["default"].crOptions();
 
-  if (!_isArr(Data)) {
-    return [];
-  }
-
-  var _timeAgoOptions = (0, _formatTimeAgo.crTimeAgoOptins)();
-
-  return Data.map(function (item) {
+  return _isArr(Data) ? Data.map(function (item) {
     var title = item.title,
         body = item.body,
         categories = item.categories,
@@ -48,10 +43,10 @@ var _toArticles = function _toArticles(json) {
       description: replaceDecCodes(body),
       related: categories,
       author: name || source,
-      timeAgo: _publishedOn && (0, _formatTimeAgo.formatTimeAgo)(_publishedOn, _timeAgoOptions),
+      timeAgo: _publishedOn && (0, _formatTimeAgo["default"])(_publishedOn, _timeAgoOptions),
       publishedAt: _publishedOn && new Date(_publishedOn).toISOString()
     };
-  });
+  }) : [];
 };
 
 var CryptoCompareAdapter = {

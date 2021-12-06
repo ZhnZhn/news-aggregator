@@ -26,9 +26,16 @@ const locale = (
 
 register('en_US', locale);
 
-export const crTimeAgoOptins = () => ({
+const formatTimeAgo = (dateMls, options) => {
+  try {
+    return format(dateMls, 'en_US', options);
+  } catch(exception) {
+    return;
+  }
+};
+
+formatTimeAgo.crOptions = () => ({
   relativeDate: new Date()
 });
 
-export const formatTimeAgo = (date, options) =>
-  format(date, 'en_US', options);
+export default formatTimeAgo

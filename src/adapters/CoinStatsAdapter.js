@@ -1,8 +1,5 @@
 import ut from '../utils/ut';
-import {
-  crTimeAgoOptins,
-  formatTimeAgo
-} from '../utils/formatTimeAgo';
+import formatTimeAgo from '../utils/formatTimeAgo';
 
 const {
   crId,
@@ -19,7 +16,7 @@ const _isArr = Array.isArray
 
 const _toArticles = json => {
   const { news } = json || {}
-  , _timeAgoOptions = crTimeAgoOptins();
+  , _timeAgoOptions = formatTimeAgo.crOptions();
   return _isArr(news) ? news.map(({
     title, description,
     coins,

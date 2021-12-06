@@ -1,8 +1,5 @@
 import ut from '../utils/ut';
-import {
-  crTimeAgoOptins,
-  formatTimeAgo
-} from '../utils/formatTimeAgo';
+import formatTimeAgo from '../utils/formatTimeAgo';
 
 const {
   crId,
@@ -17,12 +14,9 @@ const _toMls = sec => typeof sec === 'number'
  : void 0;
 
 const _toArticles = json => {
-  const { Data } = json || {};
-  if (!_isArr(Data)) {
-    return [];
-  }
-  const _timeAgoOptions = crTimeAgoOptins();
-  return Data.map(item => {
+  const { Data } = json || {}
+  , _timeAgoOptions = formatTimeAgo.crOptions();
+  return _isArr(Data) ? Data.map(item => {
     const {
       title,
       body,
@@ -44,7 +38,7 @@ const _toArticles = json => {
       timeAgo: _publishedOn && formatTimeAgo(_publishedOn, _timeAgoOptions),
       publishedAt: _publishedOn && (new Date(_publishedOn)).toISOString()
     };
-  })
+  }) : []
 };
 
 const CryptoCompareAdapter = {

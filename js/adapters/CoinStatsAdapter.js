@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _ut = _interopRequireDefault(require("../utils/ut"));
 
-var _formatTimeAgo = require("../utils/formatTimeAgo");
+var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
 
 var crId = _ut["default"].crId,
     toFirstUpperCase = _ut["default"].toFirstUpperCase;
@@ -24,7 +24,7 @@ var _isArr = Array.isArray,
 var _toArticles = function _toArticles(json) {
   var _ref2 = json || {},
       news = _ref2.news,
-      _timeAgoOptions = (0, _formatTimeAgo.crTimeAgoOptins)();
+      _timeAgoOptions = _formatTimeAgo["default"].crOptions();
 
   return _isArr(news) ? news.map(function (_ref3) {
     var title = _ref3.title,
@@ -41,7 +41,7 @@ var _toArticles = function _toArticles(json) {
       related: _crRelated(coins),
       author: source,
       publishedAt: feedDate,
-      timeAgo: (0, _formatTimeAgo.formatTimeAgo)(feedDate, _timeAgoOptions),
+      timeAgo: (0, _formatTimeAgo["default"])(feedDate, _timeAgoOptions),
       url: link
     };
   }) : [];

@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _ut = _interopRequireDefault(require("../utils/ut"));
 
-var _formatTimeAgo = require("../utils/formatTimeAgo");
+var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
 
 var crId = _ut["default"].crId;
 var _isArr = Array.isArray;
@@ -22,7 +22,7 @@ var _crRelated = function _crRelated(tags) {
 var _toArticles = function _toArticles(json) {
   var _ref = json || {},
       data = _ref.data,
-      _timeAgoOptions = (0, _formatTimeAgo.crTimeAgoOptins)();
+      _timeAgoOptions = _formatTimeAgo["default"].crOptions();
 
   return _isArr(data) ? data.map(function (item) {
     var title = item.title,
@@ -41,7 +41,7 @@ var _toArticles = function _toArticles(json) {
       author: name,
       related: _crRelated(tags),
       publishedAt: published_at,
-      timeAgo: (0, _formatTimeAgo.formatTimeAgo)(published_at, _timeAgoOptions)
+      timeAgo: (0, _formatTimeAgo["default"])(published_at, _timeAgoOptions)
     };
   }) : [];
 };

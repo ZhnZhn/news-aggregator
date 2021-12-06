@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.formatTimeAgo = exports.crTimeAgoOptins = void 0;
+exports["default"] = void 0;
 
 var _timeago = require("timeago.js");
 
@@ -14,17 +14,20 @@ var locale = function locale(number, index, totalSec) {
 
 (0, _timeago.register)('en_US', locale);
 
-var crTimeAgoOptins = function crTimeAgoOptins() {
+var formatTimeAgo = function formatTimeAgo(dateMls, options) {
+  try {
+    return (0, _timeago.format)(dateMls, 'en_US', options);
+  } catch (exception) {
+    return;
+  }
+};
+
+formatTimeAgo.crOptions = function () {
   return {
     relativeDate: new Date()
   };
 };
 
-exports.crTimeAgoOptins = crTimeAgoOptins;
-
-var formatTimeAgo = function formatTimeAgo(date, options) {
-  return (0, _timeago.format)(date, 'en_US', options);
-};
-
-exports.formatTimeAgo = formatTimeAgo;
+var _default = formatTimeAgo;
+exports["default"] = _default;
 //# sourceMappingURL=formatTimeAgo.js.map
