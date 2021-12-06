@@ -9,6 +9,8 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _react = require("react");
 
+var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
+
 var _useKeyDelete = _interopRequireDefault(require("../hooks/useKeyDelete"));
 
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
@@ -29,9 +31,9 @@ var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var CL_WRAPPER = "link-wrapper";
-var HAS_TOUCH = _has["default"].HAS_TOUCH;
-var _S_BADGE = {
+var HAS_TOUCH = _has["default"].HAS_TOUCH,
+    CL_WRAPPER = "link-wrapper",
+    _S_BADGE = {
   display: 'inline-block',
   paddingRight: 8,
   fontSize: '1.125rem'
@@ -121,12 +123,12 @@ var StackItem = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
       _ref$onRemoveItem = _ref.onRemoveItem,
       onRemoveItem = _ref$onRemoveItem === void 0 ? _fnNoop : _ref$onRemoveItem;
 
-  var _useState = (0, _react.useState)(false),
-      isClosed = _useState[0],
-      setIsClosed = _useState[1],
+  var _useBool = (0, _useBool2["default"])(false),
+      isClosed = _useBool[0],
+      setClosed = _useBool[1],
       _hClose = (0, _react.useCallback)(function () {
     onCloseItem(item);
-    setIsClosed(true);
+    setClosed();
   }, []),
       _hKeyDown = (0, _useKeyDelete["default"])(_hClose),
       _onGestureSwipeX = (0, _useItemGestureSwipeX["default"])(item, onRemoveUnder, _hClose),

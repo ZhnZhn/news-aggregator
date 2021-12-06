@@ -1,5 +1,6 @@
-import { forwardRef, useState, useCallback, useMemo } from 'react';
+import { forwardRef, useCallback, useMemo } from 'react';
 
+import useBool from '../hooks/useBool';
 import useKeyDelete from '../hooks/useKeyDelete';
 import useTheme from '../hooks/useTheme';
 import styleConfig from './Article.Style';
@@ -12,11 +13,9 @@ import GestureSwipeX from '../zhn-gesture/GestureSwipeX';
 import SvgX from '../zhn-atoms/SvgX';
 import ItemStack from '../zhn-atoms/ItemStack';
 
-const CL_WRAPPER = "link-wrapper";
-
-const { HAS_TOUCH } = has;
-
-const _S_BADGE = {
+const { HAS_TOUCH } = has
+, CL_WRAPPER = "link-wrapper"
+, _S_BADGE = {
   display: 'inline-block',
   paddingRight: 8,
   fontSize: '1.125rem',
@@ -96,15 +95,15 @@ const StackItem = forwardRef(({
   onRemoveUnder=_fnNoop,
   onRemoveItem=_fnNoop
 }, ref) => {
-  const [isClosed, setIsClosed] = useState(false)
+  const [isClosed, setClosed] = useBool(false)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hClose = useCallback(() => {
     onCloseItem(item)
-    setIsClosed(true)
+    setClosed()
   }, [])
-  //item, onCloseItem
+  //item, onCloseIte, setClosed
   /*eslint-enable react-hooks/exhaustive-deps */
-  , _hKeyDown = useKeyDelete(_hClose)    
+  , _hKeyDown = useKeyDelete(_hClose)
   , _onGestureSwipeX = useItemGestureSwipeX(item, onRemoveUnder, _hClose)
   , TS = useTheme(styleConfig)
   , _crItem = useMemo(() => _fTagItem(TS), [TS]);
