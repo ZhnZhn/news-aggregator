@@ -1,1 +1,21 @@
-{"version":3,"sources":["../../src/api/FmpApi.js"],"names":["C","BASE_URL","FmpApi","getRequestUrl","option","symbol","apiKey","_q","checkResponse","json"],"mappings":";;;;AACA,IAAMA,CAAC,GAAG;AACVC,EAAAA,QAAQ,EAAE;AADA,CAAV;AAIA,IAAMC,MAAM,GAAG;AACbC,EAAAA,aADa,yBACCC,MADD,EACQ;AAAA,yBAIfA,MAJe,CAEjBC,MAFiB;AAAA,QAEjBA,MAFiB,+BAEV,EAFU;AAAA,QAGjBC,MAHiB,GAIfF,MAJe,CAGjBE,MAHiB;AAAA,QAKjBC,EALiB,GAKZF,MAAM,gBACGA,MADH,gBACoBC,MADpB,eAEEA,MAPI;;AAQnB,WAAUN,CAAC,CAACC,QAAZ,SAAwBM,EAAxB;AACD,GAVY;AAYbC,EAAAA,aAZa,yBAYCC,IAZD,EAYOL,MAZP,EAYc;AACzB,WAAO,IAAP;AACD;AAdY,CAAf;eAkBeF,M","sourcesContent":["\r\nconst C = {\r\nBASE_URL: 'https://financialmodelingprep.com/api/v3/stock_news'\r\n};\r\n\r\nconst FmpApi = {\r\n  getRequestUrl(option){\r\n    const {\r\n      symbol='',\r\n      apiKey\r\n    } = option\r\n    , _q = symbol\r\n       ? `tickers=${symbol}&apikey=${apiKey}`\r\n       : `apikey=${apiKey}`\r\n    return `${C.BASE_URL}?${_q}`;\r\n  },\r\n\r\n  checkResponse(json, option){\r\n    return true;\r\n  }\r\n\r\n}\r\n\r\nexport default FmpApi\r\n"],"file":"FmpApi.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/FmpApi.js"
+ ],
+ "file": "../../src/api/FmpApi.js",
+ "names": [
+  "BASE_URL",
+  "FmpApi",
+  "getRequestUrl",
+  "option",
+  "symbol",
+  "apiKey",
+  "_q",
+  "checkResponse",
+  "json",
+  "_errMsg",
+  "msg"
+ ],
+ "mappings": ";;;;AACA,IAAMA,QAAQ,GAAG,qDAAjB;AAEA,IAAMC,MAAM,GAAG;AACbC,EAAAA,aADa,yBACCC,MADD,EACQ;AACnB,yBAGIA,MAHJ,CACEC,MADF;AAAA,QACEA,MADF,+BACS,EADT;AAAA,QAEEC,MAFF,GAGIF,MAHJ,CAEEE,MAFF;AAAA,QAIEC,EAJF,GAIOF,MAAM,gBACGA,MADH,gBACoBC,MADpB,eAEEA,MANf;;AAOAF,IAAAA,MAAM,CAACE,MAAP,GAAgB,KAAK,CAArB;AACA,WAAUL,QAAV,SAAsBM,EAAtB;AACD,GAXY;AAabC,EAAAA,aAba,yBAaCC,IAbD,EAaOL,MAbP,EAac;AACzB,QAAMM,OAAO,GAAG,CAACD,IAAI,IAAI,EAAT,EAAa,eAAb,CAAhB;;AACA,QAAIC,OAAJ,EAAa;AACX,YAAM;AACJC,QAAAA,GAAG,EAAED;AADD,OAAN;AAGD;;AACD,WAAO,IAAP;AACD;AArBY,CAAf;eAyBeR,M"
+}

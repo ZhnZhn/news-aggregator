@@ -2,9 +2,7 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
-var C = {
-  BASE_URL: 'https://financialmodelingprep.com/api/v3/stock_news'
-};
+var BASE_URL = 'https://financialmodelingprep.com/api/v3/stock_news';
 var FmpApi = {
   getRequestUrl: function getRequestUrl(option) {
     var _option$symbol = option.symbol,
@@ -12,9 +10,18 @@ var FmpApi = {
         apiKey = option.apiKey,
         _q = symbol ? "tickers=" + symbol + "&apikey=" + apiKey : "apikey=" + apiKey;
 
-    return C.BASE_URL + "?" + _q;
+    option.apiKey = void 0;
+    return BASE_URL + "?" + _q;
   },
   checkResponse: function checkResponse(json, option) {
+    var _errMsg = (json || {})["Error Message"];
+
+    if (_errMsg) {
+      throw {
+        msg: _errMsg
+      };
+    }
+
     return true;
   }
 };
