@@ -1,0 +1,17 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-atoms/SafeLink.js"
+ ],
+ "file": "../../../src/components/zhn-atoms/SafeLink.js",
+ "names": [
+  "SafeLink",
+  "className",
+  "style",
+  "href",
+  "children",
+  "restProps",
+  "_href"
+ ],
+ "mappings": ";;;;;;;;;;;AAAA;;;;;;AAEA,IAAMA,QAAQ,GAAG,SAAXA,QAAW,OAMX;AAAA,MALJC,SAKI,QALJA,SAKI;AAAA,MAJJC,KAII,QAJJA,KAII;AAAA,MAHJC,IAGI,QAHJA,IAGI;AAAA,MAFJC,QAEI,QAFJA,QAEI;AAAA,MADDC,SACC;;AACJ,MAAMC,KAAK,GAAG,wBAAOH,IAAP,CAAd;;AACA,SAAOG,KAAK,gBACV;AACE,IAAA,SAAS,EAAEL,SADb;AAEE,IAAA,KAAK,EAAEC;AAFT,KAGMG,SAHN;AAIE,IAAA,IAAI,EAAEC,KAJR;AAKE,IAAA,MAAM,EAAC,QALT;AAAA,cAOGF;AAPH,KADU,GAUR,IAVJ;AAWD,CAnBD;;eAqBeJ,Q"
+}
