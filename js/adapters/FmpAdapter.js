@@ -7,9 +7,10 @@ exports["default"] = void 0;
 
 var _crId = _interopRequireDefault(require("../utils/crId"));
 
-var C = {
-  SOURCE: 'fmp_news'
-};
+var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
+
+var SOURCE_ID = 'fmp_news';
+var _isArr = Array.isArray;
 
 var _toDate = function _toDate(strDate) {
   var _arrDateTime = (strDate || '').split(' '),
@@ -20,11 +21,9 @@ var _toDate = function _toDate(strDate) {
 };
 
 var _toArticles = function _toArticles(json) {
-  if (!Array.isArray(json)) {
-    return [];
-  }
+  var _timeAgoOptions = _formatTimeAgo["default"].crOptions();
 
-  var articles = json.map(function (item) {
+  return _isArr(json) ? json.map(function (item) {
     var title = item.title,
         text = item.text,
         symbol = item.symbol,
@@ -32,17 +31,17 @@ var _toArticles = function _toArticles(json) {
         publishedDate = item.publishedDate,
         url = item.url;
     return {
-      source: C.SOURCE,
+      source: SOURCE_ID,
       articleId: (0, _crId["default"])(),
       title: title,
+      url: url,
       description: text,
       related: symbol,
       author: site,
       publishedDate: _toDate(publishedDate),
-      url: url
+      timeAgo: (0, _formatTimeAgo["default"])(publishedDate, _timeAgoOptions)
     };
-  });
-  return articles;
+  }) : [];
 };
 
 var FmpAdapter = {
@@ -50,7 +49,7 @@ var FmpAdapter = {
     var articles = _toArticles(json);
 
     return {
-      source: C.SOURCE,
+      source: SOURCE_ID,
       articles: articles //sortBy: `${symbol.toUpperCase()} ${recent}`
 
     };
