@@ -44,7 +44,8 @@ var S_ROOT = {
   paddingRight: 32,
   color: 'black',
   fontSize: '1.125rem',
-  fontWeight: 'bold'
+  fontWeight: 'bold',
+  wordBreak: 'break-word'
 },
     S_CAPTION_OPEN = {
   color: '#607d8b'
@@ -126,6 +127,7 @@ var Article = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
 
   var title = item.title,
       author = item.author,
+      timeAgo = item.timeAgo,
       publishedDate = item.publishedDate,
       publishedAt = item.publishedAt,
       url = item.url,
@@ -165,6 +167,7 @@ var Article = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
       related: related,
       publishedAt: _publishedAt,
       author: author,
+      timeAgo: timeAgo,
       onClose: _hClose,
       onHide: _hHide
     })]

@@ -28,7 +28,8 @@ const S_ROOT = {
   paddingRight: 32,
   color: 'black',
   fontSize: '1.125rem',
-  fontWeight: 'bold'
+  fontWeight: 'bold',
+  wordBreak: 'break-word'
 }
 , S_CAPTION_OPEN = { color: '#607d8b' }
 , S_SVG_CLOSE = {
@@ -91,6 +92,7 @@ const Article = forwardRef(({
   const {
     title,
     author,
+    timeAgo,
     publishedDate,
     publishedAt,
     url,
@@ -133,6 +135,7 @@ const Article = forwardRef(({
          related={related}
          publishedAt={_publishedAt}
          author={author}
+         timeAgo={timeAgo}
          onClose={_hClose}
          onHide={_hHide}
       />
