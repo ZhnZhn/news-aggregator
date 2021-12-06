@@ -12,6 +12,7 @@ module.exports = {
             "react", "react-dom",
             "interactjs",         
             "reflux-core", "nanoid",                                        
+            "timeago.js" 
           ]
   },
   output: {
