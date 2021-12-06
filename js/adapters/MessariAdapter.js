@@ -7,12 +7,11 @@ exports["default"] = void 0;
 
 var _ut = _interopRequireDefault(require("../utils/ut"));
 
+var _formatTimeAgo = require("../utils/formatTimeAgo");
+
 var crId = _ut["default"].crId;
-var C = {
-  SOURCE: 'messari_news'
-};
-/* Match only links that are fully qualified with https */
-//const fullLinkOnlyRegex = /^\[([\w\s\d]+)\]\((https?:\/\/[\w\d./?=#]+)\)$/
+var _isArr = Array.isArray;
+var SOURCE_ID = 'messari_news';
 
 var _crRelated = function _crRelated(tags) {
   return (tags || []).filter(Boolean).map(function (item) {
@@ -21,28 +20,30 @@ var _crRelated = function _crRelated(tags) {
 };
 
 var _toArticles = function _toArticles(json) {
-  if (!json || !Array.isArray(json.data)) {
-    return [];
-  }
+  var _ref = json || {},
+      data = _ref.data,
+      _timeAgoOptions = (0, _formatTimeAgo.crTimeAgoOptins)();
 
-  return json.data.map(function (item) {
+  return _isArr(data) ? data.map(function (item) {
     var title = item.title,
         tags = item.tags,
         published_at = item.published_at,
         url = item.url,
         author = item.author,
-        name = author.name;
+        _ref2 = author || {},
+        name = _ref2.name;
+
     return {
-      source: C.SOURCE,
+      source: SOURCE_ID,
       articleId: crId(),
       title: title,
-      //description: '',
-      related: _crRelated(tags),
+      url: url,
       author: name,
+      related: _crRelated(tags),
       publishedAt: published_at,
-      url: url
+      timeAgo: (0, _formatTimeAgo.formatTimeAgo)(published_at, _timeAgoOptions)
     };
-  });
+  }) : [];
 };
 
 var MessariAdapter = {
@@ -50,7 +51,7 @@ var MessariAdapter = {
     var articles = _toArticles(json);
 
     return {
-      source: C.SOURCE,
+      source: SOURCE_ID,
       articles: articles
     };
   }

@@ -1,13 +1,13 @@
-import ut from '../utils/ut'
+import ut from '../utils/ut';
+import {
+  crTimeAgoOptins,
+  formatTimeAgo
+} from '../utils/formatTimeAgo';
 
 const { crId } = ut;
+const _isArr = Array.isArray;
 
-const C = {
-  SOURCE: 'messari_news'
-};
-
-/* Match only links that are fully qualified with https */
-//const fullLinkOnlyRegex = /^\[([\w\s\d]+)\]\((https?:\/\/[\w\d./?=#]+)\)$/
+const SOURCE_ID = 'messari_news';
 
 const _crRelated = tags => (tags || [])
  .filter(Boolean)
@@ -15,39 +15,36 @@ const _crRelated = tags => (tags || [])
  .join(' ');
 
 const _toArticles = (json) => {
-  if (!json || !Array.isArray(json.data)) {
-    return [];
-  }
-  return json.data.map(item => {
+  const { data } = json || {}
+  , _timeAgoOptions = crTimeAgoOptins();
+  return _isArr(data) ? data.map(item => {
     const {
       title,
-      //content,
       tags,
       published_at, url,
       author
     } = item
-    , { name } = author;
+    , { name } = author || {};
     return {
-      source: C.SOURCE,
+      source: SOURCE_ID,
       articleId: crId(),
-      title: title,
-      //description: '',
-      related: _crRelated(tags),
+      title, url,
       author: name,
+      related: _crRelated(tags),
       publishedAt: published_at,
-      url: url
+      timeAgo: formatTimeAgo(published_at, _timeAgoOptions),
     };
-  })
-}
+  }) : [];
+};
 
 const MessariAdapter = {
   toNews(json, option){
     const articles = _toArticles(json);
     return {
-      source: C.SOURCE,
+      source: SOURCE_ID,
       articles: articles
     };
   }
-}
+};
 
 export default MessariAdapter
