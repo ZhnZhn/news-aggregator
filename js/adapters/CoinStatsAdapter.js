@@ -7,11 +7,11 @@ exports["default"] = void 0;
 
 var _ut = _interopRequireDefault(require("../utils/ut"));
 
+var _formatTimeAgo = require("../utils/formatTimeAgo");
+
 var crId = _ut["default"].crId,
     toFirstUpperCase = _ut["default"].toFirstUpperCase;
-var C = {
-  SOURCE: 'coinstats_news'
-};
+var SOURCE_ID = 'coinstats_news';
 
 var _isArr = Array.isArray,
     _crRelated = function _crRelated(coins) {
@@ -23,9 +23,10 @@ var _isArr = Array.isArray,
 
 var _toArticles = function _toArticles(json) {
   var _ref2 = json || {},
-      news = _ref2.news;
+      news = _ref2.news,
+      _timeAgoOptions = (0, _formatTimeAgo.crTimeAgoOptins)();
 
-  return !_isArr(news) ? [] : news.map(function (_ref3) {
+  return _isArr(news) ? news.map(function (_ref3) {
     var title = _ref3.title,
         description = _ref3.description,
         coins = _ref3.coins,
@@ -33,16 +34,17 @@ var _toArticles = function _toArticles(json) {
         source = _ref3.source,
         link = _ref3.link;
     return {
-      source: C.SOURCE,
+      source: SOURCE_ID,
       articleId: crId(),
       title: title,
       description: description,
       related: _crRelated(coins),
       author: source,
       publishedAt: feedDate,
+      timeAgo: (0, _formatTimeAgo.formatTimeAgo)(feedDate, _timeAgoOptions),
       url: link
     };
-  });
+  }) : [];
 };
 
 var CoinStatsAdapter = {
@@ -51,7 +53,7 @@ var CoinStatsAdapter = {
         filter = option.filter;
 
     return {
-      source: C.SOURCE,
+      source: SOURCE_ID,
       articles: articles,
       sortBy: toFirstUpperCase(filter)
     };

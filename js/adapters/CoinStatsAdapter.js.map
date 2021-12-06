@@ -1,1 +1,44 @@
-{"version":3,"sources":["../../src/adapters/CoinStatsAdapter.js"],"names":["crId","ut","toFirstUpperCase","C","SOURCE","_isArr","Array","isArray","_crRelated","coins","map","coinKeyWords","filter","Boolean","join","_toArticles","json","news","title","description","feedDate","source","link","articleId","related","author","publishedAt","url","CoinStatsAdapter","toNews","option","articles","sortBy"],"mappings":";;;;;;;AAAA;;IAGEA,I,GAEEC,c,CAFFD,I;IACAE,gB,GACED,c,CADFC,gB;AAGF,IAAMC,CAAC,GAAG;AACRC,EAAAA,MAAM,EAAE;AADA,CAAV;;AAIA,IAAMC,MAAM,GAAGC,KAAK,CAACC,OAArB;AAAA,IACEC,UAAU,GAAG,SAAbA,UAAa,CAAAC,KAAK;AAAA,SAAI,CAACA,KAAK,IAAI,EAAV,EACnBC,GADmB,CACf;AAAA,QAAGC,YAAH,QAAGA,YAAH;AAAA,WAAsBA,YAAtB;AAAA,GADe,EAEnBC,MAFmB,CAEZC,OAFY,EAGnBC,IAHmB,CAGd,GAHc,CAAJ;AAAA,CADpB;;AAMA,IAAMC,WAAW,GAAG,SAAdA,WAAc,CAAAC,IAAI,EAAI;AAAA,cACTA,IAAI,IAAI,EADC;AAAA,MAClBC,IADkB,SAClBA,IADkB;;AAE1B,SAAO,CAACZ,MAAM,CAACY,IAAD,CAAP,GAAgB,EAAhB,GAAqBA,IAAI,CAACP,GAAL,CAAS;AAAA,QACnCQ,KADmC,SACnCA,KADmC;AAAA,QAC5BC,WAD4B,SAC5BA,WAD4B;AAAA,QAEnCV,KAFmC,SAEnCA,KAFmC;AAAA,QAGnCW,QAHmC,SAGnCA,QAHmC;AAAA,QAGzBC,MAHyB,SAGzBA,MAHyB;AAAA,QAInCC,IAJmC,SAInCA,IAJmC;AAAA,WAK9B;AACJD,MAAAA,MAAM,EAAElB,CAAC,CAACC,MADN;AAEJmB,MAAAA,SAAS,EAAEvB,IAAI,EAFX;AAGJkB,MAAAA,KAAK,EAALA,KAHI;AAGGC,MAAAA,WAAW,EAAXA,WAHH;AAIJK,MAAAA,OAAO,EAAEhB,UAAU,CAACC,KAAD,CAJf;AAKJgB,MAAAA,MAAM,EAAEJ,MALJ;AAMJK,MAAAA,WAAW,EAAEN,QANT;AAOJO,MAAAA,GAAG,EAAEL;AAPD,KAL8B;AAAA,GAAT,CAA5B;AAcD,CAhBD;;AAkBA,IAAMM,gBAAgB,GAAG;AACvBC,EAAAA,MADuB,kBAChBb,IADgB,EACVc,MADU,EACH;AACZ,QAAAC,QAAQ,GAAGhB,WAAW,CAACC,IAAD,CAAtB;AAAA,QACFJ,MADE,GACSkB,MADT,CACFlB,MADE;;AAEN,WAAO;AACLS,MAAAA,MAAM,EAAElB,CAAC,CAACC,MADL;AAEL2B,MAAAA,QAAQ,EAAEA,QAFL;AAGLC,MAAAA,MAAM,EAAE9B,gBAAgB,CAACU,MAAD;AAHnB,KAAP;AAKD;AATsB,CAAzB;eAYegB,gB","sourcesContent":["import ut from '../utils/ut'\r\n\r\nconst {\r\n  crId,\r\n  toFirstUpperCase\r\n} = ut;\r\n\r\nconst C = {\r\n  SOURCE: 'coinstats_news'\r\n};\r\n\r\nconst _isArr = Array.isArray\r\n, _crRelated = coins => (coins || [])\r\n    .map(({ coinKeyWords }) => coinKeyWords)\r\n    .filter(Boolean)\r\n    .join('|');\r\n\r\nconst _toArticles = json => {\r\n  const { news } = json || {};\r\n  return !_isArr(news) ? [] : news.map(({\r\n    title, description,\r\n    coins,\r\n    feedDate, source,\r\n    link\r\n  }) => ({\r\n     source: C.SOURCE,\r\n     articleId: crId(),\r\n     title, description,\r\n     related: _crRelated(coins),\r\n     author: source,\r\n     publishedAt: feedDate,\r\n     url: link\r\n  }));\r\n};\r\n\r\nconst CoinStatsAdapter = {\r\n  toNews(json, option){\r\n    const articles = _toArticles(json)\r\n    , { filter } = option;    \r\n    return {\r\n      source: C.SOURCE,\r\n      articles: articles,\r\n      sortBy: toFirstUpperCase(filter)\r\n    };\r\n  }\r\n};\r\n\r\nexport default CoinStatsAdapter\r\n"],"file":"CoinStatsAdapter.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/adapters/CoinStatsAdapter.js"
+ ],
+ "file": "../../src/adapters/CoinStatsAdapter.js",
+ "names": [
+  "crId",
+  "ut",
+  "toFirstUpperCase",
+  "SOURCE_ID",
+  "_isArr",
+  "Array",
+  "isArray",
+  "_crRelated",
+  "coins",
+  "map",
+  "coinKeyWords",
+  "filter",
+  "Boolean",
+  "join",
+  "_toArticles",
+  "json",
+  "news",
+  "_timeAgoOptions",
+  "title",
+  "description",
+  "feedDate",
+  "source",
+  "link",
+  "articleId",
+  "related",
+  "author",
+  "publishedAt",
+  "timeAgo",
+  "url",
+  "CoinStatsAdapter",
+  "toNews",
+  "option",
+  "articles",
+  "sortBy"
+ ],
+ "mappings": ";;;;;;;AAAA;;AACA;;AAKA,IACEA,IADF,GAGIC,cAHJ,CACED,IADF;AAAA,IAEEE,gBAFF,GAGID,cAHJ,CAEEC,gBAFF;AAKA,IAAMC,SAAS,GAAG,gBAAlB;;AAEA,IAAMC,MAAM,GAAGC,KAAK,CAACC,OAArB;AAAA,IACEC,UAAU,GAAG,SAAbA,UAAa,CAAAC,KAAK;AAAA,SAAI,CAACA,KAAK,IAAI,EAAV,EACnBC,GADmB,CACf;AAAA,QAAGC,YAAH,QAAGA,YAAH;AAAA,WAAsBA,YAAtB;AAAA,GADe,EAEnBC,MAFmB,CAEZC,OAFY,EAGnBC,IAHmB,CAGd,GAHc,CAAJ;AAAA,CADpB;;AAMA,IAAMC,WAAW,GAAG,SAAdA,WAAc,CAAAC,IAAI,EAAI;AAC1B,cAAiBA,IAAI,IAAI,EAAzB;AAAA,MAAQC,IAAR,SAAQA,IAAR;AAAA,MACEC,eADF,GACoB,qCADpB;;AAEA,SAAOb,MAAM,CAACY,IAAD,CAAN,GAAeA,IAAI,CAACP,GAAL,CAAS;AAAA,QAC7BS,KAD6B,SAC7BA,KAD6B;AAAA,QACtBC,WADsB,SACtBA,WADsB;AAAA,QAE7BX,KAF6B,SAE7BA,KAF6B;AAAA,QAG7BY,QAH6B,SAG7BA,QAH6B;AAAA,QAGnBC,MAHmB,SAGnBA,MAHmB;AAAA,QAI7BC,IAJ6B,SAI7BA,IAJ6B;AAAA,WAKxB;AACJD,MAAAA,MAAM,EAAElB,SADJ;AAEJoB,MAAAA,SAAS,EAAEvB,IAAI,EAFX;AAGJkB,MAAAA,KAAK,EAALA,KAHI;AAGGC,MAAAA,WAAW,EAAXA,WAHH;AAIJK,MAAAA,OAAO,EAAEjB,UAAU,CAACC,KAAD,CAJf;AAKJiB,MAAAA,MAAM,EAAEJ,MALJ;AAMJK,MAAAA,WAAW,EAAEN,QANT;AAOJO,MAAAA,OAAO,EAAE,kCAAcP,QAAd,EAAwBH,eAAxB,CAPL;AAQJW,MAAAA,GAAG,EAAEN;AARD,KALwB;AAAA,GAAT,CAAf,GAcD,EAdN;AAeD,CAlBD;;AAoBA,IAAMO,gBAAgB,GAAG;AACvBC,EAAAA,MADuB,kBAChBf,IADgB,EACVgB,MADU,EACH;AACZ,QAAAC,QAAQ,GAAGlB,WAAW,CAACC,IAAD,CAAtB;AAAA,QACFJ,MADE,GACSoB,MADT,CACFpB,MADE;;AAEN,WAAO;AACLU,MAAAA,MAAM,EAAElB,SADH;AAEL6B,MAAAA,QAAQ,EAAEA,QAFL;AAGLC,MAAAA,MAAM,EAAE/B,gBAAgB,CAACS,MAAD;AAHnB,KAAP;AAKD;AATsB,CAAzB;eAYekB,gB"
+}

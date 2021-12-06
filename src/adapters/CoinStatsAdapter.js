@@ -1,13 +1,15 @@
-import ut from '../utils/ut'
+import ut from '../utils/ut';
+import {
+  crTimeAgoOptins,
+  formatTimeAgo
+} from '../utils/formatTimeAgo';
 
 const {
   crId,
   toFirstUpperCase
 } = ut;
 
-const C = {
-  SOURCE: 'coinstats_news'
-};
+const SOURCE_ID = 'coinstats_news';
 
 const _isArr = Array.isArray
 , _crRelated = coins => (coins || [])
@@ -16,29 +18,31 @@ const _isArr = Array.isArray
     .join('|');
 
 const _toArticles = json => {
-  const { news } = json || {};
-  return !_isArr(news) ? [] : news.map(({
+  const { news } = json || {}
+  , _timeAgoOptions = crTimeAgoOptins();
+  return _isArr(news) ? news.map(({
     title, description,
     coins,
     feedDate, source,
     link
   }) => ({
-     source: C.SOURCE,
+     source: SOURCE_ID,
      articleId: crId(),
      title, description,
      related: _crRelated(coins),
      author: source,
      publishedAt: feedDate,
+     timeAgo: formatTimeAgo(feedDate, _timeAgoOptions),
      url: link
-  }));
+  })) : [];
 };
 
 const CoinStatsAdapter = {
   toNews(json, option){
     const articles = _toArticles(json)
-    , { filter } = option;    
+    , { filter } = option;
     return {
-      source: C.SOURCE,
+      source: SOURCE_ID,
       articles: articles,
       sortBy: toFirstUpperCase(filter)
     };
