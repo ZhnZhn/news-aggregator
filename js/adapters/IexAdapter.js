@@ -7,22 +7,20 @@ exports["default"] = void 0;
 
 var _crId = _interopRequireDefault(require("../utils/crId"));
 
+var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
+
 var _isArr = Array.isArray;
-var C = {
-  SOURCE: 'iex_news',
-  DF_SYMBOL: 'AAPL'
-};
+var SOURCE_ID = 'iex_news',
+    DF_SYMBOL = 'AAPL';
 
 var _crAuthor = function _crAuthor(hasPaywall, source) {
   return hasPaywall ? "$ " + source : source;
 };
 
 var _toArticles = function _toArticles(json) {
-  if (!_isArr(json)) {
-    return [];
-  }
+  var _timeAgoOptions = _formatTimeAgo["default"].crOptions();
 
-  var articles = json.map(function (item) {
+  return _isArr(json) ? json.map(function (item) {
     var headline = item.headline,
         source = item.source,
         datetime = item.datetime,
@@ -33,29 +31,29 @@ var _toArticles = function _toArticles(json) {
         _related = related ? related.split(',').join(', ') : void 0;
 
     return {
-      source: C.SOURCE,
+      source: SOURCE_ID,
       articleId: (0, _crId["default"])(),
       title: headline,
       description: summary,
       related: _related,
       author: _crAuthor(hasPaywall, source),
       publishedAt: datetime,
+      timeAgo: (0, _formatTimeAgo["default"])(datetime, _timeAgoOptions),
       url: url
     };
-  });
-  return articles;
+  }) : [];
 };
 
 var IexAdapter = {
   toNews: function toNews(json, option) {
     var _option$symbol = option.symbol,
-        symbol = _option$symbol === void 0 ? C.DF_SYMBOL : _option$symbol,
+        symbol = _option$symbol === void 0 ? DF_SYMBOL : _option$symbol,
         _option$recent = option.recent,
         recent = _option$recent === void 0 ? '' : _option$recent,
         articles = _toArticles(json);
 
     return {
-      source: C.SOURCE,
+      source: SOURCE_ID,
       articles: articles,
       sortBy: symbol.toUpperCase() + " " + recent
     };
