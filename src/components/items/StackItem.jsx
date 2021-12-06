@@ -11,6 +11,7 @@ import crStyle from '../zhn-utils/crStyle';
 import useItemGestureSwipeX from './useItemGestureSwipeX';
 import GestureSwipeX from '../zhn-gesture/GestureSwipeX';
 import SvgX from '../zhn-atoms/SvgX';
+import SafeLink from '../zhn-atoms/SafeLink';
 import ItemStack from '../zhn-atoms/ItemStack';
 
 const { HAS_TOUCH } = has
@@ -115,11 +116,11 @@ const StackItem = forwardRef(({
     link, owner, tags
   } = item || {}
   , { reputation, display_name } = owner || {}
-  , _rootStyle = crStyle([isClosed, S_NONE]);
+  , _style = crStyle([isClosed, S_NONE]);
 
   return (
     <GestureSwipeX
-      style={{...S_ROOT, ..._rootStyle, ...TS.HEADER}}
+      style={{...S_ROOT, ..._style, ...TS.HEADER}}
       onGesture={_onGestureSwipeX}
     >
       <div style={S_ITEM_CAPTION}>
@@ -146,14 +147,14 @@ const StackItem = forwardRef(({
       <div>
         {title}
       </div>
-      <a
+      <SafeLink
         className={CL_WRAPPER}
         style={S_LINK}
         href={link}
         onKeyDown={_hKeyDown}
       >
         <ItemStack items={tags} crItem={_crItem} />
-      </a>
+      </SafeLink>
     </GestureSwipeX>
   );
 });

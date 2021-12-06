@@ -27,6 +27,8 @@ var _GestureSwipeX = _interopRequireDefault(require("../zhn-gesture/GestureSwipe
 
 var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
 
+var _SafeLink = _interopRequireDefault(require("../zhn-atoms/SafeLink"));
+
 var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
 
 var _jsxRuntime = require("react/jsx-runtime");
@@ -149,10 +151,10 @@ var StackItem = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
       _ref3 = owner || {},
       reputation = _ref3.reputation,
       display_name = _ref3.display_name,
-      _rootStyle = (0, _crStyle["default"])([isClosed, S_NONE]);
+      _style = (0, _crStyle["default"])([isClosed, S_NONE]);
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_GestureSwipeX["default"], {
-    style: (0, _extends2["default"])({}, S_ROOT, _rootStyle, TS.HEADER),
+    style: (0, _extends2["default"])({}, S_ROOT, _style, TS.HEADER),
     onGesture: _onGestureSwipeX,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       style: S_ITEM_CAPTION,
@@ -177,7 +179,7 @@ var StackItem = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
       })]
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       children: title
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SafeLink["default"], {
       className: CL_WRAPPER,
       style: S_LINK,
       href: link,
