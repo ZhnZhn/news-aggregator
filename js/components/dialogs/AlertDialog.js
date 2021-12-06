@@ -21,16 +21,17 @@ var _jsxRuntime = require("react/jsx-runtime");
 var S_DIALOG = {
   position: 'static',
   width: 350,
-  height: 160,
+  height: 220,
   margin: '70px auto 0px'
 },
     S_MSG = {
   color: 'black',
   width: '100%',
-  padding: '16px 0 0 16px',
+  padding: '8px 12px',
   fontWeight: 'bold',
   lineHeight: 1.4,
-  whiteSpace: 'pre-line'
+  whiteSpace: 'pre-line',
+  wordBreak: 'break-word'
 };
 
 var _toMsg = function _toMsg(data) {
