@@ -7,39 +7,49 @@ exports["default"] = void 0;
 
 var _ut = _interopRequireDefault(require("../utils/ut"));
 
+var _formatTimeAgo = require("../utils/formatTimeAgo");
+
 var crId = _ut["default"].crId,
     replaceDecCodes = _ut["default"].replaceDecCodes;
-var C = {
-  SOURCE: 'cryptocompare_news'
+var _isArr = Array.isArray;
+var SOURCE_ID = 'cryptocompare_news';
+
+var _toMls = function _toMls(sec) {
+  return typeof sec === 'number' ? sec * 1000 : void 0;
 };
 
 var _toArticles = function _toArticles(json) {
-  if (!json || !Array.isArray(json.Data)) {
+  var _ref = json || {},
+      Data = _ref.Data;
+
+  if (!_isArr(Data)) {
     return [];
   }
 
-  return json.Data.map(function (item) {
+  var _timeAgoOptions = (0, _formatTimeAgo.crTimeAgoOptins)();
+
+  return Data.map(function (item) {
     var title = item.title,
         body = item.body,
         categories = item.categories,
         url = item.url,
         source = item.source,
-        _item$source_info = item.source_info,
-        source_info = _item$source_info === void 0 ? {} : _item$source_info,
+        source_info = item.source_info,
         published_on = item.published_on,
-        _author = source_info.name || source,
-        _publishedAt = new Date(published_on * 1000).toISOString(),
-        _body = replaceDecCodes(body);
+        _ref2 = source_info || {},
+        name = _ref2.name,
+        _publishedOn = _toMls(published_on);
 
     return {
-      source: C.SOURCE,
+      source: SOURCE_ID,
       articleId: crId(),
       title: title,
-      description: _body,
+      url: url,
+      description: replaceDecCodes(body),
       related: categories,
-      author: _author,
-      publishedAt: _publishedAt,
-      url: url
+      author: name || source,
+      timeAgo: _publishedOn && (0, _formatTimeAgo.formatTimeAgo)(_publishedOn, _timeAgoOptions),
+      publishedAt: _publishedOn && new Date(_publishedOn).toISOString()
     };
   });
 };
@@ -50,7 +60,7 @@ var CryptoCompareAdapter = {
         articles = _toArticles(json);
 
     return {
-      source: C.SOURCE,
+      source: SOURCE_ID,
       articles: articles,
       sortBy: sortOrder
     };
