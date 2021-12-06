@@ -9,10 +9,12 @@ var _react = require("react");
 
 var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
 
+var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
+
 var _jsxRuntime = require("react/jsx-runtime");
 
-var CL_DIV = "link-wrapper";
-var S_DESCR = {
+var CL_DIV = "link-wrapper",
+    S_DESCR = {
   display: 'block',
   lineHeight: 1.8,
   padding: '8px 16px 4px 16px',
@@ -20,10 +22,22 @@ var S_DESCR = {
   fontSize: '1rem',
   fontWeight: 'bold'
 },
-    S_AUTHOR_ROOT = {
+    S_RELATED = {
+  lineHeight: 1.8,
+  padding: '0 16px 0 16px',
+  color: '#121212',
+  fontSize: '1rem',
+  fontWeight: 'bold'
+},
+    S_AUTHOR_ROW = {
   display: 'flex',
   justifyContent: 'space-between',
-  padding: '6px 8px 6px 16px'
+  padding: '8px 12px 0 16px'
+},
+    S_BOTTOM_ROW = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  padding: '0 12px 6px 16px'
 },
     S_AUTHOR = {
   color: 'gray',
@@ -32,9 +46,10 @@ var S_DESCR = {
 },
     S_DATE = {
   color: 'gray',
-  //flexShrink: 0,
-  paddingRight: 32,
   fontWeight: 'bold'
+},
+    S_PT_8 = {
+  paddingTop: 8
 };
 
 var ArticleDescr = function ArticleDescr(_ref) {
@@ -44,6 +59,7 @@ var ArticleDescr = function ArticleDescr(_ref) {
       description = _ref.description,
       related = _ref.related,
       publishedAt = _ref.publishedAt,
+      timeAgo = _ref.timeAgo,
       author = _ref.author,
       onHide = _ref.onHide,
       onClose = _ref.onClose;
@@ -53,6 +69,7 @@ var ArticleDescr = function ArticleDescr(_ref) {
     var keyCode = evt.keyCode;
 
     if (keyCode === 13) {
+      evt.preventDefault();
       window.open(href, '_blank');
     } else if (keyCode === 27) {
       onHide();
@@ -67,23 +84,34 @@ var ArticleDescr = function ArticleDescr(_ref) {
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ShowHide["default"], {
     style: style,
     isShow: isShow,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      style: S_AUTHOR_ROW,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        style: S_AUTHOR,
+        children: author
+      }), timeAgo && /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        style: S_DATE,
+        children: timeAgo
+      })]
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
       className: CL_DIV,
       style: S_DESCR,
       href: href,
       onKeyDown: _hKeyDown,
       children: description
-    }), related && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      style: S_DESCR,
-      children: related
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      style: S_AUTHOR_ROOT,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-        style: S_DATE,
-        children: publishedAt
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-        style: S_AUTHOR,
-        children: author
+      style: S_PT_8,
+      children: [related && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        style: S_RELATED,
+        children: related
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        style: S_BOTTOM_ROW,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgX["default"], {
+          onClick: onClose
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          style: S_DATE,
+          children: publishedAt
+        })]
       })]
     })]
   });
