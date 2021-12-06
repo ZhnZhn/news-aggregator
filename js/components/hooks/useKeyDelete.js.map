@@ -1,0 +1,15 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/useKeyDelete.js"
+ ],
+ "file": "../../../src/components/hooks/useKeyDelete.js",
+ "names": [
+  "useKeyDelete",
+  "fn",
+  "deps",
+  "event",
+  "keyCode"
+ ],
+ "mappings": ";;;;;AAAA;;AAEA;AACA,IAAMA,YAAY,GAAG,SAAfA,YAAe,CAACC,EAAD,EAAKC,IAAL;AAAA,SAAc,wBAAY,UAAAC,KAAK,EAAI;AACtD,QAAIA,KAAK,CAACC,OAAN,KAAkB,EAAtB,EAA0B;AACxBH,MAAAA,EAAE,CAACE,KAAD,CAAF;AACD;AACF,GAJkC,EAIhCD,IAAI,IAAI,EAJwB,CAAd;AAAA,CAArB;AAKA;;;eAEeF,Y"
+}
