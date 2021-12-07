@@ -1,5 +1,7 @@
+import formatTimeAgo from '../utils/formatTimeAgo';
 
-//const WEBZ_ID = "webz";
+const _assign = Object.assign
+, _crHm = () => Object.create(null);
 
 const _hmSourceId = {
   W_WEBZ_QUERY: "webz",
@@ -8,48 +10,65 @@ const _hmSourceId = {
 
 const _toNews = (json, option) => {
   const { posts, requestsLeft='' } = json
-  , arr = [], _hm = {}
+  , articles = [],
+  _hm = _crHm()
   , { type } = option
-  , _sourceId = _hmSourceId[type];
-  
+  , _sourceId = _hmSourceId[type]
+  , _timeAgoOptions = formatTimeAgo.crOptions();
+
   posts.forEach(post => {
-    const { title='' } = post
+    const {
+      title='',
+      uuid,
+      text,
+      published
+    } = post
     , _title = title.trim();
     if (_title && !_hm[_title]) {
-      post.articleId = post.uuid
-      post.source = _sourceId
-      post.description = post.text
-      post.publishedAt = post.published
-      arr.push(post)
+      articles.push(_assign(post, {
+        source: _sourceId,
+        articleId: uuid,        
+        description: text,
+        publishedAt: published,
+        timeAgo: formatTimeAgo(published, _timeAgoOptions)
+      }))
       _hm[_title] = true;
     }
   })
 
   return {
     source: _sourceId,
-    articles: arr,
+    articles,
     sortBy: requestsLeft
   };
 };
 
 const WebzAdapter = {
   toArticles: (posts=[], source) => {
-    const arr = []
-        , _hm = {};
+    const articles = []
+    , _hm = _crHm()
+    , _timeAgoOptions = formatTimeAgo.crOptions();
+
     posts.forEach(post => {
-      const { title='' } = post
-           , _title = title.trim();
-      if (_title && !_hm[_title] ){
-        post.articleId = post.uuid
-        //post.source = WEBZ_ID
-        post.description = post.text
-        post.publishedAt = post.published
-        arr.push(post)
+      const {
+        title='',
+        uuid,
+        text,
+        published
+      } = post
+      , _title = title.trim();
+      if (_title && !_hm[_title]){
+        articles.push(_assign(post, {
+          articleId: uuid,
+          description: text,
+          publishedAt: published,
+          timeAgo: formatTimeAgo(published, _timeAgoOptions)
+        }))
         _hm[_title] = true;
       }
     })
 
-    return arr;
+    return articles;
   },
 
   toNews: (json, option) => {
