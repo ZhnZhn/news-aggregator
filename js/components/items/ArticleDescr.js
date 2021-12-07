@@ -23,6 +23,7 @@ var CL_DIV = "link-wrapper",
   color: '#121212',
   fontSize: '1rem',
   fontWeight: 'bold',
+  whiteSpace: "pre-wrap",
   wordBreak: 'break-word'
 },
     S_RELATED = {
