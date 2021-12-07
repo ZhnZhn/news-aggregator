@@ -44,7 +44,7 @@ var _toArticles = function _toArticles(json) {
       related: categories,
       author: name || source,
       timeAgo: _publishedOn && (0, _formatTimeAgo["default"])(_publishedOn, _timeAgoOptions),
-      publishedAt: _publishedOn && new Date(_publishedOn).toISOString()
+      publishedAt: _publishedOn
     };
   }) : [];
 };

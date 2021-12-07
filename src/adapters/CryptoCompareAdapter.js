@@ -36,7 +36,7 @@ const _toArticles = json => {
       related: categories,
       author: name || source,
       timeAgo: _publishedOn && formatTimeAgo(_publishedOn, _timeAgoOptions),
-      publishedAt: _publishedOn && (new Date(_publishedOn)).toISOString()
+      publishedAt: _publishedOn      
     };
   }) : []
 };
