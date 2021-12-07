@@ -7,7 +7,12 @@ exports["default"] = void 0;
 
 var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
 
+var _toFirstUpperCase = _interopRequireDefault(require("../utils/toFirstUpperCase"));
+
+var _splitByParagraph = _interopRequireDefault(require("../utils/splitByParagraph"));
+
 var _assign = Object.assign,
+    _isArr = Array.isArray,
     _crHm = function _crHm() {
   return Object.create(null);
 };
@@ -17,15 +22,24 @@ var _hmSourceId = {
   W_WEBZ_COUNTRY: "webz_country"
 };
 
-var _toNews = function _toNews(json, option) {
-  var posts = json.posts,
-      _json$requestsLeft = json.requestsLeft,
-      requestsLeft = _json$requestsLeft === void 0 ? '' : _json$requestsLeft,
-      articles = [],
+var _crDescription = function _crDescription(text, lang) {
+  return text.indexOf('\n') === -1 ? !lang || lang === 'english' ? (0, _splitByParagraph["default"])(text) : text : text.replace(/\n/g, '\n\n');
+};
+
+var _crRelated = function _crRelated(tokenArr) {
+  return (tokenArr || []).filter(function (str) {
+    return (str || '').indexOf('_') === -1;
+  }).map(_toFirstUpperCase["default"]).join("|");
+};
+
+var _toArticles = function _toArticles(posts, sourceId, lang) {
+  var articles = [],
       _hm = _crHm(),
-      type = option.type,
-      _sourceId = _hmSourceId[type],
       _timeAgoOptions = _formatTimeAgo["default"].crOptions();
+
+  if (!_isArr(posts)) {
+    return articles;
+  }
 
   posts.forEach(function (post) {
     var _post$title = post.title,
@@ -33,58 +47,46 @@ var _toNews = function _toNews(json, option) {
         uuid = post.uuid,
         text = post.text,
         published = post.published,
+        author = post.author,
+        thread = post.thread,
+        _ref = thread || {},
+        site_full = _ref.site_full,
+        site = _ref.site,
+        site_categories = _ref.site_categories,
         _title = title.trim();
 
     if (_title && !_hm[_title]) {
       articles.push(_assign(post, {
-        source: _sourceId,
+        source: sourceId,
         articleId: uuid,
-        description: text,
+        author: author || site_full || site,
+        description: _crDescription(text, lang),
+        related: _crRelated(site_categories),
         publishedAt: published,
         timeAgo: (0, _formatTimeAgo["default"])(published, _timeAgoOptions)
       }));
       _hm[_title] = true;
     }
   });
-  return {
-    source: _sourceId,
-    articles: articles,
-    sortBy: requestsLeft
-  };
+  return articles;
 };
 
 var WebzAdapter = {
-  toArticles: function toArticles(posts, source) {
-    if (posts === void 0) {
-      posts = [];
-    }
-
-    var articles = [],
-        _hm = _crHm(),
-        _timeAgoOptions = _formatTimeAgo["default"].crOptions();
-
-    posts.forEach(function (post) {
-      var _post$title2 = post.title,
-          title = _post$title2 === void 0 ? '' : _post$title2,
-          uuid = post.uuid,
-          text = post.text,
-          published = post.published,
-          _title = title.trim();
-
-      if (_title && !_hm[_title]) {
-        articles.push(_assign(post, {
-          articleId: uuid,
-          description: text,
-          publishedAt: published,
-          timeAgo: (0, _formatTimeAgo["default"])(published, _timeAgoOptions)
-        }));
-        _hm[_title] = true;
-      }
-    });
-    return articles;
-  },
   toNews: function toNews(json, option) {
-    return _toNews(json, option);
+    var _ref2 = json || {},
+        posts = _ref2.posts,
+        requestsLeft = _ref2.requestsLeft,
+        _ref3 = option || {},
+        type = _ref3.type,
+        lang = _ref3.lang,
+        _sourceId = _hmSourceId[type],
+        articles = _toArticles(posts, _sourceId, lang);
+
+    return {
+      source: _sourceId,
+      articles: articles,
+      sortBy: requestsLeft
+    };
   }
 };
 var _default = WebzAdapter;
