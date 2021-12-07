@@ -9,6 +9,8 @@ var _react = require("react");
 
 var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
 
+var _SafeLink = _interopRequireDefault(require("../zhn-atoms/SafeLink"));
+
 var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
 
 var _jsxRuntime = require("react/jsx-runtime");
@@ -20,14 +22,16 @@ var CL_DIV = "link-wrapper",
   padding: '8px 16px 4px 16px',
   color: '#121212',
   fontSize: '1rem',
-  fontWeight: 'bold'
+  fontWeight: 'bold',
+  wordBreak: 'break-word'
 },
     S_RELATED = {
   lineHeight: 1.8,
   padding: '0 16px 0 16px',
   color: '#121212',
   fontSize: '1rem',
-  fontWeight: 'bold'
+  fontWeight: 'bold',
+  wordBreak: 'break-word'
 },
     S_AUTHOR_ROW = {
   display: 'flex',
@@ -68,10 +72,7 @@ var ArticleDescr = function ArticleDescr(_ref) {
   var _hKeyDown = (0, _react.useCallback)(function (evt) {
     var keyCode = evt.keyCode;
 
-    if (keyCode === 13) {
-      evt.preventDefault();
-      window.open(href, '_blank');
-    } else if (keyCode === 27) {
+    if (keyCode === 27) {
       onHide();
     } else if (keyCode === 46) {
       onClose();
@@ -93,7 +94,7 @@ var ArticleDescr = function ArticleDescr(_ref) {
         style: S_DATE,
         children: timeAgo
       })]
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SafeLink["default"], {
       className: CL_DIV,
       style: S_DESCR,
       href: href,

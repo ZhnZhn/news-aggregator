@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 
 import ShowHide from '../zhn-atoms/ShowHide';
+import SafeLink from '../zhn-atoms/SafeLink';
 import SvgX from '../zhn-atoms/SvgX';
 
 const CL_DIV = "link-wrapper"
@@ -10,14 +11,16 @@ const CL_DIV = "link-wrapper"
   padding: '8px 16px 4px 16px',
   color: '#121212',
   fontSize: '1rem',
-  fontWeight: 'bold'
+  fontWeight: 'bold',
+  wordBreak: 'break-word'
 },
 S_RELATED = {
   lineHeight: 1.8,
   padding: '0 16px 0 16px',
   color: '#121212',
   fontSize: '1rem',
-  fontWeight: 'bold'
+  fontWeight: 'bold',
+  wordBreak: 'break-word'
 },
 S_AUTHOR_ROW = {
   display: 'flex',
@@ -56,10 +59,7 @@ const ArticleDescr = ({
   /*eslint-disable react-hooks/exhaustive-deps */
   const _hKeyDown = useCallback(evt => {
     const { keyCode } = evt;
-    if (keyCode === 13) {
-      evt.preventDefault()
-      window.open(href, '_blank')
-    } else if (keyCode === 27) {
+    if (keyCode === 27) {
       onHide()
     } else if (keyCode === 46) {
       onClose()
@@ -83,14 +83,14 @@ const ArticleDescr = ({
             </span>
           }
         </div>
-        <a
+        <SafeLink
           className={CL_DIV}
           style={S_DESCR}
           href={href}
           onKeyDown={_hKeyDown}
         >
           {description}
-        </a>
+        </SafeLink>
         <div style={S_PT_8}>
         {
           related &&
