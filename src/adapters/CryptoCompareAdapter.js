@@ -1,10 +1,12 @@
 import ut from '../utils/ut';
 import formatTimeAgo from '../utils/formatTimeAgo';
+import splitByParagraph from '../utils/splitByParagraph';
 
 const {
   crId,
   replaceDecCodes
 } = ut;
+
 
 const _isArr = Array.isArray;
 const SOURCE_ID = 'cryptocompare_news';
@@ -27,16 +29,17 @@ const _toArticles = json => {
       published_on
     } = item
     , { name } = source_info || {}
-    , _publishedOn = _toMls(published_on);
+    , _publishedOn = _toMls(published_on)
+    , description = splitByParagraph(replaceDecCodes(body));
     return {
       source: SOURCE_ID,
       articleId: crId(),
       title, url,
-      description: replaceDecCodes(body),
+      description,
       related: categories,
       author: name || source,
       timeAgo: _publishedOn && formatTimeAgo(_publishedOn, _timeAgoOptions),
-      publishedAt: _publishedOn      
+      publishedAt: _publishedOn
     };
   }) : []
 };

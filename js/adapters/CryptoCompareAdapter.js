@@ -9,6 +9,8 @@ var _ut = _interopRequireDefault(require("../utils/ut"));
 
 var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
 
+var _splitByParagraph = _interopRequireDefault(require("../utils/splitByParagraph"));
+
 var crId = _ut["default"].crId,
     replaceDecCodes = _ut["default"].replaceDecCodes;
 var _isArr = Array.isArray;
@@ -33,14 +35,15 @@ var _toArticles = function _toArticles(json) {
         published_on = item.published_on,
         _ref2 = source_info || {},
         name = _ref2.name,
-        _publishedOn = _toMls(published_on);
+        _publishedOn = _toMls(published_on),
+        description = (0, _splitByParagraph["default"])(replaceDecCodes(body));
 
     return {
       source: SOURCE_ID,
       articleId: crId(),
       title: title,
       url: url,
-      description: replaceDecCodes(body),
+      description: description,
       related: categories,
       author: name || source,
       timeAgo: _publishedOn && (0, _formatTimeAgo["default"])(_publishedOn, _timeAgoOptions),
