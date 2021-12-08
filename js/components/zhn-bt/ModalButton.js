@@ -5,8 +5,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _useRegRef = _interopRequireDefault(require("../hooks/useRegRef"));
-
 var _BtCaption = _interopRequireDefault(require("./BtCaption"));
 
 var _jsxRuntime = require("react/jsx-runtime");
@@ -21,13 +19,8 @@ var ModalButton = function ModalButton(_ref) {
       caption = _ref.caption,
       accessKey = _ref.accessKey,
       children = _ref.children,
-      onReg = _ref.onReg,
       onClick = _ref.onClick;
-
-  var _refBtNode = (0, _useRegRef["default"])(onReg);
-
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
-    ref: _refBtNode,
     className: CL_BT_FLAT,
     style: style,
     title: title,
