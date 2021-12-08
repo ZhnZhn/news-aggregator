@@ -1,18 +1,17 @@
-import { Component } from 'react'
+import { memo, useContext, useCallback } from 'react';
 //import PropTypes from 'prop-types'
 
-import withTheme from '../hoc/withTheme'
-import styleConfig from '../dialogs/Dialog.Style'
+import ThemeContext from '../hoc/ThemeContext';
+import styleConfig from '../dialogs/Dialog.Style';
 
-import Actions from '../../flux/actions/ComponentActions'
+import Actions from '../../flux/actions/ComponentActions';
 
-import A from '../Comp'
-import CardApiKeys from './CardApiKeys'
-import CardUiTheme from './CardUiTheme'
+import A from '../Comp';
+import CardApiKeys from './CardApiKeys';
+import CardUiTheme from './CardUiTheme';
 
-const _assign = Object.assign;
-
-const S_MODAL = {
+const _assign = Object.assign
+, S_MODAL = {
   position: 'static',
   width: 340,
   height: 410,
@@ -41,11 +40,9 @@ const S_MODAL = {
 , S_INPUT_WIDTH = {
   width: 315,
   marginLeft: 8
-};
-
-
-const MIN_FS = 15
-const MAX_FS = 18
+}
+, MIN_FS = 15
+, MAX_FS = 18;
 
 const _isNumber = n => typeof n === 'number'
  && (n-n===0);
@@ -59,91 +56,76 @@ const _inRange = (min, max, v) => _isNumber(v)
    }
  };
 
-class SettingsDialog extends Component {
-  /*
-  static propTypes = {
-    isShow: PropTypes.bool,
-    data: PropTypes.shape({
-      setNewsKey: PropTypes.func,
-      setWebzKey: PropTypes.func,
-    }),
-    onClose: PropTypes.func
-  }
-  */
+const _isNotShouldUpdate = (prevProps, nextProps) =>
+  prevProps.isShow === nextProps.isShow
 
-
-  shouldComponentUpdate(nextProps, nextState){
-    if (nextProps !== this.props
-      && nextProps.isShow === this.props.isShow
-    ) {
-      return false;
+const SettingsDialog = memo(({
+  isShow,
+  data,
+  onClose
+}) => {
+  const theme = useContext(ThemeContext)
+  , _selectTheme = useCallback(item => {
+    const { value } = item || {};
+    if (value && theme.getThemeName() !== value) {
+      theme.setThemeName(value)
+      Actions.changeTheme(value)
     }
-    return true;
-  }
+  }, [theme])
+  , TS = theme.createStyle(styleConfig)
+  , _TS = JSON.parse(JSON.stringify(TS));
 
-  _selectTheme = (item) => {
-    const { theme } = this.props;
-    if (
-        item &&
-        theme.getThemeName() !== item.value
-    ) {
-      theme.setThemeName(item.value)
-      Actions.changeTheme(item.value)
-      this.forceUpdate()
-    }
-  }
+  _assign(_TS.SELECT.ROOT, S_SELECT_WIDTH)
 
+  return (
+    <A.ModalDialog
+       style={{...S_MODAL, ...TS.R_DIALOG }}
+       divBtStyle={S_DIV_BT}
+       captionStyle={TS.BROWSER_CAPTION}
+       buttonStyle={TS.BT}
+       caption="User Settings"
+       isShow={isShow}
+       onClose={onClose}
+    >
+      <A.TabPane
+         width="100%"
+         tabsStyle={S_TABS}
+         isShow={isShow}
+      >
+         <A.Tab title="API Keys">
+            <CardApiKeys
+              style={S_CARD_ROOT}
+              fieldStyle={{...TS.INPUT_ROOT, ...S_INPUT_WIDTH}}
+              buttonsStyle={S_CARD_BUTTONS}
+              TS={TS}
+              data={data}
+              onClose={onClose}
+            />
+         </A.Tab>
+         <A.Tab title="UI Theme">
+            <CardUiTheme
+              style={S_CARD_ROOT}
+              buttonsStyle={S_CARD_BUTTONS}
+              TS={_TS}
+              onSetTheme={_selectTheme}
+              onSetFontSize={_selectFontSize}
+              onClose={onClose}
+            />
+         </A.Tab>
+       </A.TabPane>
+   </A.ModalDialog>
+  );
+}, _isNotShouldUpdate);
 
-  render(){
-    const {
-      isShow,
-      theme,
-      data,
-      onClose
-    } = this.props
-    , TS = theme.createStyle(styleConfig)
-    , _TS = JSON.parse(JSON.stringify(TS));
-    _assign(_TS.SELECT.ROOT, S_SELECT_WIDTH)
-    return (
-        <A.ModalDialog
-           style={{...S_MODAL, ...TS.R_DIALOG }}
-           divBtStyle={S_DIV_BT}
-           captionStyle={TS.BROWSER_CAPTION}
-           buttonStyle={TS.BT}
-           caption="User Settings"
-           isShow={isShow}
-           onClose={onClose}
-        >
-          <A.TabPane
-             width="100%"
-             tabsStyle={S_TABS}
-             isShow={isShow}
-          >
-             <A.Tab title="API Keys">
-                <CardApiKeys
-                  ref={this._refInput}
-                  style={S_CARD_ROOT}
-                  fieldStyle={{...TS.INPUT_ROOT, ...S_INPUT_WIDTH}}
-                  buttonsStyle={S_CARD_BUTTONS}
-                  TS={TS}
-                  data={data}
-                  onClose={onClose}
-                />
-             </A.Tab>
-             <A.Tab title="UI Theme">
-                <CardUiTheme
-                  style={S_CARD_ROOT}
-                  buttonsStyle={S_CARD_BUTTONS}
-                  TS={_TS}
-                  onSetTheme={this._selectTheme}
-                  onSetFontSize={_selectFontSize}
-                  onClose={onClose}
-                />
-             </A.Tab>
-           </A.TabPane>
-       </A.ModalDialog>
-    );
-  }
+/*
+SettingsDialog.propTypes = {
+  isShow: PropTypes.bool,
+  data: PropTypes.shape({
+    setNewsKey: PropTypes.func,
+    setWebzKey: PropTypes.func,
+  }),
+  onClose: PropTypes.func
 }
+*/
 
-export default withTheme(SettingsDialog)
+export default SettingsDialog
