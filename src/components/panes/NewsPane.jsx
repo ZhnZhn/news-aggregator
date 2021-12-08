@@ -52,6 +52,22 @@ const _crPaneCaption = (...args) => args
   .map(toFirstUpperCase)
   .join(': ');
 
+const _crArticleItem = (article, index, {
+  Item,
+  refFirstItem,
+  onCloseItem,
+  onRemoveUnder
+}) => (
+  <Item
+    ref={index === 0 ? refFirstItem : void 0}
+    key={article.articleId}
+    item={article}
+    onCloseItem={onCloseItem}
+    onRemoveUnder={onRemoveUnder}
+  />
+);
+
+
 class NewsPane extends Component {
 
   constructor(props){
@@ -90,7 +106,7 @@ class NewsPane extends Component {
       const {
         addAction, showAction, toggleAction,
         id
-      } = this.props;      
+      } = this.props;
       if (option.id === id){
         switch(actionType){
           case addAction: {
@@ -154,25 +170,13 @@ class NewsPane extends Component {
       this.setState({ isShow: false })
    }
 
-  _renderArticles(articles=[], onCloseItem, onRemoveUnder){
-     const { Item } = this.props;
-     return articles.map((article, index) => (
-        <Item
-          ref={index === 0 ? this._refFirstItem : void 0}
-          key={article.articleId}
-          item={article}
-          onCloseItem={onCloseItem}
-          onRemoveUnder={onRemoveUnder}
-        />
-     ));
-  }
-
   _refRootDiv = node => this.rootDiv = node
 
    render(){
       const {
           paneCaption,
           theme,
+          Item,
           onRemoveItems,
           onRemoveUnder, onCloseItem
         } = this.props
@@ -218,7 +222,14 @@ class NewsPane extends Component {
             />
           </A.BrowserCaption>
           <A.ScrollPane className={TS.CL_SCROLL_PANE} style={S_SCROLL_DIV}>
-              { this._renderArticles(articles, onCloseItem, onRemoveUnder) }
+             <A.ItemStack
+               items={articles}
+               crItem={_crArticleItem}
+               Item={Item}
+               refFirstItem={this._refFirstItem}
+               onCloseItem={onCloseItem}
+               onRemoveUnder={onRemoveUnder}
+             />
           </A.ScrollPane>
         </div>
      )

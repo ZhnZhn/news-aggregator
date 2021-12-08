@@ -79,6 +79,19 @@ var _crPaneCaption = function _crPaneCaption() {
   return args.filter(Boolean).map(_toFirstUpperCase["default"]).join(': ');
 };
 
+var _crArticleItem = function _crArticleItem(article, index, _ref) {
+  var Item = _ref.Item,
+      refFirstItem = _ref.refFirstItem,
+      onCloseItem = _ref.onCloseItem,
+      onRemoveUnder = _ref.onRemoveUnder;
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(Item, {
+    ref: index === 0 ? refFirstItem : void 0,
+    item: article,
+    onCloseItem: onCloseItem,
+    onRemoveUnder: onRemoveUnder
+  }, article.articleId);
+};
+
 var NewsPane = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(NewsPane, _Component);
 
@@ -150,9 +163,9 @@ var NewsPane = /*#__PURE__*/function (_Component) {
     _this._getRootNodeStyle = function () {
       var _assertThisInitialize = (0, _assertThisInitialized2["default"])(_this),
           rootDiv = _assertThisInitialize.rootDiv,
-          _ref = rootDiv || {},
-          _ref$style = _ref.style,
-          style = _ref$style === void 0 ? {} : _ref$style;
+          _ref2 = rootDiv || {},
+          _ref2$style = _ref2.style,
+          style = _ref2$style === void 0 ? {} : _ref2$style;
 
       return style;
     };
@@ -228,28 +241,11 @@ var NewsPane = /*#__PURE__*/function (_Component) {
     this.unsubscribe();
   };
 
-  _proto._renderArticles = function _renderArticles(articles, onCloseItem, onRemoveUnder) {
-    var _this2 = this;
-
-    if (articles === void 0) {
-      articles = [];
-    }
-
-    var Item = this.props.Item;
-    return articles.map(function (article, index) {
-      return /*#__PURE__*/(0, _jsxRuntime.jsx)(Item, {
-        ref: index === 0 ? _this2._refFirstItem : void 0,
-        item: article,
-        onCloseItem: onCloseItem,
-        onRemoveUnder: onRemoveUnder
-      }, article.articleId);
-    });
-  };
-
   _proto.render = function render() {
     var _this$props2 = this.props,
         paneCaption = _this$props2.paneCaption,
         theme = _this$props2.theme,
+        Item = _this$props2.Item,
         onRemoveItems = _this$props2.onRemoveItems,
         onRemoveUnder = _this$props2.onRemoveUnder,
         onCloseItem = _this$props2.onCloseItem,
@@ -291,7 +287,14 @@ var NewsPane = /*#__PURE__*/function (_Component) {
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
         className: TS.CL_SCROLL_PANE,
         style: S_SCROLL_DIV,
-        children: this._renderArticles(articles, onCloseItem, onRemoveUnder)
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ItemStack, {
+          items: articles,
+          crItem: _crArticleItem,
+          Item: Item,
+          refFirstItem: this._refFirstItem,
+          onCloseItem: onCloseItem,
+          onRemoveUnder: onRemoveUnder
+        })
       })]
     });
   };
