@@ -9,11 +9,29 @@ var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inh
 
 var _react = require("react");
 
+var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
+
 var _ModalContainer = _interopRequireDefault(require("./ModalContainer"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
+var _crDialogItem = function _crDialogItem(dialog, index, _ref) {
+  var store = _ref.store,
+      currentDialog = _ref.currentDialog,
+      data = _ref.data,
+      onClose = _ref.onClose;
+  var comp = dialog.comp,
+      type = dialog.type;
+  return /*#__PURE__*/(0, _react.createElement)(comp, {
+    store: store,
+    key: type,
+    isShow: currentDialog === type,
+    data: data[type],
+    onClose: onClose
+  });
+};
+
 var ModalDialogContainer = /*#__PURE__*/function (_Component) {
   (0, _inheritsLoose2["default"])(ModalDialogContainer, _Component);
 
@@ -25,10 +43,9 @@ var ModalDialogContainer = /*#__PURE__*/function (_Component) {
     }
 
     _this = _Component.call.apply(_Component, [this].concat(args)) || this;
+    _this.inits = {};
     _this.state = {
       isShow: false,
-      inits: {},
-      shows: {},
       data: {},
       dialogs: [],
       currentDialog: null
@@ -42,64 +59,33 @@ var ModalDialogContainer = /*#__PURE__*/function (_Component) {
       if (actionType === showAction) {
         var type = option.modalDialogType,
             _this$state = _this.state,
-            inits = _this$state.inits,
-            shows = _this$state.shows,
             data = _this$state.data,
             dialogs = _this$state.dialogs;
         data[type] = option;
-        shows[type] = true;
 
-        if (inits[type]) {
-          _this.setState({
-            isShow: true,
-            currentDialog: type,
-            shows: shows,
-            data: data
-          });
-        } else {
+        if (!_this.inits[type]) {
           dialogs.push({
             type: type,
             comp: router[type]
           });
-          inits[type] = true;
-
-          _this.setState({
-            isShow: true,
-            currentDialog: type,
-            shows: shows,
-            data: data,
-            dialogs: dialogs
-          });
+          _this.inits[type] = true;
         }
+
+        _this.setState({
+          isShow: true,
+          currentDialog: type,
+          data: data,
+          dialogs: dialogs
+        });
       }
     };
 
-    _this._handleClose = function (type) {
-      _this.state.shows[type] = false;
-
-      _this.setState({
-        isShow: false,
-        currentDialog: null,
-        shows: _this.state.shows
-      });
-    };
-
-    _this._renderDialogs = function () {
-      var store = _this.props.store,
-          _this$state2 = _this.state,
-          shows = _this$state2.shows,
-          data = _this$state2.data,
-          dialogs = _this$state2.dialogs;
-      return dialogs.map(function (dialog) {
-        var type = dialog.type,
-            comp = dialog.comp;
-        return /*#__PURE__*/(0, _react.createElement)(comp, {
-          key: type,
-          isShow: shows[type],
-          data: data[type],
-          store: store,
-          onClose: _this._handleClose.bind(null, type)
-        });
+    _this._hClose = function () {
+      _this.setState(function (prevState) {
+        return {
+          isShow: false,
+          currentDialog: null
+        };
       });
     };
 
@@ -117,13 +103,23 @@ var ModalDialogContainer = /*#__PURE__*/function (_Component) {
   };
 
   _proto.render = function render() {
-    var _this$state3 = this.state,
-        isShow = _this$state3.isShow,
-        currentDialog = _this$state3.currentDialog;
+    var store = this.props.store,
+        _this$state2 = this.state,
+        isShow = _this$state2.isShow,
+        currentDialog = _this$state2.currentDialog,
+        dialogs = _this$state2.dialogs,
+        data = _this$state2.data;
     return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalContainer["default"], {
       isShow: isShow,
-      onClose: this._handleClose.bind(null, currentDialog),
-      children: this._renderDialogs()
+      onClose: this._hClose,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemStack["default"], {
+        items: dialogs,
+        crItem: _crDialogItem,
+        store: store,
+        currentDialog: currentDialog,
+        data: data,
+        onClose: this._hClose
+      })
     });
   };
 
