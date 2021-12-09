@@ -1,4 +1,16 @@
-import { TYPES } from '../actions/ComponentActions'
+import {
+  CAT_SHOW_NEWS_DIALOG,
+  CAT_SHOW_MODAL_DIALOG,
+
+  CAT_SHOW_NEWS_PANE,
+  CAT_TOGGLE_NEWS_PANE,
+
+  CAT_SHOW_BROWSER,
+  CAT_UPDATE_BROWSER,
+
+  CAT_SHOW_ABOUT,
+  CAT_CHANGE_THEME
+} from '../actions/ComponentActions'
 
 import Factory from '../logic/Factory'
 
@@ -85,49 +97,49 @@ const ComponentSlice = {
 
   onShowNewsDialog(itemConf, event){
     const r = NewsDialogLogic.showNewsDialog(this.dialogInit, itemConf);
-    this.trigger(TYPES.SHOW_NEWS_DIALOG, r)
+    this.trigger(CAT_SHOW_NEWS_DIALOG, r)
   },
 
   onShowModalDialog(type, option={}){
     option.modalDialogType = type
-    this.trigger(TYPES.SHOW_MODAL_DIALOG, option)
+    this.trigger(CAT_SHOW_MODAL_DIALOG, option)
   },
 
   onShowNewsPane(itemConf){
     const pane = NewsPaneLogic.showNewsPane(this.newsPaneInit, itemConf, this);
     const browser = BrowserLogic.updateBadge(this.hmBrowser, itemConf);
-    this.trigger(TYPES.SHOW_NEWS_PANE, pane)
-    this.trigger(TYPES.UPDATE_BROWSER, browser)
+    this.trigger(CAT_SHOW_NEWS_PANE, pane)
+    this.trigger(CAT_UPDATE_BROWSER, browser)
   },
   onToggleNewsPane(itemConf){
     const browser = BrowserLogic.toggleBadge(this.hmBrowser, itemConf);
     const pane = NewsPaneLogic.toggleNewsPane(itemConf);
-    this.trigger(TYPES.TOGGLE_NEWS_PANE, pane)
-    this.trigger(TYPES.UPDATE_BROWSER, browser)
+    this.trigger(CAT_TOGGLE_NEWS_PANE, pane)
+    this.trigger(CAT_UPDATE_BROWSER, browser)
   },
   onCloseNewsPane(itemConf){
     const r = BrowserLogic.updateBadge(this.hmBrowser, itemConf, {isOpen:false});
-    this.trigger(TYPES.UPDATE_BROWSER, r)
+    this.trigger(CAT_UPDATE_BROWSER, r)
   },
   onRemoveNewsBadges(itemConf){
     const r = BrowserLogic.removeBadges(this.hmBrowser, itemConf)
-    this.trigger(TYPES.UPDATE_BROWSER, r)
+    this.trigger(CAT_UPDATE_BROWSER, r)
   },
 
   onShowAbout(){
-    this.trigger(TYPES.SHOW_ABOUT)
+    this.trigger(CAT_SHOW_ABOUT)
   },
 
   onShowBrowser(browserId){
-    this.trigger(TYPES.SHOW_BROWSER, browserId)
+    this.trigger(CAT_SHOW_BROWSER, browserId)
   },
   onUpdateBrowser(itemConf, option){
     const r = BrowserLogic.createResult(this.hmBrowser, itemConf);
-    this.trigger(TYPES.UPDATE_BROWSER, r)
+    this.trigger(CAT_UPDATE_BROWSER, r)
   },
 
   onChangeTheme(themeName){
-    this.trigger(TYPES.CHANGE_THEME, themeName)
+    this.trigger(CAT_CHANGE_THEME, themeName)
   }
 }
 

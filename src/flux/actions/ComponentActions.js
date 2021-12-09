@@ -1,36 +1,35 @@
 import Reflux from 'reflux-core'
 
-export const TYPES = {
-  SHOW_NEWS_DIALOG: 'showNewsDialog',
-  SHOW_MODAL_DIALOG: 'showModalDialog',
+export const CAT_SHOW_NEWS_DIALOG = 'showNewsDialog'
+export const CAT_SHOW_MODAL_DIALOG = 'showModalDialog'
 
-  SHOW_NEWS_PANE: 'showNewsPane',
-  TOGGLE_NEWS_PANE: 'toggleNewsPane',
-  CLOSE_NEWS_PANE: 'closeNewsPane',
-  REMOVE_NEWS_BADGES: 'removeNewsBadges',
+export const CAT_SHOW_NEWS_PANE = 'showNewsPane'
+export const CAT_TOGGLE_NEWS_PANE = 'toggleNewsPane'
+const CAT_CLOSE_NEWS_PANE = 'closeNewsPane'
+const CAT_REMOVE_NEWS_BADGES = 'removeNewsBadges'
 
-  SHOW_ABOUT: 'showAbout',
+export const CAT_SHOW_ABOUT = 'showAbout'
 
-  SHOW_BROWSER: 'showBrowser',
-  UPDATE_BROWSER: 'updateBrowser',
+export const CAT_SHOW_BROWSER = 'showBrowser'
+export const CAT_UPDATE_BROWSER = 'updateBrowser'
 
-  CHANGE_THEME: 'changeTheme'
-}
+export const CAT_CHANGE_THEME = 'changeTheme'
+
 
 const Actions = Reflux.createActions({
-  [TYPES.SHOW_NEWS_DIALOG]: {},
-  [TYPES.SHOW_MODAL_DIALOG]: {},
+  [CAT_SHOW_NEWS_DIALOG]: {},
+  [CAT_SHOW_MODAL_DIALOG]: {},
 
-  [TYPES.SHOW_NEWS_PANE]: {},
-  [TYPES.TOGGLE_NEWS_PANE]: {},
-  [TYPES.CLOSE_NEWS_PANE]: {},
-  [TYPES.REMOVE_NEWS_BADGES]: {},
+  [CAT_SHOW_NEWS_PANE]: {},
+  [CAT_TOGGLE_NEWS_PANE]: {},
+  [CAT_CLOSE_NEWS_PANE]: {},
+  [CAT_REMOVE_NEWS_BADGES]: {},
 
-  [TYPES.SHOW_ABOUT]: {},
-  [TYPES.SHOW_BROWSER]: {},
-  [TYPES.UPDATE_BROWSER]: {},
+  [CAT_SHOW_ABOUT]: {},
+  [CAT_SHOW_BROWSER]: {},
+  [CAT_UPDATE_BROWSER]: {},
 
-  [TYPES.CHANGE_THEME]: {}
-})
+  [CAT_CHANGE_THEME]: {}
+});
 
 export default Actions

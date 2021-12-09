@@ -2,8 +2,6 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
@@ -16,6 +14,10 @@ var _NewsBrowser = _interopRequireDefault(require("../source-browsers/NewsBrowse
 var _DialogContainer = _interopRequireDefault(require("./DialogContainer"));
 
 var _jsxRuntime = require("react/jsx-runtime");
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 var onClick = _ComponentActions["default"].showNewsDialog;
 
@@ -33,8 +35,8 @@ var BrowserContainer = function BrowserContainer(_ref) {
     className: "hrz-container",
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_NewsBrowser["default"], {
       store: store,
-      showAction: _ComponentActions.TYPES.SHOW_BROWSER,
-      updateAction: _ComponentActions.TYPES.UPDATE_BROWSER,
+      showAction: _ComponentActions.CAT_SHOW_BROWSER,
+      updateAction: _ComponentActions.CAT_UPDATE_BROWSER,
       browserId: _NewsMenu["default"].NEWS,
       onClick: onClick,
       onError: onError,
@@ -43,7 +45,7 @@ var BrowserContainer = function BrowserContainer(_ref) {
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogContainer["default"], {
       maxDialog: 3,
       store: store,
-      showAction: _ComponentActions.TYPES.SHOW_NEWS_DIALOG
+      showAction: _ComponentActions.CAT_SHOW_NEWS_DIALOG
     })]
   });
 };

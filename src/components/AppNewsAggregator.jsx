@@ -1,7 +1,12 @@
 import { StrictMode, Component } from 'react'
 
 import Store from '../flux/stores/Store'
-import Actions, { TYPES } from '../flux/actions/ComponentActions'
+import Actions, {
+  CAT_CHANGE_THEME,
+  CAT_SHOW_ABOUT,
+  CAT_SHOW_NEWS_PANE,
+  CAT_SHOW_MODAL_DIALOG
+} from '../flux/actions/ComponentActions'
 
 import initTheme  from './styles/theme'
 import ThemeContext from './hoc/ThemeContext'
@@ -54,7 +59,7 @@ class AppNewsAggregator extends Component {
     this.unsubscribe()
   }
   _onStore = (actionType, themeName) => {
-    if (actionType === TYPES.CHANGE_THEME){
+    if (actionType === CAT_CHANGE_THEME){
       this.setState(({ theme }) => {
           theme.setThemeName(themeName)
           return {
@@ -95,18 +100,18 @@ class AppNewsAggregator extends Component {
             <About
               isInitShow={true}
               store={Store}
-              showAction={TYPES.SHOW_ABOUT}
-              hideAction={TYPES.SHOW_NEWS_PANE}
+              showAction={CAT_SHOW_ABOUT}
+              hideAction={CAT_SHOW_NEWS_PANE}
             />
             <ComponentHrzContainer
               store={Store}
-              addAction={TYPES.SHOW_NEWS_PANE}
+              addAction={CAT_SHOW_NEWS_PANE}
             />
           </div>
           <ModalDialogContainer
             store={Store}
             router={RouterModalDialog}
-            showAction={TYPES.SHOW_MODAL_DIALOG}
+            showAction={CAT_SHOW_MODAL_DIALOG}
           />
         </div>
       </ThemeContext.Provider>

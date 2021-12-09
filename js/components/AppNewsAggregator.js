@@ -64,7 +64,7 @@ var AppNewsAggregator = /*#__PURE__*/function (_Component) {
     _this = _Component.call(this, props) || this;
 
     _this._onStore = function (actionType, themeName) {
-      if (actionType === _ComponentActions.TYPES.CHANGE_THEME) {
+      if (actionType === _ComponentActions.CAT_CHANGE_THEME) {
         _this.setState(function (_ref) {
           var theme = _ref.theme;
           theme.setThemeName(themeName);
@@ -134,16 +134,16 @@ var AppNewsAggregator = /*#__PURE__*/function (_Component) {
             }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_About["default"], {
               isInitShow: true,
               store: _Store["default"],
-              showAction: _ComponentActions.TYPES.SHOW_ABOUT,
-              hideAction: _ComponentActions.TYPES.SHOW_NEWS_PANE
+              showAction: _ComponentActions.CAT_SHOW_ABOUT,
+              hideAction: _ComponentActions.CAT_SHOW_NEWS_PANE
             }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ComponentHrzContainer["default"], {
               store: _Store["default"],
-              addAction: _ComponentActions.TYPES.SHOW_NEWS_PANE
+              addAction: _ComponentActions.CAT_SHOW_NEWS_PANE
             })]
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialogContainer["default"], {
             store: _Store["default"],
             router: _RouterModalDialog["default"],
-            showAction: _ComponentActions.TYPES.SHOW_MODAL_DIALOG
+            showAction: _ComponentActions.CAT_SHOW_MODAL_DIALOG
           })]
         })
       })
