@@ -1,5 +1,6 @@
-import { StrictMode, Component } from 'react'
+import { StrictMode, useState, useMemo } from 'react'
 
+import useListen from './hooks/useListen'
 import Store from '../flux/stores/Store'
 import Actions, {
   CAT_CHANGE_THEME,
@@ -18,106 +19,71 @@ import ComponentHrzContainer from './zhn-containers/ComponentHrzContainer'
 import ModalDialogContainer from './zhn-containers/ModalDialogContainer'
 import RouterModalDialog from './dialogs/RouterModalDialog'
 
-import QUERY from '../conf/NewsQuery'
-import MENU from '../conf/NewsMenu'
-
 const CL_COMP = "component-container";
 
-const _fShowBrowser = id => Actions.showBrowser.bind(Actions, id);
-const _fShowDialog = id => Actions.showNewsDialog.bind(null, id);
-const _fSettings = () => Actions.showModalDialog.bind(
-   Actions, 'SETTINGS_DIALOG', Store.exportSettingsFn()
- );
+const AppNewsAggregator = () => {
+  const [theme, setTheme] = useState(initTheme)
+  , _showSettings = useMemo(() => Actions.showModalDialog.bind(
+     null, 'SETTINGS_DIALOG', Store.exportSettingsFn()
+  ), []);
 
-class AppNewsAggregator extends Component {
-  constructor(props){
-    super(props)
-    this.showNewsBrowser = _fShowBrowser(MENU.NEWS)
-
-    this.showWebz = _fShowDialog(QUERY.WEBZ)
-    this.showWebzCountry = _fShowDialog(QUERY.WEBZ_COUNTRY)
-    this.showStackTagged = _fShowDialog(QUERY.STACK_TAGGED)
-    this.showStackSearch= _fShowDialog(QUERY.STACK_SEARCH)
-    this.showCryptoCompare = _fShowDialog(QUERY.CRYPTO_COMPARE)
-    this.showCoinStats = _fShowDialog(QUERY.COIN_STATS)
-    this.showMessari = _fShowDialog(QUERY.MESSARI)
-    this.showIex= _fShowDialog(QUERY.IEX)
-    this.showFmp= _fShowDialog(QUERY.FMP)
-    this.showNewsSearch = _fShowDialog(QUERY.NEWS_SEARCH)
-    this.showNewsTop = _fShowDialog(QUERY.NEWS_TOP)
-
-    this.showSettings = _fSettings()
-    this.state = {
-      theme: initTheme
-    }
-  }
-
-  componentDidMount(){
-    this.unsubscribe = Store.listen(this._onStore)
-  }
-  componentWillUnmount(){
-    this.unsubscribe()
-  }
-  _onStore = (actionType, themeName) => {
+  useListen(Store, (actionType, themeName)=>{
     if (actionType === CAT_CHANGE_THEME){
-      this.setState(({ theme }) => {
-          theme.setThemeName(themeName)
-          return {
-            theme: {...theme}
-          };
+      setTheme(prevTheme => {
+        prevTheme.setThemeName(themeName)
+        return {...prevTheme};
       })
     }
-  }
+  })
 
-  render(){
-    const { theme } = this.state;
-    return (
-      <StrictMode>
-      <ThemeContext.Provider value={theme}>
-        <div>
-          <HeaderBar
+  return (
+    <StrictMode>
+    <ThemeContext.Provider value={theme}>
+      <div>
+        <HeaderBar
+          store={Store}
+          onChangeTheme={Actions.changeTheme}
+          onNewsSources={Actions.showNewsBrowser}
+
+          onWebz={Actions.showWebz}
+          onWebzCountry={Actions.showWebzCountry}
+          onStackTagged={Actions.showStackTagged}
+          onStackSearch={Actions.showStackSearch}
+          onCryptoCompare={Actions.showCryptoCompare}
+          onCoinStats = {Actions.showCoinStats}
+          onMessari={Actions.showMessari}
+          onIex={Actions.showIex}
+          onFmp={Actions.showFmp}
+          onNewsSearch={Actions.showNewsSearch}
+          onNewsTop={Actions.showNewsTop}
+
+          onSettings={_showSettings}
+          onAbout={Actions.showAbout}
+        />
+        <div className={CL_COMP}>
+          <BrowserContainer
             store={Store}
-            onChangeTheme={Actions.changeTheme}
-            onNewsSources={this.showNewsBrowser}
-            onWebz={this.showWebz}
-            onWebzCountry={this.showWebzCountry}
-            onStackTagged={this.showStackTagged}
-            onStackSearch={this.showStackSearch}
-            onCryptoCompare={this.showCryptoCompare}
-            onCoinStats = {this.showCoinStats}
-            onMessari={this.showMessari}
-            onIex={this.showIex}
-            onFmp={this.showFmp}
-            onNewsSearch={this.showNewsSearch}
-            onNewsTop={this.showNewsTop}
-            onSettings={this.showSettings}
-            onAbout={Actions.showAbout}
           />
-          <div className={CL_COMP}>
-            <BrowserContainer
-              store={Store}
-            />
-            <About
-              isInitShow={true}
-              store={Store}
-              showAction={CAT_SHOW_ABOUT}
-              hideAction={CAT_SHOW_NEWS_PANE}
-            />
-            <ComponentHrzContainer
-              store={Store}
-              addAction={CAT_SHOW_NEWS_PANE}
-            />
-          </div>
-          <ModalDialogContainer
+          <About
+            isInitShow={true}
             store={Store}
-            router={RouterModalDialog}
-            showAction={CAT_SHOW_MODAL_DIALOG}
+            showAction={CAT_SHOW_ABOUT}
+            hideAction={CAT_SHOW_NEWS_PANE}
+          />
+          <ComponentHrzContainer
+            store={Store}
+            addAction={CAT_SHOW_NEWS_PANE}
           />
         </div>
-      </ThemeContext.Provider>
-      </StrictMode>
-    );
-  }
-}
+        <ModalDialogContainer
+          store={Store}
+          router={RouterModalDialog}
+          showAction={CAT_SHOW_MODAL_DIALOG}
+        />
+      </div>
+    </ThemeContext.Provider>
+    </StrictMode>
+  );
+};
 
 export default AppNewsAggregator

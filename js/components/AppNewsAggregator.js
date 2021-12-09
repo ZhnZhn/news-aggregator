@@ -7,9 +7,9 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _react = require("react");
+
+var _useListen = _interopRequireDefault(require("./hooks/useListen"));
 
 var _Store = _interopRequireDefault(require("../flux/stores/Store"));
 
@@ -31,10 +31,6 @@ var _ModalDialogContainer = _interopRequireDefault(require("./zhn-containers/Mod
 
 var _RouterModalDialog = _interopRequireDefault(require("./dialogs/RouterModalDialog"));
 
-var _NewsQuery = _interopRequireDefault(require("../conf/NewsQuery"));
-
-var _NewsMenu = _interopRequireDefault(require("../conf/NewsMenu"));
-
 var _jsxRuntime = require("react/jsx-runtime");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -43,115 +39,65 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 var CL_COMP = "component-container";
 
-var _fShowBrowser = function _fShowBrowser(id) {
-  return _ComponentActions["default"].showBrowser.bind(_ComponentActions["default"], id);
-};
+var AppNewsAggregator = function AppNewsAggregator() {
+  var _useState = (0, _react.useState)(_theme["default"]),
+      theme = _useState[0],
+      setTheme = _useState[1],
+      _showSettings = (0, _react.useMemo)(function () {
+    return _ComponentActions["default"].showModalDialog.bind(null, 'SETTINGS_DIALOG', _Store["default"].exportSettingsFn());
+  }, []);
 
-var _fShowDialog = function _fShowDialog(id) {
-  return _ComponentActions["default"].showNewsDialog.bind(null, id);
-};
-
-var _fSettings = function _fSettings() {
-  return _ComponentActions["default"].showModalDialog.bind(_ComponentActions["default"], 'SETTINGS_DIALOG', _Store["default"].exportSettingsFn());
-};
-
-var AppNewsAggregator = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(AppNewsAggregator, _Component);
-
-  function AppNewsAggregator(props) {
-    var _this;
-
-    _this = _Component.call(this, props) || this;
-
-    _this._onStore = function (actionType, themeName) {
-      if (actionType === _ComponentActions.CAT_CHANGE_THEME) {
-        _this.setState(function (_ref) {
-          var theme = _ref.theme;
-          theme.setThemeName(themeName);
-          return {
-            theme: (0, _extends2["default"])({}, theme)
-          };
-        });
-      }
-    };
-
-    _this.showNewsBrowser = _fShowBrowser(_NewsMenu["default"].NEWS);
-    _this.showWebz = _fShowDialog(_NewsQuery["default"].WEBZ);
-    _this.showWebzCountry = _fShowDialog(_NewsQuery["default"].WEBZ_COUNTRY);
-    _this.showStackTagged = _fShowDialog(_NewsQuery["default"].STACK_TAGGED);
-    _this.showStackSearch = _fShowDialog(_NewsQuery["default"].STACK_SEARCH);
-    _this.showCryptoCompare = _fShowDialog(_NewsQuery["default"].CRYPTO_COMPARE);
-    _this.showCoinStats = _fShowDialog(_NewsQuery["default"].COIN_STATS);
-    _this.showMessari = _fShowDialog(_NewsQuery["default"].MESSARI);
-    _this.showIex = _fShowDialog(_NewsQuery["default"].IEX);
-    _this.showFmp = _fShowDialog(_NewsQuery["default"].FMP);
-    _this.showNewsSearch = _fShowDialog(_NewsQuery["default"].NEWS_SEARCH);
-    _this.showNewsTop = _fShowDialog(_NewsQuery["default"].NEWS_TOP);
-    _this.showSettings = _fSettings();
-    _this.state = {
-      theme: _theme["default"]
-    };
-    return _this;
-  }
-
-  var _proto = AppNewsAggregator.prototype;
-
-  _proto.componentDidMount = function componentDidMount() {
-    this.unsubscribe = _Store["default"].listen(this._onStore);
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.unsubscribe();
-  };
-
-  _proto.render = function render() {
-    var theme = this.state.theme;
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_react.StrictMode, {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ThemeContext["default"].Provider, {
-        value: theme,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_HeaderBar["default"], {
+  (0, _useListen["default"])(_Store["default"], function (actionType, themeName) {
+    if (actionType === _ComponentActions.CAT_CHANGE_THEME) {
+      setTheme(function (prevTheme) {
+        prevTheme.setThemeName(themeName);
+        return (0, _extends2["default"])({}, prevTheme);
+      });
+    }
+  });
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_react.StrictMode, {
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ThemeContext["default"].Provider, {
+      value: theme,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_HeaderBar["default"], {
+          store: _Store["default"],
+          onChangeTheme: _ComponentActions["default"].changeTheme,
+          onNewsSources: _ComponentActions["default"].showNewsBrowser,
+          onWebz: _ComponentActions["default"].showWebz,
+          onWebzCountry: _ComponentActions["default"].showWebzCountry,
+          onStackTagged: _ComponentActions["default"].showStackTagged,
+          onStackSearch: _ComponentActions["default"].showStackSearch,
+          onCryptoCompare: _ComponentActions["default"].showCryptoCompare,
+          onCoinStats: _ComponentActions["default"].showCoinStats,
+          onMessari: _ComponentActions["default"].showMessari,
+          onIex: _ComponentActions["default"].showIex,
+          onFmp: _ComponentActions["default"].showFmp,
+          onNewsSearch: _ComponentActions["default"].showNewsSearch,
+          onNewsTop: _ComponentActions["default"].showNewsTop,
+          onSettings: _showSettings,
+          onAbout: _ComponentActions["default"].showAbout
+        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+          className: CL_COMP,
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserContainer["default"], {
+            store: _Store["default"]
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_About["default"], {
+            isInitShow: true,
             store: _Store["default"],
-            onChangeTheme: _ComponentActions["default"].changeTheme,
-            onNewsSources: this.showNewsBrowser,
-            onWebz: this.showWebz,
-            onWebzCountry: this.showWebzCountry,
-            onStackTagged: this.showStackTagged,
-            onStackSearch: this.showStackSearch,
-            onCryptoCompare: this.showCryptoCompare,
-            onCoinStats: this.showCoinStats,
-            onMessari: this.showMessari,
-            onIex: this.showIex,
-            onFmp: this.showFmp,
-            onNewsSearch: this.showNewsSearch,
-            onNewsTop: this.showNewsTop,
-            onSettings: this.showSettings,
-            onAbout: _ComponentActions["default"].showAbout
-          }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-            className: CL_COMP,
-            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserContainer["default"], {
-              store: _Store["default"]
-            }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_About["default"], {
-              isInitShow: true,
-              store: _Store["default"],
-              showAction: _ComponentActions.CAT_SHOW_ABOUT,
-              hideAction: _ComponentActions.CAT_SHOW_NEWS_PANE
-            }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ComponentHrzContainer["default"], {
-              store: _Store["default"],
-              addAction: _ComponentActions.CAT_SHOW_NEWS_PANE
-            })]
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialogContainer["default"], {
+            showAction: _ComponentActions.CAT_SHOW_ABOUT,
+            hideAction: _ComponentActions.CAT_SHOW_NEWS_PANE
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ComponentHrzContainer["default"], {
             store: _Store["default"],
-            router: _RouterModalDialog["default"],
-            showAction: _ComponentActions.CAT_SHOW_MODAL_DIALOG
+            addAction: _ComponentActions.CAT_SHOW_NEWS_PANE
           })]
-        })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialogContainer["default"], {
+          store: _Store["default"],
+          router: _RouterModalDialog["default"],
+          showAction: _ComponentActions.CAT_SHOW_MODAL_DIALOG
+        })]
       })
-    });
-  };
-
-  return AppNewsAggregator;
-}(_react.Component);
+    })
+  });
+};
 
 var _default = AppNewsAggregator;
 exports["default"] = _default;

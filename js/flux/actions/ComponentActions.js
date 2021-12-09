@@ -7,6 +7,10 @@ exports["default"] = exports.CAT_UPDATE_BROWSER = exports.CAT_TOGGLE_NEWS_PANE =
 
 var _refluxCore = _interopRequireDefault(require("reflux-core"));
 
+var _NewsQuery = _interopRequireDefault(require("../../conf/NewsQuery"));
+
+var _NewsMenu = _interopRequireDefault(require("../../conf/NewsMenu"));
+
 var _Reflux$createActions;
 
 var CAT_SHOW_NEWS_DIALOG = 'showNewsDialog';
@@ -30,6 +34,27 @@ exports.CAT_CHANGE_THEME = CAT_CHANGE_THEME;
 
 var Actions = _refluxCore["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[CAT_SHOW_NEWS_DIALOG] = {}, _Reflux$createActions[CAT_SHOW_MODAL_DIALOG] = {}, _Reflux$createActions[CAT_SHOW_NEWS_PANE] = {}, _Reflux$createActions[CAT_TOGGLE_NEWS_PANE] = {}, _Reflux$createActions[CAT_CLOSE_NEWS_PANE] = {}, _Reflux$createActions[CAT_REMOVE_NEWS_BADGES] = {}, _Reflux$createActions[CAT_SHOW_ABOUT] = {}, _Reflux$createActions[CAT_SHOW_BROWSER] = {}, _Reflux$createActions[CAT_UPDATE_BROWSER] = {}, _Reflux$createActions[CAT_CHANGE_THEME] = {}, _Reflux$createActions));
 
+var _fShowDialog = function _fShowDialog(id) {
+  return Actions.showNewsDialog.bind(null, id);
+};
+
+Actions.showWebz = _fShowDialog(_NewsQuery["default"].WEBZ);
+Actions.showWebzCountry = _fShowDialog(_NewsQuery["default"].WEBZ_COUNTRY);
+Actions.showStackTagged = _fShowDialog(_NewsQuery["default"].STACK_TAGGED);
+Actions.showStackSearch = _fShowDialog(_NewsQuery["default"].STACK_SEARCH);
+Actions.showCryptoCompare = _fShowDialog(_NewsQuery["default"].CRYPTO_COMPARE);
+Actions.showCoinStats = _fShowDialog(_NewsQuery["default"].COIN_STATS);
+Actions.showMessari = _fShowDialog(_NewsQuery["default"].MESSARI);
+Actions.showIex = _fShowDialog(_NewsQuery["default"].IEX);
+Actions.showFmp = _fShowDialog(_NewsQuery["default"].FMP);
+Actions.showNewsSearch = _fShowDialog(_NewsQuery["default"].NEWS_SEARCH);
+Actions.showNewsTop = _fShowDialog(_NewsQuery["default"].NEWS_TOP);
+
+var _fShowBrowser = function _fShowBrowser(id) {
+  return Actions.showBrowser.bind(null, id);
+};
+
+Actions.showNewsBrowser = _fShowBrowser(_NewsMenu["default"].NEWS);
 var _default = Actions;
 exports["default"] = _default;
 //# sourceMappingURL=ComponentActions.js.map

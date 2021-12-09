@@ -1,5 +1,8 @@
 import Reflux from 'reflux-core'
 
+import QUERY from '../../conf/NewsQuery';
+import MENU from '../../conf/NewsMenu';
+
 export const CAT_SHOW_NEWS_DIALOG = 'showNewsDialog'
 export const CAT_SHOW_MODAL_DIALOG = 'showModalDialog'
 
@@ -31,5 +34,21 @@ const Actions = Reflux.createActions({
 
   [CAT_CHANGE_THEME]: {}
 });
+
+const _fShowDialog = id => Actions.showNewsDialog.bind(null, id);
+Actions.showWebz = _fShowDialog(QUERY.WEBZ)
+Actions.showWebzCountry = _fShowDialog(QUERY.WEBZ_COUNTRY)
+Actions.showStackTagged = _fShowDialog(QUERY.STACK_TAGGED)
+Actions.showStackSearch= _fShowDialog(QUERY.STACK_SEARCH)
+Actions.showCryptoCompare = _fShowDialog(QUERY.CRYPTO_COMPARE)
+Actions.showCoinStats = _fShowDialog(QUERY.COIN_STATS)
+Actions.showMessari = _fShowDialog(QUERY.MESSARI)
+Actions.showIex= _fShowDialog(QUERY.IEX)
+Actions.showFmp= _fShowDialog(QUERY.FMP)
+Actions.showNewsSearch = _fShowDialog(QUERY.NEWS_SEARCH)
+Actions.showNewsTop = _fShowDialog(QUERY.NEWS_TOP)
+
+const _fShowBrowser = id => Actions.showBrowser.bind(null, id);
+Actions.showNewsBrowser = _fShowBrowser(MENU.NEWS)
 
 export default Actions
