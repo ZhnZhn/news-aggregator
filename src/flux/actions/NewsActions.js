@@ -1,30 +1,27 @@
-import Reflux from 'reflux-core'
+import Reflux from 'reflux-core';
 
-import RouterApiConf from '../logic/RouterApiConf'
-import loadNews from '../logic/loadNews'
+import RouterApiConf from '../logic/RouterApiConf';
+import loadNews from '../logic/loadNews';
 
 const _assign = Object.assign;
 
-export const TYPES = {
-  LOAD_NEWS: 'loadNews',
-  LOAD_NEWS_COMPLETED: 'loadNewsCompleted',
-  LOAD_NEWS_FAILED: 'loadNewsFailed',
+export const NAT_LOAD_NEWS_COMPLETED = 'loadNewsCompleted'
 
-  REMOVE_NEWS: 'removeNews',
-  REMOVE_ALL_NEWS: 'removeAllNews',
-  REMOVE_UNDER_NEWS: 'removeUnderNews'
-}
+const NAT_LOAD_NEWS = 'loadNews'
+, NAT_REMOVE_NEWS = 'removeNews'
+, NAT_REMOVE_ALL_NEWS = 'removeAllNews'
+, NAT_REMOVE_UNDER_NEWS = 'removeUnderNews';
 
 const NewsActions = Reflux.createActions({
-  [TYPES.LOAD_NEWS] : {
+  [NAT_LOAD_NEWS] : {
     children: ['completed', 'failed']
   },
-  [TYPES.REMOVE_NEWS]: {},
-  [TYPES.REMOVE_ALL_NEWS]: {},
-  [TYPES.REMOVE_UNDER_NEWS]: {}
+  [NAT_REMOVE_NEWS]: {},
+  [NAT_REMOVE_ALL_NEWS]: {},
+  [NAT_REMOVE_UNDER_NEWS]: {}
 })
 
-NewsActions[TYPES.LOAD_NEWS].listen(function(option={}){
+NewsActions[NAT_LOAD_NEWS].listen(function(option={}){
   const {
     apiKey,
     adapter,

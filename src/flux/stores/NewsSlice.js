@@ -1,5 +1,7 @@
 
-import { TYPES } from '../actions/NewsActions'
+import {
+  NAT_LOAD_NEWS_COMPLETED
+} from '../actions/NewsActions'
 import ComponentActions from '../actions/ComponentActions'
 import {
   LPAT_LOADING,
@@ -59,7 +61,7 @@ const NewsSlice = {
   onLoadNewsCompleted({ news, itemConf }){
     if (news) {
       const r = Logic.loadNewsCompleted(this.news, news);
-      this.trigger(TYPES.LOAD_NEWS_COMPLETED, r)
+      this.trigger(NAT_LOAD_NEWS_COMPLETED, r)
     }
     this.triggerLoadingProgress(LPAT_LOADING_COMPLETE)
   },
@@ -74,11 +76,11 @@ const NewsSlice = {
   },
   onRemoveAllNews(paneId){
     const r = Logic.removeAllNews(this.news, paneId)
-    this.trigger(TYPES.LOAD_NEWS_COMPLETED, r)
+    this.trigger(NAT_LOAD_NEWS_COMPLETED, r)
   },
   onRemoveUnderNews(item){
     const r = Logic.removeUnderNews(this.news, item)
-    this.trigger(TYPES.LOAD_NEWS_COMPLETED, r)
+    this.trigger(NAT_LOAD_NEWS_COMPLETED, r)
   }
 
 }

@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
-exports["default"] = exports.TYPES = void 0;
+exports["default"] = exports.NAT_LOAD_NEWS_COMPLETED = void 0;
 
 var _refluxCore = _interopRequireDefault(require("reflux-core"));
 
@@ -14,21 +14,18 @@ var _loadNews = _interopRequireDefault(require("../logic/loadNews"));
 var _Reflux$createActions;
 
 var _assign = Object.assign;
-var TYPES = {
-  LOAD_NEWS: 'loadNews',
-  LOAD_NEWS_COMPLETED: 'loadNewsCompleted',
-  LOAD_NEWS_FAILED: 'loadNewsFailed',
-  REMOVE_NEWS: 'removeNews',
-  REMOVE_ALL_NEWS: 'removeAllNews',
-  REMOVE_UNDER_NEWS: 'removeUnderNews'
-};
-exports.TYPES = TYPES;
+var NAT_LOAD_NEWS_COMPLETED = 'loadNewsCompleted';
+exports.NAT_LOAD_NEWS_COMPLETED = NAT_LOAD_NEWS_COMPLETED;
+var NAT_LOAD_NEWS = 'loadNews',
+    NAT_REMOVE_NEWS = 'removeNews',
+    NAT_REMOVE_ALL_NEWS = 'removeAllNews',
+    NAT_REMOVE_UNDER_NEWS = 'removeUnderNews';
 
-var NewsActions = _refluxCore["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[TYPES.LOAD_NEWS] = {
+var NewsActions = _refluxCore["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[NAT_LOAD_NEWS] = {
   children: ['completed', 'failed']
-}, _Reflux$createActions[TYPES.REMOVE_NEWS] = {}, _Reflux$createActions[TYPES.REMOVE_ALL_NEWS] = {}, _Reflux$createActions[TYPES.REMOVE_UNDER_NEWS] = {}, _Reflux$createActions));
+}, _Reflux$createActions[NAT_REMOVE_NEWS] = {}, _Reflux$createActions[NAT_REMOVE_ALL_NEWS] = {}, _Reflux$createActions[NAT_REMOVE_UNDER_NEWS] = {}, _Reflux$createActions));
 
-NewsActions[TYPES.LOAD_NEWS].listen(function (option) {
+NewsActions[NAT_LOAD_NEWS].listen(function (option) {
   if (option === void 0) {
     option = {};
   }

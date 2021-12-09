@@ -1,7 +1,7 @@
 import React from 'react'
 
 import ComponentActions, {TYPES as CA } from '../actions/ComponentActions'
-import NewsActions, { TYPES as NA } from '../actions/NewsActions'
+import NewsActions, { NAT_LOAD_NEWS_COMPLETED } from '../actions/NewsActions'
 
 import RouterDialog from '../../components/dialogs/RouterDialog'
 import RouterPane from '../../components/panes/RouterPane'
@@ -32,8 +32,8 @@ const Factory = {
       id: paneId,
       paneCaption,
       store,
-      Item,      
-      addAction: NA.LOAD_NEWS_COMPLETED,
+      Item,
+      addAction: NAT_LOAD_NEWS_COMPLETED,
       showAction: CA.SHOW_NEWS_PANE,
       toggleAction: CA.TOGGLE_NEWS_PANE,
       onRemoveItems: NewsActions.removeAllNews.bind(null, paneId),

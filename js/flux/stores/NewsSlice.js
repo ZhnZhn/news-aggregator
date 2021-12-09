@@ -71,7 +71,7 @@ var NewsSlice = {
 
     if (news) {
       var r = Logic.loadNewsCompleted(this.news, news);
-      this.trigger(_NewsActions.TYPES.LOAD_NEWS_COMPLETED, r);
+      this.trigger(_NewsActions.NAT_LOAD_NEWS_COMPLETED, r);
     }
 
     this.triggerLoadingProgress(_LoadingProgressActions.LPAT_LOADING_COMPLETE);
@@ -86,11 +86,11 @@ var NewsSlice = {
   },
   onRemoveAllNews: function onRemoveAllNews(paneId) {
     var r = Logic.removeAllNews(this.news, paneId);
-    this.trigger(_NewsActions.TYPES.LOAD_NEWS_COMPLETED, r);
+    this.trigger(_NewsActions.NAT_LOAD_NEWS_COMPLETED, r);
   },
   onRemoveUnderNews: function onRemoveUnderNews(item) {
     var r = Logic.removeUnderNews(this.news, item);
-    this.trigger(_NewsActions.TYPES.LOAD_NEWS_COMPLETED, r);
+    this.trigger(_NewsActions.NAT_LOAD_NEWS_COMPLETED, r);
   }
 };
 var _default = NewsSlice;
