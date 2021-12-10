@@ -3,58 +3,43 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
-exports["default"] = exports.IexApi = exports.StackOverflow = exports.Webz = exports.NewsApi = void 0;
+exports["default"] = void 0;
 
-var _withProps = _interopRequireDefault(require("../hoc/withProps"));
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _Link = _interopRequireDefault(require("../zhn-atoms/Link"));
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
+
+var _SafeLink = _interopRequireDefault(require("../zhn-atoms/SafeLink"));
 
 var _PoweredBy = _interopRequireDefault(require("./PoweredBy"));
 
-var CryptoCompare = (0, _withProps["default"])({
-  title: "CryptoCompare",
-  href: "https://cryptocompare.com",
-  tabIndex: "-1"
-})(_Link["default"]);
-var CoinStats = (0, _withProps["default"])({
-  title: "CoinStats",
-  href: "https://coinstats.app",
-  tabIndex: "-1"
-})(_Link["default"]);
-var Messari = (0, _withProps["default"])({
-  title: "Messari",
-  href: "https://messari.io",
-  tabIndex: "-1"
-})(_Link["default"]);
-var NewsApi = (0, _withProps["default"])({
-  title: "NewsApi.org",
-  href: "https://newsapi.org",
-  tabIndex: "-1"
-})(_Link["default"]);
-exports.NewsApi = NewsApi;
-var Webz = (0, _withProps["default"])({
-  title: "Webz.io",
-  href: "https://webz.io",
-  tabIndex: "-1"
-})(_Link["default"]);
-exports.Webz = Webz;
-var StackOverflow = (0, _withProps["default"])({
-  title: "StackOverflow",
-  href: "https://stackoverflow.com",
-  tabIndex: "-1"
-})(_Link["default"]);
-exports.StackOverflow = StackOverflow;
-var IexApi = (0, _withProps["default"])({
-  title: "IEX Cloud",
-  href: "https://iexcloud.io",
-  tabIndex: "-1"
-})(_Link["default"]);
-exports.IexApi = IexApi;
-var FmpApi = (0, _withProps["default"])({
-  title: "FMP",
-  href: "https://financialmodelingprep.com",
-  tabIndex: "-1"
-})(_Link["default"]);
+var _jsxRuntime = require("react/jsx-runtime");
+
+var _excluded = ["title"];
+var CL_LINK = "link";
+
+var _fSafeLink = function _fSafeLink(href, caption) {
+  return function (_ref) {
+    var title = _ref.title,
+        restProps = (0, _objectWithoutPropertiesLoose2["default"])(_ref, _excluded);
+    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_SafeLink["default"], (0, _extends2["default"])({
+      className: CL_LINK
+    }, restProps, {
+      href: href,
+      tabIndex: "-1",
+      children: title || caption
+    }));
+  };
+},
+    CryptoCompare = _fSafeLink("https://cryptocompare.com", "CryptoCompare"),
+    CoinStats = _fSafeLink("https://coinstats.app", "CoinStats"),
+    Messari = _fSafeLink("https://messari.io", "Messari"),
+    NewsApi = _fSafeLink("https://newsapi.org", "NewsApi.org"),
+    Webz = _fSafeLink("https://webz.io", "Webz.io"),
+    StackOverflow = _fSafeLink("https://stackoverflow.com", "StackOverflow"),
+    IexApi = _fSafeLink("https://iexcloud.io", "IEX Cloud"),
+    FmpApi = _fSafeLink("https://financialmodelingprep.com", "FMP");
+
 var Link = {
   NewsApi: NewsApi,
   Webz: Webz,
