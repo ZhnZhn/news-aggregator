@@ -4,7 +4,7 @@ import splitByParagraph from '../utils/splitByParagraph';
 
 const {
   crId,
-  replaceDecCodes
+  decodeHTMLEntities
 } = ut;
 
 
@@ -30,7 +30,7 @@ const _toArticles = json => {
     } = item
     , { name } = source_info || {}
     , _publishedOn = _toMls(published_on)
-    , description = splitByParagraph(replaceDecCodes(body));
+    , description = splitByParagraph(decodeHTMLEntities(body));
     return {
       source: SOURCE_ID,
       articleId: crId(),

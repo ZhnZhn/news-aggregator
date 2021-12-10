@@ -3,7 +3,8 @@ import formatTimeAgo from '../utils/formatTimeAgo';
 
 const {
   crId,
-  toFirstUpperCase
+  toFirstUpperCase,
+  decodeHTMLEntities
 } = ut;
 
 const SOURCE_ID = 'coinstats_news';
@@ -25,7 +26,8 @@ const _toArticles = json => {
   }) => ({
      source: SOURCE_ID,
      articleId: crId(),
-     title, description,
+     title,
+     description: decodeHTMLEntities(description),
      related: _crRelated(coins),
      author: source,
      publishedAt: feedDate,

@@ -11,13 +11,13 @@ var _joinStrsBy = _interopRequireDefault(require("./joinStrsBy"));
 
 var _toFirstUpperCase = _interopRequireDefault(require("./toFirstUpperCase"));
 
-var _replaceDecCodes = _interopRequireDefault(require("./replaceDecCodes"));
+var _decodeHTMLEntities = _interopRequireDefault(require("./decodeHTMLEntities"));
 
 var ut = {
   crId: _crId["default"],
   joinStrsBy: _joinStrsBy["default"],
   toFirstUpperCase: _toFirstUpperCase["default"],
-  replaceDecCodes: _replaceDecCodes["default"]
+  decodeHTMLEntities: _decodeHTMLEntities["default"]
 };
 var _default = ut;
 exports["default"] = _default;

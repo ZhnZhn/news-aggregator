@@ -10,7 +10,8 @@ var _ut = _interopRequireDefault(require("../utils/ut"));
 var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
 
 var crId = _ut["default"].crId,
-    toFirstUpperCase = _ut["default"].toFirstUpperCase;
+    toFirstUpperCase = _ut["default"].toFirstUpperCase,
+    decodeHTMLEntities = _ut["default"].decodeHTMLEntities;
 var SOURCE_ID = 'coinstats_news';
 
 var _isArr = Array.isArray,
@@ -37,7 +38,7 @@ var _toArticles = function _toArticles(json) {
       source: SOURCE_ID,
       articleId: crId(),
       title: title,
-      description: description,
+      description: decodeHTMLEntities(description),
       related: _crRelated(coins),
       author: source,
       publishedAt: feedDate,

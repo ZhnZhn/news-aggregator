@@ -12,7 +12,7 @@ var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
 var _splitByParagraph = _interopRequireDefault(require("../utils/splitByParagraph"));
 
 var crId = _ut["default"].crId,
-    replaceDecCodes = _ut["default"].replaceDecCodes;
+    decodeHTMLEntities = _ut["default"].decodeHTMLEntities;
 var _isArr = Array.isArray;
 var SOURCE_ID = 'cryptocompare_news';
 
@@ -36,7 +36,7 @@ var _toArticles = function _toArticles(json) {
         _ref2 = source_info || {},
         name = _ref2.name,
         _publishedOn = _toMls(published_on),
-        description = (0, _splitByParagraph["default"])(replaceDecCodes(body));
+        description = (0, _splitByParagraph["default"])(decodeHTMLEntities(body));
 
     return {
       source: SOURCE_ID,

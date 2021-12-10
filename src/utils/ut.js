@@ -1,13 +1,13 @@
 import crId from './crId'
 import joinStrsBy from './joinStrsBy'
 import toFirstUpperCase from './toFirstUpperCase'
-import replaceDecCodes from './replaceDecCodes'
+import decodeHTMLEntities from './decodeHTMLEntities'
 
 const ut = {
   crId,
   joinStrsBy,
   toFirstUpperCase,
-  replaceDecCodes
+  decodeHTMLEntities
 };
 
 export default ut
