@@ -7,15 +7,15 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-
-var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/inheritsLoose"));
-
 var _react = require("react");
 
-var _toFirstUpperCase = _interopRequireDefault(require("../../utils/toFirstUpperCase"));
+var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
 
-var _withTheme = _interopRequireDefault(require("../hoc/withTheme"));
+var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
+
+var _useListen = _interopRequireDefault(require("../hooks/useListen"));
+
+var _toFirstUpperCase = _interopRequireDefault(require("../../utils/toFirstUpperCase"));
 
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 
@@ -29,7 +29,7 @@ var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var CHILD_MARGIN = 36,
+var WIDTH_STYLE = _has["default"].initWidthStyle(),
     RESIZE_INIT_WIDTH = 635,
     RESIZE_MIN_WIDTH = 395,
     RESIZE_MAX_WIDTH = 1200,
@@ -40,8 +40,7 @@ var CHILD_MARGIN = 36,
     S_BT_REMOVE = {
   position: 'relative',
   top: -3,
-  marginLeft: 16,
-  marginRight: 6
+  margin: '0 6px 0 16px'
 },
     S_SCROLL_DIV = {
   overflow: 'hidden auto',
@@ -71,12 +70,8 @@ var _focusFirstItem = function _focusFirstItem(ref) {
   }, 1000);
 };
 
-var _crPaneCaption = function _crPaneCaption() {
-  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-    args[_key] = arguments[_key];
-  }
-
-  return args.filter(Boolean).map(_toFirstUpperCase["default"]).join(': ');
+var _crPaneCaption = function _crPaneCaption(caption, sortBy) {
+  return [caption, sortBy].filter(Boolean).map(_toFirstUpperCase["default"]).join(': ');
 };
 
 var _crArticleItem = function _crArticleItem(article, index, _ref) {
@@ -92,217 +87,160 @@ var _crArticleItem = function _crArticleItem(article, index, _ref) {
   }, article.articleId);
 };
 
-var NewsPane = /*#__PURE__*/function (_Component) {
-  (0, _inheritsLoose2["default"])(NewsPane, _Component);
+var _crModelMoreHandlers = function _crModelMoreHandlers(ref, onRemoveItems) {
+  var _getRootNodeStyle = function _getRootNodeStyle() {
+    var current = ref.current,
+        _ref2 = current || {},
+        style = _ref2.style;
 
-  function NewsPane(props) {
-    var _this;
+    return style || {};
+  },
+      _resizeTo = function _resizeTo(width) {
+    _getRootNodeStyle().width = _toStyleWidth(width);
+  },
+      _plusToWidth = function _plusToWidth() {
+    var style = _getRootNodeStyle(),
+        w = _getWidth(style) + RESIZE_DELTA;
 
-    _this = _Component.call(this, props) || this;
+    if (w < RESIZE_MAX_WIDTH) {
+      style.width = _toStyleWidth(w);
+    }
+  },
+      _minusToWidth = function _minusToWidth() {
+    var style = _getRootNodeStyle(),
+        w = _getWidth(style) - RESIZE_DELTA;
 
-    _this._onStore = function (actionType, option) {
-      if (option === void 0) {
-        option = {};
-      }
-
-      var _this$props = _this.props,
-          addAction = _this$props.addAction,
-          showAction = _this$props.showAction,
-          toggleAction = _this$props.toggleAction,
-          id = _this$props.id;
-
-      if (option.id === id) {
-        switch (actionType) {
-          case addAction:
-            {
-              _this.setState({
-                isShow: true,
-                articles: option.data,
-                sortBy: option.sortBy || _this.state.sortBy
-              });
-
-              break;
-            }
-
-          case showAction:
-            _this.setState({
-              isShow: true
-            });
-
-            break;
-
-          case toggleAction:
-            _this.setState(function (prevState) {
-              return {
-                isShow: !prevState.isShow
-              };
-            });
-
-            break;
-
-          default:
-            return void 0;
-        }
-      }
-    };
-
-    _this._showMore = function () {
-      _this.setState({
-        isMore: true
-      });
-    };
-
-    _this._hToggleMore = function () {
-      _this.setState(function (prevState) {
-        return {
-          isMore: !prevState.isMore
-        };
-      });
-    };
-
-    _this._getRootNodeStyle = function () {
-      var _assertThisInitialize = (0, _assertThisInitialized2["default"])(_this),
-          rootDiv = _assertThisInitialize.rootDiv,
-          _ref2 = rootDiv || {},
-          _ref2$style = _ref2.style,
-          style = _ref2$style === void 0 ? {} : _ref2$style;
-
-      return style;
-    };
-
-    _this._resizeTo = function (width) {
-      _this._getRootNodeStyle().width = _toStyleWidth(width);
-    };
-
-    _this._plusToWidth = function () {
-      var style = _this._getRootNodeStyle(),
-          w = _getWidth(style) + RESIZE_DELTA;
-
-      if (w < RESIZE_MAX_WIDTH) {
-        style.width = _toStyleWidth(w);
-      }
-    };
-
-    _this._minusToWidth = function () {
-      var style = _this._getRootNodeStyle(),
-          w = _getWidth(style) - RESIZE_DELTA;
-
-      if (w > RESIZE_MIN_WIDTH) {
-        style.width = _toStyleWidth(w);
-      }
-    };
-
-    _this._hHide = function () {
-      var onClose = _this.props.onClose;
-      onClose();
-
-      _this.setState({
-        isShow: false
-      });
-    };
-
-    _this._refRootDiv = function (node) {
-      return _this.rootDiv = node;
-    };
-
-    _this._getRootDiv = function () {
-      return _this.rootDiv;
-    };
-
-    _this._refFirstItem = /*#__PURE__*/(0, _react.createRef)();
-    _this.childMargin = CHILD_MARGIN;
-    _this._widthStyle = _has["default"].initWidthStyle();
-    _this._MODEL = (0, _crModelMore["default"])({
-      onMinWidth: _this._resizeTo.bind((0, _assertThisInitialized2["default"])(_this), RESIZE_MIN_WIDTH),
-      onInitWidth: _this._resizeTo.bind((0, _assertThisInitialized2["default"])(_this), RESIZE_INIT_WIDTH),
-      onPlusWidth: _this._plusToWidth,
-      onMinusWidth: _this._minusToWidth,
-      onRemoveItems: props.onRemoveItems
-    });
-    _this.state = {
-      isShow: true,
-      isMore: false,
-      articles: [],
-      sortBy: ''
-    };
-    return _this;
-  }
-
-  var _proto = NewsPane.prototype;
-
-  _proto.componentDidMount = function componentDidMount() {
-    var store = this.props.store;
-    this.unsubscribe = store.listen(this._onStore);
-
-    _focusFirstItem(this._refFirstItem);
+    if (w > RESIZE_MIN_WIDTH) {
+      style.width = _toStyleWidth(w);
+    }
   };
 
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.unsubscribe();
+  return {
+    onMinWidth: _resizeTo.bind(null, RESIZE_MIN_WIDTH),
+    onInitWidth: _resizeTo.bind(null, RESIZE_INIT_WIDTH),
+    onPlusWidth: _plusToWidth,
+    onMinusWidth: _minusToWidth,
+    onRemoveItems: onRemoveItems
   };
+};
 
-  _proto.render = function render() {
-    var _this$props2 = this.props,
-        paneCaption = _this$props2.paneCaption,
-        theme = _this$props2.theme,
-        Item = _this$props2.Item,
-        onRemoveItems = _this$props2.onRemoveItems,
-        onRemoveUnder = _this$props2.onRemoveUnder,
-        onCloseItem = _this$props2.onCloseItem,
-        TS = theme.createStyle(_NewsPane["default"]),
-        _this$state = this.state,
-        isShow = _this$state.isShow,
-        isMore = _this$state.isMore,
-        articles = _this$state.articles,
-        sortBy = _this$state.sortBy,
-        _paneCaption = _crPaneCaption(paneCaption, '' + sortBy),
-        _className = (0, _crCn["default"])(CL_NEWS_PANE, [isShow, CL_SHOW_POPUP]),
-        _styleIsShow = isShow ? S_INLINE_BLOCK : S_NONE;
+var _getRefValue = function _getRefValue(ref) {
+  return ref.current;
+};
 
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      ref: this._refRootDiv,
-      className: _className,
-      style: (0, _extends2["default"])({}, this._widthStyle, TS.PANE_ROOT, _styleIsShow),
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ModalSlider, {
-        isShow: isMore,
-        className: CL_MENU_MORE,
-        style: TS.EL_BORDER,
-        model: this._MODEL,
-        onClose: this._hToggleMore
-      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].BrowserCaption, {
-        style: TS.PANE_CAPTION,
-        caption: _paneCaption,
-        onMore: this._showMore,
-        onClose: this._hHide,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].CircleButton, {
-          caption: "R",
-          title: "Remove All Items",
-          style: S_BT_REMOVE,
-          onClick: onRemoveItems
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].SvgHrzResize, {
-          minWidth: RESIZE_MIN_WIDTH,
-          maxWidth: RESIZE_MAX_WIDTH,
-          getDomNode: this._getRootDiv
-        })]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
-        className: TS.CL_SCROLL_PANE,
-        style: S_SCROLL_DIV,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ItemStack, {
-          items: articles,
-          crItem: _crArticleItem,
-          Item: Item,
-          refFirstItem: this._refFirstItem,
-          onCloseItem: onCloseItem,
-          onRemoveUnder: onRemoveUnder
-        })
+var NewsPane = function NewsPane(_ref3) {
+  var store = _ref3.store,
+      addAction = _ref3.addAction,
+      showAction = _ref3.showAction,
+      toggleAction = _ref3.toggleAction,
+      id = _ref3.id,
+      paneCaption = _ref3.paneCaption,
+      Item = _ref3.Item,
+      onRemoveItems = _ref3.onRemoveItems,
+      onRemoveUnder = _ref3.onRemoveUnder,
+      onCloseItem = _ref3.onCloseItem,
+      onClose = _ref3.onClose;
+
+  var _refRootDiv = (0, _react.useRef)(),
+      _getRootDiv = (0, _react.useCallback)(function () {
+    return _getRefValue(_refRootDiv);
+  }, []),
+      _refFirstItem = (0, _react.useRef)(),
+      _MODEL_MORE = (0, _react.useMemo)(function () {
+    return (0, _crModelMore["default"])(_crModelMoreHandlers(_refRootDiv, onRemoveItems));
+  }, []),
+      _useState = (0, _react.useState)(true),
+      isShow = _useState[0],
+      setIsShow = _useState[1],
+      _useBool = (0, _useBool2["default"])(false),
+      isMore = _useBool[0],
+      _showMore = _useBool[1],
+      _hideMore = _useBool[2],
+      _useState2 = (0, _react.useState)({
+    articles: [],
+    sortBy: ''
+  }),
+      state = _useState2[0],
+      setState = _useState2[1],
+      articles = state.articles,
+      sortBy = state.sortBy,
+      _hHide = (0, _react.useCallback)(function () {
+    onClose();
+    setIsShow(false);
+  }, []),
+      TS = (0, _useTheme["default"])(_NewsPane["default"]);
+
+  (0, _react.useEffect)(function () {
+    return _focusFirstItem(_refFirstItem);
+  }, []);
+  (0, _useListen["default"])(store, function (actionType, option) {
+    if (option === void 0) {
+      option = {};
+    }
+
+    if (option.id === id) {
+      if (actionType === addAction) {
+        setIsShow(true);
+        setState(function (prevState) {
+          return {
+            articles: option.data,
+            sortBy: option.sortBy
+          };
+        });
+      } else if (actionType === showAction) {
+        setIsShow(true);
+      } else if (actionType === toggleAction) {
+        setIsShow(function (is) {
+          return !is;
+        });
+      }
+    }
+  });
+
+  var _paneCaption = _crPaneCaption(paneCaption, sortBy),
+      _className = (0, _crCn["default"])(CL_NEWS_PANE, [isShow, CL_SHOW_POPUP]),
+      _styleIsShow = isShow ? S_INLINE_BLOCK : S_NONE;
+
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    ref: _refRootDiv,
+    className: _className,
+    style: (0, _extends2["default"])({}, WIDTH_STYLE, TS.PANE_ROOT, _styleIsShow),
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ModalSlider, {
+      isShow: isMore,
+      className: CL_MENU_MORE,
+      style: TS.EL_BORDER,
+      model: _MODEL_MORE,
+      onClose: _hideMore
+    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].BrowserCaption, {
+      style: TS.PANE_CAPTION,
+      caption: _paneCaption,
+      onMore: _showMore,
+      onClose: _hHide,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].CircleButton, {
+        caption: "R",
+        title: "Remove All Items",
+        style: S_BT_REMOVE,
+        onClick: onRemoveItems
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].SvgHrzResize, {
+        minWidth: RESIZE_MIN_WIDTH,
+        maxWidth: RESIZE_MAX_WIDTH,
+        getDomNode: _getRootDiv
       })]
-    });
-  };
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
+      className: TS.CL_SCROLL_PANE,
+      style: S_SCROLL_DIV,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ItemStack, {
+        items: articles,
+        crItem: _crArticleItem,
+        Item: Item,
+        refFirstItem: _refFirstItem,
+        onCloseItem: onCloseItem,
+        onRemoveUnder: onRemoveUnder
+      })
+    })]
+  });
+};
 
-  return NewsPane;
-}(_react.Component);
-
-var _default = (0, _withTheme["default"])(NewsPane);
-
+var _default = NewsPane;
 exports["default"] = _default;
 //# sourceMappingURL=NewsPane.js.map

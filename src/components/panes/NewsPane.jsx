@@ -1,16 +1,18 @@
-import { Component, createRef } from 'react'
+import { useRef, useState, useCallback, useMemo, useEffect } from 'react';
 
+import useBool from '../hooks/useBool';
+import useTheme from '../hooks/useTheme';
+import useListen from '../hooks/useListen';
 import toFirstUpperCase from '../../utils/toFirstUpperCase'
 
-import withTheme from '../hoc/withTheme'
-import crCn from '../zhn-utils/crCn'
-import styleConfig from './NewsPane.Style'
-import has from '../has'
+import crCn from '../zhn-utils/crCn';
+import styleConfig from './NewsPane.Style';
+import has from '../has';
 
-import crModelMore from './crModelMore'
-import A from '../Comp'
+import crModelMore from './crModelMore';
+import A from '../Comp';
 
-const CHILD_MARGIN = 36
+const WIDTH_STYLE = has.initWidthStyle()
 , RESIZE_INIT_WIDTH = 635
 , RESIZE_MIN_WIDTH = 395
 , RESIZE_MAX_WIDTH = 1200
@@ -23,15 +25,14 @@ const CHILD_MARGIN = 36
 , S_BT_REMOVE = {
   position: 'relative',
   top: -3,
-  marginLeft: 16,
-  marginRight: 6
+  margin: '0 6px 0 16px'
 }
 , S_SCROLL_DIV = {
   overflow: 'hidden auto',
   height: '92%',
   paddingRight: 10
 }
-, S_INLINE_BLOCK = { display : 'inline-block' }
+, S_INLINE_BLOCK = { display: 'inline-block' }
 , S_NONE = { display: 'none' };
 
 
@@ -47,10 +48,11 @@ const _focusFirstItem = ref => {
   }, 1000)
 };
 
-const _crPaneCaption = (...args) => args
-  .filter(Boolean)
-  .map(toFirstUpperCase)
-  .join(': ');
+const _crPaneCaption = (caption, sortBy) =>
+ [caption, sortBy]
+   .filter(Boolean)
+   .map(toFirstUpperCase)
+   .join(': ');
 
 const _crArticleItem = (article, index, {
   Item,
@@ -67,177 +69,149 @@ const _crArticleItem = (article, index, {
   />
 );
 
-
-class NewsPane extends Component {
-
-  constructor(props){
-    super(props);
-
-    this._refFirstItem = createRef()
-    this.childMargin = CHILD_MARGIN;
-    this._widthStyle = has.initWidthStyle()
-
-    this._MODEL = crModelMore({
-      onMinWidth: this._resizeTo.bind(this, RESIZE_MIN_WIDTH),
-      onInitWidth: this._resizeTo.bind(this, RESIZE_INIT_WIDTH),
-      onPlusWidth: this._plusToWidth,
-      onMinusWidth: this._minusToWidth,
-      onRemoveItems: props.onRemoveItems
-    })
-
-    this.state = {
-      isShow: true,
-      isMore: false,
-      articles: [],
-      sortBy: ''
-    };
+const _crModelMoreHandlers = (ref, onRemoveItems) => {
+  const _getRootNodeStyle = () => {
+    const { current } = ref
+    , { style } = current || {};
+    return style || {};
   }
-
-  componentDidMount(){
-    const { store } = this.props;
-    this.unsubscribe = store.listen(this._onStore)
-    _focusFirstItem(this._refFirstItem)
+  , _resizeTo = (width) => {
+    _getRootNodeStyle().width = _toStyleWidth(width);
   }
-  componentWillUnmount(){
-    this.unsubscribe()
-  }
-
-   _onStore = (actionType, option={}) => {
-      const {
-        addAction, showAction, toggleAction,
-        id
-      } = this.props;
-      if (option.id === id){
-        switch(actionType){
-          case addAction: {
-            this.setState({
-              isShow: true,
-              articles: option.data,
-              sortBy: option.sortBy || this.state.sortBy
-            })
-            break;
-           }
-          case showAction:
-            this.setState({ isShow: true })
-            break;
-          case toggleAction:
-            this.setState(prevState => ({
-              isShow: !prevState.isShow
-            }))
-            break;
-          default: return void 0;
-        }
-      }
-   }
-
-   _showMore = () => {
-      this.setState({ isMore: true })
-   }
-   _hToggleMore = () => {
-     this.setState(prevState => ({
-       isMore: !prevState.isMore
-     }))
-   }
-
-   _getRootNodeStyle = () => {
-     const { rootDiv } = this
-     , { style={} } = rootDiv || {};
-     return style;
-   }
-
-   _resizeTo = (width) => {
-     this._getRootNodeStyle().width = _toStyleWidth(width);
-   }
-
-   _plusToWidth = () => {
-     const style = this._getRootNodeStyle()
-         , w = _getWidth(style) + RESIZE_DELTA;
-     if (w < RESIZE_MAX_WIDTH) {
-        style.width = _toStyleWidth(w)
-     }
-   }
-   _minusToWidth = () => {
-     const style = this._getRootNodeStyle()
-         , w = _getWidth(style) - RESIZE_DELTA;
-     if (w > RESIZE_MIN_WIDTH) {
+  , _plusToWidth = () => {
+    const style = _getRootNodeStyle()
+        , w = _getWidth(style) + RESIZE_DELTA;
+    if (w < RESIZE_MAX_WIDTH) {
        style.width = _toStyleWidth(w)
-     }
-   }
+    }
+  }
+  , _minusToWidth = () => {
+    const style = _getRootNodeStyle()
+        , w = _getWidth(style) - RESIZE_DELTA;
+    if (w > RESIZE_MIN_WIDTH) {
+      style.width = _toStyleWidth(w)
+    }
+  };
 
-   _hHide = () => {
-      const { onClose } = this.props;
-      onClose()
-      this.setState({ isShow: false })
-   }
+  return {
+    onMinWidth: _resizeTo.bind(null, RESIZE_MIN_WIDTH),
+    onInitWidth: _resizeTo.bind(null, RESIZE_INIT_WIDTH),
+    onPlusWidth: _plusToWidth,
+    onMinusWidth: _minusToWidth,
+    onRemoveItems: onRemoveItems
+  };
+};
 
-  _refRootDiv = node => this.rootDiv = node
+const _getRefValue = ref => ref.current;
 
-   render(){
-      const {
-          paneCaption,
-          theme,
-          Item,
-          onRemoveItems,
-          onRemoveUnder, onCloseItem
-        } = this.props
-      , TS = theme.createStyle(styleConfig)
-      , { isShow, isMore, articles, sortBy } = this.state
-      , _paneCaption = _crPaneCaption(paneCaption, ''+sortBy)
-      , _className = crCn(CL_NEWS_PANE, [isShow,  CL_SHOW_POPUP])
-      , _styleIsShow = isShow ? S_INLINE_BLOCK : S_NONE;
+const NewsPane = ({
+  store,
 
-     return(
-        <div
-           ref={this._refRootDiv}
-           className={_className}
-           style={{
-             ...this._widthStyle,
-             ...TS.PANE_ROOT,
-             ..._styleIsShow
-           }}
-        >
-          <A.ModalSlider
-            isShow={isMore}
-            className={CL_MENU_MORE}
-            style={TS.EL_BORDER}
-            model={this._MODEL}
-            onClose={this._hToggleMore}
-          />
-          <A.BrowserCaption
-             style={TS.PANE_CAPTION}
-             caption={_paneCaption}
-             onMore={this._showMore}
-             onClose={this._hHide}
-          >
-            <A.CircleButton
-              caption="R"
-              title="Remove All Items"
-              style={S_BT_REMOVE}
-              onClick={onRemoveItems}
-            />
-            <A.SvgHrzResize
-              minWidth={RESIZE_MIN_WIDTH}
-              maxWidth={RESIZE_MAX_WIDTH}
-              getDomNode={this._getRootDiv}
-            />
-          </A.BrowserCaption>
-          <A.ScrollPane className={TS.CL_SCROLL_PANE} style={S_SCROLL_DIV}>
-             <A.ItemStack
-               items={articles}
-               crItem={_crArticleItem}
-               Item={Item}
-               refFirstItem={this._refFirstItem}
-               onCloseItem={onCloseItem}
-               onRemoveUnder={onRemoveUnder}
-             />
-          </A.ScrollPane>
-        </div>
-     )
-   }
+  addAction,
+  showAction,
+  toggleAction,
+  id,
 
-   _getRootDiv = () => {
-     return this.rootDiv;
-   }
-}
+  paneCaption,
+  Item,
+  onRemoveItems,
+  onRemoveUnder,
+  onCloseItem,
 
-export default withTheme(NewsPane)
+  onClose
+}) => {
+  const _refRootDiv = useRef()
+  , _getRootDiv = useCallback(() => _getRefValue(_refRootDiv), [])
+  , _refFirstItem = useRef()
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _MODEL_MORE = useMemo(
+      () => crModelMore(_crModelMoreHandlers(_refRootDiv, onRemoveItems)),
+      []
+   )
+   // onRemoveItems
+   /*eslint-enable react-hooks/exhaustive-deps */
+  , [isShow, setIsShow] = useState(true)
+  , [isMore, _showMore, _hideMore] = useBool(false)
+  , [state, setState] = useState({articles: [], sortBy: ''})
+  , { articles, sortBy } = state
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hHide = useCallback(() => {
+     onClose()
+     setIsShow(false)
+  }, [])
+  // onClose
+  /*eslint-enable react-hooks/exhaustive-deps */
+  , TS = useTheme(styleConfig);
+
+  useEffect(()=>_focusFirstItem(_refFirstItem), [])
+
+  useListen(store, (actionType, option={}) => {
+    if (option.id === id){
+      if (actionType === addAction) {
+        setIsShow(true)
+        setState(prevState => ({
+          articles: option.data,
+          sortBy: option.sortBy
+        }))
+      } else if (actionType === showAction) {
+        setIsShow(true)
+      } else if (actionType === toggleAction) {
+        setIsShow(is => !is)
+      }
+    }
+  })
+
+  const _paneCaption = _crPaneCaption(paneCaption, sortBy)
+  , _className = crCn(CL_NEWS_PANE, [isShow,  CL_SHOW_POPUP])
+  , _styleIsShow = isShow ? S_INLINE_BLOCK : S_NONE;
+
+  return (
+    <div
+       ref={_refRootDiv}
+       className={_className}
+       style={{
+         ...WIDTH_STYLE,
+         ...TS.PANE_ROOT,
+         ..._styleIsShow
+       }}
+    >
+      <A.ModalSlider
+        isShow={isMore}
+        className={CL_MENU_MORE}
+        style={TS.EL_BORDER}
+        model={_MODEL_MORE}
+        onClose={_hideMore}
+      />
+      <A.BrowserCaption
+         style={TS.PANE_CAPTION}
+         caption={_paneCaption}
+         onMore={_showMore}
+         onClose={_hHide}
+      >
+        <A.CircleButton
+          caption="R"
+          title="Remove All Items"
+          style={S_BT_REMOVE}
+          onClick={onRemoveItems}
+        />
+        <A.SvgHrzResize
+          minWidth={RESIZE_MIN_WIDTH}
+          maxWidth={RESIZE_MAX_WIDTH}
+          getDomNode={_getRootDiv}
+        />
+      </A.BrowserCaption>
+      <A.ScrollPane className={TS.CL_SCROLL_PANE} style={S_SCROLL_DIV}>
+         <A.ItemStack
+           items={articles}
+           crItem={_crArticleItem}
+           Item={Item}
+           refFirstItem={_refFirstItem}
+           onCloseItem={onCloseItem}
+           onRemoveUnder={onRemoveUnder}
+         />
+      </A.ScrollPane>
+    </div>
+  );
+};
+
+export default NewsPane
