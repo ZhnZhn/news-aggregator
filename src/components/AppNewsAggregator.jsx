@@ -10,7 +10,7 @@ import Actions, {
 } from '../flux/actions/ComponentActions'
 
 import initTheme  from './styles/theme'
-import ThemeContext from './hoc/ThemeContext'
+import ThemeContext from './hooks/ThemeContext'
 
 import HeaderBar from './header/HeaderBar'
 import BrowserContainer from './zhn-containers/BrowserContainer'

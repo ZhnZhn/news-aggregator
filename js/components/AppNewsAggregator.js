@@ -17,7 +17,7 @@ var _ComponentActions = _interopRequireWildcard(require("../flux/actions/Compone
 
 var _theme = _interopRequireDefault(require("./styles/theme"));
 
-var _ThemeContext = _interopRequireDefault(require("./hoc/ThemeContext"));
+var _ThemeContext = _interopRequireDefault(require("./hooks/ThemeContext"));
 
 var _HeaderBar = _interopRequireDefault(require("./header/HeaderBar"));
 

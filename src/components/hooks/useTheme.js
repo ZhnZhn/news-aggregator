@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import ThemeContext  from '../hoc/ThemeContext';
+import ThemeContext  from './ThemeContext';
 
 const useTheme = styleConfig => useContext(ThemeContext)
  .createStyle(styleConfig);

@@ -9,7 +9,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _react = require("react");
 
-var _ThemeContext = _interopRequireDefault(require("../hoc/ThemeContext"));
+var _ThemeContext = _interopRequireDefault(require("../hooks/ThemeContext"));
 
 var _Dialog = _interopRequireDefault(require("../dialogs/Dialog.Style"));
 

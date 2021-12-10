@@ -1,7 +1,7 @@
 import { memo, useContext, useCallback } from 'react';
 //import PropTypes from 'prop-types'
 
-import ThemeContext from '../hoc/ThemeContext';
+import ThemeContext from '../hooks/ThemeContext';
 import styleConfig from '../dialogs/Dialog.Style';
 
 import Actions from '../../flux/actions/ComponentActions';
