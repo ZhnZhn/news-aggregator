@@ -1,15 +1,9 @@
-import ut from '../utils/ut';
+import crId from '../utils/crId';
 import formatTimeAgo from '../utils/formatTimeAgo';
-import splitByParagraph from '../utils/splitByParagraph';
+import crDescription from '../utils/crDescription';
 
-const {
-  crId,
-  decodeHTMLEntities
-} = ut;
-
-
-const _isArr = Array.isArray;
-const SOURCE_ID = 'cryptocompare_news';
+const _isArr = Array.isArray
+, SOURCE_ID = 'cryptocompare_news';
 
 const _toMls = sec => typeof sec === 'number'
  ? sec*1000
@@ -30,12 +24,11 @@ const _toArticles = json => {
     } = item
     , { name } = source_info || {}
     , _publishedOn = _toMls(published_on)
-    , description = splitByParagraph(decodeHTMLEntities(body));
     return {
       source: SOURCE_ID,
       articleId: crId(),
       title, url,
-      description,
+      description: crDescription(body),
       related: categories,
       author: name || source,
       timeAgo: _publishedOn && formatTimeAgo(_publishedOn, _timeAgoOptions),

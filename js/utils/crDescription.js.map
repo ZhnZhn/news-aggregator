@@ -1,0 +1,13 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/crDescription.js"
+ ],
+ "file": "../../src/utils/crDescription.js",
+ "names": [
+  "crDescription",
+  "str",
+  "maxLength"
+ ],
+ "mappings": ";;;;;;;AAAA;;AACA;;AAEA,IAAMA,aAAa,GAAG,SAAhBA,aAAgB,CACpBC,GADoB,EAEpBC,SAFoB;AAAA,SAGjB,kCAAiB,oCAAmBD,GAAnB,CAAjB,EAA0CC,SAA1C,CAHiB;AAAA,CAAtB;;eAKeF,a"
+}

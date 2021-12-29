@@ -5,16 +5,14 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _ut = _interopRequireDefault(require("../utils/ut"));
+var _crId = _interopRequireDefault(require("../utils/crId"));
 
 var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
 
-var _splitByParagraph = _interopRequireDefault(require("../utils/splitByParagraph"));
+var _crDescription = _interopRequireDefault(require("../utils/crDescription"));
 
-var crId = _ut["default"].crId,
-    decodeHTMLEntities = _ut["default"].decodeHTMLEntities;
-var _isArr = Array.isArray;
-var SOURCE_ID = 'cryptocompare_news';
+var _isArr = Array.isArray,
+    SOURCE_ID = 'cryptocompare_news';
 
 var _toMls = function _toMls(sec) {
   return typeof sec === 'number' ? sec * 1000 : void 0;
@@ -35,15 +33,14 @@ var _toArticles = function _toArticles(json) {
         published_on = item.published_on,
         _ref2 = source_info || {},
         name = _ref2.name,
-        _publishedOn = _toMls(published_on),
-        description = (0, _splitByParagraph["default"])(decodeHTMLEntities(body));
+        _publishedOn = _toMls(published_on);
 
     return {
       source: SOURCE_ID,
-      articleId: crId(),
+      articleId: (0, _crId["default"])(),
       title: title,
       url: url,
-      description: description,
+      description: (0, _crDescription["default"])(body),
       related: categories,
       author: name || source,
       timeAgo: _publishedOn && (0, _formatTimeAgo["default"])(_publishedOn, _timeAgoOptions),

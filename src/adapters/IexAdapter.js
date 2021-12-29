@@ -1,5 +1,6 @@
 import crId from '../utils/crId';
 import formatTimeAgo from '../utils/formatTimeAgo';
+import crDescription from '../utils/crDescription';
 
 const _isArr = Array.isArray;
 
@@ -29,7 +30,7 @@ const _toArticles = (json) => {
         source: SOURCE_ID,
         articleId: crId(),
         title: headline,
-        description: summary,
+        description: crDescription(summary),
         related: _related,
         author: _crAuthor(hasPaywall, source),
         publishedAt: datetime,

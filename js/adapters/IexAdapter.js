@@ -9,6 +9,8 @@ var _crId = _interopRequireDefault(require("../utils/crId"));
 
 var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
 
+var _crDescription = _interopRequireDefault(require("../utils/crDescription"));
+
 var _isArr = Array.isArray;
 var SOURCE_ID = 'iex_news',
     DF_SYMBOL = 'AAPL';
@@ -34,7 +36,7 @@ var _toArticles = function _toArticles(json) {
       source: SOURCE_ID,
       articleId: (0, _crId["default"])(),
       title: headline,
-      description: summary,
+      description: (0, _crDescription["default"])(summary),
       related: _related,
       author: _crAuthor(hasPaywall, source),
       publishedAt: datetime,
