@@ -170,9 +170,6 @@ var NewsPane = function NewsPane(_ref3) {
   }, []),
       TS = (0, _useTheme["default"])(_NewsPane["default"]);
 
-  (0, _react.useEffect)(function () {
-    return _focusFirstItem(_refFirstItem);
-  }, []);
   (0, _useListen["default"])(store, function (actionType, option) {
     if (option === void 0) {
       option = {};
@@ -187,6 +184,8 @@ var NewsPane = function NewsPane(_ref3) {
             sortBy: option.sortBy
           };
         });
+
+        _focusFirstItem(_refFirstItem);
       } else if (actionType === showAction) {
         setIsShow(true);
       } else if (actionType === toggleAction) {

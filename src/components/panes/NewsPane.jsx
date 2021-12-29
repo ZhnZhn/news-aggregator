@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback, useMemo, useEffect } from 'react';
+import { useRef, useState, useCallback, useMemo } from 'react';
 
 import useBool from '../hooks/useBool';
 import useTheme from '../hooks/useTheme';
@@ -142,9 +142,7 @@ const NewsPane = ({
   // onClose
   /*eslint-enable react-hooks/exhaustive-deps */
   , TS = useTheme(styleConfig);
-
-  useEffect(()=>_focusFirstItem(_refFirstItem), [])
-
+  
   useListen(store, (actionType, option={}) => {
     if (option.id === id){
       if (actionType === addAction) {
@@ -153,6 +151,7 @@ const NewsPane = ({
           articles: option.data,
           sortBy: option.sortBy
         }))
+        _focusFirstItem(_refFirstItem)
       } else if (actionType === showAction) {
         setIsShow(true)
       } else if (actionType === toggleAction) {
