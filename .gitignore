@@ -7,3 +7,8 @@ lib-dev
 stats.json
 report.html
 coverage
+dev
+css-sass.js
+css-min.js
+babel.dev.config.js
+webpack.dev.js
