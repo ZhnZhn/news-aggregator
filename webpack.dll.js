@@ -9,9 +9,11 @@ module.exports = {
   mode: "production",
   entry: {
      lib: [
-            "react", "react-dom",
+            "react", 
+            "react-dom",
             "interactjs",         
-            "reflux-core", "nanoid",                                        
+            "reflux-core", 
+            "nanoid",                                        
             "timeago.js" 
           ]
   },
