@@ -11,8 +11,9 @@ const THEME_OPTIONS = [
 const FONT_SIZE_OPTIONS = [
   { caption: 'Small (15px)', value: 15 },
   { caption: 'Medium (16px)', value: 16 },
-  { caption: 'Large (17px)', value: 17 },
-  { caption: 'Extra Large (18px)', value: 18 }
+  { caption: 'Extra Medium (17px)', value: 17 },
+  { caption: 'Large (18px)', value: 18 },
+  { caption: 'Extra Large (19px)', value: 19 }
 ],
 DF_FONT_SIZE = FONT_SIZE_OPTIONS[1];
 

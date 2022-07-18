@@ -32,11 +32,14 @@ var FONT_SIZE_OPTIONS = [{
   caption: 'Medium (16px)',
   value: 16
 }, {
-  caption: 'Large (17px)',
+  caption: 'Extra Medium (17px)',
   value: 17
 }, {
-  caption: 'Extra Large (18px)',
+  caption: 'Large (18px)',
   value: 18
+}, {
+  caption: 'Extra Large (19px)',
+  value: 19
 }],
     DF_FONT_SIZE = FONT_SIZE_OPTIONS[1];
 

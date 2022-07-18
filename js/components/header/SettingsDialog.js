@@ -56,7 +56,7 @@ var _assign = Object.assign,
   marginLeft: 8
 },
     MIN_FS = 15,
-    MAX_FS = 18;
+    MAX_FS = 19;
 
 var _isNumber = function _isNumber(n) {
   return typeof n === 'number' && n - n === 0;

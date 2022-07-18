@@ -42,7 +42,7 @@ const _assign = Object.assign
   marginLeft: 8
 }
 , MIN_FS = 15
-, MAX_FS = 18;
+, MAX_FS = 19;
 
 const _isNumber = n => typeof n === 'number'
  && (n-n===0);
@@ -50,7 +50,7 @@ const _inRange = (min, max, v) => _isNumber(v)
  && v>=min && v<=max;
 
  const _selectFontSize = (item) => {
-   const { value } = item || {}
+   const { value } = item || {}   
    if (_inRange(MIN_FS, MAX_FS, value)) {
      document.documentElement.style.fontSize = `${value}px`
    }
