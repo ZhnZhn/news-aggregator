@@ -1,6 +1,5 @@
-import { memo } from 'react';
 //import PropTypes from 'prop-types'
-
+import memoIsShow from '../hoc/memoIsShow';
 import useTheme from '../hooks/useTheme';
 import styleConfig from './Dialog.Style';
 
@@ -22,23 +21,23 @@ const S_DIALOG = {
   wordBreak: 'break-word'
 };
 
-const _toMsg = (data) => {
+const _toMsg = (
+  data
+) => {
   if (data instanceof TypeError){
     return data.message;
   }
-  const { status, url, msg } = data || {};
-  if (status){
-    return `${url}\ncode:${status}\nNetwork exception`;
-  } else if (msg){
-    return msg;
-  }
-  return 'Exception Message';
+  const {
+    status,
+    url,
+    msg
+  } = data || {};
+  return status
+    ? `${url}\ncode:${status}\nNetwork exception`
+    : msg || 'Exception Message';
 };
 
-const _isNotShouldUpdate = (prevProp, nextProp) =>
-  prevProp.isShow === nextProp.isShow;
-
-const AlertDialog = memo(({
+const AlertDialog = memoIsShow(({
   isShow,
   data,
   onClose
@@ -61,7 +60,7 @@ const AlertDialog = memo(({
       </p>
     </ModalDialog>
   );
-}, _isNotShouldUpdate);
+});
 
 /*
 AlertDialog.propTypes = {

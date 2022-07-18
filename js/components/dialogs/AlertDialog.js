@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _memoIsShow = _interopRequireDefault(require("../hoc/memoIsShow"));
 
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 
@@ -44,20 +44,10 @@ var _toMsg = function _toMsg(data) {
       url = _ref.url,
       msg = _ref.msg;
 
-  if (status) {
-    return url + "\ncode:" + status + "\nNetwork exception";
-  } else if (msg) {
-    return msg;
-  }
-
-  return 'Exception Message';
+  return status ? url + "\ncode:" + status + "\nNetwork exception" : msg || 'Exception Message';
 };
 
-var _isNotShouldUpdate = function _isNotShouldUpdate(prevProp, nextProp) {
-  return prevProp.isShow === nextProp.isShow;
-};
-
-var AlertDialog = /*#__PURE__*/(0, _react.memo)(function (_ref2) {
+var AlertDialog = (0, _memoIsShow["default"])(function (_ref2) {
   var isShow = _ref2.isShow,
       data = _ref2.data,
       onClose = _ref2.onClose;
@@ -78,7 +68,7 @@ var AlertDialog = /*#__PURE__*/(0, _react.memo)(function (_ref2) {
       children: _msg
     })
   });
-}, _isNotShouldUpdate);
+});
 /*
 AlertDialog.propTypes = {
   isShow: PropTypes.bool,
