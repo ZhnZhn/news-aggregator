@@ -9,6 +9,8 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _react = require("react");
 
+var _memoIsShow = _interopRequireDefault(require("../hoc/memoIsShow"));
+
 var _ThemeContext = _interopRequireDefault(require("../hooks/ThemeContext"));
 
 var _Dialog = _interopRequireDefault(require("../dialogs/Dialog.Style"));
@@ -75,11 +77,7 @@ var _selectFontSize = function _selectFontSize(item) {
   }
 };
 
-var _isNotShouldUpdate = function _isNotShouldUpdate(prevProps, nextProps) {
-  return prevProps.isShow === nextProps.isShow;
-};
-
-var SettingsDialog = /*#__PURE__*/(0, _react.memo)(function (_ref2) {
+var SettingsDialog = (0, _memoIsShow["default"])(function (_ref2) {
   var isShow = _ref2.isShow,
       data = _ref2.data,
       onClose = _ref2.onClose;
@@ -135,7 +133,7 @@ var SettingsDialog = /*#__PURE__*/(0, _react.memo)(function (_ref2) {
       })]
     })
   });
-}, _isNotShouldUpdate);
+});
 /*
 SettingsDialog.propTypes = {
   isShow: PropTypes.bool,

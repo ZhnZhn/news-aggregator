@@ -1,6 +1,10 @@
-import { memo, useContext, useCallback } from 'react';
 //import PropTypes from 'prop-types'
+import {
+  useContext,
+  useCallback
+} from 'react';
 
+import memoIsShow from '../hoc/memoIsShow';
 import ThemeContext from '../hooks/ThemeContext';
 import styleConfig from '../dialogs/Dialog.Style';
 
@@ -50,16 +54,13 @@ const _inRange = (min, max, v) => _isNumber(v)
  && v>=min && v<=max;
 
  const _selectFontSize = (item) => {
-   const { value } = item || {}   
+   const { value } = item || {}
    if (_inRange(MIN_FS, MAX_FS, value)) {
      document.documentElement.style.fontSize = `${value}px`
    }
  };
 
-const _isNotShouldUpdate = (prevProps, nextProps) =>
-  prevProps.isShow === nextProps.isShow
-
-const SettingsDialog = memo(({
+const SettingsDialog = memoIsShow(({
   isShow,
   data,
   onClose
@@ -115,7 +116,7 @@ const SettingsDialog = memo(({
        </A.TabPane>
    </A.ModalDialog>
   );
-}, _isNotShouldUpdate);
+});
 
 /*
 SettingsDialog.propTypes = {
