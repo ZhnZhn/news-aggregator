@@ -15,14 +15,27 @@ var _isArr = Array.isArray;
 var SOURCE_ID = 'iex_news',
     DF_SYMBOL = 'AAPL';
 
+var _isStr = function _isStr(v) {
+  return typeof v === 'string';
+};
+
 var _crAuthor = function _crAuthor(hasPaywall, source) {
   return hasPaywall ? "$ " + source : source;
 };
 
-var _toArticles = function _toArticles(json) {
-  var _timeAgoOptions = _formatTimeAgo["default"].crOptions();
+var _crRelated = function _crRelated(related) {
+  return _isStr(related) ? related.split(',').join(', ') : void 0;
+};
 
-  return _isArr(json) ? json.map(function (item) {
+var _crSource = function _crSource(source) {
+  return _isStr(source) ? source.trim() : '';
+};
+
+var _toArticles = function _toArticles(json) {
+  var _timeAgoOptions = _formatTimeAgo["default"].crOptions(),
+      _hmByHeadline = {};
+
+  return _isArr(json) ? json.reduce(function (arr, item, index) {
     var headline = item.headline,
         source = item.source,
         datetime = item.datetime,
@@ -30,34 +43,57 @@ var _toArticles = function _toArticles(json) {
         related = item.related,
         url = item.url,
         hasPaywall = item.hasPaywall,
-        _related = related ? related.split(',').join(', ') : void 0;
-
-    return {
+        _source = _crSource(source),
+        description = (0, _crDescription["default"])(summary),
+        _article = {
       source: SOURCE_ID,
       articleId: (0, _crId["default"])(),
       title: headline,
-      description: (0, _crDescription["default"])(summary),
-      related: _related,
-      author: _crAuthor(hasPaywall, source),
+      description: description,
+      related: _crRelated(related),
+      author: _crAuthor(hasPaywall, _source),
       publishedAt: datetime,
       timeAgo: (0, _formatTimeAgo["default"])(datetime, _timeAgoOptions),
       url: url
-    };
+    },
+        _hmArticle = _hmByHeadline[headline];
+
+    if (_hmArticle) {
+      var hmSource = _hmArticle[0],
+          hmDescr = _hmArticle[1],
+          hmDatetime = _hmArticle[2],
+          hmIndex = _hmArticle[3];
+
+      if (hmSource === _source && hmDescr === description) {
+        if (hmDatetime < datetime) {
+          arr[hmIndex]._isNewer = true;
+        } else {
+          _article._isNewer = true;
+        }
+      }
+    }
+
+    _hmByHeadline[headline] = [_source, description, datetime, arr.push(_article) - 1];
+    return arr;
+  }, []).filter(function (item) {
+    return !item._isNewer;
   }) : [];
+};
+
+var _crSortBy = function _crSortBy(_ref) {
+  var _ref$symbol = _ref.symbol,
+      symbol = _ref$symbol === void 0 ? DF_SYMBOL : _ref$symbol,
+      _ref$recent = _ref.recent,
+      recent = _ref$recent === void 0 ? '' : _ref$recent;
+  return symbol.toUpperCase() + " " + recent;
 };
 
 var IexAdapter = {
   toNews: function toNews(json, option) {
-    var _option$symbol = option.symbol,
-        symbol = _option$symbol === void 0 ? DF_SYMBOL : _option$symbol,
-        _option$recent = option.recent,
-        recent = _option$recent === void 0 ? '' : _option$recent,
-        articles = _toArticles(json);
-
     return {
       source: SOURCE_ID,
-      articles: articles,
-      sortBy: symbol.toUpperCase() + " " + recent
+      articles: _toArticles(json),
+      sortBy: _crSortBy(option)
     };
   }
 };
