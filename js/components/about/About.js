@@ -15,7 +15,7 @@ var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 
-var _About = _interopRequireDefault(require("./About.Style"));
+var _About = require("./About.Style");
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
@@ -61,7 +61,7 @@ var About = function About(_ref2) {
       isShow = _useBool[0],
       setIsShowTrue = _useBool[1],
       setIsShowFalse = _useBool[2],
-      TS = (0, _useTheme["default"])(_About["default"]);
+      TS = (0, _useTheme["default"])(_About.styleConfig);
 
   (0, _useListen["default"])(store, function (actionType) {
     if (actionType === showAction) {
@@ -72,7 +72,7 @@ var About = function About(_ref2) {
   });
 
   var _className = (0, _crCn["default"])(CL_ABOUT_PANE, [isShow, CL_SHOW]),
-      _style = isShow ? TS.BLOCK : TS.NONE;
+      _style = isShow ? _About.S_BLOCK : _About.S_NONE;
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: _className,
@@ -83,51 +83,59 @@ var About = function About(_ref2) {
       onClose: setIsShowFalse
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
       className: TS.CL_SCROLL_PANE,
-      style: TS.SCROLL_DIV,
+      style: _About.S_SCROLL_DIV,
       children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-        style: TS.DIV_WRAPPER,
+        style: _About.S_DIV_WRAPPER,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-          style: TS.DIV_TEXT,
+          style: _About.S_LH_14,
           children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("p", {
             children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-              style: TS.APP_TITLE,
+              style: _About.S_APP_TITLE,
               children: "News Agreggator"
             }), " is web app for browsing news."]
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
             children: "News headlines providers:\xA0"
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(ItemStack, {
+          })]
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          style: _About.S_LH_18,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(ItemStack, {
             items: PROVIDER_LINKS,
             crItem: _crLinkItem
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
-            style: TS.MT_8,
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+          style: _About.S_LH_14,
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+            style: _About.S_MT_8,
             children: "Personal API Keys from providers are required."
           }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
             children: "API Keys can be set by means off Settings Dialog."
           })]
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
-          style: TS.MT_8,
+          style: _About.S_MT_8,
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-            style: TS.BLACK,
+            style: _About.S_BLACK,
             children: "Browsing by news source:"
           })
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(ItemStack, {
           items: NEWS_SOURCE_STEP_DESCRIPTIONS,
           crItem: _crStepItem
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
-          style: TS.MT_8,
-          children: "Not all news source support all sortBy values."
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
-          style: TS.MT_8,
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-            style: TS.BLACK,
-            children: "Browsing by search terms:"
-          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+          style: _About.S_LH_14,
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+            style: _About.S_MT_8,
+            children: "Not all news source support all sortBy values."
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+            children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+              style: TS.BLACK,
+              children: "Browsing by search terms:"
+            })
+          })]
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(ItemStack, {
           items: SEARCH_TERM_STEP_DESCRIPTIONS,
           crItem: _crStepItem
         }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconLogoBar["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
           children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-            style: TS.BLACK,
+            style: _About.S_BLACK,
             children: "*Logos Fair Use."
           })
         })]

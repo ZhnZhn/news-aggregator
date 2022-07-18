@@ -3,7 +3,18 @@ import useTheme from '../hooks/useTheme';
 import useListen from '../hooks/useListen';
 
 import crCn from '../zhn-utils/crCn';
-import styleConfig from './About.Style';
+import {
+  S_BLOCK,
+  S_NONE,
+  S_APP_TITLE,
+  S_SCROLL_DIV,
+  S_DIV_WRAPPER,
+  S_BLACK,
+  S_LH_14,
+  S_LH_18,
+  S_MT_8,
+  styleConfig
+} from './About.Style';
 
 import A from '../Comp';
 import Step from './Step';
@@ -43,7 +54,10 @@ const SEARCH_TERM_STEP_DESCRIPTIONS = [
   "Click a button Load in dialog."
 ];
 
-const _crStepItem = (descr, index) => (
+const _crStepItem = (
+  descr,
+  index
+) => (
   <Step
     key={index}
     step={index+1}
@@ -73,7 +87,7 @@ const About = ({
   })
 
   const _className = crCn(CL_ABOUT_PANE, [isShow, CL_SHOW])
-  , _style = isShow ? TS.BLOCK : TS.NONE;
+  , _style = isShow ? S_BLOCK : S_NONE;
 
   return (
     <div
@@ -87,48 +101,53 @@ const About = ({
        />
        <A.ScrollPane
           className={TS.CL_SCROLL_PANE}
-          style={TS.SCROLL_DIV}
+          style={S_SCROLL_DIV}
        >
-         <div style={TS.DIV_WRAPPER}>
-            <div style={TS.DIV_TEXT}>
+         <div style={S_DIV_WRAPPER}>
+            <div style={S_LH_14}>
                <p>
-                 <span style={TS.APP_TITLE}>News Agreggator</span> is web app for browsing news.
+                 <span style={S_APP_TITLE}>News Agreggator</span> is web app for browsing news.
                </p>
                <p>
                  News headlines providers:&nbsp;
                </p>
-               <ItemStack
-                  items={PROVIDER_LINKS}
-                  crItem={_crLinkItem}
-               />
-               <p style={TS.MT_8}>
-                 Personal API Keys from providers are required.
-               </p>
-               <p>
-                 API Keys can be set by means off Settings Dialog.
-               </p>
+            </div>
+            <div style={S_LH_18}>
+              <ItemStack
+                items={PROVIDER_LINKS}
+                crItem={_crLinkItem}
+              />
            </div>
-           <p style={TS.MT_8}>
-             <span style={TS.BLACK}>Browsing by news source:</span>
+           <div style={S_LH_14}>
+             <p style={S_MT_8}>
+              Personal API Keys from providers are required.
+             </p>
+             <p>
+              API Keys can be set by means off Settings Dialog.
+             </p>
+           </div>
+           <p style={S_MT_8}>
+             <span style={S_BLACK}>Browsing by news source:</span>
            </p>
            <ItemStack
              items={NEWS_SOURCE_STEP_DESCRIPTIONS}
              crItem={_crStepItem}
            />
-           <p style={TS.MT_8}>
-             Not all news source support all sortBy values.
-           </p>
-
-           <p style={TS.MT_8}>
-             <span style={TS.BLACK}>Browsing by search terms:</span>
-           </p>
+           <div style={S_LH_14}>
+             <p style={S_MT_8}>
+               Not all news source support all sortBy values.
+             </p>
+             <p>
+               <span style={TS.BLACK}>Browsing by search terms:</span>
+             </p>
+           </div>
            <ItemStack
              items={SEARCH_TERM_STEP_DESCRIPTIONS}
              crItem={_crStepItem}
            />
            <IconLogoBar />
            <p>
-             <span style={TS.BLACK}>
+             <span style={S_BLACK}>
                *Logos Fair Use.
              </span>
           </p>
