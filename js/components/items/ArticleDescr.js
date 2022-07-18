@@ -11,14 +11,19 @@ var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
 
 var _SafeLink = _interopRequireDefault(require("../zhn-atoms/SafeLink"));
 
+var _TextDiv = _interopRequireDefault(require("../zhn-atoms/TextDiv"));
+
+var _TextSpan = _interopRequireDefault(require("../zhn-atoms/TextSpan"));
+
 var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
 var CL_DIV = "link-wrapper",
+    CL_SELECT_NONE = "select-none",
     S_DESCR = {
   display: 'block',
-  lineHeight: 1.8,
+  lineHeight: 1.4,
   padding: '8px 16px 4px 16px',
   color: '#121212',
   fontSize: '1rem',
@@ -89,12 +94,12 @@ var ArticleDescr = function ArticleDescr(_ref) {
     isShow: isShow,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       style: S_AUTHOR_ROW,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_TextSpan["default"], {
         style: S_AUTHOR,
-        children: author
-      }), timeAgo && /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        text: author
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_TextSpan["default"], {
         style: S_DATE,
-        children: timeAgo
+        text: timeAgo
       })]
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SafeLink["default"], {
       className: CL_DIV,
@@ -104,16 +109,18 @@ var ArticleDescr = function ArticleDescr(_ref) {
       children: description
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       style: S_PT_8,
-      children: [related && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_TextDiv["default"], {
+        className: CL_SELECT_NONE,
         style: S_RELATED,
-        children: related
+        text: related
       }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         style: S_BOTTOM_ROW,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgX["default"], {
           onClick: onClose
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_TextSpan["default"], {
+          className: CL_SELECT_NONE,
           style: S_DATE,
-          children: publishedAt
+          text: publishedAt
         })]
       })]
     })]

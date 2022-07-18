@@ -2,12 +2,15 @@ import { useCallback } from 'react';
 
 import ShowHide from '../zhn-atoms/ShowHide';
 import SafeLink from '../zhn-atoms/SafeLink';
+import TextDiv from '../zhn-atoms/TextDiv';
+import TextSpan from '../zhn-atoms/TextSpan';
 import SvgX from '../zhn-atoms/SvgX';
 
 const CL_DIV = "link-wrapper"
+, CL_SELECT_NONE = "select-none"
 , S_DESCR = {
   display: 'block',
-  lineHeight: 1.8,
+  lineHeight: 1.4,
   padding: '8px 16px 4px 16px',
   color: '#121212',
   fontSize: '1rem',
@@ -75,15 +78,14 @@ const ArticleDescr = ({
       isShow={isShow}
     >
         <div style={S_AUTHOR_ROW}>
-          <span style={S_AUTHOR}>
-            {author}
-          </span>
-          {
-            timeAgo &&
-            <span style={S_DATE}>
-                {timeAgo}
-            </span>
-          }
+          <TextSpan
+             style={S_AUTHOR}
+             text={author}
+          />
+          <TextSpan
+             style={S_DATE}
+             text={timeAgo}
+          />
         </div>
         <SafeLink
           className={CL_DIV}
@@ -94,18 +96,19 @@ const ArticleDescr = ({
           {description}
         </SafeLink>
         <div style={S_PT_8}>
-        {
-          related &&
-          <div style={S_RELATED}>
-            {related}
+          <TextDiv
+            className={CL_SELECT_NONE}
+            style={S_RELATED}
+            text={related}
+          />
+          <div style={S_BOTTOM_ROW}>
+            <SvgX onClick={onClose} />
+            <TextSpan
+              className={CL_SELECT_NONE}
+              style={S_DATE}
+              text={publishedAt}
+            />
           </div>
-        }
-        <div style={S_BOTTOM_ROW}>
-          <SvgX onClick={onClose} />
-          <span style={S_DATE}>
-             {publishedAt}
-          </span>
-        </div>
         </div>
     </ShowHide>
   );
