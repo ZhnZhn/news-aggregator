@@ -9,7 +9,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _react = require("react");
 
-var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
+var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
 
 var _useKeyDelete = _interopRequireDefault(require("../hooks/useKeyDelete"));
 
@@ -125,12 +125,12 @@ var StackItem = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
       _ref$onRemoveItem = _ref.onRemoveItem,
       onRemoveItem = _ref$onRemoveItem === void 0 ? _fnNoop : _ref$onRemoveItem;
 
-  var _useBool = (0, _useBool2["default"])(false),
-      isClosed = _useBool[0],
-      setClosed = _useBool[1],
+  var _useToggle = (0, _useToggle2["default"])(false),
+      isClosed = _useToggle[0],
+      toggleIsClosed = _useToggle[1],
       _hClose = (0, _react.useCallback)(function () {
     onCloseItem(item);
-    setClosed();
+    toggleIsClosed(true);
   }, []),
       _hKeyDown = (0, _useKeyDelete["default"])(_hClose),
       _onGestureSwipeX = (0, _useItemGestureSwipeX["default"])(item, onRemoveUnder, _hClose),

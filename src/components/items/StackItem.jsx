@@ -1,6 +1,10 @@
-import { forwardRef, useCallback, useMemo } from 'react';
+import {
+  forwardRef,
+  useCallback,
+  useMemo
+} from 'react';
 
-import useBool from '../hooks/useBool';
+import useToggle from '../hooks/useToggle';
 import useKeyDelete from '../hooks/useKeyDelete';
 import useTheme from '../hooks/useTheme';
 import styleConfig from './Article.Style';
@@ -82,7 +86,10 @@ const TOKEN_REPUTATION = HAS_TOUCH ? 'R' : (
   <span role="img" arial-label="shamrock">&#x2618;</span>
 );
 
-const _fTagItem = TS  => (tag, index) => (
+const _fTagItem = TS  => (
+  tag,
+  index
+) => (
   <span key={index} style={{...S_SPAN_TAG, ...TS.DESCR}}>
      {tag}
   </span>
@@ -96,11 +103,14 @@ const StackItem = forwardRef(({
   onRemoveUnder=_fnNoop,
   onRemoveItem=_fnNoop
 }, ref) => {
-  const [isClosed, setClosed] = useBool(false)
+  const [
+    isClosed,
+    toggleIsClosed
+  ] = useToggle(false)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hClose = useCallback(() => {
     onCloseItem(item)
-    setClosed()
+    toggleIsClosed(true)
   }, [])
   //item, onCloseIte, setClosed
   /*eslint-enable react-hooks/exhaustive-deps */
@@ -111,11 +121,18 @@ const StackItem = forwardRef(({
 
   const {
     is_answered,
-    answer_count, score, view_count,
+    answer_count,
+    score,
+    view_count,
     title,
-    link, owner, tags
+    link,
+    owner,
+    tags
   } = item || {}
-  , { reputation, display_name } = owner || {}
+  , {
+    reputation,
+    display_name
+  } = owner || {}
   , _style = crStyle([isClosed, S_NONE]);
 
   return (
