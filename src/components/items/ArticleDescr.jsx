@@ -8,43 +8,43 @@ import SvgX from '../zhn-atoms/SvgX';
 
 const CL_DIV = "link-wrapper"
 , CL_SELECT_NONE = "select-none"
+, S_FONT = {
+   color: '#121212',
+   fontSize: '1rem',
+   fontWeight: 'bold',
+   wordBreak: 'break-word'
+}
 , S_DESCR = {
-  display: 'block',
-  lineHeight: 1.4,
-  padding: '8px 16px 4px 16px',
-  color: '#121212',
-  fontSize: '1rem',
-  fontWeight: 'bold',
-  //whiteSpace: "pre-wrap",
-  whiteSpace: "pre-line",
-  wordBreak: 'break-word'
-},
-S_RELATED = {
-  lineHeight: 1.8,
-  padding: '0 16px 0 16px',
-  color: '#121212',
-  fontSize: '1rem',
-  fontWeight: 'bold',
-  wordBreak: 'break-word'
-},
-S_AUTHOR_ROW = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  padding: '8px 12px 0 16px',
-},
-S_BOTTOM_ROW = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  padding: '0 12px 6px 16px',
-},
-S_AUTHOR = {
-  color: 'gray',
-  paddingRight: 16,
-  fontWeight: 'bold'
-},
-S_DATE = {
-  color: 'gray',
-  fontWeight: 'bold'
+   ...S_FONT,
+   display: 'block',
+   lineHeight: 1.4,
+   padding: '8px 16px 4px 16px',
+   whiteSpace: "pre-line",
+}
+, S_RELATED = {
+   ...S_FONT,
+  lineHeight: 1.6,
+   padding: '0 16px 0 16px',
+}
+, S_FLEX_SPACE_BETWEEN = {
+   display: 'flex',
+   justifyContent: 'space-between',
+}
+, S_AUTHOR_ROW = {
+   ...S_FLEX_SPACE_BETWEEN,
+   padding: '8px 12px 0 16px',
+}
+, S_BOTTOM_ROW = {
+   ...S_FLEX_SPACE_BETWEEN,
+   padding: '0 12px 6px 16px',
+}
+, S_DATE = {
+   color: 'gray',
+   fontWeight: 'bold'
+}
+, S_AUTHOR = {
+   ...S_DATE,
+   paddingRight: 16,
 }
 , S_PT_8 = { paddingTop: 8};
 

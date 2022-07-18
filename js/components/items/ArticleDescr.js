@@ -5,6 +5,8 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
 var _react = require("react");
 
 var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
@@ -21,44 +23,39 @@ var _jsxRuntime = require("react/jsx-runtime");
 
 var CL_DIV = "link-wrapper",
     CL_SELECT_NONE = "select-none",
-    S_DESCR = {
+    S_FONT = {
+  color: '#121212',
+  fontSize: '1rem',
+  fontWeight: 'bold',
+  wordBreak: 'break-word'
+},
+    S_DESCR = (0, _extends2["default"])({}, S_FONT, {
   display: 'block',
   lineHeight: 1.4,
   padding: '8px 16px 4px 16px',
-  color: '#121212',
-  fontSize: '1rem',
-  fontWeight: 'bold',
-  //whiteSpace: "pre-wrap",
-  whiteSpace: "pre-line",
-  wordBreak: 'break-word'
-},
-    S_RELATED = {
-  lineHeight: 1.8,
-  padding: '0 16px 0 16px',
-  color: '#121212',
-  fontSize: '1rem',
-  fontWeight: 'bold',
-  wordBreak: 'break-word'
-},
-    S_AUTHOR_ROW = {
+  whiteSpace: "pre-line"
+}),
+    S_RELATED = (0, _extends2["default"])({}, S_FONT, {
+  lineHeight: 1.6,
+  padding: '0 16px 0 16px'
+}),
+    S_FLEX_SPACE_BETWEEN = {
   display: 'flex',
-  justifyContent: 'space-between',
+  justifyContent: 'space-between'
+},
+    S_AUTHOR_ROW = (0, _extends2["default"])({}, S_FLEX_SPACE_BETWEEN, {
   padding: '8px 12px 0 16px'
-},
-    S_BOTTOM_ROW = {
-  display: 'flex',
-  justifyContent: 'space-between',
+}),
+    S_BOTTOM_ROW = (0, _extends2["default"])({}, S_FLEX_SPACE_BETWEEN, {
   padding: '0 12px 6px 16px'
-},
-    S_AUTHOR = {
-  color: 'gray',
-  paddingRight: 16,
-  fontWeight: 'bold'
-},
+}),
     S_DATE = {
   color: 'gray',
   fontWeight: 'bold'
 },
+    S_AUTHOR = (0, _extends2["default"])({}, S_DATE, {
+  paddingRight: 16
+}),
     S_PT_8 = {
   paddingTop: 8
 };
