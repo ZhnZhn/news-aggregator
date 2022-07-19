@@ -2,8 +2,10 @@ import {
   useRef,
   useState,
   useCallback,
-  useMemo
-} from 'react';
+  useMemo,
+  getRefElementStyle,
+  focusRefElement
+} from '../uiApi';
 
 import useToggle from '../hooks/useToggle';
 import useBool from '../hooks/useBool';
@@ -52,10 +54,8 @@ const _getWidth = style => parseInt(style.width, 10)
 const _toStyleWidth = width => width + 'px';
 
 const _focusFirstItem = ref => {
-  setTimeout( () => {
-    if (ref && ref.current && ref.current.focus) {
-      ref.current.focus()
-    }
+  setTimeout(() => {
+    focusRefElement(ref)
   }, 1000)
 };
 
@@ -80,25 +80,25 @@ const _crArticleItem = (article, index, {
   />
 );
 
-const _crModelMoreHandlers = (ref, onRemoveItems) => {
-  const _getRootNodeStyle = () => {
-    const { current } = ref
-    , { style } = current || {};
-    return style || {};
-  }
-  , _resizeTo = (width) => {
-    _getRootNodeStyle().width = _toStyleWidth(width);
+const _crModelMoreHandlers = (
+  ref,
+  onRemoveItems
+) => {
+  const _resizeTo = (
+    width
+  ) => {
+    (getRefElementStyle(ref) || {}).width = _toStyleWidth(width);
   }
   , _plusToWidth = () => {
-    const style = _getRootNodeStyle()
-        , w = _getWidth(style) + RESIZE_DELTA;
+    const style = getRefElementStyle(ref) || {}
+    , w = _getWidth(style) + RESIZE_DELTA;
     if (w < RESIZE_MAX_WIDTH) {
        style.width = _toStyleWidth(w)
     }
   }
   , _minusToWidth = () => {
-    const style = _getRootNodeStyle()
-        , w = _getWidth(style) - RESIZE_DELTA;
+    const style = getRefElementStyle(ref) || {}
+    , w = _getWidth(style) - RESIZE_DELTA;
     if (w > RESIZE_MIN_WIDTH) {
       style.width = _toStyleWidth(w)
     }

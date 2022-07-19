@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
 
@@ -72,9 +72,7 @@ var _toStyleWidth = function _toStyleWidth(width) {
 
 var _focusFirstItem = function _focusFirstItem(ref) {
   setTimeout(function () {
-    if (ref && ref.current && ref.current.focus) {
-      ref.current.focus();
-    }
+    (0, _uiApi.focusRefElement)(ref);
   }, 1000);
 };
 
@@ -96,18 +94,11 @@ var _crArticleItem = function _crArticleItem(article, index, _ref) {
 };
 
 var _crModelMoreHandlers = function _crModelMoreHandlers(ref, onRemoveItems) {
-  var _getRootNodeStyle = function _getRootNodeStyle() {
-    var current = ref.current,
-        _ref2 = current || {},
-        style = _ref2.style;
-
-    return style || {};
-  },
-      _resizeTo = function _resizeTo(width) {
-    _getRootNodeStyle().width = _toStyleWidth(width);
+  var _resizeTo = function _resizeTo(width) {
+    ((0, _uiApi.getRefElementStyle)(ref) || {}).width = _toStyleWidth(width);
   },
       _plusToWidth = function _plusToWidth() {
-    var style = _getRootNodeStyle(),
+    var style = (0, _uiApi.getRefElementStyle)(ref) || {},
         w = _getWidth(style) + RESIZE_DELTA;
 
     if (w < RESIZE_MAX_WIDTH) {
@@ -115,7 +106,7 @@ var _crModelMoreHandlers = function _crModelMoreHandlers(ref, onRemoveItems) {
     }
   },
       _minusToWidth = function _minusToWidth() {
-    var style = _getRootNodeStyle(),
+    var style = (0, _uiApi.getRefElementStyle)(ref) || {},
         w = _getWidth(style) - RESIZE_DELTA;
 
     if (w > RESIZE_MIN_WIDTH) {
@@ -132,22 +123,22 @@ var _crModelMoreHandlers = function _crModelMoreHandlers(ref, onRemoveItems) {
   };
 };
 
-var NewsPane = function NewsPane(_ref3) {
-  var store = _ref3.store,
-      addAction = _ref3.addAction,
-      showAction = _ref3.showAction,
-      toggleAction = _ref3.toggleAction,
-      id = _ref3.id,
-      paneCaption = _ref3.paneCaption,
-      Item = _ref3.Item,
-      onRemoveItems = _ref3.onRemoveItems,
-      onRemoveUnder = _ref3.onRemoveUnder,
-      onCloseItem = _ref3.onCloseItem,
-      onClose = _ref3.onClose;
+var NewsPane = function NewsPane(_ref2) {
+  var store = _ref2.store,
+      addAction = _ref2.addAction,
+      showAction = _ref2.showAction,
+      toggleAction = _ref2.toggleAction,
+      id = _ref2.id,
+      paneCaption = _ref2.paneCaption,
+      Item = _ref2.Item,
+      onRemoveItems = _ref2.onRemoveItems,
+      onRemoveUnder = _ref2.onRemoveUnder,
+      onCloseItem = _ref2.onCloseItem,
+      onClose = _ref2.onClose;
 
-  var _refRootDiv = (0, _react.useRef)(),
-      _refFirstItem = (0, _react.useRef)(),
-      _MODEL_MORE = (0, _react.useMemo)(function () {
+  var _refRootDiv = (0, _uiApi.useRef)(),
+      _refFirstItem = (0, _uiApi.useRef)(),
+      _MODEL_MORE = (0, _uiApi.useMemo)(function () {
     return (0, _crModelMore["default"])(_crModelMoreHandlers(_refRootDiv, onRemoveItems));
   }, []),
       _useToggle = (0, _useToggle2["default"])(true),
@@ -157,7 +148,7 @@ var NewsPane = function NewsPane(_ref3) {
       isMore = _useBool[0],
       _showMore = _useBool[1],
       _hideMore = _useBool[2],
-      _useState = (0, _react.useState)({
+      _useState = (0, _uiApi.useState)({
     articles: [],
     sortBy: ''
   }),
@@ -165,7 +156,7 @@ var NewsPane = function NewsPane(_ref3) {
       setState = _useState[1],
       articles = state.articles,
       sortBy = state.sortBy,
-      _hHide = (0, _react.useCallback)(function () {
+      _hHide = (0, _uiApi.useCallback)(function () {
     onClose();
     toggleIsShow(false);
   }, []),
