@@ -25,6 +25,8 @@ var _has = _interopRequireDefault(require("../has"));
 
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 
+var _SvgHrzResize = _interopRequireDefault(require("../zhn-resize/SvgHrzResize"));
+
 var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _jsxRuntime = require("react/jsx-runtime");
@@ -41,6 +43,10 @@ var WIDTH_STYLE = _has["default"].initWidthStyle(),
   position: 'relative',
   top: -3,
   margin: '0 6px 0 16px'
+},
+    S_SVG_RESIZE = {
+  position: 'relative',
+  top: 2
 },
     S_SCROLL_DIV = {
   overflow: 'hidden auto',
@@ -124,10 +130,6 @@ var _crModelMoreHandlers = function _crModelMoreHandlers(ref, onRemoveItems) {
   };
 };
 
-var _getRefValue = function _getRefValue(ref) {
-  return ref.current;
-};
-
 var NewsPane = function NewsPane(_ref3) {
   var store = _ref3.store,
       addAction = _ref3.addAction,
@@ -142,9 +144,6 @@ var NewsPane = function NewsPane(_ref3) {
       onClose = _ref3.onClose;
 
   var _refRootDiv = (0, _react.useRef)(),
-      _getRootDiv = (0, _react.useCallback)(function () {
-    return _getRefValue(_refRootDiv);
-  }, []),
       _refFirstItem = (0, _react.useRef)(),
       _MODEL_MORE = (0, _react.useMemo)(function () {
     return (0, _crModelMore["default"])(_crModelMoreHandlers(_refRootDiv, onRemoveItems));
@@ -220,10 +219,12 @@ var NewsPane = function NewsPane(_ref3) {
         title: "Remove All Items",
         style: S_BT_REMOVE,
         onClick: onRemoveItems
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].SvgHrzResize, {
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgHrzResize["default"], {
+        elementRef: _refRootDiv,
+        style: S_SVG_RESIZE,
+        initWidth: RESIZE_INIT_WIDTH,
         minWidth: RESIZE_MIN_WIDTH,
-        maxWidth: RESIZE_MAX_WIDTH,
-        getDomNode: _getRootDiv
+        maxWidth: RESIZE_MAX_WIDTH
       })]
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
       className: TS.CL_SCROLL_PANE,

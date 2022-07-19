@@ -5,8 +5,6 @@ import BrowserCaption from './BrowserCaption';
 import ScrollPane from './ScrollPane';
 import SpinnerLoading from './SpinnerLoading';
 
-import SvgHrzResize from './SvgHrzResize';
-
 import MenuItem from './MenuItem';
 import ShowHide from './ShowHide';
 
@@ -19,8 +17,6 @@ const Atoms = {
   BrowserCaption,
   ScrollPane,
   SpinnerLoading,
-
-  SvgHrzResize,
 
   MenuItem,
   ShowHide,

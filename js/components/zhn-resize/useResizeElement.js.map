@@ -1,0 +1,23 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-resize/useResizeElement.js"
+ ],
+ "file": "../../../src/components/zhn-resize/useResizeElement.js",
+ "names": [
+  "useResizeElement",
+  "props",
+  "ref",
+  "resizeImpl",
+  "ResizeElementImpl",
+  "toWidth",
+  "resizeBy",
+  "clearInterval",
+  "hStartResizeLeft",
+  "hStartResizeRight",
+  "hStopResize",
+  "hKdLeft",
+  "hKdRight"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAIA;;AAEA;;AAEA,IAAMA,gBAAgB,GAAG,SAAnBA,gBAAmB,CACvBC,KADuB,EAEvBC,GAFuB,EAGpB;AACH,MAAMC,UAAU,GAAG,4BAAW,YAAM;AAClC,WAAO,IAAIC,6BAAJ,CAAsBH,KAAtB,CAAP;AACD,GAFkB,CAAnB;AAIA;;AACA,kCAAoBC,GAApB,EAAyB;AAAA,WAAO;AAC9BG,MAAAA,OAAO,EAAEF,UAAU,CAACE,OADU;AAE9BC,MAAAA,QAAQ,EAAEH,UAAU,CAACG;AAFS,KAAP;AAAA,GAAzB,EAGI,EAHJ,EANG,CAUH;;AAEA,wBAAU,YAAM;AACd,WAAO;AAAA,aAAMH,UAAU,CAACI,aAAX,EAAN;AAAA,KAAP;AACD,GAFD,EAEG,EAFH,EAZG,CAeH;;AACA;;AAEA,SAAO,CACLJ,UAAU,CAACK,gBADN,EAELL,UAAU,CAACM,iBAFN,EAGLN,UAAU,CAACO,WAHN,EAILP,UAAU,CAACQ,OAJN,EAKLR,UAAU,CAACS,QALN,CAAP;AAOD,CA5BD;;eA8BeZ,gB"
+}

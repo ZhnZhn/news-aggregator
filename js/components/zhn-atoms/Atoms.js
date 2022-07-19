@@ -17,8 +17,6 @@ var _ScrollPane = _interopRequireDefault(require("./ScrollPane"));
 
 var _SpinnerLoading = _interopRequireDefault(require("./SpinnerLoading"));
 
-var _SvgHrzResize = _interopRequireDefault(require("./SvgHrzResize"));
-
 var _MenuItem = _interopRequireDefault(require("./MenuItem"));
 
 var _ShowHide = _interopRequireDefault(require("./ShowHide"));
@@ -30,7 +28,6 @@ var Atoms = (0, _extends2["default"])({}, _SvgIcons["default"], {
   BrowserCaption: _BrowserCaption["default"],
   ScrollPane: _ScrollPane["default"],
   SpinnerLoading: _SpinnerLoading["default"],
-  SvgHrzResize: _SvgHrzResize["default"],
   MenuItem: _MenuItem["default"],
   ShowHide: _ShowHide["default"],
   ItemStack: _ItemStack["default"]

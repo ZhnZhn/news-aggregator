@@ -1,4 +1,9 @@
-import { useRef, useState, useCallback, useMemo } from 'react';
+import {
+  useRef,
+  useState,
+  useCallback,
+  useMemo
+} from 'react';
 
 import useBool from '../hooks/useBool';
 import useTheme from '../hooks/useTheme';
@@ -10,6 +15,7 @@ import styleConfig from './NewsPane.Style';
 import has from '../has';
 
 import crModelMore from './crModelMore';
+import SvgHrzResize from '../zhn-resize/SvgHrzResize';
 import A from '../Comp';
 
 const WIDTH_STYLE = has.initWidthStyle()
@@ -26,6 +32,10 @@ const WIDTH_STYLE = has.initWidthStyle()
   position: 'relative',
   top: -3,
   margin: '0 6px 0 16px'
+}
+, S_SVG_RESIZE = {
+  position: 'relative',
+  top: 2
 }
 , S_SCROLL_DIV = {
   overflow: 'hidden auto',
@@ -102,8 +112,6 @@ const _crModelMoreHandlers = (ref, onRemoveItems) => {
   };
 };
 
-const _getRefValue = ref => ref.current;
-
 const NewsPane = ({
   store,
 
@@ -121,7 +129,6 @@ const NewsPane = ({
   onClose
 }) => {
   const _refRootDiv = useRef()
-  , _getRootDiv = useCallback(() => _getRefValue(_refRootDiv), [])
   , _refFirstItem = useRef()
   /*eslint-disable react-hooks/exhaustive-deps */
   , _MODEL_MORE = useMemo(
@@ -142,7 +149,7 @@ const NewsPane = ({
   // onClose
   /*eslint-enable react-hooks/exhaustive-deps */
   , TS = useTheme(styleConfig);
-  
+
   useListen(store, (actionType, option={}) => {
     if (option.id === id){
       if (actionType === addAction) {
@@ -193,10 +200,12 @@ const NewsPane = ({
           style={S_BT_REMOVE}
           onClick={onRemoveItems}
         />
-        <A.SvgHrzResize
-          minWidth={RESIZE_MIN_WIDTH}
-          maxWidth={RESIZE_MAX_WIDTH}
-          getDomNode={_getRootDiv}
+        <SvgHrzResize
+           elementRef={_refRootDiv}
+           style={S_SVG_RESIZE}
+           initWidth={RESIZE_INIT_WIDTH}
+           minWidth={RESIZE_MIN_WIDTH}
+           maxWidth={RESIZE_MAX_WIDTH}
         />
       </A.BrowserCaption>
       <A.ScrollPane className={TS.CL_SCROLL_PANE} style={S_SCROLL_DIV}>
