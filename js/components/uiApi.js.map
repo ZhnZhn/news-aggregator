@@ -1,0 +1,9 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/components/uiApi.js"
+ ],
+ "file": "../../src/components/uiApi.js",
+ "names": [],
+ "mappings": ";;;;;AAAA"
+}
