@@ -5,6 +5,7 @@ import {
   useMemo
 } from 'react';
 
+import useToggle from '../hooks/useToggle';
 import useBool from '../hooks/useBool';
 import useTheme from '../hooks/useTheme';
 import useListen from '../hooks/useListen';
@@ -137,14 +138,27 @@ const NewsPane = ({
    )
    // onRemoveItems
    /*eslint-enable react-hooks/exhaustive-deps */
-  , [isShow, setIsShow] = useState(true)
-  , [isMore, _showMore, _hideMore] = useBool(false)
-  , [state, setState] = useState({articles: [], sortBy: ''})
-  , { articles, sortBy } = state
+  , [
+    isShow,
+    toggleIsShow
+  ] = useToggle(true)
+  , [
+    isMore,
+    _showMore,
+    _hideMore
+  ] = useBool(false)
+  , [
+    state,
+    setState
+  ] = useState({articles: [], sortBy: ''})
+  , {
+    articles,
+    sortBy
+  } = state
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hHide = useCallback(() => {
      onClose()
-     setIsShow(false)
+     toggleIsShow(false)
   }, [])
   // onClose
   /*eslint-enable react-hooks/exhaustive-deps */
@@ -153,16 +167,16 @@ const NewsPane = ({
   useListen(store, (actionType, option={}) => {
     if (option.id === id){
       if (actionType === addAction) {
-        setIsShow(true)
+        toggleIsShow(true)
         setState(prevState => ({
           articles: option.data,
           sortBy: option.sortBy
         }))
         _focusFirstItem(_refFirstItem)
       } else if (actionType === showAction) {
-        setIsShow(true)
+        toggleIsShow(true)
       } else if (actionType === toggleAction) {
-        setIsShow(is => !is)
+        toggleIsShow()
       }
     }
   })

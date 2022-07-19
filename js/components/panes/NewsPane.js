@@ -9,6 +9,8 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _react = require("react");
 
+var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
+
 var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
 
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
@@ -148,24 +150,24 @@ var NewsPane = function NewsPane(_ref3) {
       _MODEL_MORE = (0, _react.useMemo)(function () {
     return (0, _crModelMore["default"])(_crModelMoreHandlers(_refRootDiv, onRemoveItems));
   }, []),
-      _useState = (0, _react.useState)(true),
-      isShow = _useState[0],
-      setIsShow = _useState[1],
+      _useToggle = (0, _useToggle2["default"])(true),
+      isShow = _useToggle[0],
+      toggleIsShow = _useToggle[1],
       _useBool = (0, _useBool2["default"])(false),
       isMore = _useBool[0],
       _showMore = _useBool[1],
       _hideMore = _useBool[2],
-      _useState2 = (0, _react.useState)({
+      _useState = (0, _react.useState)({
     articles: [],
     sortBy: ''
   }),
-      state = _useState2[0],
-      setState = _useState2[1],
+      state = _useState[0],
+      setState = _useState[1],
       articles = state.articles,
       sortBy = state.sortBy,
       _hHide = (0, _react.useCallback)(function () {
     onClose();
-    setIsShow(false);
+    toggleIsShow(false);
   }, []),
       TS = (0, _useTheme["default"])(_NewsPane["default"]);
 
@@ -176,7 +178,7 @@ var NewsPane = function NewsPane(_ref3) {
 
     if (option.id === id) {
       if (actionType === addAction) {
-        setIsShow(true);
+        toggleIsShow(true);
         setState(function (prevState) {
           return {
             articles: option.data,
@@ -186,11 +188,9 @@ var NewsPane = function NewsPane(_ref3) {
 
         _focusFirstItem(_refFirstItem);
       } else if (actionType === showAction) {
-        setIsShow(true);
+        toggleIsShow(true);
       } else if (actionType === toggleAction) {
-        setIsShow(function (is) {
-          return !is;
-        });
+        toggleIsShow();
       }
     }
   });
