@@ -1,5 +1,6 @@
 export {
   memo,
+  cloneElement,
   forwardRef,
   useRef,
   useState,

@@ -1,11 +1,12 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.forwardRef = exports.focusRefElement = void 0;
+exports.useState = exports.useRef = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useCallback = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.forwardRef = exports.focusRefElement = exports.cloneElement = void 0;
 
 var _react = require("react");
 
 exports.memo = _react.memo;
+exports.cloneElement = _react.cloneElement;
 exports.forwardRef = _react.forwardRef;
 exports.useRef = _react.useRef;
 exports.useState = _react.useState;
