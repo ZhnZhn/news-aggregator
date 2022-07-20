@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo } from '../uiApi';
 
 const _isNotShouldRerender = (
   prevProps,
