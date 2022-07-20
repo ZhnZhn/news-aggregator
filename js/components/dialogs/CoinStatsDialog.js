@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
@@ -37,10 +37,6 @@ var NEWS_FOR_OPTIONS = [{
 }],
     DF_FILTER = NEWS_FOR_OPTIONS[0];
 
-var _getRefValue = function _getRefValue(ref) {
-  return ref.current;
-};
-
 var CoinStatsDialog = function CoinStatsDialog(_ref) {
   var isShow = _ref.isShow,
       type = _ref.type,
@@ -56,13 +52,13 @@ var CoinStatsDialog = function CoinStatsDialog(_ref) {
       _useRefSelectOption = (0, _useRefSelectOption2["default"])(DF_FILTER.value),
       _refFilter = _useRefSelectOption[0],
       _selectFilter = _useRefSelectOption[1],
-      _hLoad = (0, _react.useCallback)(function () {
+      _hLoad = (0, _uiApi.useCallback)(function () {
     onLoad({
       type: type,
       source: source,
       itemConf: itemConf,
       loadId: 'CS',
-      filter: _getRefValue(_refFilter)
+      filter: (0, _uiApi.getRefValue)(_refFilter)
     });
 
     _hClose();

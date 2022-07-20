@@ -1,4 +1,7 @@
-import { useCallback } from 'react';
+import {
+  useCallback,
+  getRefValue
+} from '../uiApi';
 
 import styleConfig from './Dialog.Style';
 
@@ -15,8 +18,7 @@ const SORT_BY_OPTIONS = [
   { caption: "PublishedAt", value: "publishedAt" }
 ]
 , DF_SORT_BY = SORT_BY_OPTIONS[0]
-, DF_TERM = "Weather"
-, _getRefValue = ref => ref.current;
+, DF_TERM = "Weather";
 
 const NewsApiSearchDialog = ({
   isShow,
@@ -33,10 +35,12 @@ const NewsApiSearchDialog = ({
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(() => {
     onLoad({
-      type, source, itemConf,
+      type,
+      source,
+      itemConf,
       loadId: 'NS',
       symbol: _getInputTerm(),
-      sortBy: _getRefValue(_refSortBy)
+      sortBy: getRefValue(_refSortBy)
     })
     _hClose()
   }, [])

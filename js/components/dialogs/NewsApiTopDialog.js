@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _toFirstUpperCase = _interopRequireDefault(require("../../utils/toFirstUpperCase"));
 
@@ -192,10 +192,7 @@ var _CATEGORY = ['business', 'entertainment', 'general', 'health', 'science', 's
   caption: "Venezuala",
   value: "ve"
 }],
-    DF_COUNTRY = COUNTRY_OPTIONS[52],
-    _getRefValue = function _getRefValue(ref) {
-  return ref.current;
-};
+    DF_COUNTRY = COUNTRY_OPTIONS[52];
 
 var NewsApiTopDialog = function NewsApiTopDialog(_ref) {
   var isShow = _ref.isShow,
@@ -215,14 +212,14 @@ var NewsApiTopDialog = function NewsApiTopDialog(_ref) {
       _useRefSelectOption2 = (0, _useRefSelectOption3["default"])(DF_COUNTRY.value),
       _refCountry = _useRefSelectOption2[0],
       _selectCountry = _useRefSelectOption2[1],
-      _hLoad = (0, _react.useCallback)(function () {
+      _hLoad = (0, _uiApi.useCallback)(function () {
     onLoad({
       type: type,
       source: source,
       itemConf: itemConf,
       loadId: 'NT',
-      category: _getRefValue(_refCategory),
-      country: _getRefValue(_refCountry)
+      category: (0, _uiApi.getRefValue)(_refCategory),
+      country: (0, _uiApi.getRefValue)(_refCountry)
     });
 
     _hClose();

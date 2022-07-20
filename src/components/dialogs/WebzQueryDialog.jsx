@@ -1,4 +1,7 @@
-import { useCallback } from 'react';
+import {
+  useCallback,
+  getRefValue
+} from '../uiApi';
 
 import styleConfig from './Dialog.Style';
 
@@ -18,8 +21,6 @@ const SITE_TYPE_OPTIONS = [
 , DF_IN_TITLE = 'Weather'
 , DF_BEFORE_DAYS = 2;
 
-const _getRefValue = ref => ref.current;
-
 const WebzQueryDialog = ({
   isShow,
   type,
@@ -29,10 +30,22 @@ const WebzQueryDialog = ({
   onShow,
   onClose
 }) => {
-  const [_refDialog, _hClose] = useRefClose(onClose)
-  , [_refInputInTitle, _getInputInTitle] = useRefInput(DF_IN_TITLE)
-  , [_refSiteType, _selectSiteType] = useRefSelectOption(DF_SITE_TYPE.value)
-  , [_refInputBeforeDays, _getInputBeforeDays] = useRefInput(DF_BEFORE_DAYS)
+  const [
+    _refDialog,
+    _hClose
+  ] = useRefClose(onClose)
+  , [
+    _refInputInTitle,
+    _getInputInTitle
+  ] = useRefInput(DF_IN_TITLE)
+  , [
+    _refSiteType,
+    _selectSiteType
+  ] = useRefSelectOption(DF_SITE_TYPE.value)
+  , [
+    _refInputBeforeDays,
+    _getInputBeforeDays
+  ] = useRefInput(DF_BEFORE_DAYS)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(()=>{
     onLoad({
@@ -41,7 +54,7 @@ const WebzQueryDialog = ({
       itemConf,
       loadId: "W",
       inTitle: _getInputInTitle(),
-      siteType: _getRefValue(_refSiteType),
+      siteType: getRefValue(_refSiteType),
       beforeDays: _getInputBeforeDays()
     })
     _hClose()

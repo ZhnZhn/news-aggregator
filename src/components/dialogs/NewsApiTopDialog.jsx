@@ -1,4 +1,7 @@
-import { useCallback } from 'react';
+import {
+  useCallback,
+  getRefValue
+} from '../uiApi';
 
 import toFirstUpperCase from '../../utils/toFirstUpperCase';
 
@@ -74,8 +77,7 @@ const _CATEGORY = [
    { caption: "United States", value: "us" },
    { caption: "Venezuala", value: "ve" }
   ]
-, DF_COUNTRY = COUNTRY_OPTIONS[52]
-, _getRefValue = ref => ref.current;
+, DF_COUNTRY = COUNTRY_OPTIONS[52];
 
 const NewsApiTopDialog = ({
   isShow,
@@ -92,10 +94,12 @@ const NewsApiTopDialog = ({
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(()=>{
     onLoad({
-      type, source, itemConf,
+      type,
+      source,
+      itemConf,
       loadId: 'NT',
-      category: _getRefValue(_refCategory),
-      country: _getRefValue(_refCountry)
+      category: getRefValue(_refCategory),
+      country: getRefValue(_refCountry)
     })
     _hClose()
   }, [])

@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
@@ -19,11 +19,9 @@ var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S = {
-  POWERED_BY: {
-    marginLeft: 16,
-    marginBottom: 8
-  }
+var S_POWERED_BY = {
+  marginLeft: 16,
+  marginBottom: 8
 };
 var FEED_OPTIONS = [{
   caption: 'All',
@@ -101,10 +99,6 @@ var FEED_OPTIONS = [{
 }],
     DF_SORTBY = SORTBY_OPTIONS[0];
 
-var _getRefValue = function _getRefValue(ref) {
-  return ref.current;
-};
-
 var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(_ref) {
   var isShow = _ref.isShow,
       type = _ref.type,
@@ -126,15 +120,15 @@ var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(_ref) {
       _useRefSelectOption3 = (0, _useRefSelectOption4["default"])(DF_SORTBY.value),
       _refSortBy = _useRefSelectOption3[0],
       _selectSortBy = _useRefSelectOption3[1],
-      _hLoad = (0, _react.useCallback)(function () {
+      _hLoad = (0, _uiApi.useCallback)(function () {
     onLoad({
       type: type,
       source: source,
       itemConf: itemConf,
       loadId: 'CCN',
-      feed: _getRefValue(_refFeed),
-      category: _getRefValue(_refCategory),
-      sortOrder: _getRefValue(_refSortBy)
+      feed: (0, _uiApi.getRefValue)(_refFeed),
+      category: (0, _uiApi.getRefValue)(_refCategory),
+      sortOrder: (0, _uiApi.getRefValue)(_refSortBy)
     });
 
     _hClose();
@@ -179,7 +173,7 @@ var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(_ref) {
         onSelect: _selectSortBy
       })
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
-      rootStyle: S.POWERED_BY,
+      rootStyle: S_POWERED_BY,
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.CryptoCompare, {})
     })]
   });

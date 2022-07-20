@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
@@ -40,10 +40,6 @@ var RECENT_OPTIONS = [{
     DF_RECENT = RECENT_OPTIONS[1],
     DF_SYMBOL = "AAPL";
 
-var _getRefValue = function _getRefValue(ref) {
-  return ref.current;
-};
-
 var IexNewsDialog = function IexNewsDialog(_ref) {
   var isShow = _ref.isShow,
       type = _ref.type,
@@ -62,14 +58,14 @@ var IexNewsDialog = function IexNewsDialog(_ref) {
       _useRefSelectOption = (0, _useRefSelectOption2["default"])(DF_RECENT.value),
       _refRecent = _useRefSelectOption[0],
       _selectRecent = _useRefSelectOption[1],
-      _hLoad = (0, _react.useCallback)(function () {
+      _hLoad = (0, _uiApi.useCallback)(function () {
     onLoad({
       type: type,
       source: source,
       itemConf: itemConf,
       loadId: 'IEX',
       symbol: _getInputSymbol(),
-      recent: _getRefValue(_refRecent)
+      recent: (0, _uiApi.getRefValue)(_refRecent)
     });
 
     _hClose();

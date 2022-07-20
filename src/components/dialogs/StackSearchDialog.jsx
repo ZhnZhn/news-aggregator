@@ -1,4 +1,7 @@
-import { useCallback } from 'react';
+import {
+  useCallback,
+  getRefValue
+} from '../uiApi';
 
 import DateUtil from '../../utils/dt';
 import styleConfig from './Dialog.Style';
@@ -25,8 +28,10 @@ const INITIAL_FROM_DATE = DateUtil.getFromDate(1)
 , DF_SORT_BY = SORT_BY_OPTIONS[2]
 , DF_TAGGED = 'CSS'
 , DF_IN_TITLE = 'flexbox'
-, _crInputTitle = (prefix, dfValue) => `${prefix} (Default: ${dfValue})`
-, _getRefValue = ref => ref.current;
+, _crInputTitle = (
+  prefix,
+  dfValue
+) => `${prefix} (Default: ${dfValue})`
 
 const StackSearchDialog = ({
   isShow,
@@ -53,7 +58,7 @@ const StackSearchDialog = ({
         requestType: 'SEARCH',
         tagged: _getInputTagged(),
         inTitle: _getInputInTitle(),
-        sortBy: _getRefValue(_refSortBy),
+        sortBy: getRefValue(_refSortBy),
         fromDate: _toUTCSecond(_getInputFromDate()),
         toDate: _toUTCSecond(_getInputToDate())
       })

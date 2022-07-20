@@ -1,4 +1,7 @@
-import { useCallback } from 'react';
+import {
+  useCallback,
+  getRefValue
+} from '../uiApi';
 
 import styleConfig from './Dialog.Style';
 
@@ -13,9 +16,7 @@ const SORT_BY_OPTIONS = [
   { caption: 'Popular', value: 'popularity'},
   { caption: 'Newest', value: 'publishedAt' }
 ]
-, DF_SORT_BY = SORT_BY_OPTIONS[0]
-, _getRefValue = ref => ref.current;
-
+, DF_SORT_BY = SORT_BY_OPTIONS[0];
 
 const DialogType1 = ({
   isShow,
@@ -35,7 +36,7 @@ const DialogType1 = ({
       type,
       source,
       itemConf,
-      sortBy: _getRefValue(_refSortBy)
+      sortBy: getRefValue(_refSortBy)
     })
     _hClose()
   }, [])

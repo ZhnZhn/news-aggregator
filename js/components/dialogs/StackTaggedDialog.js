@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _dt = _interopRequireDefault(require("../../utils/dt"));
 
@@ -51,10 +51,6 @@ var INITIAL_FROM_DATE = _dt["default"].getFromDate(1),
     DF_SORT_BY = SORT_BY_OPTIONS[4],
     DF_TAG = "CSS";
 
-var _getRefValue = function _getRefValue(ref) {
-  return ref.current;
-};
-
 var StackTaggedDialog = function StackTaggedDialog(_ref) {
   var isShow = _ref.isShow,
       type = _ref.type,
@@ -79,7 +75,7 @@ var StackTaggedDialog = function StackTaggedDialog(_ref) {
       _useRefInput3 = (0, _useRefInput4["default"])(INITIAL_TO_DATE),
       _refToDate = _useRefInput3[0],
       _getInputToDate = _useRefInput3[1],
-      _hLoad = (0, _react.useCallback)(function () {
+      _hLoad = (0, _uiApi.useCallback)(function () {
     onLoad({
       type: type,
       source: source,
@@ -87,7 +83,7 @@ var StackTaggedDialog = function StackTaggedDialog(_ref) {
       loadId: 'SO',
       requestType: 'TAG',
       tag: _getInputTag(),
-      sortBy: _getRefValue(_refSortBy),
+      sortBy: (0, _uiApi.getRefValue)(_refSortBy),
       fromDate: _toUTCSecond(_getInputFromDate()),
       toDate: _toUTCSecond(_getInputToDate())
     });

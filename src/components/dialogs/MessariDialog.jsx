@@ -1,4 +1,7 @@
-import { useCallback } from 'react';
+import {
+  useCallback,
+  getRefValue
+} from '../uiApi';
 
 import styleConfig from './Dialog.Style';
 
@@ -34,8 +37,6 @@ const NEWS_FOR_OPTIONS = [
 */]
 , DF_ASSET_KEY = NEWS_FOR_OPTIONS[0];
 
-const _getRefValue = ref => ref.current;
-
 const MessariDialog = ({
   isShow,
   type,
@@ -50,9 +51,11 @@ const MessariDialog = ({
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(()=>{
     onLoad({
-      type, source, itemConf,
+      type,
+      source,
+      itemConf,
       loadId: 'MS',
-      assetKey: _getRefValue(_refAssetKey)
+      assetKey: getRefValue(_refAssetKey)
     })
     _hClose()
   }, [])

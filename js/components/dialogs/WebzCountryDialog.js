@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
@@ -233,10 +233,6 @@ var OPTION_COUNTRIES = [{
     DF_TOPIC = OPTION_TOPICS[0],
     DF_LANGUAGE = OPTION_LANGUAGES[0];
 
-var _getRefValue = function _getRefValue(ref) {
-  return ref.current;
-};
-
 var WebzCountryDialog = function WebzCountryDialog(_ref) {
   var isShow = _ref.isShow,
       type = _ref.type,
@@ -258,15 +254,15 @@ var WebzCountryDialog = function WebzCountryDialog(_ref) {
       _useRefSelectOption3 = (0, _useRefSelectOption4["default"])(''),
       _refLanguage = _useRefSelectOption3[0],
       _selectLanguage = _useRefSelectOption3[1],
-      _hLoad = (0, _react.useCallback)(function () {
+      _hLoad = (0, _uiApi.useCallback)(function () {
     onLoad({
       type: type,
       source: source,
       itemConf: itemConf,
       loadId: "W",
-      country: _getRefValue(_refCountry),
-      topic: _getRefValue(_refTopic),
-      lang: _getRefValue(_refLanguage)
+      country: (0, _uiApi.getRefValue)(_refCountry),
+      topic: (0, _uiApi.getRefValue)(_refTopic),
+      lang: (0, _uiApi.getRefValue)(_refLanguage)
     });
 
     _hClose();

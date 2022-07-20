@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
@@ -32,10 +32,7 @@ var SORT_BY_OPTIONS = [{
   value: "publishedAt"
 }],
     DF_SORT_BY = SORT_BY_OPTIONS[0],
-    DF_TERM = "Weather",
-    _getRefValue = function _getRefValue(ref) {
-  return ref.current;
-};
+    DF_TERM = "Weather";
 
 var NewsApiSearchDialog = function NewsApiSearchDialog(_ref) {
   var isShow = _ref.isShow,
@@ -55,14 +52,14 @@ var NewsApiSearchDialog = function NewsApiSearchDialog(_ref) {
       _useRefSelectOption = (0, _useRefSelectOption2["default"])(DF_SORT_BY.value),
       _refSortBy = _useRefSelectOption[0],
       _selectSortBy = _useRefSelectOption[1],
-      _hLoad = (0, _react.useCallback)(function () {
+      _hLoad = (0, _uiApi.useCallback)(function () {
     onLoad({
       type: type,
       source: source,
       itemConf: itemConf,
       loadId: 'NS',
       symbol: _getInputTerm(),
-      sortBy: _getRefValue(_refSortBy)
+      sortBy: (0, _uiApi.getRefValue)(_refSortBy)
     });
 
     _hClose();

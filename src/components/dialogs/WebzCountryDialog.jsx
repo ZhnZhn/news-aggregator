@@ -1,4 +1,7 @@
-import { useCallback } from 'react';
+import {
+  useCallback,
+  getRefValue
+} from '../uiApi';
 
 import styleConfig from './Dialog.Style';
 
@@ -88,9 +91,6 @@ const OPTION_COUNTRIES = [
 , DF_TOPIC = OPTION_TOPICS[0]
 , DF_LANGUAGE = OPTION_LANGUAGES[0];
 
-
-const _getRefValue = ref => ref.current;
-
 const WebzCountryDialog = ({
   isShow,
   type,
@@ -111,9 +111,9 @@ const WebzCountryDialog = ({
       source,
       itemConf,
       loadId: "W",
-      country: _getRefValue(_refCountry),
-      topic: _getRefValue(_refTopic),
-      lang: _getRefValue(_refLanguage)
+      country: getRefValue(_refCountry),
+      topic: getRefValue(_refTopic),
+      lang: getRefValue(_refLanguage)
     })
     _hClose()
   }, [])

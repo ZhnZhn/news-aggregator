@@ -1,4 +1,7 @@
-import { useCallback } from 'react';
+import {
+  useCallback,
+  getRefValue
+} from '../uiApi';
 
 import styleConfig from './Dialog.Style';
 
@@ -17,8 +20,6 @@ const NEWS_FOR_OPTIONS = [
 ]
 , DF_FILTER = NEWS_FOR_OPTIONS[0];
 
-const _getRefValue = ref => ref.current;
-
 const CoinStatsDialog = ({
   isShow,
   type,
@@ -33,9 +34,11 @@ const CoinStatsDialog = ({
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(() => {
     onLoad({
-      type, source, itemConf,
+      type,
+      source,
+      itemConf,
       loadId: 'CS',
-      filter: _getRefValue(_refFilter)
+      filter: getRefValue(_refFilter)
     })
     _hClose()
   }, [])

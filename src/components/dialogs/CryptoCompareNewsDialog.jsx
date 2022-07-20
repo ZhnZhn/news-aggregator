@@ -1,4 +1,7 @@
-import { useCallback } from 'react';
+import {
+  useCallback,
+  getRefValue
+} from '../uiApi';
 
 import styleConfig from './Dialog.Style';
 
@@ -8,12 +11,10 @@ import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
 
-const S = {
-  POWERED_BY: {
-    marginLeft: 16,
-    marginBottom: 8
-  }
-};
+const S_POWERED_BY = {
+  marginLeft: 16,
+  marginBottom: 8
+}
 
 const FEED_OPTIONS = [
   { caption: 'All', value: 'ALL_NEWS_FEEDS' },
@@ -47,8 +48,6 @@ const FEED_OPTIONS = [
   {caption: 'Popular', value: 'popular'},
 ], DF_SORTBY = SORTBY_OPTIONS[0]
 
-const _getRefValue = ref => ref.current;
-
 const CryptoCompareNewsDialog = ({
   isShow,
   type,
@@ -58,18 +57,30 @@ const CryptoCompareNewsDialog = ({
   onShow,
   onClose
 }) => {
-  const [_refDialog, _hClose] = useRefClose(onClose)
-  , [_refFeed, _selectFeed] = useRefSelectOption(DF_FEED.value)
-  , [_refCategory, _selectCategory] = useRefSelectOption(DF_CATEGORY.value)
-  , [_refSortBy, _selectSortBy] = useRefSelectOption(DF_SORTBY.value)
+  const [
+    _refDialog,
+    _hClose]
+     = useRefClose(onClose)
+  , [
+    _refFeed,
+    _selectFeed
+  ] = useRefSelectOption(DF_FEED.value)
+  , [
+    _refCategory,
+    _selectCategory
+  ] = useRefSelectOption(DF_CATEGORY.value)
+  , [
+    _refSortBy,
+    _selectSortBy
+  ] = useRefSelectOption(DF_SORTBY.value)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(() => {
     onLoad({
       type, source, itemConf,
       loadId: 'CCN',
-      feed: _getRefValue(_refFeed),
-      category: _getRefValue(_refCategory),
-      sortOrder: _getRefValue(_refSortBy)
+      feed: getRefValue(_refFeed),
+      category: getRefValue(_refCategory),
+      sortOrder: getRefValue(_refSortBy)
     })
     _hClose()
   }, [])
@@ -117,7 +128,7 @@ const CryptoCompareNewsDialog = ({
          onSelect={_selectSortBy}
        />
       </div>
-      <A.Link.PoweredBy rootStyle={S.POWERED_BY}>
+      <A.Link.PoweredBy rootStyle={S_POWERED_BY}>
         <A.Link.CryptoCompare />
       </A.Link.PoweredBy>
     </A.DraggableDialog>

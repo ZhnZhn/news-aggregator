@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
@@ -17,7 +17,7 @@ var _onTestDaysBefore = function _onTestDaysBefore(value) {
   return !Number.isNaN(_n) && _n > 0 && _n < 31 || value === '';
 };
 
-var InputBeforeDays = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
+var InputBeforeDays = (0, _uiApi.forwardRef)(function (_ref, ref) {
   var style = _ref.style,
       initValue = _ref.initValue;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {

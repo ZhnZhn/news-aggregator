@@ -1,4 +1,7 @@
-import { useCallback } from 'react';
+import {
+  useCallback,
+  getRefValue
+} from '../uiApi';
 
 import DateUtil from '../../utils/dt';
 import styleConfig from './Dialog.Style';
@@ -27,8 +30,6 @@ const INITIAL_FROM_DATE = DateUtil.getFromDate(1)
 , DF_SORT_BY = SORT_BY_OPTIONS[4]
 , DF_TAG = "CSS";
 
-const _getRefValue = ref => ref.current;
-
 const StackTaggedDialog = ({
   isShow,
   type,
@@ -52,7 +53,7 @@ const StackTaggedDialog = ({
       loadId: 'SO',
       requestType: 'TAG',
       tag: _getInputTag(),
-      sortBy: _getRefValue(_refSortBy),
+      sortBy: getRefValue(_refSortBy),
       fromDate: _toUTCSecond(_getInputFromDate()),
       toDate: _toUTCSecond(_getInputToDate())
     })

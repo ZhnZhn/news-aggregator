@@ -1,4 +1,7 @@
-import { useCallback } from 'react';
+import {
+  useCallback,
+  getRefValue
+} from '../uiApi';
 
 import styleConfig from './Dialog.Style';
 
@@ -19,8 +22,6 @@ const RECENT_OPTIONS = [
 , DF_RECENT = RECENT_OPTIONS[1]
 , DF_SYMBOL = "AAPL";
 
-const _getRefValue = ref => ref.current;
-
 const IexNewsDialog = ({
   isShow,
   type,
@@ -36,10 +37,12 @@ const IexNewsDialog = ({
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(()=>{
     onLoad({
-      type, source, itemConf,
+      type,
+      source,
+      itemConf,
       loadId: 'IEX',
       symbol: _getInputSymbol(),
-      recent: _getRefValue(_refRecent)
+      recent: getRefValue(_refRecent)
     })
     _hClose()
   }, [])
@@ -54,7 +57,7 @@ const IexNewsDialog = ({
        style={TS.R_DIALOG}
        captionStyle={TS.BROWSER_CAPTION}
        buttonStyle={TS.BT}
-       caption="IEX Cloud: Stock News"         
+       caption="IEX Cloud: Stock News"
        onKeyDown={_hKeyDown}
        onLoad={_hLoad}
        onShow={onShow}

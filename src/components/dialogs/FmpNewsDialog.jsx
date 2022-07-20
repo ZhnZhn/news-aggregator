@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback } from '../uiApi';
 
 import styleConfig from './Dialog.Style';
 
@@ -19,12 +19,20 @@ const FmpNewsDialog = ({
   onShow,
   onClose
 }) => {
-  const [_refDialog, _hClose] = useRefClose(onClose)
-  , [_refInputSymbol, _getInputSymbol] = useRefInput(DF_SYMBOL)
+  const [
+    _refDialog,
+    _hClose
+  ] = useRefClose(onClose)
+  , [
+    _refInputSymbol,
+    _getInputSymbol
+  ] = useRefInput(DF_SYMBOL)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(() => {
     onLoad({
-      type, source, itemConf,
+      type,
+      source,
+      itemConf,
       loadId: 'FMP',
       symbol: _getInputSymbol(),
     })

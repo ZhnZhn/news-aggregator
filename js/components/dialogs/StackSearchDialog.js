@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _dt = _interopRequireDefault(require("../../utils/dt"));
 
@@ -47,9 +47,6 @@ var INITIAL_FROM_DATE = _dt["default"].getFromDate(1),
     DF_IN_TITLE = 'flexbox',
     _crInputTitle = function _crInputTitle(prefix, dfValue) {
   return prefix + " (Default: " + dfValue + ")";
-},
-    _getRefValue = function _getRefValue(ref) {
-  return ref.current;
 };
 
 var StackSearchDialog = function StackSearchDialog(_ref) {
@@ -79,7 +76,7 @@ var StackSearchDialog = function StackSearchDialog(_ref) {
       _useRefInput4 = (0, _useRefInput5["default"])(INITIAL_TO_DATE),
       _refToDate = _useRefInput4[0],
       _getInputToDate = _useRefInput4[1],
-      _hLoad = (0, _react.useCallback)(function () {
+      _hLoad = (0, _uiApi.useCallback)(function () {
     onLoad({
       type: type,
       source: source,
@@ -88,7 +85,7 @@ var StackSearchDialog = function StackSearchDialog(_ref) {
       requestType: 'SEARCH',
       tagged: _getInputTagged(),
       inTitle: _getInputInTitle(),
-      sortBy: _getRefValue(_refSortBy),
+      sortBy: (0, _uiApi.getRefValue)(_refSortBy),
       fromDate: _toUTCSecond(_getInputFromDate()),
       toDate: _toUTCSecond(_getInputToDate())
     });

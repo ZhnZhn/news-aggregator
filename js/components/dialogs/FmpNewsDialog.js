@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
@@ -36,7 +36,7 @@ var FmpNewsDialog = function FmpNewsDialog(_ref) {
       _useRefInput = (0, _useRefInput2["default"])(DF_SYMBOL),
       _refInputSymbol = _useRefInput[0],
       _getInputSymbol = _useRefInput[1],
-      _hLoad = (0, _react.useCallback)(function () {
+      _hLoad = (0, _uiApi.useCallback)(function () {
     onLoad({
       type: type,
       source: source,

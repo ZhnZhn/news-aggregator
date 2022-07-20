@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
@@ -48,10 +48,6 @@ var NEWS_FOR_OPTIONS = [{
 ],
     DF_ASSET_KEY = NEWS_FOR_OPTIONS[0];
 
-var _getRefValue = function _getRefValue(ref) {
-  return ref.current;
-};
-
 var MessariDialog = function MessariDialog(_ref) {
   var isShow = _ref.isShow,
       type = _ref.type,
@@ -67,13 +63,13 @@ var MessariDialog = function MessariDialog(_ref) {
       _useRefSelectOption = (0, _useRefSelectOption2["default"])(DF_ASSET_KEY.value),
       _refAssetKey = _useRefSelectOption[0],
       _selectAssetKey = _useRefSelectOption[1],
-      _hLoad = (0, _react.useCallback)(function () {
+      _hLoad = (0, _uiApi.useCallback)(function () {
     onLoad({
       type: type,
       source: source,
       itemConf: itemConf,
       loadId: 'MS',
-      assetKey: _getRefValue(_refAssetKey)
+      assetKey: (0, _uiApi.getRefValue)(_refAssetKey)
     });
 
     _hClose();

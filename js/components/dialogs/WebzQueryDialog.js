@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
@@ -34,10 +34,6 @@ var SITE_TYPE_OPTIONS = [{
     DF_IN_TITLE = 'Weather',
     DF_BEFORE_DAYS = 2;
 
-var _getRefValue = function _getRefValue(ref) {
-  return ref.current;
-};
-
 var WebzQueryDialog = function WebzQueryDialog(_ref) {
   var isShow = _ref.isShow,
       type = _ref.type,
@@ -59,14 +55,14 @@ var WebzQueryDialog = function WebzQueryDialog(_ref) {
       _useRefInput2 = (0, _useRefInput3["default"])(DF_BEFORE_DAYS),
       _refInputBeforeDays = _useRefInput2[0],
       _getInputBeforeDays = _useRefInput2[1],
-      _hLoad = (0, _react.useCallback)(function () {
+      _hLoad = (0, _uiApi.useCallback)(function () {
     onLoad({
       type: type,
       source: source,
       itemConf: itemConf,
       loadId: "W",
       inTitle: _getInputInTitle(),
-      siteType: _getRefValue(_refSiteType),
+      siteType: (0, _uiApi.getRefValue)(_refSiteType),
       beforeDays: _getInputBeforeDays()
     });
 
