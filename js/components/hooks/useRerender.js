@@ -3,14 +3,14 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _reducer = function _reducer() {
   return {};
 };
 
 var useRerender = function useRerender() {
-  return (0, _react.useReducer)(_reducer);
+  return (0, _uiApi.useReducer)(_reducer);
 };
 
 var _default = useRerender;

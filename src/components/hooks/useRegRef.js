@@ -1,4 +1,7 @@
-import { useRef, useEffect } from 'react';
+import {
+  useRef,
+  useEffect
+} from '../uiApi';
 
 const useRegRef = (onReg) => {
   const ref = useRef(null)

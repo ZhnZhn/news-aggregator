@@ -1,7 +1,7 @@
 import {
   useState,
   useCallback
-} from 'react';
+} from '../uiApi';
 
 const _isBool = v => typeof v === 'boolean';
 

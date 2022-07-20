@@ -3,13 +3,13 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var useRegRef = function useRegRef(onReg) {
-  var ref = (0, _react.useRef)(null);
+  var ref = (0, _uiApi.useRef)(null);
   /*eslint-disable react-hooks/exhaustive-deps */
 
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     var _node = ref.current;
 
     if (typeof onReg == 'function' && _node) {

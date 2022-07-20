@@ -5,12 +5,12 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _ThemeContext = _interopRequireDefault(require("./ThemeContext"));
 
 var useTheme = function useTheme(styleConfig) {
-  return (0, _react.useContext)(_ThemeContext["default"]).createStyle(styleConfig);
+  return (0, _uiApi.useContext)(_ThemeContext["default"]).createStyle(styleConfig);
 };
 
 var _default = useTheme;

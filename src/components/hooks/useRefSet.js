@@ -1,4 +1,7 @@
-import { useRef, useCallback } from 'react';
+import {
+  useRef,
+  useCallback
+} from '../uiApi';
 
 const useRefSet = initialValue => {
   const ref = useRef(initialValue)

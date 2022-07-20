@@ -3,11 +3,11 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 /*eslint-disable react-hooks/exhaustive-deps */
 var useKeyDelete = function useKeyDelete(fn, deps) {
-  return (0, _react.useCallback)(function (event) {
+  return (0, _uiApi.useCallback)(function (event) {
     if (event.keyCode === 46) {
       fn(event);
     }

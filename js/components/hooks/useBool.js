@@ -3,25 +3,24 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var useBool = function useBool(initialValue) {
-  var _useState = (0, _react.useState)(function () {
+  var _useState = (0, _uiApi.useState)(function () {
     return !!initialValue;
   }),
       is = _useState[0],
-      setIs = _useState[1],
-      setTrue = (0, _react.useCallback)(function () {
-    return setIs(true);
-  }, []),
-      setFalse = (0, _react.useCallback)(function () {
-    return setIs(false);
-  }, []); //setIs
+      setIs = _useState[1];
 
-  /*eslint-enable react-hooks/exhaustive-deps */
-
-
-  return [is, setTrue, setFalse];
+  return [is].concat((0, _uiApi.useMemo)(function () {
+    return [//setTrue
+    function () {
+      return setIs(true);
+    }, //setFalse
+    function () {
+      return setIs(false);
+    }];
+  }, []));
 };
 
 var _default = useBool;

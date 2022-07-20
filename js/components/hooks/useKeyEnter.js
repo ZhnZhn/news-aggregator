@@ -5,13 +5,13 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _isKeyEnter = _interopRequireDefault(require("./isKeyEnter"));
 
 /*eslint-disable react-hooks/exhaustive-deps */
 var useKeyEnter = function useKeyEnter(fn, deps) {
-  return (0, _react.useCallback)(function (event) {
+  return (0, _uiApi.useCallback)(function (event) {
     if ((0, _isKeyEnter["default"])(event)) {
       fn(event);
     }

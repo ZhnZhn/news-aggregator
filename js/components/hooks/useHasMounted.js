@@ -3,10 +3,10 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var useHasMounted = function useHasMounted() {
-  var _ref = (0, _react.useRef)(true),
+  var _ref = (0, _uiApi.useRef)(true),
       current = _ref.current;
 
   _ref.current = false;

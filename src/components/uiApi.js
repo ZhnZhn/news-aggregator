@@ -1,9 +1,12 @@
 export {
   memo,
   cloneElement,
+  createContext,
   forwardRef,
   useRef,
   useState,
+  useReducer,
+  useContext,
   useCallback,
   useMemo,
   useEffect,

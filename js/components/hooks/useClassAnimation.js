@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _useRerender2 = _interopRequireDefault(require("./useRerender"));
 
@@ -21,12 +21,12 @@ var useClassAnimation = function useClassAnimation(_ref) {
   var _useRerender = (0, _useRerender2["default"])(),
       _wasRerendered = _useRerender[0],
       _rerender = _useRerender[1],
-      _refWasClosed = (0, _react.useRef)(initialWasClosed),
-      _refPrevIsShow = (0, _react.useRef)(isShow);
+      _refWasClosed = (0, _uiApi.useRef)(initialWasClosed),
+      _refPrevIsShow = (0, _uiApi.useRef)(isShow);
   /*eslint-disable react-hooks/exhaustive-deps */
 
 
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     if (_refPrevIsShow.current && !isShow) {
       setTimeout(function () {
         _refWasClosed.current = true;

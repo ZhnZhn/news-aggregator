@@ -1,7 +1,7 @@
 import {
   useRef,
   useEffect
-} from 'react';
+} from '../uiApi';
 
 import useRerender from './useRerender';
 
@@ -41,7 +41,7 @@ const useClassAnimation = ({
     ? [CL.INIT, S.INIT]
     : isShow
        ? [CL.SHOWING, S.SHOWING]
-       : [CL.HIDING, S.HIDING]
+       : [CL.HIDING, S.HIDING];
 
   return {
     className,
