@@ -3,20 +3,20 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../../uiApi");
 
-var _fnNoop = function _fnNoop() {};
+var FN_NOOP = function FN_NOOP() {};
 
 var useRefClose = function useRefClose(onClose) {
   if (onClose === void 0) {
-    onClose = _fnNoop;
+    onClose = FN_NOOP;
   }
 
-  var _refDialog = (0, _react.useRef)(null);
+  var _refDialog = (0, _uiApi.useRef)(null);
 
   return [_refDialog,
   /*eslint-disable react-hooks/exhaustive-deps */
-  (0, _react.useCallback)(function () {
+  (0, _uiApi.useCallback)(function () {
     var current = _refDialog.current;
 
     if (current && current.focusPrevEl) {

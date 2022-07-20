@@ -1,11 +1,11 @@
-import { useCallback } from 'react';
+import { useCallback } from '../../uiApi';
 
-const _fnNoop = () => {};
+const FN_NOOP = () => {};
 
 /*eslint-disable react-hooks/exhaustive-deps */
 const useKeyDown = (
-  hLoad=_fnNoop,
-  hClose=_fnNoop
+  hLoad=FN_NOOP,
+  hClose=FN_NOOP
 ) => useCallback(evt => {
   const { keyCode } = evt;
   if (keyCode === 13){

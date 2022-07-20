@@ -1,10 +1,14 @@
-import { useRef, useCallback } from 'react';
+import { 
+  useRef,
+  useCallback,
+  getRefValue
+} from '../../uiApi';
 
 const useRefInput = (DF_VALUE) => {
   const _refInput = useRef(null)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _getInputValue = useCallback(() => {
-    const _input = _refInput.current;
+    const _input = getRefValue(_refInput);
     return _input
       ? _input.getValue() || DF_VALUE
       : DF_VALUE;

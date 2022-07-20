@@ -1,8 +1,13 @@
-import { useRef, useCallback } from 'react';
+import {
+  useRef,
+  useCallback
+} from '../../uiApi';
 
-const _fnNoop = () => {};
+const FN_NOOP = () => {};
 
-const useRefClose = (onClose=_fnNoop) => {
+const useRefClose = (
+  onClose=FN_NOOP
+) => {
   const _refDialog = useRef(null);
   return [
     _refDialog,

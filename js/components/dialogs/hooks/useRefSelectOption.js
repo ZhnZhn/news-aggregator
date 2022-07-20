@@ -3,11 +3,11 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../../uiApi");
 
 var useRefSelectOption = function useRefSelectOption(DF_VALUE) {
-  var ref = (0, _react.useRef)(DF_VALUE || null),
-      _setOptionValue = (0, _react.useCallback)(function (option) {
+  var ref = (0, _uiApi.useRef)(DF_VALUE || null),
+      _setOptionValue = (0, _uiApi.useCallback)(function (option) {
     ref.current = option ? option.value : void 0;
   }, []);
 

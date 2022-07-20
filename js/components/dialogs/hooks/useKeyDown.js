@@ -3,22 +3,22 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../../uiApi");
 
-var _fnNoop = function _fnNoop() {};
+var FN_NOOP = function FN_NOOP() {};
 /*eslint-disable react-hooks/exhaustive-deps */
 
 
 var useKeyDown = function useKeyDown(hLoad, hClose) {
   if (hLoad === void 0) {
-    hLoad = _fnNoop;
+    hLoad = FN_NOOP;
   }
 
   if (hClose === void 0) {
-    hClose = _fnNoop;
+    hClose = FN_NOOP;
   }
 
-  return (0, _react.useCallback)(function (evt) {
+  return (0, _uiApi.useCallback)(function (evt) {
     var keyCode = evt.keyCode;
 
     if (keyCode === 13) {
