@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
 
@@ -36,19 +36,19 @@ var ProgressLine = function ProgressLine(_ref) {
       completed = _ref.completed;
 
   var rerender = (0, _useRerender["default"])()[1],
-      _refWasCompleted = (0, _react.useRef)(false),
-      _refIdCompleted = (0, _react.useRef)(null),
-      _refWasOpacied = (0, _react.useRef)(false),
-      _refIdOpacied = (0, _react.useRef)(null);
+      _refWasCompleted = (0, _uiApi.useRef)(false),
+      _refIdCompleted = (0, _uiApi.useRef)(null),
+      _refWasOpacied = (0, _uiApi.useRef)(false),
+      _refIdOpacied = (0, _uiApi.useRef)(null);
 
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     if (_getCurrent(_refWasCompleted)) {
       _refIdCompleted.current = setTimeout(rerender, TM_PERIOD);
     } else if (_getCurrent(_refWasOpacied)) {
       _refIdOpacied.current = setTimeout(rerender, TM_PERIOD);
     }
   });
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     return function () {
       clearTimeout(_getCurrent(_refIdCompleted));
       clearTimeout(_getCurrent(_refIdOpacied));

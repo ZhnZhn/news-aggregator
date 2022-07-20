@@ -7,11 +7,11 @@ exports["default"] = void 0;
 
 var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _excluded = ["items", "crItem"];
 var _isArr = Array.isArray;
-var ItemStack = /*#__PURE__*/(0, _react.memo)(function (_ref) {
+var ItemStack = (0, _uiApi.memo)(function (_ref) {
   var items = _ref.items,
       crItem = _ref.crItem,
       restProps = (0, _objectWithoutPropertiesLoose2["default"])(_ref, _excluded);

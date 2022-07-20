@@ -1,7 +1,7 @@
 import {
   useRef,
   useEffect
-} from 'react';
+} from '../uiApi';
 
 import useRerender from '../hooks/useRerender';
 

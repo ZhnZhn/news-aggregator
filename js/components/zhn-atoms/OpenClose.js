@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
 
@@ -58,7 +58,7 @@ var OpenClose = function OpenClose(_ref) {
   var _useToggle = (0, _useToggle2["default"])(!isClose),
       isOpen = _useToggle[0],
       toggleIsOpen = _useToggle[1],
-      _hKeyDown = (0, _react.useCallback)(function (evt) {
+      _hKeyDown = (0, _uiApi.useCallback)(function (evt) {
     if (event.keyCode === 13 || event.keyCode === 27) {
       toggleIsOpen();
     }

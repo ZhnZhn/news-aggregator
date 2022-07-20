@@ -1,12 +1,15 @@
-import React, { useCallback } from 'react';
+import {
+  forwardRef,
+  useCallback
+} from '../uiApi';
 
-const _fnNoop = () => {};
+const FN_NOOP = () => {};
 
-const MenuItem = React.forwardRef(({
+const MenuItem = forwardRef(({
   className,
   caption,
-  onClick=_fnNoop,
-  onClose=_fnNoop
+  onClick=FN_NOOP,
+  onClose=FN_NOOP
 }, ref) => {
   /*eslint-disable react-hooks/exhaustive-deps */
   const _hKeyDown = useCallback((event) => {

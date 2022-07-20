@@ -1,5 +1,5 @@
 //import PropTypes from 'prop-types'
-import { useCallback } from 'react';
+import { useCallback } from '../uiApi';
 
 import useToggle from '../hooks/useToggle';
 
