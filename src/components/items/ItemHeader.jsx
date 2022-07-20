@@ -1,11 +1,16 @@
-import { forwardRef, useCallback } from 'react';
+import {
+  forwardRef,
+  useCallback
+} from '../uiApi';
 
 import SvgX from '../zhn-atoms/SvgX';
 
 const ItemHeader = forwardRef(({
   isShow,
   className,
-  style, captionStyle, btCloseStyle,
+  style,
+  captionStyle,
+  btCloseStyle,
   title,
   onClick,
   onHide,

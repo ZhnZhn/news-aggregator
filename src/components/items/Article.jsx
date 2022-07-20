@@ -1,4 +1,10 @@
-import { forwardRef, useRef, useState, useCallback } from 'react';
+import {
+  forwardRef,
+  useRef,
+  useState,
+  useCallback,
+  getRefValue
+} from '../uiApi';
 
 import useRefSet from '../hooks/useRefSet';
 import useTheme from '../hooks/useTheme';
@@ -39,7 +45,9 @@ const S_ROOT = {
 , S_NONE = { display: 'none' };
 
 
-const _focusNextArticle = (nodeArticle) => {
+const _focusNextArticle = (
+  nodeArticle
+) => {
   const { nextElementSibling } = nodeArticle || {}
   , { firstElementChild } = nextElementSibling || {};
   if (firstElementChild) {
@@ -47,15 +55,13 @@ const _focusNextArticle = (nodeArticle) => {
   }
 };
 
-const _fnNoop = () => {};
-
-const _getRefValue = ref => (ref || {}).current;
+const FN_NOOP = () => {};
 
 const Article = forwardRef(({
   item,
   onCloseItem,
-  onRemoveUnder=_fnNoop,
-  onRemoveItem=_fnNoop
+  onRemoveUnder=FN_NOOP,
+  onRemoveItem=FN_NOOP
 }, ref) => {
   const _refArticle = useRef(null)
  , [refTimeStamp, setTimeStamp] = useRefSet(null)
@@ -64,7 +70,7 @@ const Article = forwardRef(({
  /*eslint-disable react-hooks/exhaustive-deps */
  , _hToggle = useCallback(evt => {
    const { timeStamp } = evt || {}
-   , _timeStamp = _getRefValue(refTimeStamp)
+   , _timeStamp = getRefValue(refTimeStamp)
    if (timeStamp && _timeStamp
        && timeStamp - _timeStamp < 200) {
       return;
@@ -74,13 +80,13 @@ const Article = forwardRef(({
  }, [])
  // refTimeStamp, setTimeStamp
  , _hClose = useCallback(() => {
-   _focusNextArticle(_getRefValue(_refArticle))
+   _focusNextArticle(getRefValue(_refArticle))
    onCloseItem(item)
    setIsClosed(true)
  }, [])
  //item, onCloseItem
  , _hHide = useCallback(()=>{
-   const _node = _getRefValue(ref);
+   const _node = getRefValue(ref);
    if (_node) {_node.focus()}
    setIsShow(false)
  }, [])

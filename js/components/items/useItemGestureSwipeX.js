@@ -3,14 +3,14 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var DX_REMOVE_UNDER = 90,
     DX_REMOVE_ITEM = 40;
 /*eslint-disable react-hooks/exhaustive-deps */
 
 var useItemGestureSwipeX = function useItemGestureSwipeX(item, onRemoveUnder, hClose) {
-  return (0, _react.useCallback)(function (dX) {
+  return (0, _uiApi.useCallback)(function (dX) {
     if (dX > DX_REMOVE_UNDER) {
       onRemoveUnder(item);
       return false;

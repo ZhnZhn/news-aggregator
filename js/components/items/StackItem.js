@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
 
@@ -117,7 +117,7 @@ var _fTagItem = function _fTagItem(TS) {
 
 var _fnNoop = function _fnNoop() {};
 
-var StackItem = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
+var StackItem = (0, _uiApi.forwardRef)(function (_ref, ref) {
   var item = _ref.item,
       onCloseItem = _ref.onCloseItem,
       _ref$onRemoveUnder = _ref.onRemoveUnder,
@@ -128,14 +128,14 @@ var StackItem = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
   var _useToggle = (0, _useToggle2["default"])(false),
       isClosed = _useToggle[0],
       toggleIsClosed = _useToggle[1],
-      _hClose = (0, _react.useCallback)(function () {
+      _hClose = (0, _uiApi.useCallback)(function () {
     onCloseItem(item);
     toggleIsClosed(true);
   }, []),
       _hKeyDown = (0, _useKeyDelete["default"])(_hClose),
       _onGestureSwipeX = (0, _useItemGestureSwipeX["default"])(item, onRemoveUnder, _hClose),
       TS = (0, _useTheme["default"])(_Article["default"]),
-      _crItem = (0, _react.useMemo)(function () {
+      _crItem = (0, _uiApi.useMemo)(function () {
     return _fTagItem(TS);
   }, [TS]);
 

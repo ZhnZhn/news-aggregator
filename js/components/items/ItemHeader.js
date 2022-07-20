@@ -5,13 +5,13 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var ItemHeader = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
+var ItemHeader = (0, _uiApi.forwardRef)(function (_ref, ref) {
   var isShow = _ref.isShow,
       className = _ref.className,
       style = _ref.style,
@@ -23,12 +23,12 @@ var ItemHeader = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
       onClose = _ref.onClose;
 
   /*eslint-disable react-hooks/exhaustive-deps */
-  var _hClose = (0, _react.useCallback)(function (evt) {
+  var _hClose = (0, _uiApi.useCallback)(function (evt) {
     evt.stopPropagation();
     onClose();
   }, []) //onClose
   ,
-      _hKeyDown = (0, _react.useCallback)(function (evt) {
+      _hKeyDown = (0, _uiApi.useCallback)(function (evt) {
     var keyCode = evt.keyCode;
 
     if (keyCode === 13) {

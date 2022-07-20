@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback } from '../uiApi';
 
 const DX_REMOVE_UNDER = 90
 , DX_REMOVE_ITEM = 40;

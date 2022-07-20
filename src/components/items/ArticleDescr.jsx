@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback } from '../uiApi';
 
 import ShowHide from '../zhn-atoms/ShowHide';
 import SafeLink from '../zhn-atoms/SafeLink';

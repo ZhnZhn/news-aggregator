@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _useRefSet2 = _interopRequireDefault(require("../hooks/useRefSet"));
 
@@ -69,34 +69,30 @@ var _focusNextArticle = function _focusNextArticle(nodeArticle) {
   }
 };
 
-var _fnNoop = function _fnNoop() {};
+var FN_NOOP = function FN_NOOP() {};
 
-var _getRefValue = function _getRefValue(ref) {
-  return (ref || {}).current;
-};
-
-var Article = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
+var Article = (0, _uiApi.forwardRef)(function (_ref3, ref) {
   var item = _ref3.item,
       onCloseItem = _ref3.onCloseItem,
       _ref3$onRemoveUnder = _ref3.onRemoveUnder,
-      onRemoveUnder = _ref3$onRemoveUnder === void 0 ? _fnNoop : _ref3$onRemoveUnder,
+      onRemoveUnder = _ref3$onRemoveUnder === void 0 ? FN_NOOP : _ref3$onRemoveUnder,
       _ref3$onRemoveItem = _ref3.onRemoveItem,
-      onRemoveItem = _ref3$onRemoveItem === void 0 ? _fnNoop : _ref3$onRemoveItem;
+      onRemoveItem = _ref3$onRemoveItem === void 0 ? FN_NOOP : _ref3$onRemoveItem;
 
-  var _refArticle = (0, _react.useRef)(null),
+  var _refArticle = (0, _uiApi.useRef)(null),
       _useRefSet = (0, _useRefSet2["default"])(null),
       refTimeStamp = _useRefSet[0],
       setTimeStamp = _useRefSet[1],
-      _useState = (0, _react.useState)(false),
+      _useState = (0, _uiApi.useState)(false),
       isClosed = _useState[0],
       setIsClosed = _useState[1],
-      _useState2 = (0, _react.useState)(false),
+      _useState2 = (0, _uiApi.useState)(false),
       isShow = _useState2[0],
       setIsShow = _useState2[1],
-      _hToggle = (0, _react.useCallback)(function (evt) {
+      _hToggle = (0, _uiApi.useCallback)(function (evt) {
     var _ref4 = evt || {},
         timeStamp = _ref4.timeStamp,
-        _timeStamp = _getRefValue(refTimeStamp);
+        _timeStamp = (0, _uiApi.getRefValue)(refTimeStamp);
 
     if (timeStamp && _timeStamp && timeStamp - _timeStamp < 200) {
       return;
@@ -107,14 +103,14 @@ var Article = /*#__PURE__*/(0, _react.forwardRef)(function (_ref3, ref) {
       return !is;
     });
   }, []),
-      _hClose = (0, _react.useCallback)(function () {
-    _focusNextArticle(_getRefValue(_refArticle));
+      _hClose = (0, _uiApi.useCallback)(function () {
+    _focusNextArticle((0, _uiApi.getRefValue)(_refArticle));
 
     onCloseItem(item);
     setIsClosed(true);
   }, []),
-      _hHide = (0, _react.useCallback)(function () {
-    var _node = _getRefValue(ref);
+      _hHide = (0, _uiApi.useCallback)(function () {
+    var _node = (0, _uiApi.getRefValue)(ref);
 
     if (_node) {
       _node.focus();

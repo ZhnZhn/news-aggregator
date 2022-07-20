@@ -2,7 +2,7 @@ import {
   forwardRef,
   useCallback,
   useMemo
-} from 'react';
+} from '../uiApi';
 
 import useToggle from '../hooks/useToggle';
 import useKeyDelete from '../hooks/useKeyDelete';
