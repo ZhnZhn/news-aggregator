@@ -7,13 +7,15 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _MenuPart = _interopRequireDefault(require("./MenuPart"));
+
+var _react = require("react");
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -24,30 +26,25 @@ var Browser = _Comp["default"].Browser,
     SpinnerLoading = _Comp["default"].SpinnerLoading,
     ItemStack = _Comp["default"].ItemStack;
 var CL_MENU_MORE = "popup-menu items__menu-more";
-var S = {
-  BROWSER: {
-    paddingRight: 0
-  },
-  SCROLL_PANE: {
-    height: '92%',
-    paddingRight: 10,
-    overflowY: 'auto'
-  },
-  SPINNER_LOADING: {
-    position: 'relative',
-    display: 'block',
-    width: 32,
-    height: 32,
-    margin: '0 auto',
-    marginTop: 32,
-    textAlign: 'middle'
-  },
-  ROOT_MENU: {
-    paddingLeft: 4
-  }
+var S_BROWSER = {
+  paddingRight: 0
+},
+    S_SCROLL_PANE = {
+  height: '92%',
+  paddingRight: 10,
+  overflowY: 'auto'
+},
+    S_SPINNER_LOADING = {
+  position: 'relative',
+  display: 'block',
+  width: 32,
+  height: 32,
+  margin: '0 auto',
+  marginTop: 32,
+  textAlign: 'middle'
 };
 
-var _fnNoop = function _fnNoop() {};
+var FN_NOOP = function FN_NOOP() {};
 /*
 const INITIAL_MENU_MODEL = {
   menu: [],
@@ -71,34 +68,34 @@ var DynamicMenuBrowser = function DynamicMenuBrowser(_ref) {
       browserId = _ref.browserId,
       url = _ref.url,
       _ref$onError = _ref.onError,
-      onError = _ref$onError === void 0 ? _fnNoop : _ref$onError,
+      onError = _ref$onError === void 0 ? FN_NOOP : _ref$onError,
       children = _ref.children,
       itemData = _ref.itemData,
       onClick = _ref.onClick,
       onClickBadge = _ref.onClickBadge;
 
-  var _useState = (0, _react.useState)(true),
+  var _useState = (0, _uiApi.useState)(true),
       isShow = _useState[0],
       setIsShow = _useState[1],
-      _useState2 = (0, _react.useState)(false),
+      _useState2 = (0, _uiApi.useState)(false),
       isMore = _useState2[0],
       setIsMore = _useState2[1],
-      _useState3 = (0, _react.useState)(true),
+      _useState3 = (0, _uiApi.useState)(true),
       isLoading = _useState3[0],
       setIsLoading = _useState3[1],
-      _useState4 = (0, _react.useState)(false),
+      _useState4 = (0, _uiApi.useState)(false),
       isLoadingFailed = _useState4[0],
       setIsLoadingFailed = _useState4[1],
-      _useState5 = (0, _react.useState)(),
+      _useState5 = (0, _uiApi.useState)(),
       menuModel = _useState5[0],
       setMenuModel = _useState5[1],
-      _hHide = (0, _react.useCallback)(function () {
+      _hHide = (0, _uiApi.useCallback)(function () {
     return setIsShow(false);
   }, []),
-      _hShowMore = (0, _react.useCallback)(function () {
+      _hShowMore = (0, _uiApi.useCallback)(function () {
     return setIsMore(true);
   }, []),
-      _hCloseMore = (0, _react.useCallback)(function () {
+      _hCloseMore = (0, _uiApi.useCallback)(function () {
     return setIsMore(false);
   }, []);
 
@@ -109,7 +106,7 @@ var DynamicMenuBrowser = function DynamicMenuBrowser(_ref) {
   });
   /*eslint-disable react-hooks/exhaustive-deps*/
 
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     fetch(url).then(function (response) {
       var status = response.status;
 
@@ -141,7 +138,7 @@ var DynamicMenuBrowser = function DynamicMenuBrowser(_ref) {
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(Browser, {
     isShow: isShow,
-    style: (0, _extends2["default"])({}, S.BROWSER, TS.BROWSER),
+    style: (0, _extends2["default"])({}, S_BROWSER, TS.BROWSER),
     children: [menuMore && /*#__PURE__*/(0, _jsxRuntime.jsx)(ModalSlider, {
       isShow: isMore,
       className: CL_MENU_MORE,
@@ -154,13 +151,13 @@ var DynamicMenuBrowser = function DynamicMenuBrowser(_ref) {
       onMore: _onMore,
       onClose: _hHide
     }), isLoading && /*#__PURE__*/(0, _jsxRuntime.jsx)(SpinnerLoading, {
-      style: S.SPINNER_LOADING
+      style: S_SPINNER_LOADING
     }), isLoadingFailed && /*#__PURE__*/(0, _jsxRuntime.jsx)(SpinnerLoading, {
-      style: S.SPINNER_LOADING,
+      style: S_SPINNER_LOADING,
       isFailed: true
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(ScrollPane, {
       className: TS.CL_SCROLL_PANE,
-      style: S.SCROLL_PANE,
+      style: S_SCROLL_PANE,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(ItemStack, {
         items: menu,
         crItem: _crItemMenuPart,

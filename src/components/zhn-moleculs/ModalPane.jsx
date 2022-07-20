@@ -1,5 +1,9 @@
-import { useRef, useCallback, useEffect } from 'react';
 //import PropTypes from 'prop-types'
+import {
+  useRef,
+  useCallback,
+  useEffect
+} from '../uiApi';
 
 import useTheme from '../hooks/useTheme';
 import styleConfig from './ModalPane.Style';
@@ -13,7 +17,8 @@ const _removeClickListener = (listener, ref) => {
 
 /*eslint-disable react-hooks/exhaustive-deps */
 const ModalPane = ({
-  isShow, style,
+  isShow,
+  style,
   children,
   onClose
 }) => {

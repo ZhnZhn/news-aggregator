@@ -1,4 +1,8 @@
-import { useState, useCallback, useEffect } from 'react';
+import {
+  useState,
+  useCallback,
+  useEffect
+} from '../uiApi';
 
 import useListen from '../hooks/useListen';
 
@@ -12,31 +16,27 @@ const {
 
 const CL_MENU_MORE = "popup-menu items__menu-more";
 
-const S = {
-  BROWSER: {
-    paddingRight: 0
-  },
-  SCROLL_PANE: {
-    height: '92%',
-    paddingRight: 10,
-    overflowY: 'auto'
-  },
-  SPINNER_LOADING: {
-    position: 'relative',
-    display: 'block',
-    width: 32,
-    height: 32,
-    margin: '0 auto',
-    marginTop: 32,
-    textAlign: 'middle'
-  },
-  ROOT_MENU: {
-    paddingLeft: 4
-  }
+const S_BROWSER = {
+  paddingRight: 0
+}
+, S_SCROLL_PANE = {
+  height: '92%',
+  paddingRight: 10,
+  overflowY: 'auto'
+}
+, S_SPINNER_LOADING = {
+  position: 'relative',
+  display: 'block',
+  width: 32,
+  height: 32,
+  margin: '0 auto',
+  marginTop: 32,
+  textAlign: 'middle'
 };
 
 
-const _fnNoop = () => {};
+
+const FN_NOOP = () => {};
 /*
 const INITIAL_MENU_MODEL = {
   menu: [],
@@ -44,7 +44,11 @@ const INITIAL_MENU_MODEL = {
 };
 */
 
-const _crItemMenuPart = (menuPart, index, propOptions) => (
+const _crItemMenuPart = (
+  menuPart,
+  index,
+  propOptions
+) => (
   <MenuPart
     {...menuPart}
     {...propOptions}
@@ -57,8 +61,10 @@ const DynamicMenuBrowser = ({
   caption,
   menuMore,
   store,
-  showAction, browserId,
-  url, onError=_fnNoop,
+  showAction,
+  browserId,
+  url,
+  onError=FN_NOOP,
   children,
   itemData,
   onClick,
@@ -108,7 +114,7 @@ const DynamicMenuBrowser = ({
   , TS = styleConfig;
 
   return (
-    <Browser isShow={isShow} style={{...S.BROWSER, ...TS.BROWSER}}>
+    <Browser isShow={isShow} style={{...S_BROWSER, ...TS.BROWSER}}>
       {
         menuMore && <ModalSlider
           isShow={isMore}
@@ -124,11 +130,11 @@ const DynamicMenuBrowser = ({
         onMore={_onMore}
         onClose={_hHide}
       />
-      { isLoading && <SpinnerLoading style={S.SPINNER_LOADING} />}
-      { isLoadingFailed && <SpinnerLoading style={S.SPINNER_LOADING} isFailed={true} />}
+      { isLoading && <SpinnerLoading style={S_SPINNER_LOADING} />}
+      { isLoadingFailed && <SpinnerLoading style={S_SPINNER_LOADING} isFailed={true} />}
       <ScrollPane
          className={TS.CL_SCROLL_PANE}
-         style={S.SCROLL_PANE}
+         style={S_SCROLL_PANE}
       >
         <ItemStack
           items={menu}

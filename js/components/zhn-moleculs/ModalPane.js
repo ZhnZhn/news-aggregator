@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 
@@ -31,9 +31,9 @@ var ModalPane = function ModalPane(_ref) {
       children = _ref.children,
       onClose = _ref.onClose;
 
-  var _refNode = (0, _react.useRef)(null),
-      _refIs = (0, _react.useRef)(null),
-      _hClickOutside = (0, _react.useCallback)(function (event) {
+  var _refNode = (0, _uiApi.useRef)(null),
+      _refIs = (0, _uiApi.useRef)(null),
+      _hClickOutside = (0, _uiApi.useCallback)(function (event) {
     var _refNode$current;
 
     if (_refNode != null && (_refNode$current = _refNode.current) != null && _refNode$current.contains && !_refNode.current.contains(event.target)) {
@@ -42,7 +42,7 @@ var ModalPane = function ModalPane(_ref) {
     }
   }, []);
 
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     if (isShow && !_refIs.current) {
       document.addEventListener('click', _hClickOutside, true);
       _refIs.current = true;
@@ -50,7 +50,7 @@ var ModalPane = function ModalPane(_ref) {
       _removeClickListener(_hClickOutside, _refIs);
     }
   });
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     return function () {
       return _removeClickListener(_hClickOutside, _refIs);
     };

@@ -5,7 +5,7 @@ import {
   useCallback,
   useEffect,
   useImperativeHandle
-} from 'react';
+} from '../uiApi';
 
 import BrowserCaption from '../zhn-atoms/BrowserCaption';
 import RaisedButton from '../zhn-bt/RaisedButton';
@@ -196,7 +196,7 @@ DraggableDialog.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]),  
+  ]),
   onKeyDown: PropTypes.func,
   onLoad: PropTypes.func,
   onShow: PropTypes.func,

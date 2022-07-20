@@ -1,18 +1,30 @@
 //import PropTypes from 'prop-types'
-
 import OpenClose from '../zhn-atoms/OpenClose'
 import MenuItemBadge from './MenuItemBadge'
 
-const CL_NOT_S = 'not-selected';
+const CL_NOT_S = 'not-selected'
+, _assign = Object.assign;
 
-const _createOnKeyDown = (onClick) => (event) => {
+const _createOnKeyDown = (
+  onClick
+) => (event) => {
   if (event.keyCode === 13){
     onClick()
   }
 }
 
-const _renderMenuItems = function(TS, option){
-  const { items=[], hmItems={}, itemData, onClick, onClickBadge, ...rest } = option
+const _renderMenuItems = (
+  TS,
+  option
+) => {
+  const {
+    items=[],
+    hmItems={},
+    itemData,
+    onClick,
+    onClickBadge,
+    ...rest
+  } = option;
   return items.map((item, index) => {
     const _className = (TS.CL_ROW)
              ? `${TS.CL_ROW} ${CL_NOT_S}`
@@ -28,7 +40,7 @@ const _renderMenuItems = function(TS, option){
                  />)
                : null;
 
-    Object.assign(_itemConf, rest)
+    _assign(_itemConf, rest)
     const _onClick = onClick.bind(null, _itemConf);
     return (
        <div
@@ -48,7 +60,9 @@ const _renderMenuItems = function(TS, option){
 
 const MenuPart = ({
   styleConfig:TS,
-  caption, isInitClose, ...restProps
+  caption,
+  isInitClose,
+  ...restProps
 }) => (
   <OpenClose
      style={TS.OPEN_CLOSE}

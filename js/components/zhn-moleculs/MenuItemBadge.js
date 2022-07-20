@@ -11,23 +11,21 @@ var _crStyle = _interopRequireDefault(require("../zhn-utils/crStyle"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S = {
-  BADGE: {
-    display: 'inline-block',
-    color: 'grey',
-    backgroundColor: '#3f5178',
-    width: 32,
-    height: 32,
-    paddingRight: 5,
-    paddingLeft: 5,
-    borderRadius: '30%',
-    textAlign: 'center',
-    "float": 'right',
-    cursor: 'pointer'
-  },
-  CLOSE: {
-    color: 'black'
-  }
+var S_BADGE = {
+  display: 'inline-block',
+  color: 'grey',
+  backgroundColor: '#3f5178',
+  width: 32,
+  height: 32,
+  paddingRight: 5,
+  paddingLeft: 5,
+  borderRadius: '30%',
+  textAlign: 'center',
+  "float": 'right',
+  cursor: 'pointer'
+},
+    S_CLOSE = {
+  color: 'black'
 };
 
 var MenuItemBadge = function MenuItemBadge(_ref) {
@@ -42,7 +40,7 @@ var MenuItemBadge = function MenuItemBadge(_ref) {
   },
       _ref2 = itemBadge || {},
       isOpen = _ref2.isOpen,
-      _badgeStyle = (0, _crStyle["default"])(S.BADGE, [!isOpen, S.CLOSE]);
+      _badgeStyle = (0, _crStyle["default"])(S_BADGE, [!isOpen, S_CLOSE]);
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
     tabIndex: "-1",

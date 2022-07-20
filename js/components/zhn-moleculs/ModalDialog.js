@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 
@@ -70,16 +70,16 @@ var ModalDialog = function ModalDialog(_ref2) {
       _ref2$isClosePrimary = _ref2.isClosePrimary,
       isClosePrimary = _ref2$isClosePrimary === void 0 ? false : _ref2$isClosePrimary;
 
-  var _refRootDiv = (0, _react.useRef)(),
-      _refPrevFocused = (0, _react.useRef)(),
+  var _refRootDiv = (0, _uiApi.useRef)(),
+      _refPrevFocused = (0, _uiApi.useRef)(),
       _hKeyDown = (0, _useKeyEscape["default"])(onClose),
       _className = (0, _crCn["default"])([isShow, CL_SHOWING]),
       _style = isShow ? S_BLOCK : S_NONE;
 
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     _refPrevFocused.current = (document || {}).activeElement;
   }, []);
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     var _refEl = isShow ? _refRootDiv : _refPrevFocused;
 
     _focusRefElement(_refEl);

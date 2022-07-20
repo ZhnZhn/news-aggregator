@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
 
@@ -89,7 +89,7 @@ var _setRefValue = function _setRefValue(ref, value) {
 
 
 var useFocusByRef = function useFocusByRef(ref) {
-  return (0, _react.useCallback)(function () {
+  return (0, _uiApi.useCallback)(function () {
     var _node = _getRefValue(ref);
 
     if (_node) {
@@ -101,7 +101,7 @@ var useFocusByRef = function useFocusByRef(ref) {
 /*eslint-enable react-hooks/exhaustive-deps */
 
 
-var DraggableDialog = /*#__PURE__*/(0, _react.forwardRef)(function (_ref2, ref) {
+var DraggableDialog = (0, _uiApi.forwardRef)(function (_ref2, ref) {
   var isShow = _ref2.isShow,
       style = _ref2.style,
       captionStyle = _ref2.captionStyle,
@@ -113,20 +113,20 @@ var DraggableDialog = /*#__PURE__*/(0, _react.forwardRef)(function (_ref2, ref) 
       onShow = _ref2.onShow,
       onClose = _ref2.onClose;
 
-  var _refDiv = (0, _react.useRef)(null),
-      _refIsShow = (0, _react.useRef)(isShow),
-      _refPrevFocused = (0, _react.useRef)(null),
+  var _refDiv = (0, _uiApi.useRef)(null),
+      _refIsShow = (0, _uiApi.useRef)(isShow),
+      _refPrevFocused = (0, _uiApi.useRef)(null),
       focusPrevEl = useFocusByRef(_refPrevFocused),
       focus = useFocusByRef(_refDiv)
   /*eslint-disable react-hooks/exhaustive-deps */
   ,
-      _hKeyDown = (0, _react.useCallback)(function (evt) {
+      _hKeyDown = (0, _uiApi.useCallback)(function (evt) {
     if (document.activeElement == _getRefValue(_refDiv)) {
       onKeyDown(evt);
     }
   }, []) //onKeyDown
   ,
-      _hClose = (0, _react.useCallback)(function (evt) {
+      _hClose = (0, _uiApi.useCallback)(function (evt) {
     focusPrevEl();
     onClose();
   }, []); //_focusPrevEl, onClose
@@ -134,7 +134,7 @@ var DraggableDialog = /*#__PURE__*/(0, _react.forwardRef)(function (_ref2, ref) 
   /*eslint-enable react-hooks/exhaustive-deps */
 
 
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     var _divNode = _getRefValue(_refDiv);
 
     _Interact["default"].makeDragable(_divNode);
@@ -145,7 +145,7 @@ var DraggableDialog = /*#__PURE__*/(0, _react.forwardRef)(function (_ref2, ref) 
   }, []);
   /*eslint-disable react-hooks/exhaustive-deps */
 
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     if (isShow && !_getRefValue(_refIsShow)) {
       focus();
     }
@@ -155,7 +155,7 @@ var DraggableDialog = /*#__PURE__*/(0, _react.forwardRef)(function (_ref2, ref) 
 
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  (0, _react.useImperativeHandle)(ref, function () {
+  (0, _uiApi.useImperativeHandle)(ref, function () {
     return {
       focusPrevEl: focusPrevEl
     };
@@ -204,7 +204,7 @@ DraggableDialog.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]),  
+  ]),
   onKeyDown: PropTypes.func,
   onLoad: PropTypes.func,
   onShow: PropTypes.func,

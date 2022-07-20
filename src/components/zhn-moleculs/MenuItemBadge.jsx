@@ -1,22 +1,20 @@
 import crStyle from '../zhn-utils/crStyle';
 
-const S = {
-  BADGE: {
-    display: 'inline-block',
-    color: 'grey',
-    backgroundColor: '#3f5178',
-    width: 32,
-    height: 32,
-    paddingRight: 5,
-    paddingLeft: 5,
-    borderRadius: '30%',
-    textAlign: 'center',
-    float: 'right',
-    cursor: 'pointer'
-  },
-  CLOSE: {
-    color: 'black'
-  }
+const S_BADGE = {
+  display: 'inline-block',
+  color: 'grey',
+  backgroundColor: '#3f5178',
+  width: 32,
+  height: 32,
+  paddingRight: 5,
+  paddingLeft: 5,
+  borderRadius: '30%',
+  textAlign: 'center',
+  float: 'right',
+  cursor: 'pointer'
+}
+, S_CLOSE = {
+  color: 'black'
 };
 
 const MenuItemBadge = ({
@@ -30,7 +28,7 @@ const MenuItemBadge = ({
     onClick(itemConf)
   }
   , { isOpen } = itemBadge || {}
-  , _badgeStyle = crStyle(S.BADGE, [!isOpen, S.CLOSE]);
+  , _badgeStyle = crStyle(S_BADGE, [!isOpen, S_CLOSE]);
 
   return (
     <button

@@ -13,8 +13,10 @@ var _MenuItemBadge = _interopRequireDefault(require("./MenuItemBadge"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-//import PropTypes from 'prop-types'
-var CL_NOT_S = 'not-selected';
+var _excluded = ["items", "hmItems", "itemData", "onClick", "onClickBadge"],
+    _excluded2 = ["styleConfig", "caption", "isInitClose"];
+var CL_NOT_S = 'not-selected',
+    _assign = Object.assign;
 
 var _createOnKeyDown = function _createOnKeyDown(onClick) {
   return function (event) {
@@ -32,7 +34,7 @@ var _renderMenuItems = function _renderMenuItems(TS, option) {
       itemData = option.itemData,
       onClick = option.onClick,
       onClickBadge = option.onClickBadge,
-      rest = (0, _objectWithoutPropertiesLoose2["default"])(option, ["items", "hmItems", "itemData", "onClick", "onClickBadge"]);
+      rest = (0, _objectWithoutPropertiesLoose2["default"])(option, _excluded);
   return items.map(function (item, index) {
     var _className = TS.CL_ROW ? TS.CL_ROW + " " + CL_NOT_S : CL_NOT_S,
         _itemConf = hmItems[item.id],
@@ -44,7 +46,7 @@ var _renderMenuItems = function _renderMenuItems(TS, option) {
       onClick: onClickBadge
     }) : null;
 
-    Object.assign(_itemConf, rest);
+    _assign(_itemConf, rest);
 
     var _onClick = onClick.bind(null, _itemConf);
 
@@ -63,7 +65,7 @@ var MenuPart = function MenuPart(_ref) {
   var TS = _ref.styleConfig,
       caption = _ref.caption,
       isInitClose = _ref.isInitClose,
-      restProps = (0, _objectWithoutPropertiesLoose2["default"])(_ref, ["styleConfig", "caption", "isInitClose"]);
+      restProps = (0, _objectWithoutPropertiesLoose2["default"])(_ref, _excluded2);
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_OpenClose["default"], {
     style: TS.OPEN_CLOSE,
     caption: caption,
