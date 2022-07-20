@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _has = _interopRequireDefault(require("../has"));
 
@@ -72,25 +72,25 @@ var _getRefValue = function _getRefValue(ref) {
   return ref.current;
 };
 
-var GestureSwipeX = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
+var GestureSwipeX = (0, _uiApi.forwardRef)(function (_ref, ref) {
   var style = _ref.style,
       children = _ref.children,
       _ref$setTimeStamp = _ref.setTimeStamp,
       setTimeStamp = _ref$setTimeStamp === void 0 ? _noopFn : _ref$setTimeStamp,
       onGesture = _ref.onGesture;
 
-  var _refClientX = (0, _react.useRef)(0),
-      _refIsGestureStart = (0, _react.useRef)(false),
-      _refIsMoveStart = (0, _react.useRef)(false),
-      _refGestureId = (0, _react.useRef)(),
-      _gestureStartImpl = (0, _react.useCallback)(function (node) {
+  var _refClientX = (0, _uiApi.useRef)(0),
+      _refIsGestureStart = (0, _uiApi.useRef)(false),
+      _refIsMoveStart = (0, _uiApi.useRef)(false),
+      _refGestureId = (0, _uiApi.useRef)(),
+      _gestureStartImpl = (0, _uiApi.useCallback)(function (node) {
     _setRefValue(_refIsGestureStart, true);
 
     _styleNode(node);
   }, [])
   /*eslint-disable react-hooks/exhaustive-deps */
   ,
-      _gestureStart = (0, _react.useCallback)(function (evt) {
+      _gestureStart = (0, _uiApi.useCallback)(function (evt) {
     if (evt.target.tagName !== 'A') {
       var node = evt.currentTarget;
 
@@ -110,7 +110,7 @@ var GestureSwipeX = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
 
   /*eslint-enable react-hooks/exhaustive-deps */
   ,
-      _gestureMove = (0, _react.useCallback)(function (evt) {
+      _gestureMove = (0, _uiApi.useCallback)(function (evt) {
     _preventDefault(evt);
 
     if (_getRefValue(_refIsGestureStart)) {
@@ -133,7 +133,7 @@ var GestureSwipeX = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
   }, [])
   /*eslint-disable react-hooks/exhaustive-deps */
   ,
-      _gestureEnd = (0, _react.useCallback)(function (evt) {
+      _gestureEnd = (0, _uiApi.useCallback)(function (evt) {
     if (_getRefValue(_refIsGestureStart)) {
       var _isInitialStyle = false;
 
@@ -158,7 +158,7 @@ var GestureSwipeX = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
     }
   }, []) // setTimeStamp, onGesture
   ,
-      _handlers = (0, _react.useMemo)(function () {
+      _handlers = (0, _uiApi.useMemo)(function () {
     return HAS_TOUCH ? {
       onTouchStart: _gestureStart,
       onTouchMove: _gestureMove,

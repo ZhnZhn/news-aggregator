@@ -1,4 +1,9 @@
-import { forwardRef, useRef, useCallback, useMemo } from 'react';
+import {
+  forwardRef,
+  useRef,
+  useCallback,
+  useMemo
+} from '../uiApi';
 import has from '../has';
 
 const BORDER_LEFT = 'border-left';
