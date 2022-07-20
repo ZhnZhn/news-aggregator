@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("./uiApi");
 
 var _useListen = _interopRequireDefault(require("./hooks/useListen"));
 
@@ -40,10 +40,10 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 var CL_COMP = "component-container";
 
 var AppNewsAggregator = function AppNewsAggregator() {
-  var _useState = (0, _react.useState)(_theme["default"]),
+  var _useState = (0, _uiApi.useState)(_theme["default"]),
       theme = _useState[0],
       setTheme = _useState[1],
-      _showSettings = (0, _react.useMemo)(function () {
+      _showSettings = (0, _uiApi.useMemo)(function () {
     return _ComponentActions["default"].showModalDialog.bind(null, 'SETTINGS_DIALOG', _Store["default"].exportSettingsFn());
   }, []);
 
@@ -55,46 +55,44 @@ var AppNewsAggregator = function AppNewsAggregator() {
       });
     }
   });
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_react.StrictMode, {
-    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ThemeContext["default"].Provider, {
-      value: theme,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_HeaderBar["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ThemeContext["default"].Provider, {
+    value: theme,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_HeaderBar["default"], {
+        store: _Store["default"],
+        onChangeTheme: _ComponentActions["default"].changeTheme,
+        onNewsSources: _ComponentActions["default"].showNewsBrowser,
+        onWebz: _ComponentActions["default"].showWebz,
+        onWebzCountry: _ComponentActions["default"].showWebzCountry,
+        onStackTagged: _ComponentActions["default"].showStackTagged,
+        onStackSearch: _ComponentActions["default"].showStackSearch,
+        onCryptoCompare: _ComponentActions["default"].showCryptoCompare,
+        onCoinStats: _ComponentActions["default"].showCoinStats,
+        onMessari: _ComponentActions["default"].showMessari,
+        onIex: _ComponentActions["default"].showIex,
+        onFmp: _ComponentActions["default"].showFmp,
+        onNewsSearch: _ComponentActions["default"].showNewsSearch,
+        onNewsTop: _ComponentActions["default"].showNewsTop,
+        onSettings: _showSettings,
+        onAbout: _ComponentActions["default"].showAbout
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        className: CL_COMP,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserContainer["default"], {
+          store: _Store["default"]
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_About["default"], {
+          isInitShow: true,
           store: _Store["default"],
-          onChangeTheme: _ComponentActions["default"].changeTheme,
-          onNewsSources: _ComponentActions["default"].showNewsBrowser,
-          onWebz: _ComponentActions["default"].showWebz,
-          onWebzCountry: _ComponentActions["default"].showWebzCountry,
-          onStackTagged: _ComponentActions["default"].showStackTagged,
-          onStackSearch: _ComponentActions["default"].showStackSearch,
-          onCryptoCompare: _ComponentActions["default"].showCryptoCompare,
-          onCoinStats: _ComponentActions["default"].showCoinStats,
-          onMessari: _ComponentActions["default"].showMessari,
-          onIex: _ComponentActions["default"].showIex,
-          onFmp: _ComponentActions["default"].showFmp,
-          onNewsSearch: _ComponentActions["default"].showNewsSearch,
-          onNewsTop: _ComponentActions["default"].showNewsTop,
-          onSettings: _showSettings,
-          onAbout: _ComponentActions["default"].showAbout
-        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-          className: CL_COMP,
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserContainer["default"], {
-            store: _Store["default"]
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_About["default"], {
-            isInitShow: true,
-            store: _Store["default"],
-            showAction: _ComponentActions.CAT_SHOW_ABOUT,
-            hideAction: _ComponentActions.CAT_SHOW_NEWS_PANE
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ComponentHrzContainer["default"], {
-            store: _Store["default"],
-            addAction: _ComponentActions.CAT_SHOW_NEWS_PANE
-          })]
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialogContainer["default"], {
+          showAction: _ComponentActions.CAT_SHOW_ABOUT,
+          hideAction: _ComponentActions.CAT_SHOW_NEWS_PANE
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ComponentHrzContainer["default"], {
           store: _Store["default"],
-          router: _RouterModalDialog["default"],
-          showAction: _ComponentActions.CAT_SHOW_MODAL_DIALOG
+          addAction: _ComponentActions.CAT_SHOW_NEWS_PANE
         })]
-      })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialogContainer["default"], {
+        store: _Store["default"],
+        router: _RouterModalDialog["default"],
+        showAction: _ComponentActions.CAT_SHOW_MODAL_DIALOG
+      })]
     })
   });
 };

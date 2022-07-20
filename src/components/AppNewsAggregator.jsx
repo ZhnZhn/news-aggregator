@@ -1,4 +1,7 @@
-import { StrictMode, useState, useMemo } from 'react'
+import {
+  useState,
+  useMemo
+} from './uiApi';
 
 import useListen from './hooks/useListen'
 import Store from '../flux/stores/Store'
@@ -37,7 +40,6 @@ const AppNewsAggregator = () => {
   })
 
   return (
-    <StrictMode>
     <ThemeContext.Provider value={theme}>
       <div>
         <HeaderBar
@@ -82,7 +84,6 @@ const AppNewsAggregator = () => {
         />
       </div>
     </ThemeContext.Provider>
-    </StrictMode>
   );
 };
 
