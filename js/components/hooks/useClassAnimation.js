@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _react = require("react");
 
-var _useForceUpdate2 = _interopRequireDefault(require("./useForceUpdate"));
+var _useRerender2 = _interopRequireDefault(require("./useRerender"));
 
 var useClassAnimation = function useClassAnimation(_ref) {
   var isShow = _ref.isShow,
@@ -18,9 +18,9 @@ var useClassAnimation = function useClassAnimation(_ref) {
       _ref$timeout = _ref.timeout,
       timeout = _ref$timeout === void 0 ? 450 : _ref$timeout;
 
-  var _useForceUpdate = (0, _useForceUpdate2["default"])(),
-      _wasUpdated = _useForceUpdate[0],
-      _forceUpdate = _useForceUpdate[1],
+  var _useRerender = (0, _useRerender2["default"])(),
+      _wasRerendered = _useRerender[0],
+      _rerender = _useRerender[1],
       _refWasClosed = (0, _react.useRef)(initialWasClosed),
       _refPrevIsShow = (0, _react.useRef)(isShow);
   /*eslint-disable react-hooks/exhaustive-deps */
@@ -31,24 +31,18 @@ var useClassAnimation = function useClassAnimation(_ref) {
       setTimeout(function () {
         _refWasClosed.current = true;
 
-        _forceUpdate();
+        _rerender();
       }, timeout);
     }
 
     _refPrevIsShow.current = isShow;
     _refWasClosed.current = false;
-  }, [isShow, _wasUpdated]);
+  }, [isShow, _wasRerendered]);
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  var className, style;
-
-  if (_refWasClosed.current) {
-    className = CL.INIT;
-    style = S.INIT;
-  } else {
-    className = isShow ? CL.SHOWING : CL.HIDING;
-    style = isShow ? S.SHOWING : S.HIDING;
-  }
+  var _ref2 = _refWasClosed.current ? [CL.INIT, S.INIT] : isShow ? [CL.SHOWING, S.SHOWING] : [CL.HIDING, S.HIDING],
+      className = _ref2[0],
+      style = _ref2[1];
 
   return {
     className: className,

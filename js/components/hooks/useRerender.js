@@ -9,10 +9,10 @@ var _reducer = function _reducer() {
   return {};
 };
 
-var useForceUpdate = function useForceUpdate() {
+var useRerender = function useRerender() {
   return (0, _react.useReducer)(_reducer);
 };
 
-var _default = useForceUpdate;
+var _default = useRerender;
 exports["default"] = _default;
-//# sourceMappingURL=useForceUpdate.js.map
+//# sourceMappingURL=useRerender.js.map

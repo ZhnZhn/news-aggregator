@@ -2,53 +2,50 @@ import { Component } from 'react';
 
 import has from '../has';
 
-const CL = {
-  SELECT: 'm-select',
-  LABEL: 'm-select__label',
-  DIV: 'm-textfield-input__div',
-  INPUT: 'm-textfield-input',
-  BT_CLEAR: 'm-textfield__bt-clear',
-  INPUT_LINE: 'm-input__line',
-  INPUT_MSG_ERR: 'm-input__msg-err'
+const CL_SELECT = 'm-select'
+, CL_LABEL = `${CL_SELECT}__label`
+, M_TEXTFIELD = 'm-textfield'
+, CL_DIV = `${M_TEXTFIELD}-input__div`
+, CL_INPUT = `${M_TEXTFIELD}-input`
+, CL_BT_CLEAR = `${M_TEXTFIELD}__bt-clear`
+, M_INPUT = 'm-input'
+, CL_INPUT_LINE = `${M_INPUT}__line`
+, CL_INPUT_MSG_ERR = `${M_INPUT}__msg-err`
+
+, S_LABEL_TO_INPUT = {
+   transform: 'scale(1) translate(0px, -6px)'
+}
+, S_LABEL_ON_ERROR = {
+   color: '#f44336'
+}
+, S_LINE_ERROR = {
+   borderBottom: '2px solid #f44336'
+}
+, S_LINE_AFTER_ENTER = {
+   borderBottom: '2px solid #80c040'
 };
 
-const S = {
-  LABEL_TO_INPUT: {
-     transform: 'scale(1) translate(0px, -6px)'
-  },
-  BT_CLEAR: {
-    position: 'absolute',
-    top: 28,
-    right: 12,
-    color: '#2f7ed8',
-    fontWeight: 'bold'
-  },
-  LABEL_ON_ERROR: {
-    color: '#f44336'
-  },
-  LINE_ERROR: {
-    borderBottom: '2px solid #f44336'
-  },
-  LINE_AFTER_ENTER: {
-    borderBottom: '2px solid #80c040'
-  }
-};
 
 const _crId = ({ name }) => name
   + '_'
   + Math.random().toString(36).substr(2, 6);
 
+const _isValue = (
+  input
+) => input
+  ? !!input.value
+  : false;
 
-const _fnNoop = () => {};
-const _fnTrue = () => true;
+const FN_NOOP = () => {};
+const FN_TRUE = () => true;
 
 class PasswordField extends Component {
   static defaultProps = {
     name: 'pwd',
     maxLength: "32",
     errorMsg: '',
-    onTest: _fnTrue,
-    onEnter: _fnNoop
+    onTest: FN_TRUE,
+    onEnter: FN_NOOP
   }
 
   constructor(props){
@@ -107,47 +104,44 @@ class PasswordField extends Component {
      this.forceUpdate(this._clearWasEnter)
    }
  }
- _isValue = () => {
-    return this._input
-       ? !!this._input.value
-       : false;
- }
 
  _refInput = node => this._input = node
 
   render(){
     const {
-        style, caption,
+        style,
+        caption,
         name,
-        maxLength, errorMsg,
+        maxLength,
+        errorMsg,
         onTest
       } = this.props
     , { value } = this.state
     , _isPassTest = onTest(value)
-    , _labelStyle = this._isValue() || this.isFocus
+    , _labelStyle = _isValue(this._input) || this.isFocus
         ? void 0
-        : S.LABEL_TO_INPUT
+        : S_LABEL_TO_INPUT
     , _labelErrStyle = _isPassTest
         ? void 0
-        : S.LABEL_ON_ERROR
+        : S_LABEL_ON_ERROR
     , _lineStyle = _isPassTest
         ? this._wasEnter
-             ? S.LINE_AFTER_ENTER
+             ? S_LINE_AFTER_ENTER
              : void 0
-        : S.LINE_ERROR;
+        : S_LINE_ERROR;
     return (
       <div
-        className={CL.SELECT}
+        className={CL_SELECT}
         style={style}
       >
         <label
-          className={CL.LABEL}
+          className={CL_LABEL}
           style={{..._labelStyle, ..._labelErrStyle}}
           htmlFor={this._id}
          >
           {caption}
         </label>
-        <div className={CL.DIV}>
+        <div className={CL_DIV}>
           <input
             hidden={true}
             autoComplete="username"
@@ -159,7 +153,7 @@ class PasswordField extends Component {
             id={this._id}
             type="password"
             autoComplete="current-password"
-            className={CL.INPUT}
+            className={CL_INPUT}
             maxLength={maxLength}
             value={value}
             onChange={this._hInputChange}
@@ -169,13 +163,13 @@ class PasswordField extends Component {
           />
           {
             has.HAS_TOUCH && value && <button
-             className={CL.BT_CLEAR}
+             className={CL_BT_CLEAR}
              onClick={this._hClear}
             >x</button>
           }
-          <div className={CL.INPUT_LINE} style={_lineStyle} />
+          <div className={CL_INPUT_LINE} style={_lineStyle} />
           {
-             !_isPassTest && <div className={CL.INPUT_MSG_ERR}>
+             !_isPassTest && <div className={CL_INPUT_MSG_ERR}>
                  {errorMsg}
                </div>
           }

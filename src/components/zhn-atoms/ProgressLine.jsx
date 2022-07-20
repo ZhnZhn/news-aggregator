@@ -1,6 +1,9 @@
-import { useRef, useEffect } from 'react';
+import {
+  useRef,
+  useEffect
+} from 'react';
 
-import useForceUpdate from '../hooks/useForceUpdate';
+import useRerender from '../hooks/useRerender';
 
 const CL = "progress-line"
 , DF_COLOR = '#2f7ed8'
@@ -26,7 +29,7 @@ const ProgressLine = ({
   color=DF_COLOR,
   completed
 }) => {
-  const forceUpdate = useForceUpdate()[1]
+  const rerender = useRerender()[1]
   , _refWasCompleted = useRef(false)
   , _refIdCompleted = useRef(null)
   , _refWasOpacied = useRef(false)
@@ -34,9 +37,9 @@ const ProgressLine = ({
 
   useEffect(()=>{
     if (_getCurrent(_refWasCompleted)){
-      _refIdCompleted.current = setTimeout(forceUpdate, TM_PERIOD)
+      _refIdCompleted.current = setTimeout(rerender, TM_PERIOD)
     } else if (_getCurrent(_refWasOpacied)){
-      _refIdOpacied.current = setTimeout(forceUpdate, TM_PERIOD)
+      _refIdOpacied.current = setTimeout(rerender, TM_PERIOD)
     }
   })
 

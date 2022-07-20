@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _react = require("react");
 
-var _useForceUpdate = _interopRequireDefault(require("../hooks/useForceUpdate"));
+var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
@@ -35,7 +35,7 @@ var ProgressLine = function ProgressLine(_ref) {
       color = _ref$color === void 0 ? DF_COLOR : _ref$color,
       completed = _ref.completed;
 
-  var forceUpdate = (0, _useForceUpdate["default"])()[1],
+  var rerender = (0, _useRerender["default"])()[1],
       _refWasCompleted = (0, _react.useRef)(false),
       _refIdCompleted = (0, _react.useRef)(null),
       _refWasOpacied = (0, _react.useRef)(false),
@@ -43,9 +43,9 @@ var ProgressLine = function ProgressLine(_ref) {
 
   (0, _react.useEffect)(function () {
     if (_getCurrent(_refWasCompleted)) {
-      _refIdCompleted.current = setTimeout(forceUpdate, TM_PERIOD);
+      _refIdCompleted.current = setTimeout(rerender, TM_PERIOD);
     } else if (_getCurrent(_refWasOpacied)) {
-      _refIdOpacied.current = setTimeout(forceUpdate, TM_PERIOD);
+      _refIdOpacied.current = setTimeout(rerender, TM_PERIOD);
     }
   });
   (0, _react.useEffect)(function () {
