@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = _interopRequireDefault(require("react"));
+var _uiApi = require("../../components/uiApi");
 
 var _ComponentActions = _interopRequireWildcard(require("../actions/ComponentActions"));
 
@@ -31,7 +31,7 @@ var Factory = {
         dialogProps = itemConf.dialogProps,
         El = _RouterDialog["default"].getElement(dialogType);
 
-    return /*#__PURE__*/_react["default"].createElement(El, (0, _extends2["default"])({
+    return (0, _uiApi.createElement)(El, (0, _extends2["default"])({
       key: type,
       type: type,
       itemConf: itemConf
@@ -49,7 +49,7 @@ var Factory = {
         Pane = _RouterPane$getElemen.Pane,
         Item = _RouterPane$getElemen.Item;
 
-    return /*#__PURE__*/_react["default"].createElement(Pane, {
+    return (0, _uiApi.createElement)(Pane, {
       key: type,
       id: paneId,
       paneCaption: paneCaption,

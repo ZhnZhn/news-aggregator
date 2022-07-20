@@ -1,4 +1,6 @@
-import React from 'react'
+import {
+  createElement
+} from '../../components/uiApi';
 
 import ComponentActions, {
   CAT_SHOW_NEWS_PANE,
@@ -14,10 +16,14 @@ const closeNewsPane = ComponentActions.closeNewsPane;
 const loadNews = NewsActions.loadNews;
 
 const Factory = {
-  createDialog : (itemConf) => {
-    const { type, dialogType, dialogProps } = itemConf
-        , El = RouterDialog.getElement(dialogType);
-    return React.createElement(El, {
+  createDialog: (itemConf) => {
+    const {
+      type,
+      dialogType,
+      dialogProps
+    } = itemConf
+    , El = RouterDialog.getElement(dialogType);
+    return createElement(El, {
       key: type,
       type: type,
       itemConf: itemConf,
@@ -27,10 +33,18 @@ const Factory = {
     });
   },
 
-  createNewsPane : (itemConf, store) => {
-    const { type, paneType, paneCaption, paneId } = itemConf
-        , { Pane, Item } = RouterPane.getElement(paneType);
-    return React.createElement(Pane, {
+  createNewsPane: (itemConf, store) => {
+    const {
+      type,
+      paneType,
+      paneCaption,
+      paneId
+    } = itemConf
+    , {
+      Pane,
+      Item
+    } = RouterPane.getElement(paneType);
+    return createElement(Pane, {
       key: type,
       id: paneId,
       paneCaption,
