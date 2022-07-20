@@ -41,18 +41,18 @@ const DialogType1 = ({
   }, [])
   // type, source, itemConf, onLoad
   /*eslint-enable react-hooks/exhaustive-deps */
-  , [TS, _commandButtons, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose);
+  , [TS, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose);
 
   return (
     <A.DraggableDialog
        ref={_refDialog}
        isShow={isShow}
-       rootStyle={TS.R_DIALOG}
-       browserCaptionStyle={TS.BROWSER_CAPTION}
-       styleButton={TS.BT}
+       style={TS.R_DIALOG}
+       captionStyle={TS.BROWSER_CAPTION}
+       buttonStyle={TS.BT}
        caption={caption}
-       commandButtons={_commandButtons}
        onKeyDown={_hKeyDown}
+       onLoad={_hLoad}
        onShowChart={onShow}
        onClose={_hClose}
     >

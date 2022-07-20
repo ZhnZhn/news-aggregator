@@ -119,21 +119,21 @@ const WebzCountryDialog = ({
   }, [])
   //type, source, itemConf, onLoad
   /*eslint-enable react-hooks/exhaustive-deps */
-  , [TS, _commandButtons, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose);
+  , [TS, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose);
 
   return (
     <A.DraggableDialog
-         ref={_refDialog}
-         rootStyle={TS.R_DIALOG}
-         browserCaptionStyle={TS.BROWSER_CAPTION}
-         styleButton={TS.BT}
-         caption="Webz.io: By Country"
-         isShow={isShow}
-         commandButtons={_commandButtons}
-         onKeyDown={_hKeyDown}
-         onShowChart={onShow}
-         onClose={_hClose}
-     >
+       ref={_refDialog}
+       isShow={isShow}
+       style={TS.R_DIALOG}
+       captionStyle={TS.BROWSER_CAPTION}
+       buttonStyle={TS.BT}
+       caption="Webz.io: By Country"
+       onKeyDown={_hKeyDown}
+       onLoad={_hLoad}
+       onShow={onShow}
+       onClose={_hClose}
+    >
       <div>
         <A.InputSelect
           caption="Country"

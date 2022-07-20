@@ -62,18 +62,17 @@ var DialogType1 = function DialogType1(_ref) {
   }, []),
       _useDecorDialog = (0, _useDecorDialog2["default"])(_Dialog["default"], _hLoad, _hClose),
       TS = _useDecorDialog[0],
-      _commandButtons = _useDecorDialog[1],
-      _hKeyDown = _useDecorDialog[2];
+      _hKeyDown = _useDecorDialog[1];
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].DraggableDialog, {
     ref: _refDialog,
     isShow: isShow,
-    rootStyle: TS.R_DIALOG,
-    browserCaptionStyle: TS.BROWSER_CAPTION,
-    styleButton: TS.BT,
+    style: TS.R_DIALOG,
+    captionStyle: TS.BROWSER_CAPTION,
+    buttonStyle: TS.BT,
     caption: caption,
-    commandButtons: _commandButtons,
     onKeyDown: _hKeyDown,
+    onLoad: _hLoad,
     onShowChart: onShow,
     onClose: _hClose,
     children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {

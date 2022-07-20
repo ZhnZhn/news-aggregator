@@ -1,53 +1,65 @@
-import { forwardRef, useRef, useCallback, useEffect, useImperativeHandle } from 'react';
 //import PropTypes from 'prop-types'
+import {
+  forwardRef,
+  useRef,
+  useCallback,
+  useEffect,
+  useImperativeHandle
+} from 'react';
 
 import BrowserCaption from '../zhn-atoms/BrowserCaption';
 import RaisedButton from '../zhn-bt/RaisedButton';
 
 import Interact from '../../utils/Interact';
 
-const CL_DIALOG = 'dialog';
-const CL_DIALOG_OPEN = 'dialog show-popup';
+const CL_DIALOG = 'dialog'
+, CL_DIALOG_OPEN = `${CL_DIALOG} show-popup`
 
-const S = {
-  DIV: {
-    position: 'absolute',
-    top: 30,
-    left: 50,
-    backgroundColor: '#4d4d4d',
-    border: 'solid 2px #3f5178',
-    borderRadius: '5px',
-    boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
-    zIndex: 10
-  },
-  CHL_DIV: {
-    cursor: 'default'
-  },
-  BTS: {
-     marginTop: 16,
-     marginBottom: 10,
-     marginRight: 4,
-     float: 'right',
-     cursor: 'default'
-  },
-  BLOCK: {
-    display: 'block'
-  },
-  NONE: {
-    display: 'none'
-  }
+, S_DIV = {
+  position: 'absolute',
+  top: 30,
+  left: 50,
+  backgroundColor: '#4d4d4d',
+  border: 'solid 2px #3f5178',
+  borderRadius: '5px',
+  boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
+  zIndex: 10
+}
+, S_CHL_DIV = {
+  cursor: 'default'
+}
+, S_BTS = {
+   marginTop: 16,
+   marginBottom: 10,
+   marginRight: 4,
+   float: 'right',
+   cursor: 'default'
+}
+, S_BLOCK = {
+  display: 'block'
+}
+, S_NONE = {
+  display: 'none'
 };
 
 const _isFn = fn => typeof fn === 'function';
 
 const DialogButtons = ({
   TS,
-  buttons,
+  onLoad,
   onShow,
   onClose
 }) => (
-  <div style={S.BTS}>
-    {buttons}
+  <div style={S_BTS}>
+    {_isFn(onLoad) &&
+      <RaisedButton
+        isPrimary={true}
+        style={TS.RAISED}
+        clDiv={TS.CL_RAISED_DIV}
+        caption="Load"
+        onClick={onLoad}
+      />
+    }
     {_isFn(onShow) &&
       <RaisedButton
          style={TS.RAISED}
@@ -80,14 +92,14 @@ const useFocusByRef = ref => useCallback(() => {
 
 const DraggableDialog = forwardRef(({
   isShow,
-  rootStyle,
-  browserCaptionStyle,
-  styleButton,
+  style,
+  captionStyle,
+  buttonStyle,
   caption,
-  commandButtons,
   children,
   onKeyDown,
-  onShowChart,
+  onLoad,
+  onShow,
   onClose
 }, ref) => {
   const _refDiv = useRef(null)
@@ -129,8 +141,13 @@ const DraggableDialog = forwardRef(({
 
   useImperativeHandle(ref, () => ({ focusPrevEl }))
 
-  const _styleShow = isShow ? S.BLOCK : S.NONE
-  , _classShow = isShow ? CL_DIALOG_OPEN : CL_DIALOG;
+  const [
+    _styleShow,
+    _classShow
+  ] = isShow
+    ? [S_BLOCK, CL_DIALOG_OPEN]
+    : [S_NONE, CL_DIALOG]
+
 
   return (
     /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
@@ -140,8 +157,8 @@ const DraggableDialog = forwardRef(({
          role="dialog"
          className={_classShow}
          style={{
-           ...S.DIV,
-           ...rootStyle,
+           ...S_DIV,
+           ...style,
            ..._styleShow
          }}
          tabIndex="0"
@@ -152,17 +169,17 @@ const DraggableDialog = forwardRef(({
       /*eslint-enable jsx-a11y/no-noninteractive-tabindex*/
     }
       <BrowserCaption
-         style={browserCaptionStyle}
+         style={captionStyle}
          caption={caption}
          onClose={onClose}
       />
-      <div style={S.CHL_DIV}>
+      <div style={S_CHL_DIV}>
          {children}
       </div>
       <DialogButtons
-        TS={styleButton}
-        buttons={commandButtons}
-        onShow={onShowChart}
+        TS={buttonStyle}
+        onLoad={onLoad}
+        onShow={onShow}
         onClose={_hClose}
       />
     </div>
@@ -172,17 +189,17 @@ const DraggableDialog = forwardRef(({
 /*
 DraggableDialog.propTypes = {
   isShow: PropTypes.bool,
-  rootStyle: PropTypes.object,
-  browserCaptionStyle: PropTypes.object,
+  style: PropTypes.object,
+  captionStyle: PropTypes.object,
   styleButton: PropTypes.object,
   caption: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]),
-  commandButtons: PropTypes.arrayOf(PropTypes.element),
+  ]),  
   onKeyDown: PropTypes.func,
-  onShowChart: PropTypes.func,
+  onLoad: PropTypes.func,
+  onShow: PropTypes.func,
   onClose: PropTypes.func
 }
 */

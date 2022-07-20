@@ -61,22 +61,22 @@ const StackSearchDialog = ({
   }, [])
   // type, source, itemConf, _hClose
   // ...
-  /*eslint-enable react-hooks/exhaustive-deps */  
-  , [TS, _commandButtons, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose)
+  /*eslint-enable react-hooks/exhaustive-deps */
+  , [TS, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose)
   , _titleTagged = _crInputTitle('Tagged', DF_TAGGED)
   , _titleInTitle = _crInputTitle('In Title', DF_IN_TITLE)
 
   return (
     <A.DraggableDialog
       ref={_refDialog}
-      rootStyle={TS.R_DIALOG}
-      browserCaptionStyle={TS.BROWSER_CAPTION}
-      styleButton={TS.BT}
-      caption="Search Questions"
       isShow={isShow}
-      commandButtons={_commandButtons}
+      style={TS.R_DIALOG}
+      captionStyle={TS.BROWSER_CAPTION}
+      buttonStyle={TS.BT}
+      caption="Search Questions"
       onKeyDown={_hKeyDown}
-      onShowChart={onShow}
+      onLoad={_hLoad}
+      onShow={onShow}
       onClose={_hClose}
     >
        <A.TextField

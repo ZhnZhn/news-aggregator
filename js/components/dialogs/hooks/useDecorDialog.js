@@ -7,13 +7,11 @@ exports["default"] = void 0;
 
 var _useTheme = _interopRequireDefault(require("../../hooks/useTheme"));
 
-var _useBtLoad = _interopRequireDefault(require("./useBtLoad"));
-
 var _useKeyDown = _interopRequireDefault(require("./useKeyDown"));
 
 var useDecorDialog = function useDecorDialog(styleConfig, hLoad, hClose) {
   var TS = (0, _useTheme["default"])(styleConfig);
-  return [TS, (0, _useBtLoad["default"])(TS.BT, hLoad), (0, _useKeyDown["default"])(hLoad, hClose)];
+  return [TS, (0, _useKeyDown["default"])(hLoad, hClose)];
 };
 
 var _default = useDecorDialog;

@@ -97,21 +97,20 @@ var StackSearchDialog = function StackSearchDialog(_ref) {
   }, []),
       _useDecorDialog = (0, _useDecorDialog2["default"])(_Dialog["default"], _hLoad, _hClose),
       TS = _useDecorDialog[0],
-      _commandButtons = _useDecorDialog[1],
-      _hKeyDown = _useDecorDialog[2],
+      _hKeyDown = _useDecorDialog[1],
       _titleTagged = _crInputTitle('Tagged', DF_TAGGED),
       _titleInTitle = _crInputTitle('In Title', DF_IN_TITLE);
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
     ref: _refDialog,
-    rootStyle: TS.R_DIALOG,
-    browserCaptionStyle: TS.BROWSER_CAPTION,
-    styleButton: TS.BT,
-    caption: "Search Questions",
     isShow: isShow,
-    commandButtons: _commandButtons,
+    style: TS.R_DIALOG,
+    captionStyle: TS.BROWSER_CAPTION,
+    buttonStyle: TS.BT,
+    caption: "Search Questions",
     onKeyDown: _hKeyDown,
-    onShowChart: onShow,
+    onLoad: _hLoad,
+    onShow: onShow,
     onClose: _hClose,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
       style: TS.INPUT_ROOT,

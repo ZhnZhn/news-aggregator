@@ -42,22 +42,22 @@ const NewsApiSearchDialog = ({
   }, [])
   // type, source, itemConf, onLoad,
   /*eslint-enable react-hooks/exhaustive-deps */
-  , [TS, _commandButtons, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose)
+  , [TS, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose)
   , _termCaption = `Term (Default: ${DF_TERM})`;
 
   return (
     <A.DraggableDialog
-         ref={_refDialog}
-         isShow={isShow}
-         rootStyle={TS.R_DIALOG}
-         browserCaptionStyle={TS.BROWSER_CAPTION}
-         styleButton={TS.BT}
-         caption="NewsApi Search"
-         commandButtons={_commandButtons}
-         onKeyDown={_hKeyDown}
-         onShowChart={onShow}
-         onClose={_hClose}
-     >
+       ref={_refDialog}
+       isShow={isShow}
+       style={TS.R_DIALOG}
+       captionStyle={TS.BROWSER_CAPTION}
+       buttonStyle={TS.BT}
+       caption="NewsApi Search"
+       onKeyDown={_hKeyDown}
+       onLoad={_hLoad}
+       onShow={onShow}
+       onClose={_hClose}
+    >
        <A.TextField
          style={TS.INPUT_ROOT}
          ref={_refInputTerm}
