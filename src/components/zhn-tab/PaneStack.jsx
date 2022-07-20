@@ -1,4 +1,4 @@
-import { cloneElement } from 'react';
+import { cloneElement } from '../uiApi';
 
 import ItemStack from '../zhn-atoms/ItemStack';
 
@@ -7,7 +7,8 @@ const CL_PANES = "panes"
 , S_NONE = { display: 'none' };
 
 const _crItemPane = (
-  tab, index,
+  tab,
+  index,
   { isShow, selectedTabIndex }
 ) => {
   const isSelected = index === selectedTabIndex;

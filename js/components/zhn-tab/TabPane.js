@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _TabStack = _interopRequireDefault(require("./TabStack"));
 
@@ -13,18 +13,18 @@ var _PaneStack = _interopRequireDefault(require("./PaneStack"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var TabPane = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
+var TabPane = (0, _uiApi.forwardRef)(function (_ref, ref) {
   var isShow = _ref.isShow,
       width = _ref.width,
       height = _ref.height,
       tabsStyle = _ref.tabsStyle,
       children = _ref.children;
 
-  var _useState = (0, _react.useState)(0),
+  var _useState = (0, _uiApi.useState)(0),
       selectedTabIndex = _useState[0],
       setTabIndex = _useState[1];
 
-  (0, _react.useImperativeHandle)(ref, function () {
+  (0, _uiApi.useImperativeHandle)(ref, function () {
     return {
       getSelectedTabIndex: function getSelectedTabIndex() {
         return selectedTabIndex;

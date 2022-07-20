@@ -6,7 +6,8 @@ const CL_TAB = "tab"
 
 const Tab = ({
   isSelected,
-  id, title,
+  id,
+  title,
   onClick
 }) => (
   <button
@@ -22,6 +23,5 @@ const Tab = ({
      </span>
   </button>
 );
-
 
 export default Tab

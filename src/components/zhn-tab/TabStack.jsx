@@ -1,4 +1,7 @@
-import { cloneElement, useCallback } from 'react';
+import {
+  cloneElement,
+  useCallback
+} from '../uiApi';
 
 import ItemStack from '../zhn-atoms/ItemStack';
 
@@ -7,13 +10,14 @@ const CL_TABS = "tabs";
 const _isFn = fn => typeof fn === 'function';
 
 const _crItemTab = (
-  tabEl, index,
+  tabEl,
+  index,
   { selectedTabIndex, hClick }
 ) => cloneElement(tabEl, {
    key: index,
    id: index,
    onClick: hClick.bind(null, index, tabEl),
-   isSelected: index === selectedTabIndex   
+   isSelected: index === selectedTabIndex
 });
 
 const TabStack = ({

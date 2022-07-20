@@ -1,15 +1,23 @@
-import { forwardRef, useState, useImperativeHandle } from 'react';
+import {
+  forwardRef,
+  useState,
+  useImperativeHandle
+} from '../uiApi';
 
 import TabStack from './TabStack';
-import PaneStack from './PaneStack'
+import PaneStack from './PaneStack';
 
 const TabPane = forwardRef(({
   isShow,
-  width, height,
+  width,
+  height,
   tabsStyle,
   children
 }, ref) => {
-  const [selectedTabIndex, setTabIndex] = useState(0);
+  const [
+    selectedTabIndex,
+    setTabIndex
+  ] = useState(0);
 
   useImperativeHandle(ref, () => ({
     getSelectedTabIndex: () => selectedTabIndex

@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
 
@@ -28,7 +28,7 @@ var _crItemPane = function _crItemPane(tab, index, _ref) {
     role: "tabpanel",
     id: "tabpanel-" + index,
     "aria-labelledby": "tab-" + index,
-    children: /*#__PURE__*/(0, _react.cloneElement)(tab.props.children, {
+    children: (0, _uiApi.cloneElement)(tab.props.children, {
       isShow: isShow,
       isSelected: isSelected
     })
