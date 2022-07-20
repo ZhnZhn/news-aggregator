@@ -2,7 +2,7 @@
 import {
   useContext,
   useCallback
-} from 'react';
+} from '../uiApi';
 
 import memoIsShow from '../hoc/memoIsShow';
 import ThemeContext from '../hooks/ThemeContext';

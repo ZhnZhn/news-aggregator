@@ -1,5 +1,9 @@
 
-const IconAppLogo = ({ className, title, onClick }) => (
+const IconAppLogo = ({ 
+  className,
+  title,
+  onClick
+}) => (
     <span
        className={className}
        title={title}

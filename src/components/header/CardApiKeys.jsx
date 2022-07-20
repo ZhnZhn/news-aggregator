@@ -1,4 +1,7 @@
-import { useRef, useCallback } from 'react';
+import {
+  useRef,
+  useCallback
+} from '../uiApi';
 
 import safeFn from '../../utils/safeFn';
 

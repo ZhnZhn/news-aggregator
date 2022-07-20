@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 
@@ -25,13 +25,13 @@ var _jsxRuntime = require("react/jsx-runtime");
 
 var TITLE = "News Aggregator v0.4.0",
     CL_HEADER = "header",
-    CL_PANEL_BROWSER = "header__panel-browser",
-    CL_ICON_APP = "header__icon-app",
-    CL_LABEL_APP = "header__label-app",
-    CL_BROWSER_BTS = "header__browser-bts",
+    CL_PANEL_BROWSER = CL_HEADER + "__panel-browser",
+    CL_ICON_APP = CL_HEADER + "__icon-app",
+    CL_LABEL_APP = CL_HEADER + "__label-app",
+    CL_BROWSER_BTS = CL_HEADER + "__browser-bts",
     CL_ARROW_DOWN = "arrow-down",
-    CL_BTS = "header__bts",
-    CL_BT_ABOUT = "header__bt-about",
+    CL_BTS = CL_HEADER + "__bts",
+    CL_BT_ABOUT = CL_HEADER + "__bt-about",
     S_SVG_ICON = {
   position: 'relative',
   top: -1,
@@ -41,7 +41,7 @@ var TITLE = "News Aggregator v0.4.0",
 /*eslint-disable react-hooks/exhaustive-deps */
 
 var _useClickItem = function _useClickItem(onClick, onClose) {
-  return (0, _react.useCallback)(function () {
+  return (0, _uiApi.useCallback)(function () {
     onClick();
     onClose();
   }, []);
@@ -67,13 +67,13 @@ var HeaderBar = function HeaderBar(_ref) {
       onNewsSearch = _ref.onNewsSearch,
       onNewsTop = _ref.onNewsTop;
 
-  var _useState = (0, _react.useState)(false),
+  var _useState = (0, _uiApi.useState)(false),
       isQuery = _useState[0],
       setIsQuery = _useState[1],
-      _hCloseQuery = (0, _react.useCallback)(function () {
+      _hCloseQuery = (0, _uiApi.useCallback)(function () {
     return setIsQuery(false);
   }, []),
-      _hToggleQuery = (0, _react.useCallback)(function () {
+      _hToggleQuery = (0, _uiApi.useCallback)(function () {
     return setIsQuery(function (is) {
       return !is;
     });

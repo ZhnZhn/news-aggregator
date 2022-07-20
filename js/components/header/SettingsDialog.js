@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _memoIsShow = _interopRequireDefault(require("../hoc/memoIsShow"));
 
@@ -82,8 +82,8 @@ var SettingsDialog = (0, _memoIsShow["default"])(function (_ref2) {
       data = _ref2.data,
       onClose = _ref2.onClose;
 
-  var theme = (0, _react.useContext)(_ThemeContext["default"]),
-      _selectTheme = (0, _react.useCallback)(function (item) {
+  var theme = (0, _uiApi.useContext)(_ThemeContext["default"]),
+      _selectTheme = (0, _uiApi.useCallback)(function (item) {
     var _ref3 = item || {},
         value = _ref3.value;
 

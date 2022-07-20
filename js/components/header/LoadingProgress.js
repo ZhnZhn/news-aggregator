@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
@@ -26,7 +26,7 @@ var _crState = function _crState(completed, color) {
 var ProgressLoading = function ProgressLoading(_ref) {
   var store = _ref.store;
 
-  var _useState = (0, _react.useState)(function () {
+  var _useState = (0, _uiApi.useState)(function () {
     return _crState(0, COLOR_LOADING);
   }),
       state = _useState[0],
@@ -52,7 +52,7 @@ var ProgressLoading = function ProgressLoading(_ref) {
   });
 };
 
-var _default = /*#__PURE__*/(0, _react.memo)(ProgressLoading);
+var _default = (0, _uiApi.memo)(ProgressLoading);
 
 exports["default"] = _default;
 //# sourceMappingURL=LoadingProgress.js.map

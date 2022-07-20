@@ -1,4 +1,7 @@
-import { useState, useCallback } from 'react';
+import {
+  useState,
+  useCallback
+} from '../uiApi';
 
 import useTheme from '../hooks/useTheme';
 import styleConfig from './HeaderBar.Style';
@@ -12,13 +15,13 @@ import PanelQuery from './PanelQuery';
 const TITLE = "News Aggregator v0.4.0"
 
 , CL_HEADER = "header"
-, CL_PANEL_BROWSER = "header__panel-browser"
-, CL_ICON_APP = "header__icon-app"
-, CL_LABEL_APP = "header__label-app"
-, CL_BROWSER_BTS = "header__browser-bts"
+, CL_PANEL_BROWSER = `${CL_HEADER}__panel-browser`
+, CL_ICON_APP = `${CL_HEADER}__icon-app`
+, CL_LABEL_APP = `${CL_HEADER}__label-app`
+, CL_BROWSER_BTS = `${CL_HEADER}__browser-bts`
 , CL_ARROW_DOWN = "arrow-down"
-, CL_BTS = "header__bts"
-, CL_BT_ABOUT = "header__bt-about"
+, CL_BTS = `${CL_HEADER}__bts`
+, CL_BT_ABOUT = `${CL_HEADER}__bt-about`
 
 , S_SVG_ICON = {
   position: 'relative',
@@ -28,7 +31,10 @@ const TITLE = "News Aggregator v0.4.0"
 };
 
 /*eslint-disable react-hooks/exhaustive-deps */
-const _useClickItem = (onClick, onClose) =>
+const _useClickItem = (
+  onClick,
+  onClose
+) =>
  useCallback(() => {
    onClick()
    onClose()

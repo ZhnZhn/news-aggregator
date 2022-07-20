@@ -1,1 +1,16 @@
-{"version":3,"sources":["../../../src/components/header/AppLabel.jsx"],"names":["AppLabel","className","style","caption","title","onClick"],"mappings":";;;;;;;AACA,IAAMA,QAAQ,GAAG,SAAXA,QAAW;AAAA,MAAGC,SAAH,QAAGA,SAAH;AAAA,MAAcC,KAAd,QAAcA,KAAd;AAAA,MAAqBC,OAArB,QAAqBA,OAArB;AAAA,MAA8BC,KAA9B,QAA8BA,KAA9B;AAAA,MAAqCC,OAArC,QAAqCA,OAArC;AAAA,sBACf;AACG,IAAA,SAAS,EAAEJ,SADd;AAEG,IAAA,KAAK,EAAEC,KAFV;AAGG,IAAA,KAAK,EAAEE,KAHV;AAIG,IAAA,OAAO,EAAEC,OAJZ;AAAA,cAMGF;AANH,IADe;AAAA,CAAjB;;eAWeH,Q","sourcesContent":["\r\nconst AppLabel = ({ className, style, caption, title, onClick }) => (\r\n  <span\r\n     className={className}\r\n     style={style}\r\n     title={title}\r\n     onClick={onClick}\r\n  >\r\n    {caption}\r\n  </span>\r\n);\r\n\r\nexport default AppLabel\r\n"],"file":"AppLabel.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/header/AppLabel.js"
+ ],
+ "file": "../../../src/components/header/AppLabel.js",
+ "names": [
+  "AppLabel",
+  "className",
+  "style",
+  "caption",
+  "title",
+  "onClick"
+ ],
+ "mappings": ";;;;;;;AACA,IAAMA,QAAQ,GAAG,SAAXA,QAAW;AAAA,MACfC,SADe,QACfA,SADe;AAAA,MAEfC,KAFe,QAEfA,KAFe;AAAA,MAGfC,OAHe,QAGfA,OAHe;AAAA,MAIfC,KAJe,QAIfA,KAJe;AAAA,MAKfC,OALe,QAKfA,OALe;AAAA,sBAOf;AACG,IAAA,SAAS,EAAEJ,SADd;AAEG,IAAA,KAAK,EAAEC,KAFV;AAGG,IAAA,KAAK,EAAEE,KAHV;AAIG,IAAA,OAAO,EAAEC,OAJZ;AAAA,cAMGF;AANH,IAPe;AAAA,CAAjB;;eAiBeH,Q"
+}

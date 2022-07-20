@@ -18,7 +18,8 @@ const FONT_SIZE_OPTIONS = [
 DF_FONT_SIZE = FONT_SIZE_OPTIONS[1];
 
 const CardUiTheme = ({
-  style, buttonsStyle,
+  style,
+  buttonsStyle,
   TS,
   onSetTheme,
   onSetFontSize,

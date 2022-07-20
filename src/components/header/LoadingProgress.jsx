@@ -1,4 +1,7 @@
-import { memo, useState } from 'react';
+import {
+  memo,
+  useState
+} from '../uiApi';
 import useListen from '../hooks/useListen';
 
 import {
@@ -13,7 +16,10 @@ const COLOR_LOADING = '#2f7ed8'
 , COLOR_FAILED = '#ed5813'
 , COMPLETE_TIMEOUT_MLS = 450;
 
-const _crState = (completed, color) => [
+const _crState = (
+  completed,
+  color
+) => [
   completed,
   color
 ];
@@ -21,7 +27,10 @@ const _crState = (completed, color) => [
 const ProgressLoading = ({
   store
 }) => {
-  const [state, setState] = useState(
+  const [
+    state,
+    setState
+  ] = useState(
     ()=>_crState(0, COLOR_LOADING)
   )
   , [completed, color] = state;

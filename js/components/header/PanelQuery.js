@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
@@ -42,10 +42,10 @@ var PanelQuery = function PanelQuery(_ref) {
       onWebzCountry = _ref.onWebzCountry,
       onClose = _ref.onClose;
 
-  var _refFirstItem = (0, _react.useRef)(),
-      _refPrevEl = (0, _react.useRef)();
+  var _refFirstItem = (0, _uiApi.useRef)(),
+      _refPrevEl = (0, _uiApi.useRef)();
 
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     if (isShow && !_refPrevEl.current) {
       _refPrevEl.current = document.activeElement;
 

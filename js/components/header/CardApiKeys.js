@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _safeFn = _interopRequireDefault(require("../../utils/safeFn"));
 
@@ -59,10 +59,10 @@ var _setWasEnterRefs = function _setWasEnterRefs(refs) {
 };
 
 var CardApiKeys = function CardApiKeys(props) {
-  var _refInputIex = (0, _react.useRef)(),
-      _refInputFmp = (0, _react.useRef)(),
-      _refInputNews = (0, _react.useRef)(),
-      _refInputWebz = (0, _react.useRef)(),
+  var _refInputIex = (0, _uiApi.useRef)(),
+      _refInputFmp = (0, _uiApi.useRef)(),
+      _refInputNews = (0, _uiApi.useRef)(),
+      _refInputWebz = (0, _uiApi.useRef)(),
       style = props.style,
       fieldStyle = props.fieldStyle,
       buttonsStyle = props.buttonsStyle,
@@ -74,7 +74,7 @@ var CardApiKeys = function CardApiKeys(props) {
       setFmp = _getKeySetters2.setFmp,
       setNews = _getKeySetters2.setNews,
       setWebz = _getKeySetters2.setWebz,
-      _hClearAll = (0, _react.useCallback)(function () {
+      _hClearAll = (0, _uiApi.useCallback)(function () {
     setIex('');
     setFmp('');
     setNews('');
@@ -82,7 +82,7 @@ var CardApiKeys = function CardApiKeys(props) {
 
     _clearInputRefs([_refInputIex, _refInputFmp, _refInputNews, _refInputWebz]);
   }, []),
-      _hSetAll = (0, _react.useCallback)(function () {
+      _hSetAll = (0, _uiApi.useCallback)(function () {
     setIex(_getRefCompValue(_refInputIex));
     setFmp(_getRefCompValue(_refInputFmp));
     setNews(_getRefCompValue(_refInputNews));
