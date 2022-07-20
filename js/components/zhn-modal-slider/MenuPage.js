@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _MenuTitle = _interopRequireDefault(require("./MenuTitle"));
 
@@ -42,14 +42,14 @@ var MenuPage = function MenuPage(_ref) {
       onNextPage = _ref.onNextPage,
       onPrevPage = _ref.onPrevPage;
 
-  var _refTitle = (0, _react.useRef)(),
-      _refFirst = (0, _react.useRef)(),
-      _hClickTitle = (0, _react.useCallback)(function () {
+  var _refTitle = (0, _uiApi.useRef)(),
+      _refFirst = (0, _uiApi.useRef)(),
+      _hClickTitle = (0, _uiApi.useCallback)(function () {
     onPrevPage(pageNumber);
   }, [onPrevPage, pageNumber]),
       _isFocus = pageCurrent === pageNumber && isShow;
 
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     if (_isFocus) {
       if (_refTitle.current) {
         _focusAsyncRefElement(_refTitle);

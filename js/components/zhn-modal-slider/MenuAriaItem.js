@@ -5,13 +5,13 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var MenuAriaItem = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
+var MenuAriaItem = (0, _uiApi.forwardRef)(function (_ref, ref) {
   var className = _ref.className,
       style = _ref.style,
       children = _ref.children,

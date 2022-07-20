@@ -3,7 +3,7 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var MenuPages = function MenuPages(_ref) {
   var isShow = _ref.isShow,
@@ -14,7 +14,7 @@ var MenuPages = function MenuPages(_ref) {
       onPrevPage = _ref.onPrevPage,
       onClose = _ref.onClose;
   return pages.map(function (Page, index) {
-    return /*#__PURE__*/(0, _react.cloneElement)(Page, {
+    return (0, _uiApi.cloneElement)(Page, {
       isShow: isShow,
       pageCurrent: pageCurrent,
       style: style,

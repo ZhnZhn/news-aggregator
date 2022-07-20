@@ -1,4 +1,8 @@
-import { useState, useCallback, useEffect } from 'react';
+import {
+  useState,
+  useCallback,
+  useEffect
+} from '../uiApi';
 
 import useHasMounted from '../hooks/useHasMounted';
 import throttleOnce from '../../utils/throttleOnce';
@@ -8,19 +12,18 @@ import ShowHide from '../zhn-atoms/ShowHide';
 import MenuPage from './MenuPage';
 import MenuPages from './MenuPages';
 
-const S = {
-  SHOW_HIDE: {
-    position: 'absolute',
-    overflow: 'hidden'
-  },
-  PAGES: {
-    display: 'flex',
-    flexFlow: 'row nowrap',
-    alignItems: 'flex-start',
-    overflowX: 'hidden',
-    transition: 'all 750ms ease-out'
-  }
+const S_SHOW_HIDE = {
+  position: 'absolute',
+  overflow: 'hidden'
+}
+, S_PAGES = {
+  display: 'flex',
+  flexFlow: 'row nowrap',
+  alignItems: 'flex-start',
+  overflowX: 'hidden',
+  transition: 'all 750ms ease-out'
 };
+
 
 /*
 static propTypes = {
@@ -90,14 +93,22 @@ const _crTransform = (pageWidth, pageCurrent) => {
 
 const ModalSlider = ({
   model=DF_MODEL,
-  isShow, className,
-  rootStyle, style,
+  isShow,
+  className,
+  rootStyle,
+  style,
   onClose
 }) => {
-  const [state, setState] = useState(() => _initState(model))
+  const [
+    state,
+    setState
+  ] = useState(() => _initState(model))
   , {
-     pageWidth, pagesStyle, pageStyle,
-     pageCurrent, pages
+     pageWidth,
+     pagesStyle,
+     pageStyle,
+     pageCurrent,
+     pages
    } = state
    /*eslint-disable react-hooks/exhaustive-deps */
   , hPrevPage = useCallback(throttleOnce((pageNumber) => {
@@ -141,17 +152,15 @@ const ModalSlider = ({
   // _hasMounted
   /*eslint-enable react-hooks/exhaustive-deps */
 
-
   const _showHideStyle = {
     ...style,
-    ...S.SHOW_HIDE,
+    ...S_SHOW_HIDE,
     ...pageStyle
   }, _divStyle = {
-    ...S.PAGES,
+    ...S_PAGES,
     ...pagesStyle,
     ..._crTransform(pageWidth, pageCurrent)
   };
-
 
   return (
       <ModalPane

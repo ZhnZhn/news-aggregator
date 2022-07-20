@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef } from '../uiApi';
 
 import useKeyEnter from '../hooks/useKeyEnter';
 

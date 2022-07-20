@@ -1,25 +1,27 @@
-import { forwardRef } from 'react';
+import { forwardRef } from '../uiApi';
 
 import MenuAriaItem from './MenuAriaItem';
 
 const SUB_MENU = 'sub';
 
-const S = {
-  ITEM: {
-    position: 'relative'
-  },
-  NEXT_PAGE: {
-    display: 'inline-block',
-    position: 'absolute',
-    top: 0,
-    right: 4,
-    color: 'inherit',
-    padding: '1px 16px 1px 0px',
-    fontWeight: 'bold'
-  }
+const S_ITEM = {
+  position: 'relative'
+}
+, S_NEXT_PAGE = {
+  display: 'inline-block',
+  position: 'absolute',
+  top: 0,
+  right: 4,
+  color: 'inherit',
+  padding: '1px 16px 1px 0px',
+  fontWeight: 'bold'
 };
 
-const _fClick = ({ isClose, onClick, onClose }) => {
+const _fClick = ({
+  isClose,
+  onClick,
+  onClose 
+}) => {
   return typeof onClick === 'function'
     ? isClose
         ? () => { onClick(); onClose() }
@@ -27,20 +29,23 @@ const _fClick = ({ isClose, onClick, onClose }) => {
     : void 0;
 };
 
-const NextPageArrow = ({ type }) => {
+const NextPageArrow = ({
+  type
+}) => {
   if (type !== SUB_MENU) return null;
 
   return (
-    <span style={S.NEXT_PAGE}>
+    <span style={S_NEXT_PAGE}>
         >
     </span>
   );
-}
-
+};
 
 const MenuItemList = forwardRef(({
-  items, itemCl,
-  pageNumber, onNextPage,
+  items,
+  itemCl,
+  pageNumber,
+  onNextPage,
   onClose
 }, ref) => {
   return (
@@ -56,7 +61,7 @@ const MenuItemList = forwardRef(({
            key={name}
            ref={_ref}
            className={cn || itemCl}
-           style={S.ITEM}
+           style={S_ITEM}
            onClick={_onClick}
          >
            <span>{name}</span>

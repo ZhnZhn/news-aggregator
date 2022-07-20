@@ -1,10 +1,12 @@
-import { cloneElement } from 'react';
+import { cloneElement } from '../uiApi';
 
 const MenuPages = ({
   isShow,
   style,
-  pages, pageCurrent,
-  onNextPage, onPrevPage,
+  pages,
+  pageCurrent,
+  onNextPage,
+  onPrevPage,
   onClose
 }) => pages
  .map((Page, index) => cloneElement(Page, {
@@ -16,6 +18,5 @@ const MenuPages = ({
     onPrevPage: index !== 0 ? onPrevPage : void 0,
     onClose
  }));
-
 
 export default MenuPages

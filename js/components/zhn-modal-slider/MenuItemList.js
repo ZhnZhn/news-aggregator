@@ -5,26 +5,24 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _MenuAriaItem = _interopRequireDefault(require("./MenuAriaItem"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
 var SUB_MENU = 'sub';
-var S = {
-  ITEM: {
-    position: 'relative'
-  },
-  NEXT_PAGE: {
-    display: 'inline-block',
-    position: 'absolute',
-    top: 0,
-    right: 4,
-    color: 'inherit',
-    padding: '1px 16px 1px 0px',
-    fontWeight: 'bold'
-  }
+var S_ITEM = {
+  position: 'relative'
+},
+    S_NEXT_PAGE = {
+  display: 'inline-block',
+  position: 'absolute',
+  top: 0,
+  right: 4,
+  color: 'inherit',
+  padding: '1px 16px 1px 0px',
+  fontWeight: 'bold'
 };
 
 var _fClick = function _fClick(_ref2) {
@@ -41,12 +39,12 @@ var NextPageArrow = function NextPageArrow(_ref3) {
   var type = _ref3.type;
   if (type !== SUB_MENU) return null;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-    style: S.NEXT_PAGE,
+    style: S_NEXT_PAGE,
     children: ">"
   });
 };
 
-var MenuItemList = /*#__PURE__*/(0, _react.forwardRef)(function (_ref4, ref) {
+var MenuItemList = (0, _uiApi.forwardRef)(function (_ref4, ref) {
   var items = _ref4.items,
       itemCl = _ref4.itemCl,
       pageNumber = _ref4.pageNumber,
@@ -70,7 +68,7 @@ var MenuItemList = /*#__PURE__*/(0, _react.forwardRef)(function (_ref4, ref) {
       return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_MenuAriaItem["default"], {
         ref: _ref,
         className: cn || itemCl,
-        style: S.ITEM,
+        style: S_ITEM,
         onClick: _onClick,
         children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
           children: name

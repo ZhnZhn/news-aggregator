@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _useHasMounted = _interopRequireDefault(require("../hooks/useHasMounted"));
 
@@ -23,18 +23,16 @@ var _MenuPages = _interopRequireDefault(require("./MenuPages"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
-var S = {
-  SHOW_HIDE: {
-    position: 'absolute',
-    overflow: 'hidden'
-  },
-  PAGES: {
-    display: 'flex',
-    flexFlow: 'row nowrap',
-    alignItems: 'flex-start',
-    overflowX: 'hidden',
-    transition: 'all 750ms ease-out'
-  }
+var S_SHOW_HIDE = {
+  position: 'absolute',
+  overflow: 'hidden'
+},
+    S_PAGES = {
+  display: 'flex',
+  flexFlow: 'row nowrap',
+  alignItems: 'flex-start',
+  overflowX: 'hidden',
+  transition: 'all 750ms ease-out'
 };
 /*
 static propTypes = {
@@ -106,7 +104,7 @@ var ModalSlider = function ModalSlider(_ref) {
       style = _ref.style,
       onClose = _ref.onClose;
 
-  var _useState = (0, _react.useState)(function () {
+  var _useState = (0, _uiApi.useState)(function () {
     return _initState(model);
   }),
       state = _useState[0],
@@ -116,13 +114,13 @@ var ModalSlider = function ModalSlider(_ref) {
       pageStyle = state.pageStyle,
       pageCurrent = state.pageCurrent,
       pages = state.pages,
-      hPrevPage = (0, _react.useCallback)((0, _throttleOnce["default"])(function (pageNumber) {
+      hPrevPage = (0, _uiApi.useCallback)((0, _throttleOnce["default"])(function (pageNumber) {
     setState(function (prevState) {
       prevState.pageCurrent = pageNumber - 1;
       return (0, _extends2["default"])({}, prevState);
     });
   }), []),
-      hNextPage = (0, _react.useCallback)((0, _throttleOnce["default"])(function (id, title, pageNumber) {
+      hNextPage = (0, _uiApi.useCallback)((0, _throttleOnce["default"])(function (id, title, pageNumber) {
     setState(function (prevState) {
       var pages = prevState.pages,
           _max = pages.length - 1;
@@ -149,7 +147,7 @@ var ModalSlider = function ModalSlider(_ref) {
   /*eslint-disable react-hooks/exhaustive-deps */
 
 
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     if (!_hasMounted) {
       setState(_initState(model));
     }
@@ -157,8 +155,8 @@ var ModalSlider = function ModalSlider(_ref) {
 
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  var _showHideStyle = (0, _extends2["default"])({}, style, S.SHOW_HIDE, pageStyle),
-      _divStyle = (0, _extends2["default"])({}, S.PAGES, pagesStyle, _crTransform(pageWidth, pageCurrent));
+  var _showHideStyle = (0, _extends2["default"])({}, style, S_SHOW_HIDE, pageStyle),
+      _divStyle = (0, _extends2["default"])({}, S_PAGES, pagesStyle, _crTransform(pageWidth, pageCurrent));
 
   return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalPane["default"], {
     isShow: isShow,

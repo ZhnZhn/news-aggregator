@@ -1,4 +1,8 @@
-import { useRef, useCallback, useEffect } from 'react';
+import {
+  useRef,
+  useCallback,
+  useEffect
+} from '../uiApi';
 
 import MenuTitle from './MenuTitle';
 import MenuItemList from './MenuItemList';
