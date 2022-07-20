@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from '../uiApi';
 //import PropTypes from 'prop-types'
 
 import useListen from '../hooks/useListen';
@@ -10,7 +10,10 @@ const ComponentHrzContainer = ({
   store,
   addAction
 }) => {
-  const [containers, setContainers] = useState([]);
+  const [
+    containers,
+    setContainers
+  ] = useState([]);
 
   useListen(store, (actionType, option) => {
     const { Comp } = option || {};

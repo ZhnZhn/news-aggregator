@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
@@ -45,7 +45,7 @@ var ModalDialogContainer = function ModalDialogContainer(_ref3) {
       router = _ref3.router,
       showAction = _ref3.showAction;
 
-  var _useState = (0, _react.useState)({
+  var _useState = (0, _uiApi.useState)({
     isShow: false,
     currentDialog: null,
     data: {},
@@ -57,7 +57,7 @@ var ModalDialogContainer = function ModalDialogContainer(_ref3) {
       data = state.data,
       dialogs = state.dialogs,
       currentDialog = state.currentDialog,
-      _hClose = (0, _react.useCallback)(function () {
+      _hClose = (0, _uiApi.useCallback)(function () {
     return setState(function (prevState) {
       return (0, _extends2["default"])({}, prevState, {
         isShow: false,

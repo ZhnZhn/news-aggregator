@@ -12,12 +12,13 @@ var _useClassAnimation = _interopRequireDefault(require("../hooks/useClassAnimat
 var _jsxRuntime = require("react/jsx-runtime");
 
 //import PropTypes from 'prop-types'
-var CL = {
-  INIT: 'modal-root',
-  SHOWING: 'modal-root show-modal',
-  HIDING: 'modal-root hide-modal'
-};
-var S = {
+var MODAL_ROOT = 'modal-root',
+    CL = {
+  INIT: MODAL_ROOT,
+  SHOWING: MODAL_ROOT + " show-modal",
+  HIDING: MODAL_ROOT + " hide-modal"
+},
+    S = {
   INIT: {
     display: 'none'
   },

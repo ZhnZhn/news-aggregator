@@ -1,4 +1,7 @@
-import { useState, useCallback } from 'react';
+import {
+  useState,
+  useCallback
+} from '../uiApi';
 
 import useListen from '../hooks/useListen';
 
@@ -31,13 +34,21 @@ const ModalDialogContainer = ({
   router,
   showAction
 }) => {
-  const [state, setState] = useState({
+  const [
+    state,
+    setState
+  ] = useState({
      isShow: false,
      currentDialog: null,
      data: {},
      dialogs: [],
   })
-  , { isShow, data, dialogs, currentDialog } = state
+  , {
+    isShow,
+    data,
+    dialogs,
+    currentDialog
+  } = state
   , _hClose = useCallback(() => setState(prevState => ({
      ...prevState,
      isShow: false,

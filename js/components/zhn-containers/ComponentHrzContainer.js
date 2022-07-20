@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
@@ -20,7 +20,7 @@ var ComponentHrzContainer = function ComponentHrzContainer(_ref) {
   var store = _ref.store,
       addAction = _ref.addAction;
 
-  var _useState = (0, _react.useState)([]),
+  var _useState = (0, _uiApi.useState)([]),
       containers = _useState[0],
       setContainers = _useState[1];
 
