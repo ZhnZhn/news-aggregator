@@ -3,7 +3,10 @@ import PoweredBy from './PoweredBy';
 
 const CL_LINK = "link";
 
-const _fSafeLink = (href, caption) => ({ title, ...restProps }) => (
+const _fSafeLink = (
+  href,
+  caption
+) => ({ title, ...restProps }) => (
   <SafeLink
     className={CL_LINK}
     {...restProps}
