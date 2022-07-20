@@ -1,16 +1,17 @@
-import { useState, useCallback } from 'react';
+import {
+  useState,
+  useCallback
+} from '../uiApi';
 
 import ArrowCell from './ArrowCell';
 import OptionsPane from './OptionsPane';
 
-const CL = {
-  SELECT: 'm-select',
-  LABEL: 'm-select__label',
-  DIV: 'm-select__div',
-  DIV_VALUE: 'm-select__div__value',
-  DIV_BT: 'm-select__div__bt',
-  INPUT_LINE: 'm-select__line'
-};
+const CL_SELECT = 'm-select'
+, CL_LABEL = `${CL_SELECT}__label`
+, CL_DIV = `${CL_SELECT}__div`
+, CL_DIV_VALUE = `${CL_SELECT}__div__value`
+, CL_DIV_BT = `${CL_SELECT}__div__bt`
+, CL_INPUT_LINE = `${CL_SELECT}__line`;
 
 const DF_INIT_ITEM = {
   caption: '',
@@ -39,11 +40,11 @@ const InputSelect = ({
   return (
     <div
       role="presentation"
-      className={CL.SELECT}
+      className={CL_SELECT}
       style={TS.ROOT}
       onClick={_hOpen}
     >
-      <label className={CL.LABEL}>
+      <label className={CL_LABEL}>
         {caption}
       </label>
       <OptionsPane
@@ -54,14 +55,14 @@ const InputSelect = ({
          onSelect={_hSelect}
          onClose={_hClose}
        />
-      <div className={CL.DIV}>
-        <div className={CL.DIV_VALUE}>
+      <div className={CL_DIV}>
+        <div className={CL_DIV_VALUE}>
            {item.caption}
         </div>
-        <button className={CL.DIV_BT}>
+        <button className={CL_DIV_BT}>
            <ArrowCell />
         </button>
-        <div className={CL.INPUT_LINE} />
+        <div className={CL_INPUT_LINE} />
       </div>
     </div>
   );

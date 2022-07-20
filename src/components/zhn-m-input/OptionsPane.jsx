@@ -1,4 +1,8 @@
-import { useRef, useCallback, useEffect } from 'react';
+import {
+  useRef,
+  useCallback,
+  useEffect
+} from '../uiApi';
 
 import useTheme from '../hooks/useTheme';
 import styleConfig  from '../styles/ScrollStyle';

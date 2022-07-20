@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _useRefInit = _interopRequireDefault(require("../hooks/useRefInit"));
 
@@ -56,7 +56,7 @@ var FN_TRUE = function FN_TRUE() {
   return true;
 };
 
-var PasswordField = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
+var PasswordField = (0, _uiApi.forwardRef)(function (_ref, ref) {
   var style = _ref.style,
       caption = _ref.caption,
       _ref$name = _ref.name,
@@ -73,14 +73,14 @@ var PasswordField = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
   var _id = (0, _useRefInit["default"])(function () {
     return _crId(name);
   }),
-      _refInput = (0, _react.useRef)(),
+      _refInput = (0, _uiApi.useRef)(),
       _useProperty = (0, _useProperty3["default"])(false),
       _setWasEnter = _useProperty[0],
       getWasEnter = _useProperty[1],
       _useProperty2 = (0, _useProperty3["default"])(false),
       setIsFocus = _useProperty2[0],
       getIsFocus = _useProperty2[1],
-      _useState = (0, _react.useState)({
+      _useState = (0, _uiApi.useState)({
     value: ''
   }),
       state = _useState[0],
@@ -121,7 +121,7 @@ var PasswordField = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
     }
   };
 
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     var _clearId = setTimeout(function () {
       var _input = _refInput.current;
 
@@ -134,12 +134,12 @@ var PasswordField = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
       return clearTimeout(_clearId);
     };
   });
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     if (getWasEnter()) {
       _setWasEnter(false);
     }
   });
-  (0, _react.useImperativeHandle)(ref, function () {
+  (0, _uiApi.useImperativeHandle)(ref, function () {
     return {
       setWasEnter: function setWasEnter() {
         _setWasEnter(true);

@@ -1,4 +1,10 @@
-import { forwardRef, useRef, useState, useCallback, useImperativeHandle } from 'react';
+import {
+  forwardRef,
+  useRef,
+  useState,
+  useCallback,
+  useImperativeHandle
+} from '../uiApi';
 
 import has from '../has';
 import SvgX from '../zhn-atoms/SvgX';
@@ -7,30 +13,29 @@ import crId from '../../utils/crId';
 
 const { HAS_TOUCH } = has;
 
-const CL = {
-  SELECT: 'm-select',
-  LABEL: 'm-select__label',
-  DIV: 'm-textfield-input__div',
-  INPUT: 'm-textfield-input',
-  INPUT_LINE: 'm-input__line',
-  INPUT_MSG_ERR: 'm-input__msg-err'
-};
+const CL_SELECT = 'm-select'
+, CL_LABEL = `${CL_SELECT}__label`
+, M_TEXTFIELD = 'm-textfield'
+, CL_DIV = `${M_TEXTFIELD}-input__div`
+, CL_INPUT = `${M_TEXTFIELD}-input`
+, M_INPUT = 'm-input'
+, CL_INPUT_LINE = `${M_INPUT}__line`
+, CL_INPUT_MSG_ERR = `${M_INPUT}__msg-err`
 
-const S = {
-  LABEL_TO_INPUT: {
-     transform: 'scale(1) translate(0px, -6px)'
-  },
-  BT_CLEAR: {
-    position: 'absolute',
-    top: 25,
-    right: 12
-  },
-  LABEL_ON_ERROR: {
-    color: '#f44336'
-  },
-  LINE_ERROR: {
-    borderBottom: '2px solid #f44336'
-  }
+
+const S_LABEL_TO_INPUT = {
+  transform: 'scale(1) translate(0px, -6px)'
+}
+, S_BT_CLEAR = {
+  position: 'absolute',
+  top: 25,
+  right: 12
+}
+, S_LABEL_ON_ERROR = {
+  color: '#f44336'
+}
+, S_LINE_ERROR = {
+  borderBottom: '2px solid #f44336'
 };
 
 const DF_ON_TEST = () => true;
@@ -76,35 +81,36 @@ const TextField = forwardRef(({
     getValue: () => String(value).trim()
   }), [value])
 
-  const  _labelStyle = value || isFocus
+  const  _labelStyle = value
+   || isFocus
       ? void 0
-      : S.LABEL_TO_INPUT
-  , _labelErrStyle = isPassTest
-      ? void 0
-      : S.LABEL_ON_ERROR
-  , _lineStyle = isPassTest
-      ? void 0
-      : S.LINE_ERROR;
+      : S_LABEL_TO_INPUT
+  , [
+    _labelErrStyle,
+    _lineStyle
+  ] = isPassTest
+    ? []
+    : [S_LABEL_ON_ERROR, S_LINE_ERROR];
 
   return (
     <div
-      className={CL.SELECT}
+      className={CL_SELECT}
       style={style}
     >
       <label
-        className={CL.LABEL}
+        className={CL_LABEL}
         style={{..._labelStyle, ..._labelErrStyle}}
         htmlFor={_refId.current}
        >
         {caption}
       </label>
-      <div className={CL.DIV}>
+      <div className={CL_DIV}>
         <input
           id={_refId.current}
           type="text"
-          className={CL.INPUT}
+          className={CL_INPUT}
           value={value}
-          autoComplete="off"
+          //autoComplete="off"
           autoCorrect="off"
           autoCapitalize={autoCapitalize}
           spellCheck="false"
@@ -118,11 +124,11 @@ const TextField = forwardRef(({
         {HAS_TOUCH && hasClear && value && <SvgX
            color="black"
            className="svg-clear"
-           style={S.BT_CLEAR}
+           style={S_BT_CLEAR}
            onClick={_hClear}
         />}
-        <div className={CL.INPUT_LINE} style={_lineStyle} />
-        { _lineStyle && <div className={CL.INPUT_MSG_ERR}>{errorMsg}</div>}
+        <div className={CL_INPUT_LINE} style={_lineStyle} />
+        { _lineStyle && <div className={CL_INPUT_MSG_ERR}>{errorMsg}</div>}
       </div>
     </div>
   );

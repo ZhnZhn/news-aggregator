@@ -2,10 +2,9 @@ import {
   forwardRef,
   useRef,
   useState,
-  useLayoutEffect,
   useEffect,
   useImperativeHandle
-} from 'react';
+} from '../uiApi';
 
 import useRefInit from '../hooks/useRefInit';
 import useProperty from '../hooks/useProperty';

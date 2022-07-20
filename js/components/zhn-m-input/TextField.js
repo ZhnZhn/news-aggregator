@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _has = _interopRequireDefault(require("../has"));
 
@@ -18,29 +18,27 @@ var _crId = _interopRequireDefault(require("../../utils/crId"));
 var _jsxRuntime = require("react/jsx-runtime");
 
 var HAS_TOUCH = _has["default"].HAS_TOUCH;
-var CL = {
-  SELECT: 'm-select',
-  LABEL: 'm-select__label',
-  DIV: 'm-textfield-input__div',
-  INPUT: 'm-textfield-input',
-  INPUT_LINE: 'm-input__line',
-  INPUT_MSG_ERR: 'm-input__msg-err'
-};
-var S = {
-  LABEL_TO_INPUT: {
-    transform: 'scale(1) translate(0px, -6px)'
-  },
-  BT_CLEAR: {
-    position: 'absolute',
-    top: 25,
-    right: 12
-  },
-  LABEL_ON_ERROR: {
-    color: '#f44336'
-  },
-  LINE_ERROR: {
-    borderBottom: '2px solid #f44336'
-  }
+var CL_SELECT = 'm-select',
+    CL_LABEL = CL_SELECT + "__label",
+    M_TEXTFIELD = 'm-textfield',
+    CL_DIV = M_TEXTFIELD + "-input__div",
+    CL_INPUT = M_TEXTFIELD + "-input",
+    M_INPUT = 'm-input',
+    CL_INPUT_LINE = M_INPUT + "__line",
+    CL_INPUT_MSG_ERR = M_INPUT + "__msg-err";
+var S_LABEL_TO_INPUT = {
+  transform: 'scale(1) translate(0px, -6px)'
+},
+    S_BT_CLEAR = {
+  position: 'absolute',
+  top: 25,
+  right: 12
+},
+    S_LABEL_ON_ERROR = {
+  color: '#f44336'
+},
+    S_LINE_ERROR = {
+  borderBottom: '2px solid #f44336'
 };
 
 var DF_ON_TEST = function DF_ON_TEST() {
@@ -49,7 +47,7 @@ var DF_ON_TEST = function DF_ON_TEST() {
 
 var DF_ON_ENTER = function DF_ON_ENTER() {};
 
-var TextField = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
+var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
   var style = _ref.style,
       caption = _ref.caption,
       id = _ref.id,
@@ -67,30 +65,30 @@ var TextField = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
       _ref$onEnter = _ref.onEnter,
       onEnter = _ref$onEnter === void 0 ? DF_ON_ENTER : _ref$onEnter;
 
-  var _refId = (0, _react.useRef)(id || (0, _crId["default"])()),
-      _useState = (0, _react.useState)(initValue || ''),
+  var _refId = (0, _uiApi.useRef)(id || (0, _crId["default"])()),
+      _useState = (0, _uiApi.useState)(initValue || ''),
       value = _useState[0],
       setValue = _useState[1],
-      _useState2 = (0, _react.useState)(function () {
+      _useState2 = (0, _uiApi.useState)(function () {
     return onTest(initValue || '');
   }),
       isPassTest = _useState2[0],
       setIsPastTest = _useState2[1],
-      _useState3 = (0, _react.useState)(false),
+      _useState3 = (0, _uiApi.useState)(false),
       isFocus = _useState3[0],
       setIsFocus = _useState3[1],
-      _hFocusInput = (0, _react.useCallback)(function () {
+      _hFocusInput = (0, _uiApi.useCallback)(function () {
     return setIsFocus(true);
   }, []),
-      _hBlurInput = (0, _react.useCallback)(function () {
+      _hBlurInput = (0, _uiApi.useCallback)(function () {
     return setIsFocus(false);
   }, []),
-      _hInputChange = (0, _react.useCallback)(function (event) {
+      _hInputChange = (0, _uiApi.useCallback)(function (event) {
     var _value = event.target.value;
     setValue(_value);
     setIsPastTest(onTest(_value));
   }, []),
-      _hKeyDown = (0, _react.useCallback)(function (event) {
+      _hKeyDown = (0, _uiApi.useCallback)(function (event) {
     var keyCode = event.keyCode;
 
     if (keyCode === 46 || keyCode === 27) {
@@ -99,11 +97,11 @@ var TextField = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
       onEnter(event.target.value);
     }
   }, []),
-      _hClear = (0, _react.useCallback)(function () {
+      _hClear = (0, _uiApi.useCallback)(function () {
     return setValue('');
   }, []);
 
-  (0, _react.useImperativeHandle)(ref, function () {
+  (0, _uiApi.useImperativeHandle)(ref, function () {
     return {
       getValue: function getValue() {
         return String(value).trim();
@@ -111,26 +109,27 @@ var TextField = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
     };
   }, [value]);
 
-  var _labelStyle = value || isFocus ? void 0 : S.LABEL_TO_INPUT,
-      _labelErrStyle = isPassTest ? void 0 : S.LABEL_ON_ERROR,
-      _lineStyle = isPassTest ? void 0 : S.LINE_ERROR;
+  var _labelStyle = value || isFocus ? void 0 : S_LABEL_TO_INPUT,
+      _ref2 = isPassTest ? [] : [S_LABEL_ON_ERROR, S_LINE_ERROR],
+      _labelErrStyle = _ref2[0],
+      _lineStyle = _ref2[1];
 
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    className: CL.SELECT,
+    className: CL_SELECT,
     style: style,
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
-      className: CL.LABEL,
+      className: CL_LABEL,
       style: (0, _extends2["default"])({}, _labelStyle, _labelErrStyle),
       htmlFor: _refId.current,
       children: caption
     }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      className: CL.DIV,
+      className: CL_DIV,
       children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
         id: _refId.current,
         type: "text",
-        className: CL.INPUT,
-        value: value,
-        autoComplete: "off",
+        className: CL_INPUT,
+        value: value //autoComplete="off"
+        ,
         autoCorrect: "off",
         autoCapitalize: autoCapitalize,
         spellCheck: "false",
@@ -143,13 +142,13 @@ var TextField = /*#__PURE__*/(0, _react.forwardRef)(function (_ref, ref) {
       }), HAS_TOUCH && hasClear && value && /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgX["default"], {
         color: "black",
         className: "svg-clear",
-        style: S.BT_CLEAR,
+        style: S_BT_CLEAR,
         onClick: _hClear
       }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        className: CL.INPUT_LINE,
+        className: CL_INPUT_LINE,
         style: _lineStyle
       }), _lineStyle && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-        className: CL.INPUT_MSG_ERR,
+        className: CL_INPUT_MSG_ERR,
         children: errorMsg
       })]
     })]

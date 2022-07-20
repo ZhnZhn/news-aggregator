@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 
@@ -105,13 +105,13 @@ var OptionsPane = function OptionsPane(_ref2) {
       onSelect = _ref2.onSelect,
       onClose = _ref2.onClose;
 
-  var _refItem = (0, _react.useRef)(null),
-      _refFocus = (0, _react.useRef)(null),
+  var _refItem = (0, _uiApi.useRef)(null),
+      _refFocus = (0, _uiApi.useRef)(null),
       TS = (0, _useTheme["default"])(_ScrollStyle["default"]),
       TS_D = (0, _useTheme["default"])(_Dialog["default"])
   /*eslint-disable react-hooks/exhaustive-deps */
   ,
-      _hKeyDown = (0, _react.useCallback)(function (evt) {
+      _hKeyDown = (0, _uiApi.useCallback)(function (evt) {
     if (evt.key === 'ArrowDown') {
       _preventStopEvent(evt);
 
@@ -130,7 +130,7 @@ var OptionsPane = function OptionsPane(_ref2) {
   /*eslint-enable react-hooks/exhaustive-deps */
 
 
-  (0, _react.useEffect)(function () {
+  (0, _uiApi.useEffect)(function () {
     if (isShow && _refItem.current) {
       _refItem.current.focus();
 
