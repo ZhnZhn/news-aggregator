@@ -1,4 +1,7 @@
-import { useState, useMemo } from 'react';
+import {
+  useState,
+  useMemo
+} from '../uiApi';
 
 import useListen from '../hooks/useListen';
 import useTheme from '../hooks/useTheme';
@@ -21,7 +24,10 @@ const NewsBrowser = ({
   onRemoveBadges
 }) => {
   const TS = useTheme(styleConfig)
-  , [itemData, setItemData] = useState({})
+  , [
+    itemData,
+    setItemData
+  ] = useState({})
   /*eslint-disable react-hooks/exhaustive-deps */
   , _menuMore = useMemo(
       () => crModelMore({ onRemoveBadges }),

@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
 
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 
@@ -36,10 +36,10 @@ var NewsBrowser = function NewsBrowser(_ref) {
       onRemoveBadges = _ref.onRemoveBadges;
 
   var TS = (0, _useTheme["default"])(_NewsBrowser["default"]),
-      _useState = (0, _react.useState)({}),
+      _useState = (0, _uiApi.useState)({}),
       itemData = _useState[0],
       setItemData = _useState[1],
-      _menuMore = (0, _react.useMemo)(function () {
+      _menuMore = (0, _uiApi.useMemo)(function () {
     return (0, _crModelMore["default"])({
       onRemoveBadges: onRemoveBadges
     });
