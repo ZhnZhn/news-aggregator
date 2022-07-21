@@ -1,9 +1,12 @@
 export {
   memo,
+  forwardRef,
+
+  render,
   cloneElement,
   createElement,
-  createContext,  
-  forwardRef,
+  createContext,
+
   useRef,
   useState,
   useReducer,
@@ -12,7 +15,7 @@ export {
   useMemo,
   useEffect,
   useImperativeHandle
-} from 'react';
+} from 'preact/compat';
 
 const _isFn = fn => typeof fn === 'function'
 

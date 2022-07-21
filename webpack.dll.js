@@ -8,9 +8,10 @@ const path = require('path')
 module.exports = {
   mode: "production",
   entry: {
-     lib: [
-            "react", 
-            "react-dom",
+     lib: [           
+            "preact",
+            "preact/compat",             
+            "dompurify", 
             "interactjs",         
             "reflux-core", 
             "nanoid",                                        

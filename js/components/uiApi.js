@@ -1,23 +1,24 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.forwardRef = exports.focusRefElement = exports.createElement = exports.createContext = exports.cloneElement = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.render = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.forwardRef = exports.focusRefElement = exports.createElement = exports.createContext = exports.cloneElement = void 0;
 
-var _react = require("react");
+var _compat = require("preact/compat");
 
-exports.memo = _react.memo;
-exports.cloneElement = _react.cloneElement;
-exports.createElement = _react.createElement;
-exports.createContext = _react.createContext;
-exports.forwardRef = _react.forwardRef;
-exports.useRef = _react.useRef;
-exports.useState = _react.useState;
-exports.useReducer = _react.useReducer;
-exports.useContext = _react.useContext;
-exports.useCallback = _react.useCallback;
-exports.useMemo = _react.useMemo;
-exports.useEffect = _react.useEffect;
-exports.useImperativeHandle = _react.useImperativeHandle;
+exports.memo = _compat.memo;
+exports.forwardRef = _compat.forwardRef;
+exports.render = _compat.render;
+exports.cloneElement = _compat.cloneElement;
+exports.createElement = _compat.createElement;
+exports.createContext = _compat.createContext;
+exports.useRef = _compat.useRef;
+exports.useState = _compat.useState;
+exports.useReducer = _compat.useReducer;
+exports.useContext = _compat.useContext;
+exports.useCallback = _compat.useCallback;
+exports.useMemo = _compat.useMemo;
+exports.useEffect = _compat.useEffect;
+exports.useImperativeHandle = _compat.useImperativeHandle;
 
 var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
