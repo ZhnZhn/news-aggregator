@@ -21,9 +21,9 @@ var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _Step = _interopRequireDefault(require("./Step"));
 
-var _IconLogoBar = _interopRequireDefault(require("./IconLogoBar"));
+var _LogoBar = _interopRequireDefault(require("./LogoBar"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var CL_ABOUT_PANE = "about-pane";
 var CL_SHOW = "show-popup";
@@ -36,8 +36,8 @@ var PROVIDER_LINKS = [[Link.CryptoCompare], [Link.CoinStats], [Link.Messari], [L
 var _crLinkItem = function _crLinkItem(_ref, index) {
   var Comp = _ref[0],
       props = _ref[1];
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(Comp, (0, _extends2["default"])({}, props))
+  return (0, _jsxRuntime.jsx)("div", {
+    children: (0, _jsxRuntime.jsx)(Comp, (0, _extends2["default"])({}, props))
   }, index);
 };
 
@@ -45,7 +45,7 @@ var NEWS_SOURCE_STEP_DESCRIPTIONS = ["Please, click button News in header.", "Ch
 var SEARCH_TERM_STEP_DESCRIPTIONS = ["Please, click button Query in header.", "Choose news source in modal pane.", "Click a button Load in dialog."];
 
 var _crStepItem = function _crStepItem(descr, index) {
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Step["default"], {
+  return (0, _jsxRuntime.jsx)(_Step["default"], {
     step: index + 1,
     description: descr
   }, index);
@@ -74,67 +74,67 @@ var About = function About(_ref2) {
   var _className = (0, _crCn["default"])(CL_ABOUT_PANE, [isShow, CL_SHOW]),
       _style = isShow ? _About.S_BLOCK : _About.S_NONE;
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  return (0, _jsxRuntime.jsxs)("div", {
     className: _className,
     style: (0, _extends2["default"])({}, _style, TS.ROOT),
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].BrowserCaption, {
+    children: [(0, _jsxRuntime.jsx)(_Comp["default"].BrowserCaption, {
       style: TS.BROWSER_CAPTION,
       caption: "About News Aggregator",
       onClose: setIsShowFalse
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
+    }), (0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
       className: TS.CL_SCROLL_PANE,
       style: _About.S_SCROLL_DIV,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      children: (0, _jsxRuntime.jsxs)("div", {
         style: _About.S_DIV_WRAPPER,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        children: [(0, _jsxRuntime.jsxs)("div", {
           style: _About.S_LH_14,
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("p", {
-            children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          children: [(0, _jsxRuntime.jsxs)("p", {
+            children: [(0, _jsxRuntime.jsx)("span", {
               style: _About.S_APP_TITLE,
               children: "News Agreggator"
             }), " is web app for browsing news."]
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+          }), (0, _jsxRuntime.jsx)("p", {
             children: "News headlines providers:\xA0"
           })]
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        }), (0, _jsxRuntime.jsx)("div", {
           style: _About.S_LH_18,
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)(ItemStack, {
+          children: (0, _jsxRuntime.jsx)(ItemStack, {
             items: PROVIDER_LINKS,
             crItem: _crLinkItem
           })
-        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        }), (0, _jsxRuntime.jsxs)("div", {
           style: _About.S_LH_14,
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+          children: [(0, _jsxRuntime.jsx)("p", {
             style: _About.S_MT_8,
             children: "Personal API Keys from providers are required."
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+          }), (0, _jsxRuntime.jsx)("p", {
             children: "API Keys can be set by means off Settings Dialog."
           })]
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+        }), (0, _jsxRuntime.jsx)("p", {
           style: _About.S_MT_8,
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          children: (0, _jsxRuntime.jsx)("span", {
             style: _About.S_BLACK,
             children: "Browsing by news source:"
           })
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(ItemStack, {
+        }), (0, _jsxRuntime.jsx)(ItemStack, {
           items: NEWS_SOURCE_STEP_DESCRIPTIONS,
           crItem: _crStepItem
-        }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        }), (0, _jsxRuntime.jsxs)("div", {
           style: _About.S_LH_14,
-          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+          children: [(0, _jsxRuntime.jsx)("p", {
             style: _About.S_MT_8,
             children: "Not all news source support all sortBy values."
-          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
-            children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+          }), (0, _jsxRuntime.jsx)("p", {
+            children: (0, _jsxRuntime.jsx)("span", {
               style: TS.BLACK,
               children: "Browsing by search terms:"
             })
           })]
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(ItemStack, {
+        }), (0, _jsxRuntime.jsx)(ItemStack, {
           items: SEARCH_TERM_STEP_DESCRIPTIONS,
           crItem: _crStepItem
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_IconLogoBar["default"], {}), /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
-          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+        }), (0, _jsxRuntime.jsx)(_LogoBar["default"], {}), (0, _jsxRuntime.jsx)("p", {
+          children: (0, _jsxRuntime.jsx)("span", {
             style: _About.S_BLACK,
             children: "*Logos Fair Use."
           })

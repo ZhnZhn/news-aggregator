@@ -1,0 +1,14 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/about/LogoBar.js"
+ ],
+ "file": "../../../src/components/about/LogoBar.js",
+ "names": [
+  "S_ROOT",
+  "textAlign",
+  "paddingTop",
+  "LogoBar"
+ ],
+ "mappings": ";;;;;;;AAAA;;AACA;;;;AAEA,IAAMA,MAAM,GAAG;AACbC,EAAAA,SAAS,EAAE,QADE;AAEbC,EAAAA,UAAU,EAAE;AAFC,CAAf;;AAKA,IAAMC,OAAO,GAAG,SAAVA,OAAU;AAAA,SACd;AAAK,IAAA,KAAK,EAAEH,MAAZ;AAAA,eACG,qBAAC,sBAAD;AACG,MAAA,SAAS,EAAC,cADb;AAEG,MAAA,KAAK,EAAC,oCAFT;AAGG,MAAA,IAAI,EAAC;AAHR,MADH,EAMG,qBAAC,sBAAD;AACG,MAAA,SAAS,EAAC;AADb,MANH;AAAA,IADc;AAAA,CAAhB;;eAaeG,O"
+}

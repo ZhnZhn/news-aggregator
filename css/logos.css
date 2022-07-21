@@ -1,4 +1,4 @@
-.icon__github {
+.logo__github {
   display: inline-block;
   width: 70px;
   height: 70px;
@@ -8,17 +8,17 @@
   transition: border-color, background-color, border-width 200ms ease-out;
   fill: #4d4d4d;
 }
-.icon__github:hover{
+.logo__github:hover{
   border-color: #2f7ed8;
-  border-width: 8px;
+  border-width: 6px;
   background-color: yellow;
   stroke: yellow;
   stroke-width: 1;
 }
 
-.icon__react {
+.logo__preact {
   position: relative;
-  top: -4px;
+  top: 4px;
   display: inline-block;
   width: 74px;
   height: 74px;
@@ -31,10 +31,14 @@
   stroke: #00d8ff;
   stroke-width: 12;
 }
-.icon__react:hover {
+.logo__preact:hover {
   border-color: #2f7ed8;
-  border-width: 6px;
   fill: yellow;
   stroke: yellow;
   stroke-width: 24;
+}
+.logo__preact > svg {
+  position: relative;
+  top: -3px;
+  left: -3px;
 }

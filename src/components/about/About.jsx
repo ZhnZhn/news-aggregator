@@ -18,7 +18,7 @@ import {
 
 import A from '../Comp';
 import Step from './Step';
-import IconLogoBar from './IconLogoBar';
+import LogoBar from './LogoBar';
 
 const CL_ABOUT_PANE = "about-pane";
 const CL_SHOW = "show-popup";
@@ -145,7 +145,7 @@ const About = ({
              items={SEARCH_TERM_STEP_DESCRIPTIONS}
              crItem={_crStepItem}
            />
-           <IconLogoBar />
+           <LogoBar />
            <p>
              <span style={S_BLACK}>
                *Logos Fair Use.
