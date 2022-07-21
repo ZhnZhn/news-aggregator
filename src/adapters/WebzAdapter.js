@@ -2,6 +2,8 @@ import formatTimeAgo from '../utils/formatTimeAgo';
 import toFirstUpperCase from '../utils/toFirstUpperCase';
 import splitByParagraph from '../utils/splitByParagraph';
 
+import sanitizeArticle from './sanitizeArticle';
+
 const _assign = Object.assign
 , _isArr = Array.isArray
 , _crHm = () => Object.create(null);
@@ -23,7 +25,11 @@ const _crRelated = tokenArr =>
     .map(toFirstUpperCase)
     .join("|")
 
-const _toArticles = (posts, sourceId, lang) => {
+const _toArticles = (
+  posts,
+  sourceId,
+  lang
+) => {
   const articles = [],
   _hm = _crHm()
   , _timeAgoOptions = formatTimeAgo.crOptions();
@@ -61,18 +67,25 @@ const _toArticles = (posts, sourceId, lang) => {
     }
   })
 
-  return articles;
+  return articles
+    .map(sanitizeArticle);
 };
 
 const WebzAdapter = {
   toNews: (json, option) => {
-    const { posts, requestsLeft } = json || {}
-    , { type, lang } = option || {}
-    , _sourceId = _hmSourceId[type]
-    , articles = _toArticles(posts, _sourceId, lang);
+    const {
+      posts,
+      requestsLeft
+    } = json || {}
+    , {
+      type,
+      lang
+    } = option || {}
+    , _sourceId = _hmSourceId[type];
+
     return {
       source: _sourceId,
-      articles,
+      articles: _toArticles(posts, _sourceId, lang),
       sortBy: requestsLeft
     };
   }

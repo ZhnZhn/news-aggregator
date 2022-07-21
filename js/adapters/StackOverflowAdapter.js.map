@@ -1,1 +1,39 @@
-{"version":3,"sources":["../../src/adapters/StackOverflowAdapter.js"],"names":["_rSourceId","TAG","SEARCH","StackOverflowAdapter","toNews","json","option","items","requestType","_sourceId","_items","map","item","title","question_id","owner","Object","assign","articleId","source","Dom","htmlDecode","display_name","articles","sortBy","tag"],"mappings":";;;;;;;AAAA;;AACA;;AAEA;AAEA,IAAMA,UAAU,GAAG;AACjBC,EAAAA,GAAG,EAAE,cADY;AAEjBC,EAAAA,MAAM,EAAE;AAFS,CAAnB;AAKA,IAAMC,oBAAoB,GAAG;AAC3BC,EAAAA,MAAM,EAAE,gBAACC,IAAD,EAAOC,MAAP,EAAkB;AAClB,QAAEC,KAAF,GAAYF,IAAZ,CAAEE,KAAF;AAAA,QACEC,WADF,GACkBF,MADlB,CACEE,WADF;AAAA,QAEAC,SAFA,GAEYT,UAAU,CAACQ,WAAD,CAFtB;;AAIN,QAAME,MAAM,GAAGH,KAAK,CAACI,GAAN,CAAU,UAAAC,IAAI,EAAI;AAAA,UACvBC,KADuB,GACUD,IADV,CACvBC,KADuB;AAAA,UAChBC,WADgB,GACUF,IADV,CAChBE,WADgB;AAAA,wBACUF,IADV,CACHG,KADG;AAAA,UACHA,KADG,4BACG,EADH;AAE/BC,MAAAA,MAAM,CAACC,MAAP,CAAcL,IAAd,EAAoB;AAClBM,QAAAA,SAAS,EAAEJ,WAAW,IAAI,uBADR;AAElBK,QAAAA,MAAM,EAAEV,SAFU;AAGlBI,QAAAA,KAAK,EAAEO,gBAAIC,UAAJ,CAAeR,KAAf,CAHW;AAIlBE,QAAAA,KAAK,EAAE;AACLO,UAAAA,YAAY,EAAEF,gBAAIC,UAAJ,CAAeN,KAAK,CAACO,YAArB;AADT;AAJW,OAApB;AAQA,aAAOV,IAAP;AACD,KAXc,CAAf;;AAYA,WAAO;AACLO,MAAAA,MAAM,EAAEV,SADH;AAELc,MAAAA,QAAQ,EAAEb,MAFL;AAGLc,MAAAA,MAAM,EAAElB,MAAM,CAACmB;AAHV,KAAP;AAKD;AAvB0B,CAA7B;eA0BetB,oB","sourcesContent":["import Dom from '../utils/Dom'\r\nimport crId from '../utils/crId'\r\n\r\n//const SOURCE_ID = \"stack_tagged\";\r\n\r\nconst _rSourceId = {\r\n  TAG: 'stack_tagged',\r\n  SEARCH: 'stack_search'\r\n}\r\n\r\nconst StackOverflowAdapter = {\r\n  toNews: (json, option) => {\r\n    const { items } = json\r\n        , { requestType } = option\r\n        , _sourceId = _rSourceId[requestType];\r\n\r\n    const _items = items.map(item => {\r\n      const { title, question_id, owner={} } = item;\r\n      Object.assign(item, {\r\n        articleId: question_id || crId(),\r\n        source: _sourceId,\r\n        title: Dom.htmlDecode(title),\r\n        owner: {\r\n          display_name: Dom.htmlDecode(owner.display_name)\r\n        }\r\n      })\r\n      return item;\r\n    })\r\n    return {\r\n      source: _sourceId,\r\n      articles: _items,\r\n      sortBy: option.tag\r\n    };\r\n  }\r\n}\r\n\r\nexport default StackOverflowAdapter\r\n"],"file":"StackOverflowAdapter.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/adapters/StackOverflowAdapter.js"
+ ],
+ "file": "../../src/adapters/StackOverflowAdapter.js",
+ "names": [
+  "_rSourceId",
+  "TAG",
+  "SEARCH",
+  "_assign",
+  "Object",
+  "assign",
+  "_crArticle",
+  "item",
+  "sourceId",
+  "title",
+  "question_id",
+  "owner",
+  "articleId",
+  "source",
+  "Dom",
+  "htmlDecode",
+  "display_name",
+  "_crArticles",
+  "items",
+  "map",
+  "StackOverflowAdapter",
+  "toNews",
+  "json",
+  "option",
+  "requestType",
+  "_sourceId",
+  "articles",
+  "sortBy",
+  "tag"
+ ],
+ "mappings": ";;;;;;;AAAA;;AACA;;AAEA;;AAEA;AAEA,IAAMA,UAAU,GAAG;AACjBC,EAAAA,GAAG,EAAE,cADY;AAEjBC,EAAAA,MAAM,EAAE;AAFS,CAAnB;AAKA,IAAMC,OAAO,GAAGC,MAAM,CAACC,MAAvB;;AAEA,IAAMC,UAAU,GAAG,SAAbA,UAAa,CACjBC,IADiB,EAEjBC,QAFiB,EAGd;AACH,MACEC,KADF,GAIIF,IAJJ,CACEE,KADF;AAAA,MAEEC,WAFF,GAIIH,IAJJ,CAEEG,WAFF;AAAA,oBAIIH,IAJJ,CAGEI,KAHF;AAAA,MAGEA,KAHF,4BAGQ,EAHR;AAKA,SAAOR,OAAO,CAACI,IAAD,EAAO;AACnBK,IAAAA,SAAS,EAAEF,WAAW,IAAI,uBADP;AAEnBG,IAAAA,MAAM,EAAEL,QAFW;AAGnBC,IAAAA,KAAK,EAAEK,gBAAIC,UAAJ,CAAeN,KAAf,CAHY;AAInBE,IAAAA,KAAK,EAAE;AACLK,MAAAA,YAAY,EAAEF,gBAAIC,UAAJ,CAAeJ,KAAK,CAACK,YAArB;AADT;AAJY,GAAP,CAAd;AAQD,CAjBD;;AAmBA,IAAMC,WAAW,GAAG,SAAdA,WAAc,CAClBC,KADkB,EAElBV,QAFkB;AAAA,SAGfU,KAAK,CACPC,GADE,CACE,UAAAZ,IAAI;AAAA,WAAI,iCACTD,UAAU,CAACC,IAAD,EAAOC,QAAP,CADD,CAAJ;AAAA,GADN,CAHe;AAAA,CAApB;;AAQA,IAAMY,oBAAoB,GAAG;AAC3BC,EAAAA,MAAM,EAAE,gBAACC,IAAD,EAAOC,MAAP,EAAkB;AAClB,QAAEL,KAAF,GAAYI,IAAZ,CAAEJ,KAAF;AAAA,QACFM,WADE,GACcD,MADd,CACFC,WADE;AAAA,QAEJC,SAFI,GAEQzB,UAAU,CAACwB,WAAD,CAFlB;AAIN,WAAO;AACLX,MAAAA,MAAM,EAAEY,SADH;AAELC,MAAAA,QAAQ,EAAET,WAAW,CAACC,KAAD,EAAQO,SAAR,CAFhB;AAGLE,MAAAA,MAAM,EAAEJ,MAAM,CAACK;AAHV,KAAP;AAKD;AAX0B,CAA7B;eAceR,oB"
+}

@@ -1,47 +1,42 @@
 import crId from '../utils/crId';
 import formatTimeAgo from '../utils/formatTimeAgo';
 
-const SOURCE_ID = 'fmp_news';
+import crArticles from './crArticles';
 
-const _isArr = Array.isArray;
+
+const SOURCE_ID = 'fmp_news';
 
 const _toDate = strDate => {
   const _arrDateTime = (strDate || '').split(' ')
   , _arrDate = (_arrDateTime[0] || '').split('-')
-  , _strDate = _arrDate.reverse().join('-')
+  , _strDate = _arrDate.reverse().join('-');
   return (_arrDateTime[1] || '') + ' ' + _strDate;
 };
 
-const _toArticles = json => {
-  const _timeAgoOptions = formatTimeAgo.crOptions()
-  return _isArr(json) ? json.map(item => {
-      const {
-        title, text, symbol,
-        site, publishedDate,
-        url
-      } = item;
-
-      return {
-        source: SOURCE_ID,
-        articleId: crId(),
-        title, url,
-        description: text,
-        related: symbol,
-        author: site,
-        publishedDate: _toDate(publishedDate),
-        timeAgo: formatTimeAgo(publishedDate, _timeAgoOptions)
-      };
-  }) : [];
-};
-
+const _crArticle = ({
+  title,
+  text,
+  symbol,
+  site,
+  publishedDate,
+  url
+}, timeAgoOptions) => ({
+  source: SOURCE_ID,
+  articleId: crId(),
+  title,
+  description: text,
+  related: symbol,
+  author: site,
+  publishedDate: _toDate(publishedDate),
+  timeAgo: formatTimeAgo(publishedDate, timeAgoOptions),
+  url
+})
 
 const FmpAdapter = {
   toNews(json, option) {
-    const articles = _toArticles(json);
-
     return {
       source: SOURCE_ID,
-      articles: articles,
+      articles: crArticles(json, _crArticle)
       //sortBy: `${symbol.toUpperCase()} ${recent}`
     };
   }

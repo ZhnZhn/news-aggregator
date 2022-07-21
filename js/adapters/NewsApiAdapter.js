@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _ut = _interopRequireDefault(require("../utils/ut"));
 
+var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
+
 var crId = _ut["default"].crId,
     joinStrsBy = _ut["default"].joinStrsBy,
     toFirstUpperCase = _ut["default"].toFirstUpperCase;
@@ -45,19 +47,18 @@ var NewsApiAdapter = {
 
     var _toArticle = source === NEWS_SEARCH || source === NEWS_TOP ? _fToSearchArticle(source) : _fToArticle(source);
 
-    return articles.map(_toArticle);
+    return articles.map(function (item) {
+      return (0, _sanitizeArticle["default"])(_toArticle(item));
+    });
   },
   toNews: function toNews(json, option) {
     var source = option.source,
         articles = json.articles,
-        sortBy = json.sortBy,
-        _sortBy = toFirstUpperCase(sortBy),
-        _articles = NewsApiAdapter.toArticles(articles, source);
-
+        sortBy = json.sortBy;
     return {
       source: source,
-      articles: _articles,
-      sortBy: _sortBy
+      articles: NewsApiAdapter.toArticles(articles, source),
+      sortBy: toFirstUpperCase(sortBy)
     };
   }
 };

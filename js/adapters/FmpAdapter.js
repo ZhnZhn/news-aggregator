@@ -9,8 +9,9 @@ var _crId = _interopRequireDefault(require("../utils/crId"));
 
 var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
 
+var _crArticles = _interopRequireDefault(require("./crArticles"));
+
 var SOURCE_ID = 'fmp_news';
-var _isArr = Array.isArray;
 
 var _toDate = function _toDate(strDate) {
   var _arrDateTime = (strDate || '').split(' '),
@@ -20,37 +21,31 @@ var _toDate = function _toDate(strDate) {
   return (_arrDateTime[1] || '') + ' ' + _strDate;
 };
 
-var _toArticles = function _toArticles(json) {
-  var _timeAgoOptions = _formatTimeAgo["default"].crOptions();
-
-  return _isArr(json) ? json.map(function (item) {
-    var title = item.title,
-        text = item.text,
-        symbol = item.symbol,
-        site = item.site,
-        publishedDate = item.publishedDate,
-        url = item.url;
-    return {
-      source: SOURCE_ID,
-      articleId: (0, _crId["default"])(),
-      title: title,
-      url: url,
-      description: text,
-      related: symbol,
-      author: site,
-      publishedDate: _toDate(publishedDate),
-      timeAgo: (0, _formatTimeAgo["default"])(publishedDate, _timeAgoOptions)
-    };
-  }) : [];
+var _crArticle = function _crArticle(_ref, timeAgoOptions) {
+  var title = _ref.title,
+      text = _ref.text,
+      symbol = _ref.symbol,
+      site = _ref.site,
+      publishedDate = _ref.publishedDate,
+      url = _ref.url;
+  return {
+    source: SOURCE_ID,
+    articleId: (0, _crId["default"])(),
+    title: title,
+    description: text,
+    related: symbol,
+    author: site,
+    publishedDate: _toDate(publishedDate),
+    timeAgo: (0, _formatTimeAgo["default"])(publishedDate, timeAgoOptions),
+    url: url
+  };
 };
 
 var FmpAdapter = {
   toNews: function toNews(json, option) {
-    var articles = _toArticles(json);
-
     return {
       source: SOURCE_ID,
-      articles: articles //sortBy: `${symbol.toUpperCase()} ${recent}`
+      articles: (0, _crArticles["default"])(json, _crArticle) //sortBy: `${symbol.toUpperCase()} ${recent}`
 
     };
   }

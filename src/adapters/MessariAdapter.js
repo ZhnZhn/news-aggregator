@@ -1,9 +1,8 @@
 import ut from '../utils/ut';
 import formatTimeAgo from '../utils/formatTimeAgo';
+import crArticles from './crArticles';
 
 const { crId } = ut;
-const _isArr = Array.isArray;
-
 const SOURCE_ID = 'messari_news';
 
 const _crRelated = tags => (tags || [])
@@ -11,35 +10,36 @@ const _crRelated = tags => (tags || [])
  .map(item => `#${item}`)
  .join(' ');
 
+ const _crArticle = ({
+   title,
+   tags,
+   published_at,
+   url,
+   author
+ }, timeAgoOptions) => {
+   const { name } = author || {};
+   return {
+     source: SOURCE_ID,
+     articleId: crId(),
+     title,
+     author: name,
+     related: _crRelated(tags),
+     publishedAt: published_at,
+     timeAgo: formatTimeAgo(published_at, timeAgoOptions),
+     url
+   };
+}
+
 const _toArticles = (json) => {
-  const { data } = json || {}
-  , _timeAgoOptions = formatTimeAgo.crOptions();
-  return _isArr(data) ? data.map(item => {
-    const {
-      title,
-      tags,
-      published_at, url,
-      author
-    } = item
-    , { name } = author || {};
-    return {
-      source: SOURCE_ID,
-      articleId: crId(),
-      title, url,
-      author: name,
-      related: _crRelated(tags),
-      publishedAt: published_at,
-      timeAgo: formatTimeAgo(published_at, _timeAgoOptions),
-    };
-  }) : [];
+  const { data } = json || {};
+  return crArticles(data, _crArticle)
 };
 
 const MessariAdapter = {
   toNews(json, option){
-    const articles = _toArticles(json);
     return {
       source: SOURCE_ID,
-      articles: articles
+      articles: _toArticles(json)
     };
   }
 };

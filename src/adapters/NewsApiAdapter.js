@@ -1,8 +1,11 @@
-import ut from '../utils/ut'
+import ut from '../utils/ut';
+
+import sanitizeArticle from './sanitizeArticle';
 
 const {
   crId,
-  joinStrsBy, toFirstUpperCase
+  joinStrsBy,
+  toFirstUpperCase
 } = ut;
 
 const NEWS_SEARCH = 'newsapi_search';
@@ -16,7 +19,7 @@ const _fToArticle = source => article => {
 const _fToSearchArticle = paneId => article => {
   article.articleId = crId()
   const { source, author } = article || {}
-  , { name } = source || {}
+  , { name } = source || {};
   article.source = paneId
   article.author = joinStrsBy([name, author])
   return article;
@@ -27,18 +30,19 @@ const NewsApiAdapter = {
     const _toArticle = source === NEWS_SEARCH || source === NEWS_TOP
       ? _fToSearchArticle(source)
       : _fToArticle(source);
-    return articles.map(_toArticle);
+    return articles
+     .map(item => sanitizeArticle(
+        _toArticle(item)
+     ));
   },
 
   toNews: (json, option) => {
     const { source } = option
-    , { articles, sortBy } = json
-    , _sortBy = toFirstUpperCase(sortBy)
-    , _articles = NewsApiAdapter.toArticles(articles, source);
+    , { articles, sortBy } = json;
     return {
-      source: source,
-      articles: _articles,
-      sortBy: _sortBy
+      source,
+      articles: NewsApiAdapter.toArticles(articles, source),
+      sortBy: toFirstUpperCase(sortBy)
     };
   }
 }

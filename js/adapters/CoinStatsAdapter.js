@@ -9,53 +9,53 @@ var _ut = _interopRequireDefault(require("../utils/ut"));
 
 var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
 
+var _crArticles = _interopRequireDefault(require("./crArticles"));
+
 var crId = _ut["default"].crId,
     toFirstUpperCase = _ut["default"].toFirstUpperCase,
     decodeHTMLEntities = _ut["default"].decodeHTMLEntities;
 var SOURCE_ID = 'coinstats_news';
 
-var _isArr = Array.isArray,
-    _crRelated = function _crRelated(coins) {
+var _crRelated = function _crRelated(coins) {
   return (coins || []).map(function (_ref) {
     var coinKeyWords = _ref.coinKeyWords;
     return coinKeyWords;
   }).filter(Boolean).join('|');
 };
 
-var _toArticles = function _toArticles(json) {
-  var _ref2 = json || {},
-      news = _ref2.news,
-      _timeAgoOptions = _formatTimeAgo["default"].crOptions();
+var _crArticle = function _crArticle(_ref2, timeAgoOptions) {
+  var title = _ref2.title,
+      description = _ref2.description,
+      coins = _ref2.coins,
+      feedDate = _ref2.feedDate,
+      source = _ref2.source,
+      link = _ref2.link;
+  return {
+    source: SOURCE_ID,
+    articleId: crId(),
+    title: title,
+    description: decodeHTMLEntities(description),
+    related: _crRelated(coins),
+    author: source,
+    publishedAt: feedDate,
+    timeAgo: (0, _formatTimeAgo["default"])(feedDate, timeAgoOptions),
+    url: link
+  };
+};
 
-  return _isArr(news) ? news.map(function (_ref3) {
-    var title = _ref3.title,
-        description = _ref3.description,
-        coins = _ref3.coins,
-        feedDate = _ref3.feedDate,
-        source = _ref3.source,
-        link = _ref3.link;
-    return {
-      source: SOURCE_ID,
-      articleId: crId(),
-      title: title,
-      description: decodeHTMLEntities(description),
-      related: _crRelated(coins),
-      author: source,
-      publishedAt: feedDate,
-      timeAgo: (0, _formatTimeAgo["default"])(feedDate, _timeAgoOptions),
-      url: link
-    };
-  }) : [];
+var _toArticles = function _toArticles(json) {
+  var _ref3 = json || {},
+      news = _ref3.news;
+
+  return (0, _crArticles["default"])(news, _crArticle);
 };
 
 var CoinStatsAdapter = {
   toNews: function toNews(json, option) {
-    var articles = _toArticles(json),
-        filter = option.filter;
-
+    var filter = option.filter;
     return {
       source: SOURCE_ID,
-      articles: articles,
+      articles: _toArticles(json),
       sortBy: toFirstUpperCase(filter)
     };
   }

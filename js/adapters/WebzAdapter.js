@@ -11,6 +11,8 @@ var _toFirstUpperCase = _interopRequireDefault(require("../utils/toFirstUpperCas
 
 var _splitByParagraph = _interopRequireDefault(require("../utils/splitByParagraph"));
 
+var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
+
 var _assign = Object.assign,
     _isArr = Array.isArray,
     _crHm = function _crHm() {
@@ -68,7 +70,7 @@ var _toArticles = function _toArticles(posts, sourceId, lang) {
       _hm[_title] = true;
     }
   });
-  return articles;
+  return articles.map(_sanitizeArticle["default"]);
 };
 
 var WebzAdapter = {
@@ -79,12 +81,11 @@ var WebzAdapter = {
         _ref3 = option || {},
         type = _ref3.type,
         lang = _ref3.lang,
-        _sourceId = _hmSourceId[type],
-        articles = _toArticles(posts, _sourceId, lang);
+        _sourceId = _hmSourceId[type];
 
     return {
       source: _sourceId,
-      articles: articles,
+      articles: _toArticles(posts, _sourceId, lang),
       sortBy: requestsLeft
     };
   }

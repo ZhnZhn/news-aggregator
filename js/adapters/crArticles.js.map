@@ -1,0 +1,21 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/adapters/crArticles.js"
+ ],
+ "file": "../../src/adapters/crArticles.js",
+ "names": [
+  "_isArr",
+  "Array",
+  "isArray",
+  "crArticles",
+  "items",
+  "crArticle",
+  "_timeAgoOptions",
+  "formatTimeAgo",
+  "crOptions",
+  "map",
+  "item"
+ ],
+ "mappings": ";;;;;;;AAAA;;AACA;;AAEA,IAAMA,MAAM,GAAGC,KAAK,CAACC,OAArB;;AAEA,IAAMC,UAAU,GAAG,SAAbA,UAAa,CACjBC,KADiB,EAEjBC,SAFiB,EAGd;AACH,MAAMC,eAAe,GAAGC,0BAAcC,SAAd,EAAxB;;AACA,SAAOR,MAAM,CAACI,KAAD,CAAN,GACJA,KAAK,CAACK,GAAN,CAAU,UAAAC,IAAI;AAAA,WAAI,iCAChBL,SAAS,CAACK,IAAD,EAAOJ,eAAP,CADO,CAAJ;AAAA,GAAd,CADI,GAIJ,EAJH;AAKD,CAVD;;eAYeH,U"
+}

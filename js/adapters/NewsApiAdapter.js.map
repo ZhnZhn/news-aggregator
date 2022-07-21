@@ -1,1 +1,34 @@
-{"version":3,"sources":["../../src/adapters/NewsApiAdapter.js"],"names":["crId","ut","joinStrsBy","toFirstUpperCase","NEWS_SEARCH","NEWS_TOP","_fToArticle","source","article","articleId","_fToSearchArticle","paneId","author","name","NewsApiAdapter","toArticles","articles","_toArticle","map","toNews","json","option","sortBy","_sortBy","_articles"],"mappings":";;;;;;;AAAA;;IAGEA,I,GAEEC,c,CAFFD,I;IACAE,U,GACED,c,CADFC,U;IAAYC,gB,GACVF,c,CADUE,gB;AAGd,IAAMC,WAAW,GAAG,gBAApB;AACA,IAAMC,QAAQ,GAAG,aAAjB;;AAEA,IAAMC,WAAW,GAAG,SAAdA,WAAc,CAAAC,MAAM;AAAA,SAAI,UAAAC,OAAO,EAAI;AACvCA,IAAAA,OAAO,CAACC,SAAR,GAAoBT,IAAI,EAAxB;AACAQ,IAAAA,OAAO,CAACD,MAAR,GAAiBA,MAAjB;AACA,WAAOC,OAAP;AACD,GAJyB;AAAA,CAA1B;;AAKA,IAAME,iBAAiB,GAAG,SAApBA,iBAAoB,CAAAC,MAAM;AAAA,SAAI,UAAAH,OAAO,EAAI;AAC7CA,IAAAA,OAAO,CAACC,SAAR,GAAoBT,IAAI,EAAxB;;AAD6C,eAElBQ,OAAO,IAAI,EAFO;AAAA,QAErCD,MAFqC,QAErCA,MAFqC;AAAA,QAE7BK,MAF6B,QAE7BA,MAF6B;AAAA,gBAGhCL,MAAM,IAAI,EAHsB;AAAA,QAGzCM,IAHyC,SAGzCA,IAHyC;;AAI7CL,IAAAA,OAAO,CAACD,MAAR,GAAiBI,MAAjB;AACAH,IAAAA,OAAO,CAACI,MAAR,GAAiBV,UAAU,CAAC,CAACW,IAAD,EAAOD,MAAP,CAAD,CAA3B;AACA,WAAOJ,OAAP;AACD,GAP+B;AAAA,CAAhC;;AASA,IAAMM,cAAc,GAAG;AACrBC,EAAAA,UAAU,EAAE,oBAACC,QAAD,EAAcT,MAAd,EAAyB;AAAA,QAAxBS,QAAwB;AAAxBA,MAAAA,QAAwB,GAAf,EAAe;AAAA;;AACnC,QAAMC,UAAU,GAAGV,MAAM,KAAKH,WAAX,IAA0BG,MAAM,KAAKF,QAArC,GACfK,iBAAiB,CAACH,MAAD,CADF,GAEfD,WAAW,CAACC,MAAD,CAFf;;AAGA,WAAOS,QAAQ,CAACE,GAAT,CAAaD,UAAb,CAAP;AACD,GANoB;AAQrBE,EAAAA,MAAM,EAAE,gBAACC,IAAD,EAAOC,MAAP,EAAkB;AAClB,QAAEd,MAAF,GAAac,MAAb,CAAEd,MAAF;AAAA,QACFS,QADE,GACmBI,IADnB,CACFJ,QADE;AAAA,QACQM,MADR,GACmBF,IADnB,CACQE,MADR;AAAA,QAEJC,OAFI,GAEMpB,gBAAgB,CAACmB,MAAD,CAFtB;AAAA,QAGJE,SAHI,GAGQV,cAAc,CAACC,UAAf,CAA0BC,QAA1B,EAAoCT,MAApC,CAHR;;AAIN,WAAO;AACLA,MAAAA,MAAM,EAAEA,MADH;AAELS,MAAAA,QAAQ,EAAEQ,SAFL;AAGLF,MAAAA,MAAM,EAAEC;AAHH,KAAP;AAKD;AAlBoB,CAAvB;eAqBeT,c","sourcesContent":["import ut from '../utils/ut'\r\n\r\nconst {\r\n  crId,\r\n  joinStrsBy, toFirstUpperCase\r\n} = ut;\r\n\r\nconst NEWS_SEARCH = 'newsapi_search';\r\nconst NEWS_TOP = 'newsapi_top';\r\n\r\nconst _fToArticle = source => article => {\r\n  article.articleId = crId()\r\n  article.source = source\r\n  return article;\r\n};\r\nconst _fToSearchArticle = paneId => article => {\r\n  article.articleId = crId()\r\n  const { source, author } = article || {}\r\n  , { name } = source || {}\r\n  article.source = paneId\r\n  article.author = joinStrsBy([name, author])\r\n  return article;\r\n};\r\n\r\nconst NewsApiAdapter = {\r\n  toArticles: (articles=[], source) => {\r\n    const _toArticle = source === NEWS_SEARCH || source === NEWS_TOP\r\n      ? _fToSearchArticle(source)\r\n      : _fToArticle(source);\r\n    return articles.map(_toArticle);\r\n  },\r\n\r\n  toNews: (json, option) => {\r\n    const { source } = option\r\n    , { articles, sortBy } = json\r\n    , _sortBy = toFirstUpperCase(sortBy)\r\n    , _articles = NewsApiAdapter.toArticles(articles, source);\r\n    return {\r\n      source: source,\r\n      articles: _articles,\r\n      sortBy: _sortBy\r\n    };\r\n  }\r\n}\r\n\r\nexport default NewsApiAdapter\r\n"],"file":"NewsApiAdapter.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/adapters/NewsApiAdapter.js"
+ ],
+ "file": "../../src/adapters/NewsApiAdapter.js",
+ "names": [
+  "crId",
+  "ut",
+  "joinStrsBy",
+  "toFirstUpperCase",
+  "NEWS_SEARCH",
+  "NEWS_TOP",
+  "_fToArticle",
+  "source",
+  "article",
+  "articleId",
+  "_fToSearchArticle",
+  "paneId",
+  "author",
+  "name",
+  "NewsApiAdapter",
+  "toArticles",
+  "articles",
+  "_toArticle",
+  "map",
+  "item",
+  "toNews",
+  "json",
+  "option",
+  "sortBy"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAEA;;AAEA,IACEA,IADF,GAIIC,cAJJ,CACED,IADF;AAAA,IAEEE,UAFF,GAIID,cAJJ,CAEEC,UAFF;AAAA,IAGEC,gBAHF,GAIIF,cAJJ,CAGEE,gBAHF;AAMA,IAAMC,WAAW,GAAG,gBAApB;AACA,IAAMC,QAAQ,GAAG,aAAjB;;AAEA,IAAMC,WAAW,GAAG,SAAdA,WAAc,CAAAC,MAAM;AAAA,SAAI,UAAAC,OAAO,EAAI;AACvCA,IAAAA,OAAO,CAACC,SAAR,GAAoBT,IAAI,EAAxB;AACAQ,IAAAA,OAAO,CAACD,MAAR,GAAiBA,MAAjB;AACA,WAAOC,OAAP;AACD,GAJyB;AAAA,CAA1B;;AAKA,IAAME,iBAAiB,GAAG,SAApBA,iBAAoB,CAAAC,MAAM;AAAA,SAAI,UAAAH,OAAO,EAAI;AAC7CA,IAAAA,OAAO,CAACC,SAAR,GAAoBT,IAAI,EAAxB;;AACA,eAA2BQ,OAAO,IAAI,EAAtC;AAAA,QAAQD,MAAR,QAAQA,MAAR;AAAA,QAAgBK,MAAhB,QAAgBA,MAAhB;AAAA,gBACaL,MAAM,IAAI,EADvB;AAAA,QACIM,IADJ,SACIA,IADJ;;AAEAL,IAAAA,OAAO,CAACD,MAAR,GAAiBI,MAAjB;AACAH,IAAAA,OAAO,CAACI,MAAR,GAAiBV,UAAU,CAAC,CAACW,IAAD,EAAOD,MAAP,CAAD,CAA3B;AACA,WAAOJ,OAAP;AACD,GAP+B;AAAA,CAAhC;;AASA,IAAMM,cAAc,GAAG;AACrBC,EAAAA,UAAU,EAAE,oBAACC,QAAD,EAAcT,MAAd,EAAyB;AAAA,QAAxBS,QAAwB;AAAxBA,MAAAA,QAAwB,GAAf,EAAe;AAAA;;AACnC,QAAMC,UAAU,GAAGV,MAAM,KAAKH,WAAX,IAA0BG,MAAM,KAAKF,QAArC,GACfK,iBAAiB,CAACH,MAAD,CADF,GAEfD,WAAW,CAACC,MAAD,CAFf;;AAGA,WAAOS,QAAQ,CACbE,GADK,CACD,UAAAC,IAAI;AAAA,aAAI,iCACVF,UAAU,CAACE,IAAD,CADA,CAAJ;AAAA,KADH,CAAP;AAID,GAToB;AAWrBC,EAAAA,MAAM,EAAE,gBAACC,IAAD,EAAOC,MAAP,EAAkB;AAClB,QAAEf,MAAF,GAAae,MAAb,CAAEf,MAAF;AAAA,QACFS,QADE,GACmBK,IADnB,CACFL,QADE;AAAA,QACQO,MADR,GACmBF,IADnB,CACQE,MADR;AAEN,WAAO;AACLhB,MAAAA,MAAM,EAANA,MADK;AAELS,MAAAA,QAAQ,EAAEF,cAAc,CAACC,UAAf,CAA0BC,QAA1B,EAAoCT,MAApC,CAFL;AAGLgB,MAAAA,MAAM,EAAEpB,gBAAgB,CAACoB,MAAD;AAHnB,KAAP;AAKD;AAnBoB,CAAvB;eAsBeT,c"
+}

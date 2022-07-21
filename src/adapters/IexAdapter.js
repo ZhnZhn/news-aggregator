@@ -2,6 +2,8 @@ import crId from '../utils/crId';
 import formatTimeAgo from '../utils/formatTimeAgo';
 import crDescription from '../utils/crDescription';
 
+import sanitizeArticle from './sanitizeArticle';
+
 const _isArr = Array.isArray;
 
 const SOURCE_ID = 'iex_news'
@@ -82,7 +84,9 @@ const _toArticles = (
         arr.push(_article) - 1
       ]
       return arr;
-  }, []).filter(item => !item._isNewer) : [];
+  }, [])
+   .filter(item => !item._isNewer)
+   .map(sanitizeArticle) : [];
 };
 
 const _crSortBy = ({
