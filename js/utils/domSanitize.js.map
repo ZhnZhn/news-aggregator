@@ -1,0 +1,17 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/domSanitize.js"
+ ],
+ "file": "../../src/utils/domSanitize.js",
+ "names": [
+  "_sanitize",
+  "DOMPurify",
+  "sanitize",
+  "domSanitize",
+  "str",
+  "USE_PROFILES",
+  "html"
+ ],
+ "mappings": ";;;;;;;AAAA;;AAEA;AACA,IAAMA,SAAS,GAAGC,sBAAUC,QAA5B;;AAEA,IAAMC,WAAW,GAAG,SAAdA,WAAc,CAClBC,GADkB;AAAA,SAEfJ,SAAS,CAACI,GAAD,EAAM;AAACC,IAAAA,YAAY,EAAE;AAAEC,MAAAA,IAAI,EAAE;AAAR;AAAf,GAAN,CAFM;AAAA,CAApB;;eAIeH,W"
+}
