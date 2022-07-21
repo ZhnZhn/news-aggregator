@@ -1,4 +1,4 @@
-import { render } from 'react-dom'
+import { render } from './components/uiApi';
 
 import AppNewsAggregator from './components/AppNewsAggregator'
 
