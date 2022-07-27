@@ -31,7 +31,7 @@ var _SafeLink = _interopRequireDefault(require("../zhn-atoms/SafeLink"));
 
 var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var HAS_TOUCH = _has["default"].HAS_TOUCH,
     CL_WRAPPER = "link-wrapper",
@@ -48,7 +48,7 @@ var HAS_TOUCH = _has["default"].HAS_TOUCH,
   backgroundColor: '#404040',
   fontWeight: 'bold',
   width: '100%',
-  padding: '8px 0 16px 16px',
+  padding: '8px 4px 16px 16px',
   marginBottom: 5,
   lineHeight: 1.5,
   boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
@@ -56,7 +56,6 @@ var HAS_TOUCH = _has["default"].HAS_TOUCH,
   borderBottomRightRadius: 2
 },
     S_SVG_CLOSE = {
-  "float": 'none',
   position: 'absolute',
   top: 8,
   right: 0
@@ -85,22 +84,22 @@ var HAS_TOUCH = _has["default"].HAS_TOUCH,
     S_BLACK_BADGE = (0, _extends2["default"])({}, _S_BADGE, {
   color: 'black'
 });
-var TOKEN_ANSWER = HAS_TOUCH ? 'A' : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+var TOKEN_ANSWER = HAS_TOUCH ? 'A' : (0, _jsxRuntime.jsx)("span", {
   role: "img",
   "arial-label": "hammer and pick",
   children: "\u2692"
 });
-var TOKEN_SCORE = HAS_TOUCH ? 'S' : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+var TOKEN_SCORE = HAS_TOUCH ? 'S' : (0, _jsxRuntime.jsx)("span", {
   role: "img",
   "aria-label": "fish",
   children: "\uD83D\uDC1F"
 });
-var TOKEN_VIEW = HAS_TOUCH ? 'V' : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+var TOKEN_VIEW = HAS_TOUCH ? 'V' : (0, _jsxRuntime.jsx)("span", {
   role: "img",
   "aria-label": "wheel of dharma",
   children: "\u2638"
 });
-var TOKEN_REPUTATION = HAS_TOUCH ? 'R' : /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+var TOKEN_REPUTATION = HAS_TOUCH ? 'R' : (0, _jsxRuntime.jsx)("span", {
   role: "img",
   "arial-label": "shamrock",
   children: "\u2618"
@@ -108,22 +107,22 @@ var TOKEN_REPUTATION = HAS_TOUCH ? 'R' : /*#__PURE__*/(0, _jsxRuntime.jsx)("span
 
 var _fTagItem = function _fTagItem(TS) {
   return function (tag, index) {
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    return (0, _jsxRuntime.jsx)("span", {
       style: (0, _extends2["default"])({}, S_SPAN_TAG, TS.DESCR),
       children: tag
     }, index);
   };
 };
 
-var _fnNoop = function _fnNoop() {};
+var FN_NOOP = function FN_NOOP() {};
 
 var StackItem = (0, _uiApi.forwardRef)(function (_ref, ref) {
   var item = _ref.item,
       onCloseItem = _ref.onCloseItem,
       _ref$onRemoveUnder = _ref.onRemoveUnder,
-      onRemoveUnder = _ref$onRemoveUnder === void 0 ? _fnNoop : _ref$onRemoveUnder,
+      onRemoveUnder = _ref$onRemoveUnder === void 0 ? FN_NOOP : _ref$onRemoveUnder,
       _ref$onRemoveItem = _ref.onRemoveItem,
-      onRemoveItem = _ref$onRemoveItem === void 0 ? _fnNoop : _ref$onRemoveItem;
+      onRemoveItem = _ref$onRemoveItem === void 0 ? FN_NOOP : _ref$onRemoveItem;
 
   var _useToggle = (0, _useToggle2["default"])(false),
       isClosed = _useToggle[0],
@@ -153,38 +152,38 @@ var StackItem = (0, _uiApi.forwardRef)(function (_ref, ref) {
       display_name = _ref3.display_name,
       _style = (0, _crStyle["default"])([isClosed, S_NONE]);
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_GestureSwipeX["default"], {
+  return (0, _jsxRuntime.jsxs)(_GestureSwipeX["default"], {
     style: (0, _extends2["default"])({}, S_ROOT, _style, TS.HEADER),
     onGesture: _onGestureSwipeX,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    children: [(0, _jsxRuntime.jsxs)("div", {
       style: S_ITEM_CAPTION,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+      children: [(0, _jsxRuntime.jsxs)("span", {
         style: is_answered ? S_GREEN_BADGE : S_FISH_BADGE,
         children: [TOKEN_ANSWER, "\xA0", answer_count]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+      }), (0, _jsxRuntime.jsxs)("span", {
         style: S_FISH_BADGE,
         children: [TOKEN_SCORE, "\xA0", score]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+      }), (0, _jsxRuntime.jsxs)("span", {
         style: S_BLACK_BADGE,
         children: [TOKEN_VIEW, "\xA0", view_count]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+      }), (0, _jsxRuntime.jsxs)("span", {
         style: S_GREEN_BADGE,
         children: [TOKEN_REPUTATION, "\xA0", reputation]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      }), (0, _jsxRuntime.jsx)("span", {
         style: S_BLACK_BADGE,
         children: display_name
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgX["default"], {
+      }), (0, _jsxRuntime.jsx)(_SvgX["default"], {
         style: S_SVG_CLOSE,
         onClick: _hClose
       })]
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    }), (0, _jsxRuntime.jsx)("div", {
       children: title
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SafeLink["default"], {
+    }), (0, _jsxRuntime.jsx)(_SafeLink["default"], {
       className: CL_WRAPPER,
       style: S_LINK,
       href: link,
       onKeyDown: _hKeyDown,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemStack["default"], {
+      children: (0, _jsxRuntime.jsx)(_ItemStack["default"], {
         items: tags,
         crItem: _crItem
       })

@@ -31,7 +31,7 @@ const { HAS_TOUCH } = has
   backgroundColor: '#404040',
   fontWeight: 'bold',
   width: '100%',
-  padding: '8px 0 16px 16px',
+  padding: '8px 4px 16px 16px',
   marginBottom: 5,
   lineHeight: 1.5,
   boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
@@ -39,7 +39,6 @@ const { HAS_TOUCH } = has
   borderBottomRightRadius: 2
 },
 S_SVG_CLOSE = {
-  float: 'none',
   position: 'absolute',
   top: 8,
   right: 0
@@ -95,13 +94,13 @@ const _fTagItem = TS  => (
   </span>
 );
 
-const _fnNoop = () => {};
+const FN_NOOP = () => {};
 
 const StackItem = forwardRef(({
   item,
   onCloseItem,
-  onRemoveUnder=_fnNoop,
-  onRemoveItem=_fnNoop
+  onRemoveUnder=FN_NOOP,
+  onRemoveItem=FN_NOOP
 }, ref) => {
   const [
     isClosed,
