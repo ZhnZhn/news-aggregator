@@ -1,11 +1,11 @@
 
 .show-popup{
   transform-origin: 50% 0;
-  animation: showing-popup 400ms ease-out;
+  animation: showing-popup 300ms ease-out;
 }
 .hide-popup {
   transform-origin: 50% 0;
-  animation: hiding-popup 400ms ease-out;
+  animation: hiding-popup 300ms ease-out;
 }
 @keyframes showing-popup{
   from {
