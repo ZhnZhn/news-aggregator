@@ -3,7 +3,8 @@ import {
   useRef,
   useState,
   useEffect,
-  useImperativeHandle
+  useImperativeHandle,
+  stopDefaultFor
 } from '../uiApi';
 
 import useRefInit from '../hooks/useRefInit';
@@ -86,15 +87,15 @@ const PasswordField = forwardRef(({
   , _hInputChange = (event) => {
     setState({value: event.target.value.trim()})
   }
-  , _hClear = () => {
+  , _hClear = (event) => {
+    stopDefaultFor(event)
     setState({value: ''})
   }
   , _hKeyDown = (event) => {
     if (event.keyCode === 46){
       setState({ value: '' })
     } else if (event.keyCode === 13) {
-      event.stopPropagation()
-      event.preventDefault()
+      stopDefaultFor(event)
       onEnter(event.target.value)
       setWasEnter(true)
       rerender()

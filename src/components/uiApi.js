@@ -32,3 +32,8 @@ export const getRefElementStyle = ref => {
   const element = getRefValue(ref);
   return (element || {}).style;
 }
+
+export const stopDefaultFor = event => {
+  event.stopPropagation()
+  event.preventDefault()
+}

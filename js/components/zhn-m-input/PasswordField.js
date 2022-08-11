@@ -17,7 +17,7 @@ var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
 
 var _has = _interopRequireDefault(require("../has"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var HAS_TOUCH = _has["default"].HAS_TOUCH,
     CL_SELECT = 'm-select',
@@ -100,7 +100,8 @@ var PasswordField = (0, _uiApi.forwardRef)(function (_ref, ref) {
       value: event.target.value.trim()
     });
   },
-      _hClear = function _hClear() {
+      _hClear = function _hClear(event) {
+    (0, _uiApi.stopDefaultFor)(event);
     setState({
       value: ''
     });
@@ -111,8 +112,7 @@ var PasswordField = (0, _uiApi.forwardRef)(function (_ref, ref) {
         value: ''
       });
     } else if (event.keyCode === 13) {
-      event.stopPropagation();
-      event.preventDefault();
+      (0, _uiApi.stopDefaultFor)(event);
       onEnter(event.target.value);
 
       _setWasEnter(true);
@@ -165,22 +165,22 @@ var PasswordField = (0, _uiApi.forwardRef)(function (_ref, ref) {
       _labelErrStyle = _isPassTest ? void 0 : S_LABEL_ON_ERROR,
       _lineStyle = _isPassTest ? getWasEnter() ? S_LINE_AFTER_ENTER : void 0 : S_LINE_ERROR;
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  return (0, _jsxRuntime.jsxs)("div", {
     className: CL_SELECT,
     style: style,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+    children: [(0, _jsxRuntime.jsx)("label", {
       className: CL_LABEL,
       style: (0, _extends2["default"])({}, _labelStyle, _labelErrStyle),
       htmlFor: _id,
       children: caption
-    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    }), (0, _jsxRuntime.jsxs)("div", {
       className: CL_DIV,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+      children: [(0, _jsxRuntime.jsx)("input", {
         hidden: true,
         autoComplete: "username",
         value: name,
         readOnly: true
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+      }), (0, _jsxRuntime.jsx)("input", {
         ref: _refInput,
         id: _id,
         type: "password",
@@ -192,14 +192,14 @@ var PasswordField = (0, _uiApi.forwardRef)(function (_ref, ref) {
         onKeyDown: _hKeyDown,
         onFocus: _hFocusInput,
         onBlur: _hBlurInput
-      }), HAS_TOUCH && value && /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+      }), HAS_TOUCH && value && (0, _jsxRuntime.jsx)("button", {
         className: CL_BT_CLEAR,
         onClick: _hClear,
         children: "x"
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      }), (0, _jsxRuntime.jsx)("div", {
         className: CL_INPUT_LINE,
         style: _lineStyle
-      }), !_isPassTest && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      }), !_isPassTest && (0, _jsxRuntime.jsx)("div", {
         className: CL_INPUT_MSG_ERR,
         children: errorMsg
       })]

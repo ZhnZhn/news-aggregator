@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.render = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.forwardRef = exports.focusRefElement = exports.createElement = exports.createContext = exports.cloneElement = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.render = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.forwardRef = exports.focusRefElement = exports.createElement = exports.createContext = exports.cloneElement = void 0;
 
 var _compat = require("preact/compat");
 
@@ -46,4 +46,11 @@ var getRefElementStyle = function getRefElementStyle(ref) {
 };
 
 exports.getRefElementStyle = getRefElementStyle;
+
+var stopDefaultFor = function stopDefaultFor(event) {
+  event.stopPropagation();
+  event.preventDefault();
+};
+
+exports.stopDefaultFor = stopDefaultFor;
 //# sourceMappingURL=uiApi.js.map
