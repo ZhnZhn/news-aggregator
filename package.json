@@ -52,8 +52,8 @@
     "@babel/runtime": "^7.18.9",
     "dompurify": "^2.3.10",
     "interactjs": "^1.3.4",
-    "nanoid": "^3.2.0",
-    "preact": "^10.10.2",
+    "nanoid": "^3.3.4",
+    "preact": "^10.10.4",
     "reflux-core": "^1.0.0",
     "timeago.js": "^4.0.2"
   }
