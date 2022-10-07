@@ -1,45 +1,57 @@
-import A from '../Comp'
+import {
+  THEME_OPTIONS,
+  FONT_SIZE_OPTIONS,
+  selectFontSize,
+  isAllowUseLs,
+  allowSaveToLs,
+  notAllowSaveToLs
+} from '../styles/theme';
 
-const S_DIV = { paddingTop: 16 };
+import A from '../Comp';
+import SvgCheckBox from '../zhn-atoms/svg/SvgCheckBox';
 
-const THEME_OPTIONS = [
-  { caption: 'Grey', value: 'GREY' },
-  { caption: 'White', value: 'WHITE' },
-  { caption: 'Sand', value: 'SAND' },
-], DF_THEME = THEME_OPTIONS[0];
-
-const FONT_SIZE_OPTIONS = [
-  { caption: 'Small (15px)', value: 15 },
-  { caption: 'Medium (16px)', value: 16 },
-  { caption: 'Extra Medium (17px)', value: 17 },
-  { caption: 'Large (18px)', value: 18 },
-  { caption: 'Extra Large (19px)', value: 19 }
-],
-DF_FONT_SIZE = FONT_SIZE_OPTIONS[1];
+const S_DIV = { paddingTop: 16 }
+, S_ROW_CHECKBOX = {
+  margin: '24px 0 0 16px'
+}
+, S_CHECKBOX_CAPTION = {
+  fontWeight: 'bold',
+  marginLeft: 8,
+  userSelect: 'none'
+}
+, IS_ALLOW_USE_LS = isAllowUseLs();
 
 const CardUiTheme = ({
   style,
   buttonsStyle,
   TS,
   onSetTheme,
-  onSetFontSize,
   onClose
 }) => (
     <div style={{...S_DIV, ...style}}>
       <A.InputSelect
         styleConfig={TS.SELECT}
         caption="UI Theme"
-        initItem={DF_THEME}
+        initItem={THEME_OPTIONS.DF}
         options={THEME_OPTIONS}
         onSelect={onSetTheme}
       />
       <A.InputSelect
         styleConfig={TS.SELECT}
         caption="Font Size"
-        initItem={DF_FONT_SIZE}
+        initItem={FONT_SIZE_OPTIONS.DF}
         options={FONT_SIZE_OPTIONS}
-        onSelect={onSetFontSize}
+        onSelect={selectFontSize}
       />
+      <div style={S_ROW_CHECKBOX}>
+        <SvgCheckBox
+          initialValue={IS_ALLOW_USE_LS}
+          stroke={TS.R_DIALOG.backgroundColor}
+          onCheck={allowSaveToLs}
+          onUnCheck={notAllowSaveToLs}
+        />
+        <span style={S_CHECKBOX_CAPTION}>Allow to save to localStorage</span>
+      </div>
       <div style={buttonsStyle}>
         <A.RaisedButton
           style={TS.BT.RAISED}
@@ -51,5 +63,6 @@ const CardUiTheme = ({
       </div>
     </div>
 );
+
 
 export default CardUiTheme

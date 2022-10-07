@@ -44,21 +44,7 @@ const _assign = Object.assign
 , S_INPUT_WIDTH = {
   width: 315,
   marginLeft: 8
-}
-, MIN_FS = 15
-, MAX_FS = 19;
-
-const _isNumber = n => typeof n === 'number'
- && (n-n===0);
-const _inRange = (min, max, v) => _isNumber(v)
- && v>=min && v<=max;
-
- const _selectFontSize = (item) => {
-   const { value } = item || {}
-   if (_inRange(MIN_FS, MAX_FS, value)) {
-     document.documentElement.style.fontSize = `${value}px`
-   }
- };
+};
 
 const SettingsDialog = memoIsShow(({
   isShow,
@@ -80,7 +66,7 @@ const SettingsDialog = memoIsShow(({
 
   return (
     <A.ModalDialog
-       style={{...S_MODAL, ...TS.R_DIALOG }}
+       style={{...S_MODAL, ...TS.R_DIALOG}}
        divBtStyle={S_DIV_BT}
        captionStyle={TS.BROWSER_CAPTION}
        buttonStyle={TS.BT}
@@ -109,7 +95,6 @@ const SettingsDialog = memoIsShow(({
               buttonsStyle={S_CARD_BUTTONS}
               TS={_TS}
               onSetTheme={_selectTheme}
-              onSetFontSize={_selectFontSize}
               onClose={onClose}
             />
          </A.Tab>

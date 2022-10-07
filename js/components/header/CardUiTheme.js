@@ -7,66 +7,61 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
+var _theme = require("../styles/theme");
+
 var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _SvgCheckBox = _interopRequireDefault(require("../zhn-atoms/svg/SvgCheckBox"));
+
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var S_DIV = {
   paddingTop: 16
-};
-var THEME_OPTIONS = [{
-  caption: 'Grey',
-  value: 'GREY'
-}, {
-  caption: 'White',
-  value: 'WHITE'
-}, {
-  caption: 'Sand',
-  value: 'SAND'
-}],
-    DF_THEME = THEME_OPTIONS[0];
-var FONT_SIZE_OPTIONS = [{
-  caption: 'Small (15px)',
-  value: 15
-}, {
-  caption: 'Medium (16px)',
-  value: 16
-}, {
-  caption: 'Extra Medium (17px)',
-  value: 17
-}, {
-  caption: 'Large (18px)',
-  value: 18
-}, {
-  caption: 'Extra Large (19px)',
-  value: 19
-}],
-    DF_FONT_SIZE = FONT_SIZE_OPTIONS[1];
+},
+    S_ROW_CHECKBOX = {
+  margin: '24px 0 0 16px'
+},
+    S_CHECKBOX_CAPTION = {
+  fontWeight: 'bold',
+  marginLeft: 8,
+  userSelect: 'none'
+},
+    IS_ALLOW_USE_LS = (0, _theme.isAllowUseLs)();
 
 var CardUiTheme = function CardUiTheme(_ref) {
   var style = _ref.style,
       buttonsStyle = _ref.buttonsStyle,
       TS = _ref.TS,
       onSetTheme = _ref.onSetTheme,
-      onSetFontSize = _ref.onSetFontSize,
       onClose = _ref.onClose;
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  return (0, _jsxRuntime.jsxs)("div", {
     style: (0, _extends2["default"])({}, S_DIV, style),
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+    children: [(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
       styleConfig: TS.SELECT,
       caption: "UI Theme",
-      initItem: DF_THEME,
-      options: THEME_OPTIONS,
+      initItem: _theme.THEME_OPTIONS.DF,
+      options: _theme.THEME_OPTIONS,
       onSelect: onSetTheme
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+    }), (0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
       styleConfig: TS.SELECT,
       caption: "Font Size",
-      initItem: DF_FONT_SIZE,
-      options: FONT_SIZE_OPTIONS,
-      onSelect: onSetFontSize
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      initItem: _theme.FONT_SIZE_OPTIONS.DF,
+      options: _theme.FONT_SIZE_OPTIONS,
+      onSelect: _theme.selectFontSize
+    }), (0, _jsxRuntime.jsxs)("div", {
+      style: S_ROW_CHECKBOX,
+      children: [(0, _jsxRuntime.jsx)(_SvgCheckBox["default"], {
+        initialValue: IS_ALLOW_USE_LS,
+        stroke: TS.R_DIALOG.backgroundColor,
+        onCheck: _theme.allowSaveToLs,
+        onUnCheck: _theme.notAllowSaveToLs
+      }), (0, _jsxRuntime.jsx)("span", {
+        style: S_CHECKBOX_CAPTION,
+        children: "Allow to save to localStorage"
+      })]
+    }), (0, _jsxRuntime.jsx)("div", {
       style: buttonsStyle,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].RaisedButton, {
+      children: (0, _jsxRuntime.jsx)(_Comp["default"].RaisedButton, {
         style: TS.BT.RAISED,
         clDiv: TS.BT.CL_RAISED_DIV,
         isPrimary: true,

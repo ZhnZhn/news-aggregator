@@ -23,7 +23,7 @@ var _CardApiKeys = _interopRequireDefault(require("./CardApiKeys"));
 
 var _CardUiTheme = _interopRequireDefault(require("./CardUiTheme"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 //import PropTypes from 'prop-types'
 var _assign = Object.assign,
@@ -56,36 +56,16 @@ var _assign = Object.assign,
     S_INPUT_WIDTH = {
   width: 315,
   marginLeft: 8
-},
-    MIN_FS = 15,
-    MAX_FS = 19;
-
-var _isNumber = function _isNumber(n) {
-  return typeof n === 'number' && n - n === 0;
 };
-
-var _inRange = function _inRange(min, max, v) {
-  return _isNumber(v) && v >= min && v <= max;
-};
-
-var _selectFontSize = function _selectFontSize(item) {
-  var _ref = item || {},
-      value = _ref.value;
-
-  if (_inRange(MIN_FS, MAX_FS, value)) {
-    document.documentElement.style.fontSize = value + "px";
-  }
-};
-
-var SettingsDialog = (0, _memoIsShow["default"])(function (_ref2) {
-  var isShow = _ref2.isShow,
-      data = _ref2.data,
-      onClose = _ref2.onClose;
+var SettingsDialog = (0, _memoIsShow["default"])(function (_ref) {
+  var isShow = _ref.isShow,
+      data = _ref.data,
+      onClose = _ref.onClose;
 
   var theme = (0, _uiApi.useContext)(_ThemeContext["default"]),
       _selectTheme = (0, _uiApi.useCallback)(function (item) {
-    var _ref3 = item || {},
-        value = _ref3.value;
+    var _ref2 = item || {},
+        value = _ref2.value;
 
     if (value && theme.getThemeName() !== value) {
       theme.setThemeName(value);
@@ -98,7 +78,7 @@ var SettingsDialog = (0, _memoIsShow["default"])(function (_ref2) {
 
   _assign(_TS.SELECT.ROOT, S_SELECT_WIDTH);
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ModalDialog, {
+  return (0, _jsxRuntime.jsx)(_Comp["default"].ModalDialog, {
     style: (0, _extends2["default"])({}, S_MODAL, TS.R_DIALOG),
     divBtStyle: S_DIV_BT,
     captionStyle: TS.BROWSER_CAPTION,
@@ -106,13 +86,13 @@ var SettingsDialog = (0, _memoIsShow["default"])(function (_ref2) {
     caption: "User Settings",
     isShow: isShow,
     onClose: onClose,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].TabPane, {
+    children: (0, _jsxRuntime.jsxs)(_Comp["default"].TabPane, {
       width: "100%",
       tabsStyle: S_TABS,
       isShow: isShow,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Tab, {
+      children: [(0, _jsxRuntime.jsx)(_Comp["default"].Tab, {
         title: "API Keys",
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_CardApiKeys["default"], {
+        children: (0, _jsxRuntime.jsx)(_CardApiKeys["default"], {
           style: S_CARD_ROOT,
           fieldStyle: (0, _extends2["default"])({}, TS.INPUT_ROOT, S_INPUT_WIDTH),
           buttonsStyle: S_CARD_BUTTONS,
@@ -120,14 +100,13 @@ var SettingsDialog = (0, _memoIsShow["default"])(function (_ref2) {
           data: data,
           onClose: onClose
         })
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Tab, {
+      }), (0, _jsxRuntime.jsx)(_Comp["default"].Tab, {
         title: "UI Theme",
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_CardUiTheme["default"], {
+        children: (0, _jsxRuntime.jsx)(_CardUiTheme["default"], {
           style: S_CARD_ROOT,
           buttonsStyle: S_CARD_BUTTONS,
           TS: _TS,
           onSetTheme: _selectTheme,
-          onSetFontSize: _selectFontSize,
           onClose: onClose
         })
       })]
