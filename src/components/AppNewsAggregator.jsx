@@ -12,7 +12,7 @@ import Actions, {
   CAT_SHOW_MODAL_DIALOG
 } from '../flux/actions/ComponentActions'
 
-import initTheme  from './styles/theme'
+import { initialTheme } from './styles/theme'
 import ThemeContext from './hooks/ThemeContext'
 
 import HeaderBar from './header/HeaderBar'
@@ -25,7 +25,10 @@ import RouterModalDialog from './dialogs/RouterModalDialog'
 const CL_COMP = "component-container";
 
 const AppNewsAggregator = () => {
-  const [theme, setTheme] = useState(initTheme)
+  const [
+    theme,
+    setTheme
+  ] = useState(initialTheme)
   , _showSettings = useMemo(() => Actions.showModalDialog.bind(
      null, 'SETTINGS_DIALOG', Store.exportSettingsFn()
   ), []);

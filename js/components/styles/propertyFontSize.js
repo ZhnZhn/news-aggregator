@@ -64,7 +64,7 @@ var selectFontSize = function selectFontSize(item) {
   var _ref = item || {},
       value = _ref.value;
 
-  if ((0, _isNumberInRange["default"])(value, MIN_FS, MAX_FS)) {
+  if ((0, _isNumberInRange["default"])(MIN_FS, MAX_FS, value)) {
     _appFontSize = value;
     _documentElement.style.fontSize = value + "px";
     (0, _localStorageFn.writeToLs)(_LS.LS_FONT_SIZE_KEY, value);

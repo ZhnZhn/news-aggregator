@@ -41,7 +41,7 @@ export const selectFontSize = (
   item
 ) => {
   const { value } = item || {};
-  if (isNumberInRange(value, MIN_FS, MAX_FS)) {
+  if (isNumberInRange(MIN_FS, MAX_FS, value)) {
     _appFontSize = value
     _documentElement.style.fontSize = `${value}px`
     writeToLs(LS_FONT_SIZE_KEY, value)

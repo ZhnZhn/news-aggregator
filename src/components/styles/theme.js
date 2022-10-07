@@ -1,4 +1,38 @@
+export {
+  isAllowUseLs
+} from '../../utils/localStorageFn';
+export {
+  FONT_SIZE_OPTIONS,
+  selectFontSize
+} from './propertyFontSize';
+export {
+  THEME_NAME,
+  THEME_OPTIONS
+} from './propertyThemeName';
 
+import {
+  readFromLs,
+  writeToLs,
+  initAllowUseLs,
+  allowUseLs,
+  notAllowUseLs,
+  clearLs
+} from '../../utils/localStorageFn';
+
+import {
+  initFontSize,
+  getFontSize
+} from './propertyFontSize';
+import {
+  THEME_NAME,
+  crInitialThemeName
+} from './propertyThemeName';
+
+import {
+  LS_IS,
+  LS_UI_THEME_KEY,
+  LS_FONT_SIZE_KEY
+} from './LS';
 
 const P_GREY = {
   BG_BODY: '#5f5f5f',
@@ -65,13 +99,6 @@ const _setStyleTo = (conf, pallete) => {
   _FN_STYLES.forEach(fn => fn(conf, pallete))
 };
 
-
-export const THEME_NAME = {
-  DEFAULT: 'GREY',
-  GREY: 'GREY',
-  WHITE: 'WHITE',
-  SAND: 'SAND'
-};
 const THEME_CONFIG = {
   [THEME_NAME.GREY]: {
     pallete: P_GREY,
@@ -97,29 +124,37 @@ const CL_PROPS = {
   CL_ROW_NEWS_SOURCE: 'row__news-source'
 };
 
+const _getObjectKeys = Object.keys;
 const _setClassNameTo = (suffix='') => {
-  Object.keys(CL_PROPS).forEach(key => {
+  _getObjectKeys(CL_PROPS).forEach(key => {
     CSS_RULE[key] = CL_PROPS[key] + suffix
   })
-}
+};
 
-const _setTheme = (themeName) => {
-  const config = THEME_CONFIG[themeName];
-  const { clSuffix, pallete } = config;
+const _setTheme = (
+  themeName
+) => {
+  const {
+    clSuffix,
+    pallete
+  } = THEME_CONFIG[themeName];
   _setClassNameTo(clSuffix)
   _setStyleTo(CSS_RULE, pallete)
+  writeToLs(LS_UI_THEME_KEY, themeName)
 }
 
 const theme = {
-  themeName: THEME_NAME.DEFAULT,
+  themeName: THEME_NAME.DF,
   _init(){
-    this.setThemeName(THEME_NAME.DEFAULT)
+    this.setThemeName(crInitialThemeName())
+    initFontSize()
+    initAllowUseLs(!!(readFromLs(LS_IS)[0]))
   },
   getThemeName(){
     return this.themeName;
   },
   setThemeName(themeName){
-    this.themeName = THEME_NAME[themeName] || THEME_NAME.DEFAULT;
+    this.themeName = THEME_NAME[themeName] || THEME_NAME.DF;
     _setTheme(this.themeName)
   },
   createStyle(config){
@@ -133,4 +168,15 @@ const theme = {
 
 theme._init()
 
-export default theme
+export const allowSaveToLs = () => {
+  allowUseLs()
+  writeToLs(LS_IS, "1")
+  writeToLs(LS_UI_THEME_KEY, theme.themeName)
+  writeToLs(LS_FONT_SIZE_KEY, getFontSize())
+}
+export const notAllowSaveToLs = () => {
+  notAllowUseLs()
+  clearLs()
+}
+
+export const initialTheme = theme

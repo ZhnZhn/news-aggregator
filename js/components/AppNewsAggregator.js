@@ -15,7 +15,7 @@ var _Store = _interopRequireDefault(require("../flux/stores/Store"));
 
 var _ComponentActions = _interopRequireWildcard(require("../flux/actions/ComponentActions"));
 
-var _theme = _interopRequireDefault(require("./styles/theme"));
+var _theme = require("./styles/theme");
 
 var _ThemeContext = _interopRequireDefault(require("./hooks/ThemeContext"));
 
@@ -31,7 +31,7 @@ var _ModalDialogContainer = _interopRequireDefault(require("./zhn-containers/Mod
 
 var _RouterModalDialog = _interopRequireDefault(require("./dialogs/RouterModalDialog"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
@@ -40,7 +40,7 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 var CL_COMP = "component-container";
 
 var AppNewsAggregator = function AppNewsAggregator() {
-  var _useState = (0, _uiApi.useState)(_theme["default"]),
+  var _useState = (0, _uiApi.useState)(_theme.initialTheme),
       theme = _useState[0],
       setTheme = _useState[1],
       _showSettings = (0, _uiApi.useMemo)(function () {
@@ -55,10 +55,10 @@ var AppNewsAggregator = function AppNewsAggregator() {
       });
     }
   });
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_ThemeContext["default"].Provider, {
+  return (0, _jsxRuntime.jsx)(_ThemeContext["default"].Provider, {
     value: theme,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_HeaderBar["default"], {
+    children: (0, _jsxRuntime.jsxs)("div", {
+      children: [(0, _jsxRuntime.jsx)(_HeaderBar["default"], {
         store: _Store["default"],
         onChangeTheme: _ComponentActions["default"].changeTheme,
         onNewsSources: _ComponentActions["default"].showNewsBrowser,
@@ -75,20 +75,20 @@ var AppNewsAggregator = function AppNewsAggregator() {
         onNewsTop: _ComponentActions["default"].showNewsTop,
         onSettings: _showSettings,
         onAbout: _ComponentActions["default"].showAbout
-      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      }), (0, _jsxRuntime.jsxs)("div", {
         className: CL_COMP,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserContainer["default"], {
+        children: [(0, _jsxRuntime.jsx)(_BrowserContainer["default"], {
           store: _Store["default"]
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_About["default"], {
+        }), (0, _jsxRuntime.jsx)(_About["default"], {
           isInitShow: true,
           store: _Store["default"],
           showAction: _ComponentActions.CAT_SHOW_ABOUT,
           hideAction: _ComponentActions.CAT_SHOW_NEWS_PANE
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ComponentHrzContainer["default"], {
+        }), (0, _jsxRuntime.jsx)(_ComponentHrzContainer["default"], {
           store: _Store["default"],
           addAction: _ComponentActions.CAT_SHOW_NEWS_PANE
         })]
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ModalDialogContainer["default"], {
+      }), (0, _jsxRuntime.jsx)(_ModalDialogContainer["default"], {
         store: _Store["default"],
         router: _RouterModalDialog["default"],
         showAction: _ComponentActions.CAT_SHOW_MODAL_DIALOG

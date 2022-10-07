@@ -1,7 +1,23 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = exports.THEME_NAME = void 0;
+exports.selectFontSize = exports.notAllowSaveToLs = exports.isAllowUseLs = exports.initialTheme = exports.allowSaveToLs = exports.THEME_OPTIONS = exports.FONT_SIZE_OPTIONS = void 0;
+
+var _localStorageFn = require("../../utils/localStorageFn");
+
+exports.isAllowUseLs = _localStorageFn.isAllowUseLs;
+
+var _propertyFontSize = require("./propertyFontSize");
+
+exports.FONT_SIZE_OPTIONS = _propertyFontSize.FONT_SIZE_OPTIONS;
+exports.selectFontSize = _propertyFontSize.selectFontSize;
+
+var _propertyThemeName = require("./propertyThemeName");
+
+exports.THEME_NAME = _propertyThemeName.THEME_NAME;
+exports.THEME_OPTIONS = _propertyThemeName.THEME_OPTIONS;
+
+var _LS = require("./LS");
 
 var _THEME_CONFIG;
 
@@ -73,20 +89,13 @@ var _setStyleTo = function _setStyleTo(conf, pallete) {
   });
 };
 
-var THEME_NAME = {
-  DEFAULT: 'GREY',
-  GREY: 'GREY',
-  WHITE: 'WHITE',
-  SAND: 'SAND'
-};
-exports.THEME_NAME = THEME_NAME;
-var THEME_CONFIG = (_THEME_CONFIG = {}, _THEME_CONFIG[THEME_NAME.GREY] = {
+var THEME_CONFIG = (_THEME_CONFIG = {}, _THEME_CONFIG[_propertyThemeName.THEME_NAME.GREY] = {
   pallete: P_GREY,
   clSuffix: ''
-}, _THEME_CONFIG[THEME_NAME.WHITE] = {
+}, _THEME_CONFIG[_propertyThemeName.THEME_NAME.WHITE] = {
   pallete: P_WHITE,
   clSuffix: '--white'
-}, _THEME_CONFIG[THEME_NAME.SAND] = {
+}, _THEME_CONFIG[_propertyThemeName.THEME_NAME.SAND] = {
   pallete: P_SAND,
   clSuffix: '--sand'
 }, _THEME_CONFIG);
@@ -98,37 +107,42 @@ var CL_PROPS = {
   CL_SELECT_ITEM: 'm-select__item',
   CL_ROW_NEWS_SOURCE: 'row__news-source'
 };
+var _getObjectKeys = Object.keys;
 
 var _setClassNameTo = function _setClassNameTo(suffix) {
   if (suffix === void 0) {
     suffix = '';
   }
 
-  Object.keys(CL_PROPS).forEach(function (key) {
+  _getObjectKeys(CL_PROPS).forEach(function (key) {
     CSS_RULE[key] = CL_PROPS[key] + suffix;
   });
 };
 
 var _setTheme = function _setTheme(themeName) {
-  var config = THEME_CONFIG[themeName];
-  var clSuffix = config.clSuffix,
-      pallete = config.pallete;
+  var _THEME_CONFIG$themeNa = THEME_CONFIG[themeName],
+      clSuffix = _THEME_CONFIG$themeNa.clSuffix,
+      pallete = _THEME_CONFIG$themeNa.pallete;
 
   _setClassNameTo(clSuffix);
 
   _setStyleTo(CSS_RULE, pallete);
+
+  (0, _localStorageFn.writeToLs)(_LS.LS_UI_THEME_KEY, themeName);
 };
 
 var theme = {
-  themeName: THEME_NAME.DEFAULT,
+  themeName: _propertyThemeName.THEME_NAME.DF,
   _init: function _init() {
-    this.setThemeName(THEME_NAME.DEFAULT);
+    this.setThemeName((0, _propertyThemeName.crInitialThemeName)());
+    (0, _propertyFontSize.initFontSize)();
+    (0, _localStorageFn.initAllowUseLs)(!!(0, _localStorageFn.readFromLs)(_LS.LS_IS)[0]);
   },
   getThemeName: function getThemeName() {
     return this.themeName;
   },
   setThemeName: function setThemeName(themeName) {
-    this.themeName = THEME_NAME[themeName] || THEME_NAME.DEFAULT;
+    this.themeName = _propertyThemeName.THEME_NAME[themeName] || _propertyThemeName.THEME_NAME.DF;
 
     _setTheme(this.themeName);
   },
@@ -144,6 +158,21 @@ var theme = {
 
 theme._init();
 
-var _default = theme;
-exports["default"] = _default;
+var allowSaveToLs = function allowSaveToLs() {
+  (0, _localStorageFn.allowUseLs)();
+  (0, _localStorageFn.writeToLs)(_LS.LS_IS, "1");
+  (0, _localStorageFn.writeToLs)(_LS.LS_UI_THEME_KEY, theme.themeName);
+  (0, _localStorageFn.writeToLs)(_LS.LS_FONT_SIZE_KEY, (0, _propertyFontSize.getFontSize)());
+};
+
+exports.allowSaveToLs = allowSaveToLs;
+
+var notAllowSaveToLs = function notAllowSaveToLs() {
+  (0, _localStorageFn.notAllowUseLs)();
+  (0, _localStorageFn.clearLs)();
+};
+
+exports.notAllowSaveToLs = notAllowSaveToLs;
+var initialTheme = theme;
+exports.initialTheme = initialTheme;
 //# sourceMappingURL=theme.js.map
