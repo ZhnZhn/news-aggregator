@@ -15,9 +15,9 @@ var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _MenuPart = _interopRequireDefault(require("./MenuPart"));
 
-var _react = require("react");
+var _preact = require("preact");
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var Browser = _Comp["default"].Browser,
     BrowserCaption = _Comp["default"].BrowserCaption,
@@ -54,7 +54,7 @@ const INITIAL_MENU_MODEL = {
 
 
 var _crItemMenuPart = function _crItemMenuPart(menuPart, index, propOptions) {
-  return /*#__PURE__*/(0, _react.createElement)(_MenuPart["default"], (0, _extends2["default"])({}, menuPart, propOptions, {
+  return (0, _preact.createElement)(_MenuPart["default"], (0, _extends2["default"])({}, menuPart, propOptions, {
     key: index
   }));
 };
@@ -136,29 +136,28 @@ var DynamicMenuBrowser = function DynamicMenuBrowser(_ref) {
       _onMore = menuMore ? _hShowMore : void 0,
       TS = styleConfig;
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(Browser, {
+  return (0, _jsxRuntime.jsxs)(Browser, {
     isShow: isShow,
     style: (0, _extends2["default"])({}, S_BROWSER, TS.BROWSER),
-    children: [menuMore && /*#__PURE__*/(0, _jsxRuntime.jsx)(ModalSlider, {
+    children: [menuMore && (0, _jsxRuntime.jsx)(ModalSlider, {
       isShow: isMore,
       className: CL_MENU_MORE,
       style: TS.EL_BORDER,
       model: menuMore,
       onClose: _hCloseMore
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(BrowserCaption, {
+    }), (0, _jsxRuntime.jsx)(BrowserCaption, {
       style: TS.BROWSER_CAPTION,
       caption: caption,
       onMore: _onMore,
       onClose: _hHide
-    }), isLoading && /*#__PURE__*/(0, _jsxRuntime.jsx)(SpinnerLoading, {
+    }), isLoading && (0, _jsxRuntime.jsx)(SpinnerLoading, {
       style: S_SPINNER_LOADING
-    }), isLoadingFailed && /*#__PURE__*/(0, _jsxRuntime.jsx)(SpinnerLoading, {
+    }), isLoadingFailed && (0, _jsxRuntime.jsx)(SpinnerLoading, {
       style: S_SPINNER_LOADING,
       isFailed: true
-    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(ScrollPane, {
-      className: TS.CL_SCROLL_PANE,
+    }), (0, _jsxRuntime.jsxs)(ScrollPane, {
       style: S_SCROLL_PANE,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(ItemStack, {
+      children: [(0, _jsxRuntime.jsx)(ItemStack, {
         items: menu,
         crItem: _crItemMenuPart,
         styleConfig: styleConfig,

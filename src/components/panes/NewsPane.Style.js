@@ -1,8 +1,7 @@
 
-
 const styleConfig = {
-  themeName : void 0,
-  style : void 0,
+  themeName: void 0,
+  style: void 0,
   createStyle : (CSS_RULE, themeName) => {
     let _paneRoot;
     switch(themeName){
@@ -15,7 +14,6 @@ const styleConfig = {
       default:
     }
     return {
-      CL_SCROLL_PANE: CSS_RULE.CL_SCROLL_PANE,
       PANE_CAPTION: {
         ...CSS_RULE.BG_HEADER
       },

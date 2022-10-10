@@ -59,13 +59,17 @@ const _focusFirstItem = ref => {
   }, 1000)
 };
 
-const _crPaneCaption = (caption, sortBy) =>
- [caption, sortBy]
-   .filter(Boolean)
-   .map(toFirstUpperCase)
-   .join(': ');
+const _crPaneCaption = (
+  caption,
+  sortBy
+) => [caption, sortBy]
+  .filter(Boolean)
+  .map(toFirstUpperCase)
+  .join(': ');
 
-const _crArticleItem = (article, index, {
+const _crArticleItem = (
+  article,
+  index, {
   Item,
   refFirstItem,
   onCloseItem,
@@ -222,7 +226,9 @@ const NewsPane = ({
            maxWidth={RESIZE_MAX_WIDTH}
         />
       </A.BrowserCaption>
-      <A.ScrollPane className={TS.CL_SCROLL_PANE} style={S_SCROLL_DIV}>
+      <A.ScrollPane
+         style={S_SCROLL_DIV}
+      >
          <A.ItemStack
            items={articles}
            crItem={_crArticleItem}

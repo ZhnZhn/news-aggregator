@@ -31,7 +31,7 @@ var _SvgHrzResize = _interopRequireDefault(require("../zhn-resize/SvgHrzResize")
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var WIDTH_STYLE = _has["default"].initWidthStyle(),
     RESIZE_INIT_WIDTH = 635,
@@ -85,7 +85,7 @@ var _crArticleItem = function _crArticleItem(article, index, _ref) {
       refFirstItem = _ref.refFirstItem,
       onCloseItem = _ref.onCloseItem,
       onRemoveUnder = _ref.onRemoveUnder;
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(Item, {
+  return (0, _jsxRuntime.jsx)(Item, {
     ref: index === 0 ? refFirstItem : void 0,
     item: article,
     onCloseItem: onCloseItem,
@@ -190,37 +190,36 @@ var NewsPane = function NewsPane(_ref2) {
       _className = (0, _crCn["default"])(CL_NEWS_PANE, [isShow, CL_SHOW_POPUP]),
       _styleIsShow = isShow ? S_INLINE_BLOCK : S_NONE;
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  return (0, _jsxRuntime.jsxs)("div", {
     ref: _refRootDiv,
     className: _className,
     style: (0, _extends2["default"])({}, WIDTH_STYLE, TS.PANE_ROOT, _styleIsShow),
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ModalSlider, {
+    children: [(0, _jsxRuntime.jsx)(_Comp["default"].ModalSlider, {
       isShow: isMore,
       className: CL_MENU_MORE,
       style: TS.EL_BORDER,
       model: _MODEL_MORE,
       onClose: _hideMore
-    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].BrowserCaption, {
+    }), (0, _jsxRuntime.jsxs)(_Comp["default"].BrowserCaption, {
       style: TS.PANE_CAPTION,
       caption: _paneCaption,
       onMore: _showMore,
       onClose: _hHide,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].CircleButton, {
+      children: [(0, _jsxRuntime.jsx)(_Comp["default"].CircleButton, {
         caption: "R",
         title: "Remove All Items",
         style: S_BT_REMOVE,
         onClick: onRemoveItems
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgHrzResize["default"], {
+      }), (0, _jsxRuntime.jsx)(_SvgHrzResize["default"], {
         elementRef: _refRootDiv,
         style: S_SVG_RESIZE,
         initWidth: RESIZE_INIT_WIDTH,
         minWidth: RESIZE_MIN_WIDTH,
         maxWidth: RESIZE_MAX_WIDTH
       })]
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
-      className: TS.CL_SCROLL_PANE,
+    }), (0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
       style: S_SCROLL_DIV,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].ItemStack, {
+      children: (0, _jsxRuntime.jsx)(_Comp["default"].ItemStack, {
         items: articles,
         crItem: _crArticleItem,
         Item: Item,

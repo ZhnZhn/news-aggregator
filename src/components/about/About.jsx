@@ -23,7 +23,10 @@ import LogoBar from './LogoBar';
 const CL_ABOUT_PANE = "about-pane";
 const CL_SHOW = "show-popup";
 
-const { Link, ItemStack } = A;
+const {
+  Link,
+  ItemStack
+} = A;
 
 const PROVIDER_LINKS = [
   [Link.CryptoCompare],
@@ -100,7 +103,6 @@ const About = ({
           onClose={setIsShowFalse}
        />
        <A.ScrollPane
-          className={TS.CL_SCROLL_PANE}
           style={S_SCROLL_DIV}
        >
          <div style={S_DIV_WRAPPER}>

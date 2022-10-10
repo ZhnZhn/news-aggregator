@@ -10,8 +10,12 @@ import Comp from '../Comp';
 import MenuPart from './MenuPart';
 
 const {
-  Browser, BrowserCaption, ModalSlider,
-  ScrollPane, SpinnerLoading, ItemStack
+  Browser,
+  BrowserCaption,
+  ModalSlider,
+  ScrollPane,
+  SpinnerLoading,
+  ItemStack
 } = Comp;
 
 const CL_MENU_MORE = "popup-menu items__menu-more";
@@ -33,8 +37,6 @@ const S_BROWSER = {
   marginTop: 32,
   textAlign: 'middle'
 };
-
-
 
 const FN_NOOP = () => {};
 /*
@@ -133,7 +135,6 @@ const DynamicMenuBrowser = ({
       { isLoading && <SpinnerLoading style={S_SPINNER_LOADING} />}
       { isLoadingFailed && <SpinnerLoading style={S_SPINNER_LOADING} isFailed={true} />}
       <ScrollPane
-         className={TS.CL_SCROLL_PANE}
          style={S_SCROLL_PANE}
       >
         <ItemStack

@@ -55,7 +55,6 @@ var styleConfig = {
   //style : void 0,
   createStyle: function createStyle(CSS_RULE) {
     return {
-      CL_SCROLL_PANE: CSS_RULE.CL_SCROLL_PANE,
       ROOT: (0, _extends2["default"])({}, CSS_RULE.BG),
       BROWSER_CAPTION: (0, _extends2["default"])({}, CSS_RULE.BG_HEADER)
     };

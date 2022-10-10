@@ -82,7 +82,6 @@ var About = function About(_ref2) {
       caption: "About News Aggregator",
       onClose: setIsShowFalse
     }), (0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
-      className: TS.CL_SCROLL_PANE,
       style: _About.S_SCROLL_DIV,
       children: (0, _jsxRuntime.jsxs)("div", {
         style: _About.S_DIV_WRAPPER,

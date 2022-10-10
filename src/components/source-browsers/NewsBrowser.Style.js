@@ -1,4 +1,6 @@
-
+import {
+  CL_ROW_NEWS_SOURCE
+} from '../styles/CL';
 //color: #009ae5 - header_browser
 
 const styleConfig = {
@@ -6,11 +8,10 @@ const styleConfig = {
   style: void 0,
   createStyle : (CSS_RULE, themeName) => {
     const _itemColor = themeName === 'WHITE'
-              ? { color: '#5f5f5f' }
-              : undefined;
+      ? { color: '#5f5f5f' }
+      : void 0;
     return {
-      CL_SCROLL_PANE: CSS_RULE.CL_SCROLL_PANE,
-      CL_ROW: CSS_RULE.CL_ROW_NEWS_SOURCE,
+      CL_ROW: CL_ROW_NEWS_SOURCE,
 
       BROWSER: {
         ...CSS_RULE.BG

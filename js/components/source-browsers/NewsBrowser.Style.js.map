@@ -1,1 +1,26 @@
-{"version":3,"sources":["../../../src/components/source-browsers/NewsBrowser.Style.js"],"names":["styleConfig","themeName","style","createStyle","CSS_RULE","_itemColor","color","undefined","CL_SCROLL_PANE","CL_ROW","CL_ROW_NEWS_SOURCE","BROWSER","BG","OPEN_CLOSE","BROWSER_CAPTION","BG_HEADER","ITEM","BADGE"],"mappings":";;;;;;;;;AACA;AAEA,IAAMA,WAAW,GAAG;AAClBC,EAAAA,SAAS,EAAE,KAAK,CADE;AAElBC,EAAAA,KAAK,EAAE,KAAK,CAFM;AAGlBC,EAAAA,WAAW,EAAG,qBAACC,QAAD,EAAWH,SAAX,EAAyB;AACrC,QAAMI,UAAU,GAAGJ,SAAS,KAAK,OAAd,GACP;AAAEK,MAAAA,KAAK,EAAE;AAAT,KADO,GAEPC,SAFZ;;AAGA,WAAO;AACLC,MAAAA,cAAc,EAAEJ,QAAQ,CAACI,cADpB;AAELC,MAAAA,MAAM,EAAEL,QAAQ,CAACM,kBAFZ;AAILC,MAAAA,OAAO,gCACFP,QAAQ,CAACQ,EADP,CAJF;AAOLC,MAAAA,UAAU,gCACLT,QAAQ,CAACQ,EADJ,CAPL;AAULE,MAAAA,eAAe,gCACVV,QAAQ,CAACW,SADC,CAVV;AAaLC,MAAAA,IAAI,gCACCX,UADD,CAbC;AAgBLY,MAAAA,KAAK,gCACAb,QAAQ,CAACW,SADT;AAhBA,KAAP;AAoBD;AA3BiB,CAApB;eA8Bef,W","sourcesContent":["\r\n//color: #009ae5 - header_browser\r\n\r\nconst styleConfig = {\r\n  themeName: void 0,\r\n  style: void 0,\r\n  createStyle : (CSS_RULE, themeName) => {\r\n    const _itemColor = themeName === 'WHITE'\r\n              ? { color: '#5f5f5f' }\r\n              : undefined;\r\n    return {\r\n      CL_SCROLL_PANE: CSS_RULE.CL_SCROLL_PANE,\r\n      CL_ROW: CSS_RULE.CL_ROW_NEWS_SOURCE,\r\n\r\n      BROWSER: {\r\n        ...CSS_RULE.BG\r\n      },\r\n      OPEN_CLOSE: {\r\n        ...CSS_RULE.BG\r\n      },\r\n      BROWSER_CAPTION: {\r\n        ...CSS_RULE.BG_HEADER\r\n      },\r\n      ITEM: {\r\n        ..._itemColor\r\n      },\r\n      BADGE: {\r\n        ...CSS_RULE.BG_HEADER\r\n      }\r\n    };\r\n  }\r\n}\r\n\r\nexport default styleConfig\r\n"],"file":"NewsBrowser.Style.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/source-browsers/NewsBrowser.Style.js"
+ ],
+ "file": "../../../src/components/source-browsers/NewsBrowser.Style.js",
+ "names": [
+  "styleConfig",
+  "themeName",
+  "style",
+  "createStyle",
+  "CSS_RULE",
+  "_itemColor",
+  "color",
+  "CL_ROW",
+  "CL_ROW_NEWS_SOURCE",
+  "BROWSER",
+  "BG",
+  "OPEN_CLOSE",
+  "BROWSER_CAPTION",
+  "BG_HEADER",
+  "ITEM",
+  "BADGE"
+ ],
+ "mappings": ";;;;;;;;;AAAA;;AAGA;AAEA,IAAMA,WAAW,GAAG;EAClBC,SAAS,EAAE,KAAK,CADE;EAElBC,KAAK,EAAE,KAAK,CAFM;EAGlBC,WAAW,EAAG,qBAACC,QAAD,EAAWH,SAAX,EAAyB;IACrC,IAAMI,UAAU,GAAGJ,SAAS,KAAK,OAAd,GACf;MAAEK,KAAK,EAAE;IAAT,CADe,GAEf,KAAK,CAFT;;IAGA,OAAO;MACLC,MAAM,EAAEC,sBADH;MAGLC,OAAO,gCACFL,QAAQ,CAACM,EADP,CAHF;MAMLC,UAAU,gCACLP,QAAQ,CAACM,EADJ,CANL;MASLE,eAAe,gCACVR,QAAQ,CAACS,SADC,CATV;MAYLC,IAAI,gCACCT,UADD,CAZC;MAeLU,KAAK,gCACAX,QAAQ,CAACS,SADT;IAfA,CAAP;EAmBD;AA1BiB,CAApB;eA6Beb,W"
+}

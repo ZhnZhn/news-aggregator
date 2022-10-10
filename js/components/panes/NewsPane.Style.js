@@ -30,7 +30,6 @@ var styleConfig = {
     }
 
     return {
-      CL_SCROLL_PANE: CSS_RULE.CL_SCROLL_PANE,
       PANE_CAPTION: (0, _extends2["default"])({}, CSS_RULE.BG_HEADER),
       PANE_ROOT: (0, _extends2["default"])({}, _paneRoot)
     };

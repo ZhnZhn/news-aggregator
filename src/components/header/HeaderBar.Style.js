@@ -1,3 +1,6 @@
+import {
+  CL_BT_FLAT_DIV
+} from '../styles/CL';
 
 const styleConfig = {
   themeName : void 0,
@@ -5,7 +8,6 @@ const styleConfig = {
 
   createStyle : (CSS_RULE) => {
     return {
-      CL_QUERY_ITEM: CSS_RULE.CL_QUERY_ITEM,
       HEADER: {
         ...CSS_RULE.BG
       },
@@ -16,7 +18,7 @@ const styleConfig = {
         FLAT_ROOT: {
           color: CSS_RULE.BG_HEADER.backgroundColor
         },
-        CL_FLAT_DIV: CSS_RULE.CL_BT_FLAT_DIV
+        CL_FLAT_DIV: CL_BT_FLAT_DIV
       }
     }
   }

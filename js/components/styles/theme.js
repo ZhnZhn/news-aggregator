@@ -21,25 +21,45 @@ var _LS = require("./LS");
 
 var _THEME_CONFIG;
 
+var DF_BG = '#4d4d4d';
+var DF_BT_H = 'rgba(255, 255, 255, 0.1)';
+var DF_MSI_C = 'white';
+var DF_MSI_FH = 'rgba(48, 48, 48, 0.4)';
+var DF_SBT_BG = '#3f5178';
+var BT_H_LIGHT = 'rgba(48, 48, 48, 0.3)';
+var MSI_C_LIGHT = '#303030';
+var MSI_FH_LIGHT = 'rgba(255, 255, 255, 0.4)';
+var SBT_BG_LIGHT = '#0096c8';
 var P_GREY = {
   BG_BODY: '#5f5f5f',
-  BG: '#4d4d4d',
+  BG: DF_BG,
+  BT_H: DF_BT_H,
   BG_OPTIONS: '#404040',
+  MSI_C: DF_MSI_C,
+  MSI_FH: DF_MSI_FH,
+  SBT_BG: DF_SBT_BG,
   BG_HEADER: '#3a6799',
   C_HEADER: '#8a8a8a'
 };
 var P_WHITE = {
   BG_BODY: 'darkgrey',
-  //BG: '#ebf1f5',
   BG: '#eaeaea',
+  BT_H: BT_H_LIGHT,
   BG_OPTIONS: '#dfe4e7',
+  MSI_C: MSI_C_LIGHT,
+  MSI_FH: MSI_FH_LIGHT,
+  SBT_BG: SBT_BG_LIGHT,
   BG_HEADER: '#0096c8',
   C_HEADER: '#4d4d4d'
 };
 var P_SAND = {
   BG_BODY: 'darkgrey',
   BG: '#e8e0cb',
+  BT_H: BT_H_LIGHT,
   BG_OPTIONS: '#c6bda5',
+  MSI_C: MSI_C_LIGHT,
+  MSI_FH: MSI_FH_LIGHT,
+  SBT_BG: SBT_BG_LIGHT,
   BG_HEADER: '#0096c8',
   C_HEADER: '#4d4d4d'
 };
@@ -52,7 +72,18 @@ var CSS_RULE = {
 var _assign = Object.assign;
 
 var _setBodyBg = function _setBodyBg(conf, P) {
-  document.body.style.backgroundColor = P.BG_BODY;
+  var _style = document.body.style;
+  _style.backgroundColor = P.BG_BODY;
+
+  _style.setProperty("--bg-c", P.BG || DF_BG);
+
+  _style.setProperty("--bt-h", P.BT_H || DF_BT_H);
+
+  _style.setProperty("--msi-c", P.MSI_C || DF_MSI_C);
+
+  _style.setProperty("--msi-fh", P.MSI_FH || DF_MSI_FH);
+
+  _style.setProperty("--sbt-bg", P.SBT_BG || DF_SBT_BG);
 };
 
 var _crBg = function _crBg(conf, P) {
@@ -89,44 +120,10 @@ var _setStyleTo = function _setStyleTo(conf, pallete) {
   });
 };
 
-var THEME_CONFIG = (_THEME_CONFIG = {}, _THEME_CONFIG[_propertyThemeName.THEME_NAME.GREY] = {
-  pallete: P_GREY,
-  clSuffix: ''
-}, _THEME_CONFIG[_propertyThemeName.THEME_NAME.WHITE] = {
-  pallete: P_WHITE,
-  clSuffix: '--white'
-}, _THEME_CONFIG[_propertyThemeName.THEME_NAME.SAND] = {
-  pallete: P_SAND,
-  clSuffix: '--sand'
-}, _THEME_CONFIG);
-var CL_PROPS = {
-  CL_SCROLL_PANE: 'with-scroll',
-  //CL_QUERY_ITEM: 'row__topic',
-  CL_BT_RAISED_DIV: 'bt-raise__div',
-  CL_BT_FLAT_DIV: 'bt-flat__div',
-  CL_SELECT_ITEM: 'm-select__item',
-  CL_ROW_NEWS_SOURCE: 'row__news-source'
-};
-var _getObjectKeys = Object.keys;
-
-var _setClassNameTo = function _setClassNameTo(suffix) {
-  if (suffix === void 0) {
-    suffix = '';
-  }
-
-  _getObjectKeys(CL_PROPS).forEach(function (key) {
-    CSS_RULE[key] = CL_PROPS[key] + suffix;
-  });
-};
+var THEME_CONFIG = (_THEME_CONFIG = {}, _THEME_CONFIG[_propertyThemeName.THEME_NAME.GREY] = P_GREY, _THEME_CONFIG[_propertyThemeName.THEME_NAME.WHITE] = P_WHITE, _THEME_CONFIG[_propertyThemeName.THEME_NAME.SAND] = P_SAND, _THEME_CONFIG);
 
 var _setTheme = function _setTheme(themeName) {
-  var _THEME_CONFIG$themeNa = THEME_CONFIG[themeName],
-      clSuffix = _THEME_CONFIG$themeNa.clSuffix,
-      pallete = _THEME_CONFIG$themeNa.pallete;
-
-  _setClassNameTo(clSuffix);
-
-  _setStyleTo(CSS_RULE, pallete);
+  _setStyleTo(CSS_RULE, THEME_CONFIG[themeName]);
 
   (0, _localStorageFn.writeToLs)(_LS.LS_UI_THEME_KEY, themeName);
 };

@@ -5,14 +5,13 @@ import {
 } from '../uiApi';
 
 import useTheme from '../hooks/useTheme';
-import styleConfig  from '../styles/ScrollStyle';
-import styleConfigD from '../dialogs/Dialog.Style';
+import styleConfig from '../dialogs/Dialog.Style';
 
 import ShowHide from '../zhn-atoms/ShowHide';
 import ItemStack from '../zhn-atoms/ItemStack';
 import ModalPane from '../zhn-moleculs/ModalPane';
 
-const CL = "with-scroll"
+const CL_WITH_SCROLL = "with-scroll"
 , S_PANE = {
   position: 'absolute',
   top: 12,
@@ -90,7 +89,6 @@ const OptionsPane = ({
   const _refItem = useRef(null)
   , _refFocus = useRef(null)
   , TS = useTheme(styleConfig)
-  , TS_D = useTheme(styleConfigD)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hKeyDown = useCallback((evt) => {
     if (evt.key === 'ArrowDown') {
@@ -116,14 +114,14 @@ const OptionsPane = ({
 return (
   <ModalPane
      isShow={isShow}
-     style={TS_D.SELECT.MODAL_PANE}
+     style={TS.SELECT.MODAL_PANE}
      onClose={onClose}
   >
      <ShowHide
         isShow={isShow}
         isScrollable={true}
-        className={`${CL} ${TS.CL_SCROLL}`}
-        style={{...S_PANE, ...TS_D.SELECT.MODAL_PANE}}
+        className={CL_WITH_SCROLL}
+        style={{...S_PANE, ...TS.SELECT.MODAL_PANE}}
      >
        <div
          role="presentation"
@@ -134,7 +132,7 @@ return (
            crItem={_crItem}
            refItem={_refItem}
            currentItem={item}
-           clItem={TS_D.SELECT.CL_ITEM}
+           clItem={TS.SELECT.CL_ITEM}
            onSelect={onSelect}
          />
       </div>

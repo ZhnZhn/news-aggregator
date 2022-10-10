@@ -1,4 +1,3 @@
-
 export const S_SCROLL_DIV = {
   height: '92%',
   paddingTop: 8,
@@ -39,7 +38,6 @@ export const styleConfig = {
   //style : void 0,
   createStyle : (CSS_RULE) => {
     return {
-      CL_SCROLL_PANE: CSS_RULE.CL_SCROLL_PANE,
       ROOT: {
         ...CSS_RULE.BG
       },

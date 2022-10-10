@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
+var _CL = require("../styles/CL");
+
 var INPUT_WIDTH = 250;
 var S_BROWSER_CAPTION = {
   color: '#9e9e9e',
@@ -43,11 +45,11 @@ var styleConfig = {
       INPUT_DATE: (0, _extends2["default"])({}, S_INPUT_DATE),
       POWERED_BY: (0, _extends2["default"])({}, S_POWERED_BY),
       BT: {
-        CL_RAISED_DIV: CSS_RULE.CL_BT_RAISED_DIV,
+        CL_RAISED_DIV: _CL.CL_BT_RAISED_DIV,
         RAISED: (0, _extends2["default"])({}, S_BT_RAISED, CSS_RULE.BG_HEADER)
       },
       SELECT: {
-        CL_ITEM: CSS_RULE.CL_SELECT_ITEM,
+        CL_ITEM: _CL.CL_SELECT_ITEM,
         ROOT: {
           width: INPUT_WIDTH
         },

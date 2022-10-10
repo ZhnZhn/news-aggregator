@@ -1,1 +1,20 @@
-{"version":3,"sources":["../../../src/components/panes/NewsPane.Style.js"],"names":["styleConfig","themeName","style","createStyle","CSS_RULE","_paneRoot","backgroundColor","CL_SCROLL_PANE","PANE_CAPTION","BG_HEADER","PANE_ROOT"],"mappings":";;;;;;;;;AAEA,IAAMA,WAAW,GAAG;AAClBC,EAAAA,SAAS,EAAG,KAAK,CADC;AAElBC,EAAAA,KAAK,EAAG,KAAK,CAFK;AAGlBC,EAAAA,WAAW,EAAG,qBAACC,QAAD,EAAWH,SAAX,EAAyB;AACrC,QAAII,SAAJ;;AACA,YAAOJ,SAAP;AACE,WAAK,OAAL;AACEI,QAAAA,SAAS,GAAG;AAAEC,UAAAA,eAAe,EAAE;AAAnB,SAAZ;AACA;;AACF,WAAK,MAAL;AACED,QAAAA,SAAS,GAAG;AAAEC,UAAAA,eAAe,EAAE;AAAnB,SAAZ;AACA;;AACF;AAPF;;AASA,WAAO;AACLC,MAAAA,cAAc,EAAEH,QAAQ,CAACG,cADpB;AAELC,MAAAA,YAAY,gCACPJ,QAAQ,CAACK,SADF,CAFP;AAKLC,MAAAA,SAAS,gCACJL,SADI;AALJ,KAAP;AASD;AAvBiB,CAApB;eA0BeL,W","sourcesContent":["\r\n\r\nconst styleConfig = {\r\n  themeName : void 0,\r\n  style : void 0,\r\n  createStyle : (CSS_RULE, themeName) => {\r\n    let _paneRoot;\r\n    switch(themeName){\r\n      case 'WHITE':\r\n        _paneRoot = { backgroundColor: 'rgb(235, 241, 245)' }\r\n        break;\r\n      case 'SAND':\r\n        _paneRoot = { backgroundColor: '#e8e0cb' }\r\n        break;\r\n      default:\r\n    }\r\n    return {\r\n      CL_SCROLL_PANE: CSS_RULE.CL_SCROLL_PANE,\r\n      PANE_CAPTION: {\r\n        ...CSS_RULE.BG_HEADER\r\n      },\r\n      PANE_ROOT: {\r\n        ..._paneRoot\r\n      }\r\n    };\r\n  }\r\n}\r\n\r\nexport default styleConfig\r\n"],"file":"NewsPane.Style.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/panes/NewsPane.Style.js"
+ ],
+ "file": "../../../src/components/panes/NewsPane.Style.js",
+ "names": [
+  "styleConfig",
+  "themeName",
+  "style",
+  "createStyle",
+  "CSS_RULE",
+  "_paneRoot",
+  "backgroundColor",
+  "PANE_CAPTION",
+  "BG_HEADER",
+  "PANE_ROOT"
+ ],
+ "mappings": ";;;;;;;;;AACA,IAAMA,WAAW,GAAG;EAClBC,SAAS,EAAE,KAAK,CADE;EAElBC,KAAK,EAAE,KAAK,CAFM;EAGlBC,WAAW,EAAG,qBAACC,QAAD,EAAWH,SAAX,EAAyB;IACrC,IAAII,SAAJ;;IACA,QAAOJ,SAAP;MACE,KAAK,OAAL;QACEI,SAAS,GAAG;UAAEC,eAAe,EAAE;QAAnB,CAAZ;QACA;;MACF,KAAK,MAAL;QACED,SAAS,GAAG;UAAEC,eAAe,EAAE;QAAnB,CAAZ;QACA;;MACF;IAPF;;IASA,OAAO;MACLC,YAAY,gCACPH,QAAQ,CAACI,SADF,CADP;MAILC,SAAS,gCACJJ,SADI;IAJJ,CAAP;EAQD;AAtBiB,CAApB;eAyBeL,W"
+}
