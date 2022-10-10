@@ -33,22 +33,5 @@
   }
 }
 
-//_bgcRaiseHoverDark
-$_bgc-r-h-d: rgba(48,48,48, 0.4);
-//_bgcFlatHoverDark
-$_bgc-f-h-d: rgba(120, 120, 120, 0.2);
-
-//_bgcRaiseHoverLight
-$_bgc-r-h-l: rgba(255,255,255, 0.4);
-//_bgcFlatHoverLight
-$_bgc-f-h-l: rgba(153,153,153, 0.2);
-
-
-@include bt-raise__div($thGreySuffix, rgb(48, 48, 48), $_bgc-r-h-d);
-@include bt-flat__div($thGreySuffix, $_bgc-f-h-d);
-
-@include bt-raise__div($thWhiteSuffix, rgb(255,255,255), $_bgc-r-h-l);
-@include bt-flat__div($thWhiteSuffix, $_bgc-f-h-l);
-
-@include bt-raise__div($thSandSuffix, #e8e0cb, $_bgc-r-h-l);
-@include bt-flat__div($thSandSuffix, $_bgc-f-h-l);
+@include bt-raise__div($thGreySuffix, var(--bg-c, #4d4d4d), var(--bt-h, rgba(255, 255, 255, 0.1)));
+@include bt-flat__div($thGreySuffix, rgba(153,153,153, 0.2));
