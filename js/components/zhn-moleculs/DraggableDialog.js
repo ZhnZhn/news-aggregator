@@ -15,7 +15,7 @@ var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
 
 var _Interact = _interopRequireDefault(require("../../utils/Interact"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 //import PropTypes from 'prop-types'
 var CL_DIALOG = 'dialog',
@@ -56,20 +56,20 @@ var DialogButtons = function DialogButtons(_ref) {
       onLoad = _ref.onLoad,
       onShow = _ref.onShow,
       onClose = _ref.onClose;
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  return (0, _jsxRuntime.jsxs)("div", {
     style: S_BTS,
-    children: [_isFn(onLoad) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
+    children: [_isFn(onLoad) && (0, _jsxRuntime.jsx)(_RaisedButton["default"], {
       isPrimary: true,
       style: TS.RAISED,
       clDiv: TS.CL_RAISED_DIV,
       caption: "Load",
       onClick: onLoad
-    }), _isFn(onShow) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
+    }), _isFn(onShow) && (0, _jsxRuntime.jsx)(_RaisedButton["default"], {
       style: TS.RAISED,
       clDiv: TS.CL_RAISED_DIV,
       caption: "Show",
       onClick: onShow
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_RaisedButton["default"], {
+    }), (0, _jsxRuntime.jsx)(_RaisedButton["default"], {
       style: TS.RAISED,
       clDiv: TS.CL_RAISED_DIV,
       caption: "Close",
@@ -77,24 +77,12 @@ var DialogButtons = function DialogButtons(_ref) {
     })]
   });
 };
-
-var _getRefValue = function _getRefValue(ref) {
-  return ref.current;
-};
-
-var _setRefValue = function _setRefValue(ref, value) {
-  return ref.current = value;
-};
 /*eslint-disable react-hooks/exhaustive-deps */
 
 
 var useFocusByRef = function useFocusByRef(ref) {
   return (0, _uiApi.useCallback)(function () {
-    var _node = _getRefValue(ref);
-
-    if (_node) {
-      _node.focus();
-    }
+    (0, _uiApi.focusRefElement)(ref);
   }, []);
 }; //ref
 
@@ -121,7 +109,7 @@ var DraggableDialog = (0, _uiApi.forwardRef)(function (_ref2, ref) {
   /*eslint-disable react-hooks/exhaustive-deps */
   ,
       _hKeyDown = (0, _uiApi.useCallback)(function (evt) {
-    if (document.activeElement == _getRefValue(_refDiv)) {
+    if (document.activeElement == (0, _uiApi.getRefValue)(_refDiv)) {
       onKeyDown(evt);
     }
   }, []) //onKeyDown
@@ -135,22 +123,22 @@ var DraggableDialog = (0, _uiApi.forwardRef)(function (_ref2, ref) {
 
 
   (0, _uiApi.useEffect)(function () {
-    var _divNode = _getRefValue(_refDiv);
+    var _divElement = (0, _uiApi.getRefValue)(_refDiv);
 
-    _Interact["default"].makeDragable(_divNode);
+    _Interact["default"].makeDragable(_divElement);
 
-    _setRefValue(_refPrevFocused, document.activeElement);
+    (0, _uiApi.setRefValue)(_refPrevFocused, document.activeElement);
 
-    _divNode.focus();
+    _divElement.focus();
   }, []);
   /*eslint-disable react-hooks/exhaustive-deps */
 
   (0, _uiApi.useEffect)(function () {
-    if (isShow && !_getRefValue(_refIsShow)) {
+    if (isShow && !(0, _uiApi.getRefValue)(_refIsShow)) {
       focus();
     }
 
-    _setRefValue(_refIsShow, isShow);
+    (0, _uiApi.setRefValue)(_refIsShow, isShow);
   }, [isShow]); // focus
 
   /*eslint-enable react-hooks/exhaustive-deps */
@@ -166,8 +154,6 @@ var DraggableDialog = (0, _uiApi.forwardRef)(function (_ref2, ref) {
       _classShow = _ref3[1];
 
   return (
-    /*#__PURE__*/
-
     /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
 
     /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
@@ -178,14 +164,14 @@ var DraggableDialog = (0, _uiApi.forwardRef)(function (_ref2, ref) {
       style: (0, _extends2["default"])({}, S_DIV, style, _styleShow),
       tabIndex: "0",
       onKeyDown: _hKeyDown,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BrowserCaption["default"], {
+      children: [(0, _jsxRuntime.jsx)(_BrowserCaption["default"], {
         style: captionStyle,
         caption: caption,
         onClose: onClose
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      }), (0, _jsxRuntime.jsx)("div", {
         style: S_CHL_DIV,
         children: children
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(DialogButtons, {
+      }), (0, _jsxRuntime.jsx)(DialogButtons, {
         TS: buttonStyle,
         onLoad: onLoad,
         onShow: onShow,

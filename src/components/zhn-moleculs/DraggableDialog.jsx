@@ -4,7 +4,10 @@ import {
   useRef,
   useCallback,
   useEffect,
-  useImperativeHandle
+  useImperativeHandle,
+  getRefValue,
+  setRefValue,
+  focusRefElement
 } from '../uiApi';
 
 import BrowserCaption from '../zhn-atoms/BrowserCaption';
@@ -77,15 +80,9 @@ const DialogButtons = ({
   </div>
 );
 
-const _getRefValue = ref => ref.current
-const _setRefValue = (ref, value) => ref.current = value
-
 /*eslint-disable react-hooks/exhaustive-deps */
 const useFocusByRef = ref => useCallback(() => {
-  const _node = _getRefValue(ref);
-  if (_node) {
-    _node.focus()
-  }
+  focusRefElement(ref)
 }, [])
 //ref
 /*eslint-enable react-hooks/exhaustive-deps */
@@ -109,7 +106,7 @@ const DraggableDialog = forwardRef(({
   , focus = useFocusByRef(_refDiv)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hKeyDown = useCallback(evt => {
-    if (document.activeElement == _getRefValue(_refDiv)) {
+    if (document.activeElement == getRefValue(_refDiv)) {
       onKeyDown(evt)
     }
   }, [])
@@ -123,18 +120,18 @@ const DraggableDialog = forwardRef(({
 
 
   useEffect(() => {
-    const _divNode = _getRefValue(_refDiv);
-    Interact.makeDragable(_divNode)
-    _setRefValue(_refPrevFocused, document.activeElement)
-    _divNode.focus()
+    const _divElement = getRefValue(_refDiv);
+    Interact.makeDragable(_divElement)
+    setRefValue(_refPrevFocused, document.activeElement)
+    _divElement.focus()
   }, [])
 
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
-    if (isShow && !_getRefValue(_refIsShow)) {
+    if (isShow && !getRefValue(_refIsShow)) {
       focus()
     }
-    _setRefValue(_refIsShow, isShow)
+    setRefValue(_refIsShow, isShow)
   }, [isShow])
   // focus
   /*eslint-enable react-hooks/exhaustive-deps */
