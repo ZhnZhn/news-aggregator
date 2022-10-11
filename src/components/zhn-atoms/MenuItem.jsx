@@ -12,12 +12,12 @@ const MenuItem = forwardRef(({
   onClose=FN_NOOP
 }, ref) => {
   /*eslint-disable react-hooks/exhaustive-deps */
-  const _hKeyDown = useCallback((event) => {
-    const { keyCode } = event;
+  const _hKeyDown = useCallback(evt => {
+    const { keyCode } = evt;
     if (keyCode === 13) {
       onClick()
     } else if (keyCode === 27) {
-      onClose({ target: ref.current })
+      onClose(evt)
     }
   }, []);
   //oncLick, onClose

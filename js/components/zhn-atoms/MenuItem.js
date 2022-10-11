@@ -5,7 +5,7 @@ exports["default"] = void 0;
 
 var _uiApi = require("../uiApi");
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var FN_NOOP = function FN_NOOP() {};
 
@@ -18,22 +18,20 @@ var MenuItem = (0, _uiApi.forwardRef)(function (_ref, ref) {
       onClose = _ref$onClose === void 0 ? FN_NOOP : _ref$onClose;
 
   /*eslint-disable react-hooks/exhaustive-deps */
-  var _hKeyDown = (0, _uiApi.useCallback)(function (event) {
-    var keyCode = event.keyCode;
+  var _hKeyDown = (0, _uiApi.useCallback)(function (evt) {
+    var keyCode = evt.keyCode;
 
     if (keyCode === 13) {
       onClick();
     } else if (keyCode === 27) {
-      onClose({
-        target: ref.current
-      });
+      onClose(evt);
     }
   }, []); //oncLick, onClose
 
   /*eslint-enable react-hooks/exhaustive-deps */
 
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+  return (0, _jsxRuntime.jsx)("div", {
     ref: ref,
     role: "menuitem",
     className: className,
