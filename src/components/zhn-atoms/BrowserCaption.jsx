@@ -17,8 +17,13 @@ const CL_GAP = "gap-right"
 }, S_CAPTION = {
     fontSize: '1.125rem',
     fontWeight: 'bold'
-}, S_BT_MORE = { marginRight: 6 }
- , S_SVG_MORE = {
+}, S_BT_MORE = {
+  verticalAlign: 'sub',
+  position: 'relative',
+  top: 2,
+  marginRight: 6
+}
+ , S_SVG_MORE = {    
     fill: 'inherit',
     stroke: 'inherit'
 }, S_SVG_CLOSE = {

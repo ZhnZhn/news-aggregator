@@ -7,14 +7,9 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var CL_BT_MORE = 'bt-more',
-    S_BT = {
-  verticalAlign: 'sub',
-  padding: '0 6px',
-  cursor: 'pointer'
-},
     S_SVG = {
   fill: 'black',
   stroke: 'black'
@@ -27,31 +22,31 @@ var SvgMore = function SvgMore(_ref) {
       title = _ref$title === void 0 ? 'Menu More' : _ref$title,
       btRef = _ref.btRef,
       onClick = _ref.onClick;
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+  return (0, _jsxRuntime.jsx)("button", {
     ref: btRef,
     className: CL_BT_MORE,
-    style: (0, _extends2["default"])({}, S_BT, style),
+    style: style,
     title: title,
     onClick: onClick,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("svg", {
+    children: (0, _jsxRuntime.jsxs)("svg", {
       style: (0, _extends2["default"])({}, S_SVG, svgStyle),
       width: "6px",
-      height: "22px",
-      viewBox: "0 0 6 22",
+      height: "24px",
+      viewBox: "0 0 6 24",
       preserveAspectRatio: "none",
       xmlns: "http://www.w3.org/2000/svg",
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("circle", {
+      children: [(0, _jsxRuntime.jsx)("circle", {
         cx: "3",
         cy: "4",
-        r: "2"
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("circle", {
+        r: "2.5"
+      }), (0, _jsxRuntime.jsx)("circle", {
         cx: "3",
-        cy: "11",
-        r: "2"
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("circle", {
+        cy: "12",
+        r: "2.5"
+      }), (0, _jsxRuntime.jsx)("circle", {
         cx: "3",
-        cy: "18",
-        r: "2"
+        cy: "19",
+        r: "2.5"
       })]
     })
   });

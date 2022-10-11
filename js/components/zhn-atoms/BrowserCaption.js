@@ -11,7 +11,7 @@ var _SvgMore = _interopRequireDefault(require("./SvgMore"));
 
 var _SvgX = _interopRequireDefault(require("./SvgX"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var CL_GAP = "gap-right",
     CL_NOT_SELECTED = "not-selected",
@@ -32,6 +32,9 @@ var CL_GAP = "gap-right",
   fontWeight: 'bold'
 },
     S_BT_MORE = {
+  verticalAlign: 'sub',
+  position: 'relative',
+  top: 2,
   marginRight: 6
 },
     S_SVG_MORE = {
@@ -56,18 +59,18 @@ var BrowserCaption = function BrowserCaption(_ref) {
       children = _ref.children,
       onMore = _ref.onMore,
       onClose = _ref.onClose;
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  return (0, _jsxRuntime.jsxs)("div", {
     className: CL_GAP,
     style: (0, _extends2["default"])({}, S_ROOT, style),
-    children: [_isFn(onMore) && /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgMore["default"], {
+    children: [_isFn(onMore) && (0, _jsxRuntime.jsx)(_SvgMore["default"], {
       style: S_BT_MORE,
       svgStyle: S_SVG_MORE,
       onClick: onMore
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    }), (0, _jsxRuntime.jsx)("span", {
       className: CL_NOT_SELECTED,
       style: S_CAPTION,
       children: caption
-    }), children, /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgX["default"], {
+    }), children, (0, _jsxRuntime.jsx)(_SvgX["default"], {
       style: S_SVG_CLOSE,
       onClick: onClose
     })]
