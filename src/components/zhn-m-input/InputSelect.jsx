@@ -3,6 +3,8 @@ import {
   useCallback
 } from '../uiApi';
 
+import useBool from '../hooks/useBool';
+
 import {
   CL_SELECT_ITEM
 } from '../styles/CL';
@@ -35,18 +37,17 @@ const InputSelect = ({
   ] = useState(initItem || DF_INIT_ITEM)
   , [
     isShow,
-    setIsShow
-  ] = useState(false)
-  , _hOpen = useCallback(()=> setIsShow(true), [])
-  , _hClose = useCallback(() => setIsShow(false), [])
+    showComp,
+    hideComp
+  ] = useBool()
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hSelect = useCallback((item, event) => {
       event.stopPropagation()
       onSelect(item)
-      setIsShow(false)
+      hideComp()
       setItem(item)
-  }, [])
-  // onSelect
+  }, []);
+  // onSelect, hideComp
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (
@@ -54,7 +55,7 @@ const InputSelect = ({
       role="presentation"
       className={CL_SELECT}
       style={TS.ROOT}
-      onClick={_hOpen}
+      onClick={showComp}
     >
       <label className={CL_LABEL}>
         {caption}
@@ -65,7 +66,7 @@ const InputSelect = ({
          options={options}
          clItem={CL_SELECT_ITEM}
          onSelect={_hSelect}
-         onClose={_hClose}
+         onClose={hideComp}
        />
       <div className={CL_DIV}>
         <div className={CL_DIV_VALUE}>

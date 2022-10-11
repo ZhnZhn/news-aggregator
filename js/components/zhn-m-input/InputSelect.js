@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _uiApi = require("../uiApi");
 
+var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
+
 var _CL = require("../styles/CL");
 
 var _ArrowCell = _interopRequireDefault(require("./ArrowCell"));
@@ -36,21 +38,16 @@ var InputSelect = function InputSelect(_ref) {
   var _useState = (0, _uiApi.useState)(initItem || DF_INIT_ITEM),
       item = _useState[0],
       setItem = _useState[1],
-      _useState2 = (0, _uiApi.useState)(false),
-      isShow = _useState2[0],
-      setIsShow = _useState2[1],
-      _hOpen = (0, _uiApi.useCallback)(function () {
-    return setIsShow(true);
-  }, []),
-      _hClose = (0, _uiApi.useCallback)(function () {
-    return setIsShow(false);
-  }, []),
+      _useBool = (0, _useBool2["default"])(),
+      isShow = _useBool[0],
+      showComp = _useBool[1],
+      hideComp = _useBool[2],
       _hSelect = (0, _uiApi.useCallback)(function (item, event) {
     event.stopPropagation();
     onSelect(item);
-    setIsShow(false);
+    hideComp();
     setItem(item);
-  }, []); // onSelect
+  }, []); // onSelect, hideComp
 
   /*eslint-enable react-hooks/exhaustive-deps */
 
@@ -59,7 +56,7 @@ var InputSelect = function InputSelect(_ref) {
     role: "presentation",
     className: CL_SELECT,
     style: TS.ROOT,
-    onClick: _hOpen,
+    onClick: showComp,
     children: [(0, _jsxRuntime.jsx)("label", {
       className: CL_LABEL,
       children: caption
@@ -69,7 +66,7 @@ var InputSelect = function InputSelect(_ref) {
       options: options,
       clItem: _CL.CL_SELECT_ITEM,
       onSelect: _hSelect,
-      onClose: _hClose
+      onClose: hideComp
     }), (0, _jsxRuntime.jsxs)("div", {
       className: CL_DIV,
       children: [(0, _jsxRuntime.jsx)("div", {
