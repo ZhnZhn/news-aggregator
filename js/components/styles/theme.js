@@ -30,7 +30,8 @@ var DF_BG = '#4d4d4d',
     DF_BG_OPTIONS = '#404040',
     DF_MSI_C = 'white',
     DF_MSI_FH = 'rgba(48, 48, 48, 0.4)',
-    DF_SBT_BG = '#3f5178';
+    DF_SBT_BG = '#3f5178',
+    DF_C_HEADER = '#a9a9a9';
 var BT_H_LIGHT = 'rgba(48, 48, 48, 0.3)',
     MSI_C_LIGHT = '#303030',
     MSI_FH_LIGHT = 'rgba(255, 255, 255, 0.4)',
@@ -46,7 +47,7 @@ var P_GREY = {
   MSI_FH: DF_MSI_FH,
   SBT_BG: DF_SBT_BG,
   BG_HEADER: '#3a6799',
-  C_HEADER: '#8a8a8a'
+  C_HEADER: DF_C_HEADER
 };
 var _P_LIGHT = {
   BT_H: BT_H_LIGHT,
@@ -80,6 +81,8 @@ var _setBodyBg = function _setBodyBg(conf, P) {
   _style.setProperty("--bg-c", P.BG || DF_BG);
 
   _style.setProperty("--bt-h", P.BT_H || DF_BT_H);
+
+  _style.setProperty("--h-c", P.C_HEADER || DF_C_HEADER);
 
   _style.setProperty("--mso-bg", P.BG_OPTIONS || DF_BG_OPTIONS);
 

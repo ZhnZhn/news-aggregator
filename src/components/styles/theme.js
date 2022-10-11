@@ -40,6 +40,7 @@ const DF_BG = '#4d4d4d'
 , DF_MSI_C = 'white'
 , DF_MSI_FH = 'rgba(48, 48, 48, 0.4)'
 , DF_SBT_BG = '#3f5178'
+, DF_C_HEADER = '#a9a9a9'
 
 const BT_H_LIGHT = 'rgba(48, 48, 48, 0.3)'
 , MSI_C_LIGHT = '#303030'
@@ -56,8 +57,8 @@ const P_GREY = {
   MSI_C: DF_MSI_C,
   MSI_FH: DF_MSI_FH,
   SBT_BG: DF_SBT_BG,
-  BG_HEADER: '#3a6799',
-  C_HEADER: '#8a8a8a'
+  BG_HEADER: '#3a6799',    
+  C_HEADER: DF_C_HEADER
 };
 
 const _P_LIGHT = {
@@ -94,6 +95,7 @@ const _setBodyBg = (conf, P) => {
   _style.backgroundColor = P.BG_BODY
   _style.setProperty("--bg-c", P.BG || DF_BG)
   _style.setProperty("--bt-h", P.BT_H || DF_BT_H)
+  _style.setProperty("--h-c", P.C_HEADER || DF_C_HEADER)
   _style.setProperty("--mso-bg", P.BG_OPTIONS || DF_BG_OPTIONS)
   _style.setProperty("--msi-c", P.MSI_C || DF_MSI_C)
   _style.setProperty("--msi-fh", P.MSI_FH || DF_MSI_FH)

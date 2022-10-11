@@ -53,8 +53,8 @@
   line-height: normal;
   vertical-align: text-bottom;
   border-radius: 50%;
-  border: 2px solid gray;
-  stroke: gray;
+  border: 2px solid var(--h-c, #a9a9a9);
+  stroke: var(--h-c, #a9a9a9);  
 }
 .bt-resize:focus,
 .bt-resize:hover {
