@@ -20,6 +20,14 @@ export {
 const _isFn = fn => typeof fn === 'function'
 
 export const getRefValue = ref => (ref || {}).current
+export const setRefValue = (
+  ref,
+  value
+) => {
+  if (ref) {
+    ref.current = value
+  }
+}
 
 export const focusRefElement = ref => {
   const element = getRefValue(ref);

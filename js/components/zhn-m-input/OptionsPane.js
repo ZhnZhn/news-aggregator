@@ -134,7 +134,7 @@ var OptionsPane = function OptionsPane(_ref2) {
       if (_elItem) {
         _elItem.focus();
 
-        _refFocus.current = _elItem;
+        (0, _uiApi.setRefValue)(_refFocus, _elItem);
       }
     }
   }, [isShow]);

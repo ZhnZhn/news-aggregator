@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.render = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.forwardRef = exports.focusRefElement = exports.createElement = exports.createContext = exports.cloneElement = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.render = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.forwardRef = exports.focusRefElement = exports.createElement = exports.createContext = exports.cloneElement = void 0;
 
 var _compat = require("preact/compat");
 
@@ -29,6 +29,14 @@ var getRefValue = function getRefValue(ref) {
 };
 
 exports.getRefValue = getRefValue;
+
+var setRefValue = function setRefValue(ref, value) {
+  if (ref) {
+    ref.current = value;
+  }
+};
+
+exports.setRefValue = setRefValue;
 
 var focusRefElement = function focusRefElement(ref) {
   var element = getRefValue(ref);

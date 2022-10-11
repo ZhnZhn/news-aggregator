@@ -2,7 +2,8 @@ import {
   useRef,
   useCallback,
   useEffect,
-  getRefValue
+  getRefValue,
+  setRefValue
 } from '../uiApi';
 
 import useTheme from '../hooks/useTheme';
@@ -118,7 +119,7 @@ const OptionsPane = ({
       const _elItem = getRefValue(_refItem);
       if (_elItem) {
         _elItem.focus()
-        _refFocus.current = _elItem
+        setRefValue(_refFocus, _elItem)
       }
     }
   }, [isShow])
