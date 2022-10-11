@@ -1,20 +1,18 @@
 import {
   useRef,
   useCallback,
-  useEffect
+  useEffect,
+  focusRefElement
 } from '../uiApi';
 
 import MenuTitle from './MenuTitle';
 import MenuItemList from './MenuItemList';
 
-const _fFocus = ref => () => {
-  if (ref && ref.current) {
-    ref.current.focus()
-  }
-};
-
 const _focusAsyncRefElement = ref => {
-  setTimeout(_fFocus(ref), 1000)
+  setTimeout(
+    () => focusRefElement(ref),
+    1000
+  )
 };
 
 const DF_ITEMS = [];

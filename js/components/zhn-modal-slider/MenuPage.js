@@ -11,18 +11,12 @@ var _MenuTitle = _interopRequireDefault(require("./MenuTitle"));
 
 var _MenuItemList = _interopRequireDefault(require("./MenuItemList"));
 
-var _jsxRuntime = require("react/jsx-runtime");
-
-var _fFocus = function _fFocus(ref) {
-  return function () {
-    if (ref && ref.current) {
-      ref.current.focus();
-    }
-  };
-};
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var _focusAsyncRefElement = function _focusAsyncRefElement(ref) {
-  setTimeout(_fFocus(ref), 1000);
+  setTimeout(function () {
+    return (0, _uiApi.focusRefElement)(ref);
+  }, 1000);
 };
 
 var DF_ITEMS = [];
@@ -58,14 +52,14 @@ var MenuPage = function MenuPage(_ref) {
       }
     }
   }, [_isFocus]);
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  return (0, _jsxRuntime.jsxs)("div", {
     style: style,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuTitle["default"], {
+    children: [(0, _jsxRuntime.jsx)(_MenuTitle["default"], {
       ref: _refTitle,
       titleCl: titleCl,
       title: title,
       onClick: _hClickTitle
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuItemList["default"], {
+    }), (0, _jsxRuntime.jsx)(_MenuItemList["default"], {
       ref: _refFirst,
       items: items,
       itemCl: itemCl || titleCl,
