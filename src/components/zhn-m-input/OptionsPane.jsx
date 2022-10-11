@@ -1,7 +1,8 @@
 import {
   useRef,
   useCallback,
-  useEffect
+  useEffect,
+  getRefValue
 } from '../uiApi';
 
 import useTheme from '../hooks/useTheme';
@@ -37,7 +38,7 @@ const _preventStopEvent = evt => {
 };
 
 const _fFocusItem = propName => ref => {
-  const _elItem = (ref.current || {})[propName];
+  const _elItem = (getRefValue(ref) || {})[propName];
   if (_elItem) {
     _elItem.scrollIntoView(SCROLL_OPTIONS)
     _elItem.focus()
@@ -49,10 +50,17 @@ const _focusNextItem = _fFocusItem('nextSibling');
 const _focusPrevItem = _fFocusItem('previousSibling');
 
 const _crItem = (
-  item, index,
-  { refItem, currentItem, clItem, onSelect }
-) => {
-  const { value, caption } = item
+  item,
+  index, {
+  refItem,
+  currentItem,
+  clItem,
+  onSelect
+}) => {
+  const {
+    value,
+    caption
+  } = item
   , _style = value === currentItem.value
        ? S_ITEM
        : void 0
@@ -106,15 +114,17 @@ const OptionsPane = ({
   /*eslint-enable react-hooks/exhaustive-deps */
 
   useEffect(()=>{
-    if (isShow && _refItem.current) {
-      _refItem.current.focus()
-      _refFocus.current = _refItem.current
+    if (isShow) {
+      const _elItem = getRefValue(_refItem);
+      if (_elItem) {
+        _elItem.focus()
+        _refFocus.current = _elItem
+      }
     }
   }, [isShow])
 return (
   <ModalPane
      isShow={isShow}
-     style={TS.SELECT.MODAL_PANE}
      onClose={onClose}
   >
      <ShowHide

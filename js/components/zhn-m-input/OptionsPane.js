@@ -49,7 +49,7 @@ var _preventStopEvent = function _preventStopEvent(evt) {
 
 var _fFocusItem = function _fFocusItem(propName) {
   return function (ref) {
-    var _elItem = (ref.current || {})[propName];
+    var _elItem = ((0, _uiApi.getRefValue)(ref) || {})[propName];
 
     if (_elItem) {
       _elItem.scrollIntoView(SCROLL_OPTIONS);
@@ -128,15 +128,18 @@ var OptionsPane = function OptionsPane(_ref2) {
 
 
   (0, _uiApi.useEffect)(function () {
-    if (isShow && _refItem.current) {
-      _refItem.current.focus();
+    if (isShow) {
+      var _elItem = (0, _uiApi.getRefValue)(_refItem);
 
-      _refFocus.current = _refItem.current;
+      if (_elItem) {
+        _elItem.focus();
+
+        _refFocus.current = _elItem;
+      }
     }
   }, [isShow]);
   return (0, _jsxRuntime.jsx)(_ModalPane["default"], {
     isShow: isShow,
-    style: TS.SELECT.MODAL_PANE,
     onClose: onClose,
     children: (0, _jsxRuntime.jsx)(_ShowHide["default"], {
       isShow: isShow,
