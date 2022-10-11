@@ -49,7 +49,6 @@ var styleConfig = {
         RAISED: (0, _extends2["default"])({}, S_BT_RAISED, CSS_RULE.BG_HEADER)
       },
       SELECT: {
-        CL_ITEM: _CL.CL_SELECT_ITEM,
         ROOT: {
           width: INPUT_WIDTH
         },

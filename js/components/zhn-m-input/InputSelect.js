@@ -7,11 +7,13 @@ exports["default"] = void 0;
 
 var _uiApi = require("../uiApi");
 
+var _CL = require("../styles/CL");
+
 var _ArrowCell = _interopRequireDefault(require("./ArrowCell"));
 
 var _OptionsPane = _interopRequireDefault(require("./OptionsPane"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var CL_SELECT = 'm-select',
     CL_LABEL = CL_SELECT + "__label",
@@ -53,30 +55,30 @@ var InputSelect = function InputSelect(_ref) {
   /*eslint-enable react-hooks/exhaustive-deps */
 
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  return (0, _jsxRuntime.jsxs)("div", {
     role: "presentation",
     className: CL_SELECT,
     style: TS.ROOT,
     onClick: _hOpen,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+    children: [(0, _jsxRuntime.jsx)("label", {
       className: CL_LABEL,
       children: caption
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_OptionsPane["default"], {
+    }), (0, _jsxRuntime.jsx)(_OptionsPane["default"], {
       isShow: isShow,
       item: item,
       options: options,
-      clItem: TS.CL_ITEM,
+      clItem: _CL.CL_SELECT_ITEM,
       onSelect: _hSelect,
       onClose: _hClose
-    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    }), (0, _jsxRuntime.jsxs)("div", {
       className: CL_DIV,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      children: [(0, _jsxRuntime.jsx)("div", {
         className: CL_DIV_VALUE,
         children: item.caption
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+      }), (0, _jsxRuntime.jsx)("button", {
         className: CL_DIV_BT,
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ArrowCell["default"], {})
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        children: (0, _jsxRuntime.jsx)(_ArrowCell["default"], {})
+      }), (0, _jsxRuntime.jsx)("div", {
         className: CL_INPUT_LINE
       })]
     })]

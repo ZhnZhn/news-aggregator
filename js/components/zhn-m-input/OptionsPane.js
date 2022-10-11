@@ -151,7 +151,7 @@ var OptionsPane = function OptionsPane(_ref2) {
           crItem: _crItem,
           refItem: _refItem,
           currentItem: item,
-          clItem: TS.SELECT.CL_ITEM,
+          clItem: clItem,
           onSelect: onSelect
         })
       })

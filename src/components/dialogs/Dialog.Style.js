@@ -1,6 +1,5 @@
 import {
-  CL_BT_RAISED_DIV,
-  CL_SELECT_ITEM
+  CL_BT_RAISED_DIV
 } from '../styles/CL';
 
 const INPUT_WIDTH = 250;
@@ -51,7 +50,7 @@ const styleConfig = {
       POWERED_BY: {
         ...S_POWERED_BY
       },
-      BT: {        
+      BT: {
         CL_RAISED_DIV: CL_BT_RAISED_DIV,
         RAISED: {
           ...S_BT_RAISED,
@@ -59,7 +58,6 @@ const styleConfig = {
         }
       },
       SELECT: {
-        CL_ITEM: CL_SELECT_ITEM,
         ROOT: {
           width: INPUT_WIDTH
         },

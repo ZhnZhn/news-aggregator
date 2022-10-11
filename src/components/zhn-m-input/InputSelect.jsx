@@ -3,6 +3,10 @@ import {
   useCallback
 } from '../uiApi';
 
+import {
+  CL_SELECT_ITEM
+} from '../styles/CL';
+
 import ArrowCell from './ArrowCell';
 import OptionsPane from './OptionsPane';
 
@@ -20,11 +24,19 @@ const DF_INIT_ITEM = {
 
 const InputSelect = ({
   initItem,
-  caption, options, styleConfig:TS,
+  caption,
+  options,
+  styleConfig:TS,
   onSelect
 }) => {
-  const [item, setItem] = useState(initItem || DF_INIT_ITEM)
-  , [isShow, setIsShow] = useState(false)
+  const [
+    item,
+    setItem
+  ] = useState(initItem || DF_INIT_ITEM)
+  , [
+    isShow,
+    setIsShow
+  ] = useState(false)
   , _hOpen = useCallback(()=> setIsShow(true), [])
   , _hClose = useCallback(() => setIsShow(false), [])
   /*eslint-disable react-hooks/exhaustive-deps */
@@ -51,7 +63,7 @@ const InputSelect = ({
          isShow={isShow}
          item={item}
          options={options}
-         clItem={TS.CL_ITEM}
+         clItem={CL_SELECT_ITEM}
          onSelect={_hSelect}
          onClose={_hClose}
        />
