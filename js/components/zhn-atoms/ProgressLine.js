@@ -9,7 +9,7 @@ var _uiApi = require("../uiApi");
 
 var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var CL = "progress-line",
     DF_COLOR = '#2f7ed8',
@@ -26,10 +26,6 @@ var _crStyle = function _crStyle(backgroundColor, opacity, width, transition) {
   };
 };
 
-var _getCurrent = function _getCurrent(ref) {
-  return ref.current;
-};
-
 var ProgressLine = function ProgressLine(_ref) {
   var _ref$color = _ref.color,
       color = _ref$color === void 0 ? DF_COLOR : _ref$color,
@@ -42,40 +38,40 @@ var ProgressLine = function ProgressLine(_ref) {
       _refIdOpacied = (0, _uiApi.useRef)(null);
 
   (0, _uiApi.useEffect)(function () {
-    if (_getCurrent(_refWasCompleted)) {
-      _refIdCompleted.current = setTimeout(rerender, TM_PERIOD);
-    } else if (_getCurrent(_refWasOpacied)) {
-      _refIdOpacied.current = setTimeout(rerender, TM_PERIOD);
+    if ((0, _uiApi.getRefValue)(_refWasCompleted)) {
+      (0, _uiApi.setRefValue)(_refIdCompleted, setTimeout(rerender, TM_PERIOD));
+    } else if ((0, _uiApi.getRefValue)(_refWasOpacied)) {
+      (0, _uiApi.setRefValue)(_refIdOpacied, setTimeout(rerender, TM_PERIOD));
     }
   });
   (0, _uiApi.useEffect)(function () {
     return function () {
-      clearTimeout(_getCurrent(_refIdCompleted));
-      clearTimeout(_getCurrent(_refIdOpacied));
+      clearTimeout((0, _uiApi.getRefValue)(_refIdCompleted));
+      clearTimeout((0, _uiApi.getRefValue)(_refIdOpacied));
     };
   }, []);
 
   var _style;
 
-  if (_getCurrent(_refWasOpacied)) {
+  if ((0, _uiApi.getRefValue)(_refWasOpacied)) {
     _style = _crStyle(color, 1, 0);
-    _refWasOpacied.current = false;
-  } else if (_getCurrent(_refWasCompleted)) {
+    (0, _uiApi.setRefValue)(_refWasOpacied, false);
+  } else if ((0, _uiApi.getRefValue)(_refWasCompleted)) {
     _style = _crStyle(color, 0, '100%', TRANSITION_OPACITY);
-    _refWasCompleted.current = false;
-    _refWasOpacied.current = true;
+    (0, _uiApi.setRefValue)(_refWasCompleted, false);
+    (0, _uiApi.setRefValue)(_refWasOpacied, true);
   } else {
     if (completed < 0) {
       completed = 0;
     } else if (completed >= 100) {
       completed = 100;
-      _refWasCompleted.current = true;
+      (0, _uiApi.setRefValue)(_refWasOpacied, true);
     }
 
     _style = _crStyle(color, 1, completed + '%', TRANSITION_WIDTH);
   }
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+  return (0, _jsxRuntime.jsx)("div", {
     className: CL,
     style: _style
   });
