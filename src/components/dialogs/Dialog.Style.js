@@ -60,9 +60,6 @@ const styleConfig = {
       SELECT: {
         ROOT: {
           width: INPUT_WIDTH
-        },
-        MODAL_PANE: {
-          ...CSS_RULE.BG_OPTIONS
         }
       }
     };

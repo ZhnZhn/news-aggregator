@@ -1,7 +1,11 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 exports.__esModule = true;
 exports.selectFontSize = exports.notAllowSaveToLs = exports.isAllowUseLs = exports.initialTheme = exports.allowSaveToLs = exports.THEME_OPTIONS = exports.FONT_SIZE_OPTIONS = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _localStorageFn = require("../../utils/localStorageFn");
 
@@ -21,51 +25,49 @@ var _LS = require("./LS");
 
 var _THEME_CONFIG;
 
-var DF_BG = '#4d4d4d';
-var DF_BT_H = 'rgba(255, 255, 255, 0.1)';
-var DF_MSI_C = 'white';
-var DF_MSI_FH = 'rgba(48, 48, 48, 0.4)';
-var DF_SBT_BG = '#3f5178';
-var BT_H_LIGHT = 'rgba(48, 48, 48, 0.3)';
-var MSI_C_LIGHT = '#303030';
-var MSI_FH_LIGHT = 'rgba(255, 255, 255, 0.4)';
-var SBT_BG_LIGHT = '#0096c8';
+var DF_BG = '#4d4d4d',
+    DF_BT_H = 'rgba(255, 255, 255, 0.1)',
+    DF_BG_OPTIONS = '#404040',
+    DF_MSI_C = 'white',
+    DF_MSI_FH = 'rgba(48, 48, 48, 0.4)',
+    DF_SBT_BG = '#3f5178';
+var BT_H_LIGHT = 'rgba(48, 48, 48, 0.3)',
+    MSI_C_LIGHT = '#303030',
+    MSI_FH_LIGHT = 'rgba(255, 255, 255, 0.4)',
+    SBT_BG_LIGHT = '#0096c8',
+    BG_HEADER_LIGHT = '#0096c8',
+    C_HEADER_LIGHT = '#4d4d4d';
 var P_GREY = {
   BG_BODY: '#5f5f5f',
   BG: DF_BG,
   BT_H: DF_BT_H,
-  BG_OPTIONS: '#404040',
+  BG_OPTIONS: DF_BG_OPTIONS,
   MSI_C: DF_MSI_C,
   MSI_FH: DF_MSI_FH,
   SBT_BG: DF_SBT_BG,
   BG_HEADER: '#3a6799',
   C_HEADER: '#8a8a8a'
 };
-var P_WHITE = {
+var _P_LIGHT = {
+  BT_H: BT_H_LIGHT,
+  MSI_C: MSI_C_LIGHT,
+  MSI_FH: MSI_FH_LIGHT,
+  SBT_BG: SBT_BG_LIGHT,
+  BG_HEADER: BG_HEADER_LIGHT,
+  C_HEADER: C_HEADER_LIGHT
+};
+var P_WHITE = (0, _extends2["default"])({}, _P_LIGHT, {
   BG_BODY: 'darkgrey',
   BG: '#eaeaea',
-  BT_H: BT_H_LIGHT,
-  BG_OPTIONS: '#dfe4e7',
-  MSI_C: MSI_C_LIGHT,
-  MSI_FH: MSI_FH_LIGHT,
-  SBT_BG: SBT_BG_LIGHT,
-  BG_HEADER: '#0096c8',
-  C_HEADER: '#4d4d4d'
-};
-var P_SAND = {
+  BG_OPTIONS: '#dfe4e7'
+});
+var P_SAND = (0, _extends2["default"])({}, _P_LIGHT, {
   BG_BODY: 'darkgrey',
   BG: '#e8e0cb',
-  BT_H: BT_H_LIGHT,
-  BG_OPTIONS: '#c6bda5',
-  MSI_C: MSI_C_LIGHT,
-  MSI_FH: MSI_FH_LIGHT,
-  SBT_BG: SBT_BG_LIGHT,
-  BG_HEADER: '#0096c8',
-  C_HEADER: '#4d4d4d'
-};
+  BG_OPTIONS: '#c6bda5'
+});
 var CSS_RULE = {
   BG: {},
-  BG_OPTIONS: {},
   BG_HEADER: {},
   R_DIALOG: {}
 };
@@ -79,6 +81,8 @@ var _setBodyBg = function _setBodyBg(conf, P) {
 
   _style.setProperty("--bt-h", P.BT_H || DF_BT_H);
 
+  _style.setProperty("--mso-bg", P.BG_OPTIONS || DF_BG_OPTIONS);
+
   _style.setProperty("--msi-c", P.MSI_C || DF_MSI_C);
 
   _style.setProperty("--msi-fh", P.MSI_FH || DF_MSI_FH);
@@ -89,12 +93,6 @@ var _setBodyBg = function _setBodyBg(conf, P) {
 var _crBg = function _crBg(conf, P) {
   _assign(conf.BG, {
     backgroundColor: P.BG
-  });
-};
-
-var _crBgOption = function _crBgOption(conf, P) {
-  _assign(conf.BG_OPTIONS, {
-    backgroundColor: P.BG_OPTIONS
   });
 };
 
@@ -112,7 +110,7 @@ var _crRDialog = function _crRDialog(conf, P) {
   });
 };
 
-var _FN_STYLES = [_setBodyBg, _crBg, _crBgOption, _crBgHeader, _crRDialog];
+var _FN_STYLES = [_setBodyBg, _crBg, _crBgHeader, _crRDialog];
 
 var _setStyleTo = function _setStyleTo(conf, pallete) {
   _FN_STYLES.forEach(function (fn) {

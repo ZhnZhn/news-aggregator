@@ -17,7 +17,8 @@ const CL_SELECT = 'm-select'
 , CL_DIV = `${CL_SELECT}__div`
 , CL_DIV_VALUE = `${CL_SELECT}__div__value`
 , CL_DIV_BT = `${CL_SELECT}__div__bt`
-, CL_INPUT_LINE = `${CL_SELECT}__line`;
+, CL_INPUT_LINE = `${CL_SELECT}__line`
+, CL_SELECT_OPTIONS = `${CL_SELECT}__options with-scroll`;
 
 const DF_INIT_ITEM = {
   caption: '',
@@ -62,6 +63,7 @@ const InputSelect = ({
       </label>
       <OptionsPane
          isShow={isShow}
+         className={CL_SELECT_OPTIONS}
          item={item}
          options={options}
          clItem={CL_SELECT_ITEM}

@@ -46,18 +46,20 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.svg-resize {
+.bt-resize {
+  display: inline-block;
   width: 26px;
   height: 26px;
   padding: 2px;
-  display: inline-block;
+  line-height: normal;
+  vertical-align: text-bottom;
   border-radius: 50%;
   border: 2px solid gray;
   stroke: gray;
-  cursor: pointer;
 }
 
-.svg-resize:hover {
+.bt-resize:focus,
+.bt-resize:hover {
   border: 2px solid #a487d4;
   stroke: #a487d4;
 }

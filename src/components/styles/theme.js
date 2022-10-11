@@ -35,53 +35,55 @@ import {
 } from './LS';
 
 const DF_BG = '#4d4d4d'
-const DF_BT_H = 'rgba(255, 255, 255, 0.1)'
-const DF_MSI_C = 'white'
-const DF_MSI_FH = 'rgba(48, 48, 48, 0.4)'
-const DF_SBT_BG = '#3f5178'
+, DF_BT_H = 'rgba(255, 255, 255, 0.1)'
+, DF_BG_OPTIONS = '#404040'
+, DF_MSI_C = 'white'
+, DF_MSI_FH = 'rgba(48, 48, 48, 0.4)'
+, DF_SBT_BG = '#3f5178'
 
 const BT_H_LIGHT = 'rgba(48, 48, 48, 0.3)'
-const MSI_C_LIGHT = '#303030'
-const MSI_FH_LIGHT = 'rgba(255, 255, 255, 0.4)'
-const SBT_BG_LIGHT = '#0096c8'
+, MSI_C_LIGHT = '#303030'
+, MSI_FH_LIGHT = 'rgba(255, 255, 255, 0.4)'
+, SBT_BG_LIGHT = '#0096c8'
+, BG_HEADER_LIGHT = '#0096c8'
+, C_HEADER_LIGHT = '#4d4d4d';
 
 const P_GREY = {
   BG_BODY: '#5f5f5f',
   BG: DF_BG,
   BT_H: DF_BT_H,
-  BG_OPTIONS: '#404040',
+  BG_OPTIONS: DF_BG_OPTIONS,
   MSI_C: DF_MSI_C,
   MSI_FH: DF_MSI_FH,
   SBT_BG: DF_SBT_BG,
   BG_HEADER: '#3a6799',
   C_HEADER: '#8a8a8a'
 };
+
+const _P_LIGHT = {
+  BT_H: BT_H_LIGHT,
+  MSI_C: MSI_C_LIGHT,
+  MSI_FH: MSI_FH_LIGHT,
+  SBT_BG: SBT_BG_LIGHT,
+  BG_HEADER: BG_HEADER_LIGHT,
+  C_HEADER: C_HEADER_LIGHT
+};
+
 const P_WHITE = {
+  ..._P_LIGHT,
   BG_BODY: 'darkgrey',
   BG: '#eaeaea',
-  BT_H: BT_H_LIGHT,
   BG_OPTIONS: '#dfe4e7',
-  MSI_C: MSI_C_LIGHT,
-  MSI_FH: MSI_FH_LIGHT,
-  SBT_BG: SBT_BG_LIGHT,
-  BG_HEADER: '#0096c8',
-  C_HEADER: '#4d4d4d'
 };
 const P_SAND = {
+  ..._P_LIGHT,
   BG_BODY: 'darkgrey',
   BG: '#e8e0cb',
-  BT_H: BT_H_LIGHT,
   BG_OPTIONS: '#c6bda5',
-  MSI_C: MSI_C_LIGHT,
-  MSI_FH: MSI_FH_LIGHT,
-  SBT_BG: SBT_BG_LIGHT,
-  BG_HEADER: '#0096c8',
-  C_HEADER: '#4d4d4d'
 };
 
 const CSS_RULE = {
   BG: {},
-  BG_OPTIONS: {},
   BG_HEADER: {},
   R_DIALOG: {}
 };
@@ -92,6 +94,7 @@ const _setBodyBg = (conf, P) => {
   _style.backgroundColor = P.BG_BODY
   _style.setProperty("--bg-c", P.BG || DF_BG)
   _style.setProperty("--bt-h", P.BT_H || DF_BT_H)
+  _style.setProperty("--mso-bg", P.BG_OPTIONS || DF_BG_OPTIONS)
   _style.setProperty("--msi-c", P.MSI_C || DF_MSI_C)
   _style.setProperty("--msi-fh", P.MSI_FH || DF_MSI_FH)
   _style.setProperty("--sbt-bg", P.SBT_BG || DF_SBT_BG)
@@ -99,11 +102,6 @@ const _setBodyBg = (conf, P) => {
 const _crBg = (conf, P) => {
   _assign(conf.BG, {
     backgroundColor: P.BG
-  })
-}
-const _crBgOption = (conf, P) => {
-  _assign(conf.BG_OPTIONS, {
-    backgroundColor: P.BG_OPTIONS
   })
 }
 const _crBgHeader = (conf, P) => {
@@ -122,7 +120,6 @@ const _crRDialog = (conf, P) => {
 const _FN_STYLES = [
   _setBodyBg,
   _crBg,
-  _crBgOption,
   _crBgHeader,
   _crRDialog
 ];

@@ -22,7 +22,8 @@ var CL_SELECT = 'm-select',
     CL_DIV = CL_SELECT + "__div",
     CL_DIV_VALUE = CL_SELECT + "__div__value",
     CL_DIV_BT = CL_SELECT + "__div__bt",
-    CL_INPUT_LINE = CL_SELECT + "__line";
+    CL_INPUT_LINE = CL_SELECT + "__line",
+    CL_SELECT_OPTIONS = CL_SELECT + "__options with-scroll";
 var DF_INIT_ITEM = {
   caption: '',
   value: ''
@@ -62,6 +63,7 @@ var InputSelect = function InputSelect(_ref) {
       children: caption
     }), (0, _jsxRuntime.jsx)(_OptionsPane["default"], {
       isShow: isShow,
+      className: CL_SELECT_OPTIONS,
       item: item,
       options: options,
       clItem: _CL.CL_SELECT_ITEM,
