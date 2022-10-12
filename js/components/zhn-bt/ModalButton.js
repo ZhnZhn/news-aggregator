@@ -7,28 +7,30 @@ exports["default"] = void 0;
 
 var _BtCaption = _interopRequireDefault(require("./BtCaption"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var CL_BT_FLAT = 'bt-flat';
 var CL_BT_FLAT_SPAN = 'bt-flat__span';
 
 var ModalButton = function ModalButton(_ref) {
-  var style = _ref.style,
+  var ariaLabel = _ref.ariaLabel,
+      dataPos = _ref.dataPos,
+      style = _ref.style,
       clDiv = _ref.clDiv,
-      title = _ref.title,
       caption = _ref.caption,
       accessKey = _ref.accessKey,
       children = _ref.children,
       onClick = _ref.onClick;
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+  return (0, _jsxRuntime.jsx)("button", {
+    "aria-label": ariaLabel,
+    "data-pos": dataPos,
     className: CL_BT_FLAT,
     style: style,
-    title: title,
     accessKey: accessKey,
     onClick: onClick,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    children: (0, _jsxRuntime.jsx)("div", {
       className: clDiv,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_BtCaption["default"], {
+      children: (0, _jsxRuntime.jsx)(_BtCaption["default"], {
         className: CL_BT_FLAT_SPAN,
         caption: caption,
         accessKey: accessKey,

@@ -5,17 +5,21 @@ const CL_BT_FLAT = 'bt-flat';
 const CL_BT_FLAT_SPAN = 'bt-flat__span';
 
 const FlatButton = ({
+  ariaLabel,
+  dataPos,
   className,
-  style, clDiv,
-  title, caption,
+  style,
+  clDiv,
+  caption,
   accessKey,
   children,
   onClick
 }) => (
   <button
+    aria-label={ariaLabel}
+    data-pos={dataPos}
     className={crCn(CL_BT_FLAT, className)}
     style={style}
-    title={title}
     accessKey={accessKey}
     onClick={onClick}
   >

@@ -6,10 +6,13 @@ exports["default"] = void 0;
 var _jsxRuntime = require("preact/jsx-runtime");
 
 var LogoPreact = function LogoPreact(_ref) {
-  var className = _ref.className;
+  var ariaLabel = _ref.ariaLabel,
+      dataPos = _ref.dataPos,
+      className = _ref.className;
   return (0, _jsxRuntime.jsx)("a", {
+    "aria-label": ariaLabel,
+    "data-pos": dataPos,
     className: className,
-    title: "Official Preact site",
     href: "https://preactjs.com",
     tabIndex: "-1",
     children: (0, _jsxRuntime.jsxs)("svg", {
@@ -17,9 +20,7 @@ var LogoPreact = function LogoPreact(_ref) {
       width: "60px",
       height: "60px",
       viewBox: "-256 -256 512 512",
-      children: [(0, _jsxRuntime.jsx)("title", {
-        children: "Preact Logo"
-      }), (0, _jsxRuntime.jsx)("path", {
+      children: [(0, _jsxRuntime.jsx)("path", {
         d: "M0,-256 221.7025033688164,-128 221.7025033688164,128 0,256 -221.7025033688164,128 -221.7025033688164,-128z",
         fill: "white"
       }), (0, _jsxRuntime.jsx)("ellipse", {

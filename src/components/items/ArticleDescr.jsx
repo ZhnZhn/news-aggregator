@@ -1,5 +1,7 @@
 import { useCallback } from '../uiApi';
 
+import { DP_CLOSE_RIGHT } from '../DP';
+
 import ShowHide from '../zhn-atoms/ShowHide';
 import SafeLink from '../zhn-atoms/SafeLink';
 import TextDiv from '../zhn-atoms/TextDiv';
@@ -102,7 +104,10 @@ const ArticleDescr = ({
             text={related}
           />
           <div style={S_BOTTOM_ROW}>
-            <SvgX onClick={onClose} />
+            <SvgX
+              dataPos={DP_CLOSE_RIGHT}
+              onClick={onClose}
+            />
             <TextSpan
               className={CL_SELECT_NONE}
               style={S_DATE}

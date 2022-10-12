@@ -25,6 +25,8 @@ var _NewsPane = _interopRequireDefault(require("./NewsPane.Style"));
 
 var _has = _interopRequireDefault(require("../has"));
 
+var _DP = require("../DP");
+
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 
 var _SvgHrzResize = _interopRequireDefault(require("../zhn-resize/SvgHrzResize"));
@@ -43,7 +45,7 @@ var WIDTH_STYLE = _has["default"].initWidthStyle(),
     CL_MENU_MORE = "popup-menu items__menu-more",
     S_BT_REMOVE = {
   position: 'relative',
-  top: -3,
+  top: -2,
   margin: '0 6px 0 16px'
 },
     S_SVG_RESIZE = {
@@ -206,8 +208,9 @@ var NewsPane = function NewsPane(_ref2) {
       onMore: _showMore,
       onClose: _hHide,
       children: [(0, _jsxRuntime.jsx)(_Comp["default"].CircleButton, {
+        ariaLabel: "Remove All Items",
+        dataPos: _DP.DP_MIDDLE_RIGHT,
         caption: "R",
-        title: "Remove All Items",
         style: S_BT_REMOVE,
         onClick: onRemoveItems
       }), (0, _jsxRuntime.jsx)(_SvgHrzResize["default"], {

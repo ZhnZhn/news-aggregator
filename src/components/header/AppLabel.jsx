@@ -2,15 +2,11 @@
 const AppLabel = ({
   className,
   style,
-  caption,
-  title,
-  onClick
+  caption
 }) => (
   <span
      className={className}
      style={style}
-     title={title}
-     onClick={onClick}
   >
     {caption}
   </span>

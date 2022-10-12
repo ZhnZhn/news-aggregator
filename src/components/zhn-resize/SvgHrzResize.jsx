@@ -1,4 +1,5 @@
 import { forwardRef } from '../uiApi';
+import { DP_MIDDLE_RIGHT } from '../DP';
 import useResizeElement from './useResizeElement';
 
 import BtResize from './BtResize';
@@ -6,13 +7,10 @@ import BtResize from './BtResize';
 const S_ROOT_DIV = {
   display: 'inline-block'
 }
-, S_BT_LEFT = {
+, S_ML_10 = {
   marginLeft: 10
-}
-, S_BT_RIGHT = {
-  marginLeft: 10,
-  transform: 'rotate(180deg)'
 };
+
 
 const SvgHrzResize = forwardRef((
   props,
@@ -28,15 +26,18 @@ const SvgHrzResize = forwardRef((
   return (
     <div style={{...S_ROOT_DIV, ...props.style}}>
       <BtResize
-        style={S_BT_LEFT}
-        title="Resize container to left"
+        ariaLabel="Resize to Left"
+        dataPos={DP_MIDDLE_RIGHT}
+        style={S_ML_10}
         startResize={hStartResizeLeft}
         stopResize={hStopResize}
         onKeyDown={hKdLeft}
       />
       <BtResize
-        style={S_BT_RIGHT}
-        title="Resize container to right"
+        to="r"
+        ariaLabel="Resize to Right"
+        dataPos={DP_MIDDLE_RIGHT}
+        style={S_ML_10}
         startResize={hStartResizeRight}
         stopResize={hStopResize}
         onKeyDown={hKdRight}

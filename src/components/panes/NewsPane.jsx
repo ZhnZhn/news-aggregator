@@ -17,6 +17,10 @@ import crCn from '../zhn-utils/crCn';
 import styleConfig from './NewsPane.Style';
 import has from '../has';
 
+import {
+  DP_MIDDLE_RIGHT
+} from '../DP';
+
 import crModelMore from './crModelMore';
 import SvgHrzResize from '../zhn-resize/SvgHrzResize';
 import A from '../Comp';
@@ -33,7 +37,7 @@ const WIDTH_STYLE = has.initWidthStyle()
 
 , S_BT_REMOVE = {
   position: 'relative',
-  top: -3,
+  top: -2,
   margin: '0 6px 0 16px'
 }
 , S_SVG_RESIZE = {
@@ -213,8 +217,9 @@ const NewsPane = ({
          onClose={_hHide}
       >
         <A.CircleButton
+          ariaLabel="Remove All Items"
+          dataPos={DP_MIDDLE_RIGHT}
           caption="R"
-          title="Remove All Items"
           style={S_BT_REMOVE}
           onClick={onRemoveItems}
         />

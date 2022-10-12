@@ -1,13 +1,13 @@
 
-const IconAppLogo = ({ 
-  className,
-  title,
-  onClick
+const IconAppLogo = ({
+  ariaLabel,
+  dataPos,
+  className
 }) => (
     <span
+       aria-label={ariaLabel}
+       data-pos={dataPos}
        className={className}
-       title={title}
-       onClick={onClick}
     >
     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
          fillRule="evenodd"
@@ -16,7 +16,6 @@ const IconAppLogo = ({
          strokeMiterlimit="2"
          strokeWidth="2"
     >
-    <title>{title}</title>
     <rect
       ry="1.8825414"
       rx="194.14471"

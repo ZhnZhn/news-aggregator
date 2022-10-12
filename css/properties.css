@@ -4,13 +4,13 @@
 }
 
 .gap-right::before {
-   content: '';
-   position: absolute;
-   right: 0;
-   top: 0;
-   width: 38px;
-   height: 100%;
-   background: inherit;
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 38px;
+  height: 100%;
+  background: inherit;
 }
 
 .select-none {

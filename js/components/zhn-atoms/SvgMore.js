@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
+var _DP = require("../DP");
+
 var _jsxRuntime = require("preact/jsx-runtime");
 
 var CL_BT_MORE = 'bt-more',
@@ -18,15 +20,14 @@ var CL_BT_MORE = 'bt-more',
 var SvgMore = function SvgMore(_ref) {
   var style = _ref.style,
       svgStyle = _ref.svgStyle,
-      _ref$title = _ref.title,
-      title = _ref$title === void 0 ? 'Menu More' : _ref$title,
       btRef = _ref.btRef,
       onClick = _ref.onClick;
   return (0, _jsxRuntime.jsx)("button", {
+    "aria-label": "More",
+    "data-pos": _DP.DP_MIDDLE_LEFT,
     ref: btRef,
     className: CL_BT_MORE,
     style: style,
-    title: title,
     onClick: onClick,
     children: (0, _jsxRuntime.jsxs)("svg", {
       style: (0, _extends2["default"])({}, S_SVG, svgStyle),

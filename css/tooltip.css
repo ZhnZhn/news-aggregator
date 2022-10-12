@@ -1,0 +1,62 @@
+
+[aria-label][data-pos]::after {
+  content: attr(aria-label);
+  position: absolute;
+  top: 110%;
+  z-index: 20;
+  color: #f0fff0;
+  background: rgba(16, 16, 16, 0.95);
+  border-radius: 2px;
+  pointer-events: none;
+  white-space: nowrap;
+  text-indent: 0;
+  text-shadow: none;
+  font-family: Roboto, Arial, Lato, sans-serif; 
+  font-weight: normal;
+  font-size: 16px;
+  padding: 1px 7px;
+  line-height: 1.8;
+  opacity: 0; 
+  transition: opacity 0.12s ease-out;
+}
+
+[aria-label][data-pos]:hover::after {
+  opacity: 1;
+  transition: opacity 0.12s ease-out 0.7s;
+}
+
+[aria-label][data-pos="l"]::after {
+  left: 0;
+}
+
+[aria-label][data-pos="r"]::after {
+  right: 0;
+} 
+
+[aria-label][data-pos="tl"]::after {
+  top: 0;
+  left: calc(100% + 6px);
+}
+
+[aria-label][data-pos="tr"]::after {
+  top: 0;
+  right: calc(100% + 6px);
+}
+
+[aria-label][data-pos="cl"]::after {
+  top: 38px;
+  right: -12px;
+  font-size: 12px;
+  transform: rotate(-90deg);
+}
+[aria-label][data-pos="cr"]::after {
+  top: -38px;
+  right: -12px;
+  font-size: 12px;
+  transform: rotate(-90deg);
+}
+
+[aria-label][data-pos="gh"]::after {
+  top: 87%;
+  left: 0;
+}

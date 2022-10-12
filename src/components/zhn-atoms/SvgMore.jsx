@@ -1,3 +1,7 @@
+import {
+  DP_MIDDLE_LEFT
+} from '../DP';
+
 const CL_BT_MORE = 'bt-more'
 , S_SVG = {
   fill: 'black',
@@ -7,16 +11,16 @@ const CL_BT_MORE = 'bt-more'
 const SvgMore = ({
   style,
   svgStyle,
-  title='Menu More',
   btRef,
   onClick
 }) => {
   return (
     <button
+      aria-label="More"
+      data-pos={DP_MIDDLE_LEFT}
       ref={btRef}
       className={CL_BT_MORE}
       style={style}
-      title={title}
       onClick={onClick}
     >
       <svg

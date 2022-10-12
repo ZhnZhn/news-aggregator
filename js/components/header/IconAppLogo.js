@@ -3,17 +3,17 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var IconAppLogo = function IconAppLogo(_ref) {
-  var className = _ref.className,
-      title = _ref.title,
-      onClick = _ref.onClick;
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+  var ariaLabel = _ref.ariaLabel,
+      dataPos = _ref.dataPos,
+      className = _ref.className;
+  return (0, _jsxRuntime.jsx)("span", {
+    "aria-label": ariaLabel,
+    "data-pos": dataPos,
     className: className,
-    title: title,
-    onClick: onClick,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("svg", {
+    children: (0, _jsxRuntime.jsxs)("svg", {
       viewBox: "0 0 32 32",
       xmlns: "http://www.w3.org/2000/svg",
       fillRule: "evenodd",
@@ -21,9 +21,7 @@ var IconAppLogo = function IconAppLogo(_ref) {
       strokeLinejoin: "round",
       strokeMiterlimit: "2",
       strokeWidth: "2",
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("title", {
-        children: title
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("rect", {
+      children: [(0, _jsxRuntime.jsx)("rect", {
         ry: "1.8825414",
         rx: "194.14471",
         y: "1.434558",
@@ -32,7 +30,7 @@ var IconAppLogo = function IconAppLogo(_ref) {
         width: "10.85316",
         fill: "#8ecc2d",
         stroke: "#8ecc2d"
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("rect", {
+      }), (0, _jsxRuntime.jsx)("rect", {
         ry: "1.87537",
         rx: "204.478",
         y: "16.639841",
@@ -41,7 +39,7 @@ var IconAppLogo = function IconAppLogo(_ref) {
         width: "18.307165",
         fill: "#232f3b",
         stroke: "#232f3b"
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("rect", {
+      }), (0, _jsxRuntime.jsx)("rect", {
         ry: "1.87537",
         rx: "204.478",
         y: "3.4229634",

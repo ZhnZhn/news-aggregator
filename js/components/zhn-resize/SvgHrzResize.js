@@ -9,21 +9,19 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _uiApi = require("../uiApi");
 
+var _DP = require("../DP");
+
 var _useResizeElement2 = _interopRequireDefault(require("./useResizeElement"));
 
 var _BtResize = _interopRequireDefault(require("./BtResize"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var S_ROOT_DIV = {
   display: 'inline-block'
 },
-    S_BT_LEFT = {
+    S_ML_10 = {
   marginLeft: 10
-},
-    S_BT_RIGHT = {
-  marginLeft: 10,
-  transform: 'rotate(180deg)'
 };
 var SvgHrzResize = (0, _uiApi.forwardRef)(function (props, ref) {
   var _useResizeElement = (0, _useResizeElement2["default"])(props, ref),
@@ -33,17 +31,20 @@ var SvgHrzResize = (0, _uiApi.forwardRef)(function (props, ref) {
       hKdLeft = _useResizeElement[3],
       hKdRight = _useResizeElement[4];
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  return (0, _jsxRuntime.jsxs)("div", {
     style: (0, _extends2["default"])({}, S_ROOT_DIV, props.style),
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_BtResize["default"], {
-      style: S_BT_LEFT,
-      title: "Resize container to left",
+    children: [(0, _jsxRuntime.jsx)(_BtResize["default"], {
+      ariaLabel: "Resize to Left",
+      dataPos: _DP.DP_MIDDLE_RIGHT,
+      style: S_ML_10,
       startResize: hStartResizeLeft,
       stopResize: hStopResize,
       onKeyDown: hKdLeft
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_BtResize["default"], {
-      style: S_BT_RIGHT,
-      title: "Resize container to right",
+    }), (0, _jsxRuntime.jsx)(_BtResize["default"], {
+      to: "r",
+      ariaLabel: "Resize to Right",
+      dataPos: _DP.DP_MIDDLE_RIGHT,
+      style: S_ML_10,
       startResize: hStartResizeRight,
       stopResize: hStopResize,
       onKeyDown: hKdRight

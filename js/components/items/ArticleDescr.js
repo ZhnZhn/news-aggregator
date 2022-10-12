@@ -7,7 +7,9 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _react = require("react");
+var _uiApi = require("../uiApi");
+
+var _DP = require("../DP");
 
 var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
 
@@ -19,7 +21,7 @@ var _TextSpan = _interopRequireDefault(require("../zhn-atoms/TextSpan"));
 
 var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var CL_DIV = "link-wrapper",
     CL_SELECT_NONE = "select-none",
@@ -73,7 +75,7 @@ var ArticleDescr = function ArticleDescr(_ref) {
       onClose = _ref.onClose;
 
   /*eslint-disable react-hooks/exhaustive-deps */
-  var _hKeyDown = (0, _react.useCallback)(function (evt) {
+  var _hKeyDown = (0, _uiApi.useCallback)(function (evt) {
     var keyCode = evt.keyCode;
 
     if (keyCode === 27) {
@@ -86,35 +88,36 @@ var ArticleDescr = function ArticleDescr(_ref) {
   /*eslint-enable react-hooks/exhaustive-deps */
 
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_ShowHide["default"], {
+  return (0, _jsxRuntime.jsxs)(_ShowHide["default"], {
     style: style,
     isShow: isShow,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    children: [(0, _jsxRuntime.jsxs)("div", {
       style: S_AUTHOR_ROW,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_TextSpan["default"], {
+      children: [(0, _jsxRuntime.jsx)(_TextSpan["default"], {
         style: S_AUTHOR,
         text: author
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_TextSpan["default"], {
+      }), (0, _jsxRuntime.jsx)(_TextSpan["default"], {
         style: S_DATE,
         text: timeAgo
       })]
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SafeLink["default"], {
+    }), (0, _jsxRuntime.jsx)(_SafeLink["default"], {
       className: CL_DIV,
       style: S_DESCR,
       href: href,
       onKeyDown: _hKeyDown,
       children: description
-    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    }), (0, _jsxRuntime.jsxs)("div", {
       style: S_PT_8,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_TextDiv["default"], {
+      children: [(0, _jsxRuntime.jsx)(_TextDiv["default"], {
         className: CL_SELECT_NONE,
         style: S_RELATED,
         text: related
-      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      }), (0, _jsxRuntime.jsxs)("div", {
         style: S_BOTTOM_ROW,
-        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgX["default"], {
+        children: [(0, _jsxRuntime.jsx)(_SvgX["default"], {
+          dataPos: _DP.DP_CLOSE_RIGHT,
           onClick: onClose
-        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_TextSpan["default"], {
+        }), (0, _jsxRuntime.jsx)(_TextSpan["default"], {
           className: CL_SELECT_NONE,
           style: S_DATE,
           text: publishedAt

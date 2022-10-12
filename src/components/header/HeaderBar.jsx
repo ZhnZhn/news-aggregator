@@ -6,6 +6,11 @@ import {
 import useTheme from '../hooks/useTheme';
 import styleConfig from './HeaderBar.Style';
 
+import {
+  DP_BOTTOM_LEFT,
+  DP_BOTTOM_RIGHT
+} from '../DP';
+
 import LoadingProgress from './LoadingProgress';
 import IconAppLogo from './IconAppLogo';
 import AppLabel from './AppLabel';
@@ -98,8 +103,9 @@ const HeaderBar = ({
          store={store}
       />
       <IconAppLogo
+         ariaLabel={TITLE}
+         dataPos={DP_BOTTOM_LEFT}
          className={CL_ICON_APP}
-         title={TITLE}
       />
       <AppLabel
          className={CL_LABEL_APP}
@@ -107,18 +113,20 @@ const HeaderBar = ({
       />
       <span className={CL_BROWSER_BTS}>
         <A.FlatButton
+          ariaLabel="News Sources Browser [n]"
+          dataPos={DP_BOTTOM_LEFT}
           style={TS.BT.FLAT_ROOT}
           clDiv={TS.BT.CL_FLAT_DIV}
           caption="News"
-          title="Open News Sources Browser"
           accessKey="n"
           onClick={onNewsSources}
         />
         <A.ModalButton
+           ariaLabel="Panel Query Sources [q]"
+           dataPos={DP_BOTTOM_RIGHT}
            style={TS.BT.FLAT_ROOT}
            clDiv={TS.BT.CL_FLAT_DIV}
            caption="Query"
-           title="Panel Query Source"
            accessKey="q"
            onClick={_hToggleQuery}
         >
@@ -127,19 +135,21 @@ const HeaderBar = ({
       </span>
       <div className={CL_BTS}>
           <A.FlatButton
+            ariaLabel="About News Aggregator [a]"
+            dataPos={DP_BOTTOM_RIGHT}
             className={CL_BT_ABOUT}
             style={TS.BT.FLAT_ROOT}
             clDiv={TS.BT.CL_FLAT_DIV}
-            title="About News Aggregator"
             accessKey="a"
             onClick={onAbout}
           >
             <A.SvgInfo style={S_SVG_ICON} />
           </A.FlatButton>
           <A.FlatButton
+            ariaLabel="Settings Dialog [s]"
+            dataPos={DP_BOTTOM_RIGHT}
             style={TS.BT.FLAT_ROOT}
             clDiv={TS.BT.CL_FLAT_DIV}
-            title="Open Settings Dialog"
             accessKey="s"
             onClick={onSettings}
           >

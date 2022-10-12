@@ -8,7 +8,7 @@
   cursor: pointer;
   -webkit-transition: -webkit-transform 0.3s ease-out;
   -ms-transition: -ms-transform 0.3s ease-out;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out 0.2s;
   -webkit-transform-origin: center center;
   -ms-transform-origin: center center;
   transform-origin: center center;
