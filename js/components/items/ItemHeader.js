@@ -7,9 +7,11 @@ exports["default"] = void 0;
 
 var _uiApi = require("../uiApi");
 
+var _CL = require("../styles/CL");
+
 var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var ItemHeader = (0, _uiApi.forwardRef)(function (_ref, ref) {
   var isShow = _ref.isShow,
@@ -47,7 +49,7 @@ var ItemHeader = (0, _uiApi.forwardRef)(function (_ref, ref) {
   /*eslint-enable react-hooks/exhaustive-deps */
 
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  return (0, _jsxRuntime.jsxs)("div", {
     role: "button",
     ref: ref,
     tabIndex: "0",
@@ -55,11 +57,11 @@ var ItemHeader = (0, _uiApi.forwardRef)(function (_ref, ref) {
     style: style,
     onClick: onClick,
     onKeyDown: _hKeyDown,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
-      className: "not-selected",
+    children: [(0, _jsxRuntime.jsx)("span", {
+      className: _CL.CL_SELECT_NONE,
       style: captionStyle,
       children: title
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgX["default"], {
+    }), (0, _jsxRuntime.jsx)(_SvgX["default"], {
       style: btCloseStyle,
       onClick: _hClose
     })]

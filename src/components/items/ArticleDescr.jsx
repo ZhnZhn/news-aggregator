@@ -1,6 +1,7 @@
 import { useCallback } from '../uiApi';
 
 import { DP_CLOSE_RIGHT } from '../DP';
+import { CL_SELECT_NONE } from '../styles/CL';
 
 import ShowHide from '../zhn-atoms/ShowHide';
 import SafeLink from '../zhn-atoms/SafeLink';
@@ -9,7 +10,6 @@ import TextSpan from '../zhn-atoms/TextSpan';
 import SvgX from '../zhn-atoms/SvgX';
 
 const CL_DIV = "link-wrapper"
-, CL_SELECT_NONE = "select-none"
 , S_FONT = {
    color: '#121212',
    fontSize: '1rem',

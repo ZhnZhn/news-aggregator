@@ -7,16 +7,17 @@ exports["default"] = void 0;
 
 var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
 
+var _CL = require("../styles/CL");
+
 var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose"));
 
 var _MenuItemBadge = _interopRequireDefault(require("./MenuItemBadge"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var _excluded = ["items", "hmItems", "itemData", "onClick", "onClickBadge"],
     _excluded2 = ["styleConfig", "caption", "isInitClose"];
-var CL_NOT_S = 'not-selected',
-    _assign = Object.assign;
+var _assign = Object.assign;
 
 var _createOnKeyDown = function _createOnKeyDown(onClick) {
   return function (event) {
@@ -36,10 +37,10 @@ var _renderMenuItems = function _renderMenuItems(TS, option) {
       onClickBadge = option.onClickBadge,
       rest = (0, _objectWithoutPropertiesLoose2["default"])(option, _excluded);
   return items.map(function (item, index) {
-    var _className = TS.CL_ROW ? TS.CL_ROW + " " + CL_NOT_S : CL_NOT_S,
+    var _className = TS.CL_ROW ? TS.CL_ROW + " " + _CL.CL_SELECT_NONE : _CL.CL_SELECT_NONE,
         _itemConf = hmItems[item.id],
         menuTitle = _itemConf.menuTitle,
-        badgeEl = itemData[item.id] ? /*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuItemBadge["default"], {
+        badgeEl = itemData[item.id] ? (0, _jsxRuntime.jsx)(_MenuItemBadge["default"], {
       style: TS.BADGE,
       itemBadge: itemData[item.id],
       itemConf: _itemConf,
@@ -50,7 +51,7 @@ var _renderMenuItems = function _renderMenuItems(TS, option) {
 
     var _onClick = onClick.bind(null, _itemConf);
 
-    return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    return (0, _jsxRuntime.jsxs)("div", {
       role: "menuitem",
       tabIndex: "0",
       className: _className,
@@ -66,7 +67,7 @@ var MenuPart = function MenuPart(_ref) {
       caption = _ref.caption,
       isInitClose = _ref.isInitClose,
       restProps = (0, _objectWithoutPropertiesLoose2["default"])(_ref, _excluded2);
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_OpenClose["default"], {
+  return (0, _jsxRuntime.jsx)(_OpenClose["default"], {
     style: TS.OPEN_CLOSE,
     caption: caption,
     isClose: isInitClose,

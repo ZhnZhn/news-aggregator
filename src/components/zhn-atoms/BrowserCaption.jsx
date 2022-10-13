@@ -1,8 +1,9 @@
+import { CL_SELECT_NONE } from '../styles/CL';
+
 import SvgMore from './SvgMore';
 import SvgX from './SvgX';
 
 const CL_GAP = "gap-right"
-, CL_SELECT_NONE = "select-none"
 , S_ROOT = {
   position: 'relative',
   backgroundColor: '#3f5178',

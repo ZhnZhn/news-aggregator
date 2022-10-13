@@ -1,9 +1,10 @@
 //import PropTypes from 'prop-types'
-import OpenClose from '../zhn-atoms/OpenClose'
-import MenuItemBadge from './MenuItemBadge'
+import { CL_SELECT_NONE } from '../styles/CL';
 
-const CL_NOT_S = 'not-selected'
-, _assign = Object.assign;
+import OpenClose from '../zhn-atoms/OpenClose';
+import MenuItemBadge from './MenuItemBadge';
+
+const _assign = Object.assign;
 
 const _createOnKeyDown = (
   onClick
@@ -26,9 +27,9 @@ const _renderMenuItems = (
     ...rest
   } = option;
   return items.map((item, index) => {
-    const _className = (TS.CL_ROW)
-             ? `${TS.CL_ROW} ${CL_NOT_S}`
-             :  CL_NOT_S
+    const _className = TS.CL_ROW
+             ? `${TS.CL_ROW} ${CL_SELECT_NONE}`
+             :  CL_SELECT_NONE
           , _itemConf = hmItems[item.id]
           , { menuTitle} = _itemConf
           , badgeEl = itemData[item.id]

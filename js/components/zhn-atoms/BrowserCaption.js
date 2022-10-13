@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
+var _CL = require("../styles/CL");
+
 var _SvgMore = _interopRequireDefault(require("./SvgMore"));
 
 var _SvgX = _interopRequireDefault(require("./SvgX"));
@@ -14,7 +16,6 @@ var _SvgX = _interopRequireDefault(require("./SvgX"));
 var _jsxRuntime = require("preact/jsx-runtime");
 
 var CL_GAP = "gap-right",
-    CL_SELECT_NONE = "select-none",
     S_ROOT = {
   position: 'relative',
   backgroundColor: '#3f5178',
@@ -67,7 +68,7 @@ var BrowserCaption = function BrowserCaption(_ref) {
       svgStyle: S_SVG_MORE,
       onClick: onMore
     }), (0, _jsxRuntime.jsx)("span", {
-      className: CL_SELECT_NONE,
+      className: _CL.CL_SELECT_NONE,
       style: S_CAPTION,
       children: caption
     }), children, (0, _jsxRuntime.jsx)(_SvgX["default"], {

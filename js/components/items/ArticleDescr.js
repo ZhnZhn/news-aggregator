@@ -11,6 +11,8 @@ var _uiApi = require("../uiApi");
 
 var _DP = require("../DP");
 
+var _CL = require("../styles/CL");
+
 var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
 
 var _SafeLink = _interopRequireDefault(require("../zhn-atoms/SafeLink"));
@@ -24,7 +26,6 @@ var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
 var _jsxRuntime = require("preact/jsx-runtime");
 
 var CL_DIV = "link-wrapper",
-    CL_SELECT_NONE = "select-none",
     S_FONT = {
   color: '#121212',
   fontSize: '1rem',
@@ -109,7 +110,7 @@ var ArticleDescr = function ArticleDescr(_ref) {
     }), (0, _jsxRuntime.jsxs)("div", {
       style: S_PT_8,
       children: [(0, _jsxRuntime.jsx)(_TextDiv["default"], {
-        className: CL_SELECT_NONE,
+        className: _CL.CL_SELECT_NONE,
         style: S_RELATED,
         text: related
       }), (0, _jsxRuntime.jsxs)("div", {
@@ -118,7 +119,7 @@ var ArticleDescr = function ArticleDescr(_ref) {
           dataPos: _DP.DP_CLOSE_RIGHT,
           onClick: onClose
         }), (0, _jsxRuntime.jsx)(_TextSpan["default"], {
-          className: CL_SELECT_NONE,
+          className: _CL.CL_SELECT_NONE,
           style: S_DATE,
           text: publishedAt
         })]

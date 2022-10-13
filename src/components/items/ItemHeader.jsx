@@ -3,6 +3,7 @@ import {
   useCallback
 } from '../uiApi';
 
+import { CL_SELECT_NONE } from '../styles/CL';
 import SvgX from '../zhn-atoms/SvgX';
 
 const ItemHeader = forwardRef(({
@@ -50,14 +51,14 @@ const ItemHeader = forwardRef(({
       onKeyDown={_hKeyDown}
     >
       <span
-         className="not-selected"
-         style={captionStyle}
+        className={CL_SELECT_NONE}
+        style={captionStyle}
       >
          {title}
       </span>
       <SvgX
-          style={btCloseStyle}
-          onClick={_hClose}
+        style={btCloseStyle}
+        onClick={_hClose}
       />
     </div>
   );
