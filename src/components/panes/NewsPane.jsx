@@ -34,15 +34,17 @@ const WIDTH_STYLE = has.initWidthStyle()
 , CL_NEWS_PANE = "news-pane"
 , CL_SHOW_POPUP = "show-popup"
 , CL_MENU_MORE = "popup-menu items__menu-more"
-
+, S_BROWSER_CAPTION = {
+  paddingTop: 2
+}
 , S_BT_REMOVE = {
   position: 'relative',
   top: -2,
-  margin: '0 6px 0 16px'
+  margin: '0 6px 0 12px'
 }
 , S_SVG_RESIZE = {
   position: 'relative',
-  top: 2
+  top: 3
 }
 , S_SCROLL_DIV = {
   overflow: 'hidden auto',
@@ -211,7 +213,7 @@ const NewsPane = ({
         onClose={_hideMore}
       />
       <A.BrowserCaption
-         style={TS.PANE_CAPTION}
+         style={{...TS.PANE_CAPTION, ...S_BROWSER_CAPTION}}
          caption={_paneCaption}
          onMore={_showMore}
          onClose={_hHide}
