@@ -14,13 +14,13 @@ var _SvgX = _interopRequireDefault(require("./SvgX"));
 var _jsxRuntime = require("preact/jsx-runtime");
 
 var CL_GAP = "gap-right",
-    CL_NOT_SELECTED = "not-selected",
+    CL_SELECT_NONE = "select-none",
     S_ROOT = {
   position: 'relative',
   backgroundColor: '#3f5178',
-  color: 'rgba(164, 135, 212, 1)',
+  color: '#a487d4',
   lineHeight: 1.8,
-  padding: '4px 42px 2px 10px',
+  padding: '4px 42px 2px 4px',
   borderTopLeftRadius: '4px',
   borderTopRightRadius: '4px',
   overflow: 'hidden',
@@ -35,7 +35,7 @@ var CL_GAP = "gap-right",
   verticalAlign: 'sub',
   position: 'relative',
   top: 2,
-  marginRight: 6
+  marginRight: 4
 },
     S_SVG_MORE = {
   fill: 'inherit',
@@ -67,7 +67,7 @@ var BrowserCaption = function BrowserCaption(_ref) {
       svgStyle: S_SVG_MORE,
       onClick: onMore
     }), (0, _jsxRuntime.jsx)("span", {
-      className: CL_NOT_SELECTED,
+      className: CL_SELECT_NONE,
       style: S_CAPTION,
       children: caption
     }), children, (0, _jsxRuntime.jsx)(_SvgX["default"], {

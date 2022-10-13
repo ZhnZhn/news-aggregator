@@ -1,39 +1,38 @@
-import SvgMore from './SvgMore'
-import SvgX from './SvgX'
+import SvgMore from './SvgMore';
+import SvgX from './SvgX';
 
 const CL_GAP = "gap-right"
-, CL_NOT_SELECTED = "not-selected"
+, CL_SELECT_NONE = "select-none"
 , S_ROOT = {
   position: 'relative',
   backgroundColor: '#3f5178',
-  color: 'rgba(164, 135, 212, 1)',
+  color: '#a487d4',
   lineHeight: 1.8,
-  padding: '4px 42px 2px 10px',
+  padding: '4px 42px 2px 4px',
   borderTopLeftRadius: '4px',
   borderTopRightRadius: '4px',
   overflow: 'hidden',
   whiteSpace: 'nowrap',
   textOverflow: 'clip'
 }, S_CAPTION = {
-    fontSize: '1.125rem',
-    fontWeight: 'bold'
+  fontSize: '1.125rem',
+  fontWeight: 'bold'
 }, S_BT_MORE = {
   verticalAlign: 'sub',
   position: 'relative',
   top: 2,
-  marginRight: 6
+  marginRight: 4
 }
- , S_SVG_MORE = {    
-    fill: 'inherit',
-    stroke: 'inherit'
+, S_SVG_MORE = {
+  fill: 'inherit',
+  stroke: 'inherit'
 }, S_SVG_CLOSE = {
-    position: 'absolute',
-    top: 6,
-    right: 0,
-    width: '1.5rem',
-    height: '1.5rem'
+  position: 'absolute',
+  top: 6,
+  right: 0,
+  width: '1.5rem',
+  height: '1.5rem'
 };
-
 
 const _isFn = fn => typeof fn === "function";
 
@@ -54,7 +53,7 @@ const BrowserCaption = ({
        />
      }
     <span
-       className={CL_NOT_SELECTED}
+       className={CL_SELECT_NONE}
        style={S_CAPTION}
     >
        {caption}
