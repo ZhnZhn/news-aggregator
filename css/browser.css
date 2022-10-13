@@ -1,6 +1,5 @@
 .open-close {
   cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .open-close:focus {
@@ -9,16 +8,13 @@
 }
 
 .row__news-source {
+  color: black;
+  padding: 1px 0 1px 12px;
+  line-height: 2;
+  border-left: 4px solid transparent;
   font-size: 1rem;
   font-weight: bold;
-  color: black;
-  line-height: 2;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  padding-left: 12px;
-  border-left: 4px solid transparent;
   cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 .row__news-source:hover {
   border-left: 4px solid #1b75bb;

@@ -1,41 +1,29 @@
 @import 'base/values';
-@import 'base/themeSuffix';
-@import 'base/palette';
-
-@mixin row__news-source($suffix){
-  .row__news-source {
-    &#{$suffix} {
-      font-size: 1rem;
-      font-weight: bold;
-      color: black;
-      line-height: 2;
-      padding-top: 1px;
-      padding-bottom: 1px;
-      padding-left: 12px;
-      border-left: 4px solid transparent;
-      cursor: pointer;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    }
-    &#{$suffix}:hover {
-      border-left: 4px solid $cBlSourceHover;
-    }
-    &#{$suffix}:focus,
-    &#{$suffix}:active {
-      background-color: $bgItemFocus;
-      outline: 0;
-    }
-  }
-}
+//@import 'base/palette';
 
 .open-close {
   cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 .open-close:focus {
   background-color: $bgItemFocus;
   outline: 0;
 }
 
-@include row__news-source($thGreySuffix);
-//@include row__news-source($thWhiteSuffix);
-//@include row__news-source($thSandSuffix);
+.row__news-source {   
+  color: black;
+  padding: 1px 0 1px 12px;
+  line-height: 2;
+  border-left: 4px solid transparent;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+   
+  &:hover {
+    border-left: 4px solid $cBlSourceHover;
+  }
+  &:focus,
+  &:active {
+    background-color: $bgItemFocus;
+    outline: 0;
+  }
+}
