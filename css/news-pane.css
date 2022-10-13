@@ -1,25 +1,24 @@
 .about-pane {  
   position: relative;
-  background-color: #4d4d4d;
+  height: calc(100vh - 71px);
+  min-height: 500px;
   width: 450px;
   min-width: 300px;
   max-width: 700px;
-  min-height: 500px;
-  padding: 0;
-  padding-bottom: 35px;
   margin-left: 16px;
-  height: calc(100vh - 71px);
+  padding: 0 0 35px 0;
+  background-color: #4d4d4d;
   border-radius: 4px;
   box-shadow: 1px 4px 6px 1px rgba(0,0,0,0.6);
 }
 
 .news-pane {
   position: relative;
-  background-color: #4d4d4d;
-  padding: 0 0 3px 0;
   height: calc(100vh - 71px);
   min-height: 500px;
   margin-left: 16px;
+  padding: 0 0 3px 0;
+  background-color: #4d4d4d;
   border-radius: 4px;
   box-shadow: 1px 4px 6px 1px rgba(0,0,0,0.6);
   overflow: hidden;

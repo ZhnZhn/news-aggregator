@@ -2,8 +2,7 @@
 .component-container {
   display: flex;
   flex-direction: row;
-  margin-top: 8px;
-  margin-bottom: 10px;
+  margin: 8px 0 10px 0;
 }
 
 .hrz-container {
@@ -29,9 +28,6 @@
 
 .popup-menu {
   position: absolute;
-
-  /* background-color: rgba(77, 77, 77, 1); */
-
   background-color: inherit;
   border-bottom: 4px solid #80c040;
   border-radius: 5px;
@@ -39,9 +35,7 @@
 }
 
 .items__menu-more {
+  z-index: 2000;
   top: 36px;
   left: 8px;
-  z-index: 2000;
-
-  /* border: 2px solid rgb(27, 40, 54); */
 }

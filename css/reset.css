@@ -12,20 +12,20 @@ html {
 }
 
 body {
-    font-family: Roboto, Arial, Lato, sans-serif;
-    font-weight: 300;
-    background-color: #5f5f5f;
+  font-family: Roboto, Arial, Lato, sans-serif;
+  font-weight: 300;
+  background-color: #5f5f5f;
 }
 
 button {
   appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   border: none;
   background-color: transparent;
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit; 
-  -webkit-appearance: none;
-  -moz-appearance: none;
   cursor: pointer;
 }
 button:hover,
@@ -35,11 +35,12 @@ button:focus {
 
 button::-moz-focus-inner {
   border: 0;
-  outline: 0; }
+  outline: 0; 
+}
 
 a {
-  text-decoration: none;
   color: black;
+  text-decoration: none;
   outline: 0 none;
 }
 

@@ -1,22 +1,16 @@
-.svg-close {
-  width: 1.375rem;
-  height: 1.375rem; 
-  padding: 2px;
+.svg-close {  
   display: inline-block;
   float: right;
+  width: 1.375rem;
+  height: 1.375rem; 
   margin-right: 10px;
+  padding: 2px;
   cursor: pointer;
-  -webkit-transition: -webkit-transform 0.3s ease-out;
-  -ms-transition: -ms-transform 0.3s ease-out;
-  transition: transform 0.3s ease-out 0.2s;
-  -webkit-transform-origin: center center;
-  -ms-transform-origin: center center;
   transform-origin: center center;
+  transition: transform 0.3s ease-out 0.2s;
 }
 .svg-close:hover {
   outline: none;
-  -webkit-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
   transform: rotate(90deg) scale(1.3, 1.3) translateY(-3px);
 },
 .svg-close:focus,
@@ -25,10 +19,10 @@
 }
 
 .svg-clear {
+  display: inline-block;
   width: 22px;
   height: 22px;
   padding: 2px;
-  display: inline-block;
   cursor: pointer;
 }
 .svg-clear:hover,
