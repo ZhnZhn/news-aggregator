@@ -11,12 +11,11 @@ var _uiApi = require("../uiApi");
 
 var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
-//import PropTypes from 'prop-types'
-var CL_CAPTION = 'open-close not-selected';
-var CL_SHOW_POPUP = 'show-popup';
-var S_ROOT = {
+var CL_CAPTION = 'open-close select-none',
+    CL_SHOW_POPUP = 'show-popup',
+    S_ROOT = {
   backgroundColor: '#4d4d4d',
   lineHeight: 2.5
 },
@@ -83,57 +82,38 @@ var OpenClose = function OpenClose(_ref) {
     _itemStyle = itemStyle;
   }
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  return (0, _jsxRuntime.jsxs)("div", {
     style: (0, _extends2["default"])({}, S_ROOT, style),
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    children: [(0, _jsxRuntime.jsxs)("div", {
       role: "button",
       className: CL_CAPTION,
       tabIndex: "0",
       style: (0, _extends2["default"])({}, S_ROOT_CAPTION, _itemStyle),
       onClick: toggleIsOpen,
       onKeyDown: _hKeyDown,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("svg", {
+      children: [(0, _jsxRuntime.jsx)("svg", {
         viewBox: "0 0 16 16",
         width: "16",
         height: "16",
         preserveAspectRatio: "none",
         xmlns: "http://www.w3.org/2000/svg",
-        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("path", {
+        children: (0, _jsxRuntime.jsx)("path", {
           d: _pathV,
           fill: _fillV,
           strokeWidth: "1",
           stroke: fillOpen
         })
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+      }), (0, _jsxRuntime.jsx)("span", {
         style: (0, _extends2["default"])({}, S_CAPTION, captionStyle),
         children: caption
       })]
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    }), (0, _jsxRuntime.jsx)("div", {
       className: _classShow,
       style: _styleCollapse,
       children: children
     })]
   });
 };
-/*
- OpenClose.propTypes = {
-  isClose: PropTypes.bool,
-
-  style: PropTypes.object,
-  captionStyle: PropTypes.object,
-  itemStyle: PropTypes.object,
-
-  caption: PropTypes.string,
-  fillOpen: PropTypes.string,
-  fillClose: PropTypes.string,
-
-  children: PropTypes.oneOfType([
-     PropTypes.arrayOf(PropTypes.node),
-     PropTypes.node
-  ])
-}
-*/
-
 
 var _default = OpenClose;
 exports["default"] = _default;

@@ -1,26 +1,25 @@
-//import PropTypes from 'prop-types'
 import { useCallback } from '../uiApi';
 
 import useToggle from '../hooks/useToggle';
 
-const CL_CAPTION = 'open-close not-selected';
-const CL_SHOW_POPUP = 'show-popup';
+const CL_CAPTION = 'open-close select-none'
+, CL_SHOW_POPUP = 'show-popup'
 
-const S_ROOT = {
-    backgroundColor: '#4d4d4d',
-    lineHeight: 2.5
-  },
-  S_ROOT_CAPTION = { paddingLeft: 12 },
-  S_CAPTION = {
-    color: '#9e9e9e',
-    paddingLeft: 4,
-    verticalAlign: 'top',
-    fontWeight: 'bold',
-    fontSize: '1rem',
-    cursor: 'pointer'
-  },
-  S_BLOCK = { display: 'block' },
-  S_NONE = { display: 'none' };
+, S_ROOT = {
+  backgroundColor: '#4d4d4d',
+  lineHeight: 2.5
+}
+, S_ROOT_CAPTION = { paddingLeft: 12 }
+, S_CAPTION = {
+  color: '#9e9e9e',
+  paddingLeft: 4,
+  verticalAlign: 'top',
+  fontWeight: 'bold',
+  fontSize: '1rem',
+  cursor: 'pointer'
+}
+, S_BLOCK = { display: 'block' }
+, S_NONE = { display: 'none' };
 
 
 const FILL_OPEN = '#9e9e9e'
@@ -30,13 +29,18 @@ const FILL_OPEN = '#9e9e9e'
 
 const OpenClose = ({
   isClose=true,
-  style, itemStyle, captionStyle,
+  style,
+  itemStyle,
+  captionStyle,
   caption,
   fillOpen=FILL_OPEN,
   fillClose=FILL_CLOSE,
   children
 }) => {
-  const [isOpen, toggleIsOpen] = useToggle(!isClose)
+  const [
+    isOpen,
+    toggleIsOpen
+  ] = useToggle(!isClose)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hKeyDown = useCallback(evt => {
     if (event.keyCode === 13 || event.keyCode === 27) {
@@ -46,7 +50,11 @@ const OpenClose = ({
   //toggleIsOpen
   /*esline-enable react-hooks/exhaustive-deps */
 
-  let _pathV, _fillV, _styleCollapse, _classShow, _itemStyle;
+  let _pathV
+  , _fillV
+  , _styleCollapse
+  , _classShow
+  , _itemStyle;
   if (isOpen){
    _pathV = PATH_OPEN;
    _fillV = fillOpen;
@@ -67,10 +75,10 @@ const OpenClose = ({
          role="button"
          className={CL_CAPTION}
          tabIndex="0"
-         style={{...S_ROOT_CAPTION, ..._itemStyle }}
+         style={{...S_ROOT_CAPTION, ..._itemStyle}}
          onClick={toggleIsOpen}
          onKeyDown={_hKeyDown}
-       >
+      >
         <svg
           viewBox="0 0 16 16" width="16" height="16"
           preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"
@@ -95,24 +103,5 @@ const OpenClose = ({
    </div>
   );
 };
-
-/*
- OpenClose.propTypes = {
-  isClose: PropTypes.bool,
-
-  style: PropTypes.object,
-  captionStyle: PropTypes.object,
-  itemStyle: PropTypes.object,
-
-  caption: PropTypes.string,
-  fillOpen: PropTypes.string,
-  fillClose: PropTypes.string,
-
-  children: PropTypes.oneOfType([
-     PropTypes.arrayOf(PropTypes.node),
-     PropTypes.node
-  ])
-}
-*/
 
 export default OpenClose
