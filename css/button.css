@@ -3,25 +3,11 @@
   height: 28px;
   padding-top: 3px;
   border-radius: 50%;
-  cursor: pointer;
 }
 
 .bt-more:hover,
 .bt-more:focus {
   background: var(--bt-h, rgba(255, 255, 255, 0.1));
-}
-
-.bt-sub-item {
-  color: grey;
-  line-height: 1.8;
-  font-weight: normal;
-  border-bottom: 1px solid;
-  cursor: pointer;
-}
-
-.bt-sub-item:hover {
-  color: #a487d4;
-  font-weight: bold;
 }
 
 .arrow-down {
@@ -75,41 +61,6 @@
 .bt-resize:hover {
   border: 2px solid #a487d4;
   stroke: #a487d4;
-}
-
-.bt__watch__bar {
-  display: inline-block;
-  text-align: center;
-  font-weight: bold;
-  margin-left: 10px;
-  padding: 6px 12px;
-  border-radius: 20px;
-  width: auto;
-  height: auto;
-  border: 2px solid gray;
-  color: gray;
-  cursor: pointer;
-  transition: color, border-color 200ms ease-out;
-}
-
-.bt__watch__bar:hover {
-  color: #80c040;
-  border-color: #80c040;
-}
-
-.not-selected {
-  /* iOS Safari */
-  -webkit-touch-callout: none;
-  /* Chrome all / Safari all / Opera */
-  -webkit-user-select: none;
-  /* Konqueror */
-  -khtml-user-select: none;
-  /* Firefox all */
-  -moz-user-select: none;
-  /* IE 10+ */
-  -ms-user-select: none;
-  /* Likely future */
-  user-select: none;
 }
 
 [data-loader=circle-failed] {
