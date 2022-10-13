@@ -12,7 +12,7 @@ html {
 }
 
 body {
-    font-family: "Roboto", "Arial", "Lato", sans-serif;
+    font-family: Roboto, Arial, Lato, sans-serif;
     font-weight: 300;
     background-color: #5f5f5f;
 }
@@ -21,7 +21,9 @@ button {
   appearance: none;
   border: none;
   background-color: transparent;
+  font-family: inherit;
   font-size: inherit;
+  font-weight: inherit; 
   -webkit-appearance: none;
   -moz-appearance: none;
   cursor: pointer;
