@@ -5,27 +5,33 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
+var _useTooltip2 = _interopRequireDefault(require("../hooks/useTooltip"));
+
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 
 var _jsxRuntime = require("preact/jsx-runtime");
 
-var CL_BT = 'bt-circle not-selected';
+var CL_BT = 'bt-circle select-none';
 
 var CircleButton = function CircleButton(_ref) {
   var ariaLabel = _ref.ariaLabel,
       dataPos = _ref.dataPos,
-      _ref$caption = _ref.caption,
-      caption = _ref$caption === void 0 ? '' : _ref$caption,
+      caption = _ref.caption,
       className = _ref.className,
       style = _ref.style,
       onClick = _ref.onClick;
+
+  var _useTooltip = (0, _useTooltip2["default"])(ariaLabel, dataPos),
+      _ariaLabel = _useTooltip[0],
+      _dataPos = _useTooltip[1];
+
   return (0, _jsxRuntime.jsx)("button", {
-    "aria-label": ariaLabel,
-    "data-pos": dataPos,
+    "aria-label": _ariaLabel,
+    "data-pos": _dataPos,
     className: (0, _crCn["default"])(CL_BT, className),
     style: style,
     onClick: onClick,
-    children: caption
+    children: caption || ''
   });
 };
 

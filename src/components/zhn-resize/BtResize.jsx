@@ -1,3 +1,4 @@
+import useTooltip from '../hooks/useTooltip';
 import Svg100 from '../zhn-atoms/svg/Svg100';
 
 const CL_BT_RESIZE = "bt-resize select-none";
@@ -14,11 +15,15 @@ const BtResize = ({
 }) => {
   const _x = to === 'r'
     ? '11'
-    : '1';
+    : '1'
+  , [
+    _ariaLabel,
+    _dataPos
+  ] = useTooltip(ariaLabel, dataPos);
   return (
     <button
-       aria-label={ariaLabel}
-       data-pos={dataPos}
+       aria-label={_ariaLabel}
+       data-pos={_dataPos}
        className={CL_BT_RESIZE}
        style={style}
        onMouseDown={startResize}

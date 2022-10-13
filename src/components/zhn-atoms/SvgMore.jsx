@@ -1,6 +1,5 @@
-import {
-  DP_MIDDLE_LEFT
-} from '../DP';
+import useTooltip from '../hooks/useTooltip';
+import { DP_MIDDLE_LEFT } from '../DP';
 
 const CL_BT_MORE = 'bt-more'
 , S_SVG = {
@@ -14,10 +13,14 @@ const SvgMore = ({
   btRef,
   onClick
 }) => {
+  const [
+    _ariaLabel,
+    _dataPos
+  ] = useTooltip("More", DP_MIDDLE_LEFT);
   return (
     <button
-      aria-label="More"
-      data-pos={DP_MIDDLE_LEFT}
+      aria-label={_ariaLabel}
+      data-pos={_dataPos}
       ref={btRef}
       className={CL_BT_MORE}
       style={style}

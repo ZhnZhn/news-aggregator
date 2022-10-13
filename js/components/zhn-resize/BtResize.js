@@ -5,6 +5,8 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
+var _useTooltip2 = _interopRequireDefault(require("../hooks/useTooltip"));
+
 var _Svg = _interopRequireDefault(require("../zhn-atoms/svg/Svg100"));
 
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -21,11 +23,14 @@ var BtResize = function BtResize(_ref) {
       onKeyDown = _ref.onKeyDown,
       children = _ref.children;
 
-  var _x = to === 'r' ? '11' : '1';
+  var _x = to === 'r' ? '11' : '1',
+      _useTooltip = (0, _useTooltip2["default"])(ariaLabel, dataPos),
+      _ariaLabel = _useTooltip[0],
+      _dataPos = _useTooltip[1];
 
   return (0, _jsxRuntime.jsx)("button", {
-    "aria-label": ariaLabel,
-    "data-pos": dataPos,
+    "aria-label": _ariaLabel,
+    "data-pos": _dataPos,
     className: CL_BT_RESIZE,
     style: style,
     onMouseDown: startResize,

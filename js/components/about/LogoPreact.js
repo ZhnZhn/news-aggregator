@@ -1,7 +1,11 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 exports.__esModule = true;
 exports["default"] = void 0;
+
+var _useTooltip2 = _interopRequireDefault(require("../hooks/useTooltip"));
 
 var _jsxRuntime = require("preact/jsx-runtime");
 
@@ -9,9 +13,14 @@ var LogoPreact = function LogoPreact(_ref) {
   var ariaLabel = _ref.ariaLabel,
       dataPos = _ref.dataPos,
       className = _ref.className;
+
+  var _useTooltip = (0, _useTooltip2["default"])(ariaLabel, dataPos),
+      _ariaLabel = _useTooltip[0],
+      _dataPos = _useTooltip[1];
+
   return (0, _jsxRuntime.jsx)("a", {
-    "aria-label": ariaLabel,
-    "data-pos": dataPos,
+    "aria-label": _ariaLabel,
+    "data-pos": _dataPos,
     className: className,
     href: "https://preactjs.com",
     tabIndex: "-1",

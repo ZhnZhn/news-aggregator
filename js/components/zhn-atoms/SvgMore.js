@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
+var _useTooltip2 = _interopRequireDefault(require("../hooks/useTooltip"));
+
 var _DP = require("../DP");
 
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -22,9 +24,14 @@ var SvgMore = function SvgMore(_ref) {
       svgStyle = _ref.svgStyle,
       btRef = _ref.btRef,
       onClick = _ref.onClick;
+
+  var _useTooltip = (0, _useTooltip2["default"])("More", _DP.DP_MIDDLE_LEFT),
+      _ariaLabel = _useTooltip[0],
+      _dataPos = _useTooltip[1];
+
   return (0, _jsxRuntime.jsx)("button", {
-    "aria-label": "More",
-    "data-pos": _DP.DP_MIDDLE_LEFT,
+    "aria-label": _ariaLabel,
+    "data-pos": _dataPos,
     ref: btRef,
     className: CL_BT_MORE,
     style: style,
