@@ -3,10 +3,15 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
-exports.styleConfig = exports.S_SCROLL_DIV = exports.S_NONE = exports.S_MT_8 = exports.S_LH_18 = exports.S_LH_14 = exports.S_DIV_WRAPPER = exports.S_BLOCK = exports.S_BLACK = exports.S_APP_TITLE = void 0;
+exports.styleConfig = exports.S_SCROLL_DIV = exports.S_NONE = exports.S_MT_8 = exports.S_LH_18 = exports.S_LH_14 = exports.S_DIV_WRAPPER = exports.S_BROWSER_CAPTION = exports.S_BLOCK = exports.S_BLACK = exports.S_APP_TITLE = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
+var S_BROWSER_CAPTION = {
+  paddingTop: 5,
+  paddingLeft: 10
+};
+exports.S_BROWSER_CAPTION = S_BROWSER_CAPTION;
 var S_SCROLL_DIV = {
   height: '92%',
   paddingTop: 8,
