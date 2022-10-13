@@ -1,23 +1,24 @@
-
-const CL_ROW = 'menu-more__item not-selected';
+import { CL_MENU_MORE_ITEM } from '../styles/CL';
 
 const crModelMore = ({
-  onMinWidth, onInitWidth,
-  onPlusWidth, onMinusWidth,
+  onMinWidth,
+  onInitWidth,
+  onPlusWidth,
+  onMinusWidth,
   onRemoveItems
 }) => {
   return {
-    titleCl: CL_ROW,
+    titleCl: CL_MENU_MORE_ITEM,
     pageWidth: 180,
     maxPages: 2,
     p0: [
       {
         id: 'p1',
         type: 'sub',
-        cn: CL_ROW,
+        cn: CL_MENU_MORE_ITEM,
         name: 'Resize'
       },{
-        cn: CL_ROW,
+        cn: CL_MENU_MORE_ITEM,
         name: 'Remove All Items',
         onClick: onRemoveItems,
         isClose: true
@@ -25,19 +26,19 @@ const crModelMore = ({
     ],
     p1: [
       {
-        cn: CL_ROW,
+        cn: CL_MENU_MORE_ITEM,
         name: 'to MinWidth',
         onClick: onMinWidth
       },{
-        cn: CL_ROW,
+        cn: CL_MENU_MORE_ITEM,
         name: 'to InitWidth',
         onClick: onInitWidth
       },{
-        cn: CL_ROW,
+        cn: CL_MENU_MORE_ITEM,
         name: '+10px to Width',
         onClick: onPlusWidth
       },{
-        cn: CL_ROW,
+        cn: CL_MENU_MORE_ITEM,
         name: '-10px to Width',
         onClick: onMinusWidth
       }

@@ -2,7 +2,8 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
-var CL_ROW = 'menu-more__item not-selected';
+
+var _CL = require("../styles/CL");
 
 var crModelMore = function crModelMore(_ref) {
   var onMinWidth = _ref.onMinWidth,
@@ -11,34 +12,34 @@ var crModelMore = function crModelMore(_ref) {
       onMinusWidth = _ref.onMinusWidth,
       onRemoveItems = _ref.onRemoveItems;
   return {
-    titleCl: CL_ROW,
+    titleCl: _CL.CL_MENU_MORE_ITEM,
     pageWidth: 180,
     maxPages: 2,
     p0: [{
       id: 'p1',
       type: 'sub',
-      cn: CL_ROW,
+      cn: _CL.CL_MENU_MORE_ITEM,
       name: 'Resize'
     }, {
-      cn: CL_ROW,
+      cn: _CL.CL_MENU_MORE_ITEM,
       name: 'Remove All Items',
       onClick: onRemoveItems,
       isClose: true
     }],
     p1: [{
-      cn: CL_ROW,
+      cn: _CL.CL_MENU_MORE_ITEM,
       name: 'to MinWidth',
       onClick: onMinWidth
     }, {
-      cn: CL_ROW,
+      cn: _CL.CL_MENU_MORE_ITEM,
       name: 'to InitWidth',
       onClick: onInitWidth
     }, {
-      cn: CL_ROW,
+      cn: _CL.CL_MENU_MORE_ITEM,
       name: '+10px to Width',
       onClick: onPlusWidth
     }, {
-      cn: CL_ROW,
+      cn: _CL.CL_MENU_MORE_ITEM,
       name: '-10px to Width',
       onClick: onMinusWidth
     }]

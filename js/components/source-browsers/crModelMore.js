@@ -2,16 +2,17 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
-var CL_ROW = 'menu-more__item not-selected';
+
+var _CL = require("../styles/CL");
 
 var crModelMore = function crModelMore(_ref) {
   var onRemoveBadges = _ref.onRemoveBadges;
   return {
-    titleCl: CL_ROW,
+    titleCl: _CL.CL_MENU_MORE_ITEM,
     pageWidth: 186,
     maxPages: 1,
     p0: [{
-      cn: CL_ROW,
+      cn: _CL.CL_MENU_MORE_ITEM,
       name: 'Remove All Badges',
       onClick: onRemoveBadges,
       isClose: true
