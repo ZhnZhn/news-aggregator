@@ -1,11 +1,11 @@
 .header {
   position: relative;
   width: 100%;
-  background-color: #4d4d4d;
   min-height: 50px;
   max-height: 50px;
   padding-top: 8px;
   padding-left: 12px;
+  background-color: #4d4d4d;
   box-shadow: rgba(0, 0, 0, 0.14) 0 0 4px, rgba(0, 0, 0, 0.6) 0 4px 8px;
   z-index: 50;
 }
@@ -23,9 +23,7 @@
   display: inline-block;
   color: #80c040;
   margin-left: 35px;
-  padding-top: 6px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 6px 10px 0 10px;
   font-size: 1.125rem;
   font-weight: bold;
 }
@@ -89,13 +87,13 @@
   }
 }
 .row__topic {
-  line-height: 2;
   color: black;
-  font-size: 1rem;
-  font-weight: bold;
   padding-top: 2px;
   padding-left: 16px;
+  line-height: 2;
   border-left: 4px solid transparent;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
 }
 .row__topic:focus {
