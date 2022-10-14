@@ -1,6 +1,8 @@
 :root {
  --bg-c: #4d4d4d;
  --bt-h: rgba(255, 255, 255, 0.1);
+ --bt-fc: #6ca1dc; 
+ --bt-rc: #a9a9a9;
 
  --h-c: #a9a9a9; 
 

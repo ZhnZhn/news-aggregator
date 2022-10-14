@@ -42,6 +42,8 @@ var P_GREY = {
   BG_BODY: '#5f5f5f',
   BG: DF_BG,
   BT_H: DF_BT_H,
+  BT_FC: '#6ca1dc',
+  BT_RC: '#a9a9a9',
   BG_OPTIONS: DF_BG_OPTIONS,
   MSI_C: DF_MSI_C,
   MSI_FH: DF_MSI_FH,
@@ -55,42 +57,52 @@ var _P_LIGHT = {
   MSI_FH: MSI_FH_LIGHT,
   SBT_BG: SBT_BG_LIGHT,
   BG_HEADER: BG_HEADER_LIGHT,
+  BT_FC: BG_HEADER_LIGHT,
   C_HEADER: C_HEADER_LIGHT
 };
+var WHITE_BG = '#eaeaea';
 var P_WHITE = (0, _extends2["default"])({}, _P_LIGHT, {
   BG_BODY: 'darkgrey',
-  BG: '#eaeaea',
-  BG_OPTIONS: '#dfe4e7'
+  BG: WHITE_BG,
+  BG_OPTIONS: '#dfe4e7',
+  BT_RC: WHITE_BG
 });
+var SAND_BG = '#e8e0cb';
 var P_SAND = (0, _extends2["default"])({}, _P_LIGHT, {
   BG_BODY: 'darkgrey',
-  BG: '#e8e0cb',
-  BG_OPTIONS: '#c6bda5'
+  BG: SAND_BG,
+  BG_OPTIONS: '#c6bda5',
+  BT_RC: SAND_BG
 });
 var CSS_RULE = {
   BG: {},
   BG_HEADER: {},
   R_DIALOG: {}
 };
+var THEME_CONFIG = (_THEME_CONFIG = {}, _THEME_CONFIG[_propertyThemeName.THEME_NAME.GREY] = P_GREY, _THEME_CONFIG[_propertyThemeName.THEME_NAME.WHITE] = P_WHITE, _THEME_CONFIG[_propertyThemeName.THEME_NAME.SAND] = P_SAND, _THEME_CONFIG);
 var _assign = Object.assign;
 
 var _setBodyBg = function _setBodyBg(conf, P) {
   var _style = document.body.style;
   _style.backgroundColor = P.BG_BODY;
 
-  _style.setProperty("--bg-c", P.BG || DF_BG);
+  _style.setProperty("--bg-c", P.BG);
 
-  _style.setProperty("--bt-h", P.BT_H || DF_BT_H);
+  _style.setProperty("--bt-h", P.BT_H);
 
-  _style.setProperty("--h-c", P.C_HEADER || DF_C_HEADER);
+  _style.setProperty("--bt-fc", P.BT_FC);
 
-  _style.setProperty("--mso-bg", P.BG_OPTIONS || DF_BG_OPTIONS);
+  _style.setProperty("--bt-rc", P.BT_RC);
 
-  _style.setProperty("--msi-c", P.MSI_C || DF_MSI_C);
+  _style.setProperty("--h-c", P.C_HEADER);
 
-  _style.setProperty("--msi-fh", P.MSI_FH || DF_MSI_FH);
+  _style.setProperty("--mso-bg", P.BG_OPTIONS);
 
-  _style.setProperty("--sbt-bg", P.SBT_BG || DF_SBT_BG);
+  _style.setProperty("--msi-c", P.MSI_C);
+
+  _style.setProperty("--msi-fh", P.MSI_FH);
+
+  _style.setProperty("--sbt-bg", P.SBT_BG);
 };
 
 var _crBg = function _crBg(conf, P) {
@@ -115,16 +127,16 @@ var _crRDialog = function _crRDialog(conf, P) {
 
 var _FN_STYLES = [_setBodyBg, _crBg, _crBgHeader, _crRDialog];
 
-var _setStyleTo = function _setStyleTo(conf, pallete) {
+var _setStyleTo = function _setStyleTo(conf, themeName) {
+  var _pallete = THEME_CONFIG[themeName];
+
   _FN_STYLES.forEach(function (fn) {
-    return fn(conf, pallete);
+    return fn(conf, _pallete);
   });
 };
 
-var THEME_CONFIG = (_THEME_CONFIG = {}, _THEME_CONFIG[_propertyThemeName.THEME_NAME.GREY] = P_GREY, _THEME_CONFIG[_propertyThemeName.THEME_NAME.WHITE] = P_WHITE, _THEME_CONFIG[_propertyThemeName.THEME_NAME.SAND] = P_SAND, _THEME_CONFIG);
-
 var _setTheme = function _setTheme(themeName) {
-  _setStyleTo(CSS_RULE, THEME_CONFIG[themeName]);
+  _setStyleTo(CSS_RULE, themeName);
 
   (0, _localStorageFn.writeToLs)(_LS.LS_UI_THEME_KEY, themeName);
 };

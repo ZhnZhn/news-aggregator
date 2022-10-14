@@ -53,11 +53,13 @@ const P_GREY = {
   BG_BODY: '#5f5f5f',
   BG: DF_BG,
   BT_H: DF_BT_H,
+  BT_FC: '#6ca1dc',
+  BT_RC: '#a9a9a9',
   BG_OPTIONS: DF_BG_OPTIONS,
   MSI_C: DF_MSI_C,
   MSI_FH: DF_MSI_FH,
   SBT_BG: DF_SBT_BG,
-  BG_HEADER: '#3a6799',    
+  BG_HEADER: '#3a6799',
   C_HEADER: DF_C_HEADER
 };
 
@@ -66,21 +68,28 @@ const _P_LIGHT = {
   MSI_C: MSI_C_LIGHT,
   MSI_FH: MSI_FH_LIGHT,
   SBT_BG: SBT_BG_LIGHT,
+
   BG_HEADER: BG_HEADER_LIGHT,
-  C_HEADER: C_HEADER_LIGHT
+  BT_FC: BG_HEADER_LIGHT,
+  C_HEADER: C_HEADER_LIGHT,
 };
 
+const WHITE_BG = '#eaeaea';
 const P_WHITE = {
   ..._P_LIGHT,
   BG_BODY: 'darkgrey',
-  BG: '#eaeaea',
+  BG: WHITE_BG,
   BG_OPTIONS: '#dfe4e7',
+  BT_RC: WHITE_BG
 };
+
+const SAND_BG = '#e8e0cb';
 const P_SAND = {
   ..._P_LIGHT,
   BG_BODY: 'darkgrey',
-  BG: '#e8e0cb',
+  BG: SAND_BG,
   BG_OPTIONS: '#c6bda5',
+  BT_RC: SAND_BG
 };
 
 const CSS_RULE = {
@@ -89,17 +98,25 @@ const CSS_RULE = {
   R_DIALOG: {}
 };
 
+const THEME_CONFIG = {
+  [THEME_NAME.GREY]: P_GREY,
+  [THEME_NAME.WHITE]: P_WHITE,
+  [THEME_NAME.SAND]: P_SAND
+};
+
 const _assign = Object.assign;
 const _setBodyBg = (conf, P) => {
-  const _style = document.body.style
+  const _style = document.body.style;
   _style.backgroundColor = P.BG_BODY
-  _style.setProperty("--bg-c", P.BG || DF_BG)
-  _style.setProperty("--bt-h", P.BT_H || DF_BT_H)
-  _style.setProperty("--h-c", P.C_HEADER || DF_C_HEADER)
-  _style.setProperty("--mso-bg", P.BG_OPTIONS || DF_BG_OPTIONS)
-  _style.setProperty("--msi-c", P.MSI_C || DF_MSI_C)
-  _style.setProperty("--msi-fh", P.MSI_FH || DF_MSI_FH)
-  _style.setProperty("--sbt-bg", P.SBT_BG || DF_SBT_BG)
+  _style.setProperty("--bg-c", P.BG)
+  _style.setProperty("--bt-h", P.BT_H)
+  _style.setProperty("--bt-fc", P.BT_FC)
+  _style.setProperty("--bt-rc", P.BT_RC)
+  _style.setProperty("--h-c", P.C_HEADER)
+  _style.setProperty("--mso-bg", P.BG_OPTIONS)
+  _style.setProperty("--msi-c", P.MSI_C)
+  _style.setProperty("--msi-fh", P.MSI_FH)
+  _style.setProperty("--sbt-bg", P.SBT_BG)
 };
 const _crBg = (conf, P) => {
   _assign(conf.BG, {
@@ -125,20 +142,15 @@ const _FN_STYLES = [
   _crBgHeader,
   _crRDialog
 ];
-const _setStyleTo = (conf, pallete) => {
-  _FN_STYLES.forEach(fn => fn(conf, pallete))
-};
-
-const THEME_CONFIG = {
-  [THEME_NAME.GREY]: P_GREY,
-  [THEME_NAME.WHITE]: P_WHITE,
-  [THEME_NAME.SAND]: P_SAND
+const _setStyleTo = (conf, themeName) => {
+  const _pallete = THEME_CONFIG[themeName];
+  _FN_STYLES.forEach(fn => fn(conf, _pallete))
 };
 
 const _setTheme = (
   themeName
 ) => {
-  _setStyleTo(CSS_RULE, THEME_CONFIG[themeName])
+  _setStyleTo(CSS_RULE, themeName)
   writeToLs(LS_UI_THEME_KEY, themeName)
 }
 
