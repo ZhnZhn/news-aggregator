@@ -17,12 +17,8 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
-var S_POWERED_BY = {
-  marginLeft: 16,
-  marginBottom: 8
-};
 var FEED_OPTIONS = [{
   caption: 'All',
   value: 'ALL_NEWS_FEEDS'
@@ -137,7 +133,7 @@ var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(_ref) {
       TS = _useDecorDialog[0],
       _hKeyDown = _useDecorDialog[1];
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
+  return (0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
     ref: _refDialog,
     isShow: isShow,
     style: TS.R_DIALOG,
@@ -148,33 +144,33 @@ var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(_ref) {
     onLoad: _hLoad,
     onShow: onShow,
     onClose: _hClose,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+    children: [(0, _jsxRuntime.jsx)("div", {
+      children: (0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
         caption: "Feed",
         initItem: DF_FEED,
         options: FEED_OPTIONS,
         styleConfig: TS.SELECT,
         onSelect: _selectFeed
       })
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+    }), (0, _jsxRuntime.jsx)("div", {
+      children: (0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
         caption: "Category",
         initItem: DF_CATEGORY,
         options: CATEGORY_OPTIONS,
         styleConfig: TS.SELECT,
         onSelect: _selectCategory
       })
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+    }), (0, _jsxRuntime.jsx)("div", {
+      children: (0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
         caption: "SortBy",
         initItem: DF_SORTBY,
         options: SORTBY_OPTIONS,
         styleConfig: TS.SELECT,
         onSelect: _selectSortBy
       })
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
-      rootStyle: S_POWERED_BY,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.CryptoCompare, {})
+    }), (0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
+      rootStyle: TS.POWERED_BY,
+      children: (0, _jsxRuntime.jsx)(_Comp["default"].Link.CryptoCompare, {})
     })]
   });
 };

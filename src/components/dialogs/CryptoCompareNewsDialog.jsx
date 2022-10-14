@@ -11,11 +11,6 @@ import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
 
-const S_POWERED_BY = {
-  marginLeft: 16,
-  marginBottom: 8
-}
-
 const FEED_OPTIONS = [
   { caption: 'All', value: 'ALL_NEWS_FEEDS' },
   { caption: 'Decrypt', value: 'decrypt' },
@@ -128,7 +123,7 @@ const CryptoCompareNewsDialog = ({
          onSelect={_selectSortBy}
        />
       </div>
-      <A.Link.PoweredBy rootStyle={S_POWERED_BY}>
+      <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
         <A.Link.CryptoCompare />
       </A.Link.PoweredBy>
     </A.DraggableDialog>

@@ -7,8 +7,6 @@ const INPUT_WIDTH = 250;
 const S_BROWSER_CAPTION = {
   color: '#9e9e9e',
   backgroundColor: '#3f5178',
-  paddingTop: 5,
-  marginBottom: 0,
   textAlign: 'center',
   fontSize: '1.125rem'
 }
@@ -25,8 +23,7 @@ const S_BROWSER_CAPTION = {
   width: 110
 }
 , S_POWERED_BY = {
-  marginLeft: 16,
-  marginBottom: 8
+  margin: '16px 0 8px 16px'
 };
 
 const styleConfig = {
