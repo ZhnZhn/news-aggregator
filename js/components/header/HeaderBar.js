@@ -126,7 +126,6 @@ var HeaderBar = function HeaderBar(_ref) {
       children: [(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
         ariaLabel: "News Sources Browser [n]",
         dataPos: _DP.DP_BOTTOM_LEFT,
-        style: TS.BT.FLAT_ROOT,
         clDiv: TS.BT.CL_FLAT_DIV,
         caption: "News",
         accessKey: "n",
@@ -134,7 +133,6 @@ var HeaderBar = function HeaderBar(_ref) {
       }), (0, _jsxRuntime.jsx)(_Comp["default"].ModalButton, {
         ariaLabel: "Panel Query Sources [q]",
         dataPos: _DP.DP_BOTTOM_RIGHT,
-        style: TS.BT.FLAT_ROOT,
         clDiv: TS.BT.CL_FLAT_DIV,
         caption: "Query",
         accessKey: "q",
@@ -149,7 +147,6 @@ var HeaderBar = function HeaderBar(_ref) {
         ariaLabel: "About News Aggregator [a]",
         dataPos: _DP.DP_BOTTOM_RIGHT,
         className: CL_BT_ABOUT,
-        style: TS.BT.FLAT_ROOT,
         clDiv: TS.BT.CL_FLAT_DIV,
         accessKey: "a",
         onClick: onAbout,
@@ -159,7 +156,6 @@ var HeaderBar = function HeaderBar(_ref) {
       }), (0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
         ariaLabel: "Settings Dialog [s]",
         dataPos: _DP.DP_BOTTOM_RIGHT,
-        style: TS.BT.FLAT_ROOT,
         clDiv: TS.BT.CL_FLAT_DIV,
         accessKey: "s",
         onClick: onSettings,

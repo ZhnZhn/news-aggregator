@@ -115,7 +115,6 @@ const HeaderBar = ({
         <A.FlatButton
           ariaLabel="News Sources Browser [n]"
           dataPos={DP_BOTTOM_LEFT}
-          style={TS.BT.FLAT_ROOT}
           clDiv={TS.BT.CL_FLAT_DIV}
           caption="News"
           accessKey="n"
@@ -124,7 +123,6 @@ const HeaderBar = ({
         <A.ModalButton
            ariaLabel="Panel Query Sources [q]"
            dataPos={DP_BOTTOM_RIGHT}
-           style={TS.BT.FLAT_ROOT}
            clDiv={TS.BT.CL_FLAT_DIV}
            caption="Query"
            accessKey="q"
@@ -138,7 +136,6 @@ const HeaderBar = ({
             ariaLabel="About News Aggregator [a]"
             dataPos={DP_BOTTOM_RIGHT}
             className={CL_BT_ABOUT}
-            style={TS.BT.FLAT_ROOT}
             clDiv={TS.BT.CL_FLAT_DIV}
             accessKey="a"
             onClick={onAbout}
@@ -148,7 +145,6 @@ const HeaderBar = ({
           <A.FlatButton
             ariaLabel="Settings Dialog [s]"
             dataPos={DP_BOTTOM_RIGHT}
-            style={TS.BT.FLAT_ROOT}
             clDiv={TS.BT.CL_FLAT_DIV}
             accessKey="s"
             onClick={onSettings}
