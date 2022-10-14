@@ -29,10 +29,9 @@
 .bt-circle {
   display: inline-block;
   color: #80c040;
-  width: 28px;
-  height: 28px;
-  line-height: 26px;
-  text-align: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  padding-top: 2px;
   border-radius: 50%;
   border: 2px solid #80c040;
   background-color: transparent;
@@ -46,11 +45,9 @@
 
 .bt-resize {
   display: inline-block;
-  width: 28px;
-  height: 28px;
+  width: 1.6rem;
+  height: 1.6rem;
   padding: 2px;
-  line-height: normal;
-  vertical-align: text-bottom;
   border-radius: 50%;
   border: 2px solid var(--h-c, #a9a9a9);
   stroke: var(--h-c, #a9a9a9);  
