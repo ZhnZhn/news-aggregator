@@ -31,6 +31,8 @@ var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 
 var _SvgHrzResize = _interopRequireDefault(require("../zhn-resize/SvgHrzResize"));
 
+var _InlineFlexStart = _interopRequireDefault(require("../zhn-atoms/InlineFlexStart"));
+
 var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -43,17 +45,14 @@ var WIDTH_STYLE = _has["default"].initWidthStyle(),
     CL_NEWS_PANE = "news-pane",
     CL_SHOW_POPUP = "show-popup",
     CL_MENU_MORE = "popup-menu items__menu-more",
-    S_BROWSER_CAPTION = {
-  paddingTop: 2
-},
     S_BT_REMOVE = {
   position: 'relative',
-  top: -2,
-  margin: '0 6px 0 12px'
+  margin: '0 3px 0 12px' //top: -1
+
 },
     S_SVG_RESIZE = {
-  position: 'relative',
-  top: 3
+  position: 'relative' //top: -3
+
 },
     S_SCROLL_DIV = {
   overflow: 'hidden auto',
@@ -205,24 +204,26 @@ var NewsPane = function NewsPane(_ref2) {
       style: TS.EL_BORDER,
       model: _MODEL_MORE,
       onClose: _hideMore
-    }), (0, _jsxRuntime.jsxs)(_Comp["default"].BrowserCaption, {
-      style: (0, _extends2["default"])({}, TS.PANE_CAPTION, S_BROWSER_CAPTION),
+    }), (0, _jsxRuntime.jsx)(_Comp["default"].BrowserCaption, {
+      style: TS.PANE_CAPTION,
       caption: _paneCaption,
       onMore: _showMore,
       onClose: _hHide,
-      children: [(0, _jsxRuntime.jsx)(_Comp["default"].CircleButton, {
-        ariaLabel: "Remove All Items",
-        dataPos: _DP.DP_MIDDLE_RIGHT,
-        caption: "R",
-        style: S_BT_REMOVE,
-        onClick: onRemoveItems
-      }), (0, _jsxRuntime.jsx)(_SvgHrzResize["default"], {
-        elementRef: _refRootDiv,
-        style: S_SVG_RESIZE,
-        initWidth: RESIZE_INIT_WIDTH,
-        minWidth: RESIZE_MIN_WIDTH,
-        maxWidth: RESIZE_MAX_WIDTH
-      })]
+      children: (0, _jsxRuntime.jsxs)(_InlineFlexStart["default"], {
+        children: [(0, _jsxRuntime.jsx)(_Comp["default"].CircleButton, {
+          ariaLabel: "Remove All Items",
+          dataPos: _DP.DP_MIDDLE_RIGHT,
+          caption: "R",
+          style: S_BT_REMOVE,
+          onClick: onRemoveItems
+        }), (0, _jsxRuntime.jsx)(_SvgHrzResize["default"], {
+          elementRef: _refRootDiv,
+          style: S_SVG_RESIZE,
+          initWidth: RESIZE_INIT_WIDTH,
+          minWidth: RESIZE_MIN_WIDTH,
+          maxWidth: RESIZE_MAX_WIDTH
+        })]
+      })
     }), (0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
       style: S_SCROLL_DIV,
       children: (0, _jsxRuntime.jsx)(_Comp["default"].ItemStack, {

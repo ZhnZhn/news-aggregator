@@ -15,7 +15,11 @@ const CL_GAP = "gap-right"
   overflow: 'hidden',
   whiteSpace: 'nowrap',
   textOverflow: 'clip'
-}, S_CAPTION = {
+}
+, S_PL_10 = {
+  paddingLeft: 10
+}
+, S_CAPTION = {
   fontSize: '1.125rem',
   fontWeight: 'bold'
 }, S_BT_MORE = {
@@ -43,28 +47,33 @@ const BrowserCaption = ({
   children,
   onMore,
   onClose
-}) => (
-  <div className={CL_GAP} style={{...S_ROOT, ...style}}>
-    {
-       _isFn(onMore) &&
-       <SvgMore
-          style={S_BT_MORE}
-          svgStyle={S_SVG_MORE}
-          onClick={onMore}
-       />
-     }
-    <span
-       className={CL_SELECT_NONE}
-       style={S_CAPTION}
-    >
-       {caption}
-    </span>
-    {children}
-    <SvgX
-      style={S_SVG_CLOSE}
-      onClick={onClose}
-    />
-  </div>
-);
+}) => {
+  const _isMore = _isFn(onMore)
+  , _style = _isMore
+     ? {...S_ROOT, ...style}
+     : {...S_ROOT, ...S_PL_10, ...style};
+  return (
+    <div className={CL_GAP} style={_style}>
+      {
+         _isMore && <SvgMore
+            style={S_BT_MORE}
+            svgStyle={S_SVG_MORE}
+            onClick={onMore}
+         />
+       }
+      <span
+         className={CL_SELECT_NONE}
+         style={S_CAPTION}
+      >
+         {caption}
+      </span>
+      {children}
+      <SvgX
+        style={S_SVG_CLOSE}
+        onClick={onClose}
+      />
+    </div>
+  );
+}
 
 export default BrowserCaption

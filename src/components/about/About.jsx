@@ -4,7 +4,6 @@ import useListen from '../hooks/useListen';
 
 import crCn from '../zhn-utils/crCn';
 import {
-  S_BROWSER_CAPTION,
   S_BLOCK,
   S_NONE,
   S_APP_TITLE,
@@ -99,7 +98,7 @@ const About = ({
       style={{..._style, ...TS.ROOT}}
      >
        <A.BrowserCaption
-          style={{...TS.BROWSER_CAPTION, ...S_BROWSER_CAPTION}}
+          style={TS.BROWSER_CAPTION}
           caption="About News Aggregator"
           onClose={setIsShowFalse}
        />

@@ -22,7 +22,9 @@ import {
 } from '../DP';
 
 import crModelMore from './crModelMore';
+
 import SvgHrzResize from '../zhn-resize/SvgHrzResize';
+import InlineFlexStart from '../zhn-atoms/InlineFlexStart';
 import A from '../Comp';
 
 const WIDTH_STYLE = has.initWidthStyle()
@@ -34,17 +36,14 @@ const WIDTH_STYLE = has.initWidthStyle()
 , CL_NEWS_PANE = "news-pane"
 , CL_SHOW_POPUP = "show-popup"
 , CL_MENU_MORE = "popup-menu items__menu-more"
-, S_BROWSER_CAPTION = {
-  paddingTop: 2
-}
 , S_BT_REMOVE = {
   position: 'relative',
-  top: -2,
-  margin: '0 6px 0 12px'
+  margin: '0 3px 0 12px'
+  //top: -1
 }
 , S_SVG_RESIZE = {
-  position: 'relative',
-  top: 3
+  position: 'relative'
+  //top: -3
 }
 , S_SCROLL_DIV = {
   overflow: 'hidden auto',
@@ -213,25 +212,27 @@ const NewsPane = ({
         onClose={_hideMore}
       />
       <A.BrowserCaption
-         style={{...TS.PANE_CAPTION, ...S_BROWSER_CAPTION}}
+         style={TS.PANE_CAPTION}
          caption={_paneCaption}
          onMore={_showMore}
          onClose={_hHide}
       >
-        <A.CircleButton
-          ariaLabel="Remove All Items"
-          dataPos={DP_MIDDLE_RIGHT}
-          caption="R"
-          style={S_BT_REMOVE}
-          onClick={onRemoveItems}
-        />
-        <SvgHrzResize
-           elementRef={_refRootDiv}
-           style={S_SVG_RESIZE}
-           initWidth={RESIZE_INIT_WIDTH}
-           minWidth={RESIZE_MIN_WIDTH}
-           maxWidth={RESIZE_MAX_WIDTH}
-        />
+        <InlineFlexStart>
+           <A.CircleButton
+             ariaLabel="Remove All Items"
+             dataPos={DP_MIDDLE_RIGHT}
+             caption="R"
+             style={S_BT_REMOVE}
+             onClick={onRemoveItems}
+           />
+           <SvgHrzResize
+              elementRef={_refRootDiv}
+              style={S_SVG_RESIZE}
+              initWidth={RESIZE_INIT_WIDTH}
+              minWidth={RESIZE_MIN_WIDTH}
+              maxWidth={RESIZE_MAX_WIDTH}
+           />
+        </InlineFlexStart>
       </A.BrowserCaption>
       <A.ScrollPane
          style={S_SCROLL_DIV}

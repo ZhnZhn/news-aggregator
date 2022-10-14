@@ -28,6 +28,9 @@ var CL_GAP = "gap-right",
   whiteSpace: 'nowrap',
   textOverflow: 'clip'
 },
+    S_PL_10 = {
+  paddingLeft: 10
+},
     S_CAPTION = {
   fontSize: '1.125rem',
   fontWeight: 'bold'
@@ -60,10 +63,14 @@ var BrowserCaption = function BrowserCaption(_ref) {
       children = _ref.children,
       onMore = _ref.onMore,
       onClose = _ref.onClose;
+
+  var _isMore = _isFn(onMore),
+      _style = _isMore ? (0, _extends2["default"])({}, S_ROOT, style) : (0, _extends2["default"])({}, S_ROOT, S_PL_10, style);
+
   return (0, _jsxRuntime.jsxs)("div", {
     className: CL_GAP,
-    style: (0, _extends2["default"])({}, S_ROOT, style),
-    children: [_isFn(onMore) && (0, _jsxRuntime.jsx)(_SvgMore["default"], {
+    style: _style,
+    children: [_isMore && (0, _jsxRuntime.jsx)(_SvgMore["default"], {
       style: S_BT_MORE,
       svgStyle: S_SVG_MORE,
       onClick: onMore

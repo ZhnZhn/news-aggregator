@@ -1,7 +1,3 @@
-export const S_BROWSER_CAPTION = {
-  paddingTop: 5,
-  paddingLeft: 10
-}
 export const S_SCROLL_DIV = {
   height: '92%',
   paddingTop: 8,
