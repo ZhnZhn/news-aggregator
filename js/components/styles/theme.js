@@ -25,40 +25,34 @@ var _LS = require("./LS");
 
 var _THEME_CONFIG;
 
-var DF_BG = '#4d4d4d',
-    DF_BT_H = 'rgba(255, 255, 255, 0.1)',
-    DF_BG_OPTIONS = '#404040',
-    DF_MSI_C = 'white',
-    DF_MSI_FH = 'rgba(48, 48, 48, 0.4)',
-    DF_SBT_BG = '#3f5178',
-    DF_C_HEADER = '#a9a9a9';
-var BT_H_LIGHT = 'rgba(48, 48, 48, 0.3)',
-    MSI_C_LIGHT = '#303030',
-    MSI_FH_LIGHT = 'rgba(255, 255, 255, 0.4)',
-    SBT_BG_LIGHT = '#0096c8',
-    BG_HEADER_LIGHT = '#0096c8',
-    C_HEADER_LIGHT = '#4d4d4d';
+var _crRgba = function _crRgba(v, a) {
+  return "rgba(" + v + ", " + v + ", " + v + ", " + a + ")";
+};
+
+var GREY_BG_HEADER = '#3a6799';
+var GREY_C_HEADER = '#a9a9a9';
 var P_GREY = {
   BG_BODY: '#5f5f5f',
-  BG: DF_BG,
-  BT_H: DF_BT_H,
+  BG: '#4d4d4d',
+  BT_H: _crRgba(255, 0.1),
   BT_FC: '#6ca1dc',
-  BT_RC: '#a9a9a9',
-  BG_OPTIONS: DF_BG_OPTIONS,
-  MSI_C: DF_MSI_C,
-  MSI_FH: DF_MSI_FH,
-  SBT_BG: DF_SBT_BG,
-  BG_HEADER: '#3a6799',
-  C_HEADER: DF_C_HEADER
+  BT_RC: GREY_C_HEADER,
+  BG_OPTIONS: '#404040',
+  MSI_C: '#f8f8ff',
+  MSI_FH: _crRgba(48, 0.4),
+  SBT_BG: GREY_BG_HEADER,
+  BG_HEADER: GREY_BG_HEADER,
+  C_HEADER: GREY_C_HEADER
 };
+var BG_HEADER_LIGHT = '#0096c8';
 var _P_LIGHT = {
-  BT_H: BT_H_LIGHT,
-  MSI_C: MSI_C_LIGHT,
-  MSI_FH: MSI_FH_LIGHT,
-  SBT_BG: SBT_BG_LIGHT,
+  BT_H: _crRgba(48, 0.3),
+  MSI_C: '#303030',
+  MSI_FH: _crRgba(255, 0.4),
+  SBT_BG: '#0096c8',
   BG_HEADER: BG_HEADER_LIGHT,
   BT_FC: BG_HEADER_LIGHT,
-  C_HEADER: C_HEADER_LIGHT
+  C_HEADER: '#4d4d4d'
 };
 var WHITE_BG = '#eaeaea';
 var P_WHITE = (0, _extends2["default"])({}, _P_LIGHT, {
