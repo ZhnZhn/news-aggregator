@@ -6,10 +6,11 @@ import ComponentActions, {
   CAT_SHOW_NEWS_PANE,
   CAT_TOGGLE_NEWS_PANE
 } from '../actions/ComponentActions'
-import NewsActions, {
+import {
   NAT_LOAD_NEWS_COMPLETED,
-  NAT_UPDATE_NEWS
-} from '../actions/NewsActions'
+  NAT_UPDATE_NEWS,
+  NewsActions
+} from '../actions/NewsActions';
 
 import RouterDialog from '../../components/dialogs/RouterDialog'
 import RouterPane from '../../components/panes/RouterPane'

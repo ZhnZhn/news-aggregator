@@ -1,7 +1,7 @@
 import Reflux from 'reflux-core'
 
 import ComponentActions from '../actions/ComponentActions'
-import NewsActions from '../actions/NewsActions'
+import { NewsActions } from '../actions/NewsActions'
 
 import ComponentSlice from './ComponentSlice'
 import NewsSlice from './NewsSlice'
@@ -10,8 +10,8 @@ import WithLoadingProgress from './WithLoadingProgress'
 
 const Store = Reflux.createStore({
   listenables: [
-       ComponentActions,
-       NewsActions
+     ComponentActions,
+     NewsActions
   ],
 
   ...ComponentSlice,

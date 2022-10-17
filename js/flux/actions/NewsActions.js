@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
-exports["default"] = exports.NAT_UPDATE_NEWS = exports.NAT_LOAD_NEWS_COMPLETED = void 0;
+exports.NewsActions = exports.NAT_UPDATE_NEWS = exports.NAT_LOAD_NEWS_COMPLETED = void 0;
 
 var _refluxCore = _interopRequireDefault(require("reflux-core"));
 
@@ -23,11 +23,11 @@ var NAT_LOAD_NEWS = 'loadNews',
     NAT_REMOVE_ALL_NEWS = 'removeAllNews',
     NAT_REMOVE_UNDER_NEWS = 'removeUnderNews';
 
-var NewsActions = _refluxCore["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[NAT_LOAD_NEWS] = {
+var _NewsActions = _refluxCore["default"].createActions((_Reflux$createActions = {}, _Reflux$createActions[NAT_LOAD_NEWS] = {
   children: ['completed', 'failed']
 }, _Reflux$createActions[NAT_REMOVE_NEWS] = {}, _Reflux$createActions[NAT_REMOVE_ALL_NEWS] = {}, _Reflux$createActions[NAT_REMOVE_UNDER_NEWS] = {}, _Reflux$createActions));
 
-NewsActions[NAT_LOAD_NEWS].listen(function (option) {
+_NewsActions[NAT_LOAD_NEWS].listen(function (option) {
   if (option === void 0) {
     option = {};
   }
@@ -52,6 +52,7 @@ NewsActions[NAT_LOAD_NEWS].listen(function (option) {
     });
   }
 });
-var _default = NewsActions;
-exports["default"] = _default;
+
+var NewsActions = _NewsActions;
+exports.NewsActions = NewsActions;
 //# sourceMappingURL=NewsActions.js.map

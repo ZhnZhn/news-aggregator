@@ -13,8 +13,8 @@ const NAT_LOAD_NEWS = 'loadNews'
 , NAT_REMOVE_ALL_NEWS = 'removeAllNews'
 , NAT_REMOVE_UNDER_NEWS = 'removeUnderNews';
 
-const NewsActions = Reflux.createActions({
-  [NAT_LOAD_NEWS] : {
+const _NewsActions = Reflux.createActions({
+  [NAT_LOAD_NEWS]: {
     children: ['completed', 'failed']
   },
   [NAT_REMOVE_NEWS]: {},
@@ -22,7 +22,7 @@ const NewsActions = Reflux.createActions({
   [NAT_REMOVE_UNDER_NEWS]: {}
 })
 
-NewsActions[NAT_LOAD_NEWS].listen(function(option={}){
+_NewsActions[NAT_LOAD_NEWS].listen(function(option={}){
   const {
     apiKey,
     adapter,
@@ -37,4 +37,4 @@ NewsActions[NAT_LOAD_NEWS].listen(function(option={}){
   }
 })
 
-export default NewsActions
+export const NewsActions = _NewsActions

@@ -11,7 +11,7 @@ var _uiApi = require("../../components/uiApi");
 
 var _ComponentActions = _interopRequireWildcard(require("../actions/ComponentActions"));
 
-var _NewsActions = _interopRequireWildcard(require("../actions/NewsActions"));
+var _NewsActions = require("../actions/NewsActions");
 
 var _RouterDialog = _interopRequireDefault(require("../../components/dialogs/RouterDialog"));
 
@@ -23,7 +23,7 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 var showNewsPane = _ComponentActions["default"].showNewsPane;
 var closeNewsPane = _ComponentActions["default"].closeNewsPane;
-var loadNews = _NewsActions["default"].loadNews;
+var loadNews = _NewsActions.NewsActions.loadNews;
 var Factory = {
   createDialog: function createDialog(itemConf) {
     var type = itemConf.type,
@@ -59,9 +59,9 @@ var Factory = {
       updateAction: _NewsActions.NAT_UPDATE_NEWS,
       showAction: _ComponentActions.CAT_SHOW_NEWS_PANE,
       toggleAction: _ComponentActions.CAT_TOGGLE_NEWS_PANE,
-      onRemoveItems: _NewsActions["default"].removeAllNews.bind(null, paneId),
-      onRemoveUnder: _NewsActions["default"].removeUnderNews,
-      onCloseItem: _NewsActions["default"].removeNews,
+      onRemoveItems: _NewsActions.NewsActions.removeAllNews.bind(null, paneId),
+      onRemoveUnder: _NewsActions.NewsActions.removeUnderNews,
+      onCloseItem: _NewsActions.NewsActions.removeNews,
       onClose: closeNewsPane.bind(null, itemConf)
     });
   }

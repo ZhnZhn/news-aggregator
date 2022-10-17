@@ -46,7 +46,6 @@ const NewsSlice = {
   onRemoveUnderNews(item){
     const r = removeUnderNews(this.news, item)
     this.trigger(NAT_UPDATE_NEWS, r)
-    //this.trigger(NAT_LOAD_NEWS_COMPLETED, r)
   }
 
 }

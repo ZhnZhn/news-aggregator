@@ -49,7 +49,7 @@ var NewsSlice = {
   },
   onRemoveUnderNews: function onRemoveUnderNews(item) {
     var r = (0, _NewsSliceFn.removeUnderNews)(this.news, item);
-    this.trigger(_NewsActions.NAT_UPDATE_NEWS, r); //this.trigger(NAT_LOAD_NEWS_COMPLETED, r)
+    this.trigger(_NewsActions.NAT_UPDATE_NEWS, r);
   }
 };
 var _default = NewsSlice;
