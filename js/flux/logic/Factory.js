@@ -56,6 +56,7 @@ var Factory = {
       store: store,
       Item: Item,
       addAction: _NewsActions.NAT_LOAD_NEWS_COMPLETED,
+      updateAction: _NewsActions.NAT_UPDATE_NEWS,
       showAction: _ComponentActions.CAT_SHOW_NEWS_PANE,
       toggleAction: _ComponentActions.CAT_TOGGLE_NEWS_PANE,
       onRemoveItems: _NewsActions["default"].removeAllNews.bind(null, paneId),

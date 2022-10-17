@@ -126,6 +126,7 @@ const NewsPane = ({
   store,
 
   addAction,
+  updateAction,
   showAction,
   toggleAction,
   id,
@@ -159,10 +160,15 @@ const NewsPane = ({
   , [
     state,
     setState
-  ] = useState({articles: [], sortBy: ''})
+  ] = useState({
+    articles: [],
+    sortBy: '',
+    caption: ''
+  })
   , {
     articles,
-    sortBy
+    sortBy,
+    caption
   } = state
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hHide = useCallback(() => {
@@ -179,9 +185,15 @@ const NewsPane = ({
         toggleIsShow(true)
         setState(prevState => ({
           articles: option.data,
-          sortBy: option.sortBy
+          sortBy: option.sortBy,
+          caption: option.caption
         }))
         _focusFirstItem(_refFirstItem)
+      } else if (actionType === updateAction) {
+        setState(prevState => ({
+          ...prevState,
+          articles: option.data
+        }))
       } else if (actionType === showAction) {
         toggleIsShow(true)
       } else if (actionType === toggleAction) {
@@ -190,9 +202,12 @@ const NewsPane = ({
     }
   })
 
-  const _paneCaption = _crPaneCaption(paneCaption, sortBy)
+  const _paneCaption = caption
+    || _crPaneCaption(paneCaption, sortBy)
   , _className = crCn(CL_NEWS_PANE, [isShow,  CL_SHOW_POPUP])
-  , _styleIsShow = isShow ? S_INLINE_BLOCK : S_NONE;
+  , _styleIsShow = isShow
+     ? S_INLINE_BLOCK
+     : S_NONE;
 
   return (
     <div

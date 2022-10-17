@@ -6,6 +6,7 @@ import loadNews from '../logic/loadNews';
 const _assign = Object.assign;
 
 export const NAT_LOAD_NEWS_COMPLETED = 'loadNewsCompleted'
+export const NAT_UPDATE_NEWS = 'updateNews'
 
 const NAT_LOAD_NEWS = 'loadNews'
 , NAT_REMOVE_NEWS = 'removeNews'

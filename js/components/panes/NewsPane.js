@@ -130,6 +130,7 @@ var _crModelMoreHandlers = function _crModelMoreHandlers(ref, onRemoveItems) {
 var NewsPane = function NewsPane(_ref2) {
   var store = _ref2.store,
       addAction = _ref2.addAction,
+      updateAction = _ref2.updateAction,
       showAction = _ref2.showAction,
       toggleAction = _ref2.toggleAction,
       id = _ref2.id,
@@ -154,12 +155,14 @@ var NewsPane = function NewsPane(_ref2) {
       _hideMore = _useBool[2],
       _useState = (0, _uiApi.useState)({
     articles: [],
-    sortBy: ''
+    sortBy: '',
+    caption: ''
   }),
       state = _useState[0],
       setState = _useState[1],
       articles = state.articles,
       sortBy = state.sortBy,
+      caption = state.caption,
       _hHide = (0, _uiApi.useCallback)(function () {
     onClose();
     toggleIsShow(false);
@@ -177,11 +180,18 @@ var NewsPane = function NewsPane(_ref2) {
         setState(function (prevState) {
           return {
             articles: option.data,
-            sortBy: option.sortBy
+            sortBy: option.sortBy,
+            caption: option.caption
           };
         });
 
         _focusFirstItem(_refFirstItem);
+      } else if (actionType === updateAction) {
+        setState(function (prevState) {
+          return (0, _extends2["default"])({}, prevState, {
+            articles: option.data
+          });
+        });
       } else if (actionType === showAction) {
         toggleIsShow(true);
       } else if (actionType === toggleAction) {
@@ -190,7 +200,7 @@ var NewsPane = function NewsPane(_ref2) {
     }
   });
 
-  var _paneCaption = _crPaneCaption(paneCaption, sortBy),
+  var _paneCaption = caption || _crPaneCaption(paneCaption, sortBy),
       _className = (0, _crCn["default"])(CL_NEWS_PANE, [isShow, CL_SHOW_POPUP]),
       _styleIsShow = isShow ? S_INLINE_BLOCK : S_NONE;
 

@@ -11,49 +11,8 @@ var _ComponentActions = _interopRequireDefault(require("../actions/ComponentActi
 
 var _LoadingProgressActions = require("../actions/LoadingProgressActions");
 
-var Logic = {
-  loadNewsCompleted: function loadNewsCompleted(slice, news) {
-    var source = news.source,
-        _news$articles = news.articles,
-        articles = _news$articles === void 0 ? [] : _news$articles,
-        sortBy = news.sortBy;
-    slice[source] = slice[source] ? articles.concat(slice[source]) : articles;
-    return {
-      id: source,
-      data: slice[source],
-      sortBy: sortBy
-    };
-  },
-  removeAllNews: function removeAllNews(slice, paneId) {
-    slice[paneId] = [];
-    return {
-      id: paneId,
-      data: slice[paneId],
-      sortBy: ''
-    };
-  },
-  removeNews: function removeNews(slice, item) {
-    var id = item.id,
-        source = item.source;
-    slice[source] = slice[source].filter(function (article) {
-      return article.articleId !== id;
-    });
-  },
-  removeUnderNews: function removeUnderNews(slice, item) {
-    var articleId = item.articleId,
-        source = item.source;
+var _NewsSliceFn = require("./NewsSliceFn");
 
-    var _underIndex = slice[source].findIndex(function (article) {
-      return article.articleId === articleId;
-    });
-
-    slice[source] = slice[source].slice(_underIndex + 1);
-    return {
-      id: source,
-      data: slice[source]
-    };
-  }
-};
 var NewsSlice = {
   news: {},
   onLoadNews: function onLoadNews(option) {
@@ -70,7 +29,7 @@ var NewsSlice = {
         itemConf = _ref.itemConf;
 
     if (news) {
-      var r = Logic.loadNewsCompleted(this.news, news);
+      var r = (0, _NewsSliceFn.loadNewsCompleted)(this.news, news);
       this.trigger(_NewsActions.NAT_LOAD_NEWS_COMPLETED, r);
     }
 
@@ -82,15 +41,15 @@ var NewsSlice = {
     this.triggerLoadingProgress(_LoadingProgressActions.LPAT_LOADING_FAILED);
   },
   onRemoveNews: function onRemoveNews(item) {
-    Logic.removeNews(this.news, item);
+    (0, _NewsSliceFn.removeNews)(this.news, item);
   },
   onRemoveAllNews: function onRemoveAllNews(paneId) {
-    var r = Logic.removeAllNews(this.news, paneId);
+    var r = (0, _NewsSliceFn.removeAllNews)(this.news, paneId);
     this.trigger(_NewsActions.NAT_LOAD_NEWS_COMPLETED, r);
   },
   onRemoveUnderNews: function onRemoveUnderNews(item) {
-    var r = Logic.removeUnderNews(this.news, item);
-    this.trigger(_NewsActions.NAT_LOAD_NEWS_COMPLETED, r);
+    var r = (0, _NewsSliceFn.removeUnderNews)(this.news, item);
+    this.trigger(_NewsActions.NAT_UPDATE_NEWS, r); //this.trigger(NAT_LOAD_NEWS_COMPLETED, r)
   }
 };
 var _default = NewsSlice;
