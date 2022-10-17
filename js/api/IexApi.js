@@ -2,20 +2,17 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
-var C = {
-  DF_SYMBOL: 'AAPL',
-  DF_RECENT: '20',
-  BASE_URL: 'https://cloud.iexapis.com/stable/stock' //BASE_URL: 'https://api.iextrading.com/1.0/stock'
-
-};
+var DF_SYMBOL = 'AAPL',
+    DF_RECENT = '20',
+    DF_URL = 'https://cloud.iexapis.com/stable/stock';
 var IexApi = {
-  getRequestUrl: function getRequestUrl(option) {
-    var _option$symbol = option.symbol,
-        symbol = _option$symbol === void 0 ? C.DF_SYMBOL : _option$symbol,
-        _option$recent = option.recent,
-        recent = _option$recent === void 0 ? C.DF_RECENT : _option$recent,
-        apiKey = option.apiKey;
-    return C.BASE_URL + "/" + symbol + "/news/last/" + recent + "?token=" + apiKey;
+  getRequestUrl: function getRequestUrl(_ref) {
+    var _ref$symbol = _ref.symbol,
+        symbol = _ref$symbol === void 0 ? DF_SYMBOL : _ref$symbol,
+        _ref$recent = _ref.recent,
+        recent = _ref$recent === void 0 ? DF_RECENT : _ref$recent,
+        apiKey = _ref.apiKey;
+    return DF_URL + "/" + symbol + "/news/last/" + recent + "?token=" + apiKey;
   },
   checkResponse: function checkResponse(json, option) {
     return true;

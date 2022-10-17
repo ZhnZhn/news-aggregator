@@ -89,10 +89,9 @@ const _toArticles = (
    .map(sanitizeArticle) : [];
 };
 
-const _crSortBy = ({
-  symbol=DF_SYMBOL,
-  recent=''
-}) => `${symbol.toUpperCase()} ${recent}`;
+const _crCaption = ({
+  symbol=DF_SYMBOL
+}) => `IEX Cloud: ${symbol.toUpperCase()}`;
 
 const IexAdapter = {
   toNews: (
@@ -100,8 +99,8 @@ const IexAdapter = {
     option
   ) => ({
      source: SOURCE_ID,
-     articles: _toArticles(json),
-     sortBy: _crSortBy(option)
+     caption: _crCaption(option),
+     articles: _toArticles(json)
   })
 };
 

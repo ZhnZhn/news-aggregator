@@ -11,6 +11,8 @@ var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
 
 var _crDescription = _interopRequireDefault(require("../utils/crDescription"));
 
+var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
+
 var _isArr = Array.isArray;
 var SOURCE_ID = 'iex_news',
     DF_SYMBOL = 'AAPL';
@@ -77,23 +79,21 @@ var _toArticles = function _toArticles(json) {
     return arr;
   }, []).filter(function (item) {
     return !item._isNewer;
-  }) : [];
+  }).map(_sanitizeArticle["default"]) : [];
 };
 
-var _crSortBy = function _crSortBy(_ref) {
+var _crCaption = function _crCaption(_ref) {
   var _ref$symbol = _ref.symbol,
-      symbol = _ref$symbol === void 0 ? DF_SYMBOL : _ref$symbol,
-      _ref$recent = _ref.recent,
-      recent = _ref$recent === void 0 ? '' : _ref$recent;
-  return symbol.toUpperCase() + " " + recent;
+      symbol = _ref$symbol === void 0 ? DF_SYMBOL : _ref$symbol;
+  return "IEX Cloud: " + symbol.toUpperCase();
 };
 
 var IexAdapter = {
   toNews: function toNews(json, option) {
     return {
       source: SOURCE_ID,
-      articles: _toArticles(json),
-      sortBy: _crSortBy(option)
+      caption: _crCaption(option),
+      articles: _toArticles(json)
     };
   }
 };
