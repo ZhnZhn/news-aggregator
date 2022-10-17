@@ -1,12 +1,12 @@
 .with-scroll {
-  scrollbar-color: #8bc34a var(--sbt-bg, #3f5178);
+  scrollbar-color: #8bc34a var(--sbt-bg, #3a6799);
   scrollbar-width: thin;
 }
 
 
 .with-scroll::-webkit-scrollbar-track-piece {
   width: 2px;
-  background-color: var(--sbt-bg, #3f5178);
+  background-color: var(--sbt-bg, #3a6799);
 }
 
 .with-scroll::-webkit-scrollbar {
@@ -14,12 +14,14 @@
   width: 5px;
 }
 
+/*
 .with-scroll::-webkit-scrollbar-track {
   //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   background-color:black;
   width: 2px;
   border-radius: 2px;
 }
+*/
 
 .with-scroll::-webkit-scrollbar-thumb {
   width:3px;
