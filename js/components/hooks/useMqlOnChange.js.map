@@ -1,0 +1,16 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/useMqlOnChange.js"
+ ],
+ "file": "../../../src/components/hooks/useMqlOnChange.js",
+ "names": [
+  "useMqlOnChange",
+  "mql",
+  "onChange",
+  "useEffect",
+  "addEventListener",
+  "removeEventListener"
+ ],
+ "mappings": ";;;;;AAAA;;AAIA,IAAMA,cAAc,GAAG,SAAjBA,cAAiB,CACrBC,GADqB,EAErBC,QAFqB,EAGlB;EACH;EACA,IAAAC,gBAAA,EAAU,YAAM;IACd,IAAIF,GAAJ,EAAS;MACPA,GAAG,CAACG,gBAAJ,CAAqB,QAArB,EAA+BF,QAA/B;IACD;;IACD,OAAO,YAAM;MACX,IAAID,GAAJ,EAAS;QACPA,GAAG,CAACI,mBAAJ,CAAwB,QAAxB,EAAkCH,QAAlC;MACD;IACF,CAJD;EAKD,CATD,EASG,EATH,EAFG,CAYH;;EACA;AACD,CAjBD;;eAmBeF,c"
+}
