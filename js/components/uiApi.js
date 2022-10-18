@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.render = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.forwardRef = exports.focusRefElement = exports.createElement = exports.createContext = exports.cloneElement = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.render = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.forwardRef = exports.focusRefElement = exports.createContext = exports.cloneElement = void 0;
 
 var _compat = require("preact/compat");
 
@@ -9,7 +9,6 @@ exports.memo = _compat.memo;
 exports.forwardRef = _compat.forwardRef;
 exports.render = _compat.render;
 exports.cloneElement = _compat.cloneElement;
-exports.createElement = _compat.createElement;
 exports.createContext = _compat.createContext;
 exports.useRef = _compat.useRef;
 exports.useState = _compat.useState;

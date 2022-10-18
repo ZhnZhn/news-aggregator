@@ -4,7 +4,6 @@ export {
 
   render,
   cloneElement,
-  createElement,
   createContext,
 
   useRef,
