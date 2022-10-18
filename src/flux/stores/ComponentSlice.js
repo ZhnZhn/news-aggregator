@@ -10,9 +10,12 @@ import {
 
   CAT_SHOW_ABOUT,
   CAT_CHANGE_THEME
-} from '../actions/ComponentActions'
+} from '../actions/ComponentActions';
 
-import Factory from '../logic/Factory'
+import {
+  createDialog,
+  createNewsPane
+} from '../logic/Factory';
 
 const NewsDialogLogic = {
   showNewsDialog(slice, itemConf){
@@ -20,7 +23,7 @@ const NewsDialogLogic = {
     if (slice[type]){
       return { key:type };
     } else {
-      const Comp = Factory.createDialog(itemConf);
+      const Comp = createDialog(itemConf);
       slice[type] = true
       return { key:type, Comp };
     }
@@ -33,7 +36,7 @@ const NewsPaneLogic = {
     if (slice[type]){
       return { id: itemConf.paneId };
     } else {
-      const Comp = Factory.createNewsPane(itemConf, store)
+      const Comp = createNewsPane(itemConf, store)
       slice[type] = true;
       return { Comp };
     }

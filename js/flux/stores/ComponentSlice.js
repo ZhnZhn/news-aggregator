@@ -9,7 +9,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _ComponentActions = require("../actions/ComponentActions");
 
-var _Factory = _interopRequireDefault(require("../logic/Factory"));
+var _Factory = require("../logic/Factory");
 
 var NewsDialogLogic = {
   showNewsDialog: function showNewsDialog(slice, itemConf) {
@@ -20,8 +20,7 @@ var NewsDialogLogic = {
         key: type
       };
     } else {
-      var Comp = _Factory["default"].createDialog(itemConf);
-
+      var Comp = (0, _Factory.createDialog)(itemConf);
       slice[type] = true;
       return {
         key: type,
@@ -39,8 +38,7 @@ var NewsPaneLogic = {
         id: itemConf.paneId
       };
     } else {
-      var Comp = _Factory["default"].createNewsPane(itemConf, store);
-
+      var Comp = (0, _Factory.createNewsPane)(itemConf, store);
       slice[type] = true;
       return {
         Comp: Comp

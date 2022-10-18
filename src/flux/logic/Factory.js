@@ -1,70 +1,71 @@
 import {
-  createElement
-} from '../../components/uiApi';
-
-import {
   CAT_SHOW_NEWS_PANE,
   CAT_TOGGLE_NEWS_PANE,
   ComponentActions
-} from '../actions/ComponentActions'
+} from '../actions/ComponentActions';
 import {
   NAT_LOAD_NEWS_COMPLETED,
   NAT_UPDATE_NEWS,
   NewsActions
 } from '../actions/NewsActions';
 
-import RouterDialog from '../../components/dialogs/RouterDialog'
-import RouterPane from '../../components/panes/RouterPane'
+import RouterDialog from '../../components/dialogs/RouterDialog';
+import RouterPane from '../../components/panes/RouterPane';
 
-const showNewsPane = ComponentActions.showNewsPane;
-const closeNewsPane = ComponentActions.closeNewsPane;
-const loadNews = NewsActions.loadNews;
+const showNewsPane = ComponentActions.showNewsPane
+, closeNewsPane = ComponentActions.closeNewsPane
+, loadNews = NewsActions.loadNews;
 
-const Factory = {
-  createDialog: (itemConf) => {
-    const {
-      type,
-      dialogType,
-      dialogProps
-    } = itemConf
-    , El = RouterDialog.getElement(dialogType);
-    return createElement(El, {
-      key: type,
-      type: type,
-      itemConf: itemConf,
-      ...dialogProps,
-      onShow: showNewsPane.bind(null, itemConf),
-      onLoad: loadNews
-    });
-  },
-
-  createNewsPane: (itemConf, store) => {
-    const {
-      type,
-      paneType,
-      paneCaption,
-      paneId
-    } = itemConf
-    , {
-      Pane,
-      Item
-    } = RouterPane.getElement(paneType);
-    return createElement(Pane, {
-      key: type,
-      id: paneId,
-      paneCaption,
-      store,
-      Item,
-      addAction: NAT_LOAD_NEWS_COMPLETED,
-      updateAction: NAT_UPDATE_NEWS,
-      showAction: CAT_SHOW_NEWS_PANE,
-      toggleAction: CAT_TOGGLE_NEWS_PANE,
-      onRemoveItems: NewsActions.removeAllNews.bind(null, paneId),
-      onRemoveUnder: NewsActions.removeUnderNews,
-      onCloseItem: NewsActions.removeNews,
-      onClose: closeNewsPane.bind(null, itemConf)
-    });
-  }
+export const createDialog = (
+  itemConf
+) => {
+  const {
+    type,
+    dialogType,
+    dialogProps
+  } = itemConf
+  , El = RouterDialog.getElement(dialogType);
+  return (
+    <El
+      key={type}
+      type={type}
+      itemConf={itemConf}
+      {...dialogProps}
+      onShow={showNewsPane.bind(null, itemConf)}
+      onLoad={loadNews}
+    />
+  );
 }
 
-export default Factory
+export const createNewsPane = (
+  itemConf,
+  store
+) => {
+  const {
+    type,
+    paneType,
+    paneCaption,
+    paneId
+  } = itemConf
+  , {
+    Pane,
+    Item
+  } = RouterPane.getElement(paneType);
+  return (
+    <Pane
+      key={type}
+      id={paneId}
+      paneCaption={paneCaption}
+      store={store}
+      Item={Item}
+      addAction={NAT_LOAD_NEWS_COMPLETED}
+      updateAction={NAT_UPDATE_NEWS}
+      showAction={CAT_SHOW_NEWS_PANE}
+      toggleAction={CAT_TOGGLE_NEWS_PANE}
+      onRemoveItems={NewsActions.removeAllNews.bind(null, paneId)}
+      onRemoveUnder={NewsActions.removeUnderNews}
+      onCloseItem={NewsActions.removeNews}
+      onClose={closeNewsPane.bind(null, itemConf)}
+    />
+  );
+}
