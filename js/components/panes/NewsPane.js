@@ -25,35 +25,20 @@ var _NewsPane = _interopRequireDefault(require("./NewsPane.Style"));
 
 var _has = _interopRequireDefault(require("../has"));
 
-var _DP = require("../DP");
-
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 
-var _SvgHrzResize = _interopRequireDefault(require("../zhn-resize/SvgHrzResize"));
-
-var _InlineFlexStart = _interopRequireDefault(require("../zhn-atoms/InlineFlexStart"));
-
 var _Comp = _interopRequireDefault(require("../Comp"));
+
+var _CaptionButtons = _interopRequireDefault(require("./CaptionButtons"));
+
+var _ResizeWidth = require("./ResizeWidth");
 
 var _jsxRuntime = require("preact/jsx-runtime");
 
 var WIDTH_STYLE = _has["default"].initWidthStyle(),
-    RESIZE_INIT_WIDTH = 635,
-    RESIZE_MIN_WIDTH = 395,
-    RESIZE_MAX_WIDTH = 1200,
-    RESIZE_DELTA = 10,
     CL_NEWS_PANE = "news-pane",
     CL_SHOW_POPUP = "show-popup",
     CL_MENU_MORE = "popup-menu items__menu-more",
-    S_BT_REMOVE = {
-  position: 'relative',
-  margin: '0 3px 0 12px' //top: -1
-
-},
-    S_SVG_RESIZE = {
-  position: 'relative' //top: -3
-
-},
     S_SCROLL_DIV = {
   overflow: 'hidden auto',
   height: '92%',
@@ -67,7 +52,7 @@ var WIDTH_STYLE = _has["default"].initWidthStyle(),
 };
 
 var _getWidth = function _getWidth(style) {
-  return parseInt(style.width, 10) || RESIZE_INIT_WIDTH;
+  return parseInt(style.width, 10) || _ResizeWidth.RESIZE_INIT_WIDTH;
 };
 
 var _toStyleWidth = function _toStyleWidth(width) {
@@ -103,24 +88,24 @@ var _crModelMoreHandlers = function _crModelMoreHandlers(ref, onRemoveItems) {
   },
       _plusToWidth = function _plusToWidth() {
     var style = (0, _uiApi.getRefElementStyle)(ref) || {},
-        w = _getWidth(style) + RESIZE_DELTA;
+        w = _getWidth(style) + _ResizeWidth.RESIZE_DELTA;
 
-    if (w < RESIZE_MAX_WIDTH) {
+    if (w < _ResizeWidth.RESIZE_MAX_WIDTH) {
       style.width = _toStyleWidth(w);
     }
   },
       _minusToWidth = function _minusToWidth() {
     var style = (0, _uiApi.getRefElementStyle)(ref) || {},
-        w = _getWidth(style) - RESIZE_DELTA;
+        w = _getWidth(style) - _ResizeWidth.RESIZE_DELTA;
 
-    if (w > RESIZE_MIN_WIDTH) {
+    if (w > _ResizeWidth.RESIZE_MIN_WIDTH) {
       style.width = _toStyleWidth(w);
     }
   };
 
   return {
-    onMinWidth: _resizeTo.bind(null, RESIZE_MIN_WIDTH),
-    onInitWidth: _resizeTo.bind(null, RESIZE_INIT_WIDTH),
+    onMinWidth: _resizeTo.bind(null, _ResizeWidth.RESIZE_MIN_WIDTH),
+    onInitWidth: _resizeTo.bind(null, _ResizeWidth.RESIZE_INIT_WIDTH),
     onPlusWidth: _plusToWidth,
     onMinusWidth: _minusToWidth,
     onRemoveItems: onRemoveItems
@@ -219,20 +204,9 @@ var NewsPane = function NewsPane(_ref2) {
       caption: _paneCaption,
       onMore: _showMore,
       onClose: _hHide,
-      children: (0, _jsxRuntime.jsxs)(_InlineFlexStart["default"], {
-        children: [(0, _jsxRuntime.jsx)(_Comp["default"].CircleButton, {
-          ariaLabel: "Remove All Items",
-          dataPos: _DP.DP_MIDDLE_RIGHT,
-          caption: "R",
-          style: S_BT_REMOVE,
-          onClick: onRemoveItems
-        }), (0, _jsxRuntime.jsx)(_SvgHrzResize["default"], {
-          elementRef: _refRootDiv,
-          style: S_SVG_RESIZE,
-          initWidth: RESIZE_INIT_WIDTH,
-          minWidth: RESIZE_MIN_WIDTH,
-          maxWidth: RESIZE_MAX_WIDTH
-        })]
+      children: (0, _jsxRuntime.jsx)(_CaptionButtons["default"], {
+        refRootDiv: _refRootDiv,
+        onRemoveItems: onRemoveItems
       })
     }), (0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
       style: S_SCROLL_DIV,

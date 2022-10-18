@@ -1,0 +1,14 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/panes/ResizeWidth.js"
+ ],
+ "file": "../../../src/components/panes/ResizeWidth.js",
+ "names": [
+  "RESIZE_INIT_WIDTH",
+  "RESIZE_MIN_WIDTH",
+  "RESIZE_MAX_WIDTH",
+  "RESIZE_DELTA"
+ ],
+ "mappings": ";;;;AACO,IAAMA,iBAAiB,GAAG,GAA1B;;AACA,IAAMC,gBAAgB,GAAG,GAAzB;;AACA,IAAMC,gBAAgB,GAAG,IAAzB;;AACA,IAAMC,YAAY,GAAG,EAArB"
+}

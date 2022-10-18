@@ -17,34 +17,21 @@ import crCn from '../zhn-utils/crCn';
 import styleConfig from './NewsPane.Style';
 import has from '../has';
 
-import {
-  DP_MIDDLE_RIGHT
-} from '../DP';
-
 import crModelMore from './crModelMore';
 
-import SvgHrzResize from '../zhn-resize/SvgHrzResize';
-import InlineFlexStart from '../zhn-atoms/InlineFlexStart';
 import A from '../Comp';
+import CaptionButtons from './CaptionButtons';
+import {
+  RESIZE_INIT_WIDTH,
+  RESIZE_MIN_WIDTH,
+  RESIZE_MAX_WIDTH,
+  RESIZE_DELTA
+} from './ResizeWidth';
 
 const WIDTH_STYLE = has.initWidthStyle()
-, RESIZE_INIT_WIDTH = 635
-, RESIZE_MIN_WIDTH = 395
-, RESIZE_MAX_WIDTH = 1200
-, RESIZE_DELTA = 10
-
 , CL_NEWS_PANE = "news-pane"
 , CL_SHOW_POPUP = "show-popup"
 , CL_MENU_MORE = "popup-menu items__menu-more"
-, S_BT_REMOVE = {
-  position: 'relative',
-  margin: '0 3px 0 12px'
-  //top: -1
-}
-, S_SVG_RESIZE = {
-  position: 'relative'
-  //top: -3
-}
 , S_SCROLL_DIV = {
   overflow: 'hidden auto',
   height: '92%',
@@ -52,7 +39,6 @@ const WIDTH_STYLE = has.initWidthStyle()
 }
 , S_INLINE_BLOCK = { display: 'inline-block' }
 , S_NONE = { display: 'none' };
-
 
 const _getWidth = style => parseInt(style.width, 10)
   || RESIZE_INIT_WIDTH;
@@ -232,22 +218,10 @@ const NewsPane = ({
          onMore={_showMore}
          onClose={_hHide}
       >
-        <InlineFlexStart>
-           <A.CircleButton
-             ariaLabel="Remove All Items"
-             dataPos={DP_MIDDLE_RIGHT}
-             caption="R"
-             style={S_BT_REMOVE}
-             onClick={onRemoveItems}
-           />
-           <SvgHrzResize
-              elementRef={_refRootDiv}
-              style={S_SVG_RESIZE}
-              initWidth={RESIZE_INIT_WIDTH}
-              minWidth={RESIZE_MIN_WIDTH}
-              maxWidth={RESIZE_MAX_WIDTH}
-           />
-        </InlineFlexStart>
+        <CaptionButtons
+           refRootDiv={_refRootDiv}
+           onRemoveItems={onRemoveItems}
+        />
       </A.BrowserCaption>
       <A.ScrollPane
          style={S_SCROLL_DIV}
