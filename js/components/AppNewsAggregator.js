@@ -13,7 +13,7 @@ var _useListen = _interopRequireDefault(require("./hooks/useListen"));
 
 var _Store = _interopRequireDefault(require("../flux/stores/Store"));
 
-var _ComponentActions = _interopRequireWildcard(require("../flux/actions/ComponentActions"));
+var _ComponentActions = require("../flux/actions/ComponentActions");
 
 var _theme = require("./styles/theme");
 
@@ -33,10 +33,6 @@ var _RouterModalDialog = _interopRequireDefault(require("./dialogs/RouterModalDi
 
 var _jsxRuntime = require("preact/jsx-runtime");
 
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
 var CL_COMP = "component-container";
 
 var AppNewsAggregator = function AppNewsAggregator() {
@@ -44,7 +40,7 @@ var AppNewsAggregator = function AppNewsAggregator() {
       theme = _useState[0],
       setTheme = _useState[1],
       _showSettings = (0, _uiApi.useMemo)(function () {
-    return _ComponentActions["default"].showModalDialog.bind(null, 'SETTINGS_DIALOG', _Store["default"].exportSettingsFn());
+    return _ComponentActions.ComponentActions.showModalDialog.bind(null, 'SETTINGS_DIALOG', _Store["default"].exportSettingsFn());
   }, []);
 
   (0, _useListen["default"])(_Store["default"], function (actionType, themeName) {
@@ -60,21 +56,21 @@ var AppNewsAggregator = function AppNewsAggregator() {
     children: (0, _jsxRuntime.jsxs)("div", {
       children: [(0, _jsxRuntime.jsx)(_HeaderBar["default"], {
         store: _Store["default"],
-        onChangeTheme: _ComponentActions["default"].changeTheme,
-        onNewsSources: _ComponentActions["default"].showNewsBrowser,
-        onWebz: _ComponentActions["default"].showWebz,
-        onWebzCountry: _ComponentActions["default"].showWebzCountry,
-        onStackTagged: _ComponentActions["default"].showStackTagged,
-        onStackSearch: _ComponentActions["default"].showStackSearch,
-        onCryptoCompare: _ComponentActions["default"].showCryptoCompare,
-        onCoinStats: _ComponentActions["default"].showCoinStats,
-        onMessari: _ComponentActions["default"].showMessari,
-        onIex: _ComponentActions["default"].showIex,
-        onFmp: _ComponentActions["default"].showFmp,
-        onNewsSearch: _ComponentActions["default"].showNewsSearch,
-        onNewsTop: _ComponentActions["default"].showNewsTop,
+        onChangeTheme: _ComponentActions.ComponentActions.changeTheme,
+        onNewsSources: _ComponentActions.ComponentActions.showNewsBrowser,
+        onWebz: _ComponentActions.ComponentActions.showWebz,
+        onWebzCountry: _ComponentActions.ComponentActions.showWebzCountry,
+        onStackTagged: _ComponentActions.ComponentActions.showStackTagged,
+        onStackSearch: _ComponentActions.ComponentActions.showStackSearch,
+        onCryptoCompare: _ComponentActions.ComponentActions.showCryptoCompare,
+        onCoinStats: _ComponentActions.ComponentActions.showCoinStats,
+        onMessari: _ComponentActions.ComponentActions.showMessari,
+        onIex: _ComponentActions.ComponentActions.showIex,
+        onFmp: _ComponentActions.ComponentActions.showFmp,
+        onNewsSearch: _ComponentActions.ComponentActions.showNewsSearch,
+        onNewsTop: _ComponentActions.ComponentActions.showNewsTop,
         onSettings: _showSettings,
-        onAbout: _ComponentActions["default"].showAbout
+        onAbout: _ComponentActions.ComponentActions.showAbout
       }), (0, _jsxRuntime.jsxs)("div", {
         className: CL_COMP,
         children: [(0, _jsxRuntime.jsx)(_BrowserContainer["default"], {

@@ -1,13 +1,11 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
 var _NewsActions = require("../actions/NewsActions");
 
-var _ComponentActions = _interopRequireDefault(require("../actions/ComponentActions"));
+var _ComponentActions = require("../actions/ComponentActions");
 
 var _LoadingProgressActions = require("../actions/LoadingProgressActions");
 
@@ -20,7 +18,7 @@ var NewsSlice = {
       option = {};
     }
 
-    _ComponentActions["default"].showNewsPane(option.itemConf);
+    _ComponentActions.ComponentActions.showNewsPane(option.itemConf);
 
     this.triggerLoadingProgress(_LoadingProgressActions.LPAT_LOADING);
   },
@@ -36,7 +34,7 @@ var NewsSlice = {
     this.triggerLoadingProgress(_LoadingProgressActions.LPAT_LOADING_COMPLETE);
   },
   onLoadNewsFailed: function onLoadNewsFailed(option) {
-    _ComponentActions["default"].showModalDialog('ALERT_DIALOG', option);
+    _ComponentActions.ComponentActions.showModalDialog('ALERT_DIALOG', option);
 
     this.triggerLoadingProgress(_LoadingProgressActions.LPAT_LOADING_FAILED);
   },

@@ -8,7 +8,7 @@ import memoIsShow from '../hoc/memoIsShow';
 import ThemeContext from '../hooks/ThemeContext';
 import styleConfig from '../dialogs/Dialog.Style';
 
-import Actions from '../../flux/actions/ComponentActions';
+import { ComponentActions } from '../../flux/actions/ComponentActions';
 
 import A from '../Comp';
 import CardApiKeys from './CardApiKeys';
@@ -56,7 +56,7 @@ const SettingsDialog = memoIsShow(({
     const { value } = item || {};
     if (value && theme.getThemeName() !== value) {
       theme.setThemeName(value)
-      Actions.changeTheme(value)
+      ComponentActions.changeTheme(value)
     }
   }, [theme])
   , TS = theme.createStyle(styleConfig)

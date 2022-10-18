@@ -51,4 +51,4 @@ Actions.showNewsTop = _fShowDialog(QUERY.NEWS_TOP)
 const _fShowBrowser = id => Actions.showBrowser.bind(null, id);
 Actions.showNewsBrowser = _fShowBrowser(MENU.NEWS)
 
-export default Actions
+export const ComponentActions = Actions

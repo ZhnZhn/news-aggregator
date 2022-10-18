@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
-exports["default"] = exports.CAT_UPDATE_BROWSER = exports.CAT_TOGGLE_NEWS_PANE = exports.CAT_SHOW_NEWS_PANE = exports.CAT_SHOW_NEWS_DIALOG = exports.CAT_SHOW_MODAL_DIALOG = exports.CAT_SHOW_BROWSER = exports.CAT_SHOW_ABOUT = exports.CAT_CHANGE_THEME = void 0;
+exports.ComponentActions = exports.CAT_UPDATE_BROWSER = exports.CAT_TOGGLE_NEWS_PANE = exports.CAT_SHOW_NEWS_PANE = exports.CAT_SHOW_NEWS_DIALOG = exports.CAT_SHOW_MODAL_DIALOG = exports.CAT_SHOW_BROWSER = exports.CAT_SHOW_ABOUT = exports.CAT_CHANGE_THEME = void 0;
 
 var _refluxCore = _interopRequireDefault(require("reflux-core"));
 
@@ -55,6 +55,6 @@ var _fShowBrowser = function _fShowBrowser(id) {
 };
 
 Actions.showNewsBrowser = _fShowBrowser(_NewsMenu["default"].NEWS);
-var _default = Actions;
-exports["default"] = _default;
+var ComponentActions = Actions;
+exports.ComponentActions = ComponentActions;
 //# sourceMappingURL=ComponentActions.js.map

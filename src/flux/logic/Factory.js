@@ -2,9 +2,10 @@ import {
   createElement
 } from '../../components/uiApi';
 
-import ComponentActions, {
+import {
   CAT_SHOW_NEWS_PANE,
-  CAT_TOGGLE_NEWS_PANE
+  CAT_TOGGLE_NEWS_PANE,
+  ComponentActions
 } from '../actions/ComponentActions'
 import {
   NAT_LOAD_NEWS_COMPLETED,

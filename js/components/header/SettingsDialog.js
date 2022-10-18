@@ -15,7 +15,7 @@ var _ThemeContext = _interopRequireDefault(require("../hooks/ThemeContext"));
 
 var _Dialog = _interopRequireDefault(require("../dialogs/Dialog.Style"));
 
-var _ComponentActions = _interopRequireDefault(require("../../flux/actions/ComponentActions"));
+var _ComponentActions = require("../../flux/actions/ComponentActions");
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
@@ -70,7 +70,7 @@ var SettingsDialog = (0, _memoIsShow["default"])(function (_ref) {
     if (value && theme.getThemeName() !== value) {
       theme.setThemeName(value);
 
-      _ComponentActions["default"].changeTheme(value);
+      _ComponentActions.ComponentActions.changeTheme(value);
     }
   }, [theme]),
       TS = theme.createStyle(_Dialog["default"]),

@@ -9,7 +9,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _uiApi = require("../../components/uiApi");
 
-var _ComponentActions = _interopRequireWildcard(require("../actions/ComponentActions"));
+var _ComponentActions = require("../actions/ComponentActions");
 
 var _NewsActions = require("../actions/NewsActions");
 
@@ -17,12 +17,8 @@ var _RouterDialog = _interopRequireDefault(require("../../components/dialogs/Rou
 
 var _RouterPane = _interopRequireDefault(require("../../components/panes/RouterPane"));
 
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-var showNewsPane = _ComponentActions["default"].showNewsPane;
-var closeNewsPane = _ComponentActions["default"].closeNewsPane;
+var showNewsPane = _ComponentActions.ComponentActions.showNewsPane;
+var closeNewsPane = _ComponentActions.ComponentActions.closeNewsPane;
 var loadNews = _NewsActions.NewsActions.loadNews;
 var Factory = {
   createDialog: function createDialog(itemConf) {

@@ -5,11 +5,12 @@ import {
 
 import useListen from './hooks/useListen'
 import Store from '../flux/stores/Store'
-import Actions, {
+import {
   CAT_CHANGE_THEME,
   CAT_SHOW_ABOUT,
   CAT_SHOW_NEWS_PANE,
-  CAT_SHOW_MODAL_DIALOG
+  CAT_SHOW_MODAL_DIALOG,
+  ComponentActions
 } from '../flux/actions/ComponentActions'
 
 import { initialTheme } from './styles/theme'
@@ -29,8 +30,11 @@ const AppNewsAggregator = () => {
     theme,
     setTheme
   ] = useState(initialTheme)
-  , _showSettings = useMemo(() => Actions.showModalDialog.bind(
-     null, 'SETTINGS_DIALOG', Store.exportSettingsFn()
+  , _showSettings = useMemo(() => ComponentActions
+     .showModalDialog.bind(
+       null,
+       'SETTINGS_DIALOG',
+       Store.exportSettingsFn()
   ), []);
 
   useListen(Store, (actionType, themeName)=>{
@@ -47,23 +51,23 @@ const AppNewsAggregator = () => {
       <div>
         <HeaderBar
           store={Store}
-          onChangeTheme={Actions.changeTheme}
-          onNewsSources={Actions.showNewsBrowser}
+          onChangeTheme={ComponentActions.changeTheme}
+          onNewsSources={ComponentActions.showNewsBrowser}
 
-          onWebz={Actions.showWebz}
-          onWebzCountry={Actions.showWebzCountry}
-          onStackTagged={Actions.showStackTagged}
-          onStackSearch={Actions.showStackSearch}
-          onCryptoCompare={Actions.showCryptoCompare}
-          onCoinStats = {Actions.showCoinStats}
-          onMessari={Actions.showMessari}
-          onIex={Actions.showIex}
-          onFmp={Actions.showFmp}
-          onNewsSearch={Actions.showNewsSearch}
-          onNewsTop={Actions.showNewsTop}
+          onWebz={ComponentActions.showWebz}
+          onWebzCountry={ComponentActions.showWebzCountry}
+          onStackTagged={ComponentActions.showStackTagged}
+          onStackSearch={ComponentActions.showStackSearch}
+          onCryptoCompare={ComponentActions.showCryptoCompare}
+          onCoinStats = {ComponentActions.showCoinStats}
+          onMessari={ComponentActions.showMessari}
+          onIex={ComponentActions.showIex}
+          onFmp={ComponentActions.showFmp}
+          onNewsSearch={ComponentActions.showNewsSearch}
+          onNewsTop={ComponentActions.showNewsTop}
 
           onSettings={_showSettings}
-          onAbout={Actions.showAbout}
+          onAbout={ComponentActions.showAbout}
         />
         <div className={CL_COMP}>
           <BrowserContainer

@@ -2,7 +2,9 @@ import {
   NAT_LOAD_NEWS_COMPLETED,
   NAT_UPDATE_NEWS
 } from '../actions/NewsActions';
-import ComponentActions from '../actions/ComponentActions';
+import {
+  ComponentActions
+} from '../actions/ComponentActions';
 import {
   LPAT_LOADING,
   LPAT_LOADING_COMPLETE,

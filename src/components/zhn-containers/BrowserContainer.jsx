@@ -1,7 +1,8 @@
-import ComponentActions, {
+import {
   CAT_SHOW_BROWSER,
   CAT_UPDATE_BROWSER,
-  CAT_SHOW_NEWS_DIALOG
+  CAT_SHOW_NEWS_DIALOG,
+  ComponentActions
 } from '../../flux/actions/ComponentActions'
 import MENU from '../../conf/NewsMenu'
 

@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _ComponentActions = _interopRequireWildcard(require("../../flux/actions/ComponentActions"));
+var _ComponentActions = require("../../flux/actions/ComponentActions");
 
 var _NewsMenu = _interopRequireDefault(require("../../conf/NewsMenu"));
 
@@ -13,27 +13,23 @@ var _NewsBrowser = _interopRequireDefault(require("../source-browsers/NewsBrowse
 
 var _DialogContainer = _interopRequireDefault(require("./DialogContainer"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+var onClick = _ComponentActions.ComponentActions.showNewsDialog;
 
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+var onError = _ComponentActions.ComponentActions.showModalDialog.bind(null, 'ALERT_DIALOG');
 
-var onClick = _ComponentActions["default"].showNewsDialog;
+var onClickBadge = _ComponentActions.ComponentActions.toggleNewsPane;
 
-var onError = _ComponentActions["default"].showModalDialog.bind(null, 'ALERT_DIALOG');
-
-var onClickBadge = _ComponentActions["default"].toggleNewsPane;
-
-var onRemoveBadges = _ComponentActions["default"].removeNewsBadges.bind(null, {
+var onRemoveBadges = _ComponentActions.ComponentActions.removeNewsBadges.bind(null, {
   browserId: _NewsMenu["default"].NEWS
 });
 
 var BrowserContainer = function BrowserContainer(_ref) {
   var store = _ref.store;
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  return (0, _jsxRuntime.jsxs)("div", {
     className: "hrz-container",
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_NewsBrowser["default"], {
+    children: [(0, _jsxRuntime.jsx)(_NewsBrowser["default"], {
       store: store,
       showAction: _ComponentActions.CAT_SHOW_BROWSER,
       updateAction: _ComponentActions.CAT_UPDATE_BROWSER,
@@ -42,7 +38,7 @@ var BrowserContainer = function BrowserContainer(_ref) {
       onError: onError,
       onClickBadge: onClickBadge,
       onRemoveBadges: onRemoveBadges
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DialogContainer["default"], {
+    }), (0, _jsxRuntime.jsx)(_DialogContainer["default"], {
       maxDialog: 3,
       store: store,
       showAction: _ComponentActions.CAT_SHOW_NEWS_DIALOG
