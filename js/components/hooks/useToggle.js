@@ -7,24 +7,16 @@ var _uiApi = require("../uiApi");
 
 var _isBool = function _isBool(v) {
   return typeof v === 'boolean';
+},
+    _initState = function _initState(initialValue) {
+  return !!initialValue;
+},
+    _reducer = function _reducer(state, value) {
+  return _isBool(value) ? value : !state;
 };
 
 var useToggle = function useToggle(initialValue) {
-  var _useState = (0, _uiApi.useState)(function () {
-    return !!initialValue;
-  }),
-      is = _useState[0],
-      setIs = _useState[1];
-
-  return [is, (0, _uiApi.useCallback)(function (v) {
-    if (_isBool(v)) {
-      setIs(v);
-    } else {
-      setIs(function (is) {
-        return !is;
-      });
-    }
-  }, [])];
+  return (0, _uiApi.useReducer)(_reducer, initialValue, _initState);
 };
 
 var _default = useToggle;

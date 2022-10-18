@@ -1,27 +1,20 @@
-import {
-  useState,
-  useCallback
-} from '../uiApi';
+import { useReducer } from '../uiApi';
 
-const _isBool = v => typeof v === 'boolean';
+const _isBool = v => typeof v === 'boolean'
+, _initState = (initialValue) => !!initialValue
+, _reducer = (
+  state,
+  value
+) => _isBool(value)
+  ? value
+  : !state;
 
 const useToggle = (
   initialValue
-) => {
- const [
-   is,
-   setIs
- ] = useState(() => !!initialValue);
- return [
-   is,
-   useCallback((v) => {
-     if (_isBool(v)) {
-       setIs(v)
-     } else {
-       setIs(is => !is)
-     }
-   }, [])
- ];
-};
+) => useReducer(
+  _reducer,
+  initialValue,
+  _initState
+);
 
 export default useToggle
