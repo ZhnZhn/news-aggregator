@@ -1,10 +1,12 @@
-const LS = window.localStorage
-, ERR_LS_IS_ABSENT = {
-  message: "LocalStorage is absent"
-}
-, ERR_USE_LS_NOT_ALLOWED = {
-  message: "Use LocalStorage is not allowed"
-};
+const FN_IDENTITY = str => str
+, KEY_PREFIX = 'NA'
+, LS = window.localStorage
+, _toBase64 = window.btoa || FN_IDENTITY
+, _fromBase64 = window.atob || FN_IDENTITY
+, _crErr = msg => ({ message: msg })
+, ERR_LS_IS_ABSENT = _crErr("LocalStorage is absent")
+, ERR_USE_LS_NOT_ALLOWED = _crErr("Use LocalStorage is not allowed");
+
 export const hasLocalStorage = !!(LS)
 
 let _isAllowUseLs = false;
@@ -19,12 +21,16 @@ export const notAllowUseLs = () => {
   _isAllowUseLs = false
 }
 
+const _crStorageKey = (
+  storageKey
+) => `${KEY_PREFIX}_${storageKey}`
+
 export const readFromLs = (
   storageKey
 ) => {
   if (hasLocalStorage) {
     try {
-      return [LS[storageKey]];
+      return [_fromBase64(LS[_crStorageKey(storageKey)])];
     } catch(err) {
       return [void 0, err];
     }
@@ -42,19 +48,21 @@ export const writeToLs = (
   }
   if (hasLocalStorage) {
     try {
-      LS[storageKey] = value
+      LS[_crStorageKey(storageKey)] = _toBase64(value)
     } catch(err) {
       return err;
     }
   } else {
     return {...ERR_LS_IS_ABSENT};
   }
-};
+}
 
-export const clearLs = () => {
+export const removeItem = (
+  storageKey
+) => {
   if (hasLocalStorage) {
     try {
-      LS.clear()
+      LS.removeItem(_crStorageKey(storageKey))
     } catch(err) {
       return err;
     }

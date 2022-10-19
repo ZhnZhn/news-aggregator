@@ -173,7 +173,9 @@ exports.allowSaveToLs = allowSaveToLs;
 
 var notAllowSaveToLs = function notAllowSaveToLs() {
   (0, _localStorageFn.notAllowUseLs)();
-  (0, _localStorageFn.clearLs)();
+  (0, _localStorageFn.removeItem)(_LS.LS_IS);
+  (0, _localStorageFn.removeItem)(_LS.LS_UI_THEME_KEY);
+  (0, _localStorageFn.removeItem)(_LS.LS_FONT_SIZE_KEY);
 };
 
 exports.notAllowSaveToLs = notAllowSaveToLs;

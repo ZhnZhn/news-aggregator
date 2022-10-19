@@ -16,7 +16,7 @@ import {
   initAllowUseLs,
   allowUseLs,
   notAllowUseLs,
-  clearLs
+  removeItem
 } from '../../utils/localStorageFn';
 
 import {
@@ -180,7 +180,9 @@ export const allowSaveToLs = () => {
 }
 export const notAllowSaveToLs = () => {
   notAllowUseLs()
-  clearLs()
+  removeItem(LS_IS)
+  removeItem(LS_UI_THEME_KEY)
+  removeItem(LS_FONT_SIZE_KEY)
 }
 
 export const initialTheme = theme

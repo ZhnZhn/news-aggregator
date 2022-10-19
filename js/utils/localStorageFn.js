@@ -3,17 +3,25 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
-exports.writeToLs = exports.readFromLs = exports.notAllowUseLs = exports.isAllowUseLs = exports.initAllowUseLs = exports.hasLocalStorage = exports.clearLs = exports.allowUseLs = void 0;
+exports.writeToLs = exports.removeItem = exports.readFromLs = exports.notAllowUseLs = exports.isAllowUseLs = exports.initAllowUseLs = exports.hasLocalStorage = exports.allowUseLs = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var LS = window.localStorage,
-    ERR_LS_IS_ABSENT = {
-  message: "LocalStorage is absent"
+var FN_IDENTITY = function FN_IDENTITY(str) {
+  return str;
 },
-    ERR_USE_LS_NOT_ALLOWED = {
-  message: "Use LocalStorage is not allowed"
-};
+    KEY_PREFIX = 'NA',
+    LS = window.localStorage,
+    _toBase64 = window.btoa || FN_IDENTITY,
+    _fromBase64 = window.atob || FN_IDENTITY,
+    _crErr = function _crErr(msg) {
+  return {
+    message: msg
+  };
+},
+    ERR_LS_IS_ABSENT = _crErr("LocalStorage is absent"),
+    ERR_USE_LS_NOT_ALLOWED = _crErr("Use LocalStorage is not allowed");
+
 var hasLocalStorage = !!LS;
 exports.hasLocalStorage = hasLocalStorage;
 var _isAllowUseLs = false;
@@ -42,10 +50,14 @@ var notAllowUseLs = function notAllowUseLs() {
 
 exports.notAllowUseLs = notAllowUseLs;
 
+var _crStorageKey = function _crStorageKey(storageKey) {
+  return KEY_PREFIX + "_" + storageKey;
+};
+
 var readFromLs = function readFromLs(storageKey) {
   if (hasLocalStorage) {
     try {
-      return [LS[storageKey]];
+      return [_fromBase64(LS[_crStorageKey(storageKey)])];
     } catch (err) {
       return [void 0, err];
     }
@@ -63,7 +75,7 @@ var writeToLs = function writeToLs(storageKey, value) {
 
   if (hasLocalStorage) {
     try {
-      LS[storageKey] = value;
+      LS[_crStorageKey(storageKey)] = _toBase64(value);
     } catch (err) {
       return err;
     }
@@ -74,10 +86,10 @@ var writeToLs = function writeToLs(storageKey, value) {
 
 exports.writeToLs = writeToLs;
 
-var clearLs = function clearLs() {
+var removeItem = function removeItem(storageKey) {
   if (hasLocalStorage) {
     try {
-      LS.clear();
+      LS.removeItem(_crStorageKey(storageKey));
     } catch (err) {
       return err;
     }
@@ -86,5 +98,5 @@ var clearLs = function clearLs() {
   }
 };
 
-exports.clearLs = clearLs;
+exports.removeItem = removeItem;
 //# sourceMappingURL=localStorageFn.js.map
