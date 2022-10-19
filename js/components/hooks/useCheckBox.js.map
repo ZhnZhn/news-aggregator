@@ -1,0 +1,23 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/useCheckBox.js"
+ ],
+ "file": "../../../src/components/hooks/useCheckBox.js",
+ "names": [
+  "FN_NOOP",
+  "useCheckBox",
+  "initialValue",
+  "onCheck",
+  "onUnCheck",
+  "useToggle",
+  "isChecked",
+  "toggleIsChecked",
+  "hClick",
+  "hKeyDown",
+  "evt",
+  "isKeyEnter",
+  "preventDefault"
+ ],
+ "mappings": ";;;;;;;AAAA;;AACA;;AAEA,IAAMA,OAAO,GAAG,SAAVA,OAAU,GAAM,CAAE,CAAxB;;AAEA,IAAMC,WAAW,GAAG,SAAdA,WAAc,CAClBC,YADkB,EAElBC,OAFkB,EAGlBC,SAHkB,EAIf;EAAA,IAFHD,OAEG;IAFHA,OAEG,GAFKH,OAEL;EAAA;;EAAA,IADHI,SACG;IADHA,SACG,GADOJ,OACP;EAAA;;EACH,iBAGI,IAAAK,sBAAA,EAAUH,YAAV,CAHJ;EAAA,IACEI,SADF;EAAA,IAEEC,eAFF;EAAA,IAIEC,MAJF,GAIW,SAATA,MAAS,GAAM;IACd,CAACF,SAAS,GAAGF,SAAH,GAAeD,OAAzB;IACAI,eAAe;EACf,CAPH;EAAA,IAQEE,QARF,GAQa,SAAXA,QAAW,CAACC,GAAD,EAAS;IAClB,IAAI,IAAAC,sBAAA,EAAWD,GAAX,CAAJ,EAAoB;MAClBA,GAAG,CAACE,cAAJ;MACAJ,MAAM;IACP;EACJ,CAbD;;EAeA,OAAO,CACLF,SADK,EAELE,MAFK,EAGLC,QAHK,CAAP;AAKD,CAzBD;;eA2BeR,W"
+}
