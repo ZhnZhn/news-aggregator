@@ -1,22 +1,19 @@
-import useToggle from '../../hooks/useToggle';
-import isKeyEnter from '../../hooks/isKeyEnter';
-
 import Svg100 from './Svg100';
 
-const COLOR_BLANK = "rgba(0,0,0,0)"
+const CL_CHECK_BOX = "chb"
+, COLOR_BLANK = "rgba(0,0,0,0)"
 , COLOR_GREY = "#777777"
 , DF_COLOR_IS = "#2f7ed8"
 , CHECKBOX_WIDTH = 16
 , S_DIV = {
   display: 'inline-block',
-  width: CHECKBOX_WIDTH,
-  height: CHECKBOX_WIDTH,
   cursor: 'pointer'
 }
 , S_SVG = { display: 'inline-block' };
 
-
-const SvgChecked = ({ stroke }) => (
+const SvgChecked = ({
+  stroke
+}) => (
   <path
      d="M 2,5 L 8,14 14,1"
      strokeWidth="2"
@@ -26,8 +23,7 @@ const SvgChecked = ({ stroke }) => (
   />
 );
 
-const _isFn = fn => typeof fn === 'function'
-, _crRestStyle = (
+const _crRestStyle = (
   stroke,
   fill=stroke
 ) => ({
@@ -36,51 +32,37 @@ const _isFn = fn => typeof fn === 'function'
 });
 
 const SvgCheckBox = ({
-  initialValue,
+  isChecked,
   style,
   stroke,
-  onCheck,
-  onUnCheck
+  onClick,
+  onKeyDown
 }) => {
-  const [
-    isChecked,
-    toggleIsChecked
-  ] = useToggle(initialValue)
-  , _hClick = () => {
-      if (!isChecked && _isFn(onCheck)){
-        onCheck();
-      } else if (_isFn(onUnCheck)){
-        onUnCheck();
-      }
-      toggleIsChecked()
-    }
-  , _hKeyDown = (evt) => {
-      if (isKeyEnter(evt)){
-        evt.preventDefault()
-        _hClick()
-      }
-  }
-  , _restStyle = isChecked
-      ? _crRestStyle(DF_COLOR_IS)
-      : _crRestStyle(COLOR_GREY, COLOR_BLANK);
+  const _restStyle = isChecked
+    ? _crRestStyle(DF_COLOR_IS)
+    : _crRestStyle(COLOR_GREY, COLOR_BLANK);
 
   return (
     <div
        role="checkbox"
        tabIndex="0"
        aria-checked={isChecked}
+       className={CL_CHECK_BOX}
        style={{...S_DIV, ...style}}
-       onClick={_hClick}
-       onKeyDown={_hKeyDown}
+       onClick={onClick}
+       onKeyDown={onKeyDown}
     >
       <Svg100
         w={CHECKBOX_WIDTH}
         style={S_SVG}
       >
         <rect
-           x="1" y="1"
-           height="14" width="14"
-           strokeWidth="2" rx="3"
+           x="1"
+           y="1"
+           height="14"
+           width="14"
+           strokeWidth="2"
+           rx="3"
            strokeLinecap="round"
            {..._restStyle}
         />

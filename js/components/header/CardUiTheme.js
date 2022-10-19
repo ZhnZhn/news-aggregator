@@ -11,20 +11,12 @@ var _theme = require("../styles/theme");
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _SvgCheckBox = _interopRequireDefault(require("../zhn-atoms/svg/SvgCheckBox"));
+var _RowCheckBox = _interopRequireDefault(require("../dialogs/RowCheckBox"));
 
 var _jsxRuntime = require("preact/jsx-runtime");
 
 var S_DIV = {
   paddingTop: 16
-},
-    S_ROW_CHECKBOX = {
-  margin: '24px 0 0 16px'
-},
-    S_CHECKBOX_CAPTION = {
-  fontWeight: 'bold',
-  marginLeft: 8,
-  userSelect: 'none'
 },
     IS_ALLOW_USE_LS = (0, _theme.isAllowUseLs)();
 
@@ -48,17 +40,12 @@ var CardUiTheme = function CardUiTheme(_ref) {
       initItem: _theme.FONT_SIZE_OPTIONS.DF,
       options: _theme.FONT_SIZE_OPTIONS,
       onSelect: _theme.selectFontSize
-    }), (0, _jsxRuntime.jsxs)("div", {
-      style: S_ROW_CHECKBOX,
-      children: [(0, _jsxRuntime.jsx)(_SvgCheckBox["default"], {
-        initialValue: IS_ALLOW_USE_LS,
-        stroke: TS.R_DIALOG.backgroundColor,
-        onCheck: _theme.allowSaveToLs,
-        onUnCheck: _theme.notAllowSaveToLs
-      }), (0, _jsxRuntime.jsx)("span", {
-        style: S_CHECKBOX_CAPTION,
-        children: "Allow to save to localStorage"
-      })]
+    }), (0, _jsxRuntime.jsx)(_RowCheckBox["default"], {
+      initialValue: IS_ALLOW_USE_LS,
+      stroke: TS.R_DIALOG.backgroundColor,
+      caption: "Allow to save to localStorage",
+      onCheck: _theme.allowSaveToLs,
+      onUnCheck: _theme.notAllowSaveToLs
     }), (0, _jsxRuntime.jsx)("div", {
       style: buttonsStyle,
       children: (0, _jsxRuntime.jsx)(_Comp["default"].RaisedButton, {

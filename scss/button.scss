@@ -79,5 +79,18 @@
   border-bottom-width: 3px;
 }
 
+.chb {
+  display: inline-block;
+  width: 23px;
+  height: 23px;
+  padding: 1px;
+  border-radius: 2px;
+  border: 2px solid transparent;
+}
+.chb:focus {
+  outline: 0;
+  border: 2px solid #fdb316;
+}
+
 @import 'bt-raised-mixin';
 @import 'bt-flat-mixin';

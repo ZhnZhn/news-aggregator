@@ -8,17 +8,9 @@ import {
 } from '../styles/theme';
 
 import A from '../Comp';
-import SvgCheckBox from '../zhn-atoms/svg/SvgCheckBox';
+import RowCheckBox from '../dialogs/RowCheckBox';
 
 const S_DIV = { paddingTop: 16 }
-, S_ROW_CHECKBOX = {
-  margin: '24px 0 0 16px'
-}
-, S_CHECKBOX_CAPTION = {
-  fontWeight: 'bold',
-  marginLeft: 8,
-  userSelect: 'none'
-}
 , IS_ALLOW_USE_LS = isAllowUseLs();
 
 const CardUiTheme = ({
@@ -43,15 +35,13 @@ const CardUiTheme = ({
         options={FONT_SIZE_OPTIONS}
         onSelect={selectFontSize}
       />
-      <div style={S_ROW_CHECKBOX}>
-        <SvgCheckBox
-          initialValue={IS_ALLOW_USE_LS}
-          stroke={TS.R_DIALOG.backgroundColor}
-          onCheck={allowSaveToLs}
-          onUnCheck={notAllowSaveToLs}
-        />
-        <span style={S_CHECKBOX_CAPTION}>Allow to save to localStorage</span>
-      </div>
+      <RowCheckBox
+        initialValue={IS_ALLOW_USE_LS}
+        stroke={TS.R_DIALOG.backgroundColor}
+        caption="Allow to save to localStorage"
+        onCheck={allowSaveToLs}
+        onUnCheck={notAllowSaveToLs}
+      />
       <div style={buttonsStyle}>
         <A.RaisedButton
           style={TS.BT.RAISED}
@@ -63,6 +53,5 @@ const CardUiTheme = ({
       </div>
     </div>
 );
-
 
 export default CardUiTheme
