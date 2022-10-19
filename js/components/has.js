@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
+exports.initWidthStyle = exports.HAS_TOUCH = void 0;
 
 var INITIAL_WIDTH = 635,
     _isInnerWidth = function _isInnerWidth() {
@@ -11,24 +11,27 @@ var INITIAL_WIDTH = 635,
   return document && 'ontouchstart' in document.documentElement;
 };
 
-var has = {
-  HAS_TOUCH: _isTouchable(),
-  wideWidth: function wideWidth() {
-    return _isInnerWidth() ? window.innerWidth > 700 : true;
-  },
-  getWidth: function getWidth() {
-    return _isInnerWidth() ? window.innerWidth - 16 : INITIAL_WIDTH;
-  },
-  initWidthStyle: function initWidthStyle(initialWidth) {
-    if (initialWidth === void 0) {
-      initialWidth = INITIAL_WIDTH;
-    }
+var HAS_TOUCH = _isTouchable();
 
-    return {
-      width: !has.wideWidth() ? has.getWidth() : initialWidth
-    };
-  }
+exports.HAS_TOUCH = HAS_TOUCH;
+
+var _wideWidth = function _wideWidth() {
+  return _isInnerWidth() ? window.innerWidth > 700 : true;
 };
-var _default = has;
-exports["default"] = _default;
+
+var _getWidth = function _getWidth() {
+  return _isInnerWidth() ? window.innerWidth - 16 : INITIAL_WIDTH;
+};
+
+var initWidthStyle = function initWidthStyle(initialWidth) {
+  if (initialWidth === void 0) {
+    initialWidth = INITIAL_WIDTH;
+  }
+
+  return {
+    width: !_wideWidth() ? _getWidth() : initialWidth
+  };
+};
+
+exports.initWidthStyle = initWidthStyle;
 //# sourceMappingURL=has.js.map

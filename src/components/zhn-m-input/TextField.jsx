@@ -6,12 +6,10 @@ import {
   useImperativeHandle
 } from '../uiApi';
 
-import has from '../has';
+import { HAS_TOUCH } from '../has';
 import SvgX from '../zhn-atoms/SvgX';
 
 import crId from '../../utils/crId';
-
-const { HAS_TOUCH } = has;
 
 const CL_SELECT = 'm-select'
 , CL_LABEL = `${CL_SELECT}__label`
@@ -20,8 +18,7 @@ const CL_SELECT = 'm-select'
 , CL_INPUT = `${M_TEXTFIELD}-input`
 , M_INPUT = 'm-input'
 , CL_INPUT_LINE = `${M_INPUT}__line`
-, CL_INPUT_MSG_ERR = `${M_INPUT}__msg-err`
-
+, CL_INPUT_MSG_ERR = `${M_INPUT}__msg-err`;
 
 const S_LABEL_TO_INPUT = {
   transform: 'scale(1) translate(0px, -6px)'

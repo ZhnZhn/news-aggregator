@@ -15,12 +15,11 @@ var _useProperty3 = _interopRequireDefault(require("../hooks/useProperty"));
 
 var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
 
-var _has = _interopRequireDefault(require("../has"));
+var _has = require("../has");
 
 var _jsxRuntime = require("preact/jsx-runtime");
 
-var HAS_TOUCH = _has["default"].HAS_TOUCH,
-    CL_SELECT = 'm-select',
+var CL_SELECT = 'm-select',
     CL_LABEL = CL_SELECT + "__label",
     M_TEXTFIELD = 'm-textfield',
     CL_DIV = M_TEXTFIELD + "-input__div",
@@ -192,7 +191,7 @@ var PasswordField = (0, _uiApi.forwardRef)(function (_ref, ref) {
         onKeyDown: _hKeyDown,
         onFocus: _hFocusInput,
         onBlur: _hBlurInput
-      }), HAS_TOUCH && value && (0, _jsxRuntime.jsx)("button", {
+      }), _has.HAS_TOUCH && value && (0, _jsxRuntime.jsx)("button", {
         className: CL_BT_CLEAR,
         onClick: _hClear,
         children: "x"

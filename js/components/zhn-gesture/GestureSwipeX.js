@@ -9,17 +9,16 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _uiApi = require("../uiApi");
 
-var _has = _interopRequireDefault(require("../has"));
+var _has = require("../has");
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var BORDER_LEFT = 'border-left';
 var DRAG_START_BORDER_LEFT = "4px solid #d64336";
 var LONG_TOUCH = 1000;
-var HAS_TOUCH = _has["default"].HAS_TOUCH;
 
 var _preventDefault = function _preventDefault(evt) {
-  if (!HAS_TOUCH) {
+  if (!_has.HAS_TOUCH) {
     evt.preventDefault();
   }
 };
@@ -159,7 +158,7 @@ var GestureSwipeX = (0, _uiApi.forwardRef)(function (_ref, ref) {
   }, []) // setTimeStamp, onGesture
   ,
       _handlers = (0, _uiApi.useMemo)(function () {
-    return HAS_TOUCH ? {
+    return _has.HAS_TOUCH ? {
       onTouchStart: _gestureStart,
       onTouchMove: _gestureMove,
       onTouchEnd: _gestureEnd
@@ -173,7 +172,7 @@ var GestureSwipeX = (0, _uiApi.forwardRef)(function (_ref, ref) {
   /*eslint-enable react-hooks/exhaustive-deps */
 
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", (0, _extends2["default"])({
+  return (0, _jsxRuntime.jsx)("div", (0, _extends2["default"])({
     ref: ref,
     role: "presentation",
     style: style

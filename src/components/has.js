@@ -3,20 +3,20 @@ const INITIAL_WIDTH = 635
 , _isTouchable = () => document
      && 'ontouchstart' in document.documentElement;
 
-const has = {
-  HAS_TOUCH: _isTouchable(),
+export const HAS_TOUCH = _isTouchable()
 
-  wideWidth: () => _isInnerWidth()
-    ? window.innerWidth > 700
-    : true,
-  getWidth: () => _isInnerWidth()
-    ? window.innerWidth - 16
-    : INITIAL_WIDTH,
-  initWidthStyle: (initialWidth=INITIAL_WIDTH) => ({
-     width: !has.wideWidth()
-        ? has.getWidth()
-        : initialWidth
-    })
-};
+const _wideWidth = () => _isInnerWidth()
+  ? window.innerWidth > 700
+  : true
 
-export default has
+const _getWidth = () => _isInnerWidth()
+  ? window.innerWidth - 16
+  : INITIAL_WIDTH
+
+export const initWidthStyle = (
+  initialWidth=INITIAL_WIDTH
+) => ({
+  width: !_wideWidth()
+    ? _getWidth()
+    : initialWidth
+})

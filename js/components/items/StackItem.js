@@ -17,7 +17,7 @@ var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 
 var _Article = _interopRequireDefault(require("./Article.Style"));
 
-var _has = _interopRequireDefault(require("../has"));
+var _has = require("../has");
 
 var _crStyle = _interopRequireDefault(require("../zhn-utils/crStyle"));
 
@@ -33,8 +33,7 @@ var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
 
 var _jsxRuntime = require("preact/jsx-runtime");
 
-var HAS_TOUCH = _has["default"].HAS_TOUCH,
-    CL_WRAPPER = "link-wrapper",
+var CL_WRAPPER = "link-wrapper",
     _S_BADGE = {
   display: 'inline-block',
   paddingRight: 8,
@@ -84,22 +83,22 @@ var HAS_TOUCH = _has["default"].HAS_TOUCH,
     S_BLACK_BADGE = (0, _extends2["default"])({}, _S_BADGE, {
   color: 'black'
 });
-var TOKEN_ANSWER = HAS_TOUCH ? 'A' : (0, _jsxRuntime.jsx)("span", {
+var TOKEN_ANSWER = _has.HAS_TOUCH ? 'A' : (0, _jsxRuntime.jsx)("span", {
   role: "img",
   "arial-label": "hammer and pick",
   children: "\u2692"
 });
-var TOKEN_SCORE = HAS_TOUCH ? 'S' : (0, _jsxRuntime.jsx)("span", {
+var TOKEN_SCORE = _has.HAS_TOUCH ? 'S' : (0, _jsxRuntime.jsx)("span", {
   role: "img",
   "aria-label": "fish",
   children: "\uD83D\uDC1F"
 });
-var TOKEN_VIEW = HAS_TOUCH ? 'V' : (0, _jsxRuntime.jsx)("span", {
+var TOKEN_VIEW = _has.HAS_TOUCH ? 'V' : (0, _jsxRuntime.jsx)("span", {
   role: "img",
   "aria-label": "wheel of dharma",
   children: "\u2638"
 });
-var TOKEN_REPUTATION = HAS_TOUCH ? 'R' : (0, _jsxRuntime.jsx)("span", {
+var TOKEN_REPUTATION = _has.HAS_TOUCH ? 'R' : (0, _jsxRuntime.jsx)("span", {
   role: "img",
   "arial-label": "shamrock",
   children: "\u2618"

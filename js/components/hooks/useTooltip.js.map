@@ -5,11 +5,10 @@
  ],
  "file": "../../../src/components/hooks/useTooltip.js",
  "names": [
-  "HAS_TOUCH",
-  "has",
   "useTooltip",
   "ariaLabel",
-  "dataPos"
+  "dataPos",
+  "HAS_TOUCH"
  ],
- "mappings": ";;;;;;;AAAA;;AAEA,IAAMA,SAAS,GAAGC,eAAA,CAAID,SAAtB;;AAEA,IAAME,UAAU,GAAG,SAAbA,UAAa,CACjBC,SADiB,EAEjBC,OAFiB;EAAA,OAGdJ,SAAS,GACV,EADU,GAEV,CACEG,SADF,EAEEC,OAFF,CALe;AAAA,CAAnB;;eAUeF,U"
+ "mappings": ";;;;;AAAA;;AAEA,IAAMA,UAAU,GAAG,SAAbA,UAAa,CACjBC,SADiB,EAEjBC,OAFiB;EAAA,OAGdC,cAAA,GACD,EADC,GAED,CACEF,SADF,EAEEC,OAFF,CALe;AAAA,CAAnB;;eAUeF,U"
 }

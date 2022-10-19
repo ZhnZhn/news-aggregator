@@ -11,10 +11,9 @@ import useRefInit from '../hooks/useRefInit';
 import useProperty from '../hooks/useProperty';
 import useRerender from '../hooks/useRerender';
 
-import has from '../has';
+import { HAS_TOUCH } from '../has';
 
-const { HAS_TOUCH } = has
-, CL_SELECT = 'm-select'
+const CL_SELECT = 'm-select'
 , CL_LABEL = `${CL_SELECT}__label`
 , M_TEXTFIELD = 'm-textfield'
 , CL_DIV = `${M_TEXTFIELD}-input__div`

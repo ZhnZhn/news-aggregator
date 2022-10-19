@@ -15,7 +15,7 @@ import toFirstUpperCase from '../../utils/toFirstUpperCase'
 
 import crCn from '../zhn-utils/crCn';
 import styleConfig from './NewsPane.Style';
-import has from '../has';
+import { initWidthStyle } from '../has';
 
 import crModelMore from './crModelMore';
 
@@ -28,7 +28,7 @@ import {
   RESIZE_DELTA
 } from './ResizeWidth';
 
-const WIDTH_STYLE = has.initWidthStyle()
+const WIDTH_STYLE = initWidthStyle()
 , CL_NEWS_PANE = "news-pane"
 , CL_SHOW_POPUP = "show-popup"
 , CL_MENU_MORE = "popup-menu items__menu-more"

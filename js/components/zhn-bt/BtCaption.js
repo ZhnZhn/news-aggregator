@@ -1,16 +1,13 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
 
-var _has = _interopRequireDefault(require("../has"));
+var _has = require("../has");
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
-var HAS_TOUCH = _has["default"].HAS_TOUCH,
-    S_KEY = {
+var S_KEY = {
   textDecoration: 'underline'
 };
 
@@ -27,13 +24,13 @@ var CaptionToken = function CaptionToken(_ref) {
       _key = _crCaptionToken2[1],
       _after = _crCaptionToken2[2];
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+  return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+    children: [(0, _jsxRuntime.jsx)("span", {
       children: _before
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    }), (0, _jsxRuntime.jsx)("span", {
       style: S_KEY,
       children: _key
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+    }), (0, _jsxRuntime.jsx)("span", {
       children: _after
     })]
   });
@@ -51,12 +48,12 @@ var BtCaption = function BtCaption(_ref2) {
       children = _ref2.children;
 
   var _keyIndex = _findKeyIndex(caption, accessKey),
-      _caption = HAS_TOUCH || _keyIndex === -1 ? caption || '' : /*#__PURE__*/(0, _jsxRuntime.jsx)(CaptionToken, {
+      _caption = _has.HAS_TOUCH || _keyIndex === -1 ? caption || '' : (0, _jsxRuntime.jsx)(CaptionToken, {
     caption: caption,
     keyIndex: _keyIndex
   });
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("span", {
+  return (0, _jsxRuntime.jsxs)("span", {
     className: className,
     style: style,
     children: [_caption, children]

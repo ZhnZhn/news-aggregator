@@ -1,17 +1,24 @@
-import has from '../has';
+import { HAS_TOUCH } from '../has';
 
-const { HAS_TOUCH } = has
-, S_KEY = { textDecoration: 'underline' };
+const S_KEY = { textDecoration: 'underline' };
 
-const _crCaptionToken = (caption, keyIndex) => [
+const _crCaptionToken = (
+  caption,
+  keyIndex
+) => [
   caption.substring(0, keyIndex),
   caption.substring(keyIndex, keyIndex+1),
   caption.substring(keyIndex+1)
 ];
 
-const CaptionToken = ({ caption, keyIndex }) => {
+const CaptionToken = ({
+  caption,
+  keyIndex
+}) => {
   const [
-    _before, _key, _after
+    _before,
+    _key,
+    _after
   ] = _crCaptionToken(caption, keyIndex);
   return (
     <>
@@ -22,8 +29,10 @@ const CaptionToken = ({ caption, keyIndex }) => {
   );
 };
 
-const _findKeyIndex = (caption, accessKey) =>
-  accessKey && caption
+const _findKeyIndex = (
+  caption,
+  accessKey
+) => accessKey && caption
     ?  caption
         .toLowerCase()
         .indexOf(accessKey)

@@ -4,14 +4,13 @@ import {
   useCallback,
   useMemo
 } from '../uiApi';
-import has from '../has';
+import { HAS_TOUCH } from '../has';
 
 const BORDER_LEFT = 'border-left';
 const DRAG_START_BORDER_LEFT = "4px solid #d64336";
 
 const LONG_TOUCH = 1000;
 
-const { HAS_TOUCH } = has;
 const _preventDefault = evt => {
   if (!HAS_TOUCH) { evt.preventDefault() }
 };

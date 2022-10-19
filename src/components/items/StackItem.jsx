@@ -9,7 +9,7 @@ import useKeyDelete from '../hooks/useKeyDelete';
 import useTheme from '../hooks/useTheme';
 import styleConfig from './Article.Style';
 
-import has from '../has';
+import { HAS_TOUCH } from '../has';
 import crStyle from '../zhn-utils/crStyle';
 
 import useItemGestureSwipeX from './useItemGestureSwipeX';
@@ -18,8 +18,7 @@ import SvgX from '../zhn-atoms/SvgX';
 import SafeLink from '../zhn-atoms/SafeLink';
 import ItemStack from '../zhn-atoms/ItemStack';
 
-const { HAS_TOUCH } = has
-, CL_WRAPPER = "link-wrapper"
+const CL_WRAPPER = "link-wrapper"
 , _S_BADGE = {
   display: 'inline-block',
   paddingRight: 8,

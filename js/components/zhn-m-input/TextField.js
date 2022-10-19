@@ -9,15 +9,14 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _uiApi = require("../uiApi");
 
-var _has = _interopRequireDefault(require("../has"));
+var _has = require("../has");
 
 var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
 
 var _crId = _interopRequireDefault(require("../../utils/crId"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
-var HAS_TOUCH = _has["default"].HAS_TOUCH;
 var CL_SELECT = 'm-select',
     CL_LABEL = CL_SELECT + "__label",
     M_TEXTFIELD = 'm-textfield',
@@ -114,17 +113,17 @@ var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
       _labelErrStyle = _ref2[0],
       _lineStyle = _ref2[1];
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  return (0, _jsxRuntime.jsxs)("div", {
     className: CL_SELECT,
     style: style,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("label", {
+    children: [(0, _jsxRuntime.jsx)("label", {
       className: CL_LABEL,
       style: (0, _extends2["default"])({}, _labelStyle, _labelErrStyle),
       htmlFor: _refId.current,
       children: caption
-    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    }), (0, _jsxRuntime.jsxs)("div", {
       className: CL_DIV,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("input", {
+      children: [(0, _jsxRuntime.jsx)("input", {
         id: _refId.current,
         type: "text",
         className: CL_INPUT,
@@ -139,15 +138,15 @@ var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
         onBlur: _hBlurInput,
         onChange: _hInputChange,
         onKeyDown: _hKeyDown
-      }), HAS_TOUCH && hasClear && value && /*#__PURE__*/(0, _jsxRuntime.jsx)(_SvgX["default"], {
+      }), _has.HAS_TOUCH && hasClear && value && (0, _jsxRuntime.jsx)(_SvgX["default"], {
         color: "black",
         className: "svg-clear",
         style: S_BT_CLEAR,
         onClick: _hClear
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      }), (0, _jsxRuntime.jsx)("div", {
         className: CL_INPUT_LINE,
         style: _lineStyle
-      }), _lineStyle && /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      }), _lineStyle && (0, _jsxRuntime.jsx)("div", {
         className: CL_INPUT_MSG_ERR,
         children: errorMsg
       })]

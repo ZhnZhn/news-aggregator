@@ -1,6 +1,4 @@
-import has from '../has';
-
-const HAS_TOUCH = has.HAS_TOUCH;
+import { HAS_TOUCH } from '../has';
 
 const useTooltip = (
   ariaLabel,

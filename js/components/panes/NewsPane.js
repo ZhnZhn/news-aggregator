@@ -23,7 +23,7 @@ var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 
 var _NewsPane = _interopRequireDefault(require("./NewsPane.Style"));
 
-var _has = _interopRequireDefault(require("../has"));
+var _has = require("../has");
 
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 
@@ -35,7 +35,7 @@ var _ResizeWidth = require("./ResizeWidth");
 
 var _jsxRuntime = require("preact/jsx-runtime");
 
-var WIDTH_STYLE = _has["default"].initWidthStyle(),
+var WIDTH_STYLE = (0, _has.initWidthStyle)(),
     CL_NEWS_PANE = "news-pane",
     CL_SHOW_POPUP = "show-popup",
     CL_MENU_MORE = "popup-menu items__menu-more",
