@@ -91,7 +91,7 @@ const _toArticles = (
 
 const _crCaption = ({
   symbol=DF_SYMBOL
-}) => `IEX Cloud: ${symbol.toUpperCase()}`;
+}) => `IEX Cloud: ${symbol}`;
 
 const IexAdapter = {
   toNews: (

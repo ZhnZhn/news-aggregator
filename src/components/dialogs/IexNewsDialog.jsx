@@ -20,7 +20,10 @@ const RECENT_OPTIONS = [
   { caption: "50 News", value: "50" }
 ]
 , DF_RECENT = RECENT_OPTIONS[1]
-, DF_SYMBOL = "AAPL";
+, DF_SYMBOL = "AAPL"
+, S_INPUT_STYLE = {
+  textTransform: 'uppercase'
+};
 
 const IexNewsDialog = ({
   isShow,
@@ -31,9 +34,18 @@ const IexNewsDialog = ({
   onShow,
   onClose
 }) => {
-  const [_refDialog, _hClose] = useRefClose(onClose)
-  , [_refInputSymbol, _getInputSymbol] = useRefInput(DF_SYMBOL)
-  , [_refRecent, _selectRecent] = useRefSelectOption(DF_RECENT.value)
+  const [
+    _refDialog,
+    _hClose
+  ] = useRefClose(onClose)
+  , [
+    _refInputSymbol,
+    _getInputSymbol
+  ] = useRefInput(DF_SYMBOL)
+  , [
+    _refRecent,
+    _selectRecent
+  ] = useRefSelectOption(DF_RECENT.value)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(()=>{
     onLoad({
@@ -41,7 +53,7 @@ const IexNewsDialog = ({
       source,
       itemConf,
       loadId: 'IEX',
-      symbol: _getInputSymbol(),
+      symbol: _getInputSymbol().toUpperCase(),
       recent: getRefValue(_refRecent)
     })
     _hClose()
@@ -66,6 +78,7 @@ const IexNewsDialog = ({
        <A.TextField
          ref={_refInputSymbol}
          style={TS.INPUT_ROOT}
+         inputStyle={S_INPUT_STYLE}
          maxLength="10"
          caption="Stock Symbol"
          initValue={DF_SYMBOL}

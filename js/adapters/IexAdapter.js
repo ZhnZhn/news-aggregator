@@ -85,7 +85,7 @@ var _toArticles = function _toArticles(json) {
 var _crCaption = function _crCaption(_ref) {
   var _ref$symbol = _ref.symbol,
       symbol = _ref$symbol === void 0 ? DF_SYMBOL : _ref$symbol;
-  return "IEX Cloud: " + symbol.toUpperCase();
+  return "IEX Cloud: " + symbol;
 };
 
 var IexAdapter = {

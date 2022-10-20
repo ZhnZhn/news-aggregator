@@ -48,6 +48,7 @@ var DF_ON_ENTER = function DF_ON_ENTER() {};
 
 var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
   var style = _ref.style,
+      inputStyle = _ref.inputStyle,
       caption = _ref.caption,
       id = _ref.id,
       initValue = _ref.initValue,
@@ -127,6 +128,7 @@ var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
         id: _refId.current,
         type: "text",
         className: CL_INPUT,
+        style: inputStyle,
         value: value //autoComplete="off"
         ,
         autoCorrect: "off",

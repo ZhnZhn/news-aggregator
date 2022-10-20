@@ -40,8 +40,10 @@ const DF_ON_ENTER = () => {};
 
 const TextField = forwardRef(({
   style,
+  inputStyle,
   caption,
-  id, initValue,
+  id,
+  initValue,
   maxLength="20",
   autoCapitalize="off",
   errorMsg='',
@@ -50,9 +52,18 @@ const TextField = forwardRef(({
   onEnter=DF_ON_ENTER
 }, ref) => {
   const _refId = useRef(id || crId())
-  , [value, setValue] = useState(initValue || '')
-  , [isPassTest, setIsPastTest] = useState(()=>onTest(initValue || ''))
-  , [isFocus, setIsFocus] = useState(false)
+  , [
+    value,
+    setValue
+  ] = useState(initValue || '')
+  , [
+    isPassTest,
+    setIsPastTest
+  ] = useState(()=>onTest(initValue || ''))
+  , [
+    isFocus,
+    setIsFocus
+  ] = useState(false)
   , _hFocusInput = useCallback(()=>setIsFocus(true), [])
   , _hBlurInput = useCallback(()=>setIsFocus(false), [])
   /*eslint-disable react-hooks/exhaustive-deps */
@@ -106,6 +117,7 @@ const TextField = forwardRef(({
           id={_refId.current}
           type="text"
           className={CL_INPUT}
+          style={inputStyle}
           value={value}
           //autoComplete="off"
           autoCorrect="off"
