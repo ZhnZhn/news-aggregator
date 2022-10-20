@@ -6,6 +6,8 @@ import {
   useImperativeHandle
 } from '../uiApi';
 
+import useBool from '../hooks/useBool';
+
 import { HAS_TOUCH } from '../has';
 import SvgX from '../zhn-atoms/SvgX';
 
@@ -62,10 +64,9 @@ const TextField = forwardRef(({
   ] = useState(()=>onTest(initValue || ''))
   , [
     isFocus,
-    setIsFocus
-  ] = useState(false)
-  , _hFocusInput = useCallback(()=>setIsFocus(true), [])
-  , _hBlurInput = useCallback(()=>setIsFocus(false), [])
+    _hFocusInput,
+    _hBlurInput
+  ] = useBool()
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hInputChange = useCallback(event => {
     const _value = event.target.value;

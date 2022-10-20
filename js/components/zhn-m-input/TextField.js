@@ -9,6 +9,8 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 
 var _uiApi = require("../uiApi");
 
+var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
+
 var _has = require("../has");
 
 var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
@@ -74,15 +76,10 @@ var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
   }),
       isPassTest = _useState2[0],
       setIsPastTest = _useState2[1],
-      _useState3 = (0, _uiApi.useState)(false),
-      isFocus = _useState3[0],
-      setIsFocus = _useState3[1],
-      _hFocusInput = (0, _uiApi.useCallback)(function () {
-    return setIsFocus(true);
-  }, []),
-      _hBlurInput = (0, _uiApi.useCallback)(function () {
-    return setIsFocus(false);
-  }, []),
+      _useBool = (0, _useBool2["default"])(),
+      isFocus = _useBool[0],
+      _hFocusInput = _useBool[1],
+      _hBlurInput = _useBool[2],
       _hInputChange = (0, _uiApi.useCallback)(function (event) {
     var _value = event.target.value;
     setValue(_value);
