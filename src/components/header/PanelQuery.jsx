@@ -1,20 +1,12 @@
 import {
   useRef,
-  useEffect
+  useEffect,
+  focusRefElement
 } from '../uiApi';
 
 import A from '../Comp';
 
 const CL_ITEM = 'row__topic';
-
-const _isFn = fn => typeof fn === 'function';
-
-const _focusRefElement = ref => {
-  const _el = ref.current;
-  if (_el && _isFn(_el.focus)) {
-    _el.focus()
-  }
-};
 
 const PanelQuery = ({
   className,
@@ -39,9 +31,9 @@ const PanelQuery = ({
   useEffect(()=>{
     if (isShow && !_refPrevEl.current) {
       _refPrevEl.current = document.activeElement
-      _focusRefElement(_refFirstItem)
+      focusRefElement(_refFirstItem)
     } else if (!isShow) {
-      _focusRefElement(_refPrevEl)
+      focusRefElement(_refPrevEl)
       _refPrevEl.current = null
     }
   }, [isShow])
