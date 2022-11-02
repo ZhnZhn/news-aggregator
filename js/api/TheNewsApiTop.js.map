@@ -1,0 +1,27 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/TheNewsApiTop.js"
+ ],
+ "file": "../../src/api/TheNewsApiTop.js",
+ "names": [
+  "API_URL",
+  "QUERY_LIMIT",
+  "_crQueryToken",
+  "value",
+  "parameterName",
+  "TheNewsApiTop",
+  "getRequestUrl",
+  "option",
+  "apiKey",
+  "category",
+  "locale",
+  "domain",
+  "_categoryQuery",
+  "_domainQuery",
+  "_localeQuery",
+  "checkResponse",
+  "json"
+ ],
+ "mappings": ";;;;AAAA,IAAMA,OAAO,GAAG,wCAAhB;AAAA,IACEC,WAAW,GAAG,qBADhB;;AAGA,IAAMC,aAAa,GAAG,SAAhBA,aAAgB,CACpBC,KADoB,EAEpBC,aAFoB;EAAA,OAGjBD,KAAK,KAAK,KAAV,GACD,EADC,SAEGC,aAFH,SAEoBD,KALH;AAAA,CAAtB;;AAOA,IAAME,aAAa,GAAG;EACpBC,aAAa,EAAE,uBAAAC,MAAM,EAAI;IACvB,IACEC,MADF,GAKID,MALJ,CACEC,MADF;IAAA,IAEEC,QAFF,GAKIF,MALJ,CAEEE,QAFF;IAAA,IAGEC,MAHF,GAKIH,MALJ,CAGEG,MAHF;IAAA,IAIEC,MAJF,GAKIJ,MALJ,CAIEI,MAJF;IAAA,IAMEC,cANF,GAMmBV,aAAa,CAACO,QAAD,EAAW,YAAX,CANhC;IAAA,IAOEI,YAPF,GAOiBX,aAAa,CAACS,MAAD,EAAS,SAAT,CAP9B;IAAA,IAQEG,YARF,GAQiBZ,aAAa,CAACQ,MAAD,EAAS,QAAT,CAR9B;;IAUA,OAAUV,OAAV,mBAA+BQ,MAA/B,GAAwCM,YAAxC,GAAuDF,cAAvD,GAAwEC,YAAxE,SAAwFZ,WAAxF;EACD,CAbmB;EAepBc,aAfoB,yBAeNC,IAfM,EAeAT,MAfA,EAeO;IACzB,OAAO,IAAP;EACD;AAjBmB,CAAtB;eAoBeF,a"
+}

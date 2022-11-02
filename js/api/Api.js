@@ -19,6 +19,8 @@ var _NewsSearchApi = _interopRequireDefault(require("./NewsSearchApi"));
 
 var _NewsApiTop = _interopRequireDefault(require("./NewsApiTop"));
 
+var _TheNewsApiTop = _interopRequireDefault(require("./TheNewsApiTop"));
+
 var _CryptoCompareApi = _interopRequireDefault(require("./CryptoCompareApi"));
 
 var _CoinStatsApi = _interopRequireDefault(require("./CoinStatsApi"));
@@ -35,7 +37,8 @@ var Api = {
   NewsTop: _NewsApiTop["default"],
   CryptoCompare: _CryptoCompareApi["default"],
   CoinStats: _CoinStatsApi["default"],
-  Messari: _MessariApi["default"]
+  Messari: _MessariApi["default"],
+  TheNewsTop: _TheNewsApiTop["default"]
 };
 var _default = Api;
 exports["default"] = _default;
