@@ -110,6 +110,15 @@ var NEWS_QUERY = {
     "dialogProps": {
       "source": "newsapi_top"
     }
+  },
+  THE_NEWS_TOP: {
+    "type": "THE_NEWS_TOP",
+    "dialogType": "TheNewsApiTop",
+    "paneCaption": "TheNewsApi: Top By",
+    "paneId": "thenewsapi_top",
+    "dialogProps": {
+      "source": "thenewsapi_top"
+    }
   }
 };
 var _default = NEWS_QUERY;

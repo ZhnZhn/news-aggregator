@@ -49,6 +49,7 @@ Actions.showIex = _fShowDialog(_NewsQuery["default"].IEX);
 Actions.showFmp = _fShowDialog(_NewsQuery["default"].FMP);
 Actions.showNewsSearch = _fShowDialog(_NewsQuery["default"].NEWS_SEARCH);
 Actions.showNewsTop = _fShowDialog(_NewsQuery["default"].NEWS_TOP);
+Actions.showTheNewsTop = _fShowDialog(_NewsQuery["default"].THE_NEWS_TOP);
 
 var _fShowBrowser = function _fShowBrowser(id) {
   return Actions.showBrowser.bind(null, id);

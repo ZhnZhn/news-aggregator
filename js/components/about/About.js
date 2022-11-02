@@ -31,7 +31,7 @@ var Link = _Comp["default"].Link,
     ItemStack = _Comp["default"].ItemStack;
 var PROVIDER_LINKS = [[Link.CryptoCompare], [Link.CoinStats], [Link.Messari], [Link.IexApi], [Link.FmpApi, {
   title: "Financial Modeling Prep"
-}], [Link.NewsApi], [Link.StackOverflow], [Link.Webz]];
+}], [Link.NewsApi], [Link.TheNewsApi], [Link.StackOverflow], [Link.Webz]];
 
 var _crLinkItem = function _crLinkItem(_ref, index) {
   var Comp = _ref[0],

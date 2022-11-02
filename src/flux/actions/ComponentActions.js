@@ -47,6 +47,7 @@ Actions.showIex= _fShowDialog(QUERY.IEX)
 Actions.showFmp= _fShowDialog(QUERY.FMP)
 Actions.showNewsSearch = _fShowDialog(QUERY.NEWS_SEARCH)
 Actions.showNewsTop = _fShowDialog(QUERY.NEWS_TOP)
+Actions.showTheNewsTop = _fShowDialog(QUERY.THE_NEWS_TOP)
 
 const _fShowBrowser = id => Actions.showBrowser.bind(null, id);
 Actions.showNewsBrowser = _fShowBrowser(MENU.NEWS)

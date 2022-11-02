@@ -31,6 +31,13 @@ const RouterApiConf = {
           adapter: Adapter.News,
           msgErr: `NewsApi ${MSG_ERR_TAIL}`
         };
+      case 'TNT':
+        return {
+          apiKey: Store.getTheNewsKey(),
+          api: Api.TheNewsTop,
+          adapter: Adapter.TheNews,
+          msgErr: `TheNewsApi ${MSG_ERR_TAIL}`
+        };
       case 'W':
         return {
           apiKey: Store.getWebzKey(),

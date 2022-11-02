@@ -67,7 +67,8 @@ var HeaderBar = function HeaderBar(_ref) {
       onIex = _ref.onIex,
       onFmp = _ref.onFmp,
       onNewsSearch = _ref.onNewsSearch,
-      onNewsTop = _ref.onNewsTop;
+      onNewsTop = _ref.onNewsTop,
+      onTheNewsTop = _ref.onTheNewsTop;
 
   var _useState = (0, _uiApi.useState)(false),
       isQuery = _useState[0],
@@ -91,6 +92,7 @@ var HeaderBar = function HeaderBar(_ref) {
       _hFmp = _useClickItem(onFmp, _hCloseQuery),
       _hNewsApi = _useClickItem(onNewsSearch, _hCloseQuery),
       _hNewsTop = _useClickItem(onNewsTop, _hCloseQuery),
+      _hTheNewsTop = _useClickItem(onTheNewsTop, _hCloseQuery),
       TS = (0, _useTheme["default"])(_HeaderBar["default"]);
 
   return (0, _jsxRuntime.jsxs)("div", {
@@ -111,7 +113,8 @@ var HeaderBar = function HeaderBar(_ref) {
       onIex: _hIex,
       onFmp: _hFmp,
       onNewsApi: _hNewsApi,
-      onNewsTop: _hNewsTop
+      onNewsTop: _hNewsTop,
+      onTheNewsTop: _hTheNewsTop
     }), (0, _jsxRuntime.jsx)(_LoadingProgress["default"], {
       store: store
     }), (0, _jsxRuntime.jsx)(_IconAppLogo["default"], {

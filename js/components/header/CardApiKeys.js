@@ -11,27 +11,30 @@ var _safeFn = _interopRequireDefault(require("../../utils/safeFn"));
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var STR_EMPTY = '',
     _hasLengthOrEmpty = function _hasLengthOrEmpty(length) {
   return function (str) {
-    return str.length === length || str === STR_EMPTY ? true : false;
+    return str.length === length || str === STR_EMPTY;
   };
 },
     _onTestIex = _hasLengthOrEmpty(35),
     _onTestFmp = _hasLengthOrEmpty(32),
     _onTestNews = _hasLengthOrEmpty(32),
+    _onTestTheNews = _hasLengthOrEmpty(40),
     _onTestWebz = _hasLengthOrEmpty(36),
     SET_IEX_KEY = 'setIexKey',
     SET_FMP_KEY = 'setFmpKey',
     SET_NEWS_KEY = 'setNewsKey',
+    SET_THE_NEWS_KEY = 'setTheNewsKey',
     SET_WEBZ_KEY = 'setWebzKey',
     _getKeySetters = function _getKeySetters(data) {
   return {
     setIex: (0, _safeFn["default"])(data, SET_IEX_KEY),
     setFmp: (0, _safeFn["default"])(data, SET_FMP_KEY),
     setNews: (0, _safeFn["default"])(data, SET_NEWS_KEY),
+    setTheNews: (0, _safeFn["default"])(data, SET_THE_NEWS_KEY),
     setWebz: (0, _safeFn["default"])(data, SET_WEBZ_KEY)
   };
 };
@@ -62,6 +65,7 @@ var CardApiKeys = function CardApiKeys(props) {
   var _refInputIex = (0, _uiApi.useRef)(),
       _refInputFmp = (0, _uiApi.useRef)(),
       _refInputNews = (0, _uiApi.useRef)(),
+      _refInputTheNews = (0, _uiApi.useRef)(),
       _refInputWebz = (0, _uiApi.useRef)(),
       style = props.style,
       fieldStyle = props.fieldStyle,
@@ -73,19 +77,22 @@ var CardApiKeys = function CardApiKeys(props) {
       setIex = _getKeySetters2.setIex,
       setFmp = _getKeySetters2.setFmp,
       setNews = _getKeySetters2.setNews,
+      setTheNews = _getKeySetters2.setTheNews,
       setWebz = _getKeySetters2.setWebz,
       _hClearAll = (0, _uiApi.useCallback)(function () {
     setIex('');
     setFmp('');
     setNews('');
+    setTheNews('');
     setWebz('');
 
-    _clearInputRefs([_refInputIex, _refInputFmp, _refInputNews, _refInputWebz]);
+    _clearInputRefs([_refInputIex, _refInputFmp, _refInputNews, _refInputTheNews, _refInputWebz]);
   }, []),
       _hSetAll = (0, _uiApi.useCallback)(function () {
     setIex(_getRefCompValue(_refInputIex));
     setFmp(_getRefCompValue(_refInputFmp));
     setNews(_getRefCompValue(_refInputNews));
+    setTheNews(_getRefCompValue(_refInputTheNews));
     setWebz(_getRefCompValue(_refInputWebz));
 
     _setWasEnterRefs([_refInputIex, _refInputFmp, _refInputNews, _refInputWebz]);
@@ -95,10 +102,10 @@ var CardApiKeys = function CardApiKeys(props) {
     return null;
   }
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+  return (0, _jsxRuntime.jsxs)("div", {
     style: style,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("form", {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].PasswordField, {
+    children: [(0, _jsxRuntime.jsx)("form", {
+      children: (0, _jsxRuntime.jsx)(_Comp["default"].PasswordField, {
         ref: _refInputIex,
         style: fieldStyle,
         name: "iex-cloud",
@@ -107,8 +114,8 @@ var CardApiKeys = function CardApiKeys(props) {
         onTest: _onTestIex,
         onEnter: setIex
       })
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("form", {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].PasswordField, {
+    }), (0, _jsxRuntime.jsx)("form", {
+      children: (0, _jsxRuntime.jsx)(_Comp["default"].PasswordField, {
         ref: _refInputFmp,
         style: fieldStyle,
         name: "fmp-api",
@@ -117,8 +124,8 @@ var CardApiKeys = function CardApiKeys(props) {
         onTest: _onTestFmp,
         onEnter: setFmp
       })
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("form", {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].PasswordField, {
+    }), (0, _jsxRuntime.jsx)("form", {
+      children: (0, _jsxRuntime.jsx)(_Comp["default"].PasswordField, {
         ref: _refInputNews,
         style: fieldStyle,
         name: "newsapi",
@@ -127,8 +134,18 @@ var CardApiKeys = function CardApiKeys(props) {
         onTest: _onTestNews,
         onEnter: setNews
       })
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("form", {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].PasswordField, {
+    }), (0, _jsxRuntime.jsx)("form", {
+      children: (0, _jsxRuntime.jsx)(_Comp["default"].PasswordField, {
+        ref: _refInputTheNews,
+        style: fieldStyle,
+        name: "thenewsapi",
+        caption: "TheNewsApi API Key (40 Symbols)",
+        maxLength: 40,
+        onTest: _onTestTheNews,
+        onEnter: setTheNews
+      })
+    }), (0, _jsxRuntime.jsx)("form", {
+      children: (0, _jsxRuntime.jsx)(_Comp["default"].PasswordField, {
         ref: _refInputWebz,
         style: fieldStyle,
         name: "webz.io",
@@ -137,19 +154,19 @@ var CardApiKeys = function CardApiKeys(props) {
         onTest: _onTestWebz,
         onEnter: setWebz
       })
-    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    }), (0, _jsxRuntime.jsxs)("div", {
       style: buttonsStyle,
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].RaisedButton, {
+      children: [(0, _jsxRuntime.jsx)(_Comp["default"].RaisedButton, {
         style: TS.BT.RAISED,
         clDiv: TS.BT.CL_RAISED_DIV,
         caption: "Clear All",
         onClick: _hClearAll
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].RaisedButton, {
+      }), (0, _jsxRuntime.jsx)(_Comp["default"].RaisedButton, {
         style: TS.BT.RAISED,
         clDiv: TS.BT.CL_RAISED_DIV,
         caption: "Set All",
         onClick: _hSetAll
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].RaisedButton, {
+      }), (0, _jsxRuntime.jsx)(_Comp["default"].RaisedButton, {
         style: TS.BT.RAISED,
         clDiv: TS.BT.CL_RAISED_DIV,
         isPrimary: true,

@@ -35,6 +35,7 @@ const PROVIDER_LINKS = [
   [Link.IexApi],
   [Link.FmpApi, { title: "Financial Modeling Prep"}],
   [Link.NewsApi],
+  [Link.TheNewsApi],
   [Link.StackOverflow],
   [Link.Webz]
 ];

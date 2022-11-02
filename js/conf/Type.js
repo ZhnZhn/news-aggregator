@@ -6,6 +6,7 @@ var LoadType = {
   IEX: 'IEX',
   FMP: 'FMP',
   NEWS: 'NEWS',
+  TNEWS: 'TNEWS',
   WEBZ: 'WEBZ'
 };
 exports.LoadType = LoadType;

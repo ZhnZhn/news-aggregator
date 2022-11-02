@@ -69,6 +69,7 @@ var AppNewsAggregator = function AppNewsAggregator() {
         onFmp: _ComponentActions.ComponentActions.showFmp,
         onNewsSearch: _ComponentActions.ComponentActions.showNewsSearch,
         onNewsTop: _ComponentActions.ComponentActions.showNewsTop,
+        onTheNewsTop: _ComponentActions.ComponentActions.showTheNewsTop,
         onSettings: _showSettings,
         onAbout: _ComponentActions.ComponentActions.showAbout
       }), (0, _jsxRuntime.jsxs)("div", {

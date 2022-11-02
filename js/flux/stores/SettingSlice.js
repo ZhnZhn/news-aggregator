@@ -19,6 +19,7 @@ var SettingSlice = {
       setIexKey: _fSetKey(_Type.LoadType.IEX),
       setFmpKey: _fSetKey(_Type.LoadType.FMP),
       setNewsKey: _fSetKey(_Type.LoadType.NEWS),
+      setTheNewsKey: _fSetKey(_Type.LoadType.TNEWS),
       setWebzKey: _fSetKey(_Type.LoadType.WEBZ)
     };
   },
@@ -30,6 +31,9 @@ var SettingSlice = {
   },
   getNewsKey: function getNewsKey() {
     return _settings[_Type.LoadType.NEWS];
+  },
+  getTheNewsKey: function getTheNewsKey() {
+    return _settings[_Type.LoadType.TNEWS];
   },
   getWebzKey: function getWebzKey() {
     return _settings[_Type.LoadType.WEBZ];

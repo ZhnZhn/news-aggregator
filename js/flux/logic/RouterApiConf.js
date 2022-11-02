@@ -40,6 +40,14 @@ var RouterApiConf = {
           msgErr: "NewsApi " + MSG_ERR_TAIL
         };
 
+      case 'TNT':
+        return {
+          apiKey: _Store["default"].getTheNewsKey(),
+          api: _Api["default"].TheNewsTop,
+          adapter: _Adapters["default"].TheNews,
+          msgErr: "TheNewsApi " + MSG_ERR_TAIL
+        };
+
       case 'W':
         return {
           apiKey: _Store["default"].getWebzKey(),

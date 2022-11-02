@@ -32,6 +32,10 @@ const _fSafeLink = (
   "https://newsapi.org",
   "NewsApi.org"
 )
+, TheNewsApi = _fSafeLink(
+  "https://thenewsapi.com",
+  "TheNewsApi"
+)
 , Webz = _fSafeLink(
   "https://webz.io",
   "Webz.io"
@@ -51,6 +55,7 @@ const _fSafeLink = (
 
 const Link = {
   NewsApi,
+  TheNewsApi,
   Webz,
   StackOverflow,
   IexApi,

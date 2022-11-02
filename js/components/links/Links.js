@@ -13,7 +13,7 @@ var _SafeLink = _interopRequireDefault(require("../zhn-atoms/SafeLink"));
 
 var _PoweredBy = _interopRequireDefault(require("./PoweredBy"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var _excluded = ["title"];
 var CL_LINK = "link";
@@ -22,7 +22,7 @@ var _fSafeLink = function _fSafeLink(href, caption) {
   return function (_ref) {
     var title = _ref.title,
         restProps = (0, _objectWithoutPropertiesLoose2["default"])(_ref, _excluded);
-    return /*#__PURE__*/(0, _jsxRuntime.jsx)(_SafeLink["default"], (0, _extends2["default"])({
+    return (0, _jsxRuntime.jsx)(_SafeLink["default"], (0, _extends2["default"])({
       className: CL_LINK
     }, restProps, {
       href: href,
@@ -35,6 +35,7 @@ var _fSafeLink = function _fSafeLink(href, caption) {
     CoinStats = _fSafeLink("https://coinstats.app", "CoinStats"),
     Messari = _fSafeLink("https://messari.io", "Messari"),
     NewsApi = _fSafeLink("https://newsapi.org", "NewsApi.org"),
+    TheNewsApi = _fSafeLink("https://thenewsapi.com", "TheNewsApi"),
     Webz = _fSafeLink("https://webz.io", "Webz.io"),
     StackOverflow = _fSafeLink("https://stackoverflow.com", "StackOverflow"),
     IexApi = _fSafeLink("https://iexcloud.io", "IEX Cloud"),
@@ -42,6 +43,7 @@ var _fSafeLink = function _fSafeLink(href, caption) {
 
 var Link = {
   NewsApi: NewsApi,
+  TheNewsApi: TheNewsApi,
   Webz: Webz,
   StackOverflow: StackOverflow,
   IexApi: IexApi,

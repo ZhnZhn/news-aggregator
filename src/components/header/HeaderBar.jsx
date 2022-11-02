@@ -62,9 +62,13 @@ const HeaderBar = ({
   onIex,
   onFmp,
   onNewsSearch,
-  onNewsTop
+  onNewsTop,
+  onTheNewsTop
 }) => {
-  const [isQuery, setIsQuery] = useState(false)
+  const [
+    isQuery,
+    setIsQuery
+  ] = useState(false)
   , _hCloseQuery = useCallback(() => setIsQuery(false), [])
   , _hToggleQuery = useCallback(() => setIsQuery(is => !is), [])
   , _hWebz = _useClickItem(onWebz, _hCloseQuery)
@@ -78,7 +82,8 @@ const HeaderBar = ({
   , _hFmp = _useClickItem(onFmp, _hCloseQuery)
   , _hNewsApi = _useClickItem(onNewsSearch, _hCloseQuery)
   , _hNewsTop = _useClickItem(onNewsTop, _hCloseQuery)
-  , TS = useTheme(styleConfig)
+  , _hTheNewsTop = _useClickItem(onTheNewsTop, _hCloseQuery)
+  , TS = useTheme(styleConfig);
 
   return (
     <div className={CL_HEADER} style={TS.HEADER}>
@@ -98,6 +103,7 @@ const HeaderBar = ({
         onFmp={_hFmp}
         onNewsApi={_hNewsApi}
         onNewsTop={_hNewsTop}
+        onTheNewsTop={_hTheNewsTop}
       />
       <LoadingProgress
          store={store}

@@ -30,7 +30,7 @@ var _assign = Object.assign,
     S_MODAL = {
   position: 'static',
   width: 340,
-  height: 410,
+  height: 460,
   margin: '70px auto 0px'
 },
     S_DIV_BT = {
@@ -42,7 +42,7 @@ var _assign = Object.assign,
 },
     S_CARD_ROOT = {
   position: 'relative',
-  height: 315
+  height: 370
 },
     S_CARD_BUTTONS = {
   position: 'absolute',
