@@ -23,6 +23,8 @@ var _NewsApiSearchDialog = _interopRequireDefault(require("./NewsApiSearchDialog
 
 var _NewsApiTopDialog = _interopRequireDefault(require("./NewsApiTopDialog"));
 
+var _TheNewsApiTopDialog = _interopRequireDefault(require("./TheNewsApiTopDialog"));
+
 var _CryptoCompareNewsDialog = _interopRequireDefault(require("./CryptoCompareNewsDialog"));
 
 var _CoinStatsDialog = _interopRequireDefault(require("./CoinStatsDialog"));
@@ -42,7 +44,8 @@ var R = {
   IexNews: _IexNewsDialog["default"],
   FmpNews: _FmpNewsDialog["default"],
   NewsApiSearch: _NewsApiSearchDialog["default"],
-  NewsApiTop: _NewsApiTopDialog["default"]
+  NewsApiTop: _NewsApiTopDialog["default"],
+  TheNewsApiTop: _TheNewsApiTopDialog["default"]
 };
 var RouterDialog = {
   getElement: function getElement(type) {

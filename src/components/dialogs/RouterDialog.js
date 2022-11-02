@@ -1,4 +1,3 @@
-
 import DialogType1 from './DialogType1';
 import WebzQuery from './WebzQueryDialog';
 import WebzCountry from './WebzCountryDialog';
@@ -8,6 +7,7 @@ import IexNews from './IexNewsDialog';
 import FmpNews from './FmpNewsDialog';
 import NewsApiSearch from './NewsApiSearchDialog';
 import NewsApiTop from './NewsApiTopDialog';
+import TheNewsApiTop from './TheNewsApiTopDialog';
 import CryptoCompareNews from './CryptoCompareNewsDialog';
 import CoinStatsNews from './CoinStatsDialog';
 import MessariNews from './MessariDialog';
@@ -24,7 +24,9 @@ const R = {
   MessariNews,
   IexNews,
   FmpNews,
-  NewsApiSearch, NewsApiTop
+  NewsApiSearch,
+  NewsApiTop,
+  TheNewsApiTop
 }
 
 const RouterDialog = {
