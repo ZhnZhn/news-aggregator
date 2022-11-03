@@ -147,7 +147,7 @@ const PasswordField = forwardRef(({
       : S_LINE_ERROR;
 
   return (
-    <div
+    <form
       className={CL_SELECT}
       style={style}
     >
@@ -191,7 +191,7 @@ const PasswordField = forwardRef(({
           </div>
         }
       </div>
-    </div>
+    </form>
   );
 });
 

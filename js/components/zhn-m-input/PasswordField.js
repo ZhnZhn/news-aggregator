@@ -164,7 +164,7 @@ var PasswordField = (0, _uiApi.forwardRef)(function (_ref, ref) {
       _labelErrStyle = _isPassTest ? void 0 : S_LABEL_ON_ERROR,
       _lineStyle = _isPassTest ? getWasEnter() ? S_LINE_AFTER_ENTER : void 0 : S_LINE_ERROR;
 
-  return (0, _jsxRuntime.jsxs)("div", {
+  return (0, _jsxRuntime.jsxs)("form", {
     className: CL_SELECT,
     style: style,
     children: [(0, _jsxRuntime.jsx)("label", {
