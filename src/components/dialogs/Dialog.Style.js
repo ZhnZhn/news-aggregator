@@ -38,6 +38,9 @@ const styleConfig = {
         ...S_BROWSER_CAPTION,
         ...CSS_RULE.BG_HEADER
       },
+      OPEN_CLOSE: {
+        ...CSS_RULE.BG
+      },
       INPUT_ROOT: {
         ...S_INPUT_ROOT
       },

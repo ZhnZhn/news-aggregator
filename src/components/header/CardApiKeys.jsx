@@ -5,17 +5,18 @@ import {
 
 import safeFn from '../../utils/safeFn';
 
-import A from '../Comp';
+import ScrollPane from '../zhn-atoms/ScrollPane';
+import OpenClose from '../zhn-atoms/OpenClose';
+import PasswordField from '../zhn-m-input/PasswordField';
+import RaisedButton from '../zhn-bt/RaisedButton';
 
-const STR_EMPTY = ''
-, _hasLengthOrEmpty = (
+const S_OPEN_CLOSE = {
+  lineHeight: 2.2
+};
+
+const _hasLengthOrEmpty = (
   length
-) => (str) => str.length === length || str === STR_EMPTY
-, _onTestIex = _hasLengthOrEmpty(35)
-, _onTestFmp = _hasLengthOrEmpty(32)
-, _onTestNews = _hasLengthOrEmpty(32)
-, _onTestTheNews = _hasLengthOrEmpty(40)
-, _onTestWebz = _hasLengthOrEmpty(36)
+) => (str) => str.length === length || str === ''
 , SET_IEX_KEY = 'setIexKey'
 , SET_FMP_KEY = 'setFmpKey'
 , SET_NEWS_KEY = 'setNewsKey'
@@ -40,6 +41,15 @@ const _clearInputRefs = refs => refs
 const _setWasEnterRefs = refs => refs
   .forEach(ref => ref.current.setWasEnter());
 
+const _crPasswordFieldProps = (
+  name,
+  maxLength
+) => ({
+  caption: `${name} API Key (${maxLength})`,
+  maxLength,
+  onTest: _hasLengthOrEmpty(maxLength)
+});
+
 const CardApiKeys = (props) => {
   const _refInputIex = useRef()
   , _refInputFmp = useRef()
@@ -51,8 +61,7 @@ const CardApiKeys = (props) => {
     fieldStyle,
     buttonsStyle,
     TS,
-    data,
-    onClose
+    data
   } = props
   , {
     setIex,
@@ -61,6 +70,7 @@ const CardApiKeys = (props) => {
     setTheNews,
     setWebz
   } = _getKeySetters(data)
+  /*eslint-disable react-hooks/exhaustive-deps */
   , _hClearAll = useCallback(() => {
       setIex('')
       setFmp('')
@@ -75,6 +85,9 @@ const CardApiKeys = (props) => {
          _refInputWebz
       ])
   }, [])
+  //setIex, setFmp, setNews, setTheNews, setWebz
+  /*eslint-enable react-hooks/exhaustive-deps */
+  /*eslint-disable react-hooks/exhaustive-deps */
   , _hSetAll = useCallback(() => {
       setIex(_getRefCompValue(_refInputIex))
       setFmp(_getRefCompValue(_refInputFmp))
@@ -83,91 +96,76 @@ const CardApiKeys = (props) => {
       setWebz(_getRefCompValue(_refInputWebz))
       _setWasEnterRefs([_refInputIex, _refInputFmp, _refInputNews, _refInputWebz])
   }, []);
+  //setIex, setFmp, setNews, setTheNews, setWebz
+  /*eslint-enable react-hooks/exhaustive-deps */
 
   if (!_isVisible(props)) {
     return null;
   }
   return(
-      <div style={style}>
-          <form>
-            <A.PasswordField
-               ref={_refInputIex}
-               style={fieldStyle}
-               name="iex-cloud"
-               caption="IEX Cloud API Key (35 Symbols)"
-               maxLength={35}
-               onTest={_onTestIex}
-               onEnter={setIex}
-            />
-          </form>
-          <form>
-          <A.PasswordField
+    <ScrollPane style={style}>
+        <OpenClose
+          style={{...TS.OPEN_CLOSE, ...S_OPEN_CLOSE}}
+          caption="Stock Market"
+        >
+          <PasswordField
+             {..._crPasswordFieldProps('IEX Cloud', 35)}
+             ref={_refInputIex}
+             style={fieldStyle}
+             name="iex-cloud"
+             onEnter={setIex}
+          />
+          <PasswordField
+             {..._crPasswordFieldProps('FMP', 32)}
              ref={_refInputFmp}
              style={fieldStyle}
              name="fmp-api"
-             caption="FMP API Key (32 Symbols)"
-             maxLength={32}
-             onTest={_onTestFmp}
              onEnter={setFmp}
           />
-        </form>
-        <form>
-          <A.PasswordField
-             ref={_refInputNews}
-             style={fieldStyle}
-             name="newsapi"
-             caption="NewsApi API Key (32 Symbols)"
-             maxLength={32}
-             onTest={_onTestNews}
-             onEnter={setNews}
-          />
-        </form>
-        <form>
-          <A.PasswordField
-             ref={_refInputTheNews}
-             style={fieldStyle}
-             name="thenewsapi"
-             caption="TheNewsApi API Key (40 Symbols)"
-             maxLength={40}
-             onTest={_onTestTheNews}
-             onEnter={setTheNews}
-          />
-        </form>
-        <form>
-          <A.PasswordField
-             ref={_refInputWebz}
-             style={fieldStyle}
-             name="webz.io"
-             caption="Webz.IO API Key (36 Symbols)"
-             maxLength={36}
-             onTest={_onTestWebz}
-             onEnter={setWebz}
-          />
-        </form>
-        <div style={buttonsStyle}>
-          <A.RaisedButton
-            style={TS.BT.RAISED}
-            clDiv={TS.BT.CL_RAISED_DIV}
-            caption="Clear All"
-            onClick={_hClearAll}
-          />
-          <A.RaisedButton
-            style={TS.BT.RAISED}
-            clDiv={TS.BT.CL_RAISED_DIV}
-            caption="Set All"
-            onClick={_hSetAll}
-          />
-          <A.RaisedButton
-            style={TS.BT.RAISED}
-            clDiv={TS.BT.CL_RAISED_DIV}
-            isPrimary={true}
-            caption="Close"
-            onClick={onClose}
-          />
-        </div>
+      </OpenClose>
+      <OpenClose
+         style={{...TS.OPEN_CLOSE, ...S_OPEN_CLOSE}}
+         caption="General News"
+      >
+        <PasswordField
+           {..._crPasswordFieldProps('NewsApi', 32)}
+           ref={_refInputNews}
+           style={fieldStyle}
+           name="newsapi"
+           onEnter={setNews}
+        />
+        <PasswordField
+           {..._crPasswordFieldProps('TheNewsApi', 40)}
+           ref={_refInputTheNews}
+           style={fieldStyle}
+           name="thenewsapi"
+           onEnter={setTheNews}
+        />
+        <PasswordField
+           {..._crPasswordFieldProps('Webz.IO', 36)}
+           ref={_refInputWebz}
+           style={fieldStyle}
+           name="webz.io"
+           onEnter={setWebz}
+        />
+      </OpenClose>
+      <div style={buttonsStyle}>
+        <RaisedButton
+          style={TS.BT.RAISED}
+          clDiv={TS.BT.CL_RAISED_DIV}
+          caption="Clear All"
+          onClick={_hClearAll}
+        />
+        <RaisedButton
+          style={TS.BT.RAISED}
+          clDiv={TS.BT.CL_RAISED_DIV}
+          isPrimary={true}
+          caption="Set All"
+          onClick={_hSetAll}
+        />
       </div>
-    );
-  }
-
+    </ScrollPane>
+  );
+}
 
 export default CardApiKeys

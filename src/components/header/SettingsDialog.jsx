@@ -30,13 +30,14 @@ const _assign = Object.assign
 }
 , S_CARD_ROOT = {
   position: 'relative',
-  height: 370
+  height: 370,
+  overflowY: 'auto'
 }
 , S_CARD_BUTTONS = {
-  position: 'absolute',
-  right: 10,
-  bottom: 4,
-  cursor: 'default'
+  display: 'flex',
+  justifyContent: 'flex-end',
+  flexWrap: 'wrap',
+  margin: '10px 10px 10px 0'
 }
 , S_SELECT_WIDTH = {
   width: 300
@@ -86,7 +87,6 @@ const SettingsDialog = memoIsShow(({
               buttonsStyle={S_CARD_BUTTONS}
               TS={TS}
               data={data}
-              onClose={onClose}
             />
          </A.Tab>
          <A.Tab title="UI Theme">

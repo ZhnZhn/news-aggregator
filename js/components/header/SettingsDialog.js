@@ -42,13 +42,14 @@ var _assign = Object.assign,
 },
     S_CARD_ROOT = {
   position: 'relative',
-  height: 370
+  height: 370,
+  overflowY: 'auto'
 },
     S_CARD_BUTTONS = {
-  position: 'absolute',
-  right: 10,
-  bottom: 4,
-  cursor: 'default'
+  display: 'flex',
+  justifyContent: 'flex-end',
+  flexWrap: 'wrap',
+  margin: '10px 10px 10px 0'
 },
     S_SELECT_WIDTH = {
   width: 300
@@ -97,8 +98,7 @@ var SettingsDialog = (0, _memoIsShow["default"])(function (_ref) {
           fieldStyle: (0, _extends2["default"])({}, TS.INPUT_ROOT, S_INPUT_WIDTH),
           buttonsStyle: S_CARD_BUTTONS,
           TS: TS,
-          data: data,
-          onClose: onClose
+          data: data
         })
       }), (0, _jsxRuntime.jsx)(_Comp["default"].Tab, {
         title: "UI Theme",

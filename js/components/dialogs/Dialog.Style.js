@@ -38,6 +38,7 @@ var styleConfig = {
     return {
       R_DIALOG: (0, _extends2["default"])({}, CSS_RULE.R_DIALOG),
       BROWSER_CAPTION: (0, _extends2["default"])({}, S_BROWSER_CAPTION, CSS_RULE.BG_HEADER),
+      OPEN_CLOSE: (0, _extends2["default"])({}, CSS_RULE.BG),
       INPUT_ROOT: (0, _extends2["default"])({}, S_INPUT_ROOT),
       INPUT_DATE: (0, _extends2["default"])({}, S_INPUT_DATE),
       POWERED_BY: (0, _extends2["default"])({}, S_POWERED_BY),
