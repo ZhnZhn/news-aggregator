@@ -15,7 +15,11 @@ var _useRefSelectOption4 = _interopRequireDefault(require("./hooks/useRefSelectO
 
 var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"));
 
-var _Comp = _interopRequireDefault(require("../Comp"));
+var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/DraggableDialog"));
+
+var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
+
+var _FlexColumn = _interopRequireDefault(require("../zhn-atoms/FlexColumn"));
 
 var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
 
@@ -23,7 +27,6 @@ var _Links = require("../links/Links");
 
 var _jsxRuntime = require("preact/jsx-runtime");
 
-//'general | science | sports | business | health | entertainment | tech | politics | food | travel'
 var CATEGORY_OPTIONS = [{
   caption: 'All',
   value: 'all'
@@ -282,7 +285,7 @@ var TheNewsApiTopDialog = function TheNewsApiTopDialog(_ref) {
       TS = _useDecorDialog[0],
       _hKeyDown = _useDecorDialog[1];
 
-  return (0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
+  return (0, _jsxRuntime.jsx)(_DraggableDialog["default"], {
     ref: _refDialog,
     isShow: isShow,
     style: TS.R_DIALOG,
@@ -293,34 +296,30 @@ var TheNewsApiTopDialog = function TheNewsApiTopDialog(_ref) {
     onLoad: _hLoad,
     onShow: onShow,
     onClose: _hClose,
-    children: [(0, _jsxRuntime.jsx)("div", {
-      children: (0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+    children: (0, _jsxRuntime.jsxs)(_FlexColumn["default"], {
+      children: [(0, _jsxRuntime.jsx)(_InputSelect["default"], {
         caption: "Category",
         initItem: DF_CATEGORY,
         options: CATEGORY_OPTIONS,
         styleConfig: TS.SELECT,
         onSelect: _selectCategory
-      })
-    }), (0, _jsxRuntime.jsx)("div", {
-      children: (0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+      }), (0, _jsxRuntime.jsx)(_InputSelect["default"], {
         caption: "Locale",
         initItem: DF_LOCALE,
         options: LOCALE_OPTIONS,
         styleConfig: TS.SELECT,
         onSelect: _selectLocale
-      })
-    }), (0, _jsxRuntime.jsx)("div", {
-      children: (0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+      }), (0, _jsxRuntime.jsx)(_InputSelect["default"], {
         caption: "Domain",
         initItem: DF_DOMAIN,
         options: DOMAIN_OPTIONS,
         styleConfig: TS.SELECT,
         onSelect: _selectDomain
-      })
-    }), (0, _jsxRuntime.jsx)(_PoweredBy["default"], {
-      style: TS.POWERED_BY,
-      children: (0, _jsxRuntime.jsx)(_Links.TheNewsApiLink, {})
-    })]
+      }), (0, _jsxRuntime.jsx)(_PoweredBy["default"], {
+        style: TS.POWERED_BY,
+        children: (0, _jsxRuntime.jsx)(_Links.TheNewsApiLink, {})
+      })]
+    })
   });
 };
 

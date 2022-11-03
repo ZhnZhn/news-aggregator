@@ -9,7 +9,9 @@ import useRefClose from './hooks/useRefClose';
 import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
-import A from '../Comp';
+import DraggableDialog from '../zhn-moleculs/DraggableDialog';
+import InputSelect from '../zhn-m-input/InputSelect';
+import FlexColumn from '../zhn-atoms/FlexColumn';
 import PoweredBy from '../links/PoweredBy';
 import { CryptoCompareLink } from '../links/Links';
 
@@ -86,7 +88,7 @@ const CryptoCompareNewsDialog = ({
   , [TS, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose);
 
   return (
-    <A.DraggableDialog
+    <DraggableDialog
        ref={_refDialog}
        isShow={isShow}
        style={TS.R_DIALOG}
@@ -98,37 +100,33 @@ const CryptoCompareNewsDialog = ({
        onShow={onShow}
        onClose={_hClose}
     >
-      <div>
-        <A.InputSelect
-          caption="Feed"
-          initItem={DF_FEED}
-          options={FEED_OPTIONS}
-          styleConfig={TS.SELECT}
-          onSelect={_selectFeed}
-        />
-      </div>
-      <div>
-        <A.InputSelect
+      <FlexColumn>
+        <InputSelect
           caption="Category"
           initItem={DF_CATEGORY}
           options={CATEGORY_OPTIONS}
           styleConfig={TS.SELECT}
           onSelect={_selectCategory}
         />
-      </div>
-      <div>
-       <A.InputSelect
-         caption="SortBy"
-         initItem={DF_SORTBY}
-         options={SORTBY_OPTIONS}
-         styleConfig={TS.SELECT}
-         onSelect={_selectSortBy}
-       />
-      </div>
-      <PoweredBy style={TS.POWERED_BY}>
-        <CryptoCompareLink />
-      </PoweredBy>
-    </A.DraggableDialog>
+        <InputSelect
+          caption="Feed"
+          initItem={DF_FEED}
+          options={FEED_OPTIONS}
+          styleConfig={TS.SELECT}
+          onSelect={_selectFeed}
+        />
+        <InputSelect
+          caption="SortBy"
+          initItem={DF_SORTBY}
+          options={SORTBY_OPTIONS}
+          styleConfig={TS.SELECT}
+          onSelect={_selectSortBy}
+        />
+        <PoweredBy style={TS.POWERED_BY}>
+          <CryptoCompareLink />
+        </PoweredBy>
+      </FlexColumn>
+    </DraggableDialog>
   );
 };
 

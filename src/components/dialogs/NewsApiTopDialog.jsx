@@ -11,11 +11,19 @@ import useRefClose from './hooks/useRefClose';
 import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
-import A from '../Comp';
+import DraggableDialog from '../zhn-moleculs/DraggableDialog';
+import InputSelect from '../zhn-m-input/InputSelect';
+import FlexColumn from '../zhn-atoms/FlexColumn';
 import { PoweredByNewsApi } from '../links/PoweredByLink';
 
 const _CATEGORY = [
-  'business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'
+  'business',
+  'entertainment',
+  'general',
+  'health',
+  'science',
+  'sports',
+  'technology'
 ]
 , CATEGORY_OPTIONS = _CATEGORY.map(str => ({
     caption: toFirstUpperCase(str),
@@ -71,7 +79,7 @@ const _CATEGORY = [
    { caption: "Switzerland", value: "ch" },
    { caption: "Taiwan", value: "tw" },
    { caption: "Thailand", value: "th" },
-   { caption: "Turkey", value: "tr" },
+   { caption: "Türkiye", value: "tr" },
    { caption: "Ukraine", value: "ua" },
    { caption: "United Arab Emirates", value: "ae" },
    { caption: "United Kingdom", value: "gb" },
@@ -89,9 +97,18 @@ const NewsApiTopDialog = ({
   onShow,
   onClose
 }) => {
-  const [_refDialog, _hClose] = useRefClose(onClose)
-  , [_refCategory, _selectCategory] = useRefSelectOption(DF_CATEGORY.value)
-  , [_refCountry, _selectCountry] = useRefSelectOption(DF_COUNTRY.value)
+  const [
+    _refDialog,
+    _hClose
+  ] = useRefClose(onClose)
+  , [
+    _refCategory,
+    _selectCategory
+  ] = useRefSelectOption(DF_CATEGORY.value)
+  , [
+    _refCountry,
+    _selectCountry
+  ] = useRefSelectOption(DF_COUNTRY.value)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(()=>{
     onLoad({
@@ -106,10 +123,13 @@ const NewsApiTopDialog = ({
   }, [])
   //type, source, itemConf, onLoad,
   /*eslint-enable react-hooks/exhaustive-deps */
-  , [TS, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose);
+  , [
+    TS,
+    _hKeyDown
+  ] = useDecorDialog(styleConfig, _hLoad, _hClose);
 
   return (
-    <A.DraggableDialog
+    <DraggableDialog
        ref={_refDialog}
        isShow={isShow}
        style={TS.R_DIALOG}
@@ -121,28 +141,26 @@ const NewsApiTopDialog = ({
        onShow={onShow}
        onClose={_hClose}
     >
-       <div>
-         <A.InputSelect
+       <FlexColumn>
+         <InputSelect
            caption="Category"
            initItem={DF_CATEGORY}
            options={CATEGORY_OPTIONS}
            styleConfig={TS.SELECT}
            onSelect={_selectCategory}
          />
-       </div>
-       <div>
-         <A.InputSelect
+         <InputSelect
            caption="Country"
            initItem={DF_COUNTRY}
            options={COUNTRY_OPTIONS}
            styleConfig={TS.SELECT}
            onSelect={_selectCountry}
          />
-       </div>
-       <PoweredByNewsApi
-          style={TS.POWERED_BY}
-       />
-    </A.DraggableDialog>
+         <PoweredByNewsApi
+            style={TS.POWERED_BY}
+         />
+       </FlexColumn>
+    </DraggableDialog>
   );
 };
 

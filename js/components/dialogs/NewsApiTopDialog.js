@@ -17,7 +17,11 @@ var _useRefSelectOption3 = _interopRequireDefault(require("./hooks/useRefSelectO
 
 var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"));
 
-var _Comp = _interopRequireDefault(require("../Comp"));
+var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/DraggableDialog"));
+
+var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
+
+var _FlexColumn = _interopRequireDefault(require("../zhn-atoms/FlexColumn"));
 
 var _PoweredByLink = require("../links/PoweredByLink");
 
@@ -176,7 +180,7 @@ var _CATEGORY = ['business', 'entertainment', 'general', 'health', 'science', 's
   caption: "Thailand",
   value: "th"
 }, {
-  caption: "Turkey",
+  caption: "Türkiye",
   value: "tr"
 }, {
   caption: "Ukraine",
@@ -230,7 +234,7 @@ var NewsApiTopDialog = function NewsApiTopDialog(_ref) {
       TS = _useDecorDialog[0],
       _hKeyDown = _useDecorDialog[1];
 
-  return (0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
+  return (0, _jsxRuntime.jsx)(_DraggableDialog["default"], {
     ref: _refDialog,
     isShow: isShow,
     style: TS.R_DIALOG,
@@ -241,25 +245,23 @@ var NewsApiTopDialog = function NewsApiTopDialog(_ref) {
     onLoad: _hLoad,
     onShow: onShow,
     onClose: _hClose,
-    children: [(0, _jsxRuntime.jsx)("div", {
-      children: (0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+    children: (0, _jsxRuntime.jsxs)(_FlexColumn["default"], {
+      children: [(0, _jsxRuntime.jsx)(_InputSelect["default"], {
         caption: "Category",
         initItem: DF_CATEGORY,
         options: CATEGORY_OPTIONS,
         styleConfig: TS.SELECT,
         onSelect: _selectCategory
-      })
-    }), (0, _jsxRuntime.jsx)("div", {
-      children: (0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+      }), (0, _jsxRuntime.jsx)(_InputSelect["default"], {
         caption: "Country",
         initItem: DF_COUNTRY,
         options: COUNTRY_OPTIONS,
         styleConfig: TS.SELECT,
         onSelect: _selectCountry
-      })
-    }), (0, _jsxRuntime.jsx)(_PoweredByLink.PoweredByNewsApi, {
-      style: TS.POWERED_BY
-    })]
+      }), (0, _jsxRuntime.jsx)(_PoweredByLink.PoweredByNewsApi, {
+        style: TS.POWERED_BY
+      })]
+    })
   });
 };
 

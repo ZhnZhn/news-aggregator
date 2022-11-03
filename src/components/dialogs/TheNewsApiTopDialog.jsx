@@ -9,11 +9,11 @@ import useRefClose from './hooks/useRefClose';
 import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
-import A from '../Comp';
+import DraggableDialog from '../zhn-moleculs/DraggableDialog';
+import InputSelect from '../zhn-m-input/InputSelect';
+import FlexColumn from '../zhn-atoms/FlexColumn';
 import PoweredBy from '../links/PoweredBy';
 import { TheNewsApiLink } from '../links/Links';
-
-//'general | science | sports | business | health | entertainment | tech | politics | food | travel'
 
 const CATEGORY_OPTIONS = [
   { caption: 'All', value: 'all' },
@@ -138,7 +138,7 @@ const TheNewsApiTopDialog = ({
   , [TS, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose);
 
   return (
-    <A.DraggableDialog
+    <DraggableDialog
        ref={_refDialog}
        isShow={isShow}
        style={TS.R_DIALOG}
@@ -150,37 +150,33 @@ const TheNewsApiTopDialog = ({
        onShow={onShow}
        onClose={_hClose}
     >
-      <div>
-        <A.InputSelect
-          caption="Category"
-          initItem={DF_CATEGORY}
-          options={CATEGORY_OPTIONS}
-          styleConfig={TS.SELECT}
-          onSelect={_selectCategory}
-        />
-      </div>
-      <div>
-        <A.InputSelect
-          caption="Locale"
-          initItem={DF_LOCALE}
-          options={LOCALE_OPTIONS}
-          styleConfig={TS.SELECT}
-          onSelect={_selectLocale}
-        />
-      </div>
-      <div>
-        <A.InputSelect
-          caption="Domain"
-          initItem={DF_DOMAIN}
-          options={DOMAIN_OPTIONS}
-          styleConfig={TS.SELECT}
-          onSelect={_selectDomain}
-        />
-      </div>
-      <PoweredBy style={TS.POWERED_BY}>
-        <TheNewsApiLink />
-      </PoweredBy>
-    </A.DraggableDialog>
+      <FlexColumn>
+         <InputSelect
+           caption="Category"
+           initItem={DF_CATEGORY}
+           options={CATEGORY_OPTIONS}
+           styleConfig={TS.SELECT}
+           onSelect={_selectCategory}
+         />
+         <InputSelect
+           caption="Locale"
+           initItem={DF_LOCALE}
+           options={LOCALE_OPTIONS}
+           styleConfig={TS.SELECT}
+           onSelect={_selectLocale}
+         />
+         <InputSelect
+           caption="Domain"
+           initItem={DF_DOMAIN}
+           options={DOMAIN_OPTIONS}
+           styleConfig={TS.SELECT}
+           onSelect={_selectDomain}
+         />
+         <PoweredBy style={TS.POWERED_BY}>
+           <TheNewsApiLink />
+         </PoweredBy>
+       </FlexColumn>
+    </DraggableDialog>
   );
 };
 
