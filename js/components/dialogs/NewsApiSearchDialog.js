@@ -19,7 +19,9 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _PoweredByLink = require("../links/PoweredByLink");
+
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var SORT_BY_OPTIONS = [{
   caption: "Relevancy",
@@ -69,7 +71,7 @@ var NewsApiSearchDialog = function NewsApiSearchDialog(_ref) {
       _hKeyDown = _useDecorDialog[1],
       _termCaption = "Term (Default: " + DF_TERM + ")";
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
+  return (0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
     ref: _refDialog,
     isShow: isShow,
     style: TS.R_DIALOG,
@@ -80,21 +82,20 @@ var NewsApiSearchDialog = function NewsApiSearchDialog(_ref) {
     onLoad: _hLoad,
     onShow: onShow,
     onClose: _hClose,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
+    children: [(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
       style: TS.INPUT_ROOT,
       ref: _refInputTerm,
       caption: _termCaption,
       initValue: DF_TERM,
       onEnter: _hLoad
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+    }), (0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
       caption: "SortBy",
       initItem: DF_SORT_BY,
       options: SORT_BY_OPTIONS,
       styleConfig: TS.SELECT,
       onSelect: _selectSortBy
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
-      rootStyle: TS.POWERED_BY,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.NewsApi, {})
+    }), (0, _jsxRuntime.jsx)(_PoweredByLink.PoweredByNewsApi, {
+      style: TS.POWERED_BY
     })]
   });
 };

@@ -10,6 +10,8 @@ import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import PoweredBy from '../links/PoweredBy';
+import { CoinStatsLink } from '../links/Links';
 
 const NEWS_FOR_OPTIONS = [
 {caption: "Latest", value: "latest"},
@@ -66,9 +68,9 @@ const CoinStatsDialog = ({
        styleConfig={TS.SELECT}
        onSelect={_selectFilter}
       />
-      <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
-        <A.Link.CoinStats />
-      </A.Link.PoweredBy>
+      <PoweredBy style={TS.POWERED_BY}>
+        <CoinStatsLink />
+      </PoweredBy>
     </A.DraggableDialog>
   );
 };

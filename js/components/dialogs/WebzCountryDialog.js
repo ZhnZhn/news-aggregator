@@ -17,217 +17,219 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _PoweredByLink = require("../links/PoweredByLink");
+
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var OPTION_COUNTRIES = [{
-  "caption": "Australia",
+  caption: "Australia",
   value: "AU"
 }, {
-  "caption": "Austria",
+  caption: "Austria",
   value: "AT"
 }, {
-  "caption": "Belarus",
+  caption: "Belarus",
   value: "BY"
 }, {
-  "caption": "Belguim",
+  caption: "Belguim",
   value: "BE"
 }, {
-  "caption": "Brazil",
+  caption: "Brazil",
   value: "BR"
 }, {
-  "caption": "Bulgaria",
+  caption: "Bulgaria",
   value: "BG"
 }, {
-  "caption": "Canada",
+  caption: "Canada",
   value: "CA"
 }, {
-  "caption": "Chile",
+  caption: "Chile",
   value: "CL"
 }, {
-  "caption": "China",
+  caption: "China",
   value: "CN"
 }, {
-  "caption": "Colombia",
+  caption: "Colombia",
   value: "CO"
 }, {
-  "caption": "Croatia",
+  caption: "Croatia",
   value: "HR"
 }, {
-  "caption": "Czech Republic",
+  caption: "Czech Republic",
   value: "CZ"
 }, {
-  "caption": "Denmark",
+  caption: "Denmark",
   value: "DK"
 }, {
-  "caption": "Estonia",
+  caption: "Estonia",
   value: "EE"
 }, {
-  "caption": "Finland",
+  caption: "Finland",
   value: "FI"
 }, {
-  "caption": "France",
+  caption: "France",
   value: "FR"
 }, {
-  "caption": "Germany",
+  caption: "Germany",
   value: "DE"
 }, {
-  "caption": "Greece",
+  caption: "Greece",
   value: "GR"
 }, {
-  "caption": "Hong Kong",
+  caption: "Hong Kong",
   value: "HK"
 }, {
-  "caption": "Hungary",
+  caption: "Hungary",
   value: "HU"
 }, {
-  "caption": "India",
+  caption: "India",
   value: "IN"
 }, {
-  "caption": "Indonesia",
+  caption: "Indonesia",
   value: "ID"
 }, {
-  "caption": "Iran",
+  caption: "Iran",
   value: "IR"
 }, {
-  "caption": "Ireland",
+  caption: "Ireland",
   value: "IE"
 }, {
-  "caption": "Israel",
+  caption: "Israel",
   value: "IL"
 }, {
-  "caption": "Italy",
+  caption: "Italy",
   value: "IT"
 }, {
-  "caption": "Japan",
+  caption: "Japan",
   value: "JP"
 }, {
-  "caption": "Malaysia",
+  caption: "Malaysia",
   value: "MY"
 }, {
-  "caption": "Mexico",
+  caption: "Mexico",
   value: "MX"
 }, {
-  "caption": "Nertherlands",
+  caption: "Nertherlands",
   value: "NL"
 }, {
-  "caption": "New Zealand",
+  caption: "New Zealand",
   value: "NZ"
 }, {
-  "caption": "Nigeria",
+  caption: "Nigeria",
   value: "NG"
 }, {
-  "caption": "Norway",
+  caption: "Norway",
   value: "NO"
 }, {
-  "caption": "Philippines",
+  caption: "Philippines",
   value: "PH"
 }, {
-  "caption": "Poland",
+  caption: "Poland",
   value: "PL"
 }, {
-  "caption": "Portugal",
+  caption: "Portugal",
   value: "PT"
 }, {
-  "caption": "Romania",
+  caption: "Romania",
   value: "RO"
 }, {
-  "caption": "Russia",
+  caption: "Russia",
   value: "RU"
 }, {
-  "caption": "Serbia",
+  caption: "Serbia",
   value: "RS"
 }, {
-  "caption": "Singapore",
+  caption: "Singapore",
   value: "SG"
 }, {
-  "caption": "Slovakia",
+  caption: "Slovakia",
   value: "SK"
 }, {
-  "caption": "Slovenia",
+  caption: "Slovenia",
   value: "SI"
 }, {
-  "caption": "South Africa",
+  caption: "South Africa",
   value: "ZA"
 }, {
-  "caption": "South Korea",
+  caption: "South Korea",
   value: "KR"
 }, {
-  "caption": "Spain",
+  caption: "Spain",
   value: "ES"
 }, {
-  "caption": "Sweden",
+  caption: "Sweden",
   value: "SE"
 }, {
-  "caption": "Switzerland",
+  caption: "Switzerland",
   value: "CH"
 }, {
-  "caption": "Taiwan",
+  caption: "Taiwan",
   value: "TW"
 }, {
-  "caption": "Thailand",
+  caption: "Thailand",
   value: "TH"
 }, {
-  "caption": "Turkey",
+  caption: "Türkiye",
   value: "TR"
 }, {
-  "caption": "Ukraine",
+  caption: "Ukraine",
   value: "UA"
 }, {
-  "caption": "United Kingdom",
+  caption: "United Kingdom",
   value: "GB"
 }, {
-  "caption": "United States",
+  caption: "United States",
   value: "US"
 }, {
-  "caption": "Vietnam",
+  caption: "Vietnam",
   value: "VN"
 }],
     OPTION_TOPICS = [{
-  "caption": "Business",
-  "value": "business"
+  caption: "Business",
+  value: "business"
 }, {
-  "caption": "Politics",
-  "value": "politics"
+  caption: "Politics",
+  value: "politics"
 }, {
-  "caption": "Entertainment",
-  "value": "entertainment"
+  caption: "Entertainment",
+  value: "entertainment"
 }, {
-  "caption": "Health",
-  "value": "health"
+  caption: "Health",
+  value: "health"
 }, {
-  "caption": "Travel",
-  "value": "travel"
+  caption: "Travel",
+  value: "travel"
 }, {
-  "caption": "Financial",
-  "value": "financial_news"
+  caption: "Financial",
+  value: "financial_news"
 }, {
-  "caption": "Sports",
-  "value": "sports"
+  caption: "Sports",
+  value: "sports"
 }, {
-  "caption": "Technology",
-  "value": "tech"
+  caption: "Technology",
+  value: "tech"
 }, {
-  "caption": "Real Estate",
-  "value": "real_estate"
+  caption: "Real Estate",
+  value: "real_estate"
 }, {
-  "caption": "Education",
-  "value": "education"
+  caption: "Education",
+  value: "education"
 }, {
-  "caption": "Fashion",
-  "value": "fashion"
+  caption: "Fashion",
+  value: "fashion"
 }, {
-  "caption": "Science",
-  "value": "science"
+  caption: "Science",
+  value: "science"
 }, {
-  "caption": "Architects",
-  "value": "architects"
+  caption: "Architects",
+  value: "architects"
 }],
     OPTION_LANGUAGES = [{
-  "caption": "All",
-  "value": ""
+  caption: "All",
+  value: ""
 }, {
-  "caption": "English",
-  "value": "english"
+  caption: "English",
+  value: "english"
 }],
     DF_COUNTRY = OPTION_COUNTRIES[0],
     DF_TOPIC = OPTION_TOPICS[0],
@@ -271,7 +273,7 @@ var WebzCountryDialog = function WebzCountryDialog(_ref) {
       TS = _useDecorDialog[0],
       _hKeyDown = _useDecorDialog[1];
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
+  return (0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
     ref: _refDialog,
     isShow: isShow,
     style: TS.R_DIALOG,
@@ -282,33 +284,32 @@ var WebzCountryDialog = function WebzCountryDialog(_ref) {
     onLoad: _hLoad,
     onShow: onShow,
     onClose: _hClose,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+    children: [(0, _jsxRuntime.jsx)("div", {
+      children: (0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
         caption: "Country",
         initItem: DF_COUNTRY,
         options: OPTION_COUNTRIES,
         styleConfig: TS.SELECT,
         onSelect: _selectCountry
       })
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+    }), (0, _jsxRuntime.jsx)("div", {
+      children: (0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
         caption: "Topic",
         initItem: DF_TOPIC,
         options: OPTION_TOPICS,
         styleConfig: TS.SELECT,
         onSelect: _selectTopic
       })
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+    }), (0, _jsxRuntime.jsx)("div", {
+      children: (0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
         caption: "Language",
         initItem: DF_LANGUAGE,
         options: OPTION_LANGUAGES,
         styleConfig: TS.SELECT,
         onSelect: _selectLanguage
       })
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
-      rootStyle: TS.POWERED_BY,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.Webz, {})
+    }), (0, _jsxRuntime.jsx)(_PoweredByLink.PoweredByWebzLink, {
+      style: TS.POWERED_BY
     })]
   });
 };

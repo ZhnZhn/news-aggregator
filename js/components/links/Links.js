@@ -3,15 +3,13 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
-exports["default"] = void 0;
+exports.WebzLink = exports.TheNewsApiLink = exports.StackOverflowLink = exports.NewsApiLink = exports.MessariLink = exports.IexApiLink = exports.FmpApiLink = exports.CryptoCompareLink = exports.CoinStatsLink = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
 
 var _SafeLink = _interopRequireDefault(require("../zhn-atoms/SafeLink"));
-
-var _PoweredBy = _interopRequireDefault(require("./PoweredBy"));
 
 var _jsxRuntime = require("preact/jsx-runtime");
 
@@ -30,29 +28,41 @@ var _fSafeLink = function _fSafeLink(href, caption) {
       children: title || caption
     }));
   };
-},
-    CryptoCompare = _fSafeLink("https://cryptocompare.com", "CryptoCompare"),
-    CoinStats = _fSafeLink("https://coinstats.app", "CoinStats"),
-    Messari = _fSafeLink("https://messari.io", "Messari"),
-    NewsApi = _fSafeLink("https://newsapi.org", "NewsApi.org"),
-    TheNewsApi = _fSafeLink("https://thenewsapi.com", "TheNewsApi"),
-    Webz = _fSafeLink("https://webz.io", "Webz.io"),
-    StackOverflow = _fSafeLink("https://stackoverflow.com", "StackOverflow"),
-    IexApi = _fSafeLink("https://iexcloud.io", "IEX Cloud"),
-    FmpApi = _fSafeLink("https://financialmodelingprep.com", "FMP");
-
-var Link = {
-  NewsApi: NewsApi,
-  TheNewsApi: TheNewsApi,
-  Webz: Webz,
-  StackOverflow: StackOverflow,
-  IexApi: IexApi,
-  FmpApi: FmpApi,
-  CryptoCompare: CryptoCompare,
-  CoinStats: CoinStats,
-  Messari: Messari,
-  PoweredBy: _PoweredBy["default"]
 };
-var _default = Link;
-exports["default"] = _default;
+
+var CryptoCompareLink = _fSafeLink("https://cryptocompare.com", "CryptoCompare");
+
+exports.CryptoCompareLink = CryptoCompareLink;
+
+var CoinStatsLink = _fSafeLink("https://coinstats.app", "CoinStats");
+
+exports.CoinStatsLink = CoinStatsLink;
+
+var MessariLink = _fSafeLink("https://messari.io", "Messari");
+
+exports.MessariLink = MessariLink;
+
+var NewsApiLink = _fSafeLink("https://newsapi.org", "NewsApi.org");
+
+exports.NewsApiLink = NewsApiLink;
+
+var TheNewsApiLink = _fSafeLink("https://thenewsapi.com", "TheNewsApi");
+
+exports.TheNewsApiLink = TheNewsApiLink;
+
+var WebzLink = _fSafeLink("https://webz.io", "Webz.io");
+
+exports.WebzLink = WebzLink;
+
+var StackOverflowLink = _fSafeLink("https://stackoverflow.com", "StackOverflow");
+
+exports.StackOverflowLink = StackOverflowLink;
+
+var IexApiLink = _fSafeLink("https://iexcloud.io", "IEX Cloud");
+
+exports.IexApiLink = IexApiLink;
+
+var FmpApiLink = _fSafeLink("https://financialmodelingprep.com", "FMP");
+
+exports.FmpApiLink = FmpApiLink;
 //# sourceMappingURL=Links.js.map

@@ -1,5 +1,4 @@
 import SafeLink from '../zhn-atoms/SafeLink';
-import PoweredBy from './PoweredBy';
 
 const CL_LINK = "link";
 
@@ -16,54 +15,48 @@ const _fSafeLink = (
     {title || caption}
   </SafeLink>
 )
-, CryptoCompare = _fSafeLink(
+
+export const CryptoCompareLink = _fSafeLink(
   "https://cryptocompare.com",
   "CryptoCompare"
 )
-, CoinStats = _fSafeLink(
+
+export const CoinStatsLink = _fSafeLink(
   "https://coinstats.app",
   "CoinStats"
 )
-, Messari = _fSafeLink(
+
+export const MessariLink = _fSafeLink(
   "https://messari.io",
   "Messari"
 )
-, NewsApi = _fSafeLink(
+
+export const NewsApiLink = _fSafeLink(
   "https://newsapi.org",
   "NewsApi.org"
 )
-, TheNewsApi = _fSafeLink(
+
+export const TheNewsApiLink = _fSafeLink(
   "https://thenewsapi.com",
   "TheNewsApi"
 )
-, Webz = _fSafeLink(
+
+export const WebzLink = _fSafeLink(
   "https://webz.io",
   "Webz.io"
 )
-, StackOverflow = _fSafeLink(
+
+export const StackOverflowLink = _fSafeLink(
   "https://stackoverflow.com",
   "StackOverflow"
 )
-, IexApi = _fSafeLink(
+
+export const IexApiLink = _fSafeLink(
   "https://iexcloud.io",
   "IEX Cloud"
 )
-, FmpApi = _fSafeLink(
+
+export const FmpApiLink = _fSafeLink(
   "https://financialmodelingprep.com",
   "FMP"
 );
-
-const Link = {
-  NewsApi,
-  TheNewsApi,
-  Webz,
-  StackOverflow,
-  IexApi,
-  FmpApi,
-  CryptoCompare,
-  CoinStats,
-  Messari,
-  PoweredBy
-};
-
-export default Link

@@ -7,6 +7,8 @@ import useRefInput from './hooks/useRefInput';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import PoweredBy from '../links/PoweredBy';
+import { FmpApiLink } from '../links/Links';
 
 const DF_SYMBOL = "AAPL";
 
@@ -64,9 +66,9 @@ const FmpNewsDialog = ({
          autoCapitalize="on"
          onEnter={_hLoad}
        />
-      <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
-        <A.Link.FmpApi />
-      </A.Link.PoweredBy>
+      <PoweredBy style={TS.POWERED_BY}>
+        <FmpApiLink />
+      </PoweredBy>
     </A.DraggableDialog>
   );
 }

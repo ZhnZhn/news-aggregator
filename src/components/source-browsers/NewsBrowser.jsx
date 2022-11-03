@@ -9,8 +9,7 @@ import useTheme from '../hooks/useTheme';
 import styleConfig from './NewsBrowser.Style';
 
 import DynamicMenuBrowser from '../zhn-moleculs/DynamicMenuBrowser';
-import PoweredBy from '../links/PoweredBy';
-import Link from '../links/Links';
+import { PoweredByNewsApi } from '../links/PoweredByLink';
 import crModelMore from './crModelMore';
 
 const NewsBrowser = ({
@@ -56,9 +55,7 @@ const NewsBrowser = ({
        onError={onError}
        onClickBadge={onClickBadge}
     >
-       <PoweredBy>
-         <Link.NewsApi />
-       </PoweredBy>
+       <PoweredByNewsApi />
     </DynamicMenuBrowser>
   );
 }

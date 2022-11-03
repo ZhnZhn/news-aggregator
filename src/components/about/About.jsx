@@ -17,27 +17,37 @@ import {
 } from './About.Style';
 
 import A from '../Comp';
+import {
+  CryptoCompareLink,
+  CoinStatsLink,
+  MessariLink,
+  IexApiLink,
+  FmpApiLink,
+  NewsApiLink,
+  TheNewsApiLink,
+  StackOverflowLink,
+  WebzLink
+} from '../links/Links';
 import Step from './Step';
 import LogoBar from './LogoBar';
+
+
 
 const CL_ABOUT_PANE = "about-pane";
 const CL_SHOW = "show-popup";
 
-const {
-  Link,
-  ItemStack
-} = A;
+const { ItemStack } = A;
 
 const PROVIDER_LINKS = [
-  [Link.CryptoCompare],
-  [Link.CoinStats],
-  [Link.Messari],
-  [Link.IexApi],
-  [Link.FmpApi, { title: "Financial Modeling Prep"}],
-  [Link.NewsApi],
-  [Link.TheNewsApi],
-  [Link.StackOverflow],
-  [Link.Webz]
+  [CryptoCompareLink],
+  [CoinStatsLink],
+  [MessariLink],
+  [IexApiLink],
+  [FmpApiLink, { title: "Financial Modeling Prep"}],
+  [NewsApiLink],
+  [TheNewsApiLink],
+  [StackOverflowLink],
+  [WebzLink]
 ];
 
 const _crLinkItem = ([Comp, props], index) => (

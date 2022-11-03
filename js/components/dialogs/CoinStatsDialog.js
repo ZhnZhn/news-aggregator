@@ -17,7 +17,11 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
+
+var _Links = require("../links/Links");
+
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var NEWS_FOR_OPTIONS = [{
   caption: "Latest",
@@ -67,7 +71,7 @@ var CoinStatsDialog = function CoinStatsDialog(_ref) {
       TS = _useDecorDialog[0],
       _hKeyDown = _useDecorDialog[1];
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
+  return (0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
     ref: _refDialog,
     isShow: isShow,
     style: TS.R_DIALOG,
@@ -78,15 +82,15 @@ var CoinStatsDialog = function CoinStatsDialog(_ref) {
     onLoad: _hLoad,
     onShow: onShow,
     onClose: _hClose,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+    children: [(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
       caption: "News filter",
       initItem: DF_FILTER,
       options: NEWS_FOR_OPTIONS,
       styleConfig: TS.SELECT,
       onSelect: _selectFilter
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
-      rootStyle: TS.POWERED_BY,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.CoinStats, {})
+    }), (0, _jsxRuntime.jsx)(_PoweredBy["default"], {
+      style: TS.POWERED_BY,
+      children: (0, _jsxRuntime.jsx)(_Links.CoinStatsLink, {})
     })]
   });
 };

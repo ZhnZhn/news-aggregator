@@ -11,6 +11,7 @@ import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import { PoweredByNewsApi } from '../links/PoweredByLink';
 
 const SORT_BY_OPTIONS = [
   { caption: "Relevancy", value: "relevancy" },
@@ -29,9 +30,18 @@ const NewsApiSearchDialog = ({
   onShow,
   onClose
 }) => {
-  const [_refDialog, _hClose] = useRefClose(onClose)
-  , [_refInputTerm, _getInputTerm] = useRefInput(DF_TERM)
-  , [_refSortBy, _selectSortBy] = useRefSelectOption(DF_SORT_BY.value)
+  const [
+    _refDialog,
+    _hClose
+  ] = useRefClose(onClose)
+  , [
+    _refInputTerm,
+    _getInputTerm
+  ] = useRefInput(DF_TERM)
+  , [
+    _refSortBy,
+    _selectSortBy
+  ] = useRefSelectOption(DF_SORT_BY.value)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(() => {
     onLoad({
@@ -76,9 +86,9 @@ const NewsApiSearchDialog = ({
          styleConfig={TS.SELECT}
          onSelect={_selectSortBy}
        />
-      <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
-        <A.Link.NewsApi />
-      </A.Link.PoweredBy>
+      <PoweredByNewsApi
+         style={TS.POWERED_BY}
+       />
     </A.DraggableDialog>
   );
 };

@@ -12,6 +12,7 @@ import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import { PoweredByStackOverflow } from '../links/PoweredByLink';
 
 const DATE_ERR_MSG = "YYYY-MM-DD";
 
@@ -42,12 +43,30 @@ const StackSearchDialog = ({
   onShow,
   onClose
 }) => {
-  const [_refDialog, _hClose] = useRefClose(onClose)
-  , [_refTagged, _getInputTagged] = useRefInput(DF_TAGGED)
-  , [_refInTitle, _getInputInTitle] = useRefInput(DF_IN_TITLE)
-  , [_refSortBy, _selectSortBy] = useRefSelectOption(DF_SORT_BY.value)
-  , [_refFromDate, _getInputFromDate] = useRefInput(INITIAL_FROM_DATE)
-  , [_refToDate, _getInputToDate] = useRefInput(INITIAL_TO_DATE)
+  const [
+    _refDialog,
+    _hClose
+  ] = useRefClose(onClose)
+  , [
+    _refTagged,
+    _getInputTagged
+  ] = useRefInput(DF_TAGGED)
+  , [
+    _refInTitle,
+    _getInputInTitle
+  ] = useRefInput(DF_IN_TITLE)
+  , [
+    _refSortBy,
+    _selectSortBy
+  ] = useRefSelectOption(DF_SORT_BY.value)
+  , [
+    _refFromDate,
+    _getInputFromDate
+  ] = useRefInput(INITIAL_FROM_DATE)
+  , [
+    _refToDate,
+    _getInputToDate
+  ] = useRefInput(INITIAL_TO_DATE)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(()=>{
       onLoad({
@@ -123,9 +142,9 @@ const StackSearchDialog = ({
             onTest={_onTestDate}
           />
       </div>
-      <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
-        <A.Link.StackOverflow />
-      </A.Link.PoweredBy>
+      <PoweredByStackOverflow
+         style={TS.POWERED_BY}
+      />
     </A.DraggableDialog>
   );
 };

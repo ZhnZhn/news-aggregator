@@ -10,6 +10,8 @@ import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import PoweredBy from '../links/PoweredBy';
+import { CryptoCompareLink } from '../links/Links';
 
 const FEED_OPTIONS = [
   { caption: 'All', value: 'ALL_NEWS_FEEDS' },
@@ -123,9 +125,9 @@ const CryptoCompareNewsDialog = ({
          onSelect={_selectSortBy}
        />
       </div>
-      <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
-        <A.Link.CryptoCompare />
-      </A.Link.PoweredBy>
+      <PoweredBy style={TS.POWERED_BY}>
+        <CryptoCompareLink />
+      </PoweredBy>
     </A.DraggableDialog>
   );
 };

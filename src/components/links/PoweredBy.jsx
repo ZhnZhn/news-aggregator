@@ -7,11 +7,11 @@ const S_ROOT = {
 };
 
 const PoweredBy = ({
-  rootStyle,
+  style,
   spanStyle,
   children
 }) => (
-  <div style={{...S_ROOT, ...rootStyle}}>
+  <div style={{...S_ROOT, ...style}}>
     <span style={{...S_SPAN, ...spanStyle}}>
         Powered by
     </span>

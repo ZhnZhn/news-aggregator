@@ -12,6 +12,7 @@ import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import { PoweredByNewsApi } from '../links/PoweredByLink';
 
 const _CATEGORY = [
   'business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'
@@ -138,9 +139,9 @@ const NewsApiTopDialog = ({
            onSelect={_selectCountry}
          />
        </div>
-      <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
-        <A.Link.NewsApi />
-      </A.Link.PoweredBy>
+       <PoweredByNewsApi
+          style={TS.POWERED_BY}
+       />
     </A.DraggableDialog>
   );
 };

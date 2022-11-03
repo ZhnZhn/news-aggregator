@@ -17,13 +17,11 @@ var _NewsBrowser = _interopRequireDefault(require("./NewsBrowser.Style"));
 
 var _DynamicMenuBrowser = _interopRequireDefault(require("../zhn-moleculs/DynamicMenuBrowser"));
 
-var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
-
-var _Links = _interopRequireDefault(require("../links/Links"));
+var _PoweredByLink = require("../links/PoweredByLink");
 
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var NewsBrowser = function NewsBrowser(_ref) {
   var store = _ref.store,
@@ -53,7 +51,7 @@ var NewsBrowser = function NewsBrowser(_ref) {
       setItemData((0, _extends2["default"])({}, option.data));
     }
   });
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_DynamicMenuBrowser["default"], {
+  return (0, _jsxRuntime.jsx)(_DynamicMenuBrowser["default"], {
     styleConfig: TS,
     caption: "News Sources",
     url: "data/news-source-menu.json",
@@ -65,9 +63,7 @@ var NewsBrowser = function NewsBrowser(_ref) {
     onClick: onClick,
     onError: onError,
     onClickBadge: onClickBadge,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_PoweredBy["default"], {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Links["default"].NewsApi, {})
-    })
+    children: (0, _jsxRuntime.jsx)(_PoweredByLink.PoweredByNewsApi, {})
   });
 };
 

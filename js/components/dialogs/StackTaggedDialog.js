@@ -21,7 +21,9 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _PoweredByLink = require("../links/PoweredByLink");
+
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var DATE_ERR_MSG = "YYYY-MM-DD";
 
@@ -95,7 +97,7 @@ var StackTaggedDialog = function StackTaggedDialog(_ref) {
       _hKeyDown = _useDecorDialog[1],
       _tagCaption = "Tag (Default: " + DF_TAG + ")";
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
+  return (0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
     ref: _refDialog,
     isShow: isShow,
     style: TS.R_DIALOG,
@@ -106,20 +108,20 @@ var StackTaggedDialog = function StackTaggedDialog(_ref) {
     onLoad: _hLoad,
     onShow: onShow,
     onClose: _hClose,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
+    children: [(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
       style: TS.INPUT_ROOT,
       ref: _refTag,
       caption: _tagCaption,
       initValue: DF_TAG,
       onEnter: _hLoad
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+    }), (0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
       caption: "SortBy",
       initItem: DF_SORT_BY,
       options: SORT_BY_OPTIONS,
       styleConfig: TS.SELECT,
       onSelect: _selectSortBy
-    }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
+    }), (0, _jsxRuntime.jsxs)("div", {
+      children: [(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
         ref: _refFromDate,
         hasClear: false,
         caption: "From Date",
@@ -127,7 +129,7 @@ var StackTaggedDialog = function StackTaggedDialog(_ref) {
         initValue: INITIAL_FROM_DATE,
         errorMsg: DATE_ERR_MSG,
         onTest: _onTestDate
-      }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
+      }), (0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
         ref: _refToDate,
         hasClear: false,
         caption: "To Date",
@@ -136,9 +138,8 @@ var StackTaggedDialog = function StackTaggedDialog(_ref) {
         errorMsg: DATE_ERR_MSG,
         onTest: _onTestDate
       })]
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
-      rootStyle: TS.POWERED_BY,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.StackOverflow, {})
+    }), (0, _jsxRuntime.jsx)(_PoweredByLink.PoweredByStackOverflow, {
+      style: TS.POWERED_BY
     })]
   });
 };

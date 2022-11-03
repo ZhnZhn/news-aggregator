@@ -11,6 +11,8 @@ import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import PoweredBy from '../links/PoweredBy';
+import { IexApiLink } from '../links/Links';
 
 const RECENT_OPTIONS = [
   { caption: "10 News", value: "10" },
@@ -92,9 +94,9 @@ const IexNewsDialog = ({
          styleConfig={TS.SELECT}
          onSelect={_selectRecent}
        />
-      <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
-        <A.Link.IexApi />
-      </A.Link.PoweredBy>
+      <PoweredBy style={TS.POWERED_BY}>
+        <IexApiLink />
+      </PoweredBy>
     </A.DraggableDialog>
   );
 };

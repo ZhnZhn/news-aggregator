@@ -19,11 +19,7 @@ var _A4 = _interopRequireDefault(require("./zhn-moleculs/A"));
 
 var _A5 = _interopRequireDefault(require("./zhn-tab/A"));
 
-var _Links = _interopRequireDefault(require("./links/Links"));
-
-var Comp = (0, _extends2["default"])({}, _Atoms["default"], _A["default"], _A2["default"], _A3["default"], _A4["default"], _A5["default"], {
-  Link: _Links["default"]
-});
+var Comp = (0, _extends2["default"])({}, _Atoms["default"], _A["default"], _A2["default"], _A3["default"], _A4["default"], _A5["default"]);
 var _default = Comp;
 exports["default"] = _default;
 //# sourceMappingURL=Comp.js.map

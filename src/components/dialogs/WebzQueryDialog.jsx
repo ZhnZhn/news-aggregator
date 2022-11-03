@@ -11,6 +11,7 @@ import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import { PoweredByWebzLink } from '../links/PoweredByLink';
 import InputBeforeDays from './InputBeforeDays';
 
 const SITE_TYPE_OPTIONS = [
@@ -94,9 +95,9 @@ const WebzQueryDialog = ({
         style={TS.INPUT_ROOT}
         initValue={DF_BEFORE_DAYS}
       />
-      <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
-        <A.Link.Webz />
-      </A.Link.PoweredBy>
+      <PoweredByWebzLink
+        style={TS.POWERED_BY}
+      />
     </A.DraggableDialog>
   );
 };

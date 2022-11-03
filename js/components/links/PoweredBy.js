@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var S_ROOT = {
   marginTop: 16,
@@ -18,12 +18,12 @@ var S_ROOT = {
 };
 
 var PoweredBy = function PoweredBy(_ref) {
-  var rootStyle = _ref.rootStyle,
+  var style = _ref.style,
       spanStyle = _ref.spanStyle,
       children = _ref.children;
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-    style: (0, _extends2["default"])({}, S_ROOT, rootStyle),
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+  return (0, _jsxRuntime.jsxs)("div", {
+    style: (0, _extends2["default"])({}, S_ROOT, style),
+    children: [(0, _jsxRuntime.jsx)("span", {
       style: (0, _extends2["default"])({}, S_SPAN, spanStyle),
       children: "Powered by"
     }), children]

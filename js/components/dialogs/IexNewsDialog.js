@@ -19,6 +19,10 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
+var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
+
+var _Links = require("../links/Links");
+
 var _jsxRuntime = require("preact/jsx-runtime");
 
 var RECENT_OPTIONS = [{
@@ -103,9 +107,9 @@ var IexNewsDialog = function IexNewsDialog(_ref) {
       options: RECENT_OPTIONS,
       styleConfig: TS.SELECT,
       onSelect: _selectRecent
-    }), (0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
-      rootStyle: TS.POWERED_BY,
-      children: (0, _jsxRuntime.jsx)(_Comp["default"].Link.IexApi, {})
+    }), (0, _jsxRuntime.jsx)(_PoweredBy["default"], {
+      style: TS.POWERED_BY,
+      children: (0, _jsxRuntime.jsx)(_Links.IexApiLink, {})
     })]
   });
 };

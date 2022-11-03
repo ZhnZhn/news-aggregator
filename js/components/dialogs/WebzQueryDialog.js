@@ -19,9 +19,11 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
+var _PoweredByLink = require("../links/PoweredByLink");
+
 var _InputBeforeDays = _interopRequireDefault(require("./InputBeforeDays"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var SITE_TYPE_OPTIONS = [{
   caption: 'News',
@@ -72,7 +74,7 @@ var WebzQueryDialog = function WebzQueryDialog(_ref) {
       TS = _useDecorDialog[0],
       _hKeyDown = _useDecorDialog[1];
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
+  return (0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
     ref: _refDialog,
     isShow: isShow,
     style: TS.R_DIALOG,
@@ -83,24 +85,23 @@ var WebzQueryDialog = function WebzQueryDialog(_ref) {
     onLoad: _hLoad,
     onShow: onShow,
     onClose: _hClose,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
+    children: [(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
       style: TS.INPUT_ROOT,
       ref: _refInputInTitle,
       caption: "In Title (Default: Weather)",
       initValue: DF_IN_TITLE
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+    }), (0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
       caption: "Site Type",
       initItem: DF_SITE_TYPE,
       options: SITE_TYPE_OPTIONS,
       styleConfig: TS.SELECT,
       onSelect: _selectSiteType
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_InputBeforeDays["default"], {
+    }), (0, _jsxRuntime.jsx)(_InputBeforeDays["default"], {
       ref: _refInputBeforeDays,
       style: TS.INPUT_ROOT,
       initValue: DF_BEFORE_DAYS
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
-      rootStyle: TS.POWERED_BY,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.Webz, {})
+    }), (0, _jsxRuntime.jsx)(_PoweredByLink.PoweredByWebzLink, {
+      style: TS.POWERED_BY
     })]
   });
 };

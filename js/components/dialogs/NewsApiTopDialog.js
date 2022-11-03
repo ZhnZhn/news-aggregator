@@ -19,7 +19,9 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _PoweredByLink = require("../links/PoweredByLink");
+
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var _CATEGORY = ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'],
     CATEGORY_OPTIONS = _CATEGORY.map(function (str) {
@@ -228,7 +230,7 @@ var NewsApiTopDialog = function NewsApiTopDialog(_ref) {
       TS = _useDecorDialog[0],
       _hKeyDown = _useDecorDialog[1];
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
+  return (0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
     ref: _refDialog,
     isShow: isShow,
     style: TS.R_DIALOG,
@@ -239,25 +241,24 @@ var NewsApiTopDialog = function NewsApiTopDialog(_ref) {
     onLoad: _hLoad,
     onShow: onShow,
     onClose: _hClose,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+    children: [(0, _jsxRuntime.jsx)("div", {
+      children: (0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
         caption: "Category",
         initItem: DF_CATEGORY,
         options: CATEGORY_OPTIONS,
         styleConfig: TS.SELECT,
         onSelect: _selectCategory
       })
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+    }), (0, _jsxRuntime.jsx)("div", {
+      children: (0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
         caption: "Country",
         initItem: DF_COUNTRY,
         options: COUNTRY_OPTIONS,
         styleConfig: TS.SELECT,
         onSelect: _selectCountry
       })
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
-      rootStyle: TS.POWERED_BY,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.NewsApi, {})
+    }), (0, _jsxRuntime.jsx)(_PoweredByLink.PoweredByNewsApi, {
+      style: TS.POWERED_BY
     })]
   });
 };

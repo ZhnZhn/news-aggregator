@@ -17,7 +17,11 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
+
+var _Links = require("../links/Links");
+
+var _jsxRuntime = require("preact/jsx-runtime");
 
 var DF_SYMBOL = "AAPL";
 
@@ -51,7 +55,7 @@ var FmpNewsDialog = function FmpNewsDialog(_ref) {
       TS = _useDecorDialog[0],
       _hKeyDown = _useDecorDialog[1];
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
+  return (0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
     ref: _refDialog,
     isShow: isShow,
     style: TS.R_DIALOG,
@@ -62,7 +66,7 @@ var FmpNewsDialog = function FmpNewsDialog(_ref) {
     onLoad: _hLoad,
     onShow: onShow,
     onClose: _hClose,
-    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
+    children: [(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
       ref: _refInputSymbol,
       style: TS.INPUT_ROOT,
       maxLength: "10",
@@ -70,9 +74,9 @@ var FmpNewsDialog = function FmpNewsDialog(_ref) {
       initValue: DF_SYMBOL,
       autoCapitalize: "on",
       onEnter: _hLoad
-    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
-      rootStyle: TS.POWERED_BY,
-      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].Link.FmpApi, {})
+    }), (0, _jsxRuntime.jsx)(_PoweredBy["default"], {
+      style: TS.POWERED_BY,
+      children: (0, _jsxRuntime.jsx)(_Links.FmpApiLink, {})
     })]
   });
 };

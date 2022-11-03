@@ -10,6 +10,8 @@ import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import PoweredBy from '../links/PoweredBy';
+import { TheNewsApiLink } from '../links/Links';
 
 //'general | science | sports | business | health | entertainment | tech | politics | food | travel'
 
@@ -175,9 +177,9 @@ const TheNewsApiTopDialog = ({
           onSelect={_selectDomain}
         />
       </div>
-      <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
-        <A.Link.TheNewsApi />
-      </A.Link.PoweredBy>
+      <PoweredBy style={TS.POWERED_BY}>
+        <TheNewsApiLink />
+      </PoweredBy>
     </A.DraggableDialog>
   );
 };

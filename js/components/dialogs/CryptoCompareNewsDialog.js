@@ -17,6 +17,10 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
+var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
+
+var _Links = require("../links/Links");
+
 var _jsxRuntime = require("preact/jsx-runtime");
 
 var FEED_OPTIONS = [{
@@ -168,9 +172,9 @@ var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(_ref) {
         styleConfig: TS.SELECT,
         onSelect: _selectSortBy
       })
-    }), (0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
-      rootStyle: TS.POWERED_BY,
-      children: (0, _jsxRuntime.jsx)(_Comp["default"].Link.CryptoCompare, {})
+    }), (0, _jsxRuntime.jsx)(_PoweredBy["default"], {
+      style: TS.POWERED_BY,
+      children: (0, _jsxRuntime.jsx)(_Links.CryptoCompareLink, {})
     })]
   });
 };

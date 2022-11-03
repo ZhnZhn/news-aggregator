@@ -11,81 +11,82 @@ import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import { PoweredByWebzLink } from '../links/PoweredByLink';
 
 const OPTION_COUNTRIES = [
-  {"caption": "Australia", value: "AU"},
-  {"caption": "Austria", value: "AT"},
-  {"caption": "Belarus", value: "BY"},
-  {"caption": "Belguim", value: "BE"},
-  {"caption": "Brazil", value: "BR"},
-  {"caption": "Bulgaria", value: "BG"},
-  {"caption": "Canada", value: "CA"},
-  {"caption": "Chile", value: "CL"},
-  {"caption": "China", value: "CN"},
-  {"caption": "Colombia", value: "CO"},
-  {"caption": "Croatia", value: "HR"},
-  {"caption": "Czech Republic", value: "CZ"},
-  {"caption": "Denmark", value: "DK"},
-  {"caption": "Estonia", value: "EE"},
-  {"caption": "Finland", value: "FI"},
-  {"caption": "France", value: "FR"},
-  {"caption": "Germany", value: "DE"},
-  {"caption": "Greece", value: "GR"},
-  {"caption": "Hong Kong", value: "HK"},
-  {"caption": "Hungary", value: "HU"},
-  {"caption": "India", value: "IN"},
-  {"caption": "Indonesia", value: "ID"},
-  {"caption": "Iran", value: "IR"},
-  {"caption": "Ireland", value: "IE"},
-  {"caption": "Israel", value: "IL"},
-  {"caption": "Italy", value: "IT"},
-  {"caption": "Japan", value: "JP"},
-  {"caption": "Malaysia", value: "MY"},
-  {"caption": "Mexico", value: "MX"},
-  {"caption": "Nertherlands", value: "NL"},
-  {"caption": "New Zealand", value: "NZ"},
-  {"caption": "Nigeria", value: "NG"},
-  {"caption": "Norway", value: "NO"},
-  {"caption": "Philippines", value: "PH"},
-  {"caption": "Poland", value: "PL"},
-  {"caption": "Portugal", value: "PT"},
-  {"caption": "Romania", value: "RO"},
-  {"caption": "Russia", value: "RU"},
-  {"caption": "Serbia", value: "RS"},
-  {"caption": "Singapore", value: "SG"},
-  {"caption": "Slovakia", value: "SK"},
-  {"caption": "Slovenia", value: "SI"},
-  {"caption": "South Africa", value: "ZA"},
-  {"caption": "South Korea", value: "KR"},
-  {"caption": "Spain", value: "ES"},
-  {"caption": "Sweden", value: "SE"},
-  {"caption": "Switzerland", value: "CH"},
-  {"caption": "Taiwan", value: "TW"},
-  {"caption": "Thailand", value: "TH"},
-  {"caption": "Turkey", value: "TR"},
-  {"caption": "Ukraine", value: "UA"},
-  {"caption": "United Kingdom", value: "GB"},
-  {"caption": "United States", value: "US"},
-  {"caption": "Vietnam", value: "VN"}
+  {caption: "Australia", value: "AU"},
+  {caption: "Austria", value: "AT"},
+  {caption: "Belarus", value: "BY"},
+  {caption: "Belguim", value: "BE"},
+  {caption: "Brazil", value: "BR"},
+  {caption: "Bulgaria", value: "BG"},
+  {caption: "Canada", value: "CA"},
+  {caption: "Chile", value: "CL"},
+  {caption: "China", value: "CN"},
+  {caption: "Colombia", value: "CO"},
+  {caption: "Croatia", value: "HR"},
+  {caption: "Czech Republic", value: "CZ"},
+  {caption: "Denmark", value: "DK"},
+  {caption: "Estonia", value: "EE"},
+  {caption: "Finland", value: "FI"},
+  {caption: "France", value: "FR"},
+  {caption: "Germany", value: "DE"},
+  {caption: "Greece", value: "GR"},
+  {caption: "Hong Kong", value: "HK"},
+  {caption: "Hungary", value: "HU"},
+  {caption: "India", value: "IN"},
+  {caption: "Indonesia", value: "ID"},
+  {caption: "Iran", value: "IR"},
+  {caption: "Ireland", value: "IE"},
+  {caption: "Israel", value: "IL"},
+  {caption: "Italy", value: "IT"},
+  {caption: "Japan", value: "JP"},
+  {caption: "Malaysia", value: "MY"},
+  {caption: "Mexico", value: "MX"},
+  {caption: "Nertherlands", value: "NL"},
+  {caption: "New Zealand", value: "NZ"},
+  {caption: "Nigeria", value: "NG"},
+  {caption: "Norway", value: "NO"},
+  {caption: "Philippines", value: "PH"},
+  {caption: "Poland", value: "PL"},
+  {caption: "Portugal", value: "PT"},
+  {caption: "Romania", value: "RO"},
+  {caption: "Russia", value: "RU"},
+  {caption: "Serbia", value: "RS"},
+  {caption: "Singapore", value: "SG"},
+  {caption: "Slovakia", value: "SK"},
+  {caption: "Slovenia", value: "SI"},
+  {caption: "South Africa", value: "ZA"},
+  {caption: "South Korea", value: "KR"},
+  {caption: "Spain", value: "ES"},
+  {caption: "Sweden", value: "SE"},
+  {caption: "Switzerland", value: "CH"},
+  {caption: "Taiwan", value: "TW"},
+  {caption: "Thailand", value: "TH"},
+  {caption: "Türkiye", value: "TR"},
+  {caption: "Ukraine", value: "UA"},
+  {caption: "United Kingdom", value: "GB"},
+  {caption: "United States", value: "US"},
+  {caption: "Vietnam", value: "VN"}
 ]
 , OPTION_TOPICS = [
-  {"caption": "Business", "value": "business"},
-  {"caption": "Politics", "value": "politics"},
-  {"caption": "Entertainment", "value": "entertainment"},
-  {"caption": "Health", "value": "health"},
-  {"caption": "Travel", "value": "travel"},
-  {"caption": "Financial", "value": "financial_news"},
-  {"caption": "Sports", "value": "sports"},
-  {"caption": "Technology", "value": "tech"},
-  {"caption": "Real Estate", "value": "real_estate"},
-  {"caption": "Education", "value": "education"},
-  {"caption": "Fashion", "value": "fashion"},
-  {"caption": "Science", "value": "science"},
-  {"caption": "Architects", "value": "architects"}
+  {caption: "Business", value: "business"},
+  {caption: "Politics", value: "politics"},
+  {caption: "Entertainment", value: "entertainment"},
+  {caption: "Health", value: "health"},
+  {caption: "Travel", value: "travel"},
+  {caption: "Financial", value: "financial_news"},
+  {caption: "Sports", value: "sports"},
+  {caption: "Technology", value: "tech"},
+  {caption: "Real Estate", value: "real_estate"},
+  {caption: "Education", value: "education"},
+  {caption: "Fashion", value: "fashion"},
+  {caption: "Science", value: "science"},
+  {caption: "Architects", value: "architects"}
 ]
 , OPTION_LANGUAGES = [
-  { "caption": "All", "value": "" },
-  { "caption": "English", "value": "english" }
+  { caption: "All", value: "" },
+  { caption: "English", value: "english" }
 ]
 , DF_COUNTRY = OPTION_COUNTRIES[0]
 , DF_TOPIC = OPTION_TOPICS[0]
@@ -100,10 +101,22 @@ const WebzCountryDialog = ({
   onShow,
   onClose
 }) => {
-  const [_refDialog, _hClose] = useRefClose(onClose)
-  , [_refCountry, _selectCountry] = useRefSelectOption(DF_COUNTRY.value)
-  , [_refTopic, _selectTopic] = useRefSelectOption(DF_TOPIC.value)
-  , [_refLanguage, _selectLanguage] = useRefSelectOption('')
+  const [
+    _refDialog,
+    _hClose
+  ] = useRefClose(onClose)
+  , [
+    _refCountry,
+    _selectCountry
+  ] = useRefSelectOption(DF_COUNTRY.value)
+  , [
+    _refTopic,
+    _selectTopic
+  ] = useRefSelectOption(DF_TOPIC.value)
+  , [
+    _refLanguage,
+    _selectLanguage
+  ] = useRefSelectOption('')
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(()=>{
     onLoad({
@@ -161,9 +174,9 @@ const WebzCountryDialog = ({
           onSelect={_selectLanguage}
         />
       </div>
-      <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
-        <A.Link.Webz />
-      </A.Link.PoweredBy>
+      <PoweredByWebzLink
+         style={TS.POWERED_BY}
+      />
     </A.DraggableDialog>
   );
 };

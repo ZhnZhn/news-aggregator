@@ -17,6 +17,10 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
+var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
+
+var _Links = require("../links/Links");
+
 var _jsxRuntime = require("preact/jsx-runtime");
 
 //'general | science | sports | business | health | entertainment | tech | politics | food | travel'
@@ -313,9 +317,9 @@ var TheNewsApiTopDialog = function TheNewsApiTopDialog(_ref) {
         styleConfig: TS.SELECT,
         onSelect: _selectDomain
       })
-    }), (0, _jsxRuntime.jsx)(_Comp["default"].Link.PoweredBy, {
-      rootStyle: TS.POWERED_BY,
-      children: (0, _jsxRuntime.jsx)(_Comp["default"].Link.TheNewsApi, {})
+    }), (0, _jsxRuntime.jsx)(_PoweredBy["default"], {
+      style: TS.POWERED_BY,
+      children: (0, _jsxRuntime.jsx)(_Links.TheNewsApiLink, {})
     })]
   });
 };

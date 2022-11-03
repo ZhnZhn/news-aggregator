@@ -10,6 +10,8 @@ import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import PoweredBy from '../links/PoweredBy';
+import { MessariLink } from '../links/Links';
 
 const NEWS_FOR_OPTIONS = [
 {caption: "All", value: "all"}
@@ -83,9 +85,9 @@ const MessariDialog = ({
          styleConfig={TS.SELECT}
          onSelect={_selectAssetKey}
        />
-      <A.Link.PoweredBy rootStyle={TS.POWERED_BY}>
-        <A.Link.Messari />
-      </A.Link.PoweredBy>
+      <PoweredBy style={TS.POWERED_BY}>
+        <MessariLink />
+      </PoweredBy>
     </A.DraggableDialog>
   );
 };

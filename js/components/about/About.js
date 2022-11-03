@@ -19,6 +19,8 @@ var _About = require("./About.Style");
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
+var _Links = require("../links/Links");
+
 var _Step = _interopRequireDefault(require("./Step"));
 
 var _LogoBar = _interopRequireDefault(require("./LogoBar"));
@@ -27,11 +29,10 @@ var _jsxRuntime = require("preact/jsx-runtime");
 
 var CL_ABOUT_PANE = "about-pane";
 var CL_SHOW = "show-popup";
-var Link = _Comp["default"].Link,
-    ItemStack = _Comp["default"].ItemStack;
-var PROVIDER_LINKS = [[Link.CryptoCompare], [Link.CoinStats], [Link.Messari], [Link.IexApi], [Link.FmpApi, {
+var ItemStack = _Comp["default"].ItemStack;
+var PROVIDER_LINKS = [[_Links.CryptoCompareLink], [_Links.CoinStatsLink], [_Links.MessariLink], [_Links.IexApiLink], [_Links.FmpApiLink, {
   title: "Financial Modeling Prep"
-}], [Link.NewsApi], [Link.TheNewsApi], [Link.StackOverflow], [Link.Webz]];
+}], [_Links.NewsApiLink], [_Links.TheNewsApiLink], [_Links.StackOverflowLink], [_Links.WebzLink]];
 
 var _crLinkItem = function _crLinkItem(_ref, index) {
   var Comp = _ref[0],
