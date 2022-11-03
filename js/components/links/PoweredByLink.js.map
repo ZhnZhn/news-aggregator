@@ -1,0 +1,17 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/links/PoweredByLink.js"
+ ],
+ "file": "../../../src/components/links/PoweredByLink.js",
+ "names": [
+  "PoweredByNewsApi",
+  "fPoweredBy",
+  "NewsApiLink",
+  "PoweredByStackOverflow",
+  "StackOverflowLink",
+  "PoweredByWebzLink",
+  "WebzLink"
+ ],
+ "mappings": ";;;;;;;AAAA;;AACA;;AAMO,IAAMA,gBAAgB,GAAG,IAAAC,sBAAA,EAAWC,kBAAX,CAAzB;;AACA,IAAMC,sBAAsB,GAAG,IAAAF,sBAAA,EAAWG,wBAAX,CAA/B;;AACA,IAAMC,iBAAiB,GAAG,IAAAJ,sBAAA,EAAWK,eAAX,CAA1B"
+}
