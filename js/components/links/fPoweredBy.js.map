@@ -1,0 +1,13 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/links/fPoweredBy.js"
+ ],
+ "file": "../../../src/components/links/fPoweredBy.js",
+ "names": [
+  "fPoweredBy",
+  "CompLink",
+  "style"
+ ],
+ "mappings": ";;;;;;;AAAA;;;;AAEA,IAAMA,UAAU,GAAG,SAAbA,UAAa,CAAAC,QAAQ;EAAA,OAAI;IAAA,IAC7BC,KAD6B,QAC7BA,KAD6B;IAAA,OAG7B,qBAAC,qBAAD;MAAW,KAAK,EAAEA,KAAlB;MAAA,UACE,qBAAC,QAAD;IADF,EAH6B;EAAA,CAAJ;AAAA,CAA3B;;eAQeF,U"
+}
