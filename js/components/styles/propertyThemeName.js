@@ -18,16 +18,7 @@ var THEME_NAME = {
   SAND: 'SAND'
 };
 exports.THEME_NAME = THEME_NAME;
-var THEME_OPTIONS = [{
-  caption: 'Grey',
-  value: 'GREY'
-}, {
-  caption: 'White',
-  value: 'WHITE'
-}, {
-  caption: 'Sand',
-  value: 'SAND'
-}];
+var THEME_OPTIONS = [['Grey', 'GREY'], ['White', 'WHITE'], ['Sand', 'SAND']];
 exports.THEME_OPTIONS = THEME_OPTIONS;
 
 var crInitialThemeName = function crInitialThemeName() {

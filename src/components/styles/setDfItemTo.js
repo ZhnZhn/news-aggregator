@@ -4,7 +4,7 @@ const setDfItemTo = (
   dfIndex
 ) => {
   options.DF = options
-    .find(item => item.value === value)
+    .find(item => item[1] === value)
     || options[dfIndex]
 };
 

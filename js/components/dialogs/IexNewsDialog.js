@@ -19,29 +19,17 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
+var _OptionFn = require("../zhn-m-input/OptionFn");
+
 var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
 
 var _Links = require("../links/Links");
 
 var _jsxRuntime = require("preact/jsx-runtime");
 
-var RECENT_OPTIONS = [{
-  caption: "10 News",
-  value: "10"
-}, {
-  caption: "20 News",
-  value: "20"
-}, {
-  caption: "30 News",
-  value: "30"
-}, {
-  caption: "40 News",
-  value: "40"
-}, {
-  caption: "50 News",
-  value: "50"
-}],
+var RECENT_OPTIONS = [["10 News", "10"], ["20 News", "20"], ["30 News", "30"], ["40 News", "40"], ["50 News", "50"]],
     DF_RECENT = RECENT_OPTIONS[1],
+    INITIAL_RECENT_VALUE = (0, _OptionFn.getItemValue)(DF_RECENT),
     DF_SYMBOL = "AAPL",
     S_INPUT_STYLE = {
   textTransform: 'uppercase'
@@ -62,7 +50,7 @@ var IexNewsDialog = function IexNewsDialog(_ref) {
       _useRefInput = (0, _useRefInput2["default"])(DF_SYMBOL),
       _refInputSymbol = _useRefInput[0],
       _getInputSymbol = _useRefInput[1],
-      _useRefSelectOption = (0, _useRefSelectOption2["default"])(DF_RECENT.value),
+      _useRefSelectOption = (0, _useRefSelectOption2["default"])(INITIAL_RECENT_VALUE),
       _refRecent = _useRefSelectOption[0],
       _selectRecent = _useRefSelectOption[1],
       _hLoad = (0, _uiApi.useCallback)(function () {

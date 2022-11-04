@@ -12,6 +12,7 @@ import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import { getItemValue } from '../zhn-m-input/OptionFn';
 import { PoweredByStackOverflow } from '../links/PoweredByLink';
 
 const DATE_ERR_MSG = "YYYY-MM-DD";
@@ -21,12 +22,13 @@ const INITIAL_FROM_DATE = DateUtil.getFromDate(1)
 , _onTestDate = DateUtil.isValidDate
 , _toUTCSecond = DateUtil.toUTCSecond
 , SORT_BY_OPTIONS = [
-  { caption: "Activity, Recent Day", value: "activity" },
-  { caption: "Creation Date", value: "creation"},
-  { caption: "Score", value: "votes" },
-  { caption: "Relevance", value: "relevance" }
+  ["Activity, Recent Day", "activity"],
+  ["Creation Date", "creation"],
+  ["Score", "votes"],
+  ["Relevance", "relevance"],
 ]
 , DF_SORT_BY = SORT_BY_OPTIONS[2]
+, INITIAL_SORT_BY_VALUE = getItemValue(DF_SORT_BY)
 , DF_TAGGED = 'CSS'
 , DF_IN_TITLE = 'flexbox'
 , _crInputTitle = (
@@ -58,7 +60,7 @@ const StackSearchDialog = ({
   , [
     _refSortBy,
     _selectSortBy
-  ] = useRefSelectOption(DF_SORT_BY.value)
+  ] = useRefSelectOption(INITIAL_SORT_BY_VALUE)
   , [
     _refFromDate,
     _getInputFromDate
@@ -86,7 +88,10 @@ const StackSearchDialog = ({
   // type, source, itemConf, _hClose
   // ...
   /*eslint-enable react-hooks/exhaustive-deps */
-  , [TS, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose)
+  , [
+    TS,
+    _hKeyDown
+  ] = useDecorDialog(styleConfig, _hLoad, _hClose)
   , _titleTagged = _crInputTitle('Tagged', DF_TAGGED)
   , _titleInTitle = _crInputTitle('In Title', DF_IN_TITLE)
 

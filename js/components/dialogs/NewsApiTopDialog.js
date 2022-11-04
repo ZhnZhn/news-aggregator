@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _uiApi = require("../uiApi");
 
-var _toFirstUpperCase = _interopRequireDefault(require("../../utils/toFirstUpperCase"));
-
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 
 var _useRefClose2 = _interopRequireDefault(require("./hooks/useRefClose"));
@@ -21,6 +19,8 @@ var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/Draggable
 
 var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
 
+var _OptionFn = require("../zhn-m-input/OptionFn");
+
 var _FlexColumn = _interopRequireDefault(require("../zhn-atoms/FlexColumn"));
 
 var _PoweredByLink = require("../links/PoweredByLink");
@@ -28,177 +28,12 @@ var _PoweredByLink = require("../links/PoweredByLink");
 var _jsxRuntime = require("preact/jsx-runtime");
 
 var _CATEGORY = ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology'],
-    CATEGORY_OPTIONS = _CATEGORY.map(function (str) {
-  return {
-    caption: (0, _toFirstUpperCase["default"])(str),
-    value: str
-  };
-}),
+    CATEGORY_OPTIONS = (0, _OptionFn.crSelectOptions)(_CATEGORY),
     DF_CATEGORY = CATEGORY_OPTIONS[0],
-    COUNTRY_OPTIONS = [{
-  caption: "Argentina",
-  value: "ar"
-}, {
-  caption: "Australia",
-  value: "au"
-}, {
-  caption: "Austria",
-  value: "at"
-}, {
-  caption: "Belguim",
-  value: "be"
-}, {
-  caption: "Brazil",
-  value: "br"
-}, {
-  caption: "Bulgaria",
-  value: "bg"
-}, {
-  caption: "Canada",
-  value: "ca"
-}, {
-  caption: "China",
-  value: "cn"
-}, {
-  caption: "Colombia",
-  value: "co"
-}, {
-  caption: "Cuba",
-  value: "cu"
-}, {
-  caption: "Czechia",
-  value: "cz"
-}, {
-  caption: "Egypt",
-  value: "eg"
-}, {
-  caption: "France",
-  value: "fr"
-}, {
-  caption: "Germany",
-  value: "de"
-}, {
-  caption: "Greece",
-  value: "gr"
-}, {
-  caption: "Hong Kong",
-  value: "hk"
-}, {
-  caption: "Hungary",
-  value: "hu"
-}, {
-  caption: "India",
-  value: "in"
-}, {
-  caption: "Indonesia",
-  value: "id"
-}, {
-  caption: "Ireland",
-  value: "ie"
-}, {
-  caption: "Israel",
-  value: "il"
-}, {
-  caption: "Italy",
-  value: "it"
-}, {
-  caption: "Japan",
-  value: "jp"
-}, {
-  caption: "Latvia",
-  value: "lv"
-}, {
-  caption: "Lithuania",
-  value: "lt"
-}, {
-  caption: "Malaysia",
-  value: "my"
-}, {
-  caption: "Mexico",
-  value: "mx"
-}, {
-  caption: "Morocco",
-  value: "ma"
-}, {
-  caption: "Netherlands",
-  value: "nl"
-}, {
-  caption: "New Zealand",
-  value: "nz"
-}, {
-  caption: "Nigeria",
-  value: "ng"
-}, {
-  caption: "Norway",
-  value: "no"
-}, {
-  caption: "Phillipines",
-  value: "ph"
-}, {
-  caption: "Poland",
-  value: "pl"
-}, {
-  caption: "Portugal",
-  value: "pt"
-}, {
-  caption: "Romania",
-  value: "ro"
-}, {
-  caption: "Russian Federation",
-  value: "ru"
-}, {
-  caption: "Saudi Arabia",
-  value: "sa"
-}, {
-  caption: "Serbia",
-  value: "rs"
-}, {
-  caption: "Singapore",
-  value: "sg"
-}, {
-  caption: "Slovakia",
-  value: "sk"
-}, {
-  caption: "Slovenia",
-  value: "si"
-}, {
-  caption: "South Africa",
-  value: "za"
-}, {
-  caption: "South Korea",
-  value: "kr"
-}, {
-  caption: "Sweden",
-  value: "se"
-}, {
-  caption: "Switzerland",
-  value: "ch"
-}, {
-  caption: "Taiwan",
-  value: "tw"
-}, {
-  caption: "Thailand",
-  value: "th"
-}, {
-  caption: "Türkiye",
-  value: "tr"
-}, {
-  caption: "Ukraine",
-  value: "ua"
-}, {
-  caption: "United Arab Emirates",
-  value: "ae"
-}, {
-  caption: "United Kingdom",
-  value: "gb"
-}, {
-  caption: "United States",
-  value: "us"
-}, {
-  caption: "Venezuala",
-  value: "ve"
-}],
-    DF_COUNTRY = COUNTRY_OPTIONS[52];
+    INITIAL_CATEGORY_VALUE = (0, _OptionFn.getItemValue)(DF_CATEGORY),
+    COUNTRY_OPTIONS = [["Argentina", "ar"], ["Australia", "au"], ["Austria", "at"], ["Belguim", "be"], ["Brazil", "br"], ["Bulgaria", "bg"], ["Canada", "ca"], ["China", "cn"], ["Colombia", "co"], ["Cuba", "cu"], ["Czechia", "cz"], ["Egypt", "eg"], ["France", "fr"], ["Germany", "de"], ["Greece", "gr"], ["Hong Kong", "hk"], ["Hungary", "hu"], ["India", "in"], ["Indonesia", "id"], ["Ireland", "ie"], ["Israel", "il"], ["Italy", "it"], ["Japan", "jp"], ["Latvia", "lv"], ["Lithuania", "lt"], ["Malaysia", "my"], ["Mexico", "mx"], ["Morocco", "ma"], ["Netherlands", "nl"], ["New Zealand", "nz"], ["Nigeria", "ng"], ["Norway", "no"], ["Phillipines", "ph"], ["Poland", "pl"], ["Portugal", "pt"], ["Romania", "ro"], ["Russian Federation", "ru"], ["Saudi Arabia", "sa"], ["Serbia", "rs"], ["Singapore", "sg"], ["Slovakia", "sk"], ["Slovenia", "si"], ["South Africa", "za"], ["South Korea", "kr"], ["Sweden", "se"], ["Switzerland", "ch"], ["Taiwan", "tw"], ["Thailand", "th"], ["Türkiye", "tr"], ["Ukraine", "ua"], ["United Arab Emirates", "ae"], ["United Kingdom", "gb"], ["United States", "us"], ["Venezuala", "ve"]],
+    DF_COUNTRY = COUNTRY_OPTIONS[52],
+    INITIAL_COUNTRY_VALUE = (0, _OptionFn.getItemValue)(DF_COUNTRY);
 
 var NewsApiTopDialog = function NewsApiTopDialog(_ref) {
   var isShow = _ref.isShow,
@@ -212,10 +47,10 @@ var NewsApiTopDialog = function NewsApiTopDialog(_ref) {
   var _useRefClose = (0, _useRefClose2["default"])(onClose),
       _refDialog = _useRefClose[0],
       _hClose = _useRefClose[1],
-      _useRefSelectOption = (0, _useRefSelectOption3["default"])(DF_CATEGORY.value),
+      _useRefSelectOption = (0, _useRefSelectOption3["default"])(INITIAL_CATEGORY_VALUE),
       _refCategory = _useRefSelectOption[0],
       _selectCategory = _useRefSelectOption[1],
-      _useRefSelectOption2 = (0, _useRefSelectOption3["default"])(DF_COUNTRY.value),
+      _useRefSelectOption2 = (0, _useRefSelectOption3["default"])(INITIAL_COUNTRY_VALUE),
       _refCountry = _useRefSelectOption2[0],
       _selectCountry = _useRefSelectOption2[1],
       _hLoad = (0, _uiApi.useCallback)(function () {

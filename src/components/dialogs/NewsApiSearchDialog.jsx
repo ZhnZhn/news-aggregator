@@ -11,14 +11,16 @@ import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import { getItemValue } from '../zhn-m-input/OptionFn';
 import { PoweredByNewsApi } from '../links/PoweredByLink';
 
 const SORT_BY_OPTIONS = [
-  { caption: "Relevancy", value: "relevancy" },
-  { caption: "Popularity", value: "popularity"},
-  { caption: "PublishedAt", value: "publishedAt" }
+  ["Relevancy", "relevancy"],
+  ["Popularity", "popularity"],
+  ["PublishedAt", "publishedAt"]
 ]
 , DF_SORT_BY = SORT_BY_OPTIONS[0]
+, INITIAL_SORT_BY_VALUE = getItemValue(DF_SORT_BY)
 , DF_TERM = "Weather";
 
 const NewsApiSearchDialog = ({
@@ -41,7 +43,7 @@ const NewsApiSearchDialog = ({
   , [
     _refSortBy,
     _selectSortBy
-  ] = useRefSelectOption(DF_SORT_BY.value)
+  ] = useRefSelectOption(INITIAL_SORT_BY_VALUE)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(() => {
     onLoad({
@@ -56,7 +58,10 @@ const NewsApiSearchDialog = ({
   }, [])
   // type, source, itemConf, onLoad,
   /*eslint-enable react-hooks/exhaustive-deps */
-  , [TS, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose)
+  , [
+    TS,
+    _hKeyDown
+  ] = useDecorDialog(styleConfig, _hLoad, _hClose)
   , _termCaption = `Term (Default: ${DF_TERM})`;
 
   return (

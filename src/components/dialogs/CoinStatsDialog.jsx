@@ -10,17 +10,19 @@ import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import { getItemValue } from '../zhn-m-input/OptionFn';
 import PoweredBy from '../links/PoweredBy';
 import { CoinStatsLink } from '../links/Links';
 
 const NEWS_FOR_OPTIONS = [
-{caption: "Latest", value: "latest"},
-{caption: "Handpicked", value: "handpicked"},
-{caption: "Trending", value: "trending"},
-{caption: "Bullish", value: "bullish"},
-{caption: "Bearish", value: "bearish"}
+  ["Latest", "latest"],
+  ["Handpicked", "handpicked"],
+  ["Trending", "trending"],
+  ["Bullish", "bullish"],
+  ["Bearish", "bearish"]
 ]
-, DF_FILTER = NEWS_FOR_OPTIONS[0];
+, DF_FILTER = NEWS_FOR_OPTIONS[0]
+, INITIAL_FILTER_VALUE = getItemValue(DF_FILTER);
 
 const CoinStatsDialog = ({
   isShow,
@@ -31,8 +33,14 @@ const CoinStatsDialog = ({
   onShow,
   onClose
 }) => {
-  const [_refDialog, _hClose] = useRefClose(onClose)
-  , [_refFilter, _selectFilter] = useRefSelectOption(DF_FILTER.value)
+  const [
+    _refDialog,
+    _hClose
+  ] = useRefClose(onClose)
+  , [
+    _refFilter,
+    _selectFilter
+  ] = useRefSelectOption(INITIAL_FILTER_VALUE)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(() => {
     onLoad({
@@ -46,7 +54,10 @@ const CoinStatsDialog = ({
   }, [])
   //type, source, itemConf, onLoad
   /*eslint-enable react-hooks/exhaustive-deps */
-  , [TS, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose);
+  , [
+    TS,
+    _hKeyDown
+  ] = useDecorDialog(styleConfig, _hLoad, _hClose);
 
   return (
     <A.DraggableDialog

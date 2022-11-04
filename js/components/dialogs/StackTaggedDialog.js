@@ -21,6 +21,8 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
+var _OptionFn = require("../zhn-m-input/OptionFn");
+
 var _PoweredByLink = require("../links/PoweredByLink");
 
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -31,26 +33,9 @@ var INITIAL_FROM_DATE = _dt["default"].getFromDate(1),
     INITIAL_TO_DATE = _dt["default"].getToDate(),
     _onTestDate = _dt["default"].isValidDate,
     _toUTCSecond = _dt["default"].toUTCSecond,
-    SORT_BY_OPTIONS = [{
-  caption: "Activity, Recent Day",
-  value: "activity"
-}, {
-  caption: "Creation Date",
-  value: "creation"
-}, {
-  caption: "Score",
-  value: "votes"
-}, {
-  caption: "Hot Tab",
-  value: "hot"
-}, {
-  caption: "Hot Week Tab",
-  value: "week"
-}, {
-  caption: "Hot Month Tab",
-  value: "month"
-}],
+    SORT_BY_OPTIONS = [["Activity, Recent Day", "activity"], ["Creation Date", "creation"], ["Score", "votes"], ["Hot Tab", "hot"], ["Hot Week Tab", "week"], ["Hot Month Tab", "month"]],
     DF_SORT_BY = SORT_BY_OPTIONS[4],
+    INITIAL_SORT_BY_VALUE = (0, _OptionFn.getItemValue)(DF_SORT_BY),
     DF_TAG = "CSS";
 
 var StackTaggedDialog = function StackTaggedDialog(_ref) {
@@ -68,7 +53,7 @@ var StackTaggedDialog = function StackTaggedDialog(_ref) {
       _useRefInput = (0, _useRefInput4["default"])(DF_TAG),
       _refTag = _useRefInput[0],
       _getInputTag = _useRefInput[1],
-      _useRefSelectOption = (0, _useRefSelectOption2["default"])(DF_SORT_BY.value),
+      _useRefSelectOption = (0, _useRefSelectOption2["default"])(INITIAL_SORT_BY_VALUE),
       _refSortBy = _useRefSelectOption[0],
       _selectSortBy = _useRefSelectOption[1],
       _useRefInput2 = (0, _useRefInput4["default"])(INITIAL_FROM_DATE),

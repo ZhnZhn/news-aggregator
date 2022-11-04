@@ -17,29 +17,17 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
+var _OptionFn = require("../zhn-m-input/OptionFn");
+
 var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
 
 var _Links = require("../links/Links");
 
 var _jsxRuntime = require("preact/jsx-runtime");
 
-var NEWS_FOR_OPTIONS = [{
-  caption: "Latest",
-  value: "latest"
-}, {
-  caption: "Handpicked",
-  value: "handpicked"
-}, {
-  caption: "Trending",
-  value: "trending"
-}, {
-  caption: "Bullish",
-  value: "bullish"
-}, {
-  caption: "Bearish",
-  value: "bearish"
-}],
-    DF_FILTER = NEWS_FOR_OPTIONS[0];
+var NEWS_FOR_OPTIONS = [["Latest", "latest"], ["Handpicked", "handpicked"], ["Trending", "trending"], ["Bullish", "bullish"], ["Bearish", "bearish"]],
+    DF_FILTER = NEWS_FOR_OPTIONS[0],
+    INITIAL_FILTER_VALUE = (0, _OptionFn.getItemValue)(DF_FILTER);
 
 var CoinStatsDialog = function CoinStatsDialog(_ref) {
   var isShow = _ref.isShow,
@@ -53,7 +41,7 @@ var CoinStatsDialog = function CoinStatsDialog(_ref) {
   var _useRefClose = (0, _useRefClose2["default"])(onClose),
       _refDialog = _useRefClose[0],
       _hClose = _useRefClose[1],
-      _useRefSelectOption = (0, _useRefSelectOption2["default"])(DF_FILTER.value),
+      _useRefSelectOption = (0, _useRefSelectOption2["default"])(INITIAL_FILTER_VALUE),
       _refFilter = _useRefSelectOption[0],
       _selectFilter = _useRefSelectOption[1],
       _hLoad = (0, _uiApi.useCallback)(function () {

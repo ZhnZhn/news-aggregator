@@ -17,40 +17,40 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
+var _OptionFn = require("../zhn-m-input/OptionFn");
+
 var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
 
 var _Links = require("../links/Links");
 
 var _jsxRuntime = require("preact/jsx-runtime");
 
-var NEWS_FOR_OPTIONS = [{
-  caption: "All",
-  value: "all"
-}
+var NEWS_FOR_OPTIONS = [["All", "all"]
 /*,
-{caption: "Bitcoin", value: "BTC"},
-{caption: "Ethereum", value: "ETH"},
-{caption: "Tether", value: "USDT"},
-{caption: "XRP", value: "XRP"},
-{caption: "Bitcoin-Cash", value: "BCH"},
-{ caption: "Chainlink", value: "LINK"},
-{ caption: "Cardano", value: "ADA"},
-{ caption: "Bitcoin-SV", value: "BSV"},
-{ caption: "Litecoin", value: "LTC"},
-{ caption: "Binance-Coin", value: "BNB"},
-{ caption: "Crypto-Com-Chain", value: "CRO"},
-{ caption: "Tezos", value: "XTZ"},
-{ caption: "EOS", value: "EOS"},
-{ caption: "Stellar", value: "XLM"},
-{ caption: "Monero", value: "XMR"},
-{ caption: "Tron", value: "TRX"},
-{ caption: "Unus-Sed-Leo", value: "LEO"},
-{ caption: "USD-Coin", value: "USDC"},
-{ caption: "Vechain", value: "VET"},
-{ caption: "Cosmos", value: "ATOM"}
+[Bitcoin", "BTC"],
+[Ethereum", "ETH"],
+[Tether", "USDT"],
+[XRP", "XRP"],
+[Bitcoin-Cash", "BCH"],
+["Chainlink", "LINK"],
+["Cardano", "ADA"],
+["Bitcoin-SV", "BSV"],
+["Litecoin", "LTC"],
+["Binance-Coin", "BNB"],
+["Crypto-Com-Chain", "CRO"],
+["Tezos", "XTZ"],
+["EOS", "EOS"],
+["Stellar", "XLM"],
+["Monero", "XMR"],
+["Tron", "TRX"],
+["Unus-Sed-Leo", "LEO"],
+["USD-Coin", "USDC"],
+["Vechain", "VET"],
+["Cosmos", "ATOM"],
 */
 ],
-    DF_ASSET_KEY = NEWS_FOR_OPTIONS[0];
+    DF_ASSET = NEWS_FOR_OPTIONS[0],
+    INITIAL_ASSET_VALUE = (0, _OptionFn.getItemValue)(DF_ASSET);
 
 var MessariDialog = function MessariDialog(_ref) {
   var isShow = _ref.isShow,
@@ -64,7 +64,7 @@ var MessariDialog = function MessariDialog(_ref) {
   var _useRefClose = (0, _useRefClose2["default"])(onClose),
       _refDialog = _useRefClose[0],
       _hClose = _useRefClose[1],
-      _useRefSelectOption = (0, _useRefSelectOption2["default"])(DF_ASSET_KEY.value),
+      _useRefSelectOption = (0, _useRefSelectOption2["default"])(INITIAL_ASSET_VALUE),
       _refAssetKey = _useRefSelectOption[0],
       _selectAssetKey = _useRefSelectOption[1],
       _hLoad = (0, _uiApi.useCallback)(function () {
@@ -95,7 +95,7 @@ var MessariDialog = function MessariDialog(_ref) {
     onClose: _hClose,
     children: [(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
       caption: "News about",
-      initItem: DF_ASSET_KEY,
+      initItem: DF_ASSET,
       options: NEWS_FOR_OPTIONS,
       styleConfig: TS.SELECT,
       onSelect: _selectAssetKey

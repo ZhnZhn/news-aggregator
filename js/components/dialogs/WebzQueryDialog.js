@@ -19,20 +19,18 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
+var _OptionFn = require("../zhn-m-input/OptionFn");
+
 var _PoweredByLink = require("../links/PoweredByLink");
 
 var _InputBeforeDays = _interopRequireDefault(require("./InputBeforeDays"));
 
 var _jsxRuntime = require("preact/jsx-runtime");
 
-var SITE_TYPE_OPTIONS = [{
-  caption: 'News',
-  value: 'news'
-}, {
-  caption: 'Blogs',
-  value: 'blogs'
-}],
+var _SITE_TYPES = ['news', 'blogs'],
+    SITE_TYPE_OPTIONS = (0, _OptionFn.crSelectOptions)(_SITE_TYPES),
     DF_SITE_TYPE = SITE_TYPE_OPTIONS[0],
+    INITIAL_SITE_TYPE_VALUE = (0, _OptionFn.getItemValue)(DF_SITE_TYPE),
     DF_IN_TITLE = 'Weather',
     DF_BEFORE_DAYS = 2;
 
@@ -51,7 +49,7 @@ var WebzQueryDialog = function WebzQueryDialog(_ref) {
       _useRefInput = (0, _useRefInput3["default"])(DF_IN_TITLE),
       _refInputInTitle = _useRefInput[0],
       _getInputInTitle = _useRefInput[1],
-      _useRefSelectOption = (0, _useRefSelectOption2["default"])(DF_SITE_TYPE.value),
+      _useRefSelectOption = (0, _useRefSelectOption2["default"])(INITIAL_SITE_TYPE_VALUE),
       _refSiteType = _useRefSelectOption[0],
       _selectSiteType = _useRefSelectOption[1],
       _useRefInput2 = (0, _useRefInput3["default"])(DF_BEFORE_DAYS),

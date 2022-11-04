@@ -13,9 +13,9 @@ export const THEME_NAME = {
 }
 
 export const THEME_OPTIONS = [
-  { caption: 'Grey', value: 'GREY' },
-  { caption: 'White', value: 'WHITE' },
-  { caption: 'Sand', value: 'SAND' }
+  ['Grey', 'GREY'],
+  ['White', 'WHITE'],
+  ['Sand', 'SAND'],
 ]
 
 export const crInitialThemeName = () => {

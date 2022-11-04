@@ -11,11 +11,11 @@ import {
 } from './LS';
 
 export const FONT_SIZE_OPTIONS = [
-  { caption: 'Small (15px)', value: 15 },
-  { caption: 'Medium (16px)', value: 16 },
-  { caption: 'Extra Medium (17px)', value: 17 },
-  { caption: 'Large (18px)', value: 18 },
-  { caption: 'Extra Large (19px)', value: 19 }
+  ['Small (15px)', 15],
+  ['Medium (16px)', 16],
+  ['Extra Medium (17px)', 17],
+  ['Large (18px)', 18],
+  ['Extra Large (19px)', 19],
 ];
 
 const DF_APP_FONT_SIZE = 16
@@ -40,7 +40,7 @@ export const initFontSize = () => {
 export const selectFontSize = (
   item
 ) => {
-  const { value } = item || {};
+  const value = (item || [])[1];
   if (isNumberInRange(MIN_FS, MAX_FS, value)) {
     _appFontSize = value
     _documentElement.style.fontSize = `${value}px`

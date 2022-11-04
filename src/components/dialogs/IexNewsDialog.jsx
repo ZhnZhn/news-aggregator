@@ -11,17 +11,19 @@ import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import { getItemValue } from '../zhn-m-input/OptionFn';
 import PoweredBy from '../links/PoweredBy';
 import { IexApiLink } from '../links/Links';
 
 const RECENT_OPTIONS = [
-  { caption: "10 News", value: "10" },
-  { caption: "20 News", value: "20" },
-  { caption: "30 News", value: "30" },
-  { caption: "40 News", value: "40" },
-  { caption: "50 News", value: "50" }
+  ["10 News", "10"],
+  ["20 News", "20"],
+  ["30 News", "30"],
+  ["40 News", "40"],
+  ["50 News", "50"],
 ]
 , DF_RECENT = RECENT_OPTIONS[1]
+, INITIAL_RECENT_VALUE = getItemValue(DF_RECENT)
 , DF_SYMBOL = "AAPL"
 , S_INPUT_STYLE = {
   textTransform: 'uppercase'
@@ -47,7 +49,7 @@ const IexNewsDialog = ({
   , [
     _refRecent,
     _selectRecent
-  ] = useRefSelectOption(DF_RECENT.value)
+  ] = useRefSelectOption(INITIAL_RECENT_VALUE)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(()=>{
     onLoad({
@@ -62,7 +64,10 @@ const IexNewsDialog = ({
   }, [])
   // type, source, itemConf, onLoad, _getInputSymbol, _refRecent, _hClose
   /*eslint-enable react-hooks/exhaustive-deps */
-  , [TS, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose);
+  , [
+    TS,
+    _hKeyDown
+  ] = useDecorDialog(styleConfig, _hLoad, _hClose);
 
   return (
     <A.DraggableDialog

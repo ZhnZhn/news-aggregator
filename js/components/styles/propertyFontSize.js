@@ -13,22 +13,7 @@ var _setDfItemTo = _interopRequireDefault(require("./setDfItemTo"));
 
 var _LS = require("./LS");
 
-var FONT_SIZE_OPTIONS = [{
-  caption: 'Small (15px)',
-  value: 15
-}, {
-  caption: 'Medium (16px)',
-  value: 16
-}, {
-  caption: 'Extra Medium (17px)',
-  value: 17
-}, {
-  caption: 'Large (18px)',
-  value: 18
-}, {
-  caption: 'Extra Large (19px)',
-  value: 19
-}];
+var FONT_SIZE_OPTIONS = [['Small (15px)', 15], ['Medium (16px)', 16], ['Extra Medium (17px)', 17], ['Large (18px)', 18], ['Extra Large (19px)', 19]];
 exports.FONT_SIZE_OPTIONS = FONT_SIZE_OPTIONS;
 var DF_APP_FONT_SIZE = 16,
     MIN_FS = 15,
@@ -61,8 +46,7 @@ var initFontSize = function initFontSize() {
 exports.initFontSize = initFontSize;
 
 var selectFontSize = function selectFontSize(item) {
-  var _ref = item || {},
-      value = _ref.value;
+  var value = (item || [])[1];
 
   if ((0, _isNumberInRange["default"])(MIN_FS, MAX_FS, value)) {
     _appFontSize = value;

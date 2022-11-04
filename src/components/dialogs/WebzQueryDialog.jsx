@@ -11,14 +11,20 @@ import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import {
+  getItemValue,
+  crSelectOptions
+} from '../zhn-m-input/OptionFn';
 import { PoweredByWebzLink } from '../links/PoweredByLink';
 import InputBeforeDays from './InputBeforeDays';
 
-const SITE_TYPE_OPTIONS = [
-  { caption: 'News', value: 'news'},
-  { caption: 'Blogs', value: 'blogs'}
+const _SITE_TYPES = [
+  'news',
+  'blogs'
 ]
+, SITE_TYPE_OPTIONS = crSelectOptions(_SITE_TYPES)
 , DF_SITE_TYPE = SITE_TYPE_OPTIONS[0]
+, INITIAL_SITE_TYPE_VALUE = getItemValue(DF_SITE_TYPE)
 , DF_IN_TITLE = 'Weather'
 , DF_BEFORE_DAYS = 2;
 
@@ -42,7 +48,7 @@ const WebzQueryDialog = ({
   , [
     _refSiteType,
     _selectSiteType
-  ] = useRefSelectOption(DF_SITE_TYPE.value)
+  ] = useRefSelectOption(INITIAL_SITE_TYPE_VALUE)
   , [
     _refInputBeforeDays,
     _getInputBeforeDays
@@ -62,7 +68,10 @@ const WebzQueryDialog = ({
   }, [])
   //type, source, itemConf, onLoad
   /*eslint-enable react-hooks/exhaustive-deps */
-  , [TS, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose);
+  , [
+    TS,
+    _hKeyDown
+  ] = useDecorDialog(styleConfig, _hLoad, _hClose);
 
   return (
     <A.DraggableDialog

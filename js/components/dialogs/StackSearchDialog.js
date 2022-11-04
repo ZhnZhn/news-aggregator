@@ -21,6 +21,8 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
+var _OptionFn = require("../zhn-m-input/OptionFn");
+
 var _PoweredByLink = require("../links/PoweredByLink");
 
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -31,20 +33,9 @@ var INITIAL_FROM_DATE = _dt["default"].getFromDate(1),
     INITIAL_TO_DATE = _dt["default"].getToDate(),
     _onTestDate = _dt["default"].isValidDate,
     _toUTCSecond = _dt["default"].toUTCSecond,
-    SORT_BY_OPTIONS = [{
-  caption: "Activity, Recent Day",
-  value: "activity"
-}, {
-  caption: "Creation Date",
-  value: "creation"
-}, {
-  caption: "Score",
-  value: "votes"
-}, {
-  caption: "Relevance",
-  value: "relevance"
-}],
+    SORT_BY_OPTIONS = [["Activity, Recent Day", "activity"], ["Creation Date", "creation"], ["Score", "votes"], ["Relevance", "relevance"]],
     DF_SORT_BY = SORT_BY_OPTIONS[2],
+    INITIAL_SORT_BY_VALUE = (0, _OptionFn.getItemValue)(DF_SORT_BY),
     DF_TAGGED = 'CSS',
     DF_IN_TITLE = 'flexbox',
     _crInputTitle = function _crInputTitle(prefix, dfValue) {
@@ -69,7 +60,7 @@ var StackSearchDialog = function StackSearchDialog(_ref) {
       _useRefInput2 = (0, _useRefInput5["default"])(DF_IN_TITLE),
       _refInTitle = _useRefInput2[0],
       _getInputInTitle = _useRefInput2[1],
-      _useRefSelectOption = (0, _useRefSelectOption2["default"])(DF_SORT_BY.value),
+      _useRefSelectOption = (0, _useRefSelectOption2["default"])(INITIAL_SORT_BY_VALUE),
       _refSortBy = _useRefSelectOption[0],
       _selectSortBy = _useRefSelectOption[1],
       _useRefInput3 = (0, _useRefInput5["default"])(INITIAL_FROM_DATE),

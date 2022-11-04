@@ -11,89 +11,98 @@ import useDecorDialog from './hooks/useDecorDialog';
 
 import DraggableDialog from '../zhn-moleculs/DraggableDialog';
 import InputSelect from '../zhn-m-input/InputSelect';
+import {
+  getItemValue,
+  crSelectOptions
+} from '../zhn-m-input/OptionFn';
 import FlexColumn from '../zhn-atoms/FlexColumn';
 import PoweredBy from '../links/PoweredBy';
 import { TheNewsApiLink } from '../links/Links';
 
-const CATEGORY_OPTIONS = [
-  { caption: 'All', value: 'all' },
-  { caption: 'General', value: 'general' },
-  { caption: 'Science', value: 'science' },
-  { caption: 'Sports', value: 'sports' },
-  { caption: 'Business', value: 'business' },
-  { caption: 'Health', value: 'health' },
-  { caption: 'Tech', value: 'tech' },
-  { caption: 'Politics', value: 'politics' },
-  { caption: 'Food', value: 'food' },
-  { caption: 'Travel', value: 'travel' }
+const _CATEGORIES = [
+  'all',
+  'general',
+  'science',
+  'sports',
+  'business',
+  'health',
+  'tech',
+  'politics',
+  'food',
+  'travel'
 ]
+const CATEGORY_OPTIONS = crSelectOptions(_CATEGORIES)
 , DF_CATEGORY = CATEGORY_OPTIONS[0]
+, INITIAL_CAREGORY_VALUE = getItemValue(DF_CATEGORY)
 , LOCALE_OPTIONS = [
-  {caption: "All", value:"all" },
-  {caption: "Argentina", value:"ar" },
-  {caption: "Armenia", value:"am" },
-  {caption: "Australia", value:"au" },
-  {caption: "Austria", value:"at"},
-  {caption: "Belarus", value:"by" },
-  {caption: "Belgium", value:"be" },
-  {caption: "Bolivia", value:"bo"},
-  {caption: "Brazil", value:"br" },
-  {caption: "Bulgaria", value:"bg" },
-  {caption: "Canada", value:"ca" },
-  {caption: "Chile", value:"cl"},
-  {caption: "China", value:"cn" },
-  {caption: "Colombia", value:"co" },
-  {caption: "Croatia", value:"hr" },
-  {caption: "Czechia", value:"cz" },
-  {caption: "Ecuador", value:"ec" },
-  {caption: "Egypt", value:"eg"},
-  {caption: "France", value:"fr" },
-  {caption: "Germany", value:"de" },
-  {caption: "Greece", value:"gr" },
-  {caption: "Honduras", value:"hn" },
-  {caption: "Hong Kong", value:"hk" },
-  {caption: "India", value:"in"},
-  {caption: "Indonesia", value:"id" },
-  {caption: "Iran", value:"ir"},
-  {caption: "Ireland", value:"ie" },
-  {caption: "Israel", value:"il" },
-  {caption: "Italy", value:"it"},
-  {caption: "Japan", value:"jp" },
-  {caption: "Korea", value:"kr" },
-  {caption: "Mexico", value:"mx" },
-  {caption: "Netherlands", value:"nl" },
-  {caption: "New Zealand", value:"nz"},
-  {caption: "Nicaragua", value:"ni" },
-  {caption: "Pakistan", value:"pk" },
-  {caption: "Panama", value:"pa" },
-  {caption: "Peru", value:"pe"},
-  {caption: "Poland", value:"pl" },
-  {caption: "Portugal", value:"pt" },
-  {caption: "Qatar", value:"qa"},
-  {caption: "Romania", value:"ro" },
-  {caption: "Russia", value:"ru" },
-  {caption: "Saudi Arabia", value:"sa" },
-  {caption: "South Africa", value:"za" },
-  {caption: "Spain", value:"es"},
-  {caption: "Switzerland", value:"ch" },
-  {caption: "Syria", value:"sy"},
-  {caption: "Taiwan", value:"tw" },
-  {caption: "Thailand", value:"th" },
-  {caption: "Türkiye", value:"tr" },
-  {caption: "Ukraine", value:"ua" },
-  {caption: "United Kingdom", value:"gb" },
-  {caption: "United States Of America", value:"us" },
-  {caption: "Uruguay", value:"uy" },
-  {caption: "Venezuela", value:"ve" }
+  ["All", "all"],
+  ["Argentina", "ar"],
+  ["Armenia", "am"],
+  ["Australia", "au"],
+  ["Austria", "at"],
+  ["Belarus", "by"],
+  ["Belgium", "be"],
+  ["Bolivia", "bo"],
+  ["Brazil", "br"],
+  ["Bulgaria", "bg"],
+  ["Canada", "ca"],
+  ["Chile", "cl"],
+  ["China", "cn"],
+  ["Colombia", "co"],
+  ["Croatia", "hr"],
+  ["Czechia", "cz"],
+  ["Ecuador", "ec"],
+  ["Egypt", "eg"],
+  ["France", "fr"],
+  ["Germany", "de"],
+  ["Greece", "gr"],
+  ["Honduras", "hn"],
+  ["Hong Kong", "hk"],
+  ["India", "in"],
+  ["Indonesia", "id"],
+  ["Iran", "ir"],
+  ["Ireland", "ie"],
+  ["Israel", "il"],
+  ["Italy", "it"],
+  ["Japan", "jp"],
+  ["Korea", "kr"],
+  ["Mexico", "mx"],
+  ["Netherlands", "nl"],
+  ["New Zealand", "nz"],
+  ["Nicaragua", "ni"],
+  ["Pakistan", "pk"],
+  ["Panama", "pa"],
+  ["Peru", "pe"],
+  ["Poland", "pl"],
+  ["Portugal", "pt"],
+  ["Qatar", "qa"],
+  ["Romania", "ro"],
+  ["Russia", "ru"],
+  ["Saudi Arabia", "sa"],
+  ["South Africa", "za"],
+  ["Spain", "es"],
+  ["Switzerland", "ch"],
+  ["Syria", "sy"],
+  ["Taiwan", "tw"],
+  ["Thailand", "th"],
+  ["Türkiye", "tr"],
+  ["Ukraine", "ua"],
+  ["United Kingdom", "gb"],
+  ["United States Of America", "us"],
+  ["Uruguay", "uy"],
+  ["Venezuela", "ve"]
 ]
 , DF_LOCALE = LOCALE_OPTIONS[0]
+, INITIAL_LOCALE_VALUE = getItemValue(DF_LOCALE)
 , DOMAIN_OPTIONS = [
-  { caption: "All", value:"all" },
-  { caption: "Business Insider", value: "businessinsider.com"},
-  { caption: "CNBC", value: "cnbc.com"},
-  { caption: "CNET", value: "cnet.com"},
-  { caption: "The Verge", value: "theverge.com"}
-], DF_DOMAIN = DOMAIN_OPTIONS[0];
+  ["All", "all"],
+  ["Business Insider", "businessinsider.com"],
+  ["CNBC", "cnbc.com"],
+  ["CNET", "cnet.com"],
+  ["The Verge", "theverge.com"],
+]
+, DF_DOMAIN = DOMAIN_OPTIONS[0]
+, INITIAL_DOMAIN_VALUE = getItemValue(DF_DOMAIN);
 
 const TheNewsApiTopDialog = ({
   isShow,
@@ -111,15 +120,15 @@ const TheNewsApiTopDialog = ({
   , [
     _refCategory,
     _selectCategory
-  ] = useRefSelectOption(DF_CATEGORY.value)
+  ] = useRefSelectOption(INITIAL_CAREGORY_VALUE)
   , [
     _refLocale,
     _selectLocale
-  ] = useRefSelectOption(DF_LOCALE.value)
+  ] = useRefSelectOption(INITIAL_LOCALE_VALUE)
   , [
     _refDomain,
     _selectDomain
-  ] = useRefSelectOption(DF_DOMAIN.value)
+  ] = useRefSelectOption(INITIAL_DOMAIN_VALUE)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(() => {
     onLoad({
@@ -135,7 +144,10 @@ const TheNewsApiTopDialog = ({
   }, [])
   //type, source, itemConf, onLoad
   /*eslint-enable react-hooks/exhaustive-deps */
-  , [TS, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose);
+  , [
+    TS,
+    _hKeyDown
+  ] = useDecorDialog(styleConfig, _hLoad, _hClose);
 
   return (
     <DraggableDialog

@@ -54,7 +54,7 @@ const SettingsDialog = memoIsShow(({
 }) => {
   const theme = useContext(ThemeContext)
   , _selectTheme = useCallback(item => {
-    const { value } = item || {};
+    const value = (item || [])[1];
     if (value && theme.getThemeName() !== value) {
       theme.setThemeName(value)
       ComponentActions.changeTheme(value)

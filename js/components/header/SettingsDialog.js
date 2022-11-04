@@ -65,8 +65,7 @@ var SettingsDialog = (0, _memoIsShow["default"])(function (_ref) {
 
   var theme = (0, _uiApi.useContext)(_ThemeContext["default"]),
       _selectTheme = (0, _uiApi.useCallback)(function (item) {
-    var _ref2 = item || {},
-        value = _ref2.value;
+    var value = (item || [])[1];
 
     if (value && theme.getThemeName() !== value) {
       theme.setThemeName(value);

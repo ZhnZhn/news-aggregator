@@ -10,34 +10,36 @@ import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import { getItemValue } from '../zhn-m-input/OptionFn';
 import PoweredBy from '../links/PoweredBy';
 import { MessariLink } from '../links/Links';
 
 const NEWS_FOR_OPTIONS = [
-{caption: "All", value: "all"}
+["All", "all"]
 /*,
-{caption: "Bitcoin", value: "BTC"},
-{caption: "Ethereum", value: "ETH"},
-{caption: "Tether", value: "USDT"},
-{caption: "XRP", value: "XRP"},
-{caption: "Bitcoin-Cash", value: "BCH"},
-{ caption: "Chainlink", value: "LINK"},
-{ caption: "Cardano", value: "ADA"},
-{ caption: "Bitcoin-SV", value: "BSV"},
-{ caption: "Litecoin", value: "LTC"},
-{ caption: "Binance-Coin", value: "BNB"},
-{ caption: "Crypto-Com-Chain", value: "CRO"},
-{ caption: "Tezos", value: "XTZ"},
-{ caption: "EOS", value: "EOS"},
-{ caption: "Stellar", value: "XLM"},
-{ caption: "Monero", value: "XMR"},
-{ caption: "Tron", value: "TRX"},
-{ caption: "Unus-Sed-Leo", value: "LEO"},
-{ caption: "USD-Coin", value: "USDC"},
-{ caption: "Vechain", value: "VET"},
-{ caption: "Cosmos", value: "ATOM"}
+[Bitcoin", "BTC"],
+[Ethereum", "ETH"],
+[Tether", "USDT"],
+[XRP", "XRP"],
+[Bitcoin-Cash", "BCH"],
+["Chainlink", "LINK"],
+["Cardano", "ADA"],
+["Bitcoin-SV", "BSV"],
+["Litecoin", "LTC"],
+["Binance-Coin", "BNB"],
+["Crypto-Com-Chain", "CRO"],
+["Tezos", "XTZ"],
+["EOS", "EOS"],
+["Stellar", "XLM"],
+["Monero", "XMR"],
+["Tron", "TRX"],
+["Unus-Sed-Leo", "LEO"],
+["USD-Coin", "USDC"],
+["Vechain", "VET"],
+["Cosmos", "ATOM"],
 */]
-, DF_ASSET_KEY = NEWS_FOR_OPTIONS[0];
+, DF_ASSET = NEWS_FOR_OPTIONS[0]
+, INITIAL_ASSET_VALUE = getItemValue(DF_ASSET);
 
 const MessariDialog = ({
   isShow,
@@ -48,8 +50,14 @@ const MessariDialog = ({
   onShow,
   onClose
  }) => {
-  const [_refDialog, _hClose] = useRefClose(onClose)
-  , [_refAssetKey, _selectAssetKey] = useRefSelectOption(DF_ASSET_KEY.value)
+  const [
+    _refDialog,
+    _hClose
+  ] = useRefClose(onClose)
+  , [
+    _refAssetKey,
+    _selectAssetKey
+  ] = useRefSelectOption(INITIAL_ASSET_VALUE)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(()=>{
     onLoad({
@@ -63,7 +71,10 @@ const MessariDialog = ({
   }, [])
   // type, source, itemConf, onLoad, _refAssetKey, _hClose
   /*eslint-enable react-hooks/exhaustive-deps */
-  , [TS, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose);
+  , [
+    TS,
+    _hKeyDown
+  ] = useDecorDialog(styleConfig, _hLoad, _hClose);
 
   return (
     <A.DraggableDialog
@@ -80,7 +91,7 @@ const MessariDialog = ({
     >
        <A.InputSelect
          caption="News about"
-         initItem={DF_ASSET_KEY}
+         initItem={DF_ASSET}
          options={NEWS_FOR_OPTIONS}
          styleConfig={TS.SELECT}
          onSelect={_selectAssetKey}

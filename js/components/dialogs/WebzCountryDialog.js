@@ -17,223 +17,21 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
+var _OptionFn = require("../zhn-m-input/OptionFn");
+
 var _PoweredByLink = require("../links/PoweredByLink");
 
 var _jsxRuntime = require("preact/jsx-runtime");
 
-var OPTION_COUNTRIES = [{
-  caption: "Australia",
-  value: "AU"
-}, {
-  caption: "Austria",
-  value: "AT"
-}, {
-  caption: "Belarus",
-  value: "BY"
-}, {
-  caption: "Belguim",
-  value: "BE"
-}, {
-  caption: "Brazil",
-  value: "BR"
-}, {
-  caption: "Bulgaria",
-  value: "BG"
-}, {
-  caption: "Canada",
-  value: "CA"
-}, {
-  caption: "Chile",
-  value: "CL"
-}, {
-  caption: "China",
-  value: "CN"
-}, {
-  caption: "Colombia",
-  value: "CO"
-}, {
-  caption: "Croatia",
-  value: "HR"
-}, {
-  caption: "Czech Republic",
-  value: "CZ"
-}, {
-  caption: "Denmark",
-  value: "DK"
-}, {
-  caption: "Estonia",
-  value: "EE"
-}, {
-  caption: "Finland",
-  value: "FI"
-}, {
-  caption: "France",
-  value: "FR"
-}, {
-  caption: "Germany",
-  value: "DE"
-}, {
-  caption: "Greece",
-  value: "GR"
-}, {
-  caption: "Hong Kong",
-  value: "HK"
-}, {
-  caption: "Hungary",
-  value: "HU"
-}, {
-  caption: "India",
-  value: "IN"
-}, {
-  caption: "Indonesia",
-  value: "ID"
-}, {
-  caption: "Iran",
-  value: "IR"
-}, {
-  caption: "Ireland",
-  value: "IE"
-}, {
-  caption: "Israel",
-  value: "IL"
-}, {
-  caption: "Italy",
-  value: "IT"
-}, {
-  caption: "Japan",
-  value: "JP"
-}, {
-  caption: "Malaysia",
-  value: "MY"
-}, {
-  caption: "Mexico",
-  value: "MX"
-}, {
-  caption: "Nertherlands",
-  value: "NL"
-}, {
-  caption: "New Zealand",
-  value: "NZ"
-}, {
-  caption: "Nigeria",
-  value: "NG"
-}, {
-  caption: "Norway",
-  value: "NO"
-}, {
-  caption: "Philippines",
-  value: "PH"
-}, {
-  caption: "Poland",
-  value: "PL"
-}, {
-  caption: "Portugal",
-  value: "PT"
-}, {
-  caption: "Romania",
-  value: "RO"
-}, {
-  caption: "Russia",
-  value: "RU"
-}, {
-  caption: "Serbia",
-  value: "RS"
-}, {
-  caption: "Singapore",
-  value: "SG"
-}, {
-  caption: "Slovakia",
-  value: "SK"
-}, {
-  caption: "Slovenia",
-  value: "SI"
-}, {
-  caption: "South Africa",
-  value: "ZA"
-}, {
-  caption: "South Korea",
-  value: "KR"
-}, {
-  caption: "Spain",
-  value: "ES"
-}, {
-  caption: "Sweden",
-  value: "SE"
-}, {
-  caption: "Switzerland",
-  value: "CH"
-}, {
-  caption: "Taiwan",
-  value: "TW"
-}, {
-  caption: "Thailand",
-  value: "TH"
-}, {
-  caption: "Türkiye",
-  value: "TR"
-}, {
-  caption: "Ukraine",
-  value: "UA"
-}, {
-  caption: "United Kingdom",
-  value: "GB"
-}, {
-  caption: "United States",
-  value: "US"
-}, {
-  caption: "Vietnam",
-  value: "VN"
-}],
-    OPTION_TOPICS = [{
-  caption: "Business",
-  value: "business"
-}, {
-  caption: "Politics",
-  value: "politics"
-}, {
-  caption: "Entertainment",
-  value: "entertainment"
-}, {
-  caption: "Health",
-  value: "health"
-}, {
-  caption: "Travel",
-  value: "travel"
-}, {
-  caption: "Financial",
-  value: "financial_news"
-}, {
-  caption: "Sports",
-  value: "sports"
-}, {
-  caption: "Technology",
-  value: "tech"
-}, {
-  caption: "Real Estate",
-  value: "real_estate"
-}, {
-  caption: "Education",
-  value: "education"
-}, {
-  caption: "Fashion",
-  value: "fashion"
-}, {
-  caption: "Science",
-  value: "science"
-}, {
-  caption: "Architects",
-  value: "architects"
-}],
-    OPTION_LANGUAGES = [{
-  caption: "All",
-  value: ""
-}, {
-  caption: "English",
-  value: "english"
-}],
+var OPTION_COUNTRIES = [["Australia", "AU"], ["Austria", "AT"], ["Belarus", "BY"], ["Belguim", "BE"], ["Brazil", "BR"], ["Bulgaria", "BG"], ["Canada", "CA"], ["Chile", "CL"], ["China", "CN"], ["Colombia", "CO"], ["Croatia", "HR"], ["Czech Republic", "CZ"], ["Denmark", "DK"], ["Estonia", "EE"], ["Finland", "FI"], ["France", "FR"], ["Germany", "DE"], ["Greece", "GR"], ["Hong Kong", "HK"], ["Hungary", "HU"], ["India", "IN"], ["Indonesia", "ID"], ["Iran", "IR"], ["Ireland", "IE"], ["Israel", "IL"], ["Italy", "IT"], ["Japan", "JP"], ["Malaysia", "MY"], ["Mexico", "MX"], ["Nertherlands", "NL"], ["New Zealand", "NZ"], ["Nigeria", "NG"], ["Norway", "NO"], ["Philippines", "PH"], ["Poland", "PL"], ["Portugal", "PT"], ["Romania", "RO"], ["Russia", "RU"], ["Serbia", "RS"], ["Singapore", "SG"], ["Slovakia", "SK"], ["Slovenia", "SI"], ["South Africa", "ZA"], ["South Korea", "KR"], ["Spain", "ES"], ["Sweden", "SE"], ["Switzerland", "CH"], ["Taiwan", "TW"], ["Thailand", "TH"], ["Türkiye", "TR"], ["Ukraine", "UA"], ["United Kingdom", "GB"], ["United States", "US"], ["Vietnam", "VN"]],
+    OPTION_TOPICS = [["Business", "business"], ["Politics", "politics"], ["Entertainment", "entertainment"], ["Health", "health"], ["Travel", "travel"], ["Financial", "financial_news"], ["Sports", "sports"], ["Technology", "tech"], ["Real Estate", "real_estate"], ["Education", "education"], ["Fashion", "fashion"], ["Science", "science"], ["Architects", "architects"]],
+    OPTION_LANGUAGES = [["All", ""], ["English", "english"]],
     DF_COUNTRY = OPTION_COUNTRIES[0],
+    INITIAL_COUNTRY_VALUE = (0, _OptionFn.getItemValue)(DF_COUNTRY),
     DF_TOPIC = OPTION_TOPICS[0],
-    DF_LANGUAGE = OPTION_LANGUAGES[0];
+    INITIAL_TOPIC_VALUE = (0, _OptionFn.getItemValue)(DF_TOPIC),
+    DF_LANGUAGE = OPTION_LANGUAGES[0],
+    INITIAL_LANGUAGE_VALUE = (0, _OptionFn.getItemValue)(DF_LANGUAGE);
 
 var WebzCountryDialog = function WebzCountryDialog(_ref) {
   var isShow = _ref.isShow,
@@ -247,13 +45,13 @@ var WebzCountryDialog = function WebzCountryDialog(_ref) {
   var _useRefClose = (0, _useRefClose2["default"])(onClose),
       _refDialog = _useRefClose[0],
       _hClose = _useRefClose[1],
-      _useRefSelectOption = (0, _useRefSelectOption4["default"])(DF_COUNTRY.value),
+      _useRefSelectOption = (0, _useRefSelectOption4["default"])(INITIAL_COUNTRY_VALUE),
       _refCountry = _useRefSelectOption[0],
       _selectCountry = _useRefSelectOption[1],
-      _useRefSelectOption2 = (0, _useRefSelectOption4["default"])(DF_TOPIC.value),
+      _useRefSelectOption2 = (0, _useRefSelectOption4["default"])(INITIAL_TOPIC_VALUE),
       _refTopic = _useRefSelectOption2[0],
       _selectTopic = _useRefSelectOption2[1],
-      _useRefSelectOption3 = (0, _useRefSelectOption4["default"])(''),
+      _useRefSelectOption3 = (0, _useRefSelectOption4["default"])(INITIAL_LANGUAGE_VALUE),
       _refLanguage = _useRefSelectOption3[0],
       _selectLanguage = _useRefSelectOption3[1],
       _hLoad = (0, _uiApi.useCallback)(function () {

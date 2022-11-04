@@ -10,13 +10,15 @@ import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import { getItemValue } from '../zhn-m-input/OptionFn';
 
 const SORT_BY_OPTIONS = [
-  { caption: 'Top', value: 'top'},
-  { caption: 'Popular', value: 'popularity'},
-  { caption: 'Newest', value: 'publishedAt' }
+  ['Top', 'top'],
+  ['Popular', 'popularity'],
+  ['Newest', 'publishedAt']
 ]
-, DF_SORT_BY = SORT_BY_OPTIONS[0];
+, DF_SORT_BY = SORT_BY_OPTIONS[0]
+, INITIAL_SORTBY_VALUE = getItemValue(DF_SORT_BY);
 
 const DialogType1 = ({
   isShow,
@@ -28,8 +30,14 @@ const DialogType1 = ({
   onShow,
   onClose
 }) => {
-  const [_refDialog, _hClose] = useRefClose(onClose)
-  , [_refSortBy, _selectSortBy] = useRefSelectOption(DF_SORT_BY.value)
+  const [
+    _refDialog,
+    _hClose
+  ] = useRefClose(onClose)
+  , [
+    _refSortBy,
+    _selectSortBy
+  ] = useRefSelectOption(INITIAL_SORTBY_VALUE)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(()=>{
     onLoad({
@@ -42,7 +50,10 @@ const DialogType1 = ({
   }, [])
   // type, source, itemConf, onLoad
   /*eslint-enable react-hooks/exhaustive-deps */
-  , [TS, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose);
+  , [
+    TS,
+    _hKeyDown
+  ] = useDecorDialog(styleConfig, _hLoad, _hClose);
 
   return (
     <A.DraggableDialog

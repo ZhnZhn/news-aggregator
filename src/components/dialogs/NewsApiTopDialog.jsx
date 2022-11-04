@@ -3,8 +3,6 @@ import {
   getRefValue
 } from '../uiApi';
 
-import toFirstUpperCase from '../../utils/toFirstUpperCase';
-
 import styleConfig from './Dialog.Style';
 
 import useRefClose from './hooks/useRefClose';
@@ -13,6 +11,10 @@ import useDecorDialog from './hooks/useDecorDialog';
 
 import DraggableDialog from '../zhn-moleculs/DraggableDialog';
 import InputSelect from '../zhn-m-input/InputSelect';
+import {
+  getItemValue,
+  crSelectOptions
+} from '../zhn-m-input/OptionFn';
 import FlexColumn from '../zhn-atoms/FlexColumn';
 import { PoweredByNewsApi } from '../links/PoweredByLink';
 
@@ -25,68 +27,67 @@ const _CATEGORY = [
   'sports',
   'technology'
 ]
-, CATEGORY_OPTIONS = _CATEGORY.map(str => ({
-    caption: toFirstUpperCase(str),
-    value: str
-  }))
+, CATEGORY_OPTIONS = crSelectOptions(_CATEGORY)
 , DF_CATEGORY = CATEGORY_OPTIONS[0]
+, INITIAL_CATEGORY_VALUE = getItemValue(DF_CATEGORY)
 , COUNTRY_OPTIONS = [
-   { caption: "Argentina", value: "ar" },
-   { caption: "Australia", value: "au" },
-   { caption: "Austria", value: "at" },
-   { caption: "Belguim", value: "be" },
-   { caption: "Brazil", value: "br" },
-   { caption: "Bulgaria", value: "bg" },
-   { caption: "Canada", value: "ca" },
-   { caption: "China", value: "cn" },
-   { caption: "Colombia", value: "co" },
-   { caption: "Cuba", value: "cu" },
-   { caption: "Czechia", value: "cz" },
-   { caption: "Egypt", value: "eg" },
-   { caption: "France", value: "fr" },
-   { caption: "Germany", value: "de" },
-   { caption: "Greece", value: "gr" },
-   { caption: "Hong Kong", value: "hk" },
-   { caption: "Hungary", value: "hu" },
-   { caption: "India", value: "in" },
-   { caption: "Indonesia", value: "id" },
-   { caption: "Ireland", value: "ie" },
-   { caption: "Israel", value: "il" },
-   { caption: "Italy", value: "it" },
-   { caption: "Japan", value: "jp" },
-   { caption: "Latvia", value: "lv" },
-   { caption: "Lithuania", value: "lt" },
-   { caption: "Malaysia", value: "my" },
-   { caption: "Mexico", value: "mx" },
-   { caption: "Morocco", value: "ma" },
-   { caption: "Netherlands", value: "nl" },
-   { caption: "New Zealand", value: "nz" },
-   { caption: "Nigeria", value: "ng" },
-   { caption: "Norway", value: "no" },
-   { caption: "Phillipines", value: "ph" },
-   { caption: "Poland", value: "pl" },
-   { caption: "Portugal", value: "pt" },
-   { caption: "Romania", value: "ro" },
-   { caption: "Russian Federation", value: "ru" },
-   { caption: "Saudi Arabia", value: "sa" },
-   { caption: "Serbia", value: "rs" },
-   { caption: "Singapore", value: "sg" },
-   { caption: "Slovakia", value: "sk" },
-   { caption: "Slovenia", value: "si" },
-   { caption: "South Africa", value: "za" },
-   { caption: "South Korea", value: "kr" },
-   { caption: "Sweden", value: "se" },
-   { caption: "Switzerland", value: "ch" },
-   { caption: "Taiwan", value: "tw" },
-   { caption: "Thailand", value: "th" },
-   { caption: "Türkiye", value: "tr" },
-   { caption: "Ukraine", value: "ua" },
-   { caption: "United Arab Emirates", value: "ae" },
-   { caption: "United Kingdom", value: "gb" },
-   { caption: "United States", value: "us" },
-   { caption: "Venezuala", value: "ve" }
+   ["Argentina", "ar"],
+   ["Australia", "au"],
+   ["Austria", "at"],
+   ["Belguim", "be"],
+   ["Brazil", "br"],
+   ["Bulgaria", "bg"],
+   ["Canada", "ca"],
+   ["China", "cn"],
+   ["Colombia", "co"],
+   ["Cuba", "cu"],
+   ["Czechia", "cz"],
+   ["Egypt", "eg"],
+   ["France", "fr"],
+   ["Germany", "de"],
+   ["Greece", "gr"],
+   ["Hong Kong", "hk"],
+   ["Hungary", "hu"],
+   ["India", "in"],
+   ["Indonesia", "id"],
+   ["Ireland", "ie"],
+   ["Israel", "il"],
+   ["Italy", "it"],
+   ["Japan", "jp"],
+   ["Latvia", "lv"],
+   ["Lithuania", "lt"],
+   ["Malaysia", "my"],
+   ["Mexico", "mx"],
+   ["Morocco", "ma"],
+   ["Netherlands", "nl"],
+   ["New Zealand", "nz"],
+   ["Nigeria", "ng"],
+   ["Norway", "no"],
+   ["Phillipines", "ph"],
+   ["Poland", "pl"],
+   ["Portugal", "pt"],
+   ["Romania", "ro"],
+   ["Russian Federation", "ru"],
+   ["Saudi Arabia", "sa"],
+   ["Serbia", "rs"],
+   ["Singapore", "sg"],
+   ["Slovakia", "sk"],
+   ["Slovenia", "si"],
+   ["South Africa", "za"],
+   ["South Korea", "kr"],
+   ["Sweden", "se"],
+   ["Switzerland", "ch"],
+   ["Taiwan", "tw"],
+   ["Thailand", "th"],
+   ["Türkiye", "tr"],
+   ["Ukraine", "ua"],
+   ["United Arab Emirates", "ae"],
+   ["United Kingdom", "gb"],
+   ["United States", "us"],
+   ["Venezuala", "ve"]
   ]
-, DF_COUNTRY = COUNTRY_OPTIONS[52];
+, DF_COUNTRY = COUNTRY_OPTIONS[52]
+, INITIAL_COUNTRY_VALUE = getItemValue(DF_COUNTRY);
 
 const NewsApiTopDialog = ({
   isShow,
@@ -104,11 +105,11 @@ const NewsApiTopDialog = ({
   , [
     _refCategory,
     _selectCategory
-  ] = useRefSelectOption(DF_CATEGORY.value)
+  ] = useRefSelectOption(INITIAL_CATEGORY_VALUE)
   , [
     _refCountry,
     _selectCountry
-  ] = useRefSelectOption(DF_COUNTRY.value)
+  ] = useRefSelectOption(INITIAL_COUNTRY_VALUE)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(()=>{
     onLoad({

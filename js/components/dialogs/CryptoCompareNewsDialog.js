@@ -19,6 +19,8 @@ var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/Draggable
 
 var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
 
+var _OptionFn = require("../zhn-m-input/OptionFn");
+
 var _FlexColumn = _interopRequireDefault(require("../zhn-atoms/FlexColumn"));
 
 var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
@@ -27,81 +29,15 @@ var _Links = require("../links/Links");
 
 var _jsxRuntime = require("preact/jsx-runtime");
 
-var FEED_OPTIONS = [{
-  caption: 'All',
-  value: 'ALL_NEWS_FEEDS'
-}, {
-  caption: 'Decrypt',
-  value: 'decrypt'
-}, {
-  caption: 'CoinDesk',
-  value: 'coindesk'
-}, {
-  caption: 'CoinTelegraph',
-  value: 'cointelegraph'
-}, {
-  caption: 'CryptoCompare',
-  value: 'cryptocompare'
-}],
+var FEED_OPTIONS = [['All', 'ALL_NEWS_FEEDS'], ['Decrypt', 'decrypt'], ['CoinDesk', 'coindesk'], ['CoinTelegraph', 'cointelegraph'], ['CryptoCompare', 'cryptocompare']],
     DF_FEED = FEED_OPTIONS[0],
-    CATEGORY_OPTIONS = [{
-  caption: 'All',
-  value: 'ALL_NEWS_CATEGORIES'
-}, {
-  caption: 'Altcoin',
-  value: 'Altcoin'
-}, {
-  caption: 'Asia',
-  value: 'Asia'
-}, {
-  caption: 'Blockchain',
-  value: 'Blockchain'
-}, {
-  caption: 'Business',
-  value: 'Business'
-}, {
-  caption: 'Commodity',
-  value: 'Commodity'
-}, {
-  caption: 'Exchange',
-  value: 'Exchange'
-}, {
-  caption: 'Fiat',
-  value: 'Fiat'
-}, {
-  caption: 'ICO',
-  value: 'ICO'
-}, {
-  caption: 'Market',
-  value: 'Market'
-}, {
-  caption: 'Mining',
-  value: 'Mining'
-}, {
-  caption: 'Regulation',
-  value: 'Regulation'
-}, {
-  caption: 'Trading',
-  value: 'Trading'
-}, {
-  caption: 'Technology',
-  value: 'Technology'
-}, {
-  caption: 'Sponsored',
-  value: 'Sponsored'
-}, {
-  caption: 'Wallet',
-  value: 'Wallet'
-}],
+    CATEGORY_OPTIONS = [['All', 'ALL_NEWS_CATEGORIES'], ['Altcoin'], ['Asia'], ['Blockchain'], ['Business'], ['Commodity'], ['Exchange'], ['Fiat'], ['ICO'], ['Market'], ['Mining'], ['Regulation'], ['Trading'], ['Technology'], ['Sponsored'], ['Wallet']],
     DF_CATEGORY = CATEGORY_OPTIONS[0],
-    SORTBY_OPTIONS = [{
-  caption: 'Latest',
-  value: 'latest'
-}, {
-  caption: 'Popular',
-  value: 'popular'
-}],
-    DF_SORTBY = SORTBY_OPTIONS[0];
+    SORTBY_OPTIONS = [['Latest', 'latest'], ['Popular', 'popular']],
+    DF_SORTBY = SORTBY_OPTIONS[0],
+    INITIAL_FEED_VALUE = (0, _OptionFn.getItemValue)(DF_FEED),
+    INITIAL_CATEGORY_VALUE = (0, _OptionFn.getItemValue)(DF_CATEGORY),
+    INITIAL_SORTBY_VALUE = (0, _OptionFn.getItemValue)(DF_SORTBY);
 
 var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(_ref) {
   var isShow = _ref.isShow,
@@ -115,13 +51,13 @@ var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(_ref) {
   var _useRefClose = (0, _useRefClose2["default"])(onClose),
       _refDialog = _useRefClose[0],
       _hClose = _useRefClose[1],
-      _useRefSelectOption = (0, _useRefSelectOption4["default"])(DF_FEED.value),
+      _useRefSelectOption = (0, _useRefSelectOption4["default"])(INITIAL_FEED_VALUE),
       _refFeed = _useRefSelectOption[0],
       _selectFeed = _useRefSelectOption[1],
-      _useRefSelectOption2 = (0, _useRefSelectOption4["default"])(DF_CATEGORY.value),
+      _useRefSelectOption2 = (0, _useRefSelectOption4["default"])(INITIAL_CATEGORY_VALUE),
       _refCategory = _useRefSelectOption2[0],
       _selectCategory = _useRefSelectOption2[1],
-      _useRefSelectOption3 = (0, _useRefSelectOption4["default"])(DF_SORTBY.value),
+      _useRefSelectOption3 = (0, _useRefSelectOption4["default"])(INITIAL_SORTBY_VALUE),
       _refSortBy = _useRefSelectOption3[0],
       _selectSortBy = _useRefSelectOption3[1],
       _hLoad = (0, _uiApi.useCallback)(function () {

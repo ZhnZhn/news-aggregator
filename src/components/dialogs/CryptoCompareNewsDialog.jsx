@@ -11,41 +11,45 @@ import useDecorDialog from './hooks/useDecorDialog';
 
 import DraggableDialog from '../zhn-moleculs/DraggableDialog';
 import InputSelect from '../zhn-m-input/InputSelect';
+import { getItemValue } from '../zhn-m-input/OptionFn';
 import FlexColumn from '../zhn-atoms/FlexColumn';
 import PoweredBy from '../links/PoweredBy';
 import { CryptoCompareLink } from '../links/Links';
 
 const FEED_OPTIONS = [
-  { caption: 'All', value: 'ALL_NEWS_FEEDS' },
-  { caption: 'Decrypt', value: 'decrypt' },
-  { caption: 'CoinDesk', value: 'coindesk' },
-  { caption: 'CoinTelegraph', value: 'cointelegraph' },
-  { caption: 'CryptoCompare', value: 'cryptocompare' },
+  ['All', 'ALL_NEWS_FEEDS'],
+  ['Decrypt', 'decrypt'],
+  ['CoinDesk', 'coindesk'],
+  ['CoinTelegraph', 'cointelegraph'],
+  ['CryptoCompare', 'cryptocompare']
 ]
 , DF_FEED = FEED_OPTIONS[0]
 , CATEGORY_OPTIONS = [
-  { caption: 'All', value: 'ALL_NEWS_CATEGORIES' },
-  { caption: 'Altcoin', value: 'Altcoin' },
-  { caption: 'Asia', value: 'Asia' },
-  { caption: 'Blockchain', value: 'Blockchain' },
-  { caption: 'Business', value: 'Business' },
-  { caption: 'Commodity', value: 'Commodity' },
-  { caption: 'Exchange', value: 'Exchange' },
-  { caption: 'Fiat', value: 'Fiat' },
-  { caption: 'ICO', value: 'ICO' },
-  { caption: 'Market', value: 'Market' },
-  { caption: 'Mining', value: 'Mining' },
-  { caption: 'Regulation', value: 'Regulation' },
-  { caption: 'Trading', value: 'Trading' },
-  { caption: 'Technology', value: 'Technology' },
-  { caption: 'Sponsored', value: 'Sponsored' },
-  { caption: 'Wallet', value: 'Wallet' },
+  ['All', 'ALL_NEWS_CATEGORIES'],
+  ['Altcoin'],
+  ['Asia'],
+  ['Blockchain'],
+  ['Business'],
+  ['Commodity'],
+  ['Exchange'],
+  ['Fiat'],
+  ['ICO'],
+  ['Market'],
+  ['Mining'],
+  ['Regulation'],
+  ['Trading'],
+  ['Technology'],
+  ['Sponsored'],
+  ['Wallet']
 ]
 , DF_CATEGORY = CATEGORY_OPTIONS[0]
 , SORTBY_OPTIONS = [
-  {caption: 'Latest', value: 'latest'},
-  {caption: 'Popular', value: 'popular'},
+  ['Latest', 'latest'],
+  ['Popular', 'popular']
 ], DF_SORTBY = SORTBY_OPTIONS[0]
+, INITIAL_FEED_VALUE = getItemValue(DF_FEED)
+, INITIAL_CATEGORY_VALUE = getItemValue(DF_CATEGORY)
+, INITIAL_SORTBY_VALUE = getItemValue(DF_SORTBY);
 
 const CryptoCompareNewsDialog = ({
   isShow,
@@ -63,19 +67,21 @@ const CryptoCompareNewsDialog = ({
   , [
     _refFeed,
     _selectFeed
-  ] = useRefSelectOption(DF_FEED.value)
+  ] = useRefSelectOption(INITIAL_FEED_VALUE)
   , [
     _refCategory,
     _selectCategory
-  ] = useRefSelectOption(DF_CATEGORY.value)
+  ] = useRefSelectOption(INITIAL_CATEGORY_VALUE)
   , [
     _refSortBy,
     _selectSortBy
-  ] = useRefSelectOption(DF_SORTBY.value)
+  ] = useRefSelectOption(INITIAL_SORTBY_VALUE)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(() => {
     onLoad({
-      type, source, itemConf,
+      type,
+      source,
+      itemConf,
       loadId: 'CCN',
       feed: getRefValue(_refFeed),
       category: getRefValue(_refCategory),
@@ -85,7 +91,10 @@ const CryptoCompareNewsDialog = ({
   }, [])
   //type, source, itemConf, onLoad
   /*eslint-enable react-hooks/exhaustive-deps */
-  , [TS, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose);
+  , [
+    TS,
+    _hKeyDown
+  ] = useDecorDialog(styleConfig, _hLoad, _hClose);
 
   return (
     <DraggableDialog

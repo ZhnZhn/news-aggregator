@@ -12,6 +12,7 @@ import useRefSelectOption from './hooks/useRefSelectOption';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import { getItemValue } from '../zhn-m-input/OptionFn';
 import { PoweredByStackOverflow } from '../links/PoweredByLink';
 
 const DATE_ERR_MSG = "YYYY-MM-DD";
@@ -21,14 +22,15 @@ const INITIAL_FROM_DATE = DateUtil.getFromDate(1)
 , _onTestDate = DateUtil.isValidDate
 , _toUTCSecond = DateUtil.toUTCSecond
 ,  SORT_BY_OPTIONS = [
-  { caption: "Activity, Recent Day", value: "activity" },
-  { caption: "Creation Date", value: "creation"},
-  { caption: "Score", value: "votes" },
-  { caption: "Hot Tab", value: "hot" },
-  { caption: "Hot Week Tab", value: "week" },
-  { caption: "Hot Month Tab", value: "month" }
+  ["Activity, Recent Day", "activity"],
+  ["Creation Date", "creation"],
+  ["Score", "votes"],
+  ["Hot Tab", "hot"],
+  ["Hot Week Tab", "week"],
+  ["Hot Month Tab", "month"]
 ]
 , DF_SORT_BY = SORT_BY_OPTIONS[4]
+, INITIAL_SORT_BY_VALUE = getItemValue(DF_SORT_BY)
 , DF_TAG = "CSS";
 
 const StackTaggedDialog = ({
@@ -51,7 +53,7 @@ const StackTaggedDialog = ({
   , [
     _refSortBy,
     _selectSortBy
-  ] = useRefSelectOption(DF_SORT_BY.value)
+  ] = useRefSelectOption(INITIAL_SORT_BY_VALUE)
   , [
     _refFromDate,
     _getInputFromDate
@@ -78,7 +80,10 @@ const StackTaggedDialog = ({
   //type, source, itemConf, _hClose
   // _getInputTag, _refSortBy, _getInputFromDate, _getInputToDate
   /*eslint-enable react-hooks/exhaustive-deps */
-  , [TS, _hKeyDown] = useDecorDialog(styleConfig, _hLoad, _hClose)
+  , [
+    TS,
+    _hKeyDown
+  ] = useDecorDialog(styleConfig, _hLoad, _hClose)
   , _tagCaption = `Tag (Default: ${DF_TAG})`;
 
   return (
@@ -130,7 +135,7 @@ const StackTaggedDialog = ({
       </div>
       <PoweredByStackOverflow
          style={TS.POWERED_BY}
-      />      
+      />
     </A.DraggableDialog>
   );
 };

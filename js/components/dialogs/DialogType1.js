@@ -17,19 +17,13 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
-var _jsxRuntime = require("react/jsx-runtime");
+var _OptionFn = require("../zhn-m-input/OptionFn");
 
-var SORT_BY_OPTIONS = [{
-  caption: 'Top',
-  value: 'top'
-}, {
-  caption: 'Popular',
-  value: 'popularity'
-}, {
-  caption: 'Newest',
-  value: 'publishedAt'
-}],
-    DF_SORT_BY = SORT_BY_OPTIONS[0];
+var _jsxRuntime = require("preact/jsx-runtime");
+
+var SORT_BY_OPTIONS = [['Top', 'top'], ['Popular', 'popularity'], ['Newest', 'publishedAt']],
+    DF_SORT_BY = SORT_BY_OPTIONS[0],
+    INITIAL_SORTBY_VALUE = (0, _OptionFn.getItemValue)(DF_SORT_BY);
 
 var DialogType1 = function DialogType1(_ref) {
   var isShow = _ref.isShow,
@@ -44,7 +38,7 @@ var DialogType1 = function DialogType1(_ref) {
   var _useRefClose = (0, _useRefClose2["default"])(onClose),
       _refDialog = _useRefClose[0],
       _hClose = _useRefClose[1],
-      _useRefSelectOption = (0, _useRefSelectOption2["default"])(DF_SORT_BY.value),
+      _useRefSelectOption = (0, _useRefSelectOption2["default"])(INITIAL_SORTBY_VALUE),
       _refSortBy = _useRefSelectOption[0],
       _selectSortBy = _useRefSelectOption[1],
       _hLoad = (0, _uiApi.useCallback)(function () {
@@ -61,7 +55,7 @@ var DialogType1 = function DialogType1(_ref) {
       TS = _useDecorDialog[0],
       _hKeyDown = _useDecorDialog[1];
 
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].DraggableDialog, {
+  return (0, _jsxRuntime.jsx)(_Comp["default"].DraggableDialog, {
     ref: _refDialog,
     isShow: isShow,
     style: TS.R_DIALOG,
@@ -72,7 +66,7 @@ var DialogType1 = function DialogType1(_ref) {
     onLoad: _hLoad,
     onShowChart: onShow,
     onClose: _hClose,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
+    children: (0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
       caption: "SortBy",
       initItem: DF_SORT_BY,
       options: SORT_BY_OPTIONS,

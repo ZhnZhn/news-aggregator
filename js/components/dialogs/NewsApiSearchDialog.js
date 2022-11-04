@@ -19,21 +19,15 @@ var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"))
 
 var _Comp = _interopRequireDefault(require("../Comp"));
 
+var _OptionFn = require("../zhn-m-input/OptionFn");
+
 var _PoweredByLink = require("../links/PoweredByLink");
 
 var _jsxRuntime = require("preact/jsx-runtime");
 
-var SORT_BY_OPTIONS = [{
-  caption: "Relevancy",
-  value: "relevancy"
-}, {
-  caption: "Popularity",
-  value: "popularity"
-}, {
-  caption: "PublishedAt",
-  value: "publishedAt"
-}],
+var SORT_BY_OPTIONS = [["Relevancy", "relevancy"], ["Popularity", "popularity"], ["PublishedAt", "publishedAt"]],
     DF_SORT_BY = SORT_BY_OPTIONS[0],
+    INITIAL_SORT_BY_VALUE = (0, _OptionFn.getItemValue)(DF_SORT_BY),
     DF_TERM = "Weather";
 
 var NewsApiSearchDialog = function NewsApiSearchDialog(_ref) {
@@ -51,7 +45,7 @@ var NewsApiSearchDialog = function NewsApiSearchDialog(_ref) {
       _useRefInput = (0, _useRefInput2["default"])(DF_TERM),
       _refInputTerm = _useRefInput[0],
       _getInputTerm = _useRefInput[1],
-      _useRefSelectOption = (0, _useRefSelectOption2["default"])(DF_SORT_BY.value),
+      _useRefSelectOption = (0, _useRefSelectOption2["default"])(INITIAL_SORT_BY_VALUE),
       _refSortBy = _useRefSelectOption[0],
       _selectSortBy = _useRefSelectOption[1],
       _hLoad = (0, _uiApi.useCallback)(function () {
