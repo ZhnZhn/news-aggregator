@@ -15,6 +15,8 @@ var _ArrowCell = _interopRequireDefault(require("./ArrowCell"));
 
 var _OptionsPane = _interopRequireDefault(require("./OptionsPane"));
 
+var _OptionFn = require("./OptionFn");
+
 var _jsxRuntime = require("preact/jsx-runtime");
 
 var CL_SELECT = 'm-select',
@@ -24,10 +26,7 @@ var CL_SELECT = 'm-select',
     CL_DIV_BT = CL_SELECT + "__div__bt",
     CL_INPUT_LINE = CL_SELECT + "__line",
     CL_SELECT_OPTIONS = CL_SELECT + "__options with-scroll";
-var DF_INIT_ITEM = {
-  caption: '',
-  value: ''
-};
+var DF_INIT_ITEM = ['', ''];
 
 var InputSelect = function InputSelect(_ref) {
   var initItem = _ref.initItem,
@@ -73,7 +72,7 @@ var InputSelect = function InputSelect(_ref) {
       className: CL_DIV,
       children: [(0, _jsxRuntime.jsx)("div", {
         className: CL_DIV_VALUE,
-        children: item.caption
+        children: (0, _OptionFn.getItemCaption)(item)
       }), (0, _jsxRuntime.jsx)("button", {
         className: CL_DIV_BT,
         children: (0, _jsxRuntime.jsx)(_ArrowCell["default"], {})

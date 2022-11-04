@@ -9,6 +9,10 @@ import {
 import ShowHide from '../zhn-atoms/ShowHide';
 import ItemStack from '../zhn-atoms/ItemStack';
 import ModalPane from '../zhn-moleculs/ModalPane';
+import {
+  getItemCaption,
+  getItemValue
+} from './OptionFn';
 
 const SCROLL_OPTIONS = {
   block: 'center',
@@ -40,15 +44,13 @@ const _crItem = (
   clItem,
   onSelect
 }) => {
-  const {
-    value,
-    caption
-  } = item
+  const caption = getItemCaption(item)
+  , value = getItemValue(item)
   , [
     _tabIndex,
     _ref,
     _ariaSelected,
-  ] = value === currentItem.value
+  ] = value === getItemValue(currentItem)
     ? ["0", refItem, "true"]
     : ["-1"]
   , _hKeyDown = evt => {

@@ -13,6 +13,8 @@ var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
 
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 
+var _OptionFn = require("./OptionFn");
+
 var _jsxRuntime = require("preact/jsx-runtime");
 
 var SCROLL_OPTIONS = {
@@ -49,9 +51,9 @@ var _crItem = function _crItem(item, index, _ref2) {
       clItem = _ref2.clItem,
       onSelect = _ref2.onSelect;
 
-  var value = item.value,
-      caption = item.caption,
-      _ref3 = value === currentItem.value ? ["0", refItem, "true"] : ["-1"],
+  var caption = (0, _OptionFn.getItemCaption)(item),
+      value = (0, _OptionFn.getItemValue)(item),
+      _ref3 = value === (0, _OptionFn.getItemValue)(currentItem) ? ["0", refItem, "true"] : ["-1"],
       _tabIndex = _ref3[0],
       _ref = _ref3[1],
       _ariaSelected = _ref3[2],

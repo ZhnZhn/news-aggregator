@@ -11,6 +11,9 @@ import {
 
 import ArrowCell from './ArrowCell';
 import OptionsPane from './OptionsPane';
+import {
+  getItemCaption
+} from './OptionFn';
 
 const CL_SELECT = 'm-select'
 , CL_LABEL = `${CL_SELECT}__label`
@@ -20,10 +23,7 @@ const CL_SELECT = 'm-select'
 , CL_INPUT_LINE = `${CL_SELECT}__line`
 , CL_SELECT_OPTIONS = `${CL_SELECT}__options with-scroll`;
 
-const DF_INIT_ITEM = {
-  caption: '',
-  value: ''
-};
+const DF_INIT_ITEM = ['', ''];
 
 const InputSelect = ({
   initItem,
@@ -72,7 +72,7 @@ const InputSelect = ({
        />
       <div className={CL_DIV}>
         <div className={CL_DIV_VALUE}>
-           {item.caption}
+           {getItemCaption(item)}
         </div>
         <button className={CL_DIV_BT}>
            <ArrowCell />
