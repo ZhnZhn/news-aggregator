@@ -23,15 +23,14 @@ var _Comp = _interopRequireDefault(require("../Comp"));
 
 var _OptionFn = require("../zhn-m-input/OptionFn");
 
+var _InputFromToDate = _interopRequireDefault(require("./InputFromToDate"));
+
 var _PoweredByLink = require("../links/PoweredByLink");
 
 var _jsxRuntime = require("preact/jsx-runtime");
 
-var DATE_ERR_MSG = "YYYY-MM-DD";
-
 var INITIAL_FROM_DATE = _dt["default"].getFromDate(1),
     INITIAL_TO_DATE = _dt["default"].getToDate(),
-    _onTestDate = _dt["default"].isValidDate,
     _toUTCSecond = _dt["default"].toUTCSecond,
     SORT_BY_OPTIONS = [["Activity, Recent Day", "activity"], ["Creation Date", "creation"], ["Score", "votes"], ["Relevance", "relevance"]],
     DF_SORT_BY = SORT_BY_OPTIONS[2],
@@ -118,24 +117,12 @@ var StackSearchDialog = function StackSearchDialog(_ref) {
       options: SORT_BY_OPTIONS,
       styleConfig: TS.SELECT,
       onSelect: _selectSortBy
-    }), (0, _jsxRuntime.jsxs)("div", {
-      children: [(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
-        ref: _refFromDate,
-        caption: "From Date",
-        hasClear: false,
-        style: TS.INPUT_DATE,
-        initValue: INITIAL_FROM_DATE,
-        errorMsg: DATE_ERR_MSG,
-        onTest: _onTestDate
-      }), (0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
-        ref: _refToDate,
-        caption: "To Date",
-        hasClear: false,
-        style: TS.INPUT_DATE,
-        initValue: INITIAL_TO_DATE,
-        errorMsg: DATE_ERR_MSG,
-        onTest: _onTestDate
-      })]
+    }), (0, _jsxRuntime.jsx)(_InputFromToDate["default"], {
+      refFromDate: _refFromDate,
+      refToDate: _refToDate,
+      TS: TS,
+      initialFrom: INITIAL_FROM_DATE,
+      initialTo: INITIAL_TO_DATE
     }), (0, _jsxRuntime.jsx)(_PoweredByLink.PoweredByStackOverflow, {
       style: TS.POWERED_BY
     })]

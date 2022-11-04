@@ -13,13 +13,11 @@ import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
 import { getItemValue } from '../zhn-m-input/OptionFn';
+import InputFromToDate from './InputFromToDate';
 import { PoweredByStackOverflow } from '../links/PoweredByLink';
-
-const DATE_ERR_MSG = "YYYY-MM-DD";
 
 const INITIAL_FROM_DATE = DateUtil.getFromDate(1)
 , INITIAL_TO_DATE = DateUtil.getToDate()
-, _onTestDate = DateUtil.isValidDate
 , _toUTCSecond = DateUtil.toUTCSecond
 , SORT_BY_OPTIONS = [
   ["Activity, Recent Day", "activity"],
@@ -127,26 +125,13 @@ const StackSearchDialog = ({
          styleConfig={TS.SELECT}
          onSelect={_selectSortBy}
        />
-       <div>
-          <A.TextField
-            ref={_refFromDate}
-            caption="From Date"
-            hasClear={false}
-            style={TS.INPUT_DATE}
-            initValue={INITIAL_FROM_DATE}
-            errorMsg={DATE_ERR_MSG}
-            onTest={_onTestDate}
-          />
-          <A.TextField
-            ref={_refToDate}
-            caption="To Date"
-            hasClear={false}
-            style={TS.INPUT_DATE}
-            initValue={INITIAL_TO_DATE}
-            errorMsg={DATE_ERR_MSG}
-            onTest={_onTestDate}
-          />
-      </div>
+       <InputFromToDate
+         refFromDate={_refFromDate}
+         refToDate={_refToDate}
+         TS={TS}
+         initialFrom={INITIAL_FROM_DATE}
+         initialTo={INITIAL_TO_DATE}
+       />
       <PoweredByStackOverflow
          style={TS.POWERED_BY}
       />
