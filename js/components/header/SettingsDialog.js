@@ -1,83 +1,69 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
-
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
 var _uiApi = require("../uiApi");
-
 var _memoIsShow = _interopRequireDefault(require("../hoc/memoIsShow"));
-
 var _ThemeContext = _interopRequireDefault(require("../hooks/ThemeContext"));
-
 var _Dialog = _interopRequireDefault(require("../dialogs/Dialog.Style"));
-
 var _ComponentActions = require("../../flux/actions/ComponentActions");
-
 var _Comp = _interopRequireDefault(require("../Comp"));
-
 var _CardApiKeys = _interopRequireDefault(require("./CardApiKeys"));
-
 var _CardUiTheme = _interopRequireDefault(require("./CardUiTheme"));
-
 var _jsxRuntime = require("preact/jsx-runtime");
-
 //import PropTypes from 'prop-types'
+
 var _assign = Object.assign,
-    S_MODAL = {
-  position: 'static',
-  width: 340,
-  height: 460,
-  margin: '70px auto 0px'
-},
-    S_DIV_BT = {
-  margin: '26px 0 4px 0'
-},
-    S_TABS = {
-  marginLeft: 24,
-  textAlign: 'left'
-},
-    S_CARD_ROOT = {
-  position: 'relative',
-  height: 370,
-  overflowY: 'auto'
-},
-    S_CARD_BUTTONS = {
-  display: 'flex',
-  justifyContent: 'flex-end',
-  flexWrap: 'wrap',
-  margin: '10px 10px 10px 0'
-},
-    S_SELECT_WIDTH = {
-  width: 300
-},
-    S_INPUT_WIDTH = {
-  width: 315,
-  marginLeft: 8
-};
+  S_MODAL = {
+    position: 'static',
+    width: 340,
+    maxHeight: 460,
+    margin: '70px auto 0px'
+  },
+  S_DIV_BT = {
+    margin: '26px 0 4px 0'
+  },
+  S_TABS = {
+    marginLeft: 24,
+    textAlign: 'left'
+  },
+  S_CARD_ROOT = {
+    position: 'relative',
+    maxHeight: 370
+  },
+  S_CARD_API = (0, _extends2["default"])({}, S_CARD_ROOT, {
+    overflowY: 'auto'
+  }),
+  S_CARD_BUTTONS = {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    flexWrap: 'wrap',
+    margin: '10px 12px 10px 0'
+  },
+  S_SELECT_WIDTH = {
+    width: 306
+  },
+  S_INPUT_WIDTH = {
+    width: 315,
+    marginLeft: 8
+  };
 var SettingsDialog = (0, _memoIsShow["default"])(function (_ref) {
   var isShow = _ref.isShow,
-      data = _ref.data,
-      onClose = _ref.onClose;
-
+    data = _ref.data,
+    onClose = _ref.onClose;
   var theme = (0, _uiApi.useContext)(_ThemeContext["default"]),
-      _selectTheme = (0, _uiApi.useCallback)(function (item) {
-    var value = (item || [])[1];
-
-    if (value && theme.getThemeName() !== value) {
-      theme.setThemeName(value);
-
-      _ComponentActions.ComponentActions.changeTheme(value);
-    }
-  }, [theme]),
-      TS = theme.createStyle(_Dialog["default"]),
-      _TS = JSON.parse(JSON.stringify(TS));
-
+    _selectTheme = (0, _uiApi.useCallback)(function (item) {
+      var value = (item || [])[1];
+      if (value && theme.getThemeName() !== value) {
+        theme.setThemeName(value);
+        _ComponentActions.ComponentActions.changeTheme(value);
+      }
+    }, [theme]),
+    TS = theme.createStyle(_Dialog["default"]),
+    _TS = JSON.parse(JSON.stringify(TS));
   _assign(_TS.SELECT.ROOT, S_SELECT_WIDTH);
-
   return (0, _jsxRuntime.jsx)(_Comp["default"].ModalDialog, {
     style: (0, _extends2["default"])({}, S_MODAL, TS.R_DIALOG),
     divBtStyle: S_DIV_BT,
@@ -93,7 +79,7 @@ var SettingsDialog = (0, _memoIsShow["default"])(function (_ref) {
       children: [(0, _jsxRuntime.jsx)(_Comp["default"].Tab, {
         title: "API Keys",
         children: (0, _jsxRuntime.jsx)(_CardApiKeys["default"], {
-          style: S_CARD_ROOT,
+          style: S_CARD_API,
           fieldStyle: (0, _extends2["default"])({}, TS.INPUT_ROOT, S_INPUT_WIDTH),
           buttonsStyle: S_CARD_BUTTONS,
           TS: TS,
@@ -112,6 +98,7 @@ var SettingsDialog = (0, _memoIsShow["default"])(function (_ref) {
     })
   });
 });
+
 /*
 SettingsDialog.propTypes = {
   isShow: PropTypes.bool,
@@ -122,7 +109,6 @@ SettingsDialog.propTypes = {
   onClose: PropTypes.func
 }
 */
-
 var _default = SettingsDialog;
 exports["default"] = _default;
 //# sourceMappingURL=SettingsDialog.js.map

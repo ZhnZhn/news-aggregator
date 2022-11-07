@@ -8,7 +8,9 @@ import memoIsShow from '../hoc/memoIsShow';
 import ThemeContext from '../hooks/ThemeContext';
 import styleConfig from '../dialogs/Dialog.Style';
 
-import { ComponentActions } from '../../flux/actions/ComponentActions';
+import {
+  ComponentActions
+} from '../../flux/actions/ComponentActions';
 
 import A from '../Comp';
 import CardApiKeys from './CardApiKeys';
@@ -18,7 +20,7 @@ const _assign = Object.assign
 , S_MODAL = {
   position: 'static',
   width: 340,
-  height: 460,
+  maxHeight: 460,
   margin: '70px auto 0px'
 }
 , S_DIV_BT = {
@@ -30,17 +32,20 @@ const _assign = Object.assign
 }
 , S_CARD_ROOT = {
   position: 'relative',
-  height: 370,
+  maxHeight: 370,
+}
+, S_CARD_API = {
+  ...S_CARD_ROOT,
   overflowY: 'auto'
 }
 , S_CARD_BUTTONS = {
   display: 'flex',
   justifyContent: 'flex-end',
   flexWrap: 'wrap',
-  margin: '10px 10px 10px 0'
+  margin: '10px 12px 10px 0'
 }
 , S_SELECT_WIDTH = {
-  width: 300
+  width: 306
 }
 , S_INPUT_WIDTH = {
   width: 315,
@@ -82,7 +87,7 @@ const SettingsDialog = memoIsShow(({
       >
          <A.Tab title="API Keys">
             <CardApiKeys
-              style={S_CARD_ROOT}
+              style={S_CARD_API}
               fieldStyle={{...TS.INPUT_ROOT, ...S_INPUT_WIDTH}}
               buttonsStyle={S_CARD_BUTTONS}
               TS={TS}
