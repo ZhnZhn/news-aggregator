@@ -2,18 +2,16 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
-
 var _CL = require("../styles/CL");
-
 var crModelMore = function crModelMore(_ref) {
   var onMinWidth = _ref.onMinWidth,
-      onInitWidth = _ref.onInitWidth,
-      onPlusWidth = _ref.onPlusWidth,
-      onMinusWidth = _ref.onMinusWidth,
-      onRemoveItems = _ref.onRemoveItems;
+    onInitWidth = _ref.onInitWidth,
+    onPlusWidth = _ref.onPlusWidth,
+    onMinusWidth = _ref.onMinusWidth,
+    onRemoveItems = _ref.onRemoveItems;
   return {
     titleCl: _CL.CL_MENU_MORE_ITEM,
-    pageWidth: 180,
+    pageWidth: 196,
     maxPages: 2,
     p0: [{
       id: 'p1',
@@ -45,7 +43,6 @@ var crModelMore = function crModelMore(_ref) {
     }]
   };
 };
-
 var _default = crModelMore;
 exports["default"] = _default;
 //# sourceMappingURL=crModelMore.js.map

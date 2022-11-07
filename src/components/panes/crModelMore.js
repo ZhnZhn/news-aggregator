@@ -9,7 +9,7 @@ const crModelMore = ({
 }) => {
   return {
     titleCl: CL_MENU_MORE_ITEM,
-    pageWidth: 180,
+    pageWidth: 196,
     maxPages: 2,
     p0: [
       {

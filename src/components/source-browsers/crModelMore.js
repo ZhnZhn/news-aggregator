@@ -4,7 +4,7 @@ const crModelMore = ({
   onRemoveBadges
 }) => ({
   titleCl: CL_MENU_MORE_ITEM,
-  pageWidth: 186,
+  pageWidth: '11.625rem',
   maxPages: 1,
   p0: [{
     cn: CL_MENU_MORE_ITEM,
