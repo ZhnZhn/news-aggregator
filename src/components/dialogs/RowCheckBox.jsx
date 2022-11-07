@@ -8,9 +8,10 @@ const S_ROW_CHECKBOX = {
   fontWeight: 'bold',
   marginLeft: 8,
   userSelect: 'none'
-}
+};
 
 const RowCheckBox = ({
+  style=S_ROW_CHECKBOX,
   initialValue,
   stroke,
   caption,
@@ -27,7 +28,7 @@ const RowCheckBox = ({
     onUnCheck
   );
   return (
-    <div style={S_ROW_CHECKBOX}>
+    <div style={style}>
       <SvgCheckBox
         isChecked={isChecked}
         stroke={stroke}
