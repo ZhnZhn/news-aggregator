@@ -8,19 +8,27 @@ const _crQueryToken = (
   ? ''
   : `&${parameterName}=${value}`;
 
+const _crPage = (
+  nextPage
+) => nextPage
+  ? `&page=${nextPage}`
+  : '';
+
 const TheNewsApiTop = {
   getRequestUrl: option => {
     const {
       apiKey,
       category,
       locale,
-      domain
+      domain,
+      nextPage
     } = option
     , _categoryQuery = _crQueryToken(category, 'categories')
     , _domainQuery = _crQueryToken(domain, 'domains')
-    , _localeQuery = _crQueryToken(locale, 'locale');
+    , _localeQuery = _crQueryToken(locale, 'locale')
+    , _page = _crPage(nextPage);
 
-    return `${API_URL}?api_token=${apiKey}${_localeQuery}${_categoryQuery}${_domainQuery}&${QUERY_LIMIT}`;
+    return `${API_URL}?api_token=${apiKey}${_localeQuery}${_categoryQuery}${_domainQuery}${_page}&${QUERY_LIMIT}`;
   },
 
   checkResponse(json, option){
