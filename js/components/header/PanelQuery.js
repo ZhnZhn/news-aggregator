@@ -1,39 +1,31 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
-
 var _uiApi = require("../uiApi");
-
 var _Comp = _interopRequireDefault(require("../Comp"));
-
 var _jsxRuntime = require("preact/jsx-runtime");
-
 var CL_ITEM = 'row__topic';
-
 var PanelQuery = function PanelQuery(_ref) {
   var className = _ref.className,
-      paneStyle = _ref.paneStyle,
-      isShow = _ref.isShow,
-      onCryptoCompare = _ref.onCryptoCompare,
-      onCoinStats = _ref.onCoinStats,
-      onMessari = _ref.onMessari,
-      onIex = _ref.onIex,
-      onFmp = _ref.onFmp,
-      onNewsApi = _ref.onNewsApi,
-      onNewsTop = _ref.onNewsTop,
-      onTheNewsTop = _ref.onTheNewsTop,
-      onStackTagged = _ref.onStackTagged,
-      onStackSearch = _ref.onStackSearch,
-      onWebz = _ref.onWebz,
-      onWebzCountry = _ref.onWebzCountry,
-      onClose = _ref.onClose;
-
+    paneStyle = _ref.paneStyle,
+    isShow = _ref.isShow,
+    onCryptoCompare = _ref.onCryptoCompare,
+    onCoinStats = _ref.onCoinStats,
+    onMessari = _ref.onMessari,
+    onIex = _ref.onIex,
+    onFmp = _ref.onFmp,
+    onNewsApi = _ref.onNewsApi,
+    onNewsTop = _ref.onNewsTop,
+    onTheNewsTop = _ref.onTheNewsTop,
+    onStackTagged = _ref.onStackTagged,
+    onStackSearch = _ref.onStackSearch,
+    onWebz = _ref.onWebz,
+    onWebzCountry = _ref.onWebzCountry,
+    onClose = _ref.onClose;
   var _refFirstItem = (0, _uiApi.useRef)(),
-      _refPrevEl = (0, _uiApi.useRef)();
-
+    _refPrevEl = (0, _uiApi.useRef)();
   (0, _uiApi.useEffect)(function () {
     if (isShow && !_refPrevEl.current) {
       _refPrevEl.current = document.activeElement;
@@ -86,7 +78,7 @@ var PanelQuery = function PanelQuery(_ref) {
       onClose: onClose
     }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
       className: CL_ITEM,
-      caption: "TheNewsApi: Top By",
+      caption: "TheNewsAPI: Top By",
       onClick: onTheNewsTop,
       onClose: onClose
     }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
@@ -112,7 +104,6 @@ var PanelQuery = function PanelQuery(_ref) {
     })]
   });
 };
-
 var _default = PanelQuery;
 exports["default"] = _default;
 //# sourceMappingURL=PanelQuery.js.map

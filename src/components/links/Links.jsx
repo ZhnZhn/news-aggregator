@@ -38,7 +38,7 @@ export const NewsApiLink = _fSafeLink(
 
 export const TheNewsApiLink = _fSafeLink(
   "https://thenewsapi.com",
-  "TheNewsApi"
+  "TheNewsAPI"
 )
 
 export const WebzLink = _fSafeLink(

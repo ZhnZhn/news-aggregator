@@ -44,7 +44,7 @@ const _toArticles = ({
 
 const _crCaption = ({
   category
-}) => `TheNewsApi: ${toFirstUpperCase(category)}`
+}) => `TheNewsAPI: ${toFirstUpperCase(category)}`
 
 const _crNextPage = (
   page,

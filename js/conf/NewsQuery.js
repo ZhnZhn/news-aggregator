@@ -114,7 +114,7 @@ var NEWS_QUERY = {
   THE_NEWS_TOP: {
     "type": "THE_NEWS_TOP",
     "dialogType": "TheNewsApiTop",
-    "paneCaption": "TheNewsApi: Top By",
+    "paneCaption": "TheNewsAPI: Top By",
     "paneId": "thenewsapi_top",
     "dialogProps": {
       "source": "thenewsapi_top"

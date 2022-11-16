@@ -91,7 +91,7 @@ const PanelQuery = ({
         />
         <A.MenuItem
           className={CL_ITEM}
-          caption="TheNewsApi: Top By"
+          caption="TheNewsAPI: Top By"
           onClick={onTheNewsTop}
           onClose={onClose}
         />

@@ -135,7 +135,7 @@ const CardApiKeys = (props) => {
            onEnter={setNews}
         />
         <PasswordField
-           {..._crPasswordFieldProps('TheNewsApi', 40)}
+           {..._crPasswordFieldProps('TheNewsAPI', 40)}
            ref={_refInputTheNews}
            style={fieldStyle}
            name="thenewsapi"

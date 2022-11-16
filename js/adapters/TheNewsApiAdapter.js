@@ -36,7 +36,7 @@ var _toArticles = function _toArticles(_ref) {
 };
 var _crCaption = function _crCaption(_ref2) {
   var category = _ref2.category;
-  return "TheNewsApi: " + (0, _toFirstUpperCase["default"])(category);
+  return "TheNewsAPI: " + (0, _toFirstUpperCase["default"])(category);
 };
 var _crNextPage = function _crNextPage(page, maxPage) {
   return _isNumber(page) ? _isNumber(maxPage) ? Math.min(page + 1, maxPage) : page + 1 : void 0;
