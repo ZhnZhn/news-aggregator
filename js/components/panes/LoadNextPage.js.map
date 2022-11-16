@@ -1,0 +1,24 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/panes/LoadNextPage.js"
+ ],
+ "file": "../../../src/components/panes/LoadNextPage.js",
+ "names": [
+  "S_DIV",
+  "textAlign",
+  "paddingTop",
+  "_crPageCounter",
+  "nextPage",
+  "maxPage",
+  "LoadNextPage",
+  "page",
+  "TS",
+  "useTheme",
+  "styleConfig",
+  "BT",
+  "CL_FLAT_DIV",
+  "onPageLoad"
+ ],
+ "mappings": ";;;;;AAAA;AACA;AAEA;AAA8C;AAE9C,IAAMA,KAAK,GAAG;EACZC,SAAS,EAAE,QAAQ;EACnBC,UAAU,EAAE;AACd,CAAC;AAED,IAAMC,cAAc,GAAG,SAAjBA,cAAc;EAAA,IAClBC,QAAQ,QAARA,QAAQ;IACRC,OAAO,QAAPA,OAAO;EAAA,OACHA,OAAO,GACND,QAAQ,SAAIC,OAAO,GACtBD,QAAQ;AAAA;AAEZ,IAAME,YAAY,GAAG,SAAfA,YAAY,QAEZ;EAAA,IADJC,IAAI,SAAJA,IAAI;EAEJ,IAAMC,EAAE,GAAG,IAAAC,oBAAQ,EAACC,qBAAW,CAAC;EAChC,OAAOH,IAAI,GACT;IAAK,KAAK,EAAEP,KAAM;IAAA,UAChB,qBAAC,sBAAU;MACT,KAAK,EAAEQ,EAAE,CAACG,EAAE,CAACC,WAAY;MACzB,OAAO,sBAAoBT,cAAc,CAACI,IAAI,CAAI;MAClD,OAAO,EAAEA,IAAI,CAACM;IAAW;EACzB,EACE,GACJ,IAAI;AACV,CAAC;AAAA,eAEcP,YAAY;AAAA"
+}

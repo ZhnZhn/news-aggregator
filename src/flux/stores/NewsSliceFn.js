@@ -7,7 +7,8 @@ export const loadNewsCompleted = (
     source,
     articles=[],
     sortBy,
-    caption
+    caption,
+    page
   } = news;
   slice[source] = slice[source]
     ? articles.concat(slice[source])
@@ -16,7 +17,8 @@ export const loadNewsCompleted = (
     id: source,
     data: slice[source],
     sortBy,
-    caption
+    caption,
+    page
   };
 }
 

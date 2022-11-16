@@ -21,6 +21,7 @@ import crModelMore from './crModelMore';
 
 import A from '../Comp';
 import CaptionButtons from './CaptionButtons';
+import LoadNextPage from './LoadNextPage';
 import {
   RESIZE_INIT_WIDTH,
   RESIZE_MIN_WIDTH,
@@ -154,7 +155,8 @@ const NewsPane = ({
   , {
     articles,
     sortBy,
-    caption
+    caption,
+    page
   } = state
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hHide = useCallback(() => {
@@ -172,7 +174,8 @@ const NewsPane = ({
         setState(prevState => ({
           articles: option.data,
           sortBy: option.sortBy,
-          caption: option.caption
+          caption: option.caption,
+          page: option.page
         }))
         _focusFirstItem(_refFirstItem)
       } else if (actionType === updateAction) {
@@ -233,6 +236,9 @@ const NewsPane = ({
            refFirstItem={_refFirstItem}
            onCloseItem={onCloseItem}
            onRemoveUnder={onRemoveUnder}
+         />
+         <LoadNextPage
+           page={page}
          />
       </A.ScrollPane>
     </div>
