@@ -1,6 +1,5 @@
-import {
-  NewsActions
-} from '../flux/actions/NewsActions';
+import { NewsActions } from '../flux/actions/NewsActions';
+import { THE_NEWS_API } from '../conf/ProviderNames';
 
 import crId from '../utils/crId';
 import formatTimeAgo from '../utils/formatTimeAgo';
@@ -9,6 +8,7 @@ import toFirstUpperCase from '../utils/toFirstUpperCase';
 import sanitizeArticle from './sanitizeArticle';
 
 const SOURCE_ID = 'thenewsapi_top';
+const MAX_ARTICLES_PER_PAGES = 20000;
 
 const _isArr = Array.isArray;
 const _isNumber = n => typeof n === 'number'
@@ -44,7 +44,7 @@ const _toArticles = ({
 
 const _crCaption = ({
   category
-}) => `TheNewsAPI: ${toFirstUpperCase(category)}`
+}) => `${THE_NEWS_API}: ${toFirstUpperCase(category)}`
 
 const _crNextPage = (
   page,
@@ -59,7 +59,7 @@ const _crMaxPage = (
   found,
   limit
 ) => _isNumber(found) && _isNumber(limit)
-  ? Math.min(Math.round(found/limit), 20000/limit)
+  ? Math.min(Math.floor(found/limit), MAX_ARTICLES_PER_PAGES/limit)
   : '';
 
 const _crConfigPages = meta => {

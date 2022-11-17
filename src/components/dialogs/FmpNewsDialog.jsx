@@ -1,3 +1,4 @@
+import { FMP } from '../../conf/ProviderNames';
 import { useCallback } from '../uiApi';
 
 import styleConfig from './Dialog.Style';
@@ -51,7 +52,7 @@ const FmpNewsDialog = ({
        style={TS.R_DIALOG}
        captionStyle={TS.BROWSER_CAPTION}
        buttonStyle={TS.BT}
-       caption="FMP: Stock News"
+       caption={`${FMP}: Stock News`}
        onKeyDown={_hKeyDown}
        onLoad={_hLoad}
        onShow={onShow}

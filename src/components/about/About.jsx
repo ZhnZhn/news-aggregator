@@ -1,3 +1,5 @@
+import { FMP_LONG } from '../../conf/ProviderNames';
+
 import useBool from '../hooks/useBool';
 import useTheme from '../hooks/useTheme';
 import useListen from '../hooks/useListen';
@@ -43,7 +45,7 @@ const PROVIDER_LINKS = [
   [CoinStatsLink],
   [MessariLink],
   [IexApiLink],
-  [FmpApiLink, { title: "Financial Modeling Prep"}],
+  [FmpApiLink, { title: FMP_LONG }],
   [NewsApiLink],
   [TheNewsApiLink],
   [StackOverflowLink],

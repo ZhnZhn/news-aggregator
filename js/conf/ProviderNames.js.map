@@ -1,0 +1,17 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/conf/ProviderNames.js"
+ ],
+ "file": "../../src/conf/ProviderNames.js",
+ "names": [
+  "IEX_CLOUD",
+  "FMP",
+  "FMP_LONG",
+  "NEWS_API",
+  "NEWS_API_LONG",
+  "THE_NEWS_API",
+  "WEBZ_IO"
+ ],
+ "mappings": ";;;;AAAO,IAAMA,SAAS,GAAG,WAAW;AAAA;AAE7B,IAAMC,GAAG,GAAG,KAAK;AAAA;AACjB,IAAMC,QAAQ,GAAG,yBAAyB;AAAA;AAE1C,IAAMC,QAAQ,GAAG,SAAS;AAAA;AAC1B,IAAMC,aAAa,GAAG,aAAa;AAAA;AAEnC,IAAMC,YAAY,GAAG,YAAY;AAAA;AAEjC,IAAMC,OAAO,GAAG,SAAS;AAAA"
+}

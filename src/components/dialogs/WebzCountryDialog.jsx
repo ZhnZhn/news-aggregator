@@ -1,3 +1,5 @@
+import { WEBZ_IO } from '../../conf/ProviderNames';
+
 import {
   useCallback,
   getRefValue
@@ -94,7 +96,7 @@ const OPTION_COUNTRIES = [
 , DF_TOPIC = OPTION_TOPICS[0]
 , INITIAL_TOPIC_VALUE = getItemValue(DF_TOPIC)
 , DF_LANGUAGE = OPTION_LANGUAGES[0]
-, INITIAL_LANGUAGE_VALUE = getItemValue(DF_LANGUAGE);
+, INITIAL_LANGUAGE_VALUE = "";
 
 const WebzCountryDialog = ({
   isShow,
@@ -148,7 +150,7 @@ const WebzCountryDialog = ({
        style={TS.R_DIALOG}
        captionStyle={TS.BROWSER_CAPTION}
        buttonStyle={TS.BT}
-       caption="Webz.io: By Country"
+       caption={`${WEBZ_IO}: By Country`}
        onKeyDown={_hKeyDown}
        onLoad={_hLoad}
        onShow={onShow}

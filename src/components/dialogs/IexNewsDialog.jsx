@@ -1,4 +1,8 @@
 import {
+  IEX_CLOUD
+} from '../../conf/ProviderNames';
+
+import {
   useCallback,
   getRefValue
 } from '../uiApi';
@@ -76,7 +80,7 @@ const IexNewsDialog = ({
        style={TS.R_DIALOG}
        captionStyle={TS.BROWSER_CAPTION}
        buttonStyle={TS.BT}
-       caption="IEX Cloud: Stock News"
+       caption={`${IEX_CLOUD}: Stock News`}
        onKeyDown={_hKeyDown}
        onLoad={_hLoad}
        onShow={onShow}

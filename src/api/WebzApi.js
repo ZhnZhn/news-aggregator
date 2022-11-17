@@ -44,7 +44,7 @@ const _crCountryUrl = option => {
   , _qLangToken = lang
       ? `language:${lang} AND `
       : '';
-  option.apiKey = void 0
+  option.apiKey = void 0    
   return `${_crRootUrl(apiKey)}&q=${_qLangToken}site_type:news AND country:${country} AND site_category:${topic}`;
 };
 

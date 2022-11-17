@@ -1,4 +1,12 @@
 import {
+  IEX_CLOUD,
+  FMP,
+  NEWS_API_LONG,
+  THE_NEWS_API,
+  WEBZ_IO
+} from '../../conf/ProviderNames';
+
+import {
   useRef,
   useCallback
 } from '../uiApi';
@@ -41,11 +49,23 @@ const _clearInputRefs = refs => refs
 const _setWasEnterRefs = refs => refs
   .forEach(ref => ref.current.setWasEnter());
 
+const _crCaption = (
+  name,
+  maxLength
+) => {
+  const _tokenKey = name
+   .toUpperCase()
+   .indexOf('API') === -1
+     ? 'API Key'
+     : 'Key';
+  return `${name} ${_tokenKey} (${maxLength})`;
+};
+
 const _crPasswordFieldProps = (
   name,
   maxLength
 ) => ({
-  caption: `${name} API Key (${maxLength})`,
+  caption: _crCaption(name, maxLength),
   maxLength,
   onTest: _hasLengthOrEmpty(maxLength)
 });
@@ -109,14 +129,14 @@ const CardApiKeys = (props) => {
           caption="Stock Market"
         >
           <PasswordField
-             {..._crPasswordFieldProps('IEX Cloud', 35)}
+             {..._crPasswordFieldProps(IEX_CLOUD, 35)}
              ref={_refInputIex}
              style={fieldStyle}
              name="iex-cloud"
              onEnter={setIex}
           />
           <PasswordField
-             {..._crPasswordFieldProps('FMP', 32)}
+             {..._crPasswordFieldProps(FMP, 32)}
              ref={_refInputFmp}
              style={fieldStyle}
              name="fmp-api"
@@ -128,21 +148,21 @@ const CardApiKeys = (props) => {
          caption="General News"
       >
         <PasswordField
-           {..._crPasswordFieldProps('NewsApi', 32)}
+           {..._crPasswordFieldProps(NEWS_API_LONG, 32)}
            ref={_refInputNews}
            style={fieldStyle}
-           name="newsapi"
+           name="newsapi.org"
            onEnter={setNews}
         />
         <PasswordField
-           {..._crPasswordFieldProps('TheNewsAPI', 40)}
+           {..._crPasswordFieldProps(THE_NEWS_API, 40)}
            ref={_refInputTheNews}
            style={fieldStyle}
            name="thenewsapi"
            onEnter={setTheNews}
         />
         <PasswordField
-           {..._crPasswordFieldProps('Webz.IO', 36)}
+           {..._crPasswordFieldProps(WEBZ_IO, 36)}
            ref={_refInputWebz}
            style={fieldStyle}
            name="webz.io"

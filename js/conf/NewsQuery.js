@@ -2,23 +2,24 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
+var _ProviderNames = require("./ProviderNames");
 var NEWS_QUERY = {
   WEBZ: {
     "type": "W_WEBZ_QUERY",
     "dialogType": "WebzQuery",
-    "paneCaption": "Webz.io Query",
+    "paneCaption": _ProviderNames.WEBZ_IO + " Query",
     "paneId": "webz",
     "loadId": "W",
     "requestType": "NEWS",
     "dialogProps": {
-      "caption": "Webz.io Query",
+      "caption": _ProviderNames.WEBZ_IO + " Query",
       "source": "webz"
     }
   },
   WEBZ_COUNTRY: {
     "type": "W_WEBZ_COUNTRY",
     "dialogType": "WebzCountry",
-    "paneCaption": "Webz.io: By Country",
+    "paneCaption": _ProviderNames.WEBZ_IO + ": By Country",
     "paneId": "webz_country",
     "loadId": "W",
     "requestType": "NEWS"
@@ -76,27 +77,27 @@ var NEWS_QUERY = {
   IEX: {
     "type": "IEX_NEWS",
     "dialogType": "IexNews",
-    "paneCaption": "IEX Cloud: Stock Market News",
+    "paneCaption": _ProviderNames.IEX_CLOUD + ": Stock Market News",
     "paneId": "iex_news",
     "paneType": "IEX_NEWS",
     "dialogProps": {
-      "caption": "IEX Cloud: Stock News"
+      "caption": _ProviderNames.IEX_CLOUD + ": Stock News"
     }
   },
   FMP: {
     "type": "FMP",
     "dialogType": "FmpNews",
-    "paneCaption": "Financial Modeling Prep: Stock Market News",
+    "paneCaption": _ProviderNames.FMP_LONG + ": Stock Market News",
     "paneId": "fmp_news",
     "paneType": "FMP_NEWS",
     "dialogProps": {
-      "caption": "FMP: Stock News"
+      "caption": _ProviderNames.FMP + ": Stock News"
     }
   },
   NEWS_SEARCH: {
     "type": "NEWS_SEARCH",
     "dialogType": "NewsApiSearch",
-    "paneCaption": "NewsApi: Search",
+    "paneCaption": _ProviderNames.NEWS_API + ": Search",
     "paneId": "newsapi_search",
     "dialogProps": {
       "source": "newsapi_search"
@@ -105,7 +106,7 @@ var NEWS_QUERY = {
   NEWS_TOP: {
     "type": "NEWS_TOP",
     "dialogType": "NewsApiTop",
-    "paneCaption": "NewsApi: Top By",
+    "paneCaption": _ProviderNames.NEWS_API + ": Top By",
     "paneId": "newsapi_top",
     "dialogProps": {
       "source": "newsapi_top"
@@ -114,7 +115,7 @@ var NEWS_QUERY = {
   THE_NEWS_TOP: {
     "type": "THE_NEWS_TOP",
     "dialogType": "TheNewsApiTop",
-    "paneCaption": "TheNewsAPI: Top By",
+    "paneCaption": _ProviderNames.THE_NEWS_API + ": Top By",
     "paneId": "thenewsapi_top",
     "dialogProps": {
       "source": "thenewsapi_top"

@@ -1,4 +1,8 @@
 import {
+  NEWS_API
+} from '../../conf/ProviderNames';
+
+import {
   useCallback,
   getRefValue
 } from '../uiApi';
@@ -136,7 +140,7 @@ const NewsApiTopDialog = ({
        style={TS.R_DIALOG}
        captionStyle={TS.BROWSER_CAPTION}
        buttonStyle={TS.BT}
-       caption="NewsApi Top By"
+       caption={`${NEWS_API} Top By`}
        onKeyDown={_hKeyDown}
        onLoad={_hLoad}
        onShow={onShow}

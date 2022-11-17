@@ -1,4 +1,12 @@
 import {
+  IEX_CLOUD,
+  FMP,
+  NEWS_API_LONG,
+  THE_NEWS_API,
+  WEBZ_IO
+} from '../../conf/ProviderNames';
+
+import {
   useRef,
   useEffect,
   focusRefElement
@@ -67,31 +75,31 @@ const PanelQuery = ({
         />
         <A.MenuItem
           className={CL_ITEM}
-          caption="IEX Cloud: Stock Market News"
+          caption={`${IEX_CLOUD}: Stock Market News`}
           onClick={onIex}
           onClose={onClose}
         />
         <A.MenuItem
           className={CL_ITEM}
-          caption="FMP: Stock Market News"
+          caption={`${FMP}: Stock Market News`}
           onClick={onFmp}
           onClose={onClose}
         />
         <A.MenuItem
           className={CL_ITEM}
-          caption="NewsApi: Search"
+          caption={`${NEWS_API_LONG}: Search`}
           onClick={onNewsApi}
           onClose={onClose}
         />
         <A.MenuItem
           className={CL_ITEM}
-          caption="NewsApi: Top By"
+          caption={`${NEWS_API_LONG}: Top By`}
           onClick={onNewsTop}
           onClose={onClose}
         />
         <A.MenuItem
           className={CL_ITEM}
-          caption="TheNewsAPI: Top By"
+          caption={`${THE_NEWS_API}: Top By`}
           onClick={onTheNewsTop}
           onClose={onClose}
         />
@@ -109,13 +117,13 @@ const PanelQuery = ({
         />
         <A.MenuItem
           className={CL_ITEM}
-          caption="Webz.io: News, Blogs"
+          caption={`${WEBZ_IO}: News, Blogs`}
           onClick={onWebz}
           onClose={onClose}
         />
         <A.MenuItem
           className={CL_ITEM}
-          caption="Webz.io: By Country, Topic"
+          caption={`${WEBZ_IO}: By Country, Topic`}
           onClick={onWebzCountry}
           onClose={onClose}
         />

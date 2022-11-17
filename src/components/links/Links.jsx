@@ -1,3 +1,10 @@
+import {
+  IEX_CLOUD,
+  FMP,
+  NEWS_API_LONG,
+  THE_NEWS_API,
+  WEBZ_IO
+} from '../../conf/ProviderNames';
 import SafeLink from '../zhn-atoms/SafeLink';
 
 const CL_LINK = "link";
@@ -33,17 +40,17 @@ export const MessariLink = _fSafeLink(
 
 export const NewsApiLink = _fSafeLink(
   "https://newsapi.org",
-  "NewsApi.org"
+  NEWS_API_LONG
 )
 
 export const TheNewsApiLink = _fSafeLink(
   "https://thenewsapi.com",
-  "TheNewsAPI"
+  THE_NEWS_API
 )
 
 export const WebzLink = _fSafeLink(
   "https://webz.io",
-  "Webz.io"
+  WEBZ_IO
 )
 
 export const StackOverflowLink = _fSafeLink(
@@ -53,10 +60,10 @@ export const StackOverflowLink = _fSafeLink(
 
 export const IexApiLink = _fSafeLink(
   "https://iexcloud.io",
-  "IEX Cloud"
+  IEX_CLOUD
 )
 
 export const FmpApiLink = _fSafeLink(
   "https://financialmodelingprep.com",
-  "FMP"
+  FMP
 );

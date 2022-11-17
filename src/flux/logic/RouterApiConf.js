@@ -1,4 +1,10 @@
-
+import {
+  IEX_CLOUD,
+  FMP,
+  NEWS_API_LONG,
+  THE_NEWS_API,
+  WEBZ_IO
+} from '../../conf/ProviderNames';
 import Store from '../stores/Store'
 
 import Adapter from '../../adapters/Adapters'
@@ -15,35 +21,35 @@ const RouterApiConf = {
           apiKey: Store.getNewsKey(),
           api: Api.News,
           adapter: Adapter.News,
-          msgErr: `NewsApi ${MSG_ERR_TAIL}`
+          msgErr: `${NEWS_API_LONG} ${MSG_ERR_TAIL}`
         };
       case 'NS':
         return {
           apiKey: Store.getNewsKey(),
           api: Api.NewsSearch,
           adapter: Adapter.News,
-          msgErr: `NewsApi ${MSG_ERR_TAIL}`
+          msgErr: `${NEWS_API_LONG} ${MSG_ERR_TAIL}`
         };
       case 'NT':
         return {
           apiKey: Store.getNewsKey(),
           api: Api.NewsTop,
           adapter: Adapter.News,
-          msgErr: `NewsApi ${MSG_ERR_TAIL}`
+          msgErr: `${NEWS_API_LONG} ${MSG_ERR_TAIL}`
         };
       case 'TNT':
         return {
           apiKey: Store.getTheNewsKey(),
           api: Api.TheNewsTop,
           adapter: Adapter.TheNews,
-          msgErr: `TheNewsApi ${MSG_ERR_TAIL}`
+          msgErr: `${THE_NEWS_API} ${MSG_ERR_TAIL}`
         };
       case 'W':
         return {
           apiKey: Store.getWebzKey(),
           api: Api.Webz,
           adapter: Adapter.Webz,
-          msgErr: `Webz.io API ${MSG_ERR_TAIL}`
+          msgErr: `${WEBZ_IO} API ${MSG_ERR_TAIL}`
         };
       case 'SO':
         return {
@@ -57,14 +63,14 @@ const RouterApiConf = {
            apiKey: Store.getIexKey(),
            api: Api.Iex,
            adapter: Adapter.Iex,
-           msgErr: `IEX Cloud API ${MSG_ERR_TAIL}`
+           msgErr: `${IEX_CLOUD} API ${MSG_ERR_TAIL}`
          };
      case 'FMP':
         return {
           apiKey: Store.getFmpKey(),
           api: Api.Fmp,
           adapter: Adapter.Fmp,
-          msgErr: `FMP API ${MSG_ERR_TAIL}`
+          msgErr: `${FMP} API ${MSG_ERR_TAIL}`
         };
      case 'CCN':
         return {

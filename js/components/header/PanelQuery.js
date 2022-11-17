@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports["default"] = void 0;
+var _ProviderNames = require("../../conf/ProviderNames");
 var _uiApi = require("../uiApi");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -58,27 +59,27 @@ var PanelQuery = function PanelQuery(_ref) {
       onClose: onClose
     }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
       className: CL_ITEM,
-      caption: "IEX Cloud: Stock Market News",
+      caption: _ProviderNames.IEX_CLOUD + ": Stock Market News",
       onClick: onIex,
       onClose: onClose
     }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
       className: CL_ITEM,
-      caption: "FMP: Stock Market News",
+      caption: _ProviderNames.FMP + ": Stock Market News",
       onClick: onFmp,
       onClose: onClose
     }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
       className: CL_ITEM,
-      caption: "NewsApi: Search",
+      caption: _ProviderNames.NEWS_API_LONG + ": Search",
       onClick: onNewsApi,
       onClose: onClose
     }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
       className: CL_ITEM,
-      caption: "NewsApi: Top By",
+      caption: _ProviderNames.NEWS_API_LONG + ": Top By",
       onClick: onNewsTop,
       onClose: onClose
     }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
       className: CL_ITEM,
-      caption: "TheNewsAPI: Top By",
+      caption: _ProviderNames.THE_NEWS_API + ": Top By",
       onClick: onTheNewsTop,
       onClose: onClose
     }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
@@ -93,12 +94,12 @@ var PanelQuery = function PanelQuery(_ref) {
       onClose: onClose
     }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
       className: CL_ITEM,
-      caption: "Webz.io: News, Blogs",
+      caption: _ProviderNames.WEBZ_IO + ": News, Blogs",
       onClick: onWebz,
       onClose: onClose
     }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
       className: CL_ITEM,
-      caption: "Webz.io: By Country, Topic",
+      caption: _ProviderNames.WEBZ_IO + ": By Country, Topic",
       onClick: onWebzCountry,
       onClose: onClose
     })]

@@ -1,3 +1,4 @@
+import { IEX_CLOUD } from '../conf/ProviderNames';
 import crId from '../utils/crId';
 import formatTimeAgo from '../utils/formatTimeAgo';
 import crDescription from '../utils/crDescription';
@@ -91,7 +92,7 @@ const _toArticles = (
 
 const _crCaption = ({
   symbol=DF_SYMBOL
-}) => `IEX Cloud: ${symbol}`;
+}) => `${IEX_CLOUD}: ${symbol}`;
 
 const IexAdapter = {
   toNews: (

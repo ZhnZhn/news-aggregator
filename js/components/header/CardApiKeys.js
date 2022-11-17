@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+var _ProviderNames = require("../../conf/ProviderNames");
 var _uiApi = require("../uiApi");
 var _safeFn = _interopRequireDefault(require("../../utils/safeFn"));
 var _ScrollPane = _interopRequireDefault(require("../zhn-atoms/ScrollPane"));
@@ -51,9 +52,13 @@ var _setWasEnterRefs = function _setWasEnterRefs(refs) {
     return ref.current.setWasEnter();
   });
 };
+var _crCaption = function _crCaption(name, maxLength) {
+  var _tokenKey = name.toUpperCase().indexOf('API') === -1 ? 'API Key' : 'Key';
+  return name + " " + _tokenKey + " (" + maxLength + ")";
+};
 var _crPasswordFieldProps = function _crPasswordFieldProps(name, maxLength) {
   return {
-    caption: name + " API Key (" + maxLength + ")",
+    caption: _crCaption(name, maxLength),
     maxLength: maxLength,
     onTest: _hasLengthOrEmpty(maxLength)
   };
@@ -103,12 +108,12 @@ var CardApiKeys = function CardApiKeys(props) {
     children: [(0, _jsxRuntime.jsxs)(_OpenClose["default"], {
       style: (0, _extends2["default"])({}, TS.OPEN_CLOSE, S_OPEN_CLOSE),
       caption: "Stock Market",
-      children: [(0, _jsxRuntime.jsx)(_PasswordField["default"], (0, _extends2["default"])({}, _crPasswordFieldProps('IEX Cloud', 35), {
+      children: [(0, _jsxRuntime.jsx)(_PasswordField["default"], (0, _extends2["default"])({}, _crPasswordFieldProps(_ProviderNames.IEX_CLOUD, 35), {
         ref: _refInputIex,
         style: fieldStyle,
         name: "iex-cloud",
         onEnter: setIex
-      })), (0, _jsxRuntime.jsx)(_PasswordField["default"], (0, _extends2["default"])({}, _crPasswordFieldProps('FMP', 32), {
+      })), (0, _jsxRuntime.jsx)(_PasswordField["default"], (0, _extends2["default"])({}, _crPasswordFieldProps(_ProviderNames.FMP, 32), {
         ref: _refInputFmp,
         style: fieldStyle,
         name: "fmp-api",
@@ -117,17 +122,17 @@ var CardApiKeys = function CardApiKeys(props) {
     }), (0, _jsxRuntime.jsxs)(_OpenClose["default"], {
       style: (0, _extends2["default"])({}, TS.OPEN_CLOSE, S_OPEN_CLOSE),
       caption: "General News",
-      children: [(0, _jsxRuntime.jsx)(_PasswordField["default"], (0, _extends2["default"])({}, _crPasswordFieldProps('NewsApi', 32), {
+      children: [(0, _jsxRuntime.jsx)(_PasswordField["default"], (0, _extends2["default"])({}, _crPasswordFieldProps(_ProviderNames.NEWS_API_LONG, 32), {
         ref: _refInputNews,
         style: fieldStyle,
-        name: "newsapi",
+        name: "newsapi.org",
         onEnter: setNews
-      })), (0, _jsxRuntime.jsx)(_PasswordField["default"], (0, _extends2["default"])({}, _crPasswordFieldProps('TheNewsAPI', 40), {
+      })), (0, _jsxRuntime.jsx)(_PasswordField["default"], (0, _extends2["default"])({}, _crPasswordFieldProps(_ProviderNames.THE_NEWS_API, 40), {
         ref: _refInputTheNews,
         style: fieldStyle,
         name: "thenewsapi",
         onEnter: setTheNews
-      })), (0, _jsxRuntime.jsx)(_PasswordField["default"], (0, _extends2["default"])({}, _crPasswordFieldProps('Webz.IO', 36), {
+      })), (0, _jsxRuntime.jsx)(_PasswordField["default"], (0, _extends2["default"])({}, _crPasswordFieldProps(_ProviderNames.WEBZ_IO, 36), {
         ref: _refInputWebz,
         style: fieldStyle,
         name: "webz.io",

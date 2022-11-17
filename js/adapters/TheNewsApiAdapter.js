@@ -4,11 +4,13 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 var _NewsActions = require("../flux/actions/NewsActions");
+var _ProviderNames = require("../conf/ProviderNames");
 var _crId = _interopRequireDefault(require("../utils/crId"));
 var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
 var _toFirstUpperCase = _interopRequireDefault(require("../utils/toFirstUpperCase"));
 var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
 var SOURCE_ID = 'thenewsapi_top';
+var MAX_ARTICLES_PER_PAGES = 20000;
 var _isArr = Array.isArray;
 var _isNumber = function _isNumber(n) {
   return typeof n === 'number' && n - n === 0;
@@ -36,13 +38,13 @@ var _toArticles = function _toArticles(_ref) {
 };
 var _crCaption = function _crCaption(_ref2) {
   var category = _ref2.category;
-  return "TheNewsAPI: " + (0, _toFirstUpperCase["default"])(category);
+  return _ProviderNames.THE_NEWS_API + ": " + (0, _toFirstUpperCase["default"])(category);
 };
 var _crNextPage = function _crNextPage(page, maxPage) {
   return _isNumber(page) ? _isNumber(maxPage) ? Math.min(page + 1, maxPage) : page + 1 : void 0;
 };
 var _crMaxPage = function _crMaxPage(found, limit) {
-  return _isNumber(found) && _isNumber(limit) ? Math.min(Math.round(found / limit), 20000 / limit) : '';
+  return _isNumber(found) && _isNumber(limit) ? Math.min(Math.floor(found / limit), MAX_ARTICLES_PER_PAGES / limit) : '';
 };
 var _crConfigPages = function _crConfigPages(meta) {
   var _ref3 = meta || {},
