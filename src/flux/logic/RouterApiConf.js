@@ -1,9 +1,13 @@
 import {
+  CRYPTO_COMPARE,
+  COIN_STATS,
+  MESSARI,
   IEX_CLOUD,
   FMP,
   NEWS_API_LONG,
   THE_NEWS_API,
-  WEBZ_IO
+  WEBZ_IO,
+  STACK_OVERFLOW
 } from '../../conf/ProviderNames';
 import Store from '../stores/Store'
 
@@ -56,7 +60,7 @@ const RouterApiConf = {
           apiKey: true,
           api: Api.StackOverflow,
           adapter: Adapter.StackOverflow,
-          msgErr: `StackOverflowApi API ${MSG_ERR_TAIL}`
+          msgErr: `${STACK_OVERFLOW} API ${MSG_ERR_TAIL}`
         };
       case 'IEX':
          return {
@@ -77,21 +81,21 @@ const RouterApiConf = {
           apiKey: true,
           api: Api.CryptoCompare,
           adapter: Adapter.CryptoCompare,
-          msgErr: `CryptoCompare News API ${MSG_ERR_TAIL}`
+          msgErr: `${CRYPTO_COMPARE} News API ${MSG_ERR_TAIL}`
         };
       case 'CS':
         return {
           apiKey: true,
           api: Api.CoinStats,
           adapter: Adapter.CoinStats,
-          msgErr: `CoinStats API ${MSG_ERR_TAIL}`
+          msgErr: `${COIN_STATS} API ${MSG_ERR_TAIL}`
         };
       case 'MS':
         return {
           apiKey: true,
           api: Api.Messari,
           adapter: Adapter.Messari,
-          msgErr: `Messari Blockchain News API ${MSG_ERR_TAIL}`
+          msgErr: `${MESSARI} Blockchain News API ${MSG_ERR_TAIL}`
         };
       default:
         return {

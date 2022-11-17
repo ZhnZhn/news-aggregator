@@ -15,6 +15,7 @@ import A from '../Comp';
 import { getItemValue } from '../zhn-m-input/OptionFn';
 import InputFromToDate from './InputFromToDate';
 import { PoweredByStackOverflow } from '../links/PoweredByLink';
+import { getDialogCaption } from './DialogFn';
 
 const INITIAL_FROM_DATE = DateUtil.getFromDate(1)
 , INITIAL_TO_DATE = DateUtil.getToDate()
@@ -92,6 +93,7 @@ const StackSearchDialog = ({
   ] = useDecorDialog(styleConfig, _hLoad, _hClose)
   , _titleTagged = _crInputTitle('Tagged', DF_TAGGED)
   , _titleInTitle = _crInputTitle('In Title', DF_IN_TITLE)
+  , caption = getDialogCaption(itemConf)
 
   return (
     <A.DraggableDialog
@@ -100,7 +102,7 @@ const StackSearchDialog = ({
       style={TS.R_DIALOG}
       captionStyle={TS.BROWSER_CAPTION}
       buttonStyle={TS.BT}
-      caption="Search Questions"
+      caption={caption}
       onKeyDown={_hKeyDown}
       onLoad={_hLoad}
       onShow={onShow}

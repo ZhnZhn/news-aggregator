@@ -1,89 +1,73 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
-
 var _uiApi = require("../uiApi");
-
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
-
 var _useRefClose2 = _interopRequireDefault(require("./hooks/useRefClose"));
-
 var _useRefSelectOption4 = _interopRequireDefault(require("./hooks/useRefSelectOption"));
-
 var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"));
-
 var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/DraggableDialog"));
-
 var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
-
 var _OptionFn = require("../zhn-m-input/OptionFn");
-
 var _FlexColumn = _interopRequireDefault(require("../zhn-atoms/FlexColumn"));
-
 var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
-
 var _Links = require("../links/Links");
-
+var _DialogFn = require("./DialogFn");
 var _jsxRuntime = require("preact/jsx-runtime");
-
 var FEED_OPTIONS = [['All', 'ALL_NEWS_FEEDS'], ['Decrypt', 'decrypt'], ['CoinDesk', 'coindesk'], ['CoinTelegraph', 'cointelegraph'], ['CryptoCompare', 'cryptocompare']],
-    DF_FEED = FEED_OPTIONS[0],
-    CATEGORY_OPTIONS = [['All', 'ALL_NEWS_CATEGORIES'], ['Altcoin'], ['Asia'], ['Blockchain'], ['Business'], ['Commodity'], ['Exchange'], ['Fiat'], ['ICO'], ['Market'], ['Mining'], ['Regulation'], ['Trading'], ['Technology'], ['Sponsored'], ['Wallet']],
-    DF_CATEGORY = CATEGORY_OPTIONS[0],
-    SORTBY_OPTIONS = [['Latest', 'latest'], ['Popular', 'popular']],
-    DF_SORTBY = SORTBY_OPTIONS[0],
-    INITIAL_FEED_VALUE = (0, _OptionFn.getItemValue)(DF_FEED),
-    INITIAL_CATEGORY_VALUE = (0, _OptionFn.getItemValue)(DF_CATEGORY),
-    INITIAL_SORTBY_VALUE = (0, _OptionFn.getItemValue)(DF_SORTBY);
-
+  DF_FEED = FEED_OPTIONS[0],
+  CATEGORY_OPTIONS = [['All', 'ALL_NEWS_CATEGORIES'], ['Altcoin'], ['Asia'], ['Blockchain'], ['Business'], ['Commodity'], ['Exchange'], ['Fiat'], ['ICO'], ['Market'], ['Mining'], ['Regulation'], ['Trading'], ['Technology'], ['Sponsored'], ['Wallet']],
+  DF_CATEGORY = CATEGORY_OPTIONS[0],
+  SORTBY_OPTIONS = [['Latest', 'latest'], ['Popular', 'popular']],
+  DF_SORTBY = SORTBY_OPTIONS[0],
+  INITIAL_FEED_VALUE = (0, _OptionFn.getItemValue)(DF_FEED),
+  INITIAL_CATEGORY_VALUE = (0, _OptionFn.getItemValue)(DF_CATEGORY),
+  INITIAL_SORTBY_VALUE = (0, _OptionFn.getItemValue)(DF_SORTBY);
 var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(_ref) {
   var isShow = _ref.isShow,
-      type = _ref.type,
-      source = _ref.source,
-      itemConf = _ref.itemConf,
-      onLoad = _ref.onLoad,
-      onShow = _ref.onShow,
-      onClose = _ref.onClose;
-
+    type = _ref.type,
+    source = _ref.source,
+    itemConf = _ref.itemConf,
+    onLoad = _ref.onLoad,
+    onShow = _ref.onShow,
+    onClose = _ref.onClose;
   var _useRefClose = (0, _useRefClose2["default"])(onClose),
-      _refDialog = _useRefClose[0],
-      _hClose = _useRefClose[1],
-      _useRefSelectOption = (0, _useRefSelectOption4["default"])(INITIAL_FEED_VALUE),
-      _refFeed = _useRefSelectOption[0],
-      _selectFeed = _useRefSelectOption[1],
-      _useRefSelectOption2 = (0, _useRefSelectOption4["default"])(INITIAL_CATEGORY_VALUE),
-      _refCategory = _useRefSelectOption2[0],
-      _selectCategory = _useRefSelectOption2[1],
-      _useRefSelectOption3 = (0, _useRefSelectOption4["default"])(INITIAL_SORTBY_VALUE),
-      _refSortBy = _useRefSelectOption3[0],
-      _selectSortBy = _useRefSelectOption3[1],
-      _hLoad = (0, _uiApi.useCallback)(function () {
-    onLoad({
-      type: type,
-      source: source,
-      itemConf: itemConf,
-      loadId: 'CCN',
-      feed: (0, _uiApi.getRefValue)(_refFeed),
-      category: (0, _uiApi.getRefValue)(_refCategory),
-      sortOrder: (0, _uiApi.getRefValue)(_refSortBy)
-    });
-
-    _hClose();
-  }, []),
-      _useDecorDialog = (0, _useDecorDialog2["default"])(_Dialog["default"], _hLoad, _hClose),
-      TS = _useDecorDialog[0],
-      _hKeyDown = _useDecorDialog[1];
-
+    _refDialog = _useRefClose[0],
+    _hClose = _useRefClose[1],
+    _useRefSelectOption = (0, _useRefSelectOption4["default"])(INITIAL_FEED_VALUE),
+    _refFeed = _useRefSelectOption[0],
+    _selectFeed = _useRefSelectOption[1],
+    _useRefSelectOption2 = (0, _useRefSelectOption4["default"])(INITIAL_CATEGORY_VALUE),
+    _refCategory = _useRefSelectOption2[0],
+    _selectCategory = _useRefSelectOption2[1],
+    _useRefSelectOption3 = (0, _useRefSelectOption4["default"])(INITIAL_SORTBY_VALUE),
+    _refSortBy = _useRefSelectOption3[0],
+    _selectSortBy = _useRefSelectOption3[1],
+    _hLoad = (0, _uiApi.useCallback)(function () {
+      onLoad({
+        type: type,
+        source: source,
+        itemConf: itemConf,
+        loadId: 'CCN',
+        feed: (0, _uiApi.getRefValue)(_refFeed),
+        category: (0, _uiApi.getRefValue)(_refCategory),
+        sortOrder: (0, _uiApi.getRefValue)(_refSortBy)
+      });
+      _hClose();
+    }, []),
+    _useDecorDialog = (0, _useDecorDialog2["default"])(_Dialog["default"], _hLoad, _hClose),
+    TS = _useDecorDialog[0],
+    _hKeyDown = _useDecorDialog[1],
+    paneCaption = (0, _DialogFn.getPaneCaption)(itemConf);
   return (0, _jsxRuntime.jsx)(_DraggableDialog["default"], {
     ref: _refDialog,
     isShow: isShow,
     style: TS.R_DIALOG,
     captionStyle: TS.BROWSER_CAPTION,
     buttonStyle: TS.BT,
-    caption: "CryptoCompare News",
+    caption: paneCaption,
     onKeyDown: _hKeyDown,
     onLoad: _hLoad,
     onShow: onShow,
@@ -114,7 +98,6 @@ var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(_ref) {
     })
   });
 };
-
 var _default = CryptoCompareNewsDialog;
 exports["default"] = _default;
 //# sourceMappingURL=CryptoCompareNewsDialog.js.map

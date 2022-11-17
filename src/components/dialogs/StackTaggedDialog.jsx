@@ -15,6 +15,7 @@ import A from '../Comp';
 import { getItemValue } from '../zhn-m-input/OptionFn';
 import InputFromToDate from './InputFromToDate';
 import { PoweredByStackOverflow } from '../links/PoweredByLink';
+import { getDialogCaption } from './DialogFn';
 
 const INITIAL_FROM_DATE = DateUtil.getFromDate(1)
 , INITIAL_TO_DATE = DateUtil.getToDate()
@@ -82,7 +83,8 @@ const StackTaggedDialog = ({
     TS,
     _hKeyDown
   ] = useDecorDialog(styleConfig, _hLoad, _hClose)
-  , _tagCaption = `Tag (Default: ${DF_TAG})`;
+  , _tagCaption = `Tag (Default: ${DF_TAG})`
+  , caption = getDialogCaption(itemConf);
 
   return (
     <A.DraggableDialog
@@ -91,7 +93,7 @@ const StackTaggedDialog = ({
        style={TS.R_DIALOG}
        captionStyle={TS.BROWSER_CAPTION}
        buttonStyle={TS.BT}
-       caption="Tagged Questions"
+       caption={caption}
        onKeyDown={_hKeyDown}
        onLoad={_hLoad}
        onShow={onShow}

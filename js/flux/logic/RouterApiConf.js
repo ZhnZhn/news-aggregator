@@ -52,7 +52,7 @@ var RouterApiConf = {
           apiKey: true,
           api: _Api["default"].StackOverflow,
           adapter: _Adapters["default"].StackOverflow,
-          msgErr: "StackOverflowApi API " + MSG_ERR_TAIL
+          msgErr: _ProviderNames.STACK_OVERFLOW + " API " + MSG_ERR_TAIL
         };
       case 'IEX':
         return {
@@ -73,21 +73,21 @@ var RouterApiConf = {
           apiKey: true,
           api: _Api["default"].CryptoCompare,
           adapter: _Adapters["default"].CryptoCompare,
-          msgErr: "CryptoCompare News API " + MSG_ERR_TAIL
+          msgErr: _ProviderNames.CRYPTO_COMPARE + " News API " + MSG_ERR_TAIL
         };
       case 'CS':
         return {
           apiKey: true,
           api: _Api["default"].CoinStats,
           adapter: _Adapters["default"].CoinStats,
-          msgErr: "CoinStats API " + MSG_ERR_TAIL
+          msgErr: _ProviderNames.COIN_STATS + " API " + MSG_ERR_TAIL
         };
       case 'MS':
         return {
           apiKey: true,
           api: _Api["default"].Messari,
           adapter: _Adapters["default"].Messari,
-          msgErr: "Messari Blockchain News API " + MSG_ERR_TAIL
+          msgErr: _ProviderNames.MESSARI + " Blockchain News API " + MSG_ERR_TAIL
         };
       default:
         return {

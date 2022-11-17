@@ -1,0 +1,16 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/dialogs/DialogFn.js"
+ ],
+ "file": "../../../src/components/dialogs/DialogFn.js",
+ "names": [
+  "getPaneCaption",
+  "itemConf",
+  "paneCaption",
+  "getDialogCaption",
+  "dialogProps",
+  "caption"
+ ],
+ "mappings": ";;;;AACO,IAAMA,cAAc,GAAG,SAAjBA,cAAc,CACzBC,QAAQ;EAAA,OACL,CAACA,QAAQ,IAAI,CAAC,CAAC,EAAEC,WAAW;AAAA;AAAA;AAE1B,IAAMC,gBAAgB,GAAG,SAAnBA,gBAAgB,CAC3BF,QAAQ;EAAA,OACL,CAAC,CAACA,QAAQ,IAAI,CAAC,CAAC,EAAEG,WAAW,IAAI,CAAC,CAAC,EAAEC,OAAO;AAAA;AAAA"
+}

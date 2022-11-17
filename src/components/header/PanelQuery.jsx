@@ -1,9 +1,13 @@
 import {
+  CRYPTO_COMPARE,
+  COIN_STATS,
+  MESSARI,
   IEX_CLOUD,
   FMP,
   NEWS_API_LONG,
   THE_NEWS_API,
-  WEBZ_IO
+  WEBZ_IO,
+  STACK_OVERFLOW
 } from '../../conf/ProviderNames';
 
 import {
@@ -57,19 +61,19 @@ const PanelQuery = ({
         <A.MenuItem
           ref={_refFirstItem}
           className={CL_ITEM}
-          caption="CryptoCompare: News"
+          caption={`${CRYPTO_COMPARE}: News`}
           onClick={onCryptoCompare}
           onClose={onClose}
         />
         <A.MenuItem
           className={CL_ITEM}
-          caption="CoinStats: News"
+          caption={`${COIN_STATS}: News`}
           onClick={onCoinStats}
           onClose={onClose}
         />
         <A.MenuItem
           className={CL_ITEM}
-          caption="Messari: Blockchain News"
+          caption={`${MESSARI}: Blockchain News`}
           onClick={onMessari}
           onClose={onClose}
         />
@@ -105,13 +109,13 @@ const PanelQuery = ({
         />
         <A.MenuItem
           className={CL_ITEM}
-          caption="StackOverflow: Tagged Questions"
+          caption={`${STACK_OVERFLOW}: Tagged Questions`}
           onClick={onStackTagged}
           onClose={onClose}
         />
         <A.MenuItem
           className={CL_ITEM}
-          caption="StackOverflow: Search Questions"
+          caption={`${STACK_OVERFLOW}: Search Questions`}
           onClick={onStackSearch}
           onClose={onClose}
         />

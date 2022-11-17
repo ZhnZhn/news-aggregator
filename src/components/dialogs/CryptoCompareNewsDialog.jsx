@@ -15,6 +15,7 @@ import { getItemValue } from '../zhn-m-input/OptionFn';
 import FlexColumn from '../zhn-atoms/FlexColumn';
 import PoweredBy from '../links/PoweredBy';
 import { CryptoCompareLink } from '../links/Links';
+import { getPaneCaption } from './DialogFn';
 
 const FEED_OPTIONS = [
   ['All', 'ALL_NEWS_FEEDS'],
@@ -62,8 +63,8 @@ const CryptoCompareNewsDialog = ({
 }) => {
   const [
     _refDialog,
-    _hClose]
-     = useRefClose(onClose)
+    _hClose
+  ] = useRefClose(onClose)
   , [
     _refFeed,
     _selectFeed
@@ -94,7 +95,8 @@ const CryptoCompareNewsDialog = ({
   , [
     TS,
     _hKeyDown
-  ] = useDecorDialog(styleConfig, _hLoad, _hClose);
+  ] = useDecorDialog(styleConfig, _hLoad, _hClose)
+  , paneCaption = getPaneCaption(itemConf);
 
   return (
     <DraggableDialog
@@ -103,7 +105,7 @@ const CryptoCompareNewsDialog = ({
        style={TS.R_DIALOG}
        captionStyle={TS.BROWSER_CAPTION}
        buttonStyle={TS.BT}
-       caption="CryptoCompare News"
+       caption={paneCaption}
        onKeyDown={_hKeyDown}
        onLoad={_hLoad}
        onShow={onShow}

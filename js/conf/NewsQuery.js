@@ -27,7 +27,7 @@ var NEWS_QUERY = {
   STACK_TAGGED: {
     "type": "SO_TAGGED",
     "dialogType": "StackTagged",
-    "paneCaption": "StackOverflow: Tagged",
+    "paneCaption": _ProviderNames.STACK_OVERFLOW + ": Tagged",
     "paneId": "stack_tagged",
     "paneType": "SO_TAGGED",
     "dialogProps": {
@@ -37,7 +37,7 @@ var NEWS_QUERY = {
   STACK_SEARCH: {
     "type": "SO_SEARCH",
     "dialogType": "StackSearch",
-    "paneCaption": "StackOverflow: Search Questions",
+    "paneCaption": _ProviderNames.STACK_OVERFLOW + ": Search Questions",
     "paneId": "stack_search",
     "paneType": "SO_SEARCH",
     "dialogProps": {
@@ -47,32 +47,23 @@ var NEWS_QUERY = {
   CRYPTO_COMPARE: {
     "type": "CRYPTO_COMPARE",
     "dialogType": "CryptoCompareNews",
-    "paneCaption": "CryptoCompare News",
+    "paneCaption": _ProviderNames.CRYPTO_COMPARE + " News",
     "paneId": "cryptocompare_news",
-    "paneType": "CRYPTO_COMPARE_NEWS",
-    "dialogProps": {
-      "caption": "CryptoCompare News"
-    }
+    "paneType": "CRYPTO_COMPARE_NEWS"
   },
   COIN_STATS: {
     "type": "COIN_STATS",
     "dialogType": "CoinStatsNews",
-    "paneCaption": "CoinStats News",
+    "paneCaption": _ProviderNames.COIN_STATS + " News",
     "paneId": "coinstats_news",
-    "paneType": "COIN_STATS_NEWS",
-    "dialogProps": {
-      "caption": "CoinStats News"
-    }
+    "paneType": "COIN_STATS_NEWS"
   },
   MESSARI: {
     "type": "MESSARI",
     "dialogType": "MessariNews",
-    "paneCaption": "Messari Blockchain News",
+    "paneCaption": _ProviderNames.MESSARI + " Blockchain News",
     "paneId": "messari_news",
-    "paneType": "MESSARI_NEWS",
-    "dialogProps": {
-      "caption": "Messari Blockchain News"
-    }
+    "paneType": "MESSARI_NEWS"
   },
   IEX: {
     "type": "IEX_NEWS",

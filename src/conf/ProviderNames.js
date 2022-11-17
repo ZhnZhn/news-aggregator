@@ -1,3 +1,7 @@
+export const CRYPTO_COMPARE = 'CryptoCompare'
+export const COIN_STATS = 'CoinStats'
+export const MESSARI = 'Messari'
+
 export const IEX_CLOUD = 'IEX Cloud'
 
 export const FMP = 'FMP'
@@ -9,3 +13,5 @@ export const NEWS_API_LONG = 'NewsApi.org'
 export const THE_NEWS_API = 'TheNewsAPI'
 
 export const WEBZ_IO = 'Webz.io'
+
+export const STACK_OVERFLOW = 'StackOverflow'

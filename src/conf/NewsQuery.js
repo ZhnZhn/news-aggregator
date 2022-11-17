@@ -1,12 +1,15 @@
 import {
+  CRYPTO_COMPARE,
+  COIN_STATS,
+  MESSARI,
   IEX_CLOUD,
   FMP,
   FMP_LONG,
   NEWS_API,
   THE_NEWS_API,
-  WEBZ_IO
+  WEBZ_IO,
+  STACK_OVERFLOW
 } from './ProviderNames';
-
 
 const NEWS_QUERY = {
   WEBZ: {
@@ -32,7 +35,7 @@ const NEWS_QUERY = {
   STACK_TAGGED: {
     "type": "SO_TAGGED",
     "dialogType": "StackTagged",
-    "paneCaption": "StackOverflow: Tagged",
+    "paneCaption": `${STACK_OVERFLOW}: Tagged`,
     "paneId": "stack_tagged",
     "paneType": "SO_TAGGED",
     "dialogProps": {
@@ -42,7 +45,7 @@ const NEWS_QUERY = {
   STACK_SEARCH: {
     "type": "SO_SEARCH",
     "dialogType": "StackSearch",
-    "paneCaption": "StackOverflow: Search Questions",
+    "paneCaption": `${STACK_OVERFLOW}: Search Questions`,
     "paneId": "stack_search",
     "paneType": "SO_SEARCH",
     "dialogProps": {
@@ -53,32 +56,23 @@ const NEWS_QUERY = {
   CRYPTO_COMPARE: {
     "type": "CRYPTO_COMPARE",
     "dialogType": "CryptoCompareNews",
-    "paneCaption": "CryptoCompare News",
+    "paneCaption": `${CRYPTO_COMPARE} News`,
     "paneId": "cryptocompare_news",
-    "paneType": "CRYPTO_COMPARE_NEWS",
-    "dialogProps": {
-       "caption": "CryptoCompare News",
-     }
+    "paneType": "CRYPTO_COMPARE_NEWS"
   },
   COIN_STATS: {
     "type": "COIN_STATS",
     "dialogType": "CoinStatsNews",
-    "paneCaption": "CoinStats News",
+    "paneCaption": `${COIN_STATS} News`,
     "paneId": "coinstats_news",
-    "paneType": "COIN_STATS_NEWS",
-    "dialogProps": {
-       "caption": "CoinStats News",
-     }
+    "paneType": "COIN_STATS_NEWS"
   },
   MESSARI: {
     "type": "MESSARI",
     "dialogType": "MessariNews",
-    "paneCaption": "Messari Blockchain News",
+    "paneCaption": `${MESSARI} Blockchain News`,
     "paneId": "messari_news",
-    "paneType": "MESSARI_NEWS",
-    "dialogProps": {
-       "caption": "Messari Blockchain News",
-     }
+    "paneType": "MESSARI_NEWS"
   },
   IEX: {
     "type": "IEX_NEWS",

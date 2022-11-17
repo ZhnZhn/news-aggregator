@@ -23,11 +23,11 @@ var _fSafeLink = function _fSafeLink(href, caption) {
     }));
   };
 };
-var CryptoCompareLink = _fSafeLink("https://cryptocompare.com", "CryptoCompare");
+var CryptoCompareLink = _fSafeLink("https://cryptocompare.com", _ProviderNames.CRYPTO_COMPARE);
 exports.CryptoCompareLink = CryptoCompareLink;
-var CoinStatsLink = _fSafeLink("https://coinstats.app", "CoinStats");
+var CoinStatsLink = _fSafeLink("https://coinstats.app", _ProviderNames.COIN_STATS);
 exports.CoinStatsLink = CoinStatsLink;
-var MessariLink = _fSafeLink("https://messari.io", "Messari");
+var MessariLink = _fSafeLink("https://messari.io", _ProviderNames.MESSARI);
 exports.MessariLink = MessariLink;
 var NewsApiLink = _fSafeLink("https://newsapi.org", _ProviderNames.NEWS_API_LONG);
 exports.NewsApiLink = NewsApiLink;
@@ -35,7 +35,7 @@ var TheNewsApiLink = _fSafeLink("https://thenewsapi.com", _ProviderNames.THE_NEW
 exports.TheNewsApiLink = TheNewsApiLink;
 var WebzLink = _fSafeLink("https://webz.io", _ProviderNames.WEBZ_IO);
 exports.WebzLink = WebzLink;
-var StackOverflowLink = _fSafeLink("https://stackoverflow.com", "StackOverflow");
+var StackOverflowLink = _fSafeLink("https://stackoverflow.com", _ProviderNames.STACK_OVERFLOW);
 exports.StackOverflowLink = StackOverflowLink;
 var IexApiLink = _fSafeLink("https://iexcloud.io", _ProviderNames.IEX_CLOUD);
 exports.IexApiLink = IexApiLink;

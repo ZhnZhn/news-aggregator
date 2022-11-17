@@ -1,9 +1,13 @@
 import {
+  CRYPTO_COMPARE,
+  COIN_STATS,
+  MESSARI,
   IEX_CLOUD,
   FMP,
   NEWS_API_LONG,
   THE_NEWS_API,
-  WEBZ_IO
+  WEBZ_IO,
+  STACK_OVERFLOW
 } from '../../conf/ProviderNames';
 import SafeLink from '../zhn-atoms/SafeLink';
 
@@ -25,17 +29,17 @@ const _fSafeLink = (
 
 export const CryptoCompareLink = _fSafeLink(
   "https://cryptocompare.com",
-  "CryptoCompare"
+  CRYPTO_COMPARE
 )
 
 export const CoinStatsLink = _fSafeLink(
   "https://coinstats.app",
-  "CoinStats"
+  COIN_STATS
 )
 
 export const MessariLink = _fSafeLink(
   "https://messari.io",
-  "Messari"
+  MESSARI
 )
 
 export const NewsApiLink = _fSafeLink(
@@ -55,7 +59,7 @@ export const WebzLink = _fSafeLink(
 
 export const StackOverflowLink = _fSafeLink(
   "https://stackoverflow.com",
-  "StackOverflow"
+  STACK_OVERFLOW
 )
 
 export const IexApiLink = _fSafeLink(

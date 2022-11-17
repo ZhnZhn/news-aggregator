@@ -44,17 +44,17 @@ var PanelQuery = function PanelQuery(_ref) {
     children: [(0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
       ref: _refFirstItem,
       className: CL_ITEM,
-      caption: "CryptoCompare: News",
+      caption: _ProviderNames.CRYPTO_COMPARE + ": News",
       onClick: onCryptoCompare,
       onClose: onClose
     }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
       className: CL_ITEM,
-      caption: "CoinStats: News",
+      caption: _ProviderNames.COIN_STATS + ": News",
       onClick: onCoinStats,
       onClose: onClose
     }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
       className: CL_ITEM,
-      caption: "Messari: Blockchain News",
+      caption: _ProviderNames.MESSARI + ": Blockchain News",
       onClick: onMessari,
       onClose: onClose
     }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
@@ -84,12 +84,12 @@ var PanelQuery = function PanelQuery(_ref) {
       onClose: onClose
     }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
       className: CL_ITEM,
-      caption: "StackOverflow: Tagged Questions",
+      caption: _ProviderNames.STACK_OVERFLOW + ": Tagged Questions",
       onClick: onStackTagged,
       onClose: onClose
     }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
       className: CL_ITEM,
-      caption: "StackOverflow: Search Questions",
+      caption: _ProviderNames.STACK_OVERFLOW + ": Search Questions",
       onClick: onStackSearch,
       onClose: onClose
     }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
