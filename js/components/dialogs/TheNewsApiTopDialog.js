@@ -13,8 +13,7 @@ var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/Draggable
 var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
 var _OptionFn = require("../zhn-m-input/OptionFn");
 var _FlexColumn = _interopRequireDefault(require("../zhn-atoms/FlexColumn"));
-var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
-var _Links = require("../links/Links");
+var _PoweredByLink = require("../links/PoweredByLink");
 var _jsxRuntime = require("preact/jsx-runtime");
 var _CATEGORIES = ['all', 'general', 'science', 'sports', 'business', 'health', 'tech', 'politics', 'food', 'travel'];
 var CATEGORY_OPTIONS = (0, _OptionFn.crSelectOptions)(_CATEGORIES),
@@ -91,9 +90,8 @@ var TheNewsApiTopDialog = function TheNewsApiTopDialog(_ref) {
         options: DOMAIN_OPTIONS,
         styleConfig: TS.SELECT,
         onSelect: _selectDomain
-      }), (0, _jsxRuntime.jsx)(_PoweredBy["default"], {
-        style: TS.POWERED_BY,
-        children: (0, _jsxRuntime.jsx)(_Links.TheNewsApiLink, {})
+      }), (0, _jsxRuntime.jsx)(_PoweredByLink.PoweredByNewsApi, {
+        style: TS.POWERED_BY
       })]
     })
   });

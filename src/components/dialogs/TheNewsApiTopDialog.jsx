@@ -20,8 +20,9 @@ import {
   crSelectOptions
 } from '../zhn-m-input/OptionFn';
 import FlexColumn from '../zhn-atoms/FlexColumn';
-import PoweredBy from '../links/PoweredBy';
-import { TheNewsApiLink } from '../links/Links';
+import {
+  PoweredByNewsApi
+} from '../links/PoweredByLink';
 
 const _CATEGORIES = [
   'all',
@@ -188,9 +189,9 @@ const TheNewsApiTopDialog = ({
            styleConfig={TS.SELECT}
            onSelect={_selectDomain}
          />
-         <PoweredBy style={TS.POWERED_BY}>
-           <TheNewsApiLink />
-         </PoweredBy>
+         <PoweredByNewsApi
+            style={TS.POWERED_BY}
+         />
        </FlexColumn>
     </DraggableDialog>
   );
