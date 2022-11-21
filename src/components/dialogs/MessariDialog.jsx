@@ -6,16 +6,20 @@ import {
 import styleConfig from './Dialog.Style';
 
 import useRefClose from './hooks/useRefClose';
-import useRefSelectOption from './hooks/useRefSelectOption';
+import useRefInputs from './hooks/useRefInputs';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import StackInputs from '../zhn-inputs/StackInputs';
 import { getItemValue } from '../zhn-m-input/OptionFn';
 import PoweredBy from '../links/PoweredBy';
 import { MessariLink } from '../links/Links';
-import { getPaneCaption } from './DialogFn';
+import {
+  crDfInputs,
+  getPaneCaption
+} from './DialogFn';
 
-const NEWS_FOR_OPTIONS = [
+const ASSET_OPTIONS = [
 ["All", "all"]
 /*,
 [Bitcoin", "BTC"],
@@ -39,8 +43,13 @@ const NEWS_FOR_OPTIONS = [
 ["Vechain", "VET"],
 ["Cosmos", "ATOM"],
 */]
-, DF_ASSET = NEWS_FOR_OPTIONS[0]
-, INITIAL_ASSET_VALUE = getItemValue(DF_ASSET);
+, DF_ASSET = ASSET_OPTIONS[0]
+, INITIAL_INPUTS = crDfInputs({
+  assetKey: getItemValue(DF_ASSET)
+})
+, INPUT_CONFIGS = [
+  ['s','assetKey','News about', ASSET_OPTIONS, DF_ASSET]
+];
 
 const MessariDialog = ({
   isShow,
@@ -56,9 +65,9 @@ const MessariDialog = ({
     _hClose
   ] = useRefClose(onClose)
   , [
-    _refAssetKey,
-    _selectAssetKey
-  ] = useRefSelectOption(INITIAL_ASSET_VALUE)
+    _refValues,
+    _selectInput
+  ] = useRefInputs(INITIAL_INPUTS)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(()=>{
     onLoad({
@@ -66,11 +75,12 @@ const MessariDialog = ({
       source,
       itemConf,
       loadId: 'MS',
-      assetKey: getRefValue(_refAssetKey)
+      ...getRefValue(_refValues)
+      //assetKey: getRefValue(_refAssetKey)
     })
     _hClose()
   }, [])
-  // type, source, itemConf, onLoad, _refAssetKey, _hClose
+  // type, source, itemConf, onLoad, _hClose
   /*eslint-enable react-hooks/exhaustive-deps */
   , [
     TS,
@@ -91,12 +101,10 @@ const MessariDialog = ({
        onShow={onShow}
        onClose={_hClose}
     >
-       <A.InputSelect
-         caption="News about"
-         initItem={DF_ASSET}
-         options={NEWS_FOR_OPTIONS}
-         styleConfig={TS.SELECT}
-         onSelect={_selectAssetKey}
+       <StackInputs
+         TS={TS}
+         configs={INPUT_CONFIGS}
+         onSelect={_selectInput}
        />
       <PoweredBy style={TS.POWERED_BY}>
         <MessariLink />
