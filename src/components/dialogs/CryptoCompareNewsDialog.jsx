@@ -6,7 +6,7 @@ import {
 import styleConfig from './Dialog.Style';
 
 import useRefClose from './hooks/useRefClose';
-import useRefSelectOption from './hooks/useRefSelectOption';
+import useRefInputs from './hooks/useRefInputs';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import DraggableDialog from '../zhn-moleculs/DraggableDialog';
@@ -15,7 +15,10 @@ import { getItemValue } from '../zhn-m-input/OptionFn';
 import FlexColumn from '../zhn-atoms/FlexColumn';
 import PoweredBy from '../links/PoweredBy';
 import { CryptoCompareLink } from '../links/Links';
-import { getPaneCaption } from './DialogFn';
+import {
+  crDfInputs,
+  getPaneCaption
+} from './DialogFn';
 
 const FEED_OPTIONS = [
   ['All', 'ALL_NEWS_FEEDS'],
@@ -48,9 +51,11 @@ const FEED_OPTIONS = [
   ['Latest', 'latest'],
   ['Popular', 'popular']
 ], DF_SORTBY = SORTBY_OPTIONS[0]
-, INITIAL_FEED_VALUE = getItemValue(DF_FEED)
-, INITIAL_CATEGORY_VALUE = getItemValue(DF_CATEGORY)
-, INITIAL_SORTBY_VALUE = getItemValue(DF_SORTBY);
+, INITIAL_INPUTS = crDfInputs({
+   feed: getItemValue(DF_FEED),
+   category: getItemValue(DF_CATEGORY),
+   sortOrder: getItemValue(DF_SORTBY)
+});
 
 const CryptoCompareNewsDialog = ({
   isShow,
@@ -66,17 +71,9 @@ const CryptoCompareNewsDialog = ({
     _hClose
   ] = useRefClose(onClose)
   , [
-    _refFeed,
-    _selectFeed
-  ] = useRefSelectOption(INITIAL_FEED_VALUE)
-  , [
-    _refCategory,
-    _selectCategory
-  ] = useRefSelectOption(INITIAL_CATEGORY_VALUE)
-  , [
-    _refSortBy,
-    _selectSortBy
-  ] = useRefSelectOption(INITIAL_SORTBY_VALUE)
+    _refInputs,
+    _selectInput
+  ] = useRefInputs(INITIAL_INPUTS)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(() => {
     onLoad({
@@ -84,9 +81,7 @@ const CryptoCompareNewsDialog = ({
       source,
       itemConf,
       loadId: 'CCN',
-      feed: getRefValue(_refFeed),
-      category: getRefValue(_refCategory),
-      sortOrder: getRefValue(_refSortBy)
+      ...getRefValue(_refInputs)
     })
     _hClose()
   }, [])
@@ -113,25 +108,28 @@ const CryptoCompareNewsDialog = ({
     >
       <FlexColumn>
         <InputSelect
+          id="category"
           caption="Category"
           initItem={DF_CATEGORY}
           options={CATEGORY_OPTIONS}
           styleConfig={TS.SELECT}
-          onSelect={_selectCategory}
+          onSelect={_selectInput}
         />
         <InputSelect
+          id="feed"
           caption="Feed"
           initItem={DF_FEED}
           options={FEED_OPTIONS}
           styleConfig={TS.SELECT}
-          onSelect={_selectFeed}
+          onSelect={_selectInput}
         />
         <InputSelect
+          id="sortOrder"
           caption="SortBy"
           initItem={DF_SORTBY}
           options={SORTBY_OPTIONS}
           styleConfig={TS.SELECT}
-          onSelect={_selectSortBy}
+          onSelect={_selectInput}
         />
         <PoweredBy style={TS.POWERED_BY}>
           <CryptoCompareLink />

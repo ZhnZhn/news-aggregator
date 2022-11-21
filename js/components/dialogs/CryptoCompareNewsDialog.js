@@ -3,10 +3,11 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports["default"] = void 0;
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _uiApi = require("../uiApi");
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 var _useRefClose2 = _interopRequireDefault(require("./hooks/useRefClose"));
-var _useRefSelectOption4 = _interopRequireDefault(require("./hooks/useRefSelectOption"));
+var _useRefInputs2 = _interopRequireDefault(require("./hooks/useRefInputs"));
 var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"));
 var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/DraggableDialog"));
 var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
@@ -22,9 +23,11 @@ var FEED_OPTIONS = [['All', 'ALL_NEWS_FEEDS'], ['Decrypt', 'decrypt'], ['CoinDes
   DF_CATEGORY = CATEGORY_OPTIONS[0],
   SORTBY_OPTIONS = [['Latest', 'latest'], ['Popular', 'popular']],
   DF_SORTBY = SORTBY_OPTIONS[0],
-  INITIAL_FEED_VALUE = (0, _OptionFn.getItemValue)(DF_FEED),
-  INITIAL_CATEGORY_VALUE = (0, _OptionFn.getItemValue)(DF_CATEGORY),
-  INITIAL_SORTBY_VALUE = (0, _OptionFn.getItemValue)(DF_SORTBY);
+  INITIAL_INPUTS = (0, _DialogFn.crDfInputs)({
+    feed: (0, _OptionFn.getItemValue)(DF_FEED),
+    category: (0, _OptionFn.getItemValue)(DF_CATEGORY),
+    sortOrder: (0, _OptionFn.getItemValue)(DF_SORTBY)
+  });
 var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(_ref) {
   var isShow = _ref.isShow,
     type = _ref.type,
@@ -36,25 +39,16 @@ var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(_ref) {
   var _useRefClose = (0, _useRefClose2["default"])(onClose),
     _refDialog = _useRefClose[0],
     _hClose = _useRefClose[1],
-    _useRefSelectOption = (0, _useRefSelectOption4["default"])(INITIAL_FEED_VALUE),
-    _refFeed = _useRefSelectOption[0],
-    _selectFeed = _useRefSelectOption[1],
-    _useRefSelectOption2 = (0, _useRefSelectOption4["default"])(INITIAL_CATEGORY_VALUE),
-    _refCategory = _useRefSelectOption2[0],
-    _selectCategory = _useRefSelectOption2[1],
-    _useRefSelectOption3 = (0, _useRefSelectOption4["default"])(INITIAL_SORTBY_VALUE),
-    _refSortBy = _useRefSelectOption3[0],
-    _selectSortBy = _useRefSelectOption3[1],
+    _useRefInputs = (0, _useRefInputs2["default"])(INITIAL_INPUTS),
+    _refInputs = _useRefInputs[0],
+    _selectInput = _useRefInputs[1],
     _hLoad = (0, _uiApi.useCallback)(function () {
-      onLoad({
+      onLoad((0, _extends2["default"])({
         type: type,
         source: source,
         itemConf: itemConf,
-        loadId: 'CCN',
-        feed: (0, _uiApi.getRefValue)(_refFeed),
-        category: (0, _uiApi.getRefValue)(_refCategory),
-        sortOrder: (0, _uiApi.getRefValue)(_refSortBy)
-      });
+        loadId: 'CCN'
+      }, (0, _uiApi.getRefValue)(_refInputs)));
       _hClose();
     }, []),
     _useDecorDialog = (0, _useDecorDialog2["default"])(_Dialog["default"], _hLoad, _hClose),
@@ -74,23 +68,26 @@ var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(_ref) {
     onClose: _hClose,
     children: (0, _jsxRuntime.jsxs)(_FlexColumn["default"], {
       children: [(0, _jsxRuntime.jsx)(_InputSelect["default"], {
+        id: "category",
         caption: "Category",
         initItem: DF_CATEGORY,
         options: CATEGORY_OPTIONS,
         styleConfig: TS.SELECT,
-        onSelect: _selectCategory
+        onSelect: _selectInput
       }), (0, _jsxRuntime.jsx)(_InputSelect["default"], {
+        id: "feed",
         caption: "Feed",
         initItem: DF_FEED,
         options: FEED_OPTIONS,
         styleConfig: TS.SELECT,
-        onSelect: _selectFeed
+        onSelect: _selectInput
       }), (0, _jsxRuntime.jsx)(_InputSelect["default"], {
+        id: "sortOrder",
         caption: "SortBy",
         initItem: DF_SORTBY,
         options: SORTBY_OPTIONS,
         styleConfig: TS.SELECT,
-        onSelect: _selectSortBy
+        onSelect: _selectInput
       }), (0, _jsxRuntime.jsx)(_PoweredBy["default"], {
         style: TS.POWERED_BY,
         children: (0, _jsxRuntime.jsx)(_Links.CryptoCompareLink, {})
