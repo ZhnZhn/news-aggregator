@@ -26,6 +26,7 @@ const CL_SELECT = 'm-select'
 const DF_INIT_ITEM = ['', ''];
 
 const InputSelect = ({
+  id,
   initItem,
   caption,
   options,
@@ -44,11 +45,11 @@ const InputSelect = ({
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hSelect = useCallback((item, event) => {
       event.stopPropagation()
-      onSelect(item)
+      onSelect(item, id)
       hideComp()
       setItem(item)
   }, []);
-  // onSelect, hideComp
+  // id, onSelect, hideComp
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (
