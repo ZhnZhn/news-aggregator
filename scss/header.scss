@@ -92,11 +92,14 @@
 .row__topic {      
   color: black;
   padding-top: 2px;
-  padding-left: 16px;
+  padding-left: 12px;
   line-height: 2;
   border-left: 4px solid transparent;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: bold; 
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   cursor: pointer;
     
   &:focus {
