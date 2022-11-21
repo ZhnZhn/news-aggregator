@@ -9,10 +9,10 @@ import useRefClose from './hooks/useRefClose';
 import useRefInputs from './hooks/useRefInputs';
 import useDecorDialog from './hooks/useDecorDialog';
 
-import DraggableDialog from '../zhn-moleculs/DraggableDialog';
-import InputSelect from '../zhn-m-input/InputSelect';
 import { getItemValue } from '../zhn-m-input/OptionFn';
+import DraggableDialog from '../zhn-moleculs/DraggableDialog';
 import FlexColumn from '../zhn-atoms/FlexColumn';
+import StackInputs from '../zhn-inputs/StackInputs';
 import PoweredBy from '../links/PoweredBy';
 import { CryptoCompareLink } from '../links/Links';
 import {
@@ -52,10 +52,15 @@ const FEED_OPTIONS = [
   ['Popular', 'popular']
 ], DF_SORTBY = SORTBY_OPTIONS[0]
 , INITIAL_INPUTS = crDfInputs({
-   feed: getItemValue(DF_FEED),
    category: getItemValue(DF_CATEGORY),
+   feed: getItemValue(DF_FEED),
    sortOrder: getItemValue(DF_SORTBY)
-});
+})
+, INPUT_CONFIGS = [
+  ['s','category', 'Category', CATEGORY_OPTIONS, DF_CATEGORY],
+  ['s','feed', 'Feed', FEED_OPTIONS, DF_FEED],
+  ['s','sortOrder', 'SortBy', SORTBY_OPTIONS, DF_SORTBY]
+];
 
 const CryptoCompareNewsDialog = ({
   isShow,
@@ -107,28 +112,9 @@ const CryptoCompareNewsDialog = ({
        onClose={_hClose}
     >
       <FlexColumn>
-        <InputSelect
-          id="category"
-          caption="Category"
-          initItem={DF_CATEGORY}
-          options={CATEGORY_OPTIONS}
-          styleConfig={TS.SELECT}
-          onSelect={_selectInput}
-        />
-        <InputSelect
-          id="feed"
-          caption="Feed"
-          initItem={DF_FEED}
-          options={FEED_OPTIONS}
-          styleConfig={TS.SELECT}
-          onSelect={_selectInput}
-        />
-        <InputSelect
-          id="sortOrder"
-          caption="SortBy"
-          initItem={DF_SORTBY}
-          options={SORTBY_OPTIONS}
-          styleConfig={TS.SELECT}
+        <StackInputs
+          TS={TS}
+          configs={INPUT_CONFIGS}
           onSelect={_selectInput}
         />
         <PoweredBy style={TS.POWERED_BY}>

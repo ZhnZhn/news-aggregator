@@ -9,10 +9,10 @@ var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 var _useRefClose2 = _interopRequireDefault(require("./hooks/useRefClose"));
 var _useRefInputs2 = _interopRequireDefault(require("./hooks/useRefInputs"));
 var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"));
-var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/DraggableDialog"));
-var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
 var _OptionFn = require("../zhn-m-input/OptionFn");
+var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/DraggableDialog"));
 var _FlexColumn = _interopRequireDefault(require("../zhn-atoms/FlexColumn"));
+var _StackInputs = _interopRequireDefault(require("../zhn-inputs/StackInputs"));
 var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
 var _Links = require("../links/Links");
 var _DialogFn = require("./DialogFn");
@@ -24,10 +24,11 @@ var FEED_OPTIONS = [['All', 'ALL_NEWS_FEEDS'], ['Decrypt', 'decrypt'], ['CoinDes
   SORTBY_OPTIONS = [['Latest', 'latest'], ['Popular', 'popular']],
   DF_SORTBY = SORTBY_OPTIONS[0],
   INITIAL_INPUTS = (0, _DialogFn.crDfInputs)({
-    feed: (0, _OptionFn.getItemValue)(DF_FEED),
     category: (0, _OptionFn.getItemValue)(DF_CATEGORY),
+    feed: (0, _OptionFn.getItemValue)(DF_FEED),
     sortOrder: (0, _OptionFn.getItemValue)(DF_SORTBY)
-  });
+  }),
+  INPUT_CONFIGS = [['s', 'category', 'Category', CATEGORY_OPTIONS, DF_CATEGORY], ['s', 'feed', 'Feed', FEED_OPTIONS, DF_FEED], ['s', 'sortOrder', 'SortBy', SORTBY_OPTIONS, DF_SORTBY]];
 var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(_ref) {
   var isShow = _ref.isShow,
     type = _ref.type,
@@ -67,26 +68,9 @@ var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(_ref) {
     onShow: onShow,
     onClose: _hClose,
     children: (0, _jsxRuntime.jsxs)(_FlexColumn["default"], {
-      children: [(0, _jsxRuntime.jsx)(_InputSelect["default"], {
-        id: "category",
-        caption: "Category",
-        initItem: DF_CATEGORY,
-        options: CATEGORY_OPTIONS,
-        styleConfig: TS.SELECT,
-        onSelect: _selectInput
-      }), (0, _jsxRuntime.jsx)(_InputSelect["default"], {
-        id: "feed",
-        caption: "Feed",
-        initItem: DF_FEED,
-        options: FEED_OPTIONS,
-        styleConfig: TS.SELECT,
-        onSelect: _selectInput
-      }), (0, _jsxRuntime.jsx)(_InputSelect["default"], {
-        id: "sortOrder",
-        caption: "SortBy",
-        initItem: DF_SORTBY,
-        options: SORTBY_OPTIONS,
-        styleConfig: TS.SELECT,
+      children: [(0, _jsxRuntime.jsx)(_StackInputs["default"], {
+        TS: TS,
+        configs: INPUT_CONFIGS,
         onSelect: _selectInput
       }), (0, _jsxRuntime.jsx)(_PoweredBy["default"], {
         style: TS.POWERED_BY,
