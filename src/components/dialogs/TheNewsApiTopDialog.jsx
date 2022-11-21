@@ -16,30 +16,19 @@ import useDecorDialog from './hooks/useDecorDialog';
 import DraggableDialog from '../zhn-moleculs/DraggableDialog';
 import InputSelect from '../zhn-m-input/InputSelect';
 import {
-  getItemValue,
-  crSelectOptions
+  getItemValue
 } from '../zhn-m-input/OptionFn';
 import FlexColumn from '../zhn-atoms/FlexColumn';
 import {
   PoweredByNewsApi
 } from '../links/PoweredByLink';
+import {
+  CATEGORY_OPTIONS,
+  DF_CATEGORY,
+  INITIAL_CAREGORY_VALUE
+} from './TheNewsApiDialogFn';
 
-const _CATEGORIES = [
-  'all',
-  'general',
-  'science',
-  'sports',
-  'business',
-  'health',
-  'tech',
-  'politics',
-  'food',
-  'travel'
-]
-const CATEGORY_OPTIONS = crSelectOptions(_CATEGORIES)
-, DF_CATEGORY = CATEGORY_OPTIONS[0]
-, INITIAL_CAREGORY_VALUE = getItemValue(DF_CATEGORY)
-, LOCALE_OPTIONS = [
+const LOCALE_OPTIONS = [
   ["All", "all"],
   ["Argentina", "ar"],
   ["Armenia", "am"],
@@ -120,8 +109,8 @@ const TheNewsApiTopDialog = ({
 }) => {
   const [
     _refDialog,
-    _hClose]
-     = useRefClose(onClose)
+    _hClose
+  ] = useRefClose(onClose)
   , [
     _refCategory,
     _selectCategory

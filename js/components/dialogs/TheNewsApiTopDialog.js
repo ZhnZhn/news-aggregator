@@ -14,12 +14,9 @@ var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"))
 var _OptionFn = require("../zhn-m-input/OptionFn");
 var _FlexColumn = _interopRequireDefault(require("../zhn-atoms/FlexColumn"));
 var _PoweredByLink = require("../links/PoweredByLink");
+var _TheNewsApiDialogFn = require("./TheNewsApiDialogFn");
 var _jsxRuntime = require("preact/jsx-runtime");
-var _CATEGORIES = ['all', 'general', 'science', 'sports', 'business', 'health', 'tech', 'politics', 'food', 'travel'];
-var CATEGORY_OPTIONS = (0, _OptionFn.crSelectOptions)(_CATEGORIES),
-  DF_CATEGORY = CATEGORY_OPTIONS[0],
-  INITIAL_CAREGORY_VALUE = (0, _OptionFn.getItemValue)(DF_CATEGORY),
-  LOCALE_OPTIONS = [["All", "all"], ["Argentina", "ar"], ["Armenia", "am"], ["Australia", "au"], ["Austria", "at"], ["Belarus", "by"], ["Belgium", "be"], ["Bolivia", "bo"], ["Brazil", "br"], ["Bulgaria", "bg"], ["Canada", "ca"], ["Chile", "cl"], ["China", "cn"], ["Colombia", "co"], ["Croatia", "hr"], ["Czechia", "cz"], ["Ecuador", "ec"], ["Egypt", "eg"], ["France", "fr"], ["Germany", "de"], ["Greece", "gr"], ["Honduras", "hn"], ["Hong Kong", "hk"], ["India", "in"], ["Indonesia", "id"], ["Iran", "ir"], ["Ireland", "ie"], ["Israel", "il"], ["Italy", "it"], ["Japan", "jp"], ["Korea", "kr"], ["Mexico", "mx"], ["Netherlands", "nl"], ["New Zealand", "nz"], ["Nicaragua", "ni"], ["Pakistan", "pk"], ["Panama", "pa"], ["Peru", "pe"], ["Poland", "pl"], ["Portugal", "pt"], ["Qatar", "qa"], ["Romania", "ro"], ["Russia", "ru"], ["Saudi Arabia", "sa"], ["South Africa", "za"], ["Spain", "es"], ["Switzerland", "ch"], ["Syria", "sy"], ["Taiwan", "tw"], ["Thailand", "th"], ["Türkiye", "tr"], ["Ukraine", "ua"], ["United Kingdom", "gb"], ["United States Of America", "us"], ["Uruguay", "uy"], ["Venezuela", "ve"]],
+var LOCALE_OPTIONS = [["All", "all"], ["Argentina", "ar"], ["Armenia", "am"], ["Australia", "au"], ["Austria", "at"], ["Belarus", "by"], ["Belgium", "be"], ["Bolivia", "bo"], ["Brazil", "br"], ["Bulgaria", "bg"], ["Canada", "ca"], ["Chile", "cl"], ["China", "cn"], ["Colombia", "co"], ["Croatia", "hr"], ["Czechia", "cz"], ["Ecuador", "ec"], ["Egypt", "eg"], ["France", "fr"], ["Germany", "de"], ["Greece", "gr"], ["Honduras", "hn"], ["Hong Kong", "hk"], ["India", "in"], ["Indonesia", "id"], ["Iran", "ir"], ["Ireland", "ie"], ["Israel", "il"], ["Italy", "it"], ["Japan", "jp"], ["Korea", "kr"], ["Mexico", "mx"], ["Netherlands", "nl"], ["New Zealand", "nz"], ["Nicaragua", "ni"], ["Pakistan", "pk"], ["Panama", "pa"], ["Peru", "pe"], ["Poland", "pl"], ["Portugal", "pt"], ["Qatar", "qa"], ["Romania", "ro"], ["Russia", "ru"], ["Saudi Arabia", "sa"], ["South Africa", "za"], ["Spain", "es"], ["Switzerland", "ch"], ["Syria", "sy"], ["Taiwan", "tw"], ["Thailand", "th"], ["Türkiye", "tr"], ["Ukraine", "ua"], ["United Kingdom", "gb"], ["United States Of America", "us"], ["Uruguay", "uy"], ["Venezuela", "ve"]],
   DF_LOCALE = LOCALE_OPTIONS[0],
   INITIAL_LOCALE_VALUE = (0, _OptionFn.getItemValue)(DF_LOCALE),
   DOMAIN_OPTIONS = [["All", "all"], ["Business Insider", "businessinsider.com"], ["CNBC", "cnbc.com"], ["CNET", "cnet.com"], ["The Verge", "theverge.com"]],
@@ -36,7 +33,7 @@ var TheNewsApiTopDialog = function TheNewsApiTopDialog(_ref) {
   var _useRefClose = (0, _useRefClose2["default"])(onClose),
     _refDialog = _useRefClose[0],
     _hClose = _useRefClose[1],
-    _useRefSelectOption = (0, _useRefSelectOption4["default"])(INITIAL_CAREGORY_VALUE),
+    _useRefSelectOption = (0, _useRefSelectOption4["default"])(_TheNewsApiDialogFn.INITIAL_CAREGORY_VALUE),
     _refCategory = _useRefSelectOption[0],
     _selectCategory = _useRefSelectOption[1],
     _useRefSelectOption2 = (0, _useRefSelectOption4["default"])(INITIAL_LOCALE_VALUE),
@@ -74,8 +71,8 @@ var TheNewsApiTopDialog = function TheNewsApiTopDialog(_ref) {
     children: (0, _jsxRuntime.jsxs)(_FlexColumn["default"], {
       children: [(0, _jsxRuntime.jsx)(_InputSelect["default"], {
         caption: "Category",
-        initItem: DF_CATEGORY,
-        options: CATEGORY_OPTIONS,
+        initItem: _TheNewsApiDialogFn.DF_CATEGORY,
+        options: _TheNewsApiDialogFn.CATEGORY_OPTIONS,
         styleConfig: TS.SELECT,
         onSelect: _selectCategory
       }), (0, _jsxRuntime.jsx)(_InputSelect["default"], {
