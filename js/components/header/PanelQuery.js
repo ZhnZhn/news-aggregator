@@ -19,6 +19,7 @@ var PanelQuery = function PanelQuery(_ref) {
     onFmp = _ref.onFmp,
     onNewsApi = _ref.onNewsApi,
     onNewsTop = _ref.onNewsTop,
+    onTheNewsSearch = _ref.onTheNewsSearch,
     onTheNewsTop = _ref.onTheNewsTop,
     onStackTagged = _ref.onStackTagged,
     onStackSearch = _ref.onStackSearch,
@@ -76,6 +77,11 @@ var PanelQuery = function PanelQuery(_ref) {
       className: CL_ITEM,
       caption: _ProviderNames.NEWS_API_LONG + ": Top By",
       onClick: onNewsTop,
+      onClose: onClose
+    }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+      className: CL_ITEM,
+      caption: _ProviderNames.THE_NEWS_API + ": Search",
+      onClick: onTheNewsSearch,
       onClose: onClose
     }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
       className: CL_ITEM,

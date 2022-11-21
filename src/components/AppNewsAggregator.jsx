@@ -65,6 +65,7 @@ const AppNewsAggregator = () => {
           onFmp={ComponentActions.showFmp}
           onNewsSearch={ComponentActions.showNewsSearch}
           onNewsTop={ComponentActions.showNewsTop}
+          onTheNewsSearch={ComponentActions.showTheNewsSearch}
           onTheNewsTop={ComponentActions.showTheNewsTop}
 
           onSettings={_showSettings}

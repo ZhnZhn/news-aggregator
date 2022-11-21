@@ -9,100 +9,113 @@ import {
   WEBZ_IO,
   STACK_OVERFLOW
 } from '../../conf/ProviderNames';
-import Store from '../stores/Store'
+import Store from '../stores/Store';
 
-import Adapter from '../../adapters/Adapters'
-import Api from '../../api/Api'
+import Adapter from '../../adapters/Adapters';
+import Api from '../../api/Api';
 
 const MSG_ERR_TAIL = 'Key is not set. \nPlease, set and try again.';
 const MSG_ERR_DF = 'Unknow news API provider';
+
+
+const _isFn = fn => typeof fn === 'function';
+
+const _crConf = (
+  type,
+  msgErr,
+  apiKey
+) => ({
+   apiKey: _isFn(apiKey) ? apiKey() : true,
+   api: Api[type],
+   adapter: Adapter[type],
+   msgErr
+});
+
+
+const _crNewsConf = () => ({
+  apiKey: Store.getNewsKey(),
+  adapter: Adapter.News,
+  msgErr: `${NEWS_API_LONG} ${MSG_ERR_TAIL}`
+});
+
+const _crTheNewsConf = () => ({
+  apiKey: Store.getTheNewsKey(),
+  adapter: Adapter.TheNews,
+  msgErr: `${THE_NEWS_API} ${MSG_ERR_TAIL}`
+});
 
 const RouterApiConf = {
   getApiConf: (id) => {
     switch(id){
       case 'N':
         return {
-          apiKey: Store.getNewsKey(),
-          api: Api.News,
-          adapter: Adapter.News,
-          msgErr: `${NEWS_API_LONG} ${MSG_ERR_TAIL}`
+          ..._crNewsConf(),
+          api: Api.News
         };
       case 'NS':
         return {
-          apiKey: Store.getNewsKey(),
-          api: Api.NewsSearch,
-          adapter: Adapter.News,
-          msgErr: `${NEWS_API_LONG} ${MSG_ERR_TAIL}`
+          ..._crNewsConf(),
+          api: Api.NewsSearch
         };
       case 'NT':
         return {
-          apiKey: Store.getNewsKey(),
-          api: Api.NewsTop,
-          adapter: Adapter.News,
-          msgErr: `${NEWS_API_LONG} ${MSG_ERR_TAIL}`
+          ..._crNewsConf(),
+          api: Api.NewsTop
+        };
+      case 'TNS':
+        return {
+          ..._crTheNewsConf(),
+          api: Api.TheNewsSearch
         };
       case 'TNT':
         return {
-          apiKey: Store.getTheNewsKey(),
-          api: Api.TheNewsTop,
-          adapter: Adapter.TheNews,
-          msgErr: `${THE_NEWS_API} ${MSG_ERR_TAIL}`
+          ..._crTheNewsConf(),
+          api: Api.TheNewsTop
         };
       case 'W':
-        return {
-          apiKey: Store.getWebzKey(),
-          api: Api.Webz,
-          adapter: Adapter.Webz,
-          msgErr: `${WEBZ_IO} API ${MSG_ERR_TAIL}`
-        };
+        return _crConf(
+          'Webz',
+          `${WEBZ_IO} API ${MSG_ERR_TAIL}`,
+          Store.getWebzKey
+        );
       case 'SO':
-        return {
-          apiKey: true,
-          api: Api.StackOverflow,
-          adapter: Adapter.StackOverflow,
-          msgErr: `${STACK_OVERFLOW} API ${MSG_ERR_TAIL}`
-        };
+        return _crConf(
+          'StackOverflow',
+          `${STACK_OVERFLOW} API ${MSG_ERR_TAIL}`
+        );
       case 'IEX':
-         return {
-           apiKey: Store.getIexKey(),
-           api: Api.Iex,
-           adapter: Adapter.Iex,
-           msgErr: `${IEX_CLOUD} API ${MSG_ERR_TAIL}`
-         };
+         return _crConf(
+           'Iex',
+           `${IEX_CLOUD} API ${MSG_ERR_TAIL}`,
+           Store.getIexKey
+         );
      case 'FMP':
-        return {
-          apiKey: Store.getFmpKey(),
-          api: Api.Fmp,
-          adapter: Adapter.Fmp,
-          msgErr: `${FMP} API ${MSG_ERR_TAIL}`
-        };
+        return _crConf(
+          'Fmp',
+          `${FMP} API ${MSG_ERR_TAIL}`,
+          Store.getFmpKey
+        );
      case 'CCN':
-        return {
-          apiKey: true,
-          api: Api.CryptoCompare,
-          adapter: Adapter.CryptoCompare,
-          msgErr: `${CRYPTO_COMPARE} News API ${MSG_ERR_TAIL}`
-        };
+        return _crConf(
+          'CryptoCompare',
+          `${CRYPTO_COMPARE} News API ${MSG_ERR_TAIL}`
+        );
       case 'CS':
-        return {
-          apiKey: true,
-          api: Api.CoinStats,
-          adapter: Adapter.CoinStats,
-          msgErr: `${COIN_STATS} API ${MSG_ERR_TAIL}`
-        };
+        return _crConf(
+          'CoinStats',
+          `${COIN_STATS} API ${MSG_ERR_TAIL}`
+        );
       case 'MS':
-        return {
-          apiKey: true,
-          api: Api.Messari,
-          adapter: Adapter.Messari,
-          msgErr: `${MESSARI} Blockchain News API ${MSG_ERR_TAIL}`
-        };
+        return _crConf(
+          'Messari',
+          `${MESSARI} Blockchain News API ${MSG_ERR_TAIL}`
+        );
       default:
         return {
           msgErr: MSG_ERR_DF
         };
     }
   }
-}
+};
 
 export default RouterApiConf

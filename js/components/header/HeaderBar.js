@@ -1,100 +1,87 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
-
 var _uiApi = require("../uiApi");
-
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
-
 var _HeaderBar = _interopRequireDefault(require("./HeaderBar.Style"));
-
 var _DP = require("../DP");
-
 var _LoadingProgress = _interopRequireDefault(require("./LoadingProgress"));
-
 var _IconAppLogo = _interopRequireDefault(require("./IconAppLogo"));
-
 var _AppLabel = _interopRequireDefault(require("./AppLabel"));
-
 var _Comp = _interopRequireDefault(require("../Comp"));
-
 var _PanelQuery = _interopRequireDefault(require("./PanelQuery"));
-
 var _jsxRuntime = require("preact/jsx-runtime");
-
 var TITLE = "News Aggregator v0.4.0",
-    CL_HEADER = "header",
-    CL_PANEL_BROWSER = CL_HEADER + "__panel-browser",
-    CL_ICON_APP = CL_HEADER + "__icon-app",
-    CL_LABEL_APP = CL_HEADER + "__label-app",
-    CL_BROWSER_BTS = CL_HEADER + "__browser-bts",
-    CL_ARROW_DOWN = "arrow-down",
-    CL_BTS = CL_HEADER + "__bts",
-    CL_BT_ABOUT = CL_HEADER + "__bt-about",
-    S_SVG_ICON = {
-  position: 'relative',
-  top: -1,
-  verticalAlign: 'middle',
-  margin: '0 8px'
-};
-/*eslint-disable react-hooks/exhaustive-deps */
+  CL_HEADER = "header",
+  CL_PANEL_BROWSER = CL_HEADER + "__panel-browser",
+  CL_ICON_APP = CL_HEADER + "__icon-app",
+  CL_LABEL_APP = CL_HEADER + "__label-app",
+  CL_BROWSER_BTS = CL_HEADER + "__browser-bts",
+  CL_ARROW_DOWN = "arrow-down",
+  CL_BTS = CL_HEADER + "__bts",
+  CL_BT_ABOUT = CL_HEADER + "__bt-about",
+  S_SVG_ICON = {
+    position: 'relative',
+    top: -1,
+    verticalAlign: 'middle',
+    margin: '0 8px'
+  };
 
+/*eslint-disable react-hooks/exhaustive-deps */
 var _useClickItem = function _useClickItem(onClick, onClose) {
   return (0, _uiApi.useCallback)(function () {
     onClick();
     onClose();
   }, []);
-}; // onClick, onClose
-
+};
+// onClick, onClose
 /*eslint-enable react-hooks/exhaustive-deps */
-
 
 var HeaderBar = function HeaderBar(_ref) {
   var store = _ref.store,
-      onNewsSources = _ref.onNewsSources,
-      onSettings = _ref.onSettings,
-      onAbout = _ref.onAbout,
-      onWebz = _ref.onWebz,
-      onWebzCountry = _ref.onWebzCountry,
-      onStackTagged = _ref.onStackTagged,
-      onStackSearch = _ref.onStackSearch,
-      onCryptoCompare = _ref.onCryptoCompare,
-      onCoinStats = _ref.onCoinStats,
-      onMessari = _ref.onMessari,
-      onIex = _ref.onIex,
-      onFmp = _ref.onFmp,
-      onNewsSearch = _ref.onNewsSearch,
-      onNewsTop = _ref.onNewsTop,
-      onTheNewsTop = _ref.onTheNewsTop;
-
+    onNewsSources = _ref.onNewsSources,
+    onSettings = _ref.onSettings,
+    onAbout = _ref.onAbout,
+    onWebz = _ref.onWebz,
+    onWebzCountry = _ref.onWebzCountry,
+    onStackTagged = _ref.onStackTagged,
+    onStackSearch = _ref.onStackSearch,
+    onCryptoCompare = _ref.onCryptoCompare,
+    onCoinStats = _ref.onCoinStats,
+    onMessari = _ref.onMessari,
+    onIex = _ref.onIex,
+    onFmp = _ref.onFmp,
+    onNewsSearch = _ref.onNewsSearch,
+    onNewsTop = _ref.onNewsTop,
+    onTheNewsSearch = _ref.onTheNewsSearch,
+    onTheNewsTop = _ref.onTheNewsTop;
   var _useState = (0, _uiApi.useState)(false),
-      isQuery = _useState[0],
-      setIsQuery = _useState[1],
-      _hCloseQuery = (0, _uiApi.useCallback)(function () {
-    return setIsQuery(false);
-  }, []),
-      _hToggleQuery = (0, _uiApi.useCallback)(function () {
-    return setIsQuery(function (is) {
-      return !is;
-    });
-  }, []),
-      _hWebz = _useClickItem(onWebz, _hCloseQuery),
-      _hWebzCountry = _useClickItem(onWebzCountry, _hCloseQuery),
-      _hStackTagged = _useClickItem(onStackTagged, _hCloseQuery),
-      _hStackSearch = _useClickItem(onStackSearch, _hCloseQuery),
-      _hCryptoCompare = _useClickItem(onCryptoCompare, _hCloseQuery),
-      _hCoinStats = _useClickItem(onCoinStats, _hCloseQuery),
-      _hMessari = _useClickItem(onMessari, _hCloseQuery),
-      _hIex = _useClickItem(onIex, _hCloseQuery),
-      _hFmp = _useClickItem(onFmp, _hCloseQuery),
-      _hNewsApi = _useClickItem(onNewsSearch, _hCloseQuery),
-      _hNewsTop = _useClickItem(onNewsTop, _hCloseQuery),
-      _hTheNewsTop = _useClickItem(onTheNewsTop, _hCloseQuery),
-      TS = (0, _useTheme["default"])(_HeaderBar["default"]);
-
+    isQuery = _useState[0],
+    setIsQuery = _useState[1],
+    _hCloseQuery = (0, _uiApi.useCallback)(function () {
+      return setIsQuery(false);
+    }, []),
+    _hToggleQuery = (0, _uiApi.useCallback)(function () {
+      return setIsQuery(function (is) {
+        return !is;
+      });
+    }, []),
+    _hWebz = _useClickItem(onWebz, _hCloseQuery),
+    _hWebzCountry = _useClickItem(onWebzCountry, _hCloseQuery),
+    _hStackTagged = _useClickItem(onStackTagged, _hCloseQuery),
+    _hStackSearch = _useClickItem(onStackSearch, _hCloseQuery),
+    _hCryptoCompare = _useClickItem(onCryptoCompare, _hCloseQuery),
+    _hCoinStats = _useClickItem(onCoinStats, _hCloseQuery),
+    _hMessari = _useClickItem(onMessari, _hCloseQuery),
+    _hIex = _useClickItem(onIex, _hCloseQuery),
+    _hFmp = _useClickItem(onFmp, _hCloseQuery),
+    _hNewsApi = _useClickItem(onNewsSearch, _hCloseQuery),
+    _hNewsTop = _useClickItem(onNewsTop, _hCloseQuery),
+    _hTheNewsSearch = _useClickItem(onTheNewsSearch, _hCloseQuery),
+    _hTheNewsTop = _useClickItem(onTheNewsTop, _hCloseQuery),
+    TS = (0, _useTheme["default"])(_HeaderBar["default"]);
   return (0, _jsxRuntime.jsxs)("div", {
     className: CL_HEADER,
     style: TS.HEADER,
@@ -114,6 +101,7 @@ var HeaderBar = function HeaderBar(_ref) {
       onFmp: _hFmp,
       onNewsApi: _hNewsApi,
       onNewsTop: _hNewsTop,
+      onTheNewsSearch: _hTheNewsSearch,
       onTheNewsTop: _hTheNewsTop
     }), (0, _jsxRuntime.jsx)(_LoadingProgress["default"], {
       store: store
@@ -169,7 +157,6 @@ var HeaderBar = function HeaderBar(_ref) {
     })]
   });
 };
-
 var _default = HeaderBar;
 exports["default"] = _default;
 //# sourceMappingURL=HeaderBar.js.map

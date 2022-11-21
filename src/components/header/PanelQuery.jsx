@@ -31,6 +31,7 @@ const PanelQuery = ({
   onFmp,
   onNewsApi,
   onNewsTop,
+  onTheNewsSearch,
   onTheNewsTop,
   onStackTagged,
   onStackSearch,
@@ -99,6 +100,12 @@ const PanelQuery = ({
           className={CL_ITEM}
           caption={`${NEWS_API_LONG}: Top By`}
           onClick={onNewsTop}
+          onClose={onClose}
+        />
+        <A.MenuItem
+          className={CL_ITEM}
+          caption={`${THE_NEWS_API}: Search`}
+          onClick={onTheNewsSearch}
           onClose={onClose}
         />
         <A.MenuItem

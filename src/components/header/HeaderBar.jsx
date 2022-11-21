@@ -63,6 +63,7 @@ const HeaderBar = ({
   onFmp,
   onNewsSearch,
   onNewsTop,
+  onTheNewsSearch,
   onTheNewsTop
 }) => {
   const [
@@ -82,6 +83,7 @@ const HeaderBar = ({
   , _hFmp = _useClickItem(onFmp, _hCloseQuery)
   , _hNewsApi = _useClickItem(onNewsSearch, _hCloseQuery)
   , _hNewsTop = _useClickItem(onNewsTop, _hCloseQuery)
+  , _hTheNewsSearch = _useClickItem(onTheNewsSearch, _hCloseQuery)
   , _hTheNewsTop = _useClickItem(onTheNewsTop, _hCloseQuery)
   , TS = useTheme(styleConfig);
 
@@ -103,6 +105,7 @@ const HeaderBar = ({
         onFmp={_hFmp}
         onNewsApi={_hNewsApi}
         onNewsTop={_hNewsTop}
+        onTheNewsSearch={_hTheNewsSearch}
         onTheNewsTop={_hTheNewsTop}
       />
       <LoadingProgress

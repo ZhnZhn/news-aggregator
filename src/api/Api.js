@@ -6,6 +6,7 @@ import Iex from './IexApi'
 import Fmp from './FmpApi'
 import NewsSearch from './NewsSearchApi'
 import NewsTop from './NewsApiTop'
+import TheNewsSearch from './TheNewsApiSearch';
 import TheNewsTop from './TheNewsApiTop'
 import CryptoCompare from './CryptoCompareApi'
 import CoinStats from './CoinStatsApi'
@@ -22,6 +23,7 @@ const Api = {
   CryptoCompare,
   CoinStats,
   Messari,
+  TheNewsSearch,
   TheNewsTop
 };
 

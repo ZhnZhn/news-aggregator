@@ -7,6 +7,7 @@ import IexNews from './IexNewsDialog';
 import FmpNews from './FmpNewsDialog';
 import NewsApiSearch from './NewsApiSearchDialog';
 import NewsApiTop from './NewsApiTopDialog';
+import TheNewsApiSearch from './TheNewsApiSearchDialog';
 import TheNewsApiTop from './TheNewsApiTopDialog';
 import CryptoCompareNews from './CryptoCompareNewsDialog';
 import CoinStatsNews from './CoinStatsDialog';
@@ -26,6 +27,7 @@ const R = {
   FmpNews,
   NewsApiSearch,
   NewsApiTop,
+  TheNewsApiSearch,
   TheNewsApiTop
 }
 

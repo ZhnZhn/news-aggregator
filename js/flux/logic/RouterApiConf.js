@@ -3,92 +3,75 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports["default"] = void 0;
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _ProviderNames = require("../../conf/ProviderNames");
 var _Store = _interopRequireDefault(require("../stores/Store"));
 var _Adapters = _interopRequireDefault(require("../../adapters/Adapters"));
 var _Api = _interopRequireDefault(require("../../api/Api"));
 var MSG_ERR_TAIL = 'Key is not set. \nPlease, set and try again.';
 var MSG_ERR_DF = 'Unknow news API provider';
+var _isFn = function _isFn(fn) {
+  return typeof fn === 'function';
+};
+var _crConf = function _crConf(type, msgErr, apiKey) {
+  return {
+    apiKey: _isFn(apiKey) ? apiKey() : true,
+    api: _Api["default"][type],
+    adapter: _Adapters["default"][type],
+    msgErr: msgErr
+  };
+};
+var _crNewsConf = function _crNewsConf() {
+  return {
+    apiKey: _Store["default"].getNewsKey(),
+    adapter: _Adapters["default"].News,
+    msgErr: _ProviderNames.NEWS_API_LONG + " " + MSG_ERR_TAIL
+  };
+};
+var _crTheNewsConf = function _crTheNewsConf() {
+  return {
+    apiKey: _Store["default"].getTheNewsKey(),
+    adapter: _Adapters["default"].TheNews,
+    msgErr: _ProviderNames.THE_NEWS_API + " " + MSG_ERR_TAIL
+  };
+};
 var RouterApiConf = {
   getApiConf: function getApiConf(id) {
     switch (id) {
       case 'N':
-        return {
-          apiKey: _Store["default"].getNewsKey(),
-          api: _Api["default"].News,
-          adapter: _Adapters["default"].News,
-          msgErr: _ProviderNames.NEWS_API_LONG + " " + MSG_ERR_TAIL
-        };
+        return (0, _extends2["default"])({}, _crNewsConf(), {
+          api: _Api["default"].News
+        });
       case 'NS':
-        return {
-          apiKey: _Store["default"].getNewsKey(),
-          api: _Api["default"].NewsSearch,
-          adapter: _Adapters["default"].News,
-          msgErr: _ProviderNames.NEWS_API_LONG + " " + MSG_ERR_TAIL
-        };
+        return (0, _extends2["default"])({}, _crNewsConf(), {
+          api: _Api["default"].NewsSearch
+        });
       case 'NT':
-        return {
-          apiKey: _Store["default"].getNewsKey(),
-          api: _Api["default"].NewsTop,
-          adapter: _Adapters["default"].News,
-          msgErr: _ProviderNames.NEWS_API_LONG + " " + MSG_ERR_TAIL
-        };
+        return (0, _extends2["default"])({}, _crNewsConf(), {
+          api: _Api["default"].NewsTop
+        });
+      case 'TNS':
+        return (0, _extends2["default"])({}, _crTheNewsConf(), {
+          api: _Api["default"].TheNewsSearch
+        });
       case 'TNT':
-        return {
-          apiKey: _Store["default"].getTheNewsKey(),
-          api: _Api["default"].TheNewsTop,
-          adapter: _Adapters["default"].TheNews,
-          msgErr: _ProviderNames.THE_NEWS_API + " " + MSG_ERR_TAIL
-        };
+        return (0, _extends2["default"])({}, _crTheNewsConf(), {
+          api: _Api["default"].TheNewsTop
+        });
       case 'W':
-        return {
-          apiKey: _Store["default"].getWebzKey(),
-          api: _Api["default"].Webz,
-          adapter: _Adapters["default"].Webz,
-          msgErr: _ProviderNames.WEBZ_IO + " API " + MSG_ERR_TAIL
-        };
+        return _crConf('Webz', _ProviderNames.WEBZ_IO + " API " + MSG_ERR_TAIL, _Store["default"].getWebzKey);
       case 'SO':
-        return {
-          apiKey: true,
-          api: _Api["default"].StackOverflow,
-          adapter: _Adapters["default"].StackOverflow,
-          msgErr: _ProviderNames.STACK_OVERFLOW + " API " + MSG_ERR_TAIL
-        };
+        return _crConf('StackOverflow', _ProviderNames.STACK_OVERFLOW + " API " + MSG_ERR_TAIL);
       case 'IEX':
-        return {
-          apiKey: _Store["default"].getIexKey(),
-          api: _Api["default"].Iex,
-          adapter: _Adapters["default"].Iex,
-          msgErr: _ProviderNames.IEX_CLOUD + " API " + MSG_ERR_TAIL
-        };
+        return _crConf('Iex', _ProviderNames.IEX_CLOUD + " API " + MSG_ERR_TAIL, _Store["default"].getIexKey);
       case 'FMP':
-        return {
-          apiKey: _Store["default"].getFmpKey(),
-          api: _Api["default"].Fmp,
-          adapter: _Adapters["default"].Fmp,
-          msgErr: _ProviderNames.FMP + " API " + MSG_ERR_TAIL
-        };
+        return _crConf('Fmp', _ProviderNames.FMP + " API " + MSG_ERR_TAIL, _Store["default"].getFmpKey);
       case 'CCN':
-        return {
-          apiKey: true,
-          api: _Api["default"].CryptoCompare,
-          adapter: _Adapters["default"].CryptoCompare,
-          msgErr: _ProviderNames.CRYPTO_COMPARE + " News API " + MSG_ERR_TAIL
-        };
+        return _crConf('CryptoCompare', _ProviderNames.CRYPTO_COMPARE + " News API " + MSG_ERR_TAIL);
       case 'CS':
-        return {
-          apiKey: true,
-          api: _Api["default"].CoinStats,
-          adapter: _Adapters["default"].CoinStats,
-          msgErr: _ProviderNames.COIN_STATS + " API " + MSG_ERR_TAIL
-        };
+        return _crConf('CoinStats', _ProviderNames.COIN_STATS + " API " + MSG_ERR_TAIL);
       case 'MS':
-        return {
-          apiKey: true,
-          api: _Api["default"].Messari,
-          adapter: _Adapters["default"].Messari,
-          msgErr: _ProviderNames.MESSARI + " Blockchain News API " + MSG_ERR_TAIL
-        };
+        return _crConf('Messari', _ProviderNames.MESSARI + " Blockchain News API " + MSG_ERR_TAIL);
       default:
         return {
           msgErr: MSG_ERR_DF

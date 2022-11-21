@@ -103,14 +103,17 @@ var NEWS_QUERY = {
       "source": "newsapi_top"
     }
   },
+  THE_NEWS_SEARCH: {
+    "type": "THE_NEWS_SEARCH",
+    "dialogType": "TheNewsApiSearch",
+    "paneCaption": _ProviderNames.THE_NEWS_API + ": Search",
+    "paneId": "thenewsapi_search"
+  },
   THE_NEWS_TOP: {
     "type": "THE_NEWS_TOP",
     "dialogType": "TheNewsApiTop",
     "paneCaption": _ProviderNames.THE_NEWS_API + ": Top By",
-    "paneId": "thenewsapi_top",
-    "dialogProps": {
-      "source": "thenewsapi_top"
-    }
+    "paneId": "thenewsapi_top"
   }
 };
 var _default = NEWS_QUERY;

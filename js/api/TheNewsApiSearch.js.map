@@ -1,0 +1,20 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/TheNewsApiSearch.js"
+ ],
+ "file": "../../src/api/TheNewsApiSearch.js",
+ "names": [
+  "TheNewsApiSearch",
+  "getRequestUrl",
+  "option",
+  "search",
+  "category",
+  "sortBy",
+  "_categoryQuery",
+  "crQueryToken",
+  "crApiUrl",
+  "checkResponse"
+ ],
+ "mappings": ";;;;AAAA;AAMA,IAAMA,gBAAgB,GAAG;EACvBC,aAAa,yBAACC,MAAM,EAAC;IACnB,IACEC,MAAM,GAGJD,MAAM,CAHRC,MAAM;MACNC,QAAQ,GAENF,MAAM,CAFRE,QAAQ;MACRC,MAAM,GACJH,MAAM,CADRG,MAAM;MAENC,cAAc,GAAG,IAAAC,0BAAY,EAACH,QAAQ,EAAE,YAAY,CAAC;IACvD,YAAU,IAAAI,sBAAQ,EAAC,KAAK,EAAEN,MAAM,CAAC,GAAGI,cAAc,gBAAWH,MAAM,cAASE,MAAM;EACpF,CAAC;EAEDI,aAAa,EAAbA;AACF,CAAC;AAAA,eAEcT,gBAAgB;AAAA"
+}
