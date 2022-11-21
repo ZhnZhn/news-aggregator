@@ -21,4 +21,11 @@ export const crApiUrl = (
   return `${API_URL}/${type}?api_token=${apiKey}${_page}&${QUERY_LIMIT}`;
 }
 
+export const crQueryToken = (
+  value,
+  parameterName
+) => value === 'all'
+  ? ''
+  : `&${parameterName}=${value}`;
+
 export const checkResponse = () => true
