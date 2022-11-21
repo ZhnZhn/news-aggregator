@@ -6,24 +6,34 @@ import {
 import styleConfig from './Dialog.Style';
 
 import useRefClose from './hooks/useRefClose';
-import useRefSelectOption from './hooks/useRefSelectOption';
+import useRefInputs from './hooks/useRefInputs';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import A from '../Comp';
+import StackInputs from '../zhn-inputs/StackInputs';
 import { getItemValue } from '../zhn-m-input/OptionFn';
+
 import PoweredBy from '../links/PoweredBy';
 import { CoinStatsLink } from '../links/Links';
-import { getPaneCaption } from './DialogFn';
+import {
+  crDfInputs,
+  getPaneCaption
+} from './DialogFn';
 
-const NEWS_FOR_OPTIONS = [
+const NEWS_FILTER_OPTIONS = [
   ["Latest", "latest"],
   ["Handpicked", "handpicked"],
   ["Trending", "trending"],
   ["Bullish", "bullish"],
   ["Bearish", "bearish"]
 ]
-, DF_FILTER = NEWS_FOR_OPTIONS[0]
-, INITIAL_FILTER_VALUE = getItemValue(DF_FILTER);
+, DF_FILTER = NEWS_FILTER_OPTIONS[0]
+, INITIAL_INPUTS = crDfInputs({
+  filter: getItemValue(DF_FILTER)
+})
+, INPUT_CONFIGS = [
+  ['s','filter','News filter', NEWS_FILTER_OPTIONS, DF_FILTER]
+];
 
 const CoinStatsDialog = ({
   isShow,
@@ -39,9 +49,9 @@ const CoinStatsDialog = ({
     _hClose
   ] = useRefClose(onClose)
   , [
-    _refFilter,
-    _selectFilter
-  ] = useRefSelectOption(INITIAL_FILTER_VALUE)
+    _refValues,
+    _selectInput
+  ] = useRefInputs(INITIAL_INPUTS)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(() => {
     onLoad({
@@ -49,7 +59,7 @@ const CoinStatsDialog = ({
       source,
       itemConf,
       loadId: 'CS',
-      filter: getRefValue(_refFilter)
+      ...getRefValue(_refValues)
     })
     _hClose()
   }, [])
@@ -74,12 +84,10 @@ const CoinStatsDialog = ({
       onShow={onShow}
       onClose={_hClose}
     >
-      <A.InputSelect
-       caption="News filter"
-       initItem={DF_FILTER}
-       options={NEWS_FOR_OPTIONS}
-       styleConfig={TS.SELECT}
-       onSelect={_selectFilter}
+      <StackInputs
+        TS={TS}
+        configs={INPUT_CONFIGS}
+        onSelect={_selectInput}
       />
       <PoweredBy style={TS.POWERED_BY}>
         <CoinStatsLink />

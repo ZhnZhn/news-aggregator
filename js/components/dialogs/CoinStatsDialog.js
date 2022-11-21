@@ -3,20 +3,25 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports["default"] = void 0;
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _uiApi = require("../uiApi");
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 var _useRefClose2 = _interopRequireDefault(require("./hooks/useRefClose"));
-var _useRefSelectOption2 = _interopRequireDefault(require("./hooks/useRefSelectOption"));
+var _useRefInputs2 = _interopRequireDefault(require("./hooks/useRefInputs"));
 var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"));
 var _Comp = _interopRequireDefault(require("../Comp"));
+var _StackInputs = _interopRequireDefault(require("../zhn-inputs/StackInputs"));
 var _OptionFn = require("../zhn-m-input/OptionFn");
 var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
 var _Links = require("../links/Links");
 var _DialogFn = require("./DialogFn");
 var _jsxRuntime = require("preact/jsx-runtime");
-var NEWS_FOR_OPTIONS = [["Latest", "latest"], ["Handpicked", "handpicked"], ["Trending", "trending"], ["Bullish", "bullish"], ["Bearish", "bearish"]],
-  DF_FILTER = NEWS_FOR_OPTIONS[0],
-  INITIAL_FILTER_VALUE = (0, _OptionFn.getItemValue)(DF_FILTER);
+var NEWS_FILTER_OPTIONS = [["Latest", "latest"], ["Handpicked", "handpicked"], ["Trending", "trending"], ["Bullish", "bullish"], ["Bearish", "bearish"]],
+  DF_FILTER = NEWS_FILTER_OPTIONS[0],
+  INITIAL_INPUTS = (0, _DialogFn.crDfInputs)({
+    filter: (0, _OptionFn.getItemValue)(DF_FILTER)
+  }),
+  INPUT_CONFIGS = [['s', 'filter', 'News filter', NEWS_FILTER_OPTIONS, DF_FILTER]];
 var CoinStatsDialog = function CoinStatsDialog(_ref) {
   var isShow = _ref.isShow,
     type = _ref.type,
@@ -28,17 +33,16 @@ var CoinStatsDialog = function CoinStatsDialog(_ref) {
   var _useRefClose = (0, _useRefClose2["default"])(onClose),
     _refDialog = _useRefClose[0],
     _hClose = _useRefClose[1],
-    _useRefSelectOption = (0, _useRefSelectOption2["default"])(INITIAL_FILTER_VALUE),
-    _refFilter = _useRefSelectOption[0],
-    _selectFilter = _useRefSelectOption[1],
+    _useRefInputs = (0, _useRefInputs2["default"])(INITIAL_INPUTS),
+    _refValues = _useRefInputs[0],
+    _selectInput = _useRefInputs[1],
     _hLoad = (0, _uiApi.useCallback)(function () {
-      onLoad({
+      onLoad((0, _extends2["default"])({
         type: type,
         source: source,
         itemConf: itemConf,
-        loadId: 'CS',
-        filter: (0, _uiApi.getRefValue)(_refFilter)
-      });
+        loadId: 'CS'
+      }, (0, _uiApi.getRefValue)(_refValues)));
       _hClose();
     }, []),
     _useDecorDialog = (0, _useDecorDialog2["default"])(_Dialog["default"], _hLoad, _hClose),
@@ -56,12 +60,10 @@ var CoinStatsDialog = function CoinStatsDialog(_ref) {
     onLoad: _hLoad,
     onShow: onShow,
     onClose: _hClose,
-    children: [(0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
-      caption: "News filter",
-      initItem: DF_FILTER,
-      options: NEWS_FOR_OPTIONS,
-      styleConfig: TS.SELECT,
-      onSelect: _selectFilter
+    children: [(0, _jsxRuntime.jsx)(_StackInputs["default"], {
+      TS: TS,
+      configs: INPUT_CONFIGS,
+      onSelect: _selectInput
     }), (0, _jsxRuntime.jsx)(_PoweredBy["default"], {
       style: TS.POWERED_BY,
       children: (0, _jsxRuntime.jsx)(_Links.CoinStatsLink, {})
