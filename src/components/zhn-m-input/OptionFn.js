@@ -1,6 +1,7 @@
 import toFirstUpperCase from '../../utils/toFirstUpperCase';
 
-const _isArr = Array.isArray;
+const _isArr = Array.isArray
+, _isStr = value => typeof value === 'string';
 
 export const getItemCaption = (
   item
@@ -11,7 +12,9 @@ export const getItemCaption = (
 export const getItemValue = (
   item
 ) => _isArr(item)
- ? item[1] || item[0]
+ ? _isStr(item[1])
+     ? item[1]
+     : item[0]
  : void 0;
 
 export const crSelectOptions = (
