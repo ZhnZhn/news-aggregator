@@ -2,25 +2,22 @@ import {
   NEWS_API
 } from '../../conf/ProviderNames';
 
-import {
-  useCallback,
-  getRefValue
-} from '../uiApi';
-
 import styleConfig from './Dialog.Style';
 
-import useRefClose from './hooks/useRefClose';
-import useRefSelectOption from './hooks/useRefSelectOption';
+import useRefInputs from './hooks/useRefInputs';
+import useDialog from './hooks/useDialog';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import DraggableDialog from '../zhn-moleculs/DraggableDialog';
-import InputSelect from '../zhn-m-input/InputSelect';
+import StackInputs from '../zhn-inputs/StackInputs';
 import {
-  getItemValue,
   crSelectOptions
 } from '../zhn-m-input/OptionFn';
 import FlexColumn from '../zhn-atoms/FlexColumn';
 import { PoweredByNewsApi } from '../links/PoweredByLink';
+import {
+  crDfInputs
+} from './DialogFn';
 
 const _CATEGORY = [
   'business',
@@ -33,7 +30,6 @@ const _CATEGORY = [
 ]
 , CATEGORY_OPTIONS = crSelectOptions(_CATEGORY)
 , DF_CATEGORY = CATEGORY_OPTIONS[0]
-, INITIAL_CATEGORY_VALUE = getItemValue(DF_CATEGORY)
 , COUNTRY_OPTIONS = [
    ["Argentina", "ar"],
    ["Australia", "au"],
@@ -91,43 +87,26 @@ const _CATEGORY = [
    ["Venezuala", "ve"]
   ]
 , DF_COUNTRY = COUNTRY_OPTIONS[52]
-, INITIAL_COUNTRY_VALUE = getItemValue(DF_COUNTRY);
+, INPUT_CONFIGS = [
+  ['s','category','Category',CATEGORY_OPTIONS, DF_CATEGORY],
+  ['s','country','Country',COUNTRY_OPTIONS, DF_COUNTRY]
+]
+, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);
 
-const NewsApiTopDialog = ({
-  isShow,
-  type,
-  source,
-  itemConf,
-  onLoad,
-  onShow,
-  onClose
-}) => {
-  const [
+const NewsApiTopDialog = (props) => {
+  const {
+    isShow,
+    onShow
+  } = props
+  , [
+    _refInputs,
+    _selectInput
+  ] = useRefInputs(INITIAL_INPUTS)
+  , [
     _refDialog,
+    _hLoad,
     _hClose
-  ] = useRefClose(onClose)
-  , [
-    _refCategory,
-    _selectCategory
-  ] = useRefSelectOption(INITIAL_CATEGORY_VALUE)
-  , [
-    _refCountry,
-    _selectCountry
-  ] = useRefSelectOption(INITIAL_COUNTRY_VALUE)
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _hLoad = useCallback(()=>{
-    onLoad({
-      type,
-      source,
-      itemConf,
-      loadId: 'NT',
-      category: getRefValue(_refCategory),
-      country: getRefValue(_refCountry)
-    })
-    _hClose()
-  }, [])
-  //type, source, itemConf, onLoad,
-  /*eslint-enable react-hooks/exhaustive-deps */
+  ] = useDialog(props, 'NT', _refInputs)
   , [
     TS,
     _hKeyDown
@@ -147,19 +126,10 @@ const NewsApiTopDialog = ({
        onClose={_hClose}
     >
        <FlexColumn>
-         <InputSelect
-           caption="Category"
-           initItem={DF_CATEGORY}
-           options={CATEGORY_OPTIONS}
-           styleConfig={TS.SELECT}
-           onSelect={_selectCategory}
-         />
-         <InputSelect
-           caption="Country"
-           initItem={DF_COUNTRY}
-           options={COUNTRY_OPTIONS}
-           styleConfig={TS.SELECT}
-           onSelect={_selectCountry}
+         <StackInputs
+            TS={TS}
+            configs={INPUT_CONFIGS}
+            onSelect={_selectInput}
          />
          <PoweredByNewsApi
             style={TS.POWERED_BY}
