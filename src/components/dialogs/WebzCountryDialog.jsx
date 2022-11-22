@@ -1,20 +1,18 @@
 import { WEBZ_IO } from '../../conf/ProviderNames';
 
-import {
-  useCallback,
-  getRefValue
-} from '../uiApi';
-
 import styleConfig from './Dialog.Style';
 
-import useRefClose from './hooks/useRefClose';
-
-import useRefSelectOption from './hooks/useRefSelectOption';
+import useRefInputs from './hooks/useRefInputs';
+import useDialog from './hooks/useDialog';
 import useDecorDialog from './hooks/useDecorDialog';
 
-import A from '../Comp';
-import { getItemValue } from '../zhn-m-input/OptionFn';
+import DraggableDialog from '../zhn-moleculs/DraggableDialog';
+import FlexColumn from '../zhn-atoms/FlexColumn';
+import StackInputs from '../zhn-inputs/StackInputs';
 import { PoweredByWebzLink } from '../links/PoweredByLink';
+import {
+  crDfInputs
+} from './DialogFn';
 
 const OPTION_COUNTRIES = [
   ["Australia",  "AU"],
@@ -92,59 +90,36 @@ const OPTION_COUNTRIES = [
   ["English", "english"]
 ]
 , DF_COUNTRY = OPTION_COUNTRIES[0]
-, INITIAL_COUNTRY_VALUE = getItemValue(DF_COUNTRY)
 , DF_TOPIC = OPTION_TOPICS[0]
-, INITIAL_TOPIC_VALUE = getItemValue(DF_TOPIC)
 , DF_LANGUAGE = OPTION_LANGUAGES[0]
-, INITIAL_LANGUAGE_VALUE = "";
+, INPUT_CONFIGS = [
+  ['s','country','Country',OPTION_COUNTRIES,DF_COUNTRY],
+  ['s','topic','Topic',OPTION_TOPICS,DF_TOPIC],
+  ['s','lang','Language',OPTION_LANGUAGES,DF_LANGUAGE]
+]
+, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);
 
-const WebzCountryDialog = ({
-  isShow,
-  type,
-  source,
-  itemConf,
-  onLoad,
-  onShow,
-  onClose
-}) => {
-  const [
+const WebzCountryDialog = (props) => {
+  const {
+    isShow,
+    onShow
+  } = props
+  , [
+    _refInputs,
+    _selectInput
+  ] = useRefInputs(INITIAL_INPUTS)
+  , [
     _refDialog,
+    _hLoad,
     _hClose
-  ] = useRefClose(onClose)
-  , [
-    _refCountry,
-    _selectCountry
-  ] = useRefSelectOption(INITIAL_COUNTRY_VALUE)
-  , [
-    _refTopic,
-    _selectTopic
-  ] = useRefSelectOption(INITIAL_TOPIC_VALUE)
-  , [
-    _refLanguage,
-    _selectLanguage
-  ] = useRefSelectOption(INITIAL_LANGUAGE_VALUE)
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _hLoad = useCallback(()=>{
-    onLoad({
-      type,
-      source,
-      itemConf,
-      loadId: "W",
-      country: getRefValue(_refCountry),
-      topic: getRefValue(_refTopic),
-      lang: getRefValue(_refLanguage)
-    })
-    _hClose()
-  }, [])
-  //type, source, itemConf, onLoad
-  /*eslint-enable react-hooks/exhaustive-deps */
+  ] = useDialog(props, 'W', _refInputs)
   , [
     TS,
     _hKeyDown
   ] = useDecorDialog(styleConfig, _hLoad, _hClose);
 
   return (
-    <A.DraggableDialog
+    <DraggableDialog
        ref={_refDialog}
        isShow={isShow}
        style={TS.R_DIALOG}
@@ -156,37 +131,17 @@ const WebzCountryDialog = ({
        onShow={onShow}
        onClose={_hClose}
     >
-      <div>
-        <A.InputSelect
-          caption="Country"
-          initItem={DF_COUNTRY}
-          options={OPTION_COUNTRIES}
-          styleConfig={TS.SELECT}
-          onSelect={_selectCountry}
-        />
-      </div>
-      <div>
-        <A.InputSelect
-          caption="Topic"
-          initItem={DF_TOPIC}
-          options={OPTION_TOPICS}
-          styleConfig={TS.SELECT}
-          onSelect={_selectTopic}
-        />
-      </div>
-      <div>
-        <A.InputSelect
-          caption="Language"
-          initItem={DF_LANGUAGE}
-          options={OPTION_LANGUAGES}
-          styleConfig={TS.SELECT}
-          onSelect={_selectLanguage}
-        />
-      </div>
-      <PoweredByWebzLink
-         style={TS.POWERED_BY}
-      />
-    </A.DraggableDialog>
+       <FlexColumn>
+         <StackInputs
+            TS={TS}
+            configs={INPUT_CONFIGS}
+            onSelect={_selectInput}
+         />
+         <PoweredByWebzLink
+            style={TS.POWERED_BY}
+         />
+      </FlexColumn>
+    </DraggableDialog>
   );
 };
 
