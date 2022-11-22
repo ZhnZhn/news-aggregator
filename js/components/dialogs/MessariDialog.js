@@ -3,11 +3,9 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var _uiApi = require("../uiApi");
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
-var _useRefClose2 = _interopRequireDefault(require("./hooks/useRefClose"));
 var _useRefInputs2 = _interopRequireDefault(require("./hooks/useRefInputs"));
+var _useDialog2 = _interopRequireDefault(require("./hooks/useDialog"));
 var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"));
 var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/DraggableDialog"));
 var _StackInputs = _interopRequireDefault(require("../zhn-inputs/StackInputs"));
@@ -41,29 +39,17 @@ var ASSET_OPTIONS = [["All", "all"]
   DF_ASSET = ASSET_OPTIONS[0],
   INPUT_CONFIGS = [['s', 'assetKey', 'News about', ASSET_OPTIONS, DF_ASSET]],
   INITIAL_INPUTS = (0, _DialogFn.crDfInputs)(INPUT_CONFIGS);
-var MessariDialog = function MessariDialog(_ref) {
-  var isShow = _ref.isShow,
-    type = _ref.type,
-    source = _ref.source,
-    itemConf = _ref.itemConf,
-    onLoad = _ref.onLoad,
-    onShow = _ref.onShow,
-    onClose = _ref.onClose;
-  var _useRefClose = (0, _useRefClose2["default"])(onClose),
-    _refDialog = _useRefClose[0],
-    _hClose = _useRefClose[1],
+var MessariDialog = function MessariDialog(props) {
+  var isShow = props.isShow,
+    itemConf = props.itemConf,
+    onShow = props.onShow,
     _useRefInputs = (0, _useRefInputs2["default"])(INITIAL_INPUTS),
-    _refValues = _useRefInputs[0],
+    _refInputs = _useRefInputs[0],
     _selectInput = _useRefInputs[1],
-    _hLoad = (0, _uiApi.useCallback)(function () {
-      onLoad((0, _extends2["default"])({
-        type: type,
-        source: source,
-        itemConf: itemConf,
-        loadId: 'MS'
-      }, (0, _uiApi.getRefValue)(_refValues)));
-      _hClose();
-    }, []),
+    _useDialog = (0, _useDialog2["default"])(props, 'MS', _refInputs),
+    _refDialog = _useDialog[0],
+    _hLoad = _useDialog[1],
+    _hClose = _useDialog[2],
     _useDecorDialog = (0, _useDecorDialog2["default"])(_Dialog["default"], _hLoad, _hClose),
     TS = _useDecorDialog[0],
     _hKeyDown = _useDecorDialog[1],

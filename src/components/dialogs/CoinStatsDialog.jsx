@@ -1,12 +1,7 @@
-import {
-  useCallback,
-  getRefValue
-} from '../uiApi';
-
 import styleConfig from './Dialog.Style';
 
-import useRefClose from './hooks/useRefClose';
 import useRefInputs from './hooks/useRefInputs';
+import useDialog from './hooks/useRefInputs';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import DraggableDialog from '../zhn-moleculs/DraggableDialog';
@@ -31,36 +26,21 @@ const NEWS_FILTER_OPTIONS = [
 ]
 , INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);
 
-const CoinStatsDialog = ({
-  isShow,
-  type,
-  source,
-  itemConf,
-  onLoad,
-  onShow,
-  onClose
-}) => {
-  const [
-    _refDialog,
-    _hClose
-  ] = useRefClose(onClose)
+const CoinStatsDialog = (props) => {
+  const {
+    isShow,
+    itemConf,
+    onShow
+  } = props
   , [
-    _refValues,
+    _refInputs,
     _selectInput
   ] = useRefInputs(INITIAL_INPUTS)
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _hLoad = useCallback(() => {
-    onLoad({
-      type,
-      source,
-      itemConf,
-      loadId: 'CS',
-      ...getRefValue(_refValues)
-    })
-    _hClose()
-  }, [])
-  //type, source, itemConf, onLoad
-  /*eslint-enable react-hooks/exhaustive-deps */
+  , [
+    _refDialog,
+    _hLoad,
+    _hClose
+  ] = useDialog(props, 'CS', _refInputs)
   , [
     TS,
     _hKeyDown

@@ -1,12 +1,7 @@
-import {
-  useCallback,
-  getRefValue
-} from '../uiApi';
-
 import styleConfig from './Dialog.Style';
 
-import useRefClose from './hooks/useRefClose';
 import useRefInputs from './hooks/useRefInputs';
+import useDialog from './hooks/useDialog';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import DraggableDialog from '../zhn-moleculs/DraggableDialog';
@@ -48,36 +43,21 @@ const ASSET_OPTIONS = [
 ]
 , INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);
 
-const MessariDialog = ({
-  isShow,
-  type,
-  source,
-  itemConf,
-  onLoad,
-  onShow,
-  onClose
- }) => {
-  const [
-    _refDialog,
-    _hClose
-  ] = useRefClose(onClose)
+const MessariDialog = (props) => {
+  const {
+    isShow,
+    itemConf,
+    onShow,
+  } = props  
   , [
-    _refValues,
+    _refInputs,
     _selectInput
   ] = useRefInputs(INITIAL_INPUTS)
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _hLoad = useCallback(()=>{
-    onLoad({
-      type,
-      source,
-      itemConf,
-      loadId: 'MS',
-      ...getRefValue(_refValues)
-    })
-    _hClose()
-  }, [])
-  // type, source, itemConf, onLoad, _hClose
-  /*eslint-enable react-hooks/exhaustive-deps */
+  , [
+    _refDialog,
+    _hLoad,
+    _hClose
+  ] = useDialog(props, 'MS', _refInputs)
   , [
     TS,
     _hKeyDown

@@ -3,13 +3,10 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var _uiApi = require("../uiApi");
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
-var _useRefClose2 = _interopRequireDefault(require("./hooks/useRefClose"));
 var _useRefInputs2 = _interopRequireDefault(require("./hooks/useRefInputs"));
+var _useDialog2 = _interopRequireDefault(require("./hooks/useDialog"));
 var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"));
-var _OptionFn = require("../zhn-m-input/OptionFn");
 var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/DraggableDialog"));
 var _FlexColumn = _interopRequireDefault(require("../zhn-atoms/FlexColumn"));
 var _StackInputs = _interopRequireDefault(require("../zhn-inputs/StackInputs"));
@@ -23,35 +20,19 @@ var FEED_OPTIONS = [['All', 'ALL_NEWS_FEEDS'], ['Decrypt', 'decrypt'], ['CoinDes
   DF_CATEGORY = CATEGORY_OPTIONS[0],
   SORTBY_OPTIONS = [['Latest', 'latest'], ['Popular', 'popular']],
   DF_SORTBY = SORTBY_OPTIONS[0],
-  INITIAL_INPUTS = (0, _DialogFn.crDfInputs)({
-    category: (0, _OptionFn.getItemValue)(DF_CATEGORY),
-    feed: (0, _OptionFn.getItemValue)(DF_FEED),
-    sortOrder: (0, _OptionFn.getItemValue)(DF_SORTBY)
-  }),
-  INPUT_CONFIGS = [['s', 'category', 'Category', CATEGORY_OPTIONS, DF_CATEGORY], ['s', 'feed', 'Feed', FEED_OPTIONS, DF_FEED], ['s', 'sortOrder', 'SortBy', SORTBY_OPTIONS, DF_SORTBY]];
-var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(_ref) {
-  var isShow = _ref.isShow,
-    type = _ref.type,
-    source = _ref.source,
-    itemConf = _ref.itemConf,
-    onLoad = _ref.onLoad,
-    onShow = _ref.onShow,
-    onClose = _ref.onClose;
-  var _useRefClose = (0, _useRefClose2["default"])(onClose),
-    _refDialog = _useRefClose[0],
-    _hClose = _useRefClose[1],
+  INPUT_CONFIGS = [['s', 'category', 'Category', CATEGORY_OPTIONS, DF_CATEGORY], ['s', 'feed', 'Feed', FEED_OPTIONS, DF_FEED], ['s', 'sortOrder', 'SortBy', SORTBY_OPTIONS, DF_SORTBY]],
+  INITIAL_INPUTS = (0, _DialogFn.crDfInputs)(INPUT_CONFIGS);
+var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(props) {
+  var isShow = props.isShow,
+    itemConf = props.itemConf,
+    onShow = props.onShow,
     _useRefInputs = (0, _useRefInputs2["default"])(INITIAL_INPUTS),
     _refInputs = _useRefInputs[0],
     _selectInput = _useRefInputs[1],
-    _hLoad = (0, _uiApi.useCallback)(function () {
-      onLoad((0, _extends2["default"])({
-        type: type,
-        source: source,
-        itemConf: itemConf,
-        loadId: 'CCN'
-      }, (0, _uiApi.getRefValue)(_refInputs)));
-      _hClose();
-    }, []),
+    _useDialog = (0, _useDialog2["default"])(props, 'CCN', _refInputs),
+    _refDialog = _useDialog[0],
+    _hLoad = _useDialog[1],
+    _hClose = _useDialog[2],
     _useDecorDialog = (0, _useDecorDialog2["default"])(_Dialog["default"], _hLoad, _hClose),
     TS = _useDecorDialog[0],
     _hKeyDown = _useDecorDialog[1],

@@ -1,0 +1,25 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../../src/components/dialogs/hooks/useDialog.js"
+ ],
+ "file": "../../../../src/components/dialogs/hooks/useDialog.js",
+ "names": [
+  "useDialog",
+  "props",
+  "loadId",
+  "refInputs",
+  "type",
+  "source",
+  "itemConf",
+  "onLoad",
+  "onClose",
+  "useRefClose",
+  "_refDialog",
+  "_hClose",
+  "_hLoad",
+  "useCallback",
+  "getRefValue"
+ ],
+ "mappings": ";;;;;;AAAA;AAIA;AAEA,IAAMA,SAAS,GAAG,SAAZA,SAAS,CACbC,KAAK,EACLC,MAAM,EACNC,SAAS,EACN;EACH,IACEC,IAAI,GAKFH,KAAK,CALPG,IAAI;IACJC,MAAM,GAIJJ,KAAK,CAJPI,MAAM;IACNC,QAAQ,GAGNL,KAAK,CAHPK,QAAQ;IACRC,MAAM,GAEJN,KAAK,CAFPM,MAAM;IACNC,OAAO,GACLP,KAAK,CADPO,OAAO;IAAA,eAKL,IAAAC,wBAAW,EAACD,OAAO,CAAC;IAFtBE,UAAU;IACVC,OAAO;IAGPC,MAAM,GAAG,IAAAC,kBAAW,EAAC,YAAM;MAC3BN,MAAM;QACJH,IAAI,EAAJA,IAAI;QACJC,MAAM,EAANA,MAAM;QACNC,QAAQ,EAARA,QAAQ;QACRJ,MAAM,EAANA;MAAM,GACH,IAAAY,kBAAW,EAACX,SAAS,CAAC,EACzB;MACFQ,OAAO,EAAE;IACX,CAAC,EAAE,EAAE,CAAC;EACN;EACA;EACA,OAAO,CACLD,UAAU,EACVE,MAAM,EACND,OAAO,CACR;AACH,CAAC;AAAC,eAEaX,SAAS;AAAA"
+}
