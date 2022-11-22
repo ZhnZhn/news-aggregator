@@ -2,30 +2,24 @@ import {
   THE_NEWS_API
 } from '../../conf/ProviderNames';
 
-import {
-  useCallback,
-  getRefValue
-} from '../uiApi';
-
 import styleConfig from './Dialog.Style';
 
-import useRefClose from './hooks/useRefClose';
-import useRefSelectOption from './hooks/useRefSelectOption';
+import useRefInputs from './hooks/useRefInputs';
+import useDialog from './hooks/useDialog';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import DraggableDialog from '../zhn-moleculs/DraggableDialog';
-import InputSelect from '../zhn-m-input/InputSelect';
-import {
-  getItemValue
-} from '../zhn-m-input/OptionFn';
 import FlexColumn from '../zhn-atoms/FlexColumn';
+import StackInputs from '../zhn-inputs/StackInputs';
 import {
   PoweredByNewsApi
 } from '../links/PoweredByLink';
 import {
+  crDfInputs
+} from './DialogFn';
+import {
   CATEGORY_OPTIONS,
-  DF_CATEGORY,
-  INITIAL_CAREGORY_VALUE
+  DF_CATEGORY
 } from './TheNewsApiDialogFn';
 
 const LOCALE_OPTIONS = [
@@ -87,7 +81,6 @@ const LOCALE_OPTIONS = [
   ["Venezuela", "ve"]
 ]
 , DF_LOCALE = LOCALE_OPTIONS[0]
-, INITIAL_LOCALE_VALUE = getItemValue(DF_LOCALE)
 , DOMAIN_OPTIONS = [
   ["All", "all"],
   ["Business Insider", "businessinsider.com"],
@@ -96,48 +89,27 @@ const LOCALE_OPTIONS = [
   ["The Verge", "theverge.com"],
 ]
 , DF_DOMAIN = DOMAIN_OPTIONS[0]
-, INITIAL_DOMAIN_VALUE = getItemValue(DF_DOMAIN);
+, INPUT_CONFIGS = [
+  ['s','category','Category',CATEGORY_OPTIONS,DF_CATEGORY],
+  ['s','locale','Locale',LOCALE_OPTIONS,DF_LOCALE],
+  ['s','domain','Domain',DOMAIN_OPTIONS,DF_DOMAIN]
+]
+, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);
 
-const TheNewsApiTopDialog = ({
-  isShow,
-  type,
-  source,
-  itemConf,
-  onLoad,
-  onShow,
-  onClose
-}) => {
-  const [
+const TheNewsApiTopDialog = (props) => {
+  const {
+    isShow,
+    onShow
+  } = props
+  , [
+    _refInputs,
+    _selectInput
+  ] = useRefInputs(INITIAL_INPUTS)
+  , [
     _refDialog,
+    _hLoad,
     _hClose
-  ] = useRefClose(onClose)
-  , [
-    _refCategory,
-    _selectCategory
-  ] = useRefSelectOption(INITIAL_CAREGORY_VALUE)
-  , [
-    _refLocale,
-    _selectLocale
-  ] = useRefSelectOption(INITIAL_LOCALE_VALUE)
-  , [
-    _refDomain,
-    _selectDomain
-  ] = useRefSelectOption(INITIAL_DOMAIN_VALUE)
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _hLoad = useCallback(() => {
-    onLoad({
-      type,
-      source,
-      itemConf,
-      loadId: 'TNT',
-      category: getRefValue(_refCategory),
-      locale: getRefValue(_refLocale),
-      domain: getRefValue(_refDomain)
-    })
-    _hClose()
-  }, [])
-  //type, source, itemConf, onLoad
-  /*eslint-enable react-hooks/exhaustive-deps */
+  ] = useDialog(props, 'TNT', _refInputs)
   , [
     TS,
     _hKeyDown
@@ -157,26 +129,10 @@ const TheNewsApiTopDialog = ({
        onClose={_hClose}
     >
       <FlexColumn>
-         <InputSelect
-           caption="Category"
-           initItem={DF_CATEGORY}
-           options={CATEGORY_OPTIONS}
-           styleConfig={TS.SELECT}
-           onSelect={_selectCategory}
-         />
-         <InputSelect
-           caption="Locale"
-           initItem={DF_LOCALE}
-           options={LOCALE_OPTIONS}
-           styleConfig={TS.SELECT}
-           onSelect={_selectLocale}
-         />
-         <InputSelect
-           caption="Domain"
-           initItem={DF_DOMAIN}
-           options={DOMAIN_OPTIONS}
-           styleConfig={TS.SELECT}
-           onSelect={_selectDomain}
+         <StackInputs
+           TS={TS}
+           configs={INPUT_CONFIGS}
+           onSelect={_selectInput}
          />
          <PoweredByNewsApi
             style={TS.POWERED_BY}
