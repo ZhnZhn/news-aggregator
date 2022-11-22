@@ -1,8 +1,16 @@
-const _assign = Object.assign;
+import { getItemValue } from '../zhn-m-input/OptionFn';
+
+const _crObject = Object.create
+, _getId = arrConfig => arrConfig[1]
+, _getDfValue = arrConfig => getItemValue(arrConfig[4]);
 
 export const crDfInputs = (
-  values
-) => _assign(Object.create(null), values)
+  inputConfigs
+) => inputConfigs
+ .reduce((dfInputs, arrConfig) => {
+    dfInputs[_getId(arrConfig)] = _getDfValue(arrConfig)
+    return dfInputs;
+ }, _crObject(null))
 
 export const getPaneCaption = (
   itemConf

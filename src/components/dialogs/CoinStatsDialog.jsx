@@ -9,10 +9,8 @@ import useRefClose from './hooks/useRefClose';
 import useRefInputs from './hooks/useRefInputs';
 import useDecorDialog from './hooks/useDecorDialog';
 
-import A from '../Comp';
+import DraggableDialog from '../zhn-moleculs/DraggableDialog';
 import StackInputs from '../zhn-inputs/StackInputs';
-import { getItemValue } from '../zhn-m-input/OptionFn';
-
 import PoweredBy from '../links/PoweredBy';
 import { CoinStatsLink } from '../links/Links';
 import {
@@ -28,12 +26,10 @@ const NEWS_FILTER_OPTIONS = [
   ["Bearish", "bearish"]
 ]
 , DF_FILTER = NEWS_FILTER_OPTIONS[0]
-, INITIAL_INPUTS = crDfInputs({
-  filter: getItemValue(DF_FILTER)
-})
 , INPUT_CONFIGS = [
   ['s','filter','News filter', NEWS_FILTER_OPTIONS, DF_FILTER]
-];
+]
+, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);
 
 const CoinStatsDialog = ({
   isShow,
@@ -72,7 +68,7 @@ const CoinStatsDialog = ({
   , paneCaption = getPaneCaption(itemConf);
 
   return (
-    <A.DraggableDialog
+    <DraggableDialog
       ref={_refDialog}
       isShow={isShow}
       style={TS.R_DIALOG}
@@ -92,7 +88,7 @@ const CoinStatsDialog = ({
       <PoweredBy style={TS.POWERED_BY}>
         <CoinStatsLink />
       </PoweredBy>
-    </A.DraggableDialog>
+    </DraggableDialog>
   );
 };
 

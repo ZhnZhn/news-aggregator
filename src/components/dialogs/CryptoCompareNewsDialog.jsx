@@ -9,7 +9,6 @@ import useRefClose from './hooks/useRefClose';
 import useRefInputs from './hooks/useRefInputs';
 import useDecorDialog from './hooks/useDecorDialog';
 
-import { getItemValue } from '../zhn-m-input/OptionFn';
 import DraggableDialog from '../zhn-moleculs/DraggableDialog';
 import FlexColumn from '../zhn-atoms/FlexColumn';
 import StackInputs from '../zhn-inputs/StackInputs';
@@ -51,16 +50,12 @@ const FEED_OPTIONS = [
   ['Latest', 'latest'],
   ['Popular', 'popular']
 ], DF_SORTBY = SORTBY_OPTIONS[0]
-, INITIAL_INPUTS = crDfInputs({
-   category: getItemValue(DF_CATEGORY),
-   feed: getItemValue(DF_FEED),
-   sortOrder: getItemValue(DF_SORTBY)
-})
 , INPUT_CONFIGS = [
   ['s','category', 'Category', CATEGORY_OPTIONS, DF_CATEGORY],
   ['s','feed', 'Feed', FEED_OPTIONS, DF_FEED],
   ['s','sortOrder', 'SortBy', SORTBY_OPTIONS, DF_SORTBY]
-];
+]
+, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);
 
 const CryptoCompareNewsDialog = ({
   isShow,

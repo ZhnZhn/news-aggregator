@@ -9,9 +9,8 @@ var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 var _useRefClose2 = _interopRequireDefault(require("./hooks/useRefClose"));
 var _useRefInputs2 = _interopRequireDefault(require("./hooks/useRefInputs"));
 var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"));
-var _Comp = _interopRequireDefault(require("../Comp"));
+var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/DraggableDialog"));
 var _StackInputs = _interopRequireDefault(require("../zhn-inputs/StackInputs"));
-var _OptionFn = require("../zhn-m-input/OptionFn");
 var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
 var _Links = require("../links/Links");
 var _DialogFn = require("./DialogFn");
@@ -40,10 +39,8 @@ var ASSET_OPTIONS = [["All", "all"]
   ["Cosmos", "ATOM"],
   */],
   DF_ASSET = ASSET_OPTIONS[0],
-  INITIAL_INPUTS = (0, _DialogFn.crDfInputs)({
-    assetKey: (0, _OptionFn.getItemValue)(DF_ASSET)
-  }),
-  INPUT_CONFIGS = [['s', 'assetKey', 'News about', ASSET_OPTIONS, DF_ASSET]];
+  INPUT_CONFIGS = [['s', 'assetKey', 'News about', ASSET_OPTIONS, DF_ASSET]],
+  INITIAL_INPUTS = (0, _DialogFn.crDfInputs)(INPUT_CONFIGS);
 var MessariDialog = function MessariDialog(_ref) {
   var isShow = _ref.isShow,
     type = _ref.type,
@@ -71,7 +68,7 @@ var MessariDialog = function MessariDialog(_ref) {
     TS = _useDecorDialog[0],
     _hKeyDown = _useDecorDialog[1],
     paneCaption = (0, _DialogFn.getPaneCaption)(itemConf);
-  return (0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
+  return (0, _jsxRuntime.jsxs)(_DraggableDialog["default"], {
     ref: _refDialog,
     isShow: isShow,
     style: TS.R_DIALOG,

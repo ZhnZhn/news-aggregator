@@ -9,9 +9,8 @@ import useRefClose from './hooks/useRefClose';
 import useRefInputs from './hooks/useRefInputs';
 import useDecorDialog from './hooks/useDecorDialog';
 
-import A from '../Comp';
+import DraggableDialog from '../zhn-moleculs/DraggableDialog';
 import StackInputs from '../zhn-inputs/StackInputs';
-import { getItemValue } from '../zhn-m-input/OptionFn';
 import PoweredBy from '../links/PoweredBy';
 import { MessariLink } from '../links/Links';
 import {
@@ -44,12 +43,10 @@ const ASSET_OPTIONS = [
 ["Cosmos", "ATOM"],
 */]
 , DF_ASSET = ASSET_OPTIONS[0]
-, INITIAL_INPUTS = crDfInputs({
-  assetKey: getItemValue(DF_ASSET)
-})
 , INPUT_CONFIGS = [
   ['s','assetKey','News about', ASSET_OPTIONS, DF_ASSET]
-];
+]
+, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);
 
 const MessariDialog = ({
   isShow,
@@ -76,7 +73,6 @@ const MessariDialog = ({
       itemConf,
       loadId: 'MS',
       ...getRefValue(_refValues)
-      //assetKey: getRefValue(_refAssetKey)
     })
     _hClose()
   }, [])
@@ -89,7 +85,7 @@ const MessariDialog = ({
   , paneCaption  = getPaneCaption(itemConf);
 
   return (
-    <A.DraggableDialog
+    <DraggableDialog
        ref={_refDialog}
        isShow={isShow}
        style={TS.R_DIALOG}
@@ -109,7 +105,7 @@ const MessariDialog = ({
       <PoweredBy style={TS.POWERED_BY}>
         <MessariLink />
       </PoweredBy>
-    </A.DraggableDialog>
+    </DraggableDialog>
   );
 };
 
