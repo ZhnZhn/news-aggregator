@@ -37,8 +37,12 @@ const S_LABEL_TO_INPUT = {
   borderBottom: '2px solid #f44336'
 };
 
-const DF_ON_TEST = () => true;
-const DF_ON_ENTER = () => {};
+const FN_TRUE = () => true;
+const FN_NOOP = () => {};
+
+const _getEventTargetValue = (
+  event
+) => event.target.value;
 
 const TextField = forwardRef(({
   style,
@@ -50,8 +54,9 @@ const TextField = forwardRef(({
   autoCapitalize="off",
   errorMsg='',
   hasClear=true,
-  onTest=DF_ON_TEST,
-  onEnter=DF_ON_ENTER
+  onTest=FN_TRUE,
+  onEnter=FN_NOOP,
+  onBlur=FN_NOOP
 }, ref) => {
   const _refId = useRef(id || crId())
   , [
@@ -61,12 +66,24 @@ const TextField = forwardRef(({
   , [
     isPassTest,
     setIsPastTest
-  ] = useState(()=>onTest(initValue || ''))
+  ] = useState(
+    () => onTest(initValue || '')
+  )
   , [
     isFocus,
     _hFocusInput,
-    _hBlurInput
+    _blurInput
   ] = useBool()
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hBlurInput = useCallback(event => {
+    const _value = _getEventTargetValue(event);
+    if (onTest(_value)) {
+      onBlur(_value.trim(), id)
+    }
+    _blurInput()
+  }, [])
+  // onTest, onBlur, _hBlurInput, id
+  /*eslint-enable react-hooks/exhaustive-deps */
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hInputChange = useCallback(event => {
     const _value = event.target.value;
@@ -79,10 +96,13 @@ const TextField = forwardRef(({
     if (keyCode === 46 || keyCode === 27){
       setValue('')
     } else if (keyCode === 13) {
-      onEnter(event.target.value)
+      const _value = _getEventTargetValue(event);
+      if (onTest(_value)) {
+        onEnter(_value.trim(), id)
+      }
     }
   }, [])
-  //onEnter
+  //onTest, onEnter, id
   /*eslint-enable react-hooks/exhaustive-deps */
   , _hClear = useCallback(()=> setValue(''), []);
 
