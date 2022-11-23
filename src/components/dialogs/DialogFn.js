@@ -2,7 +2,10 @@ import { getItemValue } from '../zhn-m-input/OptionFn';
 
 const _crObject = Object.create
 , _getId = arrConfig => arrConfig[1]
-, _getDfValue = arrConfig => getItemValue(arrConfig[4]);
+, _getDfValue = arrConfig => arrConfig[0] === 's'
+   ? getItemValue(arrConfig[4])
+   //_type === 't'
+   : arrConfig[3];
 
 export const crDfInputs = (
   inputConfigs
