@@ -11,9 +11,9 @@ var useRefInputs = function useRefInputs(dfValues) {
   var _refValues = (0, _uiApi.useRef)(dfValues || Object.create(null)),
     _setValue = (0, _uiApi.useCallback)(function (input, id) {
       if (_isStr(id)) {
-        _refValues.current[id] = (0, _OptionFn.getItemValue)(input);
+        _refValues.current[id] = _isStr(input) ? input === '' ? dfValues[id] : input : (0, _OptionFn.getItemValue)(input);
       }
-    }, []);
+    }, [dfValues]);
   return [_refValues, _setValue];
 };
 var _default = useRefInputs;

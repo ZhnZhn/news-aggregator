@@ -15,9 +15,13 @@ const useRefInputs = (
   const _refValues = useRef(dfValues || Object.create(null))
   , _setValue = useCallback((input, id) => {
     if (_isStr(id)) {
-      _refValues.current[id] = getItemValue(input)
+      _refValues.current[id] = _isStr(input)
+        ? input === ''
+            ? dfValues[id]
+            : input
+        : getItemValue(input)
     }
-  }, []);
+  }, [dfValues]);
   return [
     _refValues,
     _setValue
