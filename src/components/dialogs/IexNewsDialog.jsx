@@ -2,22 +2,20 @@ import {
   IEX_CLOUD
 } from '../../conf/ProviderNames';
 
-import {
-  useCallback,
-  getRefValue
-} from '../uiApi';
-
 import styleConfig from './Dialog.Style';
 
-import useRefClose from './hooks/useRefClose';
-import useRefInput from './hooks/useRefInput';
-import useRefSelectOption from './hooks/useRefSelectOption';
+import useRefInputs from './hooks/useRefInputs';
+import useDialog from './hooks/useDialog';
 import useDecorDialog from './hooks/useDecorDialog';
 
-import A from '../Comp';
-import { getItemValue } from '../zhn-m-input/OptionFn';
+import DraggableDialog from '../zhn-moleculs/DraggableDialog';
+import FlexColumn from '../zhn-atoms/FlexColumn';
+import StackInputs from '../zhn-inputs/StackInputs';
 import PoweredBy from '../links/PoweredBy';
 import { IexApiLink } from '../links/Links';
+import {
+  crDfInputs
+} from './DialogFn';
 
 const RECENT_OPTIONS = [
   ["10 News", "10"],
@@ -27,54 +25,40 @@ const RECENT_OPTIONS = [
   ["50 News", "50"],
 ]
 , DF_RECENT = RECENT_OPTIONS[1]
-, INITIAL_RECENT_VALUE = getItemValue(DF_RECENT)
 , DF_SYMBOL = "AAPL"
-, S_INPUT_STYLE = {
-  textTransform: 'uppercase'
-};
+const INPUT_CONFIGS = [
+  ['t','symbol','Stock Symbol',DF_SYMBOL,{
+    maxLength: '10',
+    inputStyle: {
+      textTransform: 'uppercase'
+    },
+    autoCapitalize: 'on'
+  }],
+  ['s','recent','Recent',RECENT_OPTIONS,DF_RECENT]
+]
+, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);
 
-const IexNewsDialog = ({
-  isShow,
-  type,
-  source,
-  itemConf,
-  onLoad,
-  onShow,
-  onClose
-}) => {
-  const [
+const IexNewsDialog = (props) => {
+  const {
+    isShow,
+    onShow
+  } = props
+  , [
+    _refInputs,
+    _selectInput
+  ] = useRefInputs(INITIAL_INPUTS)
+  , [
     _refDialog,
+    _hLoad,
     _hClose
-  ] = useRefClose(onClose)
-  , [
-    _refInputSymbol,
-    _getInputSymbol
-  ] = useRefInput(DF_SYMBOL)
-  , [
-    _refRecent,
-    _selectRecent
-  ] = useRefSelectOption(INITIAL_RECENT_VALUE)
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _hLoad = useCallback(()=>{
-    onLoad({
-      type,
-      source,
-      itemConf,
-      loadId: 'IEX',
-      symbol: _getInputSymbol().toUpperCase(),
-      recent: getRefValue(_refRecent)
-    })
-    _hClose()
-  }, [])
-  // type, source, itemConf, onLoad, _getInputSymbol, _refRecent, _hClose
-  /*eslint-enable react-hooks/exhaustive-deps */
+  ] = useDialog(props, 'IEX', _refInputs)
   , [
     TS,
     _hKeyDown
   ] = useDecorDialog(styleConfig, _hLoad, _hClose);
 
   return (
-    <A.DraggableDialog
+    <DraggableDialog
        ref={_refDialog}
        isShow={isShow}
        style={TS.R_DIALOG}
@@ -86,27 +70,17 @@ const IexNewsDialog = ({
        onShow={onShow}
        onClose={_hClose}
     >
-       <A.TextField
-         ref={_refInputSymbol}
-         style={TS.INPUT_ROOT}
-         inputStyle={S_INPUT_STYLE}
-         maxLength="10"
-         caption="Stock Symbol"
-         initValue={DF_SYMBOL}
-         autoCapitalize="on"
-         onEnter={_hLoad}
-       />
-       <A.InputSelect
-         caption="Recent"
-         initItem={DF_RECENT}
-         options={RECENT_OPTIONS}
-         styleConfig={TS.SELECT}
-         onSelect={_selectRecent}
-       />
-      <PoweredBy style={TS.POWERED_BY}>
-        <IexApiLink />
-      </PoweredBy>
-    </A.DraggableDialog>
+       <FlexColumn>
+         <StackInputs
+           TS={TS}
+           configs={INPUT_CONFIGS}
+           onSelect={_selectInput}
+         />
+         <PoweredBy style={TS.POWERED_BY}>
+           <IexApiLink />
+         </PoweredBy>
+      </FlexColumn>
+    </DraggableDialog>
   );
 };
 

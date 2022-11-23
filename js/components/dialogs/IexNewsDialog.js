@@ -4,56 +4,42 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 var _ProviderNames = require("../../conf/ProviderNames");
-var _uiApi = require("../uiApi");
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
-var _useRefClose2 = _interopRequireDefault(require("./hooks/useRefClose"));
-var _useRefInput2 = _interopRequireDefault(require("./hooks/useRefInput"));
-var _useRefSelectOption2 = _interopRequireDefault(require("./hooks/useRefSelectOption"));
+var _useRefInputs2 = _interopRequireDefault(require("./hooks/useRefInputs"));
+var _useDialog2 = _interopRequireDefault(require("./hooks/useDialog"));
 var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"));
-var _Comp = _interopRequireDefault(require("../Comp"));
-var _OptionFn = require("../zhn-m-input/OptionFn");
+var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/DraggableDialog"));
+var _FlexColumn = _interopRequireDefault(require("../zhn-atoms/FlexColumn"));
+var _StackInputs = _interopRequireDefault(require("../zhn-inputs/StackInputs"));
 var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
 var _Links = require("../links/Links");
+var _DialogFn = require("./DialogFn");
 var _jsxRuntime = require("preact/jsx-runtime");
 var RECENT_OPTIONS = [["10 News", "10"], ["20 News", "20"], ["30 News", "30"], ["40 News", "40"], ["50 News", "50"]],
   DF_RECENT = RECENT_OPTIONS[1],
-  INITIAL_RECENT_VALUE = (0, _OptionFn.getItemValue)(DF_RECENT),
-  DF_SYMBOL = "AAPL",
-  S_INPUT_STYLE = {
-    textTransform: 'uppercase'
-  };
-var IexNewsDialog = function IexNewsDialog(_ref) {
-  var isShow = _ref.isShow,
-    type = _ref.type,
-    source = _ref.source,
-    itemConf = _ref.itemConf,
-    onLoad = _ref.onLoad,
-    onShow = _ref.onShow,
-    onClose = _ref.onClose;
-  var _useRefClose = (0, _useRefClose2["default"])(onClose),
-    _refDialog = _useRefClose[0],
-    _hClose = _useRefClose[1],
-    _useRefInput = (0, _useRefInput2["default"])(DF_SYMBOL),
-    _refInputSymbol = _useRefInput[0],
-    _getInputSymbol = _useRefInput[1],
-    _useRefSelectOption = (0, _useRefSelectOption2["default"])(INITIAL_RECENT_VALUE),
-    _refRecent = _useRefSelectOption[0],
-    _selectRecent = _useRefSelectOption[1],
-    _hLoad = (0, _uiApi.useCallback)(function () {
-      onLoad({
-        type: type,
-        source: source,
-        itemConf: itemConf,
-        loadId: 'IEX',
-        symbol: _getInputSymbol().toUpperCase(),
-        recent: (0, _uiApi.getRefValue)(_refRecent)
-      });
-      _hClose();
-    }, []),
+  DF_SYMBOL = "AAPL";
+var INPUT_CONFIGS = [['t', 'symbol', 'Stock Symbol', DF_SYMBOL, {
+    maxLength: '10',
+    inputStyle: {
+      textTransform: 'uppercase'
+    },
+    autoCapitalize: 'on'
+  }], ['s', 'recent', 'Recent', RECENT_OPTIONS, DF_RECENT]],
+  INITIAL_INPUTS = (0, _DialogFn.crDfInputs)(INPUT_CONFIGS);
+var IexNewsDialog = function IexNewsDialog(props) {
+  var isShow = props.isShow,
+    onShow = props.onShow,
+    _useRefInputs = (0, _useRefInputs2["default"])(INITIAL_INPUTS),
+    _refInputs = _useRefInputs[0],
+    _selectInput = _useRefInputs[1],
+    _useDialog = (0, _useDialog2["default"])(props, 'IEX', _refInputs),
+    _refDialog = _useDialog[0],
+    _hLoad = _useDialog[1],
+    _hClose = _useDialog[2],
     _useDecorDialog = (0, _useDecorDialog2["default"])(_Dialog["default"], _hLoad, _hClose),
     TS = _useDecorDialog[0],
     _hKeyDown = _useDecorDialog[1];
-  return (0, _jsxRuntime.jsxs)(_Comp["default"].DraggableDialog, {
+  return (0, _jsxRuntime.jsx)(_DraggableDialog["default"], {
     ref: _refDialog,
     isShow: isShow,
     style: TS.R_DIALOG,
@@ -64,25 +50,16 @@ var IexNewsDialog = function IexNewsDialog(_ref) {
     onLoad: _hLoad,
     onShow: onShow,
     onClose: _hClose,
-    children: [(0, _jsxRuntime.jsx)(_Comp["default"].TextField, {
-      ref: _refInputSymbol,
-      style: TS.INPUT_ROOT,
-      inputStyle: S_INPUT_STYLE,
-      maxLength: "10",
-      caption: "Stock Symbol",
-      initValue: DF_SYMBOL,
-      autoCapitalize: "on",
-      onEnter: _hLoad
-    }), (0, _jsxRuntime.jsx)(_Comp["default"].InputSelect, {
-      caption: "Recent",
-      initItem: DF_RECENT,
-      options: RECENT_OPTIONS,
-      styleConfig: TS.SELECT,
-      onSelect: _selectRecent
-    }), (0, _jsxRuntime.jsx)(_PoweredBy["default"], {
-      style: TS.POWERED_BY,
-      children: (0, _jsxRuntime.jsx)(_Links.IexApiLink, {})
-    })]
+    children: (0, _jsxRuntime.jsxs)(_FlexColumn["default"], {
+      children: [(0, _jsxRuntime.jsx)(_StackInputs["default"], {
+        TS: TS,
+        configs: INPUT_CONFIGS,
+        onSelect: _selectInput
+      }), (0, _jsxRuntime.jsx)(_PoweredBy["default"], {
+        style: TS.POWERED_BY,
+        children: (0, _jsxRuntime.jsx)(_Links.IexApiLink, {})
+      })]
+    })
   });
 };
 var _default = IexNewsDialog;
