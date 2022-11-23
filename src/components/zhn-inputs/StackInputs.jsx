@@ -22,6 +22,7 @@ const StackInputs = ({
   } else if (_type === 't') {
     return (
       <TextField
+        {...arrConfig[4]}
         key={arrConfig[1]}
         id={arrConfig[1]}
         style={TS.INPUT_ROOT}
