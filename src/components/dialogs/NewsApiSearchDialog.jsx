@@ -2,21 +2,21 @@ import {
   NEWS_API
 } from '../../conf/ProviderNames';
 
-import {
-  useCallback,
-  getRefValue
-} from '../uiApi';
-
 import styleConfig from './Dialog.Style';
 
-import useRefClose from './hooks/useRefClose';
-import useRefInput from './hooks/useRefInput';
-import useRefSelectOption from './hooks/useRefSelectOption';
+import useRefInputs from './hooks/useRefInputs';
+import useDialog from './hooks/useDialog';
 import useDecorDialog from './hooks/useDecorDialog';
 
-import A from '../Comp';
-import { getItemValue } from '../zhn-m-input/OptionFn';
-import { PoweredByNewsApi } from '../links/PoweredByLink';
+import DraggableDialog from '../zhn-moleculs/DraggableDialog';
+import FlexColumn from '../zhn-atoms/FlexColumn';
+import StackInputs from '../zhn-inputs/StackInputs';
+import {
+  PoweredByNewsApi
+} from '../links/PoweredByLink';
+import {
+  crDfInputs
+} from './DialogFn';
 
 const SORT_BY_OPTIONS = [
   ["Relevancy", "relevancy"],
@@ -24,52 +24,34 @@ const SORT_BY_OPTIONS = [
   ["PublishedAt", "publishedAt"]
 ]
 , DF_SORT_BY = SORT_BY_OPTIONS[0]
-, INITIAL_SORT_BY_VALUE = getItemValue(DF_SORT_BY)
-, DF_TERM = "Weather";
+, DF_TERM = "Weather"
+, INPUT_CONFIGS = [
+  ['t','symbol',`Term (Default: ${DF_TERM})`,DF_TERM],
+  ['s','sortBy','SortBy',SORT_BY_OPTIONS,DF_SORT_BY]
+]
+, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);
 
-const NewsApiSearchDialog = ({
-  isShow,
-  type,
-  source,
-  itemConf,
-  onLoad,
-  onShow,
-  onClose
-}) => {
-  const [
+const NewsApiSearchDialog = (props) => {
+  const {
+    isShow,
+    onShow
+  } = props
+  , [
+    _refInputs,
+    _selectInput
+  ] = useRefInputs(INITIAL_INPUTS)
+  , [
     _refDialog,
+    _hLoad,
     _hClose
-  ] = useRefClose(onClose)
-  , [
-    _refInputTerm,
-    _getInputTerm
-  ] = useRefInput(DF_TERM)
-  , [
-    _refSortBy,
-    _selectSortBy
-  ] = useRefSelectOption(INITIAL_SORT_BY_VALUE)
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _hLoad = useCallback(() => {
-    onLoad({
-      type,
-      source,
-      itemConf,
-      loadId: 'NS',
-      symbol: _getInputTerm(),
-      sortBy: getRefValue(_refSortBy)
-    })
-    _hClose()
-  }, [])
-  // type, source, itemConf, onLoad,
-  /*eslint-enable react-hooks/exhaustive-deps */
+  ] = useDialog(props, 'NS', _refInputs)
   , [
     TS,
     _hKeyDown
   ] = useDecorDialog(styleConfig, _hLoad, _hClose)
-  , _termCaption = `Term (Default: ${DF_TERM})`;
 
   return (
-    <A.DraggableDialog
+    <DraggableDialog
        ref={_refDialog}
        isShow={isShow}
        style={TS.R_DIALOG}
@@ -81,24 +63,17 @@ const NewsApiSearchDialog = ({
        onShow={onShow}
        onClose={_hClose}
     >
-       <A.TextField
-         style={TS.INPUT_ROOT}
-         ref={_refInputTerm}
-         caption={_termCaption}
-         initValue={DF_TERM}
-         onEnter={_hLoad}
-       />
-       <A.InputSelect
-         caption="SortBy"
-         initItem={DF_SORT_BY}
-         options={SORT_BY_OPTIONS}
-         styleConfig={TS.SELECT}
-         onSelect={_selectSortBy}
-       />
-      <PoweredByNewsApi
-         style={TS.POWERED_BY}
-       />
-    </A.DraggableDialog>
+       <FlexColumn>
+         <StackInputs
+           TS={TS}
+           configs={INPUT_CONFIGS}
+           onSelect={_selectInput}
+         />
+         <PoweredByNewsApi
+            style={TS.POWERED_BY}
+          />
+       </FlexColumn>
+    </DraggableDialog>
   );
 };
 
