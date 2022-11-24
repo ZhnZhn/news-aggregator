@@ -8,7 +8,7 @@ const FmpApi = {
       apiKey
     } = option
     , _q = symbol
-       ? `tickers=${symbol}&apikey=${apiKey}`
+       ? `tickers=${symbol.toUpperCase()}&apikey=${apiKey}`
        : `apikey=${apiKey}`
     option.apiKey = void 0
     return `${BASE_URL}?${_q}`;

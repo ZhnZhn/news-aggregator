@@ -12,17 +12,14 @@ import StackInputs from '../zhn-inputs/StackInputs';
 import PoweredBy from '../links/PoweredBy';
 import { FmpApiLink } from '../links/Links';
 import {
+  SYMBOL_INPUT_PROPS,
   crDfInputs
 } from './DialogFn';
 
 const DF_SYMBOL = "AAPL";
 const INPUT_CONFIGS = [
   ['t','symbol','Stock Symbol',DF_SYMBOL,{
-    maxLength: '10',
-    inputStyle: {
-      textTransform: 'uppercase'
-    },
-    autoCapitalize: 'on'
+    ...SYMBOL_INPUT_PROPS    
   }]
 ]
 , INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);

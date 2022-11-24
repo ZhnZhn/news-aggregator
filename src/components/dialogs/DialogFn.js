@@ -1,5 +1,13 @@
 import { getItemValue } from '../zhn-m-input/OptionFn';
 
+export const SYMBOL_INPUT_PROPS = {
+  maxLength: '10',
+  inputStyle: {
+    textTransform: 'uppercase'
+  },
+  autoCapitalize: 'characters'
+}
+
 const _crObject = Object.create
 , _getId = arrConfig => arrConfig[1]
 , _getDfValue = arrConfig => arrConfig[0] === 's'

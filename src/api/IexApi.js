@@ -8,7 +8,7 @@ const IexApi = {
     recent=DF_RECENT,
     apiKey
   }){
-    return `${DF_URL}/${symbol}/news/last/${recent}?token=${apiKey}`;
+    return `${DF_URL}/${symbol.toLowerCase()}/news/last/${recent}?token=${apiKey}`;
   },
 
   checkResponse(json, option){

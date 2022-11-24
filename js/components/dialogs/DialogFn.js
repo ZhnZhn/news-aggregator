@@ -1,8 +1,16 @@
 "use strict";
 
 exports.__esModule = true;
-exports.getPaneCaption = exports.getDialogCaption = exports.crDfInputs = void 0;
+exports.getPaneCaption = exports.getDialogCaption = exports.crDfInputs = exports.SYMBOL_INPUT_PROPS = void 0;
 var _OptionFn = require("../zhn-m-input/OptionFn");
+var SYMBOL_INPUT_PROPS = {
+  maxLength: '10',
+  inputStyle: {
+    textTransform: 'uppercase'
+  },
+  autoCapitalize: 'characters'
+};
+exports.SYMBOL_INPUT_PROPS = SYMBOL_INPUT_PROPS;
 var _crObject = Object.create,
   _getId = function _getId(arrConfig) {
     return arrConfig[1];

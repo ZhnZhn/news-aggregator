@@ -14,6 +14,7 @@ import StackInputs from '../zhn-inputs/StackInputs';
 import PoweredBy from '../links/PoweredBy';
 import { IexApiLink } from '../links/Links';
 import {
+  SYMBOL_INPUT_PROPS,
   crDfInputs
 } from './DialogFn';
 
@@ -28,11 +29,7 @@ const RECENT_OPTIONS = [
 , DF_SYMBOL = "AAPL"
 const INPUT_CONFIGS = [
   ['t','symbol','Stock Symbol',DF_SYMBOL,{
-    maxLength: '10',
-    inputStyle: {
-      textTransform: 'uppercase'
-    },
-    autoCapitalize: 'on'
+    ...SYMBOL_INPUT_PROPS
   }],
   ['s','recent','Recent',RECENT_OPTIONS,DF_RECENT]
 ]

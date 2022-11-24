@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports["default"] = void 0;
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _ProviderNames = require("../../conf/ProviderNames");
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 var _useRefInputs2 = _interopRequireDefault(require("./hooks/useRefInputs"));
@@ -18,13 +19,7 @@ var _jsxRuntime = require("preact/jsx-runtime");
 var RECENT_OPTIONS = [["10 News", "10"], ["20 News", "20"], ["30 News", "30"], ["40 News", "40"], ["50 News", "50"]],
   DF_RECENT = RECENT_OPTIONS[1],
   DF_SYMBOL = "AAPL";
-var INPUT_CONFIGS = [['t', 'symbol', 'Stock Symbol', DF_SYMBOL, {
-    maxLength: '10',
-    inputStyle: {
-      textTransform: 'uppercase'
-    },
-    autoCapitalize: 'on'
-  }], ['s', 'recent', 'Recent', RECENT_OPTIONS, DF_RECENT]],
+var INPUT_CONFIGS = [['t', 'symbol', 'Stock Symbol', DF_SYMBOL, (0, _extends2["default"])({}, _DialogFn.SYMBOL_INPUT_PROPS)], ['s', 'recent', 'Recent', RECENT_OPTIONS, DF_RECENT]],
   INITIAL_INPUTS = (0, _DialogFn.crDfInputs)(INPUT_CONFIGS);
 var IexNewsDialog = function IexNewsDialog(props) {
   var isShow = props.isShow,

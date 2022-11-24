@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports["default"] = void 0;
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _ProviderNames = require("../../conf/ProviderNames");
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 var _useRefInputs2 = _interopRequireDefault(require("./hooks/useRefInputs"));
@@ -16,13 +17,7 @@ var _Links = require("../links/Links");
 var _DialogFn = require("./DialogFn");
 var _jsxRuntime = require("preact/jsx-runtime");
 var DF_SYMBOL = "AAPL";
-var INPUT_CONFIGS = [['t', 'symbol', 'Stock Symbol', DF_SYMBOL, {
-    maxLength: '10',
-    inputStyle: {
-      textTransform: 'uppercase'
-    },
-    autoCapitalize: 'on'
-  }]],
+var INPUT_CONFIGS = [['t', 'symbol', 'Stock Symbol', DF_SYMBOL, (0, _extends2["default"])({}, _DialogFn.SYMBOL_INPUT_PROPS)]],
   INITIAL_INPUTS = (0, _DialogFn.crDfInputs)(INPUT_CONFIGS);
 var FmpNewsDialog = function FmpNewsDialog(props) {
   var isShow = props.isShow,
