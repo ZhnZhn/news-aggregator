@@ -4,11 +4,15 @@ import {
 
 const INPUT_WIDTH = 250;
 
-const S_BROWSER_CAPTION = {
+
+const S_DIALOG_CAPTION = {
   color: '#9e9e9e',
   backgroundColor: '#3f5178',
-  textAlign: 'center',
   fontSize: '1.125rem'
+}
+, S_BROWSER_CAPTION = {
+  ...S_DIALOG_CAPTION,
+  textAlign: 'center'
 }
 , S_BT_RAISED = {
   marginRight: 2,
@@ -33,6 +37,10 @@ const styleConfig = {
     return {
       R_DIALOG: {
         ...CSS_RULE.R_DIALOG
+      },
+      DIALOG_CAPTION: {
+        ...S_DIALOG_CAPTION,
+        ...CSS_RULE.BG_HEADER
       },
       BROWSER_CAPTION: {
         ...S_BROWSER_CAPTION,
