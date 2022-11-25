@@ -1,0 +1,19 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/useToggleState.js"
+ ],
+ "file": "../../../src/components/hooks/useToggleState.js",
+ "names": [
+  "_isFn",
+  "v",
+  "_initState",
+  "initialValue",
+  "_reducer",
+  "state",
+  "propName",
+  "useToggleState",
+  "useReducer"
+ ],
+ "mappings": ";;;;;;AAAA;AAEA,IAAMA,KAAK,GAAG,SAARA,KAAK,CAAGC,CAAC;IAAA,OAAI,OAAOA,CAAC,KAAK,UAAU;EAAA;EACxCC,UAAU,GAAG,SAAbA,UAAU,CACVC,YAAY;IAAA,OACTH,KAAK,CAACG,YAAY,CAAC,GACpBA,YAAY,EAAE,GACdA,YAAY;EAAA;EACdC,QAAQ,GAAG,SAAXA,QAAQ,CACRC,KAAK,EACLC,QAAQ;IAAA;IAAA,qCAELD,KAAK,6BACPC,QAAQ,IAAG,CAACD,KAAK,CAACC,QAAQ,CAAC;EAAA,CAC5B;AAEF,IAAMC,cAAc,GAAG,SAAjBA,cAAc,CAClBJ,YAAY;EAAA,OACT,IAAAK,iBAAU,EACbJ,QAAQ,EACRD,YAAY,IAAI,CAAC,CAAC,EAClBD,UAAU,CACX;AAAA;AAAC,eAEaK,cAAc;AAAA"
+}
