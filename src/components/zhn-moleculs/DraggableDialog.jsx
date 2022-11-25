@@ -10,6 +10,9 @@ import {
   focusRefElement
 } from '../uiApi';
 
+import useToggle from '../hooks/useToggle';
+
+import ModalToggle from './ModalToggle';
 import BrowserCaption from '../zhn-atoms/BrowserCaption';
 import RaisedButton from '../zhn-bt/RaisedButton';
 
@@ -17,6 +20,7 @@ import Interact from '../../utils/Interact';
 
 const CL_DIALOG = 'dialog'
 , CL_DIALOG_OPEN = `${CL_DIALOG} show-popup`
+, CL_MODAL_TOGGLE = 'popup-menu menu-more__item select-none'
 
 , S_DIV = {
   position: 'absolute',
@@ -92,7 +96,10 @@ const DraggableDialog = forwardRef(({
   style,
   captionStyle,
   buttonStyle,
+  chbStroke,
   caption,
+  menuToggle,
+  toggleItem,
   children,
   onKeyDown,
   onLoad,
@@ -102,6 +109,10 @@ const DraggableDialog = forwardRef(({
   const _refDiv = useRef(null)
   , _refIsShow = useRef(isShow)
   , _refPrevFocused = useRef(null)
+  , [
+    isMore,
+    toggleIsMore
+  ] = useToggle(false)
   , focusPrevEl = useFocusByRef(_refPrevFocused)
   , focus = useFocusByRef(_refDiv)
   /*eslint-disable react-hooks/exhaustive-deps */
@@ -144,6 +155,9 @@ const DraggableDialog = forwardRef(({
   ] = isShow
     ? [S_BLOCK, CL_DIALOG_OPEN]
     : [S_NONE, CL_DIALOG]
+  , _onMore = menuToggle
+      ? toggleIsMore
+      : void 0;
 
 
   return (
@@ -168,7 +182,16 @@ const DraggableDialog = forwardRef(({
       <BrowserCaption
          style={captionStyle}
          caption={caption}
+         onMore={_onMore}
          onClose={onClose}
+      />
+      <ModalToggle
+        isShow={isMore}
+        className={CL_MODAL_TOGGLE}
+        chbStroke={chbStroke}
+        configs={menuToggle}
+        onToggle={toggleItem}
+        onClose={toggleIsMore}
       />
       <div style={S_CHL_DIV}>
          {children}
