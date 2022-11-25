@@ -16,7 +16,8 @@ const RowCheckBox = ({
   stroke,
   caption,
   onCheck,
-  onUnCheck
+  onUnCheck,
+  onToggle
 }) => {
   const [
     isChecked,
@@ -24,8 +25,8 @@ const RowCheckBox = ({
     hKeyDown
   ] = useCheckBox(
     initialValue,
-    onCheck,
-    onUnCheck
+    onCheck || onToggle,
+    onUnCheck || onToggle
   );
   return (
     <div style={style}>
