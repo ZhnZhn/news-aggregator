@@ -4,6 +4,7 @@ import {
 
 import styleConfig from './Dialog.Style';
 
+import useToggleState from '../hooks/useToggleState';
 import useRefInputs from './hooks/useRefInputs';
 import useDialog from './hooks/useDialog';
 import useDecorDialog from './hooks/useDecorDialog';
@@ -90,17 +91,25 @@ const LOCALE_OPTIONS = [
 ]
 , DF_DOMAIN = DOMAIN_OPTIONS[0]
 , INPUT_CONFIGS = [
-  ['s','category','Category',CATEGORY_OPTIONS,DF_CATEGORY],
-  ['s','locale','Locale',LOCALE_OPTIONS,DF_LOCALE],
-  ['s','domain','Domain',DOMAIN_OPTIONS,DF_DOMAIN]
+  ['s','category','Category',CATEGORY_OPTIONS,DF_CATEGORY,true],
+  ['s','locale','Locale',LOCALE_OPTIONS,DF_LOCALE,true],
+  ['s','domain','Domain',DOMAIN_OPTIONS,DF_DOMAIN,true]
 ]
-, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);
+, [
+  INITIAL_INPUTS,
+  TOGGLES,
+  IS_INPUTS
+] = crDfInputs(INPUT_CONFIGS);
 
 const TheNewsApiTopDialog = (props) => {
   const {
     isShow,
     onShow
   } = props
+  , [
+    isInputs,
+    toggleInput
+  ] = useToggleState(IS_INPUTS)
   , [
     _refInputs,
     _selectInput
@@ -120,9 +129,12 @@ const TheNewsApiTopDialog = (props) => {
        ref={_refDialog}
        isShow={isShow}
        style={TS.R_DIALOG}
-       captionStyle={TS.BROWSER_CAPTION}
+       captionStyle={TS.DIALOG_CAPTION}
        buttonStyle={TS.BT}
+       chbStroke={TS.R_DIALOG.backgroundColor}
        caption={`${THE_NEWS_API}: Top`}
+       menuToggle={TOGGLES}
+       toggleItem={toggleInput}
        onKeyDown={_hKeyDown}
        onLoad={_hLoad}
        onShow={onShow}
@@ -131,6 +143,7 @@ const TheNewsApiTopDialog = (props) => {
       <FlexColumn>
          <StackInputs
            TS={TS}
+           isInputs={isInputs}
            configs={INPUT_CONFIGS}
            onSelect={_selectInput}
          />

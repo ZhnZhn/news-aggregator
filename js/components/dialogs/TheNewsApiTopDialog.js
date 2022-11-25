@@ -5,6 +5,7 @@ exports.__esModule = true;
 exports["default"] = void 0;
 var _ProviderNames = require("../../conf/ProviderNames");
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
+var _useToggleState2 = _interopRequireDefault(require("../hooks/useToggleState"));
 var _useRefInputs2 = _interopRequireDefault(require("./hooks/useRefInputs"));
 var _useDialog2 = _interopRequireDefault(require("./hooks/useDialog"));
 var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"));
@@ -19,11 +20,17 @@ var LOCALE_OPTIONS = [["All", "all"], ["Argentina", "ar"], ["Armenia", "am"], ["
   DF_LOCALE = LOCALE_OPTIONS[0],
   DOMAIN_OPTIONS = [["All", "all"], ["Business Insider", "businessinsider.com"], ["CNBC", "cnbc.com"], ["CNET", "cnet.com"], ["The Verge", "theverge.com"]],
   DF_DOMAIN = DOMAIN_OPTIONS[0],
-  INPUT_CONFIGS = [['s', 'category', 'Category', _TheNewsApiDialogFn.CATEGORY_OPTIONS, _TheNewsApiDialogFn.DF_CATEGORY], ['s', 'locale', 'Locale', LOCALE_OPTIONS, DF_LOCALE], ['s', 'domain', 'Domain', DOMAIN_OPTIONS, DF_DOMAIN]],
-  INITIAL_INPUTS = (0, _DialogFn.crDfInputs)(INPUT_CONFIGS);
+  INPUT_CONFIGS = [['s', 'category', 'Category', _TheNewsApiDialogFn.CATEGORY_OPTIONS, _TheNewsApiDialogFn.DF_CATEGORY, true], ['s', 'locale', 'Locale', LOCALE_OPTIONS, DF_LOCALE, true], ['s', 'domain', 'Domain', DOMAIN_OPTIONS, DF_DOMAIN, true]],
+  _crDfInputs = (0, _DialogFn.crDfInputs)(INPUT_CONFIGS),
+  INITIAL_INPUTS = _crDfInputs[0],
+  TOGGLES = _crDfInputs[1],
+  IS_INPUTS = _crDfInputs[2];
 var TheNewsApiTopDialog = function TheNewsApiTopDialog(props) {
   var isShow = props.isShow,
     onShow = props.onShow,
+    _useToggleState = (0, _useToggleState2["default"])(IS_INPUTS),
+    isInputs = _useToggleState[0],
+    toggleInput = _useToggleState[1],
     _useRefInputs = (0, _useRefInputs2["default"])(INITIAL_INPUTS),
     _refInputs = _useRefInputs[0],
     _selectInput = _useRefInputs[1],
@@ -38,9 +45,12 @@ var TheNewsApiTopDialog = function TheNewsApiTopDialog(props) {
     ref: _refDialog,
     isShow: isShow,
     style: TS.R_DIALOG,
-    captionStyle: TS.BROWSER_CAPTION,
+    captionStyle: TS.DIALOG_CAPTION,
     buttonStyle: TS.BT,
+    chbStroke: TS.R_DIALOG.backgroundColor,
     caption: _ProviderNames.THE_NEWS_API + ": Top",
+    menuToggle: TOGGLES,
+    toggleItem: toggleInput,
     onKeyDown: _hKeyDown,
     onLoad: _hLoad,
     onShow: onShow,
@@ -48,6 +58,7 @@ var TheNewsApiTopDialog = function TheNewsApiTopDialog(props) {
     children: (0, _jsxRuntime.jsxs)(_FlexColumn["default"], {
       children: [(0, _jsxRuntime.jsx)(_StackInputs["default"], {
         TS: TS,
+        isInputs: isInputs,
         configs: INPUT_CONFIGS,
         onSelect: _selectInput
       }), (0, _jsxRuntime.jsx)(_PoweredByLink.PoweredByNewsApi, {
