@@ -21,10 +21,19 @@ var _crObject = Object.create,
     : arrConfig[3];
   };
 var crDfInputs = function crDfInputs(inputConfigs) {
-  return inputConfigs.reduce(function (dfInputs, arrConfig) {
+  return inputConfigs.reduce(function (_ref, arrConfig) {
+    var dfInputs = _ref[0],
+      toggles = _ref[1],
+      isInputs = _ref[2];
     dfInputs[_getId(arrConfig)] = _getDfValue(arrConfig);
-    return dfInputs;
-  }, _crObject(null));
+    toggles.push({
+      id: arrConfig[1],
+      caption: arrConfig[2],
+      df: !!arrConfig[5]
+    });
+    isInputs[arrConfig[1]] = !!arrConfig[5];
+    return [dfInputs, toggles, isInputs];
+  }, [_crObject(null), [], _crObject(null)]);
 };
 exports.crDfInputs = crDfInputs;
 var getPaneCaption = function getPaneCaption(itemConf) {
