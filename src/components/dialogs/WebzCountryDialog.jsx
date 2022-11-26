@@ -97,7 +97,7 @@ const OPTION_COUNTRIES = [
   ['s','topic','Topic',OPTION_TOPICS,DF_TOPIC],
   ['s','lang','Language',OPTION_LANGUAGES,DF_LANGUAGE]
 ]
-, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);
+, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS)[0];
 
 const WebzCountryDialog = (props) => {
   const {

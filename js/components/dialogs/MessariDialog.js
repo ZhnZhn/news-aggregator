@@ -38,7 +38,7 @@ var ASSET_OPTIONS = [["All", "all"]
   */],
   DF_ASSET = ASSET_OPTIONS[0],
   INPUT_CONFIGS = [['s', 'assetKey', 'News about', ASSET_OPTIONS, DF_ASSET]],
-  INITIAL_INPUTS = (0, _DialogFn.crDfInputs)(INPUT_CONFIGS);
+  INITIAL_INPUTS = (0, _DialogFn.crDfInputs)(INPUT_CONFIGS)[0];
 var MessariDialog = function MessariDialog(props) {
   var isShow = props.isShow,
     itemConf = props.itemConf,

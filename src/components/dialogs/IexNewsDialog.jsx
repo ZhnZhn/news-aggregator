@@ -33,7 +33,7 @@ const INPUT_CONFIGS = [
   }],
   ['s','recent','Recent',RECENT_OPTIONS,DF_RECENT]
 ]
-, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);
+, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS)[0];
 
 const IexNewsDialog = (props) => {
   const {

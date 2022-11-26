@@ -21,18 +21,16 @@ var _crObject = Object.create,
     : arrConfig[3];
   };
 var crDfInputs = function crDfInputs(inputConfigs) {
-  return inputConfigs.reduce(function (_ref, arrConfig) {
-    var dfInputs = _ref[0],
-      toggles = _ref[1],
-      isInputs = _ref[2];
-    dfInputs[_getId(arrConfig)] = _getDfValue(arrConfig);
-    toggles.push({
+  return inputConfigs.reduce(function (r, arrConfig) {
+    r[0][_getId(arrConfig)] = _getDfValue(arrConfig);
+    r[1].push({
       id: arrConfig[1],
       caption: arrConfig[2],
       df: !!arrConfig[5]
     });
-    isInputs[arrConfig[1]] = !!arrConfig[5];
-    return [dfInputs, toggles, isInputs];
+    r[2][arrConfig[1]] = !!arrConfig[5];
+    return r;
+    //dfInputs, toggles, isInputs
   }, [_crObject(null), [], _crObject(null)]);
 };
 exports.crDfInputs = crDfInputs;

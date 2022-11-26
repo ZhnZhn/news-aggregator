@@ -18,15 +18,16 @@ const _crObject = Object.create
 export const crDfInputs = (
   inputConfigs
 ) => inputConfigs
- .reduce(([dfInputs, toggles, isInputs], arrConfig) => {
-    dfInputs[_getId(arrConfig)] = _getDfValue(arrConfig)
-    toggles.push({
+ .reduce((r, arrConfig) => {
+    r[0][_getId(arrConfig)] = _getDfValue(arrConfig)
+    r[1].push({
       id: arrConfig[1],
       caption: arrConfig[2],
       df: !!arrConfig[5]
     })
-    isInputs[arrConfig[1]] = !!arrConfig[5]
-    return [dfInputs, toggles, isInputs];
+    r[2][arrConfig[1]] = !!arrConfig[5]
+    return r;
+ //dfInputs, toggles, isInputs
  }, [_crObject(null), [], _crObject(null)]);
 
  export const getPaneCaption = (

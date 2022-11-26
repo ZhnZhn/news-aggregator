@@ -29,7 +29,7 @@ const SORT_BY_OPTIONS = [
   ['s','category','Category',CATEGORY_OPTIONS,DF_CATEGORY],
   ['s','sortBy','SortBy',SORT_BY_OPTIONS,DF_SORT_BY]
 ]
-, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);
+, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS)[0];
 
 const TheNewsApiSearchDialog = (props) => {
   const {

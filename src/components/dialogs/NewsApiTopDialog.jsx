@@ -91,7 +91,7 @@ const _CATEGORY = [
   ['s','category','Category',CATEGORY_OPTIONS, DF_CATEGORY],
   ['s','country','Country',COUNTRY_OPTIONS, DF_COUNTRY]
 ]
-, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);
+, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS)[0];
 
 const NewsApiTopDialog = (props) => {
   const {

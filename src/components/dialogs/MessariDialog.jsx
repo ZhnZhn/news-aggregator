@@ -41,14 +41,14 @@ const ASSET_OPTIONS = [
 , INPUT_CONFIGS = [
   ['s','assetKey','News about', ASSET_OPTIONS, DF_ASSET]
 ]
-, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);
+, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS)[0];
 
 const MessariDialog = (props) => {
   const {
     isShow,
     itemConf,
     onShow,
-  } = props  
+  } = props
   , [
     _refInputs,
     _selectInput

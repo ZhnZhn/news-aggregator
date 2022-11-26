@@ -93,7 +93,7 @@ const LOCALE_OPTIONS = [
 , INPUT_CONFIGS = [
   ['s','category','Category',CATEGORY_OPTIONS,DF_CATEGORY,true],
   ['s','locale','Locale',LOCALE_OPTIONS,DF_LOCALE,true],
-  ['s','domain','Domain',DOMAIN_OPTIONS,DF_DOMAIN,true]
+  ['s','domain','Domain',DOMAIN_OPTIONS,DF_DOMAIN]
 ]
 , [
   INITIAL_INPUTS,

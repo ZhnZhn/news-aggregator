@@ -24,7 +24,7 @@ const NEWS_FILTER_OPTIONS = [
 , INPUT_CONFIGS = [
   ['s','filter','News filter', NEWS_FILTER_OPTIONS, DF_FILTER]
 ]
-, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);
+, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS)[0];
 
 const CoinStatsDialog = (props) => {
   const {

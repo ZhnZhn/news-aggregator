@@ -19,10 +19,10 @@ import {
 const DF_SYMBOL = "AAPL";
 const INPUT_CONFIGS = [
   ['t','symbol','Stock Symbol',DF_SYMBOL,{
-    ...SYMBOL_INPUT_PROPS    
+    ...SYMBOL_INPUT_PROPS
   }]
 ]
-, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);
+, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS)[0];
 
 const FmpNewsDialog = (props) => {
   const {
