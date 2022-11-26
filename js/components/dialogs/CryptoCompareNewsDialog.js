@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
+var _useToggleState2 = _interopRequireDefault(require("../hooks/useToggleState"));
 var _useRefInputs2 = _interopRequireDefault(require("./hooks/useRefInputs"));
 var _useDialog2 = _interopRequireDefault(require("./hooks/useDialog"));
 var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"));
@@ -20,12 +21,18 @@ var FEED_OPTIONS = [['All', 'ALL_NEWS_FEEDS'], ['Decrypt', 'decrypt'], ['CoinDes
   DF_CATEGORY = CATEGORY_OPTIONS[0],
   SORTBY_OPTIONS = [['Latest', 'latest'], ['Popular', 'popular']],
   DF_SORTBY = SORTBY_OPTIONS[0],
-  INPUT_CONFIGS = [['s', 'category', 'Category', CATEGORY_OPTIONS, DF_CATEGORY], ['s', 'feed', 'Feed', FEED_OPTIONS, DF_FEED], ['s', 'sortOrder', 'SortBy', SORTBY_OPTIONS, DF_SORTBY]],
-  INITIAL_INPUTS = (0, _DialogFn.crDfInputs)(INPUT_CONFIGS);
+  INPUT_CONFIGS = [['s', 'category', 'Category', CATEGORY_OPTIONS, DF_CATEGORY, true], ['s', 'feed', 'Feed', FEED_OPTIONS, DF_FEED], ['s', 'sortOrder', 'SortBy', SORTBY_OPTIONS, DF_SORTBY, true]],
+  _crDfInputs = (0, _DialogFn.crDfInputs)(INPUT_CONFIGS),
+  INITIAL_INPUTS = _crDfInputs[0],
+  TOGGLES = _crDfInputs[1],
+  IS_INPUTS = _crDfInputs[2];
 var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(props) {
   var isShow = props.isShow,
     itemConf = props.itemConf,
     onShow = props.onShow,
+    _useToggleState = (0, _useToggleState2["default"])(IS_INPUTS),
+    isInputs = _useToggleState[0],
+    toggleInput = _useToggleState[1],
     _useRefInputs = (0, _useRefInputs2["default"])(INITIAL_INPUTS),
     _refInputs = _useRefInputs[0],
     _selectInput = _useRefInputs[1],
@@ -43,7 +50,10 @@ var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(props) {
     style: TS.R_DIALOG,
     captionStyle: TS.BROWSER_CAPTION,
     buttonStyle: TS.BT,
+    chbStroke: TS.R_DIALOG.backgroundColor,
     caption: paneCaption,
+    menuToggle: TOGGLES,
+    toggleItem: toggleInput,
     onKeyDown: _hKeyDown,
     onLoad: _hLoad,
     onShow: onShow,
@@ -51,6 +61,7 @@ var CryptoCompareNewsDialog = function CryptoCompareNewsDialog(props) {
     children: (0, _jsxRuntime.jsxs)(_FlexColumn["default"], {
       children: [(0, _jsxRuntime.jsx)(_StackInputs["default"], {
         TS: TS,
+        isInputs: isInputs,
         configs: INPUT_CONFIGS,
         onSelect: _selectInput
       }), (0, _jsxRuntime.jsx)(_PoweredBy["default"], {

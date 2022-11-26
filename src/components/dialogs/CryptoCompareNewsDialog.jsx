@@ -1,5 +1,6 @@
 import styleConfig from './Dialog.Style';
 
+import useToggleState from '../hooks/useToggleState';
 import useRefInputs from './hooks/useRefInputs';
 import useDialog from './hooks/useDialog';
 import useDecorDialog from './hooks/useDecorDialog';
@@ -46,11 +47,15 @@ const FEED_OPTIONS = [
   ['Popular', 'popular']
 ], DF_SORTBY = SORTBY_OPTIONS[0]
 , INPUT_CONFIGS = [
-  ['s','category', 'Category', CATEGORY_OPTIONS, DF_CATEGORY],
+  ['s','category', 'Category', CATEGORY_OPTIONS, DF_CATEGORY, true],
   ['s','feed', 'Feed', FEED_OPTIONS, DF_FEED],
-  ['s','sortOrder', 'SortBy', SORTBY_OPTIONS, DF_SORTBY]
+  ['s','sortOrder', 'SortBy', SORTBY_OPTIONS, DF_SORTBY, true]
 ]
-, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS);
+, [
+  INITIAL_INPUTS,
+  TOGGLES,
+  IS_INPUTS
+] = crDfInputs(INPUT_CONFIGS);
 
 const CryptoCompareNewsDialog = (props) => {
   const {
@@ -59,6 +64,10 @@ const CryptoCompareNewsDialog = (props) => {
     onShow
   } = props
   , [
+    isInputs,
+    toggleInput
+  ] = useToggleState(IS_INPUTS)
+  , [
     _refInputs,
     _selectInput
   ] = useRefInputs(INITIAL_INPUTS)
@@ -66,7 +75,7 @@ const CryptoCompareNewsDialog = (props) => {
     _refDialog,
     _hLoad,
     _hClose
-  ] = useDialog(props, 'CCN', _refInputs)  
+  ] = useDialog(props, 'CCN', _refInputs)
   , [
     TS,
     _hKeyDown
@@ -80,7 +89,10 @@ const CryptoCompareNewsDialog = (props) => {
        style={TS.R_DIALOG}
        captionStyle={TS.BROWSER_CAPTION}
        buttonStyle={TS.BT}
+       chbStroke={TS.R_DIALOG.backgroundColor}
        caption={paneCaption}
+       menuToggle={TOGGLES}
+       toggleItem={toggleInput}
        onKeyDown={_hKeyDown}
        onLoad={_hLoad}
        onShow={onShow}
@@ -89,6 +101,7 @@ const CryptoCompareNewsDialog = (props) => {
       <FlexColumn>
         <StackInputs
           TS={TS}
+          isInputs={isInputs}
           configs={INPUT_CONFIGS}
           onSelect={_selectInput}
         />
