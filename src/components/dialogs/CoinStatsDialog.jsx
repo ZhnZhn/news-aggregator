@@ -1,7 +1,7 @@
 import styleConfig from './Dialog.Style';
 
 import useRefInputs from './hooks/useRefInputs';
-import useDialog from './hooks/useRefInputs';
+import useDialog from './hooks/useDialog';
 import useDecorDialog from './hooks/useDecorDialog';
 
 import DraggableDialog from '../zhn-moleculs/DraggableDialog';
