@@ -1,14 +1,4 @@
-import styleConfig from './Dialog.Style';
-
-import useToggleState from '../hooks/useToggleState';
-import useRefInputs from './hooks/useRefInputs';
-import useDialog from './hooks/useDialog';
-import useDecorDialog from './hooks/useDecorDialog';
-
-import DraggableDialog from '../zhn-moleculs/DraggableDialog';
-import FlexColumn from '../zhn-atoms/FlexColumn';
-import StackInputs from '../zhn-inputs/StackInputs';
-import PoweredBy from '../links/PoweredBy';
+import DialogStackInputs from './DialogStackInputs';
 import { CryptoCompareLink } from '../links/Links';
 import {
   crDfInputs,
@@ -58,59 +48,20 @@ const FEED_OPTIONS = [
 ] = crDfInputs(INPUT_CONFIGS);
 
 const CryptoCompareNewsDialog = (props) => {
-  const {
-    isShow,
-    itemConf,
-    onShow
-  } = props
-  , [
-    isInputs,
-    toggleInput
-  ] = useToggleState(IS_INPUTS)
-  , [
-    _refInputs,
-    _selectInput
-  ] = useRefInputs(INITIAL_INPUTS)
-  , [
-    _refDialog,
-    _hLoad,
-    _hClose
-  ] = useDialog(props, 'CCN', _refInputs)
-  , [
-    TS,
-    _hKeyDown
-  ] = useDecorDialog(styleConfig, _hLoad, _hClose)
-  , paneCaption = getPaneCaption(itemConf);
-
+  const paneCaption = getPaneCaption(props.itemConf);
   return (
-    <DraggableDialog
-       ref={_refDialog}
-       isShow={isShow}
-       style={TS.R_DIALOG}
-       captionStyle={TS.BROWSER_CAPTION}
-       buttonStyle={TS.BT}
-       chbStroke={TS.R_DIALOG.backgroundColor}
-       caption={paneCaption}
-       menuToggle={TOGGLES}
-       toggleItem={toggleInput}
-       onKeyDown={_hKeyDown}
-       onLoad={_hLoad}
-       onShow={onShow}
-       onClose={_hClose}
+    <DialogStackInputs
+      {...props}
+      caption={paneCaption}
+      loadId="CCN"
+      INPUT_CONFIGS={INPUT_CONFIGS}
+      INITIAL_INPUTS={INITIAL_INPUTS}
+      TOGGLES={TOGGLES}
+      IS_INPUTS={IS_INPUTS}
     >
-      <FlexColumn>
-        <StackInputs
-          TS={TS}
-          isInputs={isInputs}
-          configs={INPUT_CONFIGS}
-          onSelect={_selectInput}
-        />
-        <PoweredBy style={TS.POWERED_BY}>
-          <CryptoCompareLink />
-        </PoweredBy>
-      </FlexColumn>
-    </DraggableDialog>
+      <CryptoCompareLink />
+    </DialogStackInputs>
   );
-};
+}
 
 export default CryptoCompareNewsDialog
