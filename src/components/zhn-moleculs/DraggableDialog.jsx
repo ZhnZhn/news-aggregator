@@ -185,14 +185,14 @@ const DraggableDialog = forwardRef(({
          onMore={_onMore}
          onClose={onClose}
       />
-      <ModalToggle
-        isShow={isMore}
-        className={CL_MODAL_TOGGLE}
-        chbStroke={chbStroke}
-        configs={menuToggle}
-        onToggle={toggleItem}
-        onClose={toggleIsMore}
-      />
+      {menuToggle && <ModalToggle
+         isShow={isMore}
+         className={CL_MODAL_TOGGLE}
+         chbStroke={chbStroke}
+         configs={menuToggle}
+         onToggle={toggleItem}
+         onClose={toggleIsMore}
+      />}
       <div style={S_CHL_DIV}>
          {children}
       </div>

@@ -156,7 +156,7 @@ var DraggableDialog = (0, _uiApi.forwardRef)(function (_ref2, ref) {
         caption: caption,
         onMore: _onMore,
         onClose: onClose
-      }), (0, _jsxRuntime.jsx)(_ModalToggle["default"], {
+      }), menuToggle && (0, _jsxRuntime.jsx)(_ModalToggle["default"], {
         isShow: isMore,
         className: CL_MODAL_TOGGLE,
         chbStroke: chbStroke,

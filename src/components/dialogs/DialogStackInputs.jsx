@@ -10,6 +10,12 @@ import FlexColumn from '../zhn-atoms/FlexColumn';
 import StackInputs from '../zhn-inputs/StackInputs';
 import PoweredBy from '../links/PoweredBy';
 
+const _isArr = Array.isArray;
+
+const _hasMenuToggle = (
+  menuToggle
+) => _isArr(menuToggle) && menuToggle.length > 1;
+
 const DialogStackInputs = (props) => {
   const {
     isShow,
@@ -39,17 +45,23 @@ const DialogStackInputs = (props) => {
     TS,
     _hKeyDown
   ] = useDecorDialog(styleConfig, _hLoad, _hClose)
+  , [
+    _captionStyle,
+    _menuToggle
+  ] = _hasMenuToggle(TOGGLES)
+      ? [TS.DIALOG_CAPTION, TOGGLES]
+      : [TS.BROWSER_CAPTION];
 
   return (
     <DraggableDialog
        ref={_refDialog}
        isShow={isShow}
        style={TS.R_DIALOG}
-       captionStyle={TS.DIALOG_CAPTION}
+       captionStyle={_captionStyle}
        buttonStyle={TS.BT}
        chbStroke={TS.R_DIALOG.backgroundColor}
        caption={caption}
-       menuToggle={TOGGLES}
+       menuToggle={_menuToggle}
        toggleItem={toggleInput}
        onKeyDown={_hKeyDown}
        onLoad={_hLoad}

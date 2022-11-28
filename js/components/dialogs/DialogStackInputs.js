@@ -13,6 +13,10 @@ var _FlexColumn = _interopRequireDefault(require("../zhn-atoms/FlexColumn"));
 var _StackInputs = _interopRequireDefault(require("../zhn-inputs/StackInputs"));
 var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
 var _jsxRuntime = require("preact/jsx-runtime");
+var _isArr = Array.isArray;
+var _hasMenuToggle = function _hasMenuToggle(menuToggle) {
+  return _isArr(menuToggle) && menuToggle.length > 1;
+};
 var DialogStackInputs = function DialogStackInputs(props) {
   var isShow = props.isShow,
     caption = props.caption,
@@ -35,16 +39,19 @@ var DialogStackInputs = function DialogStackInputs(props) {
     _hClose = _useDialog[2],
     _useDecorDialog = (0, _useDecorDialog2["default"])(_Dialog["default"], _hLoad, _hClose),
     TS = _useDecorDialog[0],
-    _hKeyDown = _useDecorDialog[1];
+    _hKeyDown = _useDecorDialog[1],
+    _ref = _hasMenuToggle(TOGGLES) ? [TS.DIALOG_CAPTION, TOGGLES] : [TS.BROWSER_CAPTION],
+    _captionStyle = _ref[0],
+    _menuToggle = _ref[1];
   return (0, _jsxRuntime.jsx)(_DraggableDialog["default"], {
     ref: _refDialog,
     isShow: isShow,
     style: TS.R_DIALOG,
-    captionStyle: TS.DIALOG_CAPTION,
+    captionStyle: _captionStyle,
     buttonStyle: TS.BT,
     chbStroke: TS.R_DIALOG.backgroundColor,
     caption: caption,
-    menuToggle: TOGGLES,
+    menuToggle: _menuToggle,
     toggleItem: toggleInput,
     onKeyDown: _hKeyDown,
     onLoad: _hLoad,
