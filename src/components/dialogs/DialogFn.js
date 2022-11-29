@@ -39,3 +39,8 @@ export const crDfInputs = (
 export const getDialogCaption = (
   itemConf
 ) => ((itemConf || {}).dialogProps || {}).caption
+
+export const crTextFieldCaption = (
+  caption,
+  dfValue
+) => `${caption} (Default: ${dfValue})`

@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.getPaneCaption = exports.getDialogCaption = exports.crDfInputs = exports.SYMBOL_INPUT_PROPS = void 0;
+exports.getPaneCaption = exports.getDialogCaption = exports.crTextFieldCaption = exports.crDfInputs = exports.SYMBOL_INPUT_PROPS = void 0;
 var _OptionFn = require("../zhn-m-input/OptionFn");
 var SYMBOL_INPUT_PROPS = {
   maxLength: '10',
@@ -42,4 +42,8 @@ var getDialogCaption = function getDialogCaption(itemConf) {
   return ((itemConf || {}).dialogProps || {}).caption;
 };
 exports.getDialogCaption = getDialogCaption;
+var crTextFieldCaption = function crTextFieldCaption(caption, dfValue) {
+  return caption + " (Default: " + dfValue + ")";
+};
+exports.crTextFieldCaption = crTextFieldCaption;
 //# sourceMappingURL=DialogFn.js.map

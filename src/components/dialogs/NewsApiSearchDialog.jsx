@@ -2,7 +2,10 @@ import { NEWS_API } from '../../conf/ProviderNames';
 
 import DialogStackInputs from './DialogStackInputs';
 import { NewsApiLink } from '../links/Links';
-import { crDfInputs } from './DialogFn';
+import {
+  crTextFieldCaption,
+  crDfInputs
+} from './DialogFn';
 
 const SORT_BY_OPTIONS = [
   ["Relevancy", "relevancy"],
@@ -12,7 +15,7 @@ const SORT_BY_OPTIONS = [
 , DF_SORT_BY = SORT_BY_OPTIONS[0]
 , DF_TERM = "Weather"
 , INPUT_CONFIGS = [
-  ['t','symbol',`Term (Default: ${DF_TERM})`,DF_TERM,void 0,true],
+  ['t','symbol',crTextFieldCaption('Term', DF_TERM),DF_TERM,void 0,true],
   ['s','sortBy','SortBy',SORT_BY_OPTIONS,DF_SORT_BY,true]
 ]
 , [
