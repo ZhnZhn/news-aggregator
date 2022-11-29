@@ -1,16 +1,7 @@
-import styleConfig from './Dialog.Style';
-
-import useRefInputs from './hooks/useRefInputs';
-import useDialog from './hooks/useDialog';
-import useDecorDialog from './hooks/useDecorDialog';
-
-import DraggableDialog from '../zhn-moleculs/DraggableDialog';
-import FlexColumn from '../zhn-atoms/FlexColumn';
-import StackInputs from '../zhn-inputs/StackInputs';
-
-import { getPaneCaption } from './DialogFn';
-import { PoweredByTheNewsApi } from '../links/PoweredByLink';
+import DialogStackInputs from './DialogStackInputs';
+import { TheNewsApiLink } from '../links/Links';
 import {
+  getPaneCaption,
   crDfInputs
 } from './DialogFn';
 import {
@@ -19,64 +10,37 @@ import {
 } from './TheNewsApiDialogFn';
 
 const SORT_BY_OPTIONS = [
-  ["Relevancy", "relevance_score"],
-  ["PublishedAt", " published_at"]
+  ["PublishedAt", " published_at"],
+  ["Relevancy", "relevance_score"]
 ]
 , DF_SORT_BY = SORT_BY_OPTIONS[0]
 , DF_TERM = "Weather"
 , INPUT_CONFIGS = [
-  ['t','search',`Term (Default: ${DF_TERM})`,DF_TERM],
-  ['s','category','Category',CATEGORY_OPTIONS,DF_CATEGORY],
+  ['t','search',`Term (Default: ${DF_TERM})`,DF_TERM,void 0,true],
+  ['s','category','Category',CATEGORY_OPTIONS,DF_CATEGORY,true],
   ['s','sortBy','SortBy',SORT_BY_OPTIONS,DF_SORT_BY]
 ]
-, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS)[0];
+, [
+  INITIAL_INPUTS,
+  TOGGLES,
+  IS_INPUTS
+] = crDfInputs(INPUT_CONFIGS);
 
 const TheNewsApiSearchDialog = (props) => {
-  const {
-    isShow,
-    itemConf,
-    onShow
-  } = props
-  , [
-    _refInputs,
-    _selectInput
-  ] = useRefInputs(INITIAL_INPUTS)
-  , [
-    _refDialog,
-    _hLoad,
-    _hClose
-  ] = useDialog(props, 'TNS', _refInputs)
-  , [
-    TS,
-    _hKeyDown
-  ] = useDecorDialog(styleConfig, _hLoad, _hClose)
-  , caption =getPaneCaption(itemConf);
-
+  const caption = getPaneCaption(props.itemConf);
   return (
-    <DraggableDialog
-       ref={_refDialog}
-       isShow={isShow}
-       style={TS.R_DIALOG}
-       captionStyle={TS.BROWSER_CAPTION}
-       buttonStyle={TS.BT}
-       caption={caption}
-       onKeyDown={_hKeyDown}
-       onLoad={_hLoad}
-       onShow={onShow}
-       onClose={_hClose}
+    <DialogStackInputs
+      {...props}
+      caption={caption}
+      loadId="TNS"
+      INPUT_CONFIGS={INPUT_CONFIGS}
+      INITIAL_INPUTS={INITIAL_INPUTS}
+      TOGGLES={TOGGLES}
+      IS_INPUTS={IS_INPUTS}
     >
-       <FlexColumn>
-         <StackInputs
-           TS={TS}
-           configs={INPUT_CONFIGS}
-           onSelect={_selectInput}
-         />
-         <PoweredByTheNewsApi
-           style={TS.POWERED_BY}
-         />
-      </FlexColumn>
-    </DraggableDialog>
+      <TheNewsApiLink />
+    </DialogStackInputs>
   );
-};
+}
 
 export default TheNewsApiSearchDialog
