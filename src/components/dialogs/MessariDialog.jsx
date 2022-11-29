@@ -1,12 +1,4 @@
-import styleConfig from './Dialog.Style';
-
-import useRefInputs from './hooks/useRefInputs';
-import useDialog from './hooks/useDialog';
-import useDecorDialog from './hooks/useDecorDialog';
-
-import DraggableDialog from '../zhn-moleculs/DraggableDialog';
-import StackInputs from '../zhn-inputs/StackInputs';
-import PoweredBy from '../links/PoweredBy';
+import DialogStackInputs from './DialogStackInputs';
 import { MessariLink } from '../links/Links';
 import {
   crDfInputs,
@@ -41,52 +33,27 @@ const ASSET_OPTIONS = [
 , INPUT_CONFIGS = [
   ['s','assetKey','News about', ASSET_OPTIONS, DF_ASSET]
 ]
-, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS)[0];
+, [
+  INITIAL_INPUTS,
+  TOGGLES,
+  IS_INPUTS
+] = crDfInputs(INPUT_CONFIGS);
 
 const MessariDialog = (props) => {
-  const {
-    isShow,
-    itemConf,
-    onShow,
-  } = props
-  , [
-    _refInputs,
-    _selectInput
-  ] = useRefInputs(INITIAL_INPUTS)
-  , [
-    _refDialog,
-    _hLoad,
-    _hClose
-  ] = useDialog(props, 'MS', _refInputs)
-  , [
-    TS,
-    _hKeyDown
-  ] = useDecorDialog(styleConfig, _hLoad, _hClose)
-  , paneCaption  = getPaneCaption(itemConf);
-
+  const paneCaption = getPaneCaption(props.itemConf);
   return (
-    <DraggableDialog
-       ref={_refDialog}
-       isShow={isShow}
-       style={TS.R_DIALOG}
-       captionStyle={TS.BROWSER_CAPTION}
-       buttonStyle={TS.BT}
-       caption={paneCaption}
-       onKeyDown={_hKeyDown}
-       onLoad={_hLoad}
-       onShow={onShow}
-       onClose={_hClose}
+    <DialogStackInputs
+      {...props}
+      caption={paneCaption}
+      loadId="MS"
+      INPUT_CONFIGS={INPUT_CONFIGS}
+      INITIAL_INPUTS={INITIAL_INPUTS}
+      TOGGLES={TOGGLES}
+      IS_INPUTS={IS_INPUTS}
     >
-       <StackInputs
-         TS={TS}
-         configs={INPUT_CONFIGS}
-         onSelect={_selectInput}
-       />
-      <PoweredBy style={TS.POWERED_BY}>
-        <MessariLink />
-      </PoweredBy>
-    </DraggableDialog>
+      <MessariLink />
+    </DialogStackInputs>
   );
-};
+}
 
 export default MessariDialog

@@ -25,7 +25,9 @@ export const crDfInputs = (
       caption: arrConfig[2],
       df: !!arrConfig[5]
     })
-    r[2][arrConfig[1]] = !!arrConfig[5]
+    r[2][arrConfig[1]] = inputConfigs.length !== 1
+       ? !!arrConfig[5]
+       : true
     return r;
  //dfInputs, toggles, isInputs
  }, [_crObject(null), [], _crObject(null)]);

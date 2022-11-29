@@ -14,7 +14,7 @@ const NEWS_FILTER_OPTIONS = [
 ]
 , DF_FILTER = NEWS_FILTER_OPTIONS[0]
 , INPUT_CONFIGS = [
-  ['s','filter','News filter', NEWS_FILTER_OPTIONS, DF_FILTER,true]
+  ['s','filter','News filter', NEWS_FILTER_OPTIONS, DF_FILTER]
 ]
 , [
   INITIAL_INPUTS,
