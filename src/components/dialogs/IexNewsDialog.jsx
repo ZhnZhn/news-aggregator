@@ -2,16 +2,7 @@ import {
   IEX_CLOUD
 } from '../../conf/ProviderNames';
 
-import styleConfig from './Dialog.Style';
-
-import useRefInputs from './hooks/useRefInputs';
-import useDialog from './hooks/useDialog';
-import useDecorDialog from './hooks/useDecorDialog';
-
-import DraggableDialog from '../zhn-moleculs/DraggableDialog';
-import FlexColumn from '../zhn-atoms/FlexColumn';
-import StackInputs from '../zhn-inputs/StackInputs';
-import PoweredBy from '../links/PoweredBy';
+import DialogStackInputs from './DialogStackInputs';
 import { IexApiLink } from '../links/Links';
 import {
   SYMBOL_INPUT_PROPS,
@@ -30,55 +21,27 @@ const RECENT_OPTIONS = [
 const INPUT_CONFIGS = [
   ['t','symbol','Stock Symbol',DF_SYMBOL,{
     ...SYMBOL_INPUT_PROPS
-  }],
-  ['s','recent','Recent',RECENT_OPTIONS,DF_RECENT]
+  },true],
+  ['s','recent','Recent',RECENT_OPTIONS,DF_RECENT,true]
 ]
-, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS)[0];
+, [
+  INITIAL_INPUTS,
+  TOGGLES,
+  IS_INPUTS
+] = crDfInputs(INPUT_CONFIGS);
 
-const IexNewsDialog = (props) => {
-  const {
-    isShow,
-    onShow
-  } = props
-  , [
-    _refInputs,
-    _selectInput
-  ] = useRefInputs(INITIAL_INPUTS)
-  , [
-    _refDialog,
-    _hLoad,
-    _hClose
-  ] = useDialog(props, 'IEX', _refInputs)
-  , [
-    TS,
-    _hKeyDown
-  ] = useDecorDialog(styleConfig, _hLoad, _hClose);
-
-  return (
-    <DraggableDialog
-       ref={_refDialog}
-       isShow={isShow}
-       style={TS.R_DIALOG}
-       captionStyle={TS.BROWSER_CAPTION}
-       buttonStyle={TS.BT}
-       caption={`${IEX_CLOUD}: Stock News`}
-       onKeyDown={_hKeyDown}
-       onLoad={_hLoad}
-       onShow={onShow}
-       onClose={_hClose}
-    >
-       <FlexColumn>
-         <StackInputs
-           TS={TS}
-           configs={INPUT_CONFIGS}
-           onSelect={_selectInput}
-         />
-         <PoweredBy style={TS.POWERED_BY}>
-           <IexApiLink />
-         </PoweredBy>
-      </FlexColumn>
-    </DraggableDialog>
-  );
-};
+const IexNewsDialog = (props) => (
+   <DialogStackInputs
+     {...props}
+     caption={`${IEX_CLOUD}: Stock News`}
+     loadId="IEX"
+     INPUT_CONFIGS={INPUT_CONFIGS}
+     INITIAL_INPUTS={INITIAL_INPUTS}
+     TOGGLES={TOGGLES}
+     IS_INPUTS={IS_INPUTS}
+   >
+     <IexApiLink />
+   </DialogStackInputs>
+);
 
 export default IexNewsDialog
