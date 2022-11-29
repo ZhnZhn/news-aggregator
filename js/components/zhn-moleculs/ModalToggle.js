@@ -23,6 +23,10 @@ var S_MODAL_POPUP = {
     padding: '6px 0 6px',
     lineHeight: 'normal'
   };
+var _crCaption = function _crCaption(caption) {
+  var _index = caption.indexOf('(');
+  return _index === -1 ? caption : caption.slice(0, _index - 1);
+};
 var ModalToggle = function ModalToggle(_ref) {
   var isShow = _ref.isShow,
     className = _ref.className,
@@ -41,7 +45,7 @@ var ModalToggle = function ModalToggle(_ref) {
         initialValue: item.df,
         style: S_CHB_TOGGLE,
         stroke: chbStroke,
-        caption: item.caption,
+        caption: _crCaption(item.caption),
         captionStyle: S_CAPTION,
         onToggle: function onToggle() {
           return _onToggle(item.id);

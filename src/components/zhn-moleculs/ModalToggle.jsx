@@ -19,6 +19,15 @@ const S_MODAL_POPUP = {
   lineHeight: 'normal'
 };
 
+const _crCaption = (
+  caption
+) => {
+  const _index = caption.indexOf('(');
+  return _index === -1
+    ? caption
+    : caption.slice(0, _index-1);
+};
+
 const ModalToggle = ({
   isShow,
   className,
@@ -40,7 +49,7 @@ const ModalToggle = ({
          initialValue={item.df}
          style={S_CHB_TOGGLE}
          stroke={chbStroke}
-         caption={item.caption}
+         caption={_crCaption(item.caption)}
          captionStyle={S_CAPTION}
          onToggle={() => onToggle(item.id)}
        />
