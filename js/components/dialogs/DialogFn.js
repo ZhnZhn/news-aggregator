@@ -18,16 +18,20 @@ var _crObject = Object.create,
   _getDfValue = function _getDfValue(arrConfig) {
     var _type = arrConfig[0];
     return _type === 's' ? (0, _OptionFn.getItemValue)(arrConfig[4]) : _type === 't' ? arrConfig[3] : void 0;
+  },
+  _hasShow = function _hasShow(inputConfigs, arrConfig) {
+    return inputConfigs.length === 1 ? true : arrConfig[arrConfig.length - 1] === true ? true : false;
   };
 var crDfInputs = function crDfInputs(inputConfigs) {
   return inputConfigs.reduce(function (r, arrConfig) {
+    var _isShow = _hasShow(inputConfigs, arrConfig);
     r[0][_getId(arrConfig)] = _getDfValue(arrConfig);
     r[1].push({
       id: arrConfig[1],
       caption: arrConfig[2],
-      df: !!arrConfig[5]
+      df: _isShow
     });
-    r[2][arrConfig[1]] = inputConfigs.length !== 1 ? !!arrConfig[5] : true;
+    r[2][arrConfig[1]] = _isShow;
     return r;
     //dfInputs, toggles, isInputs
   }, [_crObject(null), [], _crObject(null)]);

@@ -17,7 +17,7 @@ const SORT_BY_OPTIONS = [
 , DF_SORT_BY = SORT_BY_OPTIONS[0]
 , DF_TERM = "Weather"
 , INPUT_CONFIGS = [
-  ['t','search',crTextFieldCaption('Term',DF_TERM),DF_TERM,void 0,true],
+  ['t','search',crTextFieldCaption('Term',DF_TERM),DF_TERM,true],
   ['s','category','Category',CATEGORY_OPTIONS,DF_CATEGORY,true],
   ['s','sortBy','SortBy',SORT_BY_OPTIONS,DF_SORT_BY]
 ]

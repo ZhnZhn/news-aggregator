@@ -20,7 +20,7 @@ const INITIAL_FROM_DATE = DateUtil.getFromDate(1)
 , DF_SORT_BY = SORT_BY_OPTIONS[4]
 , DF_TAG = "CSS"
 , INPUT_CONFIGS = [
-  ['t','tag',crTextFieldCaption('Tag',DF_TAG),DF_TAG,void 0,true],
+  ['t','tag',crTextFieldCaption('Tag',DF_TAG),DF_TAG,true],
   ['s','sortBy','SortBy',SORT_BY_OPTIONS,DF_SORT_BY,true],
   ['ft','_ft','From To Date',INITIAL_FROM_DATE,INITIAL_TO_DATE]
 ]

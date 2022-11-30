@@ -19,8 +19,8 @@ const INITIAL_FROM_DATE = DateUtil.getFromDate(1)
 , DF_TAGGED = 'CSS'
 , DF_IN_TITLE = 'flexbox'
 , INPUT_CONFIGS = [
-  ['t','tagged',crTextFieldCaption('Tagged',DF_TAGGED),DF_TAGGED,void 0, true],
-  ['t','inTitle',crTextFieldCaption('In Title',DF_IN_TITLE),DF_IN_TITLE,void 0,true],
+  ['t','tagged',crTextFieldCaption('Tagged',DF_TAGGED),DF_TAGGED, true],
+  ['t','inTitle',crTextFieldCaption('In Title',DF_IN_TITLE),DF_IN_TITLE,true],
   ['s','sortBy','SortBy',SORT_BY_OPTIONS,DF_SORT_BY],
   ['ft','_ft','From To Date',INITIAL_FROM_DATE,INITIAL_TO_DATE]
 ]

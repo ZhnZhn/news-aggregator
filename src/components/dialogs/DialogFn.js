@@ -19,21 +19,28 @@ const _crObject = Object.create
     : _type === 't'
        ? arrConfig[3]
        : void 0;
-};
+}
+, _hasShow = (
+  inputConfigs,
+  arrConfig
+) => inputConfigs.length === 1
+  ? true
+  : arrConfig[arrConfig.length-1] === true
+      ? true
+      : false;
 
 export const crDfInputs = (
   inputConfigs
 ) => inputConfigs
  .reduce((r, arrConfig) => {
+    const _isShow = _hasShow(inputConfigs, arrConfig);
     r[0][_getId(arrConfig)] = _getDfValue(arrConfig)
     r[1].push({
       id: arrConfig[1],
       caption: arrConfig[2],
-      df: !!arrConfig[5]
+      df: _isShow
     })
-    r[2][arrConfig[1]] = inputConfigs.length !== 1
-       ? !!arrConfig[5]
-       : true
+    r[2][arrConfig[1]] = _isShow
     return r;
  //dfInputs, toggles, isInputs
  }, [_crObject(null), [], _crObject(null)]);
