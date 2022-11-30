@@ -10,10 +10,16 @@ export const SYMBOL_INPUT_PROPS = {
 
 const _crObject = Object.create
 , _getId = arrConfig => arrConfig[1]
-, _getDfValue = arrConfig => arrConfig[0] === 's'
-   ? getItemValue(arrConfig[4])
-   //_type === 't'
-   : arrConfig[3];
+, _getDfValue = (
+  arrConfig
+) => {
+  const _type = arrConfig[0];
+  return _type === 's'
+    ? getItemValue(arrConfig[4])
+    : _type === 't'
+       ? arrConfig[3]
+       : void 0;
+};
 
 export const crDfInputs = (
   inputConfigs

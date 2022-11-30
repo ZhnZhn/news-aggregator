@@ -16,9 +16,8 @@ var _crObject = Object.create,
     return arrConfig[1];
   },
   _getDfValue = function _getDfValue(arrConfig) {
-    return arrConfig[0] === 's' ? (0, _OptionFn.getItemValue)(arrConfig[4])
-    //_type === 't'
-    : arrConfig[3];
+    var _type = arrConfig[0];
+    return _type === 's' ? (0, _OptionFn.getItemValue)(arrConfig[4]) : _type === 't' ? arrConfig[3] : void 0;
   };
 var crDfInputs = function crDfInputs(inputConfigs) {
   return inputConfigs.reduce(function (r, arrConfig) {
