@@ -77,6 +77,8 @@ const TextField = forwardRef(({
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hBlurInput = useCallback(event => {
     const _value = _getEventTargetValue(event);
+    console.log(_value)
+    console.log(onTest(_value))
     if (onTest(_value)) {
       onBlur(_value.trim(), id)
     }
