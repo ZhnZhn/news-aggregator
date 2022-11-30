@@ -3,11 +3,9 @@ import crId from '../utils/crId';
 
 import sanitizeArticle from './sanitizeArticle';
 
-//const SOURCE_ID = "stack_tagged";
-
 const _rSourceId = {
-  TAG: 'stack_tagged',
-  SEARCH: 'stack_search'
+  SO_TAGGED: 'stack_tagged',
+  SO_SEARCH: 'stack_search'
 }
 
 const _assign = Object.assign
@@ -42,8 +40,8 @@ const _crArticles = (
 const StackOverflowAdapter = {
   toNews: (json, option) => {
     const { items } = json
-    , { requestType } = option
-    , _sourceId = _rSourceId[requestType];
+    , { type } = option
+    , _sourceId = _rSourceId[type];
 
     return {
       source: _sourceId,
