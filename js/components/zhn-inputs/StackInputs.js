@@ -7,6 +7,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
 var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
 var _TextField = _interopRequireDefault(require("../zhn-m-input/TextField"));
+var _InputFromToDate = _interopRequireDefault(require("../zhn-m-input/InputFromToDate"));
 var _jsxRuntime = require("preact/jsx-runtime");
 var _preact = require("preact");
 var _isObj = function _isObj(v) {
@@ -38,7 +39,12 @@ var StackInputs = function StackInputs(_ref) {
         initValue: arrConfig[3],
         onEnter: onSelect,
         onBlur: onSelect
-      })) : void 0;
+      })) : _type === 'ft' ? (0, _jsxRuntime.jsx)(_InputFromToDate["default"], {
+        style: TS.INPUT_DATE,
+        initialFrom: arrConfig[3],
+        initialTo: arrConfig[4],
+        onInput: onSelect
+      }, "_ft") : void 0;
     return _elItem ? (0, _jsxRuntime.jsx)(_ShowHide["default"], {
       isShow: _isInput(isInputs, _inputId),
       children: _elItem
