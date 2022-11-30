@@ -1,59 +1,54 @@
+import DateUtil from '../utils/dt';
+
 const BASE = "https://api.stackexchange.com/2.2";
 
-const DF = {
-  FROM_DATE_S: 1465776000,
-  TO_DATE_S: 1497312000,
-  TAG: {
-    TAG: 'CSS',
-    SORT_BY: 'week'
-  },
-  SEARCH: {
-    TAGGED: 'CSS',
-    IN_TITLE: 'flexbox',
-    SORT_BY: 'votes'
-  }
-}
+const _toUTCSecond = DateUtil.toUTCSecond
+, DF_FROM_DATE_S = _toUTCSecond(DateUtil.getFromDate(1))
+, DF_TO_DATE_S = _toUTCSecond(DateUtil.getToDate())
 
-const _checkDate = (fromDate, toDate) => {
-  return {
-    _fromDate: fromDate || DF.FROM_DATE_S,
-    _toDate: toDate || DF.TO_DATE_S
-  };
-}
+, DF_TAG_TAG = 'CSS'
+, DF_TAG_SORT_BY = 'week'
+
+, DF_SEARCH_TAGGED = 'CSS'
+, DF_SEARCH_IN_TITLE = 'flexbox'
+, DF_SEARCH_SORT_BY = 'votes';
 
 const _rRequestUrl = {
-  TAG: ({
-    tag=DF.TAG.TAG,
-    sortBy=DF.TAG.SORT_BY,
-    fromDate, toDate
+  SO_TAGGED: ({
+    tag=DF_TAG_TAG,
+    sortBy=DF_TAG_SORT_BY,
+    fromDate=DF_FROM_DATE_S,
+    toDate=DF_TO_DATE_S
   }) => {
-    const { _fromDate, _toDate } = _checkDate(fromDate, toDate);
-    return `${BASE}/questions?page=1&pagesize=50&order=desc&fromdate=${_fromDate}&todate=${_toDate}&sort=${sortBy}&tagged=${tag}&site=stackoverflow`;
+    return `${BASE}/questions?page=1&pagesize=50&order=desc&fromdate=${fromDate}&todate=${toDate}&sort=${sortBy}&tagged=${tag}&site=stackoverflow`;
   },
-  SEARCH: ({
-    tagged=DF.SEARCH.TAGGED,
-    inTitle=DF.SEARCH.IN_TITLE,
-    sortBy=DF.SEARCH.SORT_BY,
-    fromDate, toDate
+  SO_SEARCH: ({
+    tagged=DF_SEARCH_TAGGED,
+    inTitle=DF_SEARCH_IN_TITLE,
+    sortBy=DF_SEARCH_SORT_BY,
+    fromDate=DF_FROM_DATE_S,
+    toDate=DF_TO_DATE_S
    }) => {
-    const { _fromDate, _toDate } = _checkDate(fromDate, toDate);
-    return `${BASE}/search?page=1&pagesize=50&order=desc&fromdate=${_fromDate}&todate=${_toDate}&sort=${sortBy}&tagged=${tagged}&intitle=${inTitle}&site=stackoverflow`;
+    return `${BASE}/search?page=1&pagesize=50&order=desc&fromdate=${fromDate}&todate=${toDate}&sort=${sortBy}&tagged=${tagged}&intitle=${inTitle}&site=stackoverflow`;
   }
 }
 
 const StackOverflowApi = {
   getRequestUrl(option){
-    const fn = _rRequestUrl[option.requestType];
-    return fn(option);
+    const _crRequestUrl = _rRequestUrl[option.type];
+    return _crRequestUrl(option);
   },
   checkResponse(json, option){
-    const { error_message, error_name='' } = json;
-     if (error_message){
-        throw {
-          msg: `${error_name} ${error_message}`
-        };
-     }
-      return true;
+    const {
+      error_message,
+      error_name=''
+    } = json;
+    if (error_message){
+      throw {
+        msg: `${error_name} ${error_message}`
+      };
+    }
+    return true;
   }
 }
 

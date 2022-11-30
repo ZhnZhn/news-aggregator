@@ -1,1 +1,42 @@
-{"version":3,"sources":["../../src/api/StackOverflowApi.js"],"names":["BASE","DF","FROM_DATE_S","TO_DATE_S","TAG","SORT_BY","SEARCH","TAGGED","IN_TITLE","_checkDate","fromDate","toDate","_fromDate","_toDate","_rRequestUrl","tag","sortBy","tagged","inTitle","StackOverflowApi","getRequestUrl","option","fn","requestType","checkResponse","json","error_message","error_name","msg"],"mappings":";;;;AAAA,IAAMA,IAAI,GAAG,mCAAb;AAEA,IAAMC,EAAE,GAAG;AACTC,EAAAA,WAAW,EAAE,UADJ;AAETC,EAAAA,SAAS,EAAE,UAFF;AAGTC,EAAAA,GAAG,EAAE;AACHA,IAAAA,GAAG,EAAE,KADF;AAEHC,IAAAA,OAAO,EAAE;AAFN,GAHI;AAOTC,EAAAA,MAAM,EAAE;AACNC,IAAAA,MAAM,EAAE,KADF;AAENC,IAAAA,QAAQ,EAAE,SAFJ;AAGNH,IAAAA,OAAO,EAAE;AAHH;AAPC,CAAX;;AAcA,IAAMI,UAAU,GAAG,SAAbA,UAAa,CAACC,QAAD,EAAWC,MAAX,EAAsB;AACvC,SAAO;AACLC,IAAAA,SAAS,EAAEF,QAAQ,IAAIT,EAAE,CAACC,WADrB;AAELW,IAAAA,OAAO,EAAEF,MAAM,IAAIV,EAAE,CAACE;AAFjB,GAAP;AAID,CALD;;AAOA,IAAMW,YAAY,GAAG;AACnBV,EAAAA,GAAG,EAAE,mBAIC;AAAA,wBAHJW,GAGI;AAAA,QAHJA,GAGI,yBAHAd,EAAE,CAACG,GAAH,CAAOA,GAGP;AAAA,2BAFJY,MAEI;AAAA,QAFJA,MAEI,4BAFGf,EAAE,CAACG,GAAH,CAAOC,OAEV;AAAA,QADJK,QACI,QADJA,QACI;AAAA,QADMC,MACN,QADMA,MACN;;AAAA,sBAC2BF,UAAU,CAACC,QAAD,EAAWC,MAAX,CADrC;AAAA,QACIC,SADJ,eACIA,SADJ;AAAA,QACeC,OADf,eACeA,OADf;;AAEJ,WAAUb,IAAV,0DAAmEY,SAAnE,gBAAuFC,OAAvF,cAAuGG,MAAvG,gBAAwHD,GAAxH;AACD,GARkB;AASnBT,EAAAA,MAAM,EAAE,uBAKD;AAAA,6BAJLW,MAIK;AAAA,QAJLA,MAIK,6BAJEhB,EAAE,CAACK,MAAH,CAAUC,MAIZ;AAAA,8BAHLW,OAGK;AAAA,QAHLA,OAGK,8BAHGjB,EAAE,CAACK,MAAH,CAAUE,QAGb;AAAA,6BAFLQ,MAEK;AAAA,QAFLA,MAEK,6BAFEf,EAAE,CAACK,MAAH,CAAUD,OAEZ;AAAA,QADLK,QACK,SADLA,QACK;AAAA,QADKC,MACL,SADKA,MACL;;AAAA,sBAC0BF,UAAU,CAACC,QAAD,EAAWC,MAAX,CADpC;AAAA,QACGC,SADH,eACGA,SADH;AAAA,QACcC,OADd,eACcA,OADd;;AAEL,WAAUb,IAAV,uDAAgEY,SAAhE,gBAAoFC,OAApF,cAAoGG,MAApG,gBAAqHC,MAArH,iBAAuIC,OAAvI;AACD;AAjBkB,CAArB;AAoBA,IAAMC,gBAAgB,GAAG;AACvBC,EAAAA,aADuB,yBACTC,MADS,EACF;AACnB,QAAMC,EAAE,GAAGR,YAAY,CAACO,MAAM,CAACE,WAAR,CAAvB;AACA,WAAOD,EAAE,CAACD,MAAD,CAAT;AACD,GAJsB;AAKvBG,EAAAA,aALuB,yBAKTC,IALS,EAKHJ,MALG,EAKI;AAAA,QACjBK,aADiB,GACgBD,IADhB,CACjBC,aADiB;AAAA,2BACgBD,IADhB,CACFE,UADE;AAAA,QACFA,UADE,iCACS,EADT;;AAExB,QAAID,aAAJ,EAAkB;AACf,YAAM;AACJE,QAAAA,GAAG,EAAKD,UAAL,SAAmBD;AADlB,OAAN;AAGF;;AACA,WAAO,IAAP;AACH;AAbsB,CAAzB;eAgBeP,gB","sourcesContent":["const BASE = \"https://api.stackexchange.com/2.2\";\r\n\r\nconst DF = {\r\n  FROM_DATE_S: 1465776000,\r\n  TO_DATE_S: 1497312000,\r\n  TAG: {\r\n    TAG: 'CSS',\r\n    SORT_BY: 'week'\r\n  },\r\n  SEARCH: {\r\n    TAGGED: 'CSS',\r\n    IN_TITLE: 'flexbox',\r\n    SORT_BY: 'votes'\r\n  }\r\n}\r\n\r\nconst _checkDate = (fromDate, toDate) => {\r\n  return {\r\n    _fromDate: fromDate || DF.FROM_DATE_S,\r\n    _toDate: toDate || DF.TO_DATE_S\r\n  };\r\n}\r\n\r\nconst _rRequestUrl = {\r\n  TAG: ({\r\n    tag=DF.TAG.TAG,\r\n    sortBy=DF.TAG.SORT_BY,\r\n    fromDate, toDate\r\n  }) => {\r\n    const { _fromDate, _toDate } = _checkDate(fromDate, toDate);\r\n    return `${BASE}/questions?page=1&pagesize=50&order=desc&fromdate=${_fromDate}&todate=${_toDate}&sort=${sortBy}&tagged=${tag}&site=stackoverflow`;\r\n  },\r\n  SEARCH: ({\r\n    tagged=DF.SEARCH.TAGGED,\r\n    inTitle=DF.SEARCH.IN_TITLE,\r\n    sortBy=DF.SEARCH.SORT_BY,\r\n    fromDate, toDate\r\n   }) => {\r\n    const { _fromDate, _toDate } = _checkDate(fromDate, toDate);\r\n    return `${BASE}/search?page=1&pagesize=50&order=desc&fromdate=${_fromDate}&todate=${_toDate}&sort=${sortBy}&tagged=${tagged}&intitle=${inTitle}&site=stackoverflow`;\r\n  }\r\n}\r\n\r\nconst StackOverflowApi = {\r\n  getRequestUrl(option){\r\n    const fn = _rRequestUrl[option.requestType];\r\n    return fn(option);\r\n  },\r\n  checkResponse(json, option){\r\n    const { error_message, error_name='' } = json;\r\n     if (error_message){\r\n        throw {\r\n          msg: `${error_name} ${error_message}`\r\n        };\r\n     }\r\n      return true;\r\n  }\r\n}\r\n\r\nexport default StackOverflowApi\r\n"],"file":"StackOverflowApi.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/StackOverflowApi.js"
+ ],
+ "file": "../../src/api/StackOverflowApi.js",
+ "names": [
+  "BASE",
+  "_toUTCSecond",
+  "DateUtil",
+  "toUTCSecond",
+  "DF_FROM_DATE_S",
+  "getFromDate",
+  "DF_TO_DATE_S",
+  "getToDate",
+  "DF_TAG_TAG",
+  "DF_TAG_SORT_BY",
+  "DF_SEARCH_TAGGED",
+  "DF_SEARCH_IN_TITLE",
+  "DF_SEARCH_SORT_BY",
+  "_rRequestUrl",
+  "SO_TAGGED",
+  "tag",
+  "sortBy",
+  "fromDate",
+  "toDate",
+  "SO_SEARCH",
+  "tagged",
+  "inTitle",
+  "StackOverflowApi",
+  "getRequestUrl",
+  "option",
+  "_crRequestUrl",
+  "type",
+  "checkResponse",
+  "json",
+  "error_message",
+  "error_name",
+  "msg"
+ ],
+ "mappings": ";;;;;AAAA;AAEA,IAAMA,IAAI,GAAG,mCAAmC;AAEhD,IAAMC,YAAY,GAAGC,cAAQ,CAACC,WAAW;EACvCC,cAAc,GAAGH,YAAY,CAACC,cAAQ,CAACG,WAAW,CAAC,CAAC,CAAC,CAAC;EACtDC,YAAY,GAAGL,YAAY,CAACC,cAAQ,CAACK,SAAS,EAAE,CAAC;EAEjDC,UAAU,GAAG,KAAK;EAClBC,cAAc,GAAG,MAAM;EAEvBC,gBAAgB,GAAG,KAAK;EACxBC,kBAAkB,GAAG,SAAS;EAC9BC,iBAAiB,GAAG,OAAO;AAE7B,IAAMC,YAAY,GAAG;EACnBC,SAAS,EAAE,yBAKL;IAAA,oBAJJC,GAAG;MAAHA,GAAG,yBAACP,UAAU;MAAA,mBACdQ,MAAM;MAANA,MAAM,4BAACP,cAAc;MAAA,qBACrBQ,QAAQ;MAARA,QAAQ,8BAACb,cAAc;MAAA,mBACvBc,MAAM;MAANA,MAAM,4BAACZ,YAAY;IAEnB,OAAUN,IAAI,0DAAqDiB,QAAQ,gBAAWC,MAAM,cAASF,MAAM,gBAAWD,GAAG;EAC3H,CAAC;EACDI,SAAS,EAAE,0BAMJ;IAAA,yBALLC,MAAM;MAANA,MAAM,6BAACV,gBAAgB;MAAA,sBACvBW,OAAO;MAAPA,OAAO,8BAACV,kBAAkB;MAAA,qBAC1BK,MAAM;MAANA,MAAM,6BAACJ,iBAAiB;MAAA,uBACxBK,QAAQ;MAARA,QAAQ,+BAACb,cAAc;MAAA,qBACvBc,MAAM;MAANA,MAAM,6BAACZ,YAAY;IAEnB,OAAUN,IAAI,uDAAkDiB,QAAQ,gBAAWC,MAAM,cAASF,MAAM,gBAAWI,MAAM,iBAAYC,OAAO;EAC9I;AACF,CAAC;AAED,IAAMC,gBAAgB,GAAG;EACvBC,aAAa,yBAACC,MAAM,EAAC;IACnB,IAAMC,aAAa,GAAGZ,YAAY,CAACW,MAAM,CAACE,IAAI,CAAC;IAC/C,OAAOD,aAAa,CAACD,MAAM,CAAC;EAC9B,CAAC;EACDG,aAAa,yBAACC,IAAI,EAAEJ,MAAM,EAAC;IACzB,IACEK,aAAa,GAEXD,IAAI,CAFNC,aAAa;MAAA,mBAEXD,IAAI,CADNE,UAAU;MAAVA,UAAU,iCAAC,EAAE;IAEf,IAAID,aAAa,EAAC;MAChB,MAAM;QACJE,GAAG,EAAKD,UAAU,SAAID;MACxB,CAAC;IACH;IACA,OAAO,IAAI;EACb;AACF,CAAC;AAAA,eAEcP,gBAAgB;AAAA"
+}
