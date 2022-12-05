@@ -13,8 +13,7 @@ module.exports = {
             "preact/compat",             
             "dompurify", 
             "interactjs",         
-            "reflux-core", 
-            "nanoid",                                        
+            "reflux-core",             
             "timeago.js" 
           ]
   },
