@@ -70,34 +70,43 @@ var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
     setIsPastTest = _useState2[1],
     _useBool = (0, _useBool2["default"])(),
     isFocus = _useBool[0],
-    _hFocusInput = _useBool[1],
+    _focusInput = _useBool[1],
     _blurInput = _useBool[2],
-    _hBlurInput = (0, _uiApi.useCallback)(function (event) {
-      var _value = _getEventTargetValue(event);
-      if (onTest(_value)) {
-        onBlur(_value.trim(), id);
-      }
-      _blurInput();
-    }, []),
-    _hInputChange = (0, _uiApi.useCallback)(function (event) {
-      var _value = event.target.value;
-      setValue(_value);
-      setIsPastTest(onTest(_value));
-    }, []),
-    _hKeyDown = (0, _uiApi.useCallback)(function (event) {
-      var keyCode = event.keyCode;
-      if (keyCode === 46 || keyCode === 27) {
-        setValue('');
-      } else if (keyCode === 13) {
+    _useMemo = (0, _uiApi.useMemo)(function () {
+      return [function (event) {
         var _value = _getEventTargetValue(event);
         if (onTest(_value)) {
-          onEnter(_value.trim(), id);
+          onBlur(_value.trim(), id);
         }
-      }
+        _blurInput();
+      }, function (event) {
+        var _value = event.target.value;
+        setValue(_value);
+        setIsPastTest(onTest(_value));
+      }, function (event) {
+        var keyCode = event.keyCode;
+        if (keyCode === 46 || keyCode === 27) {
+          setValue('');
+        } else if (keyCode === 13) {
+          var _value = _getEventTargetValue(event);
+          if (onTest(_value)) {
+            onEnter(_value.trim(), id);
+          }
+        }
+      }, function () {
+        return setValue('');
+      }];
     }, []),
-    _hClear = (0, _uiApi.useCallback)(function () {
-      return setValue('');
-    }, []);
+    _hBlurInput = _useMemo[0],
+    _hInputChange = _useMemo[1],
+    _hKeyDown = _useMemo[2],
+    _hClear = _useMemo[3];
+
+  //onTest, onBlur, _blurInput, id
+  //onTest
+  //onTest, onEnter, id
+  /*eslint-enable react-hooks/exhaustive-deps */
+
   (0, _uiApi.useImperativeHandle)(ref, function () {
     return {
       getValue: function getValue() {
@@ -132,7 +141,7 @@ var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
         spellCheck: "false",
         translate: "false",
         maxLength: maxLength,
-        onFocus: _hFocusInput,
+        onFocus: _focusInput,
         onBlur: _hBlurInput,
         onChange: _hInputChange,
         onKeyDown: _hKeyDown

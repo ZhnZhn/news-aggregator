@@ -2,7 +2,7 @@ import {
   forwardRef,
   useRef,
   useState,
-  useCallback,
+  useMemo,
   useImperativeHandle
 } from '../uiApi';
 
@@ -71,42 +71,45 @@ const TextField = forwardRef(({
   )
   , [
     isFocus,
-    _hFocusInput,
+    _focusInput,
     _blurInput
   ] = useBool()
   /*eslint-disable react-hooks/exhaustive-deps */
-  , _hBlurInput = useCallback(event => {
-    const _value = _getEventTargetValue(event);
-    console.log(_value)
-    console.log(onTest(_value))
-    if (onTest(_value)) {
-      onBlur(_value.trim(), id)
-    }
-    _blurInput()
-  }, [])
-  // onTest, onBlur, _hBlurInput, id
-  /*eslint-enable react-hooks/exhaustive-deps */
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _hInputChange = useCallback(event => {
-    const _value = event.target.value;
-    setValue(_value)
-    setIsPastTest(onTest(_value))
-  }, [])
-  //onTest
-  , _hKeyDown = useCallback(event => {
-    const { keyCode } = event;
-    if (keyCode === 46 || keyCode === 27){
-      setValue('')
-    } else if (keyCode === 13) {
+  , [
+    _hBlurInput,
+    _hInputChange,
+    _hKeyDown,
+    _hClear
+  ] = useMemo(() => [
+    (event) => {
       const _value = _getEventTargetValue(event);
       if (onTest(_value)) {
-        onEnter(_value.trim(), id)
+        onBlur(_value.trim(), id)
       }
-    }
-  }, [])
+      _blurInput()
+    },
+    (event) => {
+      const _value = event.target.value;
+      setValue(_value)
+      setIsPastTest(onTest(_value))
+    },
+    (event) => {
+      const keyCode = event.keyCode;
+      if (keyCode === 46 || keyCode === 27){
+        setValue('')
+      } else if (keyCode === 13) {
+        const _value = _getEventTargetValue(event);
+        if (onTest(_value)) {
+          onEnter(_value.trim(), id)
+        }
+      }
+    },
+    () => setValue('')
+  ], [])
+  //onTest, onBlur, _blurInput, id
+  //onTest
   //onTest, onEnter, id
   /*eslint-enable react-hooks/exhaustive-deps */
-  , _hClear = useCallback(()=> setValue(''), []);
 
   useImperativeHandle(ref, ()=>({
     getValue: () => String(value).trim()
@@ -148,7 +151,7 @@ const TextField = forwardRef(({
           spellCheck="false"
           translate="false"
           maxLength={maxLength}
-          onFocus={_hFocusInput}
+          onFocus={_focusInput}
           onBlur={_hBlurInput}
           onChange={_hInputChange}
           onKeyDown={_hKeyDown}
