@@ -8,6 +8,7 @@ var _WebzApi = _interopRequireDefault(require("./WebzApi"));
 var _StackOverflowApi = _interopRequireDefault(require("./StackOverflowApi"));
 var _IexApi = _interopRequireDefault(require("./IexApi"));
 var _FmpApi = _interopRequireDefault(require("./FmpApi"));
+var _AvApi = _interopRequireDefault(require("./AvApi"));
 var _NewsSearchApi = _interopRequireDefault(require("./NewsSearchApi"));
 var _NewsApiTop = _interopRequireDefault(require("./NewsApiTop"));
 var _TheNewsApiSearch = _interopRequireDefault(require("./TheNewsApiSearch"));
@@ -21,6 +22,7 @@ var Api = {
   StackOverflow: _StackOverflowApi["default"],
   Iex: _IexApi["default"],
   Fmp: _FmpApi["default"],
+  Av: _AvApi["default"],
   NewsSearch: _NewsSearchApi["default"],
   NewsTop: _NewsApiTop["default"],
   CryptoCompare: _CryptoCompareApi["default"],

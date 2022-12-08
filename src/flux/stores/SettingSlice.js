@@ -9,12 +9,16 @@ const _fSetKey = (propName) => (value) => {
 const SettingSlice = {
   exportSettingsFn(){
     return {
+      setAvKey: _fSetKey(LT.AV),
       setIexKey: _fSetKey(LT.IEX),
       setFmpKey: _fSetKey(LT.FMP),
       setNewsKey: _fSetKey(LT.NEWS),
       setTheNewsKey: _fSetKey(LT.TNEWS),
       setWebzKey: _fSetKey(LT.WEBZ)
     };
+  },
+  getAvKey(){
+    return _settings[LT.AV];
   },
   getIexKey(){
     return _settings[LT.IEX];

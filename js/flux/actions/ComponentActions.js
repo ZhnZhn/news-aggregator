@@ -38,6 +38,7 @@ Actions.showCoinStats = _fShowDialog(_NewsQuery["default"].COIN_STATS);
 Actions.showMessari = _fShowDialog(_NewsQuery["default"].MESSARI);
 Actions.showIex = _fShowDialog(_NewsQuery["default"].IEX);
 Actions.showFmp = _fShowDialog(_NewsQuery["default"].FMP);
+Actions.showAv = _fShowDialog(_NewsQuery["default"].AV);
 Actions.showNewsSearch = _fShowDialog(_NewsQuery["default"].NEWS_SEARCH);
 Actions.showNewsTop = _fShowDialog(_NewsQuery["default"].NEWS_TOP);
 Actions.showTheNewsSearch = _fShowDialog(_NewsQuery["default"].THE_NEWS_SEARCH);

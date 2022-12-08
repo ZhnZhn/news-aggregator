@@ -5,6 +5,7 @@ import StackTagged from './StackTaggedDialog';
 import StackSearch from './StackSearchDialog';
 import IexNews from './IexNewsDialog';
 import FmpNews from './FmpNewsDialog';
+import AvSentiments from './AvSentimentsDialog';
 import NewsApiSearch from './NewsApiSearchDialog';
 import NewsApiTop from './NewsApiTopDialog';
 import TheNewsApiSearch from './TheNewsApiSearchDialog';
@@ -25,6 +26,7 @@ const R = {
   MessariNews,
   IexNews,
   FmpNews,
+  AvSentiments,
   NewsApiSearch,
   NewsApiTop,
   TheNewsApiSearch,

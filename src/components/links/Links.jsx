@@ -4,6 +4,7 @@ import {
   MESSARI,
   IEX_CLOUD,
   FMP,
+  ALPHA_VANTAGE,
   NEWS_API_LONG,
   THE_NEWS_API,
   WEBZ_IO,
@@ -71,3 +72,8 @@ export const FmpApiLink = _fSafeLink(
   "https://financialmodelingprep.com",
   FMP
 );
+
+export const AlphaVantageLink = _fSafeLink(
+  "https://www.alphavantage.co",
+  ALPHA_VANTAGE
+)

@@ -4,6 +4,7 @@ import {
   MESSARI,
   IEX_CLOUD,
   FMP,
+  ALPHA_VANTAGE,
   NEWS_API_LONG,
   THE_NEWS_API,
   WEBZ_IO,
@@ -95,6 +96,12 @@ const RouterApiConf = {
           `${FMP} API ${MSG_ERR_TAIL}`,
           Store.getFmpKey
         );
+     case 'AV':
+       return _crConf(
+         'Av',
+         `${ALPHA_VANTAGE} API ${MSG_ERR_TAIL}`,
+         Store.getAvKey
+       );
      case 'CCN':
         return _crConf(
           'CryptoCompare',

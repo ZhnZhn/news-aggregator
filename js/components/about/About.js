@@ -20,7 +20,7 @@ var CL_SHOW = "show-popup";
 var ItemStack = _Comp["default"].ItemStack;
 var PROVIDER_LINKS = [[_Links.CryptoCompareLink], [_Links.CoinStatsLink], [_Links.MessariLink], [_Links.IexApiLink], [_Links.FmpApiLink, {
   title: _ProviderNames.FMP_LONG
-}], [_Links.NewsApiLink], [_Links.TheNewsApiLink], [_Links.StackOverflowLink], [_Links.WebzLink]];
+}], [_Links.AlphaVantageLink], [_Links.NewsApiLink], [_Links.TheNewsApiLink], [_Links.StackOverflowLink], [_Links.WebzLink]];
 var _crLinkItem = function _crLinkItem(_ref, index) {
   var Comp = _ref[0],
     props = _ref[1];

@@ -1,4 +1,5 @@
 import {
+  ALPHA_VANTAGE,
   IEX_CLOUD,
   FMP,
   NEWS_API_LONG,
@@ -25,12 +26,14 @@ const S_OPEN_CLOSE = {
 const _hasLengthOrEmpty = (
   length
 ) => (str) => str.length === length || str === ''
+, SET_AV_KEY = 'setAvKey'
 , SET_IEX_KEY = 'setIexKey'
 , SET_FMP_KEY = 'setFmpKey'
 , SET_NEWS_KEY = 'setNewsKey'
 , SET_THE_NEWS_KEY = 'setTheNewsKey'
 , SET_WEBZ_KEY = 'setWebzKey'
 , _getKeySetters = (data) => ({
+   setAv: safeFn(data, SET_AV_KEY),
    setIex: safeFn(data, SET_IEX_KEY),
    setFmp: safeFn(data, SET_FMP_KEY),
    setNews: safeFn(data, SET_NEWS_KEY),
@@ -71,7 +74,8 @@ const _crPasswordFieldProps = (
 });
 
 const CardApiKeys = (props) => {
-  const _refInputIex = useRef()
+  const _refInputAv = useRef()
+  , _refInputIex = useRef()
   , _refInputFmp = useRef()
   , _refInputNews = useRef()
   , _refInputTheNews = useRef()
@@ -84,6 +88,7 @@ const CardApiKeys = (props) => {
     data
   } = props
   , {
+    setAv,
     setIex,
     setFmp,
     setNews,
@@ -92,12 +97,14 @@ const CardApiKeys = (props) => {
   } = _getKeySetters(data)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hClearAll = useCallback(() => {
+      setAv('')
       setIex('')
       setFmp('')
       setNews('')
       setTheNews('')
       setWebz('')
       _clearInputRefs([
+         _refInputAv,
          _refInputIex,
          _refInputFmp,
          _refInputNews,
@@ -105,12 +112,13 @@ const CardApiKeys = (props) => {
          _refInputWebz
       ])
   }, [])
-  //setIex, setFmp, setNews, setTheNews, setWebz
+  //setAv, setIex, setFmp, setNews, setTheNews, setWebz
   /*eslint-enable react-hooks/exhaustive-deps */
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hSetAll = useCallback(() => {
       setIex(_getRefCompValue(_refInputIex))
       setFmp(_getRefCompValue(_refInputFmp))
+      setAv(_getRefCompValue(_refInputAv))
       setNews(_getRefCompValue(_refInputNews))
       setTheNews(_getRefCompValue(_refInputTheNews))
       setWebz(_getRefCompValue(_refInputWebz))
@@ -124,6 +132,18 @@ const CardApiKeys = (props) => {
   }
   return(
     <ScrollPane style={style}>
+        <OpenClose
+          style={{...TS.OPEN_CLOSE, ...S_OPEN_CLOSE}}
+          caption="Market News & Sentiment"
+        >
+          <PasswordField
+             {..._crPasswordFieldProps(ALPHA_VANTAGE, 16)}
+             ref={_refInputAv}
+             style={fieldStyle}
+             name="alpha-vantage"
+             onEnter={setAv}
+          />
+        </OpenClose>
         <OpenClose
           style={{...TS.OPEN_CLOSE, ...S_OPEN_CLOSE}}
           caption="Stock Market"

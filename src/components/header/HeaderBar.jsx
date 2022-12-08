@@ -61,6 +61,7 @@ const HeaderBar = ({
   onMessari,
   onIex,
   onFmp,
+  onAv,
   onNewsSearch,
   onNewsTop,
   onTheNewsSearch,
@@ -81,6 +82,7 @@ const HeaderBar = ({
   , _hMessari = _useClickItem(onMessari, _hCloseQuery)
   , _hIex = _useClickItem(onIex, _hCloseQuery)
   , _hFmp = _useClickItem(onFmp, _hCloseQuery)
+  , _hAv = _useClickItem(onAv, _hCloseQuery)
   , _hNewsApi = _useClickItem(onNewsSearch, _hCloseQuery)
   , _hNewsTop = _useClickItem(onNewsTop, _hCloseQuery)
   , _hTheNewsSearch = _useClickItem(onTheNewsSearch, _hCloseQuery)
@@ -103,6 +105,7 @@ const HeaderBar = ({
         onMessari={_hMessari}
         onIex={_hIex}
         onFmp={_hFmp}
+        onAv={_hAv}
         onNewsApi={_hNewsApi}
         onNewsTop={_hNewsTop}
         onTheNewsSearch={_hTheNewsSearch}

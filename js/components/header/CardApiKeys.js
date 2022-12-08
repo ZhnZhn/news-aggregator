@@ -20,6 +20,7 @@ var _hasLengthOrEmpty = function _hasLengthOrEmpty(length) {
       return str.length === length || str === '';
     };
   },
+  SET_AV_KEY = 'setAvKey',
   SET_IEX_KEY = 'setIexKey',
   SET_FMP_KEY = 'setFmpKey',
   SET_NEWS_KEY = 'setNewsKey',
@@ -27,6 +28,7 @@ var _hasLengthOrEmpty = function _hasLengthOrEmpty(length) {
   SET_WEBZ_KEY = 'setWebzKey',
   _getKeySetters = function _getKeySetters(data) {
     return {
+      setAv: (0, _safeFn["default"])(data, SET_AV_KEY),
       setIex: (0, _safeFn["default"])(data, SET_IEX_KEY),
       setFmp: (0, _safeFn["default"])(data, SET_FMP_KEY),
       setNews: (0, _safeFn["default"])(data, SET_NEWS_KEY),
@@ -64,7 +66,8 @@ var _crPasswordFieldProps = function _crPasswordFieldProps(name, maxLength) {
   };
 };
 var CardApiKeys = function CardApiKeys(props) {
-  var _refInputIex = (0, _uiApi.useRef)(),
+  var _refInputAv = (0, _uiApi.useRef)(),
+    _refInputIex = (0, _uiApi.useRef)(),
     _refInputFmp = (0, _uiApi.useRef)(),
     _refInputNews = (0, _uiApi.useRef)(),
     _refInputTheNews = (0, _uiApi.useRef)(),
@@ -75,22 +78,25 @@ var CardApiKeys = function CardApiKeys(props) {
     TS = props.TS,
     data = props.data,
     _getKeySetters2 = _getKeySetters(data),
+    setAv = _getKeySetters2.setAv,
     setIex = _getKeySetters2.setIex,
     setFmp = _getKeySetters2.setFmp,
     setNews = _getKeySetters2.setNews,
     setTheNews = _getKeySetters2.setTheNews,
     setWebz = _getKeySetters2.setWebz,
     _hClearAll = (0, _uiApi.useCallback)(function () {
+      setAv('');
       setIex('');
       setFmp('');
       setNews('');
       setTheNews('');
       setWebz('');
-      _clearInputRefs([_refInputIex, _refInputFmp, _refInputNews, _refInputTheNews, _refInputWebz]);
+      _clearInputRefs([_refInputAv, _refInputIex, _refInputFmp, _refInputNews, _refInputTheNews, _refInputWebz]);
     }, []),
     _hSetAll = (0, _uiApi.useCallback)(function () {
       setIex(_getRefCompValue(_refInputIex));
       setFmp(_getRefCompValue(_refInputFmp));
+      setAv(_getRefCompValue(_refInputAv));
       setNews(_getRefCompValue(_refInputNews));
       setTheNews(_getRefCompValue(_refInputTheNews));
       setWebz(_getRefCompValue(_refInputWebz));
@@ -105,7 +111,16 @@ var CardApiKeys = function CardApiKeys(props) {
   }
   return (0, _jsxRuntime.jsxs)(_ScrollPane["default"], {
     style: style,
-    children: [(0, _jsxRuntime.jsxs)(_OpenClose["default"], {
+    children: [(0, _jsxRuntime.jsx)(_OpenClose["default"], {
+      style: (0, _extends2["default"])({}, TS.OPEN_CLOSE, S_OPEN_CLOSE),
+      caption: "Market News & Sentiment",
+      children: (0, _jsxRuntime.jsx)(_PasswordField["default"], (0, _extends2["default"])({}, _crPasswordFieldProps(_ProviderNames.ALPHA_VANTAGE, 16), {
+        ref: _refInputAv,
+        style: fieldStyle,
+        name: "alpha-vantage",
+        onEnter: setAv
+      }))
+    }), (0, _jsxRuntime.jsxs)(_OpenClose["default"], {
       style: (0, _extends2["default"])({}, TS.OPEN_CLOSE, S_OPEN_CLOSE),
       caption: "Stock Market",
       children: [(0, _jsxRuntime.jsx)(_PasswordField["default"], (0, _extends2["default"])({}, _crPasswordFieldProps(_ProviderNames.IEX_CLOUD, 35), {

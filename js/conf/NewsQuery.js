@@ -85,6 +85,13 @@ var NEWS_QUERY = {
       "caption": _ProviderNames.FMP + ": Stock News"
     }
   },
+  AV: {
+    "type": "AV",
+    "dialogType": "AvSentiments",
+    "paneCaption": _ProviderNames.ALPHA_VANTAGE,
+    "paneId": "av_sentiments",
+    "paneType": "AV_SENTIMENTS"
+  },
   NEWS_SEARCH: {
     "type": "NEWS_SEARCH",
     "dialogType": "NewsApiSearch",

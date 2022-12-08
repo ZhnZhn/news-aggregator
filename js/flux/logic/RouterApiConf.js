@@ -66,6 +66,8 @@ var RouterApiConf = {
         return _crConf('Iex', _ProviderNames.IEX_CLOUD + " API " + MSG_ERR_TAIL, _Store["default"].getIexKey);
       case 'FMP':
         return _crConf('Fmp', _ProviderNames.FMP + " API " + MSG_ERR_TAIL, _Store["default"].getFmpKey);
+      case 'AV':
+        return _crConf('Av', _ProviderNames.ALPHA_VANTAGE + " API " + MSG_ERR_TAIL, _Store["default"].getAvKey);
       case 'CCN':
         return _crConf('CryptoCompare', _ProviderNames.CRYPTO_COMPARE + " News API " + MSG_ERR_TAIL);
       case 'CS':

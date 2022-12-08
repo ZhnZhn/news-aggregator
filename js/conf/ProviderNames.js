@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.WEBZ_IO = exports.THE_NEWS_API = exports.STACK_OVERFLOW = exports.NEWS_API_LONG = exports.NEWS_API = exports.MESSARI = exports.IEX_CLOUD = exports.FMP_LONG = exports.FMP = exports.CRYPTO_COMPARE = exports.COIN_STATS = void 0;
+exports.WEBZ_IO = exports.THE_NEWS_API = exports.STACK_OVERFLOW = exports.NEWS_API_LONG = exports.NEWS_API = exports.MESSARI = exports.IEX_CLOUD = exports.FMP_LONG = exports.FMP = exports.CRYPTO_COMPARE = exports.COIN_STATS = exports.ALPHA_VANTAGE = void 0;
 var CRYPTO_COMPARE = 'CryptoCompare';
 exports.CRYPTO_COMPARE = CRYPTO_COMPARE;
 var COIN_STATS = 'CoinStats';
@@ -14,6 +14,8 @@ var FMP = 'FMP';
 exports.FMP = FMP;
 var FMP_LONG = 'Financial Modeling Prep';
 exports.FMP_LONG = FMP_LONG;
+var ALPHA_VANTAGE = 'Alpha Vantage';
+exports.ALPHA_VANTAGE = ALPHA_VANTAGE;
 var NEWS_API = 'NewsApi';
 exports.NEWS_API = NEWS_API;
 var NEWS_API_LONG = 'NewsApi.org';

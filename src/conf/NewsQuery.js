@@ -5,6 +5,7 @@ import {
   IEX_CLOUD,
   FMP,
   FMP_LONG,
+  ALPHA_VANTAGE,
   NEWS_API,
   THE_NEWS_API,
   WEBZ_IO,
@@ -93,6 +94,13 @@ const NEWS_QUERY = {
     "dialogProps": {
        "caption": `${FMP}: Stock News`
      }
+  },
+  AV: {
+    "type": "AV",
+    "dialogType": "AvSentiments",
+    "paneCaption": ALPHA_VANTAGE,
+    "paneId": "av_sentiments",
+    "paneType": "AV_SENTIMENTS"
   },
   NEWS_SEARCH: {
     "type": "NEWS_SEARCH",

@@ -49,6 +49,7 @@ var AppNewsAggregator = function AppNewsAggregator() {
         onMessari: _ComponentActions.ComponentActions.showMessari,
         onIex: _ComponentActions.ComponentActions.showIex,
         onFmp: _ComponentActions.ComponentActions.showFmp,
+        onAv: _ComponentActions.ComponentActions.showAv,
         onNewsSearch: _ComponentActions.ComponentActions.showNewsSearch,
         onNewsTop: _ComponentActions.ComponentActions.showNewsTop,
         onTheNewsSearch: _ComponentActions.ComponentActions.showTheNewsSearch,

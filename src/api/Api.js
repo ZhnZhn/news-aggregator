@@ -4,6 +4,7 @@ import Webz from './WebzApi'
 import StackOverflow from './StackOverflowApi'
 import Iex from './IexApi'
 import Fmp from './FmpApi'
+import Av from './AvApi';
 import NewsSearch from './NewsSearchApi'
 import NewsTop from './NewsApiTop'
 import TheNewsSearch from './TheNewsApiSearch';
@@ -18,6 +19,7 @@ const Api = {
   StackOverflow,
   Iex,
   Fmp,
+  Av,
   NewsSearch,
   NewsTop,
   CryptoCompare,

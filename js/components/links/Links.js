@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.WebzLink = exports.TheNewsApiLink = exports.StackOverflowLink = exports.NewsApiLink = exports.MessariLink = exports.IexApiLink = exports.FmpApiLink = exports.CryptoCompareLink = exports.CoinStatsLink = void 0;
+exports.WebzLink = exports.TheNewsApiLink = exports.StackOverflowLink = exports.NewsApiLink = exports.MessariLink = exports.IexApiLink = exports.FmpApiLink = exports.CryptoCompareLink = exports.CoinStatsLink = exports.AlphaVantageLink = void 0;
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
 var _ProviderNames = require("../../conf/ProviderNames");
@@ -41,4 +41,6 @@ var IexApiLink = _fSafeLink("https://iexcloud.io", _ProviderNames.IEX_CLOUD);
 exports.IexApiLink = IexApiLink;
 var FmpApiLink = _fSafeLink("https://financialmodelingprep.com", _ProviderNames.FMP);
 exports.FmpApiLink = FmpApiLink;
+var AlphaVantageLink = _fSafeLink("https://www.alphavantage.co", _ProviderNames.ALPHA_VANTAGE);
+exports.AlphaVantageLink = AlphaVantageLink;
 //# sourceMappingURL=Links.js.map

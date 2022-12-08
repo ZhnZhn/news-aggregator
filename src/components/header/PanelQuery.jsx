@@ -4,6 +4,7 @@ import {
   MESSARI,
   IEX_CLOUD,
   FMP,
+  ALPHA_VANTAGE,
   NEWS_API_LONG,
   THE_NEWS_API,
   WEBZ_IO,
@@ -29,6 +30,7 @@ const PanelQuery = ({
   onMessari,
   onIex,
   onFmp,
+  onAv,
   onNewsApi,
   onNewsTop,
   onTheNewsSearch,
@@ -88,6 +90,12 @@ const PanelQuery = ({
           className={CL_ITEM}
           caption={`${FMP}: Stock Market News`}
           onClick={onFmp}
+          onClose={onClose}
+        />
+        <A.MenuItem
+          className={CL_ITEM}
+          caption={`${ALPHA_VANTAGE}: Sentiment`}
+          onClick={onAv}
           onClose={onClose}
         />
         <A.MenuItem

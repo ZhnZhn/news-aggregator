@@ -10,6 +10,7 @@ var _StackTaggedDialog = _interopRequireDefault(require("./StackTaggedDialog"));
 var _StackSearchDialog = _interopRequireDefault(require("./StackSearchDialog"));
 var _IexNewsDialog = _interopRequireDefault(require("./IexNewsDialog"));
 var _FmpNewsDialog = _interopRequireDefault(require("./FmpNewsDialog"));
+var _AvSentimentsDialog = _interopRequireDefault(require("./AvSentimentsDialog"));
 var _NewsApiSearchDialog = _interopRequireDefault(require("./NewsApiSearchDialog"));
 var _NewsApiTopDialog = _interopRequireDefault(require("./NewsApiTopDialog"));
 var _TheNewsApiSearchDialog = _interopRequireDefault(require("./TheNewsApiSearchDialog"));
@@ -29,6 +30,7 @@ var R = {
   MessariNews: _MessariDialog["default"],
   IexNews: _IexNewsDialog["default"],
   FmpNews: _FmpNewsDialog["default"],
+  AvSentiments: _AvSentimentsDialog["default"],
   NewsApiSearch: _NewsApiSearchDialog["default"],
   NewsApiTop: _NewsApiTopDialog["default"],
   TheNewsApiSearch: _TheNewsApiSearchDialog["default"],

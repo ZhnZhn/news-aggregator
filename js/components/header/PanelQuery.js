@@ -17,6 +17,7 @@ var PanelQuery = function PanelQuery(_ref) {
     onMessari = _ref.onMessari,
     onIex = _ref.onIex,
     onFmp = _ref.onFmp,
+    onAv = _ref.onAv,
     onNewsApi = _ref.onNewsApi,
     onNewsTop = _ref.onNewsTop,
     onTheNewsSearch = _ref.onTheNewsSearch,
@@ -67,6 +68,11 @@ var PanelQuery = function PanelQuery(_ref) {
       className: CL_ITEM,
       caption: _ProviderNames.FMP + ": Stock Market News",
       onClick: onFmp,
+      onClose: onClose
+    }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
+      className: CL_ITEM,
+      caption: _ProviderNames.ALPHA_VANTAGE + ": Sentiment",
+      onClick: onAv,
       onClose: onClose
     }), (0, _jsxRuntime.jsx)(_Comp["default"].MenuItem, {
       className: CL_ITEM,
