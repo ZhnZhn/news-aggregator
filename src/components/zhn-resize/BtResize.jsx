@@ -22,6 +22,7 @@ const BtResize = ({
   ] = useTooltip(ariaLabel, dataPos);
   return (
     <button
+       type="button"
        aria-label={_ariaLabel}
        data-pos={_dataPos}
        className={CL_BT_RESIZE}

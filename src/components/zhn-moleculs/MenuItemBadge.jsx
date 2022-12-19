@@ -32,6 +32,7 @@ const MenuItemBadge = ({
 
   return (
     <button
+      type="button"
       tabIndex="-1"
       style={{..._badgeStyle, ...style}}
       onClick={_hClick}

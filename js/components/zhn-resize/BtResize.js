@@ -1,34 +1,27 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
-
 var _useTooltip2 = _interopRequireDefault(require("../hooks/useTooltip"));
-
 var _Svg = _interopRequireDefault(require("../zhn-atoms/svg/Svg100"));
-
 var _jsxRuntime = require("preact/jsx-runtime");
-
 var CL_BT_RESIZE = "bt-resize select-none";
-
 var BtResize = function BtResize(_ref) {
   var to = _ref.to,
-      ariaLabel = _ref.ariaLabel,
-      dataPos = _ref.dataPos,
-      style = _ref.style,
-      startResize = _ref.startResize,
-      stopResize = _ref.stopResize,
-      onKeyDown = _ref.onKeyDown,
-      children = _ref.children;
-
+    ariaLabel = _ref.ariaLabel,
+    dataPos = _ref.dataPos,
+    style = _ref.style,
+    startResize = _ref.startResize,
+    stopResize = _ref.stopResize,
+    onKeyDown = _ref.onKeyDown,
+    children = _ref.children;
   var _x = to === 'r' ? '11' : '1',
-      _useTooltip = (0, _useTooltip2["default"])(ariaLabel, dataPos),
-      _ariaLabel = _useTooltip[0],
-      _dataPos = _useTooltip[1];
-
+    _useTooltip = (0, _useTooltip2["default"])(ariaLabel, dataPos),
+    _ariaLabel = _useTooltip[0],
+    _dataPos = _useTooltip[1];
   return (0, _jsxRuntime.jsx)("button", {
+    type: "button",
     "aria-label": _ariaLabel,
     "data-pos": _dataPos,
     className: CL_BT_RESIZE,
@@ -40,7 +33,7 @@ var BtResize = function BtResize(_ref) {
     onTouchEnd: stopResize,
     children: (0, _jsxRuntime.jsxs)(_Svg["default"], {
       w: "12",
-      strokeWidth: "2",
+      strokeWidth: "1.5",
       strokeLinecap: "round",
       fill: "none",
       children: [(0, _jsxRuntime.jsx)("path", {
@@ -51,7 +44,6 @@ var BtResize = function BtResize(_ref) {
     })
   });
 };
-
 var _default = BtResize;
 exports["default"] = _default;
 //# sourceMappingURL=BtResize.js.map

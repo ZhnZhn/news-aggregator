@@ -37,9 +37,10 @@ const RowCheckBox = ({
         onKeyDown={hKeyDown}
       />
       <button
-         tabIndex="-1"
-         style={S_CHECKBOX_CAPTION}
-         onClick={hClick}
+        type="button"
+        tabIndex="-1"
+        style={S_CHECKBOX_CAPTION}
+        onClick={hClick}
       >
         {caption}
       </button>

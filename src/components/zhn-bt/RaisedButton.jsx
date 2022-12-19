@@ -12,6 +12,7 @@ const RaisedButton = ({
     ? S_PRIMARY_SPAN : void 0;
   return (
     <button
+      type="button"
       className={CL_BT_RAISED}
       style={style}
       onClick={onClick}

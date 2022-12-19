@@ -180,6 +180,7 @@ const PasswordField = forwardRef(({
         />
         {
           HAS_TOUCH_EVENTS && value && <button
+            type="button"
             className={CL_BT_CLEAR}
             onClick={_hClear}
           >x</button>

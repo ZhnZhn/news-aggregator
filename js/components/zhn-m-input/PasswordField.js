@@ -168,6 +168,7 @@ var PasswordField = (0, _uiApi.forwardRef)(function (_ref, ref) {
         onFocus: _hFocusInput,
         onBlur: _hBlurInput
       }), _has.HAS_TOUCH_EVENTS && value && (0, _jsxRuntime.jsx)("button", {
+        type: "button",
         className: CL_BT_CLEAR,
         onClick: _hClear,
         children: "x"

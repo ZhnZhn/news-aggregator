@@ -19,6 +19,7 @@ const SvgMore = ({
   ] = useTooltip("More", DP_MIDDLE_LEFT);
   return (
     <button
+      type="button"
       aria-label={_ariaLabel}
       data-pos={_dataPos}
       ref={btRef}

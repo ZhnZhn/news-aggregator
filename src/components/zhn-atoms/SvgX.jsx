@@ -19,6 +19,7 @@ const SvgX = ({
   ] = useTooltip("Close", dataPos || DP_CLOSE_LEFT);
   return (
     <button
+       type="button"
        aria-label={_ariaLabel}
        data-pos={_dataPos}
        tabIndex="-1"

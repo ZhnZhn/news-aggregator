@@ -75,7 +75,10 @@ const InputSelect = ({
         <div className={CL_DIV_VALUE}>
            {getItemCaption(item)}
         </div>
-        <button className={CL_DIV_BT}>
+        <button
+          type="button"
+          className={CL_DIV_BT}
+        >
            <ArrowCell />
         </button>
         <div className={CL_INPUT_LINE} />

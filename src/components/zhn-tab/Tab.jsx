@@ -11,6 +11,7 @@ const Tab = ({
   onClick
 }) => (
   <button
+     type="button"
      className={crCn(CL_TAB, [isSelected, CL_ACTIVE])}
      id={`tab-${id}`}
      role="tab"

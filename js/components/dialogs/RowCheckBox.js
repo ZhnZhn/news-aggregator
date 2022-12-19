@@ -35,6 +35,7 @@ var RowCheckBox = function RowCheckBox(_ref) {
       onClick: hClick,
       onKeyDown: hKeyDown
     }), (0, _jsxRuntime.jsx)("button", {
+      type: "button",
       tabIndex: "-1",
       style: S_CHECKBOX_CAPTION,
       onClick: hClick,

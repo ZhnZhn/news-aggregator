@@ -17,6 +17,7 @@ const CircleButton = ({
   ] = useTooltip(ariaLabel, dataPos);
   return (
     <button
+       type="button"
        aria-label={_ariaLabel}
        data-pos={_dataPos}
        className={crCn(CL_BT, className)}

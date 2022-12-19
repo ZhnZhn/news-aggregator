@@ -63,6 +63,7 @@ var InputSelect = function InputSelect(_ref) {
         className: CL_DIV_VALUE,
         children: (0, _OptionFn.getItemCaption)(item)
       }), (0, _jsxRuntime.jsx)("button", {
+        type: "button",
         className: CL_DIV_BT,
         children: (0, _jsxRuntime.jsx)(_ArrowCell["default"], {})
       }), (0, _jsxRuntime.jsx)("div", {
