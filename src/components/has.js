@@ -3,7 +3,7 @@ const INITIAL_WIDTH = 635
 , _isTouchable = () => document
      && 'ontouchstart' in document.documentElement;
 
-export const HAS_TOUCH = _isTouchable()
+export const HAS_TOUCH_EVENTS = _isTouchable()
 
 const _wideWidth = () => _isInnerWidth()
   ? window.innerWidth > 700

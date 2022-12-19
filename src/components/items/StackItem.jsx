@@ -9,7 +9,7 @@ import useKeyDelete from '../hooks/useKeyDelete';
 import useTheme from '../hooks/useTheme';
 import styleConfig from './Article.Style';
 
-import { HAS_TOUCH } from '../has';
+import { HAS_TOUCH_EVENTS } from '../has';
 import crStyle from '../zhn-utils/crStyle';
 
 import useItemGestureSwipeX from './useItemGestureSwipeX';
@@ -71,16 +71,16 @@ S_BLACK_BADGE = {
 };
 
 
-const TOKEN_ANSWER = HAS_TOUCH ? 'A' : (
+const TOKEN_ANSWER = HAS_TOUCH_EVENTS ? 'A' : (
   <span role="img" arial-label="hammer and pick">&#x2692;</span>
 );
-const TOKEN_SCORE = HAS_TOUCH ? 'S' : (
+const TOKEN_SCORE = HAS_TOUCH_EVENTS ? 'S' : (
   <span role="img" aria-label="fish">&#x1F41F;</span>
 );
-const TOKEN_VIEW = HAS_TOUCH ? 'V' : (
+const TOKEN_VIEW = HAS_TOUCH_EVENTS ? 'V' : (
   <span role="img" aria-label="wheel of dharma">&#x2638;</span>
 );
-const TOKEN_REPUTATION = HAS_TOUCH ? 'R' : (
+const TOKEN_REPUTATION = HAS_TOUCH_EVENTS ? 'R' : (
   <span role="img" arial-label="shamrock">&#x2618;</span>
 );
 

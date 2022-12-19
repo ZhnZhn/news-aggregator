@@ -145,7 +145,7 @@ var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
         onBlur: _hBlurInput,
         onChange: _hInputChange,
         onKeyDown: _hKeyDown
-      }), _has.HAS_TOUCH && hasClear && value && (0, _jsxRuntime.jsx)(_SvgX["default"], {
+      }), _has.HAS_TOUCH_EVENTS && hasClear && value && (0, _jsxRuntime.jsx)(_SvgX["default"], {
         color: "black",
         className: "svg-clear",
         style: S_BT_CLEAR,

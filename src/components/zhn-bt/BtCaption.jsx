@@ -1,4 +1,4 @@
-import { HAS_TOUCH } from '../has';
+import { HAS_TOUCH_EVENTS } from '../has';
 
 const S_KEY = { textDecoration: 'underline' };
 
@@ -47,7 +47,7 @@ const BtCaption = ({
   children
 }) => {
   const _keyIndex = _findKeyIndex(caption, accessKey)
-  , _caption = HAS_TOUCH || _keyIndex === -1
+  , _caption = HAS_TOUCH_EVENTS || _keyIndex === -1
        ? caption || ''
        : <CaptionToken caption={caption} keyIndex={_keyIndex} />;
   return (

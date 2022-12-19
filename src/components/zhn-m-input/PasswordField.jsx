@@ -11,7 +11,7 @@ import useRefInit from '../hooks/useRefInit';
 import useProperty from '../hooks/useProperty';
 import useRerender from '../hooks/useRerender';
 
-import { HAS_TOUCH } from '../has';
+import { HAS_TOUCH_EVENTS } from '../has';
 
 const CL_SELECT = 'm-select'
 , CL_LABEL = `${CL_SELECT}__label`
@@ -179,7 +179,7 @@ const PasswordField = forwardRef(({
           onBlur={_hBlurInput}
         />
         {
-          HAS_TOUCH && value && <button
+          HAS_TOUCH_EVENTS && value && <button
             className={CL_BT_CLEAR}
             onClick={_hClear}
           >x</button>

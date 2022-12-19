@@ -1,134 +1,114 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
-
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
 var _uiApi = require("../uiApi");
-
 var _useRefInit = _interopRequireDefault(require("../hooks/useRefInit"));
-
 var _useProperty3 = _interopRequireDefault(require("../hooks/useProperty"));
-
 var _useRerender = _interopRequireDefault(require("../hooks/useRerender"));
-
 var _has = require("../has");
-
 var _jsxRuntime = require("preact/jsx-runtime");
-
 var CL_SELECT = 'm-select',
-    CL_LABEL = CL_SELECT + "__label",
-    M_TEXTFIELD = 'm-textfield',
-    CL_DIV = M_TEXTFIELD + "-input__div",
-    CL_INPUT = M_TEXTFIELD + "-input",
-    CL_BT_CLEAR = M_TEXTFIELD + "__bt-clear",
-    M_INPUT = 'm-input',
-    CL_INPUT_LINE = M_INPUT + "__line",
-    CL_INPUT_MSG_ERR = M_INPUT + "__msg-err",
-    S_LABEL_TO_INPUT = {
-  transform: 'scale(1) translate(0px, -6px)'
-},
-    S_LABEL_ON_ERROR = {
-  color: '#f44336'
-},
-    S_LINE_ERROR = {
-  borderBottom: '2px solid #f44336'
-},
-    S_LINE_AFTER_ENTER = {
-  borderBottom: '2px solid #80c040'
-};
-
+  CL_LABEL = CL_SELECT + "__label",
+  M_TEXTFIELD = 'm-textfield',
+  CL_DIV = M_TEXTFIELD + "-input__div",
+  CL_INPUT = M_TEXTFIELD + "-input",
+  CL_BT_CLEAR = M_TEXTFIELD + "__bt-clear",
+  M_INPUT = 'm-input',
+  CL_INPUT_LINE = M_INPUT + "__line",
+  CL_INPUT_MSG_ERR = M_INPUT + "__msg-err",
+  S_LABEL_TO_INPUT = {
+    transform: 'scale(1) translate(0px, -6px)'
+  },
+  S_LABEL_ON_ERROR = {
+    color: '#f44336'
+  },
+  S_LINE_ERROR = {
+    borderBottom: '2px solid #f44336'
+  },
+  S_LINE_AFTER_ENTER = {
+    borderBottom: '2px solid #80c040'
+  };
 var _crId = function _crId(name) {
   return name + '_' + Math.random().toString(36).substr(2, 6);
 };
-
 var _isValue = function _isValue(input) {
   return input ? !!input.value : false;
 };
-
 var FN_NOOP = function FN_NOOP() {};
-
 var FN_TRUE = function FN_TRUE() {
   return true;
 };
-
 var PasswordField = (0, _uiApi.forwardRef)(function (_ref, ref) {
   var style = _ref.style,
-      caption = _ref.caption,
-      _ref$name = _ref.name,
-      name = _ref$name === void 0 ? 'pwd' : _ref$name,
-      _ref$maxLength = _ref.maxLength,
-      maxLength = _ref$maxLength === void 0 ? "32" : _ref$maxLength,
-      _ref$errorMsg = _ref.errorMsg,
-      errorMsg = _ref$errorMsg === void 0 ? '' : _ref$errorMsg,
-      _ref$onTest = _ref.onTest,
-      onTest = _ref$onTest === void 0 ? FN_TRUE : _ref$onTest,
-      _ref$onEnter = _ref.onEnter,
-      onEnter = _ref$onEnter === void 0 ? FN_NOOP : _ref$onEnter;
-
+    caption = _ref.caption,
+    _ref$name = _ref.name,
+    name = _ref$name === void 0 ? 'pwd' : _ref$name,
+    _ref$maxLength = _ref.maxLength,
+    maxLength = _ref$maxLength === void 0 ? "32" : _ref$maxLength,
+    _ref$errorMsg = _ref.errorMsg,
+    errorMsg = _ref$errorMsg === void 0 ? '' : _ref$errorMsg,
+    _ref$onTest = _ref.onTest,
+    onTest = _ref$onTest === void 0 ? FN_TRUE : _ref$onTest,
+    _ref$onEnter = _ref.onEnter,
+    onEnter = _ref$onEnter === void 0 ? FN_NOOP : _ref$onEnter;
   var _id = (0, _useRefInit["default"])(function () {
-    return _crId(name);
-  }),
-      _refInput = (0, _uiApi.useRef)(),
-      _useProperty = (0, _useProperty3["default"])(false),
-      _setWasEnter = _useProperty[0],
-      getWasEnter = _useProperty[1],
-      _useProperty2 = (0, _useProperty3["default"])(false),
-      setIsFocus = _useProperty2[0],
-      getIsFocus = _useProperty2[1],
-      _useState = (0, _uiApi.useState)({
-    value: ''
-  }),
-      state = _useState[0],
-      setState = _useState[1],
-      value = state.value,
-      rerender = (0, _useRerender["default"])()[1],
-      _hFocusInput = function _hFocusInput() {
-    setIsFocus(true);
-    rerender();
-  },
-      _hBlurInput = function _hBlurInput() {
-    setIsFocus(false);
-    rerender();
-  },
-      _hInputChange = function _hInputChange(event) {
-    setState({
-      value: event.target.value.trim()
-    });
-  },
-      _hClear = function _hClear(event) {
-    (0, _uiApi.stopDefaultFor)(event);
-    setState({
+      return _crId(name);
+    }),
+    _refInput = (0, _uiApi.useRef)(),
+    _useProperty = (0, _useProperty3["default"])(false),
+    _setWasEnter = _useProperty[0],
+    getWasEnter = _useProperty[1],
+    _useProperty2 = (0, _useProperty3["default"])(false),
+    setIsFocus = _useProperty2[0],
+    getIsFocus = _useProperty2[1],
+    _useState = (0, _uiApi.useState)({
       value: ''
-    });
-  },
-      _hKeyDown = function _hKeyDown(event) {
-    if (event.keyCode === 46) {
+    }),
+    state = _useState[0],
+    setState = _useState[1],
+    value = state.value,
+    rerender = (0, _useRerender["default"])()[1],
+    _hFocusInput = function _hFocusInput() {
+      setIsFocus(true);
+      rerender();
+    },
+    _hBlurInput = function _hBlurInput() {
+      setIsFocus(false);
+      rerender();
+    },
+    _hInputChange = function _hInputChange(event) {
+      setState({
+        value: event.target.value.trim()
+      });
+    },
+    _hClear = function _hClear(event) {
+      (0, _uiApi.stopDefaultFor)(event);
       setState({
         value: ''
       });
-    } else if (event.keyCode === 13) {
-      (0, _uiApi.stopDefaultFor)(event);
-      onEnter(event.target.value);
-
-      _setWasEnter(true);
-
-      rerender();
-    }
-  };
-
+    },
+    _hKeyDown = function _hKeyDown(event) {
+      if (event.keyCode === 46) {
+        setState({
+          value: ''
+        });
+      } else if (event.keyCode === 13) {
+        (0, _uiApi.stopDefaultFor)(event);
+        onEnter(event.target.value);
+        _setWasEnter(true);
+        rerender();
+      }
+    };
   (0, _uiApi.useEffect)(function () {
     var _clearId = setTimeout(function () {
       var _input = _refInput.current;
-
       if (_input && _input.hasAttribute('value')) {
         _input.removeAttribute('value');
       }
     });
-
     return function () {
       return clearTimeout(_clearId);
     };
@@ -142,7 +122,6 @@ var PasswordField = (0, _uiApi.forwardRef)(function (_ref, ref) {
     return {
       setWasEnter: function setWasEnter() {
         _setWasEnter(true);
-
         rerender();
       },
       getValue: function getValue() {
@@ -151,19 +130,16 @@ var PasswordField = (0, _uiApi.forwardRef)(function (_ref, ref) {
       },
       clear: function clear() {
         _setWasEnter(true);
-
         setState({
           value: ''
         });
       }
     };
   });
-
   var _labelStyle = _isValue(_refInput.current) || getIsFocus() ? void 0 : S_LABEL_TO_INPUT,
-      _isPassTest = onTest(value),
-      _labelErrStyle = _isPassTest ? void 0 : S_LABEL_ON_ERROR,
-      _lineStyle = _isPassTest ? getWasEnter() ? S_LINE_AFTER_ENTER : void 0 : S_LINE_ERROR;
-
+    _isPassTest = onTest(value),
+    _labelErrStyle = _isPassTest ? void 0 : S_LABEL_ON_ERROR,
+    _lineStyle = _isPassTest ? getWasEnter() ? S_LINE_AFTER_ENTER : void 0 : S_LINE_ERROR;
   return (0, _jsxRuntime.jsxs)("form", {
     className: CL_SELECT,
     style: style,
@@ -191,7 +167,7 @@ var PasswordField = (0, _uiApi.forwardRef)(function (_ref, ref) {
         onKeyDown: _hKeyDown,
         onFocus: _hFocusInput,
         onBlur: _hBlurInput
-      }), _has.HAS_TOUCH && value && (0, _jsxRuntime.jsx)("button", {
+      }), _has.HAS_TOUCH_EVENTS && value && (0, _jsxRuntime.jsx)("button", {
         className: CL_BT_CLEAR,
         onClick: _hClear,
         children: "x"

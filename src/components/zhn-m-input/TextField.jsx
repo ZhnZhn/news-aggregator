@@ -8,7 +8,7 @@ import {
 
 import useBool from '../hooks/useBool';
 
-import { HAS_TOUCH } from '../has';
+import { HAS_TOUCH_EVENTS } from '../has';
 import SvgX from '../zhn-atoms/SvgX';
 
 import crId from '../../utils/crId';
@@ -156,7 +156,7 @@ const TextField = forwardRef(({
           onChange={_hInputChange}
           onKeyDown={_hKeyDown}
         />
-        {HAS_TOUCH && hasClear && value && <SvgX
+        {HAS_TOUCH_EVENTS && hasClear && value && <SvgX
            color="black"
            className="svg-clear"
            style={S_BT_CLEAR}

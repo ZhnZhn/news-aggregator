@@ -2,9 +2,10 @@ import {
   forwardRef,
   useRef,
   useCallback,
-  useMemo
+  useMemo,
+  getClientX
 } from '../uiApi';
-import { HAS_TOUCH } from '../has';
+import { HAS_TOUCH_EVENTS } from '../has';
 
 const BORDER_LEFT = 'border-left';
 const DRAG_START_BORDER_LEFT = "4px solid #d64336";
@@ -12,22 +13,12 @@ const DRAG_START_BORDER_LEFT = "4px solid #d64336";
 const LONG_TOUCH = 1000;
 
 const _preventDefault = evt => {
-  if (!HAS_TOUCH) { evt.preventDefault() }
+  if (!HAS_TOUCH_EVENTS) {
+    evt.preventDefault()
+  }
 };
 
 const _assign = Object.assign;
-
-const _getTouchClietX = touches => touches
-  && touches[0]
-  && touches[0].clientX;
-
-const _getClientX = (ev) => {
-  if (ev.clientX) { return ev.clientX; }
-  const { targetTouches, changedTouches } = ev;
-  return _getTouchClietX(targetTouches)
-    || _getTouchClietX(changedTouches)
-    || 0;
-};
 
 const _styleNode = (node) => {
   node.style.setProperty(BORDER_LEFT, DRAG_START_BORDER_LEFT)
@@ -88,7 +79,7 @@ const GestureSwipeX = forwardRef(({
   , _gestureMove = useCallback(evt => {
     _preventDefault(evt)
     if (_getRefValue(_refIsGestureStart)) {
-      const _clientX = _getClientX(evt);
+      const _clientX = getClientX(evt);
       if (_clientX) {
         if (!_getRefValue(_refIsMoveStart)) {
           _setRefValue(_refClientX, _clientX)
@@ -109,7 +100,7 @@ const GestureSwipeX = forwardRef(({
       if (_getRefValue(_refIsMoveStart)) {
         _preventDefault(evt)
         setTimeStamp(evt.timeStamp)
-        const _clientX = _getClientX(evt)
+        const _clientX = getClientX(evt)
         , _dX = _getRefValue(_refClientX) - _clientX;
         _isInitialStyle = _dX < 0 && onGesture(Math.abs(_dX));
         _setRefValue(_refIsMoveStart, false)
@@ -121,7 +112,7 @@ const GestureSwipeX = forwardRef(({
     }
   }, [])
   // setTimeStamp, onGesture
-  , _handlers = useMemo(() => HAS_TOUCH ? {
+  , _handlers = useMemo(() => HAS_TOUCH_EVENTS ? {
       onTouchStart: _gestureStart,
       onTouchMove: _gestureMove,
       onTouchEnd: _gestureEnd

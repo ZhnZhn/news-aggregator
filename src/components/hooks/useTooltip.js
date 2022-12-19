@@ -1,9 +1,9 @@
-import { HAS_TOUCH } from '../has';
+import { HAS_TOUCH_EVENTS } from '../has';
 
 const useTooltip = (
   ariaLabel,
   dataPos
-) => HAS_TOUCH
+) => HAS_TOUCH_EVENTS
   ? []
   : [
       ariaLabel,
