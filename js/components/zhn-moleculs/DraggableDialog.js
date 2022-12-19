@@ -6,10 +6,10 @@ exports["default"] = void 0;
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _uiApi = require("../uiApi");
 var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
+var _useXYMovable = _interopRequireDefault(require("../hooks/useXYMovable"));
 var _ModalToggle = _interopRequireDefault(require("./ModalToggle"));
 var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
 var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
-var _Interact = _interopRequireDefault(require("../../utils/Interact"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types'
 
@@ -26,15 +26,9 @@ var CL_DIALOG = 'dialog',
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
     zIndex: 10
   },
-  S_CHL_DIV = {
-    cursor: 'default'
-  },
   S_BTS = {
-    marginTop: 16,
-    marginBottom: 10,
-    marginRight: 4,
-    "float": 'right',
-    cursor: 'default'
+    textAlign: 'right',
+    margin: '16px 4px 10px 0'
   },
   S_BLOCK = {
     display: 'block'
@@ -118,10 +112,10 @@ var DraggableDialog = (0, _uiApi.forwardRef)(function (_ref2, ref) {
 
   (0, _uiApi.useEffect)(function () {
     var _divElement = (0, _uiApi.getRefValue)(_refDiv);
-    _Interact["default"].makeDragable(_divElement);
     (0, _uiApi.setRefValue)(_refPrevFocused, document.activeElement);
     _divElement.focus();
   }, []);
+  (0, _useXYMovable["default"])(_refDiv);
 
   /*eslint-disable react-hooks/exhaustive-deps */
   (0, _uiApi.useEffect)(function () {
@@ -164,7 +158,6 @@ var DraggableDialog = (0, _uiApi.forwardRef)(function (_ref2, ref) {
         onToggle: toggleItem,
         onClose: toggleIsMore
       }), (0, _jsxRuntime.jsx)("div", {
-        style: S_CHL_DIV,
         children: children
       }), (0, _jsxRuntime.jsx)(DialogButtons, {
         TS: buttonStyle,

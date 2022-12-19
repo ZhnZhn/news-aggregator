@@ -11,8 +11,7 @@ module.exports = {
      lib: [           
             "preact",
             "preact/compat",             
-            "dompurify", 
-            "interactjs",         
+            "dompurify",               
             "reflux-core",             
             "timeago.js" 
           ]

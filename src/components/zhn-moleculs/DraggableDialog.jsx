@@ -11,12 +11,11 @@ import {
 } from '../uiApi';
 
 import useToggle from '../hooks/useToggle';
+import useXYMovable from '../hooks/useXYMovable';
 
 import ModalToggle from './ModalToggle';
 import BrowserCaption from '../zhn-atoms/BrowserCaption';
 import RaisedButton from '../zhn-bt/RaisedButton';
-
-import Interact from '../../utils/Interact';
 
 const CL_DIALOG = 'dialog'
 , CL_DIALOG_OPEN = `${CL_DIALOG} show-popup`
@@ -32,15 +31,9 @@ const CL_DIALOG = 'dialog'
   boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
   zIndex: 10
 }
-, S_CHL_DIV = {
-  cursor: 'default'
-}
 , S_BTS = {
-   marginTop: 16,
-   marginBottom: 10,
-   marginRight: 4,
-   float: 'right',
-   cursor: 'default'
+   textAlign: 'right',
+   margin: '16px 4px 10px 0'
 }
 , S_BLOCK = {
   display: 'block'
@@ -132,10 +125,11 @@ const DraggableDialog = forwardRef(({
 
   useEffect(() => {
     const _divElement = getRefValue(_refDiv);
-    Interact.makeDragable(_divElement)
     setRefValue(_refPrevFocused, document.activeElement)
     _divElement.focus()
   }, [])
+
+  useXYMovable(_refDiv)
 
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
@@ -193,7 +187,7 @@ const DraggableDialog = forwardRef(({
          onToggle={toggleItem}
          onClose={toggleIsMore}
       />}
-      <div style={S_CHL_DIV}>
+      <div>
          {children}
       </div>
       <DialogButtons
