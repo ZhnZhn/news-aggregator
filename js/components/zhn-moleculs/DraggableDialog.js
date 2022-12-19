@@ -65,16 +65,6 @@ var DialogButtons = function DialogButtons(_ref) {
     })]
   });
 };
-
-/*eslint-disable react-hooks/exhaustive-deps */
-var useFocusByRef = function useFocusByRef(ref) {
-  return (0, _uiApi.useCallback)(function () {
-    (0, _uiApi.focusRefElement)(ref);
-  }, []);
-};
-//ref
-/*eslint-enable react-hooks/exhaustive-deps */
-
 var DraggableDialog = (0, _uiApi.forwardRef)(function (_ref2, ref) {
   var isShow = _ref2.isShow,
     style = _ref2.style,
@@ -89,42 +79,53 @@ var DraggableDialog = (0, _uiApi.forwardRef)(function (_ref2, ref) {
     onLoad = _ref2.onLoad,
     onShow = _ref2.onShow,
     onClose = _ref2.onClose;
-  var _refDiv = (0, _uiApi.useRef)(null),
-    _refIsShow = (0, _uiApi.useRef)(isShow),
+  var _refDialog = (0, _uiApi.useRef)(null),
     _refPrevFocused = (0, _uiApi.useRef)(null),
+    _refIsShow = (0, _uiApi.useRef)(isShow),
     _useToggle = (0, _useToggle2["default"])(false),
     isMore = _useToggle[0],
     toggleIsMore = _useToggle[1],
-    focusPrevEl = useFocusByRef(_refPrevFocused),
-    focus = useFocusByRef(_refDiv),
-    _hKeyDown = (0, _uiApi.useCallback)(function (evt) {
-      if (document.activeElement == (0, _uiApi.getRefValue)(_refDiv)) {
-        onKeyDown(evt);
-      }
+    _useMemo = (0, _uiApi.useMemo)(function () {
+      return [function () {
+        return (0, _uiApi.focusRefElement)(_refDialog);
+      }, function () {
+        return (0, _uiApi.focusRefElement)(_refPrevFocused);
+      }, function (evt) {
+        if (document.activeElement == (0, _uiApi.getRefValue)(_refDialog)) {
+          onKeyDown(evt);
+        }
+      }, function (evt) {
+        focusPrevEl();
+        onClose();
+      }];
     }, []),
-    _hClose = (0, _uiApi.useCallback)(function (evt) {
-      focusPrevEl();
-      onClose();
-    }, []);
+    focusDialogEl = _useMemo[0],
+    focusPrevEl = _useMemo[1],
+    _hKeyDown = _useMemo[2],
+    _hClose = _useMemo[3];
 
-  //_focusPrevEl, onClose
+  // onKeyDown
+  // onClose
   /*eslint-enable react-hooks/exhaustive-deps */
 
+  /*eslint-disable react-hooks/exhaustive-deps */
   (0, _uiApi.useEffect)(function () {
-    var _divElement = (0, _uiApi.getRefValue)(_refDiv);
     (0, _uiApi.setRefValue)(_refPrevFocused, document.activeElement);
-    _divElement.focus();
+    focusDialogEl();
   }, []);
-  (0, _useXYMovable["default"])(_refDiv);
+  // focusDialogEl
+  /*eslint-enable react-hooks/exhaustive-deps */
+
+  (0, _useXYMovable["default"])(_refDialog);
 
   /*eslint-disable react-hooks/exhaustive-deps */
   (0, _uiApi.useEffect)(function () {
     if (isShow && !(0, _uiApi.getRefValue)(_refIsShow)) {
-      focus();
+      focusDialogEl();
     }
     (0, _uiApi.setRefValue)(_refIsShow, isShow);
   }, [isShow]);
-  // focus
+  // focusDialogEl
   /*eslint-enable react-hooks/exhaustive-deps */
 
   (0, _uiApi.useImperativeHandle)(ref, function () {
@@ -139,7 +140,7 @@ var DraggableDialog = (0, _uiApi.forwardRef)(function (_ref2, ref) {
   return (/*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
     /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
     (0, _jsxRuntime.jsxs)("div", {
-      ref: _refDiv,
+      ref: _refDialog,
       role: "dialog",
       className: _classShow,
       style: (0, _extends2["default"])({}, S_DIV, style, _styleShow),

@@ -2,7 +2,7 @@
 import {
   forwardRef,
   useRef,
-  useCallback,
+  useMemo,
   useEffect,
   useImperativeHandle,
   getRefValue,
@@ -53,11 +53,11 @@ const DialogButtons = ({
   <div style={S_BTS}>
     {_isFn(onLoad) &&
       <RaisedButton
-        isPrimary={true}
-        style={TS.RAISED}
-        clDiv={TS.CL_RAISED_DIV}
-        caption="Load"
-        onClick={onLoad}
+         isPrimary={true}
+         style={TS.RAISED}
+         clDiv={TS.CL_RAISED_DIV}
+         caption="Load"
+         onClick={onLoad}
       />
     }
     {_isFn(onShow) &&
@@ -77,13 +77,6 @@ const DialogButtons = ({
   </div>
 );
 
-/*eslint-disable react-hooks/exhaustive-deps */
-const useFocusByRef = ref => useCallback(() => {
-  focusRefElement(ref)
-}, [])
-//ref
-/*eslint-enable react-hooks/exhaustive-deps */
-
 const DraggableDialog = forwardRef(({
   isShow,
   style,
@@ -99,46 +92,54 @@ const DraggableDialog = forwardRef(({
   onShow,
   onClose
 }, ref) => {
-  const _refDiv = useRef(null)
-  , _refIsShow = useRef(isShow)
+  const _refDialog = useRef(null)
   , _refPrevFocused = useRef(null)
+  , _refIsShow = useRef(isShow)
   , [
     isMore,
     toggleIsMore
   ] = useToggle(false)
-  , focusPrevEl = useFocusByRef(_refPrevFocused)
-  , focus = useFocusByRef(_refDiv)
   /*eslint-disable react-hooks/exhaustive-deps */
-  , _hKeyDown = useCallback(evt => {
-    if (document.activeElement == getRefValue(_refDiv)) {
-      onKeyDown(evt)
+  , [
+    focusDialogEl,
+    focusPrevEl,
+    _hKeyDown,
+    _hClose
+  ] = useMemo(() => [
+    () => focusRefElement(_refDialog),
+    () => focusRefElement(_refPrevFocused),
+    (evt) => {
+      if (document.activeElement == getRefValue(_refDialog)) {
+        onKeyDown(evt)
+      }
+    },
+    (evt) => {
+      focusPrevEl()
+      onClose()
     }
-  }, [])
-  //onKeyDown
-  , _hClose = useCallback(evt => {
-    focusPrevEl()
-    onClose()
-  }, [])
-  //_focusPrevEl, onClose
+  ], [])
+  // onKeyDown
+  // onClose
   /*eslint-enable react-hooks/exhaustive-deps */
 
-
+  /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
-    const _divElement = getRefValue(_refDiv);
     setRefValue(_refPrevFocused, document.activeElement)
-    _divElement.focus()
+    focusDialogEl()
   }, [])
+  // focusDialogEl
+  /*eslint-enable react-hooks/exhaustive-deps */
 
-  useXYMovable(_refDiv)
+  useXYMovable(_refDialog)
 
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     if (isShow && !getRefValue(_refIsShow)) {
-      focus()
+      focusDialogEl()
     }
     setRefValue(_refIsShow, isShow)
   }, [isShow])
-  // focus
+  // focusDialogEl
   /*eslint-enable react-hooks/exhaustive-deps */
 
   useImperativeHandle(ref, () => ({ focusPrevEl }))
@@ -158,16 +159,16 @@ const DraggableDialog = forwardRef(({
     /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
     /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
     <div
-         ref={_refDiv}
-         role="dialog"
-         className={_classShow}
-         style={{
-           ...S_DIV,
-           ...style,
-           ..._styleShow
-         }}
-         tabIndex="0"
-         onKeyDown={_hKeyDown}
+       ref={_refDialog}
+       role="dialog"
+       className={_classShow}
+       style={{
+        ...S_DIV,
+        ...style,
+        ..._styleShow
+       }}
+       tabIndex="0"
+       onKeyDown={_hKeyDown}
     >
     {
       /*eslint-enable jsx-a11y/no-noninteractive-element-interactions*/
