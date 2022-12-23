@@ -3,15 +3,13 @@ import { FMP } from '../../conf/ProviderNames';
 import DialogStackInputs from './DialogStackInputs';
 import { FmpApiLink } from '../links/Links';
 import {
-  SYMBOL_INPUT_PROPS,
+  crInputProps,
   crDfInputs
 } from './DialogFn';
 
 const DF_SYMBOL = "AAPL";
 const INPUT_CONFIGS = [
-  ['t','symbol','Stock Symbol',DF_SYMBOL,{
-    ...SYMBOL_INPUT_PROPS
-  }]
+  ['t','symbol','Stock Symbol',DF_SYMBOL,crInputProps()]
 ]
 , [
   INITIAL_INPUTS,

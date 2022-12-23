@@ -5,7 +5,7 @@ import {
 import DialogStackInputs from './DialogStackInputs';
 import { IexApiLink } from '../links/Links';
 import {
-  SYMBOL_INPUT_PROPS,
+  crInputProps,
   crDfInputs
 } from './DialogFn';
 
@@ -19,9 +19,7 @@ const RECENT_OPTIONS = [
 , DF_RECENT = RECENT_OPTIONS[1]
 , DF_SYMBOL = "AAPL"
 const INPUT_CONFIGS = [
-  ['t','symbol','Stock Symbol',DF_SYMBOL,{
-    ...SYMBOL_INPUT_PROPS
-  },true],
+  ['t','symbol','Stock Symbol',DF_SYMBOL,crInputProps(),true],
   ['s','recent','Recent',RECENT_OPTIONS,DF_RECENT,true]
 ]
 , [

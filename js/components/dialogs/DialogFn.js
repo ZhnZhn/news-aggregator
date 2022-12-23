@@ -1,16 +1,21 @@
 "use strict";
 
 exports.__esModule = true;
-exports.getPaneCaption = exports.getDialogCaption = exports.crTextFieldCaption = exports.crDfInputs = exports.SYMBOL_INPUT_PROPS = void 0;
+exports.getPaneCaption = exports.getDialogCaption = exports.crTextFieldCaption = exports.crInputProps = exports.crDfInputs = void 0;
 var _OptionFn = require("../zhn-m-input/OptionFn");
-var SYMBOL_INPUT_PROPS = {
-  maxLength: '10',
-  inputStyle: {
-    textTransform: 'uppercase'
-  },
-  autoCapitalize: 'characters'
+var crInputProps = function crInputProps(maxLength) {
+  if (maxLength === void 0) {
+    maxLength = '10';
+  }
+  return {
+    maxLength: maxLength,
+    autoCapitalize: 'characters',
+    inputStyle: {
+      textTransform: 'uppercase'
+    }
+  };
 };
-exports.SYMBOL_INPUT_PROPS = SYMBOL_INPUT_PROPS;
+exports.crInputProps = crInputProps;
 var _crObject = Object.create,
   _getId = function _getId(arrConfig) {
     return arrConfig[1];

@@ -1,7 +1,7 @@
 import DialogStackInputs from './DialogStackInputs';
 import { AlphaVantageLink } from '../links/Links';
 import {
-  SYMBOL_INPUT_PROPS,
+  crInputProps,
   crDfInputs,
   getPaneCaption
 } from './DialogFn';
@@ -35,9 +35,7 @@ const TOPIC_OPTIONS = [
 ]
 , DF_TICKERS = ''
 , INPUT_CONFIGS = [
-  ['t','tickers','Tickers',DF_TICKERS,{
-    ...SYMBOL_INPUT_PROPS
-  },true],
+  ['t','tickers','Tickers',DF_TICKERS,crInputProps(16),true],
   ['s','topics','Topics',TOPIC_OPTIONS,TOPIC_OPTIONS[0],true],
   ['s','sortBy','SortBy',SORTBY_OPTIONS,SORTBY_OPTIONS[0]],
   ['s','limit','Limit',LIMIT_OPTIONS,LIMIT_OPTIONS[0]]
