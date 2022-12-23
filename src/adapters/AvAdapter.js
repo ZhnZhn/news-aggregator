@@ -1,8 +1,10 @@
 import crId from '../utils/crId';
 import crDescription from '../utils/crDescription';
 import formatTimeAgo from '../utils/formatTimeAgo';
+import domSanitize from '../utils/domSanitize';
 import crArticles from './crArticles';
 
+const _isArr = Array.isArray;
 const SOURCE_ID = 'av_sentiments';
 
 //YYYYMMDDTHHMMSS
@@ -20,12 +22,34 @@ const _toMls = (
 
 const _rounBy = (v) => Math.round(v*100)/100;
 
-const _crRelated = (
+const _crOverallSentiment = (
   overall_sentiment_label,
   overall_sentiment_score
-) => [
-  `${overall_sentiment_label} (${_rounBy(overall_sentiment_score)})`
-];
+) => domSanitize(`${overall_sentiment_label} (${_rounBy(overall_sentiment_score)})`);
+
+const _compareByRelevanceScore = (
+  a,
+  b
+) => b.relevance_score === a.relevance_score
+  ? b.ticker_sentiment_score - a.ticker_sentiment_score
+  : b.relevance_score - a.relevance_score;
+
+const _addTickerSentimentTo = (
+  str,
+  item
+) => str + `${_rounBy(item.relevance_score)} ${item.ticker} ${item.ticker_sentiment_label} (${_rounBy(item.ticker_sentiment_score)})\n`
+
+const _crTickerSentiment = (
+  tickerSentiment
+) => {
+  if (!_isArr(tickerSentiment)) {
+    return '';
+  }
+  return domSanitize(tickerSentiment
+    .sort(_compareByRelevanceScore)
+    .reduce(_addTickerSentimentTo, '')
+  );
+}
 
 const _crArticle = ({
   title,
@@ -34,33 +58,81 @@ const _crArticle = ({
   time_published,
   url,
   overall_sentiment_label,
-  overall_sentiment_score
+  overall_sentiment_score,
+  ticker_sentiment
 }, timeAgoOptions) => {
   const publishedAt = _toMls(time_published);
   return {
     source: SOURCE_ID,
     articleId: crId(),
     title,
-    description: crDescription(summary),
+    description: `${crDescription(summary)}\n
+      ${_crOverallSentiment(overall_sentiment_label, overall_sentiment_score)}\n
+      ${_crTickerSentiment(ticker_sentiment)}`,
     author: source,
     timeAgo: formatTimeAgo(publishedAt, timeAgoOptions),
-    related: _crRelated(overall_sentiment_label, overall_sentiment_score),
     publishedAt,
     url
   };
 };
 
-const _toArticles = (json) => {
-  const { feed } = json || {};
-  return crArticles(feed, _crArticle);
+const _crScoreList = (arrScores) => {
+  const _strScore = arrScores.join(', ');
+  return _strScore === ''
+    ? ''
+    : ` (${_strScore})`;
+}
+
+const _crSentimentSummary = (feed) => {
+    if (!_isArr(feed)) {
+      return;
+    }
+
+    const _arrBullish = []
+    , _arrBearish = [];
+    let _bullish = 0
+    , _somewhatBullish = 0
+    , _neutral = 0
+    , _somewhatBearish = 0
+    , _bearish = 0;
+    feed.forEach(item => {
+      const score = _rounBy(item.overall_sentiment_score)
+      if (score>=0.35) {
+        _bullish++
+        _arrBullish.push(score)
+      } else if (score < 0.35 && score >= 0.15) {
+        _somewhatBullish++
+      } else if (score < 0.15 && score > -0.15) {
+        _neutral++
+      } else if (score <= -0.15 && score > -0.35) {
+        _somewhatBearish++
+      } else if (score <= -0.35 && score >= -1) {
+        _bearish++
+        _arrBearish.push(score)
+      }
+    })
+    return {
+       source: SOURCE_ID,
+       articleId: crId(),
+       title: 'Overall Sentiment Summary',
+       description: `${_bullish} Bullish${_crScoreList(_arrBullish)}
+        ${_somewhatBullish} Somewhat-Bullish
+        ${_neutral} Neutral
+        ${_somewhatBearish} Somewhat-Bearish
+        ${_bearish} Bearish${_crScoreList(_arrBearish)}`
+    };
 };
+//\n
 
 const AvAdapter = {
   toNews(json, option){
-    const { sortBy } = option;
+    const { feed } = json || {}
+    , { sortBy } = option
+    , articles = crArticles(feed, _crArticle);
+    articles.unshift(_crSentimentSummary(feed))
     return {
       source: SOURCE_ID,
-      articles: _toArticles(json),
+      articles,
       sortBy
     };
   }
