@@ -89,14 +89,21 @@ const ArticleDescr = ({
              text={timeAgo}
           />
         </div>
-        <SafeLink
-          className={CL_DIV}
-          style={S_DESCR}
-          href={href}
-          onKeyDown={_hKeyDown}
-        >
-          {description}
-        </SafeLink>
+        {href ? (
+           <SafeLink
+             className={CL_DIV}
+             style={S_DESCR}
+             href={href}
+             onKeyDown={_hKeyDown}
+            >
+              {description}
+            </SafeLink>
+           ) : (
+            <div style={S_DESCR}>
+             {description}
+            </div>
+          )
+        }
         <div style={S_PT_8}>
           <TextDiv
             className={CL_SELECT_NONE}

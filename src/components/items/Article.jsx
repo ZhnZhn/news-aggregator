@@ -111,7 +111,9 @@ const Article = forwardRef(({
   , _publishedAt = publishedDate || dt.toTimeDate(publishedAt)
   , _href = toLink(url);
 
-  if (!_href) { return null; }
+  if (url && !_href) {
+    return null;
+  }
 
   return (
     <GestureSwipeX
