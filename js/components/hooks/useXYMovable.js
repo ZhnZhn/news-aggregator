@@ -38,12 +38,15 @@ var _isValueInGapRange = function _isValueInGapRange(from, to, value) {
 var _getComposedPath = function _getComposedPath(evt) {
   return _isFn(evt.composedPath) ? evt.composedPath() : void 0;
 };
+var _isExcludeElement = function _isExcludeElement(element) {
+  return element.tagName === 'BUTTON' || element.dataset.scrollable;
+};
 var _isInitEvent = function _isInitEvent(evt, initialEvtClientX, initialEvtClientY, element) {
   var _composedPath = _getComposedPath(evt);
   if (_isArr(_composedPath)) {
     for (var i = 0; i < _composedPath.length; i++) {
       var _el = _composedPath[i];
-      if (_el.tagName === 'BUTTON') {
+      if (_isExcludeElement(_el)) {
         return false;
       }
       if (_el === element) {
