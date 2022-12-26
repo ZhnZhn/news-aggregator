@@ -1,5 +1,7 @@
 const API_URL = 'https://www.alphavantage.co/query?function=NEWS_SENTIMENT'
 
+const _isArr = Array.isArray;
+
 const _crQueryToken = (
   prName,
   value
@@ -27,7 +29,8 @@ const AvApi = {
   },
 
   checkResponse(json, option){
-    return true;
+    const { feed } = json || {};
+    return _isArr(feed);
   }
 }
 

@@ -3,6 +3,7 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 var API_URL = 'https://www.alphavantage.co/query?function=NEWS_SENTIMENT';
+var _isArr = Array.isArray;
 var _crQueryToken = function _crQueryToken(prName, value) {
   return value ? "&" + prName + "=" + value : '';
 };
@@ -20,7 +21,9 @@ var AvApi = {
     return "" + API_URL + _tickers + _topics + _limit + "&sort=" + sortBy + "&apikey=" + apiKey;
   },
   checkResponse: function checkResponse(json, option) {
-    return true;
+    var _ref = json || {},
+      feed = _ref.feed;
+    return _isArr(feed);
   }
 };
 var _default = AvApi;
