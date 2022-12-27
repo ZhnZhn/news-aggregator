@@ -83,46 +83,57 @@ const _crScoreList = (arrScores) => {
     : ` (${_strScore})`;
 }
 
-const _crSentimentSummary = (feed) => {
-    if (!_isArr(feed)) {
-      return;
-    }
+const _crValueName = (
+  value,
+  name
+) => value
+  ? `${value} ${name}`
+  : ''
 
-    const _arrBullish = []
-    , _arrBearish = [];
-    let _bullish = 0
-    , _somewhatBullish = 0
-    , _neutral = 0
-    , _somewhatBearish = 0
-    , _bearish = 0;
-    feed.forEach(item => {
-      const score = _rounBy(item.overall_sentiment_score)
-      if (score>=0.35) {
-        _bullish++
-        _arrBullish.push(score)
-      } else if (score < 0.35 && score >= 0.15) {
-        _somewhatBullish++
-      } else if (score < 0.15 && score > -0.15) {
-        _neutral++
-      } else if (score <= -0.15 && score > -0.35) {
-        _somewhatBearish++
-      } else if (score <= -0.35 && score >= -1) {
-        _bearish++
-        _arrBearish.push(score)
-      }
-    })
-    return {
-       source: SOURCE_ID,
-       articleId: crId(),
-       title: 'Overall Sentiment Summary',
-       description: `${_bullish} Bullish${_crScoreList(_arrBullish)}
-        ${_somewhatBullish} Somewhat-Bullish
-        ${_neutral} Neutral
-        ${_somewhatBearish} Somewhat-Bearish
-        ${_bearish} Bearish${_crScoreList(_arrBearish)}`
-    };
-};
-//\n
+const _crSentimentDescription = (
+  feed
+) => {
+  const _arrBullish = []
+  , _arrBearish = [];
+  let _bullish = 0
+  , _somewhatBullish = 0
+  , _neutral = 0
+  , _somewhatBearish = 0
+  , _bearish = 0;
+  feed.forEach(item => {
+    const score = _rounBy(item.overall_sentiment_score)
+    if (score>=0.35) {
+      _bullish++
+      _arrBullish.push(score)
+    } else if (score < 0.35 && score >= 0.15) {
+      _somewhatBullish++
+    } else if (score < 0.15 && score > -0.15) {
+      _neutral++
+    } else if (score <= -0.15 && score > -0.35) {
+      _somewhatBearish++
+    } else if (score <= -0.35 && score >= -1) {
+      _bearish++
+      _arrBearish.push(score)
+    }
+  })
+  return [
+    _crValueName(_bullish, `Bullish${_crScoreList(_arrBullish)}`),
+    _crValueName(_somewhatBullish, 'Somewhat-Bullish'),
+    _crValueName(_neutral, 'Neutral'),
+    _crValueName(_somewhatBearish, 'Somewhat-Bearish'),
+    _crValueName(_bearish, `Bearish${_crScoreList(_arrBearish)}`)
+  ].filter(Boolean)
+   .join('\n');
+}
+
+const _crSentimentSummary = (
+  feed
+) => ({
+  source: SOURCE_ID,
+  articleId: crId(),
+  title: 'Overall Sentiment Summary',
+  description: _crSentimentDescription(feed)
+});
 
 const AvAdapter = {
   toNews(json, option){

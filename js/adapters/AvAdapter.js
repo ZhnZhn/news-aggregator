@@ -58,10 +58,10 @@ var _crScoreList = function _crScoreList(arrScores) {
   var _strScore = arrScores.join(', ');
   return _strScore === '' ? '' : " (" + _strScore + ")";
 };
-var _crSentimentSummary = function _crSentimentSummary(feed) {
-  if (!_isArr(feed)) {
-    return;
-  }
+var _crValueName = function _crValueName(value, name) {
+  return value ? value + " " + name : '';
+};
+var _crSentimentDescription = function _crSentimentDescription(feed) {
   var _arrBullish = [],
     _arrBearish = [];
   var _bullish = 0,
@@ -85,15 +85,16 @@ var _crSentimentSummary = function _crSentimentSummary(feed) {
       _arrBearish.push(score);
     }
   });
+  return [_crValueName(_bullish, "Bullish" + _crScoreList(_arrBullish)), _crValueName(_somewhatBullish, 'Somewhat-Bullish'), _crValueName(_neutral, 'Neutral'), _crValueName(_somewhatBearish, 'Somewhat-Bearish'), _crValueName(_bearish, "Bearish" + _crScoreList(_arrBearish))].filter(Boolean).join('\n');
+};
+var _crSentimentSummary = function _crSentimentSummary(feed) {
   return {
     source: SOURCE_ID,
     articleId: (0, _crId["default"])(),
     title: 'Overall Sentiment Summary',
-    description: _bullish + " Bullish" + _crScoreList(_arrBullish) + "\n        " + _somewhatBullish + " Somewhat-Bullish\n        " + _neutral + " Neutral\n        " + _somewhatBearish + " Somewhat-Bearish\n        " + _bearish + " Bearish" + _crScoreList(_arrBearish)
+    description: _crSentimentDescription(feed)
   };
 };
-//\n
-
 var AvAdapter = {
   toNews: function toNews(json, option) {
     var _ref2 = json || {},
