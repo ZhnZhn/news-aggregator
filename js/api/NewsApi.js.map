@@ -1,1 +1,22 @@
-{"version":3,"sources":["../../src/api/NewsApi.js"],"names":["C","ROOT_V2","TOP","TOPIC_TOP","TOPIC_EVERYTHING","_crUrl2","source","sortBy","_topic","NewsApi","getRequestUrl","option","NewsApiFns"],"mappings":";;;;;;;;;AAKA;;AALA;AACA;AACA;AACA;AAIA,IAAMA,CAAC,GAAG;AACRC,EAAAA,OAAO,EAAE,yBADD;AAERC,EAAAA,GAAG,EAAE,KAFG;AAGRC,EAAAA,SAAS,EAAE,eAHH;AAIRC,EAAAA,gBAAgB,EAAE;AAJV,CAAV;;AAOA,IAAMC,OAAO,GAAG,SAAVA,OAAU,OAAwB;AAAA,MAArBC,MAAqB,QAArBA,MAAqB;AAAA,MAAbC,MAAa,QAAbA,MAAa;;AACtC,MAAMC,MAAM,GAAGD,MAAM,KAAKP,CAAC,CAACE,GAAb,GACRF,CAAC,CAACG,SADM,SAERH,CAAC,CAACI,gBAFM,gBAEqBG,MAFrB,kBAAf;;AAGA,cAAUP,CAAC,CAACC,OAAZ,GAAsBO,MAAtB,gBAAuCF,MAAvC;AACD,CALD;;AAOA,IAAMG,OAAO;AACXC,EAAAA,aAAa,EAAE,uBAAAC,MAAM;AAAA,WAAIN,OAAO,CAACM,MAAD,CAAX;AAAA;AADV,GAERC,sBAFQ,CAAb;eAKeH,O","sourcesContent":["//const ROOT_V1 = 'https://newsapi.org/v1/articles';\r\n//const DF_SOURCE = 'bbc-sport';\r\n//const DF_SORT_BY = 'top';\r\n// `${ROOT_V1}?source=${source}&apiKey=${apiKey}&sortBy=${sortBy}`;\r\n\r\nimport NewsApiFns from './NewsApiFns'\r\n\r\nconst C = {\r\n  ROOT_V2: 'https://newsapi.org/v2/',\r\n  TOP: 'top',\r\n  TOPIC_TOP: 'top-headlines',\r\n  TOPIC_EVERYTHING: 'everything'\r\n};\r\n\r\nconst _crUrl2 = ({ source, sortBy }) => {\r\n  const _topic = sortBy === C.TOP\r\n    ? `${C.TOPIC_TOP}?`\r\n    : `${C.TOPIC_EVERYTHING}?sortBy=${sortBy}&language=en&`;\r\n  return `${C.ROOT_V2}${_topic}sources=${source}`;\r\n};\r\n\r\nconst NewsApi = {\r\n  getRequestUrl: option => _crUrl2(option),\r\n  ...NewsApiFns\r\n};\r\n\r\nexport default NewsApi\r\n"],"file":"NewsApi.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/NewsApi.js"
+ ],
+ "file": "../../src/api/NewsApi.js",
+ "names": [
+  "API_URL",
+  "TOP",
+  "TOPIC_TOP",
+  "TOPIC_EVERYTHING",
+  "_crUrl2",
+  "source",
+  "sortBy",
+  "_topic",
+  "NewsApi",
+  "getRequestUrl",
+  "option",
+  "NewsApiFns"
+ ],
+ "mappings": ";;;;;;AAKA;AALA;AACA;AACA;AACA;;AAIA,IAAMA,OAAO,GAAG,yBAAyB;EACvCC,GAAG,GAAG,KAAK;EACXC,SAAS,GAAG,eAAe;EAC3BC,gBAAgB,GAAG,YAAY;AAEjC,IAAMC,OAAO,GAAG,SAAVA,OAAO,OAGP;EAAA,IAFJC,MAAM,QAANA,MAAM;IACNC,MAAM,QAANA,MAAM;EAEN,IAAMC,MAAM,GAAGD,MAAM,KAAKL,GAAG,GACtBC,SAAS,SACTC,gBAAgB,gBAAWG,MAAM,kBAAe;EACvD,YAAUN,OAAO,GAAGO,MAAM,gBAAWF,MAAM;AAC7C,CAAC;AAED,IAAMG,OAAO;EACXC,aAAa,EAAE,uBAAAC,MAAM;IAAA,OAAIN,OAAO,CAACM,MAAM,CAAC;EAAA;AAAA,GACrCC,sBAAU,CACd;AAAC,eAEaH,OAAO;AAAA"
+}

@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 var _dt = _interopRequireDefault(require("../utils/dt"));
-var BASE = "https://api.stackexchange.com/2.2";
+var API_URL = "https://api.stackexchange.com/2.2";
 var _toUTCSecond = _dt["default"].toUTCSecond,
   DF_FROM_DATE_S = _toUTCSecond(_dt["default"].getFromDate(1)),
   DF_TO_DATE_S = _toUTCSecond(_dt["default"].getToDate()),
@@ -23,7 +23,7 @@ var _rRequestUrl = {
       fromDate = _ref$fromDate === void 0 ? DF_FROM_DATE_S : _ref$fromDate,
       _ref$toDate = _ref.toDate,
       toDate = _ref$toDate === void 0 ? DF_TO_DATE_S : _ref$toDate;
-    return BASE + "/questions?page=1&pagesize=50&order=desc&fromdate=" + fromDate + "&todate=" + toDate + "&sort=" + sortBy + "&tagged=" + tag + "&site=stackoverflow";
+    return API_URL + "/questions?page=1&pagesize=50&order=desc&fromdate=" + fromDate + "&todate=" + toDate + "&sort=" + sortBy + "&tagged=" + tag + "&site=stackoverflow";
   },
   SO_SEARCH: function SO_SEARCH(_ref2) {
     var _ref2$tagged = _ref2.tagged,
@@ -36,7 +36,7 @@ var _rRequestUrl = {
       fromDate = _ref2$fromDate === void 0 ? DF_FROM_DATE_S : _ref2$fromDate,
       _ref2$toDate = _ref2.toDate,
       toDate = _ref2$toDate === void 0 ? DF_TO_DATE_S : _ref2$toDate;
-    return BASE + "/search?page=1&pagesize=50&order=desc&fromdate=" + fromDate + "&todate=" + toDate + "&sort=" + sortBy + "&tagged=" + tagged + "&intitle=" + inTitle + "&site=stackoverflow";
+    return API_URL + "/search?page=1&pagesize=50&order=desc&fromdate=" + fromDate + "&todate=" + toDate + "&sort=" + sortBy + "&tagged=" + tagged + "&intitle=" + inTitle + "&site=stackoverflow";
   }
 };
 var StackOverflowApi = {

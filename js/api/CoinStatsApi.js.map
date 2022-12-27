@@ -1,1 +1,19 @@
-{"version":3,"sources":["../../src/api/CoinStatsApi.js"],"names":["C","URL","QUERY_TAIL","DF_FILTER","CoinStatsApi","getRequestUrl","option","filter","checkResponse","json"],"mappings":";;;;AAAA,IAAMA,CAAC,GAAG;AACRC,EAAAA,GAAG,EAAE,0CADG;AAERC,EAAAA,UAAU,EAAE,iBAFJ;AAGRC,EAAAA,SAAS,EAAE;AAHH,CAAV;AAMA,IAAMC,YAAY,GAAG;AACnBC,EAAAA,aADmB,yBACLC,MADK,EACE;AAAA,yBACYA,MADZ,CACXC,MADW;AAAA,QACXA,MADW,+BACJP,CAAC,CAACG,SADE;AAEnBG,IAAAA,MAAM,CAACC,MAAP,GAAgBA,MAAhB;AACA,WAAUP,CAAC,CAACC,GAAZ,SAAmBM,MAAnB,UAA8BP,CAAC,CAACE,UAAhC;AACD,GALkB;AAMnBM,EAAAA,aANmB,yBAMLC,IANK,EAMCH,MAND,EAMQ;AACzB,WAAO,IAAP;AACD;AARkB,CAArB;eAWeF,Y","sourcesContent":["const C = {\r\n  URL: 'https://api.coinstats.app/public/v1/news',\r\n  QUERY_TAIL: 'skip=0&limit=20',\r\n  DF_FILTER: 'latest'\r\n};\r\n\r\nconst CoinStatsApi = {\r\n  getRequestUrl(option){\r\n    const { filter=C.DF_FILTER } = option;\r\n    option.filter = filter\r\n    return `${C.URL}/${filter}/?${C.QUERY_TAIL}`;\r\n  },\r\n  checkResponse(json, option){\r\n    return true;\r\n  }\r\n}\r\n\r\nexport default CoinStatsApi\r\n"],"file":"CoinStatsApi.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/CoinStatsApi.js"
+ ],
+ "file": "../../src/api/CoinStatsApi.js",
+ "names": [
+  "API_URL",
+  "QUERY_TAIL",
+  "DF_FILTER",
+  "CoinStatsApi",
+  "getRequestUrl",
+  "option",
+  "filter",
+  "checkResponse",
+  "json"
+ ],
+ "mappings": ";;;;AAAA,IAAMA,OAAO,GAAG,0CAA0C;EACxDC,UAAU,GAAG,iBAAiB;EAC9BC,SAAS,GAAG,QAAQ;AAEtB,IAAMC,YAAY,GAAG;EACnBC,aAAa,yBAACC,MAAM,EAAC;IACnB,qBAEIA,MAAM,CADRC,MAAM;MAANA,MAAM,+BAACJ,SAAS;IAElBG,MAAM,CAACC,MAAM,GAAGA,MAAM;IACtB,OAAUN,OAAO,SAAIM,MAAM,UAAKL,UAAU;EAC5C,CAAC;EAEDM,aAAa,yBAACC,IAAI,EAAEH,MAAM,EAAC;IACzB,OAAO,IAAI;EACb;AACF,CAAC;AAAA,eAEcF,YAAY;AAAA"
+}

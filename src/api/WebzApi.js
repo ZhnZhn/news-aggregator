@@ -1,5 +1,5 @@
 
-const ROOT_URL = 'https://api.webz.io/'
+const API_URL = 'https://api.webz.io/'
 , NEWS_SLICE = 'filterWebContent'
 
 , DF_SITE_TYPE = 'news'
@@ -20,7 +20,7 @@ const _crTs = (beforeDays) => {
 
 
 const _crRootUrl = apiKey =>
-  `${ROOT_URL}${NEWS_SLICE}?token=${apiKey}&order=desc&format=json`;
+  `${API_URL}${NEWS_SLICE}?token=${apiKey}&order=desc&format=json`;
 
 const _crNewsUrl = (option) => {
   const {
@@ -44,7 +44,7 @@ const _crCountryUrl = option => {
   , _qLangToken = lang
       ? `language:${lang} AND `
       : '';
-  option.apiKey = void 0    
+  option.apiKey = void 0
   return `${_crRootUrl(apiKey)}&q=${_qLangToken}site_type:news AND country:${country} AND site_category:${topic}`;
 };
 

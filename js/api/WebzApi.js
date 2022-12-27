@@ -2,7 +2,7 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
-var ROOT_URL = 'https://api.webz.io/',
+var API_URL = 'https://api.webz.io/',
   NEWS_SLICE = 'filterWebContent',
   DF_SITE_TYPE = 'news',
   DF_IN_TITLE = 'Weather',
@@ -16,7 +16,7 @@ var _crTs = function _crTs(beforeDays) {
   return !Number.isNaN(_) && _ < MAX_BEFORE_DAYS ? Date.now() - _ * MS_DAY : Date.now() - DF_BEFORE_DAYS * MS_DAY;
 };
 var _crRootUrl = function _crRootUrl(apiKey) {
-  return "" + ROOT_URL + NEWS_SLICE + "?token=" + apiKey + "&order=desc&format=json";
+  return "" + API_URL + NEWS_SLICE + "?token=" + apiKey + "&order=desc&format=json";
 };
 var _crNewsUrl = function _crNewsUrl(option) {
   var apiKey = option.apiKey,

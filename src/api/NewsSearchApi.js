@@ -1,12 +1,12 @@
-import NewsApiFns from './NewsApiFns'
+import NewsApiFns from './NewsApiFns';
 
-const ROOT = 'https://newsapi.org/v2/everything';
+const API_URL = 'https://newsapi.org/v2/everything';
 
 const NewsApi = {
   getRequestUrl: ({
     symbol='Weather',
     sortBy='relevancy'
-  }) => `${ROOT}?q=${symbol}&sortBy=${sortBy}`,  
+  }) => `${API_URL}?q=${symbol}&sortBy=${sortBy}`,
   ...NewsApiFns
 };
 

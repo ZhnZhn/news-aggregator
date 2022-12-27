@@ -1,6 +1,6 @@
 import DateUtil from '../utils/dt';
 
-const BASE = "https://api.stackexchange.com/2.2";
+const API_URL = "https://api.stackexchange.com/2.2";
 
 const _toUTCSecond = DateUtil.toUTCSecond
 , DF_FROM_DATE_S = _toUTCSecond(DateUtil.getFromDate(1))
@@ -20,7 +20,7 @@ const _rRequestUrl = {
     fromDate=DF_FROM_DATE_S,
     toDate=DF_TO_DATE_S
   }) => {
-    return `${BASE}/questions?page=1&pagesize=50&order=desc&fromdate=${fromDate}&todate=${toDate}&sort=${sortBy}&tagged=${tag}&site=stackoverflow`;
+    return `${API_URL}/questions?page=1&pagesize=50&order=desc&fromdate=${fromDate}&todate=${toDate}&sort=${sortBy}&tagged=${tag}&site=stackoverflow`;
   },
   SO_SEARCH: ({
     tagged=DF_SEARCH_TAGGED,
@@ -29,7 +29,7 @@ const _rRequestUrl = {
     fromDate=DF_FROM_DATE_S,
     toDate=DF_TO_DATE_S
    }) => {
-    return `${BASE}/search?page=1&pagesize=50&order=desc&fromdate=${fromDate}&todate=${toDate}&sort=${sortBy}&tagged=${tagged}&intitle=${inTitle}&site=stackoverflow`;
+    return `${API_URL}/search?page=1&pagesize=50&order=desc&fromdate=${fromDate}&todate=${toDate}&sort=${sortBy}&tagged=${tagged}&intitle=${inTitle}&site=stackoverflow`;
   }
 }
 

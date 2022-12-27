@@ -1,1 +1,16 @@
-{"version":3,"sources":["../../src/api/NewsSearchApi.js"],"names":["ROOT","NewsApi","getRequestUrl","symbol","sortBy","NewsApiFns"],"mappings":";;;;;;;;;AAAA;;AAEA,IAAMA,IAAI,GAAG,mCAAb;AAEA,IAAMC,OAAO;AACXC,EAAAA,aAAa,EAAE;AAAA,2BACbC,MADa;AAAA,QACbA,MADa,4BACN,SADM;AAAA,2BAEbC,MAFa;AAAA,QAEbA,MAFa,4BAEN,WAFM;AAAA,WAGNJ,IAHM,WAGIG,MAHJ,gBAGqBC,MAHrB;AAAA;AADJ,GAKRC,sBALQ,CAAb;eAQeJ,O","sourcesContent":["import NewsApiFns from './NewsApiFns'\r\n\r\nconst ROOT = 'https://newsapi.org/v2/everything';\r\n\r\nconst NewsApi = {\r\n  getRequestUrl: ({\r\n    symbol='Weather',\r\n    sortBy='relevancy'\r\n  }) => `${ROOT}?q=${symbol}&sortBy=${sortBy}`,  \r\n  ...NewsApiFns\r\n};\r\n\r\nexport default NewsApi\r\n"],"file":"NewsSearchApi.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/NewsSearchApi.js"
+ ],
+ "file": "../../src/api/NewsSearchApi.js",
+ "names": [
+  "API_URL",
+  "NewsApi",
+  "getRequestUrl",
+  "symbol",
+  "sortBy",
+  "NewsApiFns"
+ ],
+ "mappings": ";;;;;;AAAA;AAEA,IAAMA,OAAO,GAAG,mCAAmC;AAEnD,IAAMC,OAAO;EACXC,aAAa,EAAE;IAAA,uBACbC,MAAM;MAANA,MAAM,4BAAC,SAAS;MAAA,mBAChBC,MAAM;MAANA,MAAM,4BAAC,WAAW;IAAA,OACXJ,OAAO,WAAMG,MAAM,gBAAWC,MAAM;EAAA;AAAE,GAC5CC,sBAAU,CACd;AAAC,eAEaJ,OAAO;AAAA"
+}
