@@ -1,6 +1,6 @@
 import {
   crApiUrl,
-  crQueryToken,
+  crQueryTokenAll,
   checkResponse
 } from './TheNewsApiFn';
 
@@ -11,7 +11,7 @@ const TheNewsApiSearch = {
       category,
       sortBy
     } = option
-    , _categoryQuery = crQueryToken(category, 'categories');
+    , _categoryQuery = crQueryTokenAll('categories', category);
     return `${crApiUrl('all', option)}${_categoryQuery}&search=${search}&sort=${sortBy}`;
   },
 

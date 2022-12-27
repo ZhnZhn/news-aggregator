@@ -1,0 +1,13 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/ApiFn.js"
+ ],
+ "file": "../../src/api/ApiFn.js",
+ "names": [
+  "crQueryToken",
+  "paramName",
+  "value"
+ ],
+ "mappings": ";;;;AACO,IAAMA,YAAY,GAAG,SAAfA,YAAY,CACvBC,SAAS,EACTC,KAAK;EAAA,OACFA,KAAK,SACFD,SAAS,SAAIC,KAAK,GACtB,EAAE;AAAA;AAAC"
+}

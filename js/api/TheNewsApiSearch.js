@@ -8,7 +8,7 @@ var TheNewsApiSearch = {
     var search = option.search,
       category = option.category,
       sortBy = option.sortBy,
-      _categoryQuery = (0, _TheNewsApiFn.crQueryToken)(category, 'categories');
+      _categoryQuery = (0, _TheNewsApiFn.crQueryTokenAll)('categories', category);
     return "" + (0, _TheNewsApiFn.crApiUrl)('all', option) + _categoryQuery + "&search=" + search + "&sort=" + sortBy;
   },
   checkResponse: _TheNewsApiFn.checkResponse

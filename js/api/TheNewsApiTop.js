@@ -8,9 +8,9 @@ var TheNewsApiTop = {
     var category = option.category,
       locale = option.locale,
       domain = option.domain,
-      _categoryQuery = (0, _TheNewsApiFn.crQueryToken)(category, 'categories'),
-      _domainQuery = (0, _TheNewsApiFn.crQueryToken)(domain, 'domains'),
-      _localeQuery = (0, _TheNewsApiFn.crQueryToken)(locale, 'locale');
+      _categoryQuery = (0, _TheNewsApiFn.crQueryTokenAll)('categories', category),
+      _domainQuery = (0, _TheNewsApiFn.crQueryTokenAll)('domains', domain),
+      _localeQuery = (0, _TheNewsApiFn.crQueryTokenAll)('locale', locale);
     return "" + (0, _TheNewsApiFn.crApiUrl)('top', option) + _localeQuery + _categoryQuery + _domainQuery;
   },
   checkResponse: _TheNewsApiFn.checkResponse

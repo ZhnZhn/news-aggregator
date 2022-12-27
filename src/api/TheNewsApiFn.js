@@ -1,11 +1,11 @@
+import { crQueryToken } from './ApiFn';
+
 const API_URL = 'https://api.thenewsapi.com/v1/news'
 , QUERY_LIMIT = 'limit=5&language=en';
 
 const _crPage = (
   nextPage
-) => nextPage
-  ? `&page=${nextPage}`
-  : '';
+) => crQueryToken('page', nextPage);
 
 export const crApiUrl = (
   type,
@@ -21,11 +21,11 @@ export const crApiUrl = (
   return `${API_URL}/${type}?api_token=${apiKey}${_page}&${QUERY_LIMIT}`;
 }
 
-export const crQueryToken = (
-  value,
-  parameterName
+export const crQueryTokenAll = (
+  parameterName,
+  value
 ) => value === 'all'
   ? ''
-  : `&${parameterName}=${value}`;
+  : crQueryToken(parameterName, value)
 
 export const checkResponse = () => true

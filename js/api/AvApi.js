@@ -2,11 +2,9 @@
 
 exports.__esModule = true;
 exports["default"] = void 0;
+var _ApiFn = require("./ApiFn");
 var API_URL = 'https://www.alphavantage.co/query?function=NEWS_SENTIMENT';
 var _isArr = Array.isArray;
-var _crQueryToken = function _crQueryToken(prName, value) {
-  return value ? "&" + prName + "=" + value : '';
-};
 var AvApi = {
   getRequestUrl: function getRequestUrl(option) {
     var apiKey = option.apiKey,
@@ -14,9 +12,9 @@ var AvApi = {
       topics = option.topics,
       sortBy = option.sortBy,
       limit = option.limit,
-      _tickers = _crQueryToken('tickers', tickers),
-      _topics = _tickers ? '' : _crQueryToken('topics', topics),
-      _limit = _crQueryToken('limit', limit);
+      _tickers = (0, _ApiFn.crQueryToken)('tickers', tickers),
+      _topics = _tickers ? '' : (0, _ApiFn.crQueryToken)('topics', topics),
+      _limit = (0, _ApiFn.crQueryToken)('limit', limit);
     option.apiKey = void 0;
     return "" + API_URL + _tickers + _topics + _limit + "&sort=" + sortBy + "&apikey=" + apiKey;
   },

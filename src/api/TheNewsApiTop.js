@@ -1,19 +1,19 @@
 import {
   crApiUrl,
-  crQueryToken,
+  crQueryTokenAll,
   checkResponse
 } from './TheNewsApiFn';
 
 const TheNewsApiTop = {
-  getRequestUrl: option => {
+  getRequestUrl: (option) => {
     const {
       category,
       locale,
       domain
     } = option
-    , _categoryQuery = crQueryToken(category, 'categories')
-    , _domainQuery = crQueryToken(domain, 'domains')
-    , _localeQuery = crQueryToken(locale, 'locale');
+    , _categoryQuery = crQueryTokenAll('categories', category)
+    , _domainQuery = crQueryTokenAll('domains', domain)
+    , _localeQuery = crQueryTokenAll('locale', locale);
 
     return `${crApiUrl('top', option)}${_localeQuery}${_categoryQuery}${_domainQuery}`;
   },
