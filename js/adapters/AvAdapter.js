@@ -8,24 +8,23 @@ var _crDescription = _interopRequireDefault(require("../utils/crDescription"));
 var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
 var _domSanitize = _interopRequireDefault(require("../utils/domSanitize"));
 var _crArticles = _interopRequireDefault(require("./crArticles"));
-var _isArr = Array.isArray;
-var SOURCE_ID = 'av_sentiments';
+var _AvFn = require("./AvFn");
+var _isArr = Array.isArray,
+  _getObjectKeys = Object.keys,
+  SOURCE_ID = 'av_sentiments';
 
 //YYYYMMDDTHHMMSS
 var _toMls = function _toMls(strDate) {
   return (strDate || '').length > 12 ? Date.UTC(strDate.slice(0, 4), parseInt(strDate.slice(4, 6), 10) - 1, strDate.slice(6, 8), strDate.slice(9, 11), strDate.slice(11, 13)) : void 0;
 };
-var _rounBy = function _rounBy(v) {
-  return Math.round(v * 100) / 100;
-};
-var _crOverallSentiment = function _crOverallSentiment(overall_sentiment_label, overall_sentiment_score) {
-  return (0, _domSanitize["default"])(overall_sentiment_label + " (" + _rounBy(overall_sentiment_score) + ")");
+var _crOverallSentiment = function _crOverallSentiment(overallSentimentLabel, overallSentimentScore) {
+  return (0, _domSanitize["default"])(overallSentimentLabel + " (" + (0, _AvFn.rounBy)(overallSentimentScore) + ")");
 };
 var _compareByRelevanceScore = function _compareByRelevanceScore(a, b) {
   return b.relevance_score === a.relevance_score ? b.ticker_sentiment_score - a.ticker_sentiment_score : b.relevance_score - a.relevance_score;
 };
 var _addTickerSentimentTo = function _addTickerSentimentTo(str, item) {
-  return str + (_rounBy(item.relevance_score) + " " + item.ticker + " " + item.ticker_sentiment_label + " (" + _rounBy(item.ticker_sentiment_score) + ")\n");
+  return str + ((0, _AvFn.rounBy)(item.relevance_score) + " " + item.ticker + " " + item.ticker_sentiment_label + " (" + (0, _AvFn.rounBy)(item.ticker_sentiment_score) + ")\n");
 };
 var _crTickerSentiment = function _crTickerSentiment(tickerSentiment) {
   if (!_isArr(tickerSentiment)) {
@@ -54,57 +53,50 @@ var _crArticle = function _crArticle(_ref, timeAgoOptions) {
     url: url
   };
 };
-var _crScoreList = function _crScoreList(arrScores) {
-  var _strScore = arrScores.join(', ');
-  return _strScore === '' ? '' : " (" + _strScore + ")";
+var _compareByNumberOfSentiment = function _compareByNumberOfSentiment(a, b) {
+  return b._n - a._n;
 };
-var _crValueName = function _crValueName(value, name) {
-  return value ? value + " " + name : '';
-};
-var _crSentimentDescription = function _crSentimentDescription(feed) {
-  var _arrBullish = [],
-    _arrBearish = [];
-  var _bullish = 0,
-    _somewhatBullish = 0,
-    _neutral = 0,
-    _somewhatBearish = 0,
-    _bearish = 0;
-  feed.forEach(function (item) {
-    var score = _rounBy(item.overall_sentiment_score);
-    if (score >= 0.35) {
-      _bullish++;
-      _arrBullish.push(score);
-    } else if (score < 0.35 && score >= 0.15) {
-      _somewhatBullish++;
-    } else if (score < 0.15 && score > -0.15) {
-      _neutral++;
-    } else if (score <= -0.15 && score > -0.35) {
-      _somewhatBearish++;
-    } else if (score <= -0.35 && score >= -1) {
-      _bearish++;
-      _arrBearish.push(score);
+var _crTickersSummary = function _crTickersSummary(hmTickers) {
+  return _getObjectKeys(hmTickers).reduce(function (arr, ticker) {
+    var _sentiments = hmTickers[ticker],
+      description = (0, _AvFn.crTickerSentimentDescription)(_sentiments)[0],
+      _numberOfSentiment = _sentiments.length;
+    if ((0, _AvFn.filterTickerSentiment)(_numberOfSentiment, description)) {
+      arr.push({
+        _n: _numberOfSentiment,
+        source: SOURCE_ID,
+        articleId: (0, _crId["default"])(),
+        title: (0, _AvFn.crSentimentSummaryTitle)(ticker),
+        description: description
+      });
     }
-  });
-  return [_crValueName(_bullish, "Bullish" + _crScoreList(_arrBullish)), _crValueName(_somewhatBullish, 'Somewhat-Bullish'), _crValueName(_neutral, 'Neutral'), _crValueName(_somewhatBearish, 'Somewhat-Bearish'), _crValueName(_bearish, "Bearish" + _crScoreList(_arrBearish))].filter(Boolean).join('\n');
+    return arr;
+  }, []).sort(_compareByNumberOfSentiment);
 };
 var _crSentimentSummary = function _crSentimentSummary(feed) {
-  return {
+  var _crOverallSentimentDe = (0, _AvFn.crOverallSentimentDescription)(feed),
+    description = _crOverallSentimentDe[0],
+    hmTickers = _crOverallSentimentDe[1],
+    _tickersSummary = _crTickersSummary(hmTickers);
+  _tickersSummary.unshift({
     source: SOURCE_ID,
     articleId: (0, _crId["default"])(),
-    title: 'Overall Sentiment Summary',
-    description: _crSentimentDescription(feed)
-  };
+    title: (0, _AvFn.crSentimentSummaryTitle)('Overall'),
+    description: description
+  });
+  return _tickersSummary;
+};
+var _crArticlesWithSentiment = function _crArticlesWithSentiment(feed) {
+  return _crSentimentSummary(feed).concat((0, _crArticles["default"])(feed, _crArticle));
 };
 var AvAdapter = {
   toNews: function toNews(json, option) {
     var _ref2 = json || {},
       feed = _ref2.feed,
-      sortBy = option.sortBy,
-      articles = (0, _crArticles["default"])(feed, _crArticle);
-    articles.unshift(_crSentimentSummary(feed));
+      sortBy = option.sortBy;
     return {
       source: SOURCE_ID,
-      articles: articles,
+      articles: _crArticlesWithSentiment(feed),
       sortBy: sortBy
     };
   }

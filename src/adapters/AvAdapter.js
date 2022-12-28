@@ -3,9 +3,17 @@ import crDescription from '../utils/crDescription';
 import formatTimeAgo from '../utils/formatTimeAgo';
 import domSanitize from '../utils/domSanitize';
 import crArticles from './crArticles';
+import {
+  rounBy,
+  crSentimentSummaryTitle,
+  crOverallSentimentDescription,
+  crTickerSentimentDescription,
+  filterTickerSentiment
+} from './AvFn';
 
-const _isArr = Array.isArray;
-const SOURCE_ID = 'av_sentiments';
+const _isArr = Array.isArray
+, _getObjectKeys = Object.keys
+, SOURCE_ID = 'av_sentiments';
 
 //YYYYMMDDTHHMMSS
 const _toMls = (
@@ -20,12 +28,10 @@ const _toMls = (
     )
   : void 0;
 
-const _rounBy = (v) => Math.round(v*100)/100;
-
 const _crOverallSentiment = (
-  overall_sentiment_label,
-  overall_sentiment_score
-) => domSanitize(`${overall_sentiment_label} (${_rounBy(overall_sentiment_score)})`);
+  overallSentimentLabel,
+  overallSentimentScore
+) => domSanitize(`${overallSentimentLabel} (${rounBy(overallSentimentScore)})`);
 
 const _compareByRelevanceScore = (
   a,
@@ -37,7 +43,7 @@ const _compareByRelevanceScore = (
 const _addTickerSentimentTo = (
   str,
   item
-) => str + `${_rounBy(item.relevance_score)} ${item.ticker} ${item.ticker_sentiment_label} (${_rounBy(item.ticker_sentiment_score)})\n`
+) => str + `${rounBy(item.relevance_score)} ${item.ticker} ${item.ticker_sentiment_label} (${rounBy(item.ticker_sentiment_score)})\n`
 
 const _crTickerSentiment = (
   tickerSentiment
@@ -76,74 +82,60 @@ const _crArticle = ({
   };
 };
 
-const _crScoreList = (arrScores) => {
-  const _strScore = arrScores.join(', ');
-  return _strScore === ''
-    ? ''
-    : ` (${_strScore})`;
-}
+const _compareByNumberOfSentiment = (
+  a,
+  b
+) => b._n - a._n;
 
-const _crValueName = (
-  value,
-  name
-) => value
-  ? `${value} ${name}`
-  : ''
-
-const _crSentimentDescription = (
-  feed
-) => {
-  const _arrBullish = []
-  , _arrBearish = [];
-  let _bullish = 0
-  , _somewhatBullish = 0
-  , _neutral = 0
-  , _somewhatBearish = 0
-  , _bearish = 0;
-  feed.forEach(item => {
-    const score = _rounBy(item.overall_sentiment_score)
-    if (score>=0.35) {
-      _bullish++
-      _arrBullish.push(score)
-    } else if (score < 0.35 && score >= 0.15) {
-      _somewhatBullish++
-    } else if (score < 0.15 && score > -0.15) {
-      _neutral++
-    } else if (score <= -0.15 && score > -0.35) {
-      _somewhatBearish++
-    } else if (score <= -0.35 && score >= -1) {
-      _bearish++
-      _arrBearish.push(score)
+const _crTickersSummary = (
+  hmTickers
+) => _getObjectKeys(hmTickers)
+ .reduce((arr, ticker) => {
+    const _sentiments = hmTickers[ticker]
+    , description = crTickerSentimentDescription(_sentiments)[0]
+    , _numberOfSentiment = _sentiments.length;
+    if (filterTickerSentiment(_numberOfSentiment, description)) {
+      arr.push({
+        _n: _numberOfSentiment,
+        source: SOURCE_ID,
+        articleId: crId(),
+        title: crSentimentSummaryTitle(ticker),
+        description
+      })
     }
-  })
-  return [
-    _crValueName(_bullish, `Bullish${_crScoreList(_arrBullish)}`),
-    _crValueName(_somewhatBullish, 'Somewhat-Bullish'),
-    _crValueName(_neutral, 'Neutral'),
-    _crValueName(_somewhatBearish, 'Somewhat-Bearish'),
-    _crValueName(_bearish, `Bearish${_crScoreList(_arrBearish)}`)
-  ].filter(Boolean)
-   .join('\n');
-}
+    return arr;
+ }, [])
+ .sort(_compareByNumberOfSentiment);
 
 const _crSentimentSummary = (
   feed
-) => ({
-  source: SOURCE_ID,
-  articleId: crId(),
-  title: 'Overall Sentiment Summary',
-  description: _crSentimentDescription(feed)
-});
+) => {
+  const [
+    description,
+    hmTickers
+  ] = crOverallSentimentDescription(feed)
+  , _tickersSummary = _crTickersSummary(hmTickers);
+  _tickersSummary.unshift({
+    source: SOURCE_ID,
+    articleId: crId(),
+    title: crSentimentSummaryTitle('Overall'),
+    description
+  })
+  return _tickersSummary;
+}
+
+const _crArticlesWithSentiment = (
+  feed
+) => _crSentimentSummary(feed)
+  .concat(crArticles(feed, _crArticle));
 
 const AvAdapter = {
   toNews(json, option){
     const { feed } = json || {}
-    , { sortBy } = option
-    , articles = crArticles(feed, _crArticle);
-    articles.unshift(_crSentimentSummary(feed))
+    , { sortBy } = option;
     return {
       source: SOURCE_ID,
-      articles,
+      articles: _crArticlesWithSentiment(feed),
       sortBy
     };
   }
