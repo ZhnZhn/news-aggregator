@@ -1,13 +1,9 @@
-import ut from '../utils/ut';
+import crId from '../utils/crId';
+import toFirstUpperCase from '../utils/toFirstUpperCase';
+import decodeHTMLEntities   from '../utils/decodeHTMLEntities';
 import formatTimeAgo from '../utils/formatTimeAgo';
 
 import crArticles from './crArticles';
-
-const {
-  crId,
-  toFirstUpperCase,
-  decodeHTMLEntities
-} = ut;
 
 const SOURCE_ID = 'coinstats_news';
 

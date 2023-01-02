@@ -1,8 +1,7 @@
-import ut from '../utils/ut';
+import crId from '../utils/crId';
 import formatTimeAgo from '../utils/formatTimeAgo';
 import crArticles from './crArticles';
 
-const { crId } = ut;
 const SOURCE_ID = 'messari_news';
 
 const _crRelated = tags => (tags || [])

@@ -1,40 +1,32 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
 exports["default"] = void 0;
-
-var _ut = _interopRequireDefault(require("../utils/ut"));
-
+var _crId = _interopRequireDefault(require("../utils/crId"));
+var _toFirstUpperCase = _interopRequireDefault(require("../utils/toFirstUpperCase"));
+var _decodeHTMLEntities = _interopRequireDefault(require("../utils/decodeHTMLEntities"));
 var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
-
 var _crArticles = _interopRequireDefault(require("./crArticles"));
-
-var crId = _ut["default"].crId,
-    toFirstUpperCase = _ut["default"].toFirstUpperCase,
-    decodeHTMLEntities = _ut["default"].decodeHTMLEntities;
 var SOURCE_ID = 'coinstats_news';
-
 var _crRelated = function _crRelated(coins) {
   return (coins || []).map(function (_ref) {
     var coinKeyWords = _ref.coinKeyWords;
     return coinKeyWords;
   }).filter(Boolean).join('|');
 };
-
 var _crArticle = function _crArticle(_ref2, timeAgoOptions) {
   var title = _ref2.title,
-      description = _ref2.description,
-      coins = _ref2.coins,
-      feedDate = _ref2.feedDate,
-      source = _ref2.source,
-      link = _ref2.link;
+    description = _ref2.description,
+    coins = _ref2.coins,
+    feedDate = _ref2.feedDate,
+    source = _ref2.source,
+    link = _ref2.link;
   return {
     source: SOURCE_ID,
-    articleId: crId(),
+    articleId: (0, _crId["default"])(),
     title: title,
-    description: decodeHTMLEntities(description),
+    description: (0, _decodeHTMLEntities["default"])(description),
     related: _crRelated(coins),
     author: source,
     publishedAt: feedDate,
@@ -42,21 +34,18 @@ var _crArticle = function _crArticle(_ref2, timeAgoOptions) {
     url: link
   };
 };
-
 var _toArticles = function _toArticles(json) {
   var _ref3 = json || {},
-      news = _ref3.news;
-
+    news = _ref3.news;
   return (0, _crArticles["default"])(news, _crArticle);
 };
-
 var CoinStatsAdapter = {
   toNews: function toNews(json, option) {
     var filter = option.filter;
     return {
       source: SOURCE_ID,
       articles: _toArticles(json),
-      sortBy: toFirstUpperCase(filter)
+      sortBy: (0, _toFirstUpperCase["default"])(filter)
     };
   }
 };

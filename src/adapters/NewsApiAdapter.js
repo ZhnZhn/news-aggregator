@@ -1,12 +1,8 @@
-import ut from '../utils/ut';
+import crId from '../utils/crId';
+import joinStrsBy from '../utils/joinStrsBy';
+import toFirstUpperCase from '../utils/toFirstUpperCase';
 
 import sanitizeArticle from './sanitizeArticle';
-
-const {
-  crId,
-  joinStrsBy,
-  toFirstUpperCase
-} = ut;
 
 const NEWS_SEARCH = 'newsapi_search';
 const NEWS_TOP = 'newsapi_top';
