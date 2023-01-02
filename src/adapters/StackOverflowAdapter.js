@@ -1,4 +1,4 @@
-import Dom from '../utils/Dom';
+import domSanitize from '../utils/domSanitize';
 import crId from '../utils/crId';
 
 import sanitizeArticle from './sanitizeArticle';
@@ -22,9 +22,9 @@ const _crArticle = (
   return _assign(item, {
     articleId: question_id || crId(),
     source: sourceId,
-    title: Dom.htmlDecode(title),
+    title: domSanitize(title),
     owner: {
-      display_name: Dom.htmlDecode(owner.display_name)
+      display_name: domSanitize(owner.display_name)
     }
   })
 }

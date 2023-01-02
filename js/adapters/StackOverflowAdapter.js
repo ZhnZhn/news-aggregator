@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports["default"] = void 0;
-var _Dom = _interopRequireDefault(require("../utils/Dom"));
+var _domSanitize = _interopRequireDefault(require("../utils/domSanitize"));
 var _crId = _interopRequireDefault(require("../utils/crId"));
 var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
 var _rSourceId = {
@@ -19,9 +19,9 @@ var _crArticle = function _crArticle(item, sourceId) {
   return _assign(item, {
     articleId: question_id || (0, _crId["default"])(),
     source: sourceId,
-    title: _Dom["default"].htmlDecode(title),
+    title: (0, _domSanitize["default"])(title),
     owner: {
-      display_name: _Dom["default"].htmlDecode(owner.display_name)
+      display_name: (0, _domSanitize["default"])(owner.display_name)
     }
   });
 };
