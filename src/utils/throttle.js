@@ -1,8 +1,7 @@
 //undescore.js throttle
 
-const _fnNow = Date.now || function() {
-  return new Date().getTime();
-};
+const _dateGetTime = () => (new Date()).getTime();
+const _getDateNow = Date.now || _dateGetTime;
 
 // Returns a function, that, when invoked, will only be triggered at most once
 // during a given window of time. Normally, the throttled function will run
@@ -10,31 +9,35 @@ const _fnNow = Date.now || function() {
 // but if you'd like to disable the execution on the leading edge, pass
 // `{leading: false}`. To disable execution on the trailing edge, ditto.
 
-const throttle = function(func, wait, options={}) {
-  //var timeout, context, args, result;
-  let timeout, context, args, result;
-  //var previous = 0;
-  let previous = 0;
-  //if (!options) options = {};
+const throttle = function(
+  func,
+  wait,
+  options={}
+) {
+  let timeout
+  , context
+  , args
+  , result
+  , previous = 0;
 
-  //var later = function() {
   const later = function() {
     previous = options.leading === false
-       ? 0 : _fnNow();
+       ? 0
+       : _getDateNow();
     timeout = null;
     result = func.apply(context, args);
-    if (!timeout) context = args = null;
+    if (!timeout) {
+      context = args = null
+    }
   };
 
-  //var throttled = function() {
   const throttled = function(...inArgs) {
-    //var now = _fnNow();
-    const now = _fnNow();
-    if (!previous && options.leading === false) previous = now;
-    //var remaining = wait - (now - previous);
+    const now = _getDateNow();
+    if (!previous && options.leading === false) {
+      previous = now
+    }
     const remaining = wait - (now - previous);
     context = this;
-    //args = arguments;
     args = inArgs;
     if (remaining <= 0 || remaining > wait) {
       if (timeout) {
@@ -43,7 +46,9 @@ const throttle = function(func, wait, options={}) {
       }
       previous = now;
       result = func.apply(context, args);
-      if (!timeout) context = args = null;
+      if (!timeout) {
+        context = args = null
+      }
     } else if (!timeout && options.trailing !== false) {
       timeout = setTimeout(later, remaining);
     }
