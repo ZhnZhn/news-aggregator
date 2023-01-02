@@ -10,7 +10,7 @@ import useRefSet from '../hooks/useRefSet';
 import useTheme from '../hooks/useTheme';
 import styleConfig from './Article.Style';
 
-import dt from '../../utils/dt';
+import { toTimeDate } from '../../utils/dt';
 
 import crStyle from '../zhn-utils/crStyle';
 import toLink from '../zhn-utils/toLink';
@@ -108,7 +108,7 @@ const Article = forwardRef(({
   , description = item.description || 'More...'
   , _style = crStyle([isClosed, S_NONE])
   , _captionStyle = crStyle(S_CAPTION, [isShow, S_CAPTION_OPEN])
-  , _publishedAt = publishedDate || dt.toTimeDate(publishedAt)
+  , _publishedAt = publishedDate || toTimeDate(publishedAt)
   , _href = toLink(url);
 
   if (url && !_href) {

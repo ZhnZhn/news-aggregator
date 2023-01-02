@@ -2,6 +2,7 @@ import crId from '../utils/crId';
 import crDescription from '../utils/crDescription';
 import formatTimeAgo from '../utils/formatTimeAgo';
 import domSanitize from '../utils/domSanitize';
+import { toMls } from '../utils/dt';
 import crArticles from './crArticles';
 import {
   rounBy,
@@ -14,19 +15,6 @@ import {
 const _isArr = Array.isArray
 , _getObjectKeys = Object.keys
 , SOURCE_ID = 'av_sentiments';
-
-//YYYYMMDDTHHMMSS
-const _toMls = (
-  strDate
-) => (strDate || '').length > 12
-  ? Date.UTC(
-      strDate.slice(0,4),
-      parseInt(strDate.slice(4,6), 10) - 1,
-      strDate.slice(6,8),
-      strDate.slice(9,11),
-      strDate.slice(11,13)
-    )
-  : void 0;
 
 const _crOverallSentiment = (
   overallSentimentLabel,
@@ -67,7 +55,7 @@ const _crArticle = ({
   overall_sentiment_score,
   ticker_sentiment
 }, timeAgoOptions) => {
-  const publishedAt = _toMls(time_published);
+  const publishedAt = toMls(time_published);
   return {
     source: SOURCE_ID,
     articleId: crId(),

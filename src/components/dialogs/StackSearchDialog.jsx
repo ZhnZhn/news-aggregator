@@ -1,4 +1,7 @@
-import DateUtil from '../../utils/dt';
+import {
+  getFromDate,
+  getToDate
+} from '../../utils/dt';
 import DialogStackInputs from './DialogStackInputs';
 import { StackOverflowLink } from '../links/Links';
 import {
@@ -7,8 +10,8 @@ import {
   getDialogCaption
 } from './DialogFn';
 
-const INITIAL_FROM_DATE = DateUtil.getFromDate(1)
-, INITIAL_TO_DATE = DateUtil.getToDate()
+const INITIAL_FROM_DATE = getFromDate(1)
+, INITIAL_TO_DATE = getToDate()
 , SORT_BY_OPTIONS = [
   ["Activity, Recent Day", "activity"],
   ["Creation Date", "creation"],

@@ -1,10 +1,13 @@
-import DateUtil from '../utils/dt';
+import {
+  getFromDate,
+  getToDate,
+  toUTCSecond
+} from '../utils/dt';
 
 const API_URL = "https://api.stackexchange.com/2.2";
 
-const _toUTCSecond = DateUtil.toUTCSecond
-, DF_FROM_DATE_S = _toUTCSecond(DateUtil.getFromDate(1))
-, DF_TO_DATE_S = _toUTCSecond(DateUtil.getToDate())
+const DF_FROM_DATE_S = toUTCSecond(getFromDate(1))
+, DF_TO_DATE_S = toUTCSecond(getToDate())
 
 , DF_TAG_TAG = 'CSS'
 , DF_TAG_SORT_BY = 'week'

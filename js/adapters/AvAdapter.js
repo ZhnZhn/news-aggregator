@@ -7,16 +7,12 @@ var _crId = _interopRequireDefault(require("../utils/crId"));
 var _crDescription = _interopRequireDefault(require("../utils/crDescription"));
 var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
 var _domSanitize = _interopRequireDefault(require("../utils/domSanitize"));
+var _dt = require("../utils/dt");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
 var _AvFn = require("./AvFn");
 var _isArr = Array.isArray,
   _getObjectKeys = Object.keys,
   SOURCE_ID = 'av_sentiments';
-
-//YYYYMMDDTHHMMSS
-var _toMls = function _toMls(strDate) {
-  return (strDate || '').length > 12 ? Date.UTC(strDate.slice(0, 4), parseInt(strDate.slice(4, 6), 10) - 1, strDate.slice(6, 8), strDate.slice(9, 11), strDate.slice(11, 13)) : void 0;
-};
 var _crOverallSentiment = function _crOverallSentiment(overallSentimentLabel, overallSentimentScore) {
   return (0, _domSanitize["default"])(overallSentimentLabel + " (" + (0, _AvFn.rounBy)(overallSentimentScore) + ")");
 };
@@ -41,7 +37,7 @@ var _crArticle = function _crArticle(_ref, timeAgoOptions) {
     overall_sentiment_label = _ref.overall_sentiment_label,
     overall_sentiment_score = _ref.overall_sentiment_score,
     ticker_sentiment = _ref.ticker_sentiment;
-  var publishedAt = _toMls(time_published);
+  var publishedAt = (0, _dt.toMls)(time_published);
   return {
     source: SOURCE_ID,
     articleId: (0, _crId["default"])(),

@@ -1,13 +1,11 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports["default"] = void 0;
-var _dt = _interopRequireDefault(require("../utils/dt"));
+var _dt = require("../utils/dt");
 var API_URL = "https://api.stackexchange.com/2.2";
-var _toUTCSecond = _dt["default"].toUTCSecond,
-  DF_FROM_DATE_S = _toUTCSecond(_dt["default"].getFromDate(1)),
-  DF_TO_DATE_S = _toUTCSecond(_dt["default"].getToDate()),
+var DF_FROM_DATE_S = (0, _dt.toUTCSecond)((0, _dt.getFromDate)(1)),
+  DF_TO_DATE_S = (0, _dt.toUTCSecond)((0, _dt.getToDate)()),
   DF_TAG_TAG = 'CSS',
   DF_TAG_SORT_BY = 'week',
   DF_SEARCH_TAGGED = 'CSS',

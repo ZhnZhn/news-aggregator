@@ -1,10 +1,13 @@
-import { useCallback } from '../uiApi';
-import DateUtil from '../../utils/dt';
+import { 
+  useCallback
+} from '../uiApi';
+import {
+  isValidDate,
+  toUTCSecond
+} from '../../utils/dt';
 import TextField from './TextField';
 
-const DATE_ERR_MSG = "YYYY-MM-DD"
-, _onTestDate = DateUtil.isValidDate
-, _toUTCSecond = DateUtil.toUTCSecond;
+const DATE_ERR_MSG = "YYYY-MM-DD";
 
 const InputFromToDate = ({
   style,
@@ -13,7 +16,7 @@ const InputFromToDate = ({
   onInput
 }) => {
   const _onInput = useCallback((v, id) => {
-    onInput(''+_toUTCSecond(v), id)
+    onInput(''+toUTCSecond(v), id)
   }, [onInput]);
   return (
    <div>
@@ -24,7 +27,7 @@ const InputFromToDate = ({
         style={style}
         initValue={initialFrom}
         errorMsg={DATE_ERR_MSG}
-        onTest={_onTestDate}
+        onTest={isValidDate}
         onEnter={_onInput}
         onBlur={_onInput}
       />
@@ -35,7 +38,7 @@ const InputFromToDate = ({
         style={style}
         initValue={initialTo}
         errorMsg={DATE_ERR_MSG}
-        onTest={_onTestDate}
+        onTest={isValidDate}
         onEnter={_onInput}
         onBlur={_onInput}
       />

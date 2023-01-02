@@ -8,7 +8,7 @@ var _uiApi = require("../uiApi");
 var _useRefSet2 = _interopRequireDefault(require("../hooks/useRefSet"));
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 var _Article = _interopRequireDefault(require("./Article.Style"));
-var _dt = _interopRequireDefault(require("../../utils/dt"));
+var _dt = require("../../utils/dt");
 var _crStyle = _interopRequireDefault(require("../zhn-utils/crStyle"));
 var _toLink = _interopRequireDefault(require("../zhn-utils/toLink"));
 var _useItemGestureSwipeX = _interopRequireDefault(require("./useItemGestureSwipeX"));
@@ -105,7 +105,7 @@ var Article = (0, _uiApi.forwardRef)(function (_ref3, ref) {
     description = item.description || 'More...',
     _style = (0, _crStyle["default"])([isClosed, S_NONE]),
     _captionStyle = (0, _crStyle["default"])(S_CAPTION, [isShow, S_CAPTION_OPEN]),
-    _publishedAt = publishedDate || _dt["default"].toTimeDate(publishedAt),
+    _publishedAt = publishedDate || (0, _dt.toTimeDate)(publishedAt),
     _href = (0, _toLink["default"])(url);
   if (url && !_href) {
     return null;
