@@ -1,0 +1,14 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/getFnByPropName.js"
+ ],
+ "file": "../../src/utils/getFnByPropName.js",
+ "names": [
+  "getFnByPropName",
+  "obj",
+  "propName",
+  "dfValue"
+ ],
+ "mappings": ";;;;AAAA,IAAMA,eAAe,GAAG,SAAlBA,eAAe,CACnBC,GAAG,EACHC,QAAQ,EACRC,OAAO;EAAA,OACJF,GAAG,IAAI,OAAOA,GAAG,CAACC,QAAQ,CAAC,IAAI,UAAU,GAC1CD,GAAG,CAACC,QAAQ,CAAC,GACb,YAAM;IAAE,OAAOC,OAAO;EAAE,CAAC;AAAA;AAAA,eAEdH,eAAe;AAAA"
+}

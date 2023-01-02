@@ -12,7 +12,7 @@ import {
   useCallback
 } from '../uiApi';
 
-import safeFn from '../../utils/safeFn';
+import getFnByPropName from '../../utils/getFnByPropName';
 
 import ScrollPane from '../zhn-atoms/ScrollPane';
 import OpenClose from '../zhn-atoms/OpenClose';
@@ -33,12 +33,12 @@ const _hasLengthOrEmpty = (
 , SET_THE_NEWS_KEY = 'setTheNewsKey'
 , SET_WEBZ_KEY = 'setWebzKey'
 , _getKeySetters = (data) => ({
-   setAv: safeFn(data, SET_AV_KEY),
-   setIex: safeFn(data, SET_IEX_KEY),
-   setFmp: safeFn(data, SET_FMP_KEY),
-   setNews: safeFn(data, SET_NEWS_KEY),
-   setTheNews: safeFn(data, SET_THE_NEWS_KEY),
-   setWebz: safeFn(data, SET_WEBZ_KEY)
+   setAv: getFnByPropName(data, SET_AV_KEY),
+   setIex: getFnByPropName(data, SET_IEX_KEY),
+   setFmp: getFnByPropName(data, SET_FMP_KEY),
+   setNews: getFnByPropName(data, SET_NEWS_KEY),
+   setTheNews: getFnByPropName(data, SET_THE_NEWS_KEY),
+   setWebz: getFnByPropName(data, SET_WEBZ_KEY)
 });
 
 const _isVisible = ({

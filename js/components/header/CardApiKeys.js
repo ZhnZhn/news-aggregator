@@ -6,7 +6,7 @@ exports["default"] = void 0;
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _ProviderNames = require("../../conf/ProviderNames");
 var _uiApi = require("../uiApi");
-var _safeFn = _interopRequireDefault(require("../../utils/safeFn"));
+var _getFnByPropName = _interopRequireDefault(require("../../utils/getFnByPropName"));
 var _ScrollPane = _interopRequireDefault(require("../zhn-atoms/ScrollPane"));
 var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose"));
 var _PasswordField = _interopRequireDefault(require("../zhn-m-input/PasswordField"));
@@ -28,12 +28,12 @@ var _hasLengthOrEmpty = function _hasLengthOrEmpty(length) {
   SET_WEBZ_KEY = 'setWebzKey',
   _getKeySetters = function _getKeySetters(data) {
     return {
-      setAv: (0, _safeFn["default"])(data, SET_AV_KEY),
-      setIex: (0, _safeFn["default"])(data, SET_IEX_KEY),
-      setFmp: (0, _safeFn["default"])(data, SET_FMP_KEY),
-      setNews: (0, _safeFn["default"])(data, SET_NEWS_KEY),
-      setTheNews: (0, _safeFn["default"])(data, SET_THE_NEWS_KEY),
-      setWebz: (0, _safeFn["default"])(data, SET_WEBZ_KEY)
+      setAv: (0, _getFnByPropName["default"])(data, SET_AV_KEY),
+      setIex: (0, _getFnByPropName["default"])(data, SET_IEX_KEY),
+      setFmp: (0, _getFnByPropName["default"])(data, SET_FMP_KEY),
+      setNews: (0, _getFnByPropName["default"])(data, SET_NEWS_KEY),
+      setTheNews: (0, _getFnByPropName["default"])(data, SET_THE_NEWS_KEY),
+      setWebz: (0, _getFnByPropName["default"])(data, SET_WEBZ_KEY)
     };
   };
 var _isVisible = function _isVisible(_ref) {
