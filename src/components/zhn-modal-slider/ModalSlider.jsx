@@ -1,11 +1,10 @@
 import {
   useState,
-  useCallback,
   useEffect
 } from '../uiApi';
 
+import useThrottleCallback from '../hooks/useThrottleCallback';
 import useHasMounted from '../hooks/useHasMounted';
-import throttleOnce from '../../utils/throttleOnce';
 
 import ModalPane from '../zhn-moleculs/ModalPane';
 import ShowHide from '../zhn-atoms/ShowHide';
@@ -74,7 +73,12 @@ const _initState = model => {
 }
 
 
-const _addPage = (pages, id, title, model) => {
+const _addPage = (
+  pages,
+  id,
+  title,
+  model
+) => {
   pages.push((
     <MenuPage
       key={id}
@@ -86,9 +90,14 @@ const _addPage = (pages, id, title, model) => {
   ))
 };
 
-const _crTransform = (pageWidth, pageCurrent) => {
+const _crTransform = (
+  pageWidth,
+  pageCurrent
+) => {
   const _dX = -1*pageWidth*(pageCurrent - 1)+0;
-  return { transform: `translateX(${_dX}px)` };
+  return {
+    transform: `translateX(${_dX}px)`
+  };
 };
 
 const ModalSlider = ({
@@ -110,37 +119,38 @@ const ModalSlider = ({
      pageCurrent,
      pages
    } = state
-   /*eslint-disable react-hooks/exhaustive-deps */
-  , hPrevPage = useCallback(throttleOnce((pageNumber) => {
+   , hPrevPage = useThrottleCallback(pageNumber => {
      setState(prevState => {
        prevState.pageCurrent = pageNumber - 1
        return {...prevState};
      })
-  }), [])
-
-  , hNextPage = useCallback(throttleOnce((id, title, pageNumber)=>{
+  })
+  , hNextPage = useThrottleCallback((
+      id,
+      title,
+      pageNumber
+    ) => {
      setState(prevState => {
        const { pages } = prevState
-          , _max = pages.length-1;
+       , _max = pages.length-1;
 
-      if ( (_max+1) > pageNumber) {
-        if (pages[pageNumber] && pages[pageNumber].key !== id) {
+       if ( (_max+1) > pageNumber) {
+         if (pages[pageNumber] && pages[pageNumber].key !== id) {
            if (pageNumber>0) {
              prevState.pages.splice(pageNumber)
            } else {
              prevState.pages = []
            }
            _addPage(prevState.pages, id, title, model)
-        }
-      } else {
-        _addPage(pages, id, title, model)
-      }
+         }
+       } else {
+         _addPage(pages, id, title, model)
+       }
 
-      prevState.pageCurrent = pageNumber + 1
-      return {...prevState};
+       prevState.pageCurrent = pageNumber + 1
+       return {...prevState};
      })
-  }), [model])
-  /*eslint-enable react-hooks/exhaustive-deps */
+  }, [model])
   , _hasMounted = useHasMounted();
 
   /*eslint-disable react-hooks/exhaustive-deps */
