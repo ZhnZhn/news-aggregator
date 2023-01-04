@@ -103,15 +103,17 @@ var toTimeDate = function toTimeDate(publishedAt, dfValue) {
   if (dfValue === void 0) {
     dfValue = _DF_TO_TIME_DATE_VALUE;
   }
-  if (_isNum(publishedAt)) {
+  if (!publishedAt) {
+    return '';
+  } else if (_isNum(publishedAt)) {
     return _toDateTime(publishedAt);
   }
   //yyyy-MM-ddTHH:mm:ssZ
   var _arr = _isStr(publishedAt) ? publishedAt.split('T') : [''],
     _arrDate = _arr[0].split('-'),
-    _date = _arrDate.length === 3 ? _arrDate[2] + "-" + _arrDate[1] + "-" + _arrDate[0] : '',
+    _date = _arrDate.length === 3 ? " " + _arrDate[2] + "-" + _arrDate[1] + "-" + _arrDate[0] : '',
     _time = _arr[1] ? _arr[1].replace('Z', '').substring(0, 8) : _DF_TO_TIME_DATE_VALUE;
-  return _date ? _time + " " + _date : _time;
+  return "" + _time + _date;
 };
 exports.toTimeDate = toTimeDate;
 //# sourceMappingURL=dt.js.map

@@ -104,7 +104,9 @@ export const toTimeDate = (
   publishedAt,
   dfValue=_DF_TO_TIME_DATE_VALUE
 ) => {
-  if (_isNum(publishedAt)) {
+  if (!publishedAt) {
+    return '';
+  } else if (_isNum(publishedAt)) {
     return _toDateTime(publishedAt);
   }
   //yyyy-MM-ddTHH:mm:ssZ
@@ -113,12 +115,10 @@ export const toTimeDate = (
     : ['']
   , _arrDate = _arr[0].split('-')
   , _date = _arrDate.length === 3
-     ? `${_arrDate[2]}-${_arrDate[1]}-${_arrDate[0]}`
+     ? ` ${_arrDate[2]}-${_arrDate[1]}-${_arrDate[0]}`
      : ''
   , _time = _arr[1]
      ? _arr[1].replace('Z', '').substring(0, 8)
      : _DF_TO_TIME_DATE_VALUE;
-  return _date
-    ? `${_time} ${_date}`
-    : _time;
+  return `${_time}${_date}`;
 }
