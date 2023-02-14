@@ -1,0 +1,11 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/panes/hotKeys.js"
+ ],
+ "file": "../../../src/components/panes/hotKeys.js",
+ "names": [
+  "HK_REMOVE_ITEMS"
+ ],
+ "mappings": ";;;;AACO,IAAMA,eAAe,GAAG,GAAG;AAAA"
+}

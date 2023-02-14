@@ -20,7 +20,7 @@ var crModelMore = function crModelMore(_ref) {
       name: 'Resize'
     }, {
       cn: _CL.CL_MENU_MORE_ITEM,
-      name: 'Remove All Items',
+      name: 'Remove Items',
       onClick: onRemoveItems,
       isClose: true
     }],

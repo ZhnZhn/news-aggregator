@@ -19,7 +19,7 @@ const crModelMore = ({
         name: 'Resize'
       },{
         cn: CL_MENU_MORE_ITEM,
-        name: 'Remove All Items',
+        name: 'Remove Items',
         onClick: onRemoveItems,
         isClose: true
       }

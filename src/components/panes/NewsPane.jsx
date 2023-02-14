@@ -11,6 +11,7 @@ import useToggle from '../hooks/useToggle';
 import useBool from '../hooks/useBool';
 import useTheme from '../hooks/useTheme';
 import useListen from '../hooks/useListen';
+import useHotKey from '../hooks/useHotKey';
 import toFirstUpperCase from '../../utils/toFirstUpperCase'
 
 import crCn from '../zhn-utils/crCn';
@@ -28,6 +29,9 @@ import {
   RESIZE_MAX_WIDTH,
   RESIZE_DELTA
 } from './ResizeWidth';
+import {
+  HK_REMOVE_ITEMS
+} from './hotKeys';
 
 const WIDTH_STYLE = initWidthStyle()
 , CL_NEWS_PANE = "news-pane"
@@ -190,6 +194,8 @@ const NewsPane = ({
       }
     }
   })
+
+  useHotKey(_refRootDiv, onRemoveItems, HK_REMOVE_ITEMS)
 
   const _paneCaption = caption
     || _crPaneCaption(paneCaption, sortBy)

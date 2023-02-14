@@ -9,6 +9,7 @@ var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
 var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
+var _useHotKey = _interopRequireDefault(require("../hooks/useHotKey"));
 var _toFirstUpperCase = _interopRequireDefault(require("../../utils/toFirstUpperCase"));
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 var _NewsPane = _interopRequireDefault(require("./NewsPane.Style"));
@@ -18,6 +19,7 @@ var _Comp = _interopRequireDefault(require("../Comp"));
 var _CaptionButtons = _interopRequireDefault(require("./CaptionButtons"));
 var _LoadNextPage = _interopRequireDefault(require("./LoadNextPage"));
 var _ResizeWidth = require("./ResizeWidth");
+var _hotKeys = require("./hotKeys");
 var _jsxRuntime = require("preact/jsx-runtime");
 var WIDTH_STYLE = (0, _has.initWidthStyle)(),
   CL_NEWS_PANE = "news-pane",
@@ -156,6 +158,7 @@ var NewsPane = function NewsPane(_ref2) {
       }
     }
   });
+  (0, _useHotKey["default"])(_refRootDiv, onRemoveItems, _hotKeys.HK_REMOVE_ITEMS);
   var _paneCaption = caption || _crPaneCaption(paneCaption, sortBy),
     _className = (0, _crCn["default"])(CL_NEWS_PANE, [isShow, CL_SHOW_POPUP]),
     _styleIsShow = isShow ? S_INLINE_BLOCK : S_NONE;

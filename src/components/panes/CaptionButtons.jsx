@@ -16,6 +16,9 @@ import {
   RESIZE_MIN_WIDTH,
   RESIZE_MAX_WIDTH
 } from './ResizeWidth';
+import {
+  HK_REMOVE_ITEMS
+} from './hotKeys';
 
 const S_BT_REMOVE = {
   position: 'relative',
@@ -52,9 +55,9 @@ const CaptionButtons = ({
   return is
     ? (<InlineFlexStart>
         <CircleButton
-          ariaLabel="Remove All Items"
+          ariaLabel="Remove Items [r]"
           dataPos={DP_MIDDLE_RIGHT}
-          caption="R"
+          caption={HK_REMOVE_ITEMS}
           style={S_BT_REMOVE}
           onClick={onRemoveItems}
         />
