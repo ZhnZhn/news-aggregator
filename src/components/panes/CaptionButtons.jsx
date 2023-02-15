@@ -9,7 +9,7 @@ import CircleButton from '../zhn-bt/CircleButton';
 import SvgHrzResize from '../zhn-resize/SvgHrzResize';
 
 import {
-  DP_MIDDLE_RIGHT
+  DP_BT_REMOVE_ITEMS
 } from '../DP';
 import {
   RESIZE_INIT_WIDTH,
@@ -56,7 +56,7 @@ const CaptionButtons = ({
     ? (<InlineFlexStart>
         <CircleButton
           ariaLabel="Remove Items [r]"
-          dataPos={DP_MIDDLE_RIGHT}
+          dataPos={DP_BT_REMOVE_ITEMS}
           caption={HK_REMOVE_ITEMS}
           style={S_BT_REMOVE}
           onClick={onRemoveItems}

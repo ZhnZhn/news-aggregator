@@ -44,7 +44,7 @@ var CaptionButtons = function CaptionButtons(_ref) {
   return is ? (0, _jsxRuntime.jsxs)(_InlineFlexStart["default"], {
     children: [(0, _jsxRuntime.jsx)(_CircleButton["default"], {
       ariaLabel: "Remove Items [r]",
-      dataPos: _DP.DP_MIDDLE_RIGHT,
+      dataPos: _DP.DP_BT_REMOVE_ITEMS,
       caption: _hotKeys.HK_REMOVE_ITEMS,
       style: S_BT_REMOVE,
       onClick: onRemoveItems

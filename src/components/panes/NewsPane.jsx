@@ -11,7 +11,7 @@ import useToggle from '../hooks/useToggle';
 import useBool from '../hooks/useBool';
 import useTheme from '../hooks/useTheme';
 import useListen from '../hooks/useListen';
-import useHotKey from '../hooks/useHotKey';
+import useRefHotKey from '../hooks/useRefHotKey';
 import toFirstUpperCase from '../../utils/toFirstUpperCase'
 
 import crCn from '../zhn-utils/crCn';
@@ -195,7 +195,7 @@ const NewsPane = ({
     }
   })
 
-  useHotKey(_refRootDiv, onRemoveItems, HK_REMOVE_ITEMS)
+  useRefHotKey(_refRootDiv, onRemoveItems, HK_REMOVE_ITEMS)
 
   const _paneCaption = caption
     || _crPaneCaption(paneCaption, sortBy)

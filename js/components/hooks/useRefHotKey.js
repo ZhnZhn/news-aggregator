@@ -4,7 +4,7 @@ exports.__esModule = true;
 exports["default"] = void 0;
 var _uiApi = require("../uiApi");
 var KEY_DOWN = 'keydown';
-var useHotKey = function useHotKey(ref, onKeyDown, hotKey) {
+var useRefHotKey = function useRefHotKey(ref, onKeyDown, hotKey) {
   /*eslint-disable react-hooks/exhaustive-deps */
   (0, _uiApi.useEffect)(function () {
     var _div = ref.current,
@@ -24,6 +24,6 @@ var useHotKey = function useHotKey(ref, onKeyDown, hotKey) {
   //ref, onKeyDown, hotKey
   /*eslint-enable react-hooks/exhaustive-deps */
 };
-var _default = useHotKey;
+var _default = useRefHotKey;
 exports["default"] = _default;
-//# sourceMappingURL=useHotKey.js.map
+//# sourceMappingURL=useRefHotKey.js.map

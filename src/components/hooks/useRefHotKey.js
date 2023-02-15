@@ -2,7 +2,7 @@ import { useEffect } from '../uiApi';
 
 const KEY_DOWN = 'keydown';
 
-const useHotKey = (
+const useRefHotKey = (
   ref,
   onKeyDown,
   hotKey
@@ -30,4 +30,4 @@ const useHotKey = (
   /*eslint-enable react-hooks/exhaustive-deps */
 }
 
-export default useHotKey
+export default useRefHotKey
