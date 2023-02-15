@@ -1,5 +1,5 @@
 
-[aria-label][data-pos]::after {
+[data-pos]::after {
   content: attr(aria-label);
   position: absolute;
   top: 110%;
@@ -20,43 +20,48 @@
   transition: opacity 0.12s ease-out;
 }
 
-[aria-label][data-pos]:hover::after {
+[data-pos]:hover::after {
   opacity: 1;
   transition: opacity 0.12s ease-out 0.85s;
 }
 
-[aria-label][data-pos="l"]::after {  
+[data-pos="l"]::after {  
   left: 0;
 }
 
-[aria-label][data-pos="r"]::after {   
+[data-pos="r"]::after {   
   right: 0;
 } 
 
-[aria-label][data-pos="tl"]::after {
+[data-pos="tl"]::after {
   top: 0;
   left: calc(100% + 4px);
 }
 
-[aria-label][data-pos="tr"]::after {
+[data-pos="tr"]::after {
   top: 0;
   right: calc(100% + 4px);
 }
 
-[aria-label][data-pos="cl"]::after {
+[data-pos="btr"]::after {
+  top: -4px;
+  right: calc(100% + 6px);
+}
+
+[data-pos="cl"]::after {
   top: 38px;
   right: -12px;
   font-size: 12px;
   transform: rotate(-90deg);
 }
-[aria-label][data-pos="cr"]::after {
+[data-pos="cr"]::after {
   top: -38px;
   right: -12px;
   font-size: 12px;
   transform: rotate(-90deg);
 }
 
-[aria-label][data-pos="gh"]::after {
+[data-pos="gh"]::after {
   top: 87%;
   left: 0;
 }
