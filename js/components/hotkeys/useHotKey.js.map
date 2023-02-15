@@ -1,0 +1,17 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hotkeys/useHotKey.js"
+ ],
+ "file": "../../../src/components/hotkeys/useHotKey.js",
+ "names": [
+  "useHotKey",
+  "hotKey",
+  "onKeyDown",
+  "useEffect",
+  "HAS_TOUCH_EVENTS",
+  "addHotKey",
+  "removeHotKey"
+ ],
+ "mappings": ";;;;AAAA;AACA;AACA;AAKA,IAAMA,SAAS,GAAG,SAAZA,SAAS,CACbC,MAAM,EACNC,SAAS,EACN;EACH;EACA,IAAAC,gBAAS,EAAC,YAAI;IACZ,IAAIF,MAAM,IAAI,CAACG,qBAAgB,EAAE;MAC/B,IAAAC,oBAAS,EAACJ,MAAM,EAAEC,SAAS,CAAC;IAC9B;IACA,OAAO,YAAM;MACX,IAAAI,uBAAY,EAACL,MAAM,EAAEC,SAAS,CAAC;IACjC,CAAC;EACH,CAAC,EAAE,EAAE,CAAC;EACN;EACA;AACF,CAAC;AAAA,eAEcF,SAAS;AAAA"
+}

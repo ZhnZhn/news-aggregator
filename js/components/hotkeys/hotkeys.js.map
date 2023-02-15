@@ -1,0 +1,14 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hotkeys/hotkeys.js"
+ ],
+ "file": "../../../src/components/hotkeys/hotkeys.js",
+ "names": [
+  "HK_NEWS_BROWSER",
+  "HK_QUERY_SOURCES",
+  "HK_SETTINGS",
+  "HK_ABOUT"
+ ],
+ "mappings": ";;;;AAAO,IAAMA,eAAe,GAAG,GAAG;AAAA;AAC3B,IAAMC,gBAAgB,GAAG,GAAG;AAAA;AAC5B,IAAMC,WAAW,GAAG,GAAG;AAAA;AACvB,IAAMC,QAAQ,GAAG,GAAG;AAAA"
+}

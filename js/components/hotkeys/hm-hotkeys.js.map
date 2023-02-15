@@ -1,0 +1,18 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hotkeys/hm-hotkeys.js"
+ ],
+ "file": "../../../src/components/hotkeys/hm-hotkeys.js",
+ "names": [
+  "hmHotKeys",
+  "Object",
+  "create",
+  "addHotKey",
+  "hotKey",
+  "onKeyDown",
+  "removeHotKey",
+  "clearHotKeys"
+ ],
+ "mappings": ";;;;AAAO,IAAIA,SAAS,GAAGC,MAAM,CAACC,MAAM,CAAC,IAAI,CAAC;AAAA;AAEnC,IAAMC,SAAS,GAAG,SAAZA,SAAS,CACpBC,MAAM,EACNC,SAAS;EAAA,OACNL,SAAS,KACRA,SAAS,CAACI,MAAM,CAAC,GAAGC,SAAS,CAAC;AAAA;AAAA;AAE7B,IAAMC,YAAY,GAAG,SAAfA,YAAY,CACvBF,MAAM;EAAA,OACHJ,SAAS,KACRA,SAAS,CAACI,MAAM,CAAC,GAAG,KAAK,CAAC,CAAC;AAAA;AAAA;AAE1B,IAAMG,YAAY,GAAG,SAAfA,YAAY,GAAS;EAChC,oBAAAP,SAAS,GAAG,IAAI;AAClB,CAAC;AAAA"
+}
