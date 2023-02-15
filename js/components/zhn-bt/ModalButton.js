@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports["default"] = void 0;
-var _useTooltip2 = _interopRequireDefault(require("../hooks/useTooltip"));
+var _useButton2 = _interopRequireDefault(require("./useButton"));
 var _BtCaption = _interopRequireDefault(require("./BtCaption"));
 var _jsxRuntime = require("preact/jsx-runtime");
 var CL_BT_FLAT = 'bt-flat',
@@ -14,26 +14,25 @@ var ModalButton = function ModalButton(_ref) {
     style = _ref.style,
     clDiv = _ref.clDiv,
     caption = _ref.caption,
-    accessKey = _ref.accessKey,
+    hotKey = _ref.hotKey,
     children = _ref.children,
     onClick = _ref.onClick;
-  var _useTooltip = (0, _useTooltip2["default"])(ariaLabel, dataPos),
-    _ariaLabel = _useTooltip[0],
-    _dataPos = _useTooltip[1];
+  var _useButton = (0, _useButton2["default"])(ariaLabel, dataPos, hotKey, onClick),
+    _ariaLabel = _useButton[0],
+    _dataPos = _useButton[1];
   return (0, _jsxRuntime.jsx)("button", {
     type: "button",
     "aria-label": _ariaLabel,
     "data-pos": _dataPos,
     className: CL_BT_FLAT,
     style: style,
-    accessKey: accessKey,
     onClick: onClick,
     children: (0, _jsxRuntime.jsx)("div", {
       className: clDiv,
       children: (0, _jsxRuntime.jsx)(_BtCaption["default"], {
         className: CL_BT_FLAT_SPAN,
         caption: caption,
-        accessKey: accessKey,
+        hotKey: hotKey,
         children: children
       })
     })

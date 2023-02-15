@@ -1,4 +1,4 @@
-import useTooltip from '../hooks/useTooltip';
+import useButton from './useButton';
 import BtCaption from './BtCaption';
 
 const CL_BT_FLAT = 'bt-flat'
@@ -10,14 +10,20 @@ const ModalButton = ({
   style,
   clDiv,
   caption,
-  accessKey,
+  hotKey,
   children,
   onClick
 }) => {
   const [
     _ariaLabel,
     _dataPos
-  ] = useTooltip(ariaLabel, dataPos);
+  ] = useButton(
+    ariaLabel,
+    dataPos,
+    hotKey,
+    onClick
+  );
+
   return (
     <button
       type="button"
@@ -25,14 +31,13 @@ const ModalButton = ({
       data-pos={_dataPos}
       className={CL_BT_FLAT}
       style={style}
-      accessKey={accessKey}
       onClick={onClick}
     >
       <div className={clDiv}>
         <BtCaption
           className={CL_BT_FLAT_SPAN}
           caption={caption}
-          accessKey={accessKey}
+          hotKey={hotKey}
         >
            {children}
         </BtCaption>

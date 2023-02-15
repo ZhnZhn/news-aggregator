@@ -29,15 +29,15 @@ var CaptionToken = function CaptionToken(_ref) {
   });
 };
 var _findKeyIndex = function _findKeyIndex(caption, accessKey) {
-  return accessKey && caption ? caption.toLowerCase().indexOf(accessKey) : -1;
+  return accessKey && caption ? caption.toUpperCase().indexOf(accessKey) : -1;
 };
 var BtCaption = function BtCaption(_ref2) {
   var className = _ref2.className,
     style = _ref2.style,
     caption = _ref2.caption,
-    accessKey = _ref2.accessKey,
+    hotKey = _ref2.hotKey,
     children = _ref2.children;
-  var _keyIndex = _findKeyIndex(caption, accessKey),
+  var _keyIndex = _findKeyIndex(caption, hotKey),
     _caption = _has.HAS_TOUCH_EVENTS || _keyIndex === -1 ? caption || '' : (0, _jsxRuntime.jsx)(CaptionToken, {
       caption: caption,
       keyIndex: _keyIndex

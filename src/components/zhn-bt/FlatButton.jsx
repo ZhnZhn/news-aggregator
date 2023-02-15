@@ -1,5 +1,6 @@
-import useTooltip from '../hooks/useTooltip';
 import crCn from '../zhn-utils/crCn';
+
+import useButton from './useButton';
 import BtCaption from './BtCaption';
 
 const CL_BT_FLAT = 'bt-flat'
@@ -12,14 +13,20 @@ const FlatButton = ({
   style,
   clDiv,
   caption,
-  accessKey,
+  hotKey,
   children,
   onClick
 }) => {
   const [
     _ariaLabel,
     _dataPos
-  ] = useTooltip(ariaLabel, dataPos);
+  ] = useButton(
+    ariaLabel,
+    dataPos,
+    hotKey,
+    onClick
+  );
+
   return (
     <button
       type="button"
@@ -27,7 +34,6 @@ const FlatButton = ({
       data-pos={_dataPos}
       className={crCn(CL_BT_FLAT, className)}
       style={style}
-      accessKey={accessKey}
       onClick={onClick}
     >
       <div className={clDiv}>
@@ -35,7 +41,7 @@ const FlatButton = ({
            ? <BtCaption
                className={CL_BT_FLAT_SPAN}
                caption={caption}
-               accessKey={accessKey}
+               hotKey={hotKey}
              />
            : null
         }

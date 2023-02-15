@@ -1,12 +1,20 @@
 import { HAS_TOUCH_EVENTS } from '../has';
 
+const _crAriaLabel = (
+  ariaLabel,
+  hotKey
+) => hotKey
+  ? `${ariaLabel || ''} [${hotKey.toLowerCase()}]`
+  : ariaLabel;
+
 const useTooltip = (
   ariaLabel,
-  dataPos
+  dataPos,
+  hotKey
 ) => HAS_TOUCH_EVENTS
   ? []
   : [
-      ariaLabel,
+      _crAriaLabel(ariaLabel, hotKey),
       dataPos
     ];
 

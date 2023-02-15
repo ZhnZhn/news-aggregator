@@ -33,20 +33,20 @@ const _findKeyIndex = (
   caption,
   accessKey
 ) => accessKey && caption
-    ?  caption
-        .toLowerCase()
-        .indexOf(accessKey)
-    : -1;
+  ?  caption
+      .toUpperCase()
+      .indexOf(accessKey)
+  : -1;
 
 
 const BtCaption = ({
   className,
   style,
   caption,
-  accessKey,
+  hotKey,
   children
 }) => {
-  const _keyIndex = _findKeyIndex(caption, accessKey)
+  const _keyIndex = _findKeyIndex(caption, hotKey)
   , _caption = HAS_TOUCH_EVENTS || _keyIndex === -1
        ? caption || ''
        : <CaptionToken caption={caption} keyIndex={_keyIndex} />;
