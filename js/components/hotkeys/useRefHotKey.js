@@ -10,13 +10,11 @@ var useRefHotKey = function useRefHotKey(ref, onKeyDown, hotKey) {
     var _div = ref.current,
       _onKeyDown = function _onKeyDown(evt) {
         if ((evt.altKey || evt.metaKey) && evt.key && evt.key.toUpperCase() === hotKey) {
-          evt.stopPropagation();
+          evt.stopImmediatePropagation();
           onKeyDown();
         }
       };
-    if (_div) {
-      _div.addEventListener(KEY_DOWN, _onKeyDown, false);
-    }
+    _div.addEventListener(KEY_DOWN, _onKeyDown, false);
     return function () {
       _div.removeEventLister(KEY_DOWN, _onKeyDown, false);
     };

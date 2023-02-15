@@ -11,7 +11,7 @@ import useToggle from '../hooks/useToggle';
 import useBool from '../hooks/useBool';
 import useTheme from '../hooks/useTheme';
 import useListen from '../hooks/useListen';
-import useRefHotKey from '../hooks/useRefHotKey';
+import useRefHotKey from '../hotkeys/useRefHotKey';
 import toFirstUpperCase from '../../utils/toFirstUpperCase'
 
 import crCn from '../zhn-utils/crCn';
@@ -30,7 +30,9 @@ import {
   RESIZE_DELTA
 } from './ResizeWidth';
 import {
-  HK_REMOVE_ITEMS
+  HK_REMOVE_ITEMS,
+  HK_PLUS_WIDTH,
+  HK_MINUS_WIDTH
 } from './hotKeys';
 
 const WIDTH_STYLE = initWidthStyle()
@@ -133,12 +135,20 @@ const NewsPane = ({
   const _refRootDiv = useRef()
   , _refFirstItem = useRef()
   /*eslint-disable react-hooks/exhaustive-deps */
+  , _MORE_HANDLERS = useMemo(
+      () => _crModelMoreHandlers(_refRootDiv, onRemoveItems),
+      []
+    )
   , _MODEL_MORE = useMemo(
-      () => crModelMore(_crModelMoreHandlers(_refRootDiv, onRemoveItems)),
+      () => crModelMore(_MORE_HANDLERS),
       []
    )
    // onRemoveItems
    /*eslint-enable react-hooks/exhaustive-deps */
+  , {
+    onPlusWidth,
+    onMinusWidth
+  } = _MORE_HANDLERS
   , [
     isShow,
     toggleIsShow
@@ -196,6 +206,8 @@ const NewsPane = ({
   })
 
   useRefHotKey(_refRootDiv, onRemoveItems, HK_REMOVE_ITEMS)
+  useRefHotKey(_refRootDiv, onPlusWidth, HK_PLUS_WIDTH)
+  useRefHotKey(_refRootDiv, onMinusWidth, HK_MINUS_WIDTH)
 
   const _paneCaption = caption
     || _crPaneCaption(paneCaption, sortBy)
@@ -230,6 +242,8 @@ const NewsPane = ({
         <CaptionButtons
            refRootDiv={_refRootDiv}
            onRemoveItems={onRemoveItems}
+           onPlusWidth={onPlusWidth}
+           onMinusWidth={onMinusWidth}
         />
       </A.BrowserCaption>
       <A.ScrollPane

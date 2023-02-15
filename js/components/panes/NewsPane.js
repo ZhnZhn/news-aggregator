@@ -9,7 +9,7 @@ var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
 var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
-var _useRefHotKey = _interopRequireDefault(require("../hooks/useRefHotKey"));
+var _useRefHotKey = _interopRequireDefault(require("../hotkeys/useRefHotKey"));
 var _toFirstUpperCase = _interopRequireDefault(require("../../utils/toFirstUpperCase"));
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 var _NewsPane = _interopRequireDefault(require("./NewsPane.Style"));
@@ -103,9 +103,14 @@ var NewsPane = function NewsPane(_ref2) {
     onClose = _ref2.onClose;
   var _refRootDiv = (0, _uiApi.useRef)(),
     _refFirstItem = (0, _uiApi.useRef)(),
-    _MODEL_MORE = (0, _uiApi.useMemo)(function () {
-      return (0, _crModelMore["default"])(_crModelMoreHandlers(_refRootDiv, onRemoveItems));
+    _MORE_HANDLERS = (0, _uiApi.useMemo)(function () {
+      return _crModelMoreHandlers(_refRootDiv, onRemoveItems);
     }, []),
+    _MODEL_MORE = (0, _uiApi.useMemo)(function () {
+      return (0, _crModelMore["default"])(_MORE_HANDLERS);
+    }, []),
+    onPlusWidth = _MORE_HANDLERS.onPlusWidth,
+    onMinusWidth = _MORE_HANDLERS.onMinusWidth,
     _useToggle = (0, _useToggle2["default"])(true),
     isShow = _useToggle[0],
     toggleIsShow = _useToggle[1],
@@ -159,6 +164,8 @@ var NewsPane = function NewsPane(_ref2) {
     }
   });
   (0, _useRefHotKey["default"])(_refRootDiv, onRemoveItems, _hotKeys.HK_REMOVE_ITEMS);
+  (0, _useRefHotKey["default"])(_refRootDiv, onPlusWidth, _hotKeys.HK_PLUS_WIDTH);
+  (0, _useRefHotKey["default"])(_refRootDiv, onMinusWidth, _hotKeys.HK_MINUS_WIDTH);
   var _paneCaption = caption || _crPaneCaption(paneCaption, sortBy),
     _className = (0, _crCn["default"])(CL_NEWS_PANE, [isShow, CL_SHOW_POPUP]),
     _styleIsShow = isShow ? S_INLINE_BLOCK : S_NONE;
@@ -179,7 +186,9 @@ var NewsPane = function NewsPane(_ref2) {
       onClose: _hHide,
       children: (0, _jsxRuntime.jsx)(_CaptionButtons["default"], {
         refRootDiv: _refRootDiv,
-        onRemoveItems: onRemoveItems
+        onRemoveItems: onRemoveItems,
+        onPlusWidth: onPlusWidth,
+        onMinusWidth: onMinusWidth
       })
     }), (0, _jsxRuntime.jsxs)(_Comp["default"].ScrollPane, {
       style: S_SCROLL_DIV,

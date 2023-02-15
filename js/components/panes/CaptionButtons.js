@@ -33,8 +33,10 @@ var MEDIA_QUERY = '(min-width: 450px)',
     return _mql && _mql.matches;
   };
 var CaptionButtons = function CaptionButtons(_ref) {
-  var onRemoveItems = _ref.onRemoveItems,
-    refRootDiv = _ref.refRootDiv;
+  var refRootDiv = _ref.refRootDiv,
+    onRemoveItems = _ref.onRemoveItems,
+    onPlusWidth = _ref.onPlusWidth,
+    onMinusWidth = _ref.onMinusWidth;
   var _useState = (0, _uiApi.useState)(_crInitialState),
     is = _useState[0],
     setIs = _useState[1];
@@ -53,7 +55,9 @@ var CaptionButtons = function CaptionButtons(_ref) {
       style: S_SVG_RESIZE,
       initWidth: _ResizeWidth.RESIZE_INIT_WIDTH,
       minWidth: _ResizeWidth.RESIZE_MIN_WIDTH,
-      maxWidth: _ResizeWidth.RESIZE_MAX_WIDTH
+      maxWidth: _ResizeWidth.RESIZE_MAX_WIDTH,
+      onPlusWidth: onPlusWidth,
+      onMinusWidth: onMinusWidth
     })]
   }) : null;
 };

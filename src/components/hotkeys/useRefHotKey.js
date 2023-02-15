@@ -15,13 +15,11 @@ const useRefHotKey = (
            && evt.key
            && evt.key.toUpperCase() === hotKey
          ) {
-         evt.stopPropagation()
+         evt.stopImmediatePropagation()
          onKeyDown()
       }
     }
-    if (_div) {
-      _div.addEventListener(KEY_DOWN, _onKeyDown, false)
-    }
+    _div.addEventListener(KEY_DOWN, _onKeyDown, false)
     return () => {
       _div.removeEventLister(KEY_DOWN, _onKeyDown, false)
     }

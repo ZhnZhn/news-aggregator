@@ -5,7 +5,9 @@
  ],
  "file": "../../../src/components/panes/hotKeys.js",
  "names": [
-  "HK_REMOVE_ITEMS"
+  "HK_REMOVE_ITEMS",
+  "HK_PLUS_WIDTH",
+  "HK_MINUS_WIDTH"
  ],
- "mappings": ";;;;AACO,IAAMA,eAAe,GAAG,GAAG;AAAA"
+ "mappings": ";;;;AAAO,IAAMA,eAAe,GAAG,GAAG;AAAA;AAC3B,IAAMC,aAAa,GAAG,GAAG;AAAA;AACzB,IAAMC,cAAc,GAAG,GAAG;AAAA"
 }

@@ -1,4 +1,4 @@
-import isKeyEnter from '../hooks/isKeyEnter';
+//import isKeyEnter from '../hooks/isKeyEnter';
 
 const _isFn = fn => typeof fn === 'function'
 , _isNaN = Number.isNaN
@@ -100,23 +100,26 @@ class ResizeElementImpl {
       this.hStopResize()
     }
   }
-
+  /*
   hKdLeft = (event) => {
     if (isKeyEnter(event)) {
       event.stopPropagation()
       this.resizeBy(-this.step)
     }
   }
+  */
   _resizeLeft = () => {
      this.resizeBy(-this.deltaStep)
      this._increaseDeltaStep();
   }
+  /*
   hKdRight = (event) => {
     if (isKeyEnter(event)) {
       event.stopPropagation()
       this.resizeBy(this.step)
     }
   }
+  */
   _resizeRight = () => {
     this.resizeBy(this.deltaStep)
     this._increaseDeltaStep();

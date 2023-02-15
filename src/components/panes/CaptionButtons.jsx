@@ -42,8 +42,10 @@ const MEDIA_QUERY = '(min-width: 450px)'
 };
 
 const CaptionButtons = ({
+  refRootDiv,
   onRemoveItems,
-  refRootDiv
+  onPlusWidth,
+  onMinusWidth
 }) => {
   const [
     is,
@@ -67,6 +69,8 @@ const CaptionButtons = ({
            initWidth={RESIZE_INIT_WIDTH}
            minWidth={RESIZE_MIN_WIDTH}
            maxWidth={RESIZE_MAX_WIDTH}
+           onPlusWidth={onPlusWidth}
+           onMinusWidth={onMinusWidth}
         />
       </InlineFlexStart>)
     : null;
