@@ -1,9 +1,10 @@
 import {
-  useState,
-  useMemo
+  useState
 } from './uiApi';
 
 import useListen from './hooks/useListen'
+import useHotKeys from './hotkeys/useHotKeys';
+
 import Store from '../flux/stores/Store'
 import {
   CAT_CHANGE_THEME,
@@ -25,17 +26,18 @@ import RouterModalDialog from './dialogs/RouterModalDialog'
 
 const CL_COMP = "component-container";
 
+const _showSettings = ComponentActions
+ .showModalDialog.bind(
+   null,
+   'SETTINGS_DIALOG',
+   Store.exportSettingsFn()
+);
+
 const AppNewsAggregator = () => {
   const [
     theme,
     setTheme
-  ] = useState(initialTheme)
-  , _showSettings = useMemo(() => ComponentActions
-     .showModalDialog.bind(
-       null,
-       'SETTINGS_DIALOG',
-       Store.exportSettingsFn()
-  ), []);
+  ] = useState(initialTheme);
 
   useListen(Store, (actionType, themeName)=>{
     if (actionType === CAT_CHANGE_THEME){
@@ -45,6 +47,8 @@ const AppNewsAggregator = () => {
       })
     }
   })
+
+  useHotKeys()
 
   return (
     <ThemeContext.Provider value={theme}>

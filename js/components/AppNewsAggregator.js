@@ -6,6 +6,7 @@ exports["default"] = void 0;
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _uiApi = require("./uiApi");
 var _useListen = _interopRequireDefault(require("./hooks/useListen"));
+var _useHotKeys = _interopRequireDefault(require("./hotkeys/useHotKeys"));
 var _Store = _interopRequireDefault(require("../flux/stores/Store"));
 var _ComponentActions = require("../flux/actions/ComponentActions");
 var _theme = require("./styles/theme");
@@ -18,13 +19,11 @@ var _ModalDialogContainer = _interopRequireDefault(require("./zhn-containers/Mod
 var _RouterModalDialog = _interopRequireDefault(require("./dialogs/RouterModalDialog"));
 var _jsxRuntime = require("preact/jsx-runtime");
 var CL_COMP = "component-container";
+var _showSettings = _ComponentActions.ComponentActions.showModalDialog.bind(null, 'SETTINGS_DIALOG', _Store["default"].exportSettingsFn());
 var AppNewsAggregator = function AppNewsAggregator() {
   var _useState = (0, _uiApi.useState)(_theme.initialTheme),
     theme = _useState[0],
-    setTheme = _useState[1],
-    _showSettings = (0, _uiApi.useMemo)(function () {
-      return _ComponentActions.ComponentActions.showModalDialog.bind(null, 'SETTINGS_DIALOG', _Store["default"].exportSettingsFn());
-    }, []);
+    setTheme = _useState[1];
   (0, _useListen["default"])(_Store["default"], function (actionType, themeName) {
     if (actionType === _ComponentActions.CAT_CHANGE_THEME) {
       setTheme(function (prevTheme) {
@@ -33,6 +32,7 @@ var AppNewsAggregator = function AppNewsAggregator() {
       });
     }
   });
+  (0, _useHotKeys["default"])();
   return (0, _jsxRuntime.jsx)(_ThemeContext["default"].Provider, {
     value: theme,
     children: (0, _jsxRuntime.jsxs)("div", {

@@ -8,3 +8,4 @@ export const DP_CLOSE_LEFT = 'cl'
 export const DP_CLOSE_RIGHT = 'cr'
 
 export const DP_GITHUB = 'gh'
+export const DP_BT_REMOVE_ITEMS = 'btr'
