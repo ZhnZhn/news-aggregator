@@ -5,7 +5,9 @@ exports.__esModule = true;
 exports["default"] = void 0;
 var _uiApi = require("../uiApi");
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
+var _useHotKey = _interopRequireDefault(require("../hotkeys/useHotKey"));
 var _HeaderBar = _interopRequireDefault(require("./HeaderBar.Style"));
+var _hotkeys = require("../hotkeys/hotkeys");
 var _DP = require("../DP");
 var _LoadingProgress = _interopRequireDefault(require("./LoadingProgress"));
 var _IconAppLogo = _interopRequireDefault(require("./IconAppLogo"));
@@ -84,6 +86,7 @@ var HeaderBar = function HeaderBar(_ref) {
     _hTheNewsSearch = _useClickItem(onTheNewsSearch, _hCloseQuery),
     _hTheNewsTop = _useClickItem(onTheNewsTop, _hCloseQuery),
     TS = (0, _useTheme["default"])(_HeaderBar["default"]);
+  (0, _useHotKey["default"])(_hotkeys.HK_QUERY_SOURCES, _hToggleQuery);
   return (0, _jsxRuntime.jsxs)("div", {
     className: CL_HEADER,
     style: TS.HEADER,
@@ -118,18 +121,18 @@ var HeaderBar = function HeaderBar(_ref) {
     }), (0, _jsxRuntime.jsxs)("span", {
       className: CL_BROWSER_BTS,
       children: [(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
-        ariaLabel: "News Sources Browser [n]",
+        ariaLabel: "News Sources Browser",
         dataPos: _DP.DP_BOTTOM_LEFT,
         clDiv: TS.BT.CL_FLAT_DIV,
         caption: "News",
-        accessKey: "n",
+        hotKey: _hotkeys.HK_NEWS_BROWSER,
         onClick: onNewsSources
       }), (0, _jsxRuntime.jsx)(_Comp["default"].ModalButton, {
-        ariaLabel: "Panel Query Sources [q]",
+        ariaLabel: "Panel Query Sources",
         dataPos: _DP.DP_BOTTOM_RIGHT,
         clDiv: TS.BT.CL_FLAT_DIV,
         caption: "Query",
-        accessKey: "q",
+        hotKey: _hotkeys.HK_QUERY_SOURCES,
         onClick: _hToggleQuery,
         children: (0, _jsxRuntime.jsx)("span", {
           className: CL_ARROW_DOWN
@@ -138,20 +141,20 @@ var HeaderBar = function HeaderBar(_ref) {
     }), (0, _jsxRuntime.jsxs)("div", {
       className: CL_BTS,
       children: [(0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
-        ariaLabel: "About News Aggregator [a]",
+        ariaLabel: "About News Aggregator",
         dataPos: _DP.DP_BOTTOM_RIGHT,
         className: CL_BT_ABOUT,
         clDiv: TS.BT.CL_FLAT_DIV,
-        accessKey: "a",
+        hotKey: _hotkeys.HK_ABOUT,
         onClick: onAbout,
         children: (0, _jsxRuntime.jsx)(_Comp["default"].SvgInfo, {
           style: S_SVG_ICON
         })
       }), (0, _jsxRuntime.jsx)(_Comp["default"].FlatButton, {
-        ariaLabel: "Settings Dialog [s]",
+        ariaLabel: "Settings Dialog",
         dataPos: _DP.DP_BOTTOM_RIGHT,
         clDiv: TS.BT.CL_FLAT_DIV,
-        accessKey: "s",
+        hotKey: _hotkeys.HK_SETTINGS,
         onClick: onSettings,
         children: (0, _jsxRuntime.jsx)(_Comp["default"].SvgSettings, {
           style: S_SVG_ICON

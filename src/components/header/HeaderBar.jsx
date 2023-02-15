@@ -4,7 +4,15 @@ import {
 } from '../uiApi';
 
 import useTheme from '../hooks/useTheme';
+import useHotKey from '../hotkeys/useHotKey';
 import styleConfig from './HeaderBar.Style';
+
+import {
+  HK_NEWS_BROWSER,
+  HK_QUERY_SOURCES,
+  HK_SETTINGS,
+  HK_ABOUT
+} from '../hotkeys/hotkeys';
 
 import {
   DP_BOTTOM_LEFT,
@@ -89,6 +97,8 @@ const HeaderBar = ({
   , _hTheNewsTop = _useClickItem(onTheNewsTop, _hCloseQuery)
   , TS = useTheme(styleConfig);
 
+  useHotKey(HK_QUERY_SOURCES, _hToggleQuery)
+
   return (
     <div className={CL_HEADER} style={TS.HEADER}>
       <PanelQuery
@@ -125,19 +135,19 @@ const HeaderBar = ({
       />
       <span className={CL_BROWSER_BTS}>
         <A.FlatButton
-          ariaLabel="News Sources Browser [n]"
+          ariaLabel="News Sources Browser"
           dataPos={DP_BOTTOM_LEFT}
           clDiv={TS.BT.CL_FLAT_DIV}
           caption="News"
-          accessKey="n"
+          hotKey={HK_NEWS_BROWSER}
           onClick={onNewsSources}
         />
         <A.ModalButton
-           ariaLabel="Panel Query Sources [q]"
+           ariaLabel="Panel Query Sources"
            dataPos={DP_BOTTOM_RIGHT}
            clDiv={TS.BT.CL_FLAT_DIV}
            caption="Query"
-           accessKey="q"
+           hotKey={HK_QUERY_SOURCES}
            onClick={_hToggleQuery}
         >
           <span className={CL_ARROW_DOWN} />
@@ -145,20 +155,20 @@ const HeaderBar = ({
       </span>
       <div className={CL_BTS}>
           <A.FlatButton
-            ariaLabel="About News Aggregator [a]"
+            ariaLabel="About News Aggregator"
             dataPos={DP_BOTTOM_RIGHT}
             className={CL_BT_ABOUT}
             clDiv={TS.BT.CL_FLAT_DIV}
-            accessKey="a"
+            hotKey={HK_ABOUT}
             onClick={onAbout}
           >
             <A.SvgInfo style={S_SVG_ICON} />
           </A.FlatButton>
           <A.FlatButton
-            ariaLabel="Settings Dialog [s]"
+            ariaLabel="Settings Dialog"
             dataPos={DP_BOTTOM_RIGHT}
             clDiv={TS.BT.CL_FLAT_DIV}
-            accessKey="s"
+            hotKey={HK_SETTINGS}
             onClick={onSettings}
           >
             <A.SvgSettings style={S_SVG_ICON} />
