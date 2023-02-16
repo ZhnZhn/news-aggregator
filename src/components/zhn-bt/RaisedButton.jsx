@@ -1,15 +1,20 @@
+import BtCaption from './BtCaption';
+
 const CL_BT_RAISED = 'bt-raised'
 , CL_BT_RAISED_SPAN = 'bt-raised__span'
-, S_PRIMARY_SPAN = { color: '#80c040' };
+, S_PRIMARY_COLOR = { color: '#80c040' };
 
 const RaisedButton = ({
   isPrimary,
-  style, clDiv,
+  style,
+  clDiv,
   caption,
+  hotKey,
   onClick
 }) => {
   const _spanStyle = isPrimary
-    ? S_PRIMARY_SPAN : void 0;
+    ? S_PRIMARY_COLOR
+    : void 0;
   return (
     <button
       type="button"
@@ -18,12 +23,12 @@ const RaisedButton = ({
       onClick={onClick}
     >
       <div className={clDiv}>
-        <span
-           className={CL_BT_RAISED_SPAN}
-           style={_spanStyle}
-        >
-          {caption}
-        </span>
+        <BtCaption
+          className={CL_BT_RAISED_SPAN}
+          style={_spanStyle}
+          caption={caption}
+          hotKey={hotKey}
+        />
       </div>
     </button>
   );
