@@ -163,9 +163,9 @@ var NewsPane = function NewsPane(_ref2) {
       }
     }
   });
-  (0, _useRefHotKey["default"])(_refRootDiv, onRemoveItems, _hotKeys.HK_REMOVE_ITEMS);
-  (0, _useRefHotKey["default"])(_refRootDiv, onPlusWidth, _hotKeys.HK_PLUS_WIDTH);
-  (0, _useRefHotKey["default"])(_refRootDiv, onMinusWidth, _hotKeys.HK_MINUS_WIDTH);
+  (0, _useRefHotKey["default"])(_refRootDiv, _hotKeys.HK_REMOVE_ITEMS, onRemoveItems);
+  (0, _useRefHotKey["default"])(_refRootDiv, _hotKeys.HK_PLUS_WIDTH, onPlusWidth);
+  (0, _useRefHotKey["default"])(_refRootDiv, _hotKeys.HK_MINUS_WIDTH, onMinusWidth);
   var _paneCaption = caption || _crPaneCaption(paneCaption, sortBy),
     _className = (0, _crCn["default"])(CL_NEWS_PANE, [isShow, CL_SHOW_POPUP]),
     _styleIsShow = isShow ? S_INLINE_BLOCK : S_NONE;

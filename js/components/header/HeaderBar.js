@@ -128,7 +128,7 @@ var HeaderBar = function HeaderBar(_ref) {
         hotKey: _hotkeys.HK_NEWS_BROWSER,
         onClick: onNewsSources
       }), (0, _jsxRuntime.jsx)(_Comp["default"].ModalButton, {
-        ariaLabel: "Panel Query Sources",
+        ariaLabel: "Query Sources Menu",
         dataPos: _DP.DP_BOTTOM_RIGHT,
         clDiv: TS.BT.CL_FLAT_DIV,
         caption: "Query",

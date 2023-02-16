@@ -3,17 +3,13 @@
 exports.__esModule = true;
 exports["default"] = void 0;
 var _uiApi = require("../uiApi");
-var _has = require("../has");
 var _hmHotkeys = require("./hm-hotkeys");
 var useHotKey = function useHotKey(hotKey, onKeyDown) {
   /*eslint-disable react-hooks/exhaustive-deps */
   (0, _uiApi.useEffect)(function () {
-    if (hotKey && !_has.HAS_TOUCH_EVENTS) {
-      (0, _hmHotkeys.addHotKey)(hotKey, onKeyDown);
-    }
-    return function () {
-      (0, _hmHotkeys.removeHotKey)(hotKey, onKeyDown);
-    };
+    return _hmHotkeys.HAS_HOT_KEYS && hotKey ? ((0, _hmHotkeys.addHotKey)(hotKey, onKeyDown), function () {
+      return (0, _hmHotkeys.removeHotKey)(hotKey, onKeyDown);
+    }) : void 0;
   }, []);
   //hotKey, onKeyDown
   /*eslint-disable react-hooks/exhaustive-deps */

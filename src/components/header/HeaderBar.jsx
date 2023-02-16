@@ -143,7 +143,7 @@ const HeaderBar = ({
           onClick={onNewsSources}
         />
         <A.ModalButton
-           ariaLabel="Panel Query Sources"
+           ariaLabel="Query Sources Menu"
            dataPos={DP_BOTTOM_RIGHT}
            clDiv={TS.BT.CL_FLAT_DIV}
            caption="Query"

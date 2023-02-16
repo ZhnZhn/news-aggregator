@@ -205,9 +205,9 @@ const NewsPane = ({
     }
   })
 
-  useRefHotKey(_refRootDiv, onRemoveItems, HK_REMOVE_ITEMS)
-  useRefHotKey(_refRootDiv, onPlusWidth, HK_PLUS_WIDTH)
-  useRefHotKey(_refRootDiv, onMinusWidth, HK_MINUS_WIDTH)
+  useRefHotKey(_refRootDiv, HK_REMOVE_ITEMS, onRemoveItems)
+  useRefHotKey(_refRootDiv, HK_PLUS_WIDTH, onPlusWidth)
+  useRefHotKey(_refRootDiv, HK_MINUS_WIDTH, onMinusWidth)
 
   const _paneCaption = caption
     || _crPaneCaption(paneCaption, sortBy)

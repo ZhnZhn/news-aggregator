@@ -1,6 +1,7 @@
 import { useEffect } from '../uiApi';
-import { HAS_TOUCH_EVENTS } from '../has';
+
 import {
+  HAS_HOT_KEYS,
   addHotKey,
   removeHotKey
 } from './hm-hotkeys';
@@ -10,14 +11,13 @@ const useHotKey = (
   onKeyDown
 ) => {
   /*eslint-disable react-hooks/exhaustive-deps */
-  useEffect(()=>{
-    if (hotKey && !HAS_TOUCH_EVENTS) {
-      addHotKey(hotKey, onKeyDown)
-    }
-    return () => {
-      removeHotKey(hotKey, onKeyDown)
-    }
-  }, [])
+  useEffect(() => HAS_HOT_KEYS && hotKey
+    ? (
+        addHotKey(hotKey, onKeyDown),
+        () => removeHotKey(hotKey, onKeyDown)
+      )
+    : void 0
+  , [])
   //hotKey, onKeyDown
   /*eslint-disable react-hooks/exhaustive-deps */
 }

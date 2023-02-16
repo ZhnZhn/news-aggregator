@@ -1,29 +1,32 @@
 import { useEffect } from '../uiApi';
 import {
+  HAS_HOT_KEYS,
+  HOT_KEY_EVENT,
   hmHotKeys,
   clearHotKeys
 } from './hm-hotkeys';
 
-const KEY_DOWN = 'keydown';
-const _isFn = fn => typeof fn === 'function';
+const _onKeyDown = (evt) => {
+  if ((evt.altKey || evt.metaKey) && evt.key) {
+    const _onKeyDownHotKey = hmHotKeys[evt.key.toUpperCase()];
+    if (typeof _onKeyDownHotKey === 'function') {
+      evt.stopImmediatePropagation()
+      _onKeyDownHotKey()
+    }
+  }
+};
 
 const useHotKeys = () => {
-  useEffect(() => {
-    const _onKeyDown = (evt) => {
-      if ((evt.altKey || evt.metaKey) && evt.key) {
-        const _onKeyDownHotKey = hmHotKeys[evt.key.toUpperCase()];
-        if (_isFn(_onKeyDownHotKey)) {
-          evt.stopImmediatePropagation()
-          _onKeyDownHotKey()
+  useEffect(() => HAS_HOT_KEYS
+    ? (
+        document.addEventListener(HOT_KEY_EVENT, _onKeyDown, false),
+        () => {
+          clearHotKeys()
+          document.removeEventListener(HOT_KEY_EVENT, _onKeyDown, false)
         }
-      }
-    };
-    document.addEventListener(KEY_DOWN, _onKeyDown, false)
-    return () => {
-      clearHotKeys()
-      document.removeEventListener(KEY_DOWN, _onKeyDown, false)
-    }
-  }, [])
+      )
+     : void 0
+  , [])
 }
 
 export default useHotKeys

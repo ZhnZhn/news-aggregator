@@ -1,15 +1,17 @@
 import { useEffect } from '../uiApi';
-
-const KEY_DOWN = 'keydown';
+import {
+  HAS_HOT_KEYS,
+  HOT_KEY_EVENT
+} from './hm-hotkeys';
 
 const useRefHotKey = (
   ref,
-  onKeyDown,
-  hotKey
+  hotKey,
+  onKeyDown
 ) => {
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
-    const _div = ref.current
+    const _element = HAS_HOT_KEYS && ref && ref.current
     , _onKeyDown = (evt) => {
       if ((evt.altKey || evt.metaKey)
            && evt.key
@@ -19,12 +21,14 @@ const useRefHotKey = (
          onKeyDown()
       }
     }
-    _div.addEventListener(KEY_DOWN, _onKeyDown, false)
-    return () => {
-      _div.removeEventLister(KEY_DOWN, _onKeyDown, false)
-    }
+    return _element && typeof onKeyDown === 'function'
+      ? (
+          _element.addEventListener(HOT_KEY_EVENT, _onKeyDown, false),
+          () => _element.removeEventLister(HOT_KEY_EVENT, _onKeyDown, false)
+        )
+      : void 0;
   }, [])
-  //ref, onKeyDown, hotKey
+  //ref, hotKey, onKeyDown
   /*eslint-enable react-hooks/exhaustive-deps */
 }
 
