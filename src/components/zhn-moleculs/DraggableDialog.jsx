@@ -12,6 +12,7 @@ import {
 
 import useToggle from '../hooks/useToggle';
 import useXYMovable from '../hooks/useXYMovable';
+import useRefHotKey from '../hotkeys/useRefHotKey';
 
 import ModalToggle from './ModalToggle';
 import BrowserCaption from '../zhn-atoms/BrowserCaption';
@@ -40,7 +41,10 @@ const CL_DIALOG = 'dialog'
 }
 , S_NONE = {
   display: 'none'
-};
+}
+, HK_LOAD = 'L'
+, HK_SHOW = 'H'
+, HK_CLOSE = 'C';
 
 const _isFn = fn => typeof fn === 'function';
 
@@ -57,6 +61,7 @@ const DialogButtons = ({
          style={TS.RAISED}
          clDiv={TS.CL_RAISED_DIV}
          caption="Load"
+         hotKey={HK_LOAD}
          onClick={onLoad}
       />
     }
@@ -65,6 +70,7 @@ const DialogButtons = ({
          style={TS.RAISED}
          clDiv={TS.CL_RAISED_DIV}
          caption="Show"
+         hotKey={HK_SHOW}
          onClick={onShow}
       />
     }
@@ -72,6 +78,7 @@ const DialogButtons = ({
        style={TS.RAISED}
        clDiv={TS.CL_RAISED_DIV}
        caption="Close"
+       hotKey={HK_CLOSE}
        onClick={onClose}
     />
   </div>
@@ -143,6 +150,10 @@ const DraggableDialog = forwardRef(({
   /*eslint-enable react-hooks/exhaustive-deps */
 
   useImperativeHandle(ref, () => ({ focusPrevEl }))
+
+  useRefHotKey(_refDialog, HK_LOAD, onLoad)
+  useRefHotKey(_refDialog, HK_SHOW, onShow)
+  useRefHotKey(_refDialog, HK_CLOSE, _hClose)
 
   const [
     _styleShow,

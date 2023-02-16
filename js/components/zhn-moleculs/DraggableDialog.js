@@ -7,6 +7,7 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 var _uiApi = require("../uiApi");
 var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
 var _useXYMovable = _interopRequireDefault(require("../hooks/useXYMovable"));
+var _useRefHotKey = _interopRequireDefault(require("../hotkeys/useRefHotKey"));
 var _ModalToggle = _interopRequireDefault(require("./ModalToggle"));
 var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
 var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
@@ -35,7 +36,10 @@ var CL_DIALOG = 'dialog',
   },
   S_NONE = {
     display: 'none'
-  };
+  },
+  HK_LOAD = 'L',
+  HK_SHOW = 'H',
+  HK_CLOSE = 'C';
 var _isFn = function _isFn(fn) {
   return typeof fn === 'function';
 };
@@ -51,16 +55,19 @@ var DialogButtons = function DialogButtons(_ref) {
       style: TS.RAISED,
       clDiv: TS.CL_RAISED_DIV,
       caption: "Load",
+      hotKey: HK_LOAD,
       onClick: onLoad
     }), _isFn(onShow) && (0, _jsxRuntime.jsx)(_RaisedButton["default"], {
       style: TS.RAISED,
       clDiv: TS.CL_RAISED_DIV,
       caption: "Show",
+      hotKey: HK_SHOW,
       onClick: onShow
     }), (0, _jsxRuntime.jsx)(_RaisedButton["default"], {
       style: TS.RAISED,
       clDiv: TS.CL_RAISED_DIV,
       caption: "Close",
+      hotKey: HK_CLOSE,
       onClick: onClose
     })]
   });
@@ -133,6 +140,9 @@ var DraggableDialog = (0, _uiApi.forwardRef)(function (_ref2, ref) {
       focusPrevEl: focusPrevEl
     };
   });
+  (0, _useRefHotKey["default"])(_refDialog, HK_LOAD, onLoad);
+  (0, _useRefHotKey["default"])(_refDialog, HK_SHOW, onShow);
+  (0, _useRefHotKey["default"])(_refDialog, HK_CLOSE, _hClose);
   var _ref3 = isShow ? [S_BLOCK, CL_DIALOG_OPEN] : [S_NONE, CL_DIALOG],
     _styleShow = _ref3[0],
     _classShow = _ref3[1],
