@@ -38,7 +38,8 @@ var StackInputs = function StackInputs(_ref) {
         caption: arrConfig[2],
         initValue: arrConfig[3],
         onEnter: onSelect,
-        onBlur: onSelect
+        onBlur: onSelect,
+        onKeyDown: onSelect
       })) : _type === 'ft' ? (0, _jsxRuntime.jsx)(_InputFromToDate["default"], {
         style: TS.INPUT_DATE,
         initialFrom: arrConfig[3],

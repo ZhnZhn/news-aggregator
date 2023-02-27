@@ -56,7 +56,8 @@ const TextField = forwardRef(({
   hasClear=true,
   onTest=FN_TRUE,
   onEnter=FN_NOOP,
-  onBlur=FN_NOOP
+  onBlur=FN_NOOP,
+  onKeyDown=FN_NOOP
 }, ref) => {
   const _refId = useRef(id || crId())
   , [
@@ -76,39 +77,50 @@ const TextField = forwardRef(({
   ] = useBool()
   /*eslint-disable react-hooks/exhaustive-deps */
   , [
+    _onEvent,
+    _clearInput
+  ] = useMemo(() => [
+    (evt, onEvent) => {
+      const _value = _getEventTargetValue(evt);
+      if (onTest(_value)) {
+        onEvent(_value.trim(), id)
+      }
+    },
+    () => {
+      onKeyDown('', id)
+      setValue('')
+    }
+  ], [])
+  // onTest, onKeyDown, id
+  , [
     _hBlurInput,
     _hInputChange,
-    _hKeyDown,
-    _hClear
+    _hKeyDown
   ] = useMemo(() => [
     (event) => {
-      const _value = _getEventTargetValue(event);
-      if (onTest(_value)) {
-        onBlur(_value.trim(), id)
-      }
+      _onEvent(event, onBlur)
       _blurInput()
     },
     (event) => {
-      const _value = event.target.value;
+      _onEvent(event, onKeyDown)
+      const _value = _getEventTargetValue(event);
       setValue(_value)
       setIsPastTest(onTest(_value))
     },
     (event) => {
       const keyCode = event.keyCode;
       if (keyCode === 46 || keyCode === 27){
-        setValue('')
+        _clearInput()
       } else if (keyCode === 13) {
-        const _value = _getEventTargetValue(event);
-        if (onTest(_value)) {
-          onEnter(_value.trim(), id)
-        }
+        _onEvent(event, onEnter)
+      } else {
+        _onEvent(event, onKeyDown)
       }
-    },
-    () => setValue('')
+    }
   ], [])
   //onTest, onBlur, _blurInput, id
   //onTest
-  //onTest, onEnter, id
+  //onTest, onEnter, onKeyDown, id
   /*eslint-enable react-hooks/exhaustive-deps */
 
   useImperativeHandle(ref, ()=>({
@@ -160,7 +172,7 @@ const TextField = forwardRef(({
            color="black"
            className="svg-clear"
            style={S_BT_CLEAR}
-           onClick={_hClear}
+           onClick={_clearInput}
         />}
         <div className={CL_INPUT_LINE} style={_lineStyle} />
         { _lineStyle && <div className={CL_INPUT_MSG_ERR}>{errorMsg}</div>}

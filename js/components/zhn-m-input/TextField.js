@@ -58,7 +58,9 @@ var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
     _ref$onEnter = _ref.onEnter,
     onEnter = _ref$onEnter === void 0 ? FN_NOOP : _ref$onEnter,
     _ref$onBlur = _ref.onBlur,
-    onBlur = _ref$onBlur === void 0 ? FN_NOOP : _ref$onBlur;
+    onBlur = _ref$onBlur === void 0 ? FN_NOOP : _ref$onBlur,
+    _ref$onKeyDown = _ref.onKeyDown,
+    onKeyDown = _ref$onKeyDown === void 0 ? FN_NOOP : _ref$onKeyDown;
   var _refId = (0, _uiApi.useRef)(id || (0, _crId["default"])()),
     _useState = (0, _uiApi.useState)(initValue || ''),
     value = _useState[0],
@@ -73,38 +75,45 @@ var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
     _focusInput = _useBool[1],
     _blurInput = _useBool[2],
     _useMemo = (0, _uiApi.useMemo)(function () {
-      return [function (event) {
-        var _value = _getEventTargetValue(event);
+      return [function (evt, onEvent) {
+        var _value = _getEventTargetValue(evt);
         if (onTest(_value)) {
-          onBlur(_value.trim(), id);
+          onEvent(_value.trim(), id);
         }
+      }, function () {
+        onKeyDown('', id);
+        setValue('');
+      }];
+    }, []),
+    _onEvent = _useMemo[0],
+    _clearInput = _useMemo[1],
+    _useMemo2 = (0, _uiApi.useMemo)(function () {
+      return [function (event) {
+        _onEvent(event, onBlur);
         _blurInput();
       }, function (event) {
-        var _value = event.target.value;
+        _onEvent(event, onKeyDown);
+        var _value = _getEventTargetValue(event);
         setValue(_value);
         setIsPastTest(onTest(_value));
       }, function (event) {
         var keyCode = event.keyCode;
         if (keyCode === 46 || keyCode === 27) {
-          setValue('');
+          _clearInput();
         } else if (keyCode === 13) {
-          var _value = _getEventTargetValue(event);
-          if (onTest(_value)) {
-            onEnter(_value.trim(), id);
-          }
+          _onEvent(event, onEnter);
+        } else {
+          _onEvent(event, onKeyDown);
         }
-      }, function () {
-        return setValue('');
       }];
     }, []),
-    _hBlurInput = _useMemo[0],
-    _hInputChange = _useMemo[1],
-    _hKeyDown = _useMemo[2],
-    _hClear = _useMemo[3];
+    _hBlurInput = _useMemo2[0],
+    _hInputChange = _useMemo2[1],
+    _hKeyDown = _useMemo2[2];
 
   //onTest, onBlur, _blurInput, id
   //onTest
-  //onTest, onEnter, id
+  //onTest, onEnter, onKeyDown, id
   /*eslint-enable react-hooks/exhaustive-deps */
 
   (0, _uiApi.useImperativeHandle)(ref, function () {
@@ -149,7 +158,7 @@ var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
         color: "black",
         className: "svg-clear",
         style: S_BT_CLEAR,
-        onClick: _hClear
+        onClick: _clearInput
       }), (0, _jsxRuntime.jsx)("div", {
         className: CL_INPUT_LINE,
         style: _lineStyle

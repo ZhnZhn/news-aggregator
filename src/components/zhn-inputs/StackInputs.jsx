@@ -41,6 +41,7 @@ const StackInputs = ({
                initValue={arrConfig[3]}
                onEnter={onSelect}
                onBlur={onSelect}
+               onKeyDown={onSelect}
             />
           )
           : _type === 'ft'
