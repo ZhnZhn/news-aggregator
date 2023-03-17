@@ -4,7 +4,7 @@ exports.__esModule = true;
 exports.crQueryTokenAll = exports.crApiUrl = exports.checkResponse = void 0;
 var _ApiFn = require("./ApiFn");
 var API_URL = 'https://api.thenewsapi.com/v1/news',
-  QUERY_LIMIT = 'limit=5&language=en';
+  QUERY_LIMIT = 'limit=3&language=en';
 var _crPage = function _crPage(nextPage) {
   return (0, _ApiFn.crQueryToken)('page', nextPage);
 };

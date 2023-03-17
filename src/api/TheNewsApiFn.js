@@ -1,7 +1,7 @@
 import { crQueryToken } from './ApiFn';
 
 const API_URL = 'https://api.thenewsapi.com/v1/news'
-, QUERY_LIMIT = 'limit=5&language=en';
+, QUERY_LIMIT = 'limit=3&language=en';
 
 const _crPage = (
   nextPage

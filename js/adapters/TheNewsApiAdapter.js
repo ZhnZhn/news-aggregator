@@ -10,7 +10,8 @@ var _crId = _interopRequireDefault(require("../utils/crId"));
 var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
 var _toFirstUpperCase = _interopRequireDefault(require("../utils/toFirstUpperCase"));
 var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
-var MAX_ARTICLES_PER_PAGES = 20000;
+//const MAX_ARTICLES_PER_PAGES = 20000;
+
 var _isArr = Array.isArray;
 var _isNumber = function _isNumber(n) {
   return typeof n === 'number' && n - n === 0;
@@ -25,6 +26,7 @@ var _toArticles = function _toArticles(_ref, sourceId) {
     var title = item.title,
       description = item.description,
       source = item.source,
+      categories = item.categories,
       published_at = item.published_at,
       url = item.url;
     return {
@@ -33,6 +35,7 @@ var _toArticles = function _toArticles(_ref, sourceId) {
       title: title,
       description: description,
       author: source,
+      related: categories,
       publishedAt: published_at,
       timeAgo: (0, _formatTimeAgo["default"])(published_at, _timeAgoOptions),
       url: url
@@ -47,7 +50,7 @@ var _crNextPage = function _crNextPage(page, maxPage) {
   return _isNumber(page) ? _isNumber(maxPage) ? Math.min(page + 1, maxPage) : page + 1 : void 0;
 };
 var _crMaxPage = function _crMaxPage(found, limit) {
-  return _isNumber(found) && _isNumber(limit) ? Math.min(Math.floor(found / limit), MAX_ARTICLES_PER_PAGES / limit) : '';
+  return _isNumber(found) && _isNumber(limit) ? Math.ceil(found / limit) : '';
 };
 var _crConfigPages = function _crConfigPages(meta) {
   var _ref2 = meta || {},
