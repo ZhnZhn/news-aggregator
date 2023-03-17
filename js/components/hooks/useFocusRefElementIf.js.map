@@ -1,0 +1,24 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/useFocusRefElementIf.js"
+ ],
+ "file": "../../../src/components/hooks/useFocusRefElementIf.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "useFocusRefElementIf",
+  "isShow",
+  "_refElement",
+  "useRef",
+  "_refPrevElement",
+  "useEffect",
+  "current",
+  "document",
+  "activeElement",
+  "focusRefElement",
+  "_default",
+  "exports"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAMA,IAAMC,oBAAoB,GAAG,SAAvBA,oBAAoBA,CACxBC,MAAM,EACH;EACF,IAAMC,WAAW,GAAG,IAAAC,aAAM,GAAE;IAC1BC,eAAe,GAAG,IAAAD,aAAM,GAAE;EAE5B,IAAAE,gBAAS,EAAC,YAAI;IACZ,IAAIJ,MAAM,IAAI,CAACG,eAAe,CAACE,OAAO,EAAE;MACtCF,eAAe,CAACE,OAAO,GAAGC,QAAQ,CAACC,aAAa;MAChD,IAAAC,sBAAe,EAACP,WAAW,CAAC;IAC9B,CAAC,MAAM,IAAI,CAACD,MAAM,EAAE;MAClB,IAAAQ,sBAAe,EAACL,eAAe,CAAC;MAChCA,eAAe,CAACE,OAAO,GAAG,IAAI;IAChC;EACF,CAAC,EAAE,CAACL,MAAM,CAAC,CAAC;EAEZ,OAAOC,WAAW;AACrB,CAAC;AAAC,IAAAQ,QAAA,GAEaV,oBAAoB;AAAAW,OAAA,cAAAD,QAAA"
+}
