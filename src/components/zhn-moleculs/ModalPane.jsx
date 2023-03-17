@@ -1,69 +1,30 @@
-//import PropTypes from 'prop-types'
-import {
-  useRef,
-  useCallback,
-  useEffect
-} from '../uiApi';
-
+import useClickOutside from '../hooks/useClickOutside';
+import useKeyEscape from '../hooks/useKeyEscape';
 import useTheme from '../hooks/useTheme';
+
 import styleConfig from './ModalPane.Style';
 
-const _removeClickListener = (listener, ref) => {
-  if (ref.current) {
-   document.removeEventListener('click', listener, true);
-   ref.current = null
-  }
-};
-
-/*eslint-disable react-hooks/exhaustive-deps */
 const ModalPane = ({
   isShow,
   style,
   children,
   onClose
 }) => {
-  const _refNode = useRef(null)
-  , _refIs = useRef(null)
-  , _hClickOutside = useCallback(event => {
-      if ( _refNode?.current?.contains
-        && !_refNode.current.contains(event.target)
-      ){
-        event.stopPropagation()
-        onClose(event)
-      }
-  }, []);
+  const _refElement = useClickOutside(isShow, onClose)
+  , _hKeyEscape = useKeyEscape(onClose)
+  , _hKeyDown = isShow ? _hKeyEscape : void 0
+  , TS = useTheme(styleConfig);
 
-  useEffect(() => {
-    if (isShow && !_refIs.current) {
-      document.addEventListener('click', _hClickOutside, true)
-      _refIs.current = true
-    } else if (!isShow) {
-      _removeClickListener(_hClickOutside, _refIs)
-    }
-  })
-  useEffect(() => {
-    return () => _removeClickListener(_hClickOutside, _refIs)
-  }, [])
-/*eslint-enable react-hooks/exhaustive-deps */
-
-  const TS = useTheme(styleConfig);
   return (
     <div
-       ref={_refNode}
+       role="presentation"
+       ref={_refElement}
        style={{...style, ...TS.ROOT}}
+       onKeyDown={_hKeyDown}
     >
       {children}
     </div>
   );
 }
-
-/*
-ModalPane.propTypes = {
- className: PropTypes.string,
- style: PropTypes.object,
- isShow: PropTypes.bool,
- onClose: PropTypes.func
-}
-*/
 
 export default ModalPane
