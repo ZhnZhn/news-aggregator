@@ -1,6 +1,5 @@
-import { useCallback } from '../uiApi';
-
 import useToggle from '../hooks/useToggle';
+import useKeyEnter from '../hooks/useKeyEnter';
 
 const CL_CAPTION = 'open-close select-none'
 , CL_SHOW_POPUP = 'show-popup'
@@ -9,7 +8,9 @@ const CL_CAPTION = 'open-close select-none'
   backgroundColor: '#4d4d4d',
   lineHeight: 2.5
 }
-, S_ROOT_CAPTION = { paddingLeft: 12 }
+, S_ROOT_CAPTION = {
+  paddingLeft: 12
+}
 , S_CAPTION = {
   color: '#9e9e9e',
   paddingLeft: 4,
@@ -18,9 +19,12 @@ const CL_CAPTION = 'open-close select-none'
   fontSize: '1rem',
   cursor: 'pointer'
 }
-, S_BLOCK = { display: 'block' }
-, S_NONE = { display: 'none' };
-
+, S_BLOCK = {
+  display: 'block'
+}
+, S_NONE = {
+  display: 'none'
+};
 
 const FILL_OPEN = '#9e9e9e'
 , FILL_CLOSE = 'transparent'
@@ -28,6 +32,7 @@ const FILL_OPEN = '#9e9e9e'
 , PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
 
 const OpenClose = ({
+  refBt,
   isClose=true,
   style,
   itemStyle,
@@ -41,37 +46,31 @@ const OpenClose = ({
     isOpen,
     toggleIsOpen
   ] = useToggle(!isClose)
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _hKeyDown = useCallback(evt => {
-    if (event.keyCode === 13 || event.keyCode === 27) {
-      toggleIsOpen()
-    }
-  }, []);
-  //toggleIsOpen
-  /*esline-enable react-hooks/exhaustive-deps */
-
-  let _pathV
-  , _fillV
-  , _styleCollapse
-  , _classShow
-  , _itemStyle;
-  if (isOpen){
-   _pathV = PATH_OPEN;
-   _fillV = fillOpen;
-   _styleCollapse = S_BLOCK;
-   _classShow = CL_SHOW_POPUP;
-   _itemStyle = null;
-  } else {
-   _pathV = PATH_CLOSE;
-   _fillV = fillClose;
-   _styleCollapse = S_NONE;
-   _classShow = null;
-   _itemStyle = itemStyle;
-  }
+  , _hKeyDown = useKeyEnter(toggleIsOpen)
+  , [
+    _pathV,
+    _fillV,
+    _styleCollapse,
+    _classShow,
+    _itemStyle
+  ] = isOpen
+    ? [
+        PATH_OPEN,
+        fillOpen,
+        S_BLOCK,
+        CL_SHOW_POPUP
+    ] : [
+        PATH_CLOSE,
+        fillClose,
+        S_NONE,
+        null,
+        itemStyle
+    ];
 
   return (
     <div style={{...S_ROOT, ...style}}>
       <div
+         ref={refBt}
          role="button"
          className={CL_CAPTION}
          tabIndex="0"
