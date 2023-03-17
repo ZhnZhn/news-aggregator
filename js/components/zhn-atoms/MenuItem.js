@@ -1,36 +1,18 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports["default"] = void 0;
-
 var _uiApi = require("../uiApi");
-
+var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
 var _jsxRuntime = require("preact/jsx-runtime");
-
 var FN_NOOP = function FN_NOOP() {};
-
 var MenuItem = (0, _uiApi.forwardRef)(function (_ref, ref) {
   var className = _ref.className,
-      caption = _ref.caption,
-      _ref$onClick = _ref.onClick,
-      onClick = _ref$onClick === void 0 ? FN_NOOP : _ref$onClick,
-      _ref$onClose = _ref.onClose,
-      onClose = _ref$onClose === void 0 ? FN_NOOP : _ref$onClose;
-
-  /*eslint-disable react-hooks/exhaustive-deps */
-  var _hKeyDown = (0, _uiApi.useCallback)(function (evt) {
-    var keyCode = evt.keyCode;
-
-    if (keyCode === 13) {
-      onClick();
-    } else if (keyCode === 27) {
-      onClose(evt);
-    }
-  }, []); //oncLick, onClose
-
-  /*eslint-enable react-hooks/exhaustive-deps */
-
-
+    caption = _ref.caption,
+    _ref$onClick = _ref.onClick,
+    onClick = _ref$onClick === void 0 ? FN_NOOP : _ref$onClick;
+  var _hKeyDown = (0, _useKeyEnter["default"])(onClick);
   return (0, _jsxRuntime.jsx)("div", {
     ref: ref,
     role: "menuitem",

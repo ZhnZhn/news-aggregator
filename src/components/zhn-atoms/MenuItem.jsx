@@ -1,27 +1,14 @@
-import {
-  forwardRef,
-  useCallback
-} from '../uiApi';
+import { forwardRef } from '../uiApi';
+import useKeyEnter from '../hooks/useKeyEnter';
 
 const FN_NOOP = () => {};
 
 const MenuItem = forwardRef(({
   className,
   caption,
-  onClick=FN_NOOP,
-  onClose=FN_NOOP
+  onClick=FN_NOOP
 }, ref) => {
-  /*eslint-disable react-hooks/exhaustive-deps */
-  const _hKeyDown = useCallback(evt => {
-    const { keyCode } = evt;
-    if (keyCode === 13) {
-      onClick()
-    } else if (keyCode === 27) {
-      onClose(evt)
-    }
-  }, []);
-  //oncLick, onClose
-  /*eslint-enable react-hooks/exhaustive-deps */
+  const _hKeyDown = useKeyEnter(onClick);
 
   return (
     <div
