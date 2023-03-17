@@ -1,11 +1,14 @@
+import useTheme from '../hooks/useTheme';
 import useFocusRefElementIf from '../hooks/useFocusRefElementIf';
+
+import styleConfig from '../source-browsers/NewsBrowser.Style';
 
 import {
   CRYPTO_COMPARE,
   COIN_STATS,
   MESSARI,
   IEX_CLOUD,
-  FMP,
+  FMP_LONG,
   ALPHA_VANTAGE,
   NEWS_API_LONG,
   THE_NEWS_API,
@@ -18,6 +21,11 @@ import MenuItem from '../zhn-atoms/MenuItem';
 import OpenClose from '../zhn-atoms/OpenClose';
 
 const CL_ITEM = 'row__topic';
+
+const S_HORIZONTAL_LINE = {
+  margin: '0 16px',
+  borderBottom: '1px solid black'
+};
 
 const PanelQuery = ({
   className,
@@ -39,7 +47,8 @@ const PanelQuery = ({
   onWebzCountry,
   onClose
 }) => {
-  const _refFirstItem = useFocusRefElementIf(isShow);
+  const TS = useTheme(styleConfig)
+  , _refFirstItem = useFocusRefElementIf(isShow);
 
   return (
     <ModalPopup
@@ -50,79 +59,101 @@ const PanelQuery = ({
     >
         <OpenClose
           refBt={_refFirstItem}
+          style={TS.OPEN_CLOSE}
+          itemStyle={TS.ITEM}
           caption="Blockchain"
         >
-        <MenuItem
-          className={CL_ITEM}
-          caption={`${CRYPTO_COMPARE}: News`}
-          onClick={onCryptoCompare}
-        />
-        <MenuItem
-          className={CL_ITEM}
-          caption={`${COIN_STATS}: News`}
-          onClick={onCoinStats}
-        />
-        <MenuItem
-          className={CL_ITEM}
-          caption={`${MESSARI}: Blockchain News`}
-          onClick={onMessari}
-        />
+          <MenuItem
+            className={CL_ITEM}
+            caption={CRYPTO_COMPARE}
+            onClick={onCryptoCompare}
+          />
+          <MenuItem
+            className={CL_ITEM}
+            caption={COIN_STATS}
+            onClick={onCoinStats}
+          />
+          <MenuItem
+            className={CL_ITEM}
+            caption={MESSARI}
+            onClick={onMessari}
+          />
         </OpenClose>
-        <MenuItem
-          className={CL_ITEM}
-          caption={`${IEX_CLOUD}: Stock Market News`}
-          onClick={onIex}
-        />
-        <MenuItem
-          className={CL_ITEM}
-          caption={`${FMP}: Stock Market News`}
-          onClick={onFmp}
-        />
-        <MenuItem
-          className={CL_ITEM}
-          caption={`${ALPHA_VANTAGE}: Sentiment`}
-          onClick={onAv}
-        />
-        <MenuItem
-          className={CL_ITEM}
-          caption={`${NEWS_API_LONG}: Search`}
-          onClick={onNewsApi}
-        />
-        <MenuItem
-          className={CL_ITEM}
-          caption={`${NEWS_API_LONG}: Top By`}
-          onClick={onNewsTop}
-        />
-        <MenuItem
-          className={CL_ITEM}
-          caption={`${THE_NEWS_API}: Search`}
-          onClick={onTheNewsSearch}
-        />
-        <MenuItem
-          className={CL_ITEM}
-          caption={`${THE_NEWS_API}: Top By`}
-          onClick={onTheNewsTop}
-        />
-        <MenuItem
-          className={CL_ITEM}
-          caption={`${STACK_OVERFLOW}: Tagged Questions`}
-          onClick={onStackTagged}
-        />
-        <MenuItem
-          className={CL_ITEM}
-          caption={`${STACK_OVERFLOW}: Search Questions`}
-          onClick={onStackSearch}
-        />
-        <MenuItem
-          className={CL_ITEM}
-          caption={`${WEBZ_IO}: News, Blogs`}
-          onClick={onWebz}
-        />
-        <MenuItem
-          className={CL_ITEM}
-          caption={`${WEBZ_IO}: By Country, Topic`}
-          onClick={onWebzCountry}
-        />
+        <OpenClose
+           caption="Stock Market"
+           style={TS.OPEN_CLOSE}
+           itemStyle={TS.ITEM}
+        >
+          <MenuItem
+             className={CL_ITEM}
+             caption={`${ALPHA_VANTAGE}: Sentiment`}
+             onClick={onAv}
+           />
+           <MenuItem
+             className={CL_ITEM}
+             caption={IEX_CLOUD}
+             onClick={onIex}
+           />
+           <MenuItem
+             className={CL_ITEM}
+             caption={FMP_LONG}
+             onClick={onFmp}
+           />
+        </OpenClose>
+        <OpenClose
+           caption="General News"
+           style={TS.OPEN_CLOSE}
+           itemStyle={TS.ITEM}
+        >
+           <MenuItem
+             className={CL_ITEM}
+             caption={`${NEWS_API_LONG}: Search`}
+             onClick={onNewsApi}
+           />
+           <MenuItem
+             className={CL_ITEM}
+             caption={`${NEWS_API_LONG}: Top By`}
+             onClick={onNewsTop}
+           />
+           <div style={S_HORIZONTAL_LINE} />
+           <MenuItem
+             className={CL_ITEM}
+             caption={`${THE_NEWS_API}: Search`}
+             onClick={onTheNewsSearch}
+           />
+           <MenuItem
+             className={CL_ITEM}
+             caption={`${THE_NEWS_API}: Top By`}
+             onClick={onTheNewsTop}
+           />
+           <div style={S_HORIZONTAL_LINE} />
+           <MenuItem
+             className={CL_ITEM}
+             caption={`${WEBZ_IO}: News, Blogs`}
+             onClick={onWebz}
+           />
+           <MenuItem
+             className={CL_ITEM}
+             caption={`${WEBZ_IO}: By Country, Topic`}
+             onClick={onWebzCountry}
+           />
+        </OpenClose>
+        <OpenClose
+           caption={STACK_OVERFLOW}
+           style={TS.OPEN_CLOSE}
+           itemStyle={TS.ITEM}
+        >
+           <MenuItem
+             className={CL_ITEM}
+             caption="Tagged Questions"
+             onClick={onStackTagged}
+           />
+           <MenuItem
+             className={CL_ITEM}
+             caption="Search Questions"
+             onClick={onStackSearch}
+           />
+        </OpenClose>
      </ModalPopup>
   );
 };

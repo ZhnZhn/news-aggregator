@@ -3,13 +3,19 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports["default"] = void 0;
+var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 var _useFocusRefElementIf = _interopRequireDefault(require("../hooks/useFocusRefElementIf"));
+var _NewsBrowser = _interopRequireDefault(require("../source-browsers/NewsBrowser.Style"));
 var _ProviderNames = require("../../conf/ProviderNames");
 var _ModalPopup = _interopRequireDefault(require("../zhn-moleculs/ModalPopup"));
 var _MenuItem = _interopRequireDefault(require("../zhn-atoms/MenuItem"));
 var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose"));
 var _jsxRuntime = require("preact/jsx-runtime");
 var CL_ITEM = 'row__topic';
+var S_HORIZONTAL_LINE = {
+  margin: '0 16px',
+  borderBottom: '1px solid black'
+};
 var PanelQuery = function PanelQuery(_ref) {
   var className = _ref.className,
     paneStyle = _ref.paneStyle,
@@ -29,7 +35,8 @@ var PanelQuery = function PanelQuery(_ref) {
     onWebz = _ref.onWebz,
     onWebzCountry = _ref.onWebzCountry,
     onClose = _ref.onClose;
-  var _refFirstItem = (0, _useFocusRefElementIf["default"])(isShow);
+  var TS = (0, _useTheme["default"])(_NewsBrowser["default"]),
+    _refFirstItem = (0, _useFocusRefElementIf["default"])(isShow);
   return (0, _jsxRuntime.jsxs)(_ModalPopup["default"], {
     isShow: isShow,
     className: className,
@@ -37,64 +44,85 @@ var PanelQuery = function PanelQuery(_ref) {
     onClose: onClose,
     children: [(0, _jsxRuntime.jsxs)(_OpenClose["default"], {
       refBt: _refFirstItem,
+      style: TS.OPEN_CLOSE,
+      itemStyle: TS.ITEM,
       caption: "Blockchain",
       children: [(0, _jsxRuntime.jsx)(_MenuItem["default"], {
         className: CL_ITEM,
-        caption: _ProviderNames.CRYPTO_COMPARE + ": News",
+        caption: _ProviderNames.CRYPTO_COMPARE,
         onClick: onCryptoCompare
       }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
         className: CL_ITEM,
-        caption: _ProviderNames.COIN_STATS + ": News",
+        caption: _ProviderNames.COIN_STATS,
         onClick: onCoinStats
       }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
         className: CL_ITEM,
-        caption: _ProviderNames.MESSARI + ": Blockchain News",
+        caption: _ProviderNames.MESSARI,
         onClick: onMessari
       })]
-    }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
-      className: CL_ITEM,
-      caption: _ProviderNames.IEX_CLOUD + ": Stock Market News",
-      onClick: onIex
-    }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
-      className: CL_ITEM,
-      caption: _ProviderNames.FMP + ": Stock Market News",
-      onClick: onFmp
-    }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
-      className: CL_ITEM,
-      caption: _ProviderNames.ALPHA_VANTAGE + ": Sentiment",
-      onClick: onAv
-    }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
-      className: CL_ITEM,
-      caption: _ProviderNames.NEWS_API_LONG + ": Search",
-      onClick: onNewsApi
-    }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
-      className: CL_ITEM,
-      caption: _ProviderNames.NEWS_API_LONG + ": Top By",
-      onClick: onNewsTop
-    }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
-      className: CL_ITEM,
-      caption: _ProviderNames.THE_NEWS_API + ": Search",
-      onClick: onTheNewsSearch
-    }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
-      className: CL_ITEM,
-      caption: _ProviderNames.THE_NEWS_API + ": Top By",
-      onClick: onTheNewsTop
-    }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
-      className: CL_ITEM,
-      caption: _ProviderNames.STACK_OVERFLOW + ": Tagged Questions",
-      onClick: onStackTagged
-    }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
-      className: CL_ITEM,
-      caption: _ProviderNames.STACK_OVERFLOW + ": Search Questions",
-      onClick: onStackSearch
-    }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
-      className: CL_ITEM,
-      caption: _ProviderNames.WEBZ_IO + ": News, Blogs",
-      onClick: onWebz
-    }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
-      className: CL_ITEM,
-      caption: _ProviderNames.WEBZ_IO + ": By Country, Topic",
-      onClick: onWebzCountry
+    }), (0, _jsxRuntime.jsxs)(_OpenClose["default"], {
+      caption: "Stock Market",
+      style: TS.OPEN_CLOSE,
+      itemStyle: TS.ITEM,
+      children: [(0, _jsxRuntime.jsx)(_MenuItem["default"], {
+        className: CL_ITEM,
+        caption: _ProviderNames.ALPHA_VANTAGE + ": Sentiment",
+        onClick: onAv
+      }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
+        className: CL_ITEM,
+        caption: _ProviderNames.IEX_CLOUD,
+        onClick: onIex
+      }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
+        className: CL_ITEM,
+        caption: _ProviderNames.FMP_LONG,
+        onClick: onFmp
+      })]
+    }), (0, _jsxRuntime.jsxs)(_OpenClose["default"], {
+      caption: "General News",
+      style: TS.OPEN_CLOSE,
+      itemStyle: TS.ITEM,
+      children: [(0, _jsxRuntime.jsx)(_MenuItem["default"], {
+        className: CL_ITEM,
+        caption: _ProviderNames.NEWS_API_LONG + ": Search",
+        onClick: onNewsApi
+      }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
+        className: CL_ITEM,
+        caption: _ProviderNames.NEWS_API_LONG + ": Top By",
+        onClick: onNewsTop
+      }), (0, _jsxRuntime.jsx)("div", {
+        style: S_HORIZONTAL_LINE
+      }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
+        className: CL_ITEM,
+        caption: _ProviderNames.THE_NEWS_API + ": Search",
+        onClick: onTheNewsSearch
+      }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
+        className: CL_ITEM,
+        caption: _ProviderNames.THE_NEWS_API + ": Top By",
+        onClick: onTheNewsTop
+      }), (0, _jsxRuntime.jsx)("div", {
+        style: S_HORIZONTAL_LINE
+      }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
+        className: CL_ITEM,
+        caption: _ProviderNames.WEBZ_IO + ": News, Blogs",
+        onClick: onWebz
+      }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
+        className: CL_ITEM,
+        caption: _ProviderNames.WEBZ_IO + ": By Country, Topic",
+        onClick: onWebzCountry
+      })]
+    }), (0, _jsxRuntime.jsxs)(_OpenClose["default"], {
+      caption: _ProviderNames.STACK_OVERFLOW,
+      style: TS.OPEN_CLOSE,
+      itemStyle: TS.ITEM,
+      children: [(0, _jsxRuntime.jsx)(_MenuItem["default"], {
+        className: CL_ITEM,
+        caption: "Tagged Questions",
+        onClick: onStackTagged
+      }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
+        className: CL_ITEM,
+        caption: "Search Questions",
+        onClick: onStackSearch
+      })]
     })]
   });
 };
