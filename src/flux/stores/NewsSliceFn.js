@@ -1,6 +1,6 @@
 
 export const loadNewsCompleted = (
-  slice,
+  hmNews,
   news
 ) => {
   const {
@@ -8,52 +8,58 @@ export const loadNewsCompleted = (
     articles=[],
     sortBy,
     caption,
-    page
+    page,
+    isRelatedBars
   } = news;
-  slice[source] = slice[source]
-    ? articles.concat(slice[source])
+  hmNews[source] = hmNews[source]
+    ? articles.concat(hmNews[source])
     : articles
   return {
     id: source,
-    data: slice[source],
+    data: hmNews[source],
     sortBy,
     caption,
-    page
+    page,
+    isRelatedBars
   };
 }
 
 export const removeAllNews = (
-  slice,
+  hmNews,
   paneId
 ) => {
-  slice[paneId] = []
+  hmNews[paneId] = []
   return {
     id: paneId,
-    data: slice[paneId],
+    data: hmNews[paneId],
     sortBy: ''
   };
 }
 
 export const removeNews = (
-  slice,
+  hmNews,
   item
 ) => {
-  const { id, source } = item;
-  slice[source] = slice[source]
-    .filter(article => article.articleId !== id)
+  const {
+    articleId,
+    source
+  } = item;
+
+  hmNews[source] = hmNews[source]
+    .filter(article => article.articleId !== articleId)
 }
 
 export const removeUnderNews = (
-  slice,
+  hmNews,
   item
 ) => {
   const { articleId, source } = item;
-  const _underIndex = slice[source]
+  const _underIndex = hmNews[source]
     .findIndex(article => article.articleId === articleId);
 
-  slice[source] = slice[source].slice(_underIndex+1)
+  hmNews[source] = hmNews[source].slice(_underIndex+1)
   return {
     id: source,
-    data: slice[source]
+    data: hmNews[source]
   };
 }

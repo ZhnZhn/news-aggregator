@@ -2,50 +2,52 @@
 
 exports.__esModule = true;
 exports.removeUnderNews = exports.removeNews = exports.removeAllNews = exports.loadNewsCompleted = void 0;
-var loadNewsCompleted = function loadNewsCompleted(slice, news) {
+var loadNewsCompleted = function loadNewsCompleted(hmNews, news) {
   var source = news.source,
     _news$articles = news.articles,
     articles = _news$articles === void 0 ? [] : _news$articles,
     sortBy = news.sortBy,
     caption = news.caption,
-    page = news.page;
-  slice[source] = slice[source] ? articles.concat(slice[source]) : articles;
+    page = news.page,
+    isRelatedBars = news.isRelatedBars;
+  hmNews[source] = hmNews[source] ? articles.concat(hmNews[source]) : articles;
   return {
     id: source,
-    data: slice[source],
+    data: hmNews[source],
     sortBy: sortBy,
     caption: caption,
-    page: page
+    page: page,
+    isRelatedBars: isRelatedBars
   };
 };
 exports.loadNewsCompleted = loadNewsCompleted;
-var removeAllNews = function removeAllNews(slice, paneId) {
-  slice[paneId] = [];
+var removeAllNews = function removeAllNews(hmNews, paneId) {
+  hmNews[paneId] = [];
   return {
     id: paneId,
-    data: slice[paneId],
+    data: hmNews[paneId],
     sortBy: ''
   };
 };
 exports.removeAllNews = removeAllNews;
-var removeNews = function removeNews(slice, item) {
-  var id = item.id,
+var removeNews = function removeNews(hmNews, item) {
+  var articleId = item.articleId,
     source = item.source;
-  slice[source] = slice[source].filter(function (article) {
-    return article.articleId !== id;
+  hmNews[source] = hmNews[source].filter(function (article) {
+    return article.articleId !== articleId;
   });
 };
 exports.removeNews = removeNews;
-var removeUnderNews = function removeUnderNews(slice, item) {
+var removeUnderNews = function removeUnderNews(hmNews, item) {
   var articleId = item.articleId,
     source = item.source;
-  var _underIndex = slice[source].findIndex(function (article) {
+  var _underIndex = hmNews[source].findIndex(function (article) {
     return article.articleId === articleId;
   });
-  slice[source] = slice[source].slice(_underIndex + 1);
+  hmNews[source] = hmNews[source].slice(_underIndex + 1);
   return {
     id: source,
-    data: slice[source]
+    data: hmNews[source]
   };
 };
 exports.removeUnderNews = removeUnderNews;
