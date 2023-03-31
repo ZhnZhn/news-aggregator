@@ -1,0 +1,18 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/formatNumber.js"
+ ],
+ "file": "../../src/utils/formatNumber.js",
+ "names": [
+  "REPLACER_PATTERN",
+  "_isNumber",
+  "n",
+  "formatNumber",
+  "value",
+  "replace",
+  "_default",
+  "exports"
+ ],
+ "mappings": ";;;;AAAA,IAAMA,gBAAgB,GAAG,mBAAmB;EAC1CC,SAAS,GAAG,SAAZA,SAASA,CAAGC,CAAC;IAAA,OAAI,OAAOA,CAAC,KAAK,QAAQ,IACnCA,CAAC,GAAGA,CAAC,KAAK,CAAC;EAAA;EACdC,YAAY,GAAG,SAAfA,YAAYA,CACZC,KAAK;IAAA,OACFH,SAAS,CAACG,KAAK,CAAC,IAAIA,KAAK,IAAI,IAAI,GACjC,CAAC,EAAE,GAAGA,KAAK,EAAEC,OAAO,CAACL,gBAAgB,EAAE,KAAK,CAAC,GAC7CI,KAAK;EAAA;AAAC,IAAAE,QAAA,GAEIH,YAAY;AAAAI,OAAA,cAAAD,QAAA"
+}

@@ -3,11 +3,10 @@ import { THE_NEWS_API } from '../conf/ProviderNames';
 
 import crId from '../utils/crId';
 import formatTimeAgo from '../utils/formatTimeAgo';
+import formatNumber from '../utils/formatNumber';
 import toFirstUpperCase from '../utils/toFirstUpperCase';
 
 import sanitizeArticle from './sanitizeArticle';
-
-//const MAX_ARTICLES_PER_PAGES = 20000;
 
 const _isArr = Array.isArray;
 const _isNumber = n => typeof n === 'number'
@@ -28,24 +27,25 @@ const _toArticles = (
       const {
         title,
         description,
+        snippet,
         source,
         categories,
         published_at,
         url
-      } = item
-      return {
-        source: sourceId,
-        articleId: crId(),
-        title,
-        description,
-        author: source,
-        related: categories,
-        publishedAt: published_at,
-        timeAgo: formatTimeAgo(published_at, _timeAgoOptions),
-        url
-      }
-    })
-    .map(sanitizeArticle) : [];
+      } = item;
+      return sanitizeArticle({
+           source: sourceId,
+           articleId: crId(),
+           title,
+           description: description || snippet,
+           author: source,
+           related: categories,
+           publishedAt: published_at,
+           timeAgo: formatTimeAgo(published_at, _timeAgoOptions),
+           url
+        })
+      })
+    : [];
 }
 
 const _crCaption = (
@@ -70,7 +70,7 @@ const _crMaxPage = (
   found,
   limit
 ) => _isNumber(found) && _isNumber(limit)
-  ? Math.ceil(found/limit)
+  ? formatNumber(Math.ceil(found/limit))
   : '';
 
 const _crConfigPages = meta => {
@@ -86,14 +86,16 @@ const _crConfigPages = meta => {
   ];
 };
 
-const _crNextPageCommonOption = (
-  option
-) => ({
-  type: option.type,
-  source: option.source,
-  itemConf: option.itemConf,
-
-  category: option.category
+const _crNextPageCommonOption = ({
+  type,
+  source,
+  itemConf,
+  category
+}) => ({
+  type,
+  source,
+  itemConf,
+  category
 });
 
 const _crNextPageOption = (
