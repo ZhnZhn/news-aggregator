@@ -33,9 +33,9 @@ var TITLE = "News Aggregator v0.4.0",
 
 /*eslint-disable react-hooks/exhaustive-deps */
 var _useClickItem = function _useClickItem(onClick, onClose) {
-  return (0, _uiApi.useCallback)(function () {
+  return (0, _uiApi.useCallback)(function (evt) {
     onClick();
-    onClose();
+    onClose(evt);
   }, []);
 };
 // onClick, onClose
@@ -60,11 +60,15 @@ var HeaderBar = function HeaderBar(_ref) {
     onNewsTop = _ref.onNewsTop,
     onTheNewsSearch = _ref.onTheNewsSearch,
     onTheNewsTop = _ref.onTheNewsTop;
-  var _useState = (0, _uiApi.useState)(false),
+  var _refFocusItem = (0, _uiApi.useRef)(),
+    _useState = (0, _uiApi.useState)(false),
     isQuery = _useState[0],
     setIsQuery = _useState[1],
-    _hCloseQuery = (0, _uiApi.useCallback)(function () {
-      return setIsQuery(false);
+    _hCloseQuery = (0, _uiApi.useCallback)(function (evt) {
+      var _menuItemElement = evt && evt.target,
+        _focusElement = _menuItemElement && _menuItemElement.role === 'menuitem' ? _menuItemElement : null;
+      _refFocusItem.current = _focusElement;
+      setIsQuery(false);
     }, []),
     _hToggleQuery = (0, _uiApi.useCallback)(function () {
       return setIsQuery(function (is) {
@@ -91,10 +95,13 @@ var HeaderBar = function HeaderBar(_ref) {
     className: CL_HEADER,
     style: TS.HEADER,
     children: [(0, _jsxRuntime.jsx)(_PanelQuery["default"], {
+      refFocusItem: _refFocusItem,
       paneStyle: TS.PANE,
       className: CL_PANEL_BROWSER,
       isShow: isQuery,
-      onClose: _hToggleQuery,
+      onClose: _hCloseQuery
+      //onClose={_hToggleQuery}
+      ,
       onWebz: _hWebz,
       onWebzCountry: _hWebzCountry,
       onStackTagged: _hStackTagged,

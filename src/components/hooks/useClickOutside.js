@@ -1,14 +1,15 @@
 import {
   useRef,
   useCallback,
-  useEffect
+  useEffect,
+  getRefValue
 } from '../uiApi';
 
 const _removeClickListener = (
   listener,
   refIs
 ) => {
-  if (refIs.current) {
+  if (getRefValue(refIs)) {
     document.removeEventListener('click', listener, true);
     refIs.current = null
   }
@@ -23,11 +24,10 @@ const useClickOutside = (
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hClickOutside = useCallback(evt => {
-      if ( _refElement?.current?.contains
-        && !_refElement.current.contains(evt.target)
-      ){
+      const _element = getRefValue(_refElement) || {};
+      if (_element.contains && !_element.contains(evt.target)){
         evt.stopPropagation()
-        onClose(evt)
+        onClose()
       }
   }, []);
   // onClose

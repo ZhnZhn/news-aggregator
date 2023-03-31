@@ -1,3 +1,4 @@
+import { HAS_TOUCH_EVENTS } from '../has';
 import useTheme from '../hooks/useTheme';
 import useFocusRefElementIf from '../hooks/useFocusRefElementIf';
 
@@ -20,6 +21,7 @@ import ModalPopup from '../zhn-moleculs/ModalPopup';
 import MenuItem from '../zhn-atoms/MenuItem';
 import OpenClose from '../zhn-atoms/OpenClose';
 
+const HAS_NOT_TOUCH_EVENTS = !HAS_TOUCH_EVENTS;
 const CL_ITEM = 'row__topic';
 
 const S_HORIZONTAL_LINE = {
@@ -28,6 +30,7 @@ const S_HORIZONTAL_LINE = {
 };
 
 const PanelQuery = ({
+  refFocusItem,
   className,
   paneStyle,
   isShow,
@@ -48,7 +51,10 @@ const PanelQuery = ({
   onClose
 }) => {
   const TS = useTheme(styleConfig)
-  , _refFirstItem = useFocusRefElementIf(isShow);
+  , _refFirstItem = useFocusRefElementIf(
+      isShow && HAS_NOT_TOUCH_EVENTS,
+      refFocusItem
+    );
 
   return (
     <ModalPopup

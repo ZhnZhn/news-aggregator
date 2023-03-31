@@ -4,7 +4,7 @@ exports.__esModule = true;
 exports["default"] = void 0;
 var _uiApi = require("../uiApi");
 var _removeClickListener = function _removeClickListener(listener, refIs) {
-  if (refIs.current) {
+  if ((0, _uiApi.getRefValue)(refIs)) {
     document.removeEventListener('click', listener, true);
     refIs.current = null;
   }
@@ -15,10 +15,10 @@ var useClickOutside = function useClickOutside(isShow, onClose) {
 
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hClickOutside = (0, _uiApi.useCallback)(function (evt) {
-      var _refElement$current;
-      if (_refElement != null && (_refElement$current = _refElement.current) != null && _refElement$current.contains && !_refElement.current.contains(evt.target)) {
+      var _element = (0, _uiApi.getRefValue)(_refElement) || {};
+      if (_element.contains && !_element.contains(evt.target)) {
         evt.stopPropagation();
-        onClose(evt);
+        onClose();
       }
     }, []);
   // onClose

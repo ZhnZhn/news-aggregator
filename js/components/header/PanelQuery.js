@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports["default"] = void 0;
+var _has = require("../has");
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 var _useFocusRefElementIf = _interopRequireDefault(require("../hooks/useFocusRefElementIf"));
 var _NewsBrowser = _interopRequireDefault(require("../source-browsers/NewsBrowser.Style"));
@@ -11,13 +12,15 @@ var _ModalPopup = _interopRequireDefault(require("../zhn-moleculs/ModalPopup"));
 var _MenuItem = _interopRequireDefault(require("../zhn-atoms/MenuItem"));
 var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose"));
 var _jsxRuntime = require("preact/jsx-runtime");
+var HAS_NOT_TOUCH_EVENTS = !_has.HAS_TOUCH_EVENTS;
 var CL_ITEM = 'row__topic';
 var S_HORIZONTAL_LINE = {
   margin: '0 16px',
   borderBottom: '1px solid black'
 };
 var PanelQuery = function PanelQuery(_ref) {
-  var className = _ref.className,
+  var refFocusItem = _ref.refFocusItem,
+    className = _ref.className,
     paneStyle = _ref.paneStyle,
     isShow = _ref.isShow,
     onCryptoCompare = _ref.onCryptoCompare,
@@ -36,7 +39,7 @@ var PanelQuery = function PanelQuery(_ref) {
     onWebzCountry = _ref.onWebzCountry,
     onClose = _ref.onClose;
   var TS = (0, _useTheme["default"])(_NewsBrowser["default"]),
-    _refFirstItem = (0, _useFocusRefElementIf["default"])(isShow);
+    _refFirstItem = (0, _useFocusRefElementIf["default"])(isShow && HAS_NOT_TOUCH_EVENTS, refFocusItem);
   return (0, _jsxRuntime.jsxs)(_ModalPopup["default"], {
     isShow: isShow,
     className: className,

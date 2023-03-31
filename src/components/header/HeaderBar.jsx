@@ -1,4 +1,5 @@
 import {
+  useRef,
   useState,
   useCallback
 } from '../uiApi';
@@ -48,9 +49,9 @@ const _useClickItem = (
   onClick,
   onClose
 ) =>
- useCallback(() => {
+ useCallback((evt) => {
    onClick()
-   onClose()
+   onClose(evt)
  }, [])
  // onClick, onClose
 /*eslint-enable react-hooks/exhaustive-deps */
@@ -75,11 +76,19 @@ const HeaderBar = ({
   onTheNewsSearch,
   onTheNewsTop
 }) => {
-  const [
+  const _refFocusItem = useRef()
+  , [
     isQuery,
     setIsQuery
   ] = useState(false)
-  , _hCloseQuery = useCallback(() => setIsQuery(false), [])
+  , _hCloseQuery = useCallback((evt) => {
+     const _menuItemElement = evt && evt.target
+     , _focusElement = _menuItemElement && _menuItemElement.role === 'menuitem'
+         ? _menuItemElement
+         : null;
+     _refFocusItem.current = _focusElement
+     setIsQuery(false)
+  }, [])
   , _hToggleQuery = useCallback(() => setIsQuery(is => !is), [])
   , _hWebz = _useClickItem(onWebz, _hCloseQuery)
   , _hWebzCountry = _useClickItem(onWebzCountry, _hCloseQuery)
@@ -102,10 +111,12 @@ const HeaderBar = ({
   return (
     <div className={CL_HEADER} style={TS.HEADER}>
       <PanelQuery
+        refFocusItem={_refFocusItem}
         paneStyle={TS.PANE}
         className={CL_PANEL_BROWSER}
         isShow={isQuery}
-        onClose={_hToggleQuery}
+        onClose={_hCloseQuery}
+        //onClose={_hToggleQuery}
         onWebz={_hWebz}
         onWebzCountry={_hWebzCountry}
         onStackTagged={_hStackTagged}

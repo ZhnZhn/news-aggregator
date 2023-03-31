@@ -1,9 +1,8 @@
 import { useCallback } from '../uiApi';
 
 /*eslint-disable react-hooks/exhaustive-deps */
-const useKeyEscape = onKeyEscape => useCallback(event => {
-  const { keyCode } = event || {};
-  if (keyCode === 27) {
+const useKeyEscape = onKeyEscape => useCallback(evt => {
+  if (evt && evt.keyCode === 27) {
     onKeyEscape()
   }
 }, [])
