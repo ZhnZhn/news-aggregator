@@ -20,30 +20,14 @@ import GestureSwipeX from '../zhn-gesture/GestureSwipeX';
 import ItemHeader from './ItemHeader';
 import ArticleDescr from './ArticleDescr';
 
-const CL_ITEM_HEADER = "article-header";
-
-const S_ROOT = {
-  position: 'relative',
-  marginBottom: 5,
-  lineHeight: 1.5,
-  borderBottomRightRadius: 2,
-  boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
-}
-, S_CAPTION = {
-  display: 'inline-block',
-  paddingRight: 32,
-  color: 'black',
-  fontSize: '1.125rem',
-  fontWeight: 'bold',
-  wordBreak: 'break-word'
-}
-, S_CAPTION_OPEN = { color: '#607d8b' }
-, S_SVG_CLOSE = {
-  position: 'absolute',
-  right: -4
-}
-, S_NONE = { display: 'none' };
-
+import {
+  CL_ITEM_HEADER,
+  S_ITEM,
+  S_CAPTION,
+  S_CAPTION_OPEN,
+  S_SVG_CLOSE,
+  S_NONE
+} from './Item.Style';
 
 const _focusNextArticle = (
   nodeArticle
@@ -118,7 +102,7 @@ const Article = forwardRef(({
   return (
     <GestureSwipeX
       ref={_refArticle}
-      style={{...S_ROOT, ..._style}}
+      style={{...S_ITEM, ..._style}}
       setTimeStamp={setTimeStamp}
       onGesture={_onGestureSwipeX}
     >

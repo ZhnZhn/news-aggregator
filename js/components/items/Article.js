@@ -15,33 +15,8 @@ var _useItemGestureSwipeX = _interopRequireDefault(require("./useItemGestureSwip
 var _GestureSwipeX = _interopRequireDefault(require("../zhn-gesture/GestureSwipeX"));
 var _ItemHeader = _interopRequireDefault(require("./ItemHeader"));
 var _ArticleDescr = _interopRequireDefault(require("./ArticleDescr"));
+var _Item = require("./Item.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
-var CL_ITEM_HEADER = "article-header";
-var S_ROOT = {
-    position: 'relative',
-    marginBottom: 5,
-    lineHeight: 1.5,
-    borderBottomRightRadius: 2,
-    boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)'
-  },
-  S_CAPTION = {
-    display: 'inline-block',
-    paddingRight: 32,
-    color: 'black',
-    fontSize: '1.125rem',
-    fontWeight: 'bold',
-    wordBreak: 'break-word'
-  },
-  S_CAPTION_OPEN = {
-    color: '#607d8b'
-  },
-  S_SVG_CLOSE = {
-    position: 'absolute',
-    right: -4
-  },
-  S_NONE = {
-    display: 'none'
-  };
 var _focusNextArticle = function _focusNextArticle(nodeArticle) {
   var _ref = nodeArticle || {},
     nextElementSibling = _ref.nextElementSibling,
@@ -103,8 +78,8 @@ var Article = (0, _uiApi.forwardRef)(function (_ref3, ref) {
     url = item.url,
     related = item.related,
     description = item.description || 'More...',
-    _style = (0, _crStyle["default"])([isClosed, S_NONE]),
-    _captionStyle = (0, _crStyle["default"])(S_CAPTION, [isShow, S_CAPTION_OPEN]),
+    _style = (0, _crStyle["default"])([isClosed, _Item.S_NONE]),
+    _captionStyle = (0, _crStyle["default"])(_Item.S_CAPTION, [isShow, _Item.S_CAPTION_OPEN]),
     _publishedAt = publishedDate || (0, _dt.toTimeDate)(publishedAt),
     _href = (0, _toLink["default"])(url);
   if (url && !_href) {
@@ -112,15 +87,15 @@ var Article = (0, _uiApi.forwardRef)(function (_ref3, ref) {
   }
   return (0, _jsxRuntime.jsxs)(_GestureSwipeX["default"], {
     ref: _refArticle,
-    style: (0, _extends2["default"])({}, S_ROOT, _style),
+    style: (0, _extends2["default"])({}, _Item.S_ITEM, _style),
     setTimeStamp: setTimeStamp,
     onGesture: _onGestureSwipeX,
     children: [(0, _jsxRuntime.jsx)(_ItemHeader["default"], {
       ref: ref,
-      className: CL_ITEM_HEADER,
+      className: _Item.CL_ITEM_HEADER,
       style: TS.HEADER,
       captionStyle: _captionStyle,
-      btCloseStyle: S_SVG_CLOSE,
+      btCloseStyle: _Item.S_SVG_CLOSE,
       title: title,
       url: url,
       isShow: isShow,

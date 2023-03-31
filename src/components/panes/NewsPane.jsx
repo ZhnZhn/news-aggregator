@@ -19,8 +19,10 @@ import styleConfig from './NewsPane.Style';
 import { initWidthStyle } from '../has';
 
 import crModelMore from './crModelMore';
+import crRelatedBars from './crRelatedBars';
 
 import A from '../Comp';
+import ItemBarChart from '../items/ItemBarChart';
 import CaptionButtons from './CaptionButtons';
 import LoadNextPage from './LoadNextPage';
 import {
@@ -170,8 +172,24 @@ const NewsPane = ({
     articles,
     sortBy,
     caption,
-    page
+    page,
+    isRelatedBars
   } = state
+  , [
+    _categoryBars,
+    _maxValue,
+    _numberOfArticles
+   ] = useMemo(() => {
+    if (isRelatedBars) {
+      const _relatedBars = crRelatedBars(articles);
+      return [
+        _relatedBars,
+        (_relatedBars[0] || [])[1],
+        articles.length
+      ];
+    }
+    return [];
+  }, [isRelatedBars, articles])
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hHide = useCallback(() => {
      onClose()
@@ -189,7 +207,8 @@ const NewsPane = ({
           articles: option.data,
           sortBy: option.sortBy,
           caption: option.caption,
-          page: option.page
+          page: option.page,
+          isRelatedBars: option.isRelatedBars
         }))
         _focusFirstItem(_refFirstItem)
       } else if (actionType === updateAction) {
@@ -249,6 +268,12 @@ const NewsPane = ({
       <A.ScrollPane
          style={S_SCROLL_DIV}
       >
+         {isRelatedBars && _maxValue && <ItemBarChart
+            categoryBars={_categoryBars}
+            maxValue={_maxValue}
+            numberOfItems={_numberOfArticles}
+          />
+         }
          <A.ItemStack
            items={articles}
            crItem={_crArticleItem}

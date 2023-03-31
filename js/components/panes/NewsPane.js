@@ -15,7 +15,9 @@ var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 var _NewsPane = _interopRequireDefault(require("./NewsPane.Style"));
 var _has = require("../has");
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
+var _crRelatedBars = _interopRequireDefault(require("./crRelatedBars"));
 var _Comp = _interopRequireDefault(require("../Comp"));
+var _ItemBarChart = _interopRequireDefault(require("../items/ItemBarChart"));
 var _CaptionButtons = _interopRequireDefault(require("./CaptionButtons"));
 var _LoadNextPage = _interopRequireDefault(require("./LoadNextPage"));
 var _ResizeWidth = require("./ResizeWidth");
@@ -129,6 +131,17 @@ var NewsPane = function NewsPane(_ref2) {
     sortBy = state.sortBy,
     caption = state.caption,
     page = state.page,
+    isRelatedBars = state.isRelatedBars,
+    _useMemo = (0, _uiApi.useMemo)(function () {
+      if (isRelatedBars) {
+        var _relatedBars = (0, _crRelatedBars["default"])(articles);
+        return [_relatedBars, (_relatedBars[0] || [])[1], articles.length];
+      }
+      return [];
+    }, [isRelatedBars, articles]),
+    _categoryBars = _useMemo[0],
+    _maxValue = _useMemo[1],
+    _numberOfArticles = _useMemo[2],
     _hHide = (0, _uiApi.useCallback)(function () {
       onClose();
       toggleIsShow(false);
@@ -146,7 +159,8 @@ var NewsPane = function NewsPane(_ref2) {
             articles: option.data,
             sortBy: option.sortBy,
             caption: option.caption,
-            page: option.page
+            page: option.page,
+            isRelatedBars: option.isRelatedBars
           };
         });
         _focusFirstItem(_refFirstItem);
@@ -192,7 +206,11 @@ var NewsPane = function NewsPane(_ref2) {
       })
     }), (0, _jsxRuntime.jsxs)(_Comp["default"].ScrollPane, {
       style: S_SCROLL_DIV,
-      children: [(0, _jsxRuntime.jsx)(_Comp["default"].ItemStack, {
+      children: [isRelatedBars && _maxValue && (0, _jsxRuntime.jsx)(_ItemBarChart["default"], {
+        categoryBars: _categoryBars,
+        maxValue: _maxValue,
+        numberOfItems: _numberOfArticles
+      }), (0, _jsxRuntime.jsx)(_Comp["default"].ItemStack, {
         items: articles,
         crItem: _crArticleItem,
         Item: Item,
