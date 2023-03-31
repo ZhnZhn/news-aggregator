@@ -28,21 +28,27 @@ export const setRefValue = (
   }
 }
 
-export const focusRefElement = ref => {
-  const element = getRefValue(ref);
+const _focusHtmlElement = (element) => {
   if (element && _isFn(element.focus)) {
     element.focus()
   }
 }
 
-export const getRefElementStyle = ref => {
-  const element = getRefValue(ref);
-  return (element || {}).style;
+export const focusRefElement = (
+  ref1,
+  ref2
+) => {
+  _focusHtmlElement(getRefValue(ref1) || getRefValue(ref2));
 }
 
-export const stopDefaultFor = event => {
-  event.stopPropagation()
-  event.preventDefault()
+export const getRefElementStyle = (
+  ref
+) => (getRefValue(ref) || {}).style
+
+
+export const stopDefaultFor = (evt) => {
+  evt.stopPropagation()
+  evt.preventDefault()
 }
 
 const _getFirstTouches = (

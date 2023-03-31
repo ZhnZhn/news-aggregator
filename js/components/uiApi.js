@@ -29,21 +29,22 @@ var setRefValue = function setRefValue(ref, value) {
   }
 };
 exports.setRefValue = setRefValue;
-var focusRefElement = function focusRefElement(ref) {
-  var element = getRefValue(ref);
+var _focusHtmlElement = function _focusHtmlElement(element) {
   if (element && _isFn(element.focus)) {
     element.focus();
   }
 };
+var focusRefElement = function focusRefElement(ref1, ref2) {
+  _focusHtmlElement(getRefValue(ref1) || getRefValue(ref2));
+};
 exports.focusRefElement = focusRefElement;
 var getRefElementStyle = function getRefElementStyle(ref) {
-  var element = getRefValue(ref);
-  return (element || {}).style;
+  return (getRefValue(ref) || {}).style;
 };
 exports.getRefElementStyle = getRefElementStyle;
-var stopDefaultFor = function stopDefaultFor(event) {
-  event.stopPropagation();
-  event.preventDefault();
+var stopDefaultFor = function stopDefaultFor(evt) {
+  evt.stopPropagation();
+  evt.preventDefault();
 };
 exports.stopDefaultFor = stopDefaultFor;
 var _getFirstTouches = function _getFirstTouches(touches) {
