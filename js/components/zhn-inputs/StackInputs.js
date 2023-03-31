@@ -20,7 +20,8 @@ var StackInputs = function StackInputs(_ref) {
   var TS = _ref.TS,
     isInputs = _ref.isInputs,
     configs = _ref.configs,
-    onSelect = _ref.onSelect;
+    onSelect = _ref.onSelect,
+    onEnter = _ref.onEnter;
   return (configs || []).map(function (arrConfig) {
     var _type = arrConfig[0],
       _inputId = arrConfig[1],
@@ -37,7 +38,7 @@ var StackInputs = function StackInputs(_ref) {
         style: TS.INPUT_ROOT,
         caption: arrConfig[2],
         initValue: arrConfig[3],
-        onEnter: onSelect,
+        onEnter: onEnter,
         onBlur: onSelect,
         onKeyDown: onSelect
       })) : _type === 'ft' ? (0, _jsxRuntime.jsx)(_InputFromToDate["default"], {

@@ -74,6 +74,7 @@ const DialogStackInputs = (props) => {
           isInputs={isInputs}
           configs={INPUT_CONFIGS}
           onSelect={_selectInput}
+          onEnter={_hLoad}
         />
         <PoweredBy style={TS.POWERED_BY}>
           {children}

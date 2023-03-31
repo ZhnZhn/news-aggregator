@@ -16,7 +16,8 @@ const StackInputs = ({
   TS,
   isInputs,
   configs,
-  onSelect
+  onSelect,
+  onEnter
 }) => (configs || []).map(arrConfig => {
   const _type = arrConfig[0]
   , _inputId = arrConfig[1]
@@ -39,7 +40,7 @@ const StackInputs = ({
                style={TS.INPUT_ROOT}
                caption={arrConfig[2]}
                initValue={arrConfig[3]}
-               onEnter={onSelect}
+               onEnter={onEnter}
                onBlur={onSelect}
                onKeyDown={onSelect}
             />

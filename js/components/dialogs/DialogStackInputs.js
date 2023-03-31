@@ -62,7 +62,8 @@ var DialogStackInputs = function DialogStackInputs(props) {
         TS: TS,
         isInputs: isInputs,
         configs: INPUT_CONFIGS,
-        onSelect: _selectInput
+        onSelect: _selectInput,
+        onEnter: _hLoad
       }), (0, _jsxRuntime.jsx)(_PoweredBy["default"], {
         style: TS.POWERED_BY,
         children: children
