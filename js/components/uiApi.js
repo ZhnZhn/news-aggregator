@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.render = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefElement = exports.createContext = exports.cloneElement = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.render = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.createContext = exports.cloneElement = void 0;
 var _compat = require("preact/compat");
 exports.memo = _compat.memo;
 exports.forwardRef = _compat.forwardRef;
@@ -38,6 +38,10 @@ var focusRefElement = function focusRefElement(ref1, ref2) {
   _focusHtmlElement(getRefValue(ref1) || getRefValue(ref2));
 };
 exports.focusRefElement = focusRefElement;
+var focusRefNextSiblingFirstChildElement = function focusRefNextSiblingFirstChildElement(ref) {
+  _focusHtmlElement(((getRefValue(ref) || {}).nextElementSibling || {}).firstElementChild);
+};
+exports.focusRefNextSiblingFirstChildElement = focusRefNextSiblingFirstChildElement;
 var getRefElementStyle = function getRefElementStyle(ref) {
   return (getRefValue(ref) || {}).style;
 };

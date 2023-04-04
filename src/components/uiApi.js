@@ -41,6 +41,15 @@ export const focusRefElement = (
   _focusHtmlElement(getRefValue(ref1) || getRefValue(ref2));
 }
 
+export const focusRefNextSiblingFirstChildElement = (
+  ref
+) => {
+  _focusHtmlElement(((getRefValue(ref) || {})
+     .nextElementSibling || {})
+     .firstElementChild
+  )
+}
+
 export const getRefElementStyle = (
   ref
 ) => (getRefValue(ref) || {}).style
