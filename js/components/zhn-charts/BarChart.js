@@ -8,15 +8,19 @@ var _uiApi = require("../uiApi");
 var _jsxRuntime = require("preact/jsx-runtime");
 var LABEL_WIDTH = 140,
   MAX_BAR_WIDTH = 200,
+  S_TEXT_ELLIPSIS = {
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden'
+  },
   S_FONT = {
     fontSize: '1rem',
     fontWeight: 'bold'
   },
   S_ROW = {
-    display: 'flex',
-    alignItems: 'center'
+    display: 'flex'
   },
-  S_LABEL = (0, _extends2["default"])({}, S_FONT, {
+  S_LABEL = (0, _extends2["default"])({}, S_FONT, S_TEXT_ELLIPSIS, {
     display: 'inline-block',
     width: LABEL_WIDTH,
     paddingRight: 8,
@@ -28,7 +32,7 @@ var LABEL_WIDTH = 140,
 var _crBarStyle = function _crBarStyle(color, maxValue, value) {
   return {
     display: 'inline-block',
-    height: '1.3rem',
+    height: '1.2rem',
     width: MAX_BAR_WIDTH * value / maxValue,
     background: color
   };

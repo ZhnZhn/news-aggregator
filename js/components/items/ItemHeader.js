@@ -7,13 +7,15 @@ var _uiApi = require("../uiApi");
 var _CL = require("../styles/CL");
 var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
 var _jsxRuntime = require("preact/jsx-runtime");
+var FN_NOOP = function FN_NOOP() {};
 var ItemHeader = (0, _uiApi.forwardRef)(function (_ref, ref) {
   var className = _ref.className,
     style = _ref.style,
     captionStyle = _ref.captionStyle,
     btCloseStyle = _ref.btCloseStyle,
     title = _ref.title,
-    onKeyDown = _ref.onKeyDown,
+    _ref$onKeyDown = _ref.onKeyDown,
+    onKeyDown = _ref$onKeyDown === void 0 ? FN_NOOP : _ref$onKeyDown,
     onClick = _ref.onClick,
     onToggle = _ref.onToggle,
     onClose = _ref.onClose;

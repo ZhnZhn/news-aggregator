@@ -6,13 +6,15 @@ import {
 import { CL_SELECT_NONE } from '../styles/CL';
 import SvgX from '../zhn-atoms/SvgX';
 
+const FN_NOOP = () => {};
+
 const ItemHeader = forwardRef(({
   className,
   style,
   captionStyle,
   btCloseStyle,
   title,
-  onKeyDown,
+  onKeyDown=FN_NOOP,
   onClick,
   onToggle,
   onClose
