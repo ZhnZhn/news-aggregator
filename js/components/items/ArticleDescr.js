@@ -4,10 +4,8 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var _uiApi = require("../uiApi");
 var _DP = require("../DP");
 var _CL = require("../styles/CL");
-var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
 var _SafeLink = _interopRequireDefault(require("../zhn-atoms/SafeLink"));
 var _TextDiv = _interopRequireDefault(require("../zhn-atoms/TextDiv"));
 var _TextSpan = _interopRequireDefault(require("../zhn-atoms/TextSpan"));
@@ -51,30 +49,15 @@ var CL_DIV = "link-wrapper",
     paddingTop: 8
   };
 var ArticleDescr = function ArticleDescr(_ref) {
-  var style = _ref.style,
-    isShow = _ref.isShow,
-    href = _ref.href,
+  var href = _ref.href,
     description = _ref.description,
     related = _ref.related,
     publishedAt = _ref.publishedAt,
     timeAgo = _ref.timeAgo,
     author = _ref.author,
-    onHide = _ref.onHide,
+    onKeyDown = _ref.onKeyDown,
     onClose = _ref.onClose;
-  /*eslint-disable react-hooks/exhaustive-deps */
-  var _hKeyDown = (0, _uiApi.useCallback)(function (evt) {
-    var keyCode = evt.keyCode;
-    if (keyCode === 27) {
-      onHide();
-    } else if (keyCode === 46) {
-      onClose();
-    }
-  }, []);
-  //url, onHide, onClose
-  /*eslint-enable react-hooks/exhaustive-deps */
-  return (0, _jsxRuntime.jsxs)(_ShowHide["default"], {
-    style: style,
-    isShow: isShow,
+  return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsxs)("div", {
       style: S_AUTHOR_ROW,
       children: [(0, _jsxRuntime.jsx)(_TextSpan["default"], {
@@ -88,7 +71,7 @@ var ArticleDescr = function ArticleDescr(_ref) {
       className: CL_DIV,
       style: S_DESCR,
       href: href,
-      onKeyDown: _hKeyDown,
+      onKeyDown: onKeyDown,
       children: description
     }) : (0, _jsxRuntime.jsx)("div", {
       style: S_DESCR,

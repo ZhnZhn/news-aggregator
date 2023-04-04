@@ -1,9 +1,6 @@
-import { useCallback } from '../uiApi';
-
 import { DP_CLOSE_RIGHT } from '../DP';
 import { CL_SELECT_NONE } from '../styles/CL';
 
-import ShowHide from '../zhn-atoms/ShowHide';
 import SafeLink from '../zhn-atoms/SafeLink';
 import TextDiv from '../zhn-atoms/TextDiv';
 import TextSpan from '../zhn-atoms/TextSpan';
@@ -52,78 +49,61 @@ const CL_DIV = "link-wrapper"
 
 
 const ArticleDescr = ({
-  style,
-  isShow,
   href,
   description,
   related,
   publishedAt,
   timeAgo,
   author,
-  onHide,
+  onKeyDown,
   onClose
-}) => {
-  /*eslint-disable react-hooks/exhaustive-deps */
-  const _hKeyDown = useCallback(evt => {
-    const { keyCode } = evt;
-    if (keyCode === 27) {
-      onHide()
-    } else if (keyCode === 46) {
-      onClose()
+}) => (
+  <>
+    <div style={S_AUTHOR_ROW}>
+      <TextSpan
+         style={S_AUTHOR}
+         text={author}
+      />
+      <TextSpan
+         style={S_DATE}
+         text={timeAgo}
+      />
+    </div>
+    {href ? (
+       <SafeLink
+         className={CL_DIV}
+         style={S_DESCR}
+         href={href}
+         onKeyDown={onKeyDown}
+        >
+          {description}
+        </SafeLink>
+       ) : (
+        <div style={S_DESCR}>
+         {description}
+        </div>
+      )
     }
-  }, [])
-  //url, onHide, onClose
-  /*eslint-enable react-hooks/exhaustive-deps */
-  return (
-    <ShowHide
-      style={style}
-      isShow={isShow}
-    >
-        <div style={S_AUTHOR_ROW}>
-          <TextSpan
-             style={S_AUTHOR}
-             text={author}
-          />
-          <TextSpan
-             style={S_DATE}
-             text={timeAgo}
-          />
-        </div>
-        {href ? (
-           <SafeLink
-             className={CL_DIV}
-             style={S_DESCR}
-             href={href}
-             onKeyDown={_hKeyDown}
-            >
-              {description}
-            </SafeLink>
-           ) : (
-            <div style={S_DESCR}>
-             {description}
-            </div>
-          )
-        }
-        <div style={S_PT_8}>
-          <TextDiv
-            className={CL_SELECT_NONE}
-            style={S_RELATED}
-            text={related}
-          />
-          <div style={S_BOTTOM_ROW}>
-            <SvgX
-              dataPos={DP_CLOSE_RIGHT}
-              onClick={onClose}
-            />
-            <TextSpan
-              className={CL_SELECT_NONE}
-              style={S_DATE}
-              text={publishedAt}
-            />
-          </div>
-        </div>
-    </ShowHide>
-  );
-};
+    <div style={S_PT_8}>
+      <TextDiv
+        className={CL_SELECT_NONE}
+        style={S_RELATED}
+        text={related}
+      />
+      <div style={S_BOTTOM_ROW}>
+        <SvgX
+          dataPos={DP_CLOSE_RIGHT}
+          onClick={onClose}
+        />
+        <TextSpan
+          className={CL_SELECT_NONE}
+          style={S_DATE}
+          text={publishedAt}
+        />
+      </div>
+    </div>
+  </>
+);
+
 
 export default ArticleDescr

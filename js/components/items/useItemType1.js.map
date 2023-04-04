@@ -1,0 +1,24 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/items/useItemType1.js"
+ ],
+ "file": "../../../src/components/items/useItemType1.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "useItemType1",
+  "ref",
+  "_useState",
+  "useState",
+  "isShowDescr",
+  "setIsShowDescr",
+  "concat",
+  "useMemo",
+  "is",
+  "focusRefElement",
+  "_default",
+  "exports"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAMA;AACA,IAAMC,YAAY,GAAG,SAAfA,YAAYA,CAChBC,GAAG,EACA;EACH,IAAAC,SAAA,GAGI,IAAAC,eAAQ,EAAC,KAAK,CAAC;IAFjBC,WAAW,GAAAF,SAAA;IACXG,cAAc,GAAAH,SAAA;EAGhB,QACEE,WAAW,EAAAE,MAAA,CAER,IAAAC,cAAO,EAAC;IAAA,OAAM,CACf;MAAA,OAAMF,cAAc,CAAC,UAAAG,EAAE;QAAA,OAAI,CAACA,EAAE;MAAA,EAAC;IAAA,GAC/B,YAAM;MACJ,IAAAC,sBAAe,EAACR,GAAG,CAAC;MACpBI,cAAc,CAAC,KAAK,CAAC;IACvB,CAAC,CACF;EAAA,GAAE,EAAE,CAAC;AAIV,CAAC;AAAC,IAAAK,QAAA,GAEaV,YAAY;AAAAW,OAAA,cAAAD,QAAA"
+}

@@ -6,34 +6,24 @@ exports["default"] = void 0;
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _uiApi = require("../uiApi");
 var _useRefSet2 = _interopRequireDefault(require("../hooks/useRefSet"));
-var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
-var _Article = _interopRequireDefault(require("./Article.Style"));
 var _dt = require("../../utils/dt");
 var _crStyle = _interopRequireDefault(require("../zhn-utils/crStyle"));
 var _toLink = _interopRequireDefault(require("../zhn-utils/toLink"));
 var _useItemGestureSwipeX = _interopRequireDefault(require("./useItemGestureSwipeX"));
+var _useItemType2 = _interopRequireDefault(require("./useItemType1"));
 var _GestureSwipeX = _interopRequireDefault(require("../zhn-gesture/GestureSwipeX"));
-var _ItemHeader = _interopRequireDefault(require("./ItemHeader"));
+var _ItemType = _interopRequireDefault(require("./ItemType1"));
 var _ArticleDescr = _interopRequireDefault(require("./ArticleDescr"));
 var _Item = require("./Item.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
-var _focusNextArticle = function _focusNextArticle(nodeArticle) {
-  var _ref = nodeArticle || {},
-    nextElementSibling = _ref.nextElementSibling,
-    _ref2 = nextElementSibling || {},
-    firstElementChild = _ref2.firstElementChild;
-  if (firstElementChild) {
-    firstElementChild.focus();
-  }
-};
 var FN_NOOP = function FN_NOOP() {};
-var Article = (0, _uiApi.forwardRef)(function (_ref3, ref) {
-  var item = _ref3.item,
-    onCloseItem = _ref3.onCloseItem,
-    _ref3$onRemoveUnder = _ref3.onRemoveUnder,
-    onRemoveUnder = _ref3$onRemoveUnder === void 0 ? FN_NOOP : _ref3$onRemoveUnder,
-    _ref3$onRemoveItem = _ref3.onRemoveItem,
-    onRemoveItem = _ref3$onRemoveItem === void 0 ? FN_NOOP : _ref3$onRemoveItem;
+var Article = (0, _uiApi.forwardRef)(function (_ref, ref) {
+  var item = _ref.item,
+    onCloseItem = _ref.onCloseItem,
+    _ref$onRemoveUnder = _ref.onRemoveUnder,
+    onRemoveUnder = _ref$onRemoveUnder === void 0 ? FN_NOOP : _ref$onRemoveUnder,
+    _ref$onRemoveItem = _ref.onRemoveItem,
+    onRemoveItem = _ref$onRemoveItem === void 0 ? FN_NOOP : _ref$onRemoveItem;
   var _refArticle = (0, _uiApi.useRef)(null),
     _useRefSet = (0, _useRefSet2["default"])(null),
     refTimeStamp = _useRefSet[0],
@@ -41,35 +31,44 @@ var Article = (0, _uiApi.forwardRef)(function (_ref3, ref) {
     _useState = (0, _uiApi.useState)(false),
     isClosed = _useState[0],
     setIsClosed = _useState[1],
-    _useState2 = (0, _uiApi.useState)(false),
-    isShow = _useState2[0],
-    setIsShow = _useState2[1],
-    _hToggle = (0, _uiApi.useCallback)(function (evt) {
-      var _ref4 = evt || {},
-        timeStamp = _ref4.timeStamp,
-        _timeStamp = (0, _uiApi.getRefValue)(refTimeStamp);
-      if (timeStamp && _timeStamp && timeStamp - _timeStamp < 200) {
-        return;
-      }
-      setTimeStamp(timeStamp);
-      setIsShow(function (is) {
-        return !is;
-      });
-    }, []),
-    _hClose = (0, _uiApi.useCallback)(function () {
-      _focusNextArticle((0, _uiApi.getRefValue)(_refArticle));
-      onCloseItem(item);
-      setIsClosed(true);
-    }, []),
-    _hHide = (0, _uiApi.useCallback)(function () {
-      var _node = (0, _uiApi.getRefValue)(ref);
-      if (_node) {
-        _node.focus();
-      }
-      setIsShow(false);
+    _hClose = (0, _uiApi.useMemo)(function () {
+      return function () {
+        (0, _uiApi.focusRefNextSiblingFirstChildElement)(_refArticle);
+        onCloseItem(item);
+        setIsClosed(true);
+      };
     }, []),
     _onGestureSwipeX = (0, _useItemGestureSwipeX["default"])(item, onRemoveUnder, _hClose),
-    TS = (0, _useTheme["default"])(_Article["default"]);
+    _useItemType = (0, _useItemType2["default"])(ref),
+    isShowDescr = _useItemType[0],
+    hToggle = _useItemType[1],
+    hHide = _useItemType[2],
+    _hToggle = (0, _uiApi.useMemo)(function () {
+      return function (evt) {
+        var _ref2 = evt || {},
+          timeStamp = _ref2.timeStamp,
+          _timeStamp = (0, _uiApi.getRefValue)(refTimeStamp);
+        if (timeStamp && _timeStamp && timeStamp - _timeStamp < 200) {
+          return;
+        }
+        setTimeStamp(timeStamp);
+        hToggle();
+      };
+    }, []),
+    _hItemKeyDown = (0, _uiApi.useMemo)(function () {
+      return function (evt) {
+        var keyCode = evt.keyCode;
+        if (keyCode === 27) {
+          hHide();
+        } else if (keyCode === 46) {
+          _hClose();
+        }
+      };
+    }, []);
+
+  // hHide, _hClose
+  /*eslint-enable react-hooks/exhaustive-deps */
+
   var title = item.title,
     author = item.author,
     timeAgo = item.timeAgo,
@@ -79,41 +78,32 @@ var Article = (0, _uiApi.forwardRef)(function (_ref3, ref) {
     related = item.related,
     description = item.description || 'More...',
     _style = (0, _crStyle["default"])([isClosed, _Item.S_NONE]),
-    _captionStyle = (0, _crStyle["default"])(_Item.S_CAPTION, [isShow, _Item.S_CAPTION_OPEN]),
     _publishedAt = publishedDate || (0, _dt.toTimeDate)(publishedAt),
     _href = (0, _toLink["default"])(url);
-  if (url && !_href) {
-    return null;
-  }
-  return (0, _jsxRuntime.jsxs)(_GestureSwipeX["default"], {
+  return url && !_href ? null : (0, _jsxRuntime.jsx)(_GestureSwipeX["default"], {
     ref: _refArticle,
     style: (0, _extends2["default"])({}, _Item.S_ITEM, _style),
     setTimeStamp: setTimeStamp,
     onGesture: _onGestureSwipeX,
-    children: [(0, _jsxRuntime.jsx)(_ItemHeader["default"], {
+    children: (0, _jsxRuntime.jsx)(_ItemType["default"], {
       ref: ref,
-      className: _Item.CL_ITEM_HEADER,
-      style: TS.HEADER,
-      captionStyle: _captionStyle,
-      btCloseStyle: _Item.S_SVG_CLOSE,
+      isShowDescr: isShowDescr,
       title: title,
-      url: url,
-      isShow: isShow,
+      onKeyDown: _hItemKeyDown,
       onClick: _hToggle,
+      onToggle: hToggle,
       onClose: _hClose,
-      onHide: _hHide
-    }), (0, _jsxRuntime.jsx)(_ArticleDescr["default"], {
-      style: TS.DESCR,
-      isShow: isShow,
-      href: _href,
-      description: description,
-      related: related,
-      publishedAt: _publishedAt,
-      author: author,
-      timeAgo: timeAgo,
-      onClose: _hClose,
-      onHide: _hHide
-    })]
+      children: (0, _jsxRuntime.jsx)(_ArticleDescr["default"], {
+        href: _href,
+        description: description,
+        related: related,
+        publishedAt: _publishedAt,
+        author: author,
+        timeAgo: timeAgo,
+        onKeyDown: _hItemKeyDown,
+        onClose: _hClose
+      })
+    })
   });
 });
 var _default = Article;

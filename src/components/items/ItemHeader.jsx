@@ -1,43 +1,41 @@
 import {
   forwardRef,
-  useCallback
+  useMemo
 } from '../uiApi';
 
 import { CL_SELECT_NONE } from '../styles/CL';
 import SvgX from '../zhn-atoms/SvgX';
 
 const ItemHeader = forwardRef(({
-  isShow,
   className,
   style,
   captionStyle,
   btCloseStyle,
   title,
+  onKeyDown,
   onClick,
-  onHide,
+  onToggle,
   onClose
 }, ref) => {
   /*eslint-disable react-hooks/exhaustive-deps */
-  const _hClose = useCallback(evt => {
-    evt.stopPropagation()
-    onClose()
-  }, [])
-  //onClose
-  , _hKeyDown = useCallback(evt => {
-    const { keyCode } = evt;
-    if (keyCode === 13) {
-      if (!isShow) {
-        onClick()
+  const [
+    _hKeyDown,
+    _hClose
+  ] = useMemo(() => [
+    evt => {
+      if (evt.keyCode === 13) {
+        onToggle()
       } else {
-        onHide()
+        onKeyDown(evt)
       }
-    } else if (keyCode === 27 && isShow) {
-      onClick()
-    } else if (keyCode === 8 || keyCode === 46) {
+    },
+    evt => {
+      evt.stopPropagation()
       onClose()
     }
-  }, [isShow])
-  //onClick, onHide, onClose
+  ], [])
+  //onToggle, onKeyDown
+  //onClose
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (
