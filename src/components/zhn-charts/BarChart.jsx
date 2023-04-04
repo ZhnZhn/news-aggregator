@@ -1,53 +1,55 @@
 import { memo } from '../uiApi';
 
-const S_FONT = {
+const LABEL_WIDTH = 140
+, MAX_BAR_WIDTH = 200
+, S_FONT = {
   fontSize: '1rem',
-  fontWeight: 'bold',
-  verticalAlign: 'top'
+  fontWeight: 'bold'
 }
-const S_LABEL = {
+, S_ROW = {
+  display: 'flex',
+  alignItems: 'center'
+}
+, S_LABEL = {
   ...S_FONT,
   display: 'inline-block',
-  width: 140,
+  width: LABEL_WIDTH,
   paddingRight: 8,
   textAlign: 'right'
 }
 , S_COUNT = {
   ...S_FONT,
-  paddingLeft: 6,
+  paddingLeft: 6
 };
 
 const _crBarStyle = (
   color,
   maxValue,
   value
-) => {
-  return {
-    display: 'inline-block',
-    width: (200*value)/maxValue,
-    height: '1rem',
-    background: color
-  };
-};
+) => ({
+  display: 'inline-block',
+  height: '1.3rem',
+  width: (MAX_BAR_WIDTH*value)/maxValue,
+  background: color
+});
 
 const BarChart = memo(({
+  style,
   items,
   maxValue,
   color='darkcyan'
-}) => {
-  return (
-    <>
-    {
-      items.map(item => (
-        <div key={item[0]}>
-          <span style={S_LABEL}>{item[0]}</span>
-          <span style={_crBarStyle(color, maxValue, item[1])}/>
-          <span style={S_COUNT}>{item[1]}</span>
-        </div>
-      ))
-    }
-    </>
-  )
-});
+}) => (
+ <div style={style}>
+   {
+     items.map(item => (
+       <div style={S_ROW} key={item[0]}>
+         <span style={S_LABEL}>{item[0]}</span>
+         <span style={_crBarStyle(color, maxValue, item[1])}/>
+         <span style={S_COUNT}>{item[1]}</span>
+       </div>
+     ))
+   }
+ </div>
+));
 
 export default BarChart

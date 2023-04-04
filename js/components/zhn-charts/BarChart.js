@@ -6,14 +6,19 @@ exports["default"] = void 0;
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _uiApi = require("../uiApi");
 var _jsxRuntime = require("preact/jsx-runtime");
-var S_FONT = {
-  fontSize: '1rem',
-  fontWeight: 'bold',
-  verticalAlign: 'top'
-};
-var S_LABEL = (0, _extends2["default"])({}, S_FONT, {
+var LABEL_WIDTH = 140,
+  MAX_BAR_WIDTH = 200,
+  S_FONT = {
+    fontSize: '1rem',
+    fontWeight: 'bold'
+  },
+  S_ROW = {
+    display: 'flex',
+    alignItems: 'center'
+  },
+  S_LABEL = (0, _extends2["default"])({}, S_FONT, {
     display: 'inline-block',
-    width: 140,
+    width: LABEL_WIDTH,
     paddingRight: 8,
     textAlign: 'right'
   }),
@@ -23,19 +28,22 @@ var S_LABEL = (0, _extends2["default"])({}, S_FONT, {
 var _crBarStyle = function _crBarStyle(color, maxValue, value) {
   return {
     display: 'inline-block',
-    width: 200 * value / maxValue,
-    height: '1rem',
+    height: '1.3rem',
+    width: MAX_BAR_WIDTH * value / maxValue,
     background: color
   };
 };
 var BarChart = (0, _uiApi.memo)(function (_ref) {
-  var items = _ref.items,
+  var style = _ref.style,
+    items = _ref.items,
     maxValue = _ref.maxValue,
     _ref$color = _ref.color,
     color = _ref$color === void 0 ? 'darkcyan' : _ref$color;
-  return (0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
+  return (0, _jsxRuntime.jsx)("div", {
+    style: style,
     children: items.map(function (item) {
       return (0, _jsxRuntime.jsxs)("div", {
+        style: S_ROW,
         children: [(0, _jsxRuntime.jsx)("span", {
           style: S_LABEL,
           children: item[0]
