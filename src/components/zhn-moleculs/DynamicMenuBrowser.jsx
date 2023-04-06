@@ -1,6 +1,6 @@
 import {
   useState,
-  useCallback,
+  useMemo,
   useEffect
 } from '../uiApi';
 
@@ -22,6 +22,10 @@ const CL_MENU_MORE = "popup-menu items__menu-more";
 
 const S_BROWSER = {
   paddingRight: 0
+}
+, S_BROWSER_CAPTION = {
+  paddingLeft: 30,
+  textAlign: 'left'
 }
 , S_SCROLL_PANE = {
   height: '92%',
@@ -72,14 +76,35 @@ const DynamicMenuBrowser = ({
   onClick,
   onClickBadge
 }) => {
-  const [isShow, setIsShow] = useState(true)
-  , [isMore, setIsMore] = useState(false)
-  , [isLoading, setIsLoading] = useState(true)
-  , [isLoadingFailed, setIsLoadingFailed] = useState(false)
-  , [menuModel, setMenuModel] = useState()
-  , _hHide = useCallback(()=>setIsShow(false), [])
-  , _hShowMore = useCallback(() => setIsMore(true), [])
-  , _hCloseMore = useCallback(()=> setIsMore(false), []);
+  const [
+    isShow,
+    setIsShow
+  ] = useState(true)
+  , [
+    isMore,
+    setIsMore
+  ] = useState(false)
+  , [
+    isLoading,
+    setIsLoading
+  ] = useState(true)
+  , [
+    isLoadingFailed,
+    setIsLoadingFailed
+  ] = useState(false)
+  , [
+    menuModel,
+    setMenuModel
+  ] = useState()
+  , [
+    _hHide,
+    _hShowMore,
+    _hCloseMore
+  ] = useMemo(() => [
+    () => setIsShow(false),
+    () => setIsMore(true),
+    () => setIsMore(false)
+  ], []);
 
   useListen(store, (actionType, id)=>{
      if (actionType === showAction && id === browserId) {
@@ -111,12 +136,20 @@ const DynamicMenuBrowser = ({
   //url, onError
   /*eslint-enable react-hooks/exhaustive-deps*/
 
-  const {menu, items} = menuModel || {}
-  , _onMore = menuMore ? _hShowMore : void 0
+  const {
+    menu,
+    items
+  } = menuModel || {}
+  , _onMore = menuMore
+     ? _hShowMore
+     : void 0
   , TS = styleConfig;
 
   return (
-    <Browser isShow={isShow} style={{...S_BROWSER, ...TS.BROWSER}}>
+    <Browser
+      isShow={isShow}
+      style={{...S_BROWSER, ...TS.BROWSER}}
+    >
       {
         menuMore && <ModalSlider
           isShow={isMore}
@@ -127,7 +160,7 @@ const DynamicMenuBrowser = ({
         />
       }
       <BrowserCaption
-        style={TS.BROWSER_CAPTION}
+        style={{...S_BROWSER_CAPTION, ...TS.BROWSER_CAPTION}}
         caption={caption}
         onMore={_onMore}
         onClose={_hHide}
