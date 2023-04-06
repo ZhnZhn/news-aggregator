@@ -2,12 +2,10 @@ import crId from '../utils/crId';
 import formatTimeAgo from '../utils/formatTimeAgo';
 import crDescription from '../utils/crDescription';
 
+import toMls from './toMls';
 import crArticles from './crArticles';
 
-const SOURCE_ID = 'cryptocompare_news'
-, _toMls = sec => typeof sec === 'number'
-   ? sec*1000
-   : void 0;
+const SOURCE_ID = 'cryptocompare_news';
 
 const _crArticle = ({
   title,
@@ -19,7 +17,7 @@ const _crArticle = ({
   published_on
 }, timeAgoOptions) => {
   const { name } = source_info || {}
-  , _publishedOn = _toMls(published_on);
+  , _publishedOn = toMls(published_on);
   return {
     source: SOURCE_ID,
     articleId: crId(),
