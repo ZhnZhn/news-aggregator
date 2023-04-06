@@ -1,18 +1,25 @@
 
+/* cubic-bezier(0.64, 0.01, 0.07, 1.65) */
+/* cubic-bezier(.42,.2,.08,1); */
+
 .show-popup{
   transform-origin: 50% 0;
-  animation: showing-popup 300ms ease-out;
+  animation: showing-popup 300ms ease-in;
 }
 .hide-popup {
   transform-origin: 50% 0;
   animation: hiding-popup 300ms ease-out;
 }
 @keyframes showing-popup{
-  from {
+  0% {
     opacity: 0;
     transform: scaleY(0);
   }
-  to {
+  20% {
+    opacity: 0;
+    transform: scaleY(1);
+  }
+  100% {
     opacity: 1;
     transform: scaleY(1);
   }
