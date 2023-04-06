@@ -1,4 +1,3 @@
-
 import News from './NewsApi'
 import Webz from './WebzApi'
 import StackOverflow from './StackOverflowApi'
@@ -12,6 +11,7 @@ import TheNewsTop from './TheNewsApiTop'
 import CryptoCompare from './CryptoCompareApi'
 import CoinStats from './CoinStatsApi'
 import Messari from './MessariApi'
+import Reddit from './RedditApi'
 
 const Api = {
   News,
@@ -26,7 +26,8 @@ const Api = {
   CoinStats,
   Messari,
   TheNewsSearch,
-  TheNewsTop
+  TheNewsTop,
+  Reddit
 };
 
 export default Api

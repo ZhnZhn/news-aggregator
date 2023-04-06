@@ -8,6 +8,7 @@ import {
   NEWS_API_LONG,
   THE_NEWS_API,
   WEBZ_IO,
+  REDDIT,
   STACK_OVERFLOW
 } from '../../conf/ProviderNames';
 import SafeLink from '../zhn-atoms/SafeLink';
@@ -56,6 +57,11 @@ export const TheNewsApiLink = _fSafeLink(
 export const WebzLink = _fSafeLink(
   "https://webz.io",
   WEBZ_IO
+)
+
+export const RedditLink = _fSafeLink(
+  "https://www.reddit.com",
+  REDDIT
 )
 
 export const StackOverflowLink = _fSafeLink(

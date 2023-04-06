@@ -37,6 +37,7 @@ var PanelQuery = function PanelQuery(_ref) {
     onStackSearch = _ref.onStackSearch,
     onWebz = _ref.onWebz,
     onWebzCountry = _ref.onWebzCountry,
+    onReddit = _ref.onReddit,
     onClose = _ref.onClose;
   var TS = (0, _useTheme["default"])(_NewsBrowser["default"]),
     _refFirstItem = (0, _useFocusRefElementIf["default"])(isShow && HAS_NOT_TOUCH_EVENTS, refFocusItem);
@@ -114,17 +115,23 @@ var PanelQuery = function PanelQuery(_ref) {
         onClick: onWebzCountry
       })]
     }), (0, _jsxRuntime.jsxs)(_OpenClose["default"], {
-      caption: _ProviderNames.STACK_OVERFLOW,
+      caption: "Miscellaneous",
       style: TS.OPEN_CLOSE,
       itemStyle: TS.ITEM,
       children: [(0, _jsxRuntime.jsx)(_MenuItem["default"], {
         className: CL_ITEM,
-        caption: "Tagged Questions",
+        caption: _ProviderNames.STACK_OVERFLOW + ": Tagged",
         onClick: onStackTagged
       }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
         className: CL_ITEM,
-        caption: "Search Questions",
+        caption: _ProviderNames.STACK_OVERFLOW + ": Search",
         onClick: onStackSearch
+      }), (0, _jsxRuntime.jsx)("div", {
+        style: S_HORIZONTAL_LINE
+      }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
+        className: CL_ITEM,
+        caption: _ProviderNames.REDDIT + ": Top By",
+        onClick: onReddit
       })]
     })]
   });

@@ -1,0 +1,27 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/RedditApi.js"
+ ],
+ "file": "../../src/api/RedditApi.js",
+ "names": [
+  "API_URL",
+  "_isArr",
+  "Array",
+  "isArray",
+  "RedditApi",
+  "getRequestUrl",
+  "_ref",
+  "subreddit",
+  "checkResponse",
+  "json",
+  "option",
+  "_ref2",
+  "data",
+  "_ref3",
+  "children",
+  "_default",
+  "exports"
+ ],
+ "mappings": ";;;;AAAA,IAAMA,OAAO,GAAG,0BAA0B;AAC1C,IAAMC,MAAM,GAAGC,KAAK,CAACC,OAAO;AAE5B,IAAMC,SAAS,GAAG;EAChBC,aAAa,WAAAA,cAAAC,IAAA,EAAe;IAAA,IAAZC,SAAS,GAAAD,IAAA,CAATC,SAAS;IACvB,OAAUP,OAAO,SAAIO,SAAS;EAChC,CAAC;EACDC,aAAa,WAAAA,cAACC,IAAI,EAAEC,MAAM,EAAC;IACzB,IAAAC,KAAA,GAAiBF,IAAI,IAAI,CAAC,CAAC;MAAnBG,IAAI,GAAAD,KAAA,CAAJC,IAAI;MAAAC,KAAA,GACKD,IAAI,IAAI,CAAC,CAAC;MAAvBE,QAAQ,GAAAD,KAAA,CAARC,QAAQ;IACZ,OAAOb,MAAM,CAACa,QAAQ,CAAC;EACzB;AACF,CAAC;AAAC,IAAAC,QAAA,GAEaX,SAAS;AAAAY,OAAA,cAAAD,QAAA"
+}

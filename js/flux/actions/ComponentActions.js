@@ -31,6 +31,7 @@ var _fShowDialog = function _fShowDialog(id) {
 };
 Actions.showWebz = _fShowDialog(_NewsQuery["default"].WEBZ);
 Actions.showWebzCountry = _fShowDialog(_NewsQuery["default"].WEBZ_COUNTRY);
+Actions.showReddit = _fShowDialog(_NewsQuery["default"].REDDIT);
 Actions.showStackTagged = _fShowDialog(_NewsQuery["default"].STACK_TAGGED);
 Actions.showStackSearch = _fShowDialog(_NewsQuery["default"].STACK_SEARCH);
 Actions.showCryptoCompare = _fShowDialog(_NewsQuery["default"].CRYPTO_COMPARE);

@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.WebzLink = exports.TheNewsApiLink = exports.StackOverflowLink = exports.NewsApiLink = exports.MessariLink = exports.IexApiLink = exports.FmpApiLink = exports.CryptoCompareLink = exports.CoinStatsLink = exports.AlphaVantageLink = void 0;
+exports.WebzLink = exports.TheNewsApiLink = exports.StackOverflowLink = exports.RedditLink = exports.NewsApiLink = exports.MessariLink = exports.IexApiLink = exports.FmpApiLink = exports.CryptoCompareLink = exports.CoinStatsLink = exports.AlphaVantageLink = void 0;
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
 var _ProviderNames = require("../../conf/ProviderNames");
@@ -35,6 +35,8 @@ var TheNewsApiLink = _fSafeLink("https://thenewsapi.com", _ProviderNames.THE_NEW
 exports.TheNewsApiLink = TheNewsApiLink;
 var WebzLink = _fSafeLink("https://webz.io", _ProviderNames.WEBZ_IO);
 exports.WebzLink = WebzLink;
+var RedditLink = _fSafeLink("https://www.reddit.com", _ProviderNames.REDDIT);
+exports.RedditLink = RedditLink;
 var StackOverflowLink = _fSafeLink("https://stackoverflow.com", _ProviderNames.STACK_OVERFLOW);
 exports.StackOverflowLink = StackOverflowLink;
 var IexApiLink = _fSafeLink("https://iexcloud.io", _ProviderNames.IEX_CLOUD);

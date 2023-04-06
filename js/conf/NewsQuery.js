@@ -16,6 +16,12 @@ var NEWS_QUERY = {
     "paneCaption": _ProviderNames.WEBZ_IO + ": By Country",
     "paneId": "webz_country"
   },
+  REDDIT: {
+    "type": "REDDIT",
+    "dialogType": "RedditTop",
+    "paneCaption": _ProviderNames.REDDIT + ": Top By",
+    "paneId": "rd_topby"
+  },
   STACK_TAGGED: {
     "type": "SO_TAGGED",
     "dialogType": "StackTagged",

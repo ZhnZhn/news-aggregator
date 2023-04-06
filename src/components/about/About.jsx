@@ -29,7 +29,8 @@ import {
   NewsApiLink,
   TheNewsApiLink,
   StackOverflowLink,
-  WebzLink
+  WebzLink,
+  RedditLink
 } from '../links/Links';
 import Step from './Step';
 import LogoBar from './LogoBar';
@@ -53,7 +54,8 @@ const PROVIDER_LINKS = [
   [NewsApiLink],
   [TheNewsApiLink],
   [StackOverflowLink],
-  [WebzLink]
+  [WebzLink],
+  [RedditLink]
 ];
 
 const _crLinkItem = ([Comp, props], index) => (

@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.WEBZ_IO = exports.THE_NEWS_API = exports.STACK_OVERFLOW = exports.NEWS_API_LONG = exports.NEWS_API = exports.MESSARI = exports.IEX_CLOUD = exports.FMP_LONG = exports.FMP = exports.CRYPTO_COMPARE = exports.COIN_STATS = exports.ALPHA_VANTAGE = void 0;
+exports.WEBZ_IO = exports.THE_NEWS_API = exports.STACK_OVERFLOW = exports.REDDIT = exports.NEWS_API_LONG = exports.NEWS_API = exports.MESSARI = exports.IEX_CLOUD = exports.FMP_LONG = exports.FMP = exports.CRYPTO_COMPARE = exports.COIN_STATS = exports.ALPHA_VANTAGE = void 0;
 var CRYPTO_COMPARE = 'CryptoCompare';
 exports.CRYPTO_COMPARE = CRYPTO_COMPARE;
 var COIN_STATS = 'CoinStats';
@@ -24,6 +24,8 @@ var THE_NEWS_API = 'TheNewsAPI';
 exports.THE_NEWS_API = THE_NEWS_API;
 var WEBZ_IO = 'Webz.io';
 exports.WEBZ_IO = WEBZ_IO;
+var REDDIT = 'Reddit';
+exports.REDDIT = REDDIT;
 var STACK_OVERFLOW = 'StackOverflow';
 exports.STACK_OVERFLOW = STACK_OVERFLOW;
 //# sourceMappingURL=ProviderNames.js.map

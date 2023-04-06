@@ -42,6 +42,7 @@ var AppNewsAggregator = function AppNewsAggregator() {
         onNewsSources: _ComponentActions.ComponentActions.showNewsBrowser,
         onWebz: _ComponentActions.ComponentActions.showWebz,
         onWebzCountry: _ComponentActions.ComponentActions.showWebzCountry,
+        onReddit: _ComponentActions.ComponentActions.showReddit,
         onStackTagged: _ComponentActions.ComponentActions.showStackTagged,
         onStackSearch: _ComponentActions.ComponentActions.showStackSearch,
         onCryptoCompare: _ComponentActions.ComponentActions.showCryptoCompare,

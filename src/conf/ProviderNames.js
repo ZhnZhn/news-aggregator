@@ -13,5 +13,6 @@ export const NEWS_API_LONG = 'NewsApi.org'
 export const THE_NEWS_API = 'TheNewsAPI'
 
 export const WEBZ_IO = 'Webz.io'
+export const REDDIT = 'Reddit'
 
 export const STACK_OVERFLOW = 'StackOverflow'

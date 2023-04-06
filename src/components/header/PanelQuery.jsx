@@ -14,6 +14,7 @@ import {
   NEWS_API_LONG,
   THE_NEWS_API,
   WEBZ_IO,
+  REDDIT,
   STACK_OVERFLOW
 } from '../../conf/ProviderNames';
 
@@ -48,6 +49,7 @@ const PanelQuery = ({
   onStackSearch,
   onWebz,
   onWebzCountry,
+  onReddit,
   onClose
 }) => {
   const TS = useTheme(styleConfig)
@@ -145,19 +147,25 @@ const PanelQuery = ({
            />
         </OpenClose>
         <OpenClose
-           caption={STACK_OVERFLOW}
+           caption="Miscellaneous"
            style={TS.OPEN_CLOSE}
            itemStyle={TS.ITEM}
         >
            <MenuItem
              className={CL_ITEM}
-             caption="Tagged Questions"
+             caption={`${STACK_OVERFLOW}: Tagged`}
              onClick={onStackTagged}
            />
            <MenuItem
              className={CL_ITEM}
-             caption="Search Questions"
+             caption={`${STACK_OVERFLOW}: Search`}
              onClick={onStackSearch}
+           />
+           <div style={S_HORIZONTAL_LINE} />
+           <MenuItem
+             className={CL_ITEM}
+             caption={`${REDDIT}: Top By`}
+             onClick={onReddit}
            />
         </OpenClose>
      </ModalPopup>

@@ -13,6 +13,7 @@ var _AvAdapter = _interopRequireDefault(require("./AvAdapter"));
 var _CryptoCompareAdapter = _interopRequireDefault(require("./CryptoCompareAdapter"));
 var _CoinStatsAdapter = _interopRequireDefault(require("./CoinStatsAdapter"));
 var _MessariAdapter = _interopRequireDefault(require("./MessariAdapter"));
+var _RedditAdapter = _interopRequireDefault(require("./RedditAdapter"));
 var Adapters = {
   News: _NewsApiAdapter["default"],
   TheNews: _TheNewsApiAdapter["default"],
@@ -23,7 +24,8 @@ var Adapters = {
   Av: _AvAdapter["default"],
   CryptoCompare: _CryptoCompareAdapter["default"],
   CoinStats: _CoinStatsAdapter["default"],
-  Messari: _MessariAdapter["default"]
+  Messari: _MessariAdapter["default"],
+  Reddit: _RedditAdapter["default"]
 };
 var _default = Adapters;
 exports["default"] = _default;

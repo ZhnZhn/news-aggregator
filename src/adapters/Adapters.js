@@ -8,6 +8,7 @@ import Av from './AvAdapter'
 import CryptoCompare from './CryptoCompareAdapter'
 import CoinStats from './CoinStatsAdapter'
 import Messari from './MessariAdapter'
+import Reddit from './RedditAdapter'
 
 const Adapters = {
   News,
@@ -19,7 +20,8 @@ const Adapters = {
   Av,
   CryptoCompare,
   CoinStats,
-  Messari
+  Messari,
+  Reddit
 };
 
 export default Adapters

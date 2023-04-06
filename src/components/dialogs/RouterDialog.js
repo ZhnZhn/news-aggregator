@@ -13,9 +13,10 @@ import TheNewsApiTop from './TheNewsApiTopDialog';
 import CryptoCompareNews from './CryptoCompareNewsDialog';
 import CoinStatsNews from './CoinStatsDialog';
 import MessariNews from './MessariDialog';
+import RedditTop from './RedditTopDialog';
 
 const R = {
-  DEFAULT: DialogType1,
+  DF: DialogType1,
   DialogType1,
   WebzQuery,
   WebzCountry,
@@ -30,13 +31,12 @@ const R = {
   NewsApiSearch,
   NewsApiTop,
   TheNewsApiSearch,
-  TheNewsApiTop
+  TheNewsApiTop,
+  RedditTop
 }
 
 const RouterDialog = {
-  getElement: (type) => {
-   return R[type] || R.DEFAULT;
-  }
+  getElement: (type) => R[type] || R.DF
 };
 
 export default RouterDialog

@@ -8,6 +8,7 @@ import {
   NEWS_API,
   THE_NEWS_API,
   WEBZ_IO,
+  REDDIT,
   STACK_OVERFLOW
 } from './ProviderNames';
 
@@ -23,6 +24,12 @@ const NEWS_QUERY = {
     "dialogType": "WebzCountry",
     "paneCaption": `${WEBZ_IO}: By Country`,
     "paneId": "webz_country"
+  },
+  REDDIT: {
+    "type": "REDDIT",
+    "dialogType": "RedditTop",
+    "paneCaption": `${REDDIT}: Top By`,
+    "paneId": "rd_topby"
   },
   STACK_TAGGED: {
     "type": "SO_TAGGED",

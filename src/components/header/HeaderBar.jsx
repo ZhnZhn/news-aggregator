@@ -63,6 +63,7 @@ const HeaderBar = ({
   onAbout,
   onWebz,
   onWebzCountry,
+  onReddit,
   onStackTagged,
   onStackSearch,
   onCryptoCompare,
@@ -92,6 +93,7 @@ const HeaderBar = ({
   , _hToggleQuery = useCallback(() => setIsQuery(is => !is), [])
   , _hWebz = _useClickItem(onWebz, _hCloseQuery)
   , _hWebzCountry = _useClickItem(onWebzCountry, _hCloseQuery)
+  , _hReddit = _useClickItem(onReddit, _hCloseQuery)
   , _hStackTagged = _useClickItem(onStackTagged, _hCloseQuery)
   , _hStackSearch = _useClickItem(onStackSearch, _hCloseQuery)
   , _hCryptoCompare = _useClickItem(onCryptoCompare, _hCloseQuery)
@@ -116,9 +118,9 @@ const HeaderBar = ({
         className={CL_PANEL_BROWSER}
         isShow={isQuery}
         onClose={_hCloseQuery}
-        //onClose={_hToggleQuery}
         onWebz={_hWebz}
         onWebzCountry={_hWebzCountry}
+        onReddit={_hReddit}
         onStackTagged={_hStackTagged}
         onStackSearch={_hStackSearch}
         onCryptoCompare={_hCryptoCompare}
