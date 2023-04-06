@@ -18,8 +18,6 @@ export const S_CAPTION = {
   wordBreak: 'break-word'
 }
 
-export const S_CAPTION_OPEN = { color: '#607d8b' }
-
 export const S_SVG_CLOSE = {
   position: 'absolute',
   right: -4

@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.S_SVG_CLOSE = exports.S_NONE = exports.S_ITEM = exports.S_CAPTION_OPEN = exports.S_CAPTION = exports.CL_ITEM_HEADER = void 0;
+exports.S_SVG_CLOSE = exports.S_NONE = exports.S_ITEM = exports.S_CAPTION = exports.CL_ITEM_HEADER = void 0;
 var CL_ITEM_HEADER = "article-header";
 exports.CL_ITEM_HEADER = CL_ITEM_HEADER;
 var S_ITEM = {
@@ -21,10 +21,6 @@ var S_CAPTION = {
   wordBreak: 'break-word'
 };
 exports.S_CAPTION = S_CAPTION;
-var S_CAPTION_OPEN = {
-  color: '#607d8b'
-};
-exports.S_CAPTION_OPEN = S_CAPTION_OPEN;
 var S_SVG_CLOSE = {
   position: 'absolute',
   right: -4

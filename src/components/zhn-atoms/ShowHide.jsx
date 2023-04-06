@@ -7,6 +7,7 @@ const CL_SHOW_POPUP = 'show-popup'
 
 const ShowHide = ({
   isShow,
+  withoutAnimation,
   isScrollable,
   className,
   style,
@@ -14,7 +15,7 @@ const ShowHide = ({
   ...restProps
 }) => (
   <div
-    className={crCn(className, [isShow, CL_SHOW_POPUP])}
+    className={crCn(className, [isShow && !withoutAnimation, CL_SHOW_POPUP])}
     style={crStyle(style, isShow ? S_SHOW : S_HIDE)}
     data-scrollable={isScrollable ? "true" : void 0}
     {...restProps}
