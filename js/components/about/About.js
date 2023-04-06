@@ -17,6 +17,10 @@ var _LogoBar = _interopRequireDefault(require("./LogoBar"));
 var _jsxRuntime = require("preact/jsx-runtime");
 var CL_ABOUT_PANE = "about-pane";
 var CL_SHOW = "show-popup";
+var S_BROWSER_CAPTION = {
+  paddingLeft: 12,
+  textAlign: 'left'
+};
 var ItemStack = _Comp["default"].ItemStack;
 var PROVIDER_LINKS = [[_Links.CryptoCompareLink], [_Links.CoinStatsLink], [_Links.MessariLink], [_Links.IexApiLink], [_Links.FmpApiLink, {
   title: _ProviderNames.FMP_LONG
@@ -59,7 +63,7 @@ var About = function About(_ref2) {
     className: _className,
     style: (0, _extends2["default"])({}, _style, TS.ROOT),
     children: [(0, _jsxRuntime.jsx)(_Comp["default"].BrowserCaption, {
-      style: TS.BROWSER_CAPTION,
+      style: (0, _extends2["default"])({}, S_BROWSER_CAPTION, TS.BROWSER_CAPTION),
       caption: "About News Aggregator",
       onClose: setIsShowFalse
     }), (0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {

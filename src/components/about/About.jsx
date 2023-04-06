@@ -34,10 +34,12 @@ import {
 import Step from './Step';
 import LogoBar from './LogoBar';
 
-
-
 const CL_ABOUT_PANE = "about-pane";
 const CL_SHOW = "show-popup";
+const S_BROWSER_CAPTION = {
+  paddingLeft: 12,
+  textAlign: 'left'
+};
 
 const { ItemStack } = A;
 
@@ -113,7 +115,7 @@ const About = ({
       style={{..._style, ...TS.ROOT}}
      >
        <A.BrowserCaption
-          style={TS.BROWSER_CAPTION}
+          style={{...S_BROWSER_CAPTION, ...TS.BROWSER_CAPTION}}
           caption="About News Aggregator"
           onClose={setIsShowFalse}
        />

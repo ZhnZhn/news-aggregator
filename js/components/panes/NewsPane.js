@@ -27,6 +27,10 @@ var WIDTH_STYLE = (0, _has.initWidthStyle)(),
   CL_NEWS_PANE = "news-pane",
   CL_SHOW_POPUP = "show-popup",
   CL_MENU_MORE = "popup-menu items__menu-more",
+  S_BROWSER_CAPTION = {
+    paddingLeft: 30,
+    textAlign: 'left'
+  },
   S_SCROLL_DIV = {
     overflow: 'hidden auto',
     height: '92%',
@@ -194,7 +198,7 @@ var NewsPane = function NewsPane(_ref2) {
       model: _MODEL_MORE,
       onClose: _hideMore
     }), (0, _jsxRuntime.jsx)(_Comp["default"].BrowserCaption, {
-      style: TS.PANE_CAPTION,
+      style: (0, _extends2["default"])({}, S_BROWSER_CAPTION, TS.PANE_CAPTION),
       caption: _paneCaption,
       onMore: _showMore,
       onClose: _hHide,
