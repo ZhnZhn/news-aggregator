@@ -1,1 +1,26 @@
-{"version":3,"sources":["../../../src/components/panes/RouterPane.js"],"names":["R","DEFAULT","Pane","NewsPane","Item","Article","SO_TAGGED","StackItem","SO_SEARCH","IEX","RouterPane","getElement","type","El"],"mappings":";;;;;;;AACA;;AAEA;;AACA;;AAEA,IAAMA,CAAC,GAAG;AACRC,EAAAA,OAAO,EAAE;AACPC,IAAAA,IAAI,EAAEC,oBADC;AAEPC,IAAAA,IAAI,EAAEC;AAFC,GADD;AAKRC,EAAAA,SAAS,EAAE;AACTJ,IAAAA,IAAI,EAAEC,oBADG;AAETC,IAAAA,IAAI,EAAEG;AAFG,GALH;AASRC,EAAAA,SAAS,EAAE;AACTN,IAAAA,IAAI,EAAEC,oBADG;AAETC,IAAAA,IAAI,EAAEG;AAFG,GATH;AAaRE,EAAAA,GAAG,EAAE;AACHP,IAAAA,IAAI,EAAEC,oBADH;AAEHC,IAAAA,IAAI,EAAEC;AAFH;AAbG,CAAV;AAoBA,IAAMK,UAAU,GAAG;AACjBC,EAAAA,UAAU,EAAE,oBAACC,IAAD,EAAU;AACpB,QAAMC,EAAE,GAAGb,CAAC,CAACY,IAAD,CAAZ;;AACA,QAAIC,EAAJ,EAAQ;AACN,aAAOb,CAAC,CAACY,IAAD,CAAR;AACD,KAFD,MAEO;AACL,aAAQZ,CAAC,CAACC,OAAV;AACD;AACF;AARgB,CAAnB;eAWeS,U","sourcesContent":["\r\nimport NewsPane from './NewsPane'\r\n\r\nimport Article from '../items/Article'\r\nimport StackItem from '../items/StackItem'\r\n\r\nconst R = {\r\n  DEFAULT: {\r\n    Pane: NewsPane,\r\n    Item: Article\r\n  },\r\n  SO_TAGGED: {\r\n    Pane: NewsPane,\r\n    Item: StackItem\r\n  },\r\n  SO_SEARCH: {\r\n    Pane: NewsPane,\r\n    Item: StackItem\r\n  },\r\n  IEX: {\r\n    Pane: NewsPane,\r\n    Item: Article\r\n  }\r\n\r\n}\r\n\r\nconst RouterPane = {\r\n  getElement: (type) => {\r\n    const El = R[type];\r\n    if (El) {\r\n      return R[type];\r\n    } else {\r\n      return  R.DEFAULT;\r\n    }\r\n  }\r\n}\r\n\r\nexport default RouterPane\r\n"],"file":"RouterPane.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/panes/RouterPane.js"
+ ],
+ "file": "../../../src/components/panes/RouterPane.js",
+ "names": [
+  "_NewsPane",
+  "_interopRequireDefault",
+  "require",
+  "_Article",
+  "_StackItem",
+  "R",
+  "DF",
+  "NewsPane",
+  "Article",
+  "STACK_ITEM",
+  "StackItem",
+  "RouterPane",
+  "getElement",
+  "type",
+  "_default",
+  "exports"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,SAAA,GAAAC,sBAAA,CAAAC,OAAA;AAEA,IAAAC,QAAA,GAAAF,sBAAA,CAAAC,OAAA;AACA,IAAAE,UAAA,GAAAH,sBAAA,CAAAC,OAAA;AAEA,IAAMG,CAAC,GAAG;EACRC,EAAE,EAAE,CAACC,oBAAQ,EAAEC,mBAAO,CAAC;EACvBC,UAAU,EAAE,CAACF,oBAAQ,EAAEG,qBAAS;AAClC,CAAC;AAED,IAAMC,UAAU,GAAG;EACjBC,UAAU,EAAE,SAAAA,WAACC,IAAI;IAAA,OAAKR,CAAC,CAACQ,IAAI,CAAC,IAAIR,CAAC,CAACC,EAAE;EAAA;AACvC,CAAC;AAAA,IAAAQ,QAAA,GAEcH,UAAU;AAAAI,OAAA,cAAAD,QAAA"
+}

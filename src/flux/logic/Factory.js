@@ -47,17 +47,17 @@ export const createNewsPane = (
     paneCaption,
     paneId
   } = itemConf
-  , {
-    Pane,
-    Item
-  } = RouterPane.getElement(paneType);
+  , [
+    CompPane,
+    CompItem
+  ] = RouterPane.getElement(paneType);
   return (
-    <Pane
+    <CompPane
       key={type}
       id={paneId}
       paneCaption={paneCaption}
       store={store}
-      Item={Item}
+      Item={CompItem}
       addAction={NAT_LOAD_NEWS_COMPLETED}
       updateAction={NAT_UPDATE_NEWS}
       showAction={CAT_SHOW_NEWS_PANE}
