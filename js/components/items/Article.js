@@ -7,7 +7,6 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 var _uiApi = require("../uiApi");
 var _useRefSet2 = _interopRequireDefault(require("../hooks/useRefSet"));
 var _dt = require("../../utils/dt");
-var _crStyle = _interopRequireDefault(require("../zhn-utils/crStyle"));
 var _toLink = _interopRequireDefault(require("../zhn-utils/toLink"));
 var _useItemGestureSwipeX = _interopRequireDefault(require("./useItemGestureSwipeX"));
 var _useItemType2 = _interopRequireDefault(require("./useItemType1"));
@@ -77,7 +76,7 @@ var Article = (0, _uiApi.forwardRef)(function (_ref, ref) {
     url = item.url,
     related = item.related,
     description = item.description || 'More...',
-    _style = (0, _crStyle["default"])([isClosed, _Item.S_NONE]),
+    _style = isClosed ? _Item.S_NONE : void 0,
     _publishedAt = publishedDate || (0, _dt.toTimeDate)(publishedAt),
     _href = (0, _toLink["default"])(url);
   return url && !_href ? null : (0, _jsxRuntime.jsx)(_GestureSwipeX["default"], {

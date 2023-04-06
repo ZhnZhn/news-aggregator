@@ -10,7 +10,6 @@ import useTheme from '../hooks/useTheme';
 import styleConfig from './Article.Style';
 
 import { HAS_TOUCH_EVENTS } from '../has';
-import crStyle from '../zhn-utils/crStyle';
 
 import useItemGestureSwipeX from './useItemGestureSwipeX';
 import GestureSwipeX from '../zhn-gesture/GestureSwipeX';
@@ -131,7 +130,9 @@ const StackItem = forwardRef(({
     reputation,
     display_name
   } = owner || {}
-  , _style = crStyle([isClosed, S_NONE]);
+  , _style = isClosed
+      ? S_NONE
+      : void 0;
 
   return (
     <GestureSwipeX

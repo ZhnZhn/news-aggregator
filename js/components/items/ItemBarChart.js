@@ -3,9 +3,8 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 var _uiApi = require("../uiApi");
-var _crStyle = _interopRequireDefault(require("../zhn-utils/crStyle"));
+var _crStyle = require("../zhn-utils/crStyle");
 var _useItemType2 = _interopRequireDefault(require("./useItemType1"));
 var _ItemType = _interopRequireDefault(require("./ItemType1"));
 var _BarChart = _interopRequireDefault(require("../zhn-charts/BarChart"));
@@ -35,8 +34,9 @@ var ItemBarChart = function ItemBarChart(_ref) {
       setIsClosed(false);
     }
   }, [categoryBars]);
+  var _style = (0, _crStyle.crStyle2)(_Item.S_ITEM, isClosed && _Item.S_NONE);
   return _isArr(categoryBars) ? (0, _jsxRuntime.jsx)("div", {
-    style: (0, _extends2["default"])({}, _Item.S_ITEM, (0, _crStyle["default"])([isClosed, _Item.S_NONE])),
+    style: _style,
     children: (0, _jsxRuntime.jsx)(_ItemType["default"], {
       title: "Categories Bar Chart (" + numberOfItems + ")",
       isShowDescr: isShowDescr,

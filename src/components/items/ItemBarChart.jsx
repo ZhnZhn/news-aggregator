@@ -4,7 +4,7 @@ import {
   useEffect
 } from '../uiApi';
 
-import crStyle from '../zhn-utils/crStyle';
+import { crStyle2 } from '../zhn-utils/crStyle';
 import useItemType1 from './useItemType1';
 
 import ItemType1 from './ItemType1';
@@ -44,8 +44,13 @@ const ItemBarChart = ({
     }
   }, [categoryBars])
 
+  const _style = crStyle2(
+    S_ITEM,
+    isClosed && S_NONE
+  );
+
   return _isArr(categoryBars) ? (
-    <div style={{...S_ITEM, ...crStyle([isClosed, S_NONE])}}>
+    <div style={_style}>
        <ItemType1
          title={`Categories Bar Chart (${numberOfItems})`}
          isShowDescr={isShowDescr}

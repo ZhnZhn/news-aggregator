@@ -1,4 +1,4 @@
-import crStyle from '../zhn-utils/crStyle';
+import { crStyle2 } from '../zhn-utils/crStyle';
 
 const S_BADGE = {
   display: 'inline-block',
@@ -23,12 +23,15 @@ const MenuItemBadge = ({
   itemConf,
   onClick
 }) => {
-  const _hClick = (event) => {
-    event.stopPropagation()
+  const _hClick = (evt) => {
+    evt.stopPropagation()
     onClick(itemConf)
   }
   , { isOpen } = itemBadge || {}
-  , _badgeStyle = crStyle(S_BADGE, [!isOpen, S_CLOSE]);
+  , _badgeStyle = crStyle2(
+      S_BADGE,
+      !isOpen && S_CLOSE
+  );
 
   return (
     <button

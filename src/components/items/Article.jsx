@@ -10,7 +10,6 @@ import {
 import useRefSet from '../hooks/useRefSet';
 
 import { toTimeDate } from '../../utils/dt';
-import crStyle from '../zhn-utils/crStyle';
 import toLink from '../zhn-utils/toLink';
 
 import useItemGestureSwipeX from './useItemGestureSwipeX';
@@ -96,7 +95,7 @@ const Article = forwardRef(({
     //, urlToImage
   } = item
   , description = item.description || 'More...'
-  , _style = crStyle([isClosed, S_NONE])
+  , _style = isClosed ? S_NONE : void 0
   , _publishedAt = publishedDate || toTimeDate(publishedAt)
   , _href = toLink(url);
 

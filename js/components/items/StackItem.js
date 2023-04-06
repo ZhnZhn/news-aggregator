@@ -10,7 +10,6 @@ var _useKeyDelete = _interopRequireDefault(require("../hooks/useKeyDelete"));
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 var _Article = _interopRequireDefault(require("./Article.Style"));
 var _has = require("../has");
-var _crStyle = _interopRequireDefault(require("../zhn-utils/crStyle"));
 var _useItemGestureSwipeX = _interopRequireDefault(require("./useItemGestureSwipeX"));
 var _GestureSwipeX = _interopRequireDefault(require("../zhn-gesture/GestureSwipeX"));
 var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
@@ -128,7 +127,7 @@ var StackItem = (0, _uiApi.forwardRef)(function (_ref, ref) {
     _ref3 = owner || {},
     reputation = _ref3.reputation,
     display_name = _ref3.display_name,
-    _style = (0, _crStyle["default"])([isClosed, S_NONE]);
+    _style = isClosed ? S_NONE : void 0;
   return (0, _jsxRuntime.jsxs)(_GestureSwipeX["default"], {
     style: (0, _extends2["default"])({}, S_ROOT, _style, TS.HEADER),
     onGesture: _onGestureSwipeX,
