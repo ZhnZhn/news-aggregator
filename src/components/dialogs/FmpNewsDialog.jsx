@@ -20,7 +20,7 @@ const INPUT_CONFIGS = [
 const FmpNewsDialog = (props) => (
   <DialogStackInputs
     {...props}
-    caption={`${FMP}: Stock News`}
+    caption={FMP}
     loadId="FMP"
     INPUT_CONFIGS={INPUT_CONFIGS}
     INITIAL_INPUTS={INITIAL_INPUTS}

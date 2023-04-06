@@ -21,9 +21,8 @@ var INITIAL_FROM_DATE = (0, _dt.getFromDate)(1),
   TOGGLES = _crDfInputs[1],
   IS_INPUTS = _crDfInputs[2];
 var StackSearchDialog = function StackSearchDialog(props) {
-  var caption = (0, _DialogFn.getDialogCaption)(props.itemConf);
   return (0, _jsxRuntime.jsx)(_DialogStackInputs["default"], (0, _extends2["default"])({}, props, {
-    caption: caption,
+    caption: "Search Questions",
     loadId: "SO",
     INPUT_CONFIGS: INPUT_CONFIGS,
     INITIAL_INPUTS: INITIAL_INPUTS,

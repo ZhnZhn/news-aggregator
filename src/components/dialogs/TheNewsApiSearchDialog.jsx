@@ -1,7 +1,6 @@
 import DialogStackInputs from './DialogStackInputs';
 import { TheNewsApiLink } from '../links/Links';
 import {
-  getPaneCaption,
   crTextFieldCaption,
   crDfInputs
 } from './DialogFn';
@@ -27,21 +26,19 @@ const SORT_BY_OPTIONS = [
   IS_INPUTS
 ] = crDfInputs(INPUT_CONFIGS);
 
-const TheNewsApiSearchDialog = (props) => {
-  const caption = getPaneCaption(props.itemConf);
-  return (
-    <DialogStackInputs
-      {...props}
-      caption={caption}
-      loadId="TNS"
-      INPUT_CONFIGS={INPUT_CONFIGS}
-      INITIAL_INPUTS={INITIAL_INPUTS}
-      TOGGLES={TOGGLES}
-      IS_INPUTS={IS_INPUTS}
-    >
-      <TheNewsApiLink />
-    </DialogStackInputs>
-  );
-}
+const TheNewsApiSearchDialog = (props) => (
+   <DialogStackInputs
+     {...props}
+     caption="Search"
+     loadId="TNS"
+     INPUT_CONFIGS={INPUT_CONFIGS}
+     INITIAL_INPUTS={INITIAL_INPUTS}
+     TOGGLES={TOGGLES}
+     IS_INPUTS={IS_INPUTS}
+   >
+     <TheNewsApiLink />
+   </DialogStackInputs>
+);
+
 
 export default TheNewsApiSearchDialog

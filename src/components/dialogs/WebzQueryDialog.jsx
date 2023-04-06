@@ -1,5 +1,3 @@
-import { WEBZ_IO } from '../../conf/ProviderNames';
-
 import {
   useCallback,
   getRefValue
@@ -82,7 +80,7 @@ const WebzQueryDialog = ({
        style={TS.R_DIALOG}
        captionStyle={TS.BROWSER_CAPTION}
        buttonStyle={TS.BT}
-       caption={`${WEBZ_IO}: News, Blogs`}
+       caption="News, Blogs"
        onKeyDown={_hKeyDown}
        onLoad={_hLoad}
        onShow={onShow}

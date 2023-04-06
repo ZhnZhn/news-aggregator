@@ -6,8 +6,7 @@ import DialogStackInputs from './DialogStackInputs';
 import { StackOverflowLink } from '../links/Links';
 import {
   crTextFieldCaption,
-  crDfInputs,
-  getDialogCaption
+  crDfInputs
 } from './DialogFn';
 
 const INITIAL_FROM_DATE = getFromDate(1)
@@ -33,21 +32,19 @@ const INITIAL_FROM_DATE = getFromDate(1)
   IS_INPUTS
 ] = crDfInputs(INPUT_CONFIGS);
 
-const StackSearchDialog = (props) => {
-  const caption = getDialogCaption(props.itemConf);
-  return (
-    <DialogStackInputs
-      {...props}
-      caption={caption}
-      loadId="SO"
-      INPUT_CONFIGS={INPUT_CONFIGS}
-      INITIAL_INPUTS={INITIAL_INPUTS}
-      TOGGLES={TOGGLES}
-      IS_INPUTS={IS_INPUTS}
-    >
-      <StackOverflowLink />
-    </DialogStackInputs>
-  );
-}
+const StackSearchDialog = (props) => (
+  <DialogStackInputs
+    {...props}
+    caption="Search Questions"
+    loadId="SO"
+    INPUT_CONFIGS={INPUT_CONFIGS}
+    INITIAL_INPUTS={INITIAL_INPUTS}
+    TOGGLES={TOGGLES}
+    IS_INPUTS={IS_INPUTS}
+  >
+    <StackOverflowLink />
+  </DialogStackInputs>
+);
+
 
 export default StackSearchDialog

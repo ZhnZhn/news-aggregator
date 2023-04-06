@@ -31,7 +31,7 @@ const INPUT_CONFIGS = [
 const IexNewsDialog = (props) => (
    <DialogStackInputs
      {...props}
-     caption={`${IEX_CLOUD}: Stock News`}
+     caption={IEX_CLOUD}
      loadId="IEX"
      INPUT_CONFIGS={INPUT_CONFIGS}
      INITIAL_INPUTS={INITIAL_INPUTS}

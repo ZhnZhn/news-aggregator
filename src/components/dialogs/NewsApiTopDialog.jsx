@@ -1,7 +1,3 @@
-import {
-  NEWS_API
-} from '../../conf/ProviderNames';
-
 import styleConfig from './Dialog.Style';
 
 import useRefInputs from './hooks/useRefInputs';
@@ -119,7 +115,7 @@ const NewsApiTopDialog = (props) => {
        style={TS.R_DIALOG}
        captionStyle={TS.BROWSER_CAPTION}
        buttonStyle={TS.BT}
-       caption={`${NEWS_API} Top By`}
+       caption="Top By"
        onKeyDown={_hKeyDown}
        onLoad={_hLoad}
        onShow={onShow}

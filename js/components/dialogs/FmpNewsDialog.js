@@ -17,7 +17,7 @@ var INPUT_CONFIGS = [['t', 'symbol', 'Stock Symbol', DF_SYMBOL, (0, _DialogFn.cr
   IS_INPUTS = _crDfInputs[2];
 var FmpNewsDialog = function FmpNewsDialog(props) {
   return (0, _jsxRuntime.jsx)(_DialogStackInputs["default"], (0, _extends2["default"])({}, props, {
-    caption: _ProviderNames.FMP + ": Stock News",
+    caption: _ProviderNames.FMP,
     loadId: "FMP",
     INPUT_CONFIGS: INPUT_CONFIGS,
     INITIAL_INPUTS: INITIAL_INPUTS,

@@ -19,7 +19,7 @@ var INPUT_CONFIGS = [['t', 'symbol', 'Stock Symbol', DF_SYMBOL, (0, _DialogFn.cr
   IS_INPUTS = _crDfInputs[2];
 var IexNewsDialog = function IexNewsDialog(props) {
   return (0, _jsxRuntime.jsx)(_DialogStackInputs["default"], (0, _extends2["default"])({}, props, {
-    caption: _ProviderNames.IEX_CLOUD + ": Stock News",
+    caption: _ProviderNames.IEX_CLOUD,
     loadId: "IEX",
     INPUT_CONFIGS: INPUT_CONFIGS,
     INITIAL_INPUTS: INITIAL_INPUTS,

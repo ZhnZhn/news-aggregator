@@ -7,90 +7,64 @@ var NEWS_QUERY = {
   WEBZ: {
     "type": "W_WEBZ_QUERY",
     "dialogType": "WebzQuery",
-    "paneCaption": _ProviderNames.WEBZ_IO + " Query",
-    "paneId": "webz",
-    "loadId": "W",
-    "requestType": "NEWS",
-    "dialogProps": {
-      "caption": _ProviderNames.WEBZ_IO + " Query",
-      "source": "webz"
-    }
+    "paneCaption": _ProviderNames.WEBZ_IO + ": News, Blogs",
+    "paneId": "webz"
   },
   WEBZ_COUNTRY: {
     "type": "W_WEBZ_COUNTRY",
     "dialogType": "WebzCountry",
     "paneCaption": _ProviderNames.WEBZ_IO + ": By Country",
-    "paneId": "webz_country",
-    "loadId": "W",
-    "requestType": "NEWS"
+    "paneId": "webz_country"
   },
   STACK_TAGGED: {
     "type": "SO_TAGGED",
     "dialogType": "StackTagged",
     "paneCaption": _ProviderNames.STACK_OVERFLOW + ": Tagged",
     "paneId": "stack_tagged",
-    "paneType": "SO_TAGGED",
-    "dialogProps": {
-      "caption": "Tagged Questions"
-    }
+    "paneType": "STACK_ITEM"
   },
   STACK_SEARCH: {
     "type": "SO_SEARCH",
     "dialogType": "StackSearch",
-    "paneCaption": _ProviderNames.STACK_OVERFLOW + ": Search Questions",
+    "paneCaption": _ProviderNames.STACK_OVERFLOW + ": Search",
     "paneId": "stack_search",
-    "paneType": "SO_SEARCH",
-    "dialogProps": {
-      "caption": "Search Questions"
-    }
+    "paneType": "STACK_ITEM"
   },
   CRYPTO_COMPARE: {
     "type": "CRYPTO_COMPARE",
     "dialogType": "CryptoCompareNews",
-    "paneCaption": _ProviderNames.CRYPTO_COMPARE + " News",
-    "paneId": "cryptocompare_news",
-    "paneType": "CRYPTO_COMPARE_NEWS"
+    "paneCaption": _ProviderNames.CRYPTO_COMPARE,
+    "paneId": "cryptocompare_news"
   },
   COIN_STATS: {
     "type": "COIN_STATS",
     "dialogType": "CoinStatsNews",
     "paneCaption": _ProviderNames.COIN_STATS + " News",
-    "paneId": "coinstats_news",
-    "paneType": "COIN_STATS_NEWS"
+    "paneId": "coinstats_news"
   },
   MESSARI: {
     "type": "MESSARI",
     "dialogType": "MessariNews",
-    "paneCaption": _ProviderNames.MESSARI + " Blockchain News",
-    "paneId": "messari_news",
-    "paneType": "MESSARI_NEWS"
+    "paneCaption": _ProviderNames.MESSARI,
+    "paneId": "messari_news"
   },
   IEX: {
     "type": "IEX_NEWS",
     "dialogType": "IexNews",
-    "paneCaption": _ProviderNames.IEX_CLOUD + ": Stock Market News",
-    "paneId": "iex_news",
-    "paneType": "IEX_NEWS",
-    "dialogProps": {
-      "caption": _ProviderNames.IEX_CLOUD + ": Stock News"
-    }
+    "paneCaption": _ProviderNames.IEX_CLOUD,
+    "paneId": "iex_news"
   },
   FMP: {
     "type": "FMP",
     "dialogType": "FmpNews",
-    "paneCaption": _ProviderNames.FMP_LONG + ": Stock Market News",
-    "paneId": "fmp_news",
-    "paneType": "FMP_NEWS",
-    "dialogProps": {
-      "caption": _ProviderNames.FMP + ": Stock News"
-    }
+    "paneCaption": _ProviderNames.FMP_LONG,
+    "paneId": "fmp_news"
   },
   AV: {
     "type": "AV",
     "dialogType": "AvSentiments",
     "paneCaption": _ProviderNames.ALPHA_VANTAGE,
-    "paneId": "av_sentiments",
-    "paneType": "AV_SENTIMENTS"
+    "paneId": "av_sentiments"
   },
   NEWS_SEARCH: {
     "type": "NEWS_SEARCH",

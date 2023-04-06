@@ -3,7 +3,6 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports["default"] = void 0;
-var _ProviderNames = require("../../conf/ProviderNames");
 var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
 var _useRefInputs2 = _interopRequireDefault(require("./hooks/useRefInputs"));
 var _useDialog2 = _interopRequireDefault(require("./hooks/useDialog"));
@@ -41,7 +40,7 @@ var WebzCountryDialog = function WebzCountryDialog(props) {
     style: TS.R_DIALOG,
     captionStyle: TS.BROWSER_CAPTION,
     buttonStyle: TS.BT,
-    caption: _ProviderNames.WEBZ_IO + ": By Country",
+    caption: "By Country, Topic",
     onKeyDown: _hKeyDown,
     onLoad: _hLoad,
     onShow: onShow,

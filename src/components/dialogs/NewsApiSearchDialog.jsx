@@ -1,5 +1,3 @@
-import { NEWS_API } from '../../conf/ProviderNames';
-
 import DialogStackInputs from './DialogStackInputs';
 import { NewsApiLink } from '../links/Links';
 import {
@@ -27,7 +25,7 @@ const SORT_BY_OPTIONS = [
 const NewsApiSearchDialog = (props) => (
   <DialogStackInputs
     {...props}
-    caption={`${NEWS_API} Search`}
+    caption="Search"
     loadId="NS"
     INPUT_CONFIGS={INPUT_CONFIGS}
     INITIAL_INPUTS={INITIAL_INPUTS}

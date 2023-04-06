@@ -1,5 +1,3 @@
-import { THE_NEWS_API } from '../../conf/ProviderNames';
-
 import DialogStackInputs from './DialogStackInputs';
 import { TheNewsApiLink } from '../links/Links';
 import { crDfInputs } from './DialogFn';
@@ -86,21 +84,19 @@ const LOCALE_OPTIONS = [
   IS_INPUTS
 ] = crDfInputs(INPUT_CONFIGS);
 
-const TheNewsApiTopDialog = (props) => {
-  const caption = `${THE_NEWS_API}: Top`;
-  return (
-    <DialogStackInputs
-      {...props}
-      caption={caption}
-      loadId="TNT"
-      INPUT_CONFIGS={INPUT_CONFIGS}
-      INITIAL_INPUTS={INITIAL_INPUTS}
-      TOGGLES={TOGGLES}
-      IS_INPUTS={IS_INPUTS}
-    >
-      <TheNewsApiLink />
-    </DialogStackInputs>
-  );
-}
+const TheNewsApiTopDialog = (props) => (
+  <DialogStackInputs
+    {...props}
+    caption="Top By"
+    loadId="TNT"
+    INPUT_CONFIGS={INPUT_CONFIGS}
+    INITIAL_INPUTS={INITIAL_INPUTS}
+    TOGGLES={TOGGLES}
+    IS_INPUTS={IS_INPUTS}
+  >
+    <TheNewsApiLink />
+  </DialogStackInputs>
+);
+
 
 export default TheNewsApiTopDialog

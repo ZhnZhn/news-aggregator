@@ -1,5 +1,3 @@
-import { WEBZ_IO } from '../../conf/ProviderNames';
-
 import styleConfig from './Dialog.Style';
 
 import useRefInputs from './hooks/useRefInputs';
@@ -10,9 +8,7 @@ import DraggableDialog from '../zhn-moleculs/DraggableDialog';
 import FlexColumn from '../zhn-atoms/FlexColumn';
 import StackInputs from '../zhn-inputs/StackInputs';
 import { PoweredByWebzLink } from '../links/PoweredByLink';
-import {
-  crDfInputs
-} from './DialogFn';
+import { crDfInputs } from './DialogFn';
 
 const OPTION_COUNTRIES = [
   ["Australia",  "AU"],
@@ -125,7 +121,7 @@ const WebzCountryDialog = (props) => {
        style={TS.R_DIALOG}
        captionStyle={TS.BROWSER_CAPTION}
        buttonStyle={TS.BT}
-       caption={`${WEBZ_IO}: By Country`}
+       caption="By Country, Topic"
        onKeyDown={_hKeyDown}
        onLoad={_hLoad}
        onShow={onShow}

@@ -4,7 +4,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports["default"] = void 0;
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var _ProviderNames = require("../../conf/ProviderNames");
 var _DialogStackInputs = _interopRequireDefault(require("./DialogStackInputs"));
 var _Links = require("../links/Links");
 var _DialogFn = require("./DialogFn");
@@ -20,9 +19,8 @@ var LOCALE_OPTIONS = [["All", "all"], ["Argentina", "ar"], ["Armenia", "am"], ["
   TOGGLES = _crDfInputs[1],
   IS_INPUTS = _crDfInputs[2];
 var TheNewsApiTopDialog = function TheNewsApiTopDialog(props) {
-  var caption = _ProviderNames.THE_NEWS_API + ": Top";
   return (0, _jsxRuntime.jsx)(_DialogStackInputs["default"], (0, _extends2["default"])({}, props, {
-    caption: caption,
+    caption: "Top By",
     loadId: "TNT",
     INPUT_CONFIGS: INPUT_CONFIGS,
     INITIAL_INPUTS: INITIAL_INPUTS,
