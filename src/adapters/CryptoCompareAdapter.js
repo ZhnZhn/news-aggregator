@@ -2,7 +2,7 @@ import crId from '../utils/crId';
 import formatTimeAgo from '../utils/formatTimeAgo';
 import crDescription from '../utils/crDescription';
 
-import toMls from './toMls';
+import { toMls } from './adapterFn';
 import crArticles from './crArticles';
 
 const SOURCE_ID = 'cryptocompare_news';

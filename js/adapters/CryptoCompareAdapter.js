@@ -6,7 +6,7 @@ exports["default"] = void 0;
 var _crId = _interopRequireDefault(require("../utils/crId"));
 var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
 var _crDescription = _interopRequireDefault(require("../utils/crDescription"));
-var _toMls = _interopRequireDefault(require("./toMls"));
+var _adapterFn = require("./adapterFn");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
 var SOURCE_ID = 'cryptocompare_news';
 var _crArticle = function _crArticle(_ref, timeAgoOptions) {
@@ -19,7 +19,7 @@ var _crArticle = function _crArticle(_ref, timeAgoOptions) {
     published_on = _ref.published_on;
   var _ref2 = source_info || {},
     name = _ref2.name,
-    _publishedOn = (0, _toMls["default"])(published_on);
+    _publishedOn = (0, _adapterFn.toMls)(published_on);
   return {
     source: SOURCE_ID,
     articleId: (0, _crId["default"])(),
