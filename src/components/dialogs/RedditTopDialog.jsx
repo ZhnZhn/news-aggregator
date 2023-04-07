@@ -2,18 +2,23 @@ import DialogStackInputs from './DialogStackInputs';
 import { RedditLink } from '../links/Links';
 import { crDfInputs } from './DialogFn';
 
-const ASSET_OPTIONS = [
+const SUBRREDIT_OPTIONS = [
 ["askscience"],
 ["books"],
+["datascience"],
+["devops"],
+["docker"],
 ["explainlikeimfive"],
+["JavaScript"],
 ["LifeProTips"],
+["MachineLearning"],
 ["todayilearned"],
 ["science"],
 ["worldnews"]
 ]
-, DF_ASSET = ASSET_OPTIONS[0]
+, DF_SUBRREDIT = SUBRREDIT_OPTIONS[0]
 , INPUT_CONFIGS = [
-  ['s','subreddit','Subreddit', ASSET_OPTIONS, DF_ASSET]
+  ['s','subreddit','Subreddit', SUBRREDIT_OPTIONS, DF_SUBRREDIT]
 ]
 , [
   INITIAL_INPUTS,
