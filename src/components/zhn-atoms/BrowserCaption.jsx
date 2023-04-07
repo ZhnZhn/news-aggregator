@@ -23,7 +23,7 @@ const CL_GAP = "gap-right"
 }
 , S_BT_MORE = {
   position: 'absolute',
-  top: 4,
+  top: '0.3rem',
   left: 0
 }
 , S_SVG_MORE = {
