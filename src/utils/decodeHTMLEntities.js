@@ -1,14 +1,20 @@
-const _hm = {
+const _hmHtmlEntities = Object.assign(
+  Object.create(null), {
   '&nbsp;': ' ',
   '&gt;': '>',
   '&lt;': '<',
   '&quot;': '"',
   '&apos;': "'",
   '&amp;': '&'
-}
-, _onMatch = (match) => _hm[match]
+})
+, _reHtmlEntities = new RegExp(
+    Object.keys(_hmHtmlEntities).join('|'),
+    'g'
+)
+, _reHtmlCode = /&#(\d+);?/g
+, _onMatch = (match) => _hmHtmlEntities[match]
 , decodeHTMLEntities = str => ((typeof str === 'string' && str) || '')
-   .replace(/&#(\d+);?/g, (_, code) => String.fromCharCode(code))
-   .replace(/&quot;|&amp;|&apos;|&gt;|&lt;|&nbsp;/g, _onMatch);
+   .replace(_reHtmlCode, (_, code) => String.fromCharCode(code))
+   .replace(_reHtmlEntities, _onMatch);
 
 export default decodeHTMLEntities
