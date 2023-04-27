@@ -9,6 +9,23 @@ var _crDescription = _interopRequireDefault(require("../utils/crDescription"));
 var _adapterFn = require("./adapterFn");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
 var SOURCE_ID = 'rd_topby';
+var _isStr = function _isStr(v) {
+  return typeof v === 'string';
+};
+var _isTitleStartWithTag = function _isTitleStartWithTag(strTitle, strTag) {
+  if (strTitle[0] === '[') {
+    var _indexOfClosedBracket = strTitle.indexOf(']');
+    return _indexOfClosedBracket !== -1 && strTitle.slice(1, _indexOfClosedBracket).trim() === strTag;
+  }
+};
+var _trimStr = function _trimStr(v) {
+  return _isStr(v) ? v.trim() : '';
+};
+var _crTitle = function _crTitle(title, tag) {
+  var _strTitle = _trimStr(title),
+    _strTag = _trimStr(tag);
+  return _strTitle && _strTag && !_isTitleStartWithTag(_strTitle, _strTag) ? _strTitle + " (" + _strTag + ")" : _strTitle;
+};
 var _crArticle = function _crArticle(_ref, timeAgoOptions) {
   var data = _ref.data;
   var title = data.title,
@@ -22,14 +39,14 @@ var _crArticle = function _crArticle(_ref, timeAgoOptions) {
     upvote_ratio = data.upvote_ratio,
     publishedAt = (0, _adapterFn.toMls)(created_utc),
     _author = (0, _adapterFn.joinByBlank)(score, upvote_ratio, author),
-    related = (0, _adapterFn.joinByBlank)(typeof link_flair_text === 'string' ? link_flair_text.toUpperCase() : void 0, domain);
+    _title = _crTitle(title, link_flair_text);
   return {
     source: SOURCE_ID,
     articleId: (0, _crId["default"])(),
-    title: title,
+    title: _title,
     description: (0, _crDescription["default"])(selftext),
     author: _author,
-    related: related,
+    related: domain,
     timeAgo: (0, _formatTimeAgo["default"])(publishedAt, timeAgoOptions),
     publishedAt: publishedAt,
     url: url

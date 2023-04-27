@@ -9,6 +9,31 @@ import {
 import crArticles from './crArticles';
 
 const SOURCE_ID = 'rd_topby';
+const _isStr = v => typeof v === 'string';
+
+const _isTitleStartWithTag = (
+  strTitle,
+  strTag
+) => {
+  if (strTitle[0] === '[') {
+    const _indexOfClosedBracket = strTitle.indexOf(']');
+    return _indexOfClosedBracket !== -1
+      && strTitle.slice(1, _indexOfClosedBracket).trim() === strTag;
+  }
+};
+
+const _trimStr = v => _isStr(v) ? v.trim() : '';
+
+const _crTitle = (
+  title,
+  tag
+) => {
+  const _strTitle = _trimStr(title)
+  , _strTag = _trimStr(tag);
+  return _strTitle && _strTag && !_isTitleStartWithTag(_strTitle, _strTag)
+    ? `${_strTitle} (${_strTag})`
+    : _strTitle;
+};
 
 const _crArticle = ({
   data
@@ -26,20 +51,15 @@ const _crArticle = ({
   } = data
   , publishedAt = toMls(created_utc)
   , _author = joinByBlank(score, upvote_ratio, author)
-  , related = joinByBlank(
-       typeof link_flair_text === 'string'
-         ? link_flair_text.toUpperCase()
-         : void 0,
-       domain
-    );
+  , _title = _crTitle(title, link_flair_text);
 
   return {
     source: SOURCE_ID,
     articleId: crId(),
-    title,
+    title: _title,
     description: crDescription(selftext),
     author: _author,
-    related,
+    related: domain,
     timeAgo: formatTimeAgo(publishedAt, timeAgoOptions),
     publishedAt,
     url
