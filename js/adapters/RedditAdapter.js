@@ -6,6 +6,7 @@ exports["default"] = void 0;
 var _crId = _interopRequireDefault(require("../utils/crId"));
 var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
 var _crDescription = _interopRequireDefault(require("../utils/crDescription"));
+var _decodeHTMLEntities = _interopRequireDefault(require("../utils/decodeHTMLEntities"));
 var _adapterFn = require("./adapterFn");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
 var SOURCE_ID = 'rd_topby';
@@ -43,7 +44,7 @@ var _crArticle = function _crArticle(_ref, timeAgoOptions) {
   return {
     source: SOURCE_ID,
     articleId: (0, _crId["default"])(),
-    title: _title,
+    title: (0, _decodeHTMLEntities["default"])(_title),
     description: (0, _crDescription["default"])(selftext),
     author: _author,
     related: domain,

@@ -1,6 +1,7 @@
 import crId from '../utils/crId';
 import formatTimeAgo from '../utils/formatTimeAgo';
 import crDescription from '../utils/crDescription';
+import decodeHTMLEntities from '../utils/decodeHTMLEntities';
 
 import {
   toMls,
@@ -56,7 +57,7 @@ const _crArticle = ({
   return {
     source: SOURCE_ID,
     articleId: crId(),
-    title: _title,
+    title: decodeHTMLEntities(_title),
     description: crDescription(selftext),
     author: _author,
     related: domain,
