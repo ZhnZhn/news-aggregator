@@ -15,6 +15,7 @@ import {
   THE_NEWS_API,
   WEBZ_IO,
   REDDIT,
+  DEV_TO,
   STACK_OVERFLOW
 } from '../../conf/ProviderNames';
 
@@ -45,6 +46,7 @@ const PanelQuery = ({
   onNewsTop,
   onTheNewsSearch,
   onTheNewsTop,
+  onDevTo,
   onStackTagged,
   onStackSearch,
   onWebz,
@@ -151,6 +153,12 @@ const PanelQuery = ({
            style={TS.OPEN_CLOSE}
            itemStyle={TS.ITEM}
         >
+           <MenuItem
+             className={CL_ITEM}
+             caption={DEV_TO}
+             onClick={onDevTo}
+           />
+           <div style={S_HORIZONTAL_LINE} />
            <MenuItem
              className={CL_ITEM}
              caption={`${STACK_OVERFLOW}: Tagged`}

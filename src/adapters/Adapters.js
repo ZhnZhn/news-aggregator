@@ -1,6 +1,7 @@
 import News from './NewsApiAdapter'
 import TheNews from './TheNewsApiAdapter'
 import Webz from './WebzAdapter'
+import DevTo from './DevToAdapter'
 import StackOverflow from './StackOverflowAdapter'
 import Iex from './IexAdapter'
 import Fmp from './FmpAdapter'
@@ -14,6 +15,7 @@ const Adapters = {
   News,
   TheNews,
   Webz,
+  DevTo,
   StackOverflow,
   Iex,
   Fmp,

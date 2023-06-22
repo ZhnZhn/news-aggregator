@@ -28,6 +28,7 @@ import {
   AlphaVantageLink,
   NewsApiLink,
   TheNewsApiLink,
+  DevToLink,
   StackOverflowLink,
   WebzLink,
   RedditLink
@@ -53,6 +54,7 @@ const PROVIDER_LINKS = [
   [AlphaVantageLink],
   [NewsApiLink],
   [TheNewsApiLink],
+  [DevToLink],
   [StackOverflowLink],
   [WebzLink],
   [RedditLink]

@@ -62,6 +62,8 @@ var RouterApiConf = {
         return _crConf('Webz', _ProviderNames.WEBZ_IO + " API " + MSG_ERR_TAIL, _Store["default"].getWebzKey);
       case 'RD':
         return _crConf('Reddit', _ProviderNames.REDDIT + " API " + MSG_ERR_TAIL);
+      case 'DT':
+        return _crConf('DevTo', _ProviderNames.DEV_TO + " API " + MSG_ERR_TAIL);
       case 'SO':
         return _crConf('StackOverflow', _ProviderNames.STACK_OVERFLOW + " API " + MSG_ERR_TAIL);
       case 'IEX':

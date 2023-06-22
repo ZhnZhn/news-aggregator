@@ -1,5 +1,6 @@
 import News from './NewsApi'
 import Webz from './WebzApi'
+import DevTo from './DevToApi'
 import StackOverflow from './StackOverflowApi'
 import Iex from './IexApi'
 import Fmp from './FmpApi'
@@ -16,6 +17,7 @@ import Reddit from './RedditApi'
 const Api = {
   News,
   Webz,
+  DevTo,
   StackOverflow,
   Iex,
   Fmp,

@@ -6,6 +6,7 @@ exports["default"] = void 0;
 var _DialogType = _interopRequireDefault(require("./DialogType1"));
 var _WebzQueryDialog = _interopRequireDefault(require("./WebzQueryDialog"));
 var _WebzCountryDialog = _interopRequireDefault(require("./WebzCountryDialog"));
+var _DevToTopDialog = _interopRequireDefault(require("./DevToTopDialog"));
 var _StackTaggedDialog = _interopRequireDefault(require("./StackTaggedDialog"));
 var _StackSearchDialog = _interopRequireDefault(require("./StackSearchDialog"));
 var _IexNewsDialog = _interopRequireDefault(require("./IexNewsDialog"));
@@ -18,11 +19,13 @@ var _TheNewsApiTopDialog = _interopRequireDefault(require("./TheNewsApiTopDialog
 var _CryptoCompareNewsDialog = _interopRequireDefault(require("./CryptoCompareNewsDialog"));
 var _CoinStatsDialog = _interopRequireDefault(require("./CoinStatsDialog"));
 var _MessariDialog = _interopRequireDefault(require("./MessariDialog"));
+var _RedditTopDialog = _interopRequireDefault(require("./RedditTopDialog"));
 var R = {
-  DEFAULT: _DialogType["default"],
+  DF: _DialogType["default"],
   DialogType1: _DialogType["default"],
   WebzQuery: _WebzQueryDialog["default"],
   WebzCountry: _WebzCountryDialog["default"],
+  DevToTop: _DevToTopDialog["default"],
   StackTagged: _StackTaggedDialog["default"],
   StackSearch: _StackSearchDialog["default"],
   CryptoCompareNews: _CryptoCompareNewsDialog["default"],
@@ -34,11 +37,12 @@ var R = {
   NewsApiSearch: _NewsApiSearchDialog["default"],
   NewsApiTop: _NewsApiTopDialog["default"],
   TheNewsApiSearch: _TheNewsApiSearchDialog["default"],
-  TheNewsApiTop: _TheNewsApiTopDialog["default"]
+  TheNewsApiTop: _TheNewsApiTopDialog["default"],
+  RedditTop: _RedditTopDialog["default"]
 };
 var RouterDialog = {
   getElement: function getElement(type) {
-    return R[type] || R.DEFAULT;
+    return R[type] || R.DF;
   }
 };
 var _default = RouterDialog;

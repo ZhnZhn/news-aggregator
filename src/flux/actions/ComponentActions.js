@@ -39,6 +39,7 @@ const _fShowDialog = id => Actions.showNewsDialog.bind(null, id);
 Actions.showWebz = _fShowDialog(QUERY.WEBZ)
 Actions.showWebzCountry = _fShowDialog(QUERY.WEBZ_COUNTRY)
 Actions.showReddit = _fShowDialog(QUERY.REDDIT)
+Actions.showDevTo = _fShowDialog(QUERY.DEV_TO)
 Actions.showStackTagged = _fShowDialog(QUERY.STACK_TAGGED)
 Actions.showStackSearch= _fShowDialog(QUERY.STACK_SEARCH)
 Actions.showCryptoCompare = _fShowDialog(QUERY.CRYPTO_COMPARE)

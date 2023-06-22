@@ -15,4 +15,5 @@ export const THE_NEWS_API = 'TheNewsAPI'
 export const WEBZ_IO = 'Webz.io'
 export const REDDIT = 'Reddit'
 
+export const DEV_TO = 'Dev To'
 export const STACK_OVERFLOW = 'StackOverflow'

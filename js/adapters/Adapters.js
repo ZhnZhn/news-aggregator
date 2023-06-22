@@ -6,6 +6,7 @@ exports["default"] = void 0;
 var _NewsApiAdapter = _interopRequireDefault(require("./NewsApiAdapter"));
 var _TheNewsApiAdapter = _interopRequireDefault(require("./TheNewsApiAdapter"));
 var _WebzAdapter = _interopRequireDefault(require("./WebzAdapter"));
+var _DevToAdapter = _interopRequireDefault(require("./DevToAdapter"));
 var _StackOverflowAdapter = _interopRequireDefault(require("./StackOverflowAdapter"));
 var _IexAdapter = _interopRequireDefault(require("./IexAdapter"));
 var _FmpAdapter = _interopRequireDefault(require("./FmpAdapter"));
@@ -18,6 +19,7 @@ var Adapters = {
   News: _NewsApiAdapter["default"],
   TheNews: _TheNewsApiAdapter["default"],
   Webz: _WebzAdapter["default"],
+  DevTo: _DevToAdapter["default"],
   StackOverflow: _StackOverflowAdapter["default"],
   Iex: _IexAdapter["default"],
   Fmp: _FmpAdapter["default"],

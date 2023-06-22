@@ -61,6 +61,7 @@ const AppNewsAggregator = () => {
           onWebz={ComponentActions.showWebz}
           onWebzCountry={ComponentActions.showWebzCountry}
           onReddit={ComponentActions.showReddit}
+          onDevTo={ComponentActions.showDevTo}
           onStackTagged={ComponentActions.showStackTagged}
           onStackSearch={ComponentActions.showStackSearch}
           onCryptoCompare={ComponentActions.showCryptoCompare}

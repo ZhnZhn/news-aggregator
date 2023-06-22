@@ -33,6 +33,7 @@ var PanelQuery = function PanelQuery(_ref) {
     onNewsTop = _ref.onNewsTop,
     onTheNewsSearch = _ref.onTheNewsSearch,
     onTheNewsTop = _ref.onTheNewsTop,
+    onDevTo = _ref.onDevTo,
     onStackTagged = _ref.onStackTagged,
     onStackSearch = _ref.onStackSearch,
     onWebz = _ref.onWebz,
@@ -119,6 +120,10 @@ var PanelQuery = function PanelQuery(_ref) {
       style: TS.OPEN_CLOSE,
       itemStyle: TS.ITEM,
       children: [(0, _jsxRuntime.jsx)(_MenuItem["default"], {
+        className: CL_ITEM,
+        caption: _ProviderNames.DEV_TO,
+        onClick: onDevTo
+      }), (0, _jsxRuntime.jsx)(_MenuItem["default"], {
         className: CL_ITEM,
         caption: _ProviderNames.STACK_OVERFLOW + ": Tagged",
         onClick: onStackTagged

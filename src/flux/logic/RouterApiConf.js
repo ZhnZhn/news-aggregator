@@ -9,6 +9,7 @@ import {
   THE_NEWS_API,
   WEBZ_IO,
   REDDIT,
+  DEV_TO,
   STACK_OVERFLOW
 } from '../../conf/ProviderNames';
 import Store from '../stores/Store';
@@ -84,6 +85,11 @@ const RouterApiConf = {
         return _crConf(
           'Reddit',
           `${REDDIT} API ${MSG_ERR_TAIL}`
+        );
+      case 'DT':
+        return _crConf(
+          'DevTo',
+          `${DEV_TO} API ${MSG_ERR_TAIL}`
         );
       case 'SO':
         return _crConf(

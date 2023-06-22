@@ -64,6 +64,7 @@ const HeaderBar = ({
   onWebz,
   onWebzCountry,
   onReddit,
+  onDevTo,
   onStackTagged,
   onStackSearch,
   onCryptoCompare,
@@ -94,6 +95,7 @@ const HeaderBar = ({
   , _hWebz = _useClickItem(onWebz, _hCloseQuery)
   , _hWebzCountry = _useClickItem(onWebzCountry, _hCloseQuery)
   , _hReddit = _useClickItem(onReddit, _hCloseQuery)
+  , _hDevTo = _useClickItem(onDevTo, _hCloseQuery)
   , _hStackTagged = _useClickItem(onStackTagged, _hCloseQuery)
   , _hStackSearch = _useClickItem(onStackSearch, _hCloseQuery)
   , _hCryptoCompare = _useClickItem(onCryptoCompare, _hCloseQuery)
@@ -121,6 +123,7 @@ const HeaderBar = ({
         onWebz={_hWebz}
         onWebzCountry={_hWebzCountry}
         onReddit={_hReddit}
+        onDevTo={_hDevTo}
         onStackTagged={_hStackTagged}
         onStackSearch={_hStackSearch}
         onCryptoCompare={_hCryptoCompare}

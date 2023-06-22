@@ -5,6 +5,7 @@ exports.__esModule = true;
 exports["default"] = void 0;
 var _NewsApi = _interopRequireDefault(require("./NewsApi"));
 var _WebzApi = _interopRequireDefault(require("./WebzApi"));
+var _DevToApi = _interopRequireDefault(require("./DevToApi"));
 var _StackOverflowApi = _interopRequireDefault(require("./StackOverflowApi"));
 var _IexApi = _interopRequireDefault(require("./IexApi"));
 var _FmpApi = _interopRequireDefault(require("./FmpApi"));
@@ -20,6 +21,7 @@ var _RedditApi = _interopRequireDefault(require("./RedditApi"));
 var Api = {
   News: _NewsApi["default"],
   Webz: _WebzApi["default"],
+  DevTo: _DevToApi["default"],
   StackOverflow: _StackOverflowApi["default"],
   Iex: _IexApi["default"],
   Fmp: _FmpApi["default"],

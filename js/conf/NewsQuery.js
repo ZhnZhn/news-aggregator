@@ -22,6 +22,12 @@ var NEWS_QUERY = {
     "paneCaption": _ProviderNames.REDDIT + ": Top By",
     "paneId": "rd_topby"
   },
+  DEV_TO: {
+    "type": "DEV_TO",
+    "dialogType": "DevToTop",
+    "paneCaption": _ProviderNames.DEV_TO + ": Top By",
+    "paneId": "dt_topby"
+  },
   STACK_TAGGED: {
     "type": "SO_TAGGED",
     "dialogType": "StackTagged",
