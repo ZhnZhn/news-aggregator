@@ -51,7 +51,7 @@
   "dependencies": {
     "@babel/runtime": "^7.22.5",
     "dompurify": "^2.4.5",
-    "preact": "^10.15.0",
+    "preact": "^10.15.1",
     "reflux-core": "^1.0.0",
     "timeago.js": "^4.0.2"
   }
