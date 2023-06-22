@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.toUTCSecond = exports.toUTCMillis = exports.toTimeDate = exports.toMls = exports.isValidDate = exports.getToDate = exports.getFromDate = void 0;
+exports.toUTCSecond = exports.toUTCMillis = exports.toTimeDate = exports.toMls = exports.isValidDate = exports.getToDate = exports.getFromDate = exports.dateTimeToMls = void 0;
 var _pipe = _interopRequireDefault(require("./pipe"));
 var MIN_YEAR = 1999;
 var _isStr = function _isStr(str) {
@@ -97,7 +97,42 @@ exports.toUTCSecond = toUTCSecond;
 var toMls = function toMls(strDate) {
   return (strDate || '').length > 12 ? Date.UTC(strDate.slice(0, 4), parseInt(strDate.slice(4, 6), 10) - 1, strDate.slice(6, 8), strDate.slice(9, 11), strDate.slice(11, 13)) : void 0;
 };
+
+/*
+//HH:MM:SS DD-MM-YYYY
+export const timeDateToMls = (
+  timeDate
+) => {
+  if (typeof timeDate !== 'string') {
+    return;
+  }
+  const [time, date] = timeDate.trim().split(' ')
+  , [hh, mm, ss] = (time || '').split(':')
+  , [DD, MM, YYYY] = (date || '').split('-');
+  return toMls(`${YYYY}${MM}${DD}${hh}${mm}${ss}`);
+}
+*/
+
+//YYYY-MM-DDThh:mm:ssZ
 exports.toMls = toMls;
+var dateTimeToMls = function dateTimeToMls(strDateTime) {
+  if (typeof strDateTime !== 'string') {
+    return;
+  }
+  var _strDateTime$trim$rep = strDateTime.trim().replace('Z', '').split('T'),
+    strDate = _strDateTime$trim$rep[0],
+    strTime = _strDateTime$trim$rep[1],
+    _split = (strDate || '').split('-'),
+    YYYY = _split[0],
+    MM = _split[1],
+    DD = _split[2],
+    _split2 = (strTime || '').split(':'),
+    hh = _split2[0],
+    mm = _split2[1],
+    ss = _split2[2];
+  return toMls("" + YYYY + MM + DD + hh + mm + ss);
+};
+exports.dateTimeToMls = dateTimeToMls;
 var _DF_TO_TIME_DATE_VALUE = 'No Time';
 var toTimeDate = function toTimeDate(publishedAt, dfValue) {
   if (dfValue === void 0) {
