@@ -78,7 +78,11 @@ export const toUTCMillis = (strDate) => {
   //YYYY-MM-DD
   if (isValidDate(strDate)) {
     const arr = strDate.split('-');
-    return Date.UTC(arr[0], parseInt(arr[1],10)-1, arr[2]);
+    return Date.UTC(
+      arr[0],
+      parseInt(arr[1], 10) - 1, 
+      arr[2]
+    );
   } else {
     return;
   }
@@ -118,7 +122,7 @@ export const timeDateToMls = (
 export const dateTimeToMls = (
   strDateTime
 ) => {
-  if (typeof strDateTime !== 'string') {
+  if (!_isStr(strDateTime)) {
     return;
   }
   const [strDate, strTime] = strDateTime
@@ -130,7 +134,7 @@ export const dateTimeToMls = (
   return toMls(`${YYYY}${MM}${DD}${hh}${mm}${ss}`);
 }
 
-const _DF_TO_TIME_DATE_VALUE = 'No Time';
+const _DF_TO_TIME_DATE_VALUE = 'No Date';
 export const toTimeDate = (
   publishedAt,
   dfValue=_DF_TO_TIME_DATE_VALUE
@@ -140,16 +144,20 @@ export const toTimeDate = (
   } else if (_isNum(publishedAt)) {
     return _toDateTime(publishedAt);
   }
-  //yyyy-MM-ddTHH:mm:ssZ
+  //yyyy-MM-ddTHH:mm:ssZ case
   const _arr = _isStr(publishedAt)
-    ? publishedAt.split('T')
+    ? publishedAt.trim().split('T')
     : ['']
-  , _arrDate = _arr[0].split('-')
-  , _date = _arrDate.length === 3
-     ? ` ${_arrDate[2]}-${_arrDate[1]}-${_arrDate[0]}`
+  , _arrDate = _arr[0].length === 10
+      ? _arr[0].split('-')
+      : []
+  , _strDate = _arrDate.length === 3
+     ? `${_arrDate[2]}-${_arrDate[1]}-${_arrDate[0]}`
      : ''
-  , _time = _arr[1]
-     ? _arr[1].replace('Z', '').substring(0, 8)
-     : _DF_TO_TIME_DATE_VALUE;
-  return `${_time}${_date}`;
+  , _strTime = _arr[1] && _arr[1].length === 9
+     ? _arr[1].substring(0, 8)
+     : '';
+  return [_strTime, _strDate]
+    .filter(Boolean)
+    .join(' ') || dfValue;
 }
