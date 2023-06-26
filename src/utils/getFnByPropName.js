@@ -4,6 +4,6 @@ const getFnByPropName = (
   dfValue
 ) => obj && typeof obj[propName] == 'function'
   ? obj[propName]
-  : () => { return dfValue; }
+  : () => dfValue;
 
 export default getFnByPropName
