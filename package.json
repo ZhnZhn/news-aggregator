@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --config webpack.dev.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "transpile": "babel ./src --out-dir ./js --source-maps --ignore test.js",
     "transpile:all": "babel ./src --out-dir ./js --source-maps",
     "css:sass": "node css-sass.js",
@@ -14,8 +17,7 @@
     "stats": "npm run stats:json && npm run stats:report",
     "stats:json": "webpack --profile --json > stats.json",
     "stats:report": "webpack-bundle-analyzer stats.json ./app --no-open --mode static",
-    "stats:help": "webpack-bundle-analyzer --help > out.txt",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "stats:help": "webpack-bundle-analyzer --help > out.txt"
   },
   "author": "Yevhenii Molodyi",
   "license": "BSD-3-Clause",
@@ -39,6 +41,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "html-webpack-plugin": "^5.5.3",
+    "jest": "^29.5.0",
     "react-refresh": "^0.14.0",
     "sass": "^1.60.0",
     "terser-webpack-plugin": "^5.3.9",
@@ -53,5 +56,13 @@
     "preact": "^10.15.1",
     "reflux-core": "^1.0.0",
     "timeago.js": "^4.0.2"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/js/utils"
+    ],
+    "transformIgnorePatterns": [
+      "<rootDir>/js/utils"
+    ]
   }
 }
