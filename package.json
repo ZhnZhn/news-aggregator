@@ -25,13 +25,20 @@
     "type": "git",
     "url": "https://github.com/ZhnZhn/news-aggregator.git"
   },
+  "dependencies": {
+    "@babel/runtime": "^7.22.6",
+    "dompurify": "^2.4.5",
+    "preact": "^10.15.1",
+    "reflux-core": "^1.0.0",
+    "timeago.js": "^4.0.2"
+  },
   "devDependencies": {
-    "@babel/cli": "^7.22.5",
-    "@babel/core": "^7.22.5",
-    "@babel/eslint-parser": "^7.22.5",
+    "@babel/cli": "^7.22.6",
+    "@babel/core": "^7.22.8",
+    "@babel/eslint-parser": "^7.22.7",
     "@babel/plugin-transform-react-jsx": "^7.22.5",
-    "@babel/plugin-transform-runtime": "^7.22.5",
-    "@babel/preset-env": "^7.22.5",
+    "@babel/plugin-transform-runtime": "^7.22.7",
+    "@babel/preset-env": "^7.22.7",
     "@babel/preset-react": "^7.22.5",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "babel-loader": "^9.1.2",
@@ -41,21 +48,17 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "html-webpack-plugin": "^5.5.3",
-    "jest": "^29.5.0",
+    "jest": "^29.6.1",
     "react-refresh": "^0.14.0",
-    "sass": "^1.60.0",
+    "sass": "^1.63.6",
     "terser-webpack-plugin": "^5.3.9",
-    "webpack": "^5.88.0",
+    "webpack": "^5.88.1",
     "webpack-bundle-analyzer": "^4.9.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   },
-  "dependencies": {
-    "@babel/runtime": "^7.22.5",
-    "dompurify": "^2.4.5",
-    "preact": "^10.15.1",
-    "reflux-core": "^1.0.0",
-    "timeago.js": "^4.0.2"
+  "overrides": {
+    "semver": "~7.5.3"
   },
   "jest": {
     "roots": [
