@@ -10,6 +10,9 @@ const SUBRREDIT_OPTIONS = [
 ["bicycling"],
 ["cardano"],
 ["cars"],
+["Database"],
+["SQL"],
+["NoSQL"],
 ["dataengineering"],
 ["datascience"],
 ["dataisbeautiful"],
@@ -49,6 +52,8 @@ const SUBRREDIT_OPTIONS = [
 ["solarDIY"],
 ["batteries"],
 ["investing"],
+["UpliftingNews"],
+["news"],
 ["worldnews"]
 ]
 , DF_SUBRREDIT = SUBRREDIT_OPTIONS[0]
