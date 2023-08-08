@@ -9,17 +9,14 @@ import {
 
 import ComponentSlice from './ComponentSlice';
 import NewsSlice from './NewsSlice';
-import SettingSlice from './SettingSlice';
 
 const Store = Reflux.createStore({
   listenables: [
      ComponentActions,
      NewsActions
   ],
-
   ...ComponentSlice,
-  ...NewsSlice,
-  ...SettingSlice
+  ...NewsSlice
 })
 
 export default Store

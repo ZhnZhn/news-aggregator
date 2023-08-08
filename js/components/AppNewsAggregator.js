@@ -5,6 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _useHotKeys = _interopRequireDefault(require("./hotkeys/useHotKeys"));
 var _storeAtoms = require("../flux/storeAtoms");
+var _settingStore = _interopRequireDefault(require("../flux/settingStore"));
 var _Store = _interopRequireDefault(require("../flux/stores/Store"));
 var _ComponentActions = require("../flux/actions/ComponentActions");
 var _ThemeContext = _interopRequireDefault(require("./hooks/ThemeContext"));
@@ -16,7 +17,7 @@ var _ModalDialogContainer = _interopRequireDefault(require("./zhn-containers/Mod
 var _RouterModalDialog = _interopRequireDefault(require("./dialogs/RouterModalDialog"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_COMP = "component-container";
-const _showSettings = _ComponentActions.ComponentActions.showModalDialog.bind(null, 'SETTINGS_DIALOG', _Store.default.exportSettingsFn());
+const _showSettings = _ComponentActions.ComponentActions.showModalDialog.bind(null, 'SETTINGS_DIALOG', _settingStore.default.exportSettingsFn());
 const AppNewsAggregator = () => {
   const uiTheme = (0, _storeAtoms.useUiTheme)();
   (0, _useHotKeys.default)();

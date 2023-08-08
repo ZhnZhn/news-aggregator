@@ -12,7 +12,8 @@ import {
   DEV_TO,
   STACK_OVERFLOW
 } from '../../conf/ProviderNames';
-import Store from '../stores/Store';
+
+import settingStore from '../settingStore';
 
 import Adapter from '../../adapters/Adapters';
 import Api from '../../api/Api';
@@ -36,13 +37,13 @@ const _crConf = (
 
 
 const _crNewsConf = () => ({
-  apiKey: Store.getNewsKey(),
+  apiKey: settingStore.getNewsKey(),
   adapter: Adapter.News,
   msgErr: `${NEWS_API_LONG} ${MSG_ERR_TAIL}`
 });
 
 const _crTheNewsConf = () => ({
-  apiKey: Store.getTheNewsKey(),
+  apiKey: settingStore.getTheNewsKey(),
   adapter: Adapter.TheNews,
   msgErr: `${THE_NEWS_API} ${MSG_ERR_TAIL}`
 });
@@ -79,7 +80,7 @@ const RouterApiConf = {
         return _crConf(
           'Webz',
           `${WEBZ_IO} API ${MSG_ERR_TAIL}`,
-          Store.getWebzKey
+          settingStore.getWebzKey
         );
       case 'RD':
         return _crConf(
@@ -100,19 +101,19 @@ const RouterApiConf = {
          return _crConf(
            'Iex',
            `${IEX_CLOUD} API ${MSG_ERR_TAIL}`,
-           Store.getIexKey
+           settingStore.getIexKey
          );
      case 'FMP':
         return _crConf(
           'Fmp',
           `${FMP} API ${MSG_ERR_TAIL}`,
-          Store.getFmpKey
+          settingStore.getFmpKey
         );
      case 'AV':
        return _crConf(
          'Av',
          `${ALPHA_VANTAGE} API ${MSG_ERR_TAIL}`,
-         Store.getAvKey
+         settingStore.getAvKey
        );
      case 'CCN':
         return _crConf(

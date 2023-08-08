@@ -1,6 +1,7 @@
 import useHotKeys from './hotkeys/useHotKeys';
 
 import { useUiTheme } from '../flux/storeAtoms';
+import settingStore from '../flux/settingStore';
 
 import Store from '../flux/stores/Store'
 import {
@@ -25,7 +26,7 @@ const _showSettings = ComponentActions
  .showModalDialog.bind(
    null,
    'SETTINGS_DIALOG',
-   Store.exportSettingsFn()
+   settingStore.exportSettingsFn()
 );
 
 const AppNewsAggregator = () => {
