@@ -2,20 +2,19 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _memoIsShow = _interopRequireDefault(require("../hoc/memoIsShow"));
-var _ThemeContext = _interopRequireDefault(require("../hooks/ThemeContext"));
+var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 var _Dialog = _interopRequireDefault(require("../dialogs/Dialog.Style"));
-var _ComponentActions = require("../../flux/actions/ComponentActions");
+var _storeAtoms = require("../../flux/storeAtoms");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _CardApiKeys = _interopRequireDefault(require("./CardApiKeys"));
 var _CardUiTheme = _interopRequireDefault(require("./CardUiTheme"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types'
 
-var _assign = Object.assign,
+const _assign = Object.assign,
   S_MODAL = {
     position: 'static',
     width: 340,
@@ -33,9 +32,10 @@ var _assign = Object.assign,
     position: 'relative',
     maxHeight: 370
   },
-  S_CARD_API = (0, _extends2["default"])({}, S_CARD_ROOT, {
+  S_CARD_API = {
+    ...S_CARD_ROOT,
     overflowY: 'auto'
-  }),
+  },
   S_CARD_BUTTONS = {
     display: 'flex',
     justifyContent: 'flex-end',
@@ -49,45 +49,48 @@ var _assign = Object.assign,
     width: 315,
     marginLeft: 8
   };
-var SettingsDialog = (0, _memoIsShow["default"])(function (_ref) {
-  var isShow = _ref.isShow,
-    data = _ref.data,
-    onClose = _ref.onClose;
-  var theme = (0, _uiApi.useContext)(_ThemeContext["default"]),
-    _selectTheme = (0, _uiApi.useCallback)(function (item) {
-      var value = (item || [])[1];
-      if (value && theme.getThemeName() !== value) {
-        theme.setThemeName(value);
-        _ComponentActions.ComponentActions.changeTheme(value);
-      }
-    }, [theme]),
-    TS = theme.createStyle(_Dialog["default"]),
+const SettingsDialog = (0, _memoIsShow.default)(_ref => {
+  let {
+    isShow,
+    data,
+    onClose
+  } = _ref;
+  const _selectTheme = (0, _uiApi.useCallback)(item => {
+      (0, _storeAtoms.setUiTheme)((item || [])[1]);
+    }, []),
+    TS = (0, _useTheme.default)(_Dialog.default),
     _TS = JSON.parse(JSON.stringify(TS));
   _assign(_TS.SELECT.ROOT, S_SELECT_WIDTH);
-  return (0, _jsxRuntime.jsx)(_Comp["default"].ModalDialog, {
-    style: (0, _extends2["default"])({}, S_MODAL, TS.R_DIALOG),
+  return (0, _jsxRuntime.jsx)(_Comp.default.ModalDialog, {
+    style: {
+      ...S_MODAL,
+      ...TS.R_DIALOG
+    },
     divBtStyle: S_DIV_BT,
     captionStyle: TS.BROWSER_CAPTION,
     buttonStyle: TS.BT,
     caption: "User Settings",
     isShow: isShow,
     onClose: onClose,
-    children: (0, _jsxRuntime.jsxs)(_Comp["default"].TabPane, {
+    children: (0, _jsxRuntime.jsxs)(_Comp.default.TabPane, {
       width: "100%",
       tabsStyle: S_TABS,
       isShow: isShow,
-      children: [(0, _jsxRuntime.jsx)(_Comp["default"].Tab, {
+      children: [(0, _jsxRuntime.jsx)(_Comp.default.Tab, {
         title: "API Keys",
-        children: (0, _jsxRuntime.jsx)(_CardApiKeys["default"], {
+        children: (0, _jsxRuntime.jsx)(_CardApiKeys.default, {
           style: S_CARD_API,
-          fieldStyle: (0, _extends2["default"])({}, TS.INPUT_ROOT, S_INPUT_WIDTH),
+          fieldStyle: {
+            ...TS.INPUT_ROOT,
+            ...S_INPUT_WIDTH
+          },
           buttonsStyle: S_CARD_BUTTONS,
           TS: TS,
           data: data
         })
-      }), (0, _jsxRuntime.jsx)(_Comp["default"].Tab, {
+      }), (0, _jsxRuntime.jsx)(_Comp.default.Tab, {
         title: "UI Theme",
-        children: (0, _jsxRuntime.jsx)(_CardUiTheme["default"], {
+        children: (0, _jsxRuntime.jsx)(_CardUiTheme.default, {
           style: S_CARD_ROOT,
           buttonsStyle: S_CARD_BUTTONS,
           TS: _TS,
@@ -110,5 +113,5 @@ SettingsDialog.propTypes = {
 }
 */
 var _default = SettingsDialog;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=SettingsDialog.js.map

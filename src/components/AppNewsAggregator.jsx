@@ -1,20 +1,15 @@
-import {
-  useState
-} from './uiApi';
-
-import useListen from './hooks/useListen'
 import useHotKeys from './hotkeys/useHotKeys';
+
+import { useUiTheme } from '../flux/storeAtoms';
 
 import Store from '../flux/stores/Store'
 import {
-  CAT_CHANGE_THEME,
   CAT_SHOW_ABOUT,
   CAT_SHOW_NEWS_PANE,
   CAT_SHOW_MODAL_DIALOG,
   ComponentActions
 } from '../flux/actions/ComponentActions'
 
-import { initialTheme } from './styles/theme'
 import ThemeContext from './hooks/ThemeContext'
 
 import HeaderBar from './header/HeaderBar'
@@ -34,24 +29,11 @@ const _showSettings = ComponentActions
 );
 
 const AppNewsAggregator = () => {
-  const [
-    theme,
-    setTheme
-  ] = useState(initialTheme);
-
-  useListen(Store, (actionType, themeName)=>{
-    if (actionType === CAT_CHANGE_THEME){
-      setTheme(prevTheme => {
-        prevTheme.setThemeName(themeName)
-        return {...prevTheme};
-      })
-    }
-  })
-
+  const uiTheme = useUiTheme();
   useHotKeys()
 
   return (
-    <ThemeContext.Provider value={theme}>
+    <ThemeContext.Provider value={uiTheme}>
       <div>
         <HeaderBar
           onChangeTheme={ComponentActions.changeTheme}

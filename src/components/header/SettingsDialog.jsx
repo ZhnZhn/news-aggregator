@@ -1,16 +1,11 @@
 //import PropTypes from 'prop-types'
-import {
-  useContext,
-  useCallback
-} from '../uiApi';
+import { useCallback } from '../uiApi';
 
 import memoIsShow from '../hoc/memoIsShow';
-import ThemeContext from '../hooks/ThemeContext';
+import useTheme from '../hooks/useTheme';
 import styleConfig from '../dialogs/Dialog.Style';
 
-import {
-  ComponentActions
-} from '../../flux/actions/ComponentActions';
+import { setUiTheme } from '../../flux/storeAtoms'
 
 import A from '../Comp';
 import CardApiKeys from './CardApiKeys';
@@ -56,16 +51,11 @@ const SettingsDialog = memoIsShow(({
   isShow,
   data,
   onClose
-}) => {
-  const theme = useContext(ThemeContext)
-  , _selectTheme = useCallback(item => {
-    const value = (item || [])[1];
-    if (value && theme.getThemeName() !== value) {
-      theme.setThemeName(value)
-      ComponentActions.changeTheme(value)
-    }
-  }, [theme])
-  , TS = theme.createStyle(styleConfig)
+}) => {  
+  const _selectTheme = useCallback(item => {
+    setUiTheme((item || [])[1])
+  }, [])
+  , TS = useTheme(styleConfig)
   , _TS = JSON.parse(JSON.stringify(TS));
 
   _assign(_TS.SELECT.ROOT, S_SELECT_WIDTH)

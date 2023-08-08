@@ -3,12 +3,10 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("./uiApi");
-var _useListen = _interopRequireDefault(require("./hooks/useListen"));
 var _useHotKeys = _interopRequireDefault(require("./hotkeys/useHotKeys"));
+var _storeAtoms = require("../flux/storeAtoms");
 var _Store = _interopRequireDefault(require("../flux/stores/Store"));
 var _ComponentActions = require("../flux/actions/ComponentActions");
-var _theme = require("./styles/theme");
 var _ThemeContext = _interopRequireDefault(require("./hooks/ThemeContext"));
 var _HeaderBar = _interopRequireDefault(require("./header/HeaderBar"));
 var _BrowserContainer = _interopRequireDefault(require("./zhn-containers/BrowserContainer"));
@@ -20,20 +18,10 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const CL_COMP = "component-container";
 const _showSettings = _ComponentActions.ComponentActions.showModalDialog.bind(null, 'SETTINGS_DIALOG', _Store.default.exportSettingsFn());
 const AppNewsAggregator = () => {
-  const [theme, setTheme] = (0, _uiApi.useState)(_theme.initialTheme);
-  (0, _useListen.default)(_Store.default, (actionType, themeName) => {
-    if (actionType === _ComponentActions.CAT_CHANGE_THEME) {
-      setTheme(prevTheme => {
-        prevTheme.setThemeName(themeName);
-        return {
-          ...prevTheme
-        };
-      });
-    }
-  });
+  const uiTheme = (0, _storeAtoms.useUiTheme)();
   (0, _useHotKeys.default)();
   return (0, _jsxRuntime.jsx)(_ThemeContext.default.Provider, {
-    value: theme,
+    value: uiTheme,
     children: (0, _jsxRuntime.jsxs)("div", {
       children: [(0, _jsxRuntime.jsx)(_HeaderBar.default, {
         onChangeTheme: _ComponentActions.ComponentActions.changeTheme,
