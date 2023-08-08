@@ -57,7 +57,6 @@ const _useClickItem = (
 /*eslint-enable react-hooks/exhaustive-deps */
 
 const HeaderBar = ({
-  store,
   onNewsSources,
   onSettings,
   onAbout,
@@ -137,9 +136,7 @@ const HeaderBar = ({
         onTheNewsSearch={_hTheNewsSearch}
         onTheNewsTop={_hTheNewsTop}
       />
-      <LoadingProgress
-         store={store}
-      />
+      <LoadingProgress />
       <IconAppLogo
          ariaLabel={TITLE}
          dataPos={DP_BOTTOM_LEFT}

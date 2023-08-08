@@ -54,7 +54,6 @@ const AppNewsAggregator = () => {
     <ThemeContext.Provider value={theme}>
       <div>
         <HeaderBar
-          store={Store}
           onChangeTheme={ComponentActions.changeTheme}
           onNewsSources={ComponentActions.showNewsBrowser}
 

@@ -2,8 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+exports.default = void 0;
 var _uiApi = require("./uiApi");
 var _useListen = _interopRequireDefault(require("./hooks/useListen"));
 var _useHotKeys = _interopRequireDefault(require("./hotkeys/useHotKeys"));
@@ -18,26 +17,25 @@ var _ComponentHrzContainer = _interopRequireDefault(require("./zhn-containers/Co
 var _ModalDialogContainer = _interopRequireDefault(require("./zhn-containers/ModalDialogContainer"));
 var _RouterModalDialog = _interopRequireDefault(require("./dialogs/RouterModalDialog"));
 var _jsxRuntime = require("preact/jsx-runtime");
-var CL_COMP = "component-container";
-var _showSettings = _ComponentActions.ComponentActions.showModalDialog.bind(null, 'SETTINGS_DIALOG', _Store["default"].exportSettingsFn());
-var AppNewsAggregator = function AppNewsAggregator() {
-  var _useState = (0, _uiApi.useState)(_theme.initialTheme),
-    theme = _useState[0],
-    setTheme = _useState[1];
-  (0, _useListen["default"])(_Store["default"], function (actionType, themeName) {
+const CL_COMP = "component-container";
+const _showSettings = _ComponentActions.ComponentActions.showModalDialog.bind(null, 'SETTINGS_DIALOG', _Store.default.exportSettingsFn());
+const AppNewsAggregator = () => {
+  const [theme, setTheme] = (0, _uiApi.useState)(_theme.initialTheme);
+  (0, _useListen.default)(_Store.default, (actionType, themeName) => {
     if (actionType === _ComponentActions.CAT_CHANGE_THEME) {
-      setTheme(function (prevTheme) {
+      setTheme(prevTheme => {
         prevTheme.setThemeName(themeName);
-        return (0, _extends2["default"])({}, prevTheme);
+        return {
+          ...prevTheme
+        };
       });
     }
   });
-  (0, _useHotKeys["default"])();
-  return (0, _jsxRuntime.jsx)(_ThemeContext["default"].Provider, {
+  (0, _useHotKeys.default)();
+  return (0, _jsxRuntime.jsx)(_ThemeContext.default.Provider, {
     value: theme,
     children: (0, _jsxRuntime.jsxs)("div", {
-      children: [(0, _jsxRuntime.jsx)(_HeaderBar["default"], {
-        store: _Store["default"],
+      children: [(0, _jsxRuntime.jsx)(_HeaderBar.default, {
         onChangeTheme: _ComponentActions.ComponentActions.changeTheme,
         onNewsSources: _ComponentActions.ComponentActions.showNewsBrowser,
         onWebz: _ComponentActions.ComponentActions.showWebz,
@@ -60,25 +58,25 @@ var AppNewsAggregator = function AppNewsAggregator() {
         onAbout: _ComponentActions.ComponentActions.showAbout
       }), (0, _jsxRuntime.jsxs)("div", {
         className: CL_COMP,
-        children: [(0, _jsxRuntime.jsx)(_BrowserContainer["default"], {
-          store: _Store["default"]
-        }), (0, _jsxRuntime.jsx)(_About["default"], {
+        children: [(0, _jsxRuntime.jsx)(_BrowserContainer.default, {
+          store: _Store.default
+        }), (0, _jsxRuntime.jsx)(_About.default, {
           isInitShow: true,
-          store: _Store["default"],
+          store: _Store.default,
           showAction: _ComponentActions.CAT_SHOW_ABOUT,
           hideAction: _ComponentActions.CAT_SHOW_NEWS_PANE
-        }), (0, _jsxRuntime.jsx)(_ComponentHrzContainer["default"], {
-          store: _Store["default"],
+        }), (0, _jsxRuntime.jsx)(_ComponentHrzContainer.default, {
+          store: _Store.default,
           addAction: _ComponentActions.CAT_SHOW_NEWS_PANE
         })]
-      }), (0, _jsxRuntime.jsx)(_ModalDialogContainer["default"], {
-        store: _Store["default"],
-        router: _RouterModalDialog["default"],
+      }), (0, _jsxRuntime.jsx)(_ModalDialogContainer.default, {
+        store: _Store.default,
+        router: _RouterModalDialog.default,
         showAction: _ComponentActions.CAT_SHOW_MODAL_DIALOG
       })]
     })
   });
 };
 var _default = AppNewsAggregator;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=AppNewsAggregator.js.map
