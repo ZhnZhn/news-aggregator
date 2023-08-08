@@ -5,6 +5,14 @@
  ],
  "file": "../../../src/flux/stores/Store.js",
  "names": [
+  "_refluxCore",
+  "_interopRequireDefault",
+  "require",
+  "_ComponentActions",
+  "_NewsActions",
+  "_ComponentSlice",
+  "_NewsSlice",
+  "_SettingSlice",
   "Store",
   "Reflux",
   "createStore",
@@ -14,7 +22,9 @@
   "ComponentSlice",
   "NewsSlice",
   "SettingSlice",
-  "WithLoadingProgress"
+  "_default",
+  "exports",
+  "default"
  ],
- "mappings": ";;;;;;;;;AAAA;;AAEA;;AAGA;;AAIA;;AACA;;AACA;;AACA;;AAEA,IAAMA,KAAK,GAAGC,sBAAA,CAAOC,WAAP;EACZC,WAAW,EAAE,CACVC,kCADU,EAEVC,wBAFU;AADD,GAMTC,0BANS,EAOTC,qBAPS,EAQTC,wBARS,EASTC,+BATS,EAAd;;eAYeT,K"
+ "mappings": ";;;;;AAAA,IAAAA,WAAA,GAAAC,sBAAA,CAAAC,OAAA;AAEA,IAAAC,iBAAA,GAAAD,OAAA;AAGA,IAAAE,YAAA,GAAAF,OAAA;AAIA,IAAAG,eAAA,GAAAJ,sBAAA,CAAAC,OAAA;AACA,IAAAI,UAAA,GAAAL,sBAAA,CAAAC,OAAA;AACA,IAAAK,aAAA,GAAAN,sBAAA,CAAAC,OAAA;AAEA,MAAMM,KAAK,GAAGC,mBAAM,CAACC,WAAW,CAAC;EAC/BC,WAAW,EAAE,CACVC,kCAAgB,EAChBC,wBAAW,CACb;EAED,GAAGC,uBAAc;EACjB,GAAGC,kBAAS;EACZ,GAAGC;AACL,CAAC,CAAC;AAAA,IAAAC,QAAA,GAEaT,KAAK;AAAAU,OAAA,CAAAC,OAAA,GAAAF,QAAA"
 }

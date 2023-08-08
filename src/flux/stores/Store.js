@@ -10,7 +10,6 @@ import {
 import ComponentSlice from './ComponentSlice';
 import NewsSlice from './NewsSlice';
 import SettingSlice from './SettingSlice';
-import WithLoadingProgress from './WithLoadingProgress';
 
 const Store = Reflux.createStore({
   listenables: [
@@ -20,8 +19,7 @@ const Store = Reflux.createStore({
 
   ...ComponentSlice,
   ...NewsSlice,
-  ...SettingSlice,
-  ...WithLoadingProgress
+  ...SettingSlice
 })
 
 export default Store
