@@ -1,0 +1,26 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/flux/storeAtoms.js"
+ ],
+ "file": "../../src/flux/storeAtoms.js",
+ "names": [
+  "_storeApi",
+  "require",
+  "_LoadingProgressActions",
+  "_atomLoading",
+  "atom",
+  "_setAtomLoading",
+  "setValue",
+  "useLoading",
+  "useAtomValue",
+  "exports",
+  "setLoading",
+  "LPAT_LOADING",
+  "setLoadingComplete",
+  "LPAT_LOADING_COMPLETE",
+  "setLoadingFailed",
+  "LPAT_LOADING_FAILED"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AAEA,IAAAC,uBAAA,GAAAD,OAAA;AAMA,MAAME,YAAY,GAAG,IAAAC,cAAI,EAAC,CAAC;EACzBC,eAAe,GAAGF,YAAY,CAACG,QAAQ;AAElC,MAAMC,UAAU,GAAGJ,YAAY,CAACK,YAAY;AAAAC,OAAA,CAAAF,UAAA,GAAAA,UAAA;AAC5C,MAAMG,UAAU,GAAGA,CAAA,KAAML,eAAe,CAACM,oCAAY,CAAC;AAAAF,OAAA,CAAAC,UAAA,GAAAA,UAAA;AACtD,MAAME,kBAAkB,GAAGA,CAAA,KAAMP,eAAe,CAACQ,6CAAqB,CAAC;AAAAJ,OAAA,CAAAG,kBAAA,GAAAA,kBAAA;AACvE,MAAME,gBAAgB,GAAGA,CAAA,KAAMT,eAAe,CAACU,2CAAmB,CAAC;AAAAN,OAAA,CAAAK,gBAAA,GAAAA,gBAAA"
+}
