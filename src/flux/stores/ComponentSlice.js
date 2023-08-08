@@ -8,8 +8,7 @@ import {
   CAT_SHOW_BROWSER,
   CAT_UPDATE_BROWSER,
 
-  CAT_SHOW_ABOUT,
-  CAT_CHANGE_THEME
+  CAT_SHOW_ABOUT
 } from '../actions/ComponentActions';
 
 import {
@@ -70,10 +69,6 @@ const ComponentSlice = {
   onUpdateBrowser(itemConf, option){
     const r = createResult(this.hmBrowser, itemConf);
     this.trigger(CAT_UPDATE_BROWSER, r)
-  },
-
-  onChangeTheme(themeName){
-    this.trigger(CAT_CHANGE_THEME, themeName)
   }
 }
 

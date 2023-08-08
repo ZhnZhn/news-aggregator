@@ -16,8 +16,6 @@ export const CAT_SHOW_ABOUT = 'showAbout'
 export const CAT_SHOW_BROWSER = 'showBrowser'
 export const CAT_UPDATE_BROWSER = 'updateBrowser'
 
-export const CAT_CHANGE_THEME = 'changeTheme'
-
 
 const Actions = Reflux.createActions({
   [CAT_SHOW_NEWS_DIALOG]: {},
@@ -30,9 +28,7 @@ const Actions = Reflux.createActions({
 
   [CAT_SHOW_ABOUT]: {},
   [CAT_SHOW_BROWSER]: {},
-  [CAT_UPDATE_BROWSER]: {},
-
-  [CAT_CHANGE_THEME]: {}
+  [CAT_UPDATE_BROWSER]: {}
 });
 
 const _fShowDialog = id => Actions.showNewsDialog.bind(null, id);

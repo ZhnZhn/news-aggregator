@@ -19,14 +19,16 @@ export const atom = (initialValue) => {
          _reducerUseAtomValue,
          initialValue
        );
+       _atom.value = value
        _atom.dispatch = dispatch
        return value;
      },
      setValue: (crOrValue) => {
-       _atom.value = _reducerUseAtomValue(_atom.value, crOrValue)
        const _dispatch = _atom.dispatch;
        if (_isFn(_dispatch)) {
          _dispatch(crOrValue)
+       } else {
+         _atom.value = _reducerUseAtomValue(_atom.value, crOrValue)
        }
      }
    };
