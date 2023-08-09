@@ -1,6 +1,4 @@
 import {
-  CAT_SHOW_NEWS_DIALOG,
-
   CAT_SHOW_NEWS_PANE,
   CAT_TOGGLE_NEWS_PANE,
 
@@ -9,8 +7,6 @@ import {
 } from '../actions/ComponentActions';
 
 import {
-  showNewsDialog,
-
   showNewsPane,
   toggleNewsPane,
 
@@ -21,14 +17,8 @@ import {
 } from './ComponentSliceFn';
 
 const ComponentSlice = {
-  dialogInit: {},
   newsPaneInit: {},
   hmBrowser: {},
-
-  onShowNewsDialog(itemConf, event){
-    const r = showNewsDialog(this.dialogInit, itemConf);
-    this.trigger(CAT_SHOW_NEWS_DIALOG, r)
-  },
 
   onShowNewsPane(itemConf){
     const pane = showNewsPane(this.newsPaneInit, itemConf, this);

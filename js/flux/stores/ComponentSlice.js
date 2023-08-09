@@ -5,13 +5,8 @@ exports.default = void 0;
 var _ComponentActions = require("../actions/ComponentActions");
 var _ComponentSliceFn = require("./ComponentSliceFn");
 const ComponentSlice = {
-  dialogInit: {},
   newsPaneInit: {},
   hmBrowser: {},
-  onShowNewsDialog(itemConf, event) {
-    const r = (0, _ComponentSliceFn.showNewsDialog)(this.dialogInit, itemConf);
-    this.trigger(_ComponentActions.CAT_SHOW_NEWS_DIALOG, r);
-  },
   onShowNewsPane(itemConf) {
     const pane = (0, _ComponentSliceFn.showNewsPane)(this.newsPaneInit, itemConf, this);
     const browser = (0, _ComponentSliceFn.updateBadge)(this.hmBrowser, itemConf);
