@@ -1,17 +1,17 @@
 import useHotKeys from './hotkeys/useHotKeys';
 
 import { useUiTheme } from '../flux/storeAtoms';
-import settingStore from '../flux/settingStore';
 
 import Store from '../flux/stores/Store'
 import {
   CAT_SHOW_NEWS_PANE,
-  CAT_SHOW_MODAL_DIALOG,
   ComponentActions
 } from '../flux/actions/ComponentActions'
 import {
   useMsAbout,
-  showAbout
+  useMsModalDialog,
+  showAbout,
+  showSettingsDialog
 } from '../flux/compStore';
 
 import ThemeContext from './hooks/ThemeContext'
@@ -24,13 +24,6 @@ import ModalDialogContainer from './zhn-containers/ModalDialogContainer'
 import RouterModalDialog from './dialogs/RouterModalDialog'
 
 const CL_COMP = "component-container";
-
-const _showSettings = ComponentActions
- .showModalDialog.bind(
-   null,
-   'SETTINGS_DIALOG',
-   settingStore.exportSettingsFn()
-);
 
 const AppNewsAggregator = () => {
   const uiTheme = useUiTheme();
@@ -59,7 +52,7 @@ const AppNewsAggregator = () => {
           onTheNewsSearch={ComponentActions.showTheNewsSearch}
           onTheNewsTop={ComponentActions.showTheNewsTop}
 
-          onSettings={_showSettings}
+          onSettings={showSettingsDialog}
           onAbout={showAbout}
         />
         <div className={CL_COMP}>
@@ -70,7 +63,6 @@ const AppNewsAggregator = () => {
             isInitShow={true}
             store={Store}
             useMsAbout={useMsAbout}
-            //showAction={CAT_SHOW_ABOUT}
             hideAction={CAT_SHOW_NEWS_PANE}
           />
           <ComponentHrzContainer
@@ -79,9 +71,8 @@ const AppNewsAggregator = () => {
           />
         </div>
         <ModalDialogContainer
-          store={Store}
           router={RouterModalDialog}
-          showAction={CAT_SHOW_MODAL_DIALOG}
+          useMsModalDialog={useMsModalDialog}
         />
       </div>
     </ThemeContext.Provider>

@@ -3,15 +3,12 @@ import {
   useCallback
 } from '../uiApi';
 
-import useListen from '../hooks/useListen';
-
 import ItemStack from '../zhn-atoms/ItemStack';
 import ModalContainer from './ModalContainer';
 
 const _crDialogItem = (
   { Comp, type },
   index, {
-  store,
   currentDialog,
   data,
   onClose
@@ -20,7 +17,6 @@ const _crDialogItem = (
     key={type}
     isShow={currentDialog === type}
     data={data[type]}
-    store={store}
     onClose={onClose}
   />
 );
@@ -30,9 +26,9 @@ const _getModalDialogType = option =>
  (option || {}).modalDialogType;
 
 const ModalDialogContainer = ({
-  store,
   router,
-  showAction
+  showAction,
+  useMsModalDialog
 }) => {
   const [
     state,
@@ -55,14 +51,17 @@ const ModalDialogContainer = ({
      currentDialog: null
   })), []);
 
-  useListen(store, (actionType, option)=>{
-    if (actionType === showAction){
+
+  useMsModalDialog(msModalDialog => {
+    const { option } = msModalDialog || {};
+    if (option) {
       const type = _getModalDialogType(option);
       if (_isStr(type)) {
         setState(prevState => {
           if (!prevState.data[type]) {
             prevState.dialogs.push({
-               type, Comp: router[type]
+               type,
+               Comp: router[type]
             });
           }
           prevState.data[type] = option;
@@ -75,7 +74,7 @@ const ModalDialogContainer = ({
       }
     }
   })
-
+  
   return (
     <ModalContainer
       isShow={isShow}
@@ -86,7 +85,6 @@ const ModalDialogContainer = ({
         crItem={_crDialogItem}
         currentDialog={currentDialog}
         data={data}
-        store={store}
         onClose={_hClose}
       />
    </ModalContainer>

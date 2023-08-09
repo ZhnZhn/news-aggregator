@@ -5,7 +5,6 @@ exports.__esModule = true;
 exports.default = void 0;
 var _useHotKeys = _interopRequireDefault(require("./hotkeys/useHotKeys"));
 var _storeAtoms = require("../flux/storeAtoms");
-var _settingStore = _interopRequireDefault(require("../flux/settingStore"));
 var _Store = _interopRequireDefault(require("../flux/stores/Store"));
 var _ComponentActions = require("../flux/actions/ComponentActions");
 var _compStore = require("../flux/compStore");
@@ -18,7 +17,6 @@ var _ModalDialogContainer = _interopRequireDefault(require("./zhn-containers/Mod
 var _RouterModalDialog = _interopRequireDefault(require("./dialogs/RouterModalDialog"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_COMP = "component-container";
-const _showSettings = _ComponentActions.ComponentActions.showModalDialog.bind(null, 'SETTINGS_DIALOG', _settingStore.default.exportSettingsFn());
 const AppNewsAggregator = () => {
   const uiTheme = (0, _storeAtoms.useUiTheme)();
   (0, _useHotKeys.default)();
@@ -43,7 +41,7 @@ const AppNewsAggregator = () => {
         onNewsTop: _ComponentActions.ComponentActions.showNewsTop,
         onTheNewsSearch: _ComponentActions.ComponentActions.showTheNewsSearch,
         onTheNewsTop: _ComponentActions.ComponentActions.showTheNewsTop,
-        onSettings: _showSettings,
+        onSettings: _compStore.showSettingsDialog,
         onAbout: _compStore.showAbout
       }), (0, _jsxRuntime.jsxs)("div", {
         className: CL_COMP,
@@ -52,18 +50,15 @@ const AppNewsAggregator = () => {
         }), (0, _jsxRuntime.jsx)(_About.default, {
           isInitShow: true,
           store: _Store.default,
-          useMsAbout: _compStore.useMsAbout
-          //showAction={CAT_SHOW_ABOUT}
-          ,
+          useMsAbout: _compStore.useMsAbout,
           hideAction: _ComponentActions.CAT_SHOW_NEWS_PANE
         }), (0, _jsxRuntime.jsx)(_ComponentHrzContainer.default, {
           store: _Store.default,
           addAction: _ComponentActions.CAT_SHOW_NEWS_PANE
         })]
       }), (0, _jsxRuntime.jsx)(_ModalDialogContainer.default, {
-        store: _Store.default,
         router: _RouterModalDialog.default,
-        showAction: _ComponentActions.CAT_SHOW_MODAL_DIALOG
+        useMsModalDialog: _compStore.useMsModalDialog
       })]
     })
   });

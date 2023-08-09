@@ -4,13 +4,15 @@ import {
   CAT_SHOW_NEWS_DIALOG,
   ComponentActions
 } from '../../flux/actions/ComponentActions'
+import {
+  showAlertDialog
+} from '../../flux/compStore';
 import MENU from '../../conf/NewsMenu'
 
 import NewsBrowser from '../source-browsers/NewsBrowser'
 import DialogContainer from './DialogContainer'
 
 const onClick = ComponentActions.showNewsDialog;
-const onError = ComponentActions.showModalDialog.bind(null, 'ALERT_DIALOG');
 const onClickBadge = ComponentActions.toggleNewsPane
 const onRemoveBadges = ComponentActions.removeNewsBadges.bind(null, { browserId: MENU.NEWS });
 
@@ -22,7 +24,7 @@ const BrowserContainer = ({ store }) => (
        updateAction={CAT_UPDATE_BROWSER}
        browserId={MENU.NEWS}
        onClick={onClick}
-       onError={onError}
+       onError={showAlertDialog}
        onClickBadge={onClickBadge}
        onRemoveBadges={onRemoveBadges}
     />
