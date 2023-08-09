@@ -4,8 +4,7 @@ import { useUiTheme } from '../flux/storeAtoms';
 
 import Store from '../flux/stores/Store'
 import {
-  CAT_SHOW_NEWS_PANE,
-  ComponentActions
+  CAT_SHOW_NEWS_PANE
 } from '../flux/actions/ComponentActions'
 import {
   useMsAbout,
@@ -30,7 +29,10 @@ import {
   showNewsSearch,
   showNewsTop,
   showTheNewsSearch,
-  showTheNewsTop
+  showTheNewsTop,
+
+  useMsBrowser,
+  showNewsBrowser
 } from '../flux/compStore';
 
 import ThemeContext from './hooks/ThemeContext'
@@ -52,7 +54,7 @@ const AppNewsAggregator = () => {
     <ThemeContext.Provider value={uiTheme}>
       <div>
         <HeaderBar
-          onNewsSources={ComponentActions.showNewsBrowser}
+          onNewsSources={showNewsBrowser}
 
           onWebz={showWebz}
           onWebzCountry={showWebzCountry}
@@ -75,8 +77,8 @@ const AppNewsAggregator = () => {
           onAbout={showAbout}
         />
         <div className={CL_COMP}>
-          <BrowserContainer
-            store={Store}
+          <BrowserContainer            
+            useMsBrowser={useMsBrowser}
             useMsDialog={useMsDialog}
           />
           <About

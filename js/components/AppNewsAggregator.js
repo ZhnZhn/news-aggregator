@@ -24,7 +24,7 @@ const AppNewsAggregator = () => {
     value: uiTheme,
     children: (0, _jsxRuntime.jsxs)("div", {
       children: [(0, _jsxRuntime.jsx)(_HeaderBar.default, {
-        onNewsSources: _ComponentActions.ComponentActions.showNewsBrowser,
+        onNewsSources: _compStore.showNewsBrowser,
         onWebz: _compStore.showWebz,
         onWebzCountry: _compStore.showWebzCountry,
         onReddit: _compStore.showReddit,
@@ -46,7 +46,7 @@ const AppNewsAggregator = () => {
       }), (0, _jsxRuntime.jsxs)("div", {
         className: CL_COMP,
         children: [(0, _jsxRuntime.jsx)(_BrowserContainer.default, {
-          store: _Store.default,
+          useMsBrowser: _compStore.useMsBrowser,
           useMsDialog: _compStore.useMsDialog
         }), (0, _jsxRuntime.jsx)(_About.default, {
           isInitShow: true,

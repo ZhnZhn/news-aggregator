@@ -4,8 +4,6 @@ import {
   useEffect
 } from '../uiApi';
 
-import useListen from '../hooks/useListen';
-
 import Comp from '../Comp';
 import MenuPart from './MenuPart';
 
@@ -24,7 +22,6 @@ const S_BROWSER = {
   paddingRight: 0
 }
 , S_BROWSER_CAPTION = {
-  paddingLeft: 30,
   textAlign: 'left'
 }
 , S_SCROLL_PANE = {
@@ -66,15 +63,12 @@ const DynamicMenuBrowser = ({
   styleConfig,
   caption,
   menuMore,
-  store,
-  showAction,
   browserId,
+  useMsBrowser,
   url,
   onError=FN_NOOP,
   children,
-  itemData,
-  onClick,
-  onClickBadge
+  onClick
 }) => {
   const [
     isShow,
@@ -106,10 +100,10 @@ const DynamicMenuBrowser = ({
     () => setIsMore(false)
   ], []);
 
-  useListen(store, (actionType, id)=>{
-     if (actionType === showAction && id === browserId) {
-       setIsShow(true)
-     }
+  useMsBrowser(msBrowser => {
+    if (msBrowser && msBrowser.id === browserId) {
+      setIsShow(true)
+    }
   })
 
   /*eslint-disable react-hooks/exhaustive-deps*/
@@ -143,7 +137,10 @@ const DynamicMenuBrowser = ({
   , _onMore = menuMore
      ? _hShowMore
      : void 0
-  , TS = styleConfig;
+  , TS = styleConfig
+  , _styleBrowserCaption = {
+    paddingLeft: menuMore ? 30 : 10
+  };
 
   return (
     <Browser
@@ -160,7 +157,11 @@ const DynamicMenuBrowser = ({
         />
       }
       <BrowserCaption
-        style={{...S_BROWSER_CAPTION, ...TS.BROWSER_CAPTION}}
+        style={{
+          ...S_BROWSER_CAPTION,
+          ..._styleBrowserCaption,
+          ...TS.BROWSER_CAPTION
+        }}
         caption={caption}
         onMore={_onMore}
         onClose={_hHide}
@@ -174,11 +175,9 @@ const DynamicMenuBrowser = ({
           items={menu}
           crItem={_crItemMenuPart}
           styleConfig={styleConfig}
-          itemData={itemData}
           browserId={browserId}
           hmItems={items}
           onClick={onClick}
-          onClickBadge={onClickBadge}
         />
         {children}
       </ScrollPane>

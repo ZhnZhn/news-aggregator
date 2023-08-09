@@ -2,14 +2,13 @@
 import { CL_SELECT_NONE } from '../styles/CL';
 
 import OpenClose from '../zhn-atoms/OpenClose';
-import MenuItemBadge from './MenuItemBadge';
 
 const _assign = Object.assign;
 
 const _createOnKeyDown = (
   onClick
-) => (event) => {
-  if (event.keyCode === 13){
+) => (evt) => {
+  if (evt.keyCode === 13){
     onClick()
   }
 }
@@ -21,25 +20,15 @@ const _renderMenuItems = (
   const {
     items=[],
     hmItems={},
-    itemData,
     onClick,
-    onClickBadge,
     ...rest
   } = option;
   return items.map((item, index) => {
     const _className = TS.CL_ROW
-             ? `${TS.CL_ROW} ${CL_SELECT_NONE}`
-             :  CL_SELECT_NONE
-          , _itemConf = hmItems[item.id]
-          , { menuTitle} = _itemConf
-          , badgeEl = itemData[item.id]
-               ? (<MenuItemBadge
-                    style={TS.BADGE}
-                    itemBadge={itemData[item.id]}
-                    itemConf={_itemConf}
-                    onClick={onClickBadge}
-                 />)
-               : null;
+       ? `${TS.CL_ROW} ${CL_SELECT_NONE}`
+       :  CL_SELECT_NONE
+    , _itemConf = hmItems[item.id]
+    , { menuTitle} = _itemConf;
 
     _assign(_itemConf, rest)
     const _onClick = onClick.bind(null, _itemConf);
@@ -53,7 +42,6 @@ const _renderMenuItems = (
            onKeyDown={_createOnKeyDown(_onClick)}
         >
           {menuTitle}
-          {badgeEl}
        </div>
     )
   })
