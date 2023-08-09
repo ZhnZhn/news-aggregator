@@ -6,9 +6,7 @@ import {
   CAT_TOGGLE_NEWS_PANE,
 
   CAT_SHOW_BROWSER,
-  CAT_UPDATE_BROWSER,
-
-  CAT_SHOW_ABOUT
+  CAT_UPDATE_BROWSER
 } from '../actions/ComponentActions';
 
 import {
@@ -57,11 +55,7 @@ const ComponentSlice = {
   onRemoveNewsBadges(itemConf){
     const r = removeBadges(this.hmBrowser, itemConf)
     this.trigger(CAT_UPDATE_BROWSER, r)
-  },
-
-  onShowAbout(){
-    this.trigger(CAT_SHOW_ABOUT)
-  },
+  },  
 
   onShowBrowser(browserId){
     this.trigger(CAT_SHOW_BROWSER, browserId)

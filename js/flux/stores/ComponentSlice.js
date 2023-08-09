@@ -41,9 +41,6 @@ const ComponentSlice = {
     const r = (0, _ComponentSliceFn.removeBadges)(this.hmBrowser, itemConf);
     this.trigger(_ComponentActions.CAT_UPDATE_BROWSER, r);
   },
-  onShowAbout() {
-    this.trigger(_ComponentActions.CAT_SHOW_ABOUT);
-  },
   onShowBrowser(browserId) {
     this.trigger(_ComponentActions.CAT_SHOW_BROWSER, browserId);
   },
