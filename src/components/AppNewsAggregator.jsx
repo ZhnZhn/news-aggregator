@@ -2,10 +2,6 @@ import useHotKeys from './hotkeys/useHotKeys';
 
 import { useUiTheme } from '../flux/storeAtoms';
 
-import Store from '../flux/stores/Store'
-import {
-  CAT_SHOW_NEWS_PANE
-} from '../flux/actions/ComponentActions'
 import {
   useMsAbout,
   showAbout,
@@ -32,7 +28,9 @@ import {
   showTheNewsTop,
 
   useMsBrowser,
-  showNewsBrowser
+  showNewsBrowser,
+
+  useMsPane
 } from '../flux/compStore';
 
 import ThemeContext from './hooks/ThemeContext'
@@ -77,19 +75,16 @@ const AppNewsAggregator = () => {
           onAbout={showAbout}
         />
         <div className={CL_COMP}>
-          <BrowserContainer            
+          <BrowserContainer
             useMsBrowser={useMsBrowser}
             useMsDialog={useMsDialog}
           />
           <About
             isInitShow={true}
-            store={Store}
             useMsAbout={useMsAbout}
-            hideAction={CAT_SHOW_NEWS_PANE}
           />
           <ComponentHrzContainer
-            store={Store}
-            addAction={CAT_SHOW_NEWS_PANE}
+            useMsPane={useMsPane}
           />
         </div>
         <ModalDialogContainer

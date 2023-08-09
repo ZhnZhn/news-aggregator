@@ -1,23 +1,20 @@
 import { useState } from '../uiApi';
-//import PropTypes from 'prop-types'
 
-import useListen from '../hooks/useListen';
 import isInCont from './isInCont';
 
 const CL = "hrz-container";
 
 const ComponentHrzContainer = ({
-  store,
-  addAction
+  useMsPane
 }) => {
   const [
     containers,
     setContainers
   ] = useState([]);
 
-  useListen(store, (actionType, option) => {
-    const { Comp } = option || {};
-    if (actionType === addAction && Comp){
+  useMsPane(msPane => {
+    const { Comp } = msPane || {};
+    if (Comp) {
       setContainers(prevContainers => isInCont(prevContainers, Comp)
          ? prevContainers
          : [Comp, ...prevContainers]
@@ -31,14 +28,5 @@ const ComponentHrzContainer = ({
     </div>
   );
 };
-
-/*
-ComponentHrzContainer.propTypes = {
-  store: PropTypes.shape({
-    listen: PropTypes.func
-  }),
-  addAction: PropTypes.string
-}
-*/
 
 export default ComponentHrzContainer

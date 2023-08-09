@@ -2,7 +2,6 @@ import { FMP_LONG } from '../../conf/ProviderNames';
 
 import useBool from '../hooks/useBool';
 import useTheme from '../hooks/useTheme';
-import useListen from '../hooks/useListen';
 
 import crCn from '../zhn-utils/crCn';
 import {
@@ -36,9 +35,9 @@ import {
 import Step from './Step';
 import LogoBar from './LogoBar';
 
-const CL_ABOUT_PANE = "about-pane";
-const CL_SHOW = "show-popup";
-const S_BROWSER_CAPTION = {
+const CL_ABOUT_PANE = "about-pane"
+, CL_SHOW = "show-popup"
+, S_BROWSER_CAPTION = {
   paddingLeft: 12,
   textAlign: 'left'
 };
@@ -60,7 +59,10 @@ const PROVIDER_LINKS = [
   [RedditLink]
 ];
 
-const _crLinkItem = ([Comp, props], index) => (
+const _crLinkItem = (
+  [Comp, props],
+  index
+) => (
   <div key={index}>
     <Comp {...props} />
   </div>
@@ -91,9 +93,7 @@ const _crStepItem = (
 
 const About = ({
   isInitShow,
-  store,
-  useMsAbout,
-  hideAction
+  useMsAbout
 }) => {
   const [
     isShow,
@@ -103,19 +103,21 @@ const About = ({
   , TS = useTheme(styleConfig);
 
   useMsAbout(msAbout => {
-    if (msAbout && msAbout.is === true) {
-      setIsShowTrue()
+    if (msAbout) {
+      const _setIs = msAbout.is
+        ? setIsShowTrue
+        : setIsShowFalse
+      _setIs()
     }
   })
 
-  useListen(store, actionType=>{
-    if (actionType === hideAction) {
-      setIsShowFalse()
-    }
-  })
-
-  const _className = crCn(CL_ABOUT_PANE, [isShow, CL_SHOW])
-  , _style = isShow ? S_BLOCK : S_NONE;
+  const _className = crCn(
+    CL_ABOUT_PANE,
+    [isShow, CL_SHOW]
+  )
+  , _style = isShow
+    ? S_BLOCK
+    : S_NONE;
 
   return (
     <div

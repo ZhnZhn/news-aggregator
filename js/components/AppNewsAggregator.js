@@ -5,8 +5,6 @@ exports.__esModule = true;
 exports.default = void 0;
 var _useHotKeys = _interopRequireDefault(require("./hotkeys/useHotKeys"));
 var _storeAtoms = require("../flux/storeAtoms");
-var _Store = _interopRequireDefault(require("../flux/stores/Store"));
-var _ComponentActions = require("../flux/actions/ComponentActions");
 var _compStore = require("../flux/compStore");
 var _ThemeContext = _interopRequireDefault(require("./hooks/ThemeContext"));
 var _HeaderBar = _interopRequireDefault(require("./header/HeaderBar"));
@@ -50,12 +48,9 @@ const AppNewsAggregator = () => {
           useMsDialog: _compStore.useMsDialog
         }), (0, _jsxRuntime.jsx)(_About.default, {
           isInitShow: true,
-          store: _Store.default,
-          useMsAbout: _compStore.useMsAbout,
-          hideAction: _ComponentActions.CAT_SHOW_NEWS_PANE
+          useMsAbout: _compStore.useMsAbout
         }), (0, _jsxRuntime.jsx)(_ComponentHrzContainer.default, {
-          store: _Store.default,
-          addAction: _ComponentActions.CAT_SHOW_NEWS_PANE
+          useMsPane: _compStore.useMsPane
         })]
       }), (0, _jsxRuntime.jsx)(_ModalDialogContainer.default, {
         router: _RouterModalDialog.default,

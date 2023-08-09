@@ -2,11 +2,10 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
-var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
+var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
+var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 var _useRefHotKey = _interopRequireDefault(require("../hotkeys/useRefHotKey"));
@@ -23,7 +22,7 @@ var _LoadNextPage = _interopRequireDefault(require("./LoadNextPage"));
 var _ResizeWidth = require("./ResizeWidth");
 var _hotKeys = require("./hotKeys");
 var _jsxRuntime = require("preact/jsx-runtime");
-var WIDTH_STYLE = (0, _has.initWidthStyle)(),
+const WIDTH_STYLE = (0, _has.initWidthStyle)(),
   CL_NEWS_PANE = "news-pane",
   CL_SHOW_POPUP = "show-popup",
   CL_MENU_MORE = "popup-menu items__menu-more",
@@ -42,25 +41,21 @@ var WIDTH_STYLE = (0, _has.initWidthStyle)(),
   S_NONE = {
     display: 'none'
   };
-var _getWidth = function _getWidth(style) {
-  return parseInt(style.width, 10) || _ResizeWidth.RESIZE_INIT_WIDTH;
-};
-var _toStyleWidth = function _toStyleWidth(width) {
-  return width + 'px';
-};
-var _focusFirstItem = function _focusFirstItem(ref) {
-  setTimeout(function () {
+const _getWidth = style => parseInt(style.width, 10) || _ResizeWidth.RESIZE_INIT_WIDTH;
+const _toStyleWidth = width => width + 'px';
+const _focusFirstItem = ref => {
+  setTimeout(() => {
     (0, _uiApi.focusRefElement)(ref);
   }, 1000);
 };
-var _crPaneCaption = function _crPaneCaption(caption, sortBy) {
-  return [caption, sortBy].filter(Boolean).map(_toFirstUpperCase["default"]).join(': ');
-};
-var _crArticleItem = function _crArticleItem(article, index, _ref) {
-  var Item = _ref.Item,
-    refFirstItem = _ref.refFirstItem,
-    onCloseItem = _ref.onCloseItem,
-    onRemoveUnder = _ref.onRemoveUnder;
+const _crPaneCaption = (caption, sortBy) => [caption, sortBy].filter(Boolean).map(_toFirstUpperCase.default).join(': ');
+const _crArticleItem = (article, index, _ref) => {
+  let {
+    Item,
+    refFirstItem,
+    onCloseItem,
+    onRemoveUnder
+  } = _ref;
   return (0, _jsxRuntime.jsx)(Item, {
     ref: index === 0 ? refFirstItem : void 0,
     item: article,
@@ -68,19 +63,19 @@ var _crArticleItem = function _crArticleItem(article, index, _ref) {
     onRemoveUnder: onRemoveUnder
   }, article.articleId);
 };
-var _crModelMoreHandlers = function _crModelMoreHandlers(ref, onRemoveItems) {
-  var _resizeTo = function _resizeTo(width) {
+const _crModelMoreHandlers = (ref, onRemoveItems) => {
+  const _resizeTo = width => {
       ((0, _uiApi.getRefElementStyle)(ref) || {}).width = _toStyleWidth(width);
     },
-    _plusToWidth = function _plusToWidth() {
-      var style = (0, _uiApi.getRefElementStyle)(ref) || {},
+    _plusToWidth = () => {
+      const style = (0, _uiApi.getRefElementStyle)(ref) || {},
         w = _getWidth(style) + _ResizeWidth.RESIZE_DELTA;
       if (w < _ResizeWidth.RESIZE_MAX_WIDTH) {
         style.width = _toStyleWidth(w);
       }
     },
-    _minusToWidth = function _minusToWidth() {
-      var style = (0, _uiApi.getRefElementStyle)(ref) || {},
+    _minusToWidth = () => {
+      const style = (0, _uiApi.getRefElementStyle)(ref) || {},
         w = _getWidth(style) - _ResizeWidth.RESIZE_DELTA;
       if (w > _ResizeWidth.RESIZE_MIN_WIDTH) {
         style.width = _toStyleWidth(w);
@@ -94,139 +89,139 @@ var _crModelMoreHandlers = function _crModelMoreHandlers(ref, onRemoveItems) {
     onRemoveItems: onRemoveItems
   };
 };
-var NewsPane = function NewsPane(_ref2) {
-  var store = _ref2.store,
-    addAction = _ref2.addAction,
-    updateAction = _ref2.updateAction,
-    showAction = _ref2.showAction,
-    toggleAction = _ref2.toggleAction,
-    id = _ref2.id,
-    paneCaption = _ref2.paneCaption,
-    Item = _ref2.Item,
-    onRemoveItems = _ref2.onRemoveItems,
-    onRemoveUnder = _ref2.onRemoveUnder,
-    onCloseItem = _ref2.onCloseItem,
-    onClose = _ref2.onClose;
-  var _refRootDiv = (0, _uiApi.useRef)(),
-    _refFirstItem = (0, _uiApi.useRef)(),
-    _MORE_HANDLERS = (0, _uiApi.useMemo)(function () {
-      return _crModelMoreHandlers(_refRootDiv, onRemoveItems);
-    }, []),
-    _MODEL_MORE = (0, _uiApi.useMemo)(function () {
-      return (0, _crModelMore["default"])(_MORE_HANDLERS);
-    }, []),
-    onPlusWidth = _MORE_HANDLERS.onPlusWidth,
-    onMinusWidth = _MORE_HANDLERS.onMinusWidth,
-    _useToggle = (0, _useToggle2["default"])(true),
-    isShow = _useToggle[0],
-    toggleIsShow = _useToggle[1],
-    _useBool = (0, _useBool2["default"])(false),
-    isMore = _useBool[0],
-    _showMore = _useBool[1],
-    _hideMore = _useBool[2],
-    _useState = (0, _uiApi.useState)({
+const NewsPane = _ref2 => {
+  let {
+    store,
+    addAction,
+    updateAction,
+    id,
+    useMsPane,
+    paneCaption,
+    Item,
+    onRemoveItems,
+    onRemoveUnder,
+    onCloseItem
+  } = _ref2;
+  const _refRootDiv = (0, _uiApi.useRef)(),
+    _refFirstItem = (0, _uiApi.useRef)()
+    /*eslint-disable react-hooks/exhaustive-deps */,
+    _MORE_HANDLERS = (0, _uiApi.useMemo)(() => _crModelMoreHandlers(_refRootDiv, onRemoveItems), []),
+    _MODEL_MORE = (0, _uiApi.useMemo)(() => (0, _crModelMore.default)(_MORE_HANDLERS), [])
+    // onRemoveItems
+    /*eslint-enable react-hooks/exhaustive-deps */,
+    {
+      onPlusWidth,
+      onMinusWidth
+    } = _MORE_HANDLERS,
+    [isShow, toggleIsShow] = (0, _useToggle.default)(true),
+    [isMore, _showMore, _hideMore] = (0, _useBool.default)(false),
+    [state, setState] = (0, _uiApi.useState)({
       articles: [],
       sortBy: '',
       caption: ''
     }),
-    state = _useState[0],
-    setState = _useState[1],
-    articles = state.articles,
-    sortBy = state.sortBy,
-    caption = state.caption,
-    page = state.page,
-    isRelatedBars = state.isRelatedBars,
-    _useMemo = (0, _uiApi.useMemo)(function () {
+    {
+      articles,
+      sortBy,
+      caption,
+      page,
+      isRelatedBars
+    } = state,
+    [_categoryBars, _maxValue, _numberOfArticles] = (0, _uiApi.useMemo)(() => {
       if (isRelatedBars) {
-        var _relatedBars = (0, _crRelatedBars["default"])(articles);
+        const _relatedBars = (0, _crRelatedBars.default)(articles);
         return [_relatedBars, (_relatedBars[0] || [])[1], articles.length];
       }
       return [];
-    }, [isRelatedBars, articles]),
-    _categoryBars = _useMemo[0],
-    _maxValue = _useMemo[1],
-    _numberOfArticles = _useMemo[2],
-    _hHide = (0, _uiApi.useCallback)(function () {
-      onClose();
+    }, [isRelatedBars, articles])
+    /*eslint-disable react-hooks/exhaustive-deps */,
+    _hHide = (0, _uiApi.useCallback)(() => {
       toggleIsShow(false);
-    }, []),
-    TS = (0, _useTheme["default"])(_NewsPane["default"]);
-  (0, _useListen["default"])(store, function (actionType, option) {
+    }, [])
+    // onClose
+    /*eslint-enable react-hooks/exhaustive-deps */,
+    TS = (0, _useTheme.default)(_NewsPane.default);
+  useMsPane(msPane => {
+    if (msPane && msPane.id === id) {
+      toggleIsShow(true);
+    }
+  });
+  (0, _useListen.default)(store, function (actionType, option) {
     if (option === void 0) {
       option = {};
     }
     if (option.id === id) {
       if (actionType === addAction) {
         toggleIsShow(true);
-        setState(function (prevState) {
-          return {
-            articles: option.data,
-            sortBy: option.sortBy,
-            caption: option.caption,
-            page: option.page,
-            isRelatedBars: option.isRelatedBars
-          };
-        });
+        setState(prevState => ({
+          articles: option.data,
+          sortBy: option.sortBy,
+          caption: option.caption,
+          page: option.page,
+          isRelatedBars: option.isRelatedBars
+        }));
         _focusFirstItem(_refFirstItem);
       } else if (actionType === updateAction) {
-        setState(function (prevState) {
-          return (0, _extends2["default"])({}, prevState, {
-            articles: option.data
-          });
-        });
-      } else if (actionType === showAction) {
-        toggleIsShow(true);
-      } else if (actionType === toggleAction) {
-        toggleIsShow();
+        setState(prevState => ({
+          ...prevState,
+          articles: option.data
+        }));
       }
     }
   });
-  (0, _useRefHotKey["default"])(_refRootDiv, _hotKeys.HK_REMOVE_ITEMS, onRemoveItems);
-  (0, _useRefHotKey["default"])(_refRootDiv, _hotKeys.HK_PLUS_WIDTH, onPlusWidth);
-  (0, _useRefHotKey["default"])(_refRootDiv, _hotKeys.HK_MINUS_WIDTH, onMinusWidth);
-  var _paneCaption = caption || _crPaneCaption(paneCaption, sortBy),
-    _className = (0, _crCn["default"])(CL_NEWS_PANE, [isShow, CL_SHOW_POPUP]),
+  (0, _useRefHotKey.default)(_refRootDiv, _hotKeys.HK_REMOVE_ITEMS, onRemoveItems);
+  (0, _useRefHotKey.default)(_refRootDiv, _hotKeys.HK_PLUS_WIDTH, onPlusWidth);
+  (0, _useRefHotKey.default)(_refRootDiv, _hotKeys.HK_MINUS_WIDTH, onMinusWidth);
+  const _paneCaption = caption || _crPaneCaption(paneCaption, sortBy),
+    _className = (0, _crCn.default)(CL_NEWS_PANE, [isShow, CL_SHOW_POPUP]),
     _styleIsShow = isShow ? S_INLINE_BLOCK : S_NONE;
   return (0, _jsxRuntime.jsxs)("div", {
     ref: _refRootDiv,
     className: _className,
-    style: (0, _extends2["default"])({}, WIDTH_STYLE, TS.PANE_ROOT, _styleIsShow),
-    children: [(0, _jsxRuntime.jsx)(_Comp["default"].ModalSlider, {
+    style: {
+      ...WIDTH_STYLE,
+      ...TS.PANE_ROOT,
+      ..._styleIsShow
+    },
+    children: [(0, _jsxRuntime.jsx)(_Comp.default.ModalSlider, {
       isShow: isMore,
       className: CL_MENU_MORE,
       style: TS.EL_BORDER,
       model: _MODEL_MORE,
       onClose: _hideMore
-    }), (0, _jsxRuntime.jsx)(_Comp["default"].BrowserCaption, {
-      style: (0, _extends2["default"])({}, S_BROWSER_CAPTION, TS.PANE_CAPTION),
+    }), (0, _jsxRuntime.jsx)(_Comp.default.BrowserCaption, {
+      style: {
+        ...S_BROWSER_CAPTION,
+        ...TS.PANE_CAPTION
+      },
       caption: _paneCaption,
       onMore: _showMore,
       onClose: _hHide,
-      children: (0, _jsxRuntime.jsx)(_CaptionButtons["default"], {
+      children: (0, _jsxRuntime.jsx)(_CaptionButtons.default, {
         refRootDiv: _refRootDiv,
         onRemoveItems: onRemoveItems,
         onPlusWidth: onPlusWidth,
         onMinusWidth: onMinusWidth
       })
-    }), (0, _jsxRuntime.jsxs)(_Comp["default"].ScrollPane, {
+    }), (0, _jsxRuntime.jsxs)(_Comp.default.ScrollPane, {
       style: S_SCROLL_DIV,
-      children: [isRelatedBars && _maxValue && (0, _jsxRuntime.jsx)(_ItemBarChart["default"], {
+      children: [isRelatedBars && _maxValue && (0, _jsxRuntime.jsx)(_ItemBarChart.default, {
         categoryBars: _categoryBars,
         maxValue: _maxValue,
         numberOfItems: _numberOfArticles
-      }), (0, _jsxRuntime.jsx)(_Comp["default"].ItemStack, {
+      }), (0, _jsxRuntime.jsx)(_Comp.default.ItemStack, {
         items: articles,
         crItem: _crArticleItem,
         Item: Item,
         refFirstItem: _refFirstItem,
         onCloseItem: onCloseItem,
         onRemoveUnder: onRemoveUnder
-      }), (0, _jsxRuntime.jsx)(_LoadNextPage["default"], {
+      }), (0, _jsxRuntime.jsx)(_LoadNextPage.default, {
         page: page
       })]
     })]
   });
 };
 var _default = NewsPane;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=NewsPane.js.map

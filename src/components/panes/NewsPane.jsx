@@ -126,17 +126,15 @@ const NewsPane = ({
 
   addAction,
   updateAction,
-  showAction,
-  toggleAction,
   id,
+
+  useMsPane,
 
   paneCaption,
   Item,
   onRemoveItems,
   onRemoveUnder,
-  onCloseItem,
-
-  onClose
+  onCloseItem
 }) => {
   const _refRootDiv = useRef()
   , _refFirstItem = useRef()
@@ -196,12 +194,17 @@ const NewsPane = ({
   }, [isRelatedBars, articles])
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hHide = useCallback(() => {
-     onClose()
      toggleIsShow(false)
   }, [])
   // onClose
   /*eslint-enable react-hooks/exhaustive-deps */
   , TS = useTheme(styleConfig);
+
+  useMsPane(msPane => {
+    if (msPane && msPane.id === id) {
+      toggleIsShow(true)
+    }
+  })
 
   useListen(store, (actionType, option={}) => {
     if (option.id === id){
@@ -220,10 +223,6 @@ const NewsPane = ({
           ...prevState,
           articles: option.data
         }))
-      } else if (actionType === showAction) {
-        toggleIsShow(true)
-      } else if (actionType === toggleAction) {
-        toggleIsShow()
       }
     }
   })
@@ -234,7 +233,10 @@ const NewsPane = ({
 
   const _paneCaption = caption
     || _crPaneCaption(paneCaption, sortBy)
-  , _className = crCn(CL_NEWS_PANE, [isShow,  CL_SHOW_POPUP])
+  , _className = crCn(
+     CL_NEWS_PANE,
+     [isShow,  CL_SHOW_POPUP]
+   )
   , _styleIsShow = isShow
      ? S_INLINE_BLOCK
      : S_NONE;

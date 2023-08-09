@@ -6,7 +6,6 @@ exports.default = void 0;
 var _ProviderNames = require("../../conf/ProviderNames");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
-var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
 var _About = require("./About.Style");
 var _Comp = _interopRequireDefault(require("../Comp"));
@@ -14,12 +13,12 @@ var _Links = require("../links/Links");
 var _Step = _interopRequireDefault(require("./Step"));
 var _LogoBar = _interopRequireDefault(require("./LogoBar"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_ABOUT_PANE = "about-pane";
-const CL_SHOW = "show-popup";
-const S_BROWSER_CAPTION = {
-  paddingLeft: 12,
-  textAlign: 'left'
-};
+const CL_ABOUT_PANE = "about-pane",
+  CL_SHOW = "show-popup",
+  S_BROWSER_CAPTION = {
+    paddingLeft: 12,
+    textAlign: 'left'
+  };
 const {
   ItemStack
 } = _Comp.default;
@@ -43,20 +42,14 @@ const _crStepItem = (descr, index) => (0, _jsxRuntime.jsx)(_Step.default, {
 const About = _ref2 => {
   let {
     isInitShow,
-    store,
-    useMsAbout,
-    hideAction
+    useMsAbout
   } = _ref2;
   const [isShow, setIsShowTrue, setIsShowFalse] = (0, _useBool.default)(isInitShow),
     TS = (0, _useTheme.default)(_About.styleConfig);
   useMsAbout(msAbout => {
-    if (msAbout && msAbout.is === true) {
-      setIsShowTrue();
-    }
-  });
-  (0, _useListen.default)(store, actionType => {
-    if (actionType === hideAction) {
-      setIsShowFalse();
+    if (msAbout) {
+      const _setIs = msAbout.is ? setIsShowTrue : setIsShowFalse;
+      _setIs();
     }
   });
   const _className = (0, _crCn.default)(CL_ABOUT_PANE, [isShow, CL_SHOW]),
