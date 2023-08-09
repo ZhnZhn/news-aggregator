@@ -1,10 +1,10 @@
 "use strict";
 
 exports.__esModule = true;
-exports.toggleNewsPane = exports.showNewsPane = exports.showNewsDialog = void 0;
+exports.showPaneImpl = exports.showDialogImpl = void 0;
 var _Factory = require("../logic/Factory");
 //NewsDialogFn
-const showNewsDialog = (slice, itemConf) => {
+const showDialogImpl = (slice, itemConf) => {
   const {
     type
   } = itemConf;
@@ -23,8 +23,8 @@ const showNewsDialog = (slice, itemConf) => {
 };
 
 //NewsPaneFn
-exports.showNewsDialog = showNewsDialog;
-const showNewsPane = (slice, itemConf, store) => {
+exports.showDialogImpl = showDialogImpl;
+const showPaneImpl = (slice, itemConf, useMsPane, store) => {
   const {
     type
   } = itemConf;
@@ -33,16 +33,12 @@ const showNewsPane = (slice, itemConf, store) => {
       id: itemConf.paneId
     };
   } else {
-    const Comp = (0, _Factory.createNewsPane)(itemConf, store);
+    const Comp = (0, _Factory.createNewsPane)(itemConf, useMsPane, store);
     slice[type] = true;
     return {
       Comp
     };
   }
 };
-exports.showNewsPane = showNewsPane;
-const toggleNewsPane = itemConf => ({
-  id: itemConf.paneId
-});
-exports.toggleNewsPane = toggleNewsPane;
+exports.showPaneImpl = showPaneImpl;
 //# sourceMappingURL=ComponentSliceFn.js.map

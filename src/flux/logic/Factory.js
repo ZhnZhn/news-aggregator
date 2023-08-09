@@ -1,20 +1,17 @@
 import {
-  CAT_SHOW_NEWS_PANE,
-  CAT_TOGGLE_NEWS_PANE,
-  ComponentActions
-} from '../actions/ComponentActions';
-import {
   NAT_LOAD_NEWS_COMPLETED,
   NAT_UPDATE_NEWS,
   NewsActions
 } from '../actions/NewsActions';
 
+import {
+  showNewsPane
+} from '../compStore';
+
 import RouterDialog from '../../components/dialogs/RouterDialog';
 import RouterPane from '../../components/panes/RouterPane';
 
-const showNewsPane = ComponentActions.showNewsPane
-, closeNewsPane = ComponentActions.closeNewsPane
-, loadNews = NewsActions.loadNews;
+const loadNews = NewsActions.loadNews;
 
 export const createDialog = (
   itemConf
@@ -39,6 +36,7 @@ export const createDialog = (
 
 export const createNewsPane = (
   itemConf,
+  useMsPane,
   store
 ) => {
   const {
@@ -60,12 +58,10 @@ export const createNewsPane = (
       Item={CompItem}
       addAction={NAT_LOAD_NEWS_COMPLETED}
       updateAction={NAT_UPDATE_NEWS}
-      showAction={CAT_SHOW_NEWS_PANE}
-      toggleAction={CAT_TOGGLE_NEWS_PANE}
+      useMsPane={useMsPane}
       onRemoveItems={NewsActions.removeAllNews.bind(null, paneId)}
       onRemoveUnder={NewsActions.removeUnderNews}
       onCloseItem={NewsActions.removeNews}
-      onClose={closeNewsPane.bind(null, itemConf)}
     />
   );
 }

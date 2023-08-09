@@ -5,17 +5,20 @@ import {
 } from './storeApi';
 
 import settingStore from './settingStore';
+import Store from './stores/Store';
 
 import QUERY from '../conf/NewsQuery';
 import MENU from '../conf/NewsMenu';
 import {
-  showNewsDialog
+  showDialogImpl,
+  showPaneImpl
 } from './stores/ComponentSliceFn';
 
 const _dialogInited = Object.create(null);
+const _newsPaneInited = Object.create(null);
 
-const _crMsAbout = () => ({
-  msAbout: { is: true }
+const _crMsAbout = (is) => ({
+  msAbout: { is }
 })
 , _crMsModalDialog = (option) => ({
   msModalDialog: { option }
@@ -26,21 +29,26 @@ const _crMsAbout = () => ({
 , _crMsBrowser = (id) => ({
   msBrowser: { id }
 })
+, _crMsPane = (option) => ({
+  msPane: option
+})
 , _crStore = () => ({
    ..._crMsAbout(),
    ..._crMsModalDialog(),
    ..._crMsDialog(),
-   ..._crMsBrowser()
+   ..._crMsBrowser(),
+   ..._crMsPane()
 })
 , _compStore = createStoreWithSelector(_crStore)
 , _selectMsAbout = state => state.msAbout
 , _selectMsModalDialog = state => state.msModalDialog
 , _selectMsDialog = state => state.msDialog
 , _selectMsBrowser = state => state.msBrowser
+, _selectMsPane = state => state.msPane
 , _set = _compStore.setState
 
 export const useMsAbout = fCrUse(_compStore, _selectMsAbout)
-export const showAbout = () => _set(_crMsAbout())
+export const showAbout = () => _set(_crMsAbout(true))
 
 export const useMsModalDialog = fCrUse(_compStore, _selectMsModalDialog)
 const _showModalDialog = (
@@ -63,7 +71,7 @@ export const showAlertDialog = bindTo(
 export const useMsDialog = fCrUse(_compStore, _selectMsDialog)
 export const showDialog = (itemConf) => {
   _set(_crMsDialog(
-    showNewsDialog(_dialogInited, itemConf)
+    showDialogImpl(_dialogInited, itemConf)
   ))
 }
 export const showWebz = bindTo(showDialog, QUERY.WEBZ)
@@ -91,3 +99,16 @@ export const showNewsBrowser = bindTo(
   _showBrowser,
   MENU.NEWS
 )
+
+export const useMsPane = fCrUse(_compStore, _selectMsPane)
+export const showNewsPane = (itemConf) => {
+  _set({
+    ..._crMsAbout(false),
+    ..._crMsPane(showPaneImpl(
+      _newsPaneInited,
+      itemConf,
+      useMsPane,
+      Store
+    ))
+  })
+}

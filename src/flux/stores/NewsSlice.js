@@ -2,11 +2,10 @@ import {
   NAT_LOAD_NEWS_COMPLETED,
   NAT_UPDATE_NEWS
 } from '../actions/NewsActions';
+
 import {
-  ComponentActions
-} from '../actions/ComponentActions';
-import {
-  showAlertDialog
+  showAlertDialog,
+  showNewsPane
 } from '../compStore';
 
 import {
@@ -26,7 +25,7 @@ const NewsSlice = {
   news: {},
 
   onLoadNews(option={}){
-    ComponentActions.showNewsPane(option.itemConf)
+    showNewsPane(option.itemConf)
     setLoading()
   },
   onLoadNewsCompleted({ news, itemConf }){

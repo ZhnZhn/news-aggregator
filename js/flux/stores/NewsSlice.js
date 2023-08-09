@@ -3,7 +3,6 @@
 exports.__esModule = true;
 exports.default = void 0;
 var _NewsActions = require("../actions/NewsActions");
-var _ComponentActions = require("../actions/ComponentActions");
 var _compStore = require("../compStore");
 var _storeAtoms = require("../storeAtoms");
 var _NewsSliceFn = require("./NewsSliceFn");
@@ -13,7 +12,7 @@ const NewsSlice = {
     if (option === void 0) {
       option = {};
     }
-    _ComponentActions.ComponentActions.showNewsPane(option.itemConf);
+    (0, _compStore.showNewsPane)(option.itemConf);
     (0, _storeAtoms.setLoading)();
   },
   onLoadNewsCompleted(_ref) {

@@ -4,7 +4,7 @@ import {
 } from '../logic/Factory';
 
 //NewsDialogFn
-export const showNewsDialog = (
+export const showDialogImpl = (
   slice,
   itemConf
 ) => {
@@ -19,23 +19,18 @@ export const showNewsDialog = (
 }
 
 //NewsPaneFn
-export const showNewsPane = (
+export const showPaneImpl = (
   slice,
   itemConf,
+  useMsPane,
   store
 ) => {
   const { type } = itemConf;
   if (slice[type]){
     return { id: itemConf.paneId };
   } else {
-    const Comp = createNewsPane(itemConf, store)
+    const Comp = createNewsPane(itemConf, useMsPane, store)
     slice[type] = true;
     return { Comp };
   }
 }
-
-export const toggleNewsPane = (
-  itemConf
-) => ({
-  id: itemConf.paneId
-})

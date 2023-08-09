@@ -2,16 +2,18 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.useMsModalDialog = exports.useMsDialog = exports.useMsBrowser = exports.useMsAbout = exports.showWebzCountry = exports.showWebz = exports.showTheNewsTop = exports.showTheNewsSearch = exports.showStackTagged = exports.showStackSearch = exports.showSettingsDialog = exports.showReddit = exports.showNewsTop = exports.showNewsSearch = exports.showNewsBrowser = exports.showMessari = exports.showIex = exports.showFmp = exports.showDialog = exports.showDevTo = exports.showCryptoCompare = exports.showCoinStats = exports.showAv = exports.showAlertDialog = exports.showAbout = void 0;
+exports.useMsPane = exports.useMsModalDialog = exports.useMsDialog = exports.useMsBrowser = exports.useMsAbout = exports.showWebzCountry = exports.showWebz = exports.showTheNewsTop = exports.showTheNewsSearch = exports.showStackTagged = exports.showStackSearch = exports.showSettingsDialog = exports.showReddit = exports.showNewsTop = exports.showNewsSearch = exports.showNewsPane = exports.showNewsBrowser = exports.showMessari = exports.showIex = exports.showFmp = exports.showDialog = exports.showDevTo = exports.showCryptoCompare = exports.showCoinStats = exports.showAv = exports.showAlertDialog = exports.showAbout = void 0;
 var _storeApi = require("./storeApi");
 var _settingStore = _interopRequireDefault(require("./settingStore"));
+var _Store = _interopRequireDefault(require("./stores/Store"));
 var _NewsQuery = _interopRequireDefault(require("../conf/NewsQuery"));
 var _NewsMenu = _interopRequireDefault(require("../conf/NewsMenu"));
 var _ComponentSliceFn = require("./stores/ComponentSliceFn");
 const _dialogInited = Object.create(null);
-const _crMsAbout = () => ({
+const _newsPaneInited = Object.create(null);
+const _crMsAbout = is => ({
     msAbout: {
-      is: true
+      is
     }
   }),
   _crMsModalDialog = option => ({
@@ -27,21 +29,26 @@ const _crMsAbout = () => ({
       id
     }
   }),
+  _crMsPane = option => ({
+    msPane: option
+  }),
   _crStore = () => ({
     ..._crMsAbout(),
     ..._crMsModalDialog(),
     ..._crMsDialog(),
-    ..._crMsBrowser()
+    ..._crMsBrowser(),
+    ..._crMsPane()
   }),
   _compStore = (0, _storeApi.createStoreWithSelector)(_crStore),
   _selectMsAbout = state => state.msAbout,
   _selectMsModalDialog = state => state.msModalDialog,
   _selectMsDialog = state => state.msDialog,
   _selectMsBrowser = state => state.msBrowser,
+  _selectMsPane = state => state.msPane,
   _set = _compStore.setState;
 const useMsAbout = (0, _storeApi.fCrUse)(_compStore, _selectMsAbout);
 exports.useMsAbout = useMsAbout;
-const showAbout = () => _set(_crMsAbout());
+const showAbout = () => _set(_crMsAbout(true));
 exports.showAbout = showAbout;
 const useMsModalDialog = (0, _storeApi.fCrUse)(_compStore, _selectMsModalDialog);
 exports.useMsModalDialog = useMsModalDialog;
@@ -59,7 +66,7 @@ exports.showAlertDialog = showAlertDialog;
 const useMsDialog = (0, _storeApi.fCrUse)(_compStore, _selectMsDialog);
 exports.useMsDialog = useMsDialog;
 const showDialog = itemConf => {
-  _set(_crMsDialog((0, _ComponentSliceFn.showNewsDialog)(_dialogInited, itemConf)));
+  _set(_crMsDialog((0, _ComponentSliceFn.showDialogImpl)(_dialogInited, itemConf)));
 };
 exports.showDialog = showDialog;
 const showWebz = (0, _storeApi.bindTo)(showDialog, _NewsQuery.default.WEBZ);
@@ -101,4 +108,13 @@ const _showBrowser = browserId => {
 };
 const showNewsBrowser = (0, _storeApi.bindTo)(_showBrowser, _NewsMenu.default.NEWS);
 exports.showNewsBrowser = showNewsBrowser;
+const useMsPane = (0, _storeApi.fCrUse)(_compStore, _selectMsPane);
+exports.useMsPane = useMsPane;
+const showNewsPane = itemConf => {
+  _set({
+    ..._crMsAbout(false),
+    ..._crMsPane((0, _ComponentSliceFn.showPaneImpl)(_newsPaneInited, itemConf, useMsPane, _Store.default))
+  });
+};
+exports.showNewsPane = showNewsPane;
 //# sourceMappingURL=compStore.js.map
