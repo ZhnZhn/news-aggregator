@@ -7,6 +7,7 @@ import {
 import settingStore from './settingStore';
 
 import QUERY from '../conf/NewsQuery';
+import MENU from '../conf/NewsMenu';
 import {
   showNewsDialog
 } from './stores/ComponentSliceFn';
@@ -22,15 +23,20 @@ const _crMsAbout = () => ({
 , _crMsDialog = (option) => ({
   msDialog: option
 })
+, _crMsBrowser = (id) => ({
+  msBrowser: { id }
+})
 , _crStore = () => ({
    ..._crMsAbout(),
    ..._crMsModalDialog(),
-   ..._crMsDialog()
+   ..._crMsDialog(),
+   ..._crMsBrowser()
 })
 , _compStore = createStoreWithSelector(_crStore)
 , _selectMsAbout = state => state.msAbout
 , _selectMsModalDialog = state => state.msModalDialog
 , _selectMsDialog = state => state.msDialog
+, _selectMsBrowser = state => state.msBrowser
 , _set = _compStore.setState
 
 export const useMsAbout = fCrUse(_compStore, _selectMsAbout)
@@ -76,3 +82,12 @@ export const showNewsSearch = bindTo(showDialog, QUERY.NEWS_SEARCH)
 export const showNewsTop = bindTo(showDialog, QUERY.NEWS_TOP)
 export const showTheNewsSearch = bindTo(showDialog, QUERY.THE_NEWS_SEARCH)
 export const showTheNewsTop = bindTo(showDialog, QUERY.THE_NEWS_TOP)
+
+export const useMsBrowser = fCrUse(_compStore, _selectMsBrowser)
+const _showBrowser = (browserId) => {
+  _set(_crMsBrowser(browserId))
+}
+export const showNewsBrowser = bindTo(
+  _showBrowser,
+  MENU.NEWS
+)

@@ -2,10 +2,11 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.useMsModalDialog = exports.useMsDialog = exports.useMsAbout = exports.showWebzCountry = exports.showWebz = exports.showTheNewsTop = exports.showTheNewsSearch = exports.showStackTagged = exports.showStackSearch = exports.showSettingsDialog = exports.showReddit = exports.showNewsTop = exports.showNewsSearch = exports.showMessari = exports.showIex = exports.showFmp = exports.showDialog = exports.showDevTo = exports.showCryptoCompare = exports.showCoinStats = exports.showAv = exports.showAlertDialog = exports.showAbout = void 0;
+exports.useMsModalDialog = exports.useMsDialog = exports.useMsBrowser = exports.useMsAbout = exports.showWebzCountry = exports.showWebz = exports.showTheNewsTop = exports.showTheNewsSearch = exports.showStackTagged = exports.showStackSearch = exports.showSettingsDialog = exports.showReddit = exports.showNewsTop = exports.showNewsSearch = exports.showNewsBrowser = exports.showMessari = exports.showIex = exports.showFmp = exports.showDialog = exports.showDevTo = exports.showCryptoCompare = exports.showCoinStats = exports.showAv = exports.showAlertDialog = exports.showAbout = void 0;
 var _storeApi = require("./storeApi");
 var _settingStore = _interopRequireDefault(require("./settingStore"));
 var _NewsQuery = _interopRequireDefault(require("../conf/NewsQuery"));
+var _NewsMenu = _interopRequireDefault(require("../conf/NewsMenu"));
 var _ComponentSliceFn = require("./stores/ComponentSliceFn");
 const _dialogInited = Object.create(null);
 const _crMsAbout = () => ({
@@ -21,15 +22,22 @@ const _crMsAbout = () => ({
   _crMsDialog = option => ({
     msDialog: option
   }),
+  _crMsBrowser = id => ({
+    msBrowser: {
+      id
+    }
+  }),
   _crStore = () => ({
     ..._crMsAbout(),
     ..._crMsModalDialog(),
-    ..._crMsDialog()
+    ..._crMsDialog(),
+    ..._crMsBrowser()
   }),
   _compStore = (0, _storeApi.createStoreWithSelector)(_crStore),
   _selectMsAbout = state => state.msAbout,
   _selectMsModalDialog = state => state.msModalDialog,
   _selectMsDialog = state => state.msDialog,
+  _selectMsBrowser = state => state.msBrowser,
   _set = _compStore.setState;
 const useMsAbout = (0, _storeApi.fCrUse)(_compStore, _selectMsAbout);
 exports.useMsAbout = useMsAbout;
@@ -86,4 +94,11 @@ const showTheNewsSearch = (0, _storeApi.bindTo)(showDialog, _NewsQuery.default.T
 exports.showTheNewsSearch = showTheNewsSearch;
 const showTheNewsTop = (0, _storeApi.bindTo)(showDialog, _NewsQuery.default.THE_NEWS_TOP);
 exports.showTheNewsTop = showTheNewsTop;
+const useMsBrowser = (0, _storeApi.fCrUse)(_compStore, _selectMsBrowser);
+exports.useMsBrowser = useMsBrowser;
+const _showBrowser = browserId => {
+  _set(_crMsBrowser(browserId));
+};
+const showNewsBrowser = (0, _storeApi.bindTo)(_showBrowser, _NewsMenu.default.NEWS);
+exports.showNewsBrowser = showNewsBrowser;
 //# sourceMappingURL=compStore.js.map
