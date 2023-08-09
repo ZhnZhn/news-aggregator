@@ -2,14 +2,21 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.fCrUse = exports.createStoreWithSelector = exports.atom = void 0;
+exports.fCrUse = exports.createStoreWithSelector = exports.bindTo = exports.atom = void 0;
 var _zustand = require("zustand");
 var _middleware = require("zustand/middleware");
 var _useSubscribe = _interopRequireDefault(require("../components/hooks/useSubscribe"));
 var _useRerender = _interopRequireDefault(require("../components/hooks/useRerender"));
+const bindTo = function (fn) {
+  for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    args[_key - 1] = arguments[_key];
+  }
+  return fn.bind(null, ...args);
+};
+exports.bindTo = bindTo;
 const createStoreWithSelector = crStore => (0, _zustand.createStore)((0, _middleware.subscribeWithSelector)(crStore));
 exports.createStoreWithSelector = createStoreWithSelector;
-const fCrUse = (store, select) => _useSubscribe.default.bind(null, store, select);
+const fCrUse = (store, select) => bindTo(_useSubscribe.default, store, select);
 exports.fCrUse = fCrUse;
 const _isFn = v => typeof v === 'function',
   _reducerUseAtomValue = (value, crOrValue) => _isFn(crOrValue) ? crOrValue(value) : crOrValue;
