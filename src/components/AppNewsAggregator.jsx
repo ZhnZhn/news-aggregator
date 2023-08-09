@@ -5,11 +5,14 @@ import settingStore from '../flux/settingStore';
 
 import Store from '../flux/stores/Store'
 import {
-  CAT_SHOW_ABOUT,
   CAT_SHOW_NEWS_PANE,
   CAT_SHOW_MODAL_DIALOG,
   ComponentActions
 } from '../flux/actions/ComponentActions'
+import {
+  useMsAbout,
+  showAbout
+} from '../flux/compStore';
 
 import ThemeContext from './hooks/ThemeContext'
 
@@ -37,7 +40,6 @@ const AppNewsAggregator = () => {
     <ThemeContext.Provider value={uiTheme}>
       <div>
         <HeaderBar
-          onChangeTheme={ComponentActions.changeTheme}
           onNewsSources={ComponentActions.showNewsBrowser}
 
           onWebz={ComponentActions.showWebz}
@@ -58,7 +60,7 @@ const AppNewsAggregator = () => {
           onTheNewsTop={ComponentActions.showTheNewsTop}
 
           onSettings={_showSettings}
-          onAbout={ComponentActions.showAbout}
+          onAbout={showAbout}
         />
         <div className={CL_COMP}>
           <BrowserContainer
@@ -67,7 +69,8 @@ const AppNewsAggregator = () => {
           <About
             isInitShow={true}
             store={Store}
-            showAction={CAT_SHOW_ABOUT}
+            useMsAbout={useMsAbout}
+            //showAction={CAT_SHOW_ABOUT}
             hideAction={CAT_SHOW_NEWS_PANE}
           />
           <ComponentHrzContainer

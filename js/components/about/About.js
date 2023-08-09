@@ -2,10 +2,9 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+exports.default = void 0;
 var _ProviderNames = require("../../conf/ProviderNames");
-var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
+var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
@@ -15,58 +14,67 @@ var _Links = require("../links/Links");
 var _Step = _interopRequireDefault(require("./Step"));
 var _LogoBar = _interopRequireDefault(require("./LogoBar"));
 var _jsxRuntime = require("preact/jsx-runtime");
-var CL_ABOUT_PANE = "about-pane";
-var CL_SHOW = "show-popup";
-var S_BROWSER_CAPTION = {
+const CL_ABOUT_PANE = "about-pane";
+const CL_SHOW = "show-popup";
+const S_BROWSER_CAPTION = {
   paddingLeft: 12,
   textAlign: 'left'
 };
-var ItemStack = _Comp["default"].ItemStack;
-var PROVIDER_LINKS = [[_Links.CryptoCompareLink], [_Links.CoinStatsLink], [_Links.MessariLink], [_Links.IexApiLink], [_Links.FmpApiLink, {
+const {
+  ItemStack
+} = _Comp.default;
+const PROVIDER_LINKS = [[_Links.CryptoCompareLink], [_Links.CoinStatsLink], [_Links.MessariLink], [_Links.IexApiLink], [_Links.FmpApiLink, {
   title: _ProviderNames.FMP_LONG
 }], [_Links.AlphaVantageLink], [_Links.NewsApiLink], [_Links.TheNewsApiLink], [_Links.DevToLink], [_Links.StackOverflowLink], [_Links.WebzLink], [_Links.RedditLink]];
-var _crLinkItem = function _crLinkItem(_ref, index) {
-  var Comp = _ref[0],
-    props = _ref[1];
+const _crLinkItem = (_ref, index) => {
+  let [Comp, props] = _ref;
   return (0, _jsxRuntime.jsx)("div", {
-    children: (0, _jsxRuntime.jsx)(Comp, (0, _extends2["default"])({}, props))
+    children: (0, _jsxRuntime.jsx)(Comp, {
+      ...props
+    })
   }, index);
 };
-var NEWS_SOURCE_STEP_DESCRIPTIONS = ["Please, click button News in header.", "Choose a topic and news source.", "Click a button Load in dialog."];
-var SEARCH_TERM_STEP_DESCRIPTIONS = ["Please, click button Query in header.", "Choose news source in modal pane.", "Click a button Load in dialog."];
-var _crStepItem = function _crStepItem(descr, index) {
-  return (0, _jsxRuntime.jsx)(_Step["default"], {
-    step: index + 1,
-    description: descr
-  }, index);
-};
-var About = function About(_ref2) {
-  var isInitShow = _ref2.isInitShow,
-    store = _ref2.store,
-    showAction = _ref2.showAction,
-    hideAction = _ref2.hideAction;
-  var _useBool = (0, _useBool2["default"])(isInitShow),
-    isShow = _useBool[0],
-    setIsShowTrue = _useBool[1],
-    setIsShowFalse = _useBool[2],
-    TS = (0, _useTheme["default"])(_About.styleConfig);
-  (0, _useListen["default"])(store, function (actionType) {
-    if (actionType === showAction) {
+const NEWS_SOURCE_STEP_DESCRIPTIONS = ["Please, click button News in header.", "Choose a topic and news source.", "Click a button Load in dialog."];
+const SEARCH_TERM_STEP_DESCRIPTIONS = ["Please, click button Query in header.", "Choose news source in modal pane.", "Click a button Load in dialog."];
+const _crStepItem = (descr, index) => (0, _jsxRuntime.jsx)(_Step.default, {
+  step: index + 1,
+  description: descr
+}, index);
+const About = _ref2 => {
+  let {
+    isInitShow,
+    store,
+    useMsAbout,
+    hideAction
+  } = _ref2;
+  const [isShow, setIsShowTrue, setIsShowFalse] = (0, _useBool.default)(isInitShow),
+    TS = (0, _useTheme.default)(_About.styleConfig);
+  useMsAbout(msAbout => {
+    if (msAbout && msAbout.is === true) {
       setIsShowTrue();
-    } else if (actionType === hideAction) {
+    }
+  });
+  (0, _useListen.default)(store, actionType => {
+    if (actionType === hideAction) {
       setIsShowFalse();
     }
   });
-  var _className = (0, _crCn["default"])(CL_ABOUT_PANE, [isShow, CL_SHOW]),
+  const _className = (0, _crCn.default)(CL_ABOUT_PANE, [isShow, CL_SHOW]),
     _style = isShow ? _About.S_BLOCK : _About.S_NONE;
   return (0, _jsxRuntime.jsxs)("div", {
     className: _className,
-    style: (0, _extends2["default"])({}, _style, TS.ROOT),
-    children: [(0, _jsxRuntime.jsx)(_Comp["default"].BrowserCaption, {
-      style: (0, _extends2["default"])({}, S_BROWSER_CAPTION, TS.BROWSER_CAPTION),
+    style: {
+      ..._style,
+      ...TS.ROOT
+    },
+    children: [(0, _jsxRuntime.jsx)(_Comp.default.BrowserCaption, {
+      style: {
+        ...S_BROWSER_CAPTION,
+        ...TS.BROWSER_CAPTION
+      },
       caption: "About News Aggregator",
       onClose: setIsShowFalse
-    }), (0, _jsxRuntime.jsx)(_Comp["default"].ScrollPane, {
+    }), (0, _jsxRuntime.jsx)(_Comp.default.ScrollPane, {
       style: _About.S_SCROLL_DIV,
       children: (0, _jsxRuntime.jsxs)("div", {
         style: _About.S_DIV_WRAPPER,
@@ -117,7 +125,7 @@ var About = function About(_ref2) {
         }), (0, _jsxRuntime.jsx)(ItemStack, {
           items: SEARCH_TERM_STEP_DESCRIPTIONS,
           crItem: _crStepItem
-        }), (0, _jsxRuntime.jsx)(_LogoBar["default"], {}), (0, _jsxRuntime.jsx)("p", {
+        }), (0, _jsxRuntime.jsx)(_LogoBar.default, {}), (0, _jsxRuntime.jsx)("p", {
           children: (0, _jsxRuntime.jsx)("span", {
             style: _About.S_BLACK,
             children: "*Logos Fair Use."
@@ -128,5 +136,5 @@ var About = function About(_ref2) {
   });
 };
 var _default = About;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=About.js.map

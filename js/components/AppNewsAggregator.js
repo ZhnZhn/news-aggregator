@@ -8,6 +8,7 @@ var _storeAtoms = require("../flux/storeAtoms");
 var _settingStore = _interopRequireDefault(require("../flux/settingStore"));
 var _Store = _interopRequireDefault(require("../flux/stores/Store"));
 var _ComponentActions = require("../flux/actions/ComponentActions");
+var _compStore = require("../flux/compStore");
 var _ThemeContext = _interopRequireDefault(require("./hooks/ThemeContext"));
 var _HeaderBar = _interopRequireDefault(require("./header/HeaderBar"));
 var _BrowserContainer = _interopRequireDefault(require("./zhn-containers/BrowserContainer"));
@@ -25,7 +26,6 @@ const AppNewsAggregator = () => {
     value: uiTheme,
     children: (0, _jsxRuntime.jsxs)("div", {
       children: [(0, _jsxRuntime.jsx)(_HeaderBar.default, {
-        onChangeTheme: _ComponentActions.ComponentActions.changeTheme,
         onNewsSources: _ComponentActions.ComponentActions.showNewsBrowser,
         onWebz: _ComponentActions.ComponentActions.showWebz,
         onWebzCountry: _ComponentActions.ComponentActions.showWebzCountry,
@@ -44,7 +44,7 @@ const AppNewsAggregator = () => {
         onTheNewsSearch: _ComponentActions.ComponentActions.showTheNewsSearch,
         onTheNewsTop: _ComponentActions.ComponentActions.showTheNewsTop,
         onSettings: _showSettings,
-        onAbout: _ComponentActions.ComponentActions.showAbout
+        onAbout: _compStore.showAbout
       }), (0, _jsxRuntime.jsxs)("div", {
         className: CL_COMP,
         children: [(0, _jsxRuntime.jsx)(_BrowserContainer.default, {
@@ -52,7 +52,9 @@ const AppNewsAggregator = () => {
         }), (0, _jsxRuntime.jsx)(_About.default, {
           isInitShow: true,
           store: _Store.default,
-          showAction: _ComponentActions.CAT_SHOW_ABOUT,
+          useMsAbout: _compStore.useMsAbout
+          //showAction={CAT_SHOW_ABOUT}
+          ,
           hideAction: _ComponentActions.CAT_SHOW_NEWS_PANE
         }), (0, _jsxRuntime.jsx)(_ComponentHrzContainer.default, {
           store: _Store.default,

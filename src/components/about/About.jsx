@@ -92,7 +92,7 @@ const _crStepItem = (
 const About = ({
   isInitShow,
   store,
-  showAction,
+  useMsAbout,
   hideAction
 }) => {
   const [
@@ -102,10 +102,14 @@ const About = ({
   ] = useBool(isInitShow)
   , TS = useTheme(styleConfig);
 
-  useListen(store, actionType=>{
-    if (actionType === showAction) {
+  useMsAbout(msAbout => {
+    if (msAbout && msAbout.is === true) {
       setIsShowTrue()
-    } else if (actionType === hideAction) {
+    }
+  })
+
+  useListen(store, actionType=>{
+    if (actionType === hideAction) {
       setIsShowFalse()
     }
   })
