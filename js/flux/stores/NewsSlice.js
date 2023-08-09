@@ -4,6 +4,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _NewsActions = require("../actions/NewsActions");
 var _ComponentActions = require("../actions/ComponentActions");
+var _compStore = require("../compStore");
 var _storeAtoms = require("../storeAtoms");
 var _NewsSliceFn = require("./NewsSliceFn");
 const NewsSlice = {
@@ -27,7 +28,7 @@ const NewsSlice = {
     (0, _storeAtoms.setLoadingComplete)();
   },
   onLoadNewsFailed(option) {
-    _ComponentActions.ComponentActions.showModalDialog('ALERT_DIALOG', option);
+    (0, _compStore.showAlertDialog)(option);
     (0, _storeAtoms.setLoadingFailed)();
   },
   onRemoveNews(item) {

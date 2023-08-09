@@ -12,13 +12,6 @@ const ComponentSlice = {
     const r = (0, _ComponentSliceFn.showNewsDialog)(this.dialogInit, itemConf);
     this.trigger(_ComponentActions.CAT_SHOW_NEWS_DIALOG, r);
   },
-  onShowModalDialog(type, option) {
-    if (option === void 0) {
-      option = {};
-    }
-    option.modalDialogType = type;
-    this.trigger(_ComponentActions.CAT_SHOW_MODAL_DIALOG, option);
-  },
   onShowNewsPane(itemConf) {
     const pane = (0, _ComponentSliceFn.showNewsPane)(this.newsPaneInit, itemConf, this);
     const browser = (0, _ComponentSliceFn.updateBadge)(this.hmBrowser, itemConf);

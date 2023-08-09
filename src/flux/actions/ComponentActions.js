@@ -4,7 +4,6 @@ import QUERY from '../../conf/NewsQuery';
 import MENU from '../../conf/NewsMenu';
 
 export const CAT_SHOW_NEWS_DIALOG = 'showNewsDialog'
-export const CAT_SHOW_MODAL_DIALOG = 'showModalDialog'
 
 export const CAT_SHOW_NEWS_PANE = 'showNewsPane'
 export const CAT_TOGGLE_NEWS_PANE = 'toggleNewsPane'
@@ -16,7 +15,6 @@ export const CAT_UPDATE_BROWSER = 'updateBrowser'
 
 const Actions = Reflux.createActions({
   [CAT_SHOW_NEWS_DIALOG]: {},
-  [CAT_SHOW_MODAL_DIALOG]: {},
 
   [CAT_SHOW_NEWS_PANE]: {},
   [CAT_TOGGLE_NEWS_PANE]: {},

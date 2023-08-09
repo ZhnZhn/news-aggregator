@@ -1,6 +1,5 @@
 import {
   CAT_SHOW_NEWS_DIALOG,
-  CAT_SHOW_MODAL_DIALOG,
 
   CAT_SHOW_NEWS_PANE,
   CAT_TOGGLE_NEWS_PANE,
@@ -31,11 +30,6 @@ const ComponentSlice = {
     this.trigger(CAT_SHOW_NEWS_DIALOG, r)
   },
 
-  onShowModalDialog(type, option={}){
-    option.modalDialogType = type
-    this.trigger(CAT_SHOW_MODAL_DIALOG, option)
-  },
-
   onShowNewsPane(itemConf){
     const pane = showNewsPane(this.newsPaneInit, itemConf, this);
     const browser = updateBadge(this.hmBrowser, itemConf);
@@ -55,7 +49,7 @@ const ComponentSlice = {
   onRemoveNewsBadges(itemConf){
     const r = removeBadges(this.hmBrowser, itemConf)
     this.trigger(CAT_UPDATE_BROWSER, r)
-  },  
+  },
 
   onShowBrowser(browserId){
     this.trigger(CAT_SHOW_BROWSER, browserId)

@@ -5,6 +5,9 @@ import {
 import {
   ComponentActions
 } from '../actions/ComponentActions';
+import {
+  showAlertDialog
+} from '../compStore';
 
 import {
   setLoading,
@@ -34,7 +37,7 @@ const NewsSlice = {
     setLoadingComplete()
   },
   onLoadNewsFailed(option){
-    ComponentActions.showModalDialog('ALERT_DIALOG', option)
+    showAlertDialog(option)
     setLoadingFailed()
   },
 

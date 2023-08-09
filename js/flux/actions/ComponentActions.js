@@ -2,14 +2,12 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.ComponentActions = exports.CAT_UPDATE_BROWSER = exports.CAT_TOGGLE_NEWS_PANE = exports.CAT_SHOW_NEWS_PANE = exports.CAT_SHOW_NEWS_DIALOG = exports.CAT_SHOW_MODAL_DIALOG = exports.CAT_SHOW_BROWSER = void 0;
+exports.ComponentActions = exports.CAT_UPDATE_BROWSER = exports.CAT_TOGGLE_NEWS_PANE = exports.CAT_SHOW_NEWS_PANE = exports.CAT_SHOW_NEWS_DIALOG = exports.CAT_SHOW_BROWSER = void 0;
 var _refluxCore = _interopRequireDefault(require("reflux-core"));
 var _NewsQuery = _interopRequireDefault(require("../../conf/NewsQuery"));
 var _NewsMenu = _interopRequireDefault(require("../../conf/NewsMenu"));
 const CAT_SHOW_NEWS_DIALOG = 'showNewsDialog';
 exports.CAT_SHOW_NEWS_DIALOG = CAT_SHOW_NEWS_DIALOG;
-const CAT_SHOW_MODAL_DIALOG = 'showModalDialog';
-exports.CAT_SHOW_MODAL_DIALOG = CAT_SHOW_MODAL_DIALOG;
 const CAT_SHOW_NEWS_PANE = 'showNewsPane';
 exports.CAT_SHOW_NEWS_PANE = CAT_SHOW_NEWS_PANE;
 const CAT_TOGGLE_NEWS_PANE = 'toggleNewsPane';
@@ -22,7 +20,6 @@ const CAT_UPDATE_BROWSER = 'updateBrowser';
 exports.CAT_UPDATE_BROWSER = CAT_UPDATE_BROWSER;
 const Actions = _refluxCore.default.createActions({
   [CAT_SHOW_NEWS_DIALOG]: {},
-  [CAT_SHOW_MODAL_DIALOG]: {},
   [CAT_SHOW_NEWS_PANE]: {},
   [CAT_TOGGLE_NEWS_PANE]: {},
   [CAT_CLOSE_NEWS_PANE]: {},
