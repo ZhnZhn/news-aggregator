@@ -25,28 +25,29 @@ const AppNewsAggregator = () => {
     children: (0, _jsxRuntime.jsxs)("div", {
       children: [(0, _jsxRuntime.jsx)(_HeaderBar.default, {
         onNewsSources: _ComponentActions.ComponentActions.showNewsBrowser,
-        onWebz: _ComponentActions.ComponentActions.showWebz,
-        onWebzCountry: _ComponentActions.ComponentActions.showWebzCountry,
-        onReddit: _ComponentActions.ComponentActions.showReddit,
-        onDevTo: _ComponentActions.ComponentActions.showDevTo,
-        onStackTagged: _ComponentActions.ComponentActions.showStackTagged,
-        onStackSearch: _ComponentActions.ComponentActions.showStackSearch,
-        onCryptoCompare: _ComponentActions.ComponentActions.showCryptoCompare,
-        onCoinStats: _ComponentActions.ComponentActions.showCoinStats,
-        onMessari: _ComponentActions.ComponentActions.showMessari,
-        onIex: _ComponentActions.ComponentActions.showIex,
-        onFmp: _ComponentActions.ComponentActions.showFmp,
-        onAv: _ComponentActions.ComponentActions.showAv,
-        onNewsSearch: _ComponentActions.ComponentActions.showNewsSearch,
-        onNewsTop: _ComponentActions.ComponentActions.showNewsTop,
-        onTheNewsSearch: _ComponentActions.ComponentActions.showTheNewsSearch,
-        onTheNewsTop: _ComponentActions.ComponentActions.showTheNewsTop,
+        onWebz: _compStore.showWebz,
+        onWebzCountry: _compStore.showWebzCountry,
+        onReddit: _compStore.showReddit,
+        onDevTo: _compStore.showDevTo,
+        onStackTagged: _compStore.showStackTagged,
+        onStackSearch: _compStore.showStackSearch,
+        onCryptoCompare: _compStore.showCryptoCompare,
+        onCoinStats: _compStore.showCoinStats,
+        onMessari: _compStore.showMessari,
+        onIex: _compStore.showIex,
+        onFmp: _compStore.showFmp,
+        onAv: _compStore.showAv,
+        onNewsSearch: _compStore.showNewsSearch,
+        onNewsTop: _compStore.showNewsTop,
+        onTheNewsSearch: _compStore.showTheNewsSearch,
+        onTheNewsTop: _compStore.showTheNewsTop,
         onSettings: _compStore.showSettingsDialog,
         onAbout: _compStore.showAbout
       }), (0, _jsxRuntime.jsxs)("div", {
         className: CL_COMP,
         children: [(0, _jsxRuntime.jsx)(_BrowserContainer.default, {
-          store: _Store.default
+          store: _Store.default,
+          useMsDialog: _compStore.useMsDialog
         }), (0, _jsxRuntime.jsx)(_About.default, {
           isInitShow: true,
           store: _Store.default,

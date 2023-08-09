@@ -9,9 +9,28 @@ import {
 } from '../flux/actions/ComponentActions'
 import {
   useMsAbout,
-  useMsModalDialog,
   showAbout,
-  showSettingsDialog
+
+  useMsModalDialog,
+  showSettingsDialog,
+
+  useMsDialog,
+  showAv,
+  showWebz,
+  showWebzCountry,
+  showReddit,
+  showDevTo,
+  showStackTagged,
+  showStackSearch,
+  showCryptoCompare,
+  showCoinStats,
+  showMessari,
+  showIex,
+  showFmp,
+  showNewsSearch,
+  showNewsTop,
+  showTheNewsSearch,
+  showTheNewsTop
 } from '../flux/compStore';
 
 import ThemeContext from './hooks/ThemeContext'
@@ -35,22 +54,22 @@ const AppNewsAggregator = () => {
         <HeaderBar
           onNewsSources={ComponentActions.showNewsBrowser}
 
-          onWebz={ComponentActions.showWebz}
-          onWebzCountry={ComponentActions.showWebzCountry}
-          onReddit={ComponentActions.showReddit}
-          onDevTo={ComponentActions.showDevTo}
-          onStackTagged={ComponentActions.showStackTagged}
-          onStackSearch={ComponentActions.showStackSearch}
-          onCryptoCompare={ComponentActions.showCryptoCompare}
-          onCoinStats = {ComponentActions.showCoinStats}
-          onMessari={ComponentActions.showMessari}
-          onIex={ComponentActions.showIex}
-          onFmp={ComponentActions.showFmp}
-          onAv={ComponentActions.showAv}
-          onNewsSearch={ComponentActions.showNewsSearch}
-          onNewsTop={ComponentActions.showNewsTop}
-          onTheNewsSearch={ComponentActions.showTheNewsSearch}
-          onTheNewsTop={ComponentActions.showTheNewsTop}
+          onWebz={showWebz}
+          onWebzCountry={showWebzCountry}
+          onReddit={showReddit}
+          onDevTo={showDevTo}
+          onStackTagged={showStackTagged}
+          onStackSearch={showStackSearch}
+          onCryptoCompare={showCryptoCompare}
+          onCoinStats = {showCoinStats}
+          onMessari={showMessari}
+          onIex={showIex}
+          onFmp={showFmp}
+          onAv={showAv}
+          onNewsSearch={showNewsSearch}
+          onNewsTop={showNewsTop}
+          onTheNewsSearch={showTheNewsSearch}
+          onTheNewsTop={showTheNewsTop}
 
           onSettings={showSettingsDialog}
           onAbout={showAbout}
@@ -58,6 +77,7 @@ const AppNewsAggregator = () => {
         <div className={CL_COMP}>
           <BrowserContainer
             store={Store}
+            useMsDialog={useMsDialog}
           />
           <About
             isInitShow={true}

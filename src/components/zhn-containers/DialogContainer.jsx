@@ -3,8 +3,6 @@ import {
   cloneElement
 } from '../uiApi';
 
-import useListen from '../hooks/useListen';
-
 const S_ROOT = {
   zIndex: 1030,
   position: 'absolute',
@@ -57,9 +55,8 @@ const _updateVisible = (
 };
 
 const DialogContainer = ({
-  store,
   maxDialog=3,
-  showAction
+  useMsDialog
 }) => {
   const [
     state,
@@ -86,22 +83,23 @@ const DialogContainer = ({
      })
   };
 
-  useListen(store, (actionType, option) => {
-     if (actionType === showAction){
-        setState(prevState => {
-          const { key, Comp } = option;
-           if (Comp && !_isUndef(_findCompIndex(prevState.compDialogs, key))) {
-             return prevState;
-           }
-          _updateVisible(prevState, key, maxDialog)
-          if (!Comp){
-             prevState.compDialogs = _doVisible(prevState.compDialogs, key)
-          } else {
-             prevState.compDialogs.push(Comp)
+  useMsDialog(msDialog => {
+    const option = msDialog || {};
+    if (option){
+       setState(prevState => {
+         const { key, Comp } = option;
+          if (Comp && !_isUndef(_findCompIndex(prevState.compDialogs, key))) {
+            return prevState;
           }
-          return {...prevState};
-        })
-     }
+         _updateVisible(prevState, key, maxDialog)
+         if (!Comp){
+            prevState.compDialogs = _doVisible(prevState.compDialogs, key)
+         } else {
+            prevState.compDialogs.push(Comp)
+         }
+         return {...prevState};
+       })
+    }
   })
 
   return (

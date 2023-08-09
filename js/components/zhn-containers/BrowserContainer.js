@@ -9,14 +9,14 @@ var _NewsMenu = _interopRequireDefault(require("../../conf/NewsMenu"));
 var _NewsBrowser = _interopRequireDefault(require("../source-browsers/NewsBrowser"));
 var _DialogContainer = _interopRequireDefault(require("./DialogContainer"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const onClick = _ComponentActions.ComponentActions.showNewsDialog;
 const onClickBadge = _ComponentActions.ComponentActions.toggleNewsPane;
 const onRemoveBadges = _ComponentActions.ComponentActions.removeNewsBadges.bind(null, {
   browserId: _NewsMenu.default.NEWS
 });
 const BrowserContainer = _ref => {
   let {
-    store
+    store,
+    useMsDialog
   } = _ref;
   return (0, _jsxRuntime.jsxs)("div", {
     className: "hrz-container",
@@ -25,14 +25,13 @@ const BrowserContainer = _ref => {
       showAction: _ComponentActions.CAT_SHOW_BROWSER,
       updateAction: _ComponentActions.CAT_UPDATE_BROWSER,
       browserId: _NewsMenu.default.NEWS,
-      onClick: onClick,
+      onClick: _compStore.showDialog,
       onError: _compStore.showAlertDialog,
       onClickBadge: onClickBadge,
       onRemoveBadges: onRemoveBadges
     }), (0, _jsxRuntime.jsx)(_DialogContainer.default, {
       maxDialog: 3,
-      store: store,
-      showAction: _ComponentActions.CAT_SHOW_NEWS_DIALOG
+      useMsDialog: useMsDialog
     })]
   });
 };
