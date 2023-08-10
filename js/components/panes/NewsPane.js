@@ -7,7 +7,6 @@ var _uiApi = require("../uiApi");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
-var _useListen = _interopRequireDefault(require("../hooks/useListen"));
 var _useRefHotKey = _interopRequireDefault(require("../hotkeys/useRefHotKey"));
 var _toFirstUpperCase = _interopRequireDefault(require("../../utils/toFirstUpperCase"));
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
@@ -91,13 +90,11 @@ const _crModelMoreHandlers = (ref, onRemoveItems) => {
 };
 const NewsPane = _ref2 => {
   let {
-    store,
-    addAction,
-    updateAction,
     id,
-    useMsPane,
     paneCaption,
     Item,
+    useMsPane,
+    useMsItem,
     onRemoveItems,
     onRemoveUnder,
     onCloseItem
@@ -146,25 +143,22 @@ const NewsPane = _ref2 => {
       toggleIsShow(true);
     }
   });
-  (0, _useListen.default)(store, function (actionType, option) {
-    if (option === void 0) {
-      option = {};
-    }
-    if (option.id === id) {
-      if (actionType === addAction) {
+  useMsItem(msItem => {
+    if (msItem && msItem.id === id) {
+      if (msItem.isAdd === true) {
         toggleIsShow(true);
-        setState(prevState => ({
-          articles: option.data,
-          sortBy: option.sortBy,
-          caption: option.caption,
-          page: option.page,
-          isRelatedBars: option.isRelatedBars
-        }));
+        setState({
+          articles: msItem.data,
+          sortBy: msItem.sortBy,
+          caption: msItem.caption,
+          page: msItem.page,
+          isRelatedBars: msItem.isRelatedBars
+        });
         _focusFirstItem(_refFirstItem);
-      } else if (actionType === updateAction) {
+      } else if (msItem.isUpdate === true) {
         setState(prevState => ({
           ...prevState,
-          articles: option.data
+          articles: msItem.data
         }));
       }
     }

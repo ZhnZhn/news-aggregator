@@ -10,7 +10,6 @@ import {
 import useToggle from '../hooks/useToggle';
 import useBool from '../hooks/useBool';
 import useTheme from '../hooks/useTheme';
-import useListen from '../hooks/useListen';
 import useRefHotKey from '../hotkeys/useRefHotKey';
 import toFirstUpperCase from '../../utils/toFirstUpperCase'
 
@@ -122,16 +121,11 @@ const _crModelMoreHandlers = (
 };
 
 const NewsPane = ({
-  store,
-
-  addAction,
-  updateAction,
   id,
-
-  useMsPane,
-
   paneCaption,
   Item,
+  useMsPane,
+  useMsItem,
   onRemoveItems,
   onRemoveUnder,
   onCloseItem
@@ -206,22 +200,22 @@ const NewsPane = ({
     }
   })
 
-  useListen(store, (actionType, option={}) => {
-    if (option.id === id){
-      if (actionType === addAction) {
+  useMsItem(msItem => {
+    if (msItem && msItem.id === id) {
+      if (msItem.isAdd === true) {
         toggleIsShow(true)
-        setState(prevState => ({
-          articles: option.data,
-          sortBy: option.sortBy,
-          caption: option.caption,
-          page: option.page,
-          isRelatedBars: option.isRelatedBars
-        }))
+        setState({
+          articles: msItem.data,
+          sortBy: msItem.sortBy,
+          caption: msItem.caption,
+          page: msItem.page,
+          isRelatedBars: msItem.isRelatedBars
+        })
         _focusFirstItem(_refFirstItem)
-      } else if (actionType === updateAction) {
+      } else if (msItem.isUpdate === true) {
         setState(prevState => ({
           ...prevState,
-          articles: option.data
+          articles: msItem.data
         }))
       }
     }

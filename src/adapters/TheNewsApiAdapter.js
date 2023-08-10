@@ -1,4 +1,4 @@
-import { NewsActions } from '../flux/actions/NewsActions';
+import { loadItem } from '../flux/itemStore';
 import { THE_NEWS_API } from '../conf/ProviderNames';
 
 import crId from '../utils/crId';
@@ -127,7 +127,7 @@ const _crPage = (
   return nextPage ? {
     nextPage,
     maxPage,
-    onPageLoad: () => NewsActions.loadNews({
+    onPageLoad: () => loadItem({
       nextPage,
       ..._crNextPageOption(option)
     })
