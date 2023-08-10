@@ -5,7 +5,7 @@ const NewsApiFns = {
     option.apiKey = void 0;
     return {
       headers: {
-        'X-Api-Key': apiKey
+        'x-api-key': apiKey
       }
     };
   },

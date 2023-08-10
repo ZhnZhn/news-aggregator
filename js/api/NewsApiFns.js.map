@@ -1,1 +1,23 @@
-{"version":3,"sources":["../../src/api/NewsApiFns.js"],"names":["NewsApiFns","crOptionFetch","option","apiKey","headers","checkResponse","json","status","message","msg"],"mappings":";;;;AACA,IAAMA,UAAU,GAAG;AACjBC,EAAAA,aAAa,EAAE,uBAAAC,MAAM,EAAI;AAAA,QACfC,MADe,GACJD,MADI,CACfC,MADe;AAEvBD,IAAAA,MAAM,CAACC,MAAP,GAAgB,KAAK,CAArB;AACA,WAAO;AACLC,MAAAA,OAAO,EAAE;AACP,qBAAaD;AADN;AADJ,KAAP;AAKD,GATgB;AAWjBE,EAAAA,aAAa,EAAE,uBAACC,IAAD,EAAOJ,MAAP,EAAkB;AAAA,QACvBK,MADuB,GACHD,IADG,CACvBC,MADuB;AAAA,QACfC,OADe,GACHF,IADG,CACfE,OADe;;AAE/B,QAAID,MAAM,KAAK,OAAf,EAAuB;AACrB,YAAM;AAAEE,QAAAA,GAAG,EAAED;AAAP,OAAN;AACD;;AACD,WAAO,IAAP;AACD;AAjBgB,CAAnB;eAoBeR,U","sourcesContent":["\r\nconst NewsApiFns = {\r\n  crOptionFetch: option => {\r\n    const { apiKey } = option;\r\n    option.apiKey = void 0;\r\n    return {\r\n      headers: {\r\n        'X-Api-Key': apiKey\r\n      }\r\n    };\r\n  },\r\n\r\n  checkResponse: (json, option) => {\r\n    const { status, message } = json;\r\n    if (status === 'error'){\r\n      throw { msg: message };\r\n    }\r\n    return true;\r\n  }\r\n};\r\n\r\nexport default NewsApiFns\r\n"],"file":"NewsApiFns.js"}
+{
+ "version": 3,
+ "sources": [
+  "../../src/api/NewsApiFns.js"
+ ],
+ "file": "../../src/api/NewsApiFns.js",
+ "names": [
+  "NewsApiFns",
+  "crOptionFetch",
+  "option",
+  "apiKey",
+  "headers",
+  "checkResponse",
+  "json",
+  "status",
+  "message",
+  "msg",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AACA,MAAMA,UAAU,GAAG;EACjBC,aAAa,EAAEC,MAAM,IAAI;IACvB,MAAM;MAAEC;IAAO,CAAC,GAAGD,MAAM;IACzBA,MAAM,CAACC,MAAM,GAAG,KAAK,CAAC;IACtB,OAAO;MACLC,OAAO,EAAE;QACP,WAAW,EAAED;MACf;IACF,CAAC;EACH,CAAC;EAEDE,aAAa,EAAEA,CAACC,IAAI,EAAEJ,MAAM,KAAK;IAC/B,MAAM;MAAEK,MAAM;MAAEC;IAAQ,CAAC,GAAGF,IAAI;IAChC,IAAIC,MAAM,KAAK,OAAO,EAAC;MACrB,MAAM;QAAEE,GAAG,EAAED;MAAQ,CAAC;IACxB;IACA,OAAO,IAAI;EACb;AACF,CAAC;AAAC,IAAAE,QAAA,GAEaV,UAAU;AAAAW,OAAA,CAAAC,OAAA,GAAAF,QAAA"
+}
