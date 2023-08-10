@@ -1,17 +1,19 @@
 import {
-  NAT_LOAD_NEWS_COMPLETED,
-  NAT_UPDATE_NEWS,
-  NewsActions
-} from '../actions/NewsActions';
-
+  bindTo
+} from '../storeApi';
 import {
   showNewsPane
 } from '../compStore';
+import {
+  useMsItem,
+  loadItem,
+  removeItem,
+  removeItems,
+  removeUnderItems
+} from '../itemStore';
 
 import RouterDialog from '../../components/dialogs/RouterDialog';
 import RouterPane from '../../components/panes/RouterPane';
-
-const loadNews = NewsActions.loadNews;
 
 export const createDialog = (
   itemConf
@@ -28,16 +30,15 @@ export const createDialog = (
       type={type}
       itemConf={itemConf}
       {...dialogProps}
-      onShow={showNewsPane.bind(null, itemConf)}
-      onLoad={loadNews}
+      onShow={bindTo(showNewsPane, itemConf)}
+      onLoad={loadItem}
     />
   );
 }
 
 export const createNewsPane = (
   itemConf,
-  useMsPane,
-  store
+  useMsPane
 ) => {
   const {
     type,
@@ -54,14 +55,12 @@ export const createNewsPane = (
       key={type}
       id={paneId}
       paneCaption={paneCaption}
-      store={store}
       Item={CompItem}
-      addAction={NAT_LOAD_NEWS_COMPLETED}
-      updateAction={NAT_UPDATE_NEWS}
       useMsPane={useMsPane}
-      onRemoveItems={NewsActions.removeAllNews.bind(null, paneId)}
-      onRemoveUnder={NewsActions.removeUnderNews}
-      onCloseItem={NewsActions.removeNews}
+      useMsItem={useMsItem}
+      onRemoveItems={bindTo(removeItems, paneId)}
+      onRemoveUnder={removeUnderItems}
+      onCloseItem={removeItem}
     />
   );
 }

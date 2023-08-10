@@ -1,5 +1,5 @@
 
-export const loadNewsCompleted = (
+export const loadItemCompletedImpl = (
   hmNews,
   news
 ) => {
@@ -15,6 +15,7 @@ export const loadNewsCompleted = (
     ? articles.concat(hmNews[source])
     : articles
   return {
+    isAdd: true,
     id: source,
     data: hmNews[source],
     sortBy,
@@ -24,19 +25,20 @@ export const loadNewsCompleted = (
   };
 }
 
-export const removeAllNews = (
+export const removeItemsImpl = (
   hmNews,
   paneId
 ) => {
   hmNews[paneId] = []
   return {
+    isUpdate: true,
     id: paneId,
     data: hmNews[paneId],
     sortBy: ''
   };
 }
 
-export const removeNews = (
+export const removeItemImpl = (
   hmNews,
   item
 ) => {
@@ -49,16 +51,20 @@ export const removeNews = (
     .filter(article => article.articleId !== articleId)
 }
 
-export const removeUnderNews = (
+export const removeUnderItemImpl = (
   hmNews,
   item
 ) => {
-  const { articleId, source } = item;
-  const _underIndex = hmNews[source]
-    .findIndex(article => article.articleId === articleId);
+  const {
+    articleId,
+    source
+  } = item
+  , _underIndex = hmNews[source]
+      .findIndex(article => article.articleId === articleId);
 
   hmNews[source] = hmNews[source].slice(_underIndex+1)
   return {
+    isUpdate: true,
     id: source,
     data: hmNews[source]
   };

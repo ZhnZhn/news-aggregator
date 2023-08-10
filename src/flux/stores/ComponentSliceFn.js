@@ -23,13 +23,12 @@ export const showPaneImpl = (
   slice,
   itemConf,
   useMsPane,
-  store
 ) => {
   const { type } = itemConf;
   if (slice[type]){
     return { id: itemConf.paneId };
   } else {
-    const Comp = createNewsPane(itemConf, useMsPane, store)
+    const Comp = createNewsPane(itemConf, useMsPane)
     slice[type] = true;
     return { Comp };
   }

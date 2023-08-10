@@ -24,7 +24,7 @@ const showDialogImpl = (slice, itemConf) => {
 
 //NewsPaneFn
 exports.showDialogImpl = showDialogImpl;
-const showPaneImpl = (slice, itemConf, useMsPane, store) => {
+const showPaneImpl = (slice, itemConf, useMsPane) => {
   const {
     type
   } = itemConf;
@@ -33,7 +33,7 @@ const showPaneImpl = (slice, itemConf, useMsPane, store) => {
       id: itemConf.paneId
     };
   } else {
-    const Comp = (0, _Factory.createNewsPane)(itemConf, useMsPane, store);
+    const Comp = (0, _Factory.createNewsPane)(itemConf, useMsPane);
     slice[type] = true;
     return {
       Comp
