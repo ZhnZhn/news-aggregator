@@ -14,6 +14,7 @@ var _IconAppLogo = _interopRequireDefault(require("./IconAppLogo"));
 var _AppLabel = _interopRequireDefault(require("./AppLabel"));
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _PanelQuery = _interopRequireDefault(require("./PanelQuery"));
+var _crMenuQuery = _interopRequireDefault(require("./crMenuQuery"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const TITLE = "News Aggregator v0.4.0",
   CL_HEADER = "header",
@@ -30,36 +31,11 @@ const TITLE = "News Aggregator v0.4.0",
     verticalAlign: 'middle',
     margin: '0 8px'
   };
-
-/*eslint-disable react-hooks/exhaustive-deps */
-const _useClickItem = (onClick, onClose) => (0, _uiApi.useCallback)(evt => {
-  onClick();
-  onClose(evt);
-}, []);
-// onClick, onClose
-/*eslint-enable react-hooks/exhaustive-deps */
-
 const HeaderBar = _ref => {
   let {
     onNewsSources,
     onSettings,
-    onAbout,
-    onWebz,
-    onWebzCountry,
-    onReddit,
-    onDevTo,
-    onStackTagged,
-    onStackSearch,
-    onCryptoCompare,
-    onCoinStats,
-    onMessari,
-    onIex,
-    onFmp,
-    onAv,
-    onNewsSearch,
-    onNewsTop,
-    onTheNewsSearch,
-    onTheNewsTop
+    onAbout
   } = _ref;
   const _refFocusItem = (0, _uiApi.useRef)(),
     [isQuery, setIsQuery] = (0, _uiApi.useState)(false),
@@ -70,49 +46,19 @@ const HeaderBar = _ref => {
       setIsQuery(false);
     }, []),
     _hToggleQuery = (0, _uiApi.useCallback)(() => setIsQuery(is => !is), []),
-    _hWebz = _useClickItem(onWebz, _hCloseQuery),
-    _hWebzCountry = _useClickItem(onWebzCountry, _hCloseQuery),
-    _hReddit = _useClickItem(onReddit, _hCloseQuery),
-    _hDevTo = _useClickItem(onDevTo, _hCloseQuery),
-    _hStackTagged = _useClickItem(onStackTagged, _hCloseQuery),
-    _hStackSearch = _useClickItem(onStackSearch, _hCloseQuery),
-    _hCryptoCompare = _useClickItem(onCryptoCompare, _hCloseQuery),
-    _hCoinStats = _useClickItem(onCoinStats, _hCloseQuery),
-    _hMessari = _useClickItem(onMessari, _hCloseQuery),
-    _hIex = _useClickItem(onIex, _hCloseQuery),
-    _hFmp = _useClickItem(onFmp, _hCloseQuery),
-    _hAv = _useClickItem(onAv, _hCloseQuery),
-    _hNewsApi = _useClickItem(onNewsSearch, _hCloseQuery),
-    _hNewsTop = _useClickItem(onNewsTop, _hCloseQuery),
-    _hTheNewsSearch = _useClickItem(onTheNewsSearch, _hCloseQuery),
-    _hTheNewsTop = _useClickItem(onTheNewsTop, _hCloseQuery),
-    TS = (0, _useTheme.default)(_HeaderBar.default);
+    TS = (0, _useTheme.default)(_HeaderBar.default),
+    _menuQuery = (0, _crMenuQuery.default)(_hCloseQuery);
   (0, _useHotKey.default)(_hotkeys.HK_QUERY_SOURCES, _hToggleQuery);
   return (0, _jsxRuntime.jsxs)("div", {
     className: CL_HEADER,
     style: TS.HEADER,
     children: [(0, _jsxRuntime.jsx)(_PanelQuery.default, {
+      menuModel: _menuQuery,
       refFocusItem: _refFocusItem,
       paneStyle: TS.PANE,
       className: CL_PANEL_BROWSER,
       isShow: isQuery,
-      onClose: _hCloseQuery,
-      onWebz: _hWebz,
-      onWebzCountry: _hWebzCountry,
-      onReddit: _hReddit,
-      onDevTo: _hDevTo,
-      onStackTagged: _hStackTagged,
-      onStackSearch: _hStackSearch,
-      onCryptoCompare: _hCryptoCompare,
-      onCoinStats: _hCoinStats,
-      onMessari: _hMessari,
-      onIex: _hIex,
-      onFmp: _hFmp,
-      onAv: _hAv,
-      onNewsApi: _hNewsApi,
-      onNewsTop: _hNewsTop,
-      onTheNewsSearch: _hTheNewsSearch,
-      onTheNewsTop: _hTheNewsTop
+      onClose: _hCloseQuery
     }), (0, _jsxRuntime.jsx)(_LoadingProgress.default, {}), (0, _jsxRuntime.jsx)(_IconAppLogo.default, {
       ariaLabel: TITLE,
       dataPos: _DP.DP_BOTTOM_LEFT,

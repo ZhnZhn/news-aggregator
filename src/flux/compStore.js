@@ -1,13 +1,12 @@
 import {
   createStoreWithSelector,
   fCrUse,
-  bindTo
+  bindTo,
+  getStoreApi
 } from './storeApi';
 
 import settingStore from './settingStore';
-import Store from './stores/Store';
 
-import QUERY from '../conf/NewsQuery';
 import MENU from '../conf/NewsMenu';
 import {
   showDialogImpl,
@@ -45,7 +44,7 @@ const _crMsAbout = (is) => ({
 , _selectMsDialog = state => state.msDialog
 , _selectMsBrowser = state => state.msBrowser
 , _selectMsPane = state => state.msPane
-, _set = _compStore.setState
+, [_set] = getStoreApi(_compStore)
 
 export const useMsAbout = fCrUse(_compStore, _selectMsAbout)
 export const showAbout = () => _set(_crMsAbout(true))
@@ -74,22 +73,7 @@ export const showDialog = (itemConf) => {
     showDialogImpl(_dialogInited, itemConf)
   ))
 }
-export const showWebz = bindTo(showDialog, QUERY.WEBZ)
-export const showWebzCountry = bindTo(showDialog, QUERY.WEBZ_COUNTRY)
-export const showReddit = bindTo(showDialog, QUERY.REDDIT)
-export const showDevTo = bindTo(showDialog, QUERY.DEV_TO)
-export const showStackTagged = bindTo(showDialog, QUERY.STACK_TAGGED)
-export const showStackSearch = bindTo(showDialog, QUERY.STACK_SEARCH)
-export const showCryptoCompare = bindTo(showDialog, QUERY.CRYPTO_COMPARE)
-export const showCoinStats = bindTo(showDialog, QUERY.COIN_STATS)
-export const showMessari = bindTo(showDialog, QUERY.MESSARI)
-export const showIex = bindTo(showDialog, QUERY.IEX)
-export const showFmp = bindTo(showDialog, QUERY.FMP)
-export const showAv = bindTo(showDialog, QUERY.AV)
-export const showNewsSearch = bindTo(showDialog, QUERY.NEWS_SEARCH)
-export const showNewsTop = bindTo(showDialog, QUERY.NEWS_TOP)
-export const showTheNewsSearch = bindTo(showDialog, QUERY.THE_NEWS_SEARCH)
-export const showTheNewsTop = bindTo(showDialog, QUERY.THE_NEWS_TOP)
+
 
 export const useMsBrowser = fCrUse(_compStore, _selectMsBrowser)
 const _showBrowser = (browserId) => {
@@ -107,8 +91,7 @@ export const showNewsPane = (itemConf) => {
     ..._crMsPane(showPaneImpl(
       _newsPaneInited,
       itemConf,
-      useMsPane,
-      Store
+      useMsPane
     ))
   })
 }

@@ -26,6 +26,8 @@ import AppLabel from './AppLabel';
 import A from '../Comp';
 import PanelQuery from './PanelQuery';
 
+import crMenuQuery from './crMenuQuery';
+
 const TITLE = "News Aggregator v0.4.0"
 
 , CL_HEADER = "header"
@@ -44,38 +46,10 @@ const TITLE = "News Aggregator v0.4.0"
   margin: '0 8px'
 };
 
-/*eslint-disable react-hooks/exhaustive-deps */
-const _useClickItem = (
-  onClick,
-  onClose
-) =>
- useCallback((evt) => {
-   onClick()
-   onClose(evt)
- }, [])
- // onClick, onClose
-/*eslint-enable react-hooks/exhaustive-deps */
-
 const HeaderBar = ({
   onNewsSources,
   onSettings,
-  onAbout,
-  onWebz,
-  onWebzCountry,
-  onReddit,
-  onDevTo,
-  onStackTagged,
-  onStackSearch,
-  onCryptoCompare,
-  onCoinStats,
-  onMessari,
-  onIex,
-  onFmp,
-  onAv,
-  onNewsSearch,
-  onNewsTop,
-  onTheNewsSearch,
-  onTheNewsTop
+  onAbout
 }) => {
   const _refFocusItem = useRef()
   , [
@@ -91,50 +65,20 @@ const HeaderBar = ({
      setIsQuery(false)
   }, [])
   , _hToggleQuery = useCallback(() => setIsQuery(is => !is), [])
-  , _hWebz = _useClickItem(onWebz, _hCloseQuery)
-  , _hWebzCountry = _useClickItem(onWebzCountry, _hCloseQuery)
-  , _hReddit = _useClickItem(onReddit, _hCloseQuery)
-  , _hDevTo = _useClickItem(onDevTo, _hCloseQuery)
-  , _hStackTagged = _useClickItem(onStackTagged, _hCloseQuery)
-  , _hStackSearch = _useClickItem(onStackSearch, _hCloseQuery)
-  , _hCryptoCompare = _useClickItem(onCryptoCompare, _hCloseQuery)
-  , _hCoinStats = _useClickItem(onCoinStats, _hCloseQuery)
-  , _hMessari = _useClickItem(onMessari, _hCloseQuery)
-  , _hIex = _useClickItem(onIex, _hCloseQuery)
-  , _hFmp = _useClickItem(onFmp, _hCloseQuery)
-  , _hAv = _useClickItem(onAv, _hCloseQuery)
-  , _hNewsApi = _useClickItem(onNewsSearch, _hCloseQuery)
-  , _hNewsTop = _useClickItem(onNewsTop, _hCloseQuery)
-  , _hTheNewsSearch = _useClickItem(onTheNewsSearch, _hCloseQuery)
-  , _hTheNewsTop = _useClickItem(onTheNewsTop, _hCloseQuery)
-  , TS = useTheme(styleConfig);
+  , TS = useTheme(styleConfig)
+  , _menuQuery = crMenuQuery(_hCloseQuery);
 
   useHotKey(HK_QUERY_SOURCES, _hToggleQuery)
 
   return (
     <div className={CL_HEADER} style={TS.HEADER}>
       <PanelQuery
+        menuModel={_menuQuery}
         refFocusItem={_refFocusItem}
         paneStyle={TS.PANE}
         className={CL_PANEL_BROWSER}
         isShow={isQuery}
         onClose={_hCloseQuery}
-        onWebz={_hWebz}
-        onWebzCountry={_hWebzCountry}
-        onReddit={_hReddit}
-        onDevTo={_hDevTo}
-        onStackTagged={_hStackTagged}
-        onStackSearch={_hStackSearch}
-        onCryptoCompare={_hCryptoCompare}
-        onCoinStats={_hCoinStats}
-        onMessari={_hMessari}
-        onIex={_hIex}
-        onFmp={_hFmp}
-        onAv={_hAv}
-        onNewsApi={_hNewsApi}
-        onNewsTop={_hNewsTop}
-        onTheNewsSearch={_hTheNewsSearch}
-        onTheNewsTop={_hTheNewsTop}
       />
       <LoadingProgress />
       <IconAppLogo

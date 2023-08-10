@@ -5,31 +5,11 @@ import { useUiTheme } from '../flux/storeAtoms';
 import {
   useMsAbout,
   showAbout,
-
   useMsModalDialog,
   showSettingsDialog,
-
   useMsDialog,
-  showAv,
-  showWebz,
-  showWebzCountry,
-  showReddit,
-  showDevTo,
-  showStackTagged,
-  showStackSearch,
-  showCryptoCompare,
-  showCoinStats,
-  showMessari,
-  showIex,
-  showFmp,
-  showNewsSearch,
-  showNewsTop,
-  showTheNewsSearch,
-  showTheNewsTop,
-
   useMsBrowser,
   showNewsBrowser,
-
   useMsPane
 } from '../flux/compStore';
 
@@ -53,24 +33,6 @@ const AppNewsAggregator = () => {
       <div>
         <HeaderBar
           onNewsSources={showNewsBrowser}
-
-          onWebz={showWebz}
-          onWebzCountry={showWebzCountry}
-          onReddit={showReddit}
-          onDevTo={showDevTo}
-          onStackTagged={showStackTagged}
-          onStackSearch={showStackSearch}
-          onCryptoCompare={showCryptoCompare}
-          onCoinStats = {showCoinStats}
-          onMessari={showMessari}
-          onIex={showIex}
-          onFmp={showFmp}
-          onAv={showAv}
-          onNewsSearch={showNewsSearch}
-          onNewsTop={showNewsTop}
-          onTheNewsSearch={showTheNewsSearch}
-          onTheNewsTop={showTheNewsTop}
-
           onSettings={showSettingsDialog}
           onAbout={showAbout}
         />
