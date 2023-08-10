@@ -7,6 +7,10 @@ import {
 
 import settingStore from './settingStore';
 
+import {
+  SETTINGS_DIALOG,
+  ALERT_DIALOG
+} from '../conf/MdType';
 import MENU from '../conf/NewsMenu';
 import {
   showDialogImpl,
@@ -59,12 +63,12 @@ const _showModalDialog = (
 };
 export const showSettingsDialog = bindTo(
   _showModalDialog,
-  'SETTINGS_DIALOG',
+  SETTINGS_DIALOG,
   settingStore.exportSettingsFn()
 )
 export const showAlertDialog = bindTo(
   _showModalDialog,
-  'ALERT_DIALOG'
+  ALERT_DIALOG
 )
 
 export const useMsDialog = fCrUse(_compStore, _selectMsDialog)

@@ -1,0 +1,13 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/conf/MdType.js"
+ ],
+ "file": "../../src/conf/MdType.js",
+ "names": [
+  "SETTINGS_DIALOG",
+  "exports",
+  "ALERT_DIALOG"
+ ],
+ "mappings": ";;;;AAAO,MAAMA,eAAe,GAAG,GAAG;AAAAC,OAAA,CAAAD,eAAA,GAAAA,eAAA;AAC3B,MAAME,YAAY,GAAG,GAAG;AAAAD,OAAA,CAAAC,YAAA,GAAAA,YAAA"
+}

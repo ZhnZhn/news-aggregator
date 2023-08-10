@@ -5,11 +5,19 @@
  ],
  "file": "../../../src/components/dialogs/RouterModalDialog.js",
  "names": [
+  "_MdType",
+  "require",
+  "_SettingsDialog",
+  "_interopRequireDefault",
+  "_AlertDialog",
   "RouterModalDialog",
   "SETTINGS_DIALOG",
   "SettingsDialog",
   "ALERT_DIALOG",
-  "AlertDialog"
+  "AlertDialog",
+  "_default",
+  "exports",
+  "default"
  ],
- "mappings": ";;;;;;;AAAA;;AACA;;AAEA,IAAMA,iBAAiB,GAAG;AACxBC,EAAAA,eAAe,EAAEC,0BADO;AAExBC,EAAAA,YAAY,EAAEC;AAFU,CAA1B;eAKeJ,iB"
+ "mappings": ";;;;;AAAA,IAAAA,OAAA,GAAAC,OAAA;AAKA,IAAAC,eAAA,GAAAC,sBAAA,CAAAF,OAAA;AACA,IAAAG,YAAA,GAAAD,sBAAA,CAAAF,OAAA;AAEA,MAAMI,iBAAiB,GAAG;EACxB,CAACC,uBAAe,GAAGC,uBAAc;EACjC,CAACC,oBAAY,GAAGC;AAClB,CAAC;AAAC,IAAAC,QAAA,GAEaL,iBAAiB;AAAAM,OAAA,CAAAC,OAAA,GAAAF,QAAA"
 }
