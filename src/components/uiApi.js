@@ -34,6 +34,12 @@ const _focusHtmlElement = (element) => {
   }
 }
 
+export const focusElementById = (id) => {
+  _focusHtmlElement(
+    document.getElementById(id)
+  )
+}
+
 export const focusRefElement = (
   ref1,
   ref2
