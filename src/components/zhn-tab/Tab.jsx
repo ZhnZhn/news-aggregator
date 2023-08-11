@@ -8,21 +8,25 @@ const Tab = ({
   isSelected,
   id,
   title,
-  onClick
+  onClick,
+  onKeyDown
 }) => (
   <button
      type="button"
      className={crCn(CL_TAB, [isSelected, CL_ACTIVE])}
      id={`tab-${id}`}
      role="tab"
+     tabIndex={isSelected ? '0' : '-1'}
      aria-selected={isSelected}
      aria-controls={`tabpanel-${id}`}
      onClick={onClick}
+     onKeyDown={onKeyDown}
   >
      <span className={CL_TAB_TITLE}>
         {title}
      </span>
   </button>
 );
+
 
 export default Tab

@@ -1,63 +1,78 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
+var _bindTo = require("../../utils/bindTo");
 var _uiApi = require("../uiApi");
-
 var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
-
-var _jsxRuntime = require("react/jsx-runtime");
-
-var CL_TABS = "tabs";
-
-var _isFn = function _isFn(fn) {
-  return typeof fn === 'function';
-};
-
-var _crItemTab = function _crItemTab(tabEl, index, _ref) {
-  var selectedTabIndex = _ref.selectedTabIndex,
-      hClick = _ref.hClick;
+var _jsxRuntime = require("preact/jsx-runtime");
+const CL_TABS = "tabs";
+const _isFn = fn => typeof fn === 'function';
+const _crItemTab = (tabEl, index, _ref) => {
+  let {
+    selectedTabIndex,
+    hClick,
+    hKeyDown
+  } = _ref;
   return (0, _uiApi.cloneElement)(tabEl, {
     key: index,
     id: index,
-    onClick: hClick.bind(null, index, tabEl),
-    isSelected: index === selectedTabIndex
+    isSelected: index === selectedTabIndex,
+    onClick: (0, _bindTo.bindTo)(hClick, index, tabEl),
+    onKeyDown: (0, _bindTo.bindTo)(hKeyDown, index, tabEl)
   });
 };
-
-var TabStack = function TabStack(_ref2) {
-  var style = _ref2.style,
-      selectedTabIndex = _ref2.selectedTabIndex,
-      setTabIndex = _ref2.setTabIndex,
-      children = _ref2.children;
-
+const _crNextId = (id, childrenLength) => id === -1 ? childrenLength - 1 : id === childrenLength ? 0 : id;
+const TabStack = _ref2 => {
+  let {
+    style,
+    selectedTabIndex,
+    setTabIndex,
+    children
+  } = _ref2;
   /*eslint-disable react-hooks/exhaustive-deps */
-  var _hClick = (0, _uiApi.useCallback)(function (index, tabEl) {
-    setTabIndex(index);
-
-    if (_isFn(tabEl.props.onClick)) {
-      tabEl.props.onClick();
-    }
-  }, []); //setTabIndex
-
+  const _hClick = (0, _uiApi.useCallback)((index, tabEl) => {
+      setTabIndex(index);
+      if (_isFn(tabEl.props.onClick)) {
+        tabEl.props.onClick();
+      }
+    }, [])
+    //setTabIndex
+    /*eslint-enable react-hooks/exhaustive-deps */,
+    _childrenLength = children.length
+    /*eslint-disable react-hooks/exhaustive-deps */,
+    _hKeyDown = (0, _uiApi.useCallback)((index, tabEl, evt) => {
+      const _focusTabByIndex = tabIndex => {
+        const _nextIndex = _crNextId(tabIndex, _childrenLength);
+        (0, _uiApi.focusElementById)("tab-" + _nextIndex);
+        _hClick(_nextIndex, tabEl);
+      };
+      const {
+        keyCode
+      } = evt;
+      if (keyCode === 39) {
+        _focusTabByIndex(index + 1);
+      }
+      if (keyCode === 37) {
+        _focusTabByIndex(index - 1);
+      }
+    }, [_childrenLength]);
+  //_hClick
   /*eslint-enable react-hooks/exhaustive-deps */
 
-
-  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+  return (0, _jsxRuntime.jsx)("div", {
     className: CL_TABS,
     style: style,
-    children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_ItemStack["default"], {
+    children: (0, _jsxRuntime.jsx)(_ItemStack.default, {
       items: children,
       crItem: _crItemTab,
       selectedTabIndex: selectedTabIndex,
-      hClick: _hClick
+      hClick: _hClick,
+      hKeyDown: _hKeyDown
     })
   });
 };
-
 var _default = TabStack;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=TabStack.js.map

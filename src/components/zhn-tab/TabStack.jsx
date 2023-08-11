@@ -1,6 +1,9 @@
+import { bindTo } from '../../utils/bindTo';
+
 import {
   cloneElement,
-  useCallback
+  useCallback,
+  focusElementById
 } from '../uiApi';
 
 import ItemStack from '../zhn-atoms/ItemStack';
@@ -11,14 +14,26 @@ const _isFn = fn => typeof fn === 'function';
 
 const _crItemTab = (
   tabEl,
-  index,
-  { selectedTabIndex, hClick }
-) => cloneElement(tabEl, {
+  index, {
+  selectedTabIndex,
+  hClick,
+  hKeyDown
+}) => cloneElement(tabEl, {
    key: index,
    id: index,
-   onClick: hClick.bind(null, index, tabEl),
-   isSelected: index === selectedTabIndex
+   isSelected: index === selectedTabIndex,
+   onClick: bindTo(hClick, index, tabEl),
+   onKeyDown: bindTo(hKeyDown, index, tabEl)
 });
+
+const _crNextId = (
+  id,
+  childrenLength
+) => id === -1
+  ? childrenLength - 1
+  : id === childrenLength
+      ? 0
+      : id;
 
 const TabStack = ({
   style,
@@ -28,12 +43,31 @@ const TabStack = ({
 }) => {
   /*eslint-disable react-hooks/exhaustive-deps */
   const _hClick = useCallback((index, tabEl) => {
-    setTabIndex(index);
-    if ( _isFn(tabEl.props.onClick)){
-      tabEl.props.onClick();
-    }
+     setTabIndex(index);
+     if (_isFn(tabEl.props.onClick)){
+       tabEl.props.onClick();
+     }
   }, [])
   //setTabIndex
+  /*eslint-enable react-hooks/exhaustive-deps */
+  , _childrenLength = children.length
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hKeyDown = useCallback((index, tabEl, evt) => {
+    const _focusTabByIndex = (tabIndex) => {
+      const _nextIndex = _crNextId(tabIndex, _childrenLength);
+      focusElementById(`tab-${_nextIndex}`)
+      _hClick(_nextIndex, tabEl)
+    }
+
+    const { keyCode } = evt;
+    if (keyCode === 39) {
+      _focusTabByIndex(index + 1)
+    }
+    if (keyCode === 37) {
+      _focusTabByIndex(index - 1)
+    }
+  }, [_childrenLength]);
+  //_hClick
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (
@@ -46,6 +80,7 @@ const TabStack = ({
         crItem={_crItemTab}
         selectedTabIndex={selectedTabIndex}
         hClick={_hClick}
+        hKeyDown={_hKeyDown}
       />
     </div>
  );
