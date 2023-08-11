@@ -6,15 +6,11 @@
   cursor: pointer;
   outline: 0;
 }
-.tab:focus > .tab_t,
-.tab:hover > .tab_t {
-  color: #81a5ce;
+.tab:focus > .tab_t {
+  color: #2f7ed8;
 }
 .tab.active {
   border-bottom: 3px solid #2f7ed8;
-}
-.tab.active > .tab_t {
-  color: #2f7ed8;
 }
 
 .tabs {
