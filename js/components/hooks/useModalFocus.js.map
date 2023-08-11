@@ -1,0 +1,25 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/useModalFocus.js"
+ ],
+ "file": "../../../src/components/hooks/useModalFocus.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "useModalFocus",
+  "isShow",
+  "_refEl",
+  "useRef",
+  "_refPrevFocused",
+  "useEffect",
+  "setRefValue",
+  "document",
+  "activeElement",
+  "focusRefElement",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAOA,MAAMC,aAAa,GACjBC,MAAM,IACH;EACH,MAAMC,MAAM,GAAG,IAAAC,aAAM,EAAC,CAAC;IACrBC,eAAe,GAAG,IAAAD,aAAM,EAAC,CAAC;EAE5B,IAAAE,gBAAS,EAAC,MAAM;IACd,IAAIJ,MAAM,EAAE;MACV,IAAAK,kBAAW,EACTF,eAAe,EACf,CAACG,QAAQ,IAAI,CAAC,CAAC,EAAEC,aACnB,CAAC;MACD,IAAAC,sBAAe,EAACP,MAAM,CAAC;IACzB,CAAC,MAAM;MACL,IAAAO,sBAAe,EAACL,eAAe,CAAC;IAClC;EACF,CAAC,EAAE,CAACH,MAAM,CAAC,CAAC;EAEZ,OAAOC,MAAM;AACf,CAAC;AAAA,IAAAQ,QAAA,GAEcV,aAAa;AAAAW,OAAA,CAAAC,OAAA,GAAAF,QAAA"
+}
