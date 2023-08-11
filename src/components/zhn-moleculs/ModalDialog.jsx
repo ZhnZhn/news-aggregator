@@ -1,14 +1,10 @@
-import {
-  useRef,
-  useEffect
-} from '../uiApi';
+import crCn from '../zhn-utils/crCn';
+import useModalFocus from '../hooks/useModalFocus';
+import useKeyEscape from '../hooks/useKeyEscape';
 
-//import PropTypes from 'prop-types'
-import crCn from '../zhn-utils/crCn'
-import useKeyEscape from '../hooks/useKeyEscape'
-
-import BrowserCaption from '../zhn-atoms/BrowserCaption'
-import RaisedButton from '../zhn-bt/RaisedButton'
+import FocusTrap from './FocusTrap';
+import BrowserCaption from '../zhn-atoms/BrowserCaption';
+import RaisedButton from '../zhn-bt/RaisedButton';
 
 const CL_SHOWING = 'dialog show-popup'
 , S_ROOT_DIV = {
@@ -27,16 +23,8 @@ const CL_SHOWING = 'dialog show-popup'
 , S_BLOCK = { display: 'block'}
 , S_NONE = { display: 'none' };
 
-
-const _focusRefElement = ref => {
-  const { current } = ref || {};
-  if (typeof (current || {}).focus === 'function') {
-    current.focus()
-  }
-};
-
-const _hClickDialog = (event) => {
-  event.stopPropagation()
+const _hClickDialog = (evt) => {
+  evt.stopPropagation()
 };
 
 const ModalDialog = ({
@@ -54,25 +42,17 @@ const ModalDialog = ({
   withoutClose,
   isClosePrimary=false
 }) => {
-  const _refRootDiv = useRef()
-  , _refPrevFocused = useRef()
+  const _refRootDiv = useModalFocus(isShow)
   , _hKeyDown = useKeyEscape(onClose)
   , _className = crCn([isShow, CL_SHOWING])
   , _style = isShow ? S_BLOCK : S_NONE;
 
-  useEffect(() => {
-    _refPrevFocused.current = (document || {}).activeElement
-  }, [])
-  useEffect(() => {
-    const _refEl = isShow
-      ? _refRootDiv
-      : _refPrevFocused;
-    _focusRefElement(_refEl)
-  }, [isShow])
-
   return (
-    /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
-    /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
+    <FocusTrap refEl={_refRootDiv} isShow={isShow}>
+    {
+      /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
+      /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
+    }
     <div
         ref={_refRootDiv}
         tabIndex="0"
@@ -114,7 +94,8 @@ const ModalDialog = ({
          }
          </div>
        }
-   </div>
+     </div>
+     </FocusTrap>
   );
 };
 
