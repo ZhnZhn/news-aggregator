@@ -14,6 +14,7 @@ const MenuPages = ({
     pageCurrent,
     style,
     pageNumber: index + 1,
+    isVisible: isShow && (pageCurrent === index + 1),
     onNextPage: index === 0 ? onNextPage : void 0,
     onPrevPage: index !== 0 ? onPrevPage : void 0,
     onClose
