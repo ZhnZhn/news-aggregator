@@ -1,4 +1,5 @@
 import crCn from '../zhn-utils/crCn';
+import { crShowHideStyle } from '../zhn-utils/crStyle';
 import useModalFocus from '../hooks/useModalFocus';
 import useKeyEscape from '../hooks/useKeyEscape';
 
@@ -19,9 +20,7 @@ const CL_SHOWING = 'dialog show-popup'
 , S_COMMAND_DIV = {
    float: 'right',
    margin: '16px 4px 10px 0',
-}
-, S_BLOCK = { display: 'block'}
-, S_NONE = { display: 'none' };
+};
 
 const _hClickDialog = (evt) => {
   evt.stopPropagation()
@@ -47,7 +46,7 @@ const ModalDialog = ({
   const _refRootDiv = useModalFocus(isShow)
   , _hKeyDown = useKeyEscape(onClose)
   , _className = crCn([isShow, CL_SHOWING])
-  , _showHideStyle = isShow ? S_BLOCK : S_NONE;
+  , _showHideStyle = crShowHideStyle(isShow);
 
   return (
   <FocusTrap

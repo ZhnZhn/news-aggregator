@@ -1,3 +1,8 @@
+import {
+  S_BLOCK,
+  S_NONE
+} from '../zhn-utils/crStyle';
+
 import useToggle from '../hooks/useToggle';
 import useKeyEnter from '../hooks/useKeyEnter';
 
@@ -18,12 +23,6 @@ const CL_CAPTION = 'open-close select-none'
   fontWeight: 'bold',
   fontSize: '1rem',
   cursor: 'pointer'
-}
-, S_BLOCK = {
-  display: 'block'
-}
-, S_NONE = {
-  display: 'none'
 };
 
 const FILL_OPEN = '#9e9e9e'

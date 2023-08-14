@@ -4,9 +4,8 @@ import useBool from '../hooks/useBool';
 import useTheme from '../hooks/useTheme';
 
 import crCn from '../zhn-utils/crCn';
+import { crShowHideStyle } from '../zhn-utils/crStyle';
 import {
-  S_BLOCK,
-  S_NONE,
   S_APP_TITLE,
   S_SCROLL_DIV,
   S_DIV_WRAPPER,
@@ -115,14 +114,12 @@ const About = ({
     CL_ABOUT_PANE,
     [isShow, CL_SHOW]
   )
-  , _style = isShow
-    ? S_BLOCK
-    : S_NONE;
+  , _showHideStyle = crShowHideStyle(isShow);
 
   return (
     <div
       className={_className}
-      style={{..._style, ...TS.ROOT}}
+      style={{..._showHideStyle, ...TS.ROOT}}
      >
        <A.BrowserCaption
           style={{...S_BROWSER_CAPTION, ...TS.BROWSER_CAPTION}}

@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
+var _crStyle = require("../zhn-utils/crStyle");
 var _useModalFocus = _interopRequireDefault(require("../hooks/useModalFocus"));
 var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
 var _FocusTrap = _interopRequireDefault(require("./FocusTrap"));
@@ -23,12 +24,6 @@ const CL_SHOWING = 'dialog show-popup',
   S_COMMAND_DIV = {
     float: 'right',
     margin: '16px 4px 10px 0'
-  },
-  S_BLOCK = {
-    display: 'block'
-  },
-  S_NONE = {
-    display: 'none'
   };
 const _hClickDialog = evt => {
   evt.stopPropagation();
@@ -54,7 +49,7 @@ const ModalDialog = _ref => {
   const _refRootDiv = (0, _useModalFocus.default)(isShow),
     _hKeyDown = (0, _useKeyEscape.default)(onClose),
     _className = (0, _crCn.default)([isShow, CL_SHOWING]),
-    _showHideStyle = isShow ? S_BLOCK : S_NONE;
+    _showHideStyle = (0, _crStyle.crShowHideStyle)(isShow);
   return (0, _jsxRuntime.jsx)(_FocusTrap.default, {
     refEl: _refRootDiv,
     refFirst: refFocusFirst,

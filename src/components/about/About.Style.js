@@ -17,12 +17,6 @@ export const S_LH_14 = {
 export const S_LH_18 = {
   lineHeight: 1.8
 }
-export const S_BLOCK = {
-  display: 'block'
-}
-export const S_NONE = {
-  display: 'none'
-}
 export const S_APP_TITLE = {
   color: '#80c040'
 }

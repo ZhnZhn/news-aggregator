@@ -7,6 +7,7 @@ var _ProviderNames = require("../../conf/ProviderNames");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
+var _crStyle = require("../zhn-utils/crStyle");
 var _About = require("./About.Style");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _Links = require("../links/Links");
@@ -53,11 +54,11 @@ const About = _ref2 => {
     }
   });
   const _className = (0, _crCn.default)(CL_ABOUT_PANE, [isShow, CL_SHOW]),
-    _style = isShow ? _About.S_BLOCK : _About.S_NONE;
+    _showHideStyle = (0, _crStyle.crShowHideStyle)(isShow);
   return (0, _jsxRuntime.jsxs)("div", {
     className: _className,
     style: {
-      ..._style,
+      ..._showHideStyle,
       ...TS.ROOT
     },
     children: [(0, _jsxRuntime.jsx)(_Comp.default.BrowserCaption, {

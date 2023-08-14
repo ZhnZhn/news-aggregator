@@ -10,6 +10,11 @@ import {
   focusRefElement
 } from '../uiApi';
 
+import {
+  S_BLOCK,
+  S_NONE
+} from '../zhn-utils/crStyle';
+
 import useToggle from '../hooks/useToggle';
 import useXYMovable from '../hooks/useXYMovable';
 import useRefHotKey from '../hotkeys/useRefHotKey';
@@ -35,12 +40,6 @@ const CL_DIALOG = 'dialog'
 , S_BTS = {
    textAlign: 'right',
    margin: '16px 4px 10px 0'
-}
-, S_BLOCK = {
-  display: 'block'
-}
-, S_NONE = {
-  display: 'none'
 }
 , HK_LOAD = 'L'
 , HK_SHOW = 'H'

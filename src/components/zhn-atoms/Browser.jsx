@@ -1,4 +1,9 @@
 //import PropTypes from 'prop-types'
+import {
+  S_BLOCK,
+  S_NONE
+} from '../zhn-utils/crStyle';
+
 const CL_SHOW = 'show-popup'
 , S_BROWSER = {
   flexShrink: 0,
@@ -13,9 +18,7 @@ const CL_SHOW = 'show-popup'
   padding: '0px 3px 35px 0px',
   boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
   borderRadius: '4px'
-}
-, S_BLOCK = { display: 'block' }
-, S_NONE = { display: 'none' };
+};
 
 const Browser = ({
   isShow,

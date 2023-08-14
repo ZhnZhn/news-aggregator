@@ -5,14 +5,9 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
+var _crStyle = require("../zhn-utils/crStyle");
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_PANES = "panes",
-  S_BLOCK = {
-    display: 'block'
-  },
-  S_NONE = {
-    display: 'none'
-  };
+const CL_PANES = "panes";
 const _crItemPane = (tab, index, _ref) => {
   let {
     isShow,
@@ -20,7 +15,7 @@ const _crItemPane = (tab, index, _ref) => {
   } = _ref;
   const isSelected = index === selectedTabIndex;
   return (0, _jsxRuntime.jsx)("div", {
-    style: isSelected ? S_BLOCK : S_NONE,
+    style: (0, _crStyle.crShowHideStyle)(isSelected),
     role: "tabpanel",
     id: "tabpanel-" + index,
     "aria-labelledby": "tab-" + index,

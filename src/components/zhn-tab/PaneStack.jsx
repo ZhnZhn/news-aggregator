@@ -1,10 +1,9 @@
 import { cloneElement } from '../uiApi';
 
 import ItemStack from '../zhn-atoms/ItemStack';
+import { crShowHideStyle } from '../zhn-utils/crStyle';
 
-const CL_PANES = "panes"
-, S_BLOCK = { display: 'block'}
-, S_NONE = { display: 'none' };
+const CL_PANES = "panes";
 
 const _crItemPane = (
   tab,
@@ -14,7 +13,7 @@ const _crItemPane = (
   const isSelected = index === selectedTabIndex;
   return (
     <div
-      style={isSelected ? S_BLOCK : S_NONE}
+      style={crShowHideStyle(isSelected)}
       key={index}
       role="tabpanel"
       id={`tabpanel-${index}`}

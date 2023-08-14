@@ -2,12 +2,12 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var _useToggle2 = _interopRequireDefault(require("../hooks/useToggle"));
+exports.default = void 0;
+var _crStyle = require("../zhn-utils/crStyle");
+var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
 var _jsxRuntime = require("preact/jsx-runtime");
-var CL_CAPTION = 'open-close select-none',
+const CL_CAPTION = 'open-close select-none',
   CL_SHOW_POPUP = 'show-popup',
   S_ROOT = {
     backgroundColor: '#4d4d4d',
@@ -23,48 +23,40 @@ var CL_CAPTION = 'open-close select-none',
     fontWeight: 'bold',
     fontSize: '1rem',
     cursor: 'pointer'
-  },
-  S_BLOCK = {
-    display: 'block'
-  },
-  S_NONE = {
-    display: 'none'
   };
-var FILL_OPEN = '#9e9e9e',
+const FILL_OPEN = '#9e9e9e',
   FILL_CLOSE = 'transparent',
   PATH_OPEN = "M 2,14 L 14,14 14,2 2,14",
   PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
-var OpenClose = function OpenClose(_ref) {
-  var refBt = _ref.refBt,
-    _ref$isClose = _ref.isClose,
-    isClose = _ref$isClose === void 0 ? true : _ref$isClose,
-    style = _ref.style,
-    itemStyle = _ref.itemStyle,
-    captionStyle = _ref.captionStyle,
-    caption = _ref.caption,
-    _ref$fillOpen = _ref.fillOpen,
-    fillOpen = _ref$fillOpen === void 0 ? FILL_OPEN : _ref$fillOpen,
-    _ref$fillClose = _ref.fillClose,
-    fillClose = _ref$fillClose === void 0 ? FILL_CLOSE : _ref$fillClose,
-    children = _ref.children;
-  var _useToggle = (0, _useToggle2["default"])(!isClose),
-    isOpen = _useToggle[0],
-    toggleIsOpen = _useToggle[1],
-    _hKeyDown = (0, _useKeyEnter["default"])(toggleIsOpen),
-    _ref2 = isOpen ? [PATH_OPEN, fillOpen, S_BLOCK, CL_SHOW_POPUP] : [PATH_CLOSE, fillClose, S_NONE, null, itemStyle],
-    _pathV = _ref2[0],
-    _fillV = _ref2[1],
-    _styleCollapse = _ref2[2],
-    _classShow = _ref2[3],
-    _itemStyle = _ref2[4];
+const OpenClose = _ref => {
+  let {
+    refBt,
+    isClose = true,
+    style,
+    itemStyle,
+    captionStyle,
+    caption,
+    fillOpen = FILL_OPEN,
+    fillClose = FILL_CLOSE,
+    children
+  } = _ref;
+  const [isOpen, toggleIsOpen] = (0, _useToggle.default)(!isClose),
+    _hKeyDown = (0, _useKeyEnter.default)(toggleIsOpen),
+    [_pathV, _fillV, _styleCollapse, _classShow, _itemStyle] = isOpen ? [PATH_OPEN, fillOpen, _crStyle.S_BLOCK, CL_SHOW_POPUP] : [PATH_CLOSE, fillClose, _crStyle.S_NONE, null, itemStyle];
   return (0, _jsxRuntime.jsxs)("div", {
-    style: (0, _extends2["default"])({}, S_ROOT, style),
+    style: {
+      ...S_ROOT,
+      ...style
+    },
     children: [(0, _jsxRuntime.jsxs)("div", {
       ref: refBt,
       role: "button",
       className: CL_CAPTION,
       tabIndex: "0",
-      style: (0, _extends2["default"])({}, S_ROOT_CAPTION, _itemStyle),
+      style: {
+        ...S_ROOT_CAPTION,
+        ..._itemStyle
+      },
       onClick: toggleIsOpen,
       onKeyDown: _hKeyDown,
       children: [(0, _jsxRuntime.jsx)("svg", {
@@ -80,7 +72,10 @@ var OpenClose = function OpenClose(_ref) {
           stroke: fillOpen
         })
       }), (0, _jsxRuntime.jsx)("span", {
-        style: (0, _extends2["default"])({}, S_CAPTION, captionStyle),
+        style: {
+          ...S_CAPTION,
+          ...captionStyle
+        },
         children: caption
       })]
     }), (0, _jsxRuntime.jsx)("div", {
@@ -91,5 +86,5 @@ var OpenClose = function OpenClose(_ref) {
   });
 };
 var _default = OpenClose;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=OpenClose.js.map
