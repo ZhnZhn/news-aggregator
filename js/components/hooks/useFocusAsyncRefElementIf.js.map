@@ -1,0 +1,21 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/useFocusAsyncRefElementIf.js"
+ ],
+ "file": "../../../src/components/hooks/useFocusAsyncRefElementIf.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "useFocusAsyncRefElementIf",
+  "is",
+  "refOrFn",
+  "mls",
+  "useEffect",
+  "focusAsyncRefElement",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAKA,MAAMC,yBAAyB,GAAGA,CAChCC,EAAE,EACFC,OAAO,EACPC,GAAG,KACA;EACH,IAAAC,gBAAS,EAAC,MAAM;IACd,IAAIH,EAAE,EAAE;MACN,IAAAI,2BAAoB,EAACH,OAAO,EAAEC,GAAG,CAAC;IACpC;EACF,CAAC,EAAE,CAACF,EAAE,EAAEC,OAAO,EAAEC,GAAG,CAAC,CAAC;AACxB,CAAC;AAAA,IAAAG,QAAA,GAEcN,yBAAyB;AAAAO,OAAA,CAAAC,OAAA,GAAAF,QAAA"
+}

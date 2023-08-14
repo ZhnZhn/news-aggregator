@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _useFocusAsyncRefElementIf = _interopRequireDefault(require("../hooks/useFocusAsyncRefElementIf"));
 var _useFocusTrap = _interopRequireDefault(require("../hooks/useFocusTrap"));
 var _FocusTrap = _interopRequireDefault(require("../zhn-moleculs/FocusTrap"));
 var _MenuTitle = _interopRequireDefault(require("./MenuTitle"));
@@ -13,6 +14,7 @@ const DF_ITEMS = [];
 const MenuPage = _ref => {
   let {
     isShow,
+    isVisible,
     items = DF_ITEMS,
     style,
     title,
@@ -31,20 +33,15 @@ const MenuPage = _ref => {
     [_getFocusRef, _refLast] = (0, _useFocusTrap.default)(items, _refFirst),
     _hClickTitle = (0, _uiApi.useCallback)(() => {
       onPrevPage(pageNumber);
-    }, [onPrevPage, pageNumber]),
-    _isFocus = pageCurrent === pageNumber && isShow;
-  (0, _uiApi.useEffect)(() => {
-    if (_isFocus) {
-      (0, _uiApi.focusAsyncRefElement)(_getRefFirst);
-    }
-  }, [_isFocus, _getRefFirst]);
+    }, [onPrevPage, pageNumber]);
+  (0, _useFocusAsyncRefElementIf.default)(isVisible, _getRefFirst);
   return (0, _jsxRuntime.jsx)("div", {
     style: style,
     children: (0, _jsxRuntime.jsxs)(_FocusTrap.default, {
       refFirst: _getRefFirst,
       refLast: _refLast,
       children: [(0, _jsxRuntime.jsx)(_MenuTitle.default, {
-        ref: _refTitle,
+        refTitle: _refTitle,
         titleCl: titleCl,
         title: title,
         onClick: _hClickTitle
