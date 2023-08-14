@@ -21,7 +21,9 @@ const _crItemPane = (
       aria-labelledby={`tab-${index}`}
     >
       {cloneElement(tab.props.children, {
-        isShow, isSelected
+         isShow,
+         isSelected,
+         isVisible: isShow && isSelected
       })}
     </div>
   );
