@@ -3,6 +3,7 @@
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _has = require("../has");
 var _jsxRuntime = require("preact/jsx-runtime");
 /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/const TrapDiv = _ref => {
   let {
@@ -26,7 +27,7 @@ const FocusTrap = _ref2 => {
     style,
     children
   } = _ref2;
-  return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+  return _has.HAS_KEYBOARD_FOCUS ? (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(TrapDiv, {
       style: style,
       onFocus: () => {
@@ -38,7 +39,7 @@ const FocusTrap = _ref2 => {
         (0, _uiApi.focusRefElement)(refFirst, refEl);
       }
     })]
-  });
+  }) : children;
 };
 var _default = FocusTrap;
 exports.default = _default;

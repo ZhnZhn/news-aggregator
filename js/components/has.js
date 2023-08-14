@@ -1,23 +1,17 @@
 "use strict";
 
 exports.__esModule = true;
-exports.initWidthStyle = exports.HAS_TOUCH_EVENTS = void 0;
-var INITIAL_WIDTH = 635,
-  _isInnerWidth = function _isInnerWidth() {
-    return window && window.innerWidth;
-  },
-  _isTouchable = function _isTouchable() {
-    return document && 'ontouchstart' in document.documentElement;
-  };
-var HAS_TOUCH_EVENTS = _isTouchable();
+exports.initWidthStyle = exports.HAS_TOUCH_EVENTS = exports.HAS_KEYBOARD_FOCUS = void 0;
+const INITIAL_WIDTH = 635,
+  _isInnerWidth = () => window && window.innerWidth,
+  _isTouchable = () => document && 'ontouchstart' in document.documentElement;
+const HAS_TOUCH_EVENTS = _isTouchable();
 exports.HAS_TOUCH_EVENTS = HAS_TOUCH_EVENTS;
-var _wideWidth = function _wideWidth() {
-  return _isInnerWidth() ? window.innerWidth > 700 : true;
-};
-var _getWidth = function _getWidth() {
-  return _isInnerWidth() ? window.innerWidth - 16 : INITIAL_WIDTH;
-};
-var initWidthStyle = function initWidthStyle(initialWidth) {
+const HAS_KEYBOARD_FOCUS = !HAS_TOUCH_EVENTS || window && window.innerWidth > 380;
+exports.HAS_KEYBOARD_FOCUS = HAS_KEYBOARD_FOCUS;
+const _wideWidth = () => _isInnerWidth() ? window.innerWidth > 700 : true;
+const _getWidth = () => _isInnerWidth() ? window.innerWidth - 16 : INITIAL_WIDTH;
+const initWidthStyle = function (initialWidth) {
   if (initialWidth === void 0) {
     initialWidth = INITIAL_WIDTH;
   }

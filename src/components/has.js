@@ -5,6 +5,9 @@ const INITIAL_WIDTH = 635
 
 export const HAS_TOUCH_EVENTS = _isTouchable()
 
+export const HAS_KEYBOARD_FOCUS = !HAS_TOUCH_EVENTS
+ || (window && window.innerWidth > 380)
+
 const _wideWidth = () => _isInnerWidth()
   ? window.innerWidth > 700
   : true

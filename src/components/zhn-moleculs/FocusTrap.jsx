@@ -1,6 +1,5 @@
-import {
-  focusRefElement
-} from '../uiApi';
+import { focusRefElement } from '../uiApi';
+import { HAS_KEYBOARD_FOCUS } from '../has';
 
 /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
 const TrapDiv = ({
@@ -22,7 +21,7 @@ const FocusTrap = ({
   refLast,
   style,
   children
-}) => (
+}) => HAS_KEYBOARD_FOCUS ? (
   <>
     <TrapDiv
       style={style}
@@ -38,7 +37,7 @@ const FocusTrap = ({
       }}
     />
   </>
-);
+) : children;
 
 
 export default FocusTrap
