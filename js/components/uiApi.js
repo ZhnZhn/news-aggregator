@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.render = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.createContext = exports.cloneElement = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.render = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.cloneElement = void 0;
 var _compat = require("preact/compat");
 exports.memo = _compat.memo;
 exports.forwardRef = _compat.forwardRef;
@@ -34,10 +34,18 @@ const focusElementById = id => {
   _focusHtmlElement(document.getElementById(id));
 };
 exports.focusElementById = focusElementById;
-const focusRefElement = (ref1, ref2) => {
-  _focusHtmlElement(getRefValue(ref1) || getRefValue(ref2));
+const _getValueFromRefOfFn = refOrFn => _isFn(refOrFn) ? refOrFn() : getRefValue(refOrFn);
+const focusRefElement = (refOrFn1, refOrFn2) => {
+  _focusHtmlElement(_getValueFromRefOfFn(refOrFn1) || _getValueFromRefOfFn(refOrFn2));
 };
 exports.focusRefElement = focusRefElement;
+const focusAsyncRefElement = function (refOrFn, mls) {
+  if (mls === void 0) {
+    mls = 1000;
+  }
+  setTimeout(() => focusRefElement(refOrFn), mls);
+};
+exports.focusAsyncRefElement = focusAsyncRefElement;
 const focusRefNextSiblingFirstChildElement = ref => {
   _focusHtmlElement(((getRefValue(ref) || {}).nextElementSibling || {}).firstElementChild);
 };

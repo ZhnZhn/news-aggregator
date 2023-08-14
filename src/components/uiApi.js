@@ -40,11 +40,29 @@ export const focusElementById = (id) => {
   )
 }
 
+const _getValueFromRefOfFn = (
+  refOrFn
+) => _isFn(refOrFn)
+  ? refOrFn()
+  : getRefValue(refOrFn);
 export const focusRefElement = (
-  ref1,
-  ref2
+  refOrFn1,
+  refOrFn2
 ) => {
-  _focusHtmlElement(getRefValue(ref1) || getRefValue(ref2));
+  _focusHtmlElement(
+    _getValueFromRefOfFn(refOrFn1)
+    || _getValueFromRefOfFn(refOrFn2)
+  )
+}
+
+export const focusAsyncRefElement = (
+  refOrFn,
+  mls=1000
+) => {
+  setTimeout(
+    () => focusRefElement(refOrFn),
+    mls
+  )
 }
 
 export const focusRefNextSiblingFirstChildElement = (
