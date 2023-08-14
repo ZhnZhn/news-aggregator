@@ -1,15 +1,9 @@
-import {
-  useRef,
-  getFocusRef
-} from '../uiApi';
-
 import useModalFocus from '../hooks/useModalFocus';
+import useFocusTrap from '../hooks/useFocusTrap';
 
 import ModalPopup from './ModalPopup';
 import FocusTrap from './FocusTrap';
 import RowCheckBox from '../dialogs/RowCheckBox';
-
-const _isArr = Array.isArray;
 
 const S_MODAL_POPUP = {
   left: 8,
@@ -46,13 +40,15 @@ const ModalToggle = ({
   onClose
 }) => {
   const _refFirst = useModalFocus(isShow)
-  , _refLast = useRef();
+  , [
+    _getFocusRef,
+    _refLast
+  ] = useFocusTrap(
+    configs,
+    _refFirst
+  );
 
-  if (!_isArr(configs)) {
-    return null;
-  }
-  const _lastIndex = configs.length - 1;
-  return (
+  return _getFocusRef ? (
   <ModalPopup
     isShow={isShow}
     style={{...S_MODAL_POPUP, ...style}}
@@ -65,12 +61,7 @@ const ModalToggle = ({
     >
       {configs.map((item, index) => (
          <RowCheckBox
-           refChb={getFocusRef(
-             _refFirst,
-             _refLast,
-             _lastIndex,
-             index
-           )}
+           refChb={_getFocusRef(index)}
            key={item.id}
            initialValue={item.df}
            style={S_CHB_TOGGLE}
@@ -82,7 +73,7 @@ const ModalToggle = ({
       ))}
     </FocusTrap>
   </ModalPopup>
-);
+) : null;
 }
 
 export default ModalToggle

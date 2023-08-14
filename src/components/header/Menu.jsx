@@ -1,37 +1,22 @@
-import {
-  memo,
-  getFocusRef
-} from '../uiApi';
+import { memo } from '../uiApi';
+
 import MenuTopic from './MenuTopic';
 
-const _isArr = Array.isArray;
-
 const Menu = ({
-  refFirstItem,
-  refLastItem,
   style,
   itemStyle,
-  menuModel
-}) => {
-  if (!_isArr(menuModel)) {
-    return null;
-  }
-  const _lastMenuIndex = menuModel.length - 1;
-  return menuModel.map((topic, index) => (
+  menuModel,
+  getFocusRef
+}) => getFocusRef
+ ? menuModel.map((topic, index) => (
     <MenuTopic
       key={topic.t}
-      refBt={getFocusRef(
-        refFirstItem,
-        refLastItem,
-        _lastMenuIndex,
-        index
-      )}
+      refBt={getFocusRef(index)}
       caption={topic.t}
       items={topic.items}
       style={style}
       itemStyle={itemStyle}
     />
-  ))
-}
+ )) : null;
 
 export default memo(Menu)

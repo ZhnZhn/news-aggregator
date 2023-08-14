@@ -1,7 +1,9 @@
 import { useRef } from '../uiApi';
 import { HAS_TOUCH_EVENTS } from '../has';
+
 import useTheme from '../hooks/useTheme';
 import useFocusRefElementIf from '../hooks/useFocusRefElementIf';
+import useFocusTrap from '../hooks/useFocusTrap';
 
 import styleConfig from '../source-browsers/NewsBrowser.Style';
 
@@ -24,7 +26,12 @@ const PanelQuery = ({
       isShow && HAS_NOT_TOUCH_EVENTS,
       refFocusItem
   )
-  , _refLastItem = useRef();
+  , _refLastItem = useRef()
+  , _getFocusRef = useFocusTrap(
+    menuModel,
+    _refFirstItem,
+    _refLastItem
+  )[0];
 
   return (
     <ModalPopup
@@ -38,11 +45,10 @@ const PanelQuery = ({
          refLast={_refLastItem}
        >
          <Menu
-           refFirstItem={_refFirstItem}
-           refLastItem={_refLastItem}
            menuModel={menuModel}
            style={TS.OPEN_CLOSE}
            itemStyle={TS.ITEM}
+           getFocusRef={_getFocusRef}
          />
        </FocusTrap>
      </ModalPopup>

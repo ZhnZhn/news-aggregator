@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _useFocusTrap = _interopRequireDefault(require("../hooks/useFocusTrap"));
 var _FocusTrap = _interopRequireDefault(require("../zhn-moleculs/FocusTrap"));
 var _MenuTitle = _interopRequireDefault(require("./MenuTitle"));
 var _MenuItemList = _interopRequireDefault(require("./MenuItemList"));
@@ -27,7 +28,7 @@ const MenuPage = _ref => {
   const _refTitle = (0, _uiApi.useRef)(),
     _refFirst = (0, _uiApi.useRef)(),
     _getRefFirst = (0, _uiApi.useCallback)(() => (0, _uiApi.getRefValue)(_refTitle) || (0, _uiApi.getRefValue)(_refFirst), []),
-    _refLast = (0, _uiApi.useRef)(),
+    [_getFocusRef, _refLast] = (0, _useFocusTrap.default)(items, _refFirst),
     _hClickTitle = (0, _uiApi.useCallback)(() => {
       onPrevPage(pageNumber);
     }, [onPrevPage, pageNumber]),
@@ -48,8 +49,7 @@ const MenuPage = _ref => {
         title: title,
         onClick: _hClickTitle
       }), (0, _jsxRuntime.jsx)(_MenuItemList.default, {
-        refFirst: _refFirst,
-        refLast: _refLast,
+        getFocusRef: _getFocusRef,
         items: items,
         itemCl: itemCl || titleCl,
         pageNumber: pageNumber,

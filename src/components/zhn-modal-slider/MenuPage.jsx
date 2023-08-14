@@ -6,6 +6,7 @@ import {
   focusAsyncRefElement
 } from '../uiApi';
 
+import useFocusTrap from '../hooks/useFocusTrap';
 import FocusTrap from '../zhn-moleculs/FocusTrap';
 
 import MenuTitle from './MenuTitle';
@@ -32,7 +33,13 @@ const MenuPage = ({
   , _getRefFirst = useCallback(
     () => getRefValue(_refTitle) || getRefValue(_refFirst)
   , [])
-  , _refLast = useRef()
+  , [
+    _getFocusRef,
+    _refLast
+  ] = useFocusTrap(
+    items,
+    _refFirst
+  )
 
   , _hClickTitle = useCallback(() => {
       onPrevPage(pageNumber)
@@ -58,8 +65,7 @@ const MenuPage = ({
           onClick={_hClickTitle}
         />
         <MenuItemList
-          refFirst={_refFirst}
-          refLast={_refLast}
+          getFocusRef={_getFocusRef}
           items={items}
           itemCl={itemCl || titleCl}
           pageNumber={pageNumber}

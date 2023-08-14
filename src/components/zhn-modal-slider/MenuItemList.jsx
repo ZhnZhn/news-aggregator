@@ -1,4 +1,4 @@
-import { getFocusRef } from '../uiApi';
+//import { getFocusRef } from '../uiApi';
 import MenuAriaItem from './MenuAriaItem';
 
 const SUB_MENU = 'sub';
@@ -33,15 +33,16 @@ const NextPageArrow = ({
 ) : null;
 
 const MenuItemList = ({
-  refFirst,
-  refLast,
+  //refFirst,
+  //refLast,
+  getFocusRef,
   items,
   itemCl,
   pageNumber,
   onNextPage,
   onClose
 }) => {
-  const _lastItemIndex = items.length - 1;
+  //const _lastItemIndex = items.length - 1;
   return (
     <>
      {items.map((item, index) => {
@@ -59,12 +60,15 @@ const MenuItemList = ({
        return (
          <MenuAriaItem
            key={name}
+           ref={getFocusRef(index)}
+           /*
            ref={getFocusRef(
              refFirst,
              refLast,
              _lastItemIndex,
              index
            )}
+           */
            className={cn || itemCl}
            style={S_ITEM}
            onClick={_onClick}
