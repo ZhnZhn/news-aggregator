@@ -1,4 +1,7 @@
-import { memo } from '../uiApi';
+import {
+  memo,
+  getFocusRef
+} from '../uiApi';
 import MenuTopic from './MenuTopic';
 
 const _isArr = Array.isArray;
@@ -13,16 +16,16 @@ const Menu = ({
   if (!_isArr(menuModel)) {
     return null;
   }
-  const _lastIndex = menuModel.length - 1;
+  const _lastMenuIndex = menuModel.length - 1;
   return menuModel.map((topic, index) => (
     <MenuTopic
       key={topic.t}
-      refBt={index === 0
-       ? refFirstItem
-       : index === _lastIndex
-          ? refLastItem
-          : void 0
-      }
+      refBt={getFocusRef(
+        refFirstItem,
+        refLastItem,
+        _lastMenuIndex,
+        index
+      )}
       caption={topic.t}
       items={topic.items}
       style={style}

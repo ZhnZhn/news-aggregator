@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.render = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.cloneElement = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.render = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.getFocusRef = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.cloneElement = void 0;
 var _compat = require("preact/compat");
 exports.memo = _compat.memo;
 exports.forwardRef = _compat.forwardRef;
@@ -46,6 +46,8 @@ const focusAsyncRefElement = function (refOrFn, mls) {
   setTimeout(() => focusRefElement(refOrFn), mls);
 };
 exports.focusAsyncRefElement = focusAsyncRefElement;
+const getFocusRef = (refFirst, refLast, lastIndex, index) => index === 0 ? refFirst : index === lastIndex ? refLast : void 0;
+exports.getFocusRef = getFocusRef;
 const focusRefNextSiblingFirstChildElement = ref => {
   _focusHtmlElement(((getRefValue(ref) || {}).nextElementSibling || {}).firstElementChild);
 };

@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _uiApi = require("../uiApi");
 var _MenuAriaItem = _interopRequireDefault(require("./MenuAriaItem"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const SUB_MENU = 'sub';
@@ -18,27 +19,27 @@ const S_ITEM = {
     padding: '1px 16px 1px 0px',
     fontWeight: 'bold'
   };
-const _fClick = _ref2 => {
+const _fClick = _ref => {
   let {
     isClose,
     onClick,
     onClose
-  } = _ref2;
+  } = _ref;
   return typeof onClick === 'function' ? isClose ? () => {
     onClick();
     onClose();
   } : onClick : void 0;
 };
-const NextPageArrow = _ref3 => {
+const NextPageArrow = _ref2 => {
   let {
     type
-  } = _ref3;
+  } = _ref2;
   return type === SUB_MENU ? (0, _jsxRuntime.jsx)("span", {
     style: S_NEXT_PAGE,
     children: ">"
   }) : null;
 };
-const MenuItemList = _ref4 => {
+const MenuItemList = _ref3 => {
   let {
     refFirst,
     refLast,
@@ -47,7 +48,8 @@ const MenuItemList = _ref4 => {
     pageNumber,
     onNextPage,
     onClose
-  } = _ref4;
+  } = _ref3;
+  const _lastItemIndex = items.length - 1;
   return (0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
     children: items.map((item, index) => {
       const {
@@ -62,10 +64,9 @@ const MenuItemList = _ref4 => {
           isClose,
           onClick,
           onClose
-        }),
-        _ref = index === 0 ? refFirst : index === items.length - 1 ? refLast : void 0;
+        });
       return (0, _jsxRuntime.jsxs)(_MenuAriaItem.default, {
-        ref: _ref,
+        ref: (0, _uiApi.getFocusRef)(refFirst, refLast, _lastItemIndex, index),
         className: cn || itemCl,
         style: S_ITEM,
         onClick: _onClick,

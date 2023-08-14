@@ -18,9 +18,9 @@ const Menu = _ref => {
   if (!_isArr(menuModel)) {
     return null;
   }
-  const _lastIndex = menuModel.length - 1;
+  const _lastMenuIndex = menuModel.length - 1;
   return menuModel.map((topic, index) => (0, _jsxRuntime.jsx)(_MenuTopic.default, {
-    refBt: index === 0 ? refFirstItem : index === _lastIndex ? refLastItem : void 0,
+    refBt: (0, _uiApi.getFocusRef)(refFirstItem, refLastItem, _lastMenuIndex, index),
     caption: topic.t,
     items: topic.items,
     style: style,
