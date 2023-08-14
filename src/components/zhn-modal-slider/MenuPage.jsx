@@ -2,18 +2,14 @@ import {
   useRef,
   useCallback,
   useEffect,
-  focusRefElement
+  getRefValue,
+  focusAsyncRefElement
 } from '../uiApi';
+
+import FocusTrap from '../zhn-moleculs/FocusTrap';
 
 import MenuTitle from './MenuTitle';
 import MenuItemList from './MenuItemList';
-
-const _focusAsyncRefElement = ref => {
-  setTimeout(
-    () => focusRefElement(ref),
-    1000
-  )
-};
 
 const DF_ITEMS = [];
 
@@ -22,7 +18,8 @@ const MenuPage = ({
   items=DF_ITEMS,
   style,
   title,
-  titleCl, itemCl,
+  titleCl,
+  itemCl,
   pageCurrent,
   pageNumber,
   onClose,
@@ -32,6 +29,11 @@ const MenuPage = ({
 }) => {
   const _refTitle = useRef()
   , _refFirst = useRef()
+  , _getRefFirst = useCallback(
+    () => getRefValue(_refTitle) || getRefValue(_refFirst)
+  , [])
+  , _refLast = useRef()
+
   , _hClickTitle = useCallback(() => {
       onPrevPage(pageNumber)
   }, [onPrevPage, pageNumber])
@@ -39,31 +41,33 @@ const MenuPage = ({
 
  useEffect(() => {
    if (_isFocus) {
-     if (_refTitle.current) {
-       _focusAsyncRefElement(_refTitle)
-     } else if (_refFirst.current) {
-       _focusAsyncRefElement(_refFirst)
-     }
+     focusAsyncRefElement(_getRefFirst)
    }
- }, [_isFocus])
+ }, [_isFocus, _getRefFirst])
 
  return (
     <div style={style}>
-      <MenuTitle
-        ref={_refTitle}
-        titleCl={titleCl}
-        title={title}
-        onClick={_hClickTitle}
-      />
-      <MenuItemList
-        ref={_refFirst}
-        items={items}
-        itemCl={itemCl || titleCl}
-        pageNumber={pageNumber}
-        onNextPage={onNextPage}
-        onClose={onClose}
-      />
-      {children}
+      <FocusTrap
+        refFirst={_getRefFirst}
+        refLast={_refLast}
+      >
+        <MenuTitle
+          ref={_refTitle}
+          titleCl={titleCl}
+          title={title}
+          onClick={_hClickTitle}
+        />
+        <MenuItemList
+          refFirst={_refFirst}
+          refLast={_refLast}
+          items={items}
+          itemCl={itemCl || titleCl}
+          pageNumber={pageNumber}
+          onNextPage={onNextPage}
+          onClose={onClose}
+        />
+        {children}
+      </FocusTrap>
     </div>
   );
 };

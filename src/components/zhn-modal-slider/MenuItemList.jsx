@@ -1,5 +1,3 @@
-import { forwardRef } from '../uiApi';
-
 import MenuAriaItem from './MenuAriaItem';
 
 const SUB_MENU = 'sub';
@@ -20,42 +18,47 @@ const S_ITEM = {
 const _fClick = ({
   isClose,
   onClick,
-  onClose 
-}) => {
-  return typeof onClick === 'function'
-    ? isClose
-        ? () => { onClick(); onClose() }
-        : onClick
-    : void 0;
-};
+  onClose
+}) => typeof onClick === 'function'
+  ? isClose
+      ? () => { onClick(); onClose() }
+      : onClick
+  : void 0;
 
 const NextPageArrow = ({
   type
-}) => {
-  if (type !== SUB_MENU) return null;
+}) => type === SUB_MENU ? (
+  <span style={S_NEXT_PAGE}>></span>
+) : null;
 
-  return (
-    <span style={S_NEXT_PAGE}>
-        >
-    </span>
-  );
-};
-
-const MenuItemList = forwardRef(({
+const MenuItemList = ({
+  refFirst,
+  refLast,
   items,
   itemCl,
   pageNumber,
   onNextPage,
   onClose
-}, ref) => {
+}) => {
   return (
     <>
      {items.map((item, index) => {
-       const { cn, name, type, id, isClose, onClick } = item
+       const {
+         cn,
+         name,
+         type,
+         id,
+         isClose,
+         onClick
+       } = item
        , _onClick = type === SUB_MENU
             ? onNextPage.bind(null, id, name, pageNumber)
             : _fClick({ isClose, onClick, onClose })
-       , _ref = index === 0 ? ref : void 0;
+       , _ref = index === 0
+          ? refFirst
+          : index === items.length -1
+             ? refLast
+             : void 0;
        return (
          <MenuAriaItem
            key={name}
@@ -71,7 +74,7 @@ const MenuItemList = forwardRef(({
       })}
     </>
   );
-})
+}
 
 /*
 MenuItemList.propTypes = {
