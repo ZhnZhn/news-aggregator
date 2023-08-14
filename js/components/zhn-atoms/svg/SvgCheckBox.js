@@ -1,31 +1,26 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
+exports.default = void 0;
 var _Svg = _interopRequireDefault(require("./Svg100"));
-
 var _jsxRuntime = require("preact/jsx-runtime");
-
-var CL_CHECK_BOX = "chb",
-    COLOR_BLANK = "rgba(0,0,0,0)",
-    COLOR_GREY = "#777777",
-    DF_COLOR_IS = "#2f7ed8",
-    CHECKBOX_WIDTH = 16,
-    S_DIV = {
-  display: 'inline-block',
-  cursor: 'pointer'
-},
-    S_SVG = {
-  display: 'inline-block'
-};
-
-var SvgChecked = function SvgChecked(_ref) {
-  var stroke = _ref.stroke;
+const CL_CHECK_BOX = "chb",
+  COLOR_BLANK = "rgba(0,0,0,0)",
+  COLOR_GREY = "#777777",
+  DF_COLOR_IS = "#2f7ed8",
+  CHECKBOX_WIDTH = 16,
+  S_DIV = {
+    display: 'inline-block',
+    cursor: 'pointer'
+  },
+  S_SVG = {
+    display: 'inline-block'
+  };
+const SvgChecked = _ref => {
+  let {
+    stroke
+  } = _ref;
   return (0, _jsxRuntime.jsx)("path", {
     d: "M 2,5 L 8,14 14,1",
     strokeWidth: "2",
@@ -34,53 +29,55 @@ var SvgChecked = function SvgChecked(_ref) {
     fill: COLOR_BLANK
   });
 };
-
-var _crRestStyle = function _crRestStyle(stroke, fill) {
+const _crRestStyle = function (stroke, fill) {
   if (fill === void 0) {
     fill = stroke;
   }
-
   return {
-    stroke: stroke,
-    fill: fill
+    stroke,
+    fill
   };
 };
-
-var SvgCheckBox = function SvgCheckBox(_ref2) {
-  var isChecked = _ref2.isChecked,
-      style = _ref2.style,
-      stroke = _ref2.stroke,
-      onClick = _ref2.onClick,
-      onKeyDown = _ref2.onKeyDown;
-
-  var _restStyle = isChecked ? _crRestStyle(DF_COLOR_IS) : _crRestStyle(COLOR_GREY, COLOR_BLANK);
-
+const SvgCheckBox = _ref2 => {
+  let {
+    refChb,
+    isChecked,
+    style,
+    stroke,
+    onClick,
+    onKeyDown
+  } = _ref2;
+  const _restStyle = isChecked ? _crRestStyle(DF_COLOR_IS) : _crRestStyle(COLOR_GREY, COLOR_BLANK);
   return (0, _jsxRuntime.jsx)("div", {
+    ref: refChb,
     role: "checkbox",
     tabIndex: "0",
     "aria-checked": isChecked,
     className: CL_CHECK_BOX,
-    style: (0, _extends2["default"])({}, S_DIV, style),
+    style: {
+      ...S_DIV,
+      ...style
+    },
     onClick: onClick,
     onKeyDown: onKeyDown,
-    children: (0, _jsxRuntime.jsxs)(_Svg["default"], {
+    children: (0, _jsxRuntime.jsxs)(_Svg.default, {
       w: CHECKBOX_WIDTH,
       style: S_SVG,
-      children: [(0, _jsxRuntime.jsx)("rect", (0, _extends2["default"])({
+      children: [(0, _jsxRuntime.jsx)("rect", {
         x: "1",
         y: "1",
         height: "14",
         width: "14",
         strokeWidth: "2",
         rx: "3",
-        strokeLinecap: "round"
-      }, _restStyle)), isChecked ? (0, _jsxRuntime.jsx)(SvgChecked, {
+        strokeLinecap: "round",
+        ..._restStyle
+      }), isChecked ? (0, _jsxRuntime.jsx)(SvgChecked, {
         stroke: stroke
       }) : null]
     })
   });
 };
-
 var _default = SvgCheckBox;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=SvgCheckBox.js.map

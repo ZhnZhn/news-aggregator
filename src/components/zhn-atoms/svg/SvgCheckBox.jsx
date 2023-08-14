@@ -32,6 +32,7 @@ const _crRestStyle = (
 });
 
 const SvgCheckBox = ({
+  refChb,
   isChecked,
   style,
   stroke,
@@ -44,6 +45,7 @@ const SvgCheckBox = ({
 
   return (
     <div
+       ref={refChb}
        role="checkbox"
        tabIndex="0"
        aria-checked={isChecked}

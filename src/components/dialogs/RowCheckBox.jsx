@@ -11,6 +11,7 @@ const S_ROW_CHECKBOX = {
 };
 
 const RowCheckBox = ({
+  refChb,
   style=S_ROW_CHECKBOX,
   initialValue,
   stroke,
@@ -31,6 +32,7 @@ const RowCheckBox = ({
   return (
     <div style={style}>
       <SvgCheckBox
+        refChb={refChb}
         isChecked={isChecked}
         stroke={stroke}
         onClick={hClick}

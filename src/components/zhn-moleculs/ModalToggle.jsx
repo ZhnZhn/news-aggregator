@@ -1,4 +1,12 @@
+import {
+  useRef,
+  getFocusRef
+} from '../uiApi';
+
+import useModalFocus from '../hooks/useModalFocus';
+
 import ModalPopup from './ModalPopup';
+import FocusTrap from './FocusTrap';
 import RowCheckBox from '../dialogs/RowCheckBox';
 
 const _isArr = Array.isArray;
@@ -36,25 +44,45 @@ const ModalToggle = ({
   configs,
   onToggle,
   onClose
-}) => _isArr(configs) ? (
+}) => {
+  const _refFirst = useModalFocus(isShow)
+  , _refLast = useRef();
+
+  if (!_isArr(configs)) {
+    return null;
+  }
+  const _lastIndex = configs.length - 1;
+  return (
   <ModalPopup
     isShow={isShow}
     style={{...S_MODAL_POPUP, ...style}}
     className={className}
     onClose={onClose}
   >
-    {configs.map(item => (
-       <RowCheckBox
-         key={item.id}
-         initialValue={item.df}
-         style={S_CHB_TOGGLE}
-         stroke={chbStroke}
-         caption={_crCaption(item.caption)}
-         captionStyle={S_CAPTION}
-         onToggle={() => onToggle(item.id)}
-       />
-    ))}
+    <FocusTrap
+      refFirst={_refFirst}
+      refLast={_refLast}
+    >
+      {configs.map((item, index) => (
+         <RowCheckBox
+           refChb={getFocusRef(
+             _refFirst,
+             _refLast,
+             _lastIndex,
+             index
+           )}
+           key={item.id}
+           initialValue={item.df}
+           style={S_CHB_TOGGLE}
+           stroke={chbStroke}
+           caption={_crCaption(item.caption)}
+           captionStyle={S_CAPTION}
+           onToggle={() => onToggle(item.id)}
+         />
+      ))}
+    </FocusTrap>
   </ModalPopup>
-) : null;
+);
+}
 
 export default ModalToggle
