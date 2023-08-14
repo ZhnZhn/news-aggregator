@@ -28,6 +28,8 @@ const _hClickDialog = (evt) => {
 };
 
 const ModalDialog = ({
+  refFocusFirst,
+  refFocusLast,
   isShow,
   isWithButton,
   style,
@@ -45,10 +47,15 @@ const ModalDialog = ({
   const _refRootDiv = useModalFocus(isShow)
   , _hKeyDown = useKeyEscape(onClose)
   , _className = crCn([isShow, CL_SHOWING])
-  , _style = isShow ? S_BLOCK : S_NONE;
+  , _showHideStyle = isShow ? S_BLOCK : S_NONE;
 
   return (
-    <FocusTrap refEl={_refRootDiv} isShow={isShow}>
+  <FocusTrap
+     refEl={_refRootDiv}
+     refFirst={refFocusFirst}
+     refLast={refFocusLast}
+     style={_showHideStyle}
+  >
     {
       /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
       /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
@@ -63,7 +70,7 @@ const ModalDialog = ({
         style={{
           ...S_ROOT_DIV,
           ...style,
-          ..._style
+          ..._showHideStyle
         }}
         onClick={_hClickDialog}
         onKeyDown={_hKeyDown}
@@ -95,7 +102,7 @@ const ModalDialog = ({
          </div>
        }
      </div>
-     </FocusTrap>
+   </FocusTrap>
   );
 };
 

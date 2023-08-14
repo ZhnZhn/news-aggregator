@@ -3,9 +3,10 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
 var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
+var _useModalFocus = _interopRequireDefault(require("../hooks/useModalFocus"));
 var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
+var _FocusTrap = _interopRequireDefault(require("./FocusTrap"));
 var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
 var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -29,25 +30,13 @@ const CL_SHOWING = 'dialog show-popup',
   S_NONE = {
     display: 'none'
   };
-const _hClickDialog = event => {
-  event.stopPropagation();
+const _hClickDialog = evt => {
+  evt.stopPropagation();
 };
-
-/*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
-const TrapDiv = _ref => {
+const ModalDialog = _ref => {
   let {
-    onFocus
-  } = _ref;
-  return (0, _jsxRuntime.jsx)("div", {
-    tabIndex: "0",
-    "aria-hidden": "true",
-    onFocus: onFocus
-  });
-};
-/*eslint-enable jsx-a11y/no-noninteractive-tabindex*/
-
-const ModalDialog = _ref2 => {
-  let {
+    refFocusFirst,
+    refFocusLast,
     isShow,
     isWithButton,
     style,
@@ -61,30 +50,17 @@ const ModalDialog = _ref2 => {
     buttonStyle: TS,
     withoutClose,
     isClosePrimary = false
-  } = _ref2;
-  const _refRootDiv = (0, _uiApi.useRef)(),
-    _refPrevFocused = (0, _uiApi.useRef)(),
+  } = _ref;
+  const _refRootDiv = (0, _useModalFocus.default)(isShow),
     _hKeyDown = (0, _useKeyEscape.default)(onClose),
     _className = (0, _crCn.default)([isShow, CL_SHOWING]),
-    _style = isShow ? S_BLOCK : S_NONE,
-    _onFocusTrapDiv = () => {
-      if (isShow) {
-        (0, _uiApi.focusRefElement)(_refRootDiv);
-      }
-    };
-  (0, _uiApi.useEffect)(() => {
-    if (isShow) {
-      (0, _uiApi.setRefValue)(_refPrevFocused, (document || {}).activeElement);
-    }
-  }, [isShow]);
-  (0, _uiApi.useEffect)(() => {
-    const _refEl = isShow ? _refRootDiv : _refPrevFocused;
-    (0, _uiApi.focusRefElement)(_refEl);
-  }, [isShow]);
-  return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
-    children: [(0, _jsxRuntime.jsx)(TrapDiv, {
-      onFocus: _onFocusTrapDiv
-    }), (0, _jsxRuntime.jsxs)("div", {
+    _showHideStyle = isShow ? S_BLOCK : S_NONE;
+  return (0, _jsxRuntime.jsx)(_FocusTrap.default, {
+    refEl: _refRootDiv,
+    refFirst: refFocusFirst,
+    refLast: refFocusLast,
+    style: _showHideStyle,
+    children: (0, _jsxRuntime.jsxs)("div", {
       ref: _refRootDiv,
       tabIndex: "0",
       role: "dialog",
@@ -94,7 +70,7 @@ const ModalDialog = _ref2 => {
       style: {
         ...S_ROOT_DIV,
         ...style,
-        ..._style
+        ..._showHideStyle
       },
       onClick: _hClickDialog,
       onKeyDown: _hKeyDown,
@@ -117,9 +93,7 @@ const ModalDialog = _ref2 => {
           onClick: onClose
         }, "_close")]
       })]
-    }), (0, _jsxRuntime.jsx)(TrapDiv, {
-      onFocus: _onFocusTrapDiv
-    })]
+    })
   });
 };
 var _default = ModalDialog;

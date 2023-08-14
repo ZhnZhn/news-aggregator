@@ -6,9 +6,11 @@ var _uiApi = require("../uiApi");
 var _jsxRuntime = require("preact/jsx-runtime");
 /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/const TrapDiv = _ref => {
   let {
+    style,
     onFocus
   } = _ref;
   return (0, _jsxRuntime.jsx)("div", {
+    style: style,
     tabIndex: "0",
     "aria-hidden": "true",
     onFocus: onFocus
@@ -19,19 +21,22 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const FocusTrap = _ref2 => {
   let {
     refEl,
-    isShow,
+    refFirst,
+    refLast,
+    style,
     children
   } = _ref2;
-  const _onFocusTrapDiv = () => {
-    if (isShow) {
-      (0, _uiApi.focusRefElement)(refEl);
-    }
-  };
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(TrapDiv, {
-      onFocus: _onFocusTrapDiv
+      style: style,
+      onFocus: () => {
+        (0, _uiApi.focusRefElement)(refLast, refEl);
+      }
     }), children, (0, _jsxRuntime.jsx)(TrapDiv, {
-      onFocus: _onFocusTrapDiv
+      style: style,
+      onFocus: () => {
+        (0, _uiApi.focusRefElement)(refFirst, refEl);
+      }
     })]
   });
 };
