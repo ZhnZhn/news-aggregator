@@ -41,11 +41,6 @@ const _hasLengthOrEmpty = (
    setWebz: getFnByPropName(data, SET_WEBZ_KEY)
 });
 
-const _isVisible = ({
-  isSelected,
-  isShow
-}) => isShow && isSelected;
-
 const _getRefCompValue = ref => ref.current.getValue();
 const _clearInputRefs = refs => refs
   .forEach(ref => ref.current.clear());
@@ -81,6 +76,8 @@ const CardApiKeys = (props) => {
   , _refInputTheNews = useRef()
   , _refInputWebz = useRef()
   , {
+    isVisible,
+    setRefLast,
     style,
     fieldStyle,
     buttonsStyle,
@@ -127,10 +124,8 @@ const CardApiKeys = (props) => {
   //setIex, setFmp, setNews, setTheNews, setWebz
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  if (!_isVisible(props)) {
-    return null;
-  }
-  return(
+
+  return isVisible ? (
     <ScrollPane style={style}>
         <OpenClose
           style={{...TS.OPEN_CLOSE, ...S_OPEN_CLOSE}}
@@ -197,6 +192,7 @@ const CardApiKeys = (props) => {
           onClick={_hClearAll}
         />
         <RaisedButton
+          refBt={isVisible ? setRefLast : void 0}
           style={TS.BT.RAISED}
           clDiv={TS.BT.CL_RAISED_DIV}
           isPrimary={true}
@@ -205,7 +201,7 @@ const CardApiKeys = (props) => {
         />
       </div>
     </ScrollPane>
-  );
+  ) : null;
 }
 
 export default CardApiKeys

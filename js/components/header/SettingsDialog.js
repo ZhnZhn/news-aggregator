@@ -55,13 +55,18 @@ const SettingsDialog = (0, _memoIsShow.default)(_ref => {
     data,
     onClose
   } = _ref;
-  const _selectTheme = (0, _uiApi.useCallback)(item => {
+  const _refFocusLast = (0, _uiApi.useRef)(),
+    _setFocusLastRef = (0, _uiApi.useCallback)(el => {
+      _refFocusLast.current = el;
+    }, []),
+    _selectTheme = (0, _uiApi.useCallback)(item => {
       (0, _storeAtoms.setUiTheme)((item || [])[1]);
     }, []),
     TS = (0, _useTheme.default)(_Dialog.default),
     _TS = JSON.parse(JSON.stringify(TS));
   _assign(_TS.SELECT.ROOT, S_SELECT_WIDTH);
   return (0, _jsxRuntime.jsx)(_Comp.default.ModalDialog, {
+    refFocusLast: _refFocusLast,
     style: {
       ...S_MODAL,
       ...TS.R_DIALOG
@@ -79,6 +84,7 @@ const SettingsDialog = (0, _memoIsShow.default)(_ref => {
       children: [(0, _jsxRuntime.jsx)(_Comp.default.Tab, {
         title: "API Keys",
         children: (0, _jsxRuntime.jsx)(_CardApiKeys.default, {
+          setRefLast: _setFocusLastRef,
           style: S_CARD_API,
           fieldStyle: {
             ...TS.INPUT_ROOT,
@@ -91,6 +97,7 @@ const SettingsDialog = (0, _memoIsShow.default)(_ref => {
       }), (0, _jsxRuntime.jsx)(_Comp.default.Tab, {
         title: "UI Theme",
         children: (0, _jsxRuntime.jsx)(_CardUiTheme.default, {
+          setRefLast: _setFocusLastRef,
           style: S_CARD_ROOT,
           buttonsStyle: S_CARD_BUTTONS,
           TS: _TS,

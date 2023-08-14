@@ -22,7 +22,9 @@ const CardUiTheme = ({
   buttonsStyle,
   TS,
   onSetTheme,
-  onClose
+  onClose,
+  isVisible,
+  setRefLast
 }) => (
     <div style={{...S_DIV, ...style}}>
       <A.InputSelect
@@ -49,6 +51,7 @@ const CardUiTheme = ({
       />
       <div style={buttonsStyle}>
         <A.RaisedButton
+          refBt={isVisible ? setRefLast : void 0}
           style={TS.BT.RAISED}
           clDiv={TS.BT.CL_RAISED_DIV}
           isPrimary={true}

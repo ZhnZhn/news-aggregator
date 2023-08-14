@@ -1,5 +1,8 @@
 //import PropTypes from 'prop-types'
-import { useCallback } from '../uiApi';
+import {
+  useRef,
+  useCallback
+} from '../uiApi';
 
 import memoIsShow from '../hoc/memoIsShow';
 import useTheme from '../hooks/useTheme';
@@ -51,8 +54,12 @@ const SettingsDialog = memoIsShow(({
   isShow,
   data,
   onClose
-}) => {  
-  const _selectTheme = useCallback(item => {
+}) => {
+  const _refFocusLast = useRef()
+  , _setFocusLastRef = useCallback(el => {
+    _refFocusLast.current = el
+  }, [])
+  , _selectTheme = useCallback(item => {
     setUiTheme((item || [])[1])
   }, [])
   , TS = useTheme(styleConfig)
@@ -62,6 +69,7 @@ const SettingsDialog = memoIsShow(({
 
   return (
     <A.ModalDialog
+       refFocusLast={_refFocusLast}
        style={{...S_MODAL, ...TS.R_DIALOG}}
        divBtStyle={S_DIV_BT}
        captionStyle={TS.BROWSER_CAPTION}
@@ -77,6 +85,7 @@ const SettingsDialog = memoIsShow(({
       >
          <A.Tab title="API Keys">
             <CardApiKeys
+              setRefLast={_setFocusLastRef}
               style={S_CARD_API}
               fieldStyle={{...TS.INPUT_ROOT, ...S_INPUT_WIDTH}}
               buttonsStyle={S_CARD_BUTTONS}
@@ -86,6 +95,7 @@ const SettingsDialog = memoIsShow(({
          </A.Tab>
          <A.Tab title="UI Theme">
             <CardUiTheme
+              setRefLast={_setFocusLastRef}
               style={S_CARD_ROOT}
               buttonsStyle={S_CARD_BUTTONS}
               TS={_TS}
