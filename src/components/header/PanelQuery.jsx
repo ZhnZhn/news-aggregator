@@ -1,3 +1,4 @@
+import { useRef } from '../uiApi';
 import { HAS_TOUCH_EVENTS } from '../has';
 import useTheme from '../hooks/useTheme';
 import useFocusRefElementIf from '../hooks/useFocusRefElementIf';
@@ -5,6 +6,7 @@ import useFocusRefElementIf from '../hooks/useFocusRefElementIf';
 import styleConfig from '../source-browsers/NewsBrowser.Style';
 
 import ModalPopup from '../zhn-moleculs/ModalPopup';
+import FocusTrap from '../zhn-moleculs/FocusTrap';
 import Menu from './Menu';
 
 const HAS_NOT_TOUCH_EVENTS = !HAS_TOUCH_EVENTS;
@@ -21,7 +23,8 @@ const PanelQuery = ({
   , _refFirstItem = useFocusRefElementIf(
       isShow && HAS_NOT_TOUCH_EVENTS,
       refFocusItem
-  );
+  )
+  , _refLastItem = useRef();
 
   return (
     <ModalPopup
@@ -30,12 +33,18 @@ const PanelQuery = ({
       style={paneStyle}
       onClose={onClose}
     >
-       <Menu
-         refFirstItem={_refFirstItem}
-         menuModel={menuModel}
-         style={TS.OPEN_CLOSE}
-         itemStyle={TS.ITEM}
-       />
+       <FocusTrap
+         refFirst={_refFirstItem}
+         refLast={_refLastItem}
+       >
+         <Menu
+           refFirstItem={_refFirstItem}
+           refLastItem={_refLastItem}
+           menuModel={menuModel}
+           style={TS.OPEN_CLOSE}
+           itemStyle={TS.ITEM}
+         />
+       </FocusTrap>
      </ModalPopup>
   );
 };
