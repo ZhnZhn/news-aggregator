@@ -1,12 +1,10 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var _crStyle = require("../zhn-utils/crStyle");
+exports.default = void 0;
+var _crStyle = require("../crStyle");
 var _jsxRuntime = require("preact/jsx-runtime");
-var S_BADGE = {
+const S_BADGE = {
     display: 'inline-block',
     color: 'grey',
     backgroundColor: '#3f5178',
@@ -16,32 +14,38 @@ var S_BADGE = {
     paddingLeft: 5,
     borderRadius: '30%',
     textAlign: 'center',
-    "float": 'right',
+    float: 'right',
     cursor: 'pointer'
   },
   S_CLOSE = {
     color: 'black'
   };
-var MenuItemBadge = function MenuItemBadge(_ref) {
-  var style = _ref.style,
-    itemBadge = _ref.itemBadge,
-    itemConf = _ref.itemConf,
-    onClick = _ref.onClick;
-  var _hClick = function _hClick(evt) {
+const MenuItemBadge = _ref => {
+  let {
+    style,
+    itemBadge,
+    itemConf,
+    onClick
+  } = _ref;
+  const _hClick = evt => {
       evt.stopPropagation();
       onClick(itemConf);
     },
-    _ref2 = itemBadge || {},
-    isOpen = _ref2.isOpen,
+    {
+      isOpen
+    } = itemBadge || {},
     _badgeStyle = (0, _crStyle.crStyle2)(S_BADGE, !isOpen && S_CLOSE);
   return (0, _jsxRuntime.jsx)("button", {
     type: "button",
     tabIndex: "-1",
-    style: (0, _extends2["default"])({}, _badgeStyle, style),
+    style: {
+      ..._badgeStyle,
+      ...style
+    },
     onClick: _hClick,
     children: "V"
   });
 };
 var _default = MenuItemBadge;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=MenuItemBadge.js.map

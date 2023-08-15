@@ -1,4 +1,4 @@
-import { crStyle2 } from '../zhn-utils/crStyle';
+import { crStyle2 } from '../crStyle';
 
 const S_BADGE = {
   display: 'inline-block',
