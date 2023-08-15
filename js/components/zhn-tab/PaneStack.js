@@ -4,8 +4,8 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _crStyle = require("../crStyle");
 var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
-var _crStyle = require("../zhn-utils/crStyle");
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_PANES = "panes";
 const _crItemPane = (tab, index, _ref) => {

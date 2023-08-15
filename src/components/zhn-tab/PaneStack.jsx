@@ -1,7 +1,7 @@
 import { cloneElement } from '../uiApi';
+import { crShowHideStyle } from '../crStyle';
 
 import ItemStack from '../zhn-atoms/ItemStack';
-import { crShowHideStyle } from '../zhn-utils/crStyle';
 
 const CL_PANES = "panes";
 

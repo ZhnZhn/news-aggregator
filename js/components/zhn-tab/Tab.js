@@ -1,9 +1,8 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
+var _crStyle = require("../crStyle");
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_TAB = "tab",
   CL_ACTIVE = "active",
@@ -18,7 +17,7 @@ const Tab = _ref => {
   } = _ref;
   return (0, _jsxRuntime.jsx)("button", {
     type: "button",
-    className: (0, _crCn.default)(CL_TAB, [isSelected, CL_ACTIVE]),
+    className: (0, _crStyle.crCn)(CL_TAB, [isSelected, CL_ACTIVE]),
     id: "tab-" + id,
     role: "tab",
     tabIndex: isSelected ? '0' : '-1',
