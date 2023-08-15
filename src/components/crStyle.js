@@ -20,6 +20,7 @@ export const crStyle2 = (
  : style1;
 
 export const S_BLOCK = { display: 'block'}
+export const S_INLINE_BLOCK = { display: 'inline-block'}
 export const S_NONE = { display: 'none' };
 
 export const crShowHideStyle = (
@@ -27,9 +28,12 @@ export const crShowHideStyle = (
 ) => is ? S_BLOCK : S_NONE
 
 const CL_SHOW = "show-popup";
-export const crShowHideTuple = (
+const _fShowHide = (showStyle) => (
   is,
   cl
 ) => is
-  ? [crCn(cl, CL_SHOW), S_BLOCK]
-  : [cl, S_NONE]
+  ? [crCn(cl, CL_SHOW), showStyle]
+  : [cl, S_NONE];
+
+export const crShowHide = _fShowHide(S_BLOCK)
+export const crInlineBlockShowHide = _fShowHide(S_INLINE_BLOCK)

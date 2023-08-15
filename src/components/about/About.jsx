@@ -3,7 +3,7 @@ import { FMP_LONG } from '../../conf/ProviderNames';
 import useBool from '../hooks/useBool';
 import useTheme from '../hooks/useTheme';
 
-import { crShowHideTuple } from '../crStyle';
+import { crShowHide } from '../crStyle';
 import {
   S_APP_TITLE,
   S_SCROLL_DIV,
@@ -111,7 +111,7 @@ const About = ({
   const [
     _className,
     _showHideStyle
-  ] = crShowHideTuple(
+  ] = crShowHide(
     isShow,
     CL_ABOUT_PANE
   );

@@ -9,9 +9,9 @@ var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 var _useRefHotKey = _interopRequireDefault(require("../hotkeys/useRefHotKey"));
 var _toFirstUpperCase = _interopRequireDefault(require("../../utils/toFirstUpperCase"));
-var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
-var _NewsPane = _interopRequireDefault(require("./NewsPane.Style"));
 var _has = require("../has");
+var _crStyle = require("../crStyle");
+var _NewsPane = _interopRequireDefault(require("./NewsPane.Style"));
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 var _crRelatedBars = _interopRequireDefault(require("./crRelatedBars"));
 var _Comp = _interopRequireDefault(require("../Comp"));
@@ -23,7 +23,6 @@ var _hotKeys = require("./hotKeys");
 var _jsxRuntime = require("preact/jsx-runtime");
 const WIDTH_STYLE = (0, _has.initWidthStyle)(),
   CL_NEWS_PANE = "news-pane",
-  CL_SHOW_POPUP = "show-popup",
   CL_MENU_MORE = "popup-menu items__menu-more",
   S_BROWSER_CAPTION = {
     paddingLeft: 30,
@@ -33,12 +32,6 @@ const WIDTH_STYLE = (0, _has.initWidthStyle)(),
     overflow: 'hidden auto',
     height: '92%',
     paddingRight: 10
-  },
-  S_INLINE_BLOCK = {
-    display: 'inline-block'
-  },
-  S_NONE = {
-    display: 'none'
   };
 const _getWidth = style => parseInt(style.width, 10) || _ResizeWidth.RESIZE_INIT_WIDTH;
 const _toStyleWidth = width => width + 'px';
@@ -167,15 +160,14 @@ const NewsPane = _ref2 => {
   (0, _useRefHotKey.default)(_refRootDiv, _hotKeys.HK_PLUS_WIDTH, onPlusWidth);
   (0, _useRefHotKey.default)(_refRootDiv, _hotKeys.HK_MINUS_WIDTH, onMinusWidth);
   const _paneCaption = caption || _crPaneCaption(paneCaption, sortBy),
-    _className = (0, _crCn.default)(CL_NEWS_PANE, [isShow, CL_SHOW_POPUP]),
-    _styleIsShow = isShow ? S_INLINE_BLOCK : S_NONE;
+    [_className, _showHideStyle] = (0, _crStyle.crInlineBlockShowHide)(isShow, CL_NEWS_PANE);
   return (0, _jsxRuntime.jsxs)("div", {
     ref: _refRootDiv,
     className: _className,
     style: {
       ...WIDTH_STYLE,
       ...TS.PANE_ROOT,
-      ..._styleIsShow
+      ..._showHideStyle
     },
     children: [(0, _jsxRuntime.jsx)(_Comp.default.ModalSlider, {
       isShow: isMore,

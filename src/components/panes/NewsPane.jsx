@@ -13,9 +13,9 @@ import useTheme from '../hooks/useTheme';
 import useRefHotKey from '../hotkeys/useRefHotKey';
 import toFirstUpperCase from '../../utils/toFirstUpperCase'
 
-import crCn from '../zhn-utils/crCn';
-import styleConfig from './NewsPane.Style';
 import { initWidthStyle } from '../has';
+import { crInlineBlockShowHide } from '../crStyle';
+import styleConfig from './NewsPane.Style';
 
 import crModelMore from './crModelMore';
 import crRelatedBars from './crRelatedBars';
@@ -38,7 +38,6 @@ import {
 
 const WIDTH_STYLE = initWidthStyle()
 , CL_NEWS_PANE = "news-pane"
-, CL_SHOW_POPUP = "show-popup"
 , CL_MENU_MORE = "popup-menu items__menu-more"
 , S_BROWSER_CAPTION = {
   paddingLeft: 30,
@@ -48,9 +47,7 @@ const WIDTH_STYLE = initWidthStyle()
   overflow: 'hidden auto',
   height: '92%',
   paddingRight: 10
-}
-, S_INLINE_BLOCK = { display: 'inline-block' }
-, S_NONE = { display: 'none' };
+};
 
 const _getWidth = style => parseInt(style.width, 10)
   || RESIZE_INIT_WIDTH;
@@ -227,13 +224,13 @@ const NewsPane = ({
 
   const _paneCaption = caption
     || _crPaneCaption(paneCaption, sortBy)
-  , _className = crCn(
-     CL_NEWS_PANE,
-     [isShow,  CL_SHOW_POPUP]
-   )
-  , _styleIsShow = isShow
-     ? S_INLINE_BLOCK
-     : S_NONE;
+  , [
+    _className,
+    _showHideStyle
+  ] = crInlineBlockShowHide(
+    isShow,
+    CL_NEWS_PANE
+  );
 
   return (
     <div
@@ -242,7 +239,7 @@ const NewsPane = ({
        style={{
          ...WIDTH_STYLE,
          ...TS.PANE_ROOT,
-         ..._styleIsShow
+         ..._showHideStyle
        }}
     >
       <A.ModalSlider

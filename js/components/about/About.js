@@ -51,7 +51,7 @@ const About = _ref2 => {
       _setIs();
     }
   });
-  const [_className, _showHideStyle] = (0, _crStyle.crShowHideTuple)(isShow, CL_ABOUT_PANE);
+  const [_className, _showHideStyle] = (0, _crStyle.crShowHide)(isShow, CL_ABOUT_PANE);
   return (0, _jsxRuntime.jsxs)("div", {
     className: _className,
     style: {
