@@ -1,5 +1,5 @@
 import useTooltip from '../hooks/useTooltip';
-import crCn from '../zhn-utils/crCn';
+import { crCn } from '../crStyle';
 
 const CL_BT = 'bt-circle select-none';
 
