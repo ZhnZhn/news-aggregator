@@ -1,4 +1,4 @@
-import crCn from '../zhn-utils/crCn';
+import { crCn } from '../crStyle';
 
 const CL_WITH_SCROLL = 'with-scroll';
 
