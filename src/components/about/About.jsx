@@ -3,8 +3,7 @@ import { FMP_LONG } from '../../conf/ProviderNames';
 import useBool from '../hooks/useBool';
 import useTheme from '../hooks/useTheme';
 
-import crCn from '../zhn-utils/crCn';
-import { crShowHideStyle } from '../zhn-utils/crStyle';
+import { crShowHideTuple } from '../crStyle';
 import {
   S_APP_TITLE,
   S_SCROLL_DIV,
@@ -35,7 +34,6 @@ import Step from './Step';
 import LogoBar from './LogoBar';
 
 const CL_ABOUT_PANE = "about-pane"
-, CL_SHOW = "show-popup"
 , S_BROWSER_CAPTION = {
   paddingLeft: 12,
   textAlign: 'left'
@@ -110,11 +108,13 @@ const About = ({
     }
   })
 
-  const _className = crCn(
-    CL_ABOUT_PANE,
-    [isShow, CL_SHOW]
-  )
-  , _showHideStyle = crShowHideStyle(isShow);
+  const [
+    _className,
+    _showHideStyle
+  ] = crShowHideTuple(
+    isShow,
+    CL_ABOUT_PANE
+  );
 
   return (
     <div

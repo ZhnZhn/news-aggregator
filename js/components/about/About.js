@@ -6,8 +6,7 @@ exports.default = void 0;
 var _ProviderNames = require("../../conf/ProviderNames");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
-var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
-var _crStyle = require("../zhn-utils/crStyle");
+var _crStyle = require("../crStyle");
 var _About = require("./About.Style");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _Links = require("../links/Links");
@@ -15,7 +14,6 @@ var _Step = _interopRequireDefault(require("./Step"));
 var _LogoBar = _interopRequireDefault(require("./LogoBar"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_ABOUT_PANE = "about-pane",
-  CL_SHOW = "show-popup",
   S_BROWSER_CAPTION = {
     paddingLeft: 12,
     textAlign: 'left'
@@ -53,8 +51,7 @@ const About = _ref2 => {
       _setIs();
     }
   });
-  const _className = (0, _crCn.default)(CL_ABOUT_PANE, [isShow, CL_SHOW]),
-    _showHideStyle = (0, _crStyle.crShowHideStyle)(isShow);
+  const [_className, _showHideStyle] = (0, _crStyle.crShowHideTuple)(isShow, CL_ABOUT_PANE);
   return (0, _jsxRuntime.jsxs)("div", {
     className: _className,
     style: {
