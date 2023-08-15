@@ -1,9 +1,8 @@
-import {
-  useState,
-  useEffect
-} from '../uiApi';
+import { useState } from '../uiApi';
+import { HAS_WIDE_SCREEN } from '../has';
 
 import useBool from '../hooks/useBool';
+import useLoadIf from '../hooks/useLoadIf';
 
 import Comp from '../Comp';
 import MenuPart from './MenuPart';
@@ -13,7 +12,6 @@ const {
   BrowserCaption,
   ModalSlider,
   ScrollPane,
-  SpinnerLoading,
   ItemStack
 } = Comp;
 
@@ -30,15 +28,6 @@ const S_BROWSER = {
   paddingRight: 10,
   overflowY: 'auto'
 }
-, S_SPINNER_LOADING = {
-  position: 'relative',
-  display: 'block',
-  width: 32,
-  height: 32,
-  margin: '0 auto',
-  marginTop: 32,
-  textAlign: 'middle'
-};
 
 const FN_NOOP = () => {};
 /*
@@ -75,54 +64,28 @@ const DynamicMenuBrowser = ({
     isShow,
     setIsShowTrue,
     setIsShowFalse
-  ] = useBool(true)
+  ] = useBool(HAS_WIDE_SCREEN)
   , [
     isMore,
     setIsMoreTrue,
     setIsMoreFalse
   ] = useBool(false)
   , [
-    isLoading,
-    setIsLoading
-  ] = useState(true)
-  , [
-    isLoadingFailed,
-    setIsLoadingFailed
-  ] = useState(false)
-  , [
     menuModel,
     setMenuModel
-  ] = useState();
+  ] = useState()
+  , loadingSpinner = useLoadIf(
+     isShow,
+     url,
+     setMenuModel,
+     onError
+   );
 
   useMsBrowser(msBrowser => {
     if (msBrowser && msBrowser.id === browserId) {
       setIsShowTrue()
     }
   })
-
-  /*eslint-disable react-hooks/exhaustive-deps*/
-  useEffect(()=>{
-    fetch(url)
-      .then(response => {
-          const { status } = response;
-          if (status>=200 && status<400){
-            return response.json();
-          } else {
-            throw ({ status, url });
-          }
-      })
-      .then(json => {
-         setIsLoading(false)
-         setMenuModel(json)
-      })
-      .catch(err => {
-         setIsLoading(false)
-         setIsLoadingFailed(true)
-         onError(err)
-      })
-  }, [])
-  //url, onError
-  /*eslint-enable react-hooks/exhaustive-deps*/
 
   const {
     menu,
@@ -160,8 +123,7 @@ const DynamicMenuBrowser = ({
         onMore={_onMore}
         onClose={setIsShowFalse}
       />
-      { isLoading && <SpinnerLoading style={S_SPINNER_LOADING} />}
-      { isLoadingFailed && <SpinnerLoading style={S_SPINNER_LOADING} isFailed={true} />}
+      {loadingSpinner}
       <ScrollPane
          style={S_SCROLL_PANE}
       >

@@ -4,9 +4,11 @@ const INITIAL_WIDTH = 635
      && 'ontouchstart' in document.documentElement;
 
 export const HAS_TOUCH_EVENTS = _isTouchable()
+export const HAS_WIDE_SCREEN = window
+  && window.innerWidth > 380
 
 export const HAS_KEYBOARD_FOCUS = !HAS_TOUCH_EVENTS
- || (window && window.innerWidth > 380)
+ || HAS_WIDE_SCREEN
 
 const _wideWidth = () => _isInnerWidth()
   ? window.innerWidth > 700

@@ -4,7 +4,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _has = require("../has");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
+var _useLoadIf = _interopRequireDefault(require("../hooks/useLoadIf"));
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _MenuPart = _interopRequireDefault(require("./MenuPart"));
 var _preact = require("preact");
@@ -14,7 +16,6 @@ const {
   BrowserCaption,
   ModalSlider,
   ScrollPane,
-  SpinnerLoading,
   ItemStack
 } = _Comp.default;
 const CL_MENU_MORE = "popup-menu items__menu-more";
@@ -28,15 +29,6 @@ const S_BROWSER = {
     height: '92%',
     paddingRight: 10,
     overflowY: 'auto'
-  },
-  S_SPINNER_LOADING = {
-    position: 'relative',
-    display: 'block',
-    width: 32,
-    height: 32,
-    margin: '0 auto',
-    marginTop: 32,
-    textAlign: 'middle'
   };
 const FN_NOOP = () => {};
 /*
@@ -63,43 +55,15 @@ const DynamicMenuBrowser = _ref => {
     children,
     onClick
   } = _ref;
-  const [isShow, setIsShowTrue, setIsShowFalse] = (0, _useBool.default)(true),
+  const [isShow, setIsShowTrue, setIsShowFalse] = (0, _useBool.default)(_has.HAS_WIDE_SCREEN),
     [isMore, setIsMoreTrue, setIsMoreFalse] = (0, _useBool.default)(false),
-    [isLoading, setIsLoading] = (0, _uiApi.useState)(true),
-    [isLoadingFailed, setIsLoadingFailed] = (0, _uiApi.useState)(false),
-    [menuModel, setMenuModel] = (0, _uiApi.useState)();
+    [menuModel, setMenuModel] = (0, _uiApi.useState)(),
+    loadingSpinner = (0, _useLoadIf.default)(isShow, url, setMenuModel, onError);
   useMsBrowser(msBrowser => {
     if (msBrowser && msBrowser.id === browserId) {
       setIsShowTrue();
     }
   });
-
-  /*eslint-disable react-hooks/exhaustive-deps*/
-  (0, _uiApi.useEffect)(() => {
-    fetch(url).then(response => {
-      const {
-        status
-      } = response;
-      if (status >= 200 && status < 400) {
-        return response.json();
-      } else {
-        throw {
-          status,
-          url
-        };
-      }
-    }).then(json => {
-      setIsLoading(false);
-      setMenuModel(json);
-    }).catch(err => {
-      setIsLoading(false);
-      setIsLoadingFailed(true);
-      onError(err);
-    });
-  }, []);
-  //url, onError
-  /*eslint-enable react-hooks/exhaustive-deps*/
-
   const {
       menu,
       items
@@ -130,12 +94,7 @@ const DynamicMenuBrowser = _ref => {
       caption: caption,
       onMore: _onMore,
       onClose: setIsShowFalse
-    }), isLoading && (0, _jsxRuntime.jsx)(SpinnerLoading, {
-      style: S_SPINNER_LOADING
-    }), isLoadingFailed && (0, _jsxRuntime.jsx)(SpinnerLoading, {
-      style: S_SPINNER_LOADING,
-      isFailed: true
-    }), (0, _jsxRuntime.jsxs)(ScrollPane, {
+    }), loadingSpinner, (0, _jsxRuntime.jsxs)(ScrollPane, {
       style: S_SCROLL_PANE,
       children: [(0, _jsxRuntime.jsx)(ItemStack, {
         items: menu,
