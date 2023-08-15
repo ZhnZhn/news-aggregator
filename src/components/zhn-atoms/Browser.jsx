@@ -1,11 +1,7 @@
 //import PropTypes from 'prop-types'
-import {
-  S_BLOCK,
-  S_NONE
-} from '../zhn-utils/crStyle';
+import { crShowHide } from '../crStyle';
 
-const CL_SHOW = 'show-popup'
-, S_BROWSER = {
+const S_BROWSER = {
   flexShrink: 0,
   zIndex: 20,
   backgroundColor: '#4d4d4d',
@@ -25,9 +21,11 @@ const Browser = ({
   style,
   children
 }) => {
-  const [_cn, _style] = isShow
-    ? [CL_SHOW, S_BLOCK]
-    : [void 0, S_NONE];
+  const [
+    _cn,
+    _style
+  ] = crShowHide(isShow);
+
   return (
      <div
         className={_cn}
