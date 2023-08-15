@@ -1,0 +1,21 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/about/UseLogoById.js"
+ ],
+ "file": "../../../src/components/about/UseLogoById.js",
+ "names": [
+  "PATH_TO_SVG_SPRITE",
+  "UseLogoById",
+  "_ref",
+  "id",
+  "style",
+  "_jsxRuntime",
+  "jsx",
+  "href",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,MAAMA,kBAAkB,GAAG,cAAc;AAEzC,MAAMC,WAAW,GAAGC,IAAA;EAAA,IAAC;IACnBC,EAAE;IACFC;EACF,CAAC,GAAAF,IAAA;EAAA,OACC,IAAAG,WAAA,CAAAC,GAAA;IACGF,KAAK,EAAEA,KAAM;IACbG,IAAI,EAAKP,kBAAkB,SAAIG,EAAE;EAAO,CAC1C,CAAC;AAAA,CACH;AAAC,IAAAK,QAAA,GAEaP,WAAW;AAAAQ,OAAA,CAAAC,OAAA,GAAAF,QAAA"
+}
