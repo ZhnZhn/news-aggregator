@@ -121,3 +121,15 @@ export const getClientY = (
   || _getTouchClientY(evt.targetTouches)
   || _getTouchClientY(evt.changedTouches)
   || 0;
+
+export const toLink = (
+  href,
+  isHttp
+) => {
+  const protocol = (href || '')
+   .split('://')[0];
+  return protocol === 'https'
+     || (isHttp && protocol === 'http')
+   ? href
+   : void 0;
+}

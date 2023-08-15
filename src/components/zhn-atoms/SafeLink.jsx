@@ -1,4 +1,4 @@
-import toLink from '../zhn-utils/toLink';
+import { toLink } from '../uiApi';
 
 const SafeLink = ({
   className,

@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.stopDefaultFor = exports.setRefValue = exports.render = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.getFocusRef = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.cloneElement = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.toLink = exports.stopDefaultFor = exports.setRefValue = exports.render = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.getFocusRef = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.cloneElement = void 0;
 var _compat = require("preact/compat");
 exports.memo = _compat.memo;
 exports.forwardRef = _compat.forwardRef;
@@ -66,4 +66,9 @@ const getClientX = evt => evt.clientX || _getTouchClientX(evt.targetTouches) || 
 exports.getClientX = getClientX;
 const getClientY = evt => evt.clientY || _getTouchClientY(evt.targetTouches) || _getTouchClientY(evt.changedTouches) || 0;
 exports.getClientY = getClientY;
+const toLink = (href, isHttp) => {
+  const protocol = (href || '').split('://')[0];
+  return protocol === 'https' || isHttp && protocol === 'http' ? href : void 0;
+};
+exports.toLink = toLink;
 //# sourceMappingURL=uiApi.js.map

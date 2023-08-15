@@ -2,89 +2,90 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _useRefSet2 = _interopRequireDefault(require("../hooks/useRefSet"));
 var _dt = require("../../utils/dt");
-var _toLink = _interopRequireDefault(require("../zhn-utils/toLink"));
+var _useRefSet = _interopRequireDefault(require("../hooks/useRefSet"));
 var _useItemGestureSwipeX = _interopRequireDefault(require("./useItemGestureSwipeX"));
-var _useItemType2 = _interopRequireDefault(require("./useItemType1"));
+var _useItemType = _interopRequireDefault(require("./useItemType1"));
 var _GestureSwipeX = _interopRequireDefault(require("../zhn-gesture/GestureSwipeX"));
 var _ItemType = _interopRequireDefault(require("./ItemType1"));
 var _ArticleDescr = _interopRequireDefault(require("./ArticleDescr"));
 var _Item = require("./Item.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
-var FN_NOOP = function FN_NOOP() {};
-var Article = (0, _uiApi.forwardRef)(function (_ref, ref) {
-  var item = _ref.item,
-    onCloseItem = _ref.onCloseItem,
-    _ref$onRemoveUnder = _ref.onRemoveUnder,
-    onRemoveUnder = _ref$onRemoveUnder === void 0 ? FN_NOOP : _ref$onRemoveUnder,
-    _ref$onRemoveItem = _ref.onRemoveItem,
-    onRemoveItem = _ref$onRemoveItem === void 0 ? FN_NOOP : _ref$onRemoveItem;
-  var _refArticle = (0, _uiApi.useRef)(null),
-    _useRefSet = (0, _useRefSet2["default"])(null),
-    refTimeStamp = _useRefSet[0],
-    setTimeStamp = _useRefSet[1],
-    _useState = (0, _uiApi.useState)(false),
-    isClosed = _useState[0],
-    setIsClosed = _useState[1],
-    _hClose = (0, _uiApi.useMemo)(function () {
-      return function () {
-        (0, _uiApi.focusRefNextSiblingFirstChildElement)(_refArticle);
-        onCloseItem(item);
-        setIsClosed(true);
-      };
-    }, []),
-    _onGestureSwipeX = (0, _useItemGestureSwipeX["default"])(item, onRemoveUnder, _hClose),
-    _useItemType = (0, _useItemType2["default"])(ref),
-    isShowDescr = _useItemType[0],
-    hToggle = _useItemType[1],
-    hHide = _useItemType[2],
-    _hToggle = (0, _uiApi.useMemo)(function () {
-      return function (evt) {
-        var _ref2 = evt || {},
-          timeStamp = _ref2.timeStamp,
-          _timeStamp = (0, _uiApi.getRefValue)(refTimeStamp);
-        if (timeStamp && _timeStamp && timeStamp - _timeStamp < 200) {
-          return;
-        }
-        setTimeStamp(timeStamp);
-        hToggle();
-      };
-    }, []),
-    _hItemKeyDown = (0, _uiApi.useMemo)(function () {
-      return function (evt) {
-        var keyCode = evt.keyCode;
-        if (keyCode === 27) {
-          hHide();
-        } else if (keyCode === 46) {
-          _hClose();
-        }
-      };
-    }, []);
+const FN_NOOP = () => {};
+const Article = (0, _uiApi.forwardRef)((_ref, ref) => {
+  let {
+    item,
+    onCloseItem,
+    onRemoveUnder = FN_NOOP,
+    onRemoveItem = FN_NOOP
+  } = _ref;
+  const _refArticle = (0, _uiApi.useRef)(null),
+    [refTimeStamp, setTimeStamp] = (0, _useRefSet.default)(null),
+    [isClosed, setIsClosed] = (0, _uiApi.useState)(false)
 
+    /*eslint-disable react-hooks/exhaustive-deps */,
+    _hClose = (0, _uiApi.useMemo)(() => () => {
+      (0, _uiApi.focusRefNextSiblingFirstChildElement)(_refArticle);
+      onCloseItem(item);
+      setIsClosed(true);
+    }, [])
+    //item, onCloseItem
+    /*eslint-enable react-hooks/exhaustive-deps */,
+    _onGestureSwipeX = (0, _useItemGestureSwipeX.default)(item, onRemoveUnder, _hClose),
+    [isShowDescr, hToggle, hHide] = (0, _useItemType.default)(ref)
+
+    /*eslint-disable react-hooks/exhaustive-deps */,
+    _hToggle = (0, _uiApi.useMemo)(() => evt => {
+      const {
+          timeStamp
+        } = evt || {},
+        _timeStamp = (0, _uiApi.getRefValue)(refTimeStamp);
+      if (timeStamp && _timeStamp && timeStamp - _timeStamp < 200) {
+        return;
+      }
+      setTimeStamp(timeStamp);
+      hToggle();
+    }, [])
+    // refTimeStamp, setTimeStamp, hToggle
+    ,
+    _hItemKeyDown = (0, _uiApi.useMemo)(() => evt => {
+      const {
+        keyCode
+      } = evt;
+      if (keyCode === 27) {
+        hHide();
+      } else if (keyCode === 46) {
+        _hClose();
+      }
+    }, []);
   // hHide, _hClose
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  var title = item.title,
-    author = item.author,
-    timeAgo = item.timeAgo,
-    publishedDate = item.publishedDate,
-    publishedAt = item.publishedAt,
-    url = item.url,
-    related = item.related,
+  const {
+      title,
+      author,
+      timeAgo,
+      publishedDate,
+      publishedAt,
+      url,
+      related
+      //, urlToImage
+    } = item,
     description = item.description || 'More...',
     _style = isClosed ? _Item.S_NONE : void 0,
     _publishedAt = publishedDate || (0, _dt.toTimeDate)(publishedAt),
-    _href = (0, _toLink["default"])(url);
-  return url && !_href ? null : (0, _jsxRuntime.jsx)(_GestureSwipeX["default"], {
+    _href = (0, _uiApi.toLink)(url);
+  return url && !_href ? null : (0, _jsxRuntime.jsx)(_GestureSwipeX.default, {
     ref: _refArticle,
-    style: (0, _extends2["default"])({}, _Item.S_ITEM, _style),
+    style: {
+      ..._Item.S_ITEM,
+      ..._style
+    },
     setTimeStamp: setTimeStamp,
     onGesture: _onGestureSwipeX,
-    children: (0, _jsxRuntime.jsx)(_ItemType["default"], {
+    children: (0, _jsxRuntime.jsx)(_ItemType.default, {
       ref: ref,
       isShowDescr: isShowDescr,
       title: title,
@@ -92,7 +93,7 @@ var Article = (0, _uiApi.forwardRef)(function (_ref, ref) {
       onClick: _hToggle,
       onToggle: hToggle,
       onClose: _hClose,
-      children: (0, _jsxRuntime.jsx)(_ArticleDescr["default"], {
+      children: (0, _jsxRuntime.jsx)(_ArticleDescr.default, {
         href: _href,
         description: description,
         related: related,
@@ -106,5 +107,5 @@ var Article = (0, _uiApi.forwardRef)(function (_ref, ref) {
   });
 });
 var _default = Article;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=Article.js.map
