@@ -4,7 +4,7 @@ import {
   useEffect
 } from '../uiApi';
 
-import { crStyle2 } from '../zhn-utils/crStyle';
+import { crStyle2 } from '../crStyle';
 import useItemType1 from './useItemType1';
 
 import ItemType1 from './ItemType1';
