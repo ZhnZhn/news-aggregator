@@ -1,5 +1,9 @@
-import crCn from '../zhn-utils/crCn';
-import { crShowHideStyle } from '../zhn-utils/crStyle';
+import {
+  CL_SHOW_POPUP,
+  crCn,
+  crShowHideStyle
+} from '../crStyle';
+
 import useModalFocus from '../hooks/useModalFocus';
 import useKeyEscape from '../hooks/useKeyEscape';
 
@@ -7,7 +11,7 @@ import FocusTrap from './FocusTrap';
 import BrowserCaption from '../zhn-atoms/BrowserCaption';
 import RaisedButton from '../zhn-bt/RaisedButton';
 
-const CL_SHOWING = 'dialog show-popup'
+const CL_SHOWING = `dialog ${CL_SHOW_POPUP}`
 , S_ROOT_DIV = {
   position: 'absolute',
   top: '20%',

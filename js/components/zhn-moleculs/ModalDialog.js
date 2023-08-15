@@ -3,15 +3,14 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _crCn = _interopRequireDefault(require("../zhn-utils/crCn"));
-var _crStyle = require("../zhn-utils/crStyle");
+var _crStyle = require("../crStyle");
 var _useModalFocus = _interopRequireDefault(require("../hooks/useModalFocus"));
 var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
 var _FocusTrap = _interopRequireDefault(require("./FocusTrap"));
 var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
 var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_SHOWING = 'dialog show-popup',
+const CL_SHOWING = "dialog " + _crStyle.CL_SHOW_POPUP,
   S_ROOT_DIV = {
     position: 'absolute',
     top: '20%',
@@ -48,7 +47,7 @@ const ModalDialog = _ref => {
   } = _ref;
   const _refRootDiv = (0, _useModalFocus.default)(isShow),
     _hKeyDown = (0, _useKeyEscape.default)(onClose),
-    _className = (0, _crCn.default)([isShow, CL_SHOWING]),
+    _className = (0, _crStyle.crCn)([isShow, CL_SHOWING]),
     _showHideStyle = (0, _crStyle.crShowHideStyle)(isShow);
   return (0, _jsxRuntime.jsx)(_FocusTrap.default, {
     refEl: _refRootDiv,
