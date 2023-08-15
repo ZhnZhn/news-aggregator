@@ -1,8 +1,9 @@
 import {
   useState,
-  useMemo,
   useEffect
 } from '../uiApi';
+
+import useBool from '../hooks/useBool';
 
 import Comp from '../Comp';
 import MenuPart from './MenuPart';
@@ -72,12 +73,14 @@ const DynamicMenuBrowser = ({
 }) => {
   const [
     isShow,
-    setIsShow
-  ] = useState(true)
+    setIsShowTrue,
+    setIsShowFalse
+  ] = useBool(true)
   , [
     isMore,
-    setIsMore
-  ] = useState(false)
+    setIsMoreTrue,
+    setIsMoreFalse
+  ] = useBool(false)
   , [
     isLoading,
     setIsLoading
@@ -89,20 +92,11 @@ const DynamicMenuBrowser = ({
   , [
     menuModel,
     setMenuModel
-  ] = useState()
-  , [
-    _hHide,
-    _hShowMore,
-    _hCloseMore
-  ] = useMemo(() => [
-    () => setIsShow(false),
-    () => setIsMore(true),
-    () => setIsMore(false)
-  ], []);
+  ] = useState();
 
   useMsBrowser(msBrowser => {
     if (msBrowser && msBrowser.id === browserId) {
-      setIsShow(true)
+      setIsShowTrue()
     }
   })
 
@@ -135,7 +129,7 @@ const DynamicMenuBrowser = ({
     items
   } = menuModel || {}
   , _onMore = menuMore
-     ? _hShowMore
+     ? setIsMoreTrue
      : void 0
   , TS = styleConfig
   , _styleBrowserCaption = {
@@ -153,7 +147,7 @@ const DynamicMenuBrowser = ({
           className={CL_MENU_MORE}
           style={TS.EL_BORDER}
           model={menuMore}
-          onClose={_hCloseMore}
+          onClose={setIsMoreFalse}
         />
       }
       <BrowserCaption
@@ -164,7 +158,7 @@ const DynamicMenuBrowser = ({
         }}
         caption={caption}
         onMore={_onMore}
-        onClose={_hHide}
+        onClose={setIsShowFalse}
       />
       { isLoading && <SpinnerLoading style={S_SPINNER_LOADING} />}
       { isLoadingFailed && <SpinnerLoading style={S_SPINNER_LOADING} isFailed={true} />}

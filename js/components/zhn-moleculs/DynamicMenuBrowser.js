@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _MenuPart = _interopRequireDefault(require("./MenuPart"));
 var _preact = require("preact");
@@ -55,22 +56,21 @@ const DynamicMenuBrowser = _ref => {
     styleConfig,
     caption,
     menuMore,
-    id,
+    browserId,
     useMsBrowser,
     url,
     onError = FN_NOOP,
     children,
     onClick
   } = _ref;
-  const [isShow, setIsShow] = (0, _uiApi.useState)(true),
-    [isMore, setIsMore] = (0, _uiApi.useState)(false),
+  const [isShow, setIsShowTrue, setIsShowFalse] = (0, _useBool.default)(true),
+    [isMore, setIsMoreTrue, setIsMoreFalse] = (0, _useBool.default)(false),
     [isLoading, setIsLoading] = (0, _uiApi.useState)(true),
     [isLoadingFailed, setIsLoadingFailed] = (0, _uiApi.useState)(false),
-    [menuModel, setMenuModel] = (0, _uiApi.useState)(),
-    [_hHide, _hShowMore, _hCloseMore] = (0, _uiApi.useMemo)(() => [() => setIsShow(false), () => setIsMore(true), () => setIsMore(false)], []);
+    [menuModel, setMenuModel] = (0, _uiApi.useState)();
   useMsBrowser(msBrowser => {
-    if (msBrowser && msBrowser.id === id) {
-      setIsShow(true);
+    if (msBrowser && msBrowser.id === browserId) {
+      setIsShowTrue();
     }
   });
 
@@ -104,7 +104,7 @@ const DynamicMenuBrowser = _ref => {
       menu,
       items
     } = menuModel || {},
-    _onMore = menuMore ? _hShowMore : void 0,
+    _onMore = menuMore ? setIsMoreTrue : void 0,
     TS = styleConfig,
     _styleBrowserCaption = {
       paddingLeft: menuMore ? 30 : 10
@@ -120,7 +120,7 @@ const DynamicMenuBrowser = _ref => {
       className: CL_MENU_MORE,
       style: TS.EL_BORDER,
       model: menuMore,
-      onClose: _hCloseMore
+      onClose: setIsMoreFalse
     }), (0, _jsxRuntime.jsx)(BrowserCaption, {
       style: {
         ...S_BROWSER_CAPTION,
@@ -129,7 +129,7 @@ const DynamicMenuBrowser = _ref => {
       },
       caption: caption,
       onMore: _onMore,
-      onClose: _hHide
+      onClose: setIsShowFalse
     }), isLoading && (0, _jsxRuntime.jsx)(SpinnerLoading, {
       style: S_SPINNER_LOADING
     }), isLoadingFailed && (0, _jsxRuntime.jsx)(SpinnerLoading, {
@@ -141,7 +141,7 @@ const DynamicMenuBrowser = _ref => {
         items: menu,
         crItem: _crItemMenuPart,
         styleConfig: styleConfig,
-        browserId: id,
+        browserId: browserId,
         hmItems: items,
         onClick: onClick
       }), children]
