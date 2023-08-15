@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _crStyle = require("../zhn-utils/crStyle");
+var _crStyle = require("../crStyle");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useXYMovable = _interopRequireDefault(require("../hooks/useXYMovable"));
 var _useRefHotKey = _interopRequireDefault(require("../hotkeys/useRefHotKey"));
@@ -15,7 +15,6 @@ var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types'
 
 const CL_DIALOG = 'dialog',
-  CL_DIALOG_OPEN = CL_DIALOG + " show-popup",
   CL_MODAL_TOGGLE = 'popup-menu menu-more__item select-none',
   S_DIV = {
     position: 'absolute',
@@ -125,18 +124,18 @@ const DraggableDialog = (0, _uiApi.forwardRef)((_ref2, ref) => {
   (0, _useRefHotKey.default)(_refDialog, HK_LOAD, onLoad);
   (0, _useRefHotKey.default)(_refDialog, HK_SHOW, onShow);
   (0, _useRefHotKey.default)(_refDialog, HK_CLOSE, _hClose);
-  const [_styleShow, _classShow] = isShow ? [_crStyle.S_BLOCK, CL_DIALOG_OPEN] : [_crStyle.S_NONE, CL_DIALOG],
+  const [_className, _showHideStyle] = (0, _crStyle.crShowHide)(isShow, CL_DIALOG),
     _onMore = menuToggle ? toggleIsMore : void 0;
   return (/*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
     /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
     (0, _jsxRuntime.jsxs)("div", {
       ref: _refDialog,
       role: "dialog",
-      className: _classShow,
+      className: _className,
       style: {
         ...S_DIV,
         ...style,
-        ..._styleShow
+        ..._showHideStyle
       },
       tabIndex: "0",
       onKeyDown: _hKeyDown,

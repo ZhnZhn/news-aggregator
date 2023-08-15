@@ -11,9 +11,8 @@ import {
 } from '../uiApi';
 
 import {
-  S_BLOCK,
-  S_NONE
-} from '../zhn-utils/crStyle';
+  crShowHide
+} from '../crStyle';
 
 import useToggle from '../hooks/useToggle';
 import useXYMovable from '../hooks/useXYMovable';
@@ -24,7 +23,6 @@ import BrowserCaption from '../zhn-atoms/BrowserCaption';
 import RaisedButton from '../zhn-bt/RaisedButton';
 
 const CL_DIALOG = 'dialog'
-, CL_DIALOG_OPEN = `${CL_DIALOG} show-popup`
 , CL_MODAL_TOGGLE = 'popup-menu menu-more__item select-none'
 
 , S_DIV = {
@@ -154,16 +152,17 @@ const DraggableDialog = forwardRef(({
   useRefHotKey(_refDialog, HK_SHOW, onShow)
   useRefHotKey(_refDialog, HK_CLOSE, _hClose)
 
+
   const [
-    _styleShow,
-    _classShow
-  ] = isShow
-    ? [S_BLOCK, CL_DIALOG_OPEN]
-    : [S_NONE, CL_DIALOG]
+    _className,
+    _showHideStyle
+  ] = crShowHide(
+    isShow,
+    CL_DIALOG
+  )
   , _onMore = menuToggle
       ? toggleIsMore
       : void 0;
-
 
   return (
     /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
@@ -171,11 +170,11 @@ const DraggableDialog = forwardRef(({
     <div
        ref={_refDialog}
        role="dialog"
-       className={_classShow}
+       className={_className}
        style={{
         ...S_DIV,
         ...style,
-        ..._styleShow
+        ..._showHideStyle
        }}
        tabIndex="0"
        onKeyDown={_hKeyDown}
