@@ -4,7 +4,7 @@ import {
   useCallback,
   useMemo,
   getRefElementStyle,
-  focusRefElement
+  focusAsyncRefElement
 } from '../uiApi';
 
 import useToggle from '../hooks/useToggle';
@@ -52,12 +52,6 @@ const WIDTH_STYLE = initWidthStyle()
 const _getWidth = style => parseInt(style.width, 10)
   || RESIZE_INIT_WIDTH;
 const _toStyleWidth = width => width + 'px';
-
-const _focusFirstItem = ref => {
-  setTimeout(() => {
-    focusRefElement(ref)
-  }, 1000)
-};
 
 const _crPaneCaption = (
   caption,
@@ -208,7 +202,7 @@ const NewsPane = ({
           page: msItem.page,
           isRelatedBars: msItem.isRelatedBars
         })
-        _focusFirstItem(_refFirstItem)
+        focusAsyncRefElement(_refFirstItem)
       } else if (msItem.isUpdate === true) {
         setState(prevState => ({
           ...prevState,

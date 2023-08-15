@@ -35,11 +35,6 @@ const WIDTH_STYLE = (0, _has.initWidthStyle)(),
   };
 const _getWidth = style => parseInt(style.width, 10) || _ResizeWidth.RESIZE_INIT_WIDTH;
 const _toStyleWidth = width => width + 'px';
-const _focusFirstItem = ref => {
-  setTimeout(() => {
-    (0, _uiApi.focusRefElement)(ref);
-  }, 1000);
-};
 const _crPaneCaption = (caption, sortBy) => [caption, sortBy].filter(Boolean).map(_toFirstUpperCase.default).join(': ');
 const _crArticleItem = (article, index, _ref) => {
   let {
@@ -147,7 +142,7 @@ const NewsPane = _ref2 => {
           page: msItem.page,
           isRelatedBars: msItem.isRelatedBars
         });
-        _focusFirstItem(_refFirstItem);
+        (0, _uiApi.focusAsyncRefElement)(_refFirstItem);
       } else if (msItem.isUpdate === true) {
         setState(prevState => ({
           ...prevState,
