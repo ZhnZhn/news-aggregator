@@ -1,9 +1,10 @@
-import crCn from '../zhn-utils/crCn';
-import { crStyle2 } from '../zhn-utils/crStyle';
-
-const CL_SHOW_POPUP = 'show-popup'
-, S_SHOW = { display : 'block' }
-, S_HIDE = { display : 'none' };
+import {
+  CL_SHOW_POPUP,
+  S_BLOCK,
+  S_NONE,
+  crCn,
+  crStyle2
+} from '../crStyle';
 
 const ShowHide = ({
   isShow,
@@ -16,7 +17,7 @@ const ShowHide = ({
 }) => (
   <div
     className={crCn(className, [isShow && !withoutAnimation, CL_SHOW_POPUP])}
-    style={crStyle2(style, isShow ? S_SHOW : S_HIDE)}
+    style={crStyle2(style, isShow ? S_BLOCK : S_NONE)}
     data-scrollable={isScrollable ? "true" : void 0}
     {...restProps}
   >
