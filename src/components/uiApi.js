@@ -16,9 +16,12 @@ export {
   useImperativeHandle
 } from 'preact/compat';
 
-const _isFn = fn => typeof fn === 'function'
+const _isFn = fn => typeof fn === 'function';
 
-export const getRefValue = ref => (ref || {}).current
+export const getRefValue = (
+  ref
+) => (ref || {}).current
+
 export const setRefValue = (
   ref,
   value
@@ -28,13 +31,17 @@ export const setRefValue = (
   }
 }
 
-const _focusHtmlElement = (element) => {
+const _focusHtmlElement = (
+  element
+) => {
   if (element && _isFn(element.focus)) {
     element.focus()
   }
 }
 
-export const focusElementById = (id) => {
+export const focusElementById = (
+  id
+) => {
   _focusHtmlElement(
     document.getElementById(id)
   )
@@ -91,36 +98,32 @@ export const getRefElementStyle = (
 ) => (getRefValue(ref) || {}).style
 
 
-export const stopDefaultFor = (evt) => {
+export const stopDefaultFor = (
+  evt
+) => {
   evt.stopPropagation()
   evt.preventDefault()
 }
 
 const _getFirstTouches = (
   touches
-) => (touches && touches[0]) || {};
-
-const _getTouchClientX = (
+) => (touches && touches[0]) || {}
+, CLIENT_X = 'clientX'
+, CLIENT_Y = 'clientY'
+, _fGetTouch = (propName) => (
   touches
-) => _getFirstTouches(touches).clientX;
-
-const _getTouchClientY = (
-  touches
-) => _getFirstTouches(touches).clientY;
-
-export const getClientX = (
+) => _getFirstTouches(touches)[propName]
+, _getTouchClientX = _fGetTouch(CLIENT_X)
+, _getTouchClientY = _fGetTouch(CLIENT_Y)
+, _fGetEvt = (propName, getTouch) => (
   evt
-) => evt.clientX
-  || _getTouchClientX(evt.targetTouches)
-  || _getTouchClientX(evt.changedTouches)
+) => evt[propName]
+  || getTouch(evt.targetTouches)
+  || getTouch(evt.changedTouches)
   || 0;
 
-export const getClientY = (
-  evt
-) => evt.clientY
-  || _getTouchClientY(evt.targetTouches)
-  || _getTouchClientY(evt.changedTouches)
-  || 0;
+export const getClientX = _fGetEvt(CLIENT_X, _getTouchClientX)
+export const getClientY = _fGetEvt(CLIENT_Y, _getTouchClientY)
 
 export const toLink = (
   href,
