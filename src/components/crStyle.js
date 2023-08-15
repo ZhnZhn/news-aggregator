@@ -27,12 +27,12 @@ export const crShowHideStyle = (
   is
 ) => is ? S_BLOCK : S_NONE
 
-const CL_SHOW = "show-popup";
+export const CL_SHOW_POPUP = "show-popup"
 const _fShowHide = (showStyle) => (
   is,
   cl
 ) => is
-  ? [crCn(cl, CL_SHOW), showStyle]
+  ? [crCn(cl, CL_SHOW_POPUP), showStyle]
   : [cl, S_NONE];
 
 export const crShowHide = _fShowHide(S_BLOCK)

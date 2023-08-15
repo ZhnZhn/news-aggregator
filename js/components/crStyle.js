@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.crStyle2 = exports.crShowHideStyle = exports.crShowHide = exports.crInlineBlockShowHide = exports.crCn = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_BLOCK = void 0;
+exports.crStyle2 = exports.crShowHideStyle = exports.crShowHide = exports.crInlineBlockShowHide = exports.crCn = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_BLOCK = exports.CL_SHOW_POPUP = void 0;
 const _isArr = Array.isArray;
 const _getCn = arrOrStr => _isArr(arrOrStr) ? arrOrStr[0] ? arrOrStr[1] : '' : arrOrStr || '';
 const crCn = (conf1, conf2) => {
@@ -29,8 +29,9 @@ const S_NONE = {
 exports.S_NONE = S_NONE;
 const crShowHideStyle = is => is ? S_BLOCK : S_NONE;
 exports.crShowHideStyle = crShowHideStyle;
-const CL_SHOW = "show-popup";
-const _fShowHide = showStyle => (is, cl) => is ? [crCn(cl, CL_SHOW), showStyle] : [cl, S_NONE];
+const CL_SHOW_POPUP = "show-popup";
+exports.CL_SHOW_POPUP = CL_SHOW_POPUP;
+const _fShowHide = showStyle => (is, cl) => is ? [crCn(cl, CL_SHOW_POPUP), showStyle] : [cl, S_NONE];
 const crShowHide = _fShowHide(S_BLOCK);
 exports.crShowHide = crShowHide;
 const crInlineBlockShowHide = _fShowHide(S_INLINE_BLOCK);

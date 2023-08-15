@@ -1,14 +1,13 @@
 import {
   S_BLOCK,
-  S_NONE
-} from '../zhn-utils/crStyle';
+  S_NONE,
+  CL_SHOW_POPUP
+} from '../crStyle';
 
 import useToggle from '../hooks/useToggle';
 import useKeyEnter from '../hooks/useKeyEnter';
 
 const CL_CAPTION = 'open-close select-none'
-, CL_SHOW_POPUP = 'show-popup'
-
 , S_ROOT = {
   backgroundColor: '#4d4d4d',
   lineHeight: 2.5

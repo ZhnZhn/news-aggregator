@@ -3,12 +3,11 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _crStyle = require("../zhn-utils/crStyle");
+var _crStyle = require("../crStyle");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_CAPTION = 'open-close select-none',
-  CL_SHOW_POPUP = 'show-popup',
   S_ROOT = {
     backgroundColor: '#4d4d4d',
     lineHeight: 2.5
@@ -42,7 +41,7 @@ const OpenClose = _ref => {
   } = _ref;
   const [isOpen, toggleIsOpen] = (0, _useToggle.default)(!isClose),
     _hKeyDown = (0, _useKeyEnter.default)(toggleIsOpen),
-    [_pathV, _fillV, _styleCollapse, _classShow, _itemStyle] = isOpen ? [PATH_OPEN, fillOpen, _crStyle.S_BLOCK, CL_SHOW_POPUP] : [PATH_CLOSE, fillClose, _crStyle.S_NONE, null, itemStyle];
+    [_pathV, _fillV, _styleCollapse, _classShow, _itemStyle] = isOpen ? [PATH_OPEN, fillOpen, _crStyle.S_BLOCK, _crStyle.CL_SHOW_POPUP] : [PATH_CLOSE, fillClose, _crStyle.S_NONE, null, itemStyle];
   return (0, _jsxRuntime.jsxs)("div", {
     style: {
       ...S_ROOT,
