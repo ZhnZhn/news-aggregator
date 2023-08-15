@@ -1,7 +1,7 @@
 .logo__github {
   display: inline-block;
-  width: 70px;
-  height: 70px;
+  width: 72px;
+  height: 72px;
   background-color: black;
   border: 4px solid #232f3b;
   border-radius: 50%;
@@ -16,15 +16,12 @@
   stroke-width: 1;
 }
 
-.logo__preact {
-  position: relative;
-  top: 4px;
+.logo__preact {  
   display: inline-block;
-  width: 74px;
-  height: 74px;
+  width: 72px;
+  height: 72px;
   border: 4px solid #232f3b;
   border-radius: 50%;
-  padding: 6px;
   margin-left: 32px;
   transition: border-color, border-width, stroke, stroke-width, fill 200ms ease-out;
   fill: #00d8ff;
