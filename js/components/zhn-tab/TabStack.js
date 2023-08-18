@@ -52,9 +52,11 @@ const TabStack = _ref2 => {
         keyCode
       } = evt;
       if (keyCode === 39) {
+        (0, _uiApi.stopDefaultFor)(evt);
         _focusTabByIndex(index + 1);
       }
       if (keyCode === 37) {
+        (0, _uiApi.stopDefaultFor)(evt);
         _focusTabByIndex(index - 1);
       }
     }, [_childrenLength]);

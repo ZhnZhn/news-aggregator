@@ -3,7 +3,8 @@ import { bindTo } from '../../utils/bindTo';
 import {
   cloneElement,
   useCallback,
-  focusElementById
+  focusElementById,
+  stopDefaultFor
 } from '../uiApi';
 
 import ItemStack from '../zhn-atoms/ItemStack';
@@ -61,9 +62,11 @@ const TabStack = ({
 
     const { keyCode } = evt;
     if (keyCode === 39) {
+      stopDefaultFor(evt)
       _focusTabByIndex(index + 1)
     }
     if (keyCode === 37) {
+      stopDefaultFor(evt)      
       _focusTabByIndex(index - 1)
     }
   }, [_childrenLength]);
