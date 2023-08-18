@@ -27,7 +27,7 @@
   "dependencies": {
     "@babel/runtime": "^7.22.10",
     "dompurify": "^3.0.5",
-    "preact": "^10.16.0",
+    "preact": "^10.17.0",
     "timeago.js": "^4.0.2",
     "zustand": "^4.4.1"
   },
