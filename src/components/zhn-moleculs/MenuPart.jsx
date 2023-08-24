@@ -1,10 +1,9 @@
 //import PropTypes from 'prop-types'
+import { bindTo } from '../uiApi';
 import { crCn } from '../crStyle';
-import { CL_SELECT_NONE } from '../styles/CL';
 
 import OpenClose from '../zhn-atoms/OpenClose';
-
-const _assign = Object.assign;
+import { CL_SELECT_NONE } from '../styles/CL';
 
 const _fOnKeyDownEnter = (
   onClick
@@ -19,28 +18,28 @@ const _renderMenuItems = (
   option
 ) => {
   const {
-    items=[],
-    hmItems={},
+    items,
+    hmItems,
     onClick,
     ...restItemProps
   } = option;
-  return items.map((item, index) => {
+  return (items || []).map((item, index) => {
     const _className = crCn(TS.CL_ROW, CL_SELECT_NONE)
-    , _itemConf = _assign(
-      hmItems[item.id],
-      restItemProps
-    )
+    , _itemConf = {
+      ...(hmItems || {})[item.id],
+      ...restItemProps
+    }
     , { menuTitle } = _itemConf
-    , _onClick = onClick.bind(null, _itemConf);
+    , _onClick = bindTo(onClick, _itemConf);
 
     return (
        <div
-           role="menuitem"
-           tabIndex="0"
-           key={index}
-           className={_className}
-           onClick={_onClick}
-           onKeyDown={_fOnKeyDownEnter(_onClick)}
+          role="menuitem"
+          tabIndex="0"
+          key={index}
+          className={_className}
+          onClick={_onClick}
+          onKeyDown={_fOnKeyDownEnter(_onClick)}
         >
           {menuTitle}
        </div>

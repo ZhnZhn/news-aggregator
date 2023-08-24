@@ -3,13 +3,13 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _uiApi = require("../uiApi");
 var _crStyle = require("../crStyle");
-var _CL = require("../styles/CL");
 var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose"));
+var _CL = require("../styles/CL");
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types'
 
-const _assign = Object.assign;
 const _fOnKeyDownEnter = onClick => evt => {
   if (evt.keyCode === 13) {
     onClick();
@@ -17,18 +17,21 @@ const _fOnKeyDownEnter = onClick => evt => {
 };
 const _renderMenuItems = (TS, option) => {
   const {
-    items = [],
-    hmItems = {},
+    items,
+    hmItems,
     onClick,
     ...restItemProps
   } = option;
-  return items.map((item, index) => {
+  return (items || []).map((item, index) => {
     const _className = (0, _crStyle.crCn)(TS.CL_ROW, _CL.CL_SELECT_NONE),
-      _itemConf = _assign(hmItems[item.id], restItemProps),
+      _itemConf = {
+        ...(hmItems || {})[item.id],
+        ...restItemProps
+      },
       {
         menuTitle
       } = _itemConf,
-      _onClick = onClick.bind(null, _itemConf);
+      _onClick = (0, _uiApi.bindTo)(onClick, _itemConf);
     return (0, _jsxRuntime.jsx)("div", {
       role: "menuitem",
       tabIndex: "0",
