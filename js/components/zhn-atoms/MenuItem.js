@@ -9,7 +9,9 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const MenuItem = (0, _uiApi.forwardRef)((_ref, ref) => {
   let {
     className,
+    style,
     caption,
+    children,
     onClick
   } = _ref;
   const _hKeyDown = (0, _useKeyEnter.default)(onClick);
@@ -18,9 +20,10 @@ const MenuItem = (0, _uiApi.forwardRef)((_ref, ref) => {
     role: "menuitem",
     tabIndex: "0",
     className: className,
+    style: style,
     onClick: onClick,
     onKeyDown: _hKeyDown,
-    children: caption
+    children: caption || children
   });
 });
 var _default = MenuItem;

@@ -3,7 +3,9 @@ import useKeyEnter from '../hooks/useKeyEnter';
 
 const MenuItem = forwardRef(({
   className,
+  style,
   caption,
+  children,
   onClick
 }, ref) => {
   const _hKeyDown = useKeyEnter(onClick);
@@ -14,10 +16,11 @@ const MenuItem = forwardRef(({
       role="menuitem"
       tabIndex="0"
       className={className}
+      style={style}
       onClick={onClick}
       onKeyDown={_hKeyDown}
     >
-      {caption}
+      {caption || children}
     </div>
   );
 });
