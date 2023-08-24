@@ -3,7 +3,7 @@ import {
   focusAsyncRefElement
 } from '../uiApi';
 
-const useFocusAsyncRefElementIf = (
+const useAsyncFocusIf = (
   is,
   refOrFn,
   mls
@@ -15,4 +15,4 @@ const useFocusAsyncRefElementIf = (
   }, [is, refOrFn, mls])
 }
 
-export default useFocusAsyncRefElementIf
+export default useAsyncFocusIf

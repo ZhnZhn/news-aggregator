@@ -3,9 +3,10 @@ import {
   useCallback
 } from '../uiApi';
 
-import useFocusAsyncRefElementIf from '../hooks/useFocusAsyncRefElementIf';
 import useItemsFocusTrap from '../hooks/useItemsFocusTrap';
 import useGetRefValue2 from '../hooks/useGetRefValue2';
+import useAsyncFocusIf from '../hooks/useAsyncFocusIf';
+
 import FocusTrap from '../zhn-moleculs/FocusTrap';
 
 import MenuTitle from './MenuTitle';
@@ -14,14 +15,12 @@ import MenuItemList from './MenuItemList';
 const DF_ITEMS = [];
 
 const MenuPage = ({
-  isShow,
   isVisible,
   items=DF_ITEMS,
   style,
   title,
   titleCl,
   itemCl,
-  pageCurrent,
   pageNumber,
   onClose,
   children,
@@ -44,7 +43,7 @@ const MenuPage = ({
       onPrevPage(pageNumber)
   }, [onPrevPage, pageNumber]);
 
-  useFocusAsyncRefElementIf(
+  useAsyncFocusIf(
     isVisible,
     _getFocusFirstItem
   )
@@ -77,7 +76,7 @@ const MenuPage = ({
 
 /*
 MenuPage.propTypes = {
-  isShow: PropTypes.bool,
+  isVisible: PropTypes.bool,
   title: PropTypes.string,
   pageNumber: PropTypes.number,
   items: PropTypes.arrayOf(
