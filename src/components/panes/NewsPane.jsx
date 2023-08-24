@@ -3,6 +3,7 @@ import {
   useState,
   useCallback,
   useMemo,
+  bindTo,
   getRefElementStyle,
   focusAsyncRefElement
 } from '../uiApi';
@@ -103,8 +104,8 @@ const _crModelMoreHandlers = (
   };
 
   return {
-    onMinWidth: _resizeTo.bind(null, RESIZE_MIN_WIDTH),
-    onInitWidth: _resizeTo.bind(null, RESIZE_INIT_WIDTH),
+    onMinWidth: bindTo(_resizeTo, RESIZE_MIN_WIDTH),
+    onInitWidth: bindTo(_resizeTo, RESIZE_INIT_WIDTH),
     onPlusWidth: _plusToWidth,
     onMinusWidth: _minusToWidth,
     onRemoveItems: onRemoveItems

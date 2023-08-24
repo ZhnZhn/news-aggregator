@@ -69,8 +69,8 @@ const _crModelMoreHandlers = (ref, onRemoveItems) => {
       }
     };
   return {
-    onMinWidth: _resizeTo.bind(null, _ResizeWidth.RESIZE_MIN_WIDTH),
-    onInitWidth: _resizeTo.bind(null, _ResizeWidth.RESIZE_INIT_WIDTH),
+    onMinWidth: (0, _uiApi.bindTo)(_resizeTo, _ResizeWidth.RESIZE_MIN_WIDTH),
+    onInitWidth: (0, _uiApi.bindTo)(_resizeTo, _ResizeWidth.RESIZE_INIT_WIDTH),
     onPlusWidth: _plusToWidth,
     onMinusWidth: _minusToWidth,
     onRemoveItems: onRemoveItems

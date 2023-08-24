@@ -1,4 +1,4 @@
-//import isKeyEnter from '../hooks/isKeyEnter';
+import { bindTo } from '../uiApi';
 
 const _isFn = fn => typeof fn === 'function'
 , _isNaN = Number.isNaN
@@ -34,8 +34,8 @@ class ResizeElementImpl {
     this.delta = 0;
     _initResizeProperties(this)
 
-    this.hStartResizeLeft = this._startResize.bind(null, this._resizeLeft)
-    this.hStartResizeRight = this._startResize.bind(null, this._resizeRight)
+    this.hStartResizeLeft = bindTo(this._startResize, this._resizeLeft)
+    this.hStartResizeRight = bindTo(this._startResize, this._resizeRight)
   }
 
   _increaseDeltaStep = () => {
