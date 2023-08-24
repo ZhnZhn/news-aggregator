@@ -18,7 +18,7 @@ export {
   useImperativeHandle
 } from 'preact/compat';
 
-const _isFn = fn => typeof fn === 'function';
+export const isFn = fn => typeof fn === 'function';
 
 export const getRefValue = (
   ref
@@ -36,7 +36,7 @@ export const setRefValue = (
 const _focusHtmlElement = (
   element
 ) => {
-  if (element && _isFn(element.focus)) {
+  if (element && isFn(element.focus)) {
     element.focus()
   }
 }
@@ -49,18 +49,18 @@ export const focusElementById = (
   )
 }
 
-const _getValueFromRefOfFn = (
-  refOrFn
-) => _isFn(refOrFn)
-  ? refOrFn()
-  : getRefValue(refOrFn);
+const _getValueFromFnOrRef = (
+  fnOrRef
+) => isFn(fnOrRef)
+  ? fnOrRef()
+  : getRefValue(fnOrRef);
 export const focusRefElement = (
-  refOrFn1,
-  refOrFn2
+  fnOrRef1,
+  fnOrRef2
 ) => {
   _focusHtmlElement(
-    _getValueFromRefOfFn(refOrFn1)
-    || _getValueFromRefOfFn(refOrFn2)
+    _getValueFromFnOrRef(fnOrRef1)
+    || _getValueFromFnOrRef(fnOrRef2)
   )
 }
 

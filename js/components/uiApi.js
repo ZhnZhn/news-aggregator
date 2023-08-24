@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.toLink = exports.stopDefaultFor = exports.setRefValue = exports.render = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.cloneElement = exports.bindTo = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.toLink = exports.stopDefaultFor = exports.setRefValue = exports.render = exports.memo = exports.isFn = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.cloneElement = exports.bindTo = void 0;
 var _bindTo = require("../utils/bindTo");
 exports.bindTo = _bindTo.bindTo;
 var _compat = require("preact/compat");
@@ -18,7 +18,8 @@ exports.useCallback = _compat.useCallback;
 exports.useMemo = _compat.useMemo;
 exports.useEffect = _compat.useEffect;
 exports.useImperativeHandle = _compat.useImperativeHandle;
-const _isFn = fn => typeof fn === 'function';
+const isFn = fn => typeof fn === 'function';
+exports.isFn = isFn;
 const getRefValue = ref => (ref || {}).current;
 exports.getRefValue = getRefValue;
 const setRefValue = (ref, value) => {
@@ -28,7 +29,7 @@ const setRefValue = (ref, value) => {
 };
 exports.setRefValue = setRefValue;
 const _focusHtmlElement = element => {
-  if (element && _isFn(element.focus)) {
+  if (element && isFn(element.focus)) {
     element.focus();
   }
 };
@@ -36,9 +37,9 @@ const focusElementById = id => {
   _focusHtmlElement(document.getElementById(id));
 };
 exports.focusElementById = focusElementById;
-const _getValueFromRefOfFn = refOrFn => _isFn(refOrFn) ? refOrFn() : getRefValue(refOrFn);
-const focusRefElement = (refOrFn1, refOrFn2) => {
-  _focusHtmlElement(_getValueFromRefOfFn(refOrFn1) || _getValueFromRefOfFn(refOrFn2));
+const _getValueFromFnOrRef = fnOrRef => isFn(fnOrRef) ? fnOrRef() : getRefValue(fnOrRef);
+const focusRefElement = (fnOrRef1, fnOrRef2) => {
+  _focusHtmlElement(_getValueFromFnOrRef(fnOrRef1) || _getValueFromFnOrRef(fnOrRef2));
 };
 exports.focusRefElement = focusRefElement;
 const focusAsyncRefElement = function (refOrFn, mls) {
