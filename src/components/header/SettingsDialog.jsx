@@ -79,6 +79,7 @@ const SettingsDialog = memoIsShow(({
        onClose={onClose}
     >
       <A.TabPane
+         id="sd"
          width="100%"
          tabsStyle={S_TABS}
          isShow={isShow}

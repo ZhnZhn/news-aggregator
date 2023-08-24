@@ -2,31 +2,29 @@
 
 exports.__esModule = true;
 exports.default = void 0;
-var _crStyle = require("../crStyle");
+var _tabPaneFn = require("./tabPaneFn");
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_TAB = "tab",
-  CL_ACTIVE = "active",
-  CL_TAB_TITLE = "tab_t";
 const Tab = _ref => {
   let {
     isSelected,
     id,
+    index,
     title,
     onClick,
     onKeyDown
   } = _ref;
   return (0, _jsxRuntime.jsx)("button", {
     type: "button",
-    className: (0, _crStyle.crCn)(CL_TAB, [isSelected, CL_ACTIVE]),
-    id: "tab-" + id,
     role: "tab",
+    className: (0, _tabPaneFn.crTabCn)(isSelected),
+    id: (0, _tabPaneFn.crTabId)(id, index),
     tabIndex: isSelected ? '0' : '-1',
     "aria-selected": isSelected,
-    "aria-controls": "tabpanel-" + id,
+    "aria-controls": (0, _tabPaneFn.crTabPanelId)(id, index),
     onClick: onClick,
     onKeyDown: onKeyDown,
     children: (0, _jsxRuntime.jsx)("span", {
-      className: CL_TAB_TITLE,
+      className: _tabPaneFn.CL_TAB_TITLE,
       children: title
     })
   });

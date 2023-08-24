@@ -1,24 +1,26 @@
-import { crCn } from '../crStyle';
-
-const CL_TAB = "tab"
-, CL_ACTIVE = "active"
-, CL_TAB_TITLE = "tab_t";
+import {
+  CL_TAB_TITLE,
+  crTabCn,
+  crTabId,
+  crTabPanelId
+} from './tabPaneFn';
 
 const Tab = ({
   isSelected,
   id,
+  index,
   title,
   onClick,
   onKeyDown
 }) => (
   <button
      type="button"
-     className={crCn(CL_TAB, [isSelected, CL_ACTIVE])}
-     id={`tab-${id}`}
      role="tab"
+     className={crTabCn(isSelected)}
+     id={crTabId(id, index)}
      tabIndex={isSelected ? '0' : '-1'}
      aria-selected={isSelected}
-     aria-controls={`tabpanel-${id}`}
+     aria-controls={crTabPanelId(id, index)}
      onClick={onClick}
      onKeyDown={onKeyDown}
   >

@@ -5,17 +5,19 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
+var _tabPaneFn = require("./tabPaneFn");
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_TABS = "tabs";
 const _crItemTab = (tabEl, index, _ref) => {
   let {
+    id,
     selectedTabIndex,
     hClick,
     hKeyDown
   } = _ref;
   return (0, _uiApi.cloneElement)(tabEl, {
     key: index,
-    id: index,
+    id,
+    index: index,
     isSelected: index === selectedTabIndex,
     onClick: (0, _uiApi.bindTo)(hClick, index, tabEl),
     onKeyDown: (0, _uiApi.bindTo)(hKeyDown, index, tabEl)
@@ -24,6 +26,7 @@ const _crItemTab = (tabEl, index, _ref) => {
 const _crNextId = (id, childrenLength) => id === -1 ? childrenLength - 1 : id === childrenLength ? 0 : id;
 const TabStack = _ref2 => {
   let {
+    id,
     style,
     selectedTabIndex,
     setTabIndex,
@@ -43,7 +46,7 @@ const TabStack = _ref2 => {
     _hKeyDown = (0, _uiApi.useCallback)((index, tabEl, evt) => {
       const _focusTabByIndex = tabIndex => {
         const _nextIndex = _crNextId(tabIndex, _childrenLength);
-        (0, _uiApi.focusElementById)("tab-" + _nextIndex);
+        (0, _uiApi.focusElementById)((0, _tabPaneFn.crTabId)(id, _nextIndex));
         _hClick(_nextIndex, tabEl);
       };
       const {
@@ -62,11 +65,12 @@ const TabStack = _ref2 => {
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (0, _jsxRuntime.jsx)("div", {
-    className: CL_TABS,
+    className: _tabPaneFn.CL_TABS,
     style: style,
     children: (0, _jsxRuntime.jsx)(_ItemStack.default, {
       items: children,
       crItem: _crItemTab,
+      id: id,
       selectedTabIndex: selectedTabIndex,
       hClick: _hClick,
       hKeyDown: _hKeyDown

@@ -6,10 +6,11 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _crStyle = require("../crStyle");
 var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
+var _tabPaneFn = require("./tabPaneFn");
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_PANES = "panes";
 const _crItemPane = (tab, index, _ref) => {
   let {
+    id,
     isShow,
     selectedTabIndex
   } = _ref;
@@ -17,8 +18,8 @@ const _crItemPane = (tab, index, _ref) => {
   return (0, _jsxRuntime.jsx)("div", {
     style: (0, _crStyle.crShowHideStyle)(isSelected),
     role: "tabpanel",
-    id: "tabpanel-" + index,
-    "aria-labelledby": "tab-" + index,
+    id: (0, _tabPaneFn.crTabPanelId)(id, index),
+    "aria-labelledby": (0, _tabPaneFn.crTabId)(id, index),
     children: (0, _uiApi.cloneElement)(tab.props.children, {
       isShow,
       isSelected,
@@ -28,16 +29,18 @@ const _crItemPane = (tab, index, _ref) => {
 };
 const PaneStack = _ref2 => {
   let {
+    id,
     style,
     isShow,
     selectedTabIndex,
     children
   } = _ref2;
   return (0, _jsxRuntime.jsx)("div", {
-    className: CL_PANES,
+    className: _tabPaneFn.CL_PANES,
     children: (0, _jsxRuntime.jsx)(_ItemStack.default, {
       items: children,
       crItem: _crItemPane,
+      id: id,
       isShow: isShow,
       selectedTabIndex: selectedTabIndex
     })

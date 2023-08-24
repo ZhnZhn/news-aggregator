@@ -78,6 +78,7 @@ const SettingsDialog = (0, _memoIsShow.default)(_ref => {
     isShow: isShow,
     onClose: onClose,
     children: (0, _jsxRuntime.jsxs)(_Comp.default.TabPane, {
+      id: "sd",
       width: "100%",
       tabsStyle: S_TABS,
       isShow: isShow,

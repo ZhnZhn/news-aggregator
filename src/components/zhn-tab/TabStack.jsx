@@ -8,18 +8,22 @@ import {
 } from '../uiApi';
 
 import ItemStack from '../zhn-atoms/ItemStack';
-
-const CL_TABS = "tabs";
+import {
+  CL_TABS,
+  crTabId
+} from './tabPaneFn';
 
 const _crItemTab = (
   tabEl,
   index, {
+  id,
   selectedTabIndex,
   hClick,
   hKeyDown
 }) => cloneElement(tabEl, {
    key: index,
-   id: index,
+   id,
+   index: index,
    isSelected: index === selectedTabIndex,
    onClick: bindTo(hClick, index, tabEl),
    onKeyDown: bindTo(hKeyDown, index, tabEl)
@@ -35,6 +39,7 @@ const _crNextId = (
       : id;
 
 const TabStack = ({
+  id,
   style,
   selectedTabIndex,
   setTabIndex,
@@ -54,7 +59,7 @@ const TabStack = ({
   , _hKeyDown = useCallback((index, tabEl, evt) => {
     const _focusTabByIndex = (tabIndex) => {
       const _nextIndex = _crNextId(tabIndex, _childrenLength);
-      focusElementById(`tab-${_nextIndex}`)
+      focusElementById(crTabId(id, _nextIndex))
       _hClick(_nextIndex, tabEl)
     }
 
@@ -79,6 +84,7 @@ const TabStack = ({
       <ItemStack
         items={children}
         crItem={_crItemTab}
+        id={id}
         selectedTabIndex={selectedTabIndex}
         hClick={_hClick}
         hKeyDown={_hKeyDown}
