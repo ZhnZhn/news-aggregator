@@ -1,3 +1,5 @@
+export { bindTo } from '../utils/bindTo';
+
 export {
   memo,
   forwardRef,

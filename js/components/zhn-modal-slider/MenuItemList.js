@@ -19,37 +19,28 @@ const S_ITEM = {
     padding: '1px 16px 1px 0px',
     fontWeight: 'bold'
   };
-const _fClick = _ref => {
-  let {
-    isClose,
-    onClick,
-    onClose
-  } = _ref;
-  return typeof onClick === 'function' ? isClose ? () => {
-    onClick();
-    onClose();
-  } : onClick : void 0;
-};
-const NextPageArrow = _ref2 => {
+const _fClick = (isClose, onClick, onClose) => typeof onClick === 'function' ? isClose ? () => {
+  onClick();
+  onClose();
+} : onClick : void 0;
+const NextPageArrow = _ref => {
   let {
     type
-  } = _ref2;
+  } = _ref;
   return type === SUB_MENU ? (0, _jsxRuntime.jsx)("span", {
     style: S_NEXT_PAGE,
     children: ">"
   }) : null;
 };
-const MenuItemList = _ref3 => {
+const MenuItemList = _ref2 => {
   let {
-    refFirst,
-    refLast,
+    getFocusRef,
     items,
     itemCl,
     pageNumber,
     onNextPage,
     onClose
-  } = _ref3;
-  const _lastItemIndex = items.length - 1;
+  } = _ref2;
   return (0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
     children: items.map((item, index) => {
       const {
@@ -60,13 +51,9 @@ const MenuItemList = _ref3 => {
           isClose,
           onClick
         } = item,
-        _onClick = type === SUB_MENU ? onNextPage.bind(null, id, name, pageNumber) : _fClick({
-          isClose,
-          onClick,
-          onClose
-        });
+        _onClick = type === SUB_MENU ? (0, _uiApi.bindTo)(onNextPage, id, name, pageNumber) : _fClick(isClose, onClick, onClose);
       return (0, _jsxRuntime.jsxs)(_MenuAriaItem.default, {
-        ref: (0, _uiApi.getFocusRef)(refFirst, refLast, _lastItemIndex, index),
+        ref: getFocusRef(index),
         className: cn || itemCl,
         style: S_ITEM,
         onClick: _onClick,

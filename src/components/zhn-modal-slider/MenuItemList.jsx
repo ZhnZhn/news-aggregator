@@ -1,4 +1,5 @@
-//import { getFocusRef } from '../uiApi';
+import { bindTo } from '../uiApi';
+
 import MenuAriaItem from './MenuAriaItem';
 
 const SUB_MENU = 'sub';
@@ -16,11 +17,11 @@ const S_ITEM = {
   fontWeight: 'bold'
 };
 
-const _fClick = ({
+const _fClick = (
   isClose,
   onClick,
   onClose
-}) => typeof onClick === 'function'
+) => typeof onClick === 'function'
   ? isClose
       ? () => { onClick(); onClose() }
       : onClick
@@ -33,54 +34,41 @@ const NextPageArrow = ({
 ) : null;
 
 const MenuItemList = ({
-  //refFirst,
-  //refLast,
   getFocusRef,
   items,
   itemCl,
   pageNumber,
   onNextPage,
   onClose
-}) => {
-  //const _lastItemIndex = items.length - 1;
-  return (
-    <>
-     {items.map((item, index) => {
-       const {
-         cn,
-         name,
-         type,
-         id,
-         isClose,
-         onClick
-       } = item
-       , _onClick = type === SUB_MENU
-           ? onNextPage.bind(null, id, name, pageNumber)
-           : _fClick({ isClose, onClick, onClose });
-       return (
-         <MenuAriaItem
-           key={name}
-           ref={getFocusRef(index)}
-           /*
-           ref={getFocusRef(
-             refFirst,
-             refLast,
-             _lastItemIndex,
-             index
-           )}
-           */
-           className={cn || itemCl}
-           style={S_ITEM}
-           onClick={_onClick}
-         >
-           <span>{name}</span>
-           <NextPageArrow type={type} />
-         </MenuAriaItem>
-       );
-      })}
-    </>
-  );
-}
+}) => (
+  <>
+   {items.map((item, index) => {
+     const {
+       cn,
+       name,
+       type,
+       id,
+       isClose,
+       onClick
+     } = item
+     , _onClick = type === SUB_MENU
+         ? bindTo(onNextPage, id, name, pageNumber)
+         : _fClick(isClose, onClick, onClose);
+     return (
+       <MenuAriaItem
+         key={name}
+         ref={getFocusRef(index)}
+         className={cn || itemCl}
+         style={S_ITEM}
+         onClick={_onClick}
+       >
+         <span>{name}</span>
+         <NextPageArrow type={type} />
+       </MenuAriaItem>
+     );
+    })}
+  </>
+);
 
 /*
 MenuItemList.propTypes = {
