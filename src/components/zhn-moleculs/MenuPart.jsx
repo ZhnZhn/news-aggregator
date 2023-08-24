@@ -1,11 +1,12 @@
 //import PropTypes from 'prop-types'
+import { crCn } from '../crStyle';
 import { CL_SELECT_NONE } from '../styles/CL';
 
 import OpenClose from '../zhn-atoms/OpenClose';
 
 const _assign = Object.assign;
 
-const _createOnKeyDown = (
+const _fOnKeyDownEnter = (
   onClick
 ) => (evt) => {
   if (evt.keyCode === 13){
@@ -21,17 +22,17 @@ const _renderMenuItems = (
     items=[],
     hmItems={},
     onClick,
-    ...rest
+    ...restItemProps
   } = option;
   return items.map((item, index) => {
-    const _className = TS.CL_ROW
-       ? `${TS.CL_ROW} ${CL_SELECT_NONE}`
-       :  CL_SELECT_NONE
-    , _itemConf = hmItems[item.id]
-    , { menuTitle} = _itemConf;
+    const _className = crCn(TS.CL_ROW, CL_SELECT_NONE)
+    , _itemConf = _assign(
+      hmItems[item.id],
+      restItemProps
+    )
+    , { menuTitle } = _itemConf
+    , _onClick = onClick.bind(null, _itemConf);
 
-    _assign(_itemConf, rest)
-    const _onClick = onClick.bind(null, _itemConf);
     return (
        <div
            role="menuitem"
@@ -39,7 +40,7 @@ const _renderMenuItems = (
            key={index}
            className={_className}
            onClick={_onClick}
-           onKeyDown={_createOnKeyDown(_onClick)}
+           onKeyDown={_fOnKeyDownEnter(_onClick)}
         >
           {menuTitle}
        </div>
