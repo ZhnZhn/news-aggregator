@@ -7,6 +7,7 @@ var _uiApi = require("../uiApi");
 var _has = require("../has");
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 var _useFocusRefElementIf = _interopRequireDefault(require("../hooks/useFocusRefElementIf"));
+var _useItemsFocusTrap = _interopRequireDefault(require("../hooks/useItemsFocusTrap"));
 var _NewsBrowser = _interopRequireDefault(require("../source-browsers/NewsBrowser.Style"));
 var _ModalPopup = _interopRequireDefault(require("../zhn-moleculs/ModalPopup"));
 var _FocusTrap = _interopRequireDefault(require("../zhn-moleculs/FocusTrap"));
@@ -24,7 +25,8 @@ const PanelQuery = _ref => {
   } = _ref;
   const TS = (0, _useTheme.default)(_NewsBrowser.default),
     _refFirstItem = (0, _useFocusRefElementIf.default)(isShow && HAS_NOT_TOUCH_EVENTS, refFocusItem),
-    _refLastItem = (0, _uiApi.useRef)();
+    _refLastItem = (0, _uiApi.useRef)(),
+    _getFocusRef = (0, _useItemsFocusTrap.default)(menuModel, _refFirstItem, _refLastItem)[0];
   return (0, _jsxRuntime.jsx)(_ModalPopup.default, {
     isShow: isShow,
     className: className,
@@ -34,11 +36,10 @@ const PanelQuery = _ref => {
       refFirst: _refFirstItem,
       refLast: _refLastItem,
       children: (0, _jsxRuntime.jsx)(_Menu.default, {
-        refFirstItem: _refFirstItem,
-        refLastItem: _refLastItem,
         menuModel: menuModel,
         style: TS.OPEN_CLOSE,
-        itemStyle: TS.ITEM
+        itemStyle: TS.ITEM,
+        getFocusRef: _getFocusRef
       })
     })
   });

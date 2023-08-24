@@ -72,18 +72,6 @@ export const focusAsyncRefElement = (
   )
 }
 
-export const getFocusRef = (
-  refFirst,
-  refLast,
-  lastIndex,
-  index
-) => index === 0
- ? refFirst
- : index === lastIndex
-    ? refLast
-    : void 0
-
-
 export const focusRefNextSiblingFirstChildElement = (
   ref
 ) => {

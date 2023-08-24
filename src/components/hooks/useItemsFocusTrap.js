@@ -1,12 +1,22 @@
 import {
   useRef,
-  useMemo,
-  getFocusRef
+  useMemo
 } from '../uiApi';
 
 const _isArr = Array.isArray;
 
-const useFocusTrap = (
+const _getFocusRefImpl = (
+  refFirst,
+  refLast,
+  lastIndex,
+  index
+) => index === 0
+ ? refFirst
+ : index === lastIndex
+    ? refLast
+    : void 0
+
+const useItemsFocusTrap = (
   items,
   ref1,
   ref2
@@ -18,7 +28,7 @@ const useFocusTrap = (
   , _getFocusRef = useMemo(() =>
     _isArr(items) ? (index) => {
     const _lastIndex = items.length - 1;
-    return getFocusRef(
+    return _getFocusRefImpl(
       _refFirstItem,
       _refLastItem,
       _lastIndex,
@@ -32,4 +42,4 @@ const useFocusTrap = (
   ];
 }
 
-export default useFocusTrap
+export default useItemsFocusTrap

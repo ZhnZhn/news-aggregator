@@ -1,5 +1,5 @@
 import useModalFocus from '../hooks/useModalFocus';
-import useFocusTrap from '../hooks/useFocusTrap';
+import useItemsFocusTrap from '../hooks/useItemsFocusTrap';
 
 import ModalPopup from './ModalPopup';
 import FocusTrap from './FocusTrap';
@@ -43,7 +43,7 @@ const ModalToggle = ({
   , [
     _getFocusRef,
     _refLast
-  ] = useFocusTrap(
+  ] = useItemsFocusTrap(
     configs,
     _refFirst
   );

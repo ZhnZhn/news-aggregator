@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _useModalFocus = _interopRequireDefault(require("../hooks/useModalFocus"));
-var _useFocusTrap = _interopRequireDefault(require("../hooks/useFocusTrap"));
+var _useItemsFocusTrap = _interopRequireDefault(require("../hooks/useItemsFocusTrap"));
 var _ModalPopup = _interopRequireDefault(require("./ModalPopup"));
 var _FocusTrap = _interopRequireDefault(require("./FocusTrap"));
 var _RowCheckBox = _interopRequireDefault(require("../dialogs/RowCheckBox"));
@@ -39,7 +39,7 @@ const ModalToggle = _ref => {
     onClose
   } = _ref;
   const _refFirst = (0, _useModalFocus.default)(isShow),
-    [_getFocusRef, _refLast] = (0, _useFocusTrap.default)(configs, _refFirst);
+    [_getFocusRef, _refLast] = (0, _useItemsFocusTrap.default)(configs, _refFirst);
   return _getFocusRef ? (0, _jsxRuntime.jsx)(_ModalPopup.default, {
     isShow: isShow,
     style: {

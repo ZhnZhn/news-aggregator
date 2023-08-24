@@ -3,7 +3,7 @@ import { HAS_TOUCH_EVENTS } from '../has';
 
 import useTheme from '../hooks/useTheme';
 import useFocusRefElementIf from '../hooks/useFocusRefElementIf';
-import useFocusTrap from '../hooks/useFocusTrap';
+import useItemsFocusTrap from '../hooks/useItemsFocusTrap';
 
 import styleConfig from '../source-browsers/NewsBrowser.Style';
 
@@ -27,7 +27,7 @@ const PanelQuery = ({
       refFocusItem
   )
   , _refLastItem = useRef()
-  , _getFocusRef = useFocusTrap(
+  , _getFocusRef = useItemsFocusTrap(
     menuModel,
     _refFirstItem,
     _refLastItem

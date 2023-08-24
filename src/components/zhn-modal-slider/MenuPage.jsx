@@ -5,7 +5,7 @@ import {
 } from '../uiApi';
 
 import useFocusAsyncRefElementIf from '../hooks/useFocusAsyncRefElementIf';
-import useFocusTrap from '../hooks/useFocusTrap';
+import useItemsFocusTrap from '../hooks/useItemsFocusTrap';
 import FocusTrap from '../zhn-moleculs/FocusTrap';
 
 import MenuTitle from './MenuTitle';
@@ -36,7 +36,7 @@ const MenuPage = ({
   , [
     _getFocusRef,
     _refLast
-  ] = useFocusTrap(
+  ] = useItemsFocusTrap(
     items,
     _refFirst
   )
