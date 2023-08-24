@@ -1,9 +1,10 @@
 import {
   useRef,
-  useState,
-  useCallback
+  useCallback,
+  setRefValue
 } from '../uiApi';
 
+import useToggle from '../hooks/useToggle';
 import useTheme from '../hooks/useTheme';
 import useHotKey from '../hotkeys/useHotKey';
 import styleConfig from './HeaderBar.Style';
@@ -54,21 +55,25 @@ const HeaderBar = ({
   const _refFocusItem = useRef()
   , [
     isQuery,
-    setIsQuery
-  ] = useState(false)
-  , _hCloseQuery = useCallback((evt) => {
-     const _menuItemElement = evt && evt.target
-     , _focusElement = _menuItemElement && _menuItemElement.role === 'menuitem'
+    toggleIsQuery
+  ] = useToggle()
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hCloseQuery = useCallback(evt => {
+     const _menuItemElement = evt && evt.target;
+     setRefValue(
+       _refFocusItem,
+       _menuItemElement && _menuItemElement.role === 'menuitem'
          ? _menuItemElement
-         : null;
-     _refFocusItem.current = _focusElement
-     setIsQuery(false)
+         : null
+     )
+     toggleIsQuery(false)
   }, [])
-  , _hToggleQuery = useCallback(() => setIsQuery(is => !is), [])
+  // toggleIsQuery
+  /*eslint-enable react-hooks/exhaustive-deps */
   , TS = useTheme(styleConfig)
   , _menuQuery = crMenuQuery(_hCloseQuery);
 
-  useHotKey(HK_QUERY_SOURCES, _hToggleQuery)
+  useHotKey(HK_QUERY_SOURCES, toggleIsQuery)
 
   return (
     <div className={CL_HEADER} style={TS.HEADER}>
@@ -105,7 +110,8 @@ const HeaderBar = ({
            clDiv={TS.BT.CL_FLAT_DIV}
            caption="Query"
            hotKey={HK_QUERY_SOURCES}
-           onClick={_hToggleQuery}
+           onClick={toggleIsQuery}
+           //onClick={_hToggleQuery}
         >
           <span className={CL_ARROW_DOWN} />
         </A.ModalButton>

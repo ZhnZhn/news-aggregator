@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 var _useHotKey = _interopRequireDefault(require("../hotkeys/useHotKey"));
 var _HeaderBar = _interopRequireDefault(require("./HeaderBar.Style"));
@@ -38,17 +39,18 @@ const HeaderBar = _ref => {
     onAbout
   } = _ref;
   const _refFocusItem = (0, _uiApi.useRef)(),
-    [isQuery, setIsQuery] = (0, _uiApi.useState)(false),
+    [isQuery, toggleIsQuery] = (0, _useToggle.default)()
+    /*eslint-disable react-hooks/exhaustive-deps */,
     _hCloseQuery = (0, _uiApi.useCallback)(evt => {
-      const _menuItemElement = evt && evt.target,
-        _focusElement = _menuItemElement && _menuItemElement.role === 'menuitem' ? _menuItemElement : null;
-      _refFocusItem.current = _focusElement;
-      setIsQuery(false);
-    }, []),
-    _hToggleQuery = (0, _uiApi.useCallback)(() => setIsQuery(is => !is), []),
+      const _menuItemElement = evt && evt.target;
+      (0, _uiApi.setRefValue)(_refFocusItem, _menuItemElement && _menuItemElement.role === 'menuitem' ? _menuItemElement : null);
+      toggleIsQuery(false);
+    }, [])
+    // toggleIsQuery
+    /*eslint-enable react-hooks/exhaustive-deps */,
     TS = (0, _useTheme.default)(_HeaderBar.default),
     _menuQuery = (0, _crMenuQuery.default)(_hCloseQuery);
-  (0, _useHotKey.default)(_hotkeys.HK_QUERY_SOURCES, _hToggleQuery);
+  (0, _useHotKey.default)(_hotkeys.HK_QUERY_SOURCES, toggleIsQuery);
   return (0, _jsxRuntime.jsxs)("div", {
     className: CL_HEADER,
     style: TS.HEADER,
@@ -81,7 +83,9 @@ const HeaderBar = _ref => {
         clDiv: TS.BT.CL_FLAT_DIV,
         caption: "Query",
         hotKey: _hotkeys.HK_QUERY_SOURCES,
-        onClick: _hToggleQuery,
+        onClick: toggleIsQuery
+        //onClick={_hToggleQuery}
+        ,
         children: (0, _jsxRuntime.jsx)("span", {
           className: CL_ARROW_DOWN
         })
