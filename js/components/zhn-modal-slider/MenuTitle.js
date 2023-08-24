@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _MenuAriaItem = _interopRequireDefault(require("./MenuAriaItem"));
+var _MenuItem = _interopRequireDefault(require("../zhn-atoms/MenuItem"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_ITEM = {
     position: 'relative'
@@ -23,7 +23,7 @@ const MenuTitle = _ref => {
     title,
     onClick
   } = _ref;
-  return title ? (0, _jsxRuntime.jsxs)(_MenuAriaItem.default, {
+  return title ? (0, _jsxRuntime.jsxs)(_MenuItem.default, {
     ref: refTitle,
     className: titleCl,
     style: S_ITEM,

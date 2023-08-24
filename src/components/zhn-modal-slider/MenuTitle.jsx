@@ -1,4 +1,4 @@
-import MenuAriaItem from './MenuAriaItem';
+import MenuItem from '../zhn-atoms/MenuItem';
 
 const S_ITEM = {
   position: 'relative'
@@ -18,7 +18,7 @@ const MenuTitle = ({
   title,
   onClick
 }) => title ? (
-  <MenuAriaItem
+  <MenuItem
     ref={refTitle}
     className={titleCl}
     style={S_ITEM}
@@ -30,7 +30,7 @@ const MenuTitle = ({
     <span style={S_TITLE}>
       {title}
     </span>
-  </MenuAriaItem>
+  </MenuItem>
 ) : null;
 
 /*

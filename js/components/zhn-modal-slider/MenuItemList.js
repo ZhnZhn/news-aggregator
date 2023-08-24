@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _MenuAriaItem = _interopRequireDefault(require("./MenuAriaItem"));
+var _MenuItem = _interopRequireDefault(require("../zhn-atoms/MenuItem"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const SUB_MENU = 'sub';
 const S_ITEM = {
@@ -52,7 +52,7 @@ const MenuItemList = _ref2 => {
           onClick
         } = item,
         _onClick = type === SUB_MENU ? (0, _uiApi.bindTo)(onNextPage, id, name, pageNumber) : _fClick(isClose, onClick, onClose);
-      return (0, _jsxRuntime.jsxs)(_MenuAriaItem.default, {
+      return (0, _jsxRuntime.jsxs)(_MenuItem.default, {
         ref: getFocusRef(index),
         className: cn || itemCl,
         style: S_ITEM,

@@ -1,6 +1,6 @@
 import { bindTo } from '../uiApi';
 
-import MenuAriaItem from './MenuAriaItem';
+import MenuItem from '../zhn-atoms/MenuItem';
 
 const SUB_MENU = 'sub';
 
@@ -55,7 +55,7 @@ const MenuItemList = ({
          ? bindTo(onNextPage, id, name, pageNumber)
          : _fClick(isClose, onClick, onClose);
      return (
-       <MenuAriaItem
+       <MenuItem
          key={name}
          ref={getFocusRef(index)}
          className={cn || itemCl}
@@ -64,7 +64,7 @@ const MenuItemList = ({
        >
          <span>{name}</span>
          <NextPageArrow type={type} />
-       </MenuAriaItem>
+       </MenuItem>
      );
     })}
   </>
