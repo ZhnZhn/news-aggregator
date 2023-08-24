@@ -1,12 +1,10 @@
 import { forwardRef } from '../uiApi';
 import useKeyEnter from '../hooks/useKeyEnter';
 
-const FN_NOOP = () => {};
-
 const MenuItem = forwardRef(({
   className,
   caption,
-  onClick=FN_NOOP
+  onClick
 }, ref) => {
   const _hKeyDown = useKeyEnter(onClick);
 
@@ -14,8 +12,8 @@ const MenuItem = forwardRef(({
     <div
       ref={ref}
       role="menuitem"
-      className={className}
       tabIndex="0"
+      className={className}
       onClick={onClick}
       onKeyDown={_hKeyDown}
     >
