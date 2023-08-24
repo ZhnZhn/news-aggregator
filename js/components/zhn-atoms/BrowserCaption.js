@@ -2,13 +2,13 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+exports.default = void 0;
+var _uiApi = require("../uiApi");
 var _CL = require("../styles/CL");
 var _SvgMore = _interopRequireDefault(require("./SvgMore"));
 var _SvgX = _interopRequireDefault(require("./SvgX"));
 var _jsxRuntime = require("preact/jsx-runtime");
-var CL_GAP = "gap-right",
+const CL_GAP = "gap-right",
   S_ROOT = {
     position: 'relative',
     backgroundColor: '#3f5178',
@@ -42,19 +42,21 @@ var CL_GAP = "gap-right",
     width: '1.5rem',
     height: '1.5rem'
   };
-var _isFn = function _isFn(fn) {
-  return typeof fn === "function";
-};
-var BrowserCaption = function BrowserCaption(_ref) {
-  var style = _ref.style,
-    caption = _ref.caption,
-    children = _ref.children,
-    onMore = _ref.onMore,
-    onClose = _ref.onClose;
+const BrowserCaption = _ref => {
+  let {
+    style,
+    caption,
+    children,
+    onMore,
+    onClose
+  } = _ref;
   return (0, _jsxRuntime.jsxs)("div", {
     className: CL_GAP,
-    style: (0, _extends2["default"])({}, S_ROOT, style),
-    children: [_isFn(onMore) && (0, _jsxRuntime.jsx)(_SvgMore["default"], {
+    style: {
+      ...S_ROOT,
+      ...style
+    },
+    children: [(0, _uiApi.isFn)(onMore) && (0, _jsxRuntime.jsx)(_SvgMore.default, {
       style: S_BT_MORE,
       svgStyle: S_SVG_MORE,
       onClick: onMore
@@ -62,12 +64,12 @@ var BrowserCaption = function BrowserCaption(_ref) {
       className: _CL.CL_SELECT_NONE,
       style: S_CAPTION,
       children: caption
-    }), children, (0, _jsxRuntime.jsx)(_SvgX["default"], {
+    }), children, (0, _jsxRuntime.jsx)(_SvgX.default, {
       style: S_SVG_CLOSE,
       onClick: onClose
     })]
   });
 };
 var _default = BrowserCaption;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=BrowserCaption.js.map

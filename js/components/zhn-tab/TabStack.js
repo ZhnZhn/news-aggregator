@@ -3,12 +3,10 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _bindTo = require("../../utils/bindTo");
 var _uiApi = require("../uiApi");
 var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_TABS = "tabs";
-const _isFn = fn => typeof fn === 'function';
 const _crItemTab = (tabEl, index, _ref) => {
   let {
     selectedTabIndex,
@@ -19,8 +17,8 @@ const _crItemTab = (tabEl, index, _ref) => {
     key: index,
     id: index,
     isSelected: index === selectedTabIndex,
-    onClick: (0, _bindTo.bindTo)(hClick, index, tabEl),
-    onKeyDown: (0, _bindTo.bindTo)(hKeyDown, index, tabEl)
+    onClick: (0, _uiApi.bindTo)(hClick, index, tabEl),
+    onKeyDown: (0, _uiApi.bindTo)(hKeyDown, index, tabEl)
   });
 };
 const _crNextId = (id, childrenLength) => id === -1 ? childrenLength - 1 : id === childrenLength ? 0 : id;
@@ -34,7 +32,7 @@ const TabStack = _ref2 => {
   /*eslint-disable react-hooks/exhaustive-deps */
   const _hClick = (0, _uiApi.useCallback)((index, tabEl) => {
       setTabIndex(index);
-      if (_isFn(tabEl.props.onClick)) {
+      if ((0, _uiApi.isFn)(tabEl.props.onClick)) {
         tabEl.props.onClick();
       }
     }, [])

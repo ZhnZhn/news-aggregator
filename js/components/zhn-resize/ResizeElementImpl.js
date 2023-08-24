@@ -3,8 +3,7 @@
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-const _isFn = fn => typeof fn === 'function',
-  _isNaN = Number.isNaN,
+const _isNaN = Number.isNaN,
   _assign = Object.assign,
   _initResizeProperties = inst => {
     _assign(inst, {
@@ -53,7 +52,7 @@ class ResizeElementImpl {
       const {
         onResizeAfter
       } = this;
-      if (_isFn(onResizeAfter)) {
+      if ((0, _uiApi.isFn)(onResizeAfter)) {
         onResizeAfter(this._getElementWidth());
       }
     };

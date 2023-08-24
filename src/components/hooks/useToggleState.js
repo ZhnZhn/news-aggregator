@@ -1,11 +1,13 @@
-import { useReducer } from '../uiApi';
+import {
+  isFn,
+  useReducer
+} from '../uiApi';
 
-const _isFn = v => typeof v === 'function'
-, _initState = (
-  initialValue
-) => _isFn(initialValue)
-  ? initialValue()
-  : initialValue
+const _initState = (
+  fnOrInitialValue
+) => isFn(fnOrInitialValue)
+  ? fnOrInitialValue()
+  : fnOrInitialValue
 , _reducer = (
   state,
   propName
@@ -15,10 +17,10 @@ const _isFn = v => typeof v === 'function'
 });
 
 const useToggleState = (
-  initialValue
+  fnOrInitialValue
 ) => useReducer(
   _reducer,
-  initialValue || {},
+  fnOrInitialValue || {},
   _initState
 );
 

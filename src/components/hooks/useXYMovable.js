@@ -1,4 +1,5 @@
 import {
+  isFn,
   useEffect,
   getRefValue,
   getClientX,
@@ -9,7 +10,6 @@ import { HAS_TOUCH_EVENTS } from '../has';
 
 const _assign = Object.assign
 , _isArr = Array.isArray
-, _isFn = fn => typeof fn === 'function'
 , [
   INIT_EVENT,
   MOVE_EVENT,
@@ -47,7 +47,7 @@ const _isValueInGapRange = (
   && to - value > START_EVENT_GAP;
 const _getComposedPath = (
   evt
-) => _isFn(evt.composedPath)
+) => isFn(evt.composedPath)
   ? evt.composedPath()
   : void 0;
 

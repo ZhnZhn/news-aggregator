@@ -5,6 +5,7 @@ import {
   useMemo,
   useEffect,
   useImperativeHandle,
+  isFn,
   getRefValue,
   setRefValue,
   focusRefElement
@@ -43,8 +44,6 @@ const CL_DIALOG = 'dialog'
 , HK_SHOW = 'H'
 , HK_CLOSE = 'C';
 
-const _isFn = fn => typeof fn === 'function';
-
 const DialogButtons = ({
   TS,
   onLoad,
@@ -52,7 +51,7 @@ const DialogButtons = ({
   onClose
 }) => (
   <div style={S_BTS}>
-    {_isFn(onLoad) &&
+    {isFn(onLoad) &&
       <RaisedButton
          isPrimary={true}
          style={TS.RAISED}
@@ -62,7 +61,7 @@ const DialogButtons = ({
          onClick={onLoad}
       />
     }
-    {_isFn(onShow) &&
+    {isFn(onShow) &&
       <RaisedButton
          style={TS.RAISED}
          clDiv={TS.CL_RAISED_DIV}

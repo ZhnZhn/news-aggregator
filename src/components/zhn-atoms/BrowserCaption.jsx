@@ -1,3 +1,5 @@
+import { isFn } from '../uiApi';
+
 import { CL_SELECT_NONE } from '../styles/CL';
 
 import SvgMore from './SvgMore';
@@ -38,8 +40,6 @@ const CL_GAP = "gap-right"
   height: '1.5rem'
 };
 
-const _isFn = fn => typeof fn === "function";
-
 const BrowserCaption = ({
   style,
   caption,
@@ -52,7 +52,7 @@ const BrowserCaption = ({
      style={{...S_ROOT, ...style}}
   >
     {
-       _isFn(onMore) && <SvgMore
+       isFn(onMore) && <SvgMore
           style={S_BT_MORE}
           svgStyle={S_SVG_MORE}
           onClick={onMore}

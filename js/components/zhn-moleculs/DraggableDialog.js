@@ -33,7 +33,6 @@ const CL_DIALOG = 'dialog',
   HK_LOAD = 'L',
   HK_SHOW = 'H',
   HK_CLOSE = 'C';
-const _isFn = fn => typeof fn === 'function';
 const DialogButtons = _ref => {
   let {
     TS,
@@ -43,14 +42,14 @@ const DialogButtons = _ref => {
   } = _ref;
   return (0, _jsxRuntime.jsxs)("div", {
     style: S_BTS,
-    children: [_isFn(onLoad) && (0, _jsxRuntime.jsx)(_RaisedButton.default, {
+    children: [(0, _uiApi.isFn)(onLoad) && (0, _jsxRuntime.jsx)(_RaisedButton.default, {
       isPrimary: true,
       style: TS.RAISED,
       clDiv: TS.CL_RAISED_DIV,
       caption: "Load",
       hotKey: HK_LOAD,
       onClick: onLoad
-    }), _isFn(onShow) && (0, _jsxRuntime.jsx)(_RaisedButton.default, {
+    }), (0, _uiApi.isFn)(onShow) && (0, _jsxRuntime.jsx)(_RaisedButton.default, {
       style: TS.RAISED,
       clDiv: TS.CL_RAISED_DIV,
       caption: "Show",

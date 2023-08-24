@@ -1,8 +1,8 @@
-import { bindTo } from '../../utils/bindTo';
-
 import {
   cloneElement,
   useCallback,
+  isFn,
+  bindTo,
   focusElementById,
   stopDefaultFor
 } from '../uiApi';
@@ -10,8 +10,6 @@ import {
 import ItemStack from '../zhn-atoms/ItemStack';
 
 const CL_TABS = "tabs";
-
-const _isFn = fn => typeof fn === 'function';
 
 const _crItemTab = (
   tabEl,
@@ -45,7 +43,7 @@ const TabStack = ({
   /*eslint-disable react-hooks/exhaustive-deps */
   const _hClick = useCallback((index, tabEl) => {
      setTabIndex(index);
-     if (_isFn(tabEl.props.onClick)){
+     if (isFn(tabEl.props.onClick)){
        tabEl.props.onClick();
      }
   }, [])
@@ -66,7 +64,7 @@ const TabStack = ({
       _focusTabByIndex(index + 1)
     }
     if (keyCode === 37) {
-      stopDefaultFor(evt)      
+      stopDefaultFor(evt)
       _focusTabByIndex(index - 1)
     }
   }, [_childrenLength]);
