@@ -6,6 +6,7 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useFocusAsyncRefElementIf = _interopRequireDefault(require("../hooks/useFocusAsyncRefElementIf"));
 var _useItemsFocusTrap = _interopRequireDefault(require("../hooks/useItemsFocusTrap"));
+var _useGetRefValue = _interopRequireDefault(require("../hooks/useGetRefValue2"));
 var _FocusTrap = _interopRequireDefault(require("../zhn-moleculs/FocusTrap"));
 var _MenuTitle = _interopRequireDefault(require("./MenuTitle"));
 var _MenuItemList = _interopRequireDefault(require("./MenuItemList"));
@@ -28,18 +29,17 @@ const MenuPage = _ref => {
     onPrevPage
   } = _ref;
   const _refTitle = (0, _uiApi.useRef)(),
-    _refFirst = (0, _uiApi.useRef)(),
-    _getRefFirst = (0, _uiApi.useCallback)(() => (0, _uiApi.getRefValue)(_refTitle) || (0, _uiApi.getRefValue)(_refFirst), []),
-    [_getFocusRef, _refLast] = (0, _useItemsFocusTrap.default)(items, _refFirst),
+    [_getFocusRef, _refLastItem, _refFirstItem] = (0, _useItemsFocusTrap.default)(items),
+    _getFocusFirstItem = (0, _useGetRefValue.default)(_refTitle, _refFirstItem),
     _hClickTitle = (0, _uiApi.useCallback)(() => {
       onPrevPage(pageNumber);
     }, [onPrevPage, pageNumber]);
-  (0, _useFocusAsyncRefElementIf.default)(isVisible, _getRefFirst);
+  (0, _useFocusAsyncRefElementIf.default)(isVisible, _getFocusFirstItem);
   return (0, _jsxRuntime.jsx)("div", {
     style: style,
     children: (0, _jsxRuntime.jsxs)(_FocusTrap.default, {
-      refFirst: _getRefFirst,
-      refLast: _refLast,
+      refFirst: _getFocusFirstItem,
+      refLast: _refLastItem,
       children: [(0, _jsxRuntime.jsx)(_MenuTitle.default, {
         refTitle: _refTitle,
         titleCl: titleCl,

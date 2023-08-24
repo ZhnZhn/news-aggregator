@@ -1,11 +1,11 @@
 import {
   useRef,
-  useCallback,
-  getRefValue
+  useCallback
 } from '../uiApi';
 
 import useFocusAsyncRefElementIf from '../hooks/useFocusAsyncRefElementIf';
 import useItemsFocusTrap from '../hooks/useItemsFocusTrap';
+import useGetRefValue2 from '../hooks/useGetRefValue2';
 import FocusTrap from '../zhn-moleculs/FocusTrap';
 
 import MenuTitle from './MenuTitle';
@@ -29,16 +29,16 @@ const MenuPage = ({
   onPrevPage
 }) => {
   const _refTitle = useRef()
-  , _refFirst = useRef()
-  , _getRefFirst = useCallback(
-    () => getRefValue(_refTitle) || getRefValue(_refFirst)
-  , [])
   , [
     _getFocusRef,
-    _refLast
+    _refLastItem,
+    _refFirstItem
   ] = useItemsFocusTrap(
-    items,
-    _refFirst
+    items
+  )
+  , _getFocusFirstItem = useGetRefValue2(
+    _refTitle,
+    _refFirstItem
   )
   , _hClickTitle = useCallback(() => {
       onPrevPage(pageNumber)
@@ -46,14 +46,14 @@ const MenuPage = ({
 
   useFocusAsyncRefElementIf(
     isVisible,
-    _getRefFirst
+    _getFocusFirstItem
   )
 
   return (
     <div style={style}>
       <FocusTrap
-        refFirst={_getRefFirst}
-        refLast={_refLast}
+        refFirst={_getFocusFirstItem}
+        refLast={_refLastItem}
       >
         <MenuTitle
           refTitle={_refTitle}
