@@ -2,16 +2,24 @@
 import { bindTo } from '../uiApi';
 import { crCn } from '../crStyle';
 
+import isKeyEnter from '../hooks/isKeyEnter';
 import OpenClose from '../zhn-atoms/OpenClose';
 import { CL_SELECT_NONE } from '../styles/CL';
 
-const _fOnKeyDownEnter = (
-  onClick
-) => (evt) => {
-  if (evt.keyCode === 13){
-    onClick()
-  }
-}
+const _crItemHandlers = (
+  onItem,
+  itemConf
+) => {
+  const onClick = bindTo(onItem, itemConf);
+  return {
+    onClick,
+    onKeyDown: (evt) => {
+      if (isKeyEnter(evt)) {
+        onClick()
+      }
+    }
+  };
+};
 
 const _renderMenuItems = (
   TS,
@@ -29,18 +37,16 @@ const _renderMenuItems = (
       ...(hmItems || {})[item.id],
       ...restItemProps
     }
-    , { menuTitle } = _itemConf
-    , _onClick = bindTo(onClick, _itemConf);
+    , { menuTitle } = _itemConf;
 
     return (
        <div
+          {..._crItemHandlers(onClick, _itemConf)}
           role="menuitem"
           tabIndex="0"
           key={index}
           className={_className}
-          onClick={_onClick}
-          onKeyDown={_fOnKeyDownEnter(_onClick)}
-        >
+       >
           {menuTitle}
        </div>
     )

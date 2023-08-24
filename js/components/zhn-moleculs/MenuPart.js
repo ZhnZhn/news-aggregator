@@ -5,15 +5,23 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _crStyle = require("../crStyle");
+var _isKeyEnter = _interopRequireDefault(require("../hooks/isKeyEnter"));
 var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose"));
 var _CL = require("../styles/CL");
+var _preact = require("preact");
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types'
 
-const _fOnKeyDownEnter = onClick => evt => {
-  if (evt.keyCode === 13) {
-    onClick();
-  }
+const _crItemHandlers = (onItem, itemConf) => {
+  const onClick = (0, _uiApi.bindTo)(onItem, itemConf);
+  return {
+    onClick,
+    onKeyDown: evt => {
+      if ((0, _isKeyEnter.default)(evt)) {
+        onClick();
+      }
+    }
+  };
 };
 const _renderMenuItems = (TS, option) => {
   const {
@@ -30,16 +38,14 @@ const _renderMenuItems = (TS, option) => {
       },
       {
         menuTitle
-      } = _itemConf,
-      _onClick = (0, _uiApi.bindTo)(onClick, _itemConf);
-    return (0, _jsxRuntime.jsx)("div", {
+      } = _itemConf;
+    return (0, _preact.createElement)("div", {
+      ..._crItemHandlers(onClick, _itemConf),
       role: "menuitem",
       tabIndex: "0",
-      className: _className,
-      onClick: _onClick,
-      onKeyDown: _fOnKeyDownEnter(_onClick),
-      children: menuTitle
-    }, index);
+      key: index,
+      className: _className
+    }, menuTitle);
   });
 };
 const MenuPart = _ref => {
