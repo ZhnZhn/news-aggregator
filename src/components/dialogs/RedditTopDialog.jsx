@@ -33,6 +33,7 @@ const SUBRREDIT_OPTIONS = [
 ["nextjs"],
 ["node"],
 ["webdev"],
+["elixir"],
 ["programming"],
 ["hardware"],
 ["LifeProTips"],
@@ -60,8 +61,18 @@ const SUBRREDIT_OPTIONS = [
 ["worldnews"]
 ]
 , DF_SUBRREDIT = SUBRREDIT_OPTIONS[0]
+, PERIOD_OPTIONS = [
+  ["hour"],
+  ["day"],
+  ["week"],
+  ["month"],
+  ["year"],
+  ["all"]
+]
+, DF_PERIOD = PERIOD_OPTIONS[1]
 , INPUT_CONFIGS = [
-  ['s','subreddit','Subreddit', SUBRREDIT_OPTIONS, DF_SUBRREDIT]
+  ['s','subreddit','Subreddit', SUBRREDIT_OPTIONS, DF_SUBRREDIT, true],
+  ['s','t','Period', PERIOD_OPTIONS, DF_PERIOD]
 ]
 , [
   INITIAL_INPUTS,
