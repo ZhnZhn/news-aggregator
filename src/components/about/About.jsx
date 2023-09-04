@@ -66,15 +66,9 @@ const _crLinkItem = (
 );
 
 const NEWS_SOURCE_STEP_DESCRIPTIONS = [
-  "Please, click button News in header.",
-  "Choose a topic and news source.",
-  "Click a button Load in dialog.",
-];
-
-const SEARCH_TERM_STEP_DESCRIPTIONS = [
-  "Please, click button Query in header.",
-  "Choose news source in modal pane.",
-  "Click a button Load in dialog."
+  "Please, click button QUERY [q] in header.",
+  "Choose headlines source.",
+  "Click button LOAD [l] in dialog.",
 ];
 
 const _crStepItem = (
@@ -132,10 +126,10 @@ const About = ({
          <div style={S_DIV_WRAPPER}>
             <div style={S_LH_14}>
                <p>
-                 <span style={S_APP_TITLE}>News Agreggator</span> is web app for browsing news.
+                 <span style={S_APP_TITLE}>News Agreggator</span> is a web app for browsing news, blogs, social media headlines.
                </p>
-               <p>
-                 News headlines providers:&nbsp;
+               <p style={S_MT_8}>
+                 Available headlines providers:&nbsp;
                </p>
             </div>
             <div style={S_LH_18}>
@@ -146,29 +140,17 @@ const About = ({
            </div>
            <div style={S_LH_14}>
              <p style={S_MT_8}>
-              Personal API Keys from providers are required.
+              Personal API Keys from some providers are required.
              </p>
              <p>
-              API Keys can be set by means off Settings Dialog.
+              API Keys can be set in the Settings Dialog [s].
              </p>
            </div>
            <p style={S_MT_8}>
-             <span style={S_BLACK}>Browsing by news source:</span>
+             <span style={S_BLACK}>Browsing by source:</span>
            </p>
            <ItemStack
              items={NEWS_SOURCE_STEP_DESCRIPTIONS}
-             crItem={_crStepItem}
-           />
-           <div style={S_LH_14}>
-             <p style={S_MT_8}>
-               Not all news source support all sortBy values.
-             </p>
-             <p>
-               <span style={TS.BLACK}>Browsing by search terms:</span>
-             </p>
-           </div>
-           <ItemStack
-             items={SEARCH_TERM_STEP_DESCRIPTIONS}
              crItem={_crStepItem}
            />
            <LogoBar />

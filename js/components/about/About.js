@@ -32,8 +32,7 @@ const _crLinkItem = (_ref, index) => {
     })
   }, index);
 };
-const NEWS_SOURCE_STEP_DESCRIPTIONS = ["Please, click button News in header.", "Choose a topic and news source.", "Click a button Load in dialog."];
-const SEARCH_TERM_STEP_DESCRIPTIONS = ["Please, click button Query in header.", "Choose news source in modal pane.", "Click a button Load in dialog."];
+const NEWS_SOURCE_STEP_DESCRIPTIONS = ["Please, click button QUERY [q] in header.", "Choose headlines source.", "Click button LOAD [l] in dialog."];
 const _crStepItem = (descr, index) => (0, _jsxRuntime.jsx)(_Step.default, {
   step: index + 1,
   description: descr
@@ -75,9 +74,10 @@ const About = _ref2 => {
             children: [(0, _jsxRuntime.jsx)("span", {
               style: _About.S_APP_TITLE,
               children: "News Agreggator"
-            }), " is web app for browsing news."]
+            }), " is a web app for browsing news, blogs, social media headlines."]
           }), (0, _jsxRuntime.jsx)("p", {
-            children: "News headlines providers:\xA0"
+            style: _About.S_MT_8,
+            children: "Available headlines providers:\xA0"
           })]
         }), (0, _jsxRuntime.jsx)("div", {
           style: _About.S_LH_18,
@@ -89,32 +89,18 @@ const About = _ref2 => {
           style: _About.S_LH_14,
           children: [(0, _jsxRuntime.jsx)("p", {
             style: _About.S_MT_8,
-            children: "Personal API Keys from providers are required."
+            children: "Personal API Keys from some providers are required."
           }), (0, _jsxRuntime.jsx)("p", {
-            children: "API Keys can be set by means off Settings Dialog."
+            children: "API Keys can be set in the Settings Dialog [s]."
           })]
         }), (0, _jsxRuntime.jsx)("p", {
           style: _About.S_MT_8,
           children: (0, _jsxRuntime.jsx)("span", {
             style: _About.S_BLACK,
-            children: "Browsing by news source:"
+            children: "Browsing by source:"
           })
         }), (0, _jsxRuntime.jsx)(ItemStack, {
           items: NEWS_SOURCE_STEP_DESCRIPTIONS,
-          crItem: _crStepItem
-        }), (0, _jsxRuntime.jsxs)("div", {
-          style: _About.S_LH_14,
-          children: [(0, _jsxRuntime.jsx)("p", {
-            style: _About.S_MT_8,
-            children: "Not all news source support all sortBy values."
-          }), (0, _jsxRuntime.jsx)("p", {
-            children: (0, _jsxRuntime.jsx)("span", {
-              style: TS.BLACK,
-              children: "Browsing by search terms:"
-            })
-          })]
-        }), (0, _jsxRuntime.jsx)(ItemStack, {
-          items: SEARCH_TERM_STEP_DESCRIPTIONS,
           crItem: _crStepItem
         }), (0, _jsxRuntime.jsx)(_LogoBar.default, {}), (0, _jsxRuntime.jsx)("p", {
           children: (0, _jsxRuntime.jsx)("span", {

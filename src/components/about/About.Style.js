@@ -5,7 +5,7 @@ export const S_SCROLL_DIV = {
   overflowY: 'auto'
 }
 export const S_DIV_WRAPPER = {
-  color: 'gray',
+  color: 'black',
   paddingLeft: 12,
   paddingRight: 5,
   lineHeight : 1.4,

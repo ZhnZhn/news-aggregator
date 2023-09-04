@@ -10,7 +10,7 @@ const S_SCROLL_DIV = {
 };
 exports.S_SCROLL_DIV = S_SCROLL_DIV;
 const S_DIV_WRAPPER = {
-  color: 'gray',
+  color: 'black',
   paddingLeft: 12,
   paddingRight: 5,
   lineHeight: 1.4,
