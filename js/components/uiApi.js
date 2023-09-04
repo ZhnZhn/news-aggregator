@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.toLink = exports.stopDefaultFor = exports.setRefValue = exports.render = exports.memo = exports.isFn = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.cloneElement = exports.bindTo = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.toLink = exports.stopDefaultFor = exports.setRefValue = exports.render = exports.memo = exports.isFn = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.cloneElement = exports.bindTo = exports.KEY_TAB = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = void 0;
 var _bindTo = require("../utils/bindTo");
 exports.bindTo = _bindTo.bindTo;
 var _compat = require("preact/compat");
@@ -18,6 +18,16 @@ exports.useCallback = _compat.useCallback;
 exports.useMemo = _compat.useMemo;
 exports.useEffect = _compat.useEffect;
 exports.useImperativeHandle = _compat.useImperativeHandle;
+const KEY_ARROW_DOWN = "ArrowDown";
+exports.KEY_ARROW_DOWN = KEY_ARROW_DOWN;
+const KEY_ARROW_UP = "ArrowUp";
+exports.KEY_ARROW_UP = KEY_ARROW_UP;
+const KEY_ENTER = "Enter";
+exports.KEY_ENTER = KEY_ENTER;
+const KEY_ESCAPE = "Escape";
+exports.KEY_ESCAPE = KEY_ESCAPE;
+const KEY_TAB = "Tab";
+exports.KEY_TAB = KEY_TAB;
 const isFn = fn => typeof fn === 'function';
 exports.isFn = isFn;
 const getRefValue = ref => (ref || {}).current;

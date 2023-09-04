@@ -34,7 +34,7 @@ const _crItem = (item, index, _ref2) => {
     value = (0, _OptionFn.getItemValue)(item),
     [_tabIndex, _ref, _ariaSelected] = value === (0, _OptionFn.getItemValue)(currentItem) ? ["0", refItem, "true"] : ["-1"],
     _hKeyDown = evt => {
-      if (evt.key === 'Enter') {
+      if (evt.key === _uiApi.KEY_ENTER) {
         onSelect(item, evt);
       }
     };
@@ -63,13 +63,13 @@ const OptionsPane = _ref3 => {
     _refFocus = (0, _uiApi.useRef)(null)
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hKeyDown = (0, _uiApi.useCallback)(evt => {
-      if (evt.key === 'ArrowDown') {
+      if (evt.key === _uiApi.KEY_ARROW_DOWN) {
         (0, _uiApi.stopDefaultFor)(evt);
         _focusNextItem(_refFocus);
-      } else if (evt.key === 'ArrowUp') {
+      } else if (evt.key === _uiApi.KEY_ARROW_UP) {
         (0, _uiApi.stopDefaultFor)(evt);
         _focusPrevItem(_refFocus);
-      } else if (evt.key === 'Escape' || evt.key === 'Tab') {
+      } else if (evt.key === _uiApi.KEY_ESCAPE || evt.key === _uiApi.KEY_TAB) {
         (0, _uiApi.stopDefaultFor)(evt);
         onClose();
       }

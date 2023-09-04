@@ -2,6 +2,13 @@ import {
   useRef,
   useCallback,
   useEffect,
+
+  KEY_ARROW_DOWN,
+  KEY_ARROW_UP,
+  KEY_ENTER,
+  KEY_ESCAPE,
+  KEY_TAB,
+  
   getRefValue,
   setRefValue,
   stopDefaultFor
@@ -50,7 +57,7 @@ const _crItem = (
     ? ["0", refItem, "true"]
     : ["-1"]
   , _hKeyDown = evt => {
-    if (evt.key === 'Enter') {
+    if (evt.key === KEY_ENTER) {
       onSelect(item, evt)
     }
   };
@@ -84,13 +91,13 @@ const OptionsPane = ({
   , _refFocus = useRef(null)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hKeyDown = useCallback(evt => {
-    if (evt.key === 'ArrowDown') {
+    if (evt.key === KEY_ARROW_DOWN) {
       stopDefaultFor(evt)
       _focusNextItem(_refFocus)
-    } else if (evt.key === 'ArrowUp') {
+    } else if (evt.key === KEY_ARROW_UP) {
       stopDefaultFor(evt)
       _focusPrevItem(_refFocus)
-    } else if (evt.key === 'Escape' || evt.key === 'Tab') {
+    } else if (evt.key === KEY_ESCAPE || evt.key === KEY_TAB) {
       stopDefaultFor(evt)
       onClose()
     }
