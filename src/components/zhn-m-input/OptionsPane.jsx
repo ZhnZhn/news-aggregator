@@ -3,7 +3,8 @@ import {
   useCallback,
   useEffect,
   getRefValue,
-  setRefValue
+  setRefValue,
+  stopDefaultFor
 } from '../uiApi';
 
 import ShowHide from '../zhn-atoms/ShowHide';
@@ -19,17 +20,12 @@ const SCROLL_OPTIONS = {
   behavior: 'smooth'
 };
 
-const _preventStopEvent = evt => {
-  evt.preventDefault()
-  evt.stopPropagation()
-};
-
 const _fFocusItem = propName => ref => {
   const _elItem = (getRefValue(ref) || {})[propName];
   if (_elItem) {
     _elItem.scrollIntoView(SCROLL_OPTIONS)
     _elItem.focus()
-    ref.current = _elItem
+    setRefValue(ref, _elItem)
   }
 };
 
@@ -87,15 +83,15 @@ const OptionsPane = ({
   const _refItem = useRef(null)
   , _refFocus = useRef(null)
   /*eslint-disable react-hooks/exhaustive-deps */
-  , _hKeyDown = useCallback((evt) => {
+  , _hKeyDown = useCallback(evt => {
     if (evt.key === 'ArrowDown') {
-      _preventStopEvent(evt)
+      stopDefaultFor(evt)
       _focusNextItem(_refFocus)
     } else if (evt.key === 'ArrowUp') {
-      _preventStopEvent(evt)
+      stopDefaultFor(evt)
       _focusPrevItem(_refFocus)
-    } else if (evt.key === 'Escape') {
-      _preventStopEvent(evt)
+    } else if (evt.key === 'Escape' || evt.key === 'Tab') {
+      stopDefaultFor(evt)
       onClose()
     }
   }, []);
@@ -111,28 +107,28 @@ const OptionsPane = ({
       }
     }
   }, [isShow])
-return (
-  <ModalPane
+  return (
+   <ModalPane
      isShow={isShow}
      onClose={onClose}
-  >
-     <ShowHide
-        isShow={isShow}
-        isScrollable={true}
-        className={className}
-        role="presentation"
-        onKeyDown={_hKeyDown}
-     >
-        <ItemStack
-          items={options}
-          crItem={_crItem}
-          refItem={_refItem}
-          currentItem={item}
-          clItem={clItem}
-          onSelect={onSelect}
-        />
-    </ShowHide>
-  </ModalPane>
+   >
+      <ShowHide
+         isShow={isShow}
+         isScrollable={true}
+         className={className}
+         role="presentation"
+         onKeyDown={_hKeyDown}
+      >
+         <ItemStack
+           items={options}
+           crItem={_crItem}
+           refItem={_refItem}
+           currentItem={item}
+           clItem={clItem}
+           onSelect={onSelect}
+         />
+     </ShowHide>
+   </ModalPane>
  );
 };
 
