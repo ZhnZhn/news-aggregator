@@ -1,4 +1,8 @@
 import {
+  HAS_WIDE_SCREEN
+} from '../has';
+
+import {
   readFromLs,
   writeToLs
 } from '../../utils/localStorageFn';
@@ -10,13 +14,28 @@ import {
   LS_FONT_SIZE_KEY
 } from './LS';
 
-export const FONT_SIZE_OPTIONS = [
-  ['Small (15px)', 15],
-  ['Medium (16px)', 16],
-  ['Extra Medium (17px)', 17],
-  ['Large (18px)', 18],
-  ['Extra Large (19px)', 19],
+const FONT_SIZE_NAMES = [
+  'Small',
+  'Medium',
+  'Extra Medium',
+  'Large',
+  'Extra Large'
 ];
+
+const _crFontItem = (
+  name,
+  size
+) => [`${name} (${size}px)`, size]
+, _crFontSizeOptions = (
+  smallSize
+) => FONT_SIZE_NAMES
+  .map(
+    (name, index) => _crFontItem(name, smallSize+index)
+  );
+
+export const FONT_SIZE_OPTIONS = _crFontSizeOptions(
+  HAS_WIDE_SCREEN ? 15 : 16
+)
 
 const DF_APP_FONT_SIZE = 16
 , MIN_FS = 15
