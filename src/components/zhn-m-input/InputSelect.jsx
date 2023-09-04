@@ -1,6 +1,8 @@
 import {
+  useRef,
   useState,
-  useCallback
+  useCallback,
+  focusRefElement
 } from '../uiApi';
 
 import useBool from '../hooks/useBool';
@@ -33,23 +35,32 @@ const InputSelect = ({
   styleConfig:TS,
   onSelect
 }) => {
-  const [
+  const _refBtArrow = useRef()
+  , [
     item,
     setItem
   ] = useState(initItem || DF_INIT_ITEM)
   , [
-    isShow,
-    showComp,
-    hideComp
+    isShowOptions,
+    showOptions,
+    hideOptions
   ] = useBool()
   /*eslint-disable react-hooks/exhaustive-deps */
-  , _hSelect = useCallback((item, event) => {
-      event.stopPropagation()
+  , _hCloseOptions = useCallback(() => {
+    hideOptions()
+    focusRefElement(_refBtArrow)
+  }, [])
+  // hideOptions, _refBtArrow
+  /*eslint-enable react-hooks/exhaustive-deps */
+
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _hSelect = useCallback((item, evt) => {
+      evt.stopPropagation()
       onSelect(item, id)
-      hideComp()
+      _hCloseOptions()
       setItem(item)
   }, []);
-  // id, onSelect, hideComp
+  // id, onSelect, _closeOptions
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (
@@ -57,25 +68,26 @@ const InputSelect = ({
       role="presentation"
       className={CL_SELECT}
       style={TS.ROOT}
-      onClick={showComp}
+      onClick={showOptions}
     >
       <label className={CL_LABEL}>
         {caption}
       </label>
       <OptionsPane
-         isShow={isShow}
+         isShow={isShowOptions}
          className={CL_SELECT_OPTIONS}
          item={item}
          options={options}
          clItem={CL_SELECT_ITEM}
          onSelect={_hSelect}
-         onClose={hideComp}
+         onClose={_hCloseOptions}
        />
       <div className={CL_DIV}>
         <div className={CL_DIV_VALUE}>
            {getItemCaption(item)}
         </div>
         <button
+          ref={_refBtArrow}
           type="button"
           className={CL_DIV_BT}
         >
