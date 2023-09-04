@@ -70,9 +70,16 @@ const SUBRREDIT_OPTIONS = [
   ["all"]
 ]
 , DF_PERIOD = PERIOD_OPTIONS[1]
+, LIMIT_OPTIONS = [
+  ["10"],
+  ["20"],
+  ["30"]
+]
+, DF_LIMIT = LIMIT_OPTIONS[1]
 , INPUT_CONFIGS = [
   ['s','subreddit','Subreddit', SUBRREDIT_OPTIONS, DF_SUBRREDIT, true],
-  ['s','t','Period', PERIOD_OPTIONS, DF_PERIOD]
+  ['s','t','Period', PERIOD_OPTIONS, DF_PERIOD],
+  ['s','limit', 'Limit', LIMIT_OPTIONS, DF_LIMIT]
 ]
 , [
   INITIAL_INPUTS,

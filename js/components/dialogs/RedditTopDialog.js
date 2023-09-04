@@ -11,7 +11,9 @@ const SUBRREDIT_OPTIONS = [["Amd"], ["askscience"], ["books"], ["FreeEBOOKS"], [
   DF_SUBRREDIT = SUBRREDIT_OPTIONS[0],
   PERIOD_OPTIONS = [["hour"], ["day"], ["week"], ["month"], ["year"], ["all"]],
   DF_PERIOD = PERIOD_OPTIONS[1],
-  INPUT_CONFIGS = [['s', 'subreddit', 'Subreddit', SUBRREDIT_OPTIONS, DF_SUBRREDIT, true], ['s', 't', 'Period', PERIOD_OPTIONS, DF_PERIOD]],
+  LIMIT_OPTIONS = [["10"], ["20"], ["30"]],
+  DF_LIMIT = LIMIT_OPTIONS[1],
+  INPUT_CONFIGS = [['s', 'subreddit', 'Subreddit', SUBRREDIT_OPTIONS, DF_SUBRREDIT, true], ['s', 't', 'Period', PERIOD_OPTIONS, DF_PERIOD], ['s', 'limit', 'Limit', LIMIT_OPTIONS, DF_LIMIT]],
   [INITIAL_INPUTS, TOGGLES, IS_INPUTS] = (0, _DialogFn.crDfInputs)(INPUT_CONFIGS);
 const RedditTopDialog = props => (0, _jsxRuntime.jsx)(_DialogStackInputs.default, {
   ...props,
