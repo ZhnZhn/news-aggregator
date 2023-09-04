@@ -1,7 +1,11 @@
+import domSanitize from '../utils/domSanitize';
 import crId from '../utils/crId';
+import formatNumber from '../utils/formatNumber';
 import formatTimeAgo from '../utils/formatTimeAgo';
 import crDescription from '../utils/crDescription';
 import decodeHTMLEntities from '../utils/decodeHTMLEntities';
+
+import { API_URL } from '../api/RedditApi';
 
 import {
   toMls,
@@ -10,6 +14,7 @@ import {
 import crArticles from './crArticles';
 
 const SOURCE_ID = 'rd_topby';
+const _isArr = Array.isArray;
 const _isStr = v => typeof v === 'string';
 
 const _isTitleStartWithTag = (
@@ -77,13 +82,39 @@ const _filterItemBy = (
     && !data.author_is_blocked;
 }
 
+const _crSubredditItem = (arr) => {
+  const item = _isArr(arr)
+    ? arr[0]
+    : void 0
+  , { data } = item || {}
+  , subreddit = domSanitize(data.subreddit)
+  , subscribers = formatNumber(
+     data.subreddit_subscribers
+  );
+  return data
+    ? {
+      source: SOURCE_ID,
+      articleId: crId(),
+      title: `r/${subreddit} ${subscribers}`,
+      url: `${API_URL}/${subreddit}`
+     }
+    : void 0;
+};
+
 const _toArticles = json => {
   const { data } = json || {}
-  , { children } = data || {};
-  return crArticles(
+  , { children } = data || {}
+  , _articles = crArticles(
     children.filter(_filterItemBy),
     _crArticle
-  );
+  )
+  , subbredditItem = _crSubredditItem(children);
+
+  if (subbredditItem) {
+    _articles.unshift(subbredditItem)
+  }
+
+  return _articles;
 };
 
 const RedditAdapter = {
