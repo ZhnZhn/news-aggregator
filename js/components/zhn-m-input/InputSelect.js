@@ -31,21 +31,28 @@ const InputSelect = _ref => {
     [item, setItem] = (0, _uiApi.useState)(initItem || DF_INIT_ITEM),
     [isShowOptions, showOptions, hideOptions] = (0, _useBool.default)()
     /*eslint-disable react-hooks/exhaustive-deps */,
-    _hCloseOptions = (0, _uiApi.useCallback)(() => {
+    _hCloseOptions = (0, _uiApi.useMemo)(() => () => {
       hideOptions();
       (0, _uiApi.focusRefElement)(_refBtArrow);
     }, [])
     // hideOptions, _refBtArrow
-    /*eslint-enable react-hooks/exhaustive-deps */
-
-    /*eslint-disable react-hooks/exhaustive-deps */,
-    _hSelect = (0, _uiApi.useCallback)((item, evt) => {
-      evt.stopPropagation();
+    ,
+    [_hSelect, _hKeyDown] = (0, _uiApi.useMemo)(() => [(item, evt) => {
+      (0, _uiApi.stopDefaultFor)(evt);
       onSelect(item, id);
       _hCloseOptions();
       setItem(item);
-    }, []);
-  // id, onSelect, _closeOptions
+    },
+    // id, onSelect, _closeOptions
+    evt => {
+      if (evt.key === _uiApi.KEY_ARROW_DOWN) {
+        (0, _uiApi.stopDefaultFor)(evt);
+        showOptions();
+      }
+    }
+    // showOptions
+    ], []);
+  // hideOptions, _refBtArrow
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (0, _jsxRuntime.jsxs)("div", {
@@ -53,6 +60,7 @@ const InputSelect = _ref => {
     className: CL_SELECT,
     style: TS.ROOT,
     onClick: showOptions,
+    onKeyDown: _hKeyDown,
     children: [(0, _jsxRuntime.jsx)("label", {
       className: CL_LABEL,
       children: caption

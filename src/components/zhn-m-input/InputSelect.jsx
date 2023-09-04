@@ -1,8 +1,10 @@
 import {
   useRef,
   useState,
-  useCallback,
-  focusRefElement
+  useMemo,
+  KEY_ARROW_DOWN,
+  focusRefElement,
+  stopDefaultFor
 } from '../uiApi';
 
 import useBool from '../hooks/useBool';
@@ -46,21 +48,32 @@ const InputSelect = ({
     hideOptions
   ] = useBool()
   /*eslint-disable react-hooks/exhaustive-deps */
-  , _hCloseOptions = useCallback(() => {
+  , _hCloseOptions = useMemo(() => () => {
     hideOptions()
     focusRefElement(_refBtArrow)
   }, [])
   // hideOptions, _refBtArrow
-  /*eslint-enable react-hooks/exhaustive-deps */
-
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _hSelect = useCallback((item, evt) => {
-      evt.stopPropagation()
-      onSelect(item, id)
-      _hCloseOptions()
-      setItem(item)
-  }, []);
-  // id, onSelect, _closeOptions
+  , [
+    _hSelect,
+    _hKeyDown
+  ] = useMemo(() => [
+    (item, evt) => {
+        stopDefaultFor(evt)
+        onSelect(item, id)
+        _hCloseOptions()
+        setItem(item)
+    },
+    // id, onSelect, _closeOptions
+    (evt) => {
+      if (evt.key === KEY_ARROW_DOWN) {
+        stopDefaultFor(evt)
+        showOptions()
+      }
+    }
+    // showOptions
+  ]
+  , [])
+  // hideOptions, _refBtArrow
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (
@@ -69,6 +82,7 @@ const InputSelect = ({
       className={CL_SELECT}
       style={TS.ROOT}
       onClick={showOptions}
+      onKeyDown={_hKeyDown}
     >
       <label className={CL_LABEL}>
         {caption}
