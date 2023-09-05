@@ -1,11 +1,11 @@
 import {
   crId,
   formatTimeAgo,
-  crDescription
+  crDescription,
+  decodeHTMLEntities
 } from '../utils';
 
 import { dateTimeToMls } from '../utils/dt';
-import decodeHTMLEntities from '../utils/decodeHTMLEntities';
 
 import crArticles from './crArticles';
 const SOURCE_ID = 'dt_topby';

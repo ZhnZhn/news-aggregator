@@ -2,11 +2,11 @@ import {
   crId,
   formatTimeAgo,
   crDescription,
-  domSanitize
+  domSanitize,
+  decodeHTMLEntities
 } from '../utils';
 
 import formatNumber from '../utils/formatNumber';
-import decodeHTMLEntities from '../utils/decodeHTMLEntities';
 
 import { API_URL } from '../api/RedditApi';
 
@@ -90,7 +90,9 @@ const _crSubredditItem = (arr) => {
     ? arr[0]
     : void 0
   , { data } = item || {}
-  , subreddit = domSanitize(data.subreddit)
+  , subreddit = decodeHTMLEntities(
+    domSanitize(data.subreddit)
+  )
   , subscribers = formatNumber(
      data.subreddit_subscribers
   );

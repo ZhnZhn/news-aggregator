@@ -5,7 +5,6 @@ exports.__esModule = true;
 exports.default = void 0;
 var _utils = require("../utils");
 var _formatNumber = _interopRequireDefault(require("../utils/formatNumber"));
-var _decodeHTMLEntities = _interopRequireDefault(require("../utils/decodeHTMLEntities"));
 var _RedditApi = require("../api/RedditApi");
 var _adapterFn = require("./adapterFn");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
@@ -45,7 +44,7 @@ const _crArticle = (_ref, timeAgoOptions) => {
   return {
     source: SOURCE_ID,
     articleId: (0, _utils.crId)(),
-    title: (0, _decodeHTMLEntities.default)(_title),
+    title: (0, _utils.decodeHTMLEntities)(_title),
     description: (0, _utils.crDescription)(selftext),
     author: _author,
     related: domain,
@@ -65,7 +64,7 @@ const _crSubredditItem = arr => {
     {
       data
     } = item || {},
-    subreddit = (0, _utils.domSanitize)(data.subreddit),
+    subreddit = (0, _utils.decodeHTMLEntities)((0, _utils.domSanitize)(data.subreddit)),
     subscribers = (0, _formatNumber.default)(data.subreddit_subscribers);
   return data ? {
     source: SOURCE_ID,

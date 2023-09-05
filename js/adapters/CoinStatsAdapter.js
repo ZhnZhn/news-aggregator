@@ -5,7 +5,6 @@ exports.__esModule = true;
 exports.default = void 0;
 var _utils = require("../utils");
 var _toFirstUpperCase = _interopRequireDefault(require("../utils/toFirstUpperCase"));
-var _decodeHTMLEntities = _interopRequireDefault(require("../utils/decodeHTMLEntities"));
 var _crArticles = _interopRequireDefault(require("./crArticles"));
 const SOURCE_ID = 'coinstats_news';
 const _crRelated = coins => (coins || []).map(_ref => {
@@ -27,7 +26,7 @@ const _crArticle = (_ref2, timeAgoOptions) => {
     source: SOURCE_ID,
     articleId: (0, _utils.crId)(),
     title,
-    description: (0, _decodeHTMLEntities.default)(description),
+    description: (0, _utils.decodeHTMLEntities)(description),
     related: _crRelated(coins),
     author: source,
     publishedAt: feedDate,

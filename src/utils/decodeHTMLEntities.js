@@ -13,10 +13,9 @@ const _hmHtmlEntities = Object.assign(
 )
 , _reHtmlCode = new RegExp('&#(\\d+);?', 'g')
 , _reHtmlFilter = new RegExp('&#x200B;', 'g')
-, _onMatch = (match) => _hmHtmlEntities[match]
-, decodeHTMLEntities = str => ((typeof str === 'string' && str) || '')
-   .replace(_reHtmlCode, (_, code) => String.fromCharCode(code))
-   .replace(_reHtmlEntities, _onMatch)
-   .replace(_reHtmlFilter, '');
+, _onMatch = (match) => _hmHtmlEntities[match];
 
-export default decodeHTMLEntities
+export const decodeHTMLEntities = str => ((typeof str === 'string' && str) || '')
+  .replace(_reHtmlCode, (_, code) => String.fromCharCode(code))
+  .replace(_reHtmlEntities, _onMatch)
+  .replace(_reHtmlFilter, '')

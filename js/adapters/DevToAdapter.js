@@ -5,7 +5,6 @@ exports.__esModule = true;
 exports.default = void 0;
 var _utils = require("../utils");
 var _dt = require("../utils/dt");
-var _decodeHTMLEntities = _interopRequireDefault(require("../utils/decodeHTMLEntities"));
 var _crArticles = _interopRequireDefault(require("./crArticles"));
 const SOURCE_ID = 'dt_topby';
 const _crArticle = (item, timeAgoOptions) => {
@@ -21,7 +20,7 @@ const _crArticle = (item, timeAgoOptions) => {
   return {
     source: SOURCE_ID,
     articleId: (0, _utils.crId)(),
-    title: (0, _decodeHTMLEntities.default)(title),
+    title: (0, _utils.decodeHTMLEntities)(title),
     description: (0, _utils.crDescription)(positive_reactions_count + " " + reading_time_minutes + "min"),
     author: (user || {}).name,
     related: tags,
