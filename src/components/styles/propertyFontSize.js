@@ -37,15 +37,17 @@ export const FONT_SIZE_OPTIONS = _crFontSizeOptions(
   HAS_WIDE_SCREEN ? 15 : 16
 )
 
-const DF_APP_FONT_SIZE = 16
+const DF_APP_FONT_SIZE = HAS_WIDE_SCREEN
+  ? FONT_SIZE_OPTIONS[1][1]
+  : FONT_SIZE_OPTIONS[2][1]
 , MIN_FS = 15
-, MAX_FS = 19
+, MAX_FS = 20;
 let _appFontSize = DF_APP_FONT_SIZE;
 export const getFontSize = () => _appFontSize;
 
 const _documentElement = document.documentElement;
 export const initFontSize = () => {
-  const [_fontSizeStr] = readFromLs(LS_FONT_SIZE_KEY)
+  const [_fontSizeStr] = readFromLs(LS_FONT_SIZE_KEY);
   if (_fontSizeStr) {
     const _fontSize = parseInt(_fontSizeStr, 10);
     if (isNumberInRange(MIN_FS, MAX_FS, _fontSize)){

@@ -13,9 +13,9 @@ const _crFontItem = (name, size) => [name + " (" + size + "px)", size],
   _crFontSizeOptions = smallSize => FONT_SIZE_NAMES.map((name, index) => _crFontItem(name, smallSize + index));
 const FONT_SIZE_OPTIONS = _crFontSizeOptions(_has.HAS_WIDE_SCREEN ? 15 : 16);
 exports.FONT_SIZE_OPTIONS = FONT_SIZE_OPTIONS;
-const DF_APP_FONT_SIZE = 16,
+const DF_APP_FONT_SIZE = _has.HAS_WIDE_SCREEN ? FONT_SIZE_OPTIONS[1][1] : FONT_SIZE_OPTIONS[2][1],
   MIN_FS = 15,
-  MAX_FS = 19;
+  MAX_FS = 20;
 let _appFontSize = DF_APP_FONT_SIZE;
 const getFontSize = () => _appFontSize;
 exports.getFontSize = getFontSize;
