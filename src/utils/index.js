@@ -2,6 +2,7 @@ export { crId } from './crId';
 export { bindTo } from './bindTo';
 
 export { crDescription } from './crDescription';
+export { formatNumber } from './formatNumber';
 export { formatTimeAgo } from './formatTimeAgo';
 export { toFirstUpperCase } from './toFirstUpperCase';
 export { joinStrsBy } from './joinStrsBy';

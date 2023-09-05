@@ -1,9 +1,8 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-var _formatNumber = _interopRequireDefault(require("../formatNumber"));
+var _formatNumber = require("../formatNumber");
 describe('util formatNumber', () => {
-  const fn = _formatNumber.default;
+  const fn = _formatNumber.formatNumber;
   test('should return format number string', () => {
     expect(fn(9)).toBe('9');
     expect(fn(99)).toBe('99');

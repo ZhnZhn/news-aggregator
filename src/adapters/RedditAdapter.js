@@ -1,12 +1,11 @@
 import {
   crId,
   formatTimeAgo,
+  formatNumber,
   crDescription,
   domSanitize,
   decodeHTMLEntities
 } from '../utils';
-
-import formatNumber from '../utils/formatNumber';
 
 import { API_URL } from '../api/RedditApi';
 

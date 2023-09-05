@@ -4,10 +4,10 @@ import { THE_NEWS_API } from '../conf/ProviderNames';
 import {
   crId,
   formatTimeAgo,
+  formatNumber,
   toFirstUpperCase
 } from '../utils';
 
-import formatNumber from '../utils/formatNumber';
 import sanitizeArticle from './sanitizeArticle';
 
 const _isArr = Array.isArray;
