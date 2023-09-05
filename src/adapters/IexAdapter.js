@@ -1,7 +1,10 @@
 import { IEX_CLOUD } from '../conf/ProviderNames';
-import crId from '../utils/crId';
-import formatTimeAgo from '../utils/formatTimeAgo';
-import crDescription from '../utils/crDescription';
+
+import {
+  crId,
+  formatTimeAgo,
+  crDescription
+} from '../utils';
 
 import sanitizeArticle from './sanitizeArticle';
 

@@ -1,8 +1,11 @@
 import { loadItem } from '../flux/itemStore';
 import { THE_NEWS_API } from '../conf/ProviderNames';
 
-import crId from '../utils/crId';
-import formatTimeAgo from '../utils/formatTimeAgo';
+import {
+  crId,
+  formatTimeAgo
+} from '../utils';
+
 import formatNumber from '../utils/formatNumber';
 import toFirstUpperCase from '../utils/toFirstUpperCase';
 

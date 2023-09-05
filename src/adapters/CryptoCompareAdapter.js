@@ -1,6 +1,8 @@
-import crId from '../utils/crId';
-import formatTimeAgo from '../utils/formatTimeAgo';
-import crDescription from '../utils/crDescription';
+import {
+  crId,
+  formatTimeAgo,
+  crDescription
+} from '../utils';
 
 import { toMls } from './adapterFn';
 import crArticles from './crArticles';

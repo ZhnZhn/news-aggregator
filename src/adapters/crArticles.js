@@ -1,4 +1,4 @@
-import formatTimeAgo from '../utils/formatTimeAgo';
+import { formatTimeAgo } from '../utils';
 import sanitizeArticle from './sanitizeArticle';
 
 const _isArr = Array.isArray;

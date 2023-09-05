@@ -2,15 +2,13 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _useBool2 = _interopRequireDefault(require("../hooks/useBool"));
+var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _has = require("../has");
 var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
-var _crId = _interopRequireDefault(require("../../utils/crId"));
 var _jsxRuntime = require("preact/jsx-runtime");
-var CL_SELECT = 'm-select',
+const CL_SELECT = 'm-select',
   CL_LABEL = CL_SELECT + "__label",
   M_TEXTFIELD = 'm-textfield',
   CL_DIV = M_TEXTFIELD + "-input__div",
@@ -18,7 +16,7 @@ var CL_SELECT = 'm-select',
   M_INPUT = 'm-input',
   CL_INPUT_LINE = M_INPUT + "__line",
   CL_INPUT_MSG_ERR = M_INPUT + "__msg-err";
-var S_LABEL_TO_INPUT = {
+const S_LABEL_TO_INPUT = {
     transform: 'scale(1) translate(0px, -6px)'
   },
   S_BT_CLEAR = {
@@ -32,107 +30,78 @@ var S_LABEL_TO_INPUT = {
   S_LINE_ERROR = {
     borderBottom: '2px solid #f44336'
   };
-var FN_TRUE = function FN_TRUE() {
-  return true;
-};
-var FN_NOOP = function FN_NOOP() {};
-var _getEventTargetValue = function _getEventTargetValue(event) {
-  return event.target.value;
-};
-var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
-  var style = _ref.style,
-    inputStyle = _ref.inputStyle,
-    caption = _ref.caption,
-    id = _ref.id,
-    initValue = _ref.initValue,
-    _ref$maxLength = _ref.maxLength,
-    maxLength = _ref$maxLength === void 0 ? "20" : _ref$maxLength,
-    _ref$autoCapitalize = _ref.autoCapitalize,
-    autoCapitalize = _ref$autoCapitalize === void 0 ? "off" : _ref$autoCapitalize,
-    _ref$errorMsg = _ref.errorMsg,
-    errorMsg = _ref$errorMsg === void 0 ? '' : _ref$errorMsg,
-    _ref$hasClear = _ref.hasClear,
-    hasClear = _ref$hasClear === void 0 ? true : _ref$hasClear,
-    _ref$onTest = _ref.onTest,
-    onTest = _ref$onTest === void 0 ? FN_TRUE : _ref$onTest,
-    _ref$onEnter = _ref.onEnter,
-    onEnter = _ref$onEnter === void 0 ? FN_NOOP : _ref$onEnter,
-    _ref$onBlur = _ref.onBlur,
-    onBlur = _ref$onBlur === void 0 ? FN_NOOP : _ref$onBlur,
-    _ref$onKeyDown = _ref.onKeyDown,
-    onKeyDown = _ref$onKeyDown === void 0 ? FN_NOOP : _ref$onKeyDown;
-  var _refId = (0, _uiApi.useRef)(id || (0, _crId["default"])()),
-    _useState = (0, _uiApi.useState)(initValue || ''),
-    value = _useState[0],
-    setValue = _useState[1],
-    _useState2 = (0, _uiApi.useState)(function () {
-      return onTest(initValue || '');
-    }),
-    isPassTest = _useState2[0],
-    setIsPastTest = _useState2[1],
-    _useBool = (0, _useBool2["default"])(),
-    isFocus = _useBool[0],
-    _focusInput = _useBool[1],
-    _blurInput = _useBool[2],
-    _useMemo = (0, _uiApi.useMemo)(function () {
-      return [function (evt, onEvent) {
-        var _value = _getEventTargetValue(evt);
-        if (onTest(_value)) {
-          onEvent(_value.trim(), id);
-        }
-      }, function () {
-        onKeyDown('', id);
-        setValue('');
-      }];
-    }, []),
-    _onEvent = _useMemo[0],
-    _clearInput = _useMemo[1],
-    _useMemo2 = (0, _uiApi.useMemo)(function () {
-      return [function (event) {
-        _onEvent(event, onBlur);
-        _blurInput();
-      }, function (event) {
+const FN_TRUE = () => true;
+const FN_NOOP = () => {};
+const _getEventTargetValue = event => event.target.value;
+const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
+  let {
+    style,
+    inputStyle,
+    caption,
+    id,
+    initValue,
+    maxLength = "20",
+    autoCapitalize = "off",
+    errorMsg = '',
+    hasClear = true,
+    onTest = FN_TRUE,
+    onEnter = FN_NOOP,
+    onBlur = FN_NOOP,
+    onKeyDown = FN_NOOP
+  } = _ref;
+  const _refId = (0, _uiApi.useRef)(id || (0, _uiApi.crId)()),
+    [value, setValue] = (0, _uiApi.useState)(initValue || ''),
+    [isPassTest, setIsPastTest] = (0, _uiApi.useState)(() => onTest(initValue || '')),
+    [isFocus, _focusInput, _blurInput] = (0, _useBool.default)()
+    /*eslint-disable react-hooks/exhaustive-deps */,
+    [_onEvent, _clearInput] = (0, _uiApi.useMemo)(() => [(evt, onEvent) => {
+      const _value = _getEventTargetValue(evt);
+      if (onTest(_value)) {
+        onEvent(_value.trim(), id);
+      }
+    }, () => {
+      onKeyDown('', id);
+      setValue('');
+    }], [])
+    // onTest, onKeyDown, id
+    ,
+    [_hBlurInput, _hInputChange, _hKeyDown] = (0, _uiApi.useMemo)(() => [event => {
+      _onEvent(event, onBlur);
+      _blurInput();
+    }, event => {
+      _onEvent(event, onKeyDown);
+      const _value = _getEventTargetValue(event);
+      setValue(_value);
+      setIsPastTest(onTest(_value));
+    }, event => {
+      const keyCode = event.keyCode;
+      if (keyCode === 46 || keyCode === 27) {
+        _clearInput();
+      } else if (keyCode === 13) {
+        _onEvent(event, onEnter);
+      } else {
         _onEvent(event, onKeyDown);
-        var _value = _getEventTargetValue(event);
-        setValue(_value);
-        setIsPastTest(onTest(_value));
-      }, function (event) {
-        var keyCode = event.keyCode;
-        if (keyCode === 46 || keyCode === 27) {
-          _clearInput();
-        } else if (keyCode === 13) {
-          _onEvent(event, onEnter);
-        } else {
-          _onEvent(event, onKeyDown);
-        }
-      }];
-    }, []),
-    _hBlurInput = _useMemo2[0],
-    _hInputChange = _useMemo2[1],
-    _hKeyDown = _useMemo2[2];
-
+      }
+    }], []);
   //onTest, onBlur, _blurInput, id
   //onTest
   //onTest, onEnter, onKeyDown, id
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  (0, _uiApi.useImperativeHandle)(ref, function () {
-    return {
-      getValue: function getValue() {
-        return String(value).trim();
-      }
-    };
-  }, [value]);
-  var _labelStyle = value || isFocus ? void 0 : S_LABEL_TO_INPUT,
-    _ref2 = isPassTest ? [] : [S_LABEL_ON_ERROR, S_LINE_ERROR],
-    _labelErrStyle = _ref2[0],
-    _lineStyle = _ref2[1];
+  (0, _uiApi.useImperativeHandle)(ref, () => ({
+    getValue: () => String(value).trim()
+  }), [value]);
+  const _labelStyle = value || isFocus ? void 0 : S_LABEL_TO_INPUT,
+    [_labelErrStyle, _lineStyle] = isPassTest ? [] : [S_LABEL_ON_ERROR, S_LINE_ERROR];
   return (0, _jsxRuntime.jsxs)("div", {
     className: CL_SELECT,
     style: style,
     children: [(0, _jsxRuntime.jsx)("label", {
       className: CL_LABEL,
-      style: (0, _extends2["default"])({}, _labelStyle, _labelErrStyle),
+      style: {
+        ..._labelStyle,
+        ..._labelErrStyle
+      },
       htmlFor: _refId.current,
       children: caption
     }), (0, _jsxRuntime.jsxs)("div", {
@@ -154,7 +123,7 @@ var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
         onBlur: _hBlurInput,
         onChange: _hInputChange,
         onKeyDown: _hKeyDown
-      }), _has.HAS_TOUCH_EVENTS && hasClear && value && (0, _jsxRuntime.jsx)(_SvgX["default"], {
+      }), _has.HAS_TOUCH_EVENTS && hasClear && value && (0, _jsxRuntime.jsx)(_SvgX.default, {
         color: "black",
         className: "svg-clear",
         style: S_BT_CLEAR,
@@ -170,5 +139,5 @@ var TextField = (0, _uiApi.forwardRef)(function (_ref, ref) {
   });
 });
 var _default = TextField;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=TextField.js.map

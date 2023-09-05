@@ -1,4 +1,4 @@
-import domSanitize from '../utils/domSanitize';
+import { domSanitize } from '../utils';
 
 const _assign = Object.assign
 , _isNumber = n => typeof n === 'number'

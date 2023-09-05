@@ -1,4 +1,7 @@
-import formatTimeAgo from '../utils/formatTimeAgo';
+import {
+  formatTimeAgo
+} from '../utils';
+
 import toFirstUpperCase from '../utils/toFirstUpperCase';
 import splitByParagraph from '../utils/splitByParagraph';
 

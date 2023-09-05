@@ -1,4 +1,4 @@
-export { bindTo } from '../utils/bindTo';
+export { bindTo, crId } from '../utils';
 
 export {
   memo,

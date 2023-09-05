@@ -2,44 +2,48 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _crId = _interopRequireDefault(require("../utils/crId"));
-var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
-var _crDescription = _interopRequireDefault(require("../utils/crDescription"));
+exports.default = void 0;
+var _utils = require("../utils");
 var _adapterFn = require("./adapterFn");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
-var SOURCE_ID = 'cryptocompare_news';
-var _crArticle = function _crArticle(_ref, timeAgoOptions) {
-  var title = _ref.title,
-    body = _ref.body,
-    categories = _ref.categories,
-    url = _ref.url,
-    source = _ref.source,
-    source_info = _ref.source_info,
-    published_on = _ref.published_on;
-  var _ref2 = source_info || {},
-    name = _ref2.name,
+const SOURCE_ID = 'cryptocompare_news';
+const _crArticle = (_ref, timeAgoOptions) => {
+  let {
+    title,
+    body,
+    categories,
+    url,
+    source,
+    source_info,
+    published_on
+  } = _ref;
+  const {
+      name
+    } = source_info || {},
     _publishedOn = (0, _adapterFn.toMls)(published_on);
   return {
     source: SOURCE_ID,
-    articleId: (0, _crId["default"])(),
-    title: title,
-    description: (0, _crDescription["default"])(body),
+    articleId: (0, _utils.crId)(),
+    title,
+    description: (0, _utils.crDescription)(body),
     related: categories,
     author: name || source,
-    timeAgo: _publishedOn && (0, _formatTimeAgo["default"])(_publishedOn, timeAgoOptions),
+    timeAgo: _publishedOn && (0, _utils.formatTimeAgo)(_publishedOn, timeAgoOptions),
     publishedAt: _publishedOn,
-    url: url
+    url
   };
 };
-var _toArticles = function _toArticles(json) {
-  var _ref3 = json || {},
-    Data = _ref3.Data;
-  return (0, _crArticles["default"])(Data, _crArticle);
+const _toArticles = json => {
+  const {
+    Data
+  } = json || {};
+  return (0, _crArticles.default)(Data, _crArticle);
 };
-var CryptoCompareAdapter = {
-  toNews: function toNews(json, option) {
-    var sortOrder = option.sortOrder;
+const CryptoCompareAdapter = {
+  toNews(json, option) {
+    const {
+      sortOrder
+    } = option;
     return {
       source: SOURCE_ID,
       articles: _toArticles(json),
@@ -48,5 +52,5 @@ var CryptoCompareAdapter = {
   }
 };
 var _default = CryptoCompareAdapter;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=CryptoCompareAdapter.js.map

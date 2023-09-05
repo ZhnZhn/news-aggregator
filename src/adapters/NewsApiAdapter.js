@@ -1,4 +1,7 @@
-import crId from '../utils/crId';
+import {
+  crId
+} from '../utils';
+
 import joinStrsBy from '../utils/joinStrsBy';
 import toFirstUpperCase from '../utils/toFirstUpperCase';
 

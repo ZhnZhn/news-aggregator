@@ -1,8 +1,11 @@
-import domSanitize from '../utils/domSanitize';
-import crId from '../utils/crId';
+import {
+  crId,
+  formatTimeAgo,
+  crDescription,
+  domSanitize
+} from '../utils';
+
 import formatNumber from '../utils/formatNumber';
-import formatTimeAgo from '../utils/formatTimeAgo';
-import crDescription from '../utils/crDescription';
 import decodeHTMLEntities from '../utils/decodeHTMLEntities';
 
 import { API_URL } from '../api/RedditApi';

@@ -5,8 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _itemStore = require("../flux/itemStore");
 var _ProviderNames = require("../conf/ProviderNames");
-var _crId = _interopRequireDefault(require("../utils/crId"));
-var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
+var _utils = require("../utils");
 var _formatNumber = _interopRequireDefault(require("../utils/formatNumber"));
 var _toFirstUpperCase = _interopRequireDefault(require("../utils/toFirstUpperCase"));
 var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
@@ -17,7 +16,7 @@ const _toArticles = (_ref, sourceId) => {
   let {
     data
   } = _ref;
-  const _timeAgoOptions = _formatTimeAgo.default.crOptions();
+  const _timeAgoOptions = _utils.formatTimeAgo.crOptions();
   return _isArr(data) ? data.map(item => {
     const {
       title,
@@ -30,13 +29,13 @@ const _toArticles = (_ref, sourceId) => {
     } = item;
     return (0, _sanitizeArticle.default)({
       source: sourceId,
-      articleId: (0, _crId.default)(),
+      articleId: (0, _utils.crId)(),
       title,
       description: description || snippet,
       author: source,
       related: categories,
       publishedAt: published_at,
-      timeAgo: (0, _formatTimeAgo.default)(published_at, _timeAgoOptions),
+      timeAgo: (0, _utils.formatTimeAgo)(published_at, _timeAgoOptions),
       url
     });
   }) : [];

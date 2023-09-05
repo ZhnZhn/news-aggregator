@@ -5,13 +5,17 @@
  ],
  "file": "../../src/utils/domSanitize.js",
  "names": [
+  "_dompurify",
+  "_interopRequireDefault",
+  "require",
   "_sanitize",
   "DOMPurify",
   "sanitize",
   "domSanitize",
   "str",
   "USE_PROFILES",
-  "html"
+  "html",
+  "exports"
  ],
- "mappings": ";;;;;;;AAAA;;AAEA;AACA,IAAMA,SAAS,GAAGC,sBAAUC,QAA5B;;AAEA,IAAMC,WAAW,GAAG,SAAdA,WAAc,CAClBC,GADkB;AAAA,SAEfJ,SAAS,CAACI,GAAD,EAAM;AAACC,IAAAA,YAAY,EAAE;AAAEC,MAAAA,IAAI,EAAE;AAAR;AAAf,GAAN,CAFM;AAAA,CAApB;;eAIeH,W"
+ "mappings": ";;;;;AAAA,IAAAA,UAAA,GAAAC,sBAAA,CAAAC,OAAA;AAEA;AACA,MAAMC,SAAS,GAAGC,kBAAS,CAACC,QAAQ;AAE7B,MAAMC,WAAW,GACtBC,GAAG,IACAJ,SAAS,CAACI,GAAG,EAAE;EAACC,YAAY,EAAE;IAAEC,IAAI,EAAE;EAAK;AAAC,CAAC,CAAC;AAACC,OAAA,CAAAJ,WAAA,GAAAA,WAAA"
 }

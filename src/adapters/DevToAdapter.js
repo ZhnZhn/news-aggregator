@@ -1,7 +1,10 @@
-import crId from '../utils/crId';
-import formatTimeAgo from '../utils/formatTimeAgo';
+import {
+  crId,
+  formatTimeAgo,
+  crDescription
+} from '../utils';
+
 import { dateTimeToMls } from '../utils/dt';
-import crDescription from '../utils/crDescription';
 import decodeHTMLEntities from '../utils/decodeHTMLEntities';
 
 import crArticles from './crArticles';

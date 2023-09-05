@@ -1,4 +1,5 @@
 import {
+  crId,
   forwardRef,
   useRef,
   useState,
@@ -10,8 +11,6 @@ import useBool from '../hooks/useBool';
 
 import { HAS_TOUCH_EVENTS } from '../has';
 import SvgX from '../zhn-atoms/SvgX';
-
-import crId from '../../utils/crId';
 
 const CL_SELECT = 'm-select'
 , CL_LABEL = `${CL_SELECT}__label`

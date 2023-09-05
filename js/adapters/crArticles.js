@@ -1,24 +1,15 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
-
+exports.default = void 0;
+var _utils = require("../utils");
 var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
-
-var _isArr = Array.isArray;
-
-var crArticles = function crArticles(items, crArticle) {
-  var _timeAgoOptions = _formatTimeAgo["default"].crOptions();
-
-  return _isArr(items) ? items.map(function (item) {
-    return (0, _sanitizeArticle["default"])(crArticle(item, _timeAgoOptions));
-  }) : [];
+const _isArr = Array.isArray;
+const crArticles = (items, crArticle) => {
+  const _timeAgoOptions = _utils.formatTimeAgo.crOptions();
+  return _isArr(items) ? items.map(item => (0, _sanitizeArticle.default)(crArticle(item, _timeAgoOptions))) : [];
 };
-
 var _default = crArticles;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=crArticles.js.map

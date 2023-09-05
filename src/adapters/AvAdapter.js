@@ -1,7 +1,10 @@
-import crId from '../utils/crId';
-import crDescription from '../utils/crDescription';
-import formatTimeAgo from '../utils/formatTimeAgo';
-import domSanitize from '../utils/domSanitize';
+import {
+  crId,
+  crDescription,
+  formatTimeAgo,
+  domSanitize
+} from '../utils';
+
 import { toMls } from '../utils/dt';
 import crArticles from './crArticles';
 import {

@@ -1,5 +1,7 @@
-import domSanitize from '../utils/domSanitize';
-import crId from '../utils/crId';
+import {
+  crId,
+  domSanitize
+} from '../utils';
 
 import sanitizeArticle from './sanitizeArticle';
 

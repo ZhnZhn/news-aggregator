@@ -1,6 +1,6 @@
-export { bindTo } from '../utils/bindTo';
+export { bindTo } from '../utils';
 
-import { bindTo } from '../utils/bindTo';
+import { bindTo } from '../utils';
 
 import { createStore } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';

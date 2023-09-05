@@ -5,8 +5,8 @@ exports.__esModule = true;
 exports.default = void 0;
 var _ProviderNames = require("../../conf/ProviderNames");
 var _NewsQuery = _interopRequireDefault(require("../../conf/NewsQuery"));
-var _bindTo = require("../../utils/bindTo");
 var _compStore = require("../../flux/compStore");
+var _uiApi = require("../uiApi");
 const _fOnClick = (onClose, id) => evt => {
   (0, _compStore.showDialog)(id);
   onClose(evt);
@@ -14,7 +14,7 @@ const _fOnClick = (onClose, id) => evt => {
 let _menuQuery;
 const crMenuQuery = onClose => {
   if (!_menuQuery) {
-    const _crOnClick = (0, _bindTo.bindTo)(_fOnClick, onClose);
+    const _crOnClick = (0, _uiApi.bindTo)(_fOnClick, onClose);
     _menuQuery = [{
       t: 'Blockchain',
       items: [[_ProviderNames.CRYPTO_COMPARE, _crOnClick(_NewsQuery.default.CRYPTO_COMPARE)], [_ProviderNames.COIN_STATS, _crOnClick(_NewsQuery.default.COIN_STATS)], [_ProviderNames.MESSARI, _crOnClick(_NewsQuery.default.MESSARI)]]

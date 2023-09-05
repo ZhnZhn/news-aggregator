@@ -1,8 +1,9 @@
-import crId from '../utils/crId';
-import formatTimeAgo from '../utils/formatTimeAgo';
+import {
+  crId,
+  formatTimeAgo
+} from '../utils';
 
 import crArticles from './crArticles';
-
 
 const SOURCE_ID = 'fmp_news';
 

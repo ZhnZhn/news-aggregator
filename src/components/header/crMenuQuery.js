@@ -15,8 +15,8 @@ import {
 
 import QUERY from '../../conf/NewsQuery';
 
-import { bindTo } from '../../utils/bindTo';
 import { showDialog } from '../../flux/compStore';
+import { bindTo } from '../uiApi';
 
 const _fOnClick = (
   onClose,

@@ -3,11 +3,8 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _domSanitize = _interopRequireDefault(require("../utils/domSanitize"));
-var _crId = _interopRequireDefault(require("../utils/crId"));
+var _utils = require("../utils");
 var _formatNumber = _interopRequireDefault(require("../utils/formatNumber"));
-var _formatTimeAgo = _interopRequireDefault(require("../utils/formatTimeAgo"));
-var _crDescription = _interopRequireDefault(require("../utils/crDescription"));
 var _decodeHTMLEntities = _interopRequireDefault(require("../utils/decodeHTMLEntities"));
 var _RedditApi = require("../api/RedditApi");
 var _adapterFn = require("./adapterFn");
@@ -47,12 +44,12 @@ const _crArticle = (_ref, timeAgoOptions) => {
     _title = _crTitle(title, link_flair_text);
   return {
     source: SOURCE_ID,
-    articleId: (0, _crId.default)(),
+    articleId: (0, _utils.crId)(),
     title: (0, _decodeHTMLEntities.default)(_title),
-    description: (0, _crDescription.default)(selftext),
+    description: (0, _utils.crDescription)(selftext),
     author: _author,
     related: domain,
-    timeAgo: (0, _formatTimeAgo.default)(publishedAt, timeAgoOptions),
+    timeAgo: (0, _utils.formatTimeAgo)(publishedAt, timeAgoOptions),
     publishedAt,
     url
   };
@@ -68,11 +65,11 @@ const _crSubredditItem = arr => {
     {
       data
     } = item || {},
-    subreddit = (0, _domSanitize.default)(data.subreddit),
+    subreddit = (0, _utils.domSanitize)(data.subreddit),
     subscribers = (0, _formatNumber.default)(data.subreddit_subscribers);
   return data ? {
     source: SOURCE_ID,
-    articleId: (0, _crId.default)(),
+    articleId: (0, _utils.crId)(),
     title: "r/" + subreddit + " " + subscribers,
     url: _RedditApi.API_URL + "/" + subreddit
   } : void 0;

@@ -26,7 +26,7 @@ const locale = (
 
 register('en_US', locale);
 
-const formatTimeAgo = (dateMls, options) => {
+export const formatTimeAgo = (dateMls, options) => {
   try {
     return format(dateMls, 'en_US', options);
   } catch(exception) {
@@ -37,5 +37,3 @@ const formatTimeAgo = (dateMls, options) => {
 formatTimeAgo.crOptions = () => ({
   relativeDate: new Date()
 });
-
-export default formatTimeAgo
