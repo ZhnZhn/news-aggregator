@@ -6,7 +6,6 @@
  "file": "../../src/utils/crDescription.js",
  "names": [
   "_splitByParagraph",
-  "_interopRequireDefault",
   "require",
   "_decodeHTMLEntities",
   "crDescription",
@@ -16,5 +15,5 @@
   "decodeHTMLEntities",
   "exports"
  ],
- "mappings": ";;;;;AAAA,IAAAA,iBAAA,GAAAC,sBAAA,CAAAC,OAAA;AACA,IAAAC,mBAAA,GAAAD,OAAA;AAEO,MAAME,aAAa,GAAGA,CAC3BC,GAAG,EACHC,SAAS,KACN,IAAAC,yBAAgB,EAAC,IAAAC,sCAAkB,EAACH,GAAG,CAAC,EAAEC,SAAS,CAAC;AAAAG,OAAA,CAAAL,aAAA,GAAAA,aAAA"
+ "mappings": ";;;;AAAA,IAAAA,iBAAA,GAAAC,OAAA;AACA,IAAAC,mBAAA,GAAAD,OAAA;AAEO,MAAME,aAAa,GAAGA,CAC3BC,GAAG,EACHC,SAAS,KACN,IAAAC,kCAAgB,EAAC,IAAAC,sCAAkB,EAACH,GAAG,CAAC,EAAEC,SAAS,CAAC;AAAAG,OAAA,CAAAL,aAAA,GAAAA,aAAA"
 }

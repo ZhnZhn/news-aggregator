@@ -1,4 +1,4 @@
-import splitByParagraph from './splitByParagraph';
+import { splitByParagraph } from './splitByParagraph';
 import { decodeHTMLEntities } from './decodeHTMLEntities';
 
 export const crDescription = (

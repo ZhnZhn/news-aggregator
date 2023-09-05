@@ -2,7 +2,10 @@
 const MAX_ALLOW_SENTENCE = 30;
 const MAX_LENGTH = 180;
 
-const splitByParagraph = (strInput, maxLength=MAX_LENGTH) => {
+export const splitByParagraph = (
+  strInput,
+  maxLength=MAX_LENGTH
+) => {
   if (!(strInput && typeof strInput === "string")) {
     return "";
   }
@@ -33,6 +36,4 @@ const splitByParagraph = (strInput, maxLength=MAX_LENGTH) => {
   return _sentences.length === 0
     ? strInput
     : _sentences.join("\n\n");
-};
-
-export default splitByParagraph
+}
