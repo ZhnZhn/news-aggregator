@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _ProviderNames = require("../../conf/ProviderNames");
+var _has = require("../has");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 var _crStyle = require("../crStyle");
@@ -17,7 +18,8 @@ const CL_ABOUT_PANE = "about-pane",
   S_BROWSER_CAPTION = {
     paddingLeft: 12,
     textAlign: 'left'
-  };
+  },
+  _crToken = (token, hotKey) => _has.HAS_WIDE_SCREEN ? token + " [" + hotKey + "]" : token;
 const {
   ItemStack
 } = _Comp.default;
@@ -32,7 +34,8 @@ const _crLinkItem = (_ref, index) => {
     })
   }, index);
 };
-const NEWS_SOURCE_STEP_DESCRIPTIONS = ["Please, click button QUERY [q] in header.", "Choose headlines source.", "Click button LOAD [l] in dialog."];
+const NEWS_SOURCE_STEP_DESCRIPTIONS = ["Please, click button " + _crToken('QUERY', 'q') + " in header.", "Choose headlines source.", "Click button " + _crToken('LOAD', 'l') + " in dialog."],
+  API_KEYS_SETTINGS_MSG = "API Keys can be set in the " + _crToken('Settings Dialog', 's');
 const _crStepItem = (descr, index) => (0, _jsxRuntime.jsx)(_Step.default, {
   step: index + 1,
   description: descr
@@ -91,7 +94,7 @@ const About = _ref2 => {
             style: _About.S_MT_8,
             children: "Personal API Keys from some providers are required."
           }), (0, _jsxRuntime.jsx)("p", {
-            children: "API Keys can be set in the Settings Dialog [s]."
+            children: API_KEYS_SETTINGS_MSG
           })]
         }), (0, _jsxRuntime.jsx)("p", {
           style: _About.S_MT_8,

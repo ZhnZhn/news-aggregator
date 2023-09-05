@@ -1,5 +1,7 @@
 import { FMP_LONG } from '../../conf/ProviderNames';
 
+import { HAS_WIDE_SCREEN } from '../has';
+
 import useBool from '../hooks/useBool';
 import useTheme from '../hooks/useTheme';
 
@@ -37,7 +39,13 @@ const CL_ABOUT_PANE = "about-pane"
 , S_BROWSER_CAPTION = {
   paddingLeft: 12,
   textAlign: 'left'
-};
+}
+, _crToken = (
+  token,
+  hotKey
+) => HAS_WIDE_SCREEN
+   ? `${token} [${hotKey}]`
+   : token;
 
 const { ItemStack } = A;
 
@@ -66,10 +74,11 @@ const _crLinkItem = (
 );
 
 const NEWS_SOURCE_STEP_DESCRIPTIONS = [
-  "Please, click button QUERY [q] in header.",
+  `Please, click button ${_crToken('QUERY', 'q')} in header.`,
   "Choose headlines source.",
-  "Click button LOAD [l] in dialog.",
-];
+  `Click button ${_crToken('LOAD', 'l')} in dialog.`,
+]
+, API_KEYS_SETTINGS_MSG = `API Keys can be set in the ${_crToken('Settings Dialog', 's')}`;
 
 const _crStepItem = (
   descr,
@@ -143,7 +152,7 @@ const About = ({
               Personal API Keys from some providers are required.
              </p>
              <p>
-              API Keys can be set in the Settings Dialog [s].
+              {API_KEYS_SETTINGS_MSG}
              </p>
            </div>
            <p style={S_MT_8}>
