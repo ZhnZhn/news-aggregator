@@ -1,4 +1,4 @@
-import joinStrsBy from '../joinStrsBy'
+import { joinStrsBy } from '../joinStrsBy';
 
 describe('joinStrsBy', () => {
   const fn = joinStrsBy;

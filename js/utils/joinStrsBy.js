@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.default = void 0;
+exports.joinStrsBy = void 0;
 const _isArr = Array.isArray;
 const joinStrsBy = function (arr, delimeter) {
   if (arr === void 0) {
@@ -12,6 +12,5 @@ const joinStrsBy = function (arr, delimeter) {
   }
   return _isArr(arr) ? arr.filter(Boolean).join(delimeter) : '';
 };
-var _default = joinStrsBy;
-exports.default = _default;
+exports.joinStrsBy = joinStrsBy;
 //# sourceMappingURL=joinStrsBy.js.map

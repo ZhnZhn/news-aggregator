@@ -1,9 +1,9 @@
 import {
   crId,
-  toFirstUpperCase
+  toFirstUpperCase,
+  joinStrsBy
 } from '../utils';
 
-import joinStrsBy from '../utils/joinStrsBy';
 import sanitizeArticle from './sanitizeArticle';
 
 const NEWS_SEARCH = 'newsapi_search';

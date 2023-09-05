@@ -1,9 +1,8 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-var _joinStrsBy = _interopRequireDefault(require("../joinStrsBy"));
+var _joinStrsBy = require("../joinStrsBy");
 describe('joinStrsBy', () => {
-  const fn = _joinStrsBy.default;
+  const fn = _joinStrsBy.joinStrsBy;
   test('should return string with joined string tokens', () => {
     expect(fn(['token1', 'token2'])).toBe('token1, token2');
     expect(fn(['', 'token2'])).toBe('token2');
