@@ -7,6 +7,7 @@ import LogoGitHub from './LogoGitHub';
 import LogoPreact from './LogoPreact';
 
 const S_ROOT = {
+  position: 'relative',
   textAlign: 'center',
   paddingTop: 20
 };
