@@ -4,6 +4,7 @@ import {
   useCallback,
   useMemo,
   bindTo,
+  toFirstUpperCase,
   getRefElementStyle,
   focusAsyncRefElement
 } from '../uiApi';
@@ -12,7 +13,6 @@ import useToggle from '../hooks/useToggle';
 import useBool from '../hooks/useBool';
 import useTheme from '../hooks/useTheme';
 import useRefHotKey from '../hotkeys/useRefHotKey';
-import toFirstUpperCase from '../../utils/toFirstUpperCase'
 
 import { initWidthStyle } from '../has';
 import { crInlineBlockShowHide } from '../crStyle';

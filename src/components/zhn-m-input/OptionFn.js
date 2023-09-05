@@ -1,4 +1,4 @@
-import toFirstUpperCase from '../../utils/toFirstUpperCase';
+import { toFirstUpperCase } from '../uiApi';
 
 const _isArr = Array.isArray
 , _isStr = value => typeof value === 'string';

@@ -3,12 +3,11 @@ import { THE_NEWS_API } from '../conf/ProviderNames';
 
 import {
   crId,
-  formatTimeAgo
+  formatTimeAgo,
+  toFirstUpperCase
 } from '../utils';
 
 import formatNumber from '../utils/formatNumber';
-import toFirstUpperCase from '../utils/toFirstUpperCase';
-
 import sanitizeArticle from './sanitizeArticle';
 
 const _isArr = Array.isArray;

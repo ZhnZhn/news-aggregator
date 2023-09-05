@@ -5,7 +5,6 @@ exports.__esModule = true;
 exports.default = void 0;
 var _utils = require("../utils");
 var _joinStrsBy = _interopRequireDefault(require("../utils/joinStrsBy"));
-var _toFirstUpperCase = _interopRequireDefault(require("../utils/toFirstUpperCase"));
 var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
 const NEWS_SEARCH = 'newsapi_search';
 const NEWS_TOP = 'newsapi_top';
@@ -46,7 +45,7 @@ const NewsApiAdapter = {
     return {
       source,
       articles: NewsApiAdapter.toArticles(articles, source),
-      sortBy: (0, _toFirstUpperCase.default)(sortBy)
+      sortBy: (0, _utils.toFirstUpperCase)(sortBy)
     };
   }
 };

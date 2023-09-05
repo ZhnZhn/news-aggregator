@@ -8,7 +8,6 @@ var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 var _useRefHotKey = _interopRequireDefault(require("../hotkeys/useRefHotKey"));
-var _toFirstUpperCase = _interopRequireDefault(require("../../utils/toFirstUpperCase"));
 var _has = require("../has");
 var _crStyle = require("../crStyle");
 var _NewsPane = _interopRequireDefault(require("./NewsPane.Style"));
@@ -35,7 +34,7 @@ const WIDTH_STYLE = (0, _has.initWidthStyle)(),
   };
 const _getWidth = style => parseInt(style.width, 10) || _ResizeWidth.RESIZE_INIT_WIDTH;
 const _toStyleWidth = width => width + 'px';
-const _crPaneCaption = (caption, sortBy) => [caption, sortBy].filter(Boolean).map(_toFirstUpperCase.default).join(': ');
+const _crPaneCaption = (caption, sortBy) => [caption, sortBy].filter(Boolean).map(_uiApi.toFirstUpperCase).join(': ');
 const _crArticleItem = (article, index, _ref) => {
   let {
     Item,

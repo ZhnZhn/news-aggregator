@@ -1,10 +1,9 @@
 import {
   crId,
   formatTimeAgo,
-  decodeHTMLEntities
+  decodeHTMLEntities,
+  toFirstUpperCase,
 } from '../utils';
-
-import toFirstUpperCase from '../utils/toFirstUpperCase';
 
 import crArticles from './crArticles';
 

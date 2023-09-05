@@ -7,7 +7,6 @@ var _itemStore = require("../flux/itemStore");
 var _ProviderNames = require("../conf/ProviderNames");
 var _utils = require("../utils");
 var _formatNumber = _interopRequireDefault(require("../utils/formatNumber"));
-var _toFirstUpperCase = _interopRequireDefault(require("../utils/toFirstUpperCase"));
 var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
 const _isArr = Array.isArray;
 const _isNumber = n => typeof n === 'number' && n - n === 0;
@@ -41,7 +40,7 @@ const _toArticles = (_ref, sourceId) => {
   }) : [];
 };
 const _crCaption = option => {
-  const _captionToken = _isTopQuery(option) ? (0, _toFirstUpperCase.default)(option.category) : option.search;
+  const _captionToken = _isTopQuery(option) ? (0, _utils.toFirstUpperCase)(option.category) : option.search;
   return _ProviderNames.THE_NEWS_API + ": " + _captionToken;
 };
 const _crNextPage = (page, maxPage) => _isNumber(page) ? _isNumber(maxPage) ? Math.min(page + 1, maxPage) : page + 1 : void 0;

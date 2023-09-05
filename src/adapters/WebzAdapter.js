@@ -1,10 +1,9 @@
 import {
-  formatTimeAgo
+  formatTimeAgo,
+  toFirstUpperCase
 } from '../utils';
 
-import toFirstUpperCase from '../utils/toFirstUpperCase';
 import splitByParagraph from '../utils/splitByParagraph';
-
 import sanitizeArticle from './sanitizeArticle';
 
 const _assign = Object.assign

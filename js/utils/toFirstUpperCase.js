@@ -1,8 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.default = void 0;
+exports.toFirstUpperCase = void 0;
 const toFirstUpperCase = str => typeof str === 'string' ? str.charAt(0).toUpperCase() + str.slice(1) : '';
-var _default = toFirstUpperCase;
-exports.default = _default;
+exports.toFirstUpperCase = toFirstUpperCase;
 //# sourceMappingURL=toFirstUpperCase.js.map
