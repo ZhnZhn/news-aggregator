@@ -19,7 +19,6 @@ const RowCheckBox = _ref => {
     refChb,
     style = S_ROW_CHECKBOX,
     initialValue,
-    stroke,
     caption,
     onCheck,
     onUnCheck,
@@ -31,7 +30,6 @@ const RowCheckBox = _ref => {
     children: [(0, _jsxRuntime.jsx)(_SvgCheckBox.default, {
       refChb: refChb,
       isChecked: isChecked,
-      stroke: stroke,
       onClick: hClick,
       onKeyDown: hKeyDown
     }), (0, _jsxRuntime.jsx)("button", {

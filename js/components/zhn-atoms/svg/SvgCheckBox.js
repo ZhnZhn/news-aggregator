@@ -17,18 +17,12 @@ const CL_CHECK_BOX = "chb",
   S_SVG = {
     display: 'inline-block'
   };
-const SvgChecked = _ref => {
-  let {
-    stroke
-  } = _ref;
-  return (0, _jsxRuntime.jsx)("path", {
-    d: "M 2,5 L 8,14 14,1",
-    strokeWidth: "2",
-    strokeLinecap: "round",
-    stroke: stroke,
-    fill: COLOR_BLANK
-  });
-};
+const SvgChecked = () => (0, _jsxRuntime.jsx)("path", {
+  d: "M 2,5 L 8,14 14,1",
+  strokeWidth: "2",
+  strokeLinecap: "round",
+  fill: COLOR_BLANK
+});
 const _crRestStyle = function (stroke, fill) {
   if (fill === void 0) {
     fill = stroke;
@@ -38,15 +32,14 @@ const _crRestStyle = function (stroke, fill) {
     fill
   };
 };
-const SvgCheckBox = _ref2 => {
+const SvgCheckBox = _ref => {
   let {
     refChb,
     isChecked,
     style,
-    stroke,
     onClick,
     onKeyDown
-  } = _ref2;
+  } = _ref;
   const _restStyle = isChecked ? _crRestStyle(DF_COLOR_IS) : _crRestStyle(COLOR_GREY, COLOR_BLANK);
   return (0, _jsxRuntime.jsx)("div", {
     ref: refChb,
@@ -72,9 +65,7 @@ const SvgCheckBox = _ref2 => {
         rx: "3",
         strokeLinecap: "round",
         ..._restStyle
-      }), isChecked ? (0, _jsxRuntime.jsx)(SvgChecked, {
-        stroke: stroke
-      }) : null]
+      }), isChecked ? (0, _jsxRuntime.jsx)(SvgChecked, {}) : null]
     })
   });
 };

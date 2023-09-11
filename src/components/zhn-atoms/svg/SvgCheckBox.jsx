@@ -11,14 +11,11 @@ const CL_CHECK_BOX = "chb"
 }
 , S_SVG = { display: 'inline-block' };
 
-const SvgChecked = ({
-  stroke
-}) => (
+const SvgChecked = () => (
   <path
      d="M 2,5 L 8,14 14,1"
      strokeWidth="2"
      strokeLinecap="round"
-     stroke={stroke}
      fill={COLOR_BLANK}
   />
 );
@@ -35,7 +32,6 @@ const SvgCheckBox = ({
   refChb,
   isChecked,
   style,
-  stroke,
   onClick,
   onKeyDown
 }) => {
@@ -69,7 +65,7 @@ const SvgCheckBox = ({
            {..._restStyle}
         />
         { isChecked
-            ? <SvgChecked stroke={stroke} />
+            ? <SvgChecked />
             : null
         }
       </Svg100>
