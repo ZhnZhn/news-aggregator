@@ -6,18 +6,44 @@ exports.default = void 0;
 var _ProviderNames = require("../../conf/ProviderNames");
 var _has = require("../has");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
-var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 var _crStyle = require("../crStyle");
-var _About = require("./About.Style");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _Links = require("../links/Links");
 var _Step = _interopRequireDefault(require("./Step"));
 var _LogoBar = _interopRequireDefault(require("./LogoBar"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_ABOUT_PANE = "about-pane",
+const CL_ABOUT_PANE = (0, _crStyle.crContainerBgCn)("about-pane"),
   S_BROWSER_CAPTION = {
     paddingLeft: 12,
     textAlign: 'left'
+  },
+  S_SCROLL_DIV = {
+    height: '92%',
+    paddingTop: 8,
+    paddingRight: 10,
+    overflowY: 'auto'
+  },
+  S_DIV_WRAPPER = {
+    color: 'black',
+    paddingLeft: 12,
+    paddingRight: 5,
+    lineHeight: 1.4,
+    fontWeight: 'bold'
+  },
+  S_LH_14 = {
+    lineHeight: 1.4
+  },
+  S_LH_18 = {
+    lineHeight: 1.8
+  },
+  S_APP_TITLE = {
+    color: '#80c040'
+  },
+  S_BLACK = {
+    color: 'black'
+  },
+  S_MT_8 = {
+    marginTop: 8
   },
   _crToken = (token, hotKey) => _has.HAS_WIDE_SCREEN ? token + " [" + hotKey + "]" : token;
 const {
@@ -45,8 +71,7 @@ const About = _ref2 => {
     isInitShow,
     useMsAbout
   } = _ref2;
-  const [isShow, setIsShowTrue, setIsShowFalse] = (0, _useBool.default)(isInitShow),
-    TS = (0, _useTheme.default)(_About.styleConfig);
+  const [isShow, setIsShowTrue, setIsShowFalse] = (0, _useBool.default)(isInitShow);
   useMsAbout(msAbout => {
     if (msAbout) {
       const _setIs = msAbout.is ? setIsShowTrue : setIsShowFalse;
@@ -56,50 +81,44 @@ const About = _ref2 => {
   const [_className, _showHideStyle] = (0, _crStyle.crShowHide)(isShow, CL_ABOUT_PANE);
   return (0, _jsxRuntime.jsxs)("div", {
     className: _className,
-    style: {
-      ..._showHideStyle,
-      ...TS.ROOT
-    },
+    style: _showHideStyle,
     children: [(0, _jsxRuntime.jsx)(_Comp.default.BrowserCaption, {
-      style: {
-        ...S_BROWSER_CAPTION,
-        ...TS.BROWSER_CAPTION
-      },
+      style: S_BROWSER_CAPTION,
       caption: "About News Aggregator",
       onClose: setIsShowFalse
     }), (0, _jsxRuntime.jsx)(_Comp.default.ScrollPane, {
-      style: _About.S_SCROLL_DIV,
+      style: S_SCROLL_DIV,
       children: (0, _jsxRuntime.jsxs)("div", {
-        style: _About.S_DIV_WRAPPER,
+        style: S_DIV_WRAPPER,
         children: [(0, _jsxRuntime.jsxs)("div", {
-          style: _About.S_LH_14,
+          style: S_LH_14,
           children: [(0, _jsxRuntime.jsxs)("p", {
             children: [(0, _jsxRuntime.jsx)("span", {
-              style: _About.S_APP_TITLE,
+              style: S_APP_TITLE,
               children: "News Agreggator"
             }), " is a web app for browsing news, blogs, social media headlines."]
           }), (0, _jsxRuntime.jsx)("p", {
-            style: _About.S_MT_8,
+            style: S_MT_8,
             children: "Available headlines providers:\xA0"
           })]
         }), (0, _jsxRuntime.jsx)("div", {
-          style: _About.S_LH_18,
+          style: S_LH_18,
           children: (0, _jsxRuntime.jsx)(ItemStack, {
             items: PROVIDER_LINKS,
             crItem: _crLinkItem
           })
         }), (0, _jsxRuntime.jsxs)("div", {
-          style: _About.S_LH_14,
+          style: S_LH_14,
           children: [(0, _jsxRuntime.jsx)("p", {
-            style: _About.S_MT_8,
+            style: S_MT_8,
             children: "Personal API Keys from some providers are required."
           }), (0, _jsxRuntime.jsx)("p", {
             children: API_KEYS_SETTINGS_MSG
           })]
         }), (0, _jsxRuntime.jsx)("p", {
-          style: _About.S_MT_8,
+          style: S_MT_8,
           children: (0, _jsxRuntime.jsx)("span", {
-            style: _About.S_BLACK,
+            style: S_BLACK,
             children: "Browsing by source:"
           })
         }), (0, _jsxRuntime.jsx)(ItemStack, {
@@ -107,7 +126,7 @@ const About = _ref2 => {
           crItem: _crStepItem
         }), (0, _jsxRuntime.jsx)(_LogoBar.default, {}), (0, _jsxRuntime.jsx)("p", {
           children: (0, _jsxRuntime.jsx)("span", {
-            style: _About.S_BLACK,
+            style: S_BLACK,
             children: "*Logos Fair Use."
           })
         })]

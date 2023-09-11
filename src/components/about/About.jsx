@@ -3,19 +3,11 @@ import { FMP_LONG } from '../../conf/ProviderNames';
 import { HAS_WIDE_SCREEN } from '../has';
 
 import useBool from '../hooks/useBool';
-import useTheme from '../hooks/useTheme';
 
-import { crShowHide } from '../crStyle';
 import {
-  S_APP_TITLE,
-  S_SCROLL_DIV,
-  S_DIV_WRAPPER,
-  S_BLACK,
-  S_LH_14,
-  S_LH_18,
-  S_MT_8,
-  styleConfig
-} from './About.Style';
+  crContainerBgCn,
+  crShowHide
+} from '../crStyle';
 
 import A from '../Comp';
 import {
@@ -35,10 +27,38 @@ import {
 import Step from './Step';
 import LogoBar from './LogoBar';
 
-const CL_ABOUT_PANE = "about-pane"
+const CL_ABOUT_PANE = crContainerBgCn("about-pane")
 , S_BROWSER_CAPTION = {
   paddingLeft: 12,
   textAlign: 'left'
+}
+, S_SCROLL_DIV = {
+  height: '92%',
+  paddingTop: 8,
+  paddingRight: 10,
+  overflowY: 'auto'
+}
+, S_DIV_WRAPPER = {
+  color: 'black',
+  paddingLeft: 12,
+  paddingRight: 5,
+  lineHeight : 1.4,
+  fontWeight: 'bold'
+}
+, S_LH_14 = {
+  lineHeight: 1.4
+}
+, S_LH_18 = {
+  lineHeight: 1.8
+}
+, S_APP_TITLE = {
+  color: '#80c040'
+}
+, S_BLACK = {
+  color: 'black'
+}
+, S_MT_8 = {
+  marginTop: 8
 }
 , _crToken = (
   token,
@@ -100,7 +120,6 @@ const About = ({
     setIsShowTrue,
     setIsShowFalse
   ] = useBool(isInitShow)
-  , TS = useTheme(styleConfig);
 
   useMsAbout(msAbout => {
     if (msAbout) {
@@ -122,10 +141,10 @@ const About = ({
   return (
     <div
       className={_className}
-      style={{..._showHideStyle, ...TS.ROOT}}
+      style={_showHideStyle}
      >
        <A.BrowserCaption
-          style={{...S_BROWSER_CAPTION, ...TS.BROWSER_CAPTION}}
+          style={S_BROWSER_CAPTION}
           caption="About News Aggregator"
           onClose={setIsShowFalse}
        />
