@@ -9,14 +9,15 @@ import {
   focusAsyncRefElement
 } from '../uiApi';
 
+import { initWidthStyle } from '../has';
+import {
+  crContainerBgCn,
+  crInlineBlockShowHide
+} from '../crStyle';
+
 import useToggle from '../hooks/useToggle';
 import useBool from '../hooks/useBool';
-import useTheme from '../hooks/useTheme';
 import useRefHotKey from '../hotkeys/useRefHotKey';
-
-import { initWidthStyle } from '../has';
-import { crInlineBlockShowHide } from '../crStyle';
-import styleConfig from './NewsPane.Style';
 
 import crModelMore from './crModelMore';
 import crRelatedBars from './crRelatedBars';
@@ -38,7 +39,7 @@ import {
 } from './hotKeys';
 
 const WIDTH_STYLE = initWidthStyle()
-, CL_NEWS_PANE = "news-pane"
+, CL_NEWS_PANE = crContainerBgCn("news-pane")
 , CL_MENU_MORE = "popup-menu items__menu-more"
 , S_BROWSER_CAPTION = {
   paddingLeft: 30,
@@ -181,10 +182,9 @@ const NewsPane = ({
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hHide = useCallback(() => {
      toggleIsShow(false)
-  }, [])
+  }, []);
   // onClose
   /*eslint-enable react-hooks/exhaustive-deps */
-  , TS = useTheme(styleConfig);
 
   useMsPane(msPane => {
     if (msPane && msPane.id === id) {
@@ -233,19 +233,17 @@ const NewsPane = ({
        className={_className}
        style={{
          ...WIDTH_STYLE,
-         ...TS.PANE_ROOT,
          ..._showHideStyle
        }}
     >
       <A.ModalSlider
         isShow={isMore}
-        className={CL_MENU_MORE}
-        style={TS.EL_BORDER}
+        className={CL_MENU_MORE}        
         model={_MODEL_MORE}
         onClose={_hideMore}
       />
       <A.BrowserCaption
-         style={{...S_BROWSER_CAPTION, ...TS.PANE_CAPTION}}
+         style={S_BROWSER_CAPTION}
          caption={_paneCaption}
          onMore={_showMore}
          onClose={_hHide}

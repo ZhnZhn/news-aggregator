@@ -4,13 +4,11 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
-var _useBool = _interopRequireDefault(require("../hooks/useBool"));
-var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
-var _useRefHotKey = _interopRequireDefault(require("../hotkeys/useRefHotKey"));
 var _has = require("../has");
 var _crStyle = require("../crStyle");
-var _NewsPane = _interopRequireDefault(require("./NewsPane.Style"));
+var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
+var _useBool = _interopRequireDefault(require("../hooks/useBool"));
+var _useRefHotKey = _interopRequireDefault(require("../hotkeys/useRefHotKey"));
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 var _crRelatedBars = _interopRequireDefault(require("./crRelatedBars"));
 var _Comp = _interopRequireDefault(require("../Comp"));
@@ -21,7 +19,7 @@ var _ResizeWidth = require("./ResizeWidth");
 var _hotKeys = require("./hotKeys");
 var _jsxRuntime = require("preact/jsx-runtime");
 const WIDTH_STYLE = (0, _has.initWidthStyle)(),
-  CL_NEWS_PANE = "news-pane",
+  CL_NEWS_PANE = (0, _crStyle.crContainerBgCn)("news-pane"),
   CL_MENU_MORE = "popup-menu items__menu-more",
   S_BROWSER_CAPTION = {
     paddingLeft: 30,
@@ -121,10 +119,10 @@ const NewsPane = _ref2 => {
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hHide = (0, _uiApi.useCallback)(() => {
       toggleIsShow(false);
-    }, [])
-    // onClose
-    /*eslint-enable react-hooks/exhaustive-deps */,
-    TS = (0, _useTheme.default)(_NewsPane.default);
+    }, []);
+  // onClose
+  /*eslint-enable react-hooks/exhaustive-deps */
+
   useMsPane(msPane => {
     if (msPane && msPane.id === id) {
       toggleIsShow(true);
@@ -160,20 +158,15 @@ const NewsPane = _ref2 => {
     className: _className,
     style: {
       ...WIDTH_STYLE,
-      ...TS.PANE_ROOT,
       ..._showHideStyle
     },
     children: [(0, _jsxRuntime.jsx)(_Comp.default.ModalSlider, {
       isShow: isMore,
       className: CL_MENU_MORE,
-      style: TS.EL_BORDER,
       model: _MODEL_MORE,
       onClose: _hideMore
     }), (0, _jsxRuntime.jsx)(_Comp.default.BrowserCaption, {
-      style: {
-        ...S_BROWSER_CAPTION,
-        ...TS.PANE_CAPTION
-      },
+      style: S_BROWSER_CAPTION,
       caption: _paneCaption,
       onMore: _showMore,
       onClose: _hHide,
