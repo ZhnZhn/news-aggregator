@@ -1,4 +1,19 @@
 
+.browser {
+  flex-shrink: 0;
+  z-index: 20;
+  position: relative;
+  height: 'calc(100vh - 71px);
+  min-height: 500px;
+  min-width: 270px;
+  max-width: 400;
+  padding: 0px 3px 35px 0px;
+  margin-left: 10px;
+  border-radius: 4px;
+  box-shadow: 1px 4px 6px 1px rgba(0,0,0,0.6); 
+}
+
+
 .br-caption {
   color: #a9a9a9;
   color: var(--h-c, #a9a9a9);
