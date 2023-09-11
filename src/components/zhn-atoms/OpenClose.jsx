@@ -7,16 +7,14 @@ import {
 import useToggle from '../hooks/useToggle';
 import useKeyEnter from '../hooks/useKeyEnter';
 
-const CL_CAPTION = 'open-close select-none'
+const CL_OPEN_CLOSE = 'open-close select-none'
 , S_ROOT = {
-  backgroundColor: '#4d4d4d',
   lineHeight: 2.5
 }
 , S_ROOT_CAPTION = {
   paddingLeft: 12
 }
 , S_CAPTION = {
-  color: '#9e9e9e',
   paddingLeft: 4,
   verticalAlign: 'top',
   fontWeight: 'bold',
@@ -24,7 +22,7 @@ const CL_CAPTION = 'open-close select-none'
   cursor: 'pointer'
 };
 
-const FILL_OPEN = '#9e9e9e'
+const FILL_OPEN = "currentColor"
 , FILL_CLOSE = 'transparent'
 , PATH_OPEN = "M 2,14 L 14,14 14,2 2,14"
 , PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
@@ -49,8 +47,7 @@ const OpenClose = ({
     _pathV,
     _fillV,
     _styleCollapse,
-    _classShow,
-    _itemStyle
+    _classShow
   ] = isOpen
     ? [
         PATH_OPEN,
@@ -61,8 +58,7 @@ const OpenClose = ({
         PATH_CLOSE,
         fillClose,
         S_NONE,
-        null,
-        itemStyle
+        null
     ];
 
   return (
@@ -70,9 +66,9 @@ const OpenClose = ({
       <div
          ref={refBt}
          role="button"
-         className={CL_CAPTION}
+         className={CL_OPEN_CLOSE}
          tabIndex="0"
-         style={{...S_ROOT_CAPTION, ..._itemStyle}}
+         style={S_ROOT_CAPTION}
          onClick={toggleIsOpen}
          onKeyDown={_hKeyDown}
       >

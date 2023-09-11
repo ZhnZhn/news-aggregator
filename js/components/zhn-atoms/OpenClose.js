@@ -7,23 +7,21 @@ var _crStyle = require("../crStyle");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_CAPTION = 'open-close select-none',
+const CL_OPEN_CLOSE = 'open-close select-none',
   S_ROOT = {
-    backgroundColor: '#4d4d4d',
     lineHeight: 2.5
   },
   S_ROOT_CAPTION = {
     paddingLeft: 12
   },
   S_CAPTION = {
-    color: '#9e9e9e',
     paddingLeft: 4,
     verticalAlign: 'top',
     fontWeight: 'bold',
     fontSize: '1rem',
     cursor: 'pointer'
   };
-const FILL_OPEN = '#9e9e9e',
+const FILL_OPEN = "currentColor",
   FILL_CLOSE = 'transparent',
   PATH_OPEN = "M 2,14 L 14,14 14,2 2,14",
   PATH_CLOSE = "M 2,2 L 14,8 2,14 2,2";
@@ -41,7 +39,7 @@ const OpenClose = _ref => {
   } = _ref;
   const [isOpen, toggleIsOpen] = (0, _useToggle.default)(!isClose),
     _hKeyDown = (0, _useKeyEnter.default)(toggleIsOpen),
-    [_pathV, _fillV, _styleCollapse, _classShow, _itemStyle] = isOpen ? [PATH_OPEN, fillOpen, _crStyle.S_BLOCK, _crStyle.CL_SHOW_POPUP] : [PATH_CLOSE, fillClose, _crStyle.S_NONE, null, itemStyle];
+    [_pathV, _fillV, _styleCollapse, _classShow] = isOpen ? [PATH_OPEN, fillOpen, _crStyle.S_BLOCK, _crStyle.CL_SHOW_POPUP] : [PATH_CLOSE, fillClose, _crStyle.S_NONE, null];
   return (0, _jsxRuntime.jsxs)("div", {
     style: {
       ...S_ROOT,
@@ -50,12 +48,9 @@ const OpenClose = _ref => {
     children: [(0, _jsxRuntime.jsxs)("div", {
       ref: refBt,
       role: "button",
-      className: CL_CAPTION,
+      className: CL_OPEN_CLOSE,
       tabIndex: "0",
-      style: {
-        ...S_ROOT_CAPTION,
-        ..._itemStyle
-      },
+      style: S_ROOT_CAPTION,
       onClick: toggleIsOpen,
       onKeyDown: _hKeyDown,
       children: [(0, _jsxRuntime.jsx)("svg", {

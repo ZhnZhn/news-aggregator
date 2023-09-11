@@ -39,10 +39,8 @@ const MenuPart = ({
   ...restProps
 }) => (
   <OpenClose
-     style={TS.OPEN_CLOSE}
      caption={caption}
      isClose={isInitClose}
-     itemStyle={TS.ITEM}
   >
      {_renderMenuItems(TS, restProps)}
   </OpenClose>
