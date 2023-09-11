@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.crStyle2 = exports.crShowHideStyle = exports.crShowHide = exports.crInlineBlockShowHide = exports.crCn = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_BLOCK = exports.CL_SHOW_POPUP = void 0;
+exports.crStyle2 = exports.crShowHideStyle = exports.crShowHide = exports.crInlineBlockShowHide = exports.crContainerBgCn = exports.crCn = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_BLOCK = exports.CL_SHOW_POPUP = void 0;
 const _isArr = Array.isArray;
 const _getCn = arrOrStr => _isArr(arrOrStr) ? arrOrStr[0] ? arrOrStr[1] : '' : arrOrStr || '';
 const crCn = (conf1, conf2) => {
@@ -36,4 +36,6 @@ const crShowHide = _fShowHide(S_BLOCK);
 exports.crShowHide = crShowHide;
 const crInlineBlockShowHide = _fShowHide(S_INLINE_BLOCK);
 exports.crInlineBlockShowHide = crInlineBlockShowHide;
+const crContainerBgCn = className => crCn(className, "c-bg");
+exports.crContainerBgCn = crContainerBgCn;
 //# sourceMappingURL=crStyle.js.map

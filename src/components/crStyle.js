@@ -37,3 +37,7 @@ const _fShowHide = (showStyle) => (
 
 export const crShowHide = _fShowHide(S_BLOCK)
 export const crInlineBlockShowHide = _fShowHide(S_INLINE_BLOCK)
+
+export const crContainerBgCn = (
+  className
+) => crCn(className, "c-bg")
