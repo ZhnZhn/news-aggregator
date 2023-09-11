@@ -4,10 +4,12 @@ import {
   setRefValue
 } from '../uiApi';
 
+import {
+  crContainerBgCn
+} from '../crStyle';
+
 import useToggle from '../hooks/useToggle';
-import useTheme from '../hooks/useTheme';
 import useHotKey from '../hotkeys/useHotKey';
-import styleConfig from './HeaderBar.Style';
 
 import {
   HK_NEWS_BROWSER,
@@ -30,15 +32,15 @@ import PanelQuery from './PanelQuery';
 import crMenuQuery from './crMenuQuery';
 
 const TITLE = "News Aggregator v0.4.0"
-
-, CL_HEADER = "header"
-, CL_PANEL_BROWSER = `${CL_HEADER}__panel-browser`
-, CL_ICON_APP = `${CL_HEADER}__icon-app`
-, CL_LABEL_APP = `${CL_HEADER}__label-app`
-, CL_BROWSER_BTS = `${CL_HEADER}__browser-bts`
+, HEADER = "header"
+, CL_HEADER = crContainerBgCn(HEADER)
+, CL_PANEL_BROWSER = crContainerBgCn(`${HEADER}__panel-browser`)
+, CL_ICON_APP = `${HEADER}__icon-app`
+, CL_LABEL_APP = `${HEADER}__label-app`
+, CL_BROWSER_BTS = `${HEADER}__browser-bts`
 , CL_ARROW_DOWN = "arrow-down"
-, CL_BTS = `${CL_HEADER}__bts`
-, CL_BT_ABOUT = `${CL_HEADER}__bt-about`
+, CL_BTS = `${HEADER}__bts`
+, CL_BT_ABOUT = `${HEADER}__bt-about`
 
 , S_SVG_ICON = {
   position: 'relative',
@@ -70,19 +72,17 @@ const HeaderBar = ({
   }, [])
   // toggleIsQuery
   /*eslint-enable react-hooks/exhaustive-deps */
-  , TS = useTheme(styleConfig)
   , _menuQuery = crMenuQuery(_hCloseQuery);
 
   useHotKey(HK_QUERY_SOURCES, toggleIsQuery)
 
   return (
-    <div className={CL_HEADER} style={TS.HEADER}>
+    <div className={CL_HEADER}>
       <PanelQuery
-        menuModel={_menuQuery}
-        refFocusItem={_refFocusItem}
-        paneStyle={TS.PANE}
-        className={CL_PANEL_BROWSER}
         isShow={isQuery}
+        menuModel={_menuQuery}
+        refFocusItem={_refFocusItem}        
+        className={CL_PANEL_BROWSER}
         onClose={_hCloseQuery}
       />
       <LoadingProgress />
@@ -99,7 +99,6 @@ const HeaderBar = ({
         <A.FlatButton
           ariaLabel="News Sources Browser"
           dataPos={DP_BOTTOM_LEFT}
-          clDiv={TS.BT.CL_FLAT_DIV}
           caption="News"
           hotKey={HK_NEWS_BROWSER}
           onClick={onNewsSources}
@@ -107,11 +106,9 @@ const HeaderBar = ({
         <A.ModalButton
            ariaLabel="Query Sources Menu"
            dataPos={DP_BOTTOM_RIGHT}
-           clDiv={TS.BT.CL_FLAT_DIV}
            caption="Query"
            hotKey={HK_QUERY_SOURCES}
            onClick={toggleIsQuery}
-           //onClick={_hToggleQuery}
         >
           <span className={CL_ARROW_DOWN} />
         </A.ModalButton>
@@ -121,7 +118,6 @@ const HeaderBar = ({
             ariaLabel="About News Aggregator"
             dataPos={DP_BOTTOM_RIGHT}
             className={CL_BT_ABOUT}
-            clDiv={TS.BT.CL_FLAT_DIV}
             hotKey={HK_ABOUT}
             onClick={onAbout}
           >
@@ -130,7 +126,6 @@ const HeaderBar = ({
           <A.FlatButton
             ariaLabel="Settings Dialog"
             dataPos={DP_BOTTOM_RIGHT}
-            clDiv={TS.BT.CL_FLAT_DIV}
             hotKey={HK_SETTINGS}
             onClick={onSettings}
           >

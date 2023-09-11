@@ -4,10 +4,9 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _crStyle = require("../crStyle");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
-var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
 var _useHotKey = _interopRequireDefault(require("../hotkeys/useHotKey"));
-var _HeaderBar = _interopRequireDefault(require("./HeaderBar.Style"));
 var _hotkeys = require("../hotkeys/hotkeys");
 var _DP = require("../DP");
 var _LoadingProgress = _interopRequireDefault(require("./LoadingProgress"));
@@ -18,14 +17,15 @@ var _PanelQuery = _interopRequireDefault(require("./PanelQuery"));
 var _crMenuQuery = _interopRequireDefault(require("./crMenuQuery"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const TITLE = "News Aggregator v0.4.0",
-  CL_HEADER = "header",
-  CL_PANEL_BROWSER = CL_HEADER + "__panel-browser",
-  CL_ICON_APP = CL_HEADER + "__icon-app",
-  CL_LABEL_APP = CL_HEADER + "__label-app",
-  CL_BROWSER_BTS = CL_HEADER + "__browser-bts",
+  HEADER = "header",
+  CL_HEADER = (0, _crStyle.crContainerBgCn)(HEADER),
+  CL_PANEL_BROWSER = (0, _crStyle.crContainerBgCn)(HEADER + "__panel-browser"),
+  CL_ICON_APP = HEADER + "__icon-app",
+  CL_LABEL_APP = HEADER + "__label-app",
+  CL_BROWSER_BTS = HEADER + "__browser-bts",
   CL_ARROW_DOWN = "arrow-down",
-  CL_BTS = CL_HEADER + "__bts",
-  CL_BT_ABOUT = CL_HEADER + "__bt-about",
+  CL_BTS = HEADER + "__bts",
+  CL_BT_ABOUT = HEADER + "__bt-about",
   S_SVG_ICON = {
     position: 'relative',
     top: -1,
@@ -48,18 +48,15 @@ const HeaderBar = _ref => {
     }, [])
     // toggleIsQuery
     /*eslint-enable react-hooks/exhaustive-deps */,
-    TS = (0, _useTheme.default)(_HeaderBar.default),
     _menuQuery = (0, _crMenuQuery.default)(_hCloseQuery);
   (0, _useHotKey.default)(_hotkeys.HK_QUERY_SOURCES, toggleIsQuery);
   return (0, _jsxRuntime.jsxs)("div", {
     className: CL_HEADER,
-    style: TS.HEADER,
     children: [(0, _jsxRuntime.jsx)(_PanelQuery.default, {
+      isShow: isQuery,
       menuModel: _menuQuery,
       refFocusItem: _refFocusItem,
-      paneStyle: TS.PANE,
       className: CL_PANEL_BROWSER,
-      isShow: isQuery,
       onClose: _hCloseQuery
     }), (0, _jsxRuntime.jsx)(_LoadingProgress.default, {}), (0, _jsxRuntime.jsx)(_IconAppLogo.default, {
       ariaLabel: TITLE,
@@ -73,19 +70,15 @@ const HeaderBar = _ref => {
       children: [(0, _jsxRuntime.jsx)(_Comp.default.FlatButton, {
         ariaLabel: "News Sources Browser",
         dataPos: _DP.DP_BOTTOM_LEFT,
-        clDiv: TS.BT.CL_FLAT_DIV,
         caption: "News",
         hotKey: _hotkeys.HK_NEWS_BROWSER,
         onClick: onNewsSources
       }), (0, _jsxRuntime.jsx)(_Comp.default.ModalButton, {
         ariaLabel: "Query Sources Menu",
         dataPos: _DP.DP_BOTTOM_RIGHT,
-        clDiv: TS.BT.CL_FLAT_DIV,
         caption: "Query",
         hotKey: _hotkeys.HK_QUERY_SOURCES,
-        onClick: toggleIsQuery
-        //onClick={_hToggleQuery}
-        ,
+        onClick: toggleIsQuery,
         children: (0, _jsxRuntime.jsx)("span", {
           className: CL_ARROW_DOWN
         })
@@ -96,7 +89,6 @@ const HeaderBar = _ref => {
         ariaLabel: "About News Aggregator",
         dataPos: _DP.DP_BOTTOM_RIGHT,
         className: CL_BT_ABOUT,
-        clDiv: TS.BT.CL_FLAT_DIV,
         hotKey: _hotkeys.HK_ABOUT,
         onClick: onAbout,
         children: (0, _jsxRuntime.jsx)(_Comp.default.SvgInfo, {
@@ -105,7 +97,6 @@ const HeaderBar = _ref => {
       }), (0, _jsxRuntime.jsx)(_Comp.default.FlatButton, {
         ariaLabel: "Settings Dialog",
         dataPos: _DP.DP_BOTTOM_RIGHT,
-        clDiv: TS.BT.CL_FLAT_DIV,
         hotKey: _hotkeys.HK_SETTINGS,
         onClick: onSettings,
         children: (0, _jsxRuntime.jsx)(_Comp.default.SvgSettings, {

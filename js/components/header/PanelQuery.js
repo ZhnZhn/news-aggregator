@@ -19,7 +19,6 @@ const PanelQuery = _ref => {
     menuModel,
     refFocusItem,
     className,
-    paneStyle,
     isShow,
     onClose
   } = _ref;
@@ -30,7 +29,6 @@ const PanelQuery = _ref => {
   return (0, _jsxRuntime.jsx)(_ModalPopup.default, {
     isShow: isShow,
     className: className,
-    style: paneStyle,
     onClose: onClose,
     children: (0, _jsxRuntime.jsx)(_FocusTrap.default, {
       refFirst: _refFirstItem,

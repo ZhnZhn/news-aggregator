@@ -17,7 +17,6 @@ const PanelQuery = ({
   menuModel,
   refFocusItem,
   className,
-  paneStyle,
   isShow,
   onClose
 }) => {
@@ -36,8 +35,7 @@ const PanelQuery = ({
   return (
     <ModalPopup
       isShow={isShow}
-      className={className}
-      style={paneStyle}
+      className={className}      
       onClose={onClose}
     >
        <FocusTrap
