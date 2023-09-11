@@ -1,6 +1,7 @@
 import BtCaption from './BtCaption';
 
-const CL_BT_RAISED = 'bt-raised'
+const CL_BT_RAISED = "bt-raised"
+, CL_BT_RAISED_DIV = `${CL_BT_RAISED}__div`
 , CL_BT_RAISED_SPAN = `${CL_BT_RAISED}__span`
 , S_PRIMARY_COLOR = { color: '#80c040' };
 
@@ -8,7 +9,6 @@ const RaisedButton = ({
   refBt,
   isPrimary,
   style,
-  clDiv,
   caption,
   hotKey,
   onClick
@@ -20,7 +20,7 @@ const RaisedButton = ({
     style={style}
     onClick={onClick}
   >
-    <div className={clDiv}>
+    <div className={CL_BT_RAISED_DIV}>
       <BtCaption
         className={CL_BT_RAISED_SPAN}
         style={isPrimary ? S_PRIMARY_COLOR : void 0}

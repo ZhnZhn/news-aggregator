@@ -5,7 +5,8 @@ exports.__esModule = true;
 exports.default = void 0;
 var _BtCaption = _interopRequireDefault(require("./BtCaption"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_BT_RAISED = 'bt-raised',
+const CL_BT_RAISED = "bt-raised",
+  CL_BT_RAISED_DIV = CL_BT_RAISED + "__div",
   CL_BT_RAISED_SPAN = CL_BT_RAISED + "__span",
   S_PRIMARY_COLOR = {
     color: '#80c040'
@@ -15,7 +16,6 @@ const RaisedButton = _ref => {
     refBt,
     isPrimary,
     style,
-    clDiv,
     caption,
     hotKey,
     onClick
@@ -27,7 +27,7 @@ const RaisedButton = _ref => {
     style: style,
     onClick: onClick,
     children: (0, _jsxRuntime.jsx)("div", {
-      className: clDiv,
+      className: CL_BT_RAISED_DIV,
       children: (0, _jsxRuntime.jsx)(_BtCaption.default, {
         className: CL_BT_RAISED_SPAN,
         style: isPrimary ? S_PRIMARY_COLOR : void 0,
