@@ -4,12 +4,12 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _crStyle = require("../crStyle");
 var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose"));
 var _MenuItem = _interopRequireDefault(require("../zhn-atoms/MenuItem"));
 var _CL = require("../styles/CL");
 var _jsxRuntime = require("preact/jsx-runtime");
-const _renderMenuItems = (TS, option) => {
+const CL_MENU_ITEM = _CL.CL_ROW_NEWS_SOURCE + " " + _CL.CL_SELECT_NONE;
+const _renderMenuItems = option => {
   const {
     items,
     hmItems,
@@ -22,7 +22,7 @@ const _renderMenuItems = (TS, option) => {
       ...restItemProps
     };
     return (0, _jsxRuntime.jsx)(_MenuItem.default, {
-      className: (0, _crStyle.crCn)(TS.CL_ROW, _CL.CL_SELECT_NONE),
+      className: CL_MENU_ITEM,
       caption: _itemConf.menuTitle,
       onClick: (0, _uiApi.bindTo)(onClick, _itemConf)
     }, index);
@@ -30,7 +30,6 @@ const _renderMenuItems = (TS, option) => {
 };
 const MenuPart = _ref => {
   let {
-    styleConfig: TS,
     caption,
     isInitClose,
     ...restProps
@@ -38,7 +37,7 @@ const MenuPart = _ref => {
   return (0, _jsxRuntime.jsx)(_OpenClose.default, {
     caption: caption,
     isClose: isInitClose,
-    children: _renderMenuItems(TS, restProps)
+    children: _renderMenuItems(restProps)
   });
 };
 var _default = MenuPart;

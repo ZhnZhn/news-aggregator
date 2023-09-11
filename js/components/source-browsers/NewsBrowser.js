@@ -3,25 +3,21 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _useTheme = _interopRequireDefault(require("../hooks/useTheme"));
-var _NewsBrowser = _interopRequireDefault(require("./NewsBrowser.Style"));
 var _DynamicMenuBrowser = _interopRequireDefault(require("../zhn-moleculs/DynamicMenuBrowser"));
 var _PoweredByLink = require("../links/PoweredByLink");
 var _jsxRuntime = require("preact/jsx-runtime");
 const NewsBrowser = _ref => {
   let {
-    id,
+    browserId,
     useMsBrowser,
     onClick,
     onError,
     onRemoveBadges
   } = _ref;
-  const TS = (0, _useTheme.default)(_NewsBrowser.default);
   return (0, _jsxRuntime.jsx)(_DynamicMenuBrowser.default, {
-    styleConfig: TS,
     caption: "News Sources",
     url: "data/news-source-menu.json",
-    browserId: id,
+    browserId: browserId,
     useMsBrowser: useMsBrowser,
     onClick: onClick,
     onError: onError,

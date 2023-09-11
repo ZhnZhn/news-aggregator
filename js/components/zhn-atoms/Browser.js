@@ -4,12 +4,9 @@ exports.__esModule = true;
 exports.default = void 0;
 var _crStyle = require("../crStyle");
 var _jsxRuntime = require("preact/jsx-runtime");
-//import PropTypes from 'prop-types'
-
 const S_BROWSER = {
   flexShrink: 0,
   zIndex: 20,
-  backgroundColor: '#4d4d4d',
   position: 'relative',
   height: 'calc(100vh - 71px)',
   minHeight: 500,
@@ -20,13 +17,14 @@ const S_BROWSER = {
   boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
   borderRadius: '4px'
 };
+const CL_BROWSER = (0, _crStyle.crContainerBgCn)("browser");
 const Browser = _ref => {
   let {
     isShow,
     style,
     children
   } = _ref;
-  const [_cn, _style] = (0, _crStyle.crShowHide)(isShow);
+  const [_cn, _style] = (0, _crStyle.crShowHide)(isShow, CL_BROWSER);
   return (0, _jsxRuntime.jsx)("div", {
     className: _cn,
     style: {
@@ -37,13 +35,6 @@ const Browser = _ref => {
     children: children
   });
 };
-
-/*
-Browser.propTypes = {
-  isShow: PropTypes.bool,
-  style: PropTypes.object
-}
-*/
 var _default = Browser;
 exports.default = _default;
 //# sourceMappingURL=Browser.js.map

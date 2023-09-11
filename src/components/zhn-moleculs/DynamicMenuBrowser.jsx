@@ -15,8 +15,8 @@ const {
   ItemStack
 } = Comp;
 
-const CL_MENU_MORE = "popup-menu items__menu-more";
 
+const CL_MENU_MORE = "popup-menu items__menu-more"
 const S_BROWSER = {
   paddingRight: 0
 }
@@ -49,8 +49,7 @@ const _crItemMenuPart = (
   />
 );
 
-const DynamicMenuBrowser = ({
-  styleConfig,
+const DynamicMenuBrowser = ({  
   caption,
   menuMore,
   browserId,
@@ -94,7 +93,6 @@ const DynamicMenuBrowser = ({
   , _onMore = menuMore
      ? setIsMoreTrue
      : void 0
-  , TS = styleConfig
   , _styleBrowserCaption = {
     paddingLeft: menuMore ? 30 : 10
   };
@@ -102,13 +100,12 @@ const DynamicMenuBrowser = ({
   return (
     <Browser
       isShow={isShow}
-      style={{...S_BROWSER, ...TS.BROWSER}}
+      style={S_BROWSER}
     >
       {
         menuMore && <ModalSlider
           isShow={isMore}
           className={CL_MENU_MORE}
-          style={TS.EL_BORDER}
           model={menuMore}
           onClose={setIsMoreFalse}
         />
@@ -116,8 +113,7 @@ const DynamicMenuBrowser = ({
       <BrowserCaption
         style={{
           ...S_BROWSER_CAPTION,
-          ..._styleBrowserCaption,
-          ...TS.BROWSER_CAPTION
+          ..._styleBrowserCaption
         }}
         caption={caption}
         onMore={_onMore}
@@ -130,7 +126,6 @@ const DynamicMenuBrowser = ({
         <ItemStack
           items={menu}
           crItem={_crItemMenuPart}
-          styleConfig={styleConfig}
           browserId={browserId}
           hmItems={items}
           onClick={onClick}

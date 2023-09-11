@@ -45,7 +45,6 @@ const _crItemMenuPart = (menuPart, index, propOptions) => (0, _preact.createElem
 });
 const DynamicMenuBrowser = _ref => {
   let {
-    styleConfig,
     caption,
     menuMore,
     browserId,
@@ -69,27 +68,21 @@ const DynamicMenuBrowser = _ref => {
       items
     } = menuModel || {},
     _onMore = menuMore ? setIsMoreTrue : void 0,
-    TS = styleConfig,
     _styleBrowserCaption = {
       paddingLeft: menuMore ? 30 : 10
     };
   return (0, _jsxRuntime.jsxs)(Browser, {
     isShow: isShow,
-    style: {
-      ...S_BROWSER,
-      ...TS.BROWSER
-    },
+    style: S_BROWSER,
     children: [menuMore && (0, _jsxRuntime.jsx)(ModalSlider, {
       isShow: isMore,
       className: CL_MENU_MORE,
-      style: TS.EL_BORDER,
       model: menuMore,
       onClose: setIsMoreFalse
     }), (0, _jsxRuntime.jsx)(BrowserCaption, {
       style: {
         ...S_BROWSER_CAPTION,
-        ..._styleBrowserCaption,
-        ...TS.BROWSER_CAPTION
+        ..._styleBrowserCaption
       },
       caption: caption,
       onMore: _onMore,
@@ -99,7 +92,6 @@ const DynamicMenuBrowser = _ref => {
       children: [(0, _jsxRuntime.jsx)(ItemStack, {
         items: menu,
         crItem: _crItemMenuPart,
-        styleConfig: styleConfig,
         browserId: browserId,
         hmItems: items,
         onClick: onClick

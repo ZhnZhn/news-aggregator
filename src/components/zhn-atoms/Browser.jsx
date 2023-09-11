@@ -1,10 +1,11 @@
-//import PropTypes from 'prop-types'
-import { crShowHide } from '../crStyle';
+import {
+  crShowHide,
+  crContainerBgCn
+} from '../crStyle';
 
 const S_BROWSER = {
   flexShrink: 0,
   zIndex: 20,
-  backgroundColor: '#4d4d4d',
   position: 'relative',
   height: 'calc(100vh - 71px)',
   minHeight: 500,
@@ -16,6 +17,8 @@ const S_BROWSER = {
   borderRadius: '4px'
 };
 
+const CL_BROWSER = crContainerBgCn("browser")
+
 const Browser = ({
   isShow,
   style,
@@ -24,7 +27,10 @@ const Browser = ({
   const [
     _cn,
     _style
-  ] = crShowHide(isShow);
+  ] = crShowHide(
+    isShow,
+    CL_BROWSER
+  );
 
   return (
      <div
@@ -35,12 +41,5 @@ const Browser = ({
      </div>
   );
 };
-
-/*
-Browser.propTypes = {
-  isShow: PropTypes.bool,
-  style: PropTypes.object
-}
-*/
 
 export default Browser
