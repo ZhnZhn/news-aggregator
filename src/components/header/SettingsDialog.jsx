@@ -5,8 +5,12 @@ import {
 } from '../uiApi';
 
 import memoIsShow from '../hoc/memoIsShow';
-import useTheme from '../hooks/useTheme';
-import styleConfig from '../dialogs/Dialog.Style';
+import {
+  S_BROWSER_CAPTION,
+  S_INPUT_ROOT,
+  S_BT_RAISED,
+  crSelectStyleConfig
+} from '../dialogs/Dialog.Style';
 
 import { setUiTheme } from '../../flux/storeAtoms'
 
@@ -14,8 +18,7 @@ import A from '../Comp';
 import CardApiKeys from './CardApiKeys';
 import CardUiTheme from './CardUiTheme';
 
-const _assign = Object.assign
-, S_MODAL = {
+const S_MODAL = {
   position: 'static',
   width: 340,
   maxHeight: 460,
@@ -42,13 +45,15 @@ const _assign = Object.assign
   flexWrap: 'wrap',
   margin: '10px 12px 10px 0'
 }
-, S_SELECT_WIDTH = {
-  width: 306
-}
 , S_INPUT_WIDTH = {
   width: 315,
   marginLeft: 8
-};
+}
+, SELECT_WIDTH = 306;
+
+const SELECT_STYLE_CONFIG = crSelectStyleConfig(
+  SELECT_WIDTH
+);
 
 const SettingsDialog = memoIsShow(({
   isShow,
@@ -61,19 +66,14 @@ const SettingsDialog = memoIsShow(({
   }, [])
   , _selectTheme = useCallback(item => {
     setUiTheme((item || [])[1])
-  }, [])
-  , TS = useTheme(styleConfig)
-  , _TS = JSON.parse(JSON.stringify(TS));
-
-  _assign(_TS.SELECT.ROOT, S_SELECT_WIDTH)
+  }, []);
 
   return (
     <A.ModalDialog
        refFocusLast={_refFocusLast}
-       style={{...S_MODAL, ...TS.R_DIALOG}}
+       style={S_MODAL}
        divBtStyle={S_DIV_BT}
-       captionStyle={TS.BROWSER_CAPTION}
-       buttonStyle={TS.BT}
+       captionStyle={S_BROWSER_CAPTION}
        caption="User Settings"
        isShow={isShow}
        onClose={onClose}
@@ -88,9 +88,9 @@ const SettingsDialog = memoIsShow(({
             <CardApiKeys
               setRefLast={_setFocusLastRef}
               style={S_CARD_API}
-              fieldStyle={{...TS.INPUT_ROOT, ...S_INPUT_WIDTH}}
+              fieldStyle={{...S_INPUT_ROOT, ...S_INPUT_WIDTH}}
               buttonsStyle={S_CARD_BUTTONS}
-              TS={TS}
+              btStyle={S_BT_RAISED}
               data={data}
             />
          </A.Tab>
@@ -99,7 +99,8 @@ const SettingsDialog = memoIsShow(({
               setRefLast={_setFocusLastRef}
               style={S_CARD_ROOT}
               buttonsStyle={S_CARD_BUTTONS}
-              TS={_TS}
+              btStyle={S_BT_RAISED}
+              selectStyleConfig={SELECT_STYLE_CONFIG}
               onSetTheme={_selectTheme}
               onClose={onClose}
             />

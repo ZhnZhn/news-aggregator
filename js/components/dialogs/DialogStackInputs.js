@@ -2,54 +2,40 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _Dialog = _interopRequireDefault(require("./Dialog.Style"));
-var _useToggleState2 = _interopRequireDefault(require("../hooks/useToggleState"));
-var _useRefInputs2 = _interopRequireDefault(require("./hooks/useRefInputs"));
-var _useDialog2 = _interopRequireDefault(require("./hooks/useDialog"));
-var _useDecorDialog2 = _interopRequireDefault(require("./hooks/useDecorDialog"));
+exports.default = void 0;
+var _Dialog = require("./Dialog.Style");
+var _useToggleState = _interopRequireDefault(require("../hooks/useToggleState"));
+var _useRefInputs = _interopRequireDefault(require("./hooks/useRefInputs"));
+var _useDialog = _interopRequireDefault(require("./hooks/useDialog"));
+var _useKeyDown = _interopRequireDefault(require("./hooks/useKeyDown"));
 var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/DraggableDialog"));
 var _FlexColumn = _interopRequireDefault(require("../zhn-atoms/FlexColumn"));
 var _StackInputs = _interopRequireDefault(require("../zhn-inputs/StackInputs"));
 var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
 var _jsxRuntime = require("preact/jsx-runtime");
-var _isArr = Array.isArray;
-var _hasMenuToggle = function _hasMenuToggle(menuToggle) {
-  return _isArr(menuToggle) && menuToggle.length > 1;
-};
-var DialogStackInputs = function DialogStackInputs(props) {
-  var isShow = props.isShow,
-    caption = props.caption,
-    loadId = props.loadId,
-    INPUT_CONFIGS = props.INPUT_CONFIGS,
-    INITIAL_INPUTS = props.INITIAL_INPUTS,
-    TOGGLES = props.TOGGLES,
-    IS_INPUTS = props.IS_INPUTS,
-    children = props.children,
-    onShow = props.onShow,
-    _useToggleState = (0, _useToggleState2["default"])(IS_INPUTS),
-    isInputs = _useToggleState[0],
-    toggleInput = _useToggleState[1],
-    _useRefInputs = (0, _useRefInputs2["default"])(INITIAL_INPUTS),
-    _refInputs = _useRefInputs[0],
-    _selectInput = _useRefInputs[1],
-    _useDialog = (0, _useDialog2["default"])(props, loadId, _refInputs),
-    _refDialog = _useDialog[0],
-    _hLoad = _useDialog[1],
-    _hClose = _useDialog[2],
-    _useDecorDialog = (0, _useDecorDialog2["default"])(_Dialog["default"], _hLoad, _hClose),
-    TS = _useDecorDialog[0],
-    _hKeyDown = _useDecorDialog[1],
-    _ref = _hasMenuToggle(TOGGLES) ? [TS.DIALOG_CAPTION, TOGGLES] : [TS.BROWSER_CAPTION],
-    _captionStyle = _ref[0],
-    _menuToggle = _ref[1];
-  return (0, _jsxRuntime.jsx)(_DraggableDialog["default"], {
+const _isArr = Array.isArray;
+const _hasMenuToggle = menuToggle => _isArr(menuToggle) && menuToggle.length > 1;
+const DialogStackInputs = props => {
+  const {
+      isShow,
+      caption,
+      loadId,
+      INPUT_CONFIGS,
+      INITIAL_INPUTS,
+      TOGGLES,
+      IS_INPUTS,
+      children,
+      onShow
+    } = props,
+    [isInputs, toggleInput] = (0, _useToggleState.default)(IS_INPUTS),
+    [_refInputs, _selectInput] = (0, _useRefInputs.default)(INITIAL_INPUTS),
+    [_refDialog, _hLoad, _hClose] = (0, _useDialog.default)(props, loadId, _refInputs),
+    _hKeyDown = (0, _useKeyDown.default)(_hLoad, _hClose),
+    [_captionStyle, _menuToggle] = _hasMenuToggle(TOGGLES) ? [_Dialog.S_DIALOG_CAPTION, TOGGLES] : [_Dialog.S_BROWSER_CAPTION];
+  return (0, _jsxRuntime.jsx)(_DraggableDialog.default, {
     ref: _refDialog,
     isShow: isShow,
-    style: TS.R_DIALOG,
     captionStyle: _captionStyle,
-    buttonStyle: TS.BT,
-    chbStroke: TS.R_DIALOG.backgroundColor,
     caption: caption,
     menuToggle: _menuToggle,
     toggleItem: toggleInput,
@@ -57,20 +43,19 @@ var DialogStackInputs = function DialogStackInputs(props) {
     onLoad: _hLoad,
     onShow: onShow,
     onClose: _hClose,
-    children: (0, _jsxRuntime.jsxs)(_FlexColumn["default"], {
-      children: [(0, _jsxRuntime.jsx)(_StackInputs["default"], {
-        TS: TS,
+    children: (0, _jsxRuntime.jsxs)(_FlexColumn.default, {
+      children: [(0, _jsxRuntime.jsx)(_StackInputs.default, {
         isInputs: isInputs,
         configs: INPUT_CONFIGS,
         onSelect: _selectInput,
         onEnter: _hLoad
-      }), (0, _jsxRuntime.jsx)(_PoweredBy["default"], {
-        style: TS.POWERED_BY,
+      }), (0, _jsxRuntime.jsx)(_PoweredBy.default, {
+        style: _Dialog.S_POWERED_BY,
         children: children
       })]
     })
   });
 };
 var _default = DialogStackInputs;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=DialogStackInputs.js.map

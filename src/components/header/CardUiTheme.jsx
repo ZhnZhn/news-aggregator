@@ -20,7 +20,8 @@ const S_DIV = {
 const CardUiTheme = ({
   style,
   buttonsStyle,
-  TS,
+  btStyle,
+  selectStyleConfig,
   onSetTheme,
   onClose,
   isVisible,
@@ -28,14 +29,14 @@ const CardUiTheme = ({
 }) => (
     <div style={{...S_DIV, ...style}}>
       <A.InputSelect
-        styleConfig={TS.SELECT}
+        styleConfig={selectStyleConfig}
         caption="UI Theme"
         initItem={THEME_OPTIONS.DF}
         options={THEME_OPTIONS}
         onSelect={onSetTheme}
       />
       <A.InputSelect
-        styleConfig={TS.SELECT}
+        styleConfig={selectStyleConfig}
         caption="Font Size"
         initItem={FONT_SIZE_OPTIONS.DF}
         options={FONT_SIZE_OPTIONS}
@@ -43,8 +44,7 @@ const CardUiTheme = ({
       />
       <RowCheckBox
         style={S_ROW_CHECKBOX_LS}
-        initialValue={IS_ALLOW_USE_LS}
-        stroke={TS.R_DIALOG.backgroundColor}
+        initialValue={IS_ALLOW_USE_LS}        
         caption="Allow to save to localStorage"
         onCheck={allowSaveToLs}
         onUnCheck={notAllowSaveToLs}
@@ -52,8 +52,7 @@ const CardUiTheme = ({
       <div style={buttonsStyle}>
         <A.RaisedButton
           refBt={isVisible ? setRefLast : void 0}
-          style={TS.BT.RAISED}
-          clDiv={TS.BT.CL_RAISED_DIV}
+          style={btStyle}
           isPrimary={true}
           caption="Close"
           onClick={onClose}

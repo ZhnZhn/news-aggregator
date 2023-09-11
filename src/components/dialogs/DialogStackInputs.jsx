@@ -1,9 +1,13 @@
-import styleConfig from './Dialog.Style';
+import {
+  S_DIALOG_CAPTION,
+  S_BROWSER_CAPTION,
+  S_POWERED_BY
+} from './Dialog.Style';
 
 import useToggleState from '../hooks/useToggleState';
 import useRefInputs from './hooks/useRefInputs';
 import useDialog from './hooks/useDialog';
-import useDecorDialog from './hooks/useDecorDialog';
+import useKeyDown from './hooks/useKeyDown';
 
 import DraggableDialog from '../zhn-moleculs/DraggableDialog';
 import FlexColumn from '../zhn-atoms/FlexColumn';
@@ -41,25 +45,19 @@ const DialogStackInputs = (props) => {
     _hLoad,
     _hClose
   ] = useDialog(props, loadId, _refInputs)
-  , [
-    TS,
-    _hKeyDown
-  ] = useDecorDialog(styleConfig, _hLoad, _hClose)
+  , _hKeyDown = useKeyDown(_hLoad, _hClose)
   , [
     _captionStyle,
     _menuToggle
   ] = _hasMenuToggle(TOGGLES)
-      ? [TS.DIALOG_CAPTION, TOGGLES]
-      : [TS.BROWSER_CAPTION];
+      ? [S_DIALOG_CAPTION, TOGGLES]
+      : [S_BROWSER_CAPTION];
 
   return (
     <DraggableDialog
        ref={_refDialog}
        isShow={isShow}
-       style={TS.R_DIALOG}
        captionStyle={_captionStyle}
-       buttonStyle={TS.BT}
-       chbStroke={TS.R_DIALOG.backgroundColor}
        caption={caption}
        menuToggle={_menuToggle}
        toggleItem={toggleInput}
@@ -70,13 +68,12 @@ const DialogStackInputs = (props) => {
     >
       <FlexColumn>
         <StackInputs
-          TS={TS}
           isInputs={isInputs}
           configs={INPUT_CONFIGS}
           onSelect={_selectInput}
           onEnter={_hLoad}
         />
-        <PoweredBy style={TS.POWERED_BY}>
+        <PoweredBy style={S_POWERED_BY}>
           {children}
         </PoweredBy>
       </FlexColumn>

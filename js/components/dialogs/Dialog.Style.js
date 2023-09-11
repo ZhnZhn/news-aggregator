@@ -1,58 +1,45 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var _CL = require("../styles/CL");
-var INPUT_WIDTH = 250;
-var S_DIALOG_CAPTION = {
-    color: '#9e9e9e',
-    backgroundColor: '#3f5178',
-    fontSize: '1.125rem'
-  },
-  S_BROWSER_CAPTION = (0, _extends2["default"])({}, S_DIALOG_CAPTION, {
-    textAlign: 'center'
-  }),
-  S_BT_RAISED = {
-    marginRight: 2,
-    marginLeft: 2
-  },
-  S_INPUT_ROOT = {
-    width: INPUT_WIDTH,
-    display: 'block'
-  },
-  S_INPUT_DATE = {
-    display: 'inline-block',
-    width: 110
-  },
-  S_POWERED_BY = {
-    margin: '16px 0 8px 16px'
-  };
-var styleConfig = {
-  themeName: void 0,
-  style: void 0,
-  createStyle: function createStyle(CSS_RULE, themeName) {
-    return {
-      R_DIALOG: (0, _extends2["default"])({}, CSS_RULE.R_DIALOG),
-      DIALOG_CAPTION: (0, _extends2["default"])({}, S_DIALOG_CAPTION, CSS_RULE.BG_HEADER),
-      BROWSER_CAPTION: (0, _extends2["default"])({}, S_BROWSER_CAPTION, CSS_RULE.BG_HEADER),
-      OPEN_CLOSE: (0, _extends2["default"])({}, CSS_RULE.BG),
-      INPUT_ROOT: (0, _extends2["default"])({}, S_INPUT_ROOT),
-      INPUT_DATE: (0, _extends2["default"])({}, S_INPUT_DATE),
-      POWERED_BY: (0, _extends2["default"])({}, S_POWERED_BY),
-      BT: {
-        CL_RAISED_DIV: _CL.CL_BT_RAISED_DIV,
-        RAISED: (0, _extends2["default"])({}, S_BT_RAISED, CSS_RULE.BG_HEADER)
-      },
-      SELECT: {
-        ROOT: {
-          width: INPUT_WIDTH
-        }
-      }
-    };
-  }
+exports.crSelectStyleConfig = exports.S_POWERED_BY = exports.S_INPUT_ROOT = exports.S_INPUT_DATE = exports.S_DIALOG_CAPTION = exports.S_BT_RAISED = exports.S_BROWSER_CAPTION = void 0;
+const INPUT_WIDTH = 250;
+const S_DIALOG_CAPTION = {
+  fontSize: '1.125rem'
 };
-var _default = styleConfig;
-exports["default"] = _default;
+exports.S_DIALOG_CAPTION = S_DIALOG_CAPTION;
+const S_BROWSER_CAPTION = {
+  ...S_DIALOG_CAPTION,
+  textAlign: 'center'
+};
+exports.S_BROWSER_CAPTION = S_BROWSER_CAPTION;
+const S_BT_RAISED = {
+  marginRight: 2,
+  marginLeft: 2
+};
+exports.S_BT_RAISED = S_BT_RAISED;
+const S_INPUT_ROOT = {
+  width: INPUT_WIDTH,
+  display: 'block'
+};
+exports.S_INPUT_ROOT = S_INPUT_ROOT;
+const S_INPUT_DATE = {
+  display: 'inline-block',
+  width: 110
+};
+exports.S_INPUT_DATE = S_INPUT_DATE;
+const S_POWERED_BY = {
+  margin: '16px 0 8px 16px'
+};
+exports.S_POWERED_BY = S_POWERED_BY;
+const crSelectStyleConfig = function (width) {
+  if (width === void 0) {
+    width = INPUT_WIDTH;
+  }
+  return {
+    ROOT: {
+      width
+    }
+  };
+};
+exports.crSelectStyleConfig = crSelectStyleConfig;
 //# sourceMappingURL=Dialog.Style.js.map

@@ -3,12 +3,17 @@ import {
   getRefValue
 } from '../uiApi';
 
-import styleConfig from './Dialog.Style';
+import {
+  S_BROWSER_CAPTION,
+  S_INPUT_ROOT,
+  S_POWERED_BY,
+  crSelectStyleConfig
+} from './Dialog.Style';
 
 import useRefClose from './hooks/useRefClose';
 import useRefInput from './hooks/useRefInput';
 import useRefSelectOption from './hooks/useRefSelectOption';
-import useDecorDialog from './hooks/useDecorDialog';
+import useKeyDown from './hooks/useKeyDown';
 
 import A from '../Comp';
 import {
@@ -26,7 +31,8 @@ const _SITE_TYPES = [
 , DF_SITE_TYPE = SITE_TYPE_OPTIONS[0]
 , INITIAL_SITE_TYPE_VALUE = getItemValue(DF_SITE_TYPE)
 , DF_IN_TITLE = 'Weather'
-, DF_BEFORE_DAYS = 2;
+, DF_BEFORE_DAYS = 2
+, SELECT_STYLE_CONFIG = crSelectStyleConfig();
 
 const WebzQueryDialog = ({
   isShow,
@@ -68,18 +74,13 @@ const WebzQueryDialog = ({
   }, [])
   //type, source, itemConf, onLoad
   /*eslint-enable react-hooks/exhaustive-deps */
-  , [
-    TS,
-    _hKeyDown
-  ] = useDecorDialog(styleConfig, _hLoad, _hClose);
+  , _hKeyDown = useKeyDown(_hLoad, _hClose);
 
   return (
     <A.DraggableDialog
        ref={_refDialog}
        isShow={isShow}
-       style={TS.R_DIALOG}
-       captionStyle={TS.BROWSER_CAPTION}
-       buttonStyle={TS.BT}
+       captionStyle={S_BROWSER_CAPTION}
        caption="News, Blogs"
        onKeyDown={_hKeyDown}
        onLoad={_hLoad}
@@ -87,7 +88,7 @@ const WebzQueryDialog = ({
        onClose={_hClose}
     >
       <A.TextField
-        style={TS.INPUT_ROOT}
+        style={S_INPUT_ROOT}
         ref={_refInputInTitle}
         caption="In Title (Default: Weather)"
         initValue={DF_IN_TITLE}
@@ -96,16 +97,16 @@ const WebzQueryDialog = ({
         caption="Site Type"
         initItem={DF_SITE_TYPE}
         options={SITE_TYPE_OPTIONS}
-        styleConfig={TS.SELECT}
+        styleConfig={SELECT_STYLE_CONFIG}
         onSelect={_selectSiteType}
       />
       <InputBeforeDays
         ref={_refInputBeforeDays}
-        style={TS.INPUT_ROOT}
+        style={S_INPUT_ROOT}
         initValue={DF_BEFORE_DAYS}
       />
       <PoweredByWebzLink
-        style={TS.POWERED_BY}
+        style={S_POWERED_BY}
       />
     </A.DraggableDialog>
   );

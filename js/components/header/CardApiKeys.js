@@ -54,7 +54,7 @@ const CardApiKeys = props => {
       style,
       fieldStyle,
       buttonsStyle,
-      TS,
+      btStyle,
       data
     } = props,
     {
@@ -93,10 +93,7 @@ const CardApiKeys = props => {
   return isVisible ? (0, _jsxRuntime.jsxs)(_ScrollPane.default, {
     style: style,
     children: [(0, _jsxRuntime.jsx)(_OpenClose.default, {
-      style: {
-        ...TS.OPEN_CLOSE,
-        ...S_OPEN_CLOSE
-      },
+      style: S_OPEN_CLOSE,
       caption: "Market News & Sentiment",
       children: (0, _jsxRuntime.jsx)(_PasswordField.default, {
         ..._crPasswordFieldProps(_ProviderNames.ALPHA_VANTAGE, 16),
@@ -106,10 +103,7 @@ const CardApiKeys = props => {
         onEnter: setAv
       })
     }), (0, _jsxRuntime.jsxs)(_OpenClose.default, {
-      style: {
-        ...TS.OPEN_CLOSE,
-        ...S_OPEN_CLOSE
-      },
+      style: S_OPEN_CLOSE,
       caption: "Stock Market",
       children: [(0, _jsxRuntime.jsx)(_PasswordField.default, {
         ..._crPasswordFieldProps(_ProviderNames.IEX_CLOUD, 35),
@@ -125,10 +119,7 @@ const CardApiKeys = props => {
         onEnter: setFmp
       })]
     }), (0, _jsxRuntime.jsxs)(_OpenClose.default, {
-      style: {
-        ...TS.OPEN_CLOSE,
-        ...S_OPEN_CLOSE
-      },
+      style: S_OPEN_CLOSE,
       caption: "General News",
       children: [(0, _jsxRuntime.jsx)(_PasswordField.default, {
         ..._crPasswordFieldProps(_ProviderNames.NEWS_API_LONG, 32),
@@ -152,15 +143,12 @@ const CardApiKeys = props => {
     }), (0, _jsxRuntime.jsxs)("div", {
       style: buttonsStyle,
       children: [(0, _jsxRuntime.jsx)(_RaisedButton.default, {
-        style: TS.BT.RAISED,
-        clDiv: TS.BT.CL_RAISED_DIV,
         caption: "Clear All",
         onClick: _hClearAll
       }), (0, _jsxRuntime.jsx)(_RaisedButton.default, {
-        refBt: isVisible ? setRefLast : void 0,
-        style: TS.BT.RAISED,
-        clDiv: TS.BT.CL_RAISED_DIV,
         isPrimary: true,
+        refBt: isVisible ? setRefLast : void 0,
+        style: btStyle,
         caption: "Set All",
         onClick: _hSetAll
       })]

@@ -1,9 +1,17 @@
+import {
+  S_INPUT_ROOT,
+  S_INPUT_DATE,
+  crSelectStyleConfig
+} from '../dialogs/Dialog.Style';
+
 import ShowHide from '../zhn-atoms/ShowHide';
 import InputSelect from '../zhn-m-input/InputSelect';
 import TextField from '../zhn-m-input/TextField';
 import InputFromToDate from '../zhn-m-input/InputFromToDate';
 
+
 const _isObj = v => v && typeof v === 'object';
+const SELECT_STYLE_CONFIG = crSelectStyleConfig();
 
 const _isInput = (
   isInputs,
@@ -13,7 +21,6 @@ const _isInput = (
   : true;
 
 const StackInputs = ({
-  TS,
   isInputs,
   configs,
   onSelect,
@@ -28,7 +35,7 @@ const StackInputs = ({
            caption={arrConfig[2]}
            options={arrConfig[3]}
            initItem={arrConfig[4]}
-           styleConfig={TS.SELECT}
+           styleConfig={SELECT_STYLE_CONFIG}
            onSelect={onSelect}
         />
       )
@@ -37,7 +44,7 @@ const StackInputs = ({
                {...arrConfig[4]}
                key={_inputId}
                id={_inputId}
-               style={TS.INPUT_ROOT}
+               style={S_INPUT_ROOT}
                caption={arrConfig[2]}
                initValue={arrConfig[3]}
                onEnter={onEnter}
@@ -48,7 +55,7 @@ const StackInputs = ({
           : _type === 'ft'
             ? (<InputFromToDate
                 key="_ft"
-                style={TS.INPUT_DATE}
+                style={S_INPUT_DATE}
                 initialFrom={arrConfig[3]}
                 initialTo={arrConfig[4]}
                 onInput={onSelect}

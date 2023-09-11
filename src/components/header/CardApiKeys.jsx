@@ -81,7 +81,7 @@ const CardApiKeys = (props) => {
     style,
     fieldStyle,
     buttonsStyle,
-    TS,
+    btStyle,
     data
   } = props
   , {
@@ -128,7 +128,7 @@ const CardApiKeys = (props) => {
   return isVisible ? (
     <ScrollPane style={style}>
         <OpenClose
-          style={{...TS.OPEN_CLOSE, ...S_OPEN_CLOSE}}
+          style={S_OPEN_CLOSE}
           caption="Market News & Sentiment"
         >
           <PasswordField
@@ -140,7 +140,7 @@ const CardApiKeys = (props) => {
           />
         </OpenClose>
         <OpenClose
-          style={{...TS.OPEN_CLOSE, ...S_OPEN_CLOSE}}
+          style={S_OPEN_CLOSE}
           caption="Stock Market"
         >
           <PasswordField
@@ -159,7 +159,7 @@ const CardApiKeys = (props) => {
           />
       </OpenClose>
       <OpenClose
-         style={{...TS.OPEN_CLOSE, ...S_OPEN_CLOSE}}
+         style={S_OPEN_CLOSE}
          caption="General News"
       >
         <PasswordField
@@ -186,16 +186,13 @@ const CardApiKeys = (props) => {
       </OpenClose>
       <div style={buttonsStyle}>
         <RaisedButton
-          style={TS.BT.RAISED}
-          clDiv={TS.BT.CL_RAISED_DIV}
           caption="Clear All"
           onClick={_hClearAll}
         />
         <RaisedButton
-          refBt={isVisible ? setRefLast : void 0}
-          style={TS.BT.RAISED}
-          clDiv={TS.BT.CL_RAISED_DIV}
           isPrimary={true}
+          refBt={isVisible ? setRefLast : void 0}
+          style={btStyle}          
           caption="Set All"
           onClick={_hSetAll}
         />

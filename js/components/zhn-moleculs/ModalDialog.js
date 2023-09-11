@@ -4,18 +4,18 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _crStyle = require("../crStyle");
+var _Dialog = require("../dialogs/Dialog.Style");
 var _useModalFocus = _interopRequireDefault(require("../hooks/useModalFocus"));
 var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
 var _FocusTrap = _interopRequireDefault(require("./FocusTrap"));
 var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
 var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_SHOWING = "dialog " + _crStyle.CL_SHOW_POPUP,
+const CL_DIALOG = (0, _crStyle.crContainerBgCn)("dialog"),
+  CL_SHOWING = CL_DIALOG + " " + _crStyle.CL_SHOW_POPUP,
   S_ROOT_DIV = {
     position: 'absolute',
     top: '20%',
-    backgroundColor: '#4d4d4d',
-    border: 'solid 2px #3f5178',
     borderRadius: 5,
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
     zIndex: 10
@@ -41,7 +41,6 @@ const ModalDialog = _ref => {
     onClose,
     divBtStyle,
     commandButtons,
-    buttonStyle: TS,
     withoutClose,
     isClosePrimary = false
   } = _ref;
@@ -80,10 +79,9 @@ const ModalDialog = _ref => {
           ...divBtStyle
         },
         children: [commandButtons, !withoutClose && (0, _jsxRuntime.jsx)(_RaisedButton.default, {
-          style: TS.RAISED,
-          clDiv: TS.CL_RAISED_DIV,
-          caption: "Close",
           isPrimary: isClosePrimary,
+          style: _Dialog.S_BT_RAISED,
+          caption: "Close",
           onClick: onClose
         }, "_close")]
       })]

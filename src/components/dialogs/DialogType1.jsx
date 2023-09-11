@@ -3,11 +3,15 @@ import {
   getRefValue
 } from '../uiApi';
 
-import styleConfig from './Dialog.Style';
+
+import {
+  S_BROWSER_CAPTION,
+  crSelectStyleConfig
+} from './Dialog.Style';
 
 import useRefClose from './hooks/useRefClose';
 import useRefSelectOption from './hooks/useRefSelectOption';
-import useDecorDialog from './hooks/useDecorDialog';
+import useKeyDown from './hooks/useKeyDown';
 
 import A from '../Comp';
 import { getItemValue } from '../zhn-m-input/OptionFn';
@@ -18,7 +22,8 @@ const SORT_BY_OPTIONS = [
   ['Newest', 'publishedAt']
 ]
 , DF_SORT_BY = SORT_BY_OPTIONS[0]
-, INITIAL_SORTBY_VALUE = getItemValue(DF_SORT_BY);
+, INITIAL_SORTBY_VALUE = getItemValue(DF_SORT_BY)
+, SELECT_STYLE_CONFIG = crSelectStyleConfig();
 
 const DialogType1 = ({
   isShow,
@@ -50,18 +55,14 @@ const DialogType1 = ({
   }, [])
   // type, source, itemConf, onLoad
   /*eslint-enable react-hooks/exhaustive-deps */
-  , [
-    TS,
-    _hKeyDown
-  ] = useDecorDialog(styleConfig, _hLoad, _hClose);
+  , _hKeyDown = useKeyDown(_hLoad, _hClose);
+
 
   return (
     <A.DraggableDialog
        ref={_refDialog}
        isShow={isShow}
-       style={TS.R_DIALOG}
-       captionStyle={TS.BROWSER_CAPTION}
-       buttonStyle={TS.BT}
+       captionStyle={S_BROWSER_CAPTION}
        caption={caption}
        onKeyDown={_hKeyDown}
        onLoad={_hLoad}
@@ -72,7 +73,7 @@ const DialogType1 = ({
         caption="SortBy"
         initItem={DF_SORT_BY}
         options={SORT_BY_OPTIONS}
-        styleConfig={TS.SELECT}
+        styleConfig={SELECT_STYLE_CONFIG}
         onSelect={_selectSortBy}
       />
     </A.DraggableDialog>

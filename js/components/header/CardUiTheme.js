@@ -18,7 +18,8 @@ const CardUiTheme = _ref => {
   let {
     style,
     buttonsStyle,
-    TS,
+    btStyle,
+    selectStyleConfig,
     onSetTheme,
     onClose,
     isVisible,
@@ -30,13 +31,13 @@ const CardUiTheme = _ref => {
       ...style
     },
     children: [(0, _jsxRuntime.jsx)(_Comp.default.InputSelect, {
-      styleConfig: TS.SELECT,
+      styleConfig: selectStyleConfig,
       caption: "UI Theme",
       initItem: _theme.THEME_OPTIONS.DF,
       options: _theme.THEME_OPTIONS,
       onSelect: onSetTheme
     }), (0, _jsxRuntime.jsx)(_Comp.default.InputSelect, {
-      styleConfig: TS.SELECT,
+      styleConfig: selectStyleConfig,
       caption: "Font Size",
       initItem: _theme.FONT_SIZE_OPTIONS.DF,
       options: _theme.FONT_SIZE_OPTIONS,
@@ -44,7 +45,6 @@ const CardUiTheme = _ref => {
     }), (0, _jsxRuntime.jsx)(_RowCheckBox.default, {
       style: S_ROW_CHECKBOX_LS,
       initialValue: IS_ALLOW_USE_LS,
-      stroke: TS.R_DIALOG.backgroundColor,
       caption: "Allow to save to localStorage",
       onCheck: _theme.allowSaveToLs,
       onUnCheck: _theme.notAllowSaveToLs
@@ -52,8 +52,7 @@ const CardUiTheme = _ref => {
       style: buttonsStyle,
       children: (0, _jsxRuntime.jsx)(_Comp.default.RaisedButton, {
         refBt: isVisible ? setRefLast : void 0,
-        style: TS.BT.RAISED,
-        clDiv: TS.BT.CL_RAISED_DIV,
+        style: btStyle,
         isPrimary: true,
         caption: "Close",
         onClick: onClose

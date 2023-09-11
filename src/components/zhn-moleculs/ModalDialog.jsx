@@ -1,8 +1,13 @@
 import {
   CL_SHOW_POPUP,
   crCn,
-  crShowHideStyle
+  crShowHideStyle,
+  crContainerBgCn
 } from '../crStyle';
+
+import {
+  S_BT_RAISED
+} from '../dialogs/Dialog.Style';
 
 import useModalFocus from '../hooks/useModalFocus';
 import useKeyEscape from '../hooks/useKeyEscape';
@@ -11,12 +16,11 @@ import FocusTrap from './FocusTrap';
 import BrowserCaption from '../zhn-atoms/BrowserCaption';
 import RaisedButton from '../zhn-bt/RaisedButton';
 
-const CL_SHOWING = `dialog ${CL_SHOW_POPUP}`
+const CL_DIALOG = crContainerBgCn("dialog")
+, CL_SHOWING = `${CL_DIALOG} ${CL_SHOW_POPUP}`
 , S_ROOT_DIV = {
   position: 'absolute',
-  top: '20%',
-  backgroundColor: '#4d4d4d',
-  border: 'solid 2px #3f5178',
+  top: '20%',  
   borderRadius: 5,
   boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
   zIndex: 10
@@ -43,7 +47,6 @@ const ModalDialog = ({
   onClose,
   divBtStyle,
   commandButtons,
-  buttonStyle:TS,
   withoutClose,
   isClosePrimary=false
 }) => {
@@ -95,10 +98,9 @@ const ModalDialog = ({
          {!withoutClose &&
              <RaisedButton
                 key="_close"
-                style={TS.RAISED}
-                clDiv={TS.CL_RAISED_DIV}
-                caption="Close"
                 isPrimary={isClosePrimary}
+                style={S_BT_RAISED}
+                caption="Close"
                 onClick={onClose}
              />
          }

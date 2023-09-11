@@ -1,7 +1,6 @@
 //import PropTypes from 'prop-types'
 import memoIsShow from '../hoc/memoIsShow';
-import useTheme from '../hooks/useTheme';
-import styleConfig from './Dialog.Style';
+import { S_BROWSER_CAPTION } from './Dialog.Style';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 
@@ -41,26 +40,21 @@ const AlertDialog = memoIsShow(({
   isShow,
   data,
   onClose
-}) => {
-  const TS = useTheme(styleConfig)
-  , _msg  = _toMsg(data);
+}) => (
+  <ModalDialog
+     isShow={isShow}
+     isClosePrimary={true}
+     style={S_DIALOG}
+     captionStyle={S_BROWSER_CAPTION}
+     caption="Exception"
+     onClose={onClose}
+  >
+    <p style={S_MSG}>
+       {_toMsg(data)}
+    </p>
+  </ModalDialog>
+));
 
-  return (
-    <ModalDialog
-       isShow={isShow}
-       isClosePrimary={true}
-       style={{...TS.R_DIALOG, ...S_DIALOG}}
-       captionStyle={TS.BROWSER_CAPTION}
-       buttonStyle={TS.BT}
-       caption="Exception"
-       onClose={onClose}
-    >
-      <p style={S_MSG}>
-         {_msg}
-      </p>
-    </ModalDialog>
-  );
-});
 
 /*
 AlertDialog.propTypes = {

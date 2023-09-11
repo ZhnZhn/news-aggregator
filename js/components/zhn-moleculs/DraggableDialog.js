@@ -5,6 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _crStyle = require("../crStyle");
+var _Dialog = require("../dialogs/Dialog.Style");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useXYMovable = _interopRequireDefault(require("../hooks/useXYMovable"));
 var _useRefHotKey = _interopRequireDefault(require("../hotkeys/useRefHotKey"));
@@ -14,14 +15,12 @@ var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types'
 
-const CL_DIALOG = 'dialog',
-  CL_MODAL_TOGGLE = 'popup-menu menu-more__item select-none',
+const CL_DIALOG = (0, _crStyle.crContainerBgCn)("dialog"),
+  CL_MODAL_TOGGLE = "popup-menu menu-more__item select-none",
   S_DIV = {
     position: 'absolute',
     top: 30,
     left: 50,
-    backgroundColor: '#4d4d4d',
-    border: 'solid 2px #3f5178',
     borderRadius: '5px',
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
     zIndex: 10
@@ -35,7 +34,6 @@ const CL_DIALOG = 'dialog',
   HK_CLOSE = 'C';
 const DialogButtons = _ref => {
   let {
-    TS,
     onLoad,
     onShow,
     onClose
@@ -44,20 +42,17 @@ const DialogButtons = _ref => {
     style: S_BTS,
     children: [(0, _uiApi.isFn)(onLoad) && (0, _jsxRuntime.jsx)(_RaisedButton.default, {
       isPrimary: true,
-      style: TS.RAISED,
-      clDiv: TS.CL_RAISED_DIV,
+      style: _Dialog.S_BT_RAISED,
       caption: "Load",
       hotKey: HK_LOAD,
       onClick: onLoad
     }), (0, _uiApi.isFn)(onShow) && (0, _jsxRuntime.jsx)(_RaisedButton.default, {
-      style: TS.RAISED,
-      clDiv: TS.CL_RAISED_DIV,
+      style: _Dialog.S_BT_RAISED,
       caption: "Show",
       hotKey: HK_SHOW,
       onClick: onShow
     }), (0, _jsxRuntime.jsx)(_RaisedButton.default, {
-      style: TS.RAISED,
-      clDiv: TS.CL_RAISED_DIV,
+      style: _Dialog.S_BT_RAISED,
       caption: "Close",
       hotKey: HK_CLOSE,
       onClick: onClose
@@ -69,8 +64,6 @@ const DraggableDialog = (0, _uiApi.forwardRef)((_ref2, ref) => {
     isShow,
     style,
     captionStyle,
-    buttonStyle,
-    chbStroke,
     caption,
     menuToggle,
     toggleItem,
@@ -146,14 +139,14 @@ const DraggableDialog = (0, _uiApi.forwardRef)((_ref2, ref) => {
       }), menuToggle && (0, _jsxRuntime.jsx)(_ModalToggle.default, {
         isShow: isMore,
         className: CL_MODAL_TOGGLE,
-        chbStroke: chbStroke,
         configs: menuToggle,
         onToggle: toggleItem,
         onClose: toggleIsMore
       }), (0, _jsxRuntime.jsx)("div", {
         children: children
-      }), (0, _jsxRuntime.jsx)(DialogButtons, {
-        TS: buttonStyle,
+      }), (0, _jsxRuntime.jsx)(DialogButtons
+      //TS={buttonStyle}
+      , {
         onLoad: onLoad,
         onShow: onShow,
         onClose: _hClose

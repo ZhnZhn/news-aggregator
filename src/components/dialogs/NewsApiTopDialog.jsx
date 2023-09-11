@@ -1,8 +1,11 @@
-import styleConfig from './Dialog.Style';
+import {
+  S_BROWSER_CAPTION,
+  S_POWERED_BY
+} from './Dialog.Style';
 
 import useRefInputs from './hooks/useRefInputs';
 import useDialog from './hooks/useDialog';
-import useDecorDialog from './hooks/useDecorDialog';
+import useKeyDown from './hooks/useKeyDown';
 
 import DraggableDialog from '../zhn-moleculs/DraggableDialog';
 import StackInputs from '../zhn-inputs/StackInputs';
@@ -103,18 +106,13 @@ const NewsApiTopDialog = (props) => {
     _hLoad,
     _hClose
   ] = useDialog(props, 'NT', _refInputs)
-  , [
-    TS,
-    _hKeyDown
-  ] = useDecorDialog(styleConfig, _hLoad, _hClose);
+  , _hKeyDown = useKeyDown(_hLoad, _hClose);
 
   return (
     <DraggableDialog
        ref={_refDialog}
        isShow={isShow}
-       style={TS.R_DIALOG}
-       captionStyle={TS.BROWSER_CAPTION}
-       buttonStyle={TS.BT}
+       captionStyle={S_BROWSER_CAPTION}
        caption="Top By"
        onKeyDown={_hKeyDown}
        onLoad={_hLoad}
@@ -122,13 +120,12 @@ const NewsApiTopDialog = (props) => {
        onClose={_hClose}
     >
        <FlexColumn>
-         <StackInputs
-            TS={TS}
+         <StackInputs            
             configs={INPUT_CONFIGS}
             onSelect={_selectInput}
          />
          <PoweredByNewsApi
-            style={TS.POWERED_BY}
+            style={S_POWERED_BY}
          />
        </FlexColumn>
     </DraggableDialog>

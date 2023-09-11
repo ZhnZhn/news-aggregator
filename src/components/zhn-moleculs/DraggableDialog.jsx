@@ -12,8 +12,13 @@ import {
 } from '../uiApi';
 
 import {
-  crShowHide
+  crShowHide,
+  crContainerBgCn
 } from '../crStyle';
+
+import {
+  S_BT_RAISED
+} from '../dialogs/Dialog.Style';
 
 import useToggle from '../hooks/useToggle';
 import useXYMovable from '../hooks/useXYMovable';
@@ -23,15 +28,13 @@ import ModalToggle from './ModalToggle';
 import BrowserCaption from '../zhn-atoms/BrowserCaption';
 import RaisedButton from '../zhn-bt/RaisedButton';
 
-const CL_DIALOG = 'dialog'
-, CL_MODAL_TOGGLE = 'popup-menu menu-more__item select-none'
+const CL_DIALOG = crContainerBgCn("dialog")
+, CL_MODAL_TOGGLE = "popup-menu menu-more__item select-none"
 
 , S_DIV = {
   position: 'absolute',
   top: 30,
-  left: 50,
-  backgroundColor: '#4d4d4d',
-  border: 'solid 2px #3f5178',
+  left: 50,  
   borderRadius: '5px',
   boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
   zIndex: 10
@@ -45,7 +48,6 @@ const CL_DIALOG = 'dialog'
 , HK_CLOSE = 'C';
 
 const DialogButtons = ({
-  TS,
   onLoad,
   onShow,
   onClose
@@ -54,8 +56,7 @@ const DialogButtons = ({
     {isFn(onLoad) &&
       <RaisedButton
          isPrimary={true}
-         style={TS.RAISED}
-         clDiv={TS.CL_RAISED_DIV}
+         style={S_BT_RAISED}
          caption="Load"
          hotKey={HK_LOAD}
          onClick={onLoad}
@@ -63,16 +64,14 @@ const DialogButtons = ({
     }
     {isFn(onShow) &&
       <RaisedButton
-         style={TS.RAISED}
-         clDiv={TS.CL_RAISED_DIV}
+         style={S_BT_RAISED}
          caption="Show"
          hotKey={HK_SHOW}
          onClick={onShow}
       />
     }
     <RaisedButton
-       style={TS.RAISED}
-       clDiv={TS.CL_RAISED_DIV}
+       style={S_BT_RAISED}
        caption="Close"
        hotKey={HK_CLOSE}
        onClick={onClose}
@@ -84,8 +83,6 @@ const DraggableDialog = forwardRef(({
   isShow,
   style,
   captionStyle,
-  buttonStyle,
-  chbStroke,
   caption,
   menuToggle,
   toggleItem,
@@ -191,7 +188,6 @@ const DraggableDialog = forwardRef(({
       {menuToggle && <ModalToggle
          isShow={isMore}
          className={CL_MODAL_TOGGLE}
-         chbStroke={chbStroke}
          configs={menuToggle}
          onToggle={toggleItem}
          onClose={toggleIsMore}
@@ -200,7 +196,7 @@ const DraggableDialog = forwardRef(({
          {children}
       </div>
       <DialogButtons
-        TS={buttonStyle}
+        //TS={buttonStyle}
         onLoad={onLoad}
         onShow={onShow}
         onClose={_hClose}
