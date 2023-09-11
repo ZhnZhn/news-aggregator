@@ -1,6 +1,3 @@
-import useTheme from '../hooks/useTheme';
-import styleConfig from '../header/HeaderBar.Style';
-
 import FlatButton from '../zhn-bt/FlatButton';
 
 const S_DIV = {
@@ -17,17 +14,13 @@ const _crPageCounter = ({
 
 const LoadNextPage = ({
   page
-}) => {
-  const TS = useTheme(styleConfig);
-  return page ? (
-    <div style={S_DIV}>
-      <FlatButton
-        clDiv={TS.BT.CL_FLAT_DIV}
-        caption={`Load Next Page ${_crPageCounter(page)}`}
-        onClick={page.onPageLoad}
-      />
-    </div>
-  ) : null;
-}
+}) => page ? (
+  <div style={S_DIV}>
+    <FlatButton
+      caption={`Load Next Page ${_crPageCounter(page)}`}
+      onClick={page.onPageLoad}
+    />
+  </div>
+) : null;
 
 export default LoadNextPage
