@@ -7,7 +7,8 @@ var _crStyle = require("../crStyle");
 var _useButton = _interopRequireDefault(require("./useButton"));
 var _BtCaption = _interopRequireDefault(require("./BtCaption"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_BT_FLAT = 'bt-flat',
+const CL_BT_FLAT = "bt-flat",
+  CL_BT_FLAT_DIV = CL_BT_FLAT + "__div",
   CL_BT_FLAT_SPAN = CL_BT_FLAT + "__span";
 const FlatButton = _ref => {
   let {
@@ -30,7 +31,7 @@ const FlatButton = _ref => {
     style: style,
     onClick: onClick,
     children: (0, _jsxRuntime.jsxs)("div", {
-      className: clDiv,
+      className: CL_BT_FLAT_DIV,
       children: [caption ? (0, _jsxRuntime.jsx)(_BtCaption.default, {
         className: CL_BT_FLAT_SPAN,
         caption: caption,

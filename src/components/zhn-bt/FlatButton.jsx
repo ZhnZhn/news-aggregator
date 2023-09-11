@@ -3,7 +3,8 @@ import { crCn } from '../crStyle';
 import useButton from './useButton';
 import BtCaption from './BtCaption';
 
-const CL_BT_FLAT = 'bt-flat'
+const CL_BT_FLAT = "bt-flat"
+, CL_BT_FLAT_DIV = `${CL_BT_FLAT}__div`
 , CL_BT_FLAT_SPAN = `${CL_BT_FLAT}__span`;
 
 const FlatButton = ({
@@ -36,7 +37,7 @@ const FlatButton = ({
       style={style}
       onClick={onClick}
     >
-      <div className={clDiv}>
+      <div className={CL_BT_FLAT_DIV}>
         { caption
            ? <BtCaption
                className={CL_BT_FLAT_SPAN}
