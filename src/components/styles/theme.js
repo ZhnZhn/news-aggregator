@@ -101,14 +101,20 @@ const _assign = Object.assign;
 const _setBodyBg = (conf, P) => {
   const _style = document.body.style;
   _style.backgroundColor = P.BG_BODY
+
   _style.setProperty("--bg-c", P.BG)
+
   _style.setProperty("--bt-h", P.BT_H)
   _style.setProperty("--bt-fc", P.BT_FC)
   _style.setProperty("--bt-rc", P.BT_RC)
+
   _style.setProperty("--h-c", P.C_HEADER)
+  _style.setProperty("--h-bg", P.BG_HEADER)
+
   _style.setProperty("--mso-bg", P.BG_OPTIONS)
   _style.setProperty("--msi-c", P.MSI_C)
   _style.setProperty("--msi-fh", P.MSI_FH)
+
   _style.setProperty("--sbt-bg", P.SBT_BG)
 };
 const _crBg = (conf, P) => {

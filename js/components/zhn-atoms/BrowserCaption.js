@@ -8,20 +8,7 @@ var _CL = require("../styles/CL");
 var _SvgMore = _interopRequireDefault(require("./SvgMore"));
 var _SvgX = _interopRequireDefault(require("./SvgX"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_GAP = "gap-right",
-  S_ROOT = {
-    position: 'relative',
-    backgroundColor: '#3f5178',
-    color: '#a487d4',
-    lineHeight: 1.8,
-    padding: '4px 42px 2px 4px',
-    textAlign: 'center',
-    borderTopLeftRadius: '4px',
-    borderTopRightRadius: '4px',
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    textOverflow: 'clip'
-  },
+const CL_BROWSER_CAPTION = "br-caption gap-right",
   S_CAPTION = {
     fontSize: '1.125rem',
     fontWeight: 'bold'
@@ -51,11 +38,8 @@ const BrowserCaption = _ref => {
     onClose
   } = _ref;
   return (0, _jsxRuntime.jsxs)("div", {
-    className: CL_GAP,
-    style: {
-      ...S_ROOT,
-      ...style
-    },
+    className: CL_BROWSER_CAPTION,
+    style: style,
     children: [(0, _uiApi.isFn)(onMore) && (0, _jsxRuntime.jsx)(_SvgMore.default, {
       style: S_BT_MORE,
       svgStyle: S_SVG_MORE,
