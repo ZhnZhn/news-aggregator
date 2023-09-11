@@ -1,8 +1,9 @@
+import { crContainerBgCn } from '../crStyle'
+
 import useClickOutside from '../hooks/useClickOutside';
 import useKeyEscape from '../hooks/useKeyEscape';
-import useTheme from '../hooks/useTheme';
 
-import styleConfig from './ModalPane.Style';
+const CL_MODAL_PANE = crContainerBgCn();
 
 const ModalPane = ({
   isShow,
@@ -11,16 +12,16 @@ const ModalPane = ({
   onClose
 }) => {
   const _refElement = useClickOutside(isShow, onClose)
-  , _hKeyEscape = useKeyEscape(onClose)
-  , _hKeyDown = isShow ? _hKeyEscape : void 0
-  , TS = useTheme(styleConfig);
+  , _hKeyEscape = useKeyEscape(onClose);
 
   return (
     <div
        role="presentation"
+       aria-hidden={!isShow}
        ref={_refElement}
-       style={{...style, ...TS.ROOT}}
-       onKeyDown={_hKeyDown}
+       className={CL_MODAL_PANE}
+       style={style}
+       onKeyDown={isShow ? _hKeyEscape : void 0}
     >
       {children}
     </div>
