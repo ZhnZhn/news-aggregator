@@ -45,6 +45,7 @@ const _setRefValue = (ref, value) => ref.current = value;
 const _getRefValue = ref => ref.current;
 
 const GestureSwipeX = forwardRef(({
+  className,
   style,
   children,
   setTimeStamp=_noopFn,
@@ -128,6 +129,7 @@ const GestureSwipeX = forwardRef(({
     <div
       ref={ref}
       role="presentation"
+      className={className}
       style={style}
       {..._handlers}
     >
