@@ -1,13 +1,10 @@
 import {
   forwardRef,
-  useCallback,
-  useMemo
+  useCallback
 } from '../uiApi';
 
 import useToggle from '../hooks/useToggle';
 import useKeyDelete from '../hooks/useKeyDelete';
-import useTheme from '../hooks/useTheme';
-import styleConfig from './Article.Style';
 
 import { HAS_TOUCH_EVENTS } from '../has';
 
@@ -16,17 +13,15 @@ import GestureSwipeX from '../zhn-gesture/GestureSwipeX';
 import SvgX from '../zhn-atoms/SvgX';
 import SafeLink from '../zhn-atoms/SafeLink';
 import ItemStack from '../zhn-atoms/ItemStack';
+import {
+  CL_ITEM_HEADER,
+  CL_ITEM_DESCR,
+  CL_LINK_WRAPPER,
+  S_NONE
+} from './Item.Style';
 
-const CL_WRAPPER = "link-wrapper"
-, _S_BADGE = {
-  display: 'inline-block',
-  paddingRight: 8,
-  fontSize: '1.125rem',
-}
-, S_NONE = { display: 'none' }
-, S_ROOT = {
+const S_ROOT = {
   position: 'relative',
-  backgroundColor: '#404040',
   fontWeight: 'bold',
   width: '100%',
   padding: '8px 4px 16px 16px',
@@ -35,39 +30,36 @@ const CL_WRAPPER = "link-wrapper"
   boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)',
   borderTopRightRadius: 2,
   borderBottomRightRadius: 2
-},
-S_SVG_CLOSE = {
+}
+, S_SVG_CLOSE = {
   position: 'absolute',
   top: 8,
   right: 0
-},
-S_ITEM_CAPTION = {
+}
+, S_ITEM_CAPTION = {
   paddingBottom: 8
-},
-S_LINK = {
+}
+, S_LINK = {
   display: 'block',
   paddingBottom: 8
-},
-S_SPAN_TAG = {
+}
+, S_SPAN_TAG = {
   display: 'inline-block',
   color: 'black',
   backgroundColor: 'gray',
   padding: '4px 8px',
   margin: '6px 8px 2px 8px',
   borderRadius: 16
-},
-S_FISH_BADGE = {
-  ..._S_BADGE,
-  color: '#d7bb52'
-},
-S_GREEN_BADGE = {
-  ..._S_BADGE,
-  color: '#80c040',
-},
-S_BLACK_BADGE = {
-  ..._S_BADGE,
-  color: 'black'
-};
+}
+, _crItemBadge = (color) => ({
+  display: 'inline-block',
+  paddingRight: 8,
+  fontSize: '1.125rem',
+  color
+})
+, S_FISH_BADGE = _crItemBadge('#d7bb52')
+, S_GREEN_BADGE = _crItemBadge('#80c040')
+, S_BLACK_BADGE = _crItemBadge('black');
 
 
 const TOKEN_ANSWER = HAS_TOUCH_EVENTS ? 'A' : (
@@ -83,11 +75,15 @@ const TOKEN_REPUTATION = HAS_TOUCH_EVENTS ? 'R' : (
   <span role="img" arial-label="shamrock">&#x2618;</span>
 );
 
-const _fTagItem = TS  => (
+const _crTagItem = (
   tag,
   index
 ) => (
-  <span key={index} style={{...S_SPAN_TAG, ...TS.DESCR}}>
+  <span
+    key={index}
+    className={CL_ITEM_DESCR}
+    style={S_SPAN_TAG}
+  >
      {tag}
   </span>
 );
@@ -113,8 +109,6 @@ const StackItem = forwardRef(({
   /*eslint-enable react-hooks/exhaustive-deps */
   , _hKeyDown = useKeyDelete(_hClose)
   , _onGestureSwipeX = useItemGestureSwipeX(item, onRemoveUnder, _hClose)
-  , TS = useTheme(styleConfig)
-  , _crItem = useMemo(() => _fTagItem(TS), [TS]);
 
   const {
     is_answered,
@@ -136,7 +130,8 @@ const StackItem = forwardRef(({
 
   return (
     <GestureSwipeX
-      style={{...S_ROOT, ..._style, ...TS.HEADER}}
+      className={CL_ITEM_HEADER}
+      style={{...S_ROOT, ..._style}}
       onGesture={_onGestureSwipeX}
     >
       <div style={S_ITEM_CAPTION}>
@@ -164,12 +159,15 @@ const StackItem = forwardRef(({
         {title}
       </div>
       <SafeLink
-        className={CL_WRAPPER}
+        className={CL_LINK_WRAPPER}
         style={S_LINK}
         href={link}
         onKeyDown={_hKeyDown}
       >
-        <ItemStack items={tags} crItem={_crItem} />
+        <ItemStack
+          items={tags}
+          crItem={_crTagItem}
+        />
       </SafeLink>
     </GestureSwipeX>
   );

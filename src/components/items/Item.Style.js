@@ -1,5 +1,7 @@
 
 export const CL_ITEM_HEADER = "article-header"
+export const CL_ITEM_DESCR = "article-descr"
+export const CL_LINK_WRAPPER = "link-wrapper"
 
 export const S_ITEM = {
   position: 'relative',

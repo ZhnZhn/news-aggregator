@@ -1,13 +1,11 @@
 import { forwardRef } from '../uiApi';
 
-import useTheme from '../hooks/useTheme';
-import styleConfig from './Article.Style';
-
 import ItemHeader from './ItemHeader';
 import ShowHide from '../zhn-atoms/ShowHide';
 
 import {
   CL_ITEM_HEADER,
+  CL_ITEM_DESCR,
   S_CAPTION,
   S_SVG_CLOSE
 } from './Item.Style';
@@ -20,15 +18,11 @@ const ItemType1 = forwardRef(({
   onClick,
   onToggle,
   onClose
-}, ref) => {
-  const TS = useTheme(styleConfig);
-
-  return (
+}, ref) => (
     <>
       <ItemHeader
         ref={ref}
         className={CL_ITEM_HEADER}
-        style={TS.HEADER}
         captionStyle={S_CAPTION}
         btCloseStyle={S_SVG_CLOSE}
         title={title}
@@ -40,12 +34,11 @@ const ItemType1 = forwardRef(({
       <ShowHide
          isShow={isShowDescr}
          withoutAnimation={true}
-         style={TS.DESCR}
+         className={CL_ITEM_DESCR}
       >
          {children}
       </ShowHide>
     </>
-  );
-})
+));
 
 export default ItemType1

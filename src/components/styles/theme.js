@@ -52,7 +52,10 @@ const P_GREY = {
   MSI_FH: _crRgba(48, 0.4),
   SBT_BG: GREY_BG_HEADER,
   BG_HEADER: GREY_BG_HEADER,
-  C_HEADER: GREY_C_HEADER
+  C_HEADER: GREY_C_HEADER,
+
+  ART_H: '#404040',
+  ART_D: '#4d4d4d'
 };
 
 const BG_HEADER_LIGHT = '#0096c8';
@@ -73,7 +76,10 @@ const P_WHITE = {
   BG_BODY: 'darkgrey',
   BG: WHITE_BG,
   BG_OPTIONS: '#dfe4e7',
-  BT_RC: WHITE_BG
+  BT_RC: WHITE_BG,
+
+  ART_H: '#dfe4e7',
+  ART_D: '#eaeaea'
 };
 
 const SAND_BG = '#e8e0cb';
@@ -82,7 +88,10 @@ const P_SAND = {
   BG_BODY: 'darkgrey',
   BG: SAND_BG,
   BG_OPTIONS: '#c6bda5',
-  BT_RC: SAND_BG
+  BT_RC: SAND_BG,
+
+  ART_H: '#c6bda5',
+  ART_D: '#e8e0cb'
 };
 
 const CSS_RULE = {
@@ -116,6 +125,9 @@ const _setBodyBg = (conf, P) => {
   _style.setProperty("--msi-fh", P.MSI_FH)
 
   _style.setProperty("--sbt-bg", P.SBT_BG)
+
+  _style.setProperty("--art-h", P.ART_H)
+  _style.setProperty("--art-d", P.ART_D)
 };
 const _crBg = (conf, P) => {
   _assign(conf.BG, {
