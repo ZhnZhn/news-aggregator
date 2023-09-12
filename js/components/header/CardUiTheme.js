@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _theme = require("../styles/theme");
+var _uiTheme = require("../styles/uiTheme");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _RowCheckBox = _interopRequireDefault(require("../dialogs/RowCheckBox"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -13,14 +13,13 @@ const S_DIV = {
   S_ROW_CHECKBOX_LS = {
     margin: '34px 0 34px 16px'
   },
-  IS_ALLOW_USE_LS = (0, _theme.isAllowUseLs)();
+  IS_ALLOW_USE_LS = (0, _uiTheme.isAllowUseLs)();
 const CardUiTheme = _ref => {
   let {
     style,
     buttonsStyle,
     btStyle,
     selectStyleConfig,
-    onSetTheme,
     onClose,
     isVisible,
     setRefLast
@@ -33,21 +32,21 @@ const CardUiTheme = _ref => {
     children: [(0, _jsxRuntime.jsx)(_Comp.default.InputSelect, {
       styleConfig: selectStyleConfig,
       caption: "UI Theme",
-      initItem: _theme.THEME_OPTIONS.DF,
-      options: _theme.THEME_OPTIONS,
-      onSelect: onSetTheme
+      initItem: _uiTheme.THEME_OPTIONS.DF,
+      options: _uiTheme.THEME_OPTIONS,
+      onSelect: _uiTheme.setUiTheme
     }), (0, _jsxRuntime.jsx)(_Comp.default.InputSelect, {
       styleConfig: selectStyleConfig,
       caption: "Font Size",
-      initItem: _theme.FONT_SIZE_OPTIONS.DF,
-      options: _theme.FONT_SIZE_OPTIONS,
-      onSelect: _theme.selectFontSize
+      initItem: _uiTheme.FONT_SIZE_OPTIONS.DF,
+      options: _uiTheme.FONT_SIZE_OPTIONS,
+      onSelect: _uiTheme.selectFontSize
     }), (0, _jsxRuntime.jsx)(_RowCheckBox.default, {
       style: S_ROW_CHECKBOX_LS,
       initialValue: IS_ALLOW_USE_LS,
       caption: "Allow to save to localStorage",
-      onCheck: _theme.allowSaveToLs,
-      onUnCheck: _theme.notAllowSaveToLs
+      onCheck: _uiTheme.allowSaveToLs,
+      onUnCheck: _uiTheme.notAllowSaveToLs
     }), (0, _jsxRuntime.jsx)("div", {
       style: buttonsStyle,
       children: (0, _jsxRuntime.jsx)(_Comp.default.RaisedButton, {

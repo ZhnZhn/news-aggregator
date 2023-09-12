@@ -12,8 +12,6 @@ import {
   crSelectStyleConfig
 } from '../dialogs/Dialog.Style';
 
-import { setUiTheme } from '../../flux/storeAtoms'
-
 import A from '../Comp';
 import CardApiKeys from './CardApiKeys';
 import CardUiTheme from './CardUiTheme';
@@ -63,11 +61,8 @@ const SettingsDialog = memoIsShow(({
   const _refFocusLast = useRef()
   , _setFocusLastRef = useCallback(el => {
     _refFocusLast.current = el
-  }, [])
-  , _selectTheme = useCallback(item => {
-    setUiTheme((item || [])[1])
   }, []);
-
+  
   return (
     <A.ModalDialog
        refFocusLast={_refFocusLast}
@@ -101,7 +96,6 @@ const SettingsDialog = memoIsShow(({
               buttonsStyle={S_CARD_BUTTONS}
               btStyle={S_BT_RAISED}
               selectStyleConfig={SELECT_STYLE_CONFIG}
-              onSetTheme={_selectTheme}
               onClose={onClose}
             />
          </A.Tab>

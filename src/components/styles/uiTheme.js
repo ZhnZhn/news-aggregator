@@ -94,20 +94,13 @@ const P_SAND = {
   ART_D: '#e8e0cb'
 };
 
-const CSS_RULE = {
-  BG: {},
-  BG_HEADER: {},
-  R_DIALOG: {}
-};
-
 const THEME_CONFIG = {
   [THEME_NAME.GREY]: P_GREY,
   [THEME_NAME.WHITE]: P_WHITE,
   [THEME_NAME.SAND]: P_SAND
 };
 
-const _assign = Object.assign;
-const _setBodyBg = (conf, P) => {
+const _setCustomPropertiesFrom = (P) => {
   const _style = document.body.style;
   _style.backgroundColor = P.BG_BODY
 
@@ -129,43 +122,15 @@ const _setBodyBg = (conf, P) => {
   _style.setProperty("--art-h", P.ART_H)
   _style.setProperty("--art-d", P.ART_D)
 };
-const _crBg = (conf, P) => {
-  _assign(conf.BG, {
-    backgroundColor: P.BG
-  })
-}
-const _crBgHeader = (conf, P) => {
-  _assign(conf.BG_HEADER, {
-    color: P.C_HEADER,
-    backgroundColor: P.BG_HEADER
-   })
-}
-const _crRDialog = (conf, P) => {
-  _assign(conf.R_DIALOG, {
-    backgroundColor: P.BG,
-    border: `solid 2px ${P.BG_HEADER}`
-  })
-}
 
-const _FN_STYLES = [
-  _setBodyBg,
-  _crBg,
-  _crBgHeader,
-  _crRDialog
-];
-const _setStyleTo = (conf, themeName) => {
-  const _pallete = THEME_CONFIG[themeName];
-  _FN_STYLES.forEach(fn => fn(conf, _pallete))
-};
-
-const _setTheme = (
+const _setUiTheme = (
   themeName
 ) => {
-  _setStyleTo(CSS_RULE, themeName)
+  _setCustomPropertiesFrom(THEME_CONFIG[themeName])
   writeToLs(LS_UI_THEME_KEY, themeName)
 }
 
-const theme = {
+const _uiTheme = {
   themeName: THEME_NAME.DF,
   _init(){
     this.setThemeName(crInitialThemeName())
@@ -177,23 +142,25 @@ const theme = {
   },
   setThemeName(themeName){
     this.themeName = THEME_NAME[themeName] || THEME_NAME.DF;
-    _setTheme(this.themeName)
-  },
-  createStyle(config){
-     if (this.themeName !== config.themeName){
-       config.style = config.createStyle(CSS_RULE, this.themeName)
-       config.themeName = this.themeName
-     }
-     return config.style;
+    _setUiTheme(this.themeName)
   }
 };
 
-theme._init()
+_uiTheme._init()
+
+export const setUiTheme = (
+  item
+) => {
+  const _themeName = (item || [])[1];
+  if (_uiTheme.getThemeName() !== _themeName) {
+    _uiTheme.setThemeName(_themeName)
+  }
+}
 
 export const allowSaveToLs = () => {
   allowUseLs()
   writeToLs(LS_IS, "1")
-  writeToLs(LS_UI_THEME_KEY, theme.themeName)
+  writeToLs(LS_UI_THEME_KEY, _uiTheme.getThemeName())
   writeToLs(LS_FONT_SIZE_KEY, getFontSize())
 }
 export const notAllowSaveToLs = () => {
@@ -202,5 +169,3 @@ export const notAllowSaveToLs = () => {
   removeItem(LS_UI_THEME_KEY)
   removeItem(LS_FONT_SIZE_KEY)
 }
-
-export const initialTheme = theme

@@ -1,7 +1,5 @@
 import useHotKeys from './hotkeys/useHotKeys';
 
-import { useUiTheme } from '../flux/storeAtoms';
-
 import {
   useMsAbout,
   showAbout,
@@ -13,8 +11,6 @@ import {
   useMsPane
 } from '../flux/compStore';
 
-import ThemeContext from './hooks/ThemeContext'
-
 import HeaderBar from './header/HeaderBar'
 import BrowserContainer from './zhn-containers/BrowserContainer'
 import About from './about/About'
@@ -25,36 +21,32 @@ import RouterModalDialog from './dialogs/RouterModalDialog'
 const CL_COMP = "component-container";
 
 const AppNewsAggregator = () => {
-  const uiTheme = useUiTheme();
   useHotKeys()
-
   return (
-    <ThemeContext.Provider value={uiTheme}>
-      <div>
-        <HeaderBar
-          onNewsSources={showNewsBrowser}
-          onSettings={showSettingsDialog}
-          onAbout={showAbout}
+    <div>
+      <HeaderBar
+        onNewsSources={showNewsBrowser}
+        onSettings={showSettingsDialog}
+        onAbout={showAbout}
+      />
+      <div className={CL_COMP}>
+        <BrowserContainer
+          useMsBrowser={useMsBrowser}
+          useMsDialog={useMsDialog}
         />
-        <div className={CL_COMP}>
-          <BrowserContainer
-            useMsBrowser={useMsBrowser}
-            useMsDialog={useMsDialog}
-          />
-          <About
-            isInitShow={true}
-            useMsAbout={useMsAbout}
-          />
-          <ComponentHrzContainer
-            useMsPane={useMsPane}
-          />
-        </div>
-        <ModalDialogContainer
-          router={RouterModalDialog}
-          useMsModalDialog={useMsModalDialog}
+        <About
+          isInitShow={true}
+          useMsAbout={useMsAbout}
+        />
+        <ComponentHrzContainer
+          useMsPane={useMsPane}
         />
       </div>
-    </ThemeContext.Provider>
+      <ModalDialogContainer
+        router={RouterModalDialog}
+        useMsModalDialog={useMsModalDialog}
+      />
+    </div>
   );
 };
 

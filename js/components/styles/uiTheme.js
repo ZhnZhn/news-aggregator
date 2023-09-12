@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.selectFontSize = exports.notAllowSaveToLs = exports.isAllowUseLs = exports.initialTheme = exports.allowSaveToLs = exports.THEME_OPTIONS = exports.FONT_SIZE_OPTIONS = void 0;
+exports.setUiTheme = exports.selectFontSize = exports.notAllowSaveToLs = exports.isAllowUseLs = exports.allowSaveToLs = exports.THEME_OPTIONS = exports.FONT_SIZE_OPTIONS = void 0;
 var _localStorageFn = require("../../utils/localStorageFn");
 exports.isAllowUseLs = _localStorageFn.isAllowUseLs;
 var _propertyFontSize = require("./propertyFontSize");
@@ -59,18 +59,12 @@ const P_SAND = {
   ART_H: '#c6bda5',
   ART_D: '#e8e0cb'
 };
-const CSS_RULE = {
-  BG: {},
-  BG_HEADER: {},
-  R_DIALOG: {}
-};
 const THEME_CONFIG = {
   [_propertyThemeName.THEME_NAME.GREY]: P_GREY,
   [_propertyThemeName.THEME_NAME.WHITE]: P_WHITE,
   [_propertyThemeName.THEME_NAME.SAND]: P_SAND
 };
-const _assign = Object.assign;
-const _setBodyBg = (conf, P) => {
+const _setCustomPropertiesFrom = P => {
   const _style = document.body.style;
   _style.backgroundColor = P.BG_BODY;
   _style.setProperty("--bg-c", P.BG);
@@ -86,33 +80,11 @@ const _setBodyBg = (conf, P) => {
   _style.setProperty("--art-h", P.ART_H);
   _style.setProperty("--art-d", P.ART_D);
 };
-const _crBg = (conf, P) => {
-  _assign(conf.BG, {
-    backgroundColor: P.BG
-  });
-};
-const _crBgHeader = (conf, P) => {
-  _assign(conf.BG_HEADER, {
-    color: P.C_HEADER,
-    backgroundColor: P.BG_HEADER
-  });
-};
-const _crRDialog = (conf, P) => {
-  _assign(conf.R_DIALOG, {
-    backgroundColor: P.BG,
-    border: "solid 2px " + P.BG_HEADER
-  });
-};
-const _FN_STYLES = [_setBodyBg, _crBg, _crBgHeader, _crRDialog];
-const _setStyleTo = (conf, themeName) => {
-  const _pallete = THEME_CONFIG[themeName];
-  _FN_STYLES.forEach(fn => fn(conf, _pallete));
-};
-const _setTheme = themeName => {
-  _setStyleTo(CSS_RULE, themeName);
+const _setUiTheme = themeName => {
+  _setCustomPropertiesFrom(THEME_CONFIG[themeName]);
   (0, _localStorageFn.writeToLs)(_LS.LS_UI_THEME_KEY, themeName);
 };
-const theme = {
+const _uiTheme = {
   themeName: _propertyThemeName.THEME_NAME.DF,
   _init() {
     this.setThemeName((0, _propertyThemeName.crInitialThemeName)());
@@ -124,21 +96,21 @@ const theme = {
   },
   setThemeName(themeName) {
     this.themeName = _propertyThemeName.THEME_NAME[themeName] || _propertyThemeName.THEME_NAME.DF;
-    _setTheme(this.themeName);
-  },
-  createStyle(config) {
-    if (this.themeName !== config.themeName) {
-      config.style = config.createStyle(CSS_RULE, this.themeName);
-      config.themeName = this.themeName;
-    }
-    return config.style;
+    _setUiTheme(this.themeName);
   }
 };
-theme._init();
+_uiTheme._init();
+const setUiTheme = item => {
+  const _themeName = (item || [])[1];
+  if (_uiTheme.getThemeName() !== _themeName) {
+    _uiTheme.setThemeName(_themeName);
+  }
+};
+exports.setUiTheme = setUiTheme;
 const allowSaveToLs = () => {
   (0, _localStorageFn.allowUseLs)();
   (0, _localStorageFn.writeToLs)(_LS.LS_IS, "1");
-  (0, _localStorageFn.writeToLs)(_LS.LS_UI_THEME_KEY, theme.themeName);
+  (0, _localStorageFn.writeToLs)(_LS.LS_UI_THEME_KEY, _uiTheme.getThemeName());
   (0, _localStorageFn.writeToLs)(_LS.LS_FONT_SIZE_KEY, (0, _propertyFontSize.getFontSize)());
 };
 exports.allowSaveToLs = allowSaveToLs;
@@ -149,6 +121,4 @@ const notAllowSaveToLs = () => {
   (0, _localStorageFn.removeItem)(_LS.LS_FONT_SIZE_KEY);
 };
 exports.notAllowSaveToLs = notAllowSaveToLs;
-const initialTheme = theme;
-exports.initialTheme = initialTheme;
-//# sourceMappingURL=theme.js.map
+//# sourceMappingURL=uiTheme.js.map

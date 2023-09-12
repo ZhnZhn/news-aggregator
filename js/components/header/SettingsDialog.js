@@ -6,7 +6,6 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _memoIsShow = _interopRequireDefault(require("../hoc/memoIsShow"));
 var _Dialog = require("../dialogs/Dialog.Style");
-var _storeAtoms = require("../../flux/storeAtoms");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _CardApiKeys = _interopRequireDefault(require("./CardApiKeys"));
 var _CardUiTheme = _interopRequireDefault(require("./CardUiTheme"));
@@ -55,9 +54,6 @@ const SettingsDialog = (0, _memoIsShow.default)(_ref => {
   const _refFocusLast = (0, _uiApi.useRef)(),
     _setFocusLastRef = (0, _uiApi.useCallback)(el => {
       _refFocusLast.current = el;
-    }, []),
-    _selectTheme = (0, _uiApi.useCallback)(item => {
-      (0, _storeAtoms.setUiTheme)((item || [])[1]);
     }, []);
   return (0, _jsxRuntime.jsx)(_Comp.default.ModalDialog, {
     refFocusLast: _refFocusLast,
@@ -93,7 +89,6 @@ const SettingsDialog = (0, _memoIsShow.default)(_ref => {
           buttonsStyle: S_CARD_BUTTONS,
           btStyle: _Dialog.S_BT_RAISED,
           selectStyleConfig: SELECT_STYLE_CONFIG,
-          onSetTheme: _selectTheme,
           onClose: onClose
         })
       })]

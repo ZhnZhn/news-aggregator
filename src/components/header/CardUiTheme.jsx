@@ -1,11 +1,12 @@
 import {
   THEME_OPTIONS,
   FONT_SIZE_OPTIONS,
+  setUiTheme,
   selectFontSize,
   isAllowUseLs,
   allowSaveToLs,
   notAllowSaveToLs
-} from '../styles/theme';
+} from '../styles/uiTheme';
 
 import A from '../Comp';
 import RowCheckBox from '../dialogs/RowCheckBox';
@@ -22,7 +23,6 @@ const CardUiTheme = ({
   buttonsStyle,
   btStyle,
   selectStyleConfig,
-  onSetTheme,
   onClose,
   isVisible,
   setRefLast
@@ -33,7 +33,7 @@ const CardUiTheme = ({
         caption="UI Theme"
         initItem={THEME_OPTIONS.DF}
         options={THEME_OPTIONS}
-        onSelect={onSetTheme}
+        onSelect={setUiTheme}
       />
       <A.InputSelect
         styleConfig={selectStyleConfig}
@@ -44,7 +44,7 @@ const CardUiTheme = ({
       />
       <RowCheckBox
         style={S_ROW_CHECKBOX_LS}
-        initialValue={IS_ALLOW_USE_LS}        
+        initialValue={IS_ALLOW_USE_LS}
         caption="Allow to save to localStorage"
         onCheck={allowSaveToLs}
         onUnCheck={notAllowSaveToLs}
