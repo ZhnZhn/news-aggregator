@@ -6,12 +6,16 @@ import {
 
 import ShowHide from '../zhn-atoms/ShowHide';
 import InputSelect from '../zhn-m-input/InputSelect';
+import InputSuggest from '../zhn-m-input/InputSuggest';
 import TextField from '../zhn-m-input/TextField';
 import InputFromToDate from '../zhn-m-input/InputFromToDate';
 
-
 const _isObj = v => v && typeof v === 'object';
 const SELECT_STYLE_CONFIG = crSelectStyleConfig();
+const S_TF_SUGGEST = {
+  ...S_INPUT_ROOT,
+  marginLeft: 0
+};
 
 const _isInput = (
   isInputs,
@@ -28,14 +32,20 @@ const StackInputs = ({
 }) => (configs || []).map(arrConfig => {
   const _type = arrConfig[0]
   , _inputId = arrConfig[1]
-  , _elItem = _type === 's'
-      ? (<InputSelect
+  , CompInput = _type === 's'
+     ? InputSelect
+     : _type === 'sg'
+         ? InputSuggest
+         : void 0
+  , _elItem = CompInput
+      ? (<CompInput
            key={_inputId}
            id={_inputId}
            caption={arrConfig[2]}
            options={arrConfig[3]}
            initItem={arrConfig[4]}
            styleConfig={SELECT_STYLE_CONFIG}
+           tfStyle={S_TF_SUGGEST}
            onSelect={onSelect}
         />
       )

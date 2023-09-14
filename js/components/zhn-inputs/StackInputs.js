@@ -6,12 +6,17 @@ exports.default = void 0;
 var _Dialog = require("../dialogs/Dialog.Style");
 var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
 var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
+var _InputSuggest = _interopRequireDefault(require("../zhn-m-input/InputSuggest"));
 var _TextField = _interopRequireDefault(require("../zhn-m-input/TextField"));
 var _InputFromToDate = _interopRequireDefault(require("../zhn-m-input/InputFromToDate"));
 var _jsxRuntime = require("preact/jsx-runtime");
 var _preact = require("preact");
 const _isObj = v => v && typeof v === 'object';
 const SELECT_STYLE_CONFIG = (0, _Dialog.crSelectStyleConfig)();
+const S_TF_SUGGEST = {
+  ..._Dialog.S_INPUT_ROOT,
+  marginLeft: 0
+};
 const _isInput = (isInputs, id) => _isObj(isInputs) ? !!isInputs[id] : true;
 const StackInputs = _ref => {
   let {
@@ -23,12 +28,14 @@ const StackInputs = _ref => {
   return (configs || []).map(arrConfig => {
     const _type = arrConfig[0],
       _inputId = arrConfig[1],
-      _elItem = _type === 's' ? (0, _jsxRuntime.jsx)(_InputSelect.default, {
+      CompInput = _type === 's' ? _InputSelect.default : _type === 'sg' ? _InputSuggest.default : void 0,
+      _elItem = CompInput ? (0, _jsxRuntime.jsx)(CompInput, {
         id: _inputId,
         caption: arrConfig[2],
         options: arrConfig[3],
         initItem: arrConfig[4],
         styleConfig: SELECT_STYLE_CONFIG,
+        tfStyle: S_TF_SUGGEST,
         onSelect: onSelect
       }, _inputId) : _type === 't' ? (0, _preact.createElement)(_TextField.default, {
         ...arrConfig[4],
