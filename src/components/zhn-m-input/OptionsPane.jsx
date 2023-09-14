@@ -2,13 +2,14 @@ import {
   useRef,
   useCallback,
   useEffect,
+  useImperativeHandle,
 
   KEY_ARROW_DOWN,
   KEY_ARROW_UP,
   KEY_ENTER,
   KEY_ESCAPE,
   KEY_TAB,
-  
+
   getRefValue,
   setRefValue,
   stopDefaultFor
@@ -79,8 +80,11 @@ const _crItem = (
 };
 
 const OptionsPane = ({
+  refOp,
   isShow,
+  isFocusItem=true,
   className,
+  style,
   options,
   item,
   clItem,
@@ -98,22 +102,28 @@ const OptionsPane = ({
       stopDefaultFor(evt)
       _focusPrevItem(_refFocus)
     } else if (evt.key === KEY_ESCAPE || evt.key === KEY_TAB) {
-      stopDefaultFor(evt)
       onClose()
     }
   }, []);
   //onClose
   /*eslint-enable react-hooks/exhaustive-deps */
 
+  /*eslint-disable react-hooks/exhaustive-deps */
+  useImperativeHandle(refOp, () => ({
+    hKeyDown: _hKeyDown
+  }), [])
+  // _hKeyDown
+  /*eslint-enable react-hooks/exhaustive-deps */
+
   useEffect(()=>{
-    if (isShow) {
+    if (isShow && isFocusItem) {
       const _elItem = getRefValue(_refItem);
       if (_elItem) {
         _elItem.focus()
         setRefValue(_refFocus, _elItem)
       }
     }
-  }, [isShow])
+  }, [isShow, isFocusItem])
   return (
    <ModalPane
      isShow={isShow}
@@ -123,6 +133,7 @@ const OptionsPane = ({
          isShow={isShow}
          isScrollable={true}
          className={className}
+         style={style}
          role="presentation"
          onKeyDown={_hKeyDown}
       >

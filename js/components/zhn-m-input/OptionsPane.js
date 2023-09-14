@@ -51,8 +51,11 @@ const _crItem = (item, index, _ref2) => {
 };
 const OptionsPane = _ref3 => {
   let {
+    refOp,
     isShow,
+    isFocusItem = true,
     className,
+    style,
     options,
     item,
     clItem,
@@ -70,22 +73,28 @@ const OptionsPane = _ref3 => {
         (0, _uiApi.stopDefaultFor)(evt);
         _focusPrevItem(_refFocus);
       } else if (evt.key === _uiApi.KEY_ESCAPE || evt.key === _uiApi.KEY_TAB) {
-        (0, _uiApi.stopDefaultFor)(evt);
         onClose();
       }
     }, []);
   //onClose
   /*eslint-enable react-hooks/exhaustive-deps */
 
+  /*eslint-disable react-hooks/exhaustive-deps */
+  (0, _uiApi.useImperativeHandle)(refOp, () => ({
+    hKeyDown: _hKeyDown
+  }), []);
+  // _hKeyDown
+  /*eslint-enable react-hooks/exhaustive-deps */
+
   (0, _uiApi.useEffect)(() => {
-    if (isShow) {
+    if (isShow && isFocusItem) {
       const _elItem = (0, _uiApi.getRefValue)(_refItem);
       if (_elItem) {
         _elItem.focus();
         (0, _uiApi.setRefValue)(_refFocus, _elItem);
       }
     }
-  }, [isShow]);
+  }, [isShow, isFocusItem]);
   return (0, _jsxRuntime.jsx)(_ModalPane.default, {
     isShow: isShow,
     onClose: onClose,
@@ -93,6 +102,7 @@ const OptionsPane = _ref3 => {
       isShow: isShow,
       isScrollable: true,
       className: className,
+      style: style,
       role: "presentation",
       onKeyDown: _hKeyDown,
       children: (0, _jsxRuntime.jsx)(_ItemStack.default, {
