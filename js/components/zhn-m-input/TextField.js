@@ -15,7 +15,8 @@ const CL_SELECT = 'm-select',
   CL_INPUT = M_TEXTFIELD + "-input",
   M_INPUT = 'm-input',
   CL_INPUT_LINE = M_INPUT + "__line",
-  CL_INPUT_MSG_ERR = M_INPUT + "__msg-err";
+  CL_INPUT_MSG_ERR = M_INPUT + "__msg-err",
+  CL_SVG_CLEAR = "svg-clear";
 const S_LABEL_TO_INPUT = {
     transform: 'scale(1) translate(0px, -6px)'
   },
@@ -32,7 +33,7 @@ const S_LABEL_TO_INPUT = {
   };
 const FN_TRUE = () => true;
 const FN_NOOP = () => {};
-const _getEventTargetValue = event => event.target.value;
+const _getEventTargetValue = evt => evt.target.value;
 const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
   let {
     style,
@@ -44,12 +45,14 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
     autoCapitalize = "off",
     errorMsg = '',
     hasClear = true,
+    children,
     onTest = FN_TRUE,
     onEnter = FN_NOOP,
     onBlur = FN_NOOP,
     onKeyDown = FN_NOOP
   } = _ref;
   const _refId = (0, _uiApi.useRef)(id || (0, _uiApi.crId)()),
+    _refTf = (0, _uiApi.useRef)(),
     [value, setValue] = (0, _uiApi.useState)(initValue || ''),
     [isPassTest, setIsPastTest] = (0, _uiApi.useState)(() => onTest(initValue || '')),
     [isFocus, _focusInput, _blurInput] = (0, _useBool.default)()
@@ -57,30 +60,28 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
     [_onEvent, _clearInput] = (0, _uiApi.useMemo)(() => [(evt, onEvent) => {
       const _value = _getEventTargetValue(evt);
       if (onTest(_value)) {
-        onEvent(_value.trim(), id);
+        onEvent(_value.trim(), id, evt);
       }
-    }, () => {
-      onKeyDown('', id);
+    }, evt => {
       setValue('');
+      onKeyDown('', id, evt);
     }], [])
     // onTest, onKeyDown, id
     ,
-    [_hBlurInput, _hInputChange, _hKeyDown] = (0, _uiApi.useMemo)(() => [event => {
-      _onEvent(event, onBlur);
+    [_hBlurInput, _hInputChange, _hKeyDown] = (0, _uiApi.useMemo)(() => [evt => {
+      _onEvent(evt, onBlur);
       _blurInput();
-    }, event => {
-      _onEvent(event, onKeyDown);
-      const _value = _getEventTargetValue(event);
+    }, evt => {
+      _onEvent(evt, onKeyDown);
+      const _value = _getEventTargetValue(evt);
       setValue(_value);
       setIsPastTest(onTest(_value));
-    }, event => {
-      const keyCode = event.keyCode;
-      if (keyCode === 46 || keyCode === 27) {
-        _clearInput();
-      } else if (keyCode === 13) {
-        _onEvent(event, onEnter);
-      } else {
-        _onEvent(event, onKeyDown);
+    }, evt => {
+      const key = evt.key;
+      if (key === _uiApi.KEY_DELETE || key === _uiApi.KEY_ESCAPE) {
+        _clearInput(evt);
+      } else if (key === _uiApi.KEY_ENTER) {
+        _onEvent(evt, onEnter);
       }
     }], []);
   //onTest, onBlur, _blurInput, id
@@ -89,7 +90,9 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
   /*eslint-enable react-hooks/exhaustive-deps */
 
   (0, _uiApi.useImperativeHandle)(ref, () => ({
-    getValue: () => String(value).trim()
+    getValue: () => String(value).trim(),
+    setValue,
+    focus: () => (0, _uiApi.focusRefElement)(_refTf)
   }), [value]);
   const _labelStyle = value || isFocus ? void 0 : S_LABEL_TO_INPUT,
     [_labelErrStyle, _lineStyle] = isPassTest ? [] : [S_LABEL_ON_ERROR, S_LINE_ERROR];
@@ -102,12 +105,13 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
         ..._labelStyle,
         ..._labelErrStyle
       },
-      htmlFor: _refId.current,
+      htmlFor: (0, _uiApi.getRefValue)(_refId),
       children: caption
     }), (0, _jsxRuntime.jsxs)("div", {
       className: CL_DIV,
       children: [(0, _jsxRuntime.jsx)("input", {
-        id: _refId.current,
+        ref: _refTf,
+        id: (0, _uiApi.getRefValue)(_refId),
         type: "text",
         className: CL_INPUT,
         style: inputStyle,
@@ -125,10 +129,10 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
         onKeyDown: _hKeyDown
       }), _has.HAS_TOUCH_EVENTS && hasClear && value && (0, _jsxRuntime.jsx)(_SvgX.default, {
         color: "black",
-        className: "svg-clear",
+        className: CL_SVG_CLEAR,
         style: S_BT_CLEAR,
         onClick: _clearInput
-      }), (0, _jsxRuntime.jsx)("div", {
+      }), children, (0, _jsxRuntime.jsx)("div", {
         className: CL_INPUT_LINE,
         style: _lineStyle
       }), _lineStyle && (0, _jsxRuntime.jsx)("div", {

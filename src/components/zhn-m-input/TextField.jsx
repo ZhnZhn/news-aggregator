@@ -4,7 +4,12 @@ import {
   useRef,
   useState,
   useMemo,
-  useImperativeHandle
+  useImperativeHandle,
+  KEY_ESCAPE,
+  KEY_DELETE,
+  KEY_ENTER,
+  getRefValue,
+  focusRefElement
 } from '../uiApi';
 
 import useBool from '../hooks/useBool';
@@ -19,7 +24,8 @@ const CL_SELECT = 'm-select'
 , CL_INPUT = `${M_TEXTFIELD}-input`
 , M_INPUT = 'm-input'
 , CL_INPUT_LINE = `${M_INPUT}__line`
-, CL_INPUT_MSG_ERR = `${M_INPUT}__msg-err`;
+, CL_INPUT_MSG_ERR = `${M_INPUT}__msg-err`
+, CL_SVG_CLEAR = "svg-clear";
 
 const S_LABEL_TO_INPUT = {
   transform: 'scale(1) translate(0px, -6px)'
@@ -40,8 +46,8 @@ const FN_TRUE = () => true;
 const FN_NOOP = () => {};
 
 const _getEventTargetValue = (
-  event
-) => event.target.value;
+  evt
+) => evt.target.value;
 
 const TextField = forwardRef(({
   style,
@@ -53,12 +59,14 @@ const TextField = forwardRef(({
   autoCapitalize="off",
   errorMsg='',
   hasClear=true,
+  children,
   onTest=FN_TRUE,
   onEnter=FN_NOOP,
   onBlur=FN_NOOP,
   onKeyDown=FN_NOOP
 }, ref) => {
   const _refId = useRef(id || crId())
+  , _refTf = useRef()
   , [
     value,
     setValue
@@ -82,12 +90,12 @@ const TextField = forwardRef(({
     (evt, onEvent) => {
       const _value = _getEventTargetValue(evt);
       if (onTest(_value)) {
-        onEvent(_value.trim(), id)
+        onEvent(_value.trim(), id, evt)
       }
     },
-    () => {
-      onKeyDown('', id)
+    (evt) => {
       setValue('')
+      onKeyDown('', id, evt)
     }
   ], [])
   // onTest, onKeyDown, id
@@ -96,24 +104,22 @@ const TextField = forwardRef(({
     _hInputChange,
     _hKeyDown
   ] = useMemo(() => [
-    (event) => {
-      _onEvent(event, onBlur)
+    (evt) => {
+      _onEvent(evt, onBlur)
       _blurInput()
     },
-    (event) => {
-      _onEvent(event, onKeyDown)
-      const _value = _getEventTargetValue(event);
+    (evt) => {
+      _onEvent(evt, onKeyDown)
+      const _value = _getEventTargetValue(evt);
       setValue(_value)
       setIsPastTest(onTest(_value))
     },
-    (event) => {
-      const keyCode = event.keyCode;
-      if (keyCode === 46 || keyCode === 27){
-        _clearInput()
-      } else if (keyCode === 13) {
-        _onEvent(event, onEnter)
-      } else {
-        _onEvent(event, onKeyDown)
+    (evt) => {
+      const key = evt.key;
+      if (key === KEY_DELETE || key === KEY_ESCAPE){
+        _clearInput(evt)
+      } else if (key === KEY_ENTER) {
+        _onEvent(evt, onEnter)
       }
     }
   ], [])
@@ -123,7 +129,9 @@ const TextField = forwardRef(({
   /*eslint-enable react-hooks/exhaustive-deps */
 
   useImperativeHandle(ref, ()=>({
-    getValue: () => String(value).trim()
+    getValue: () => String(value).trim(),
+    setValue,
+    focus: () => focusRefElement(_refTf)
   }), [value])
 
   const  _labelStyle = value
@@ -145,13 +153,14 @@ const TextField = forwardRef(({
       <label
         className={CL_LABEL}
         style={{..._labelStyle, ..._labelErrStyle}}
-        htmlFor={_refId.current}
+        htmlFor={getRefValue(_refId)}
        >
         {caption}
       </label>
       <div className={CL_DIV}>
         <input
-          id={_refId.current}
+          ref={_refTf}
+          id={getRefValue(_refId)}
           type="text"
           className={CL_INPUT}
           style={inputStyle}
@@ -169,10 +178,11 @@ const TextField = forwardRef(({
         />
         {HAS_TOUCH_EVENTS && hasClear && value && <SvgX
            color="black"
-           className="svg-clear"
+           className={CL_SVG_CLEAR}
            style={S_BT_CLEAR}
            onClick={_clearInput}
         />}
+        {children}
         <div className={CL_INPUT_LINE} style={_lineStyle} />
         { _lineStyle && <div className={CL_INPUT_MSG_ERR}>{errorMsg}</div>}
       </div>

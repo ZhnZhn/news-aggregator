@@ -1,7 +1,7 @@
 export {
   bindTo,
   crId,
-  toFirstUpperCase 
+  toFirstUpperCase
 } from '../utils';
 
 export {
@@ -27,6 +27,7 @@ export const KEY_ARROW_UP = "ArrowUp"
 export const KEY_ENTER = "Enter"
 export const KEY_ESCAPE = "Escape"
 export const KEY_TAB = "Tab"
+export const KEY_DELETE = "Delete"
 
 export const isFn = fn => typeof fn === 'function';
 
