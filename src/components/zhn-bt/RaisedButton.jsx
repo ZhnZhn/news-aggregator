@@ -3,7 +3,7 @@ import BtCaption from './BtCaption';
 const CL_BT_RAISED = "bt-raised"
 , CL_BT_RAISED_DIV = `${CL_BT_RAISED}__div`
 , CL_BT_RAISED_SPAN = `${CL_BT_RAISED}__span`
-, S_PRIMARY_COLOR = { color: '#80c040' };
+, S_PRIMARY_COLOR = { color: 'black' };
 
 const RaisedButton = ({
   refBt,
