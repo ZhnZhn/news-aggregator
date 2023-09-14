@@ -42,6 +42,7 @@ const SUBRREDIT_OPTIONS = [
 ["rust"],
 ["elixir"],
 ["programming"],
+["opensource"],
 ["hardware"],
 ["LifeProTips"],
 ["linux"],
@@ -52,11 +53,14 @@ const SUBRREDIT_OPTIONS = [
 ["statistics"],
 ["StockMarket"],
 ["stocks"],
+["startup"],
 ["smallbusiness"],
 ["travel"],
 ["visualization"],
+["technology"],
 ["Renewable"],
 ["RenewableEnergy"],
+["electricvehicles"],
 ["solar"],
 ["solarDIY"],
 ["batteries"],
@@ -85,7 +89,7 @@ const SUBRREDIT_OPTIONS = [
 ]
 , DF_LIMIT = LIMIT_OPTIONS[1]
 , INPUT_CONFIGS = [
-  ['s','subreddit','Subreddit', SUBRREDIT_OPTIONS, DF_SUBRREDIT, true],
+  ['sg','subreddit','Subreddit', SUBRREDIT_OPTIONS, DF_SUBRREDIT, true],
   ['s','t','Period', PERIOD_OPTIONS, DF_PERIOD],
   ['s','limit', 'Limit', LIMIT_OPTIONS, DF_LIMIT]
 ]

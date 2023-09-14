@@ -7,13 +7,13 @@ var _DialogStackInputs = _interopRequireDefault(require("./DialogStackInputs"));
 var _Links = require("../links/Links");
 var _DialogFn = require("./DialogFn");
 var _jsxRuntime = require("preact/jsx-runtime");
-const SUBRREDIT_OPTIONS = [["Amd"], ["askscience"], ["books"], ["FreeEBOOKS"], ["bicycling"], ["cardano"], ["cars"], ["Database"], ["SQL"], ["NoSQL"], ["dataengineering"], ["datascience"], ["dataisbeautiful"], ["datasets"], ["deeplearning"], ["devops"], ["docker"], ["Economy"], ["Economics"], ["AskEconomics"], ["GAMETHEORY"], ["explainlikeimfive"], ["europe"], ["Finance"], ["sustainableFinance"], ["Algorithms"], ["html5"], ["JavaScript"], ["reactjs"], ["nextjs"], ["node"], ["Deno"], ["webdev"], ["browsers"], ["java"], ["Kotlin"], ["rust"], ["elixir"], ["programming"], ["hardware"], ["LifeProTips"], ["linux"], ["MachineLearning"], ["learnmachinelearning"], ["todayilearned"], ["science"], ["statistics"], ["StockMarket"], ["stocks"], ["smallbusiness"], ["travel"], ["visualization"], ["Renewable"], ["RenewableEnergy"], ["solar"], ["solarDIY"], ["batteries"], ["soccer"], ["football"], ["WomensSoccer"], ["investing"], ["UpliftingNews"], ["news"], ["worldnews"]],
+const SUBRREDIT_OPTIONS = [["Amd"], ["askscience"], ["books"], ["FreeEBOOKS"], ["bicycling"], ["cardano"], ["cars"], ["Database"], ["SQL"], ["NoSQL"], ["dataengineering"], ["datascience"], ["dataisbeautiful"], ["datasets"], ["deeplearning"], ["devops"], ["docker"], ["Economy"], ["Economics"], ["AskEconomics"], ["GAMETHEORY"], ["explainlikeimfive"], ["europe"], ["Finance"], ["sustainableFinance"], ["Algorithms"], ["html5"], ["JavaScript"], ["reactjs"], ["nextjs"], ["node"], ["Deno"], ["webdev"], ["browsers"], ["java"], ["Kotlin"], ["rust"], ["elixir"], ["programming"], ["opensource"], ["hardware"], ["LifeProTips"], ["linux"], ["MachineLearning"], ["learnmachinelearning"], ["todayilearned"], ["science"], ["statistics"], ["StockMarket"], ["stocks"], ["startup"], ["smallbusiness"], ["travel"], ["visualization"], ["technology"], ["Renewable"], ["RenewableEnergy"], ["electricvehicles"], ["solar"], ["solarDIY"], ["batteries"], ["soccer"], ["football"], ["WomensSoccer"], ["investing"], ["UpliftingNews"], ["news"], ["worldnews"]],
   DF_SUBRREDIT = SUBRREDIT_OPTIONS[0],
   PERIOD_OPTIONS = [["hour"], ["day"], ["week"], ["month"], ["year"], ["all"]],
   DF_PERIOD = PERIOD_OPTIONS[1],
   LIMIT_OPTIONS = [["10"], ["20"], ["30"]],
   DF_LIMIT = LIMIT_OPTIONS[1],
-  INPUT_CONFIGS = [['s', 'subreddit', 'Subreddit', SUBRREDIT_OPTIONS, DF_SUBRREDIT, true], ['s', 't', 'Period', PERIOD_OPTIONS, DF_PERIOD], ['s', 'limit', 'Limit', LIMIT_OPTIONS, DF_LIMIT]],
+  INPUT_CONFIGS = [['sg', 'subreddit', 'Subreddit', SUBRREDIT_OPTIONS, DF_SUBRREDIT, true], ['s', 't', 'Period', PERIOD_OPTIONS, DF_PERIOD], ['s', 'limit', 'Limit', LIMIT_OPTIONS, DF_LIMIT]],
   [INITIAL_INPUTS, TOGGLES, IS_INPUTS] = (0, _DialogFn.crDfInputs)(INPUT_CONFIGS);
 const RedditTopDialog = props => (0, _jsxRuntime.jsx)(_DialogStackInputs.default, {
   ...props,
