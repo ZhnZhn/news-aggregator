@@ -27,16 +27,3 @@
   border-radius: 2px;
 }
 
-.scroll-browser-by {
-  overflow-y: auto;
-  height: 80%;
-  height: calc(100% - 85px);
-  padding-right: 10px;
-}
-
-.scroll-browser-by--search {
-  overflow-y: auto;
-  height: 80%;
-  height: calc(100% - 120px);
-  padding-right: 10px;
-}
