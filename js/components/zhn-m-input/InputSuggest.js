@@ -96,6 +96,13 @@ const InputSuggest = _ref => {
     }, [_optionsWithSearchToken, showOptions, hideOptions])
     //options, showOptions, hideOptions, _setItem
     /*eslint-enable react-hooks/exhaustive-deps */,
+    _hKeyDown = evt => {
+      const key = evt.key;
+      if (key === _uiApi.KEY_ARROW_DOWN) {
+        setIsFocusItem(true);
+        showOptions();
+      }
+    },
     _hEnter = (item, id, evt) => {
       (0, _uiApi.stopDefaultFor)(evt);
       setItems(prevItems => {
@@ -137,6 +144,7 @@ const InputSuggest = _ref => {
       initValue: (0, _OptionFn.getItemCaption)(item),
       onInputChange: _hInputChange,
       onEnter: _hEnter,
+      onKeyDown: _hKeyDown,
       children: _isBtArrow(item, items, options) && (0, _jsxRuntime.jsx)("button", {
         ref: _refBtArrow,
         type: "button",

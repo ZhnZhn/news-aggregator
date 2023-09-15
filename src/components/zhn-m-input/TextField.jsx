@@ -62,8 +62,9 @@ const TextField = forwardRef(({
   children,
   onTest=FN_TRUE,
   onEnter=FN_NOOP,
-  onBlur=FN_NOOP,  
-  onInputChange=FN_NOOP
+  onBlur=FN_NOOP,
+  onInputChange=FN_NOOP,
+  onKeyDown=FN_NOOP
 }, ref) => {
   const _refId = useRef(id || crId())
   , _refTf = useRef()
@@ -123,12 +124,14 @@ const TextField = forwardRef(({
         _clearInput(evt)
       } else if (key === KEY_ENTER) {
         _onEvent(evt, onEnter)
+      } else {
+        onKeyDown(evt)
       }
     }
   ], [])
   //onTest, onBlur, _blurInput, id
-  //onTest
-  //onTest, onEnter, onInputChange, id
+  //onTest, onInputChange
+  //onTest, onEnter, onKeyDown, id
   /*eslint-enable react-hooks/exhaustive-deps */
 
   useImperativeHandle(ref, ()=>({

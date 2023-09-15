@@ -49,7 +49,8 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
     onTest = FN_TRUE,
     onEnter = FN_NOOP,
     onBlur = FN_NOOP,
-    onInputChange = FN_NOOP
+    onInputChange = FN_NOOP,
+    onKeyDown = FN_NOOP
   } = _ref;
   const _refId = (0, _uiApi.useRef)(id || (0, _uiApi.crId)()),
     _refTf = (0, _uiApi.useRef)(),
@@ -85,11 +86,13 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
         _clearInput(evt);
       } else if (key === _uiApi.KEY_ENTER) {
         _onEvent(evt, onEnter);
+      } else {
+        onKeyDown(evt);
       }
     }], []);
   //onTest, onBlur, _blurInput, id
-  //onTest
-  //onTest, onEnter, onInputChange, id
+  //onTest, onInputChange
+  //onTest, onEnter, onKeyDown, id
   /*eslint-enable react-hooks/exhaustive-deps */
 
   (0, _uiApi.useImperativeHandle)(ref, () => ({

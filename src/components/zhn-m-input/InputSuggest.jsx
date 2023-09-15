@@ -141,6 +141,13 @@ const InputSuggest = ({
   }, [_optionsWithSearchToken, showOptions, hideOptions])
   //options, showOptions, hideOptions, _setItem
   /*eslint-enable react-hooks/exhaustive-deps */
+  , _hKeyDown = (evt) => {
+      const key = evt.key
+      if (key === KEY_ARROW_DOWN) {        
+        setIsFocusItem(true)
+        showOptions()
+      }
+  }
 
   , _hEnter = (item, id, evt) => {
       stopDefaultFor(evt)
@@ -185,8 +192,9 @@ const InputSuggest = ({
          ref={_refTf}
          style={tfStyle}
          initValue={getItemCaption(item)}
-         onInputChange={_hInputChange}        
+         onInputChange={_hInputChange}
          onEnter={_hEnter}
+         onKeyDown={_hKeyDown}
        >
          {_isBtArrow(item, items, options) && <button
              ref={_refBtArrow}
