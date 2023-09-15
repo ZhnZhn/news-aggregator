@@ -50,6 +50,7 @@ const _focusHtmlElement = (
   if (element && isFn(element.focus)) {
     element.focus()
   }
+  return element;
 }
 
 export const focusElementById = (
@@ -68,12 +69,10 @@ const _getValueFromFnOrRef = (
 export const focusRefElement = (
   fnOrRef1,
   fnOrRef2
-) => {
-  _focusHtmlElement(
-    _getValueFromFnOrRef(fnOrRef1)
-    || _getValueFromFnOrRef(fnOrRef2)
-  )
-}
+) => _focusHtmlElement(
+  _getValueFromFnOrRef(fnOrRef1)
+  || _getValueFromFnOrRef(fnOrRef2)
+)
 
 export const focusAsyncRefElement = (
   refOrFn,

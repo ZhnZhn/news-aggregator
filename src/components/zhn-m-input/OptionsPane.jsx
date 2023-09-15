@@ -10,6 +10,7 @@ import {
   KEY_ESCAPE,
   KEY_TAB,
 
+  focusRefElement,
   getRefValue,
   setRefValue,
   stopDefaultFor
@@ -43,6 +44,7 @@ const _focusPrevItem = _fFocusItem('previousSibling');
 const _crItem = (
   item,
   index, {
+  refFirstItem,
   refItem,
   currentItem,
   clItem,
@@ -68,6 +70,7 @@ const _crItem = (
       key={value}
       role="option"
       ref={_ref}
+      ref={index === 0 ? _ref || refFirstItem : _ref}
       aria-selected={_ariaSelected}
       tabIndex={_tabIndex}
       className={clItem}
@@ -91,7 +94,8 @@ const OptionsPane = ({
   onSelect,
   onClose
 }) => {
-  const _refItem = useRef(null)
+  const _refFirstItem = useRef(null)
+  , _refItem = useRef(null)
   , _refFocus = useRef(null)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hKeyDown = useCallback(evt => {
@@ -117,11 +121,10 @@ const OptionsPane = ({
 
   useEffect(()=>{
     if (isShow && isFocusItem) {
-      const _elItem = getRefValue(_refItem);
-      if (_elItem) {
-        _elItem.focus()
-        setRefValue(_refFocus, _elItem)
-      }
+      setRefValue(
+        _refFocus,
+        focusRefElement(_refItem, _refFirstItem)
+      )
     }
   }, [isShow, isFocusItem])
   return (
@@ -140,6 +143,7 @@ const OptionsPane = ({
          <ItemStack
            items={options}
            crItem={_crItem}
+           refFirstItem={_refFirstItem}
            refItem={_refItem}
            currentItem={item}
            clItem={clItem}

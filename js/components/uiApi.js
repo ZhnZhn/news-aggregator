@@ -46,15 +46,14 @@ const _focusHtmlElement = element => {
   if (element && isFn(element.focus)) {
     element.focus();
   }
+  return element;
 };
 const focusElementById = id => {
   _focusHtmlElement(document.getElementById(id));
 };
 exports.focusElementById = focusElementById;
 const _getValueFromFnOrRef = fnOrRef => isFn(fnOrRef) ? fnOrRef() : getRefValue(fnOrRef);
-const focusRefElement = (fnOrRef1, fnOrRef2) => {
-  _focusHtmlElement(_getValueFromFnOrRef(fnOrRef1) || _getValueFromFnOrRef(fnOrRef2));
-};
+const focusRefElement = (fnOrRef1, fnOrRef2) => _focusHtmlElement(_getValueFromFnOrRef(fnOrRef1) || _getValueFromFnOrRef(fnOrRef2));
 exports.focusRefElement = focusRefElement;
 const focusAsyncRefElement = function (refOrFn, mls) {
   if (mls === void 0) {

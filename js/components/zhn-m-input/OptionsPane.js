@@ -25,6 +25,7 @@ const _focusNextItem = _fFocusItem('nextSibling');
 const _focusPrevItem = _fFocusItem('previousSibling');
 const _crItem = (item, index, _ref2) => {
   let {
+    refFirstItem,
     refItem,
     currentItem,
     clItem,
@@ -41,6 +42,7 @@ const _crItem = (item, index, _ref2) => {
   return (0, _jsxRuntime.jsx)("div", {
     role: "option",
     ref: _ref,
+    ref: index === 0 ? _ref || refFirstItem : _ref,
     "aria-selected": _ariaSelected,
     tabIndex: _tabIndex,
     className: clItem,
@@ -62,7 +64,8 @@ const OptionsPane = _ref3 => {
     onSelect,
     onClose
   } = _ref3;
-  const _refItem = (0, _uiApi.useRef)(null),
+  const _refFirstItem = (0, _uiApi.useRef)(null),
+    _refItem = (0, _uiApi.useRef)(null),
     _refFocus = (0, _uiApi.useRef)(null)
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hKeyDown = (0, _uiApi.useCallback)(evt => {
@@ -88,11 +91,7 @@ const OptionsPane = _ref3 => {
 
   (0, _uiApi.useEffect)(() => {
     if (isShow && isFocusItem) {
-      const _elItem = (0, _uiApi.getRefValue)(_refItem);
-      if (_elItem) {
-        _elItem.focus();
-        (0, _uiApi.setRefValue)(_refFocus, _elItem);
-      }
+      (0, _uiApi.setRefValue)(_refFocus, (0, _uiApi.focusRefElement)(_refItem, _refFirstItem));
     }
   }, [isShow, isFocusItem]);
   return (0, _jsxRuntime.jsx)(_ModalPane.default, {
@@ -108,6 +107,7 @@ const OptionsPane = _ref3 => {
       children: (0, _jsxRuntime.jsx)(_ItemStack.default, {
         items: options,
         crItem: _crItem,
+        refFirstItem: _refFirstItem,
         refItem: _refItem,
         currentItem: item,
         clItem: clItem,
