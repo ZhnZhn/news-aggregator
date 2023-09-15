@@ -67,7 +67,7 @@ const InputSuggest = _ref => {
       onSelect(item, id);
       hideOptions();
       setItem(item);
-      _refTf.current.setValue(item);
+      (0, _uiApi.setRefInputValue)(_refTf, item);
       if (item) {
         (0, _uiApi.focusRefElement)(_refBtArrow);
       }

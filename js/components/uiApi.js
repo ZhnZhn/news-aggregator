@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.toLink = exports.toFirstUpperCase = exports.stopDefaultFor = exports.setRefValue = exports.render = exports.memo = exports.isFn = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.crId = exports.cloneElement = exports.bindTo = exports.KEY_TAB = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_DELETE = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.toLink = exports.toFirstUpperCase = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.render = exports.memo = exports.isFn = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.crId = exports.cloneElement = exports.bindTo = exports.KEY_TAB = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_DELETE = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = void 0;
 var _utils = require("../utils");
 exports.bindTo = _utils.bindTo;
 exports.crId = _utils.crId;
@@ -69,6 +69,13 @@ const focusRefNextSiblingFirstChildElement = ref => {
 exports.focusRefNextSiblingFirstChildElement = focusRefNextSiblingFirstChildElement;
 const getRefElementStyle = ref => (getRefValue(ref) || {}).style;
 exports.getRefElementStyle = getRefElementStyle;
+const setRefInputValue = (refInput, value) => {
+  const _input = getRefValue(refInput);
+  if (_input && isFn(_input.setValue)) {
+    _input.setValue(value);
+  }
+};
+exports.setRefInputValue = setRefInputValue;
 const stopDefaultFor = evt => {
   evt.stopPropagation();
   evt.preventDefault();

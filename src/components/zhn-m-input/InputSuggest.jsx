@@ -8,6 +8,7 @@ import {
   KEY_ARROW_DOWN,
   KEY_DELETE,
 
+  setRefInputValue,
   focusRefElement,
   stopDefaultFor
 } from '../uiApi';
@@ -21,7 +22,7 @@ import ArrowCell from './ArrowCell';
 import OptionsPane from './OptionsPane';
 import { getItemCaption } from './OptionFn';
 
-import {  
+import {
   CL_SELECT,
   CL_SELECT_LABEL,
   CL_SELECT_DIV_BT,
@@ -103,7 +104,7 @@ const InputSuggest = ({
     onSelect(item, id)
     hideOptions()
     setItem(item)
-    _refTf.current.setValue(item)
+    setRefInputValue(_refTf, item)    
     if (item) {
       focusRefElement(_refBtArrow)
     }

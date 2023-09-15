@@ -99,6 +99,16 @@ export const getRefElementStyle = (
 ) => (getRefValue(ref) || {}).style
 
 
+export const setRefInputValue = (
+  refInput,
+  value
+) => {
+  const _input = getRefValue(refInput);
+  if (_input && isFn(_input.setValue)) {
+    _input.setValue(value)
+  }
+}
+
 export const stopDefaultFor = (
   evt
 ) => {
