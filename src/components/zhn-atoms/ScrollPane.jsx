@@ -1,6 +1,4 @@
-import { crCn } from '../crStyle';
-
-const CL_WITH_SCROLL = 'with-scroll';
+import { crWithScrollCn } from '../crStyle';
 
 const ScrollPane = ({
   style,
@@ -8,12 +6,11 @@ const ScrollPane = ({
   children
 }) => (
   <div
-    className={crCn(CL_WITH_SCROLL, className)}
+    className={crWithScrollCn(className)}
     style={style}
   >
     {children}
   </div>
 );
-
 
 export default ScrollPane

@@ -61,3 +61,7 @@ export const crPopupMenuCn = (
   crPanelShadowCn("popup-menu"),
   className
 )
+
+export const crWithScrollCn = (
+  className
+) => crCn(className, "with-scroll")
