@@ -11,7 +11,7 @@ import {
 
 import { initWidthStyle } from '../has';
 import {
-  crContainerBgCn,
+  crPaneCn,
   crInlineBlockShowHide
 } from '../crStyle';
 
@@ -39,7 +39,7 @@ import {
 } from './hotKeys';
 
 const WIDTH_STYLE = initWidthStyle()
-, CL_NEWS_PANE = crContainerBgCn("news-pane")
+, CL_NEWS_PANE = crPaneCn("news-pane")
 , CL_MENU_MORE = "popup-menu items__menu-more"
 , S_BROWSER_CAPTION = {
   paddingLeft: 30,
@@ -238,7 +238,7 @@ const NewsPane = ({
     >
       <A.ModalSlider
         isShow={isMore}
-        className={CL_MENU_MORE}        
+        className={CL_MENU_MORE}
         model={_MODEL_MORE}
         onClose={_hideMore}
       />

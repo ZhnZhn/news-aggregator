@@ -12,7 +12,7 @@ var _Links = require("../links/Links");
 var _Step = _interopRequireDefault(require("./Step"));
 var _LogoBar = _interopRequireDefault(require("./LogoBar"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_ABOUT_PANE = (0, _crStyle.crContainerBgCn)("about-pane"),
+const CL_ABOUT_PANE = (0, _crStyle.crPaneCn)("about-pane"),
   S_BROWSER_CAPTION = {
     paddingLeft: 12,
     textAlign: 'left'

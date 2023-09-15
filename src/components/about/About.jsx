@@ -5,7 +5,7 @@ import { HAS_WIDE_SCREEN } from '../has';
 import useBool from '../hooks/useBool';
 
 import {
-  crContainerBgCn,
+  crPaneCn,
   crShowHide
 } from '../crStyle';
 
@@ -27,7 +27,7 @@ import {
 import Step from './Step';
 import LogoBar from './LogoBar';
 
-const CL_ABOUT_PANE = crContainerBgCn("about-pane")
+const CL_ABOUT_PANE = crPaneCn("about-pane")
 , S_BROWSER_CAPTION = {
   paddingLeft: 12,
   textAlign: 'left'

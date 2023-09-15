@@ -1,19 +1,35 @@
-@import 'base/values';
-//@import 'base/palette';
-
-.browser {
-  flex-shrink: 0;
-  z-index: 20;
+.pane {
   position: relative;
-  height: 'calc(100vh - 71px);
-  min-height: 500px;
-  min-width: 270px;
-  max-width: 400;
-  padding: 0px 3px 35px 0px;
+  height: calc(100vh - 71px);
+  min-height: 500px; 
   margin-left: 10px;
   border-radius: 4px;
   box-shadow: 1px 4px 6px 1px rgba(0,0,0,0.6); 
 }
+
+.about-pane {      
+  width: 450px;
+  min-width: 300px;
+  max-width: 700px; 
+  padding: 0 0 35px 0;  
+}
+
+.news-pane {  
+  padding: 0 0 3px 0;  
+  overflow: hidden;
+}
+
+
+
+.browser-pane {
+  flex-shrink: 0;
+  z-index: 20;      
+  min-width: 270px;
+  max-width: 400px;
+  padding: 0px 3px 35px 0px;
+  margin-left: 10px;    
+}
+
 
 .br-caption {
   color: #a9a9a9;
@@ -40,12 +56,13 @@
 
   cursor: pointer;
 }
+
 .open-close:focus {
-  background-color: $bgItemFocus;
+  background-color: rgba(0, 0, 0, 0.15);
   outline: 0;
 }
 
-.row__news-source {   
+.row__news-source {
   color: black;
   padding: 1px 0 1px 12px;
   line-height: 2;
@@ -53,13 +70,19 @@
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-   
-  &:hover {
-    border-left: 4px solid $cBlSourceHover;
-  }
-  &:focus,
-  &:active {
-    background-color: $bgItemFocus;
-    outline: 0;
+}
+.row__news-source:hover {
+  border-left: 4px solid #1b75bb;
+}
+.row__news-source:focus, 
+.row__news-source:active {
+  background-color: rgba(0, 0, 0, 0.15);
+  outline: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .pane,
+  .browser-pane {
+    margin-left: 8px;
   }
 }
