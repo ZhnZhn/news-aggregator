@@ -49,12 +49,12 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
     onTest = FN_TRUE,
     onEnter = FN_NOOP,
     onBlur = FN_NOOP,
-    onKeyDown = FN_NOOP
+    onInputChange = FN_NOOP
   } = _ref;
   const _refId = (0, _uiApi.useRef)(id || (0, _uiApi.crId)()),
     _refTf = (0, _uiApi.useRef)(),
     [value, setValue] = (0, _uiApi.useState)(initValue || ''),
-    [isPassTest, setIsPastTest] = (0, _uiApi.useState)(() => onTest(initValue || '')),
+    [isPassTest, setIsPassTest] = (0, _uiApi.useState)(() => onTest(initValue || '')),
     [isFocus, _focusInput, _blurInput] = (0, _useBool.default)()
     /*eslint-disable react-hooks/exhaustive-deps */,
     [_onEvent, _clearInput] = (0, _uiApi.useMemo)(() => [(evt, onEvent) => {
@@ -64,18 +64,21 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
       }
     }, evt => {
       setValue('');
-      onKeyDown('', id, evt);
+      onInputChange('', id);
     }], [])
-    // onTest, onKeyDown, id
+    // onTest, onInputChange, id
     ,
     [_hBlurInput, _hInputChange, _hKeyDown] = (0, _uiApi.useMemo)(() => [evt => {
       _onEvent(evt, onBlur);
       _blurInput();
     }, evt => {
-      _onEvent(evt, onKeyDown);
-      const _value = _getEventTargetValue(evt);
+      const _value = _getEventTargetValue(evt),
+        _isPassTest = onTest(_value);
       setValue(_value);
-      setIsPastTest(onTest(_value));
+      setIsPassTest(_isPassTest);
+      if (_isPassTest) {
+        onInputChange(_value.trim(), id);
+      }
     }, evt => {
       const key = evt.key;
       if (key === _uiApi.KEY_DELETE || key === _uiApi.KEY_ESCAPE) {
@@ -86,7 +89,7 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
     }], []);
   //onTest, onBlur, _blurInput, id
   //onTest
-  //onTest, onEnter, onKeyDown, id
+  //onTest, onEnter, onInputChange, id
   /*eslint-enable react-hooks/exhaustive-deps */
 
   (0, _uiApi.useImperativeHandle)(ref, () => ({

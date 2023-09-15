@@ -62,8 +62,8 @@ const TextField = forwardRef(({
   children,
   onTest=FN_TRUE,
   onEnter=FN_NOOP,
-  onBlur=FN_NOOP,
-  onKeyDown=FN_NOOP
+  onBlur=FN_NOOP,  
+  onInputChange=FN_NOOP
 }, ref) => {
   const _refId = useRef(id || crId())
   , _refTf = useRef()
@@ -73,7 +73,7 @@ const TextField = forwardRef(({
   ] = useState(initValue || '')
   , [
     isPassTest,
-    setIsPastTest
+    setIsPassTest
   ] = useState(
     () => onTest(initValue || '')
   )
@@ -95,10 +95,10 @@ const TextField = forwardRef(({
     },
     (evt) => {
       setValue('')
-      onKeyDown('', id, evt)
+      onInputChange('', id)
     }
   ], [])
-  // onTest, onKeyDown, id
+  // onTest, onInputChange, id
   , [
     _hBlurInput,
     _hInputChange,
@@ -109,10 +109,13 @@ const TextField = forwardRef(({
       _blurInput()
     },
     (evt) => {
-      _onEvent(evt, onKeyDown)
-      const _value = _getEventTargetValue(evt);
+      const _value = _getEventTargetValue(evt)
+      , _isPassTest = onTest(_value);
       setValue(_value)
-      setIsPastTest(onTest(_value))
+      setIsPassTest(_isPassTest)
+      if (_isPassTest) {
+        onInputChange(_value.trim(), id)
+      }
     },
     (evt) => {
       const key = evt.key;
@@ -125,7 +128,7 @@ const TextField = forwardRef(({
   ], [])
   //onTest, onBlur, _blurInput, id
   //onTest
-  //onTest, onEnter, onKeyDown, id
+  //onTest, onEnter, onInputChange, id
   /*eslint-enable react-hooks/exhaustive-deps */
 
   useImperativeHandle(ref, ()=>({

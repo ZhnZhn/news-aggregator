@@ -4,10 +4,10 @@ import {
   useMemo,
   useCallback,
 
-  KEY_TAB,
   KEY_ARROW_DOWN,
   KEY_DELETE,
 
+  getRefValue,
   setRefInputValue,
   focusRefElement,
   stopDefaultFor
@@ -75,9 +75,12 @@ const InputSuggest = ({
     showOptions,
     hideOptions
   ] = useBool()
-  , _hHideOptions = (evt) => {
+  , _hKeyDownBtArrow = (evt) => {
     if (isShowOptions) {
-      _refOp.current.hKeyDown(evt)
+      const _opInst = getRefValue(_refOp);
+      if (_opInst) {
+        _opInst.hKeyDown(evt)
+      }
     } else {
       if (evt.key === KEY_ARROW_DOWN) {
         setIsFocusItem(true)
@@ -120,8 +123,7 @@ const InputSuggest = ({
       [options]
     )
   /*eslint-disable react-hooks/exhaustive-deps */
-  , _hKeyDown = useCallback((token, id, evt) => {
-    if (evt && evt.key !== KEY_TAB) {
+  , _hInputChange = useCallback((token, id) => {
        const _token = (token || '')
          .trim()
          .toLowerCase();
@@ -136,7 +138,6 @@ const InputSuggest = ({
          setItems(options)
          hideOptions()
        }
-    }
   }, [_optionsWithSearchToken, showOptions, hideOptions])
   //options, showOptions, hideOptions, _setItem
   /*eslint-enable react-hooks/exhaustive-deps */
@@ -144,21 +145,20 @@ const InputSuggest = ({
   , _hEnter = (item, id, evt) => {
       stopDefaultFor(evt)
       setItems(prevItems => {
-      if (prevItems.length !== 0) {
-        _setItem(prevItems[0])
-      }
-      return prevItems;
-    })
+        if (prevItems.length !== 0) {
+          _setItem(prevItems[0])
+        }
+        return prevItems;
+      })
   }
   , _hSelect = (item, evt) => {
     stopDefaultFor(evt)
     _setItem(item)
   }
   , _hClickBtArrow = () => {
-    showOptions()
     setIsFocusItem(true)
+    showOptions()
   }
-
 
   return (
     <div
@@ -185,16 +185,16 @@ const InputSuggest = ({
          ref={_refTf}
          style={tfStyle}
          initValue={getItemCaption(item)}
-         onKeyDown={_hKeyDown}
+         onInputChange={_hInputChange}        
          onEnter={_hEnter}
        >
          {_isBtArrow(item, items, options) && <button
-           ref={_refBtArrow}
-           type="button"
-           className={CL_SELECT_DIV_BT}
-           style={S_BT_ARROW}
-           onKeyDown={_hHideOptions}
-           onClick={_hClickBtArrow}
+             ref={_refBtArrow}
+             type="button"
+             className={CL_SELECT_DIV_BT}
+             style={S_BT_ARROW}
+             onKeyDown={_hKeyDownBtArrow}
+             onClick={_hClickBtArrow}
          >
             <ArrowCell />
          </button>

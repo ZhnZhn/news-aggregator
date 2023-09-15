@@ -46,7 +46,7 @@ const StackInputs = _ref => {
         initValue: arrConfig[3],
         onEnter: onEnter,
         onBlur: onSelect,
-        onKeyDown: onSelect
+        onInputChange: onSelect
       }) : _type === 'ft' ? (0, _jsxRuntime.jsx)(_InputFromToDate.default, {
         style: _Dialog.S_INPUT_DATE,
         initialFrom: arrConfig[3],

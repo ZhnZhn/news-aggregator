@@ -38,9 +38,12 @@ const InputSuggest = _ref => {
     [isFocusItem, setIsFocusItem] = (0, _uiApi.useState)(false),
     [item, setItem] = (0, _uiApi.useState)(initItem || DF_INIT_ITEM),
     [isShowOptions, showOptions, hideOptions] = (0, _useBool.default)(),
-    _hHideOptions = evt => {
+    _hKeyDownBtArrow = evt => {
       if (isShowOptions) {
-        _refOp.current.hKeyDown(evt);
+        const _opInst = (0, _uiApi.getRefValue)(_refOp);
+        if (_opInst) {
+          _opInst.hKeyDown(evt);
+        }
       } else {
         if (evt.key === _uiApi.KEY_ARROW_DOWN) {
           setIsFocusItem(true);
@@ -79,18 +82,16 @@ const InputSuggest = _ref => {
       return item;
     }), [options])
     /*eslint-disable react-hooks/exhaustive-deps */,
-    _hKeyDown = (0, _uiApi.useCallback)((token, id, evt) => {
-      if (evt && evt.key !== _uiApi.KEY_TAB) {
-        const _token = (token || '').trim().toLowerCase();
-        if (_token) {
-          setItems(_optionsWithSearchToken.filter(item => item._t.indexOf(_token) !== -1));
-          setIsFocusItem(false);
-          showOptions();
-        } else {
-          _setItem('');
-          setItems(options);
-          hideOptions();
-        }
+    _hInputChange = (0, _uiApi.useCallback)((token, id) => {
+      const _token = (token || '').trim().toLowerCase();
+      if (_token) {
+        setItems(_optionsWithSearchToken.filter(item => item._t.indexOf(_token) !== -1));
+        setIsFocusItem(false);
+        showOptions();
+      } else {
+        _setItem('');
+        setItems(options);
+        hideOptions();
       }
     }, [_optionsWithSearchToken, showOptions, hideOptions])
     //options, showOptions, hideOptions, _setItem
@@ -109,8 +110,8 @@ const InputSuggest = _ref => {
       _setItem(item);
     },
     _hClickBtArrow = () => {
-      showOptions();
       setIsFocusItem(true);
+      showOptions();
     };
   return (0, _jsxRuntime.jsxs)("div", {
     role: "presentation",
@@ -134,14 +135,14 @@ const InputSuggest = _ref => {
       ref: _refTf,
       style: tfStyle,
       initValue: (0, _OptionFn.getItemCaption)(item),
-      onKeyDown: _hKeyDown,
+      onInputChange: _hInputChange,
       onEnter: _hEnter,
       children: _isBtArrow(item, items, options) && (0, _jsxRuntime.jsx)("button", {
         ref: _refBtArrow,
         type: "button",
         className: _Input.CL_SELECT_DIV_BT,
         style: S_BT_ARROW,
-        onKeyDown: _hHideOptions,
+        onKeyDown: _hKeyDownBtArrow,
         onClick: _hClickBtArrow,
         children: (0, _jsxRuntime.jsx)(_ArrowCell.default, {})
       })
