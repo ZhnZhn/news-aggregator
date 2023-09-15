@@ -104,7 +104,7 @@ const InputSuggest = ({
     onSelect(item, id)
     hideOptions()
     setItem(item)
-    setRefInputValue(_refTf, item)    
+    setRefInputValue(_refTf, item)
     if (item) {
       focusRefElement(_refBtArrow)
     }
@@ -112,6 +112,13 @@ const InputSuggest = ({
   // id, onSelect, _hCloseOptions
   /*eslint-enable react-hooks/exhaustive-deps */
 
+  , _optionsWithSearchToken = useMemo(() => options
+      .map(item => {
+        item._t = item[0].toLowerCase()
+        return item;
+      }),
+      [options]
+    )
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hKeyDown = useCallback((token, id, evt) => {
     if (evt && evt.key !== KEY_TAB) {
@@ -119,18 +126,18 @@ const InputSuggest = ({
          .trim()
          .toLowerCase();
        if (_token) {
-         setItems(prevItems => options.filter(
-           item => item[0].toLowerCase().indexOf(_token) !== -1
+         setItems(_optionsWithSearchToken.filter(
+           item => item._t.indexOf(_token) !== -1
          ))
-         showOptions()
          setIsFocusItem(false)
+         showOptions()
        } else {
          _setItem('')
          setItems(options)
          hideOptions()
        }
     }
-  }, [options, showOptions, hideOptions])
+  }, [_optionsWithSearchToken, showOptions, hideOptions])
   //options, showOptions, hideOptions, _setItem
   /*eslint-enable react-hooks/exhaustive-deps */
 
@@ -151,6 +158,7 @@ const InputSuggest = ({
     showOptions()
     setIsFocusItem(true)
   }
+
 
   return (
     <div

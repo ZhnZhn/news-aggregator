@@ -73,23 +73,26 @@ const InputSuggest = _ref => {
       }
     }, [])
     // id, onSelect, _hCloseOptions
-    /*eslint-enable react-hooks/exhaustive-deps */
-
+    /*eslint-enable react-hooks/exhaustive-deps */,
+    _optionsWithSearchToken = (0, _uiApi.useMemo)(() => options.map(item => {
+      item._t = item[0].toLowerCase();
+      return item;
+    }), [options])
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hKeyDown = (0, _uiApi.useCallback)((token, id, evt) => {
       if (evt && evt.key !== _uiApi.KEY_TAB) {
         const _token = (token || '').trim().toLowerCase();
         if (_token) {
-          setItems(prevItems => options.filter(item => item[0].toLowerCase().indexOf(_token) !== -1));
-          showOptions();
+          setItems(_optionsWithSearchToken.filter(item => item._t.indexOf(_token) !== -1));
           setIsFocusItem(false);
+          showOptions();
         } else {
           _setItem('');
           setItems(options);
           hideOptions();
         }
       }
-    }, [options, showOptions, hideOptions])
+    }, [_optionsWithSearchToken, showOptions, hideOptions])
     //options, showOptions, hideOptions, _setItem
     /*eslint-enable react-hooks/exhaustive-deps */,
     _hEnter = (item, id, evt) => {
