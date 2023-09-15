@@ -45,5 +45,19 @@ export const crContainerBgCn = (
 export const crPaneCn = (
   className
 ) => crContainerBgCn(
-   crCn("pane", className)
- )
+  crCn("pane", className)
+)
+
+export const crPanelShadowCn = (
+  className
+) => crCn(
+  className,
+  "panel-shadow"
+)
+
+export const crPopupMenuCn = (
+  className
+) => crCn(
+  crPanelShadowCn("popup-menu"),
+  className
+)

@@ -12,6 +12,7 @@ import {
 import { initWidthStyle } from '../has';
 import {
   crPaneCn,
+  crPopupMenuCn,
   crInlineBlockShowHide
 } from '../crStyle';
 
@@ -40,7 +41,7 @@ import {
 
 const WIDTH_STYLE = initWidthStyle()
 , CL_NEWS_PANE = crPaneCn("news-pane")
-, CL_MENU_MORE = "popup-menu items__menu-more"
+, CL_MENU_MORE = crPopupMenuCn("items__menu-more")
 , S_BROWSER_CAPTION = {
   paddingLeft: 30,
   textAlign: 'left'

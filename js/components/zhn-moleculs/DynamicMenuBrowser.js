@@ -5,6 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _has = require("../has");
+var _crStyle = require("../crStyle");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _useLoadIf = _interopRequireDefault(require("../hooks/useLoadIf"));
 var _Comp = _interopRequireDefault(require("../Comp"));
@@ -18,7 +19,7 @@ const {
   ScrollPane,
   ItemStack
 } = _Comp.default;
-const CL_MENU_MORE = "popup-menu items__menu-more";
+const CL_MENU_MORE = (0, _crStyle.crPopupMenuCn)("items__menu-more");
 const S_BROWSER = {
     paddingRight: 0
   },

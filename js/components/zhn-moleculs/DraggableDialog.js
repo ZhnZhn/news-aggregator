@@ -16,7 +16,7 @@ var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types'
 
 const CL_DIALOG = (0, _crStyle.crContainerBgCn)("dialog"),
-  CL_MODAL_TOGGLE = "popup-menu menu-more__item select-none",
+  CL_MODAL_TOGGLE = (0, _crStyle.crPopupMenuCn)("menu-more__item select-none"),
   S_DIV = {
     position: 'absolute',
     top: 30,

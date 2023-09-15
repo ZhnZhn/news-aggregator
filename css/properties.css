@@ -17,3 +17,9 @@
   -webkit-user-select: none;
   user-select: none;
 }
+
+.panel-shadow {
+  border-bottom: 4px solid #80c040;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 5px;
+}

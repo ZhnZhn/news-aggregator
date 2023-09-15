@@ -5,7 +5,8 @@ import {
 } from '../uiApi';
 
 import {
-  crContainerBgCn
+  crContainerBgCn,
+  crPanelShadowCn
 } from '../crStyle';
 
 import useToggle from '../hooks/useToggle';
@@ -34,7 +35,9 @@ import crMenuQuery from './crMenuQuery';
 const TITLE = "News Aggregator v0.4.0"
 , HEADER = "header"
 , CL_HEADER = crContainerBgCn(HEADER)
-, CL_PANEL_BROWSER = crContainerBgCn(`${HEADER}__panel-browser`)
+, CL_PANEL_BROWSER = crPanelShadowCn(
+   crContainerBgCn(`${HEADER}__panel-browser`)
+ )
 , CL_ICON_APP = `${HEADER}__icon-app`
 , CL_LABEL_APP = `${HEADER}__label-app`
 , CL_BROWSER_BTS = `${HEADER}__browser-bts`
@@ -81,7 +84,7 @@ const HeaderBar = ({
       <PanelQuery
         isShow={isQuery}
         menuModel={_menuQuery}
-        refFocusItem={_refFocusItem}        
+        refFocusItem={_refFocusItem}
         className={CL_PANEL_BROWSER}
         onClose={_hCloseQuery}
       />

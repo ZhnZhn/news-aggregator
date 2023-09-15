@@ -1,5 +1,6 @@
 import { useState } from '../uiApi';
 import { HAS_WIDE_SCREEN } from '../has';
+import { crPopupMenuCn } from '../crStyle'
 
 import useBool from '../hooks/useBool';
 import useLoadIf from '../hooks/useLoadIf';
@@ -16,7 +17,7 @@ const {
 } = Comp;
 
 
-const CL_MENU_MORE = "popup-menu items__menu-more"
+const CL_MENU_MORE = crPopupMenuCn("items__menu-more")
 const S_BROWSER = {
   paddingRight: 0
 }
@@ -49,7 +50,7 @@ const _crItemMenuPart = (
   />
 );
 
-const DynamicMenuBrowser = ({  
+const DynamicMenuBrowser = ({
   caption,
   menuMore,
   browserId,

@@ -20,7 +20,7 @@ var _hotKeys = require("./hotKeys");
 var _jsxRuntime = require("preact/jsx-runtime");
 const WIDTH_STYLE = (0, _has.initWidthStyle)(),
   CL_NEWS_PANE = (0, _crStyle.crPaneCn)("news-pane"),
-  CL_MENU_MORE = "popup-menu items__menu-more",
+  CL_MENU_MORE = (0, _crStyle.crPopupMenuCn)("items__menu-more"),
   S_BROWSER_CAPTION = {
     paddingLeft: 30,
     textAlign: 'left'

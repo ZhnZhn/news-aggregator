@@ -13,7 +13,8 @@ import {
 
 import {
   crShowHide,
-  crContainerBgCn
+  crContainerBgCn,
+  crPopupMenuCn
 } from '../crStyle';
 
 import {
@@ -29,12 +30,12 @@ import BrowserCaption from '../zhn-atoms/BrowserCaption';
 import RaisedButton from '../zhn-bt/RaisedButton';
 
 const CL_DIALOG = crContainerBgCn("dialog")
-, CL_MODAL_TOGGLE = "popup-menu menu-more__item select-none"
+, CL_MODAL_TOGGLE = crPopupMenuCn("menu-more__item select-none")
 
 , S_DIV = {
   position: 'absolute',
   top: 30,
-  left: 50,  
+  left: 50,
   borderRadius: '5px',
   boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
   zIndex: 10

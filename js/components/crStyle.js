@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.crStyle2 = exports.crShowHideStyle = exports.crShowHide = exports.crPaneCn = exports.crInlineBlockShowHide = exports.crContainerBgCn = exports.crCn = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_BLOCK = exports.CL_SHOW_POPUP = void 0;
+exports.crStyle2 = exports.crShowHideStyle = exports.crShowHide = exports.crPopupMenuCn = exports.crPanelShadowCn = exports.crPaneCn = exports.crInlineBlockShowHide = exports.crContainerBgCn = exports.crCn = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_BLOCK = exports.CL_SHOW_POPUP = void 0;
 const _isArr = Array.isArray;
 const _getCn = arrOrStr => _isArr(arrOrStr) ? arrOrStr[0] ? arrOrStr[1] : '' : arrOrStr || '';
 const crCn = (conf1, conf2) => {
@@ -40,4 +40,8 @@ const crContainerBgCn = className => crCn(className, "c-bg");
 exports.crContainerBgCn = crContainerBgCn;
 const crPaneCn = className => crContainerBgCn(crCn("pane", className));
 exports.crPaneCn = crPaneCn;
+const crPanelShadowCn = className => crCn(className, "panel-shadow");
+exports.crPanelShadowCn = crPanelShadowCn;
+const crPopupMenuCn = className => crCn(crPanelShadowCn("popup-menu"), className);
+exports.crPopupMenuCn = crPopupMenuCn;
 //# sourceMappingURL=crStyle.js.map
