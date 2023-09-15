@@ -5,18 +5,11 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
-var _CL = require("../styles/CL");
 var _ArrowCell = _interopRequireDefault(require("./ArrowCell"));
 var _OptionsPane = _interopRequireDefault(require("./OptionsPane"));
 var _OptionFn = require("./OptionFn");
+var _Input = require("./Input.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_SELECT = 'm-select',
-  CL_LABEL = CL_SELECT + "__label",
-  CL_DIV = CL_SELECT + "__div",
-  CL_DIV_VALUE = CL_SELECT + "__div__value",
-  CL_DIV_BT = CL_SELECT + "__div__bt",
-  CL_INPUT_LINE = CL_SELECT + "__line",
-  CL_SELECT_OPTIONS = CL_SELECT + "__options with-scroll";
 const DF_INIT_ITEM = ['', ''];
 const InputSelect = _ref => {
   let {
@@ -57,33 +50,33 @@ const InputSelect = _ref => {
 
   return (0, _jsxRuntime.jsxs)("div", {
     role: "presentation",
-    className: CL_SELECT,
+    className: _Input.CL_SELECT,
     style: TS.ROOT,
     onClick: showOptions,
     onKeyDown: _hKeyDown,
     children: [(0, _jsxRuntime.jsx)("label", {
-      className: CL_LABEL,
+      className: _Input.CL_SELECT_LABEL,
       children: caption
     }), (0, _jsxRuntime.jsx)(_OptionsPane.default, {
       isShow: isShowOptions,
-      className: CL_SELECT_OPTIONS,
+      className: _Input.CL_SELECT_OPTIONS,
       item: item,
       options: options,
-      clItem: _CL.CL_SELECT_ITEM,
+      clItem: _Input.CL_SELECT_ITEM,
       onSelect: _hSelect,
       onClose: _hCloseOptions
     }), (0, _jsxRuntime.jsxs)("div", {
-      className: CL_DIV,
+      className: _Input.CL_SELECT_DIV,
       children: [(0, _jsxRuntime.jsx)("div", {
-        className: CL_DIV_VALUE,
+        className: _Input.CL_SELECT_DIV_VALUE,
         children: (0, _OptionFn.getItemCaption)(item)
       }), (0, _jsxRuntime.jsx)("button", {
         ref: _refBtArrow,
         type: "button",
-        className: CL_DIV_BT,
+        className: _Input.CL_SELECT_DIV_BT,
         children: (0, _jsxRuntime.jsx)(_ArrowCell.default, {})
       }), (0, _jsxRuntime.jsx)("div", {
-        className: CL_INPUT_LINE
+        className: _Input.CL_SELECT_INPUT_LINE
       })]
     })]
   });

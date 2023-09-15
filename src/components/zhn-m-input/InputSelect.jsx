@@ -9,23 +9,22 @@ import {
 
 import useBool from '../hooks/useBool';
 
-import {
-  CL_SELECT_ITEM
-} from '../styles/CL';
-
 import ArrowCell from './ArrowCell';
 import OptionsPane from './OptionsPane';
 import {
   getItemCaption
 } from './OptionFn';
 
-const CL_SELECT = 'm-select'
-, CL_LABEL = `${CL_SELECT}__label`
-, CL_DIV = `${CL_SELECT}__div`
-, CL_DIV_VALUE = `${CL_SELECT}__div__value`
-, CL_DIV_BT = `${CL_SELECT}__div__bt`
-, CL_INPUT_LINE = `${CL_SELECT}__line`
-, CL_SELECT_OPTIONS = `${CL_SELECT}__options with-scroll`;
+import {  
+  CL_SELECT,
+  CL_SELECT_LABEL,
+  CL_SELECT_DIV,
+  CL_SELECT_DIV_VALUE,
+  CL_SELECT_DIV_BT,
+  CL_SELECT_INPUT_LINE,
+  CL_SELECT_OPTIONS,
+  CL_SELECT_ITEM
+} from './Input.Style';
 
 const DF_INIT_ITEM = ['', ''];
 
@@ -84,7 +83,7 @@ const InputSelect = ({
       onClick={showOptions}
       onKeyDown={_hKeyDown}
     >
-      <label className={CL_LABEL}>
+      <label className={CL_SELECT_LABEL}>
         {caption}
       </label>
       <OptionsPane
@@ -96,18 +95,18 @@ const InputSelect = ({
          onSelect={_hSelect}
          onClose={_hCloseOptions}
        />
-      <div className={CL_DIV}>
-        <div className={CL_DIV_VALUE}>
+      <div className={CL_SELECT_DIV}>
+        <div className={CL_SELECT_DIV_VALUE}>
            {getItemCaption(item)}
         </div>
         <button
           ref={_refBtArrow}
           type="button"
-          className={CL_DIV_BT}
+          className={CL_SELECT_DIV_BT}
         >
            <ArrowCell />
         </button>
-        <div className={CL_INPUT_LINE} />
+        <div className={CL_SELECT_INPUT_LINE} />
       </div>
     </div>
   );

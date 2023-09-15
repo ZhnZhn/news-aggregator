@@ -6,17 +6,13 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _has = require("../has");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
-var _CL = require("../styles/CL");
 var _TextField = _interopRequireDefault(require("./TextField"));
 var _ArrowCell = _interopRequireDefault(require("./ArrowCell"));
 var _OptionsPane = _interopRequireDefault(require("./OptionsPane"));
 var _OptionFn = require("./OptionFn");
+var _Input = require("./Input.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_SELECT = 'm-select',
-  CL_LABEL = CL_SELECT + "__label",
-  CL_DIV_BT = CL_SELECT + "__div__bt",
-  CL_SELECT_OPTIONS = CL_SELECT + "__options with-scroll",
-  S_OPTIONS_PANE = {
+const S_OPTIONS_PANE = {
     top: 64
   },
   S_BT_ARROW = {
@@ -115,20 +111,20 @@ const InputSuggest = _ref => {
     };
   return (0, _jsxRuntime.jsxs)("div", {
     role: "presentation",
-    className: CL_SELECT,
+    className: _Input.CL_SELECT,
     style: TS.ROOT,
     children: [(0, _jsxRuntime.jsx)("label", {
-      className: CL_LABEL,
+      className: _Input.CL_SELECT_LABEL,
       children: caption
     }), (0, _jsxRuntime.jsx)(_OptionsPane.default, {
       refOp: _refOp,
       isShow: isShowOptions,
       isFocusItem: isFocusItem,
-      className: CL_SELECT_OPTIONS,
+      className: _Input.CL_SELECT_OPTIONS,
       style: S_OPTIONS_PANE,
       item: item,
       options: items,
-      clItem: _CL.CL_SELECT_ITEM,
+      clItem: _Input.CL_SELECT_ITEM,
       onSelect: _hSelect,
       onClose: _hCloseOptions
     }), (0, _jsxRuntime.jsx)(_TextField.default, {
@@ -140,7 +136,7 @@ const InputSuggest = _ref => {
       children: _isBtArrow(item, items, options) && (0, _jsxRuntime.jsx)("button", {
         ref: _refBtArrow,
         type: "button",
-        className: CL_DIV_BT,
+        className: _Input.CL_SELECT_DIV_BT,
         style: S_BT_ARROW,
         onKeyDown: _hHideOptions,
         onClick: _hClickBtArrow,

@@ -1,11 +1,9 @@
 "use strict";
 
 exports.__esModule = true;
-exports.CL_SELECT_NONE = exports.CL_SELECT_ITEM = exports.CL_ROW_NEWS_SOURCE = exports.CL_MENU_MORE_ITEM = exports.CL_BT_RAISED_DIV = void 0;
+exports.CL_SELECT_NONE = exports.CL_ROW_NEWS_SOURCE = exports.CL_MENU_MORE_ITEM = exports.CL_BT_RAISED_DIV = void 0;
 const CL_BT_RAISED_DIV = "bt-raise__div";
 exports.CL_BT_RAISED_DIV = CL_BT_RAISED_DIV;
-const CL_SELECT_ITEM = "m-select__item";
-exports.CL_SELECT_ITEM = CL_SELECT_ITEM;
 const CL_ROW_NEWS_SOURCE = "row__news-source";
 exports.CL_ROW_NEWS_SOURCE = CL_ROW_NEWS_SOURCE;
 const CL_SELECT_NONE = 'select-none';

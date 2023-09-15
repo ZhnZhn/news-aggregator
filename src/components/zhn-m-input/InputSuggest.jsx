@@ -16,20 +16,20 @@ import { HAS_TOUCH_EVENTS } from '../has';
 
 import useBool from '../hooks/useBool';
 
-import {
-  CL_SELECT_ITEM
-} from '../styles/CL';
-
 import TextField from './TextField';
 import ArrowCell from './ArrowCell';
 import OptionsPane from './OptionsPane';
 import { getItemCaption } from './OptionFn';
 
-const CL_SELECT = 'm-select'
-, CL_LABEL = `${CL_SELECT}__label`
-, CL_DIV_BT = `${CL_SELECT}__div__bt`
-, CL_SELECT_OPTIONS = `${CL_SELECT}__options with-scroll`
-, S_OPTIONS_PANE = {
+import {  
+  CL_SELECT,
+  CL_SELECT_LABEL,
+  CL_SELECT_DIV_BT,
+  CL_SELECT_OPTIONS,
+  CL_SELECT_ITEM
+} from './Input.Style';
+
+const S_OPTIONS_PANE = {
   top: 64
 }
 , S_BT_ARROW = {
@@ -157,7 +157,7 @@ const InputSuggest = ({
       className={CL_SELECT}
       style={TS.ROOT}
     >
-      <label className={CL_LABEL}>
+      <label className={CL_SELECT_LABEL}>
         {caption}
       </label>
       <OptionsPane
@@ -182,7 +182,7 @@ const InputSuggest = ({
          {_isBtArrow(item, items, options) && <button
            ref={_refBtArrow}
            type="button"
-           className={CL_DIV_BT}
+           className={CL_SELECT_DIV_BT}
            style={S_BT_ARROW}
            onKeyDown={_hHideOptions}
            onClick={_hClickBtArrow}
