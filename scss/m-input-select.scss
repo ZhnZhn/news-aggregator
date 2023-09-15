@@ -70,26 +70,21 @@
 }
 
 .m-select__div__bt {
-  display: inline-block;
-  box-sizing: border-box;
+  fill: black;
+  display: inline-block;  
   position: absolute;
   right: 0;
   top: 0;
   z-index: 1;
-  background: none;
-  fill: black;
+  background: none;  
   width: 48px;
   height: 48px;
   padding: 12px;
   margin: 0;
-  border: 10px;
-  outline: none;
-  text-decoration: none;
-  font-family: Roboto, sans-serif;
+  border: 10px; 
+  text-decoration: none;  
   font-size: 0;
-  font-weight: inherit;
-  overflow: visible;
-  cursor: pointer;
+  overflow: visible; 
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   -webkit-tap-highlight-color: transparent;
 }
