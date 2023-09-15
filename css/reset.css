@@ -22,6 +22,7 @@ button {
   -webkit-appearance: none;
   -moz-appearance: none;
   border: none;
+  outline: none;
   background-color: transparent;
   font-family: inherit;
   font-size: inherit;
@@ -29,7 +30,8 @@ button {
   cursor: pointer;
 }
 button:hover,
-button:focus {
+button:focus,
+button:active {
   outline: 0;
 }
 

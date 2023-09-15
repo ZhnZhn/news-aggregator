@@ -25,7 +25,7 @@ const CL_SELECT = 'm-select'
 , M_INPUT = 'm-input'
 , CL_INPUT_LINE = `${M_INPUT}__line`
 , CL_INPUT_MSG_ERR = `${M_INPUT}__msg-err`
-, CL_SVG_CLEAR = "svg-clear";
+, CL_BT_SVG_CLEAR = "bt-svg-clear";
 
 const S_LABEL_TO_INPUT = {
   transform: 'scale(1) translate(0px, -6px)'
@@ -134,10 +134,9 @@ const TextField = forwardRef(({
     focus: () => focusRefElement(_refTf)
   }), [value])
 
-  const  _labelStyle = value
-   || isFocus
-      ? void 0
-      : S_LABEL_TO_INPUT
+  const _labelStyle = value || isFocus
+    ? void 0
+    : S_LABEL_TO_INPUT
   , [
     _labelErrStyle,
     _lineStyle
@@ -178,7 +177,7 @@ const TextField = forwardRef(({
         />
         {HAS_TOUCH_EVENTS && hasClear && value && <SvgX
            color="black"
-           className={CL_SVG_CLEAR}
+           className={CL_BT_SVG_CLEAR}
            style={S_BT_CLEAR}
            onClick={_clearInput}
         />}

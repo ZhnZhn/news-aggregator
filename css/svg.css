@@ -18,15 +18,10 @@
   outline: none;
 }
 
-.svg-clear {
+.bt-svg-clear {
   display: inline-block;
   width: 22px;
   height: 22px;
   padding: 2px;
-  cursor: pointer;
 }
-.svg-clear:hover,
-.svg-clear:focus,
-.svg-clear:active {
-  outline: none;
-}
+

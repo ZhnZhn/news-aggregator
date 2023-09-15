@@ -16,7 +16,7 @@ const CL_SELECT = 'm-select',
   M_INPUT = 'm-input',
   CL_INPUT_LINE = M_INPUT + "__line",
   CL_INPUT_MSG_ERR = M_INPUT + "__msg-err",
-  CL_SVG_CLEAR = "svg-clear";
+  CL_BT_SVG_CLEAR = "bt-svg-clear";
 const S_LABEL_TO_INPUT = {
     transform: 'scale(1) translate(0px, -6px)'
   },
@@ -129,7 +129,7 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
         onKeyDown: _hKeyDown
       }), _has.HAS_TOUCH_EVENTS && hasClear && value && (0, _jsxRuntime.jsx)(_SvgX.default, {
         color: "black",
-        className: CL_SVG_CLEAR,
+        className: CL_BT_SVG_CLEAR,
         style: S_BT_CLEAR,
         onClick: _clearInput
       }), children, (0, _jsxRuntime.jsx)("div", {
