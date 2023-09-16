@@ -39,6 +39,7 @@ const S_OPTIONS_PANE = {
 
 const DF_INIT_ITEM = ['', '']
 , NOT_HAS_TOUCH_EVENTS = !HAS_TOUCH_EVENTS
+, EMPTY_OPTIONS = [["No similiar item in list"]]
 , _isBtArrow = (
   item,
   items,
@@ -75,6 +76,24 @@ const InputSuggest = ({
     showOptions,
     hideOptions
   ] = useBool()
+
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _showOptions = useCallback(_isFocusItem => {
+    setIsFocusItem(_isFocusItem)
+    showOptions()
+  }, [])
+  // showOptions
+  /*eslint-enable react-hooks/exhaustive-deps */
+
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , _clearItem = useCallback(() => {
+    onSelect(initItem, id)
+    setItem('')
+    setItems(options)
+    hideOptions()
+  }, [])
+  // onSelect, initItem, id, hideOptions
+  /*eslint-enable react-hooks/exhaustive-deps */
   , _hKeyDownBtArrow = (evt) => {
     if (isShowOptions) {
       const _opInst = getRefValue(_refOp);
@@ -83,12 +102,9 @@ const InputSuggest = ({
       }
     } else {
       if (evt.key === KEY_ARROW_DOWN) {
-        setIsFocusItem(true)
-        showOptions()
+        _showOptions(true)
       } else if (evt.key === KEY_DELETE) {
-        _setItem('')
-        setItems(options)
-        hideOptions()
+        _clearItem()
         focusRefElement(_refTf)
       }
     }
@@ -104,11 +120,18 @@ const InputSuggest = ({
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _setItem = useCallback(item => {
-    onSelect(item, id)
+    const _isEmptyOptions = item === EMPTY_OPTIONS[0]
+    , _item = _isEmptyOptions
+      ? initItem
+      : item;      
+    onSelect(_item, id)
+    setItem(_item)
     hideOptions()
-    setItem(item)
-    setRefInputValue(_refTf, item)
-    if (item) {
+    if (_isEmptyOptions) {
+      setItems(options)
+    }
+    setRefInputValue(_refTf, _item)
+    if (_item) {
       focusRefElement(_refBtArrow)
     }
   }, [])
@@ -128,24 +151,24 @@ const InputSuggest = ({
          .trim()
          .toLowerCase();
        if (_token) {
-         setItems(_optionsWithSearchToken.filter(
+         const _nextItems = _optionsWithSearchToken.filter(
            item => item._t.indexOf(_token) !== -1
-         ))
-         setIsFocusItem(false)
-         showOptions()
+         )
+         setItems(_nextItems.length
+           ? _nextItems
+           : EMPTY_OPTIONS
+         )
+         _showOptions(false)
        } else {
-         _setItem('')
-         setItems(options)
-         hideOptions()
+         _clearItem()
        }
-  }, [_optionsWithSearchToken, showOptions, hideOptions])
-  //options, showOptions, hideOptions, _setItem
+  }, [_optionsWithSearchToken, _showOptions, _clearItem])
+  //options, _showOptions, _clearItem
   /*eslint-enable react-hooks/exhaustive-deps */
   , _hKeyDown = (evt) => {
-      const key = evt.key
-      if (key === KEY_ARROW_DOWN) {        
-        setIsFocusItem(true)
-        showOptions()
+      const key = evt.key;
+      if (key === KEY_ARROW_DOWN) {
+        _showOptions(true)
       }
   }
 
@@ -163,9 +186,8 @@ const InputSuggest = ({
     _setItem(item)
   }
   , _hClickBtArrow = () => {
-    setIsFocusItem(true)
-    showOptions()
-  }
+    _showOptions(true)
+  };
 
   return (
     <div

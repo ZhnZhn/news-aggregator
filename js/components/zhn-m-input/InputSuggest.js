@@ -20,6 +20,7 @@ const S_OPTIONS_PANE = {
   };
 const DF_INIT_ITEM = ['', ''],
   NOT_HAS_TOUCH_EVENTS = !_has.HAS_TOUCH_EVENTS,
+  EMPTY_OPTIONS = [["No similiar item in list"]],
   _isBtArrow = (item, items, options) => NOT_HAS_TOUCH_EVENTS || _has.HAS_TOUCH_EVENTS && !item && items.length === options.length;
 const InputSuggest = _ref => {
   let {
@@ -37,7 +38,25 @@ const InputSuggest = _ref => {
     [items, setItems] = (0, _uiApi.useState)(options),
     [isFocusItem, setIsFocusItem] = (0, _uiApi.useState)(false),
     [item, setItem] = (0, _uiApi.useState)(initItem || DF_INIT_ITEM),
-    [isShowOptions, showOptions, hideOptions] = (0, _useBool.default)(),
+    [isShowOptions, showOptions, hideOptions] = (0, _useBool.default)()
+
+    /*eslint-disable react-hooks/exhaustive-deps */,
+    _showOptions = (0, _uiApi.useCallback)(_isFocusItem => {
+      setIsFocusItem(_isFocusItem);
+      showOptions();
+    }, [])
+    // showOptions
+    /*eslint-enable react-hooks/exhaustive-deps */
+
+    /*eslint-disable react-hooks/exhaustive-deps */,
+    _clearItem = (0, _uiApi.useCallback)(() => {
+      onSelect(initItem, id);
+      setItem('');
+      setItems(options);
+      hideOptions();
+    }, [])
+    // onSelect, initItem, id, hideOptions
+    /*eslint-enable react-hooks/exhaustive-deps */,
     _hKeyDownBtArrow = evt => {
       if (isShowOptions) {
         const _opInst = (0, _uiApi.getRefValue)(_refOp);
@@ -46,12 +65,9 @@ const InputSuggest = _ref => {
         }
       } else {
         if (evt.key === _uiApi.KEY_ARROW_DOWN) {
-          setIsFocusItem(true);
-          showOptions();
+          _showOptions(true);
         } else if (evt.key === _uiApi.KEY_DELETE) {
-          _setItem('');
-          setItems(options);
-          hideOptions();
+          _clearItem();
           (0, _uiApi.focusRefElement)(_refTf);
         }
       }
@@ -67,11 +83,16 @@ const InputSuggest = _ref => {
 
     /*eslint-disable react-hooks/exhaustive-deps */,
     _setItem = (0, _uiApi.useCallback)(item => {
-      onSelect(item, id);
+      const _isEmptyOptions = item === EMPTY_OPTIONS[0],
+        _item = _isEmptyOptions ? initItem : item;
+      onSelect(_item, id);
+      setItem(_item);
       hideOptions();
-      setItem(item);
-      (0, _uiApi.setRefInputValue)(_refTf, item);
-      if (item) {
+      if (_isEmptyOptions) {
+        setItems(options);
+      }
+      (0, _uiApi.setRefInputValue)(_refTf, _item);
+      if (_item) {
         (0, _uiApi.focusRefElement)(_refBtArrow);
       }
     }, [])
@@ -85,22 +106,19 @@ const InputSuggest = _ref => {
     _hInputChange = (0, _uiApi.useCallback)((token, id) => {
       const _token = (token || '').trim().toLowerCase();
       if (_token) {
-        setItems(_optionsWithSearchToken.filter(item => item._t.indexOf(_token) !== -1));
-        setIsFocusItem(false);
-        showOptions();
+        const _nextItems = _optionsWithSearchToken.filter(item => item._t.indexOf(_token) !== -1);
+        setItems(_nextItems.length ? _nextItems : EMPTY_OPTIONS);
+        _showOptions(false);
       } else {
-        _setItem('');
-        setItems(options);
-        hideOptions();
+        _clearItem();
       }
-    }, [_optionsWithSearchToken, showOptions, hideOptions])
-    //options, showOptions, hideOptions, _setItem
+    }, [_optionsWithSearchToken, _showOptions, _clearItem])
+    //options, _showOptions, _clearItem
     /*eslint-enable react-hooks/exhaustive-deps */,
     _hKeyDown = evt => {
       const key = evt.key;
       if (key === _uiApi.KEY_ARROW_DOWN) {
-        setIsFocusItem(true);
-        showOptions();
+        _showOptions(true);
       }
     },
     _hEnter = (item, id, evt) => {
@@ -117,8 +135,7 @@ const InputSuggest = _ref => {
       _setItem(item);
     },
     _hClickBtArrow = () => {
-      setIsFocusItem(true);
-      showOptions();
+      _showOptions(true);
     };
   return (0, _jsxRuntime.jsxs)("div", {
     role: "presentation",
