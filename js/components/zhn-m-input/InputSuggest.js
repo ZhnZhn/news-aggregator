@@ -90,21 +90,22 @@ const InputSuggest = _ref => {
     }, [])
     // id, onSelect, dispatch
     /*eslint-enable react-hooks/exhaustive-deps */,
-    _optionsWithSearchToken = (0, _uiApi.useMemo)(() => options.map(item => {
+    _lazySearchOptions = (0, _uiApi.useMemo)(() => (0, _uiApi.crLazyValue)(() => options.map(item => {
       item._t = item[0].toLowerCase();
       return item;
-    }), [options])
+    })), [options])
+
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hInputChange = (0, _uiApi.useCallback)((token, id) => {
       const _token = (token || '').trim().toLowerCase();
       if (_token) {
-        const _nextItems = _optionsWithSearchToken.filter(item => item._t.indexOf(_token) !== -1);
+        const _nextItems = _lazySearchOptions.value.filter(item => item._t.indexOf(_token) !== -1);
         setItems(_nextItems.length ? _nextItems : _useOptionsPane.EMPTY_OPTIONS);
         dispatch(_useOptionsPane.ACTION_SHOW_OPTIONS);
       } else {
         _clearItem();
       }
-    }, [_optionsWithSearchToken, _clearItem])
+    }, [_lazySearchOptions, _clearItem])
     //options, dispatch, _clearItem
     /*eslint-enable react-hooks/exhaustive-deps */,
     _hKeyDown = evt => {
