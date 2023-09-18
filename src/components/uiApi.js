@@ -1,6 +1,7 @@
 export {
   bindTo,
   crId,
+  crLazyValue,
   toFirstUpperCase
 } from '../utils';
 

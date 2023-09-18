@@ -1,0 +1,20 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/crLazyValue.js"
+ ],
+ "file": "../../src/utils/crLazyValue.js",
+ "names": [
+  "crLazyValue",
+  "crValue",
+  "value",
+  "_value",
+  "Object",
+  "defineProperty",
+  "readable",
+  "writable",
+  "enumerable",
+  "exports"
+ ],
+ "mappings": ";;;;AACO,MAAMA,WAAW,GACtBC,OAAO,KACH;EACJ,IAAIC,KAAKA,CAAA,EAAE;IACT,MAAMC,MAAM,GAAGF,OAAO,CAAC,CAAC;IACxBG,MAAM,CAACC,cAAc,CAAC,IAAI,EAAE,OAAO,EAAE;MACnCH,KAAK,EAAEC,MAAM;MACbG,QAAQ,EAAE,IAAI;MACdC,QAAQ,EAAE,KAAK;MACfC,UAAU,EAAE;IACd,CAAC,CAAC;IACF,OAAOL,MAAM;EACf;AACF,CAAC,CAAC;AAAAM,OAAA,CAAAT,WAAA,GAAAA,WAAA"
+}
