@@ -84,6 +84,7 @@ const _crItem = (
 
 const OptionsPane = ({
   refOp,
+  id,
   isShow,
   isFocusItem=true,
   className,
@@ -129,6 +130,7 @@ const OptionsPane = ({
   }, [isShow, isFocusItem])
   return (
    <ModalPane
+     id={id}
      isShow={isShow}
      onClose={onClose}
    >

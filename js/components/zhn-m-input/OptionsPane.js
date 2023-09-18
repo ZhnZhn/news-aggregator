@@ -54,6 +54,7 @@ const _crItem = (item, index, _ref2) => {
 const OptionsPane = _ref3 => {
   let {
     refOp,
+    id,
     isShow,
     isFocusItem = true,
     className,
@@ -95,6 +96,7 @@ const OptionsPane = _ref3 => {
     }
   }, [isShow, isFocusItem]);
   return (0, _jsxRuntime.jsx)(_ModalPane.default, {
+    id: id,
     isShow: isShow,
     onClose: onClose,
     children: (0, _jsxRuntime.jsx)(_ShowHide.default, {

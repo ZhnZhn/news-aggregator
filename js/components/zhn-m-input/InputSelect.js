@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _useBool = _interopRequireDefault(require("../hooks/useBool"));
+var _useId = _interopRequireDefault(require("../hooks/useId"));
 var _ArrowCell = _interopRequireDefault(require("./ArrowCell"));
 var _OptionsPane = _interopRequireDefault(require("./OptionsPane"));
 var _OptionFn = require("./OptionFn");
@@ -17,47 +17,51 @@ const InputSelect = _ref => {
     initItem,
     caption,
     options,
-    styleConfig: TS,
+    styleConfig,
     onSelect
   } = _ref;
-  const _refBtArrow = (0, _uiApi.useRef)(),
+  const _optionPaneId = (0, _useId.default)(),
+    _refBtArrow = (0, _uiApi.useRef)(),
     [item, setItem] = (0, _uiApi.useState)(initItem || DF_INIT_ITEM),
-    [isShowOptions, showOptions, hideOptions] = (0, _useBool.default)()
-    /*eslint-disable react-hooks/exhaustive-deps */,
-    _hCloseOptions = (0, _uiApi.useMemo)(() => () => {
-      hideOptions();
+    [isShowOptions, setIsShowOptions] = (0, _uiApi.useState)(false),
+    [_hShowOptions, _hCloseOptions] = (0, _uiApi.useMemo)(() => [evt => {
+      (0, _uiApi.stopDefaultFor)(evt);
+      setIsShowOptions(true);
+    }, () => {
+      setIsShowOptions(false);
       (0, _uiApi.focusRefElement)(_refBtArrow);
-    }, [])
-    // hideOptions, _refBtArrow
-    ,
+    }], [])
+    /*eslint-disable react-hooks/exhaustive-deps */,
     [_hSelect, _hKeyDown] = (0, _uiApi.useMemo)(() => [(item, evt) => {
       (0, _uiApi.stopDefaultFor)(evt);
       onSelect(item, id);
       _hCloseOptions();
       setItem(item);
     },
-    // id, onSelect, _closeOptions
+    // id, onSelect, _hCloseOptions
     evt => {
       if (evt.key === _uiApi.KEY_ARROW_DOWN) {
-        (0, _uiApi.stopDefaultFor)(evt);
-        showOptions();
+        _hShowOptions(evt);
       }
     }
-    // showOptions
+    // _hShowOptions
     ], []);
-  // hideOptions, _refBtArrow
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (0, _jsxRuntime.jsxs)("div", {
-    role: "presentation",
+    role: "combobox",
+    "aria-controls": _optionPaneId,
+    "aria-expanded": isShowOptions,
+    tabIndex: "-1",
     className: _Input.CL_SELECT,
-    style: TS.ROOT,
-    onClick: showOptions,
+    style: styleConfig.ROOT,
+    onClick: _hShowOptions,
     onKeyDown: _hKeyDown,
     children: [(0, _jsxRuntime.jsx)("label", {
       className: _Input.CL_SELECT_LABEL,
       children: caption
     }), (0, _jsxRuntime.jsx)(_OptionsPane.default, {
+      id: _optionPaneId,
       isShow: isShowOptions,
       className: _Input.CL_SELECT_OPTIONS,
       item: item,

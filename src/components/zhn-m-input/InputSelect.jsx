@@ -7,7 +7,7 @@ import {
   stopDefaultFor
 } from '../uiApi';
 
-import useBool from '../hooks/useBool';
+import useId from '../hooks/useId';
 
 import ArrowCell from './ArrowCell';
 import OptionsPane from './OptionsPane';
@@ -15,7 +15,7 @@ import {
   getItemCaption
 } from './OptionFn';
 
-import {  
+import {
   CL_SELECT,
   CL_SELECT_LABEL,
   CL_SELECT_DIV,
@@ -33,25 +33,33 @@ const InputSelect = ({
   initItem,
   caption,
   options,
-  styleConfig:TS,
+  styleConfig,
   onSelect
 }) => {
-  const _refBtArrow = useRef()
+  const _optionPaneId = useId()
+  , _refBtArrow = useRef()
   , [
     item,
     setItem
   ] = useState(initItem || DF_INIT_ITEM)
   , [
     isShowOptions,
-    showOptions,
-    hideOptions
-  ] = useBool()
+    setIsShowOptions
+  ] = useState(false)
+  , [
+    _hShowOptions,
+    _hCloseOptions
+  ] = useMemo(() => [
+      (evt) => {
+        stopDefaultFor(evt)
+        setIsShowOptions(true)
+      },
+      () => {
+        setIsShowOptions(false)
+        focusRefElement(_refBtArrow)
+      }
+    ], [])
   /*eslint-disable react-hooks/exhaustive-deps */
-  , _hCloseOptions = useMemo(() => () => {
-    hideOptions()
-    focusRefElement(_refBtArrow)
-  }, [])
-  // hideOptions, _refBtArrow
   , [
     _hSelect,
     _hKeyDown
@@ -62,31 +70,33 @@ const InputSelect = ({
         _hCloseOptions()
         setItem(item)
     },
-    // id, onSelect, _closeOptions
+    // id, onSelect, _hCloseOptions
     (evt) => {
       if (evt.key === KEY_ARROW_DOWN) {
-        stopDefaultFor(evt)
-        showOptions()
+        _hShowOptions(evt)
       }
     }
-    // showOptions
+    // _hShowOptions
   ]
   , [])
-  // hideOptions, _refBtArrow
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (
     <div
-      role="presentation"
+      role="combobox"
+      aria-controls={_optionPaneId}
+      aria-expanded={isShowOptions}
+      tabIndex="-1"
       className={CL_SELECT}
-      style={TS.ROOT}
-      onClick={showOptions}
+      style={styleConfig.ROOT}
+      onClick={_hShowOptions}
       onKeyDown={_hKeyDown}
     >
       <label className={CL_SELECT_LABEL}>
         {caption}
       </label>
       <OptionsPane
+         id={_optionPaneId}
          isShow={isShowOptions}
          className={CL_SELECT_OPTIONS}
          item={item}
