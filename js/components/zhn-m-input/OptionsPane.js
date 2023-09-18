@@ -33,7 +33,7 @@ const _crItem = (item, index, _ref2) => {
   } = _ref2;
   const caption = (0, _OptionFn.getItemCaption)(item),
     value = (0, _OptionFn.getItemValue)(item),
-    [_tabIndex, _ref, _ariaSelected] = value === (0, _OptionFn.getItemValue)(currentItem) ? ["0", refItem, "true"] : ["-1"],
+    [_tabIndex, _ref, _ariaSelected] = value === (currentItem && (0, _OptionFn.getItemValue)(currentItem)) ? ["0", refItem, "true"] : ["-1"],
     _hKeyDown = evt => {
       if (evt.key === _uiApi.KEY_ENTER) {
         onSelect(item, evt);
@@ -42,7 +42,12 @@ const _crItem = (item, index, _ref2) => {
   return (0, _jsxRuntime.jsx)("div", {
     role: "option",
     ref: _ref,
-    ref: index === 0 ? _ref || refFirstItem : _ref,
+    ref: el => {
+      const _refEl = index === 0 ? _ref || refFirstItem : _ref;
+      if (_refEl) {
+        _refEl.current = el;
+      }
+    },
     "aria-selected": _ariaSelected,
     tabIndex: _tabIndex,
     className: clItem,

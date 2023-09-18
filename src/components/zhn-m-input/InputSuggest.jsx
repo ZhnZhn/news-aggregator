@@ -15,12 +15,18 @@ import {
 
 import { HAS_TOUCH_EVENTS } from '../has';
 
-import useBool from '../hooks/useBool';
-
 import TextField from './TextField';
 import ArrowCell from './ArrowCell';
 import OptionsPane from './OptionsPane';
 import { getItemCaption } from './OptionFn';
+
+import {
+  EMPTY_OPTIONS,
+  ACTION_SHOW_OPTIONS,
+  ACTION_SHOW_OPTIONS_WITH_FOCUS,
+  ACTION_CLOSE_OPTIONS,
+  useOptionsPane
+} from './useOptionsPane';
 
 import {
   CL_SELECT,
@@ -39,7 +45,6 @@ const S_OPTIONS_PANE = {
 
 const DF_INIT_ITEM = ['', '']
 , NOT_HAS_TOUCH_EVENTS = !HAS_TOUCH_EVENTS
-, EMPTY_OPTIONS = [["No similiar item in list"]]
 , _isBtArrow = (
   item,
   items,
@@ -53,7 +58,7 @@ const InputSuggest = ({
   initItem,
   caption,
   options,
-  styleConfig:TS,
+  styleConfig,
   onSelect
 }) => {
   const _refTf = useRef()
@@ -64,36 +69,28 @@ const InputSuggest = ({
     setItems
   ] = useState(options)
   , [
-    isFocusItem,
-    setIsFocusItem
-  ] = useState(false)
-  , [
     item,
     setItem
   ] = useState(initItem || DF_INIT_ITEM)
   , [
+    state,
+    dispatch
+  ] = useOptionsPane()
+  , [
     isShowOptions,
-    showOptions,
-    hideOptions
-  ] = useBool()
-
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _showOptions = useCallback(_isFocusItem => {
-    setIsFocusItem(_isFocusItem)
-    showOptions()
-  }, [])
-  // showOptions
-  /*eslint-enable react-hooks/exhaustive-deps */
+    isFocusItem
+  ] = state
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _clearItem = useCallback(() => {
     onSelect(initItem, id)
     setItem('')
     setItems(options)
-    hideOptions()
+    dispatch(ACTION_CLOSE_OPTIONS)
   }, [])
-  // onSelect, initItem, id, hideOptions
+  // onSelect, initItem, id, dispatch
   /*eslint-enable react-hooks/exhaustive-deps */
+
   , _hKeyDownBtArrow = (evt) => {
     if (isShowOptions) {
       const _opInst = getRefValue(_refOp);
@@ -102,9 +99,10 @@ const InputSuggest = ({
       }
     } else {
       if (evt.key === KEY_ARROW_DOWN) {
-        _showOptions(true)
+        dispatch(ACTION_SHOW_OPTIONS_WITH_FOCUS)
       } else if (evt.key === KEY_DELETE) {
         _clearItem()
+        setRefInputValue(_refTf, '')
         focusRefElement(_refTf)
       }
     }
@@ -112,10 +110,10 @@ const InputSuggest = ({
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hCloseOptions = useMemo(() => () => {
-    hideOptions()
+    dispatch(ACTION_CLOSE_OPTIONS)
     focusRefElement(_refBtArrow)
   }, [])
-  // hideOptions, _refBtArrow
+  // dispatch
   /*eslint-enable react-hooks/exhaustive-deps */
 
   /*eslint-disable react-hooks/exhaustive-deps */
@@ -123,10 +121,10 @@ const InputSuggest = ({
     const _isEmptyOptions = item === EMPTY_OPTIONS[0]
     , _item = _isEmptyOptions
       ? initItem
-      : item;      
+      : item;
     onSelect(_item, id)
     setItem(_item)
-    hideOptions()
+    dispatch(ACTION_CLOSE_OPTIONS)
     if (_isEmptyOptions) {
       setItems(options)
     }
@@ -135,7 +133,7 @@ const InputSuggest = ({
       focusRefElement(_refBtArrow)
     }
   }, [])
-  // id, onSelect, _hCloseOptions
+  // id, onSelect, dispatch
   /*eslint-enable react-hooks/exhaustive-deps */
 
   , _optionsWithSearchToken = useMemo(() => options
@@ -158,20 +156,20 @@ const InputSuggest = ({
            ? _nextItems
            : EMPTY_OPTIONS
          )
-         _showOptions(false)
+         dispatch(ACTION_SHOW_OPTIONS)
        } else {
          _clearItem()
        }
-  }, [_optionsWithSearchToken, _showOptions, _clearItem])
-  //options, _showOptions, _clearItem
+  }, [_optionsWithSearchToken, _clearItem])
+  //options, dispatch, _clearItem
   /*eslint-enable react-hooks/exhaustive-deps */
+
   , _hKeyDown = (evt) => {
       const key = evt.key;
       if (key === KEY_ARROW_DOWN) {
-        _showOptions(true)
+        dispatch(ACTION_SHOW_OPTIONS_WITH_FOCUS)
       }
   }
-
   , _hEnter = (item, id, evt) => {
       stopDefaultFor(evt)
       setItems(prevItems => {
@@ -186,14 +184,14 @@ const InputSuggest = ({
     _setItem(item)
   }
   , _hClickBtArrow = () => {
-    _showOptions(true)
+    dispatch(ACTION_SHOW_OPTIONS_WITH_FOCUS)
   };
 
   return (
     <div
       role="presentation"
       className={CL_SELECT}
-      style={TS.ROOT}
+      style={styleConfig.ROOT}
     >
       <label className={CL_SELECT_LABEL}>
         {caption}

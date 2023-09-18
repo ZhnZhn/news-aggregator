@@ -56,7 +56,7 @@ const _crItem = (
     _tabIndex,
     _ref,
     _ariaSelected,
-  ] = value === getItemValue(currentItem)
+  ] = value === (currentItem && getItemValue(currentItem))
     ? ["0", refItem, "true"]
     : ["-1"]
   , _hKeyDown = evt => {
@@ -70,7 +70,14 @@ const _crItem = (
       key={value}
       role="option"
       ref={_ref}
-      ref={index === 0 ? _ref || refFirstItem : _ref}
+      ref={el => {
+        const _refEl = index === 0
+          ? _ref || refFirstItem
+          : _ref;
+        if (_refEl) {
+          _refEl.current = el
+        }
+      }}
       aria-selected={_ariaSelected}
       tabIndex={_tabIndex}
       className={clItem}
@@ -128,6 +135,7 @@ const OptionsPane = ({
       )
     }
   }, [isShow, isFocusItem])
+  
   return (
    <ModalPane
      id={id}
