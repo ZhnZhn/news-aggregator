@@ -135,19 +135,19 @@ const OptionsPane = ({
       )
     }
   }, [isShow, isFocusItem])
-  
+
   return (
    <ModalPane
-     id={id}
      isShow={isShow}
      onClose={onClose}
    >
       <ShowHide
+         id={id}
          isShow={isShow}
          isScrollable={true}
          className={className}
          style={style}
-         role="presentation"
+         role="listbox"
          onKeyDown={_hKeyDown}
       >
          <ItemStack

@@ -51,7 +51,8 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
     onEnter = FN_NOOP,
     onBlur = FN_NOOP,
     onInputChange = FN_NOOP,
-    onKeyDown = FN_NOOP
+    onKeyDown = FN_NOOP,
+    ...restInputProps
   } = _ref;
   const _inputId = (0, _useId.default)(id),
     _refTf = (0, _uiApi.useRef)(),
@@ -122,18 +123,18 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
         type: "text",
         className: CL_INPUT,
         style: inputStyle,
-        value: value
-        //autoComplete="off"
-        ,
+        value: value,
+        autoComplete: "off",
         autoCorrect: "off",
         autoCapitalize: autoCapitalize,
         spellCheck: "false",
-        translate: "false",
+        translate: "no",
         maxLength: maxLength,
         onFocus: _focusInput,
         onBlur: _hBlurInput,
         onChange: _hInputChange,
-        onKeyDown: _hKeyDown
+        onKeyDown: _hKeyDown,
+        ...restInputProps
       }), _has.HAS_TOUCH_EVENTS && hasClear && value && (0, _jsxRuntime.jsx)(_SvgX.default, {
         color: "black",
         className: CL_BT_SVG_CLEAR,

@@ -101,15 +101,15 @@ const OptionsPane = _ref3 => {
     }
   }, [isShow, isFocusItem]);
   return (0, _jsxRuntime.jsx)(_ModalPane.default, {
-    id: id,
     isShow: isShow,
     onClose: onClose,
     children: (0, _jsxRuntime.jsx)(_ShowHide.default, {
+      id: id,
       isShow: isShow,
       isScrollable: true,
       className: className,
       style: style,
-      role: "presentation",
+      role: "listbox",
       onKeyDown: _hKeyDown,
       children: (0, _jsxRuntime.jsx)(_ItemStack.default, {
         items: options,

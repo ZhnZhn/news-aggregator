@@ -10,7 +10,6 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const CL_MODAL_PANE = (0, _crStyle.crContainerBgCn)();
 const ModalPane = _ref => {
   let {
-    id,
     isShow,
     style,
     children,
@@ -19,7 +18,6 @@ const ModalPane = _ref => {
   const _refElement = (0, _useClickOutside.default)(isShow, onClose),
     _hKeyEscape = (0, _useKeyEscape.default)(onClose);
   return (0, _jsxRuntime.jsx)("div", {
-    id: id,
     role: "presentation",
     "aria-hidden": !isShow,
     ref: _refElement,

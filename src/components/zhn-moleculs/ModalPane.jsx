@@ -6,7 +6,6 @@ import useKeyEscape from '../hooks/useKeyEscape';
 const CL_MODAL_PANE = crContainerBgCn();
 
 const ModalPane = ({
-  id,
   isShow,
   style,
   children,
@@ -17,7 +16,6 @@ const ModalPane = ({
 
   return (
     <div
-       id={id}
        role="presentation"
        aria-hidden={!isShow}
        ref={_refElement}

@@ -63,7 +63,8 @@ const TextField = forwardRef(({
   onEnter=FN_NOOP,
   onBlur=FN_NOOP,
   onInputChange=FN_NOOP,
-  onKeyDown=FN_NOOP
+  onKeyDown=FN_NOOP,
+  ...restInputProps
 }, ref) => {
   const _inputId = useId(id)
   , _refTf = useRef()
@@ -169,16 +170,17 @@ const TextField = forwardRef(({
           className={CL_INPUT}
           style={inputStyle}
           value={value}
-          //autoComplete="off"
+          autoComplete="off"
           autoCorrect="off"
           autoCapitalize={autoCapitalize}
           spellCheck="false"
-          translate="false"
+          translate="no"
           maxLength={maxLength}
           onFocus={_focusInput}
           onBlur={_hBlurInput}
           onChange={_hInputChange}
           onKeyDown={_hKeyDown}
+          {...restInputProps}
         />
         {HAS_TOUCH_EVENTS && hasClear && value && <SvgX
            color="black"

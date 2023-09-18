@@ -5,6 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _has = require("../has");
+var _useId = _interopRequireDefault(require("../hooks/useId"));
 var _TextField = _interopRequireDefault(require("./TextField"));
 var _ArrowCell = _interopRequireDefault(require("./ArrowCell"));
 var _OptionsPane = _interopRequireDefault(require("./OptionsPane"));
@@ -31,7 +32,8 @@ const InputSuggest = _ref => {
     styleConfig,
     onSelect
   } = _ref;
-  const _refTf = (0, _uiApi.useRef)(),
+  const _optionsPaneId = (0, _useId.default)(),
+    _refTf = (0, _uiApi.useRef)(),
     _refBtArrow = (0, _uiApi.useRef)(),
     _refOp = (0, _uiApi.useRef)(),
     [items, setItems] = (0, _uiApi.useState)(options),
@@ -138,6 +140,7 @@ const InputSuggest = _ref => {
       className: _Input.CL_SELECT_LABEL,
       children: caption
     }), (0, _jsxRuntime.jsx)(_OptionsPane.default, {
+      id: _optionsPaneId,
       refOp: _refOp,
       isShow: isShowOptions,
       isFocusItem: isFocusItem,
@@ -155,6 +158,10 @@ const InputSuggest = _ref => {
       onInputChange: _hInputChange,
       onEnter: _hEnter,
       onKeyDown: _hKeyDown,
+      role: "combobox",
+      "aria-autocomplete": "list",
+      "aria-expanded": isShowOptions,
+      "aria-controls": _optionsPaneId,
       children: _isBtArrow(item, items, options) && (0, _jsxRuntime.jsx)("button", {
         ref: _refBtArrow,
         type: "button",
