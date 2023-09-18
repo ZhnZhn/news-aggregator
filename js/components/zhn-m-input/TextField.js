@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _useId = _interopRequireDefault(require("../hooks/useId"));
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _has = require("../has");
 var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
@@ -52,7 +53,7 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
     onInputChange = FN_NOOP,
     onKeyDown = FN_NOOP
   } = _ref;
-  const _refId = (0, _uiApi.useRef)(id || (0, _uiApi.crId)()),
+  const _inputId = (0, _useId.default)(id),
     _refTf = (0, _uiApi.useRef)(),
     [value, setValue] = (0, _uiApi.useState)(initValue || ''),
     [isPassTest, setIsPassTest] = (0, _uiApi.useState)(() => onTest(initValue || '')),
@@ -111,13 +112,13 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
         ..._labelStyle,
         ..._labelErrStyle
       },
-      htmlFor: (0, _uiApi.getRefValue)(_refId),
+      htmlFor: _inputId,
       children: caption
     }), (0, _jsxRuntime.jsxs)("div", {
       className: CL_DIV,
       children: [(0, _jsxRuntime.jsx)("input", {
         ref: _refTf,
-        id: (0, _uiApi.getRefValue)(_refId),
+        id: _inputId,
         type: "text",
         className: CL_INPUT,
         style: inputStyle,

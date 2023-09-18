@@ -1,5 +1,4 @@
 import {
-  crId,
   forwardRef,
   useRef,
   useState,
@@ -8,10 +7,10 @@ import {
   KEY_ESCAPE,
   KEY_DELETE,
   KEY_ENTER,
-  getRefValue,
   focusRefElement
 } from '../uiApi';
 
+import useId from '../hooks/useId';
 import useBool from '../hooks/useBool';
 
 import { HAS_TOUCH_EVENTS } from '../has';
@@ -66,7 +65,7 @@ const TextField = forwardRef(({
   onInputChange=FN_NOOP,
   onKeyDown=FN_NOOP
 }, ref) => {
-  const _refId = useRef(id || crId())
+  const _inputId = useId(id)
   , _refTf = useRef()
   , [
     value,
@@ -158,14 +157,14 @@ const TextField = forwardRef(({
       <label
         className={CL_LABEL}
         style={{..._labelStyle, ..._labelErrStyle}}
-        htmlFor={getRefValue(_refId)}
+        htmlFor={_inputId}
        >
         {caption}
       </label>
       <div className={CL_DIV}>
         <input
           ref={_refTf}
-          id={getRefValue(_refId)}
+          id={_inputId}
           type="text"
           className={CL_INPUT}
           style={inputStyle}

@@ -1,0 +1,21 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/useId.js"
+ ],
+ "file": "../../../src/components/hooks/useId.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "_useRefInit",
+  "_interopRequireDefault",
+  "useId",
+  "id",
+  "useRefInit",
+  "crId",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AACA,IAAAC,WAAA,GAAAC,sBAAA,CAAAF,OAAA;AAEA,MAAMG,KAAK,GAAIC,EAAE,IAAK,IAAAC,mBAAU,EAAC,MAAMD,EAAE,IAAI,IAAAE,WAAI,EAAC,CAAC,CAAC;AAAA,IAAAC,QAAA,GAErCJ,KAAK;AAAAK,OAAA,CAAAC,OAAA,GAAAF,QAAA"
+}
