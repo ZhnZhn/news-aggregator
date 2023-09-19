@@ -23,7 +23,8 @@ const S_OPTIONS_PANE = {
   S_BT_ARROW_FILL = {
     fill: "#80c040"
   };
-const DF_INIT_ITEM = ['', ''],
+const FILTER_TIME_OUT_MLS = 350,
+  DF_INIT_ITEM = ['', ''],
   NOT_HAS_TOUCH_EVENTS = !_has.HAS_TOUCH_EVENTS,
   _isBtArrow = (item, items, options) => NOT_HAS_TOUCH_EVENTS || _has.HAS_TOUCH_EVENTS && !item && items.length === options.length;
 const InputSuggest = _ref => {
@@ -39,6 +40,7 @@ const InputSuggest = _ref => {
   const _refTf = (0, _uiApi.useRef)(),
     _refBtArrow = (0, _uiApi.useRef)(),
     _refOp = (0, _uiApi.useRef)(),
+    _refFilterId = (0, _uiApi.useRef)(),
     [items, setItems] = (0, _uiApi.useState)(options),
     [item, setItem] = (0, _uiApi.useState)(initItem || DF_INIT_ITEM),
     [state, dispatch] = (0, _useOptionsPane.useOptionsPane)(),
@@ -105,9 +107,12 @@ const InputSuggest = _ref => {
     _hInputChange = (0, _uiApi.useCallback)((token, id) => {
       const _token = (token || '').trim().toLowerCase();
       if (_token) {
-        const _nextItems = _getSearchOptions().filter(item => item._t.indexOf(_token) !== -1);
-        setItems(_nextItems.length ? _nextItems : _useOptionsPane.EMPTY_OPTIONS);
-        dispatch(_useOptionsPane.ACTION_SHOW_OPTIONS);
+        clearTimeout((0, _uiApi.getRefValue)(_refFilterId));
+        (0, _uiApi.setRefValue)(_refFilterId, setTimeout(() => {
+          const _nextItems = _getSearchOptions().filter(item => item._t.indexOf(_token) !== -1);
+          setItems(_nextItems.length ? _nextItems : _useOptionsPane.EMPTY_OPTIONS);
+          dispatch(_useOptionsPane.ACTION_SHOW_OPTIONS);
+        }, FILTER_TIME_OUT_MLS));
       } else {
         _clearItem();
       }

@@ -10,6 +10,7 @@ import {
   KEY_DELETE,
 
   getRefValue,
+  setRefValue,
   setRefInputValue,
   focusRefElement,
   stopDefaultFor
@@ -51,7 +52,8 @@ const S_OPTIONS_PANE = {
   fill: "#80c040"
 };
 
-const DF_INIT_ITEM = ['', '']
+const FILTER_TIME_OUT_MLS = 350
+, DF_INIT_ITEM = ['', '']
 , NOT_HAS_TOUCH_EVENTS = !HAS_TOUCH_EVENTS
 , _isBtArrow = (
   item,
@@ -72,6 +74,7 @@ const InputSuggest = ({
   const _refTf = useRef()
   , _refBtArrow = useRef()
   , _refOp = useRef()
+  , _refFilterId = useRef()
   , [
     items,
     setItems
@@ -165,14 +168,18 @@ const InputSuggest = ({
          .trim()
          .toLowerCase();
        if (_token) {
-         const _nextItems = _getSearchOptions().filter(
-           item => item._t.indexOf(_token) !== -1
-         )
-         setItems(_nextItems.length
-           ? _nextItems
-           : EMPTY_OPTIONS
-         )
-         dispatch(ACTION_SHOW_OPTIONS)
+         clearTimeout(getRefValue(_refFilterId))
+         setRefValue(_refFilterId, setTimeout(() => {
+            const _nextItems = _getSearchOptions().filter(
+              item => item._t.indexOf(_token) !== -1
+            )
+            setItems(_nextItems.length
+              ? _nextItems
+              : EMPTY_OPTIONS
+            )
+            dispatch(ACTION_SHOW_OPTIONS)
+          }, FILTER_TIME_OUT_MLS)
+        )
        } else {
          _clearItem()
        }
