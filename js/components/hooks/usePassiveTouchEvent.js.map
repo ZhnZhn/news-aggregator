@@ -1,0 +1,28 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/usePassiveTouchEvent.js"
+ ],
+ "file": "../../../src/components/hooks/usePassiveTouchEvent.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "_has",
+  "EVENT_OPTIONS",
+  "passive",
+  "usePassiveTouchEvent",
+  "refElement",
+  "EVENT_NAME",
+  "onEvent",
+  "useEffect",
+  "_el",
+  "getRefValue",
+  "HAS_TOUCH_EVENTS",
+  "addEventListener",
+  "removeEventListener",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAKA,IAAAC,IAAA,GAAAD,OAAA;AAIA,MAAME,aAAa,GAAG;EAAEC,OAAO,EAAE;AAAK,CAAC;AAEvC,MAAMC,oBAAoB,GAAGA,CAC3BC,UAAU,EACVC,UAAU,EACVC,OAAO,KACJ;EACH,IAAAC,gBAAS,EAAC,MAAM;IACd,MAAMC,GAAG,GAAG,IAAAC,kBAAW,EAACL,UAAU,CAAC;IACnC,IAAIM,qBAAgB,IAAIF,GAAG,EAAE;MAC1BA,GAAG,CAACG,gBAAgB,CAACN,UAAU,EAAEC,OAAO,EAAEL,aAAa,CAAC;IAC3D;IACA,OAAO,MAAM;MACX,IAAIS,qBAAgB,IAAIF,GAAG,EAAE;QAC3BA,GAAG,CAACI,mBAAmB,CAACP,UAAU,EAAEC,OAAO,EAAEL,aAAa,CAAC;MAC7D;IACF,CAAC;EACH,CAAC,EAAE,CAACI,UAAU,EAAEC,OAAO,EAAEF,UAAU,CAAC,CAAC;AACvC,CAAC;AAAA,IAAAS,QAAA,GAEcV,oBAAoB;AAAAW,OAAA,CAAAC,OAAA,GAAAF,QAAA"
+}

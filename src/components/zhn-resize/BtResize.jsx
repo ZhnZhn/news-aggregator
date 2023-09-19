@@ -1,4 +1,12 @@
+import {
+  useRef,
+  EVENT_TOUCH_START,
+  EVENT_TOUCH_END
+} from '../uiApi';
+
 import useTooltip from '../hooks/useTooltip';
+import usePassiveTouchEvent from '../hooks/usePassiveTouchEvent';
+
 import Svg100 from '../zhn-atoms/svg/Svg100';
 
 const CL_BT_RESIZE = "bt-resize select-none";
@@ -13,15 +21,21 @@ const BtResize = ({
   onKeyDown,
   children
 }) => {
-  const _x = to === 'r'
+  const _refBt = useRef()
+  , _x = to === 'r'
     ? '11'
     : '1'
   , [
     _ariaLabel,
     _dataPos
   ] = useTooltip(ariaLabel, dataPos);
+
+  usePassiveTouchEvent(_refBt, EVENT_TOUCH_START, startResize)
+  usePassiveTouchEvent(_refBt, EVENT_TOUCH_END, stopResize)
+
   return (
     <button
+       ref={_refBt}
        type="button"
        aria-label={_ariaLabel}
        data-pos={_dataPos}
@@ -30,8 +44,6 @@ const BtResize = ({
        onMouseDown={startResize}
        onMouseUp={stopResize}
        onKeyDown={onKeyDown}
-       onTouchStart={startResize}
-       onTouchEnd={stopResize}
     >
        <Svg100
          w="12"

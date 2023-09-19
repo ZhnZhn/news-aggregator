@@ -2,25 +2,31 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _useTooltip2 = _interopRequireDefault(require("../hooks/useTooltip"));
+exports.default = void 0;
+var _uiApi = require("../uiApi");
+var _useTooltip = _interopRequireDefault(require("../hooks/useTooltip"));
+var _usePassiveTouchEvent = _interopRequireDefault(require("../hooks/usePassiveTouchEvent"));
 var _Svg = _interopRequireDefault(require("../zhn-atoms/svg/Svg100"));
 var _jsxRuntime = require("preact/jsx-runtime");
-var CL_BT_RESIZE = "bt-resize select-none";
-var BtResize = function BtResize(_ref) {
-  var to = _ref.to,
-    ariaLabel = _ref.ariaLabel,
-    dataPos = _ref.dataPos,
-    style = _ref.style,
-    startResize = _ref.startResize,
-    stopResize = _ref.stopResize,
-    onKeyDown = _ref.onKeyDown,
-    children = _ref.children;
-  var _x = to === 'r' ? '11' : '1',
-    _useTooltip = (0, _useTooltip2["default"])(ariaLabel, dataPos),
-    _ariaLabel = _useTooltip[0],
-    _dataPos = _useTooltip[1];
+const CL_BT_RESIZE = "bt-resize select-none";
+const BtResize = _ref => {
+  let {
+    to,
+    ariaLabel,
+    dataPos,
+    style,
+    startResize,
+    stopResize,
+    onKeyDown,
+    children
+  } = _ref;
+  const _refBt = (0, _uiApi.useRef)(),
+    _x = to === 'r' ? '11' : '1',
+    [_ariaLabel, _dataPos] = (0, _useTooltip.default)(ariaLabel, dataPos);
+  (0, _usePassiveTouchEvent.default)(_refBt, _uiApi.EVENT_TOUCH_START, startResize);
+  (0, _usePassiveTouchEvent.default)(_refBt, _uiApi.EVENT_TOUCH_END, stopResize);
   return (0, _jsxRuntime.jsx)("button", {
+    ref: _refBt,
     type: "button",
     "aria-label": _ariaLabel,
     "data-pos": _dataPos,
@@ -29,9 +35,7 @@ var BtResize = function BtResize(_ref) {
     onMouseDown: startResize,
     onMouseUp: stopResize,
     onKeyDown: onKeyDown,
-    onTouchStart: startResize,
-    onTouchEnd: stopResize,
-    children: (0, _jsxRuntime.jsxs)(_Svg["default"], {
+    children: (0, _jsxRuntime.jsxs)(_Svg.default, {
       w: "12",
       strokeWidth: "1.5",
       strokeLinecap: "round",
@@ -45,5 +49,5 @@ var BtResize = function BtResize(_ref) {
   });
 };
 var _default = BtResize;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=BtResize.js.map
