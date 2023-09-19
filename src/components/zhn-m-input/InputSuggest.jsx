@@ -151,7 +151,7 @@ const InputSuggest = ({
   // id, onSelect, dispatch
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  , _lazySearchOptions = useMemo(() => crLazyValue(
+  , _getSearchOptions = useMemo(() => crLazyValue(
       () => options.map(item => {
         item._t = item[0].toLowerCase()
         return item;
@@ -165,7 +165,7 @@ const InputSuggest = ({
          .trim()
          .toLowerCase();
        if (_token) {
-         const _nextItems = _lazySearchOptions.value.filter(
+         const _nextItems = _getSearchOptions().filter(
            item => item._t.indexOf(_token) !== -1
          )
          setItems(_nextItems.length
@@ -176,7 +176,7 @@ const InputSuggest = ({
        } else {
          _clearItem()
        }
-  }, [_lazySearchOptions, _clearItem])
+  }, [_getSearchOptions, _clearItem])
   //options, dispatch, _clearItem
   /*eslint-enable react-hooks/exhaustive-deps */
 
