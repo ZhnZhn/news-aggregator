@@ -1,19 +1,32 @@
 import {
   forwardRef,
+
   useRef,
   useCallback,
   useMemo,
+
+  EVENT_TOUCH_START,
+  EVENT_TOUCH_MOVE,
+  EVENT_TOUCH_END,
+
+  getRefValue,
+  setRefValue,
+
   getClientX
 } from '../uiApi';
+
 import { HAS_TOUCH_EVENTS } from '../has';
+
+import usePassiveTouchEvent from '../hooks/usePassiveTouchEvent';
 
 const BORDER_LEFT = 'border-left';
 const DRAG_START_BORDER_LEFT = "4px solid #d64336";
 
 const LONG_TOUCH = 1000;
+const NOT_HAS_TOUCH_EVENTS = !HAS_TOUCH_EVENTS
 
 const _preventDefault = evt => {
-  if (!HAS_TOUCH_EVENTS) {
+  if (NOT_HAS_TOUCH_EVENTS) {
     evt.preventDefault()
   }
 };
@@ -39,38 +52,37 @@ const _setEndStyle = (node, isInitialStyle) => {
   }
 };
 
-const _noopFn = () => {};
-
-const _setRefValue = (ref, value) => ref.current = value;
-const _getRefValue = ref => ref.current;
+const FN_NOOP = () => {};
 
 const GestureSwipeX = forwardRef(({
   className,
   style,
   children,
-  setTimeStamp=_noopFn,
+  setTimeStamp=FN_NOOP,
   onGesture
 }, ref) => {
-  const _refClientX = useRef(0)
+  const _ref = useRef()
+  , _refItem = ref || _ref
+  , _refClientX = useRef(0)
   , _refIsGestureStart = useRef(false)
   , _refIsMoveStart = useRef(false)
   , _refGestureId = useRef()
   , _gestureStartImpl = useCallback(node => {
-    _setRefValue(_refIsGestureStart, true)
+    setRefValue(_refIsGestureStart, true)
     _styleNode(node)
   }, [])
   /*eslint-disable react-hooks/exhaustive-deps */
   , _gestureStart = useCallback(evt => {
      if (evt.target.tagName !== 'A') {
        const node = evt.currentTarget;
-       if (!_getRefValue(_refIsGestureStart)){
-         _setRefValue(_refGestureId, setTimeout(
+       if (!getRefValue(_refIsGestureStart)){
+         setRefValue(_refGestureId, setTimeout(
            () => _gestureStartImpl(node),
            LONG_TOUCH
          ))
        } else {
-         clearTimeout(_getRefValue(_refGestureId))
-         _setRefValue(_refIsGestureStart, false)
+         clearTimeout(getRefValue(_refGestureId))
+         setRefValue(_refIsGestureStart, false)
          _setEndStyle(node, true)
        }
      }
@@ -79,14 +91,14 @@ const GestureSwipeX = forwardRef(({
   /*eslint-enable react-hooks/exhaustive-deps */
   , _gestureMove = useCallback(evt => {
     _preventDefault(evt)
-    if (_getRefValue(_refIsGestureStart)) {
+    if (getRefValue(_refIsGestureStart)) {
       const _clientX = getClientX(evt);
       if (_clientX) {
-        if (!_getRefValue(_refIsMoveStart)) {
-          _setRefValue(_refClientX, _clientX)
-          _setRefValue(_refIsMoveStart, true)
+        if (!getRefValue(_refIsMoveStart)) {
+          setRefValue(_refClientX, _clientX)
+          setRefValue(_refIsMoveStart, true)
         } else {
-          const _dX = _getRefValue(_refClientX) - _clientX;
+          const _dX = getRefValue(_refClientX) - _clientX;
           if (_dX < 0) {
             _setMoveStyle(evt.currentTarget, _dX)
           }
@@ -96,38 +108,40 @@ const GestureSwipeX = forwardRef(({
   }, [])
   /*eslint-disable react-hooks/exhaustive-deps */
   , _gestureEnd = useCallback(evt => {
-    if (_getRefValue(_refIsGestureStart)) {
+    if (getRefValue(_refIsGestureStart)) {
       let _isInitialStyle = false;
-      if (_getRefValue(_refIsMoveStart)) {
+      if (getRefValue(_refIsMoveStart)) {
         _preventDefault(evt)
         setTimeStamp(evt.timeStamp)
         const _clientX = getClientX(evt)
-        , _dX = _getRefValue(_refClientX) - _clientX;
+        , _dX = getRefValue(_refClientX) - _clientX;
         _isInitialStyle = _dX < 0 && onGesture(Math.abs(_dX));
-        _setRefValue(_refIsMoveStart, false)
+        setRefValue(_refIsMoveStart, false)
       }
-      _setRefValue(_refIsGestureStart, false)
+      setRefValue(_refIsGestureStart, false)
       _setEndStyle(evt.currentTarget, _isInitialStyle)
     } else {
-      clearTimeout(_getRefValue(_refGestureId))
+      clearTimeout(getRefValue(_refGestureId))
     }
   }, [])
   // setTimeStamp, onGesture
-  , _handlers = useMemo(() => HAS_TOUCH_EVENTS ? {
-      onTouchStart: _gestureStart,
-      onTouchMove: _gestureMove,
-      onTouchEnd: _gestureEnd
-    } : {
-      onMouseDown: _gestureStart,
-      onMouseMove: _gestureMove,
-      onMouseUp: _gestureEnd
-   }, []);
+  , _handlers = useMemo(() => HAS_TOUCH_EVENTS
+       ? void 0
+       : {
+           onMouseDown: _gestureStart,
+           onMouseMove: _gestureMove,
+           onMouseUp: _gestureEnd
+       }, []);
    // _gestureStart, _gestureMove, _gestureEnd
    /*eslint-enable react-hooks/exhaustive-deps */
 
+  usePassiveTouchEvent(_refItem, EVENT_TOUCH_START, _gestureStart)
+  usePassiveTouchEvent(_refItem, EVENT_TOUCH_MOVE, _gestureMove)
+  usePassiveTouchEvent(_refItem, EVENT_TOUCH_END, _gestureEnd)
+
   return (
     <div
-      ref={ref}
+      ref={_refItem}
       role="presentation"
       className={className}
       style={style}
