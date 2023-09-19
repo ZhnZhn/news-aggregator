@@ -1,6 +1,12 @@
 import {
   isFn,
   useEffect,
+
+  EVENT_TOUCH_START,
+  EVENT_TOUCH_MOVE,
+  EVENT_TOUCH_CANCEL,
+  EVENT_TOUCH_END,
+
   getRefValue,
   getClientX,
   getClientY
@@ -10,14 +16,25 @@ import { HAS_TOUCH_EVENTS } from '../has';
 
 const _assign = Object.assign
 , _isArr = Array.isArray
+, NOT_HAS_TOUCH_EVENTS = !HAS_TOUCH_EVENTS
 , [
   INIT_EVENT,
   MOVE_EVENT,
   CANCEL_EVENT,
   RESET_EVENT
 ] = HAS_TOUCH_EVENTS
-? ['touchstart','touchmove','touchcancel','touchend']
-: ['mousedown','mousemove','mouseleave','mouseup'];
+? [
+  EVENT_TOUCH_START,
+  EVENT_TOUCH_MOVE,
+  EVENT_TOUCH_CANCEL,
+  EVENT_TOUCH_END
+]
+: [
+  'mousedown',
+  'mousemove',
+  'mouseleave',
+  'mouseup'
+];
 
 const EVENT_OPTIONS = { passive: true }
 , MOVE_EVENT_OPTIONS = { passive: false };
@@ -75,7 +92,9 @@ const _isInitEvent = (
     }
   }
 
-  if (!HAS_TOUCH_EVENTS) { return true; }
+  if (NOT_HAS_TOUCH_EVENTS) {
+    return true;
+  }
 
   const {
     left,

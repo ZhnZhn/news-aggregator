@@ -6,7 +6,8 @@ var _uiApi = require("../uiApi");
 var _has = require("../has");
 const _assign = Object.assign,
   _isArr = Array.isArray,
-  [INIT_EVENT, MOVE_EVENT, CANCEL_EVENT, RESET_EVENT] = _has.HAS_TOUCH_EVENTS ? ['touchstart', 'touchmove', 'touchcancel', 'touchend'] : ['mousedown', 'mousemove', 'mouseleave', 'mouseup'];
+  NOT_HAS_TOUCH_EVENTS = !_has.HAS_TOUCH_EVENTS,
+  [INIT_EVENT, MOVE_EVENT, CANCEL_EVENT, RESET_EVENT] = _has.HAS_TOUCH_EVENTS ? [_uiApi.EVENT_TOUCH_START, _uiApi.EVENT_TOUCH_MOVE, _uiApi.EVENT_TOUCH_CANCEL, _uiApi.EVENT_TOUCH_END] : ['mousedown', 'mousemove', 'mouseleave', 'mouseup'];
 const EVENT_OPTIONS = {
     passive: true
   },
@@ -35,7 +36,7 @@ const _isInitEvent = (evt, initialEvtClientX, initialEvtClientY, element) => {
       }
     }
   }
-  if (!_has.HAS_TOUCH_EVENTS) {
+  if (NOT_HAS_TOUCH_EVENTS) {
     return true;
   }
   const {

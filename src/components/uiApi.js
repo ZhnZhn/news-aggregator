@@ -30,9 +30,12 @@ export const KEY_ESCAPE = "Escape"
 export const KEY_TAB = "Tab"
 export const KEY_DELETE = "Delete"
 
-export const EVENT_TOUCH_START = "touchstart"
-export const EVENT_TOUCH_MOVE = "touchmove"
-export const EVENT_TOUCH_END = "touchend"
+const TOUCH = "touch";
+export const EVENT_TOUCH_START = `${TOUCH}start`
+export const EVENT_TOUCH_MOVE = `${TOUCH}move`
+export const EVENT_TOUCH_END = `${TOUCH}end`
+
+export const EVENT_TOUCH_CANCEL = `${TOUCH}cancel`
 
 export const isFn = fn => typeof fn === 'function';
 
