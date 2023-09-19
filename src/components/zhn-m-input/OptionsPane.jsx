@@ -1,19 +1,12 @@
 import {
   useRef,
-  useCallback,
   useEffect,
   useImperativeHandle,
 
-  KEY_ARROW_DOWN,
-  KEY_ARROW_UP,
   KEY_ENTER,
-  KEY_ESCAPE,
-  KEY_TAB,
 
   focusRefElement,
-  getRefValue,
-  setRefValue,
-  stopDefaultFor
+  setRefValue
 } from '../uiApi';
 
 import ShowHide from '../zhn-atoms/ShowHide';
@@ -24,22 +17,7 @@ import {
   getItemValue
 } from './OptionFn';
 
-const SCROLL_OPTIONS = {
-  block: 'center',
-  behavior: 'smooth'
-};
-
-const _fFocusItem = propName => ref => {
-  const _elItem = (getRefValue(ref) || {})[propName];
-  if (_elItem) {
-    _elItem.scrollIntoView(SCROLL_OPTIONS)
-    _elItem.focus()
-    setRefValue(ref, _elItem)
-  }
-};
-
-const _focusNextItem = _fFocusItem('nextSibling');
-const _focusPrevItem = _fFocusItem('previousSibling');
+import useKeyDownArrow from './useKeyDownArrow';
 
 const _crItem = (
   item,
@@ -59,6 +37,14 @@ const _crItem = (
   ] = value === (currentItem && getItemValue(currentItem))
     ? ["0", refItem, "true"]
     : ["-1"]
+  , _refOption = index === 0
+      ? _ref || refFirstItem
+      : _ref
+  , _refOptionFn = el => {
+       if (_refOption) {
+         setRefValue(_refOption, el);
+       }
+    }
   , _hKeyDown = evt => {
     if (evt.key === KEY_ENTER) {
       onSelect(item, evt)
@@ -68,16 +54,8 @@ const _crItem = (
   return (
     <div
       key={value}
+      ref={_refOptionFn}
       role="option"
-      ref={_ref}
-      ref={el => {
-        const _refEl = index === 0
-          ? _ref || refFirstItem
-          : _ref;
-        if (_refEl) {
-          _refEl.current = el
-        }
-      }}
       aria-selected={_ariaSelected}
       tabIndex={_tabIndex}
       className={clItem}
@@ -104,29 +82,19 @@ const OptionsPane = ({
 }) => {
   const _refFirstItem = useRef(null)
   , _refItem = useRef(null)
-  , _refFocus = useRef(null)
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _hKeyDown = useCallback(evt => {
-    if (evt.key === KEY_ARROW_DOWN) {
-      stopDefaultFor(evt)
-      _focusNextItem(_refFocus)
-    } else if (evt.key === KEY_ARROW_UP) {
-      stopDefaultFor(evt)
-      _focusPrevItem(_refFocus)
-    } else if (evt.key === KEY_ESCAPE || evt.key === KEY_TAB) {
-      onClose()
-    }
-  }, []);
-  //onClose
-  /*eslint-enable react-hooks/exhaustive-deps */
+  , [
+    _refFocus,
+    _hKeyDownArrow
+  ] = useKeyDownArrow(onClose)
 
   /*eslint-disable react-hooks/exhaustive-deps */
   useImperativeHandle(refOp, () => ({
-    hKeyDown: _hKeyDown
+    hKeyDown: _hKeyDownArrow
   }), [])
   // _hKeyDown
   /*eslint-enable react-hooks/exhaustive-deps */
 
+  /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(()=>{
     if (isShow && isFocusItem) {
       setRefValue(
@@ -135,30 +103,32 @@ const OptionsPane = ({
       )
     }
   }, [isShow, isFocusItem])
+  // _refFocus
+  /*eslint-enable react-hooks/exhaustive-deps */
 
   return (
    <ModalPane
      isShow={isShow}
      onClose={onClose}
    >
-      <ShowHide
-         id={id}
-         isShow={isShow}
-         isScrollable={true}
-         className={className}
-         style={style}
-         role="listbox"
-         onKeyDown={_hKeyDown}
-      >
-         <ItemStack
-           items={options}
-           crItem={_crItem}
-           refFirstItem={_refFirstItem}
-           refItem={_refItem}
-           currentItem={item}
-           clItem={clItem}
-           onSelect={onSelect}
-         />
+     <ShowHide
+       isScrollable={true}
+       isShow={isShow}
+       role="group"
+       id={id}
+       className={className}
+       style={style}
+       onKeyDown={_hKeyDownArrow}
+     >
+       <ItemStack
+         items={options}
+         crItem={_crItem}
+         refFirstItem={_refFirstItem}
+         refItem={_refItem}
+         currentItem={item}
+         clItem={clItem}
+         onSelect={onSelect}
+       />
      </ShowHide>
    </ModalPane>
  );
