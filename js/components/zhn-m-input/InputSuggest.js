@@ -5,7 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _has = require("../has");
-var _useId = _interopRequireDefault(require("../hooks/useId"));
+var _useAriaCombobox = _interopRequireDefault(require("./useAriaCombobox"));
 var _TextField = _interopRequireDefault(require("./TextField"));
 var _ArrowCell = _interopRequireDefault(require("./ArrowCell"));
 var _OptionsPane = _interopRequireDefault(require("./OptionsPane"));
@@ -32,14 +32,14 @@ const InputSuggest = _ref => {
     styleConfig,
     onSelect
   } = _ref;
-  const _optionsPaneId = (0, _useId.default)(),
-    _refTf = (0, _uiApi.useRef)(),
+  const _refTf = (0, _uiApi.useRef)(),
     _refBtArrow = (0, _uiApi.useRef)(),
     _refOp = (0, _uiApi.useRef)(),
     [items, setItems] = (0, _uiApi.useState)(options),
     [item, setItem] = (0, _uiApi.useState)(initItem || DF_INIT_ITEM),
     [state, dispatch] = (0, _useOptionsPane.useOptionsPane)(),
-    [isShowOptions, isFocusItem] = state
+    [isShowOptions, isFocusItem] = state,
+    [_optionsPaneId, _ariaComboboxProps] = (0, _useAriaCombobox.default)(isShowOptions, true)
 
     /*eslint-disable react-hooks/exhaustive-deps */,
     _clearItem = (0, _uiApi.useCallback)(() => {
@@ -158,10 +158,7 @@ const InputSuggest = _ref => {
       onInputChange: _hInputChange,
       onEnter: _hEnter,
       onKeyDown: _hKeyDown,
-      role: "combobox",
-      "aria-autocomplete": "list",
-      "aria-expanded": isShowOptions,
-      "aria-controls": _optionsPaneId,
+      ..._ariaComboboxProps,
       children: _isBtArrow(item, items, options) && (0, _jsxRuntime.jsx)("button", {
         ref: _refBtArrow,
         type: "button",

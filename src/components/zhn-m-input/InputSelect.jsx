@@ -7,7 +7,7 @@ import {
   stopDefaultFor
 } from '../uiApi';
 
-import useId from '../hooks/useId';
+import useAriaCombobox from './useAriaCombobox';
 
 import ArrowCell from './ArrowCell';
 import OptionsPane from './OptionsPane';
@@ -36,8 +36,7 @@ const InputSelect = ({
   styleConfig,
   onSelect
 }) => {
-  const _optionPaneId = useId()
-  , _refBtArrow = useRef()
+  const _refBtArrow = useRef()
   , [
     item,
     setItem
@@ -46,6 +45,10 @@ const InputSelect = ({
     isShowOptions,
     setIsShowOptions
   ] = useState(false)
+  , [
+    _optionPaneId,
+    _ariaComboboxProps
+  ] = useAriaCombobox(isShowOptions)
   , [
     _hShowOptions,
     _hCloseOptions
@@ -81,17 +84,17 @@ const InputSelect = ({
   , [])
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  return (
+  /*eslint-disable jsx-a11y/no-static-element-interactions*/
+  return (    
     <div
-      role="combobox"
-      aria-controls={_optionPaneId}
-      aria-expanded={isShowOptions}
+      {..._ariaComboboxProps}
       tabIndex="-1"
       className={CL_SELECT}
       style={styleConfig.ROOT}
       onClick={_hShowOptions}
       onKeyDown={_hKeyDown}
     >
+    {/*eslint-enable jsx-a11y/no-static-element-interactions*/}
       <label className={CL_SELECT_LABEL}>
         {caption}
       </label>

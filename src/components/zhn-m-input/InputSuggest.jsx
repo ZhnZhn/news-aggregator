@@ -17,7 +17,7 @@ import {
 
 import { HAS_TOUCH_EVENTS } from '../has';
 
-import useId from '../hooks/useId';
+import useAriaCombobox from './useAriaCombobox';
 
 import TextField from './TextField';
 import ArrowCell from './ArrowCell';
@@ -65,8 +65,7 @@ const InputSuggest = ({
   styleConfig,
   onSelect
 }) => {
-  const _optionsPaneId = useId()
-  , _refTf = useRef()
+  const _refTf = useRef()
   , _refBtArrow = useRef()
   , _refOp = useRef()
   , [
@@ -85,6 +84,13 @@ const InputSuggest = ({
     isShowOptions,
     isFocusItem
   ] = state
+  , [
+    _optionsPaneId,
+    _ariaComboboxProps
+  ] = useAriaCombobox(
+    isShowOptions,
+    true
+  )
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _clearItem = useCallback(() => {
@@ -203,7 +209,7 @@ const InputSuggest = ({
         {caption}
       </label>
       <OptionsPane
-         id={_optionsPaneId}  
+         id={_optionsPaneId}
          refOp={_refOp}
          isShow={isShowOptions}
          isFocusItem={isFocusItem}
@@ -222,10 +228,7 @@ const InputSuggest = ({
          onInputChange={_hInputChange}
          onEnter={_hEnter}
          onKeyDown={_hKeyDown}
-         role="combobox"
-         aria-autocomplete="list"
-         aria-expanded={isShowOptions}
-         aria-controls={_optionsPaneId}
+         {..._ariaComboboxProps}
        >
          {_isBtArrow(item, items, options) && <button
              ref={_refBtArrow}

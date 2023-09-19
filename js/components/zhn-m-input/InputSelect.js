@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _useId = _interopRequireDefault(require("../hooks/useId"));
+var _useAriaCombobox = _interopRequireDefault(require("./useAriaCombobox"));
 var _ArrowCell = _interopRequireDefault(require("./ArrowCell"));
 var _OptionsPane = _interopRequireDefault(require("./OptionsPane"));
 var _OptionFn = require("./OptionFn");
@@ -20,10 +20,10 @@ const InputSelect = _ref => {
     styleConfig,
     onSelect
   } = _ref;
-  const _optionPaneId = (0, _useId.default)(),
-    _refBtArrow = (0, _uiApi.useRef)(),
+  const _refBtArrow = (0, _uiApi.useRef)(),
     [item, setItem] = (0, _uiApi.useState)(initItem || DF_INIT_ITEM),
     [isShowOptions, setIsShowOptions] = (0, _uiApi.useState)(false),
+    [_optionPaneId, _ariaComboboxProps] = (0, _useAriaCombobox.default)(isShowOptions),
     [_hShowOptions, _hCloseOptions] = (0, _uiApi.useMemo)(() => [evt => {
       (0, _uiApi.stopDefaultFor)(evt);
       setIsShowOptions(true);
@@ -48,10 +48,9 @@ const InputSelect = _ref => {
     ], []);
   /*eslint-enable react-hooks/exhaustive-deps */
 
+  /*eslint-disable jsx-a11y/no-static-element-interactions*/
   return (0, _jsxRuntime.jsxs)("div", {
-    role: "combobox",
-    "aria-controls": _optionPaneId,
-    "aria-expanded": isShowOptions,
+    ..._ariaComboboxProps,
     tabIndex: "-1",
     className: _Input.CL_SELECT,
     style: styleConfig.ROOT,
