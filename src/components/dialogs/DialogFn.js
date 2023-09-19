@@ -16,9 +16,9 @@ const _crObject = Object.create
   arrConfig
 ) => {
   const _type = arrConfig[0];
-  return _type === 's'
+  return _type === "s" || _type === "sg"
     ? getItemValue(arrConfig[4])
-    : _type === 't'
+    : _type === "t"
        ? arrConfig[3]
        : void 0;
 }
