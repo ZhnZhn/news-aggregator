@@ -15,10 +15,11 @@ import {
   stopDefaultFor
 } from '../uiApi';
 
+import { crStyle2 } from '../crStyle';
+
 import { HAS_TOUCH_EVENTS } from '../has';
 
 import useAriaCombobox from './useAriaCombobox';
-
 
 import TextField from './TextField';
 import ButtonArrow from './ButtonArrow';
@@ -35,7 +36,7 @@ import {
 
 import {
   CL_SELECT,
-  CL_SELECT_LABEL,  
+  CL_SELECT_LABEL,
   CL_SELECT_OPTIONS,
   CL_SELECT_ITEM
 } from './Input.Style';
@@ -45,6 +46,9 @@ const S_OPTIONS_PANE = {
 }
 , S_BT_ARROW = {
   top: 12
+}
+, S_BT_ARROW_FILL = {
+  fill: "#80c040"
 };
 
 const DF_INIT_ITEM = ['', '']
@@ -233,7 +237,10 @@ const InputSuggest = ({
          {_isBtArrow(item, items, options) &&
            <ButtonArrow
               ref={_refBtArrow}
-              style={S_BT_ARROW}
+              style={crStyle2(
+                S_BT_ARROW,
+                isShowOptions && S_BT_ARROW_FILL
+              )}
               onKeyDown={_hKeyDownBtArrow}
               onClick={_hClickBtArrow}
            />

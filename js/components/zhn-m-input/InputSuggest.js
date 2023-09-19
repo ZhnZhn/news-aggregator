@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _crStyle = require("../crStyle");
 var _has = require("../has");
 var _useAriaCombobox = _interopRequireDefault(require("./useAriaCombobox"));
 var _TextField = _interopRequireDefault(require("./TextField"));
@@ -18,6 +19,9 @@ const S_OPTIONS_PANE = {
   },
   S_BT_ARROW = {
     top: 12
+  },
+  S_BT_ARROW_FILL = {
+    fill: "#80c040"
   };
 const DF_INIT_ITEM = ['', ''],
   NOT_HAS_TOUCH_EVENTS = !_has.HAS_TOUCH_EVENTS,
@@ -161,7 +165,7 @@ const InputSuggest = _ref => {
       ..._ariaComboboxProps,
       children: _isBtArrow(item, items, options) && (0, _jsxRuntime.jsx)(_ButtonArrow.default, {
         ref: _refBtArrow,
-        style: S_BT_ARROW,
+        style: (0, _crStyle.crStyle2)(S_BT_ARROW, isShowOptions && S_BT_ARROW_FILL),
         onKeyDown: _hKeyDownBtArrow,
         onClick: _hClickBtArrow
       })
