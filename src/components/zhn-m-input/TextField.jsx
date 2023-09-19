@@ -4,9 +4,11 @@ import {
   useState,
   useMemo,
   useImperativeHandle,
+
   KEY_ESCAPE,
   KEY_DELETE,
   KEY_ENTER,
+
   focusRefElement
 } from '../uiApi';
 
@@ -16,15 +18,15 @@ import useBool from '../hooks/useBool';
 import { HAS_TOUCH_EVENTS } from '../has';
 import SvgX from '../zhn-atoms/SvgX';
 
-const CL_SELECT = 'm-select'
-, CL_LABEL = `${CL_SELECT}__label`
-, M_TEXTFIELD = 'm-textfield'
-, CL_DIV = `${M_TEXTFIELD}-input__div`
-, CL_INPUT = `${M_TEXTFIELD}-input`
-, M_INPUT = 'm-input'
-, CL_INPUT_LINE = `${M_INPUT}__line`
-, CL_INPUT_MSG_ERR = `${M_INPUT}__msg-err`
-, CL_BT_SVG_CLEAR = "bt-svg-clear";
+import {
+  CL_SELECT,
+  CL_SELECT_LABEL,
+  CL_TEXTFIELD_INPUT_DIV,
+  CL_TEXTFIELD_INPUT,
+  CL_INPUT_LINE,
+  CL_INPUT_MSG_ERR,
+  CL_BT_SVG_CLEAR
+} from './Input.Style';
 
 const S_LABEL_TO_INPUT = {
   transform: 'scale(1) translate(0px, -6px)'
@@ -156,18 +158,18 @@ const TextField = forwardRef(({
       style={style}
     >
       <label
-        className={CL_LABEL}
+        className={CL_SELECT_LABEL}
         style={{..._labelStyle, ..._labelErrStyle}}
         htmlFor={_inputId}
        >
         {caption}
       </label>
-      <div className={CL_DIV}>
+      <div className={CL_TEXTFIELD_INPUT_DIV}>
         <input
           ref={_refTf}
           id={_inputId}
           type="text"
-          className={CL_INPUT}
+          className={CL_TEXTFIELD_INPUT}
           style={inputStyle}
           value={value}
           autoComplete="off"

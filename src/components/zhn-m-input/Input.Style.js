@@ -8,3 +8,12 @@ export const CL_SELECT = 'm-select'
 , CL_SELECT_INPUT_LINE = `${CL_SELECT}__line`
 , CL_SELECT_OPTIONS = crWithScrollCn(`${CL_SELECT}__options`)
 , CL_SELECT_ITEM = `${CL_SELECT}__item`
+
+const M_TEXTFIELD = "m-textfield";
+const M_INPUT = "m-input";
+
+export const CL_TEXTFIELD_INPUT = `${M_TEXTFIELD}-input`
+, CL_TEXTFIELD_INPUT_DIV = `${CL_TEXTFIELD_INPUT}__div`
+, CL_INPUT_LINE = `${M_INPUT}__line`
+, CL_INPUT_MSG_ERR = `${M_INPUT}__msg-err`
+, CL_BT_SVG_CLEAR = "bt-svg-clear";

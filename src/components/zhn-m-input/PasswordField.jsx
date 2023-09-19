@@ -13,17 +13,17 @@ import useRerender from '../hooks/useRerender';
 
 import { HAS_TOUCH_EVENTS } from '../has';
 
-const CL_SELECT = 'm-select'
-, CL_LABEL = `${CL_SELECT}__label`
-, M_TEXTFIELD = 'm-textfield'
-, CL_DIV = `${M_TEXTFIELD}-input__div`
-, CL_INPUT = `${M_TEXTFIELD}-input`
-, CL_BT_CLEAR = `${M_TEXTFIELD}__bt-clear`
-, M_INPUT = 'm-input'
-, CL_INPUT_LINE = `${M_INPUT}__line`
-, CL_INPUT_MSG_ERR = `${M_INPUT}__msg-err`
+import {
+  CL_SELECT,
+  CL_SELECT_LABEL,
+  CL_TEXTFIELD_INPUT_DIV,
+  CL_TEXTFIELD_INPUT,
+  CL_INPUT_LINE,
+  CL_INPUT_MSG_ERR,
+  CL_BT_SVG_CLEAR
+} from './Input.Style';
 
-, S_LABEL_TO_INPUT = {
+const S_LABEL_TO_INPUT = {
    transform: 'scale(1) translate(0px, -6px)'
 }
 , S_LABEL_ON_ERROR = {
@@ -152,13 +152,13 @@ const PasswordField = forwardRef(({
       style={style}
     >
       <label
-        className={CL_LABEL}
+        className={CL_SELECT_LABEL}
         style={{..._labelStyle, ..._labelErrStyle}}
         htmlFor={_id}
        >
         {caption}
       </label>
-      <div className={CL_DIV}>
+      <div className={CL_TEXTFIELD_INPUT_DIV}>
         <input
           hidden={true}
           autoComplete="username"
@@ -170,7 +170,7 @@ const PasswordField = forwardRef(({
           id={_id}
           type="password"
           autoComplete="current-password"
-          className={CL_INPUT}
+          className={CL_TEXTFIELD_INPUT}
           maxLength={maxLength}
           value={value}
           onChange={_hInputChange}
@@ -181,7 +181,7 @@ const PasswordField = forwardRef(({
         {
           HAS_TOUCH_EVENTS && value && <button
             type="button"
-            className={CL_BT_CLEAR}
+            className={CL_BT_SVG_CLEAR}
             onClick={_hClear}
           >x</button>
         }

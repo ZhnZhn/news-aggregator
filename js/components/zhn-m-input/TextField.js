@@ -8,16 +8,8 @@ var _useId = _interopRequireDefault(require("../hooks/useId"));
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _has = require("../has");
 var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
+var _Input = require("./Input.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_SELECT = 'm-select',
-  CL_LABEL = CL_SELECT + "__label",
-  M_TEXTFIELD = 'm-textfield',
-  CL_DIV = M_TEXTFIELD + "-input__div",
-  CL_INPUT = M_TEXTFIELD + "-input",
-  M_INPUT = 'm-input',
-  CL_INPUT_LINE = M_INPUT + "__line",
-  CL_INPUT_MSG_ERR = M_INPUT + "__msg-err",
-  CL_BT_SVG_CLEAR = "bt-svg-clear";
 const S_LABEL_TO_INPUT = {
     transform: 'scale(1) translate(0px, -6px)'
   },
@@ -105,10 +97,10 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
   const _labelStyle = value || isFocus ? void 0 : S_LABEL_TO_INPUT,
     [_labelErrStyle, _lineStyle] = isPassTest ? [] : [S_LABEL_ON_ERROR, S_LINE_ERROR];
   return (0, _jsxRuntime.jsxs)("div", {
-    className: CL_SELECT,
+    className: _Input.CL_SELECT,
     style: style,
     children: [(0, _jsxRuntime.jsx)("label", {
-      className: CL_LABEL,
+      className: _Input.CL_SELECT_LABEL,
       style: {
         ..._labelStyle,
         ..._labelErrStyle
@@ -116,12 +108,12 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
       htmlFor: _inputId,
       children: caption
     }), (0, _jsxRuntime.jsxs)("div", {
-      className: CL_DIV,
+      className: _Input.CL_TEXTFIELD_INPUT_DIV,
       children: [(0, _jsxRuntime.jsx)("input", {
         ref: _refTf,
         id: _inputId,
         type: "text",
-        className: CL_INPUT,
+        className: _Input.CL_TEXTFIELD_INPUT,
         style: inputStyle,
         value: value,
         autoComplete: "off",
@@ -137,14 +129,14 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
         ...restInputProps
       }), _has.HAS_TOUCH_EVENTS && hasClear && value && (0, _jsxRuntime.jsx)(_SvgX.default, {
         color: "black",
-        className: CL_BT_SVG_CLEAR,
+        className: _Input.CL_BT_SVG_CLEAR,
         style: S_BT_CLEAR,
         onClick: _clearInput
       }), children, (0, _jsxRuntime.jsx)("div", {
-        className: CL_INPUT_LINE,
+        className: _Input.CL_INPUT_LINE,
         style: _lineStyle
       }), _lineStyle && (0, _jsxRuntime.jsx)("div", {
-        className: CL_INPUT_MSG_ERR,
+        className: _Input.CL_INPUT_MSG_ERR,
         children: errorMsg
       })]
     })]
