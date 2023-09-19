@@ -24,7 +24,6 @@ const S_OPTIONS_PANE = {
     fill: "#80c040"
   };
 const FILTER_TIME_OUT_MLS = 350,
-  DF_INIT_ITEM = ['', ''],
   NOT_HAS_TOUCH_EVENTS = !_has.HAS_TOUCH_EVENTS,
   _isBtArrow = (item, items, options) => NOT_HAS_TOUCH_EVENTS || _has.HAS_TOUCH_EVENTS && !item && items.length === options.length;
 const InputSuggest = _ref => {
@@ -41,20 +40,55 @@ const InputSuggest = _ref => {
     _refBtArrow = (0, _uiApi.useRef)(),
     _refOp = (0, _uiApi.useRef)(),
     _refFilterId = (0, _uiApi.useRef)(),
-    [items, setItems] = (0, _uiApi.useState)(options),
-    [item, setItem] = (0, _uiApi.useState)(initItem || DF_INIT_ITEM),
-    [state, dispatch] = (0, _useOptionsPane.useOptionsPane)(),
-    [isShowOptions, isFocusItem] = state,
+    _refItem = (0, _uiApi.useRef)(),
+    [state, dispatch] = (0, _useOptionsPane.useOptionsPane)(options, initItem),
+    [isShowOptions, isFocusItem, items, item] = state,
     [_optionsPaneId, _ariaComboboxProps] = (0, _useAriaCombobox.default)(isShowOptions, true)
 
     /*eslint-disable react-hooks/exhaustive-deps */,
-    _clearItem = (0, _uiApi.useCallback)(() => {
+    [_clearItem, _setItem, _hCloseOptions, _hKeyDown, _hClickBtArrow] = (0, _uiApi.useMemo)(() => [
+    //_clearItem
+    () => {
       onSelect(initItem, id);
-      setItem('');
-      setItems(options);
-      dispatch(_useOptionsPane.ACTION_CLOSE_OPTIONS);
-    }, [])
+      dispatch([_useOptionsPane.ACTION_CLOSE_OPTIONS, options, '']);
+    },
     // onSelect, initItem, id, dispatch
+
+    //_setItem
+    item => {
+      const _isEmptyOptions = item === _useOptionsPane.EMPTY_OPTIONS[0],
+        _item = _isEmptyOptions ? initItem : item;
+      onSelect(_item, id);
+      dispatch([_useOptionsPane.ACTION_CLOSE_OPTIONS, _isEmptyOptions ? options : void 0, _item]);
+      (0, _uiApi.setRefInputValue)(_refTf, _item);
+      if (_item) {
+        (0, _uiApi.focusRefElement)(_refBtArrow);
+      }
+    },
+    // id, initItem, onSelect, dispatch
+
+    //_hCloseOptions
+    () => {
+      dispatch([_useOptionsPane.ACTION_CLOSE_OPTIONS]);
+      (0, _uiApi.focusRefElement)(_refBtArrow);
+    },
+    // dispatch
+
+    //_hKeyDown
+    evt => {
+      const key = evt.key;
+      if (key === _uiApi.KEY_ARROW_DOWN) {
+        dispatch([_useOptionsPane.ACTION_SHOW_OPTIONS_WITH_FOCUS]);
+      }
+    },
+    // dispatch
+
+    //_hClickBtArrow
+    () => {
+      dispatch([_useOptionsPane.ACTION_SHOW_OPTIONS_WITH_FOCUS]);
+    }
+    // dispatch
+    ], [])
     /*eslint-enable react-hooks/exhaustive-deps */,
     _hKeyDownBtArrow = evt => {
       if (isShowOptions) {
@@ -64,83 +98,48 @@ const InputSuggest = _ref => {
         }
       } else {
         if (evt.key === _uiApi.KEY_ARROW_DOWN) {
-          dispatch(_useOptionsPane.ACTION_SHOW_OPTIONS_WITH_FOCUS);
+          dispatch([_useOptionsPane.ACTION_SHOW_OPTIONS_WITH_FOCUS]);
         } else if (evt.key === _uiApi.KEY_DELETE) {
           _clearItem();
           (0, _uiApi.setRefInputValue)(_refTf, '');
           (0, _uiApi.focusRefElement)(_refTf);
         }
       }
-    }
-
-    /*eslint-disable react-hooks/exhaustive-deps */,
-    _hCloseOptions = (0, _uiApi.useMemo)(() => () => {
-      dispatch(_useOptionsPane.ACTION_CLOSE_OPTIONS);
-      (0, _uiApi.focusRefElement)(_refBtArrow);
-    }, [])
-    // dispatch
-    /*eslint-enable react-hooks/exhaustive-deps */
-
-    /*eslint-disable react-hooks/exhaustive-deps */,
-    _setItem = (0, _uiApi.useCallback)(item => {
-      const _isEmptyOptions = item === _useOptionsPane.EMPTY_OPTIONS[0],
-        _item = _isEmptyOptions ? initItem : item;
-      onSelect(_item, id);
-      setItem(_item);
-      dispatch(_useOptionsPane.ACTION_CLOSE_OPTIONS);
-      if (_isEmptyOptions) {
-        setItems(options);
-      }
-      (0, _uiApi.setRefInputValue)(_refTf, _item);
-      if (_item) {
-        (0, _uiApi.focusRefElement)(_refBtArrow);
-      }
-    }, [])
-    // id, onSelect, dispatch
-    /*eslint-enable react-hooks/exhaustive-deps */,
+    },
     _getSearchOptions = (0, _uiApi.useMemo)(() => (0, _uiApi.crLazyValue)(() => options.map(item => {
       item._t = item[0].toLowerCase();
       return item;
     })), [options])
 
     /*eslint-disable react-hooks/exhaustive-deps */,
-    _hInputChange = (0, _uiApi.useCallback)((token, id) => {
+    _hInputChange = (0, _uiApi.useMemo)(() => (token, id) => {
       const _token = (token || '').trim().toLowerCase();
       if (_token) {
         clearTimeout((0, _uiApi.getRefValue)(_refFilterId));
         (0, _uiApi.setRefValue)(_refFilterId, setTimeout(() => {
-          const _nextItems = _getSearchOptions().filter(item => item._t.indexOf(_token) !== -1);
-          setItems(_nextItems.length ? _nextItems : _useOptionsPane.EMPTY_OPTIONS);
-          dispatch(_useOptionsPane.ACTION_SHOW_OPTIONS);
+          const _nextItems = _getSearchOptions().filter(item => item._t.indexOf(_token) !== -1),
+            _items = _nextItems.length ? _nextItems : _useOptionsPane.EMPTY_OPTIONS;
+          (0, _uiApi.setRefValue)(_refItem, _items[0]);
+          dispatch([_useOptionsPane.ACTION_SHOW_OPTIONS, _items]);
         }, FILTER_TIME_OUT_MLS));
       } else {
         _clearItem();
       }
     }, [_getSearchOptions, _clearItem])
-    //options, dispatch, _clearItem
-    /*eslint-enable react-hooks/exhaustive-deps */,
-    _hKeyDown = evt => {
-      const key = evt.key;
-      if (key === _uiApi.KEY_ARROW_DOWN) {
-        dispatch(_useOptionsPane.ACTION_SHOW_OPTIONS_WITH_FOCUS);
-      }
-    },
-    _hEnter = (item, id, evt) => {
-      (0, _uiApi.stopDefaultFor)(evt);
-      setItems(prevItems => {
-        if (prevItems.length !== 0) {
-          _setItem(prevItems[0]);
-        }
-        return prevItems;
-      });
-    },
-    _hSelect = (item, evt) => {
+    //dispatch
+    /*eslint-enable react-hooks/exhaustive-deps */
+
+    /*eslint-disable react-hooks/exhaustive-deps */,
+    [_hSelect, _hEnter] = (0, _uiApi.useMemo)(() => [(item, evt) => {
       (0, _uiApi.stopDefaultFor)(evt);
       _setItem(item);
-    },
-    _hClickBtArrow = () => {
-      dispatch(_useOptionsPane.ACTION_SHOW_OPTIONS_WITH_FOCUS);
-    };
+    }, (item, id, evt) => {
+      (0, _uiApi.stopDefaultFor)(evt);
+      _setItem((0, _uiApi.getRefValue)(_refItem));
+    }], []);
+  // _setItem
+  /*eslint-enable react-hooks/exhaustive-deps */
+
   return (0, _jsxRuntime.jsxs)("div", {
     role: "presentation",
     className: _Input.CL_SELECT,

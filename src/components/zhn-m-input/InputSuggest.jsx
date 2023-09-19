@@ -2,9 +2,7 @@ import {
   crLazyValue,
 
   useRef,
-  useState,
   useMemo,
-  useCallback,
 
   KEY_ARROW_DOWN,
   KEY_DELETE,
@@ -53,7 +51,6 @@ const S_OPTIONS_PANE = {
 };
 
 const FILTER_TIME_OUT_MLS = 350
-, DF_INIT_ITEM = ['', '']
 , NOT_HAS_TOUCH_EVENTS = !HAS_TOUCH_EVENTS
 , _isBtArrow = (
   item,
@@ -75,21 +72,19 @@ const InputSuggest = ({
   , _refBtArrow = useRef()
   , _refOp = useRef()
   , _refFilterId = useRef()
-  , [
-    items,
-    setItems
-  ] = useState(options)
-  , [
-    item,
-    setItem
-  ] = useState(initItem || DF_INIT_ITEM)
+  , _refItem = useRef()
   , [
     state,
     dispatch
-  ] = useOptionsPane()
+  ] = useOptionsPane(
+    options,
+    initItem
+  )
   , [
     isShowOptions,
-    isFocusItem
+    isFocusItem,
+    items,
+    item
   ] = state
   , [
     _optionsPaneId,
@@ -100,13 +95,61 @@ const InputSuggest = ({
   )
 
   /*eslint-disable react-hooks/exhaustive-deps */
-  , _clearItem = useCallback(() => {
-    onSelect(initItem, id)
-    setItem('')
-    setItems(options)
-    dispatch(ACTION_CLOSE_OPTIONS)
-  }, [])
-  // onSelect, initItem, id, dispatch
+  , [
+    _clearItem,
+    _setItem,
+    _hCloseOptions,
+    _hKeyDown,
+    _hClickBtArrow
+  ] = useMemo(() => [
+    //_clearItem
+    () => {
+      onSelect(initItem, id)
+      dispatch([ACTION_CLOSE_OPTIONS, options, ''])
+    },
+    // onSelect, initItem, id, dispatch
+
+    //_setItem
+    (item) => {
+      const _isEmptyOptions = item === EMPTY_OPTIONS[0]
+      , _item = _isEmptyOptions
+        ? initItem
+        : item;
+      onSelect(_item, id)
+      dispatch([
+        ACTION_CLOSE_OPTIONS,
+        _isEmptyOptions ? options : void 0,
+        _item
+      ])
+      setRefInputValue(_refTf, _item)
+      if (_item) {
+        focusRefElement(_refBtArrow)
+      }
+    },
+    // id, initItem, onSelect, dispatch
+
+    //_hCloseOptions
+    () => {
+      dispatch([ACTION_CLOSE_OPTIONS])
+      focusRefElement(_refBtArrow)
+    },
+    // dispatch
+
+    //_hKeyDown
+    (evt) => {
+      const key = evt.key;
+      if (key === KEY_ARROW_DOWN) {
+        dispatch([ACTION_SHOW_OPTIONS_WITH_FOCUS])
+      }
+    },
+    // dispatch
+
+    //_hClickBtArrow
+    () => {
+      dispatch([ACTION_SHOW_OPTIONS_WITH_FOCUS])
+    }
+    // dispatch
+  ], [])
   /*eslint-enable react-hooks/exhaustive-deps */
 
   , _hKeyDownBtArrow = (evt) => {
@@ -117,7 +160,7 @@ const InputSuggest = ({
       }
     } else {
       if (evt.key === KEY_ARROW_DOWN) {
-        dispatch(ACTION_SHOW_OPTIONS_WITH_FOCUS)
+        dispatch([ACTION_SHOW_OPTIONS_WITH_FOCUS])
       } else if (evt.key === KEY_DELETE) {
         _clearItem()
         setRefInputValue(_refTf, '')
@@ -125,34 +168,6 @@ const InputSuggest = ({
       }
     }
   }
-
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _hCloseOptions = useMemo(() => () => {
-    dispatch(ACTION_CLOSE_OPTIONS)
-    focusRefElement(_refBtArrow)
-  }, [])
-  // dispatch
-  /*eslint-enable react-hooks/exhaustive-deps */
-
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _setItem = useCallback(item => {
-    const _isEmptyOptions = item === EMPTY_OPTIONS[0]
-    , _item = _isEmptyOptions
-      ? initItem
-      : item;
-    onSelect(_item, id)
-    setItem(_item)
-    dispatch(ACTION_CLOSE_OPTIONS)
-    if (_isEmptyOptions) {
-      setItems(options)
-    }
-    setRefInputValue(_refTf, _item)
-    if (_item) {
-      focusRefElement(_refBtArrow)
-    }
-  }, [])
-  // id, onSelect, dispatch
-  /*eslint-enable react-hooks/exhaustive-deps */
 
   , _getSearchOptions = useMemo(() => crLazyValue(
       () => options.map(item => {
@@ -163,7 +178,7 @@ const InputSuggest = ({
   )
 
   /*eslint-disable react-hooks/exhaustive-deps */
-  , _hInputChange = useCallback((token, id) => {
+  , _hInputChange = useMemo(() => (token, id) => {
        const _token = (token || '')
          .trim()
          .toLowerCase();
@@ -173,42 +188,39 @@ const InputSuggest = ({
             const _nextItems = _getSearchOptions().filter(
               item => item._t.indexOf(_token) !== -1
             )
-            setItems(_nextItems.length
-              ? _nextItems
-              : EMPTY_OPTIONS
-            )
-            dispatch(ACTION_SHOW_OPTIONS)
+            , _items = _nextItems.length
+               ? _nextItems
+               : EMPTY_OPTIONS
+            setRefValue(_refItem, _items[0])
+            dispatch([
+              ACTION_SHOW_OPTIONS,
+              _items
+            ])
           }, FILTER_TIME_OUT_MLS)
         )
        } else {
          _clearItem()
        }
   }, [_getSearchOptions, _clearItem])
-  //options, dispatch, _clearItem
+  //dispatch
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  , _hKeyDown = (evt) => {
-      const key = evt.key;
-      if (key === KEY_ARROW_DOWN) {
-        dispatch(ACTION_SHOW_OPTIONS_WITH_FOCUS)
-      }
-  }
-  , _hEnter = (item, id, evt) => {
+  /*eslint-disable react-hooks/exhaustive-deps */
+  , [
+    _hSelect,
+    _hEnter
+  ] = useMemo(() => [
+    (item, evt) => {
       stopDefaultFor(evt)
-      setItems(prevItems => {
-        if (prevItems.length !== 0) {
-          _setItem(prevItems[0])
-        }
-        return prevItems;
-      })
-  }
-  , _hSelect = (item, evt) => {
-    stopDefaultFor(evt)
-    _setItem(item)
-  }
-  , _hClickBtArrow = () => {
-    dispatch(ACTION_SHOW_OPTIONS_WITH_FOCUS)
-  };
+      _setItem(item)
+    },
+    (item, id, evt) => {
+      stopDefaultFor(evt)
+      _setItem(getRefValue(_refItem))
+    }
+  ], []);
+  // _setItem
+  /*eslint-enable react-hooks/exhaustive-deps */
 
   return (
     <div
