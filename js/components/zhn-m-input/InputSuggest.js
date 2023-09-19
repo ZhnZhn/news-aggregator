@@ -7,7 +7,7 @@ var _uiApi = require("../uiApi");
 var _has = require("../has");
 var _useAriaCombobox = _interopRequireDefault(require("./useAriaCombobox"));
 var _TextField = _interopRequireDefault(require("./TextField"));
-var _ArrowCell = _interopRequireDefault(require("./ArrowCell"));
+var _ButtonArrow = _interopRequireDefault(require("./ButtonArrow"));
 var _OptionsPane = _interopRequireDefault(require("./OptionsPane"));
 var _OptionFn = require("./OptionFn");
 var _useOptionsPane = require("./useOptionsPane");
@@ -159,14 +159,11 @@ const InputSuggest = _ref => {
       onEnter: _hEnter,
       onKeyDown: _hKeyDown,
       ..._ariaComboboxProps,
-      children: _isBtArrow(item, items, options) && (0, _jsxRuntime.jsx)("button", {
+      children: _isBtArrow(item, items, options) && (0, _jsxRuntime.jsx)(_ButtonArrow.default, {
         ref: _refBtArrow,
-        type: "button",
-        className: _Input.CL_SELECT_DIV_BT,
         style: S_BT_ARROW,
         onKeyDown: _hKeyDownBtArrow,
-        onClick: _hClickBtArrow,
-        children: (0, _jsxRuntime.jsx)(_ArrowCell.default, {})
+        onClick: _hClickBtArrow
       })
     })]
   });

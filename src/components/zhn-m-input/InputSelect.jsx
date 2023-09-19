@@ -9,18 +9,15 @@ import {
 
 import useAriaCombobox from './useAriaCombobox';
 
-import ArrowCell from './ArrowCell';
+import ButtonArrow from './ButtonArrow';
 import OptionsPane from './OptionsPane';
-import {
-  getItemCaption
-} from './OptionFn';
+import { getItemCaption } from './OptionFn';
 
 import {
   CL_SELECT,
   CL_SELECT_LABEL,
   CL_SELECT_DIV,
   CL_SELECT_DIV_VALUE,
-  CL_SELECT_DIV_BT,
   CL_SELECT_INPUT_LINE,
   CL_SELECT_OPTIONS,
   CL_SELECT_ITEM
@@ -85,7 +82,7 @@ const InputSelect = ({
   /*eslint-enable react-hooks/exhaustive-deps */
 
   /*eslint-disable jsx-a11y/no-static-element-interactions*/
-  return (    
+  return (
     <div
       {..._ariaComboboxProps}
       tabIndex="-1"
@@ -112,13 +109,7 @@ const InputSelect = ({
         <div className={CL_SELECT_DIV_VALUE}>
            {getItemCaption(item)}
         </div>
-        <button
-          ref={_refBtArrow}
-          type="button"
-          className={CL_SELECT_DIV_BT}
-        >
-           <ArrowCell />
-        </button>
+        <ButtonArrow ref={_refBtArrow} />
         <div className={CL_SELECT_INPUT_LINE} />
       </div>
     </div>

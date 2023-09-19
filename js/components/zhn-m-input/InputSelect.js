@@ -5,7 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useAriaCombobox = _interopRequireDefault(require("./useAriaCombobox"));
-var _ArrowCell = _interopRequireDefault(require("./ArrowCell"));
+var _ButtonArrow = _interopRequireDefault(require("./ButtonArrow"));
 var _OptionsPane = _interopRequireDefault(require("./OptionsPane"));
 var _OptionFn = require("./OptionFn");
 var _Input = require("./Input.Style");
@@ -73,11 +73,8 @@ const InputSelect = _ref => {
       children: [(0, _jsxRuntime.jsx)("div", {
         className: _Input.CL_SELECT_DIV_VALUE,
         children: (0, _OptionFn.getItemCaption)(item)
-      }), (0, _jsxRuntime.jsx)("button", {
-        ref: _refBtArrow,
-        type: "button",
-        className: _Input.CL_SELECT_DIV_BT,
-        children: (0, _jsxRuntime.jsx)(_ArrowCell.default, {})
+      }), (0, _jsxRuntime.jsx)(_ButtonArrow.default, {
+        ref: _refBtArrow
       }), (0, _jsxRuntime.jsx)("div", {
         className: _Input.CL_SELECT_INPUT_LINE
       })]

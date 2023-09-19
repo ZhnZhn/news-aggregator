@@ -19,8 +19,9 @@ import { HAS_TOUCH_EVENTS } from '../has';
 
 import useAriaCombobox from './useAriaCombobox';
 
+
 import TextField from './TextField';
-import ArrowCell from './ArrowCell';
+import ButtonArrow from './ButtonArrow';
 import OptionsPane from './OptionsPane';
 import { getItemCaption } from './OptionFn';
 
@@ -34,8 +35,7 @@ import {
 
 import {
   CL_SELECT,
-  CL_SELECT_LABEL,
-  CL_SELECT_DIV_BT,
+  CL_SELECT_LABEL,  
   CL_SELECT_OPTIONS,
   CL_SELECT_ITEM
 } from './Input.Style';
@@ -230,16 +230,13 @@ const InputSuggest = ({
          onKeyDown={_hKeyDown}
          {..._ariaComboboxProps}
        >
-         {_isBtArrow(item, items, options) && <button
-             ref={_refBtArrow}
-             type="button"
-             className={CL_SELECT_DIV_BT}
-             style={S_BT_ARROW}
-             onKeyDown={_hKeyDownBtArrow}
-             onClick={_hClickBtArrow}
-         >
-            <ArrowCell />
-         </button>
+         {_isBtArrow(item, items, options) &&
+           <ButtonArrow
+              ref={_refBtArrow}
+              style={S_BT_ARROW}
+              onKeyDown={_hKeyDownBtArrow}
+              onClick={_hClickBtArrow}
+           />
        }
        </TextField>
     </div>
