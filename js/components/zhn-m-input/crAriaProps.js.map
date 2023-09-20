@@ -1,0 +1,18 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn-m-input/crAriaProps.js"
+ ],
+ "file": "../../../src/components/zhn-m-input/crAriaProps.js",
+ "names": [
+  "LISTBOX_ARIA_LABEL",
+  "crAriaListboxProps",
+  "id",
+  "role",
+  "exports",
+  "crAriaOptionProps",
+  "isSelected",
+  "tabIndex"
+ ],
+ "mappings": ";;;;AACA,MAAMA,kBAAkB,GAAG,aAAa;AAEjC,MAAMC,kBAAkB,GAC7BC,EAAE,KACE;EACJA,EAAE;EACFC,IAAI,EAAE,SAAS;EACf,YAAY,EAAEH;AAChB,CAAC,CAAC;AAAAI,OAAA,CAAAH,kBAAA,GAAAA,kBAAA;AAEK,MAAMI,iBAAiB,GAAGA,CAC/BC,UAAU,EACVC,QAAQ,MACJ;EACJJ,IAAI,EAAE,QAAQ;EACd,eAAe,EAAEG,UAAU;EAC3BC;AACF,CAAC,CAAC;AAAAH,OAAA,CAAAC,iBAAA,GAAAA,iBAAA"
+}

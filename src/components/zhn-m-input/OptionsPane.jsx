@@ -18,6 +18,10 @@ import {
 } from './OptionFn';
 
 import useKeyDownArrow from './useKeyDownArrow';
+import {
+  crAriaListboxProps,
+  crAriaOptionProps
+} from './crAriaProps';
 
 const _crItem = (
   item,
@@ -51,13 +55,12 @@ const _crItem = (
     }
   };
 
+  /*eslint-disable jsx-a11y/no-static-element-interactions*/
   return (
     <div
+      {...crAriaOptionProps(_ariaSelected, _tabIndex)}
       key={value}
       ref={_refOptionFn}
-      role="option"
-      aria-selected={_ariaSelected}
-      tabIndex={_tabIndex}
       className={clItem}
       onClick={evt => onSelect(item, evt)}
       onKeyDown={_hKeyDown}
@@ -65,6 +68,7 @@ const _crItem = (
       {caption}
     </div>
   );
+  /*eslint-enable jsx-a11y/no-static-element-interactions*/
 };
 
 const OptionsPane = ({
@@ -112,10 +116,9 @@ const OptionsPane = ({
      onClose={onClose}
    >
      <ShowHide
+       {...crAriaListboxProps(id)}
        isScrollable={true}
        isShow={isShow}
-       role="listbox"
-       id={id}
        className={className}
        style={style}
        onKeyDown={_hKeyDownArrow}

@@ -9,6 +9,8 @@ var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 var _OptionFn = require("./OptionFn");
 var _useKeyDownArrow = _interopRequireDefault(require("./useKeyDownArrow"));
+var _crAriaProps = require("./crAriaProps");
+var _preact = require("preact");
 var _jsxRuntime = require("preact/jsx-runtime");
 const _crItem = (item, index, _ref2) => {
   let {
@@ -32,17 +34,19 @@ const _crItem = (item, index, _ref2) => {
         onSelect(item, evt);
       }
     };
-  return (0, _jsxRuntime.jsx)("div", {
+
+  /*eslint-disable jsx-a11y/no-static-element-interactions*/
+  return (0, _preact.createElement)("div", {
+    ...(0, _crAriaProps.crAriaOptionProps)(_ariaSelected, _tabIndex),
+    key: value,
     ref: _refOptionFn,
-    role: "option",
-    "aria-selected": _ariaSelected,
-    tabIndex: _tabIndex,
     className: clItem,
     onClick: evt => onSelect(item, evt),
-    onKeyDown: _hKeyDown,
-    children: caption
-  }, value);
+    onKeyDown: _hKeyDown
+  }, caption);
+  /*eslint-enable jsx-a11y/no-static-element-interactions*/
 };
+
 const OptionsPane = _ref3 => {
   let {
     refOp,
@@ -81,10 +85,9 @@ const OptionsPane = _ref3 => {
     isShow: isShow,
     onClose: onClose,
     children: (0, _jsxRuntime.jsx)(_ShowHide.default, {
+      ...(0, _crAriaProps.crAriaListboxProps)(id),
       isScrollable: true,
       isShow: isShow,
-      role: "listbox",
-      id: id,
       className: className,
       style: style,
       onKeyDown: _hKeyDownArrow,
