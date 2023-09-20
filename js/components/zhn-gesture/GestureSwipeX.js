@@ -7,8 +7,9 @@ var _uiApi = require("../uiApi");
 var _has = require("../has");
 var _usePassiveTouchEvent = _interopRequireDefault(require("../hooks/usePassiveTouchEvent"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const BORDER_LEFT = 'border-left';
+const BORDER_LEFT = "border-left";
 const DRAG_START_BORDER_LEFT = "4px solid #d64336";
+const TOUCH_ACTION = "touch-action";
 const LONG_TOUCH = 1000;
 const NOT_HAS_TOUCH_EVENTS = !_has.HAS_TOUCH_EVENTS;
 const _preventDefault = evt => {
@@ -16,20 +17,29 @@ const _preventDefault = evt => {
     evt.preventDefault();
   }
 };
-const _assign = Object.assign;
-const _styleNode = node => {
-  node.style.setProperty(BORDER_LEFT, DRAG_START_BORDER_LEFT);
+const _assign = Object.assign,
+  _getElementStyle = el => el.style;
+const _setStartStyle = node => {
+  const _nodeStyle = _getElementStyle(node);
+  _nodeStyle.setProperty(BORDER_LEFT, DRAG_START_BORDER_LEFT);
+  if (_has.HAS_TOUCH_EVENTS) {
+    _nodeStyle.setProperty(TOUCH_ACTION, "none");
+  }
 };
 const _setMoveStyle = (node, dX) => {
-  _assign(node.style, {
+  _assign(_getElementStyle(node), {
     right: dX + 'px',
     opacity: 1 - 0.5 * Math.abs(dX) / 60
   });
 };
 const _setEndStyle = (node, isInitialStyle) => {
-  node.style.removeProperty(BORDER_LEFT);
+  const _nodeStyle = _getElementStyle(node);
+  _nodeStyle.removeProperty(BORDER_LEFT);
+  if (_has.HAS_TOUCH_EVENTS) {
+    _nodeStyle.removeProperty(TOUCH_ACTION);
+  }
   if (isInitialStyle) {
-    _assign(node.style, {
+    _assign(_nodeStyle, {
       right: 0,
       opacity: 1
     });
@@ -52,7 +62,7 @@ const GestureSwipeX = (0, _uiApi.forwardRef)((_ref2, ref) => {
     _refGestureId = (0, _uiApi.useRef)(),
     _gestureStartImpl = (0, _uiApi.useCallback)(node => {
       (0, _uiApi.setRefValue)(_refIsGestureStart, true);
-      _styleNode(node);
+      _setStartStyle(node);
     }, [])
     /*eslint-disable react-hooks/exhaustive-deps */,
     _gestureStart = (0, _uiApi.useCallback)(evt => {
