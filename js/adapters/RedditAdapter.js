@@ -10,6 +10,7 @@ var _crArticles = _interopRequireDefault(require("./crArticles"));
 const SOURCE_ID = 'rd_topby';
 const _isArr = Array.isArray;
 const _isStr = v => typeof v === 'string';
+const _isObj = v => v && typeof v === 'object';
 const _isTitleStartWithTag = (strTitle, strTag) => {
   if (strTitle[0] === '[') {
     const _indexOfClosedBracket = strTitle.indexOf(']');
@@ -58,18 +59,27 @@ const _filterItemBy = item => {
   } = item || {};
   return data && !data.over_18 && !data.quarantine && !data.author_is_blocked;
 };
+const _crTitleAndUrl = data => {
+  const {
+      subreddit,
+      subreddit_subscribers
+    } = data,
+    _subreddit = (0, _utils.decodeHTMLEntities)((0, _utils.domSanitize)(subreddit)),
+    _subscribers = (0, _utils.formatNumber)(subreddit_subscribers);
+  return {
+    title: "r/" + _subreddit + " " + _subscribers,
+    url: _RedditApi.API_URL + "/" + _subreddit
+  };
+};
 const _crSubredditItem = arr => {
   const item = _isArr(arr) ? arr[0] : void 0,
     {
       data
-    } = item || {},
-    subreddit = (0, _utils.decodeHTMLEntities)((0, _utils.domSanitize)(data.subreddit)),
-    subscribers = (0, _utils.formatNumber)(data.subreddit_subscribers);
-  return data ? {
+    } = item || {};
+  return _isObj(data) ? {
+    ..._crTitleAndUrl(data),
     source: SOURCE_ID,
-    articleId: (0, _utils.crId)(),
-    title: "r/" + subreddit + " " + subscribers,
-    url: _RedditApi.API_URL + "/" + subreddit
+    articleId: (0, _utils.crId)()
   } : void 0;
 };
 const _toArticles = json => {

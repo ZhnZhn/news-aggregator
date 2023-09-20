@@ -15,7 +15,6 @@ const SUBRREDIT_OPTIONS = [
 ["FreeEBOOKS"],
 ["bicycling"],
 ["classicalmusic"],
-["ChartGPT"],
 ["CryptoCurrency"],
 ["CryptoMarkets"],
 ["CryptoTechnology"],

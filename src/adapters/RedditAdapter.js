@@ -18,6 +18,7 @@ import crArticles from './crArticles';
 const SOURCE_ID = 'rd_topby';
 const _isArr = Array.isArray;
 const _isStr = v => typeof v === 'string';
+const _isObj = v => v && typeof v === 'object';
 
 const _isTitleStartWithTag = (
   strTitle,
@@ -84,23 +85,35 @@ const _filterItemBy = (
     && !data.author_is_blocked;
 }
 
+const _crTitleAndUrl = (
+  data
+) => {
+  const {
+    subreddit,
+    subreddit_subscribers
+  } = data
+  , _subreddit = decodeHTMLEntities(
+    domSanitize(subreddit)
+  )
+  , _subscribers = formatNumber(
+     subreddit_subscribers
+  );
+  return {
+    title: `r/${_subreddit} ${_subscribers}`,
+    url: `${API_URL}/${_subreddit}`
+  };
+};
+
 const _crSubredditItem = (arr) => {
   const item = _isArr(arr)
     ? arr[0]
     : void 0
-  , { data } = item || {}
-  , subreddit = decodeHTMLEntities(
-    domSanitize(data.subreddit)
-  )
-  , subscribers = formatNumber(
-     data.subreddit_subscribers
-  );
-  return data
+  , { data } = item || {};
+  return _isObj(data)
     ? {
+      ..._crTitleAndUrl(data),
       source: SOURCE_ID,
-      articleId: crId(),
-      title: `r/${subreddit} ${subscribers}`,
-      url: `${API_URL}/${subreddit}`
+      articleId: crId()
      }
     : void 0;
 };
