@@ -7,6 +7,8 @@ import {
   EVENT_TOUCH_CANCEL,
   EVENT_TOUCH_END,
 
+  PASSIVE_EVENT_OPTIONS,
+
   getRefValue,
   getClientX,
   getClientY
@@ -17,6 +19,9 @@ import { HAS_TOUCH_EVENTS } from '../has';
 const _assign = Object.assign
 , _isArr = Array.isArray
 , NOT_HAS_TOUCH_EVENTS = !HAS_TOUCH_EVENTS
+, EVENT_OPTIONS = HAS_TOUCH_EVENTS
+   ? PASSIVE_EVENT_OPTIONS
+   : false
 , [
   INIT_EVENT,
   MOVE_EVENT,
@@ -35,9 +40,6 @@ const _assign = Object.assign
   'mouseleave',
   'mouseup'
 ];
-
-const EVENT_OPTIONS = { passive: true }
-, MOVE_EVENT_OPTIONS = { passive: false };
 
 const _fGetIntStyleProperty = (
   propName
@@ -118,6 +120,12 @@ const useXYMovable = (
     , _initialEvtClientX
     , _initialEvtClientY;
 
+    if (HAS_TOUCH_EVENTS) {
+      _assign(_elementStyle, {
+        touchAction: "none"
+      })
+    }
+
     function _moveDone () {
       const _prevTop = _getIntStyleTop(_elementStyle)
       , _prevLeft = _getIntStyleLeft(_elementStyle)
@@ -144,7 +152,9 @@ const useXYMovable = (
     function _hMove(evt) {
       if (evt.cancelable) {
         evt.stopPropagation()
-        evt.preventDefault()
+        if (NOT_HAS_TOUCH_EVENTS) {
+          evt.preventDefault()
+        }
       }
 
       if (_diffX === 0 && _diffY === 0) {
@@ -156,7 +166,7 @@ const useXYMovable = (
       const _translate = `translate(${_diffX}px,${_diffY}px)`
       _assign(_elementStyle, {
         webkitTransform: _translate,
-        transform: _translate
+        transform: _translate,
       })
     }
 
@@ -171,7 +181,7 @@ const useXYMovable = (
       _initialEvtClientX = getClientX(evt)
       _initialEvtClientY = getClientY(evt)
       if (_isInitEvent(evt, _initialEvtClientX, _initialEvtClientY, _element)) {
-        _element.addEventListener(MOVE_EVENT, _hMove, MOVE_EVENT_OPTIONS)
+        _element.addEventListener(MOVE_EVENT, _hMove, EVENT_OPTIONS)
         _element.addEventListener(CANCEL_EVENT, _hResetEvent, EVENT_OPTIONS)
         _element.addEventListener(RESET_EVENT, _hResetEvent, EVENT_OPTIONS)
       }
@@ -179,7 +189,7 @@ const useXYMovable = (
 
     function clearEventListener() {
       _elementStyle.cursor = ''
-      _element.removeEventListener(MOVE_EVENT, _hMove, MOVE_EVENT_OPTIONS)
+      _element.removeEventListener(MOVE_EVENT, _hMove, EVENT_OPTIONS)
       _element.removeEventListener(CANCEL_EVENT, _hResetEvent, EVENT_OPTIONS)
       _element.removeEventListener(RESET_EVENT, _hResetEvent, EVENT_OPTIONS)
     }

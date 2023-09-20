@@ -7,13 +7,8 @@ var _has = require("../has");
 const _assign = Object.assign,
   _isArr = Array.isArray,
   NOT_HAS_TOUCH_EVENTS = !_has.HAS_TOUCH_EVENTS,
+  EVENT_OPTIONS = _has.HAS_TOUCH_EVENTS ? _uiApi.PASSIVE_EVENT_OPTIONS : false,
   [INIT_EVENT, MOVE_EVENT, CANCEL_EVENT, RESET_EVENT] = _has.HAS_TOUCH_EVENTS ? [_uiApi.EVENT_TOUCH_START, _uiApi.EVENT_TOUCH_MOVE, _uiApi.EVENT_TOUCH_CANCEL, _uiApi.EVENT_TOUCH_END] : ['mousedown', 'mousemove', 'mouseleave', 'mouseup'];
-const EVENT_OPTIONS = {
-    passive: true
-  },
-  MOVE_EVENT_OPTIONS = {
-    passive: false
-  };
 const _fGetIntStyleProperty = propName => style => parseInt(style[propName], 10),
   _getIntStyleTop = _fGetIntStyleProperty('top'),
   _getIntStyleLeft = _fGetIntStyleProperty('left');
@@ -56,6 +51,11 @@ const useXYMovable = refElement => {
       _diffY = 0,
       _initialEvtClientX,
       _initialEvtClientY;
+    if (_has.HAS_TOUCH_EVENTS) {
+      _assign(_elementStyle, {
+        touchAction: "none"
+      });
+    }
     function _moveDone() {
       const _prevTop = _getIntStyleTop(_elementStyle),
         _prevLeft = _getIntStyleLeft(_elementStyle),
@@ -73,7 +73,9 @@ const useXYMovable = refElement => {
     function _hMove(evt) {
       if (evt.cancelable) {
         evt.stopPropagation();
-        evt.preventDefault();
+        if (NOT_HAS_TOUCH_EVENTS) {
+          evt.preventDefault();
+        }
       }
       if (_diffX === 0 && _diffY === 0) {
         _elementStyle.cursor = 'move';
@@ -98,14 +100,14 @@ const useXYMovable = refElement => {
       _initialEvtClientX = (0, _uiApi.getClientX)(evt);
       _initialEvtClientY = (0, _uiApi.getClientY)(evt);
       if (_isInitEvent(evt, _initialEvtClientX, _initialEvtClientY, _element)) {
-        _element.addEventListener(MOVE_EVENT, _hMove, MOVE_EVENT_OPTIONS);
+        _element.addEventListener(MOVE_EVENT, _hMove, EVENT_OPTIONS);
         _element.addEventListener(CANCEL_EVENT, _hResetEvent, EVENT_OPTIONS);
         _element.addEventListener(RESET_EVENT, _hResetEvent, EVENT_OPTIONS);
       }
     }
     function clearEventListener() {
       _elementStyle.cursor = '';
-      _element.removeEventListener(MOVE_EVENT, _hMove, MOVE_EVENT_OPTIONS);
+      _element.removeEventListener(MOVE_EVENT, _hMove, EVENT_OPTIONS);
       _element.removeEventListener(CANCEL_EVENT, _hResetEvent, EVENT_OPTIONS);
       _element.removeEventListener(RESET_EVENT, _hResetEvent, EVENT_OPTIONS);
     }

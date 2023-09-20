@@ -1,13 +1,12 @@
 import {
   useEffect,
-  getRefValue
+  getRefValue,
+  PASSIVE_EVENT_OPTIONS
 } from '../uiApi';
 
 import {
   HAS_TOUCH_EVENTS
 } from '../has';
-
-const EVENT_OPTIONS = { passive: true };
 
 const usePassiveTouchEvent = (
   refElement,
@@ -17,11 +16,11 @@ const usePassiveTouchEvent = (
   useEffect(() => {
     const _el = getRefValue(refElement);
     if (HAS_TOUCH_EVENTS && _el) {
-       _el.addEventListener(EVENT_NAME, onEvent, EVENT_OPTIONS)
+       _el.addEventListener(EVENT_NAME, onEvent, PASSIVE_EVENT_OPTIONS)
     }
     return () => {
       if (HAS_TOUCH_EVENTS && _el) {
-        _el.removeEventListener(EVENT_NAME, onEvent, EVENT_OPTIONS)
+        _el.removeEventListener(EVENT_NAME, onEvent, PASSIVE_EVENT_OPTIONS)
       }
     }
   }, [EVENT_NAME, onEvent, refElement])

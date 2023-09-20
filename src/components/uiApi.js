@@ -123,6 +123,27 @@ export const stopDefaultFor = (
   evt.preventDefault()
 }
 
+
+const EVENT_TEST_PASSIVE = "testPassive"
+, IS_SUPPORT_PASSIVE_EVENT = (() => {
+    try {
+      const options = Object.defineProperty({}, "passive", {
+        get: function() {
+          return options._r = true;
+        }
+      })
+      window.addEventListener(EVENT_TEST_PASSIVE, null, options)
+      window.removeEventListener(EVENT_TEST_PASSIVE, null, options)
+      return options._r;
+    } catch (e) {
+      return false;
+    }
+})();
+
+export const PASSIVE_EVENT_OPTIONS = IS_SUPPORT_PASSIVE_EVENT
+  ? { passive: true }
+  : false;
+
 const _getFirstTouches = (
   touches
 ) => (touches && touches[0]) || {}
