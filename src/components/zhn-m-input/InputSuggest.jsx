@@ -99,13 +99,14 @@ const InputSuggest = ({
     _clearItem,
     _setItem,
     _hCloseOptions,
-    _hKeyDown,
+    _hKeyDownTextField,
     _hClickBtArrow
   ] = useMemo(() => [
     //_clearItem
     () => {
       onSelect(initItem, id)
       dispatch([ACTION_CLOSE_OPTIONS, options, ''])
+      focusRefElement(_refTf)
     },
     // onSelect, initItem, id, dispatch
 
@@ -135,7 +136,7 @@ const InputSuggest = ({
     },
     // dispatch
 
-    //_hKeyDown
+    //_hKeyDownTextField
     (evt) => {
       const key = evt.key;
       if (key === KEY_ARROW_DOWN) {
@@ -164,7 +165,6 @@ const InputSuggest = ({
       } else if (evt.key === KEY_DELETE) {
         _clearItem()
         setRefInputValue(_refTf, '')
-        focusRefElement(_refTf)
       }
     }
   }
@@ -207,8 +207,8 @@ const InputSuggest = ({
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , [
-    _hSelect,
-    _hEnter
+    _hSelectOption,
+    _hEnterTextField
   ] = useMemo(() => [
     (item, evt) => {
       stopDefaultFor(evt)
@@ -218,9 +218,15 @@ const InputSuggest = ({
       stopDefaultFor(evt)
       _setItem(getRefValue(_refItem))
     }
-  ], []);
+  ], [])
   // _setItem
   /*eslint-enable react-hooks/exhaustive-deps */
+  , _hClickTextField = HAS_TOUCH_EVENTS ? (evt) => {
+    const _value = evt.target.value;
+    if (_value && _value === getItemCaption(item)) {
+      dispatch([ACTION_SHOW_OPTIONS_WITH_FOCUS])
+    }
+  } : void 0;
 
   return (
     <div
@@ -241,17 +247,18 @@ const InputSuggest = ({
          item={item}
          options={items}
          clItem={CL_SELECT_ITEM}
-         onSelect={_hSelect}
+         onSelect={_hSelectOption}
          onClose={_hCloseOptions}
        />
        <TextField
+         {..._ariaComboboxProps}
          ref={_refTf}
          style={tfStyle}
          initValue={getItemCaption(item)}
          onInputChange={_hInputChange}
-         onEnter={_hEnter}
-         onKeyDown={_hKeyDown}
-         {..._ariaComboboxProps}
+         onEnter={_hEnterTextField}
+         onKeyDown={_hKeyDownTextField}
+         onClick={_hClickTextField}
        >
          {_isBtArrow(item, items, options) &&
            <ButtonArrow
