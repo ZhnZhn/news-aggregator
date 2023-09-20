@@ -10,7 +10,7 @@ const useAriaCombobox = (isShow, isAutocomplete) => {
     role: "combobox",
     "aria-autocomplete": isAutocomplete ? "list" : "none",
     "aria-expanded": isShow,
-    "aria-controls": _controlsId
+    "aria-controls": isShow ? _controlsId : void 0
   }];
 };
 var _default = useAriaCombobox;
