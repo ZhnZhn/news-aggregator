@@ -11,6 +11,7 @@ import {
   setRefValue,
   setRefInputValue,
   focusRefElement,
+  focusAsyncRefElement,
   stopDefaultFor
 } from '../uiApi';
 
@@ -106,7 +107,8 @@ const InputSuggest = ({
     () => {
       onSelect(initItem, id)
       dispatch([ACTION_CLOSE_OPTIONS, options, ''])
-      focusRefElement(_refTf)
+      //focusRefElement(_refTf)
+      focusAsyncRefElement(_refTf, 200)
     },
     // onSelect, initItem, id, dispatch
 
@@ -163,8 +165,9 @@ const InputSuggest = ({
       if (evt.key === KEY_ARROW_DOWN) {
         dispatch([ACTION_SHOW_OPTIONS_WITH_FOCUS])
       } else if (evt.key === KEY_DELETE) {
-        _clearItem()
         setRefInputValue(_refTf, '')
+        _clearItem()
+        //setRefInputValue(_refTf, '')
       }
     }
   }
@@ -224,9 +227,11 @@ const InputSuggest = ({
   , _hFocusTextField = HAS_TOUCH_EVENTS ? (evt) => {
     const _value = evt.target.value;
     if (_value && _value === getItemCaption(item)) {
+      evt.preventDefault()
       dispatch([ACTION_SHOW_OPTIONS_WITH_FOCUS])
     }
-  } : void 0;
+  } : void 0
+
 
   return (
     <div

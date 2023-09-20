@@ -51,7 +51,8 @@ const InputSuggest = _ref => {
     () => {
       onSelect(initItem, id);
       dispatch([_useOptionsPane.ACTION_CLOSE_OPTIONS, options, '']);
-      (0, _uiApi.focusRefElement)(_refTf);
+      //focusRefElement(_refTf)
+      (0, _uiApi.focusAsyncRefElement)(_refTf, 200);
     },
     // onSelect, initItem, id, dispatch
 
@@ -101,8 +102,9 @@ const InputSuggest = _ref => {
         if (evt.key === _uiApi.KEY_ARROW_DOWN) {
           dispatch([_useOptionsPane.ACTION_SHOW_OPTIONS_WITH_FOCUS]);
         } else if (evt.key === _uiApi.KEY_DELETE) {
-          _clearItem();
           (0, _uiApi.setRefInputValue)(_refTf, '');
+          _clearItem();
+          //setRefInputValue(_refTf, '')
         }
       }
     },
@@ -142,6 +144,7 @@ const InputSuggest = _ref => {
     _hFocusTextField = _has.HAS_TOUCH_EVENTS ? evt => {
       const _value = evt.target.value;
       if (_value && _value === (0, _OptionFn.getItemCaption)(item)) {
+        evt.preventDefault();
         dispatch([_useOptionsPane.ACTION_SHOW_OPTIONS_WITH_FOCUS]);
       }
     } : void 0;
