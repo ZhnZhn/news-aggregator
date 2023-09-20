@@ -139,7 +139,7 @@ const InputSuggest = _ref => {
     }], [])
     // _setItem
     /*eslint-enable react-hooks/exhaustive-deps */,
-    _hClickTextField = _has.HAS_TOUCH_EVENTS ? evt => {
+    _hFocusTextField = _has.HAS_TOUCH_EVENTS ? evt => {
       const _value = evt.target.value;
       if (_value && _value === (0, _OptionFn.getItemCaption)(item)) {
         dispatch([_useOptionsPane.ACTION_SHOW_OPTIONS_WITH_FOCUS]);
@@ -172,7 +172,7 @@ const InputSuggest = _ref => {
       onInputChange: _hInputChange,
       onEnter: _hEnterTextField,
       onKeyDown: _hKeyDownTextField,
-      onClick: _hClickTextField,
+      onFocus: _hFocusTextField,
       children: _isBtArrow(item, items, options) && (0, _jsxRuntime.jsx)(_ButtonArrow.default, {
         ref: _refBtArrow,
         style: (0, _crStyle.crStyle2)(S_BT_ARROW, isShowOptions && S_BT_ARROW_FILL),

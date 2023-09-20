@@ -221,7 +221,7 @@ const InputSuggest = ({
   ], [])
   // _setItem
   /*eslint-enable react-hooks/exhaustive-deps */
-  , _hClickTextField = HAS_TOUCH_EVENTS ? (evt) => {
+  , _hFocusTextField = HAS_TOUCH_EVENTS ? (evt) => {
     const _value = evt.target.value;
     if (_value && _value === getItemCaption(item)) {
       dispatch([ACTION_SHOW_OPTIONS_WITH_FOCUS])
@@ -258,7 +258,7 @@ const InputSuggest = ({
          onInputChange={_hInputChange}
          onEnter={_hEnterTextField}
          onKeyDown={_hKeyDownTextField}
-         onClick={_hClickTextField}
+         onFocus={_hFocusTextField}
        >
          {_isBtArrow(item, items, options) &&
            <ButtonArrow
