@@ -83,7 +83,7 @@ const OptionsPane = _ref3 => {
     children: (0, _jsxRuntime.jsx)(_ShowHide.default, {
       isScrollable: true,
       isShow: isShow,
-      role: "group",
+      role: "listbox",
       id: id,
       className: className,
       style: style,
