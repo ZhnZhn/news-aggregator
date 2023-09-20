@@ -14,8 +14,7 @@ module.exports = {
       import: path.resolve('src', 'index.jsx'),
       dependOn: 'lib'
     },
-    lib: [
-       "preact",
+    lib: [       
        "preact/compat",                   
        "dompurify",       
        "zustand",
