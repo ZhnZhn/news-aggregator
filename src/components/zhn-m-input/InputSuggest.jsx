@@ -11,7 +11,7 @@ import {
   setRefValue,
   setRefInputValue,
   focusRefElement,
-  focusAsyncRefElement,
+  //focusAsyncRefElement,
   stopDefaultFor
 } from '../uiApi';
 
@@ -107,8 +107,7 @@ const InputSuggest = ({
     () => {
       onSelect(initItem, id)
       dispatch([ACTION_CLOSE_OPTIONS, options, ''])
-      //focusRefElement(_refTf)
-      focusAsyncRefElement(_refTf, 200)
+      focusRefElement(_refTf)
     },
     // onSelect, initItem, id, dispatch
 
@@ -224,13 +223,13 @@ const InputSuggest = ({
   ], [])
   // _setItem
   /*eslint-enable react-hooks/exhaustive-deps */
-  , _hFocusTextField = HAS_TOUCH_EVENTS ? (evt) => {
+  , _hTouchEnd = HAS_TOUCH_EVENTS ? (evt) => {
     const _value = evt.target.value;
     if (_value && _value === getItemCaption(item)) {
       evt.preventDefault()
       dispatch([ACTION_SHOW_OPTIONS_WITH_FOCUS])
     }
-  } : void 0
+  } : void 0;
 
 
   return (
@@ -263,7 +262,7 @@ const InputSuggest = ({
          onInputChange={_hInputChange}
          onEnter={_hEnterTextField}
          onKeyDown={_hKeyDownTextField}
-         onFocus={_hFocusTextField}
+         onTouchEnd={_hTouchEnd}
        >
          {_isBtArrow(item, items, options) &&
            <ButtonArrow
