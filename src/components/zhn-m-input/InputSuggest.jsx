@@ -11,7 +11,7 @@ import {
   setRefValue,
   setRefInputValue,
   focusRefElement,
-  //focusAsyncRefElement,
+  focusAsyncRefElement,
   stopDefaultFor
 } from '../uiApi';
 
@@ -107,7 +107,7 @@ const InputSuggest = ({
     () => {
       onSelect(initItem, id)
       dispatch([ACTION_CLOSE_OPTIONS, options, ''])
-      focusRefElement(_refTf)
+      focusAsyncRefElement(_refTf, 200)
     },
     // onSelect, initItem, id, dispatch
 
@@ -166,7 +166,6 @@ const InputSuggest = ({
       } else if (evt.key === KEY_DELETE) {
         setRefInputValue(_refTf, '')
         _clearItem()
-        //setRefInputValue(_refTf, '')
       }
     }
   }
@@ -223,18 +222,19 @@ const InputSuggest = ({
   ], [])
   // _setItem
   /*eslint-enable react-hooks/exhaustive-deps */
-  , _hTouchEnd = HAS_TOUCH_EVENTS ? (evt) => {
-    const _value = evt.target.value;
-    if (_value && _value === getItemCaption(item)) {
-      evt.preventDefault()
-      dispatch([ACTION_SHOW_OPTIONS_WITH_FOCUS])
-    }
-  } : void 0;
+  , _textFieldProps = HAS_TOUCH_EVENTS && item
+      ? {
+          tabIndex: "-1",
+          readonly: true,
+          onClick: () => {
+            dispatch([ACTION_SHOW_OPTIONS_WITH_FOCUS])
+          }
+        }
+      : void 0;
 
 
   return (
     <div
-      role="presentation"
       className={CL_SELECT}
       style={styleConfig.ROOT}
     >
@@ -256,13 +256,13 @@ const InputSuggest = ({
        />
        <TextField
          {..._ariaComboboxProps}
+         {..._textFieldProps}
          ref={_refTf}
          style={tfStyle}
          initValue={getItemCaption(item)}
          onInputChange={_hInputChange}
          onEnter={_hEnterTextField}
          onKeyDown={_hKeyDownTextField}
-         onTouchEnd={_hTouchEnd}
        >
          {_isBtArrow(item, items, options) &&
            <ButtonArrow

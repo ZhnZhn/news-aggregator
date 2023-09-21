@@ -51,7 +51,7 @@ const InputSuggest = _ref => {
     () => {
       onSelect(initItem, id);
       dispatch([_useOptionsPane.ACTION_CLOSE_OPTIONS, options, '']);
-      (0, _uiApi.focusRefElement)(_refTf);
+      (0, _uiApi.focusAsyncRefElement)(_refTf, 200);
     },
     // onSelect, initItem, id, dispatch
 
@@ -103,7 +103,6 @@ const InputSuggest = _ref => {
         } else if (evt.key === _uiApi.KEY_DELETE) {
           (0, _uiApi.setRefInputValue)(_refTf, '');
           _clearItem();
-          //setRefInputValue(_refTf, '')
         }
       }
     },
@@ -140,15 +139,14 @@ const InputSuggest = _ref => {
     }], [])
     // _setItem
     /*eslint-enable react-hooks/exhaustive-deps */,
-    _hTouchEnd = _has.HAS_TOUCH_EVENTS ? evt => {
-      const _value = evt.target.value;
-      if (_value && _value === (0, _OptionFn.getItemCaption)(item)) {
-        evt.preventDefault();
+    _textFieldProps = _has.HAS_TOUCH_EVENTS && item ? {
+      tabIndex: "-1",
+      readonly: true,
+      onClick: () => {
         dispatch([_useOptionsPane.ACTION_SHOW_OPTIONS_WITH_FOCUS]);
       }
     } : void 0;
   return (0, _jsxRuntime.jsxs)("div", {
-    role: "presentation",
     className: _Input.CL_SELECT,
     style: styleConfig.ROOT,
     children: [(0, _jsxRuntime.jsx)("label", {
@@ -168,13 +166,13 @@ const InputSuggest = _ref => {
       onClose: _hCloseOptions
     }), (0, _jsxRuntime.jsx)(_TextField.default, {
       ..._ariaComboboxProps,
+      ..._textFieldProps,
       ref: _refTf,
       style: tfStyle,
       initValue: (0, _OptionFn.getItemCaption)(item),
       onInputChange: _hInputChange,
       onEnter: _hEnterTextField,
       onKeyDown: _hKeyDownTextField,
-      onTouchEnd: _hTouchEnd,
       children: _isBtArrow(item, items, options) && (0, _jsxRuntime.jsx)(_ButtonArrow.default, {
         ref: _refBtArrow,
         style: (0, _crStyle.crStyle2)(S_BT_ARROW, isShowOptions && S_BT_ARROW_FILL),
