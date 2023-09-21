@@ -228,7 +228,7 @@ const InputSuggest = ({
   , _textFieldProps = HAS_TOUCH_EVENTS && item
       ? {
           tabIndex: "-1",
-          readonly: true,
+          readOnly: true,
           inputCn: CL_SELECT_NONE,
           onClick: () => {
             dispatch([ACTION_SHOW_OPTIONS_WITH_FOCUS])

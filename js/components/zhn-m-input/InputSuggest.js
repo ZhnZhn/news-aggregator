@@ -141,7 +141,7 @@ const InputSuggest = _ref => {
     /*eslint-enable react-hooks/exhaustive-deps */,
     _textFieldProps = _has.HAS_TOUCH_EVENTS && item ? {
       tabIndex: "-1",
-      readonly: true,
+      readOnly: true,
       inputCn: _crStyle.CL_SELECT_NONE,
       onClick: () => {
         dispatch([_useOptionsPane.ACTION_SHOW_OPTIONS_WITH_FOCUS]);

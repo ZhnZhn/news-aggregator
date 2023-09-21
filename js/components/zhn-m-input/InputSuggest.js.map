@@ -97,7 +97,7 @@
   "stopDefaultFor",
   "_textFieldProps",
   "tabIndex",
-  "readonly",
+  "readOnly",
   "inputCn",
   "CL_SELECT_NONE",
   "onClick",
