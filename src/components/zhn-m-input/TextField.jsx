@@ -12,6 +12,8 @@ import {
   focusRefElement
 } from '../uiApi';
 
+import { crCn } from '../crStyle';
+
 import useId from '../hooks/useId';
 import useBool from '../hooks/useBool';
 
@@ -53,6 +55,7 @@ const _getEventTargetValue = (
 const TextField = forwardRef(({
   style,
   inputStyle,
+  inputCn,
   caption,
   id,
   initValue,
@@ -169,7 +172,7 @@ const TextField = forwardRef(({
           ref={_refTf}
           id={_inputId}
           type="text"
-          className={CL_TEXTFIELD_INPUT}
+          className={crCn(CL_TEXTFIELD_INPUT, inputCn)}
           style={inputStyle}
           value={value}
           autoComplete="off"

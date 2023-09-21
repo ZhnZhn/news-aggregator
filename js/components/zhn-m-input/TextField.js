@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _crStyle = require("../crStyle");
 var _useId = _interopRequireDefault(require("../hooks/useId"));
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _has = require("../has");
@@ -31,6 +32,7 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
   let {
     style,
     inputStyle,
+    inputCn,
     caption,
     id,
     initValue,
@@ -113,7 +115,7 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
         ref: _refTf,
         id: _inputId,
         type: "text",
-        className: _Input.CL_TEXTFIELD_INPUT,
+        className: (0, _crStyle.crCn)(_Input.CL_TEXTFIELD_INPUT, inputCn),
         style: inputStyle,
         value: value,
         autoComplete: "off",
