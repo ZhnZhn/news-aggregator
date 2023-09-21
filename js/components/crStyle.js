@@ -1,8 +1,10 @@
 "use strict";
 
 exports.__esModule = true;
-exports.crWithScrollCn = exports.crStyle2 = exports.crShowHideStyle = exports.crShowHide = exports.crPopupMenuCn = exports.crPanelShadowCn = exports.crPaneCn = exports.crInlineBlockShowHide = exports.crContainerBgCn = exports.crCn = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_BLOCK = exports.CL_SHOW_POPUP = void 0;
+exports.crWithScrollCn = exports.crStyle2 = exports.crShowHideStyle = exports.crShowHide = exports.crPopupMenuCn = exports.crPanelShadowCn = exports.crPaneCn = exports.crInlineBlockShowHide = exports.crContainerBgCn = exports.crCn = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_BLOCK = exports.CL_SHOW_POPUP = exports.CL_SELECT_NONE = void 0;
 const _isArr = Array.isArray;
+const CL_SELECT_NONE = 'select-none';
+exports.CL_SELECT_NONE = CL_SELECT_NONE;
 const _getCn = arrOrStr => _isArr(arrOrStr) ? arrOrStr[0] ? arrOrStr[1] : '' : arrOrStr || '';
 const crCn = (conf1, conf2) => {
   const _cl1 = _getCn(conf1),

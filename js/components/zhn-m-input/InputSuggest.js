@@ -14,10 +14,7 @@ var _OptionFn = require("./OptionFn");
 var _useOptionsPane = require("./useOptionsPane");
 var _Input = require("./Input.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
-const S_SELECT_NONE = {
-    userSelect: 'none'
-  },
-  S_OPTIONS_PANE = {
+const S_OPTIONS_PANE = {
     top: 64
   },
   S_BT_ARROW = {
@@ -145,7 +142,7 @@ const InputSuggest = _ref => {
     _textFieldProps = _has.HAS_TOUCH_EVENTS && item ? {
       tabIndex: "-1",
       readonly: true,
-      inputStyle: S_SELECT_NONE,
+      inputCn: _crStyle.CL_SELECT_NONE,
       onClick: () => {
         dispatch([_useOptionsPane.ACTION_SHOW_OPTIONS_WITH_FOCUS]);
       }

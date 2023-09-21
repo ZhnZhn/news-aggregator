@@ -1,5 +1,7 @@
 const _isArr = Array.isArray;
 
+export const CL_SELECT_NONE = 'select-none'
+
 const _getCn = (arrOrStr) => _isArr(arrOrStr)
   ? arrOrStr[0] ? arrOrStr[1] : ''
   : arrOrStr || '';
