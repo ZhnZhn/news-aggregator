@@ -1,4 +1,4 @@
-import { CL_MENU_MORE_ITEM } from '../styles/CL';
+import { CL_MENU_MORE_ITEM } from '../crStyle';
 
 const crModelMore = ({
   onMinWidth,

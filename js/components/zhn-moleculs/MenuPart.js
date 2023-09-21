@@ -4,11 +4,10 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _crStyle = require("../crStyle");
 var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose"));
 var _MenuItem = _interopRequireDefault(require("../zhn-atoms/MenuItem"));
-var _CL = require("../styles/CL");
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_MENU_ITEM = _CL.CL_ROW_NEWS_SOURCE + " " + _CL.CL_SELECT_NONE;
 const _renderMenuItems = option => {
   const {
     items,
@@ -22,7 +21,7 @@ const _renderMenuItems = option => {
       ...restItemProps
     };
     return (0, _jsxRuntime.jsx)(_MenuItem.default, {
-      className: CL_MENU_ITEM,
+      className: _crStyle.CL_ROW_NEWS_SOURCE,
       caption: _itemConf.menuTitle,
       onClick: (0, _uiApi.bindTo)(onClick, _itemConf)
     }, index);

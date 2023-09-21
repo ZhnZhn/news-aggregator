@@ -2,38 +2,35 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
+exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _CL = require("../styles/CL");
+var _crStyle = require("../crStyle");
 var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
 var _jsxRuntime = require("preact/jsx-runtime");
-var FN_NOOP = function FN_NOOP() {};
-var ItemHeader = (0, _uiApi.forwardRef)(function (_ref, ref) {
-  var className = _ref.className,
-    style = _ref.style,
-    captionStyle = _ref.captionStyle,
-    btCloseStyle = _ref.btCloseStyle,
-    title = _ref.title,
-    _ref$onKeyDown = _ref.onKeyDown,
-    onKeyDown = _ref$onKeyDown === void 0 ? FN_NOOP : _ref$onKeyDown,
-    onClick = _ref.onClick,
-    onToggle = _ref.onToggle,
-    onClose = _ref.onClose;
+const FN_NOOP = () => {};
+const ItemHeader = (0, _uiApi.forwardRef)((_ref, ref) => {
+  let {
+    className,
+    style,
+    captionStyle,
+    btCloseStyle,
+    title,
+    onKeyDown = FN_NOOP,
+    onClick,
+    onToggle,
+    onClose
+  } = _ref;
   /*eslint-disable react-hooks/exhaustive-deps */
-  var _useMemo = (0, _uiApi.useMemo)(function () {
-      return [function (evt) {
-        if (evt.keyCode === 13) {
-          onToggle();
-        } else {
-          onKeyDown(evt);
-        }
-      }, function (evt) {
-        evt.stopPropagation();
-        onClose();
-      }];
-    }, []),
-    _hKeyDown = _useMemo[0],
-    _hClose = _useMemo[1];
+  const [_hKeyDown, _hClose] = (0, _uiApi.useMemo)(() => [evt => {
+    if (evt.keyCode === 13) {
+      onToggle();
+    } else {
+      onKeyDown(evt);
+    }
+  }, evt => {
+    evt.stopPropagation();
+    onClose();
+  }], []);
   //onToggle, onKeyDown
   //onClose
   /*eslint-enable react-hooks/exhaustive-deps */
@@ -47,15 +44,15 @@ var ItemHeader = (0, _uiApi.forwardRef)(function (_ref, ref) {
     onClick: onClick,
     onKeyDown: _hKeyDown,
     children: [(0, _jsxRuntime.jsx)("span", {
-      className: _CL.CL_SELECT_NONE,
+      className: _crStyle.CL_SELECT_NONE,
       style: captionStyle,
       children: title
-    }), (0, _jsxRuntime.jsx)(_SvgX["default"], {
+    }), (0, _jsxRuntime.jsx)(_SvgX.default, {
       style: btCloseStyle,
       onClick: _hClose
     })]
   });
 });
 var _default = ItemHeader;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=ItemHeader.js.map

@@ -3,7 +3,7 @@ import {
   useMemo
 } from '../uiApi';
 
-import { CL_SELECT_NONE } from '../styles/CL';
+import { CL_SELECT_NONE } from '../crStyle';
 import SvgX from '../zhn-atoms/SvgX';
 
 const FN_NOOP = () => {};

@@ -1,13 +1,10 @@
 import { bindTo } from '../uiApi';
 
+import { CL_ROW_NEWS_SOURCE } from '../crStyle';
+
 import OpenClose from '../zhn-atoms/OpenClose';
 import MenuItem from '../zhn-atoms/MenuItem';
-import {
-  CL_ROW_NEWS_SOURCE,
-  CL_SELECT_NONE
-} from '../styles/CL';
 
-const CL_MENU_ITEM = `${CL_ROW_NEWS_SOURCE} ${CL_SELECT_NONE}`;
 
 const _renderMenuItems = (
   option
@@ -27,7 +24,7 @@ const _renderMenuItems = (
     return (
       <MenuItem
         key={index}
-        className={CL_MENU_ITEM}        
+        className={CL_ROW_NEWS_SOURCE}
         caption={_itemConf.menuTitle}
         onClick={bindTo(onClick, _itemConf)}
       />

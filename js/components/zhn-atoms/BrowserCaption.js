@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _CL = require("../styles/CL");
+var _crStyle = require("../crStyle");
 var _SvgMore = _interopRequireDefault(require("./SvgMore"));
 var _SvgX = _interopRequireDefault(require("./SvgX"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -45,7 +45,7 @@ const BrowserCaption = _ref => {
       svgStyle: S_SVG_MORE,
       onClick: onMore
     }), (0, _jsxRuntime.jsx)("span", {
-      className: _CL.CL_SELECT_NONE,
+      className: _crStyle.CL_SELECT_NONE,
       style: S_CAPTION,
       children: caption
     }), children, (0, _jsxRuntime.jsx)(_SvgX.default, {

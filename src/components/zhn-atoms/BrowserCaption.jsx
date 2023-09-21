@@ -1,6 +1,6 @@
 import { isFn } from '../uiApi';
 
-import { CL_SELECT_NONE } from '../styles/CL';
+import { CL_SELECT_NONE } from '../crStyle';
 
 import SvgMore from './SvgMore';
 import SvgX from './SvgX';

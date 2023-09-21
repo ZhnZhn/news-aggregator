@@ -1,5 +1,5 @@
 import { DP_CLOSE_RIGHT } from '../DP';
-import { CL_SELECT_NONE } from '../styles/CL';
+import { CL_SELECT_NONE } from '../crStyle';
 
 import SafeLink from '../zhn-atoms/SafeLink';
 import TextDiv from '../zhn-atoms/TextDiv';

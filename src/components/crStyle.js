@@ -1,6 +1,8 @@
 const _isArr = Array.isArray;
 
 export const CL_SELECT_NONE = 'select-none'
+export const CL_MENU_MORE_ITEM = `menu-more__item ${CL_SELECT_NONE}`
+export const CL_ROW_NEWS_SOURCE = `row__news-source ${CL_SELECT_NONE}`;
 
 const _getCn = (arrOrStr) => _isArr(arrOrStr)
   ? arrOrStr[0] ? arrOrStr[1] : ''
