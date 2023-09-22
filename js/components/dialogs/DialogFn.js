@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.getPaneCaption = exports.getDialogCaption = exports.fGetDialogConfig = exports.crTextFieldConfig = exports.crTextFieldCaption = exports.crInputSuggestConfig = exports.crInputSelectConfig = exports.crInputProps = exports.crDfInputs = void 0;
+exports.getPaneCaption = exports.getLoadId = exports.getDialogCaption = exports.fGetDialogConfig = exports.crTextFieldConfig = exports.crTextFieldCaption = exports.crInputSuggestConfig = exports.crInputSelectConfig = exports.crInputProps = exports.crDfInputs = void 0;
 var _uiApi = require("../uiApi");
 var _InputTypes = require("../zhn-inputs/InputTypes");
 var _OptionFn = require("../zhn-m-input/OptionFn");
@@ -38,8 +38,11 @@ const crDfInputs = inputConfigs => inputConfigs.reduce((r, arrConfig) => {
   //dfInputs, toggles, isInputs
 }, [_crObject(null), [], _crObject(null)]);
 exports.crDfInputs = crDfInputs;
-const getPaneCaption = itemConf => (itemConf || {}).paneCaption;
+const _fGetByPropName = propName => obj => (obj || {})[propName];
+const getPaneCaption = _fGetByPropName("paneCaption");
 exports.getPaneCaption = getPaneCaption;
+const getLoadId = _fGetByPropName("type");
+exports.getLoadId = getLoadId;
 const getDialogCaption = itemConf => ((itemConf || {}).dialogProps || {}).caption;
 exports.getDialogCaption = getDialogCaption;
 const crTextFieldCaption = (caption, dfValue) => caption + " (Default: " + dfValue + ")";

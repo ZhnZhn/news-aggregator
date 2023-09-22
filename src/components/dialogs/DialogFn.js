@@ -60,9 +60,12 @@ export const crDfInputs = (
  //dfInputs, toggles, isInputs
  }, [_crObject(null), [], _crObject(null)]);
 
- export const getPaneCaption = (
-  itemConf
-) => (itemConf || {}).paneCaption
+const _fGetByPropName = (
+  propName
+) => (obj) => (obj || {})[propName];
+
+export const getPaneCaption = _fGetByPropName("paneCaption")
+export const getLoadId = _fGetByPropName("type")
 
 export const getDialogCaption = (
   itemConf
