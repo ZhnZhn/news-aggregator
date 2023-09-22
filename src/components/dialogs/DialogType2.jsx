@@ -1,6 +1,6 @@
 import DialogStackInputs from './DialogStackInputs';
 import {
-  getPaneCaption,
+  getCaption,
   getLoadId
 } from './DialogFn';
 
@@ -17,11 +17,11 @@ const DialogType2 = (props) => {
     INITIAL_INPUTS,
     TOGGLES,
     IS_INPUTS
-  ] = getConfig();  
+  ] = getConfig();
   return (
     <DialogStackInputs
       {...props}
-      caption={getPaneCaption(itemConf)}
+      caption={getCaption(itemConf)}
       loadId={getLoadId(itemConf)}
       INPUT_CONFIGS={INPUT_CONFIGS}
       INITIAL_INPUTS={INITIAL_INPUTS}

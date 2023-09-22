@@ -17,7 +17,7 @@ const DialogType2 = props => {
     [INPUT_CONFIGS, INITIAL_INPUTS, TOGGLES, IS_INPUTS] = getConfig();
   return (0, _jsxRuntime.jsx)(_DialogStackInputs.default, {
     ...props,
-    caption: (0, _DialogFn.getPaneCaption)(itemConf),
+    caption: (0, _DialogFn.getCaption)(itemConf),
     loadId: (0, _DialogFn.getLoadId)(itemConf),
     INPUT_CONFIGS: INPUT_CONFIGS,
     INITIAL_INPUTS: INITIAL_INPUTS,
