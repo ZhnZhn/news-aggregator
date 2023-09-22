@@ -14,7 +14,7 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const SORT_BY_OPTIONS = [['Top', 'top'], ['Popular', 'popularity'], ['Newest', 'publishedAt']],
   DF_SORT_BY = SORT_BY_OPTIONS[0],
   INITIAL_SORTBY_VALUE = (0, _OptionFn.getItemValue)(DF_SORT_BY),
-  SELECT_STYLE_CONFIG = (0, _Dialog.crSelectStyleConfig)();
+  INPUT_SELECT_STYLE = (0, _Dialog.crInputSelectStyle)();
 const DialogType1 = _ref => {
   let {
     isShow,
@@ -51,10 +51,10 @@ const DialogType1 = _ref => {
     onShowChart: onShow,
     onClose: _hClose,
     children: (0, _jsxRuntime.jsx)(_Comp.default.InputSelect, {
+      style: INPUT_SELECT_STYLE,
       caption: "SortBy",
       initItem: DF_SORT_BY,
       options: SORT_BY_OPTIONS,
-      styleConfig: SELECT_STYLE_CONFIG,
       onSelect: _selectSortBy
     })
   });

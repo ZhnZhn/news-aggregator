@@ -17,9 +17,9 @@ const S_DIV = {
 const CardUiTheme = _ref => {
   let {
     style,
+    selectStyle,
     buttonsStyle,
     btStyle,
-    selectStyleConfig,
     onClose,
     isVisible,
     setRefLast
@@ -30,13 +30,13 @@ const CardUiTheme = _ref => {
       ...style
     },
     children: [(0, _jsxRuntime.jsx)(_Comp.default.InputSelect, {
-      styleConfig: selectStyleConfig,
+      style: selectStyle,
       caption: "UI Theme",
       initItem: _uiTheme.THEME_OPTIONS.DF,
       options: _uiTheme.THEME_OPTIONS,
       onSelect: _uiTheme.setUiTheme
     }), (0, _jsxRuntime.jsx)(_Comp.default.InputSelect, {
-      styleConfig: selectStyleConfig,
+      style: selectStyle,
       caption: "Font Size",
       initItem: _uiTheme.FONT_SIZE_OPTIONS.DF,
       options: _uiTheme.FONT_SIZE_OPTIONS,

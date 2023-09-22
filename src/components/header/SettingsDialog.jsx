@@ -9,7 +9,7 @@ import {
   S_BROWSER_CAPTION,
   S_INPUT_ROOT,
   S_BT_RAISED,
-  crSelectStyleConfig
+  crInputSelectStyle
 } from '../dialogs/Dialog.Style';
 
 import A from '../Comp';
@@ -47,10 +47,14 @@ const S_MODAL = {
   width: 315,
   marginLeft: 8
 }
-, SELECT_WIDTH = 306;
+, S_TEXT_FIELD = {
+  ...S_INPUT_ROOT,
+  ...S_INPUT_WIDTH
+}
+, INPUT_SELECT_WIDTH = 306;
 
-const SELECT_STYLE_CONFIG = crSelectStyleConfig(
-  SELECT_WIDTH
+const INPUT_SELECT_STYLE = crInputSelectStyle(
+  INPUT_SELECT_WIDTH
 );
 
 const SettingsDialog = memoIsShow(({
@@ -62,14 +66,14 @@ const SettingsDialog = memoIsShow(({
   , _setFocusLastRef = useCallback(el => {
     _refFocusLast.current = el
   }, []);
-  
+
   return (
     <A.ModalDialog
-       refFocusLast={_refFocusLast}
+       caption="User Settings"
        style={S_MODAL}
        divBtStyle={S_DIV_BT}
        captionStyle={S_BROWSER_CAPTION}
-       caption="User Settings"
+       refFocusLast={_refFocusLast}
        isShow={isShow}
        onClose={onClose}
     >
@@ -81,21 +85,21 @@ const SettingsDialog = memoIsShow(({
       >
          <A.Tab title="API Keys">
             <CardApiKeys
-              setRefLast={_setFocusLastRef}
               style={S_CARD_API}
-              fieldStyle={{...S_INPUT_ROOT, ...S_INPUT_WIDTH}}
+              fieldStyle={S_TEXT_FIELD}
               buttonsStyle={S_CARD_BUTTONS}
               btStyle={S_BT_RAISED}
               data={data}
+              setRefLast={_setFocusLastRef}
             />
          </A.Tab>
          <A.Tab title="UI Theme">
-            <CardUiTheme
-              setRefLast={_setFocusLastRef}
+            <CardUiTheme              
               style={S_CARD_ROOT}
+              selectStyle={INPUT_SELECT_STYLE}
               buttonsStyle={S_CARD_BUTTONS}
               btStyle={S_BT_RAISED}
-              selectStyleConfig={SELECT_STYLE_CONFIG}
+              setRefLast={_setFocusLastRef}
               onClose={onClose}
             />
          </A.Tab>

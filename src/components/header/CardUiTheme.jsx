@@ -20,23 +20,23 @@ const S_DIV = {
 
 const CardUiTheme = ({
   style,
+  selectStyle,
   buttonsStyle,
   btStyle,
-  selectStyleConfig,
   onClose,
   isVisible,
   setRefLast
 }) => (
     <div style={{...S_DIV, ...style}}>
       <A.InputSelect
-        styleConfig={selectStyleConfig}
+        style={selectStyle}
         caption="UI Theme"
         initItem={THEME_OPTIONS.DF}
         options={THEME_OPTIONS}
         onSelect={setUiTheme}
       />
       <A.InputSelect
-        styleConfig={selectStyleConfig}
+        style={selectStyle}
         caption="Font Size"
         initItem={FONT_SIZE_OPTIONS.DF}
         options={FONT_SIZE_OPTIONS}

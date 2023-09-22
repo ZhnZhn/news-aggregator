@@ -14,10 +14,10 @@ const DF_INIT_ITEM = ['', ''];
 const InputSelect = _ref => {
   let {
     id,
+    style,
     initItem,
     caption,
     options,
-    styleConfig,
     onSelect
   } = _ref;
   const _refBtArrow = (0, _uiApi.useRef)(),
@@ -53,7 +53,7 @@ const InputSelect = _ref => {
     ..._ariaComboboxProps,
     tabIndex: "-1",
     className: _Input.CL_SELECT,
-    style: styleConfig.ROOT,
+    style: style,
     onClick: _hShowOptions,
     onKeyDown: _hKeyDown,
     children: [(0, _jsxRuntime.jsx)("label", {

@@ -25,8 +25,8 @@ export const S_POWERED_BY = {
   margin: '16px 0 8px 16px'
 };
 
-export const crSelectStyleConfig = (
+export const crInputSelectStyle = (
   width=INPUT_WIDTH
 ) => ({
-  ROOT: { width }
+  width
 })

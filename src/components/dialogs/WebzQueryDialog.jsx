@@ -7,7 +7,7 @@ import {
   S_BROWSER_CAPTION,
   S_INPUT_ROOT,
   S_POWERED_BY,
-  crSelectStyleConfig
+  crInputSelectStyle
 } from './Dialog.Style';
 
 import useRefClose from './hooks/useRefClose';
@@ -32,7 +32,7 @@ const _SITE_TYPES = [
 , INITIAL_SITE_TYPE_VALUE = getItemValue(DF_SITE_TYPE)
 , DF_IN_TITLE = 'Weather'
 , DF_BEFORE_DAYS = 2
-, SELECT_STYLE_CONFIG = crSelectStyleConfig();
+, INPUT_SELECT_STYLE = crInputSelectStyle();
 
 const WebzQueryDialog = ({
   isShow,
@@ -94,10 +94,10 @@ const WebzQueryDialog = ({
         initValue={DF_IN_TITLE}
       />
       <A.InputSelect
+        style={INPUT_SELECT_STYLE}
         caption="Site Type"
         initItem={DF_SITE_TYPE}
         options={SITE_TYPE_OPTIONS}
-        styleConfig={SELECT_STYLE_CONFIG}
         onSelect={_selectSiteType}
       />
       <InputBeforeDays

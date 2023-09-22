@@ -43,8 +43,12 @@ const S_MODAL = {
     width: 315,
     marginLeft: 8
   },
-  SELECT_WIDTH = 306;
-const SELECT_STYLE_CONFIG = (0, _Dialog.crSelectStyleConfig)(SELECT_WIDTH);
+  S_TEXT_FIELD = {
+    ..._Dialog.S_INPUT_ROOT,
+    ...S_INPUT_WIDTH
+  },
+  INPUT_SELECT_WIDTH = 306;
+const INPUT_SELECT_STYLE = (0, _Dialog.crInputSelectStyle)(INPUT_SELECT_WIDTH);
 const SettingsDialog = (0, _memoIsShow.default)(_ref => {
   let {
     isShow,
@@ -56,11 +60,11 @@ const SettingsDialog = (0, _memoIsShow.default)(_ref => {
       _refFocusLast.current = el;
     }, []);
   return (0, _jsxRuntime.jsx)(_Comp.default.ModalDialog, {
-    refFocusLast: _refFocusLast,
+    caption: "User Settings",
     style: S_MODAL,
     divBtStyle: S_DIV_BT,
     captionStyle: _Dialog.S_BROWSER_CAPTION,
-    caption: "User Settings",
+    refFocusLast: _refFocusLast,
     isShow: isShow,
     onClose: onClose,
     children: (0, _jsxRuntime.jsxs)(_Comp.default.TabPane, {
@@ -71,24 +75,21 @@ const SettingsDialog = (0, _memoIsShow.default)(_ref => {
       children: [(0, _jsxRuntime.jsx)(_Comp.default.Tab, {
         title: "API Keys",
         children: (0, _jsxRuntime.jsx)(_CardApiKeys.default, {
-          setRefLast: _setFocusLastRef,
           style: S_CARD_API,
-          fieldStyle: {
-            ..._Dialog.S_INPUT_ROOT,
-            ...S_INPUT_WIDTH
-          },
+          fieldStyle: S_TEXT_FIELD,
           buttonsStyle: S_CARD_BUTTONS,
           btStyle: _Dialog.S_BT_RAISED,
-          data: data
+          data: data,
+          setRefLast: _setFocusLastRef
         })
       }), (0, _jsxRuntime.jsx)(_Comp.default.Tab, {
         title: "UI Theme",
         children: (0, _jsxRuntime.jsx)(_CardUiTheme.default, {
-          setRefLast: _setFocusLastRef,
           style: S_CARD_ROOT,
+          selectStyle: INPUT_SELECT_STYLE,
           buttonsStyle: S_CARD_BUTTONS,
           btStyle: _Dialog.S_BT_RAISED,
-          selectStyleConfig: SELECT_STYLE_CONFIG,
+          setRefLast: _setFocusLastRef,
           onClose: onClose
         })
       })]

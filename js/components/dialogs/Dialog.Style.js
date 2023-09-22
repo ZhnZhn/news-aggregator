@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.crSelectStyleConfig = exports.S_POWERED_BY = exports.S_INPUT_ROOT = exports.S_INPUT_DATE = exports.S_DIALOG_CAPTION = exports.S_BT_RAISED = exports.S_BROWSER_CAPTION = void 0;
+exports.crInputSelectStyle = exports.S_POWERED_BY = exports.S_INPUT_ROOT = exports.S_INPUT_DATE = exports.S_DIALOG_CAPTION = exports.S_BT_RAISED = exports.S_BROWSER_CAPTION = void 0;
 const INPUT_WIDTH = 250;
 const S_DIALOG_CAPTION = {
   fontSize: '1.125rem'
@@ -31,15 +31,13 @@ const S_POWERED_BY = {
   margin: '16px 0 8px 16px'
 };
 exports.S_POWERED_BY = S_POWERED_BY;
-const crSelectStyleConfig = function (width) {
+const crInputSelectStyle = function (width) {
   if (width === void 0) {
     width = INPUT_WIDTH;
   }
   return {
-    ROOT: {
-      width
-    }
+    width
   };
 };
-exports.crSelectStyleConfig = crSelectStyleConfig;
+exports.crInputSelectStyle = crInputSelectStyle;
 //# sourceMappingURL=Dialog.Style.js.map

@@ -6,7 +6,7 @@ import {
 
 import {
   S_BROWSER_CAPTION,
-  crSelectStyleConfig
+  crInputSelectStyle
 } from './Dialog.Style';
 
 import useRefClose from './hooks/useRefClose';
@@ -23,7 +23,7 @@ const SORT_BY_OPTIONS = [
 ]
 , DF_SORT_BY = SORT_BY_OPTIONS[0]
 , INITIAL_SORTBY_VALUE = getItemValue(DF_SORT_BY)
-, SELECT_STYLE_CONFIG = crSelectStyleConfig();
+, INPUT_SELECT_STYLE = crInputSelectStyle();
 
 const DialogType1 = ({
   isShow,
@@ -70,10 +70,10 @@ const DialogType1 = ({
        onClose={_hClose}
     >
       <A.InputSelect
+        style={INPUT_SELECT_STYLE}
         caption="SortBy"
         initItem={DF_SORT_BY}
         options={SORT_BY_OPTIONS}
-        styleConfig={SELECT_STYLE_CONFIG}
         onSelect={_selectSortBy}
       />
     </A.DraggableDialog>

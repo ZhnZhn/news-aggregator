@@ -13,7 +13,7 @@ var _InputTypes = require("./InputTypes");
 var _jsxRuntime = require("preact/jsx-runtime");
 var _preact = require("preact");
 const _isObj = v => v && typeof v === 'object';
-const SELECT_STYLE_CONFIG = (0, _Dialog.crSelectStyleConfig)();
+const INPUT_SELECT_STYLE = (0, _Dialog.crInputSelectStyle)();
 const S_TF_SUGGEST = {
   ..._Dialog.S_INPUT_ROOT,
   marginLeft: 0
@@ -35,7 +35,7 @@ const StackInputs = _ref => {
         caption: arrConfig[2],
         options: arrConfig[3],
         initItem: arrConfig[4],
-        styleConfig: SELECT_STYLE_CONFIG,
+        style: INPUT_SELECT_STYLE,
         tfStyle: S_TF_SUGGEST,
         onSelect: onSelect
       }, _inputId) : _type === _InputTypes.INPUT_TYPE_TEXT_FIELD ? (0, _preact.createElement)(_TextField.default, {

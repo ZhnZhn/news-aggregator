@@ -1,7 +1,7 @@
 import {
   S_INPUT_ROOT,
   S_INPUT_DATE,
-  crSelectStyleConfig
+  crInputSelectStyle
 } from '../dialogs/Dialog.Style';
 
 import ShowHide from '../zhn-atoms/ShowHide';
@@ -18,7 +18,7 @@ import {
 } from './InputTypes';
 
 const _isObj = v => v && typeof v === 'object';
-const SELECT_STYLE_CONFIG = crSelectStyleConfig();
+const INPUT_SELECT_STYLE = crInputSelectStyle();
 const S_TF_SUGGEST = {
   ...S_INPUT_ROOT,
   marginLeft: 0
@@ -51,7 +51,7 @@ const StackInputs = ({
            caption={arrConfig[2]}
            options={arrConfig[3]}
            initItem={arrConfig[4]}
-           styleConfig={SELECT_STYLE_CONFIG}
+           style={INPUT_SELECT_STYLE}
            tfStyle={S_TF_SUGGEST}
            onSelect={onSelect}
         />

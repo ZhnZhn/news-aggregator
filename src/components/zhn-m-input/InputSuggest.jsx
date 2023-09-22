@@ -65,11 +65,11 @@ const FILTER_TIME_OUT_MLS = 350
 
 const InputSuggest = ({
   id,
+  style,
   tfStyle,
   initItem,
   caption,
   options,
-  styleConfig,
   onSelect
 }) => {
   const _refTf = useRef()
@@ -240,7 +240,7 @@ const InputSuggest = ({
   return (
     <div
       className={CL_SELECT}
-      style={styleConfig.ROOT}
+      style={style}
     >
       <label className={CL_SELECT_LABEL}>
         {caption}

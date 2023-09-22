@@ -29,11 +29,11 @@ const FILTER_TIME_OUT_MLS = 350,
 const InputSuggest = _ref => {
   let {
     id,
+    style,
     tfStyle,
     initItem,
     caption,
     options,
-    styleConfig,
     onSelect
   } = _ref;
   const _refTf = (0, _uiApi.useRef)(),
@@ -149,7 +149,7 @@ const InputSuggest = _ref => {
     } : void 0;
   return (0, _jsxRuntime.jsxs)("div", {
     className: _Input.CL_SELECT,
-    style: styleConfig.ROOT,
+    style: style,
     children: [(0, _jsxRuntime.jsx)("label", {
       className: _Input.CL_SELECT_LABEL,
       children: caption
