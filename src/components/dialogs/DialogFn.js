@@ -75,3 +75,19 @@ export const crTextFieldCaption = (
   caption,
   dfValue
 ) => `${caption} (Default: ${dfValue})`
+
+
+export const crInputSelectConfig = (
+  id,
+  options, {
+  caption,
+  dfOption,
+  is
+}={}) => [
+  INPUT_TYPE_SELECT,
+  id,
+  caption || crInputCaption(id),
+  options,
+  dfOption || options[0],
+  is
+]

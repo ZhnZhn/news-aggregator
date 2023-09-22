@@ -6,6 +6,7 @@ import {
   crInputCaption,
   crInputProps,
   crDfInputs,
+  crInputSelectConfig,
   getPaneCaption
 } from './DialogFn';
 
@@ -44,9 +45,9 @@ const TOPIC_OPTIONS = [
 , _crDialogConfig = () => {
   const INPUT_CONFIGS = [
     ['t',ID_TICKERS,crInputCaption(ID_TICKERS),DF_TICKERS,crInputProps(16),true],
-    ['s',ID_TOPICS,crInputCaption(ID_TOPICS),TOPIC_OPTIONS,TOPIC_OPTIONS[0],true],
-    ['s',ID_SORT_BY,crInputCaption(ID_SORT_BY),SORTBY_OPTIONS,SORTBY_OPTIONS[0]],
-    ['s',ID_LIMIT,crInputCaption(ID_LIMIT),LIMIT_OPTIONS,LIMIT_OPTIONS[0]]
+    crInputSelectConfig(ID_TOPICS, TOPIC_OPTIONS, {is: true}),
+    crInputSelectConfig(ID_SORT_BY, SORTBY_OPTIONS),
+    crInputSelectConfig(ID_LIMIT, LIMIT_OPTIONS)    
   ];
   return [
     INPUT_CONFIGS,

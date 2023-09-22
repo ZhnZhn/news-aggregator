@@ -17,7 +17,9 @@ const TOPIC_OPTIONS = [['All', ''], ['Blockchain', 'blockchain'], ['Earnings', '
   ID_SORT_BY = "sortBy",
   ID_LIMIT = "limit",
   _crDialogConfig = () => {
-    const INPUT_CONFIGS = [['t', ID_TICKERS, (0, _DialogFn.crInputCaption)(ID_TICKERS), DF_TICKERS, (0, _DialogFn.crInputProps)(16), true], ['s', ID_TOPICS, (0, _DialogFn.crInputCaption)(ID_TOPICS), TOPIC_OPTIONS, TOPIC_OPTIONS[0], true], ['s', ID_SORT_BY, (0, _DialogFn.crInputCaption)(ID_SORT_BY), SORTBY_OPTIONS, SORTBY_OPTIONS[0]], ['s', ID_LIMIT, (0, _DialogFn.crInputCaption)(ID_LIMIT), LIMIT_OPTIONS, LIMIT_OPTIONS[0]]];
+    const INPUT_CONFIGS = [['t', ID_TICKERS, (0, _DialogFn.crInputCaption)(ID_TICKERS), DF_TICKERS, (0, _DialogFn.crInputProps)(16), true], (0, _DialogFn.crInputSelectConfig)(ID_TOPICS, TOPIC_OPTIONS, {
+      is: true
+    }), (0, _DialogFn.crInputSelectConfig)(ID_SORT_BY, SORTBY_OPTIONS), (0, _DialogFn.crInputSelectConfig)(ID_LIMIT, LIMIT_OPTIONS)];
     return [INPUT_CONFIGS, ...(0, _DialogFn.crDfInputs)(INPUT_CONFIGS)];
   },
   _getDialogConfig = (0, _uiApi.crLazyValue)(_crDialogConfig);
