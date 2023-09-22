@@ -1,4 +1,5 @@
 import {
+  crLazyValue,
   toFirstUpperCase
 } from '../uiApi';
 
@@ -106,3 +107,13 @@ export const crInputSelectConfig = (
   dfOption || options[0],
   is
 ]
+
+export const fGetDialogConfig = (
+  crInputConfigs
+) => crLazyValue(() => {
+  const INPUT_CONFIGS = crInputConfigs();
+  return [
+    INPUT_CONFIGS,
+    ...crDfInputs(INPUT_CONFIGS)
+  ];
+})

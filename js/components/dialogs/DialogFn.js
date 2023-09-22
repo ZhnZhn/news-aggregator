@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.getPaneCaption = exports.getDialogCaption = exports.crTextFieldConfig = exports.crTextFieldCaption = exports.crInputSelectConfig = exports.crInputProps = exports.crDfInputs = void 0;
+exports.getPaneCaption = exports.getDialogCaption = exports.fGetDialogConfig = exports.crTextFieldConfig = exports.crTextFieldCaption = exports.crInputSelectConfig = exports.crInputProps = exports.crDfInputs = void 0;
 var _uiApi = require("../uiApi");
 var _InputTypes = require("../zhn-inputs/InputTypes");
 var _OptionFn = require("../zhn-m-input/OptionFn");
@@ -64,4 +64,9 @@ const crInputSelectConfig = function (id, options, _temp) {
   return [_InputTypes.INPUT_TYPE_SELECT, id, caption || crInputCaption(id), options, dfOption || options[0], is];
 };
 exports.crInputSelectConfig = crInputSelectConfig;
+const fGetDialogConfig = crInputConfigs => (0, _uiApi.crLazyValue)(() => {
+  const INPUT_CONFIGS = crInputConfigs();
+  return [INPUT_CONFIGS, ...crDfInputs(INPUT_CONFIGS)];
+});
+exports.fGetDialogConfig = fGetDialogConfig;
 //# sourceMappingURL=DialogFn.js.map

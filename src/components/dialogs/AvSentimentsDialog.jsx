@@ -1,12 +1,10 @@
-import { crLazyValue } from '../uiApi';
-
 import DialogStackInputs from './DialogStackInputs';
 import { AlphaVantageLink } from '../links/Links';
 import {
   crInputProps,
   crTextFieldConfig,
   crInputSelectConfig,
-  crDfInputs,
+  fGetDialogConfig,
   getPaneCaption
 } from './DialogFn';
 
@@ -39,23 +37,13 @@ const TOPIC_OPTIONS = [
   ['Limit 200', '200']
 ]
 , DF_TICKERS = ""
-, ID_TICKERS = "tickers"
-, ID_TOPICS = "topics"
-, ID_SORT_BY = "sortBy"
-, ID_LIMIT = "limit"
-, _crDialogConfig = () => {
-  const INPUT_CONFIGS = [
-    crTextFieldConfig(ID_TICKERS, { dfValue: DF_TICKERS, inputProps: crInputProps(16), is: true}),
-    crInputSelectConfig(ID_TOPICS, TOPIC_OPTIONS, {is: true}),
-    crInputSelectConfig(ID_SORT_BY, SORTBY_OPTIONS),
-    crInputSelectConfig(ID_LIMIT, LIMIT_OPTIONS)
-  ];
-  return [
-    INPUT_CONFIGS,
-    ...crDfInputs(INPUT_CONFIGS)
-  ];
-}
-, _getDialogConfig = crLazyValue(_crDialogConfig);
+, _crInputConfigs = () => [
+  crTextFieldConfig("tickers", { dfValue: DF_TICKERS, inputProps: crInputProps(16), is: true}),
+  crInputSelectConfig("topics", TOPIC_OPTIONS, {is: true}),
+  crInputSelectConfig("sortBy", SORTBY_OPTIONS),
+  crInputSelectConfig("limit", LIMIT_OPTIONS)
+]
+, _getDialogConfig = fGetDialogConfig(_crInputConfigs);
 
 
 const AvSentimentsDialog = (props) => {

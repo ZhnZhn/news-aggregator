@@ -3,7 +3,6 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
 var _DialogStackInputs = _interopRequireDefault(require("./DialogStackInputs"));
 var _Links = require("../links/Links");
 var _DialogFn = require("./DialogFn");
@@ -12,21 +11,14 @@ const TOPIC_OPTIONS = [['All', ''], ['Blockchain', 'blockchain'], ['Earnings', '
   SORTBY_OPTIONS = [['Latest', 'LATEST'], ['Earliest', 'EARLIEST'], ['Relevance', 'RELEVANCE']],
   LIMIT_OPTIONS = [['Limit 50', '50'], ['Limit 100', '100'], ['Limit 200', '200']],
   DF_TICKERS = "",
-  ID_TICKERS = "tickers",
-  ID_TOPICS = "topics",
-  ID_SORT_BY = "sortBy",
-  ID_LIMIT = "limit",
-  _crDialogConfig = () => {
-    const INPUT_CONFIGS = [(0, _DialogFn.crTextFieldConfig)(ID_TICKERS, {
-      dfValue: DF_TICKERS,
-      inputProps: (0, _DialogFn.crInputProps)(16),
-      is: true
-    }), (0, _DialogFn.crInputSelectConfig)(ID_TOPICS, TOPIC_OPTIONS, {
-      is: true
-    }), (0, _DialogFn.crInputSelectConfig)(ID_SORT_BY, SORTBY_OPTIONS), (0, _DialogFn.crInputSelectConfig)(ID_LIMIT, LIMIT_OPTIONS)];
-    return [INPUT_CONFIGS, ...(0, _DialogFn.crDfInputs)(INPUT_CONFIGS)];
-  },
-  _getDialogConfig = (0, _uiApi.crLazyValue)(_crDialogConfig);
+  _crInputConfigs = () => [(0, _DialogFn.crTextFieldConfig)("tickers", {
+    dfValue: DF_TICKERS,
+    inputProps: (0, _DialogFn.crInputProps)(16),
+    is: true
+  }), (0, _DialogFn.crInputSelectConfig)("topics", TOPIC_OPTIONS, {
+    is: true
+  }), (0, _DialogFn.crInputSelectConfig)("sortBy", SORTBY_OPTIONS), (0, _DialogFn.crInputSelectConfig)("limit", LIMIT_OPTIONS)],
+  _getDialogConfig = (0, _DialogFn.fGetDialogConfig)(_crInputConfigs);
 const AvSentimentsDialog = props => {
   const paneCaption = (0, _DialogFn.getPaneCaption)(props.itemConf),
     [INPUT_CONFIGS, INITIAL_INPUTS, TOGGLES, IS_INPUTS] = _getDialogConfig();
