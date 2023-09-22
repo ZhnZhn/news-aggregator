@@ -46,10 +46,13 @@ const NEWS_QUERY = {
     "paneType": "STACK_ITEM"
   },
   CRYPTO_COMPARE: {
-    "type": "CRYPTO_COMPARE",
-    "dialogType": "CryptoCompareNews",
-    "paneCaption": _ProviderNames.CRYPTO_COMPARE,
-    "paneId": "cryptocompare_news"
+    type: "CRYPTO_COMPARE",
+    loadId: "CCN",
+    dialogType: DIALOG_TYPE_2,
+    getConfig: _dialogs.getCryptoCompareConfig,
+    CompLink: _Links.CryptoCompareLink,
+    paneCaption: _ProviderNames.CRYPTO_COMPARE,
+    paneId: "cryptocompare_news"
   },
   COIN_STATS: {
     type: "COIN_STATS",

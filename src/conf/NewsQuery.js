@@ -1,11 +1,13 @@
 import {
   AlphaVantageLink,
-  CoinStatsLink
+  CoinStatsLink,
+  CryptoCompareLink
 } from '../components/links/Links';
 
 import {
   getAvDialogConfig,
-  getCoinStatDialogConfig
+  getCoinStatDialogConfig,
+  getCryptoCompareConfig
 } from '../components/dialogs';
 
 import {
@@ -66,10 +68,13 @@ const NEWS_QUERY = {
   },
 
   CRYPTO_COMPARE: {
-    "type": "CRYPTO_COMPARE",
-    "dialogType": "CryptoCompareNews",
-    "paneCaption": CRYPTO_COMPARE,
-    "paneId": "cryptocompare_news"
+    type: "CRYPTO_COMPARE",
+    loadId: "CCN",
+    dialogType: DIALOG_TYPE_2,
+    getConfig: getCryptoCompareConfig,
+    CompLink: CryptoCompareLink,
+    paneCaption: CRYPTO_COMPARE,
+    paneId: "cryptocompare_news"
   },
   COIN_STATS: {
     type: "COIN_STATS",
