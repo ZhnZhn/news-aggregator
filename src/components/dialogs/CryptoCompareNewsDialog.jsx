@@ -1,6 +1,9 @@
+import { crLazyValue } from '../uiApi';
+
 import DialogStackInputs from './DialogStackInputs';
 import { CryptoCompareLink } from '../links/Links';
 import {
+  crInputSelectConfig,
   crDfInputs,
   getPaneCaption
 } from './DialogFn';
@@ -12,7 +15,6 @@ const FEED_OPTIONS = [
   ['CoinTelegraph', 'cointelegraph'],
   ['CryptoCompare', 'cryptocompare']
 ]
-, DF_FEED = FEED_OPTIONS[0]
 , CATEGORY_OPTIONS = [
   ['All', 'ALL_NEWS_CATEGORIES'],
   ['Altcoin'],
@@ -31,24 +33,31 @@ const FEED_OPTIONS = [
   ['Sponsored'],
   ['Wallet']
 ]
-, DF_CATEGORY = CATEGORY_OPTIONS[0]
 , SORTBY_OPTIONS = [
   ['Latest', 'latest'],
   ['Popular', 'popular']
-], DF_SORTBY = SORTBY_OPTIONS[0]
-, INPUT_CONFIGS = [
-  ['s','category', 'Category', CATEGORY_OPTIONS, DF_CATEGORY, true],
-  ['s','feed', 'Feed', FEED_OPTIONS, DF_FEED],
-  ['s','sortOrder', 'SortBy', SORTBY_OPTIONS, DF_SORTBY, true]
 ]
-, [
-  INITIAL_INPUTS,
-  TOGGLES,
-  IS_INPUTS
-] = crDfInputs(INPUT_CONFIGS);
+, _crDialogConfig = () => {
+  const INPUT_CONFIGS = [
+    crInputSelectConfig("category", CATEGORY_OPTIONS, {is: true}),
+    crInputSelectConfig("feed", FEED_OPTIONS),
+    crInputSelectConfig("sortOrder", SORTBY_OPTIONS, {caption: "SortBy", is: true})
+  ]
+  return [
+    INPUT_CONFIGS,
+    ...crDfInputs(INPUT_CONFIGS)
+  ];
+}
+, _getDialogConfig = crLazyValue(_crDialogConfig);
 
 const CryptoCompareNewsDialog = (props) => {
-  const paneCaption = getPaneCaption(props.itemConf);
+  const paneCaption = getPaneCaption(props.itemConf)
+  , [
+    INPUT_CONFIGS,
+    INITIAL_INPUTS,
+    TOGGLES,
+    IS_INPUTS
+  ] = _getDialogConfig();
   return (
     <DialogStackInputs
       {...props}
