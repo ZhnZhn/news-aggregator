@@ -3,8 +3,9 @@
 exports.__esModule = true;
 exports.default = void 0;
 var _Links = require("../components/links/Links");
-var _crAvSentimentConfig = require("../components/dialogs/crAvSentimentConfig");
+var _dialogs = require("../components/dialogs");
 var _ProviderNames = require("./ProviderNames");
+const DIALOG_TYPE_2 = "DialogType2";
 const NEWS_QUERY = {
   WEBZ: {
     "type": "W_WEBZ_QUERY",
@@ -51,10 +52,13 @@ const NEWS_QUERY = {
     "paneId": "cryptocompare_news"
   },
   COIN_STATS: {
-    "type": "COIN_STATS",
-    "dialogType": "CoinStatsNews",
-    "paneCaption": _ProviderNames.COIN_STATS + " News",
-    "paneId": "coinstats_news"
+    type: "COIN_STATS",
+    loadId: "CS",
+    dialogType: DIALOG_TYPE_2,
+    getConfig: _dialogs.getCoinStatDialogConfig,
+    CompLink: _Links.CoinStatsLink,
+    paneCaption: _ProviderNames.COIN_STATS + " News",
+    paneId: "coinstats_news"
   },
   MESSARI: {
     "type": "MESSARI",
@@ -76,11 +80,11 @@ const NEWS_QUERY = {
   },
   AV: {
     type: "AV",
-    dialogType: "DialogType2",
+    dialogType: DIALOG_TYPE_2,
+    getConfig: _dialogs.getAvDialogConfig,
+    CompLink: _Links.AlphaVantageLink,
     paneCaption: _ProviderNames.ALPHA_VANTAGE,
-    paneId: "av_sentiments",
-    getConfig: _crAvSentimentConfig.getAvDialogConfig,
-    CompLink: _Links.AlphaVantageLink
+    paneId: "av_sentiments"
   },
   NEWS_SEARCH: {
     "type": "NEWS_SEARCH",

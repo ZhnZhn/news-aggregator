@@ -12,7 +12,6 @@ import NewsApiTop from './NewsApiTopDialog';
 import TheNewsApiSearch from './TheNewsApiSearchDialog';
 import TheNewsApiTop from './TheNewsApiTopDialog';
 import CryptoCompareNews from './CryptoCompareNewsDialog';
-import CoinStatsNews from './CoinStatsDialog';
 import MessariNews from './MessariDialog';
 import RedditTop from './RedditTopDialog';
 
@@ -26,7 +25,6 @@ const R = {
   StackTagged,
   StackSearch,
   CryptoCompareNews,
-  CoinStatsNews,
   MessariNews,
   IexNews,
   FmpNews,

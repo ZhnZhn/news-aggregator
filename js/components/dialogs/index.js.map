@@ -1,0 +1,16 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/dialogs/index.js"
+ ],
+ "file": "../../../src/components/dialogs/index.js",
+ "names": [
+  "_crAvSentimentConfig",
+  "require",
+  "exports",
+  "getAvDialogConfig",
+  "_crCoinStatConfig",
+  "getCoinStatDialogConfig"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,oBAAA,GAAAC,OAAA;AAAyDC,OAAA,CAAAC,iBAAA,GAAAH,oBAAA,CAAAG,iBAAA;AACzD,IAAAC,iBAAA,GAAAH,OAAA;AAA4DC,OAAA,CAAAG,uBAAA,GAAAD,iBAAA,CAAAC,uBAAA"
+}

@@ -65,7 +65,11 @@ const _fGetByPropName = (
 ) => (obj) => (obj || {})[propName];
 
 export const getPaneCaption = _fGetByPropName("paneCaption")
-export const getLoadId = _fGetByPropName("type")
+const _getType = _fGetByPropName("type");
+const _getLoadId = _fGetByPropName("loadId");
+export const getLoadId = (
+  itemConf
+) => _getLoadId(itemConf) || _getType(itemConf) 
 
 export const getDialogCaption = (
   itemConf

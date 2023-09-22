@@ -1,5 +1,12 @@
-import { AlphaVantageLink } from '../components/links/Links';
-import { getAvDialogConfig } from '../components/dialogs/crAvSentimentConfig';
+import {
+  AlphaVantageLink,
+  CoinStatsLink
+} from '../components/links/Links';
+
+import {
+  getAvDialogConfig,
+  getCoinStatDialogConfig
+} from '../components/dialogs';
 
 import {
   CRYPTO_COMPARE,
@@ -15,6 +22,8 @@ import {
   DEV_TO,
   STACK_OVERFLOW
 } from './ProviderNames';
+
+const DIALOG_TYPE_2 = "DialogType2";
 
 const NEWS_QUERY = {
   WEBZ: {
@@ -63,10 +72,13 @@ const NEWS_QUERY = {
     "paneId": "cryptocompare_news"
   },
   COIN_STATS: {
-    "type": "COIN_STATS",
-    "dialogType": "CoinStatsNews",
-    "paneCaption": `${COIN_STATS} News`,
-    "paneId": "coinstats_news"
+    type: "COIN_STATS",
+    loadId: "CS",
+    dialogType: DIALOG_TYPE_2,
+    getConfig: getCoinStatDialogConfig,
+    CompLink: CoinStatsLink,
+    paneCaption: `${COIN_STATS} News`,
+    paneId: "coinstats_news"
   },
   MESSARI: {
     "type": "MESSARI",
@@ -87,12 +99,12 @@ const NEWS_QUERY = {
     "paneId": "fmp_news"
   },
   AV: {
-    type: "AV",  
-    dialogType: "DialogType2",
+    type: "AV",
+    dialogType: DIALOG_TYPE_2,
+    getConfig: getAvDialogConfig,
+    CompLink: AlphaVantageLink,
     paneCaption: ALPHA_VANTAGE,
     paneId: "av_sentiments",
-    getConfig: getAvDialogConfig,
-    CompLink: AlphaVantageLink
   },
   NEWS_SEARCH: {
     "type": "NEWS_SEARCH",

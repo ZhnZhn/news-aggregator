@@ -17,7 +17,7 @@ const DialogType2 = (props) => {
     INITIAL_INPUTS,
     TOGGLES,
     IS_INPUTS
-  ] = getConfig();
+  ] = getConfig();  
   return (
     <DialogStackInputs
       {...props}
