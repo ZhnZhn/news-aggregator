@@ -26,10 +26,14 @@ const NEWS_QUERY = {
     "paneId": "rd_topby"
   },
   DEV_TO: {
-    "type": "DEV_TO",
-    "dialogType": "DevToTop",
-    "paneCaption": _ProviderNames.DEV_TO + ": Top By",
-    "paneId": "dt_topby"
+    type: "DEV_TO",
+    dialogType: DIALOG_TYPE_2,
+    loadId: "DT",
+    caption: "Top By",
+    getConfig: _dialogs.getDevToConfig,
+    CompLink: _Links.DevToLink,
+    paneCaption: _ProviderNames.DEV_TO + ": Top By",
+    paneId: "dt_topby"
   },
   STACK_TAGGED: {
     "type": "SO_TAGGED",

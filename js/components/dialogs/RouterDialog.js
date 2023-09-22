@@ -7,7 +7,6 @@ var _DialogType = _interopRequireDefault(require("./DialogType1"));
 var _DialogType2 = _interopRequireDefault(require("./DialogType2"));
 var _WebzQueryDialog = _interopRequireDefault(require("./WebzQueryDialog"));
 var _WebzCountryDialog = _interopRequireDefault(require("./WebzCountryDialog"));
-var _DevToTopDialog = _interopRequireDefault(require("./DevToTopDialog"));
 var _StackTaggedDialog = _interopRequireDefault(require("./StackTaggedDialog"));
 var _StackSearchDialog = _interopRequireDefault(require("./StackSearchDialog"));
 var _IexNewsDialog = _interopRequireDefault(require("./IexNewsDialog"));
@@ -24,7 +23,6 @@ const R = {
   DialogType2: _DialogType2.default,
   WebzQuery: _WebzQueryDialog.default,
   WebzCountry: _WebzCountryDialog.default,
-  DevToTop: _DevToTopDialog.default,
   StackTagged: _StackTaggedDialog.default,
   StackSearch: _StackSearchDialog.default,
   MessariNews: _MessariDialog.default,

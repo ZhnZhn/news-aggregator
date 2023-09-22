@@ -1,13 +1,15 @@
 import {
   AlphaVantageLink,
   CoinStatsLink,
-  CryptoCompareLink
+  CryptoCompareLink,
+  DevToLink
 } from '../components/links/Links';
 
 import {
   getAvDialogConfig,
   getCoinStatDialogConfig,
-  getCryptoCompareConfig
+  getCryptoCompareConfig,
+  getDevToConfig
 } from '../components/dialogs';
 
 import {
@@ -47,10 +49,14 @@ const NEWS_QUERY = {
     "paneId": "rd_topby"
   },
   DEV_TO: {
-    "type": "DEV_TO",
-    "dialogType": "DevToTop",
-    "paneCaption": `${DEV_TO}: Top By`,
-    "paneId": "dt_topby"
+    type: "DEV_TO",
+    dialogType: DIALOG_TYPE_2,
+    loadId: "DT",
+    caption: "Top By",
+    getConfig: getDevToConfig,
+    CompLink: DevToLink,
+    paneCaption: `${DEV_TO}: Top By`,
+    paneId: "dt_topby"
   },
   STACK_TAGGED: {
     "type": "SO_TAGGED",

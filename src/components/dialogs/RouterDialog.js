@@ -2,7 +2,6 @@ import DialogType1 from './DialogType1';
 import DialogType2 from './DialogType2';
 import WebzQuery from './WebzQueryDialog';
 import WebzCountry from './WebzCountryDialog';
-import DevToTop from './DevToTopDialog';
 import StackTagged from './StackTaggedDialog';
 import StackSearch from './StackSearchDialog';
 import IexNews from './IexNewsDialog';
@@ -20,7 +19,6 @@ const R = {
   DialogType2,
   WebzQuery,
   WebzCountry,
-  DevToTop,
   StackTagged,
   StackSearch,
   MessariNews,

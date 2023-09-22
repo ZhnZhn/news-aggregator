@@ -1,5 +1,3 @@
-import DialogStackInputs from './DialogStackInputs';
-import { DevToLink } from '../links/Links';
 import {
   crInputSelectConfig,
   fGetDialogConfig
@@ -105,28 +103,4 @@ const TAGS = [
   crInputSelectConfig("perPage", PER_PAGES, {caption: "Per Page", dfOption: DF_PER_PAGES}),
   crInputSelectConfig("inRecentDays", RECENT_DAYS, {caption: "In Recent Days"})
 ]
-, _getDialogConfig = fGetDialogConfig(_crInputConfigs);
-
-const DevToTopDialog = (props) => {
-  const [
-    INPUT_CONFIGS,
-    INITIAL_INPUTS,
-    TOGGLES,
-    IS_INPUTS
-  ] = _getDialogConfig();
-  return (
-    <DialogStackInputs
-      {...props}
-      caption="Top By"
-      loadId="DT"
-      INPUT_CONFIGS={INPUT_CONFIGS}
-      INITIAL_INPUTS={INITIAL_INPUTS}
-      TOGGLES={TOGGLES}
-      IS_INPUTS={IS_INPUTS}
-    >
-      <DevToLink />
-    </DialogStackInputs>
-  );
-};
-
-export default DevToTopDialog
+export const getDevToConfig = fGetDialogConfig(_crInputConfigs);
