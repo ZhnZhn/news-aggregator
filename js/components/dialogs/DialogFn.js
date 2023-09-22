@@ -1,7 +1,8 @@
 "use strict";
 
 exports.__esModule = true;
-exports.getPaneCaption = exports.getDialogCaption = exports.crTextFieldCaption = exports.crInputProps = exports.crDfInputs = void 0;
+exports.getPaneCaption = exports.getDialogCaption = exports.crTextFieldCaption = exports.crInputProps = exports.crInputCaption = exports.crDfInputs = void 0;
+var _uiApi = require("../uiApi");
 var _InputTypes = require("../zhn-inputs/InputTypes");
 var _OptionFn = require("../zhn-m-input/OptionFn");
 const crInputProps = function (maxLength) {
@@ -41,6 +42,8 @@ const getPaneCaption = itemConf => (itemConf || {}).paneCaption;
 exports.getPaneCaption = getPaneCaption;
 const getDialogCaption = itemConf => ((itemConf || {}).dialogProps || {}).caption;
 exports.getDialogCaption = getDialogCaption;
+const crInputCaption = token => (0, _uiApi.toFirstUpperCase)(token);
+exports.crInputCaption = crInputCaption;
 const crTextFieldCaption = (caption, dfValue) => caption + " (Default: " + dfValue + ")";
 exports.crTextFieldCaption = crTextFieldCaption;
 //# sourceMappingURL=DialogFn.js.map

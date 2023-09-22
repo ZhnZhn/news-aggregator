@@ -1,4 +1,8 @@
 import {
+  toFirstUpperCase
+} from '../uiApi';
+
+import {
   INPUT_TYPE_SELECT,
   INPUT_TYPE_SUGGEST,
   INPUT_TYPE_TEXT_FIELD
@@ -62,6 +66,10 @@ export const crDfInputs = (
 export const getDialogCaption = (
   itemConf
 ) => ((itemConf || {}).dialogProps || {}).caption
+
+export const crInputCaption = (
+  token
+) => toFirstUpperCase(token)
 
 export const crTextFieldCaption = (
   caption,
