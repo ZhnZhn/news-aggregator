@@ -1,0 +1,33 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/dialogs/DialogType2.js"
+ ],
+ "file": "../../../src/components/dialogs/DialogType2.js",
+ "names": [
+  "_DialogStackInputs",
+  "_interopRequireDefault",
+  "require",
+  "_DialogFn",
+  "_jsxRuntime",
+  "DialogType2",
+  "props",
+  "itemConf",
+  "getConfig",
+  "CompLink",
+  "INPUT_CONFIGS",
+  "INITIAL_INPUTS",
+  "TOGGLES",
+  "IS_INPUTS",
+  "jsx",
+  "default",
+  "caption",
+  "getPaneCaption",
+  "loadId",
+  "getLoadId",
+  "children",
+  "_default",
+  "exports"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,kBAAA,GAAAC,sBAAA,CAAAC,OAAA;AACA,IAAAC,SAAA,GAAAD,OAAA;AAGoB,IAAAE,WAAA,GAAAF,OAAA;AAEpB,MAAMG,WAAW,GAAIC,KAAK,IAAK;EAC7B,MAAM;MACJC;IACF,CAAC,GAAGD,KAAK;IACP;MACAE,SAAS;MACTC;IACF,CAAC,GAAGF,QAAQ;IACV,CACAG,aAAa,EACbC,cAAc,EACdC,OAAO,EACPC,SAAS,CACV,GAAGL,SAAS,CAAC,CAAC;EACf,OACE,IAAAJ,WAAA,CAAAU,GAAA,EAACd,kBAAA,CAAAe,OAAiB;IAAA,GACZT,KAAK;IACTU,OAAO,EAAE,IAAAC,wBAAc,EAACV,QAAQ,CAAE;IAClCW,MAAM,EAAE,IAAAC,mBAAS,EAACZ,QAAQ,CAAE;IAC5BG,aAAa,EAAEA,aAAc;IAC7BC,cAAc,EAAEA,cAAe;IAC/BC,OAAO,EAAEA,OAAQ;IACjBC,SAAS,EAAEA,SAAU;IAAAO,QAAA,EAErB,IAAAhB,WAAA,CAAAU,GAAA,EAACL,QAAQ,IAAE;EAAC,CACK,CAAC;AAExB,CAAC;AAAA,IAAAY,QAAA,GAEchB,WAAW;AAAAiB,OAAA,CAAAP,OAAA,GAAAM,QAAA"
+}
