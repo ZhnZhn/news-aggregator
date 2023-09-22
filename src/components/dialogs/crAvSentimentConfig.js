@@ -1,11 +1,8 @@
-import DialogStackInputs from './DialogStackInputs';
-import { AlphaVantageLink } from '../links/Links';
 import {
   crInputProps,
   crTextFieldConfig,
   crInputSelectConfig,
-  fGetDialogConfig,
-  getPaneCaption
+  fGetDialogConfig
 } from './DialogFn';
 
 const TOPIC_OPTIONS = [
@@ -42,31 +39,6 @@ const TOPIC_OPTIONS = [
   crInputSelectConfig("topics", TOPIC_OPTIONS, {is: true}),
   crInputSelectConfig("sortBy", SORTBY_OPTIONS),
   crInputSelectConfig("limit", LIMIT_OPTIONS)
-]
-, _getDialogConfig = fGetDialogConfig(_crInputConfigs);
+];
 
-
-const AvSentimentsDialog = (props) => {
-  const paneCaption = getPaneCaption(props.itemConf)
-  , [
-    INPUT_CONFIGS,
-    INITIAL_INPUTS,
-    TOGGLES,
-    IS_INPUTS
-  ] = _getDialogConfig();
-  return (
-    <DialogStackInputs
-      {...props}
-      caption={paneCaption}
-      loadId="AV"
-      INPUT_CONFIGS={INPUT_CONFIGS}
-      INITIAL_INPUTS={INITIAL_INPUTS}
-      TOGGLES={TOGGLES}
-      IS_INPUTS={IS_INPUTS}
-    >
-      <AlphaVantageLink />
-    </DialogStackInputs>
-  );
-}
-
-export default AvSentimentsDialog
+export const getAvDialogConfig = fGetDialogConfig(_crInputConfigs);

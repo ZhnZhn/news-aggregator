@@ -1,3 +1,6 @@
+import { AlphaVantageLink } from '../components/links/Links';
+import { getAvDialogConfig } from '../components/dialogs/crAvSentimentConfig';
+
 import {
   CRYPTO_COMPARE,
   COIN_STATS,
@@ -84,10 +87,12 @@ const NEWS_QUERY = {
     "paneId": "fmp_news"
   },
   AV: {
-    "type": "AV",
-    "dialogType": "AvSentiments",
-    "paneCaption": ALPHA_VANTAGE,
-    "paneId": "av_sentiments"
+    type: "AV",  
+    dialogType: "DialogType2",
+    paneCaption: ALPHA_VANTAGE,
+    paneId: "av_sentiments",
+    getConfig: getAvDialogConfig,
+    CompLink: AlphaVantageLink
   },
   NEWS_SEARCH: {
     "type": "NEWS_SEARCH",

@@ -1,9 +1,11 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
+exports.default = void 0;
+var _Links = require("../components/links/Links");
+var _crAvSentimentConfig = require("../components/dialogs/crAvSentimentConfig");
 var _ProviderNames = require("./ProviderNames");
-var NEWS_QUERY = {
+const NEWS_QUERY = {
   WEBZ: {
     "type": "W_WEBZ_QUERY",
     "dialogType": "WebzQuery",
@@ -73,10 +75,12 @@ var NEWS_QUERY = {
     "paneId": "fmp_news"
   },
   AV: {
-    "type": "AV",
-    "dialogType": "AvSentiments",
-    "paneCaption": _ProviderNames.ALPHA_VANTAGE,
-    "paneId": "av_sentiments"
+    type: "AV",
+    dialogType: "DialogType2",
+    paneCaption: _ProviderNames.ALPHA_VANTAGE,
+    paneId: "av_sentiments",
+    getConfig: _crAvSentimentConfig.getAvDialogConfig,
+    CompLink: _Links.AlphaVantageLink
   },
   NEWS_SEARCH: {
     "type": "NEWS_SEARCH",
@@ -110,5 +114,5 @@ var NEWS_QUERY = {
   }
 };
 var _default = NEWS_QUERY;
-exports["default"] = _default;
+exports.default = _default;
 //# sourceMappingURL=NewsQuery.js.map
