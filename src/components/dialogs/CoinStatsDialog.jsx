@@ -1,6 +1,9 @@
+import { crLazyValue } from '../uiApi';
+
 import DialogStackInputs from './DialogStackInputs';
 import { CoinStatsLink } from '../links/Links';
 import {
+  crInputSelectConfig,
   crDfInputs,
   getPaneCaption
 } from './DialogFn';
@@ -12,18 +15,25 @@ const NEWS_FILTER_OPTIONS = [
   ["Bullish", "bullish"],
   ["Bearish", "bearish"]
 ]
-, DF_FILTER = NEWS_FILTER_OPTIONS[0]
-, INPUT_CONFIGS = [
-  ['s','filter','News filter', NEWS_FILTER_OPTIONS, DF_FILTER]
-]
-, [
-  INITIAL_INPUTS,
-  TOGGLES,
-  IS_INPUTS
-] = crDfInputs(INPUT_CONFIGS);
+, _crDialogConfig = () => {
+  const INPUT_CONFIGS = [
+    crInputSelectConfig("filter", NEWS_FILTER_OPTIONS, { caption: "News filter" })
+  ]
+  return [
+    INPUT_CONFIGS,
+    ...crDfInputs(INPUT_CONFIGS)
+  ];
+}
+, _getDialogConfig = crLazyValue(_crDialogConfig);
 
 const CoinStatsDialog = (props) => {
-  const paneCaption = getPaneCaption(props.itemConf);
+  const paneCaption = getPaneCaption(props.itemConf)
+  , [
+    INPUT_CONFIGS,
+    INITIAL_INPUTS,
+    TOGGLES,
+    IS_INPUTS
+  ] = _getDialogConfig();
   return (
     <DialogStackInputs
       {...props}
