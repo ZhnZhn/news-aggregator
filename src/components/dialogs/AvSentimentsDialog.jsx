@@ -3,10 +3,10 @@ import { crLazyValue } from '../uiApi';
 import DialogStackInputs from './DialogStackInputs';
 import { AlphaVantageLink } from '../links/Links';
 import {
-  crInputCaption,
   crInputProps,
-  crDfInputs,
+  crTextFieldConfig,
   crInputSelectConfig,
+  crDfInputs,
   getPaneCaption
 } from './DialogFn';
 
@@ -35,6 +35,7 @@ const TOPIC_OPTIONS = [
 ]
 , LIMIT_OPTIONS = [
   ['Limit 50', '50'],
+  ['Limit 100', '100'],
   ['Limit 200', '200']
 ]
 , DF_TICKERS = ""
@@ -44,10 +45,10 @@ const TOPIC_OPTIONS = [
 , ID_LIMIT = "limit"
 , _crDialogConfig = () => {
   const INPUT_CONFIGS = [
-    ['t',ID_TICKERS,crInputCaption(ID_TICKERS),DF_TICKERS,crInputProps(16),true],
+    crTextFieldConfig(ID_TICKERS, { dfValue: DF_TICKERS, inputProps: crInputProps(16), is: true}),
     crInputSelectConfig(ID_TOPICS, TOPIC_OPTIONS, {is: true}),
     crInputSelectConfig(ID_SORT_BY, SORTBY_OPTIONS),
-    crInputSelectConfig(ID_LIMIT, LIMIT_OPTIONS)    
+    crInputSelectConfig(ID_LIMIT, LIMIT_OPTIONS)
   ];
   return [
     INPUT_CONFIGS,

@@ -67,15 +67,30 @@ export const getDialogCaption = (
   itemConf
 ) => ((itemConf || {}).dialogProps || {}).caption
 
-export const crInputCaption = (
-  token
-) => toFirstUpperCase(token)
-
 export const crTextFieldCaption = (
   caption,
   dfValue
 ) => `${caption} (Default: ${dfValue})`
 
+const crInputCaption = (
+  token
+) => toFirstUpperCase(token)
+
+export const crTextFieldConfig = (
+  id, {
+    caption,
+    dfValue,
+    inputProps,
+    is
+  }
+) => [
+  INPUT_TYPE_TEXT_FIELD,
+  id,
+  caption || crInputCaption(id),
+  dfValue,
+  inputProps,
+  is
+]
 
 export const crInputSelectConfig = (
   id,
