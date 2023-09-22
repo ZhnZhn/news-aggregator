@@ -10,6 +10,13 @@ import InputSuggest from '../zhn-m-input/InputSuggest';
 import TextField from '../zhn-m-input/TextField';
 import InputFromToDate from '../zhn-m-input/InputFromToDate';
 
+import {
+  INPUT_TYPE_SELECT,
+  INPUT_TYPE_SUGGEST,
+  INPUT_TYPE_TEXT_FIELD,
+  INPUT_TYPE_FROM_DATE
+} from './InputTypes';
+
 const _isObj = v => v && typeof v === 'object';
 const SELECT_STYLE_CONFIG = crSelectStyleConfig();
 const S_TF_SUGGEST = {
@@ -32,9 +39,9 @@ const StackInputs = ({
 }) => (configs || []).map(arrConfig => {
   const _type = arrConfig[0]
   , _inputId = arrConfig[1]
-  , CompInput = _type === 's'
+  , CompInput = _type === INPUT_TYPE_SELECT
      ? InputSelect
-     : _type === 'sg'
+     : _type === INPUT_TYPE_SUGGEST
          ? InputSuggest
          : void 0
   , _elItem = CompInput
@@ -49,7 +56,7 @@ const StackInputs = ({
            onSelect={onSelect}
         />
       )
-      : _type === 't'
+      : _type === INPUT_TYPE_TEXT_FIELD
           ? (<TextField
                {...arrConfig[4]}
                key={_inputId}
@@ -62,7 +69,7 @@ const StackInputs = ({
                onInputChange={onSelect}
             />
           )
-          : _type === 'ft'
+          : _type === INPUT_TYPE_FROM_DATE
             ? (<InputFromToDate
                 key="_ft"
                 style={S_INPUT_DATE}
