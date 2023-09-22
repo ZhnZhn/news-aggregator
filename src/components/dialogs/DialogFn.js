@@ -93,20 +93,25 @@ export const crTextFieldConfig = (
   is
 ]
 
-export const crInputSelectConfig = (
+const _fCrInputConfig = (
+  inputType
+) => (
   id,
   options, {
   caption,
   dfOption,
   is
 }={}) => [
-  INPUT_TYPE_SELECT,
+  inputType,
   id,
   caption || crInputCaption(id),
   options,
   dfOption || options[0],
   is
-]
+];
+
+export const crInputSelectConfig = _fCrInputConfig(INPUT_TYPE_SELECT)
+export const crInputSuggestConfig = _fCrInputConfig(INPUT_TYPE_SUGGEST)
 
 export const fGetDialogConfig = (
   crInputConfigs
