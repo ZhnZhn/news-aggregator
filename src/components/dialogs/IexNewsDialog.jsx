@@ -6,7 +6,9 @@ import DialogStackInputs from './DialogStackInputs';
 import { IexApiLink } from '../links/Links';
 import {
   crInputProps,
-  crDfInputs
+  crTextFieldConfig,
+  crInputSelectConfig,
+  fGetDialogConfig
 } from './DialogFn';
 
 const RECENT_OPTIONS = [
@@ -18,28 +20,32 @@ const RECENT_OPTIONS = [
 ]
 , DF_RECENT = RECENT_OPTIONS[1]
 , DF_SYMBOL = "AAPL"
-const INPUT_CONFIGS = [
-  ['t','symbol','Stock Symbol',DF_SYMBOL,crInputProps(),true],
-  ['s','recent','Recent',RECENT_OPTIONS,DF_RECENT,true]
+, _crInputConfigs = () => [
+  crTextFieldConfig("symbol", {caption: "Stock Symbol", dfValue: DF_SYMBOL, inputProps: crInputProps(), is: true}),
+  crInputSelectConfig("recent", RECENT_OPTIONS, {dfOption: DF_RECENT, is: true})
 ]
-, [
-  INITIAL_INPUTS,
-  TOGGLES,
-  IS_INPUTS
-] = crDfInputs(INPUT_CONFIGS);
+, _getDialogConfig = fGetDialogConfig(_crInputConfigs);
 
-const IexNewsDialog = (props) => (
-   <DialogStackInputs
-     {...props}
-     caption={IEX_CLOUD}
-     loadId="IEX"
-     INPUT_CONFIGS={INPUT_CONFIGS}
-     INITIAL_INPUTS={INITIAL_INPUTS}
-     TOGGLES={TOGGLES}
-     IS_INPUTS={IS_INPUTS}
-   >
-     <IexApiLink />
-   </DialogStackInputs>
-);
+const IexNewsDialog = (props) => {
+  const [
+    INPUT_CONFIGS,
+    INITIAL_INPUTS,
+    TOGGLES,
+    IS_INPUTS
+  ] = _getDialogConfig();
+  return (
+    <DialogStackInputs
+      {...props}
+      caption={IEX_CLOUD}
+      loadId="IEX"
+      INPUT_CONFIGS={INPUT_CONFIGS}
+      INITIAL_INPUTS={INITIAL_INPUTS}
+      TOGGLES={TOGGLES}
+      IS_INPUTS={IS_INPUTS}
+    >
+      <IexApiLink />
+    </DialogStackInputs>
+  );
+};
 
 export default IexNewsDialog
