@@ -2,6 +2,7 @@
 
 exports.__esModule = true;
 exports.getPaneCaption = exports.getDialogCaption = exports.crTextFieldCaption = exports.crInputProps = exports.crDfInputs = void 0;
+var _InputTypes = require("../zhn-inputs/InputTypes");
 var _OptionFn = require("../zhn-m-input/OptionFn");
 const crInputProps = function (maxLength) {
   if (maxLength === void 0) {
@@ -20,7 +21,7 @@ const _crObject = Object.create,
   _getId = arrConfig => arrConfig[1],
   _getDfValue = arrConfig => {
     const _type = arrConfig[0];
-    return _type === "s" || _type === "sg" ? (0, _OptionFn.getItemValue)(arrConfig[4]) : _type === "t" ? arrConfig[3] : void 0;
+    return _type === _InputTypes.INPUT_TYPE_SELECT || _type === _InputTypes.INPUT_TYPE_SUGGEST ? (0, _OptionFn.getItemValue)(arrConfig[4]) : _type === _InputTypes.INPUT_TYPE_TEXT_FIELD ? arrConfig[3] : void 0;
   },
   _hasShow = (inputConfigs, arrConfig) => inputConfigs.length === 1 ? true : arrConfig[arrConfig.length - 1] === true ? true : false;
 const crDfInputs = inputConfigs => inputConfigs.reduce((r, arrConfig) => {

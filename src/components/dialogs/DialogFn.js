@@ -1,4 +1,12 @@
-import { getItemValue } from '../zhn-m-input/OptionFn';
+import {
+  INPUT_TYPE_SELECT,
+  INPUT_TYPE_SUGGEST,
+  INPUT_TYPE_TEXT_FIELD
+} from '../zhn-inputs/InputTypes';
+import {
+  getItemValue
+} from '../zhn-m-input/OptionFn';
+
 
 export const crInputProps = (
   maxLength='10'
@@ -16,9 +24,9 @@ const _crObject = Object.create
   arrConfig
 ) => {
   const _type = arrConfig[0];
-  return _type === "s" || _type === "sg"
+  return _type === INPUT_TYPE_SELECT || _type === INPUT_TYPE_SUGGEST
     ? getItemValue(arrConfig[4])
-    : _type === "t"
+    : _type === INPUT_TYPE_TEXT_FIELD
        ? arrConfig[3]
        : void 0;
 }
