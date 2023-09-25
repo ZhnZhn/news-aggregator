@@ -4,7 +4,8 @@ import {
   CryptoCompareLink,
   DevToLink,
   FmpApiLink,
-  IexApiLink
+  IexApiLink,
+  MessariLink
 } from '../components/links/Links';
 
 import {
@@ -13,7 +14,8 @@ import {
   getCryptoCompareConfig,
   getDevToConfig,
   getFmpNewsConfig,
-  getIexCloudNewsConfig
+  getIexCloudNewsConfig,
+  getMessariConfig
 } from '../components/dialogs';
 
 import {
@@ -96,10 +98,13 @@ const NEWS_QUERY = {
     paneId: "coinstats_news"
   },
   MESSARI: {
-    "type": "MESSARI",
-    "dialogType": "MessariNews",
-    "paneCaption": MESSARI,
-    "paneId": "messari_news"
+    type: "MESSARI",
+    dialogType: DIALOG_TYPE_2,
+    loadId: "MS",
+    getConfig: getMessariConfig,
+    CompLink: MessariLink,
+    paneCaption: MESSARI,
+    paneId: "messari_news"
   },
   IEX: {
     type: "IEX_NEWS",

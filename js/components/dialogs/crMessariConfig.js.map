@@ -1,0 +1,19 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/dialogs/crMessariConfig.js"
+ ],
+ "file": "../../../src/components/dialogs/crMessariConfig.js",
+ "names": [
+  "_DialogFn",
+  "require",
+  "ASSET_OPTIONS",
+  "_crInputConfigs",
+  "crInputSelectConfig",
+  "caption",
+  "getMessariConfig",
+  "fGetDialogConfig",
+  "exports"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AAKA,MAAMC,aAAa,GAAG,CACtB,CAAC,KAAK,EAAE,KAAK,CAAC,CACb;EACCC,eAAe,GAAGA,CAAA,KAAM,CACxB,IAAAC,6BAAmB,EAAC,UAAU,EAAEF,aAAa,EAAE;IAACG,OAAO,EAAE;EAAY,CAAC,CAAC,CACxE;AAEM,MAAMC,gBAAgB,GAAG,IAAAC,0BAAgB,EAACJ,eAAe,CAAC;AAACK,OAAA,CAAAF,gBAAA,GAAAA,gBAAA"
+}

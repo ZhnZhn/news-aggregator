@@ -8,7 +8,6 @@ import NewsApiSearch from './NewsApiSearchDialog';
 import NewsApiTop from './NewsApiTopDialog';
 import TheNewsApiSearch from './TheNewsApiSearchDialog';
 import TheNewsApiTop from './TheNewsApiTopDialog';
-import MessariNews from './MessariDialog';
 import RedditTop from './RedditTopDialog';
 
 const R = {
@@ -19,7 +18,6 @@ const R = {
   WebzCountry,
   StackTagged,
   StackSearch,
-  MessariNews,
   NewsApiSearch,
   NewsApiTop,
   TheNewsApiSearch,

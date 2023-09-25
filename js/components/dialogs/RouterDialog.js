@@ -13,7 +13,6 @@ var _NewsApiSearchDialog = _interopRequireDefault(require("./NewsApiSearchDialog
 var _NewsApiTopDialog = _interopRequireDefault(require("./NewsApiTopDialog"));
 var _TheNewsApiSearchDialog = _interopRequireDefault(require("./TheNewsApiSearchDialog"));
 var _TheNewsApiTopDialog = _interopRequireDefault(require("./TheNewsApiTopDialog"));
-var _MessariDialog = _interopRequireDefault(require("./MessariDialog"));
 var _RedditTopDialog = _interopRequireDefault(require("./RedditTopDialog"));
 const R = {
   DF: _DialogType.default,
@@ -23,7 +22,6 @@ const R = {
   WebzCountry: _WebzCountryDialog.default,
   StackTagged: _StackTaggedDialog.default,
   StackSearch: _StackSearchDialog.default,
-  MessariNews: _MessariDialog.default,
   NewsApiSearch: _NewsApiSearchDialog.default,
   NewsApiTop: _NewsApiTopDialog.default,
   TheNewsApiSearch: _TheNewsApiSearchDialog.default,

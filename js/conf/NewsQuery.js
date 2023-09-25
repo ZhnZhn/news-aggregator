@@ -68,10 +68,13 @@ const NEWS_QUERY = {
     paneId: "coinstats_news"
   },
   MESSARI: {
-    "type": "MESSARI",
-    "dialogType": "MessariNews",
-    "paneCaption": _ProviderNames.MESSARI,
-    "paneId": "messari_news"
+    type: "MESSARI",
+    dialogType: DIALOG_TYPE_2,
+    loadId: "MS",
+    getConfig: _dialogs.getMessariConfig,
+    CompLink: _Links.MessariLink,
+    paneCaption: _ProviderNames.MESSARI,
+    paneId: "messari_news"
   },
   IEX: {
     type: "IEX_NEWS",
