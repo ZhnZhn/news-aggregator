@@ -1,6 +1,8 @@
-import DialogStackInputs from './DialogStackInputs';
-import { RedditLink } from '../links/Links';
-import { crDfInputs } from './DialogFn';
+import {
+  crInputSuggestConfig,
+  crInputSelectConfig,
+  fGetDialogConfig
+} from './DialogFn';
 
 const SUBRREDIT_OPTIONS = [
 ["Amd"],
@@ -98,7 +100,6 @@ const SUBRREDIT_OPTIONS = [
 ["news"],
 ["worldnews"]
 ]
-, DF_SUBRREDIT = SUBRREDIT_OPTIONS[0]
 , PERIOD_OPTIONS = [
   ["hour"],
   ["day"],
@@ -114,29 +115,10 @@ const SUBRREDIT_OPTIONS = [
   ["30"]
 ]
 , DF_LIMIT = LIMIT_OPTIONS[1]
-, INPUT_CONFIGS = [
-  ['sg','subreddit','Subreddit', SUBRREDIT_OPTIONS, DF_SUBRREDIT, true],
-  ['s','t','Period', PERIOD_OPTIONS, DF_PERIOD],
-  ['s','limit', 'Limit', LIMIT_OPTIONS, DF_LIMIT]
-]
-, [
-  INITIAL_INPUTS,
-  TOGGLES,
-  IS_INPUTS
-] = crDfInputs(INPUT_CONFIGS);
+, _crInputConfigs = () => [
+  crInputSuggestConfig('subreddit', SUBRREDIT_OPTIONS, { is: true }),
+  crInputSelectConfig('t', PERIOD_OPTIONS, { caption: "Period", dfOption: DF_PERIOD }),
+  crInputSelectConfig('limit', LIMIT_OPTIONS, { dfOption: DF_LIMIT })
+];
 
-const RedditTopDialog = (props) => (
-  <DialogStackInputs
-    {...props}
-    caption="Top By"
-    loadId="RD"
-    INPUT_CONFIGS={INPUT_CONFIGS}
-    INITIAL_INPUTS={INITIAL_INPUTS}
-    TOGGLES={TOGGLES}
-    IS_INPUTS={IS_INPUTS}
-  >
-    <RedditLink />
-  </DialogStackInputs>
-);
-
-export default RedditTopDialog
+export const getRedditTopConfig = fGetDialogConfig(_crInputConfigs)

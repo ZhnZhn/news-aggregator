@@ -11,7 +11,8 @@ var _StackTaggedDialog = _interopRequireDefault(require("./StackTaggedDialog"));
 var _StackSearchDialog = _interopRequireDefault(require("./StackSearchDialog"));
 var _TheNewsApiSearchDialog = _interopRequireDefault(require("./TheNewsApiSearchDialog"));
 var _TheNewsApiTopDialog = _interopRequireDefault(require("./TheNewsApiTopDialog"));
-var _RedditTopDialog = _interopRequireDefault(require("./RedditTopDialog"));
+//import RedditTop from './RedditTopDialog';
+
 const R = {
   DF: _DialogType.default,
   DialogType1: _DialogType.default,
@@ -21,9 +22,10 @@ const R = {
   StackTagged: _StackTaggedDialog.default,
   StackSearch: _StackSearchDialog.default,
   TheNewsApiSearch: _TheNewsApiSearchDialog.default,
-  TheNewsApiTop: _TheNewsApiTopDialog.default,
-  RedditTop: _RedditTopDialog.default
+  TheNewsApiTop: _TheNewsApiTopDialog.default
+  //RedditTop
 };
+
 const RouterDialog = {
   getElement: type => R[type] || R.DF
 };

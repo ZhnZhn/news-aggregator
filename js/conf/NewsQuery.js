@@ -20,10 +20,13 @@ const NEWS_QUERY = {
     "paneId": "webz_country"
   },
   REDDIT: {
-    "type": "REDDIT",
-    "dialogType": "RedditTop",
-    "paneCaption": _ProviderNames.REDDIT + ": Top By",
-    "paneId": "rd_topby"
+    type: "REDDIT",
+    dialogType: DIALOG_TYPE_2,
+    loadId: "RD",
+    getConfig: _dialogs.getRedditTopConfig,
+    CompLink: _Links.RedditLink,
+    paneCaption: _ProviderNames.REDDIT + ": Top By",
+    paneId: "rd_topby"
   },
   DEV_TO: {
     type: "DEV_TO",

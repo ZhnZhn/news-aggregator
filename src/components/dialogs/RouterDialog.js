@@ -6,7 +6,7 @@ import StackTagged from './StackTaggedDialog';
 import StackSearch from './StackSearchDialog';
 import TheNewsApiSearch from './TheNewsApiSearchDialog';
 import TheNewsApiTop from './TheNewsApiTopDialog';
-import RedditTop from './RedditTopDialog';
+//import RedditTop from './RedditTopDialog';
 
 const R = {
   DF: DialogType1,
@@ -18,7 +18,7 @@ const R = {
   StackSearch,
   TheNewsApiSearch,
   TheNewsApiTop,
-  RedditTop
+  //RedditTop
 }
 
 

@@ -1,30 +1,21 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.default = void 0;
-var _DialogStackInputs = _interopRequireDefault(require("./DialogStackInputs"));
-var _Links = require("../links/Links");
+exports.getRedditTopConfig = void 0;
 var _DialogFn = require("./DialogFn");
-var _jsxRuntime = require("preact/jsx-runtime");
 const SUBRREDIT_OPTIONS = [["Amd"], ["intel"], ["architecture"], ["Algorithms"], ["AskAcademia"], ["AskEconomics"], ["AskReddit"], ["askscience"], ["artificial"], ["ChatGPT"], ["ChatGPTPro"], ["ChatGPTCoding"], ["OpenAI"], ["books"], ["FreeEBOOKS"], ["bicycling"], ["classicalmusic"], ["CryptoCurrency"], ["CryptoMarkets"], ["CryptoTechnology"], ["cardano"], ["Autos"], ["cars"], ["Database"], ["SQL"], ["NoSQL"], ["dataengineering"], ["datascience"], ["dataisbeautiful"], ["datasets"], ["deeplearning"], ["devops"], ["docker"], ["Economy"], ["Economics"], ["Daytrading"], ["options"], ["GAMETHEORY"], ["explainlikeimfive"], ["europe"], ["Finance"], ["sustainableFinance"], ["html5"], ["JavaScript"], ["reactjs"], ["nextjs"], ["node"], ["Deno"], ["webdev"], ["web_design"], ["browsers"], ["privacy"], ["java"], ["Kotlin"], ["rust"], ["elixir"], ["programming"], ["opensource"], ["hardware"], ["gadgets"], ["LifeProTips"], ["lifehacks"], ["linux"], ["MachineLearning"], ["learnmachinelearning"], ["todayilearned"], ["science"], ["statistics"], ["StockMarket"], ["stocks"], ["startup"], ["startups"], ["smallbusiness"], ["travel"], ["visualization"], ["technology"], ["homeautomation"], ["philosophy"], ["minimalism"], ["Renewable"], ["RenewableEnergy"], ["electricvehicles"], ["teslamotors"], ["Physics"], ["solar"], ["solarDIY"], ["batteries"], ["soccer"], ["football"], ["WomensSoccer"], ["investing"], ["UpliftingNews"], ["news"], ["worldnews"]],
-  DF_SUBRREDIT = SUBRREDIT_OPTIONS[0],
   PERIOD_OPTIONS = [["hour"], ["day"], ["week"], ["month"], ["year"], ["all"]],
   DF_PERIOD = PERIOD_OPTIONS[1],
   LIMIT_OPTIONS = [["10"], ["20"], ["30"]],
   DF_LIMIT = LIMIT_OPTIONS[1],
-  INPUT_CONFIGS = [['sg', 'subreddit', 'Subreddit', SUBRREDIT_OPTIONS, DF_SUBRREDIT, true], ['s', 't', 'Period', PERIOD_OPTIONS, DF_PERIOD], ['s', 'limit', 'Limit', LIMIT_OPTIONS, DF_LIMIT]],
-  [INITIAL_INPUTS, TOGGLES, IS_INPUTS] = (0, _DialogFn.crDfInputs)(INPUT_CONFIGS);
-const RedditTopDialog = props => (0, _jsxRuntime.jsx)(_DialogStackInputs.default, {
-  ...props,
-  caption: "Top By",
-  loadId: "RD",
-  INPUT_CONFIGS: INPUT_CONFIGS,
-  INITIAL_INPUTS: INITIAL_INPUTS,
-  TOGGLES: TOGGLES,
-  IS_INPUTS: IS_INPUTS,
-  children: (0, _jsxRuntime.jsx)(_Links.RedditLink, {})
-});
-var _default = RedditTopDialog;
-exports.default = _default;
-//# sourceMappingURL=RedditTopDialog.js.map
+  _crInputConfigs = () => [(0, _DialogFn.crInputSuggestConfig)('subreddit', SUBRREDIT_OPTIONS, {
+    is: true
+  }), (0, _DialogFn.crInputSelectConfig)('t', PERIOD_OPTIONS, {
+    caption: "Period",
+    dfOption: DF_PERIOD
+  }), (0, _DialogFn.crInputSelectConfig)('limit', LIMIT_OPTIONS, {
+    dfOption: DF_LIMIT
+  })];
+const getRedditTopConfig = (0, _DialogFn.fGetDialogConfig)(_crInputConfigs);
+exports.getRedditTopConfig = getRedditTopConfig;
+//# sourceMappingURL=crRedditTopConfig.js.map
