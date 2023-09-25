@@ -9,8 +9,6 @@ var _WebzQueryDialog = _interopRequireDefault(require("./WebzQueryDialog"));
 var _WebzCountryDialog = _interopRequireDefault(require("./WebzCountryDialog"));
 var _StackTaggedDialog = _interopRequireDefault(require("./StackTaggedDialog"));
 var _StackSearchDialog = _interopRequireDefault(require("./StackSearchDialog"));
-var _IexNewsDialog = _interopRequireDefault(require("./IexNewsDialog"));
-var _FmpNewsDialog = _interopRequireDefault(require("./FmpNewsDialog"));
 var _NewsApiSearchDialog = _interopRequireDefault(require("./NewsApiSearchDialog"));
 var _NewsApiTopDialog = _interopRequireDefault(require("./NewsApiTopDialog"));
 var _TheNewsApiSearchDialog = _interopRequireDefault(require("./TheNewsApiSearchDialog"));
@@ -26,8 +24,6 @@ const R = {
   StackTagged: _StackTaggedDialog.default,
   StackSearch: _StackSearchDialog.default,
   MessariNews: _MessariDialog.default,
-  IexNews: _IexNewsDialog.default,
-  FmpNews: _FmpNewsDialog.default,
   NewsApiSearch: _NewsApiSearchDialog.default,
   NewsApiTop: _NewsApiTopDialog.default,
   TheNewsApiSearch: _TheNewsApiSearchDialog.default,

@@ -74,16 +74,21 @@ const NEWS_QUERY = {
     "paneId": "messari_news"
   },
   IEX: {
-    "type": "IEX_NEWS",
-    "dialogType": "IexNews",
-    "paneCaption": _ProviderNames.IEX_CLOUD,
-    "paneId": "iex_news"
+    type: "IEX_NEWS",
+    dialogType: DIALOG_TYPE_2,
+    loadId: "IEX",
+    getConfig: _dialogs.getIexCloudNewsConfig,
+    CompLink: _Links.IexApiLink,
+    paneCaption: _ProviderNames.IEX_CLOUD,
+    paneId: "iex_news"
   },
   FMP: {
-    "type": "FMP",
-    "dialogType": "FmpNews",
-    "paneCaption": _ProviderNames.FMP_LONG,
-    "paneId": "fmp_news"
+    type: "FMP",
+    dialogType: DIALOG_TYPE_2,
+    getConfig: _dialogs.getFmpNewsConfig,
+    CompLink: _Links.FmpApiLink,
+    paneCaption: _ProviderNames.FMP_LONG,
+    paneId: "fmp_news"
   },
   AV: {
     type: "AV",

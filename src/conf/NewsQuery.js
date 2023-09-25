@@ -2,14 +2,18 @@ import {
   AlphaVantageLink,
   CoinStatsLink,
   CryptoCompareLink,
-  DevToLink
+  DevToLink,
+  FmpApiLink,
+  IexApiLink
 } from '../components/links/Links';
 
 import {
   getAvDialogConfig,
   getCoinStatDialogConfig,
   getCryptoCompareConfig,
-  getDevToConfig
+  getDevToConfig,
+  getFmpNewsConfig,
+  getIexCloudNewsConfig
 } from '../components/dialogs';
 
 import {
@@ -98,16 +102,21 @@ const NEWS_QUERY = {
     "paneId": "messari_news"
   },
   IEX: {
-    "type": "IEX_NEWS",
-    "dialogType": "IexNews",
-    "paneCaption": IEX_CLOUD,
-    "paneId": "iex_news"
+    type: "IEX_NEWS",
+    dialogType: DIALOG_TYPE_2,
+    loadId: "IEX",
+    getConfig: getIexCloudNewsConfig,
+    CompLink: IexApiLink,
+    paneCaption: IEX_CLOUD,
+    paneId: "iex_news"
   },
   FMP: {
-    "type": "FMP",
-    "dialogType": "FmpNews",
-    "paneCaption": FMP_LONG,
-    "paneId": "fmp_news"
+    type: "FMP",
+    dialogType: DIALOG_TYPE_2,
+    getConfig: getFmpNewsConfig,
+    CompLink: FmpApiLink,
+    paneCaption: FMP_LONG,
+    paneId: "fmp_news"
   },
   AV: {
     type: "AV",
