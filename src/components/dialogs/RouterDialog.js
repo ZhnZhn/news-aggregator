@@ -4,7 +4,6 @@ import WebzQuery from './WebzQueryDialog';
 import WebzCountry from './WebzCountryDialog';
 import StackTagged from './StackTaggedDialog';
 import StackSearch from './StackSearchDialog';
-import NewsApiSearch from './NewsApiSearchDialog';
 import NewsApiTop from './NewsApiTopDialog';
 import TheNewsApiSearch from './TheNewsApiSearchDialog';
 import TheNewsApiTop from './TheNewsApiTopDialog';
@@ -18,7 +17,6 @@ const R = {
   WebzCountry,
   StackTagged,
   StackSearch,
-  NewsApiSearch,
   NewsApiTop,
   TheNewsApiSearch,
   TheNewsApiTop,

@@ -1,0 +1,24 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/dialogs/crNewsApiSearchConfig.js"
+ ],
+ "file": "../../../src/components/dialogs/crNewsApiSearchConfig.js",
+ "names": [
+  "_DialogFn",
+  "require",
+  "SORT_BY_OPTIONS",
+  "DF_TERM",
+  "_crInputConfigs",
+  "crTextFieldConfig",
+  "caption",
+  "crTextFieldCaption",
+  "dfValue",
+  "is",
+  "crInputSelectConfig",
+  "getNewsApiSearchConfig",
+  "fGetDialogConfig",
+  "exports"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AAOA,MAAMC,eAAe,GAAG,CACtB,CAAC,WAAW,EAAE,WAAW,CAAC,EAC1B,CAAC,YAAY,EAAE,YAAY,CAAC,EAC5B,CAAC,aAAa,EAAE,aAAa,CAAC,CAC/B;EACCC,OAAO,GAAG,SAAS;EACnBC,eAAe,GAAGA,CAAA,KAAM,CACxB,IAAAC,2BAAiB,EAAC,QAAQ,EAAE;IAACC,OAAO,EAAE,IAAAC,4BAAkB,EAAC,MAAM,EAAEJ,OAAO,CAAC;IAAEK,OAAO,EAAEL,OAAO;IAAEM,EAAE,EAAC;EAAK,CAAC,CAAC,EACvG,IAAAC,6BAAmB,EAAC,QAAQ,EAAER,eAAe,EAAE;IAAEO,EAAE,EAAE;EAAK,CAAC,CAAC,CAC7D;AAEM,MAAME,sBAAsB,GAAG,IAAAC,0BAAgB,EAACR,eAAe,CAAC;AAAAS,OAAA,CAAAF,sBAAA,GAAAA,sBAAA"
+}

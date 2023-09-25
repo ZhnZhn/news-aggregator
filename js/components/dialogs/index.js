@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.getMessariConfig = exports.getIexCloudNewsConfig = exports.getFmpNewsConfig = exports.getDevToConfig = exports.getCryptoCompareConfig = exports.getCoinStatDialogConfig = exports.getAvDialogConfig = void 0;
+exports.getNewsApiSearchConfig = exports.getMessariConfig = exports.getIexCloudNewsConfig = exports.getFmpNewsConfig = exports.getDevToConfig = exports.getCryptoCompareConfig = exports.getCoinStatDialogConfig = exports.getAvDialogConfig = void 0;
 var _crAvSentimentConfig = require("./crAvSentimentConfig");
 exports.getAvDialogConfig = _crAvSentimentConfig.getAvDialogConfig;
 var _crCoinStatConfig = require("./crCoinStatConfig");
@@ -16,4 +16,6 @@ var _crIexCloudNewsConfig = require("./crIexCloudNewsConfig");
 exports.getIexCloudNewsConfig = _crIexCloudNewsConfig.getIexCloudNewsConfig;
 var _crMessariConfig = require("./crMessariConfig");
 exports.getMessariConfig = _crMessariConfig.getMessariConfig;
+var _crNewsApiSearchConfig = require("./crNewsApiSearchConfig");
+exports.getNewsApiSearchConfig = _crNewsApiSearchConfig.getNewsApiSearchConfig;
 //# sourceMappingURL=index.js.map

@@ -5,7 +5,8 @@ import {
   DevToLink,
   FmpApiLink,
   IexApiLink,
-  MessariLink
+  MessariLink,
+  NewsApiLink
 } from '../components/links/Links';
 
 import {
@@ -15,7 +16,8 @@ import {
   getDevToConfig,
   getFmpNewsConfig,
   getIexCloudNewsConfig,
-  getMessariConfig
+  getMessariConfig,
+  getNewsApiSearchConfig
 } from '../components/dialogs';
 
 import {
@@ -132,11 +134,14 @@ const NEWS_QUERY = {
     paneId: "av_sentiments",
   },
   NEWS_SEARCH: {
-    "type": "NEWS_SEARCH",
-    "dialogType": "NewsApiSearch",
-    "paneCaption": `${NEWS_API}: Search`,
-    "paneId": "newsapi_search",
-    "dialogProps": {
+    type: "NEWS_SEARCH",
+    dialogType: DIALOG_TYPE_2,
+    loadId: "NS",
+    getConfig: getNewsApiSearchConfig,
+    CompLink: NewsApiLink,
+    paneCaption: `${NEWS_API}: Search`,
+    paneId: "newsapi_search",
+    dialogProps: {
        "source": "newsapi_search"
      }
   },

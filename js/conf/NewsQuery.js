@@ -102,11 +102,14 @@ const NEWS_QUERY = {
     paneId: "av_sentiments"
   },
   NEWS_SEARCH: {
-    "type": "NEWS_SEARCH",
-    "dialogType": "NewsApiSearch",
-    "paneCaption": _ProviderNames.NEWS_API + ": Search",
-    "paneId": "newsapi_search",
-    "dialogProps": {
+    type: "NEWS_SEARCH",
+    dialogType: DIALOG_TYPE_2,
+    loadId: "NS",
+    getConfig: _dialogs.getNewsApiSearchConfig,
+    CompLink: _Links.NewsApiLink,
+    paneCaption: _ProviderNames.NEWS_API + ": Search",
+    paneId: "newsapi_search",
+    dialogProps: {
       "source": "newsapi_search"
     }
   },
