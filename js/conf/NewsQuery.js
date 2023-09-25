@@ -114,11 +114,14 @@ const NEWS_QUERY = {
     }
   },
   NEWS_TOP: {
-    "type": "NEWS_TOP",
-    "dialogType": "NewsApiTop",
-    "paneCaption": _ProviderNames.NEWS_API + ": Top By",
-    "paneId": "newsapi_top",
-    "dialogProps": {
+    type: "NEWS_TOP",
+    dialogType: DIALOG_TYPE_2,
+    loadId: "NT",
+    getConfig: _dialogs.getNewsApiTopConfig,
+    CompLink: _Links.NewsApiLink,
+    paneCaption: _ProviderNames.NEWS_API + ": Top By",
+    paneId: "newsapi_top",
+    dialogProps: {
       "source": "newsapi_top"
     }
   },

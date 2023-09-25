@@ -1,21 +1,10 @@
 import {
-  S_BROWSER_CAPTION,
-  S_POWERED_BY
-} from './Dialog.Style';
-
-import useRefInputs from './hooks/useRefInputs';
-import useDialog from './hooks/useDialog';
-import useKeyDown from './hooks/useKeyDown';
-
-import DraggableDialog from '../zhn-moleculs/DraggableDialog';
-import StackInputs from '../zhn-inputs/StackInputs';
-import {
   crSelectOptions
 } from '../zhn-m-input/OptionFn';
-import FlexColumn from '../zhn-atoms/FlexColumn';
-import { PoweredByNewsApi } from '../links/PoweredByLink';
+
 import {
-  crDfInputs
+  crInputSelectConfig,
+  fGetDialogConfig
 } from './DialogFn';
 
 const _CATEGORY = [
@@ -28,7 +17,7 @@ const _CATEGORY = [
   'technology'
 ]
 , CATEGORY_OPTIONS = crSelectOptions(_CATEGORY)
-, DF_CATEGORY = CATEGORY_OPTIONS[0]
+//, DF_CATEGORY = CATEGORY_OPTIONS[0]
 , COUNTRY_OPTIONS = [
    ["Argentina", "ar"],
    ["Australia", "au"],
@@ -86,50 +75,9 @@ const _CATEGORY = [
    ["Venezuala", "ve"]
   ]
 , DF_COUNTRY = COUNTRY_OPTIONS[52]
-, INPUT_CONFIGS = [
-  ['s','category','Category',CATEGORY_OPTIONS, DF_CATEGORY],
-  ['s','country','Country',COUNTRY_OPTIONS, DF_COUNTRY]
-]
-, INITIAL_INPUTS = crDfInputs(INPUT_CONFIGS)[0];
+, _crInputConfigs = () => [
+  crInputSelectConfig('category', CATEGORY_OPTIONS, { is: true }),
+  crInputSelectConfig('country', COUNTRY_OPTIONS, { dfOption: DF_COUNTRY, is:true })
+];
 
-const NewsApiTopDialog = (props) => {
-  const {
-    isShow,
-    onShow
-  } = props
-  , [
-    _refInputs,
-    _selectInput
-  ] = useRefInputs(INITIAL_INPUTS)
-  , [
-    _refDialog,
-    _hLoad,
-    _hClose
-  ] = useDialog(props, 'NT', _refInputs)
-  , _hKeyDown = useKeyDown(_hLoad, _hClose);
-
-  return (
-    <DraggableDialog
-       ref={_refDialog}
-       isShow={isShow}
-       captionStyle={S_BROWSER_CAPTION}
-       caption="Top By"
-       onKeyDown={_hKeyDown}
-       onLoad={_hLoad}
-       onShow={onShow}
-       onClose={_hClose}
-    >
-       <FlexColumn>
-         <StackInputs            
-            configs={INPUT_CONFIGS}
-            onSelect={_selectInput}
-         />
-         <PoweredByNewsApi
-            style={S_POWERED_BY}
-         />
-       </FlexColumn>
-    </DraggableDialog>
-  );
-};
-
-export default NewsApiTopDialog
+export const getNewsApiTopConfig = fGetDialogConfig(_crInputConfigs)

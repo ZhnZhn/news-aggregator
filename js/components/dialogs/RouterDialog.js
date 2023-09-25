@@ -9,7 +9,6 @@ var _WebzQueryDialog = _interopRequireDefault(require("./WebzQueryDialog"));
 var _WebzCountryDialog = _interopRequireDefault(require("./WebzCountryDialog"));
 var _StackTaggedDialog = _interopRequireDefault(require("./StackTaggedDialog"));
 var _StackSearchDialog = _interopRequireDefault(require("./StackSearchDialog"));
-var _NewsApiTopDialog = _interopRequireDefault(require("./NewsApiTopDialog"));
 var _TheNewsApiSearchDialog = _interopRequireDefault(require("./TheNewsApiSearchDialog"));
 var _TheNewsApiTopDialog = _interopRequireDefault(require("./TheNewsApiTopDialog"));
 var _RedditTopDialog = _interopRequireDefault(require("./RedditTopDialog"));
@@ -21,7 +20,6 @@ const R = {
   WebzCountry: _WebzCountryDialog.default,
   StackTagged: _StackTaggedDialog.default,
   StackSearch: _StackSearchDialog.default,
-  NewsApiTop: _NewsApiTopDialog.default,
   TheNewsApiSearch: _TheNewsApiSearchDialog.default,
   TheNewsApiTop: _TheNewsApiTopDialog.default,
   RedditTop: _RedditTopDialog.default

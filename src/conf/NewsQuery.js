@@ -17,7 +17,8 @@ import {
   getFmpNewsConfig,
   getIexCloudNewsConfig,
   getMessariConfig,
-  getNewsApiSearchConfig
+  getNewsApiSearchConfig,
+  getNewsApiTopConfig
 } from '../components/dialogs';
 
 import {
@@ -146,11 +147,14 @@ const NEWS_QUERY = {
      }
   },
   NEWS_TOP: {
-    "type": "NEWS_TOP",
-    "dialogType": "NewsApiTop",
-    "paneCaption": `${NEWS_API}: Top By`,
-    "paneId": "newsapi_top",
-    "dialogProps": {
+    type: "NEWS_TOP",
+    dialogType: DIALOG_TYPE_2,
+    loadId: "NT",
+    getConfig: getNewsApiTopConfig,
+    CompLink: NewsApiLink,
+    paneCaption: `${NEWS_API}: Top By`,
+    paneId: "newsapi_top",
+    dialogProps: {
        "source": "newsapi_top"
      }
   },
