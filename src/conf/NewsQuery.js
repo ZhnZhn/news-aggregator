@@ -28,7 +28,8 @@ import {
   getStackTaggedConfig,
   getTheNewsApiSearchConfig,
   getTheNewsApiTopConfig,
-  getWebzCountryConfig
+  getWebzCountryConfig,
+  getWebzQueryConfig,
 } from '../components/dialogs';
 
 import {
@@ -65,10 +66,17 @@ const _crItemDialogType2 = (
 
 const NEWS_QUERY = {
   WEBZ: {
-    "type": "W_WEBZ_QUERY",
-    "dialogType": "WebzQuery",
-    "paneCaption": `${WEBZ_IO}: News, Blogs`,
-    "paneId": "webz"
+    type: "W_WEBZ_QUERY",
+    ..._crItemDialogType2(
+      getWebzQueryConfig,
+      WebzLink,
+      `${WEBZ_IO}: News, Blogs`,
+      "webz",
+      {
+        caption: "News, Blogs",
+        loadId: "W",
+      }
+    )    
   },
   WEBZ_COUNTRY: {
     type: "W_WEBZ_COUNTRY",
@@ -218,7 +226,7 @@ const NEWS_QUERY = {
            "source": "newsapi_top"
          }
       }
-    )    
+    )
   },
   THE_NEWS_SEARCH: {
     type: "THE_NEWS_SEARCH",

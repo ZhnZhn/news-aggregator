@@ -1,8 +1,4 @@
 import fPoweredBy from './fPoweredBy';
-import {
-  NewsApiLink,
-  WebzLink
-} from './Links';
+import { NewsApiLink } from './Links';
 
 export const PoweredByNewsApi = fPoweredBy(NewsApiLink)
-export const PoweredByWebzLink = fPoweredBy(WebzLink)

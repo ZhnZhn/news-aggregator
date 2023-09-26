@@ -18,3 +18,4 @@ export { getTheNewsApiSearchConfig } from './crTheNewsApiSearchConfig'
 export { getTheNewsApiTopConfig } from './crTheNewsApiTopConfig'
 
 export { getWebzCountryConfig } from './crWebzCountryConfig'
+export { getWebzQueryConfig } from './crWebzQueryConfig'

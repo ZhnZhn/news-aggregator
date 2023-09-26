@@ -1,11 +1,12 @@
 "use strict";
 
 exports.__esModule = true;
-exports.getPaneCaption = exports.getLoadId = exports.getDialogCaption = exports.getCaption = exports.fGetDialogConfig = exports.crTextFieldConfig = exports.crTextFieldCaption = exports.crInputSuggestConfig = exports.crInputSelectConfig = exports.crInputProps = exports.crFromToDateConfig = exports.crDfInputs = void 0;
+exports.getPaneCaption = exports.getLoadId = exports.getDialogCaption = exports.getCaption = exports.fGetDialogConfig = exports.crTextFieldConfig = exports.crTextFieldCaption = exports.crSelectOptions = exports.crInputSuggestConfig = exports.crInputSelectConfig = exports.crInputProps = exports.crFromToDateConfig = exports.crDfInputs = void 0;
+var _OptionFn = require("../zhn-m-input/OptionFn");
+exports.crSelectOptions = _OptionFn.crSelectOptions;
 var _dt = require("../../utils/dt");
 var _uiApi = require("../uiApi");
 var _InputTypes = require("../zhn-inputs/InputTypes");
-var _OptionFn = require("../zhn-m-input/OptionFn");
 const crInputProps = function (maxLength) {
   if (maxLength === void 0) {
     maxLength = '10';

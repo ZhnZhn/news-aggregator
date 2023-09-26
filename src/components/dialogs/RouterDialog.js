@@ -1,12 +1,10 @@
 import DialogType1 from './DialogType1';
 import DialogType2 from './DialogType2';
-import WebzQuery from './WebzQueryDialog';
 
 const R = {
   DF: DialogType1,
   DialogType1,
-  DialogType2,
-  WebzQuery
+  DialogType2
 }
 
 const RouterDialog = {

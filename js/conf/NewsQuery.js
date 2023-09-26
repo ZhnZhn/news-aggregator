@@ -16,10 +16,11 @@ const _crItemDialogType2 = (getConfig, CompLink, paneCaption, paneId, options) =
 });
 const NEWS_QUERY = {
   WEBZ: {
-    "type": "W_WEBZ_QUERY",
-    "dialogType": "WebzQuery",
-    "paneCaption": _ProviderNames.WEBZ_IO + ": News, Blogs",
-    "paneId": "webz"
+    type: "W_WEBZ_QUERY",
+    ..._crItemDialogType2(_dialogs.getWebzQueryConfig, _Links.WebzLink, _ProviderNames.WEBZ_IO + ": News, Blogs", "webz", {
+      caption: "News, Blogs",
+      loadId: "W"
+    })
   },
   WEBZ_COUNTRY: {
     type: "W_WEBZ_COUNTRY",
