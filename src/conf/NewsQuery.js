@@ -48,6 +48,21 @@ import {
 
 const DIALOG_TYPE_2 = "DialogType2";
 
+const _crItemDialogType2 = (
+  getConfig,
+  CompLink,
+  paneCaption,
+  paneId,
+  options,
+) => ({
+  ...options,
+  dialogType: DIALOG_TYPE_2,
+  getConfig,
+  CompLink,
+  paneCaption,
+  paneId
+})
+
 const NEWS_QUERY = {
   WEBZ: {
     "type": "W_WEBZ_QUERY",
@@ -57,151 +72,179 @@ const NEWS_QUERY = {
   },
   WEBZ_COUNTRY: {
     type: "W_WEBZ_COUNTRY",
-    dialogType: DIALOG_TYPE_2,
-    caption: "By Country, Topic",
-    getConfig: getWebzCountryConfig,
-    loadId: "W",
-    CompLink: WebzLink,
-    paneCaption: `${WEBZ_IO}: By Country`,
-    paneId: "webz_country"
+    ..._crItemDialogType2(
+      getWebzCountryConfig,
+      WebzLink,
+      `${WEBZ_IO}: By Country`,
+      "webz_country",
+      {
+        caption: "By Country, Topic",
+        loadId: "W"
+      }
+    )
   },
   REDDIT: {
     type: "REDDIT",
-    dialogType: DIALOG_TYPE_2,
-    loadId: "RD",
-    getConfig: getRedditTopConfig,
-    CompLink: RedditLink,
-    paneCaption: `${REDDIT}: Top By`,
-    paneId: "rd_topby"
+    ..._crItemDialogType2(
+      getRedditTopConfig,
+      RedditLink,
+      `${REDDIT}: Top By`,
+      "rd_topby",
+      { loadId: "RD" }
+    )
   },
   DEV_TO: {
     type: "DEV_TO",
-    dialogType: DIALOG_TYPE_2,
-    loadId: "DT",
-    caption: "Top By",
-    getConfig: getDevToConfig,
-    CompLink: DevToLink,
-    paneCaption: `${DEV_TO}: Top By`,
-    paneId: "dt_topby"
+    ..._crItemDialogType2(
+      getDevToConfig,
+      DevToLink,
+      `${DEV_TO}: Top By`,
+      "dt_topby",
+      { caption: "Top By", loadId: "DT" }
+    )
   },
   STACK_TAGGED: {
     type: "SO_TAGGED",
-    dialogType: DIALOG_TYPE_2,
-    caption: "Tagged Questions",
-    loadId: "SO",
-    getConfig: getStackTaggedConfig,
-    CompLink: StackOverflowLink,
-    paneCaption: `${STACK_OVERFLOW}: Tagged`,
-    paneId: "stack_tagged",
-    paneType: "STACK_ITEM"
+    ..._crItemDialogType2(
+      getStackTaggedConfig,
+      StackOverflowLink,
+      `${STACK_OVERFLOW}: Tagged`,
+      "stack_tagged",
+      {
+        caption: "Tagged Questions",
+        loadId: "SO",
+        paneType: "STACK_ITEM"
+      }
+    )
   },
   STACK_SEARCH: {
     type: "SO_SEARCH",
-    dialogType: DIALOG_TYPE_2,
-    caption: "Search Questions",
-    loadId: "SO",
-    getConfig: getStackSearchConfig,
-    CompLink: StackOverflowLink,
-    paneCaption: `${STACK_OVERFLOW}: Search`,
-    paneId: "stack_search",
-    paneType: "STACK_ITEM"
+    ..._crItemDialogType2(
+      getStackSearchConfig,
+      StackOverflowLink,
+      `${STACK_OVERFLOW}: Search`,
+      "stack_search",
+      {
+        caption: "Search Questions",
+        loadId: "SO",
+        paneType: "STACK_ITEM"
+      }
+    )
   },
 
   CRYPTO_COMPARE: {
     type: "CRYPTO_COMPARE",
-    loadId: "CCN",
-    dialogType: DIALOG_TYPE_2,
-    getConfig: getCryptoCompareConfig,
-    CompLink: CryptoCompareLink,
-    paneCaption: CRYPTO_COMPARE,
-    paneId: "cryptocompare_news"
+    ..._crItemDialogType2(
+      getCryptoCompareConfig,
+      CryptoCompareLink,
+      CRYPTO_COMPARE,
+      "cryptocompare_news",
+      { loadId: "CCN" }
+    )
   },
   COIN_STATS: {
     type: "COIN_STATS",
-    loadId: "CS",
-    dialogType: DIALOG_TYPE_2,
-    getConfig: getCoinStatDialogConfig,
-    CompLink: CoinStatsLink,
-    paneCaption: `${COIN_STATS} News`,
-    paneId: "coinstats_news"
+    ..._crItemDialogType2(
+      getCoinStatDialogConfig,
+      CoinStatsLink,
+      `${COIN_STATS} News`,
+      "coinstats_news",
+      { loadId: "CS" }
+    )
   },
   MESSARI: {
     type: "MESSARI",
-    dialogType: DIALOG_TYPE_2,
-    loadId: "MS",
-    getConfig: getMessariConfig,
-    CompLink: MessariLink,
-    paneCaption: MESSARI,
-    paneId: "messari_news"
+    ..._crItemDialogType2(
+      getMessariConfig,
+      MessariLink,
+      MESSARI,
+      "messari_news",
+      { loadId: "MS" }
+    )
   },
   IEX: {
     type: "IEX_NEWS",
-    dialogType: DIALOG_TYPE_2,
-    loadId: "IEX",
-    getConfig: getIexCloudNewsConfig,
-    CompLink: IexApiLink,
-    paneCaption: IEX_CLOUD,
-    paneId: "iex_news"
+    ..._crItemDialogType2(
+      getIexCloudNewsConfig,
+      IexApiLink,
+      IEX_CLOUD,
+      "iex_news",
+      { loadId: "IEX" }
+    )
   },
   FMP: {
     type: "FMP",
-    dialogType: DIALOG_TYPE_2,
-    getConfig: getFmpNewsConfig,
-    CompLink: FmpApiLink,
-    paneCaption: FMP_LONG,
-    paneId: "fmp_news"
+    ..._crItemDialogType2(
+      getFmpNewsConfig,
+      FmpApiLink,
+      FMP_LONG,
+      "fmp_news"
+    )
   },
   AV: {
     type: "AV",
-    dialogType: DIALOG_TYPE_2,
-    getConfig: getAvDialogConfig,
-    CompLink: AlphaVantageLink,
-    paneCaption: ALPHA_VANTAGE,
-    paneId: "av_sentiments",
+    ..._crItemDialogType2(
+      getAvDialogConfig,
+      AlphaVantageLink,
+      ALPHA_VANTAGE,
+      "av_sentiments",
+    )
   },
   NEWS_SEARCH: {
     type: "NEWS_SEARCH",
-    dialogType: DIALOG_TYPE_2,
-    loadId: "NS",
-    getConfig: getNewsApiSearchConfig,
-    CompLink: NewsApiLink,
-    paneCaption: `${NEWS_API}: Search`,
-    paneId: "newsapi_search",
-    dialogProps: {
-       "source": "newsapi_search"
-     }
+    ..._crItemDialogType2(
+      getNewsApiSearchConfig,
+      NewsApiLink,
+      `${NEWS_API}: Search`,
+      "newsapi_search",
+      {
+        loadId: "NS",
+        dialogProps: {
+           "source": "newsapi_search"
+         }
+      }
+    )
   },
   NEWS_TOP: {
     type: "NEWS_TOP",
-    dialogType: DIALOG_TYPE_2,
-    loadId: "NT",
-    getConfig: getNewsApiTopConfig,
-    CompLink: NewsApiLink,
-    paneCaption: `${NEWS_API}: Top By`,
-    paneId: "newsapi_top",
-    dialogProps: {
-       "source": "newsapi_top"
-     }
+    ..._crItemDialogType2(
+      getNewsApiTopConfig,
+      NewsApiLink,
+      `${NEWS_API}: Top By`,
+      "newsapi_top",
+      {
+        loadId: "NT",
+        dialogProps: {
+           "source": "newsapi_top"
+         }
+      }
+    )    
   },
   THE_NEWS_SEARCH: {
     type: "THE_NEWS_SEARCH",
-    dialogType: DIALOG_TYPE_2,
-    caption: "Search",
-    loadId: "TNS",
-    getConfig: getTheNewsApiSearchConfig,
-    CompLink: TheNewsApiLink,
-    paneCaption: `${THE_NEWS_API}: Search`,
-    paneId: "thenewsapi_search",
+    ..._crItemDialogType2(
+      getTheNewsApiSearchConfig,
+      TheNewsApiLink,
+      `${THE_NEWS_API}: Search`,
+      "thenewsapi_search",
+      {
+        caption: "Search",
+        loadId: "TNS"
+      }
+    )
   },
   THE_NEWS_TOP: {
     type: "THE_NEWS_TOP",
-    dialogType: DIALOG_TYPE_2,
-    caption: "Top By",
-    loadId: "TNT",
-    getConfig: getTheNewsApiTopConfig,
-    CompLink: TheNewsApiLink,
-    paneCaption: `${THE_NEWS_API}: Top By`,
-    paneId: "thenewsapi_top"
+    ..._crItemDialogType2(
+      getTheNewsApiTopConfig,
+      TheNewsApiLink,
+      `${THE_NEWS_API}: Top By`,
+      "thenewsapi_top",
+      {
+        caption: "Top By",
+        loadId: "TNT"
+      }
+    )
   }
 }
 

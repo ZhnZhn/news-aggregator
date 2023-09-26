@@ -6,6 +6,14 @@ var _Links = require("../components/links/Links");
 var _dialogs = require("../components/dialogs");
 var _ProviderNames = require("./ProviderNames");
 const DIALOG_TYPE_2 = "DialogType2";
+const _crItemDialogType2 = (getConfig, CompLink, paneCaption, paneId, options) => ({
+  ...options,
+  dialogType: DIALOG_TYPE_2,
+  getConfig,
+  CompLink,
+  paneCaption,
+  paneId
+});
 const NEWS_QUERY = {
   WEBZ: {
     "type": "W_WEBZ_QUERY",
@@ -15,150 +23,103 @@ const NEWS_QUERY = {
   },
   WEBZ_COUNTRY: {
     type: "W_WEBZ_COUNTRY",
-    dialogType: DIALOG_TYPE_2,
-    caption: "By Country, Topic",
-    getConfig: _dialogs.getWebzCountryConfig,
-    loadId: "W",
-    CompLink: _Links.WebzLink,
-    paneCaption: _ProviderNames.WEBZ_IO + ": By Country",
-    paneId: "webz_country"
+    ..._crItemDialogType2(_dialogs.getWebzCountryConfig, _Links.WebzLink, _ProviderNames.WEBZ_IO + ": By Country", "webz_country", {
+      caption: "By Country, Topic",
+      loadId: "W"
+    })
   },
   REDDIT: {
     type: "REDDIT",
-    dialogType: DIALOG_TYPE_2,
-    loadId: "RD",
-    getConfig: _dialogs.getRedditTopConfig,
-    CompLink: _Links.RedditLink,
-    paneCaption: _ProviderNames.REDDIT + ": Top By",
-    paneId: "rd_topby"
+    ..._crItemDialogType2(_dialogs.getRedditTopConfig, _Links.RedditLink, _ProviderNames.REDDIT + ": Top By", "rd_topby", {
+      loadId: "RD"
+    })
   },
   DEV_TO: {
     type: "DEV_TO",
-    dialogType: DIALOG_TYPE_2,
-    loadId: "DT",
-    caption: "Top By",
-    getConfig: _dialogs.getDevToConfig,
-    CompLink: _Links.DevToLink,
-    paneCaption: _ProviderNames.DEV_TO + ": Top By",
-    paneId: "dt_topby"
+    ..._crItemDialogType2(_dialogs.getDevToConfig, _Links.DevToLink, _ProviderNames.DEV_TO + ": Top By", "dt_topby", {
+      caption: "Top By",
+      loadId: "DT"
+    })
   },
   STACK_TAGGED: {
     type: "SO_TAGGED",
-    dialogType: DIALOG_TYPE_2,
-    caption: "Tagged Questions",
-    loadId: "SO",
-    getConfig: _dialogs.getStackTaggedConfig,
-    CompLink: _Links.StackOverflowLink,
-    paneCaption: _ProviderNames.STACK_OVERFLOW + ": Tagged",
-    paneId: "stack_tagged",
-    paneType: "STACK_ITEM"
+    ..._crItemDialogType2(_dialogs.getStackTaggedConfig, _Links.StackOverflowLink, _ProviderNames.STACK_OVERFLOW + ": Tagged", "stack_tagged", {
+      caption: "Tagged Questions",
+      loadId: "SO",
+      paneType: "STACK_ITEM"
+    })
   },
   STACK_SEARCH: {
     type: "SO_SEARCH",
-    dialogType: DIALOG_TYPE_2,
-    caption: "Search Questions",
-    loadId: "SO",
-    getConfig: _dialogs.getStackSearchConfig,
-    CompLink: _Links.StackOverflowLink,
-    paneCaption: _ProviderNames.STACK_OVERFLOW + ": Search",
-    paneId: "stack_search",
-    paneType: "STACK_ITEM"
+    ..._crItemDialogType2(_dialogs.getStackSearchConfig, _Links.StackOverflowLink, _ProviderNames.STACK_OVERFLOW + ": Search", "stack_search", {
+      caption: "Search Questions",
+      loadId: "SO",
+      paneType: "STACK_ITEM"
+    })
   },
   CRYPTO_COMPARE: {
     type: "CRYPTO_COMPARE",
-    loadId: "CCN",
-    dialogType: DIALOG_TYPE_2,
-    getConfig: _dialogs.getCryptoCompareConfig,
-    CompLink: _Links.CryptoCompareLink,
-    paneCaption: _ProviderNames.CRYPTO_COMPARE,
-    paneId: "cryptocompare_news"
+    ..._crItemDialogType2(_dialogs.getCryptoCompareConfig, _Links.CryptoCompareLink, _ProviderNames.CRYPTO_COMPARE, "cryptocompare_news", {
+      loadId: "CCN"
+    })
   },
   COIN_STATS: {
     type: "COIN_STATS",
-    loadId: "CS",
-    dialogType: DIALOG_TYPE_2,
-    getConfig: _dialogs.getCoinStatDialogConfig,
-    CompLink: _Links.CoinStatsLink,
-    paneCaption: _ProviderNames.COIN_STATS + " News",
-    paneId: "coinstats_news"
+    ..._crItemDialogType2(_dialogs.getCoinStatDialogConfig, _Links.CoinStatsLink, _ProviderNames.COIN_STATS + " News", "coinstats_news", {
+      loadId: "CS"
+    })
   },
   MESSARI: {
     type: "MESSARI",
-    dialogType: DIALOG_TYPE_2,
-    loadId: "MS",
-    getConfig: _dialogs.getMessariConfig,
-    CompLink: _Links.MessariLink,
-    paneCaption: _ProviderNames.MESSARI,
-    paneId: "messari_news"
+    ..._crItemDialogType2(_dialogs.getMessariConfig, _Links.MessariLink, _ProviderNames.MESSARI, "messari_news", {
+      loadId: "MS"
+    })
   },
   IEX: {
     type: "IEX_NEWS",
-    dialogType: DIALOG_TYPE_2,
-    loadId: "IEX",
-    getConfig: _dialogs.getIexCloudNewsConfig,
-    CompLink: _Links.IexApiLink,
-    paneCaption: _ProviderNames.IEX_CLOUD,
-    paneId: "iex_news"
+    ..._crItemDialogType2(_dialogs.getIexCloudNewsConfig, _Links.IexApiLink, _ProviderNames.IEX_CLOUD, "iex_news", {
+      loadId: "IEX"
+    })
   },
   FMP: {
     type: "FMP",
-    dialogType: DIALOG_TYPE_2,
-    getConfig: _dialogs.getFmpNewsConfig,
-    CompLink: _Links.FmpApiLink,
-    paneCaption: _ProviderNames.FMP_LONG,
-    paneId: "fmp_news"
+    ..._crItemDialogType2(_dialogs.getFmpNewsConfig, _Links.FmpApiLink, _ProviderNames.FMP_LONG, "fmp_news")
   },
   AV: {
     type: "AV",
-    dialogType: DIALOG_TYPE_2,
-    getConfig: _dialogs.getAvDialogConfig,
-    CompLink: _Links.AlphaVantageLink,
-    paneCaption: _ProviderNames.ALPHA_VANTAGE,
-    paneId: "av_sentiments"
+    ..._crItemDialogType2(_dialogs.getAvDialogConfig, _Links.AlphaVantageLink, _ProviderNames.ALPHA_VANTAGE, "av_sentiments")
   },
   NEWS_SEARCH: {
     type: "NEWS_SEARCH",
-    dialogType: DIALOG_TYPE_2,
-    loadId: "NS",
-    getConfig: _dialogs.getNewsApiSearchConfig,
-    CompLink: _Links.NewsApiLink,
-    paneCaption: _ProviderNames.NEWS_API + ": Search",
-    paneId: "newsapi_search",
-    dialogProps: {
-      "source": "newsapi_search"
-    }
+    ..._crItemDialogType2(_dialogs.getNewsApiSearchConfig, _Links.NewsApiLink, _ProviderNames.NEWS_API + ": Search", "newsapi_search", {
+      loadId: "NS",
+      dialogProps: {
+        "source": "newsapi_search"
+      }
+    })
   },
   NEWS_TOP: {
     type: "NEWS_TOP",
-    dialogType: DIALOG_TYPE_2,
-    loadId: "NT",
-    getConfig: _dialogs.getNewsApiTopConfig,
-    CompLink: _Links.NewsApiLink,
-    paneCaption: _ProviderNames.NEWS_API + ": Top By",
-    paneId: "newsapi_top",
-    dialogProps: {
-      "source": "newsapi_top"
-    }
+    ..._crItemDialogType2(_dialogs.getNewsApiTopConfig, _Links.NewsApiLink, _ProviderNames.NEWS_API + ": Top By", "newsapi_top", {
+      loadId: "NT",
+      dialogProps: {
+        "source": "newsapi_top"
+      }
+    })
   },
   THE_NEWS_SEARCH: {
     type: "THE_NEWS_SEARCH",
-    dialogType: DIALOG_TYPE_2,
-    caption: "Search",
-    loadId: "TNS",
-    getConfig: _dialogs.getTheNewsApiSearchConfig,
-    CompLink: _Links.TheNewsApiLink,
-    paneCaption: _ProviderNames.THE_NEWS_API + ": Search",
-    paneId: "thenewsapi_search"
+    ..._crItemDialogType2(_dialogs.getTheNewsApiSearchConfig, _Links.TheNewsApiLink, _ProviderNames.THE_NEWS_API + ": Search", "thenewsapi_search", {
+      caption: "Search",
+      loadId: "TNS"
+    })
   },
   THE_NEWS_TOP: {
     type: "THE_NEWS_TOP",
-    dialogType: DIALOG_TYPE_2,
-    caption: "Top By",
-    loadId: "TNT",
-    getConfig: _dialogs.getTheNewsApiTopConfig,
-    CompLink: _Links.TheNewsApiLink,
-    paneCaption: _ProviderNames.THE_NEWS_API + ": Top By",
-    paneId: "thenewsapi_top"
+    ..._crItemDialogType2(_dialogs.getTheNewsApiTopConfig, _Links.TheNewsApiLink, _ProviderNames.THE_NEWS_API + ": Top By", "thenewsapi_top", {
+      caption: "Top By",
+      loadId: "TNT"
+    })
   }
 };
 var _default = exports.default = NEWS_QUERY;
