@@ -147,10 +147,14 @@ const NEWS_QUERY = {
     paneId: "thenewsapi_search"
   },
   THE_NEWS_TOP: {
-    "type": "THE_NEWS_TOP",
-    "dialogType": "TheNewsApiTop",
-    "paneCaption": _ProviderNames.THE_NEWS_API + ": Top By",
-    "paneId": "thenewsapi_top"
+    type: "THE_NEWS_TOP",
+    dialogType: DIALOG_TYPE_2,
+    caption: "Top By",
+    loadId: "TNT",
+    getConfig: _dialogs.getTheNewsApiTopConfig,
+    CompLink: _Links.TheNewsApiLink,
+    paneCaption: _ProviderNames.THE_NEWS_API + ": Top By",
+    paneId: "thenewsapi_top"
   }
 };
 var _default = exports.default = NEWS_QUERY;

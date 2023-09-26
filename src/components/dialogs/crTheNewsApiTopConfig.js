@@ -1,9 +1,10 @@
-import DialogStackInputs from './DialogStackInputs';
-import { TheNewsApiLink } from '../links/Links';
-import { crDfInputs } from './DialogFn';
+import {
+  crInputSelectConfig,
+  fGetDialogConfig,
+} from './DialogFn';
+
 import {
   CATEGORY_OPTIONS,
-  DF_CATEGORY
 } from './TheNewsApiDialogFn';
 
 const LOCALE_OPTIONS = [
@@ -64,7 +65,6 @@ const LOCALE_OPTIONS = [
   ["Uruguay", "uy"],
   ["Venezuela", "ve"]
 ]
-, DF_LOCALE = LOCALE_OPTIONS[0]
 , DOMAIN_OPTIONS = [
   ["All", "all"],
   ["Business Insider", "businessinsider.com"],
@@ -72,31 +72,10 @@ const LOCALE_OPTIONS = [
   ["CNET", "cnet.com"],
   ["The Verge", "theverge.com"],
 ]
-, DF_DOMAIN = DOMAIN_OPTIONS[0]
-, INPUT_CONFIGS = [
-  ['s','category','Category',CATEGORY_OPTIONS,DF_CATEGORY,true],
-  ['s','locale','Locale',LOCALE_OPTIONS,DF_LOCALE,true],
-  ['s','domain','Domain',DOMAIN_OPTIONS,DF_DOMAIN]
-]
-, [
-  INITIAL_INPUTS,
-  TOGGLES,
-  IS_INPUTS
-] = crDfInputs(INPUT_CONFIGS);
+, _crInputConfigs = () => [
+  crInputSelectConfig('category', CATEGORY_OPTIONS, {is: true}),
+  crInputSelectConfig('locale', LOCALE_OPTIONS, {is: true}),
+  crInputSelectConfig('domain', DOMAIN_OPTIONS)
+];
 
-const TheNewsApiTopDialog = (props) => (
-  <DialogStackInputs
-    {...props}
-    caption="Top By"
-    loadId="TNT"
-    INPUT_CONFIGS={INPUT_CONFIGS}
-    INITIAL_INPUTS={INITIAL_INPUTS}
-    TOGGLES={TOGGLES}
-    IS_INPUTS={IS_INPUTS}
-  >
-    <TheNewsApiLink />
-  </DialogStackInputs>
-);
-
-
-export default TheNewsApiTopDialog
+export const getTheNewsApiTopConfig = fGetDialogConfig(_crInputConfigs)

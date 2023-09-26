@@ -13,7 +13,6 @@ const _CATEGORIES = [
   'politics',
   'food',
   'travel'
-]
+];
 
 export const CATEGORY_OPTIONS = crSelectOptions(_CATEGORIES)
-export const DF_CATEGORY = CATEGORY_OPTIONS[0]

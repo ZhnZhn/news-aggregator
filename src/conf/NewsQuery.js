@@ -25,7 +25,8 @@ import {
   getRedditTopConfig,
   getStackSearchConfig,
   getStackTaggedConfig,
-  getTheNewsApiSearchConfig
+  getTheNewsApiSearchConfig,
+  getTheNewsApiTopConfig
 } from '../components/dialogs';
 
 import {
@@ -187,10 +188,14 @@ const NEWS_QUERY = {
     paneId: "thenewsapi_search",
   },
   THE_NEWS_TOP: {
-    "type": "THE_NEWS_TOP",
-    "dialogType": "TheNewsApiTop",
-    "paneCaption": `${THE_NEWS_API}: Top By`,
-    "paneId": "thenewsapi_top"
+    type: "THE_NEWS_TOP",
+    dialogType: DIALOG_TYPE_2,
+    caption: "Top By",
+    loadId: "TNT",
+    getConfig: getTheNewsApiTopConfig,
+    CompLink: TheNewsApiLink,
+    paneCaption: `${THE_NEWS_API}: Top By`,
+    paneId: "thenewsapi_top"
   }
 }
 
