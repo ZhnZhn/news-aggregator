@@ -8,7 +8,8 @@ import {
   MessariLink,
   NewsApiLink,
   RedditLink,
-  StackOverflowLink
+  StackOverflowLink,
+  TheNewsApiLink
 } from '../components/links/Links';
 
 import {
@@ -23,7 +24,8 @@ import {
   getNewsApiTopConfig,
   getRedditTopConfig,
   getStackSearchConfig,
-  getStackTaggedConfig
+  getStackTaggedConfig,
+  getTheNewsApiSearchConfig
 } from '../components/dialogs';
 
 import {
@@ -175,10 +177,14 @@ const NEWS_QUERY = {
      }
   },
   THE_NEWS_SEARCH: {
-    "type": "THE_NEWS_SEARCH",
-    "dialogType": "TheNewsApiSearch",
-    "paneCaption": `${THE_NEWS_API}: Search`,
-    "paneId": "thenewsapi_search",
+    type: "THE_NEWS_SEARCH",
+    dialogType: DIALOG_TYPE_2,
+    caption: "Search",
+    loadId: "TNS",
+    getConfig: getTheNewsApiSearchConfig,
+    CompLink: TheNewsApiLink,
+    paneCaption: `${THE_NEWS_API}: Search`,
+    paneId: "thenewsapi_search",
   },
   THE_NEWS_TOP: {
     "type": "THE_NEWS_TOP",
