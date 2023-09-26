@@ -39,11 +39,15 @@ const NEWS_QUERY = {
     paneId: "dt_topby"
   },
   STACK_TAGGED: {
-    "type": "SO_TAGGED",
-    "dialogType": "StackTagged",
-    "paneCaption": _ProviderNames.STACK_OVERFLOW + ": Tagged",
-    "paneId": "stack_tagged",
-    "paneType": "STACK_ITEM"
+    type: "SO_TAGGED",
+    dialogType: DIALOG_TYPE_2,
+    caption: "Tagged Questions",
+    loadId: "SO",
+    getConfig: _dialogs.getStackTaggedConfig,
+    CompLink: _Links.StackOverflowLink,
+    paneCaption: _ProviderNames.STACK_OVERFLOW + ": Tagged",
+    paneId: "stack_tagged",
+    paneType: "STACK_ITEM"
   },
   STACK_SEARCH: {
     type: "SO_SEARCH",

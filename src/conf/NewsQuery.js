@@ -22,7 +22,8 @@ import {
   getNewsApiSearchConfig,
   getNewsApiTopConfig,
   getRedditTopConfig,
-  getStackSearchConfig
+  getStackSearchConfig,
+  getStackTaggedConfig
 } from '../components/dialogs';
 
 import {
@@ -75,11 +76,15 @@ const NEWS_QUERY = {
     paneId: "dt_topby"
   },
   STACK_TAGGED: {
-    "type": "SO_TAGGED",
-    "dialogType": "StackTagged",
-    "paneCaption": `${STACK_OVERFLOW}: Tagged`,
-    "paneId": "stack_tagged",
-    "paneType": "STACK_ITEM"
+    type: "SO_TAGGED",
+    dialogType: DIALOG_TYPE_2,
+    caption: "Tagged Questions",
+    loadId: "SO",
+    getConfig: getStackTaggedConfig,
+    CompLink: StackOverflowLink,
+    paneCaption: `${STACK_OVERFLOW}: Tagged`,
+    paneId: "stack_tagged",
+    paneType: "STACK_ITEM"
   },
   STACK_SEARCH: {
     type: "SO_SEARCH",
