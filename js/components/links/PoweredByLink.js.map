@@ -5,15 +5,16 @@
  ],
  "file": "../../../src/components/links/PoweredByLink.js",
  "names": [
+  "_fPoweredBy",
+  "_interopRequireDefault",
+  "require",
+  "_Links",
   "PoweredByNewsApi",
+  "exports",
   "fPoweredBy",
   "NewsApiLink",
-  "PoweredByTheNewsApi",
-  "TheNewsApiLink",
-  "PoweredByStackOverflow",
-  "StackOverflowLink",
   "PoweredByWebzLink",
   "WebzLink"
  ],
- "mappings": ";;;;;AAAA;AACA;AAOO,IAAMA,gBAAgB,GAAG,IAAAC,sBAAU,EAACC,kBAAW,CAAC;AAAA;AAChD,IAAMC,mBAAmB,GAAG,IAAAF,sBAAU,EAACG,qBAAc,CAAC;AAAA;AACtD,IAAMC,sBAAsB,GAAG,IAAAJ,sBAAU,EAACK,wBAAiB,CAAC;AAAA;AAC5D,IAAMC,iBAAiB,GAAG,IAAAN,sBAAU,EAACO,eAAQ,CAAC;AAAA"
+ "mappings": ";;;;;AAAA,IAAAA,WAAA,GAAAC,sBAAA,CAAAC,OAAA;AACA,IAAAC,MAAA,GAAAD,OAAA;AAKO,MAAME,gBAAgB,GAAAC,OAAA,CAAAD,gBAAA,GAAG,IAAAE,mBAAU,EAACC,kBAAW,CAAC;AAChD,MAAMC,iBAAiB,GAAAH,OAAA,CAAAG,iBAAA,GAAG,IAAAF,mBAAU,EAACG,eAAQ,CAAC"
 }
