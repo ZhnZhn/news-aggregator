@@ -3,10 +3,8 @@ import DialogType2 from './DialogType2';
 import WebzQuery from './WebzQueryDialog';
 import WebzCountry from './WebzCountryDialog';
 import StackTagged from './StackTaggedDialog';
-import StackSearch from './StackSearchDialog';
 import TheNewsApiSearch from './TheNewsApiSearchDialog';
 import TheNewsApiTop from './TheNewsApiTopDialog';
-//import RedditTop from './RedditTopDialog';
 
 const R = {
   DF: DialogType1,
@@ -15,10 +13,8 @@ const R = {
   WebzQuery,
   WebzCountry,
   StackTagged,
-  StackSearch,
   TheNewsApiSearch,
-  TheNewsApiTop,
-  //RedditTop
+  TheNewsApiTop
 }
 
 

@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.getRedditTopConfig = exports.getNewsApiTopConfig = exports.getNewsApiSearchConfig = exports.getMessariConfig = exports.getIexCloudNewsConfig = exports.getFmpNewsConfig = exports.getDevToConfig = exports.getCryptoCompareConfig = exports.getCoinStatDialogConfig = exports.getAvDialogConfig = void 0;
+exports.getStackSearchConfig = exports.getRedditTopConfig = exports.getNewsApiTopConfig = exports.getNewsApiSearchConfig = exports.getMessariConfig = exports.getIexCloudNewsConfig = exports.getFmpNewsConfig = exports.getDevToConfig = exports.getCryptoCompareConfig = exports.getCoinStatDialogConfig = exports.getAvDialogConfig = void 0;
 var _crAvSentimentConfig = require("./crAvSentimentConfig");
 exports.getAvDialogConfig = _crAvSentimentConfig.getAvDialogConfig;
 var _crCoinStatConfig = require("./crCoinStatConfig");
@@ -22,4 +22,6 @@ var _crNewsApiTopConfig = require("./crNewsApiTopConfig");
 exports.getNewsApiTopConfig = _crNewsApiTopConfig.getNewsApiTopConfig;
 var _crRedditTopConfig = require("./crRedditTopConfig");
 exports.getRedditTopConfig = _crRedditTopConfig.getRedditTopConfig;
+var _crStackSearchConfig = require("./crStackSearchConfig");
+exports.getStackSearchConfig = _crStackSearchConfig.getStackSearchConfig;
 //# sourceMappingURL=index.js.map

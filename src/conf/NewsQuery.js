@@ -7,7 +7,8 @@ import {
   IexApiLink,
   MessariLink,
   NewsApiLink,
-  RedditLink
+  RedditLink,
+  StackOverflowLink
 } from '../components/links/Links';
 
 import {
@@ -20,7 +21,8 @@ import {
   getMessariConfig,
   getNewsApiSearchConfig,
   getNewsApiTopConfig,
-  getRedditTopConfig
+  getRedditTopConfig,
+  getStackSearchConfig
 } from '../components/dialogs';
 
 import {
@@ -80,11 +82,15 @@ const NEWS_QUERY = {
     "paneType": "STACK_ITEM"
   },
   STACK_SEARCH: {
-    "type": "SO_SEARCH",
-    "dialogType": "StackSearch",
-    "paneCaption": `${STACK_OVERFLOW}: Search`,
-    "paneId": "stack_search",
-    "paneType": "STACK_ITEM"
+    type: "SO_SEARCH",
+    dialogType: DIALOG_TYPE_2,
+    caption: "Search Questions",
+    loadId: "SO",
+    getConfig: getStackSearchConfig,
+    CompLink: StackOverflowLink,
+    paneCaption: `${STACK_OVERFLOW}: Search`,
+    paneId: "stack_search",
+    paneType: "STACK_ITEM"
   },
 
   CRYPTO_COMPARE: {

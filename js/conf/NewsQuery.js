@@ -46,11 +46,15 @@ const NEWS_QUERY = {
     "paneType": "STACK_ITEM"
   },
   STACK_SEARCH: {
-    "type": "SO_SEARCH",
-    "dialogType": "StackSearch",
-    "paneCaption": _ProviderNames.STACK_OVERFLOW + ": Search",
-    "paneId": "stack_search",
-    "paneType": "STACK_ITEM"
+    type: "SO_SEARCH",
+    dialogType: DIALOG_TYPE_2,
+    caption: "Search Questions",
+    loadId: "SO",
+    getConfig: _dialogs.getStackSearchConfig,
+    CompLink: _Links.StackOverflowLink,
+    paneCaption: _ProviderNames.STACK_OVERFLOW + ": Search",
+    paneId: "stack_search",
+    paneType: "STACK_ITEM"
   },
   CRYPTO_COMPARE: {
     type: "CRYPTO_COMPARE",
@@ -141,6 +145,5 @@ const NEWS_QUERY = {
     "paneId": "thenewsapi_top"
   }
 };
-var _default = NEWS_QUERY;
-exports.default = _default;
+var _default = exports.default = NEWS_QUERY;
 //# sourceMappingURL=NewsQuery.js.map
