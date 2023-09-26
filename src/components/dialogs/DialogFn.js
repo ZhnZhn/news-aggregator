@@ -1,4 +1,9 @@
 import {
+  getFromDate,
+  getToDate
+} from '../../utils/dt';
+
+import {
   crLazyValue,
   toFirstUpperCase
 } from '../uiApi';
@@ -6,7 +11,8 @@ import {
 import {
   INPUT_TYPE_SELECT,
   INPUT_TYPE_SUGGEST,
-  INPUT_TYPE_TEXT_FIELD
+  INPUT_TYPE_TEXT_FIELD,
+  INPUT_TYPE_FROM_DATE
 } from '../zhn-inputs/InputTypes';
 import {
   getItemValue
@@ -125,6 +131,20 @@ const _fCrInputConfig = (
 
 export const crInputSelectConfig = _fCrInputConfig(INPUT_TYPE_SELECT)
 export const crInputSuggestConfig = _fCrInputConfig(INPUT_TYPE_SUGGEST)
+
+const INITIAL_FROM_DATE = getFromDate(1)
+, INITIAL_TO_DATE = getToDate();
+export const crFromToDateConfig = (
+  id,
+  fromDate,
+  toDate
+) => [
+  INPUT_TYPE_FROM_DATE,
+  id,
+  'From To Date',
+  fromDate || INITIAL_FROM_DATE,
+  toDate || INITIAL_TO_DATE
+]
 
 export const fGetDialogConfig = (
   crInputConfigs

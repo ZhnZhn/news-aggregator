@@ -1,7 +1,8 @@
 "use strict";
 
 exports.__esModule = true;
-exports.getPaneCaption = exports.getLoadId = exports.getDialogCaption = exports.getCaption = exports.fGetDialogConfig = exports.crTextFieldConfig = exports.crTextFieldCaption = exports.crInputSuggestConfig = exports.crInputSelectConfig = exports.crInputProps = exports.crDfInputs = void 0;
+exports.getPaneCaption = exports.getLoadId = exports.getDialogCaption = exports.getCaption = exports.fGetDialogConfig = exports.crTextFieldConfig = exports.crTextFieldCaption = exports.crInputSuggestConfig = exports.crInputSelectConfig = exports.crInputProps = exports.crFromToDateConfig = exports.crDfInputs = void 0;
+var _dt = require("../../utils/dt");
 var _uiApi = require("../uiApi");
 var _InputTypes = require("../zhn-inputs/InputTypes");
 var _OptionFn = require("../zhn-m-input/OptionFn");
@@ -43,8 +44,7 @@ const _getPaneCaption = _fGetByPropName("paneCaption");
 const _getCaption = _fGetByPropName("caption");
 const getCaption = itemConf => _getCaption(itemConf) || _getPaneCaption(itemConf);
 exports.getCaption = getCaption;
-const getPaneCaption = _fGetByPropName("paneCaption");
-exports.getPaneCaption = getPaneCaption;
+const getPaneCaption = exports.getPaneCaption = _fGetByPropName("paneCaption");
 const _getType = _fGetByPropName("type");
 const _getLoadId = _fGetByPropName("loadId");
 const getLoadId = itemConf => _getLoadId(itemConf) || _getType(itemConf);
@@ -72,10 +72,12 @@ const _fCrInputConfig = inputType => function (id, options, _temp) {
   } = _temp === void 0 ? {} : _temp;
   return [inputType, id, caption || crInputCaption(id), options, dfOption || options[0], is];
 };
-const crInputSelectConfig = _fCrInputConfig(_InputTypes.INPUT_TYPE_SELECT);
-exports.crInputSelectConfig = crInputSelectConfig;
-const crInputSuggestConfig = _fCrInputConfig(_InputTypes.INPUT_TYPE_SUGGEST);
-exports.crInputSuggestConfig = crInputSuggestConfig;
+const crInputSelectConfig = exports.crInputSelectConfig = _fCrInputConfig(_InputTypes.INPUT_TYPE_SELECT);
+const crInputSuggestConfig = exports.crInputSuggestConfig = _fCrInputConfig(_InputTypes.INPUT_TYPE_SUGGEST);
+const INITIAL_FROM_DATE = (0, _dt.getFromDate)(1),
+  INITIAL_TO_DATE = (0, _dt.getToDate)();
+const crFromToDateConfig = (id, fromDate, toDate) => [_InputTypes.INPUT_TYPE_FROM_DATE, id, 'From To Date', fromDate || INITIAL_FROM_DATE, toDate || INITIAL_TO_DATE];
+exports.crFromToDateConfig = crFromToDateConfig;
 const fGetDialogConfig = crInputConfigs => (0, _uiApi.crLazyValue)(() => {
   const INPUT_CONFIGS = crInputConfigs();
   return [INPUT_CONFIGS, ...crDfInputs(INPUT_CONFIGS)];
