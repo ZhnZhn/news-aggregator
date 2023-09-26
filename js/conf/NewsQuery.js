@@ -14,10 +14,14 @@ const NEWS_QUERY = {
     "paneId": "webz"
   },
   WEBZ_COUNTRY: {
-    "type": "W_WEBZ_COUNTRY",
-    "dialogType": "WebzCountry",
-    "paneCaption": _ProviderNames.WEBZ_IO + ": By Country",
-    "paneId": "webz_country"
+    type: "W_WEBZ_COUNTRY",
+    dialogType: DIALOG_TYPE_2,
+    caption: "By Country, Topic",
+    getConfig: _dialogs.getWebzCountryConfig,
+    loadId: "W",
+    CompLink: _Links.WebzLink,
+    paneCaption: _ProviderNames.WEBZ_IO + ": By Country",
+    paneId: "webz_country"
   },
   REDDIT: {
     type: "REDDIT",

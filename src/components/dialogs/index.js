@@ -16,3 +16,5 @@ export { getStackTaggedConfig } from './crStackTaggedConfig'
 
 export { getTheNewsApiSearchConfig } from './crTheNewsApiSearchConfig'
 export { getTheNewsApiTopConfig } from './crTheNewsApiTopConfig'
+
+export { getWebzCountryConfig } from './crWebzCountryConfig'

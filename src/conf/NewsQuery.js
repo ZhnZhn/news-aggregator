@@ -9,7 +9,8 @@ import {
   NewsApiLink,
   RedditLink,
   StackOverflowLink,
-  TheNewsApiLink
+  TheNewsApiLink,
+  WebzLink
 } from '../components/links/Links';
 
 import {
@@ -26,7 +27,8 @@ import {
   getStackSearchConfig,
   getStackTaggedConfig,
   getTheNewsApiSearchConfig,
-  getTheNewsApiTopConfig
+  getTheNewsApiTopConfig,
+  getWebzCountryConfig
 } from '../components/dialogs';
 
 import {
@@ -54,10 +56,14 @@ const NEWS_QUERY = {
     "paneId": "webz"
   },
   WEBZ_COUNTRY: {
-    "type": "W_WEBZ_COUNTRY",
-    "dialogType": "WebzCountry",
-    "paneCaption": `${WEBZ_IO}: By Country`,
-    "paneId": "webz_country"
+    type: "W_WEBZ_COUNTRY",
+    dialogType: DIALOG_TYPE_2,
+    caption: "By Country, Topic",
+    getConfig: getWebzCountryConfig,
+    loadId: "W",
+    CompLink: WebzLink,
+    paneCaption: `${WEBZ_IO}: By Country`,
+    paneId: "webz_country"
   },
   REDDIT: {
     type: "REDDIT",
