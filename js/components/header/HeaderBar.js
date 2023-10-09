@@ -48,7 +48,7 @@ const HeaderBar = _ref => {
     }, [])
     // toggleIsQuery
     /*eslint-enable react-hooks/exhaustive-deps */,
-    _menuQuery = (0, _crMenuQuery.default)(_hCloseQuery);
+    _menuQuery = (0, _crMenuQuery.default)(onNewsSources, _hCloseQuery);
   (0, _useHotKey.default)(_hotkeys.HK_QUERY_SOURCES, toggleIsQuery);
   return (0, _jsxRuntime.jsxs)("div", {
     className: CL_HEADER,
@@ -65,15 +65,9 @@ const HeaderBar = _ref => {
     }), (0, _jsxRuntime.jsx)(_AppLabel.default, {
       className: CL_LABEL_APP,
       caption: TITLE
-    }), (0, _jsxRuntime.jsxs)("span", {
+    }), (0, _jsxRuntime.jsx)("span", {
       className: CL_BROWSER_BTS,
-      children: [(0, _jsxRuntime.jsx)(_Comp.default.FlatButton, {
-        ariaLabel: "News Sources Browser",
-        dataPos: _DP.DP_BOTTOM_LEFT,
-        caption: "News",
-        hotKey: _hotkeys.HK_NEWS_BROWSER,
-        onClick: onNewsSources
-      }), (0, _jsxRuntime.jsx)(_Comp.default.ModalButton, {
+      children: (0, _jsxRuntime.jsx)(_Comp.default.ModalButton, {
         ariaLabel: "Query Sources Menu",
         dataPos: _DP.DP_BOTTOM_RIGHT,
         caption: "Query",
@@ -82,7 +76,7 @@ const HeaderBar = _ref => {
         children: (0, _jsxRuntime.jsx)("span", {
           className: CL_ARROW_DOWN
         })
-      })]
+      })
     }), (0, _jsxRuntime.jsxs)("div", {
       className: CL_BTS,
       children: [(0, _jsxRuntime.jsx)(_Comp.default.FlatButton, {
@@ -106,6 +100,5 @@ const HeaderBar = _ref => {
     })]
   });
 };
-var _default = HeaderBar;
-exports.default = _default;
+var _default = exports.default = HeaderBar;
 //# sourceMappingURL=HeaderBar.js.map

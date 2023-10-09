@@ -15,7 +15,7 @@ const NewsBrowser = _ref => {
     onRemoveBadges
   } = _ref;
   return (0, _jsxRuntime.jsx)(_DynamicMenuBrowser.default, {
-    caption: "News Sources",
+    caption: "NewsApi.org Browser",
     url: "data/news-source-menu.json",
     browserId: browserId,
     useMsBrowser: useMsBrowser,
@@ -24,6 +24,5 @@ const NewsBrowser = _ref => {
     children: (0, _jsxRuntime.jsx)(_PoweredByLink.PoweredByNewsApi, {})
   });
 };
-var _default = NewsBrowser;
-exports.default = _default;
+var _default = exports.default = NewsBrowser;
 //# sourceMappingURL=NewsBrowser.js.map

@@ -9,7 +9,7 @@ const NewsBrowser = ({
   onRemoveBadges
 }) => (
   <DynamicMenuBrowser
-     caption="News Sources"
+     caption="NewsApi.org Browser"
      url="data/news-source-menu.json"
      browserId={browserId}
      useMsBrowser={useMsBrowser}

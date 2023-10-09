@@ -12,8 +12,7 @@ import {
 import useToggle from '../hooks/useToggle';
 import useHotKey from '../hotkeys/useHotKey';
 
-import {
-  HK_NEWS_BROWSER,
+import {  
   HK_QUERY_SOURCES,
   HK_SETTINGS,
   HK_ABOUT
@@ -75,7 +74,7 @@ const HeaderBar = ({
   }, [])
   // toggleIsQuery
   /*eslint-enable react-hooks/exhaustive-deps */
-  , _menuQuery = crMenuQuery(_hCloseQuery);
+  , _menuQuery = crMenuQuery(onNewsSources, _hCloseQuery);
 
   useHotKey(HK_QUERY_SOURCES, toggleIsQuery)
 
@@ -99,13 +98,6 @@ const HeaderBar = ({
          caption={TITLE}
       />
       <span className={CL_BROWSER_BTS}>
-        <A.FlatButton
-          ariaLabel="News Sources Browser"
-          dataPos={DP_BOTTOM_LEFT}
-          caption="News"
-          hotKey={HK_NEWS_BROWSER}
-          onClick={onNewsSources}
-        />
         <A.ModalButton
            ariaLabel="Query Sources Menu"
            dataPos={DP_BOTTOM_RIGHT}

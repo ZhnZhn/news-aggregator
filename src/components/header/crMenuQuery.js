@@ -27,12 +27,21 @@ const _fOnClick = (
 };
 
 let _menuQuery;
-const crMenuQuery = (onClose) => {
+const crMenuQuery = (
+  onNewsSources,
+  onClose
+) => {
   if (!_menuQuery) {
     const _crOnClick = bindTo(
       _fOnClick,
       onClose
     );
+    const _fOnMenuItem = (
+      onClick
+    ) => () => {
+      onClick();
+      onClose();
+    };
     _menuQuery = [
       {
         t: 'Blockchain',
@@ -51,6 +60,7 @@ const crMenuQuery = (onClose) => {
       },{
         t: "General News",
         items: [
+          [`${NEWS_API_LONG}: Browser`, _fOnMenuItem(onNewsSources)],
           [`${NEWS_API_LONG}: Search`, _crOnClick(QUERY.NEWS_SEARCH)],
           [`${NEWS_API_LONG}: Top By`, _crOnClick(QUERY.NEWS_TOP)],
           '1',
