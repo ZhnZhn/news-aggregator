@@ -7,11 +7,8 @@ var _uiTheme = require("../styles/uiTheme");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _RowCheckBox = _interopRequireDefault(require("../dialogs/RowCheckBox"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const S_DIV = {
-    paddingTop: 16
-  },
-  S_ROW_CHECKBOX_LS = {
-    margin: '34px 0 34px 16px'
+const S_ROW_CHECKBOX_LS = {
+    margin: '12px 0 34px 16px'
   },
   IS_ALLOW_USE_LS = (0, _uiTheme.isAllowUseLs)();
 const CardUiTheme = _ref => {
@@ -25,10 +22,7 @@ const CardUiTheme = _ref => {
     setRefLast
   } = _ref;
   return (0, _jsxRuntime.jsxs)("div", {
-    style: {
-      ...S_DIV,
-      ...style
-    },
+    style: style,
     children: [(0, _jsxRuntime.jsx)(_Comp.default.InputSelect, {
       style: selectStyle,
       caption: "UI Theme",
@@ -59,6 +53,5 @@ const CardUiTheme = _ref => {
     })]
   });
 };
-var _default = CardUiTheme;
-exports.default = _default;
+var _default = exports.default = CardUiTheme;
 //# sourceMappingURL=CardUiTheme.js.map

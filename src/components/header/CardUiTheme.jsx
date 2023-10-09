@@ -11,10 +11,8 @@ import {
 import A from '../Comp';
 import RowCheckBox from '../dialogs/RowCheckBox';
 
-const S_DIV = {
-  paddingTop: 16
-}, S_ROW_CHECKBOX_LS = {
-  margin: '34px 0 34px 16px'
+const S_ROW_CHECKBOX_LS = {
+  margin: '12px 0 34px 16px'
 }
 , IS_ALLOW_USE_LS = isAllowUseLs();
 
@@ -27,7 +25,7 @@ const CardUiTheme = ({
   isVisible,
   setRefLast
 }) => (
-    <div style={{...S_DIV, ...style}}>
+    <div style={style}>
       <A.InputSelect
         style={selectStyle}
         caption="UI Theme"
