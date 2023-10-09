@@ -28,8 +28,7 @@
     "@babel/runtime": "^7.23.1",
     "dompurify": "^3.0.6",
     "preact": "^10.18.1",
-    "timeago.js": "^4.0.2",
-    "zustand": "^4.4.2"
+    "timeago.js": "^4.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.0",

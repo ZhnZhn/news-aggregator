@@ -16,8 +16,7 @@ module.exports = {
     },
     lib: [       
        "preact/compat",                   
-       "dompurify",       
-       "zustand",
+       "dompurify",              
        "timeago.js"              
     ],
   },

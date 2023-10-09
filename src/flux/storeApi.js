@@ -2,8 +2,10 @@ export { bindTo } from '../utils';
 
 import { bindTo } from '../utils';
 
-import { createStore } from 'zustand';
-import { subscribeWithSelector } from 'zustand/middleware';
+import {
+  createStore,
+  subscribeWithSelector
+} from './zustand-lite';
 
 import useSubscribe from '../components/hooks/useSubscribe';
 import useRerender from '../components/hooks/useRerender';
