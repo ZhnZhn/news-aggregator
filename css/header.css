@@ -42,16 +42,12 @@
   }
 }
 @media only screen and (max-width: 375px) {
-  .header__icon-app {
+  .header__icon-app,
+  .header__bt-about {
     display: none;
   }
   .header__browser-bts {
     margin-left: -8px;
-  }
-}
-@media only screen and (max-width: 300px) {
-  .header__bt-about {
-    display: none;
   }
 }
 .header__bts {

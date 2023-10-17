@@ -7,12 +7,13 @@ var _ProviderNames = require("../../conf/ProviderNames");
 var _NewsQuery = _interopRequireDefault(require("../../conf/NewsQuery"));
 var _compStore = require("../../flux/compStore");
 var _uiApi = require("../uiApi");
+var _has = require("../has");
 const _fOnClick = (onClose, id) => evt => {
   (0, _compStore.showDialog)(id);
   onClose(evt);
 };
 let _menuQuery;
-const crMenuQuery = (onNewsSources, onClose) => {
+const crMenuQuery = (APP_TITLE, onNewsSources, onAbout, onClose) => {
   if (!_menuQuery) {
     const _crOnClick = (0, _uiApi.bindTo)(_fOnClick, onClose);
     const _fOnMenuItem = onClick => () => {
@@ -31,7 +32,10 @@ const crMenuQuery = (onNewsSources, onClose) => {
     }, {
       t: "Miscellaneous",
       items: [[_ProviderNames.DEV_TO, _crOnClick(_NewsQuery.default.DEV_TO)], '1', [_ProviderNames.STACK_OVERFLOW + ": Tagged", _crOnClick(_NewsQuery.default.STACK_TAGGED)], [_ProviderNames.STACK_OVERFLOW + ": Search", _crOnClick(_NewsQuery.default.STACK_SEARCH)], '2', [_ProviderNames.REDDIT + ": Top By", _crOnClick(_NewsQuery.default.REDDIT)]]
-    }];
+    }, !_has.HAS_WIDE_SCREEN ? {
+      t: "About " + APP_TITLE,
+      onItem: _fOnMenuItem(onAbout)
+    } : void 0];
   }
   return _menuQuery;
 };

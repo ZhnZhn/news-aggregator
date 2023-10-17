@@ -17,6 +17,7 @@ import QUERY from '../../conf/NewsQuery';
 
 import { showDialog } from '../../flux/compStore';
 import { bindTo } from '../uiApi';
+import { HAS_WIDE_SCREEN } from '../has';
 
 const _fOnClick = (
   onClose,
@@ -28,7 +29,9 @@ const _fOnClick = (
 
 let _menuQuery;
 const crMenuQuery = (
+  APP_TITLE,
   onNewsSources,
+  onAbout,
   onClose
 ) => {
   if (!_menuQuery) {
@@ -80,7 +83,10 @@ const crMenuQuery = (
           '2',
           [`${REDDIT}: Top By`, _crOnClick(QUERY.REDDIT)]
         ]
-      }
+      },
+      !HAS_WIDE_SCREEN ? {
+         t: `About ${APP_TITLE}`, onItem: _fOnMenuItem(onAbout)
+      } : void 0
     ]
   }
   return _menuQuery;

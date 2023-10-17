@@ -18,9 +18,10 @@ const MenuTopic = _ref => {
     caption,
     items,
     style,
-    itemStyle
+    itemStyle,
+    onItem
   } = _ref;
-  return (0, _jsxRuntime.jsx)(_OpenClose.default, {
+  return _isArr(items) ? (0, _jsxRuntime.jsx)(_OpenClose.default, {
     refBt: refBt,
     style: style,
     itemStyle: itemStyle,
@@ -32,8 +33,11 @@ const MenuTopic = _ref => {
     }, config[0]) : (0, _jsxRuntime.jsx)("div", {
       style: S_HORIZONTAL_LINE
     }, config))
-  });
+  }) : (0, _jsxRuntime.jsx)(_MenuItem.default, {
+    className: CL_ITEM,
+    caption: caption,
+    onClick: onItem
+  }, caption);
 };
-var _default = MenuTopic;
-exports.default = _default;
+var _default = exports.default = MenuTopic;
 //# sourceMappingURL=MenuTopic.js.map

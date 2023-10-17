@@ -6,27 +6,21 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _MenuTopic = _interopRequireDefault(require("./MenuTopic"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const _isArr = Array.isArray;
 const Menu = _ref => {
   let {
-    refFirstItem,
-    refLastItem,
     style,
     itemStyle,
-    menuModel
+    menuModel,
+    getFocusRef
   } = _ref;
-  if (!_isArr(menuModel)) {
-    return null;
-  }
-  const _lastMenuIndex = menuModel.length - 1;
-  return menuModel.map((topic, index) => (0, _jsxRuntime.jsx)(_MenuTopic.default, {
-    refBt: (0, _uiApi.getFocusRef)(refFirstItem, refLastItem, _lastMenuIndex, index),
+  return getFocusRef ? menuModel.map((topic, index) => topic ? (0, _jsxRuntime.jsx)(_MenuTopic.default, {
+    refBt: getFocusRef(index),
     caption: topic.t,
     items: topic.items,
     style: style,
-    itemStyle: itemStyle
-  }, topic.t));
+    itemStyle: itemStyle,
+    onItem: topic.onItem
+  }, topic.t) : null) : null;
 };
-var _default = (0, _uiApi.memo)(Menu);
-exports.default = _default;
+var _default = exports.default = (0, _uiApi.memo)(Menu);
 //# sourceMappingURL=Menu.js.map

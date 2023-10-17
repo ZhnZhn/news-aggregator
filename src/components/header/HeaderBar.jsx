@@ -12,7 +12,7 @@ import {
 import useToggle from '../hooks/useToggle';
 import useHotKey from '../hotkeys/useHotKey';
 
-import {  
+import {
   HK_QUERY_SOURCES,
   HK_SETTINGS,
   HK_ABOUT
@@ -23,6 +23,8 @@ import {
   DP_BOTTOM_RIGHT
 } from '../DP';
 
+import { APP_TITLE } from '../styles/tokens';
+
 import LoadingProgress from './LoadingProgress';
 import IconAppLogo from './IconAppLogo';
 import AppLabel from './AppLabel';
@@ -31,8 +33,7 @@ import PanelQuery from './PanelQuery';
 
 import crMenuQuery from './crMenuQuery';
 
-const TITLE = "News Aggregator v0.4.0"
-, HEADER = "header"
+const HEADER = "header"
 , CL_HEADER = crContainerBgCn(HEADER)
 , CL_PANEL_BROWSER = crPanelShadowCn(
    crContainerBgCn(`${HEADER}__panel-browser`)
@@ -74,7 +75,12 @@ const HeaderBar = ({
   }, [])
   // toggleIsQuery
   /*eslint-enable react-hooks/exhaustive-deps */
-  , _menuQuery = crMenuQuery(onNewsSources, _hCloseQuery);
+  , _menuQuery = crMenuQuery(
+    APP_TITLE,
+    onNewsSources,
+    onAbout,
+    _hCloseQuery
+  );
 
   useHotKey(HK_QUERY_SOURCES, toggleIsQuery)
 
@@ -89,13 +95,13 @@ const HeaderBar = ({
       />
       <LoadingProgress />
       <IconAppLogo
-         ariaLabel={TITLE}
+         ariaLabel={APP_TITLE}
          dataPos={DP_BOTTOM_LEFT}
          className={CL_ICON_APP}
       />
       <AppLabel
          className={CL_LABEL_APP}
-         caption={TITLE}
+         caption={APP_TITLE}
       />
       <span className={CL_BROWSER_BTS}>
         <A.ModalButton

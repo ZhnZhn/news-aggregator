@@ -14,8 +14,9 @@ const MenuTopic = ({
   caption,
   items,
   style,
-  itemStyle
-}) => (
+  itemStyle,
+  onItem
+}) => _isArr(items) ? (
   <OpenClose
      refBt={refBt}
      style={style}
@@ -35,6 +36,11 @@ const MenuTopic = ({
         />
     )}
   </OpenClose>
-);
+) : <MenuItem
+   key={caption}
+   className={CL_ITEM}
+   caption={caption}
+   onClick={onItem}
+/>;
 
 export default MenuTopic
