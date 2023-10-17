@@ -38,7 +38,7 @@ const CardUiTheme = _ref => {
     }), (0, _jsxRuntime.jsx)(_RowCheckBox.default, {
       style: S_ROW_CHECKBOX_LS,
       initialValue: IS_ALLOW_USE_LS,
-      caption: "Allow to save to localStorage",
+      caption: "Allow use localStorage",
       onCheck: _uiTheme.allowSaveToLs,
       onUnCheck: _uiTheme.notAllowSaveToLs
     }), (0, _jsxRuntime.jsx)("div", {

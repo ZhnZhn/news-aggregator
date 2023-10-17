@@ -14,34 +14,33 @@ import {
   LS_FONT_SIZE_KEY
 } from './LS';
 
-const FONT_SIZE_NAMES = [
-  'Small',
-  'Medium',
-  'Extra Medium',
-  'Large',
-  'Extra Large'
-];
+const FONT_SIZE_CONFIG = [
+  [5, 15],
+  [6, 16]
+]
 
 const _crFontItem = (
-  name,
   size
-) => [`${name} (${size}px)`, size]
+) => [`${size}px`, size]
 , _crFontSizeOptions = (
+  itemSize,
   smallSize
-) => FONT_SIZE_NAMES
+) => (new Array(itemSize)).fill('')
   .map(
-    (name, index) => _crFontItem(name, smallSize+index)
-  );
+   (_, index) => _crFontItem(smallSize+index)
+);
 
 export const FONT_SIZE_OPTIONS = _crFontSizeOptions(
-  HAS_WIDE_SCREEN ? 15 : 16
+  ...(HAS_WIDE_SCREEN
+    ? FONT_SIZE_CONFIG[0]
+    : FONT_SIZE_CONFIG[1])
 )
 
 const DF_APP_FONT_SIZE = HAS_WIDE_SCREEN
   ? FONT_SIZE_OPTIONS[1][1]
   : FONT_SIZE_OPTIONS[2][1]
 , MIN_FS = 15
-, MAX_FS = 20;
+, MAX_FS = 21;
 let _appFontSize = DF_APP_FONT_SIZE;
 export const getFontSize = () => _appFontSize;
 

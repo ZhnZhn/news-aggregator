@@ -8,14 +8,13 @@ var _localStorageFn = require("../../utils/localStorageFn");
 var _isNumberInRange = _interopRequireDefault(require("../../utils/isNumberInRange"));
 var _setDfItemTo = _interopRequireDefault(require("./setDfItemTo"));
 var _LS = require("./LS");
-const FONT_SIZE_NAMES = ['Small', 'Medium', 'Extra Medium', 'Large', 'Extra Large'];
-const _crFontItem = (name, size) => [name + " (" + size + "px)", size],
-  _crFontSizeOptions = smallSize => FONT_SIZE_NAMES.map((name, index) => _crFontItem(name, smallSize + index));
-const FONT_SIZE_OPTIONS = _crFontSizeOptions(_has.HAS_WIDE_SCREEN ? 15 : 16);
-exports.FONT_SIZE_OPTIONS = FONT_SIZE_OPTIONS;
+const FONT_SIZE_CONFIG = [[5, 15], [6, 16]];
+const _crFontItem = size => [size + "px", size],
+  _crFontSizeOptions = (itemSize, smallSize) => new Array(itemSize).fill('').map((_, index) => _crFontItem(smallSize + index));
+const FONT_SIZE_OPTIONS = exports.FONT_SIZE_OPTIONS = _crFontSizeOptions(...(_has.HAS_WIDE_SCREEN ? FONT_SIZE_CONFIG[0] : FONT_SIZE_CONFIG[1]));
 const DF_APP_FONT_SIZE = _has.HAS_WIDE_SCREEN ? FONT_SIZE_OPTIONS[1][1] : FONT_SIZE_OPTIONS[2][1],
   MIN_FS = 15,
-  MAX_FS = 20;
+  MAX_FS = 21;
 let _appFontSize = DF_APP_FONT_SIZE;
 const getFontSize = () => _appFontSize;
 exports.getFontSize = getFontSize;
