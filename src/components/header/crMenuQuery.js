@@ -19,6 +19,10 @@ import { showDialog } from '../../flux/compStore';
 import { bindTo } from '../uiApi';
 import { HAS_WIDE_SCREEN } from '../has';
 
+const S_FIRST_ITEM = {
+  paddingTop: 2
+};
+
 const _fOnClick = (
   onClose,
   id
@@ -49,7 +53,7 @@ const crMenuQuery = (
       {
         t: 'Blockchain',
         items: [
-          [CRYPTO_COMPARE, _crOnClick(QUERY.CRYPTO_COMPARE)],
+          [CRYPTO_COMPARE, _crOnClick(QUERY.CRYPTO_COMPARE), S_FIRST_ITEM],
           [COIN_STATS, _crOnClick(QUERY.COIN_STATS)],
           [MESSARI, _crOnClick(QUERY.MESSARI)]
         ]
@@ -87,7 +91,7 @@ const crMenuQuery = (
       !HAS_WIDE_SCREEN ? {
          t: `About ${APP_TITLE}`, onItem: _fOnMenuItem(onAbout)
       } : void 0
-    ]
+    ].filter(Boolean)
   }
   return _menuQuery;
 };

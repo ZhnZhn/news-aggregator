@@ -29,7 +29,8 @@ const MenuTopic = _ref => {
     children: items.map(config => _isArr(config) ? (0, _jsxRuntime.jsx)(_MenuItem.default, {
       className: CL_ITEM,
       caption: config[0],
-      onClick: config[1]
+      onClick: config[1],
+      style: config[2]
     }, config[0]) : (0, _jsxRuntime.jsx)("div", {
       style: S_HORIZONTAL_LINE
     }, config))

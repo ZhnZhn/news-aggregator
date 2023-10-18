@@ -60,6 +60,5 @@ const StackInputs = _ref => {
     }) : null;
   });
 };
-var _default = StackInputs;
-exports.default = _default;
+var _default = exports.default = StackInputs;
 //# sourceMappingURL=StackInputs.js.map

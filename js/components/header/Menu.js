@@ -13,14 +13,14 @@ const Menu = _ref => {
     menuModel,
     getFocusRef
   } = _ref;
-  return getFocusRef ? menuModel.map((topic, index) => topic ? (0, _jsxRuntime.jsx)(_MenuTopic.default, {
+  return getFocusRef ? menuModel.map((topic, index) => (0, _jsxRuntime.jsx)(_MenuTopic.default, {
     refBt: getFocusRef(index),
     caption: topic.t,
     items: topic.items,
     style: style,
     itemStyle: itemStyle,
     onItem: topic.onItem
-  }, topic.t) : null) : null;
+  }, topic.t)) : null;
 };
 var _default = exports.default = (0, _uiApi.memo)(Menu);
 //# sourceMappingURL=Menu.js.map

@@ -1,4 +1,4 @@
-const INPUT_WIDTH = 250;
+const INPUT_WIDTH = 'calc(190px + 4rem)';
 
 export const S_DIALOG_CAPTION = {
   fontSize: '1.125rem'

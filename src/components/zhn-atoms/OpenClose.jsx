@@ -12,7 +12,7 @@ const CL_OPEN_CLOSE = 'open-close select-none'
   lineHeight: 2.5
 }
 , S_ROOT_CAPTION = {
-  paddingLeft: 12
+  paddingLeft: 10
 }
 , S_CAPTION = {
   paddingLeft: 4,

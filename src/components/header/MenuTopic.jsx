@@ -29,6 +29,7 @@ const MenuTopic = ({
           className={CL_ITEM}
           caption={config[0]}
           onClick={config[1]}
+          style={config[2]}
         />
       : <div
           key={config}

@@ -48,7 +48,8 @@ const S_OPTIONS_PANE = {
   top: 64
 }
 , S_BT_ARROW = {
-  top: 12
+  top: 'calc(42.8px - 1.8rem)',
+  right: 'calc(16px - 1rem)'
 }
 , S_BT_ARROW_FILL = {
   fill: "#80c040"

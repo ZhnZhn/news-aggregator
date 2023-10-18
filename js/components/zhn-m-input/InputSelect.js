@@ -10,7 +10,10 @@ var _OptionsPane = _interopRequireDefault(require("./OptionsPane"));
 var _OptionFn = require("./OptionFn");
 var _Input = require("./Input.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
-const DF_INIT_ITEM = ['', ''];
+const S_BT_ARROW = {
+    top: 'calc(17px - 1rem)'
+  },
+  DF_INIT_ITEM = ['', ''];
 const InputSelect = _ref => {
   let {
     id,
@@ -74,13 +77,13 @@ const InputSelect = _ref => {
         className: _Input.CL_SELECT_DIV_VALUE,
         children: (0, _OptionFn.getItemCaption)(item)
       }), (0, _jsxRuntime.jsx)(_ButtonArrow.default, {
-        ref: _refBtArrow
+        ref: _refBtArrow,
+        style: S_BT_ARROW
       }), (0, _jsxRuntime.jsx)("div", {
         className: _Input.CL_SELECT_INPUT_LINE
       })]
     })]
   });
 };
-var _default = InputSelect;
-exports.default = _default;
+var _default = exports.default = InputSelect;
 //# sourceMappingURL=InputSelect.js.map

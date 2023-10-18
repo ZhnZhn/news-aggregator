@@ -23,7 +23,11 @@ import {
   CL_SELECT_ITEM
 } from './Input.Style';
 
-const DF_INIT_ITEM = ['', ''];
+const S_BT_ARROW = {
+  top: 'calc(17px - 1rem)',
+  right: 'calc(16px - 1rem)'
+}
+, DF_INIT_ITEM = ['', ''];
 
 const InputSelect = ({
   id,
@@ -109,7 +113,10 @@ const InputSelect = ({
         <div className={CL_SELECT_DIV_VALUE}>
            {getItemCaption(item)}
         </div>
-        <ButtonArrow ref={_refBtArrow} />
+        <ButtonArrow
+           ref={_refBtArrow}
+           style={S_BT_ARROW}
+        />
         <div className={CL_SELECT_INPUT_LINE} />
       </div>
     </div>

@@ -8,8 +8,7 @@ const Menu = ({
   menuModel,
   getFocusRef
 }) => getFocusRef
- ? menuModel.map((topic, index) => (
-    topic ? <MenuTopic
+ ? menuModel.map((topic, index) => (<MenuTopic
       key={topic.t}
       refBt={getFocusRef(index)}
       caption={topic.t}
@@ -17,7 +16,7 @@ const Menu = ({
       style={style}
       itemStyle={itemStyle}
       onItem={topic.onItem}
-    /> : null
+    />
  )) : null;
 
 export default memo(Menu)
