@@ -17,13 +17,13 @@ const CL_DIV = "link-wrapper"
    ...S_FONT,
    display: 'block',
    lineHeight: 1.4,
-   padding: '8px 16px 4px 16px',
+   padding: '8px 16px 4px 12px',
    whiteSpace: "pre-line",
 }
 , S_RELATED = {
    ...S_FONT,
-  lineHeight: 1.6,
-   padding: '0 16px 0 16px',
+   lineHeight: 1.6,
+   padding: '0 16px 0 12px',
 }
 , S_FLEX_SPACE_BETWEEN = {
    display: 'flex',
@@ -31,11 +31,11 @@ const CL_DIV = "link-wrapper"
 }
 , S_AUTHOR_ROW = {
    ...S_FLEX_SPACE_BETWEEN,
-   padding: '8px 12px 0 16px',
+   padding: '8px 12px 0 12px',
 }
 , S_BOTTOM_ROW = {
    ...S_FLEX_SPACE_BETWEEN,
-   padding: '0 12px 6px 16px',
+   padding: '0 12px 6px 12px',
 }
 , S_DATE = {
    color: 'gray',
