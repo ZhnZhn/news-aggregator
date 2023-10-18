@@ -75,6 +75,7 @@
   padding-bottom: 2px;
   border-bottom: 1px solid;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .link:hover,
@@ -85,7 +86,6 @@
 .chb {
   stroke: #4d4d4d;
   stroke: var(--bg-c, #4d4d4d);
-
   display: inline-block;
   width: 23px;
   height: 23px;
@@ -102,10 +102,8 @@
 .bt-raised {
   color: #a9a9a9;
   color: var(--h-c, #a9a9a9);
-
   background-color: #3a6799;
   background-color: var(--h-bg, #3a6799);
-
   display: inline-block;
   position: relative;
   height: 36px;
@@ -148,7 +146,7 @@
   height: 36px;
   line-height: 36px;
   border-radius: 2px;
-  border: 10px; 
+  border: 10px;
   background-color: transparent;
   text-align: center;
   text-decoration: none;

@@ -41,16 +41,12 @@
   }
 }
 @media only screen and (max-width: 375px) {
-  .header__icon-app {
+  .header__icon-app,
+  .header__bt-about {
     display: none;
   }
   .header__browser-bts {
     margin-left: 8px;
-  }
-}
-@media only screen and (max-width: 300px) {
-  .header__bt-about {
-    display: none;
   }
 }
 
@@ -71,24 +67,20 @@
   position: absolute;
   z-index: 1010;
   top: 45px;
-  left: 160px;
+  left: 160px; 
 
-  width: 300px;
-
-  padding-top : 5px;
-  padding-bottom : 5px;  
+  width: calc(252px + 3rem);  
 }
 @media only screen and (max-width: 680px){
   .header__panel-browser {
-    left: 10px;
+    left: 8px;
   }
 }
 
 .row__topic {      
-  color: black;
-  padding-top: 2px;
-  padding-left: 12px;
-  line-height: 2;
+  color: black;  
+  padding-left: 10px;
+  line-height: 2.1;
   border-left: 4px solid transparent;
   font-size: 1rem;
   font-weight: bold; 
