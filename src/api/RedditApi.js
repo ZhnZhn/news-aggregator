@@ -1,5 +1,6 @@
 export const API_URL = 'https://www.reddit.com/r';
 const _isArr = Array.isArray;
+const DF_SUBREDDIT = 'Amd';
 
 const RedditApi = {
   getRequestUrl({
@@ -7,7 +8,7 @@ const RedditApi = {
     limit,
     t
   }){
-    return `${API_URL}/${subreddit}/top.json?limit=${limit}&t=${t}`;
+    return `${API_URL}/${subreddit || DF_SUBREDDIT}/top.json?limit=${limit}&t=${t}`;
   },
 
   checkResponse(json, option){
