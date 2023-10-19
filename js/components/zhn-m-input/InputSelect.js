@@ -11,6 +11,7 @@ var _OptionFn = require("./OptionFn");
 var _Input = require("./Input.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_BT_ARROW = {
+    ..._Input.S_BT_ARROW_RIGHT,
     top: 'calc(17px - 1rem)'
   },
   DF_INIT_ITEM = ['', ''];

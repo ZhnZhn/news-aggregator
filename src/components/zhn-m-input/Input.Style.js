@@ -17,3 +17,7 @@ export const CL_TEXTFIELD_INPUT = `${M_TEXTFIELD}-input`
 , CL_INPUT_LINE = `${M_INPUT}__line`
 , CL_INPUT_MSG_ERR = `${M_INPUT}__msg-err`
 , CL_BT_SVG_CLEAR = "bt-svg-clear";
+
+export const S_BT_ARROW_RIGHT = {
+  right: 'calc(15px - 1rem)'
+}

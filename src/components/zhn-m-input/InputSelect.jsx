@@ -20,12 +20,13 @@ import {
   CL_SELECT_DIV_VALUE,
   CL_SELECT_INPUT_LINE,
   CL_SELECT_OPTIONS,
-  CL_SELECT_ITEM
+  CL_SELECT_ITEM,
+  S_BT_ARROW_RIGHT
 } from './Input.Style';
 
 const S_BT_ARROW = {
-  top: 'calc(17px - 1rem)',
-  right: 'calc(16px - 1rem)'
+  ...S_BT_ARROW_RIGHT,
+  top: 'calc(17px - 1rem)'
 }
 , DF_INIT_ITEM = ['', ''];
 
