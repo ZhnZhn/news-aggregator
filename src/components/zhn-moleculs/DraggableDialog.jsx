@@ -12,6 +12,10 @@ import {
 } from '../uiApi';
 
 import {
+  HAS_WIDE_SCREEN
+} from '../has';
+
+import {
   crShowHide,
   crContainerBgCn,
   crPopupMenuCn
@@ -32,10 +36,11 @@ import RaisedButton from '../zhn-bt/RaisedButton';
 const CL_DIALOG = crContainerBgCn("dialog")
 , CL_MODAL_TOGGLE = crPopupMenuCn("menu-more__item select-none")
 
+, POSITION_LEFT = HAS_WIDE_SCREEN ? 50 : 15
 , S_DIV = {
   position: 'absolute',
   top: 30,
-  left: 50,
+  left: POSITION_LEFT,
   borderRadius: '5px',
   boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
   zIndex: 10

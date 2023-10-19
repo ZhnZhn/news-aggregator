@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _has = require("../has");
 var _crStyle = require("../crStyle");
 var _Dialog = require("../dialogs/Dialog.Style");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
@@ -17,10 +18,11 @@ var _jsxRuntime = require("preact/jsx-runtime");
 
 const CL_DIALOG = (0, _crStyle.crContainerBgCn)("dialog"),
   CL_MODAL_TOGGLE = (0, _crStyle.crPopupMenuCn)("menu-more__item select-none"),
+  POSITION_LEFT = _has.HAS_WIDE_SCREEN ? 50 : 15,
   S_DIV = {
     position: 'absolute',
     top: 30,
-    left: 50,
+    left: POSITION_LEFT,
     borderRadius: '5px',
     boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
     zIndex: 10
@@ -172,6 +174,5 @@ DraggableDialog.propTypes = {
   onClose: PropTypes.func
 }
 */
-var _default = DraggableDialog;
-exports.default = _default;
+var _default = exports.default = DraggableDialog;
 //# sourceMappingURL=DraggableDialog.js.map
