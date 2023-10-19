@@ -16,4 +16,6 @@
 
  --art-h: #404040;
  --art-d: #4d4d4d;
+
+ --chb-size: min(25px, max(23px, 1rem + 4px));
 }
