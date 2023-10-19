@@ -8,6 +8,7 @@ var _crStyle = require("../crStyle");
 var _useId = _interopRequireDefault(require("../hooks/useId"));
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _has = require("../has");
+var _AsyncShowComponent = _interopRequireDefault(require("../zhn-moleculs/AsyncShowComponent"));
 var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
 var _Input = require("./Input.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -65,6 +66,14 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
     }], [])
     // onTest, onInputChange, id
     ,
+    _compSvgX = (0, _uiApi.useMemo)(() => (0, _jsxRuntime.jsx)(_SvgX.default, {
+      color: "black",
+      className: _Input.CL_BT_SVG_CLEAR,
+      style: S_BT_CLEAR,
+      onClick: _clearInput
+    }), [])
+    // _clearInput
+    ,
     [_hBlurInput, _hInputChange, _hKeyDown] = (0, _uiApi.useMemo)(() => [evt => {
       _onEvent(evt, onBlur);
       _blurInput();
@@ -97,7 +106,8 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
     focus: () => (0, _uiApi.focusRefElement)(_refTf)
   }), [value]);
   const _labelStyle = value || isFocus ? void 0 : S_LABEL_TO_INPUT,
-    [_labelErrStyle, _lineStyle] = isPassTest ? [] : [S_LABEL_ON_ERROR, S_LINE_ERROR];
+    [_labelErrStyle, _lineStyle] = isPassTest ? [] : [S_LABEL_ON_ERROR, S_LINE_ERROR],
+    _isShowSvgX = _has.HAS_TOUCH_EVENTS && hasClear && value;
   return (0, _jsxRuntime.jsxs)("div", {
     className: _Input.CL_SELECT,
     style: style,
@@ -129,11 +139,10 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
         onChange: _hInputChange,
         onKeyDown: _hKeyDown,
         ...restInputProps
-      }), _has.HAS_TOUCH_EVENTS && hasClear && value && (0, _jsxRuntime.jsx)(_SvgX.default, {
-        color: "black",
-        className: _Input.CL_BT_SVG_CLEAR,
-        style: S_BT_CLEAR,
-        onClick: _clearInput
+      }), (0, _jsxRuntime.jsx)(_AsyncShowComponent.default, {
+        is: _isShowSvgX,
+        mls: 700,
+        children: _compSvgX
       }), children, (0, _jsxRuntime.jsx)("div", {
         className: _Input.CL_INPUT_LINE,
         style: _lineStyle
@@ -144,6 +153,5 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
     })]
   });
 });
-var _default = TextField;
-exports.default = _default;
+var _default = exports.default = TextField;
 //# sourceMappingURL=TextField.js.map

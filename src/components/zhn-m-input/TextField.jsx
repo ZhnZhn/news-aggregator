@@ -18,6 +18,7 @@ import useId from '../hooks/useId';
 import useBool from '../hooks/useBool';
 
 import { HAS_TOUCH_EVENTS } from '../has';
+import AsyncShowComponent from '../zhn-moleculs/AsyncShowComponent';
 import SvgX from '../zhn-atoms/SvgX';
 
 import {
@@ -105,6 +106,13 @@ const TextField = forwardRef(({
     }
   ], [])
   // onTest, onInputChange, id
+  , _compSvgX = useMemo(() => <SvgX
+     color="black"
+     className={CL_BT_SVG_CLEAR}
+     style={S_BT_CLEAR}
+     onClick={_clearInput}
+  />, [])
+  // _clearInput
   , [
     _hBlurInput,
     _hInputChange,
@@ -153,7 +161,10 @@ const TextField = forwardRef(({
     _lineStyle
   ] = isPassTest
     ? []
-    : [S_LABEL_ON_ERROR, S_LINE_ERROR];
+    : [S_LABEL_ON_ERROR, S_LINE_ERROR]
+  , _isShowSvgX = HAS_TOUCH_EVENTS
+      && hasClear
+      && value;
 
   return (
     <div
@@ -187,12 +198,12 @@ const TextField = forwardRef(({
           onKeyDown={_hKeyDown}
           {...restInputProps}
         />
-        {HAS_TOUCH_EVENTS && hasClear && value && <SvgX
-           color="black"
-           className={CL_BT_SVG_CLEAR}
-           style={S_BT_CLEAR}
-           onClick={_clearInput}
-        />}
+        <AsyncShowComponent
+          is={_isShowSvgX}
+          mls={700}
+        >
+          {_compSvgX}
+        </AsyncShowComponent>
         {children}
         <div className={CL_INPUT_LINE} style={_lineStyle} />
         { _lineStyle && <div className={CL_INPUT_MSG_ERR}>{errorMsg}</div>}
