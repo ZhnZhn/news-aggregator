@@ -1,7 +1,8 @@
 import {
   createStoreWithSelector,
   fCrUse,
-  getStoreApi
+  getStoreApi,
+  fCrStoreSlice
 } from './storeApi';
 
 import RouterApiConf from './logic/RouterApiConf';
@@ -29,11 +30,15 @@ const _assign = Object.assign;
 
 const _items = {};
 
+const [
+  _crMsItem,
+  _selectMsItem
+] = fCrStoreSlice("msItem")
+
 const _crStore = () => ({
-  msItem: void 0
+  ..._crMsItem()
 })
 , _itemStore = createStoreWithSelector(_crStore)
-, _selectMsItem = state => state.msItem
 , [_set] = getStoreApi(_itemStore);
 
 export const useMsItem = fCrUse(_itemStore, _selectMsItem)

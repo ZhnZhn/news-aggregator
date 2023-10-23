@@ -11,14 +11,13 @@ var _compStore = require("./compStore");
 var _storeAtoms = require("./storeAtoms");
 const _assign = Object.assign;
 const _items = {};
+const [_crMsItem, _selectMsItem] = (0, _storeApi.fCrStoreSlice)("msItem");
 const _crStore = () => ({
-    msItem: void 0
+    ..._crMsItem()
   }),
   _itemStore = (0, _storeApi.createStoreWithSelector)(_crStore),
-  _selectMsItem = state => state.msItem,
   [_set] = (0, _storeApi.getStoreApi)(_itemStore);
-const useMsItem = (0, _storeApi.fCrUse)(_itemStore, _selectMsItem);
-exports.useMsItem = useMsItem;
+const useMsItem = exports.useMsItem = (0, _storeApi.fCrUse)(_itemStore, _selectMsItem);
 const _loadItemCompleted = _ref => {
     let {
       news,

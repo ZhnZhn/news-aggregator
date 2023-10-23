@@ -10,16 +10,11 @@ var _NewsMenu = _interopRequireDefault(require("../conf/NewsMenu"));
 var _ComponentSliceFn = require("./stores/ComponentSliceFn");
 const _dialogInited = Object.create(null);
 const _newsPaneInited = Object.create(null);
-const _fCrSlice = (slicePn, optionPn) => [value => ({
-  [slicePn]: optionPn ? {
-    [optionPn]: value
-  } : value
-}), state => state[slicePn]];
-const [_crMsAbout, _selectMsAbout] = _fCrSlice("msAbout", "is"),
-  [_crMsModalDialog, _selectMsModalDialog] = _fCrSlice("msModalDialog", "option"),
-  [_crMsDialog, _selectMsDialog] = _fCrSlice("msDialog"),
-  [_crMsBrowser, _selectMsBrowser] = _fCrSlice("msBrowser", "id"),
-  [_crMsPane, _selectMsPane] = _fCrSlice("msPane"),
+const [_crMsAbout, _selectMsAbout] = (0, _storeApi.fCrStoreSlice)("msAbout", "is"),
+  [_crMsModalDialog, _selectMsModalDialog] = (0, _storeApi.fCrStoreSlice)("msModalDialog", "option"),
+  [_crMsDialog, _selectMsDialog] = (0, _storeApi.fCrStoreSlice)("msDialog"),
+  [_crMsBrowser, _selectMsBrowser] = (0, _storeApi.fCrStoreSlice)("msBrowser", "id"),
+  [_crMsPane, _selectMsPane] = (0, _storeApi.fCrStoreSlice)("msPane"),
   _crStore = () => ({
     ..._crMsAbout(),
     ..._crMsModalDialog(),

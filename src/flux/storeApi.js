@@ -26,6 +26,18 @@ export const getStoreApi = store => [
   store.getState
 ];
 
+export const fCrStoreSlice = (
+  slicePn,
+  optionPn
+) => [
+  (value) => ({
+    [slicePn]: optionPn
+      ? {[optionPn]: value}
+      : value
+  }),
+  state => state[slicePn]
+];
+
 const _isFn = v => typeof v === 'function'
 , _reducerUseAtomValue = (
   value,

@@ -2,7 +2,8 @@ import {
   createStoreWithSelector,
   fCrUse,
   bindTo,
-  getStoreApi
+  getStoreApi,
+  fCrStoreSlice
 } from './storeApi';
 
 import settingStore from './settingStore';
@@ -20,38 +21,28 @@ import {
 const _dialogInited = Object.create(null);
 const _newsPaneInited = Object.create(null);
 
-const _fCrSlice = (
-  slicePn,
-  optionPn
-) => [
-  (value) => ({
-    [slicePn]: optionPn
-      ? {[optionPn]: value}
-      : value
-  }),
-  state => state[slicePn]
-];
+
 
 const [
   _crMsAbout,
   _selectMsAbout
-] = _fCrSlice("msAbout", "is")
+] = fCrStoreSlice("msAbout", "is")
 , [
   _crMsModalDialog,
   _selectMsModalDialog
-] = _fCrSlice("msModalDialog", "option")
+] = fCrStoreSlice("msModalDialog", "option")
 , [
   _crMsDialog,
   _selectMsDialog
-] = _fCrSlice("msDialog")
+] = fCrStoreSlice("msDialog")
 , [
   _crMsBrowser,
   _selectMsBrowser
-] = _fCrSlice("msBrowser", "id")
+] = fCrStoreSlice("msBrowser", "id")
 , [
   _crMsPane,
   _selectMsPane
-] = _fCrSlice("msPane")
+] = fCrStoreSlice("msPane")
 , _crStore = () => ({
    ..._crMsAbout(),
    ..._crMsModalDialog(),

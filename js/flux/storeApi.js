@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.getStoreApi = exports.fCrUse = exports.createStoreWithSelector = exports.atom = void 0;
+exports.getStoreApi = exports.fCrUse = exports.fCrStoreSlice = exports.createStoreWithSelector = exports.atom = void 0;
 var _utils = require("../utils");
 exports.bindTo = _utils.bindTo;
 var _zustandLite = require("./zustand-lite");
@@ -14,6 +14,12 @@ const fCrUse = (store, select) => (0, _utils.bindTo)(_useSubscribe.default, stor
 exports.fCrUse = fCrUse;
 const getStoreApi = store => [store.setState, store.getState];
 exports.getStoreApi = getStoreApi;
+const fCrStoreSlice = (slicePn, optionPn) => [value => ({
+  [slicePn]: optionPn ? {
+    [optionPn]: value
+  } : value
+}), state => state[slicePn]];
+exports.fCrStoreSlice = fCrStoreSlice;
 const _isFn = v => typeof v === 'function',
   _reducerUseAtomValue = (value, crOrValue) => _isFn(crOrValue) ? crOrValue(value) : crOrValue;
 const atom = initialValue => {
