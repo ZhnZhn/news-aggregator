@@ -20,21 +20,38 @@ import {
 const _dialogInited = Object.create(null);
 const _newsPaneInited = Object.create(null);
 
-const _crMsAbout = (is) => ({
-  msAbout: { is }
-})
-, _crMsModalDialog = (option) => ({
-  msModalDialog: { option }
-})
-, _crMsDialog = (option) => ({
-  msDialog: option
-})
-, _crMsBrowser = (id) => ({
-  msBrowser: { id }
-})
-, _crMsPane = (option) => ({
-  msPane: option
-})
+const _fCrSlice = (
+  slicePn,
+  optionPn
+) => [
+  (value) => ({
+    [slicePn]: optionPn
+      ? {[optionPn]: value}
+      : value
+  }),
+  state => state[slicePn]
+];
+
+const [
+  _crMsAbout,
+  _selectMsAbout
+] = _fCrSlice("msAbout", "is")
+, [
+  _crMsModalDialog,
+  _selectMsModalDialog
+] = _fCrSlice("msModalDialog", "option")
+, [
+  _crMsDialog,
+  _selectMsDialog
+] = _fCrSlice("msDialog")
+, [
+  _crMsBrowser,
+  _selectMsBrowser
+] = _fCrSlice("msBrowser", "id")
+, [
+  _crMsPane,
+  _selectMsPane
+] = _fCrSlice("msPane")
 , _crStore = () => ({
    ..._crMsAbout(),
    ..._crMsModalDialog(),
@@ -43,12 +60,7 @@ const _crMsAbout = (is) => ({
    ..._crMsPane()
 })
 , _compStore = createStoreWithSelector(_crStore)
-, _selectMsAbout = state => state.msAbout
-, _selectMsModalDialog = state => state.msModalDialog
-, _selectMsDialog = state => state.msDialog
-, _selectMsBrowser = state => state.msBrowser
-, _selectMsPane = state => state.msPane
-, [_set] = getStoreApi(_compStore)
+, [_set] = getStoreApi(_compStore);
 
 export const useMsAbout = fCrUse(_compStore, _selectMsAbout)
 export const showAbout = () => _set(_crMsAbout(true))
