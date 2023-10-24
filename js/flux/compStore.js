@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.useMsPane = exports.useMsModalDialog = exports.useMsDialog = exports.useMsBrowser = exports.useMsAbout = exports.showSettingsDialog = exports.showNewsPane = exports.showNewsBrowser = exports.showDialog = exports.showAlertDialog = exports.showAbout = void 0;
+exports.useMsPane = exports.useMsModalDialog = exports.useMsDialog = exports.useMsBrowser = exports.useMsAbout = exports.useDialogItems = exports.showSettingsDialog = exports.showNewsPane = exports.showNewsBrowser = exports.showDialog = exports.showAlertDialog = exports.showAbout = exports.closeDialog = exports.cleanDialogItems = void 0;
 var _storeApi = require("./storeApi");
 var _settingStore = _interopRequireDefault(require("./settingStore"));
 var _MdType = require("../conf/MdType");
@@ -15,12 +15,14 @@ const [_crMsAbout, _selectMsAbout] = (0, _storeApi.fCrStoreSlice)("msAbout", "is
   [_crMsDialog, _selectMsDialog] = (0, _storeApi.fCrStoreSlice)("msDialog"),
   [_crMsBrowser, _selectMsBrowser] = (0, _storeApi.fCrStoreSlice)("msBrowser", "id"),
   [_crMsPane, _selectMsPane] = (0, _storeApi.fCrStoreSlice)("msPane"),
+  [_crDialogItems, _selectDialogItems] = (0, _storeApi.fCrStoreSlice)("dialogItems"),
   _crStore = () => ({
     ..._crMsAbout(),
     ..._crMsModalDialog(),
     ..._crMsDialog(),
     ..._crMsBrowser(),
-    ..._crMsPane()
+    ..._crMsPane(),
+    ..._crDialogItems([])
   }),
   _compStore = (0, _storeApi.createStoreWithSelector)(_crStore),
   [_set] = (0, _storeApi.getStoreApi)(_compStore);
@@ -38,10 +40,13 @@ const _showModalDialog = function (type, option) {
 const showSettingsDialog = exports.showSettingsDialog = (0, _storeApi.bindTo)(_showModalDialog, _MdType.SETTINGS_DIALOG, _settingStore.default.exportSettingsFn());
 const showAlertDialog = exports.showAlertDialog = (0, _storeApi.bindTo)(_showModalDialog, _MdType.ALERT_DIALOG);
 const useMsDialog = exports.useMsDialog = (0, _storeApi.fCrUse)(_compStore, _selectMsDialog);
-const showDialog = itemConf => {
-  _set(_crMsDialog((0, _ComponentSliceFn.showDialogImpl)(_dialogInited, itemConf)));
-};
+const useDialogItems = exports.useDialogItems = (0, _storeApi.fUseStoreState)(_compStore, _selectDialogItems);
+const showDialog = itemConf => _set(_crMsDialog((0, _ComponentSliceFn.showDialogImpl)(_dialogInited, itemConf)));
 exports.showDialog = showDialog;
+const closeDialog = itemConf => _set(_crDialogItems([itemConf]));
+exports.closeDialog = closeDialog;
+const cleanDialogItems = () => _set(_crDialogItems([]));
+exports.cleanDialogItems = cleanDialogItems;
 const useMsBrowser = exports.useMsBrowser = (0, _storeApi.fCrUse)(_compStore, _selectMsBrowser);
 const _showBrowser = browserId => {
   _set(_crMsBrowser(browserId));

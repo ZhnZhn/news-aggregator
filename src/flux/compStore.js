@@ -1,6 +1,7 @@
 import {
   createStoreWithSelector,
   fCrUse,
+  fUseStoreState,
   bindTo,
   getStoreApi,
   fCrStoreSlice
@@ -43,12 +44,17 @@ const [
   _crMsPane,
   _selectMsPane
 ] = fCrStoreSlice("msPane")
+, [
+  _crDialogItems,
+  _selectDialogItems
+] = fCrStoreSlice("dialogItems")
 , _crStore = () => ({
    ..._crMsAbout(),
    ..._crMsModalDialog(),
    ..._crMsDialog(),
    ..._crMsBrowser(),
-   ..._crMsPane()
+   ..._crMsPane(),
+   ..._crDialogItems([])
 })
 , _compStore = createStoreWithSelector(_crStore)
 , [_set] = getStoreApi(_compStore);
@@ -75,11 +81,14 @@ export const showAlertDialog = bindTo(
 )
 
 export const useMsDialog = fCrUse(_compStore, _selectMsDialog)
-export const showDialog = (itemConf) => {
-  _set(_crMsDialog(
-    showDialogImpl(_dialogInited, itemConf)
-  ))
-}
+export const useDialogItems = fUseStoreState(_compStore, _selectDialogItems)
+export const showDialog = (itemConf) => _set(
+  _crMsDialog(showDialogImpl(_dialogInited, itemConf)),
+)
+export const closeDialog = (itemConf) => _set(
+  _crDialogItems([itemConf])
+)
+export const cleanDialogItems = () => _set(_crDialogItems([]))
 
 
 export const useMsBrowser = fCrUse(_compStore, _selectMsBrowser)
