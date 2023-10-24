@@ -8,6 +8,8 @@ import {
 } from './zustand-lite';
 
 import useSubscribe from '../components/hooks/useSubscribe';
+import useSubscribeState from '../components/hooks/useSubscribeState';
+
 import useRerender from '../components/hooks/useRerender';
 
 export const createStoreWithSelector = (
@@ -20,6 +22,16 @@ export const fCrUse = (
   store,
   select
 ) => bindTo(useSubscribe, store, select);
+
+export const fUseStoreState = (
+  store,
+  select
+) => bindTo(
+  useSubscribeState,
+  store,
+  select,
+  () => select(store.getState())
+);
 
 export const getStoreApi = store => [
   store.setState,

@@ -2,16 +2,19 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.getStoreApi = exports.fCrUse = exports.fCrStoreSlice = exports.createStoreWithSelector = exports.atom = void 0;
+exports.getStoreApi = exports.fUseStoreState = exports.fCrUse = exports.fCrStoreSlice = exports.createStoreWithSelector = exports.atom = void 0;
 var _utils = require("../utils");
 exports.bindTo = _utils.bindTo;
 var _zustandLite = require("./zustand-lite");
 var _useSubscribe = _interopRequireDefault(require("../components/hooks/useSubscribe"));
+var _useSubscribeState = _interopRequireDefault(require("../components/hooks/useSubscribeState"));
 var _useRerender = _interopRequireDefault(require("../components/hooks/useRerender"));
 const createStoreWithSelector = crStore => (0, _zustandLite.createStore)((0, _zustandLite.subscribeWithSelector)(crStore));
 exports.createStoreWithSelector = createStoreWithSelector;
 const fCrUse = (store, select) => (0, _utils.bindTo)(_useSubscribe.default, store, select);
 exports.fCrUse = fCrUse;
+const fUseStoreState = (store, select) => (0, _utils.bindTo)(_useSubscribeState.default, store, select, () => select(store.getState()));
+exports.fUseStoreState = fUseStoreState;
 const getStoreApi = store => [store.setState, store.getState];
 exports.getStoreApi = getStoreApi;
 const fCrStoreSlice = (slicePn, optionPn) => [value => ({
