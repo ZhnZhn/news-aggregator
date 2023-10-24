@@ -9,7 +9,8 @@ import DialogContainer from './DialogContainer'
 
 const BrowserContainer = ({
   useMsBrowser,
-  useMsDialog
+  useMsDialog,
+  closeDialog
 }) => (
   <div className="hrz-container">
     <NewsBrowser
@@ -21,6 +22,7 @@ const BrowserContainer = ({
     <DialogContainer
        maxDialog={3}
        useMsDialog={useMsDialog}
+       closeDialog={closeDialog}
     />
   </div>
 );

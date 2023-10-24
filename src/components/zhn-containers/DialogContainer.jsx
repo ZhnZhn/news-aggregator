@@ -56,7 +56,8 @@ const _updateVisible = (
 
 const DialogContainer = ({
   maxDialog=3,
-  useMsDialog
+  useMsDialog,
+  closeDialog
 }) => {
   const [
     state,
@@ -109,7 +110,10 @@ const DialogContainer = ({
          return cloneElement(Comp, {
            key,
            isShow: hmIs[key],
-           onClose: () => _hToggleDialog(key)
+           onClose: () => {
+             _hToggleDialog(key)
+             closeDialog(Comp.props.itemConf)
+          }
          });
       })}
     </div>

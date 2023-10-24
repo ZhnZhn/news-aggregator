@@ -30,8 +30,9 @@ import IconAppLogo from './IconAppLogo';
 import AppLabel from './AppLabel';
 import A from '../Comp';
 import PanelQuery from './PanelQuery';
-
 import crMenuQuery from './crMenuQuery';
+import HotBar from './HotBar';
+
 
 const HEADER = "header"
 , CL_HEADER = crContainerBgCn(HEADER)
@@ -114,6 +115,7 @@ const HeaderBar = ({
           <span className={CL_ARROW_DOWN} />
         </A.ModalButton>
       </span>
+      <HotBar />
       <div className={CL_BTS}>
           <A.FlatButton
             ariaLabel="About News Aggregator"

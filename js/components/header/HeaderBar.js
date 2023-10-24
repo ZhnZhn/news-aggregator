@@ -16,16 +16,17 @@ var _AppLabel = _interopRequireDefault(require("./AppLabel"));
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _PanelQuery = _interopRequireDefault(require("./PanelQuery"));
 var _crMenuQuery = _interopRequireDefault(require("./crMenuQuery"));
+var _HotBar = _interopRequireDefault(require("./HotBar"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const HEADER = "header",
   CL_HEADER = (0, _crStyle.crContainerBgCn)(HEADER),
-  CL_PANEL_BROWSER = (0, _crStyle.crPanelShadowCn)((0, _crStyle.crContainerBgCn)(HEADER + "__panel-browser")),
-  CL_ICON_APP = HEADER + "__icon-app",
-  CL_LABEL_APP = HEADER + "__label-app",
-  CL_BROWSER_BTS = HEADER + "__browser-bts",
+  CL_PANEL_BROWSER = (0, _crStyle.crPanelShadowCn)((0, _crStyle.crContainerBgCn)(`${HEADER}__panel-browser`)),
+  CL_ICON_APP = `${HEADER}__icon-app`,
+  CL_LABEL_APP = `${HEADER}__label-app`,
+  CL_BROWSER_BTS = `${HEADER}__browser-bts`,
   CL_ARROW_DOWN = "arrow-down",
-  CL_BTS = HEADER + "__bts",
-  CL_BT_ABOUT = HEADER + "__bt-about",
+  CL_BTS = `${HEADER}__bts`,
+  CL_BT_ABOUT = `${HEADER}__bt-about`,
   S_SVG_ICON = {
     position: 'relative',
     top: -1,
@@ -77,7 +78,7 @@ const HeaderBar = _ref => {
           className: CL_ARROW_DOWN
         })
       })
-    }), (0, _jsxRuntime.jsxs)("div", {
+    }), (0, _jsxRuntime.jsx)(_HotBar.default, {}), (0, _jsxRuntime.jsxs)("div", {
       className: CL_BTS,
       children: [(0, _jsxRuntime.jsx)(_Comp.default.FlatButton, {
         ariaLabel: "About News Aggregator",

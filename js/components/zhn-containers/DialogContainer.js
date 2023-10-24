@@ -42,7 +42,8 @@ const _updateVisible = (state, key, maxDialog) => {
 const DialogContainer = _ref => {
   let {
     maxDialog = 3,
-    useMsDialog
+    useMsDialog,
+    closeDialog
   } = _ref;
   const [state, setState] = (0, _uiApi.useState)({
       hmIs: {},
@@ -96,11 +97,13 @@ const DialogContainer = _ref => {
       return (0, _uiApi.cloneElement)(Comp, {
         key,
         isShow: hmIs[key],
-        onClose: () => _hToggleDialog(key)
+        onClose: () => {
+          _hToggleDialog(key);
+          closeDialog(Comp.props.itemConf);
+        }
       });
     })
   });
 };
-var _default = DialogContainer;
-exports.default = _default;
+var _default = exports.default = DialogContainer;
 //# sourceMappingURL=DialogContainer.js.map

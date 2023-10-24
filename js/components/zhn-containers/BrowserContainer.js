@@ -11,21 +11,22 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const BrowserContainer = _ref => {
   let {
     useMsBrowser,
-    useMsDialog
+    useMsDialog,
+    closeDialog
   } = _ref;
   return (0, _jsxRuntime.jsxs)("div", {
     className: "hrz-container",
     children: [(0, _jsxRuntime.jsx)(_NewsBrowser.default, {
-      id: _NewsMenu.default.NEWS,
+      browserId: _NewsMenu.default.NEWS,
       useMsBrowser: useMsBrowser,
       onClick: _compStore.showDialog,
       onError: _compStore.showAlertDialog
     }), (0, _jsxRuntime.jsx)(_DialogContainer.default, {
       maxDialog: 3,
-      useMsDialog: useMsDialog
+      useMsDialog: useMsDialog,
+      closeDialog: closeDialog
     })]
   });
 };
-var _default = BrowserContainer;
-exports.default = _default;
+var _default = exports.default = BrowserContainer;
 //# sourceMappingURL=BrowserContainer.js.map

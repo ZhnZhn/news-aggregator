@@ -6,6 +6,7 @@ import {
   useMsModalDialog,
   showSettingsDialog,
   useMsDialog,
+  closeDialog,
   useMsBrowser,
   showNewsBrowser,
   useMsPane
@@ -33,6 +34,7 @@ const AppNewsAggregator = () => {
         <BrowserContainer
           useMsBrowser={useMsBrowser}
           useMsDialog={useMsDialog}
+          closeDialog={closeDialog}
         />
         <About
           isInitShow={true}

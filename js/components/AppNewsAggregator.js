@@ -24,7 +24,8 @@ const AppNewsAggregator = () => {
       className: CL_COMP,
       children: [(0, _jsxRuntime.jsx)(_BrowserContainer.default, {
         useMsBrowser: _compStore.useMsBrowser,
-        useMsDialog: _compStore.useMsDialog
+        useMsDialog: _compStore.useMsDialog,
+        closeDialog: _compStore.closeDialog
       }), (0, _jsxRuntime.jsx)(_About.default, {
         isInitShow: true,
         useMsAbout: _compStore.useMsAbout
@@ -37,6 +38,5 @@ const AppNewsAggregator = () => {
     })]
   });
 };
-var _default = AppNewsAggregator;
-exports.default = _default;
+var _default = exports.default = AppNewsAggregator;
 //# sourceMappingURL=AppNewsAggregator.js.map
