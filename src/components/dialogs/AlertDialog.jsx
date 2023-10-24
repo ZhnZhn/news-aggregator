@@ -1,5 +1,5 @@
 //import PropTypes from 'prop-types'
-import memoIsShow from '../hoc/memoIsShow';
+import { memoIsShow } from '../hoc/memoFn';
 import { S_BROWSER_CAPTION } from './Dialog.Style';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';

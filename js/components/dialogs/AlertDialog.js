@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _memoIsShow = _interopRequireDefault(require("../hoc/memoIsShow"));
+var _memoFn = require("../hoc/memoFn");
 var _Dialog = require("./Dialog.Style");
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -33,9 +33,9 @@ const _toMsg = data => {
     url,
     msg
   } = data || {};
-  return status ? url + "\ncode:" + status + "\nNetwork exception" : msg || 'Exception Message';
+  return status ? `${url}\ncode:${status}\nNetwork exception` : msg || 'Exception Message';
 };
-const AlertDialog = (0, _memoIsShow.default)(_ref => {
+const AlertDialog = (0, _memoFn.memoIsShow)(_ref => {
   let {
     isShow,
     data,
@@ -66,6 +66,5 @@ AlertDialog.propTypes = {
   onClose: PropTypes.func
 }
 */
-var _default = AlertDialog;
-exports.default = _default;
+var _default = exports.default = AlertDialog;
 //# sourceMappingURL=AlertDialog.js.map

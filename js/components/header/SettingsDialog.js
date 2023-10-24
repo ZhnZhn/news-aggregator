@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _memoIsShow = _interopRequireDefault(require("../hoc/memoIsShow"));
+var _memoFn = require("../hoc/memoFn");
 var _Dialog = require("../dialogs/Dialog.Style");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _CardApiKeys = _interopRequireDefault(require("./CardApiKeys"));
@@ -49,7 +49,7 @@ const S_MODAL = {
   },
   INPUT_SELECT_WIDTH = 306;
 const INPUT_SELECT_STYLE = (0, _Dialog.crInputSelectStyle)(INPUT_SELECT_WIDTH);
-const SettingsDialog = (0, _memoIsShow.default)(_ref => {
+const SettingsDialog = (0, _memoFn.memoIsShow)(_ref => {
   let {
     isShow,
     data,
@@ -107,6 +107,5 @@ SettingsDialog.propTypes = {
   onClose: PropTypes.func
 }
 */
-var _default = SettingsDialog;
-exports.default = _default;
+var _default = exports.default = SettingsDialog;
 //# sourceMappingURL=SettingsDialog.js.map

@@ -4,7 +4,10 @@ import {
   useCallback
 } from '../uiApi';
 
-import memoIsShow from '../hoc/memoIsShow';
+import {
+  memoIsShow
+} from '../hoc/memoFn';
+
 import {
   S_BROWSER_CAPTION,
   S_INPUT_ROOT,
@@ -94,7 +97,7 @@ const SettingsDialog = memoIsShow(({
             />
          </A.Tab>
          <A.Tab title="UI Theme">
-            <CardUiTheme              
+            <CardUiTheme
               style={S_CARD_ROOT}
               selectStyle={INPUT_SELECT_STYLE}
               buttonsStyle={S_CARD_BUTTONS}
