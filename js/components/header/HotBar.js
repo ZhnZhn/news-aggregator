@@ -7,6 +7,9 @@ var _uiApi = require("../uiApi");
 var _compStore = require("../../flux/compStore");
 var _memoFn = require("../hoc/memoFn");
 var _has = require("../has");
+var _DP = require("../DP");
+var _hotkeys = require("../hotkeys/hotkeys");
+var _DialogFn = require("../dialogs/DialogFn");
 var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
 var _FlatButton = _interopRequireDefault(require("../zhn-bt/FlatButton"));
 var _preact = require("preact");
@@ -23,13 +26,14 @@ const CL_BT_HOT = "bt-hot",
 const _crBtProps = (index, caption) => {
   const _hotKey = _has.HAS_TOUCH_EVENTS ? '' : String(index + 1);
   return {
+    ariaLabel: caption,
+    dataPos: _DP.DP_BOTTOM_LEFT,
     hotKey: _hotKey || void 0,
-    caption: _hotKey + (caption || DF_BT_CAPTION).slice(0, 3),
-    title: caption
+    caption: _hotKey + (caption || DF_BT_CAPTION).slice(0, 3)
   };
 };
 const _crHotBtItem = (conf, index) => (0, _preact.createElement)(_FlatButton.default, {
-  ..._crBtProps(index, conf.type),
+  ..._crBtProps(index, (0, _DialogFn.getCaption)(conf)),
   key: conf.type,
   timeout: 0,
   className: CL_BT_HOT,
@@ -43,10 +47,12 @@ const HotBar = () => {
       items: hotButtons,
       crItem: _crHotBtItem
     }), hotButtons.length !== 0 && (0, _jsxRuntime.jsx)(_FlatButton.default, {
+      ariaLabel: "Clean Hot Bar",
+      dataPos: _DP.DP_BOTTOM_LEFT,
+      hotKey: _has.HAS_TOUCH_EVENTS ? void 0 : _hotkeys.HK_CLEAR_HOT_BAR,
       timeout: 0,
       style: S_BT_CL,
       caption: "CL",
-      title: "Clean Hot Bar",
       onClick: _compStore.cleanDialogItems
     }, "BT_CLEAN")]
   }) : null;
