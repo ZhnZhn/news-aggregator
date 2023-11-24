@@ -37,8 +37,8 @@ export const FONT_SIZE_OPTIONS = _crFontSizeOptions(
 )
 
 const DF_APP_FONT_SIZE = HAS_WIDE_SCREEN
-  ? FONT_SIZE_OPTIONS[1][1]
-  : FONT_SIZE_OPTIONS[2][1]
+  ? FONT_SIZE_OPTIONS[3][1]
+  : FONT_SIZE_OPTIONS[5][1]
 , MIN_FS = 15
 , MAX_FS = 21;
 let _appFontSize = DF_APP_FONT_SIZE;
