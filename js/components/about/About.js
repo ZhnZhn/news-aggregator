@@ -45,7 +45,7 @@ const CL_ABOUT_PANE = (0, _crStyle.crPaneCn)("about-pane"),
   S_MT_8 = {
     marginTop: 8
   },
-  _crToken = (token, hotKey) => _has.HAS_WIDE_SCREEN ? token + " [" + hotKey + "]" : token;
+  _crToken = (token, hotKey) => _has.HAS_WIDE_SCREEN ? `${token} [${hotKey}]` : token;
 const {
   ItemStack
 } = _Comp.default;
@@ -56,12 +56,13 @@ const _crLinkItem = (_ref, index) => {
   let [Comp, props] = _ref;
   return (0, _jsxRuntime.jsx)("div", {
     children: (0, _jsxRuntime.jsx)(Comp, {
-      ...props
+      ...props,
+      tabIndex: "0"
     })
   }, index);
 };
-const NEWS_SOURCE_STEP_DESCRIPTIONS = ["Please, click button " + _crToken('QUERY', 'q') + " in header.", "Choose headlines source.", "Click button " + _crToken('LOAD', 'l') + " in dialog."],
-  API_KEYS_SETTINGS_MSG = "API Keys can be set in the " + _crToken('Settings Dialog', 's');
+const NEWS_SOURCE_STEP_DESCRIPTIONS = [`Please, click button ${_crToken('QUERY', 'q')} in header.`, "Choose headlines source.", `Click button ${_crToken('LOAD', 'l')} in dialog.`],
+  API_KEYS_SETTINGS_MSG = `API Keys can be set in the ${_crToken('Settings Dialog', 's')}`;
 const _crStepItem = (descr, index) => (0, _jsxRuntime.jsx)(_Step.default, {
   step: index + 1,
   description: descr
@@ -134,6 +135,5 @@ const About = _ref2 => {
     })]
   });
 };
-var _default = About;
-exports.default = _default;
+var _default = exports.default = About;
 //# sourceMappingURL=About.js.map

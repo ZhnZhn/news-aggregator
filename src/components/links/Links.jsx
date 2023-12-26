@@ -19,16 +19,20 @@ const CL_LINK = "link";
 const _fSafeLink = (
   href,
   caption
-) => ({ title, ...restProps }) => (
+) => ({
+  title,
+  tabIndex="-1",
+  ...restProps
+}) => (
   <SafeLink
     className={CL_LINK}
+    tabIndex={tabIndex}
     {...restProps}
     href={href}
-    tabIndex="-1"
   >
     {title || caption}
   </SafeLink>
-)
+);
 
 export const CryptoCompareLink = _fSafeLink(
   "https://cryptocompare.com",

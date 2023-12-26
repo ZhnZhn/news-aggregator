@@ -89,7 +89,7 @@ const _crLinkItem = (
   index
 ) => (
   <div key={index}>
-    <Comp {...props} />
+    <Comp {...props} tabIndex="0" />
   </div>
 );
 
