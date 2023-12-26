@@ -1,8 +1,7 @@
 import { FMP_LONG } from '../../conf/ProviderNames';
-
 import { HAS_WIDE_SCREEN } from '../has';
 
-import useBool from '../hooks/useBool';
+import useShowHideComponent from '../hooks/useShowHideComponent';
 
 import {
   crPaneCn,
@@ -117,15 +116,16 @@ const About = ({
 }) => {
   const [
     isShow,
-    setIsShowTrue,
-    setIsShowFalse
-  ] = useBool(isInitShow)
+    showAbout,
+    hideAbout,
+    hKeyDown
+  ] = useShowHideComponent(isInitShow);
 
   useMsAbout(msAbout => {
     if (msAbout) {
       const _setIs = msAbout.is
-        ? setIsShowTrue
-        : setIsShowFalse
+        ? showAbout
+        : hideAbout
       _setIs()
     }
   })
@@ -142,11 +142,13 @@ const About = ({
     <div
       className={_className}
       style={_showHideStyle}
+      role="presentation"
+      onKeyDown={hKeyDown}
      >
        <A.BrowserCaption
           style={S_BROWSER_CAPTION}
           caption="About News Aggregator"
-          onClose={setIsShowFalse}
+          onClose={hideAbout}
        />
        <A.ScrollPane
           style={S_SCROLL_DIV}

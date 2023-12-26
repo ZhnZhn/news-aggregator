@@ -5,7 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _ProviderNames = require("../../conf/ProviderNames");
 var _has = require("../has");
-var _useBool = _interopRequireDefault(require("../hooks/useBool"));
+var _useShowHideComponent = _interopRequireDefault(require("../hooks/useShowHideComponent"));
 var _crStyle = require("../crStyle");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _Links = require("../links/Links");
@@ -72,10 +72,10 @@ const About = _ref2 => {
     isInitShow,
     useMsAbout
   } = _ref2;
-  const [isShow, setIsShowTrue, setIsShowFalse] = (0, _useBool.default)(isInitShow);
+  const [isShow, showAbout, hideAbout, hKeyDown] = (0, _useShowHideComponent.default)(isInitShow);
   useMsAbout(msAbout => {
     if (msAbout) {
-      const _setIs = msAbout.is ? setIsShowTrue : setIsShowFalse;
+      const _setIs = msAbout.is ? showAbout : hideAbout;
       _setIs();
     }
   });
@@ -83,10 +83,12 @@ const About = _ref2 => {
   return (0, _jsxRuntime.jsxs)("div", {
     className: _className,
     style: _showHideStyle,
+    role: "presentation",
+    onKeyDown: hKeyDown,
     children: [(0, _jsxRuntime.jsx)(_Comp.default.BrowserCaption, {
       style: S_BROWSER_CAPTION,
       caption: "About News Aggregator",
-      onClose: setIsShowFalse
+      onClose: hideAbout
     }), (0, _jsxRuntime.jsx)(_Comp.default.ScrollPane, {
       style: S_SCROLL_DIV,
       children: (0, _jsxRuntime.jsxs)("div", {
