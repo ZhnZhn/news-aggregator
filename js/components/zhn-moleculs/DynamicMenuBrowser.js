@@ -7,6 +7,7 @@ var _uiApi = require("../uiApi");
 var _has = require("../has");
 var _crStyle = require("../crStyle");
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
+var _useShowHideComponent = _interopRequireDefault(require("../hooks/useShowHideComponent"));
 var _useLoadIf = _interopRequireDefault(require("../hooks/useLoadIf"));
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _MenuPart = _interopRequireDefault(require("./MenuPart"));
@@ -55,13 +56,13 @@ const DynamicMenuBrowser = _ref => {
     children,
     onClick
   } = _ref;
-  const [isShow, setIsShowTrue, setIsShowFalse] = (0, _useBool.default)(_has.HAS_WIDE_SCREEN),
+  const [isShow, showMenuBrowser, hideMenuBrowser, hKeyDown] = (0, _useShowHideComponent.default)(_has.HAS_WIDE_SCREEN),
     [isMore, setIsMoreTrue, setIsMoreFalse] = (0, _useBool.default)(false),
     [menuModel, setMenuModel] = (0, _uiApi.useState)(),
     loadingSpinner = (0, _useLoadIf.default)(isShow, url, setMenuModel, onError);
   useMsBrowser(msBrowser => {
     if (msBrowser && msBrowser.id === browserId) {
-      setIsShowTrue();
+      showMenuBrowser();
     }
   });
   const {
@@ -75,6 +76,7 @@ const DynamicMenuBrowser = _ref => {
   return (0, _jsxRuntime.jsxs)(Browser, {
     isShow: isShow,
     style: S_BROWSER,
+    onKeyDown: hKeyDown,
     children: [menuMore && (0, _jsxRuntime.jsx)(ModalSlider, {
       isShow: isMore,
       className: CL_MENU_MORE,
@@ -87,7 +89,7 @@ const DynamicMenuBrowser = _ref => {
       },
       caption: caption,
       onMore: _onMore,
-      onClose: setIsShowFalse
+      onClose: hideMenuBrowser
     }), loadingSpinner, (0, _jsxRuntime.jsxs)(ScrollPane, {
       style: S_SCROLL_PANE,
       children: [(0, _jsxRuntime.jsx)(ItemStack, {
@@ -100,6 +102,5 @@ const DynamicMenuBrowser = _ref => {
     })]
   });
 };
-var _default = DynamicMenuBrowser;
-exports.default = _default;
+var _default = exports.default = DynamicMenuBrowser;
 //# sourceMappingURL=DynamicMenuBrowser.js.map

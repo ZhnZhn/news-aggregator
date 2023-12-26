@@ -1,8 +1,9 @@
 import { useState } from '../uiApi';
 import { HAS_WIDE_SCREEN } from '../has';
-import { crPopupMenuCn } from '../crStyle'
+import { crPopupMenuCn } from '../crStyle';
 
 import useBool from '../hooks/useBool';
+import useShowHideComponent from '../hooks/useShowHideComponent';
 import useLoadIf from '../hooks/useLoadIf';
 
 import Comp from '../Comp';
@@ -15,7 +16,6 @@ const {
   ScrollPane,
   ItemStack
 } = Comp;
-
 
 const CL_MENU_MORE = crPopupMenuCn("items__menu-more")
 const S_BROWSER = {
@@ -62,9 +62,10 @@ const DynamicMenuBrowser = ({
 }) => {
   const [
     isShow,
-    setIsShowTrue,
-    setIsShowFalse
-  ] = useBool(HAS_WIDE_SCREEN)
+    showMenuBrowser,
+    hideMenuBrowser,
+    hKeyDown
+  ] = useShowHideComponent(HAS_WIDE_SCREEN)
   , [
     isMore,
     setIsMoreTrue,
@@ -83,7 +84,7 @@ const DynamicMenuBrowser = ({
 
   useMsBrowser(msBrowser => {
     if (msBrowser && msBrowser.id === browserId) {
-      setIsShowTrue()
+      showMenuBrowser()
     }
   })
 
@@ -102,6 +103,7 @@ const DynamicMenuBrowser = ({
     <Browser
       isShow={isShow}
       style={S_BROWSER}
+      onKeyDown={hKeyDown}
     >
       {
         menuMore && <ModalSlider
@@ -118,7 +120,7 @@ const DynamicMenuBrowser = ({
         }}
         caption={caption}
         onMore={_onMore}
-        onClose={setIsShowFalse}
+        onClose={hideMenuBrowser}
       />
       {loadingSpinner}
       <ScrollPane
