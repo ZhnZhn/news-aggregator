@@ -22,11 +22,10 @@ const LogoPreact = ({
        aria-label={_ariaLabel}
        data-pos={_dataPos}
        className={className}
-       href="https://preactjs.com"
-       tabIndex="-1"
+       href="https://preactjs.com"      
     >
       <svg
-        xmlns="http://www.w3.org/2000/svg"      
+        xmlns="http://www.w3.org/2000/svg"
         viewBox="-256 -256 512 512"
       >
         <UseLogoById

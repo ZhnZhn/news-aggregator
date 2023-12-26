@@ -19,8 +19,7 @@ const LogoGitHub = ({
       aria-label={_ariaLabel}
       data-pos={_dataPos}
       className={className}
-      href={href}
-      tabIndex="-1"
+      href={href}      
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
