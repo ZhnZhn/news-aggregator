@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.toLink = exports.toFirstUpperCase = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.render = exports.memo = exports.isFn = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.crLazyValue = exports.crId = exports.cloneElement = exports.bindTo = exports.PASSIVE_EVENT_OPTIONS = exports.KEY_TAB = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_DELETE = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = exports.EVENT_TOUCH_START = exports.EVENT_TOUCH_MOVE = exports.EVENT_TOUCH_END = exports.EVENT_TOUCH_CANCEL = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useEffect = exports.useContext = exports.useCallback = exports.toLink = exports.toFirstUpperCase = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.render = exports.memo = exports.isFn = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.forwardRef = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.crLazyValue = exports.crId = exports.cloneElement = exports.bindTo = exports.PASSIVE_EVENT_OPTIONS = exports.KEY_TAB = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_DELETE = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = exports.FN_NOOP = exports.EVENT_TOUCH_START = exports.EVENT_TOUCH_MOVE = exports.EVENT_TOUCH_END = exports.EVENT_TOUCH_CANCEL = void 0;
 var _utils = require("../utils");
 exports.bindTo = _utils.bindTo;
 exports.crId = _utils.crId;
@@ -21,27 +21,19 @@ exports.useCallback = _compat.useCallback;
 exports.useMemo = _compat.useMemo;
 exports.useEffect = _compat.useEffect;
 exports.useImperativeHandle = _compat.useImperativeHandle;
-const KEY_ARROW_DOWN = "ArrowDown";
-exports.KEY_ARROW_DOWN = KEY_ARROW_DOWN;
-const KEY_ARROW_UP = "ArrowUp";
-exports.KEY_ARROW_UP = KEY_ARROW_UP;
-const KEY_ENTER = "Enter";
-exports.KEY_ENTER = KEY_ENTER;
-const KEY_ESCAPE = "Escape";
-exports.KEY_ESCAPE = KEY_ESCAPE;
-const KEY_TAB = "Tab";
-exports.KEY_TAB = KEY_TAB;
-const KEY_DELETE = "Delete";
-exports.KEY_DELETE = KEY_DELETE;
+const KEY_ARROW_DOWN = exports.KEY_ARROW_DOWN = "ArrowDown";
+const KEY_ARROW_UP = exports.KEY_ARROW_UP = "ArrowUp";
+const KEY_ENTER = exports.KEY_ENTER = "Enter";
+const KEY_ESCAPE = exports.KEY_ESCAPE = "Escape";
+const KEY_TAB = exports.KEY_TAB = "Tab";
+const KEY_DELETE = exports.KEY_DELETE = "Delete";
 const TOUCH = "touch";
-const EVENT_TOUCH_START = TOUCH + "start";
-exports.EVENT_TOUCH_START = EVENT_TOUCH_START;
-const EVENT_TOUCH_MOVE = TOUCH + "move";
-exports.EVENT_TOUCH_MOVE = EVENT_TOUCH_MOVE;
-const EVENT_TOUCH_END = TOUCH + "end";
-exports.EVENT_TOUCH_END = EVENT_TOUCH_END;
-const EVENT_TOUCH_CANCEL = TOUCH + "cancel";
-exports.EVENT_TOUCH_CANCEL = EVENT_TOUCH_CANCEL;
+const EVENT_TOUCH_START = exports.EVENT_TOUCH_START = `${TOUCH}start`;
+const EVENT_TOUCH_MOVE = exports.EVENT_TOUCH_MOVE = `${TOUCH}move`;
+const EVENT_TOUCH_END = exports.EVENT_TOUCH_END = `${TOUCH}end`;
+const EVENT_TOUCH_CANCEL = exports.EVENT_TOUCH_CANCEL = `${TOUCH}cancel`;
+const FN_NOOP = () => {};
+exports.FN_NOOP = FN_NOOP;
 const isFn = fn => typeof fn === 'function';
 exports.isFn = isFn;
 const getRefValue = ref => (ref || {}).current;
@@ -105,10 +97,9 @@ const EVENT_TEST_PASSIVE = "testPassive",
       return false;
     }
   })();
-const PASSIVE_EVENT_OPTIONS = IS_SUPPORT_PASSIVE_EVENT ? {
+const PASSIVE_EVENT_OPTIONS = exports.PASSIVE_EVENT_OPTIONS = IS_SUPPORT_PASSIVE_EVENT ? {
   passive: true
 } : false;
-exports.PASSIVE_EVENT_OPTIONS = PASSIVE_EVENT_OPTIONS;
 const _getFirstTouches = touches => touches && touches[0] || {},
   CLIENT_X = 'clientX',
   CLIENT_Y = 'clientY',
@@ -116,10 +107,8 @@ const _getFirstTouches = touches => touches && touches[0] || {},
   _getTouchClientX = _fGetTouch(CLIENT_X),
   _getTouchClientY = _fGetTouch(CLIENT_Y),
   _fGetEvt = (propName, getTouch) => evt => evt[propName] || getTouch(evt.targetTouches) || getTouch(evt.changedTouches) || 0;
-const getClientX = _fGetEvt(CLIENT_X, _getTouchClientX);
-exports.getClientX = getClientX;
-const getClientY = _fGetEvt(CLIENT_Y, _getTouchClientY);
-exports.getClientY = getClientY;
+const getClientX = exports.getClientX = _fGetEvt(CLIENT_X, _getTouchClientX);
+const getClientY = exports.getClientY = _fGetEvt(CLIENT_Y, _getTouchClientY);
 const toLink = (href, isHttp) => {
   const protocol = (href || '').split('://')[0];
   return protocol === 'https' || isHttp && protocol === 'http' ? href : void 0;
