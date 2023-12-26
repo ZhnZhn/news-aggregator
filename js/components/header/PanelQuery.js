@@ -11,7 +11,6 @@ var _ModalPopup = _interopRequireDefault(require("../zhn-moleculs/ModalPopup"));
 var _FocusTrap = _interopRequireDefault(require("../zhn-moleculs/FocusTrap"));
 var _Menu = _interopRequireDefault(require("./Menu"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const HAS_NOT_TOUCH_EVENTS = !_has.HAS_TOUCH_EVENTS;
 const PanelQuery = _ref => {
   let {
     menuModel,
@@ -20,7 +19,7 @@ const PanelQuery = _ref => {
     isShow,
     onClose
   } = _ref;
-  const _refFirstItem = (0, _useFocusRefElementIf.default)(isShow && HAS_NOT_TOUCH_EVENTS, refFocusItem),
+  const _refFirstItem = (0, _useFocusRefElementIf.default)(isShow && _has.HAS_KEYBOARD_FOCUS, refFocusItem),
     _refLastItem = (0, _uiApi.useRef)(),
     _getFocusRef = (0, _useItemsFocusTrap.default)(menuModel, _refFirstItem, _refLastItem)[0];
   return (0, _jsxRuntime.jsx)(_ModalPopup.default, {
@@ -37,6 +36,5 @@ const PanelQuery = _ref => {
     })
   });
 };
-var _default = PanelQuery;
-exports.default = _default;
+var _default = exports.default = PanelQuery;
 //# sourceMappingURL=PanelQuery.js.map

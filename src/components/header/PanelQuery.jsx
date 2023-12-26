@@ -1,5 +1,5 @@
 import { useRef } from '../uiApi';
-import { HAS_TOUCH_EVENTS } from '../has';
+import { HAS_KEYBOARD_FOCUS } from '../has';
 
 import useFocusRefElementIf from '../hooks/useFocusRefElementIf';
 import useItemsFocusTrap from '../hooks/useItemsFocusTrap';
@@ -7,8 +7,6 @@ import useItemsFocusTrap from '../hooks/useItemsFocusTrap';
 import ModalPopup from '../zhn-moleculs/ModalPopup';
 import FocusTrap from '../zhn-moleculs/FocusTrap';
 import Menu from './Menu';
-
-const HAS_NOT_TOUCH_EVENTS = !HAS_TOUCH_EVENTS;
 
 const PanelQuery = ({
   menuModel,
@@ -18,7 +16,7 @@ const PanelQuery = ({
   onClose
 }) => {
   const _refFirstItem = useFocusRefElementIf(
-    isShow && HAS_NOT_TOUCH_EVENTS,
+    isShow && HAS_KEYBOARD_FOCUS,
     refFocusItem
   )
   , _refLastItem = useRef()
