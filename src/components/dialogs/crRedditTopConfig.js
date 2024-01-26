@@ -76,6 +76,8 @@ const SUBRREDIT_OPTIONS = [
 ["Python"],
 ["programming"],
 ["opensource"],
+["SaaS"],
+["SideProject"],
 ["selfhosted"],
 ["webhosting"],
 ["Cloud"],
