@@ -10,6 +10,7 @@ export { getNewsApiSearchConfig } from './crNewsApiSearchConfig'
 export { getNewsApiTopConfig } from './crNewsApiTopConfig'
 
 export { getRedditTopConfig } from './crRedditTopConfig'
+export { getRedditSearchConfig } from './crRedditSearchConfig'
 
 export { getStackSearchConfig } from './crStackSearchConfig'
 export { getStackTaggedConfig } from './crStackTaggedConfig'
