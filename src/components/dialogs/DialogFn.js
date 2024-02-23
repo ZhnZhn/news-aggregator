@@ -92,11 +92,14 @@ export const getDialogCaption = (
 export const crTextFieldCaption = (
   caption,
   dfValue
-) => `${caption} (Default: ${dfValue})`
+) => dfValue
+  ? `${caption} (Default: ${dfValue})`
+  : caption
 
-const crInputCaption = (
-  token
-) => toFirstUpperCase(token)
+const _crInputCaption = (
+  caption,
+  id
+) => caption || toFirstUpperCase(id)
 
 export const crTextFieldConfig = (
   id, {
@@ -108,7 +111,7 @@ export const crTextFieldConfig = (
 ) => [
   INPUT_TYPE_TEXT_FIELD,
   id,
-  caption || crInputCaption(id),
+  _crInputCaption(caption, id),
   dfValue,
   inputProps,
   is
@@ -125,7 +128,7 @@ const _fCrInputConfig = (
 }={}) => [
   inputType,
   id,
-  caption || crInputCaption(id),
+  _crInputCaption(caption, id),
   options,
   dfOption || options[0],
   is
