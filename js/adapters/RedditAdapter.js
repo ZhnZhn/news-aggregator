@@ -56,11 +56,11 @@ const _crArticle = (sourceId, _ref, timeAgoOptions) => {
     url
   };
 };
-const _filterItemBy = item => {
+const _fFilterItemBy = subreddit => item => {
   const {
     data
   } = item || {};
-  return data && !data.over_18 && !data.quarantine && !data.author_is_blocked;
+  return data && data.subreddit === subreddit && !data.over_18 && !data.quarantine && !data.author_is_blocked;
 };
 const _crTitleAndUrl = data => {
   const {
@@ -85,15 +85,16 @@ const _crSubredditItem = (arr, sourceId) => {
     articleId: (0, _utils.crId)()
   } : void 0;
 };
-const _toArticles = (json, sourceId) => {
+const _toArticles = (json, sourceId, subreddit) => {
   const {
       data
     } = json || {},
     {
       children
     } = data || {},
-    _articles = (0, _crArticles.default)(children.filter(_filterItemBy), (0, _utils.bindTo)(_crArticle, sourceId)),
-    subbredditItem = _crSubredditItem(children, sourceId);
+    _items = children.filter(_fFilterItemBy(subreddit)),
+    _articles = (0, _crArticles.default)(_items, (0, _utils.bindTo)(_crArticle, sourceId)),
+    subbredditItem = _crSubredditItem(_items, sourceId);
   if (subbredditItem) {
     _articles.unshift(subbredditItem);
   }
@@ -102,12 +103,13 @@ const _toArticles = (json, sourceId) => {
 const RedditAdapter = {
   toNews(json, option) {
     const {
-        type
+        type,
+        subreddit
       } = option,
       _sourceId = _rSourceId[type];
     return {
       source: _sourceId,
-      articles: _toArticles(json, _sourceId)
+      articles: _toArticles(json, _sourceId, subreddit)
     };
   }
 };

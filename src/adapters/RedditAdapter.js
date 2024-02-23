@@ -81,11 +81,14 @@ const _crArticle = (
   };
 }
 
-const _filterItemBy = (
+const _fFilterItemBy = (
+  subreddit
+) => (
   item
 ) => {
   const { data } = item || {};
   return data
+    && data.subreddit === subreddit
     && !data.over_18
     && !data.quarantine
     && !data.author_is_blocked;
@@ -129,16 +132,20 @@ const _crSubredditItem = (
 
 const _toArticles = (
   json,
-  sourceId
+  sourceId,
+  subreddit
 ) => {
   const { data } = json || {}
   , { children } = data || {}
+  , _items = children.filter(
+      _fFilterItemBy(subreddit)
+    )
   , _articles = crArticles(
-    children.filter(_filterItemBy),
-    bindTo(_crArticle, sourceId)
+     _items,
+     bindTo(_crArticle, sourceId)
   )
   , subbredditItem = _crSubredditItem(
-     children,
+     _items,
      sourceId
    );
 
@@ -151,11 +158,18 @@ const _toArticles = (
 
 const RedditAdapter = {
   toNews(json, option){
-    const { type } = option
+    const {
+      type,
+      subreddit
+    } = option
     , _sourceId = _rSourceId[type];
     return {
       source: _sourceId,
-      articles: _toArticles(json, _sourceId),
+      articles: _toArticles(
+        json,
+        _sourceId,
+        subreddit
+      )
     };
   }
 };

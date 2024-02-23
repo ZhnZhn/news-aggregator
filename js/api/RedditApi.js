@@ -14,7 +14,7 @@ const RedditApi = {
       q,
       sort
     } = _ref;
-    const [_tokenPath, _queryParameters] = q ? ["search.json", `&q=${q}&sort=${sort}`] : ["top.json", ""];
+    const [_tokenPath, _queryParameters] = q ? ["search.json", `&q=${q}&sort=${sort}&restrict_sr=true`] : ["top.json", ""];
     return `${API_URL}/${subreddit || DF_SUBREDDIT}/${_tokenPath}?limit=${limit}&t=${t}${_queryParameters}`;
   },
   checkResponse(json, option) {
