@@ -17,34 +17,40 @@ const _crItemDialogType2 = (getConfig, CompLink, paneCaption, paneId, options) =
 const NEWS_QUERY = {
   WEBZ: {
     type: "W_WEBZ_QUERY",
-    ..._crItemDialogType2(_dialogs.getWebzQueryConfig, _Links.WebzLink, _ProviderNames.WEBZ_IO + ": News, Blogs", "webz", {
+    ..._crItemDialogType2(_dialogs.getWebzQueryConfig, _Links.WebzLink, `${_ProviderNames.WEBZ_IO}: News, Blogs`, "webz", {
       caption: "News, Blogs",
       loadId: "W"
     })
   },
   WEBZ_COUNTRY: {
     type: "W_WEBZ_COUNTRY",
-    ..._crItemDialogType2(_dialogs.getWebzCountryConfig, _Links.WebzLink, _ProviderNames.WEBZ_IO + ": By Country", "webz_country", {
+    ..._crItemDialogType2(_dialogs.getWebzCountryConfig, _Links.WebzLink, `${_ProviderNames.WEBZ_IO}: By Country`, "webz_country", {
       caption: "By Country, Topic",
       loadId: "W"
     })
   },
   REDDIT: {
     type: "REDDIT",
-    ..._crItemDialogType2(_dialogs.getRedditTopConfig, _Links.RedditLink, _ProviderNames.REDDIT + ": Top By", "rd_topby", {
+    ..._crItemDialogType2(_dialogs.getRedditTopConfig, _Links.RedditLink, `${_ProviderNames.REDDIT}: Top By`, "rd_topby", {
+      loadId: "RD"
+    })
+  },
+  REDDIT_SEARCH: {
+    type: "REDDIT_SEARCH",
+    ..._crItemDialogType2(_dialogs.getRedditSearchConfig, _Links.RedditLink, `${_ProviderNames.REDDIT}: Search`, "rd_searchby", {
       loadId: "RD"
     })
   },
   DEV_TO: {
     type: "DEV_TO",
-    ..._crItemDialogType2(_dialogs.getDevToConfig, _Links.DevToLink, _ProviderNames.DEV_TO + ": Top By", "dt_topby", {
+    ..._crItemDialogType2(_dialogs.getDevToConfig, _Links.DevToLink, `${_ProviderNames.DEV_TO}: Top By`, "dt_topby", {
       caption: "Top By",
       loadId: "DT"
     })
   },
   STACK_TAGGED: {
     type: "SO_TAGGED",
-    ..._crItemDialogType2(_dialogs.getStackTaggedConfig, _Links.StackOverflowLink, _ProviderNames.STACK_OVERFLOW + ": Tagged", "stack_tagged", {
+    ..._crItemDialogType2(_dialogs.getStackTaggedConfig, _Links.StackOverflowLink, `${_ProviderNames.STACK_OVERFLOW}: Tagged`, "stack_tagged", {
       caption: "Tagged Questions",
       loadId: "SO",
       paneType: "STACK_ITEM"
@@ -52,7 +58,7 @@ const NEWS_QUERY = {
   },
   STACK_SEARCH: {
     type: "SO_SEARCH",
-    ..._crItemDialogType2(_dialogs.getStackSearchConfig, _Links.StackOverflowLink, _ProviderNames.STACK_OVERFLOW + ": Search", "stack_search", {
+    ..._crItemDialogType2(_dialogs.getStackSearchConfig, _Links.StackOverflowLink, `${_ProviderNames.STACK_OVERFLOW}: Search`, "stack_search", {
       caption: "Search Questions",
       loadId: "SO",
       paneType: "STACK_ITEM"
@@ -66,7 +72,7 @@ const NEWS_QUERY = {
   },
   COIN_STATS: {
     type: "COIN_STATS",
-    ..._crItemDialogType2(_dialogs.getCoinStatDialogConfig, _Links.CoinStatsLink, _ProviderNames.COIN_STATS + " News", "coinstats_news", {
+    ..._crItemDialogType2(_dialogs.getCoinStatDialogConfig, _Links.CoinStatsLink, `${_ProviderNames.COIN_STATS} News`, "coinstats_news", {
       loadId: "CS"
     })
   },
@@ -92,7 +98,7 @@ const NEWS_QUERY = {
   },
   NEWS_SEARCH: {
     type: "NEWS_SEARCH",
-    ..._crItemDialogType2(_dialogs.getNewsApiSearchConfig, _Links.NewsApiLink, _ProviderNames.NEWS_API + ": Search", "newsapi_search", {
+    ..._crItemDialogType2(_dialogs.getNewsApiSearchConfig, _Links.NewsApiLink, `${_ProviderNames.NEWS_API}: Search`, "newsapi_search", {
       loadId: "NS",
       dialogProps: {
         "source": "newsapi_search"
@@ -101,7 +107,7 @@ const NEWS_QUERY = {
   },
   NEWS_TOP: {
     type: "NEWS_TOP",
-    ..._crItemDialogType2(_dialogs.getNewsApiTopConfig, _Links.NewsApiLink, _ProviderNames.NEWS_API + ": Top By", "newsapi_top", {
+    ..._crItemDialogType2(_dialogs.getNewsApiTopConfig, _Links.NewsApiLink, `${_ProviderNames.NEWS_API}: Top By`, "newsapi_top", {
       loadId: "NT",
       dialogProps: {
         "source": "newsapi_top"
@@ -110,14 +116,14 @@ const NEWS_QUERY = {
   },
   THE_NEWS_SEARCH: {
     type: "THE_NEWS_SEARCH",
-    ..._crItemDialogType2(_dialogs.getTheNewsApiSearchConfig, _Links.TheNewsApiLink, _ProviderNames.THE_NEWS_API + ": Search", "thenewsapi_search", {
+    ..._crItemDialogType2(_dialogs.getTheNewsApiSearchConfig, _Links.TheNewsApiLink, `${_ProviderNames.THE_NEWS_API}: Search`, "thenewsapi_search", {
       caption: "Search",
       loadId: "TNS"
     })
   },
   THE_NEWS_TOP: {
     type: "THE_NEWS_TOP",
-    ..._crItemDialogType2(_dialogs.getTheNewsApiTopConfig, _Links.TheNewsApiLink, _ProviderNames.THE_NEWS_API + ": Top By", "thenewsapi_top", {
+    ..._crItemDialogType2(_dialogs.getTheNewsApiTopConfig, _Links.TheNewsApiLink, `${_ProviderNames.THE_NEWS_API}: Top By`, "thenewsapi_top", {
       caption: "Top By",
       loadId: "TNT"
     })

@@ -24,6 +24,7 @@ import {
   getNewsApiSearchConfig,
   getNewsApiTopConfig,
   getRedditTopConfig,
+  getRedditSearchConfig,
   getStackSearchConfig,
   getStackTaggedConfig,
   getTheNewsApiSearchConfig,
@@ -76,7 +77,7 @@ const NEWS_QUERY = {
         caption: "News, Blogs",
         loadId: "W",
       }
-    )    
+    )
   },
   WEBZ_COUNTRY: {
     type: "W_WEBZ_COUNTRY",
@@ -98,6 +99,16 @@ const NEWS_QUERY = {
       RedditLink,
       `${REDDIT}: Top By`,
       "rd_topby",
+      { loadId: "RD" }
+    )
+  },
+  REDDIT_SEARCH: {
+    type: "REDDIT_SEARCH",
+    ..._crItemDialogType2(
+      getRedditSearchConfig,
+      RedditLink,
+      `${REDDIT}: Search`,
+      "rd_searchby",
       { loadId: "RD" }
     )
   },

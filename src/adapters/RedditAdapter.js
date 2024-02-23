@@ -1,10 +1,11 @@
 import {
   crId,
+  crDescription,
+  bindTo,
+  domSanitize,
+  decodeHTMLEntities,
   formatTimeAgo,
   formatNumber,
-  crDescription,
-  domSanitize,
-  decodeHTMLEntities
 } from '../utils';
 
 import { API_URL } from '../api/RedditApi';
@@ -15,7 +16,10 @@ import {
 } from './adapterFn';
 import crArticles from './crArticles';
 
-const SOURCE_ID = 'rd_topby';
+const _rSourceId = {
+  REDDIT: 'rd_topby',
+  REDDIT_SEARCH: 'rd_searchby'
+}
 const _isArr = Array.isArray;
 const _isStr = v => typeof v === 'string';
 const _isObj = v => v && typeof v === 'object';
@@ -44,9 +48,11 @@ const _crTitle = (
     : _strTitle;
 };
 
-const _crArticle = ({
-  data
-}, timeAgoOptions) => {
+const _crArticle = (
+  sourceId,
+  { data },
+  timeAgoOptions
+) => {
   const {
     title,
     url,
@@ -63,7 +69,7 @@ const _crArticle = ({
   , _title = _crTitle(title, link_flair_text);
 
   return {
-    source: SOURCE_ID,
+    source: sourceId,
     articleId: crId(),
     title: decodeHTMLEntities(_title),
     description: crDescription(selftext),
@@ -104,7 +110,10 @@ const _crTitleAndUrl = (
   };
 };
 
-const _crSubredditItem = (arr) => {
+const _crSubredditItem = (
+  arr,
+  sourceId
+) => {
   const item = _isArr(arr)
     ? arr[0]
     : void 0
@@ -112,20 +121,26 @@ const _crSubredditItem = (arr) => {
   return _isObj(data)
     ? {
       ..._crTitleAndUrl(data),
-      source: SOURCE_ID,
+      source: sourceId,
       articleId: crId()
      }
     : void 0;
 };
 
-const _toArticles = json => {
+const _toArticles = (
+  json,
+  sourceId
+) => {
   const { data } = json || {}
   , { children } = data || {}
   , _articles = crArticles(
     children.filter(_filterItemBy),
-    _crArticle
+    bindTo(_crArticle, sourceId)
   )
-  , subbredditItem = _crSubredditItem(children);
+  , subbredditItem = _crSubredditItem(
+     children,
+     sourceId
+   );
 
   if (subbredditItem) {
     _articles.unshift(subbredditItem)
@@ -136,9 +151,11 @@ const _toArticles = json => {
 
 const RedditAdapter = {
   toNews(json, option){
+    const { type } = option
+    , _sourceId = _rSourceId[type];
     return {
-      source: SOURCE_ID,
-      articles: _toArticles(json),
+      source: _sourceId,
+      articles: _toArticles(json, _sourceId),
     };
   }
 };

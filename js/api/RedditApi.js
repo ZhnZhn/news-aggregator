@@ -10,9 +10,12 @@ const RedditApi = {
     let {
       subreddit,
       limit,
-      t
+      t,
+      q,
+      sort
     } = _ref;
-    return `${API_URL}/${subreddit || DF_SUBREDDIT}/top.json?limit=${limit}&t=${t}`;
+    const [_tokenPath, _queryParameters] = q ? ["search.json", `&q=${q}&sort=${sort}`] : ["top.json", ""];
+    return `${API_URL}/${subreddit || DF_SUBREDDIT}/${_tokenPath}?limit=${limit}&t=${t}${_queryParameters}`;
   },
   checkResponse(json, option) {
     const {

@@ -7,7 +7,10 @@ var _utils = require("../utils");
 var _RedditApi = require("../api/RedditApi");
 var _adapterFn = require("./adapterFn");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
-const SOURCE_ID = 'rd_topby';
+const _rSourceId = {
+  REDDIT: 'rd_topby',
+  REDDIT_SEARCH: 'rd_searchby'
+};
 const _isArr = Array.isArray;
 const _isStr = v => typeof v === 'string';
 const _isObj = v => v && typeof v === 'object';
@@ -21,9 +24,9 @@ const _trimStr = v => _isStr(v) ? v.trim() : '';
 const _crTitle = (title, tag) => {
   const _strTitle = _trimStr(title),
     _strTag = _trimStr(tag);
-  return _strTitle && _strTag && !_isTitleStartWithTag(_strTitle, _strTag) ? _strTitle + " (" + _strTag + ")" : _strTitle;
+  return _strTitle && _strTag && !_isTitleStartWithTag(_strTitle, _strTag) ? `${_strTitle} (${_strTag})` : _strTitle;
 };
-const _crArticle = (_ref, timeAgoOptions) => {
+const _crArticle = (sourceId, _ref, timeAgoOptions) => {
   let {
     data
   } = _ref;
@@ -42,7 +45,7 @@ const _crArticle = (_ref, timeAgoOptions) => {
     _author = (0, _adapterFn.joinByBlank)(score, upvote_ratio, author),
     _title = _crTitle(title, link_flair_text);
   return {
-    source: SOURCE_ID,
+    source: sourceId,
     articleId: (0, _utils.crId)(),
     title: (0, _utils.decodeHTMLEntities)(_title),
     description: (0, _utils.crDescription)(selftext),
@@ -67,30 +70,30 @@ const _crTitleAndUrl = data => {
     _subreddit = (0, _utils.decodeHTMLEntities)((0, _utils.domSanitize)(subreddit)),
     _subscribers = (0, _utils.formatNumber)(subreddit_subscribers);
   return {
-    title: "r/" + _subreddit + " " + _subscribers,
-    url: _RedditApi.API_URL + "/" + _subreddit
+    title: `r/${_subreddit} ${_subscribers}`,
+    url: `${_RedditApi.API_URL}/${_subreddit}`
   };
 };
-const _crSubredditItem = arr => {
+const _crSubredditItem = (arr, sourceId) => {
   const item = _isArr(arr) ? arr[0] : void 0,
     {
       data
     } = item || {};
   return _isObj(data) ? {
     ..._crTitleAndUrl(data),
-    source: SOURCE_ID,
+    source: sourceId,
     articleId: (0, _utils.crId)()
   } : void 0;
 };
-const _toArticles = json => {
+const _toArticles = (json, sourceId) => {
   const {
       data
     } = json || {},
     {
       children
     } = data || {},
-    _articles = (0, _crArticles.default)(children.filter(_filterItemBy), _crArticle),
-    subbredditItem = _crSubredditItem(children);
+    _articles = (0, _crArticles.default)(children.filter(_filterItemBy), (0, _utils.bindTo)(_crArticle, sourceId)),
+    subbredditItem = _crSubredditItem(children, sourceId);
   if (subbredditItem) {
     _articles.unshift(subbredditItem);
   }
@@ -98,12 +101,15 @@ const _toArticles = json => {
 };
 const RedditAdapter = {
   toNews(json, option) {
+    const {
+        type
+      } = option,
+      _sourceId = _rSourceId[type];
     return {
-      source: SOURCE_ID,
-      articles: _toArticles(json)
+      source: _sourceId,
+      articles: _toArticles(json, _sourceId)
     };
   }
 };
-var _default = RedditAdapter;
-exports.default = _default;
+var _default = exports.default = RedditAdapter;
 //# sourceMappingURL=RedditAdapter.js.map
