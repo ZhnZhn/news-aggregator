@@ -20,9 +20,10 @@ const _rSourceId = {
   REDDIT: 'rd_topby',
   REDDIT_SEARCH: 'rd_searchby'
 }
-const _isArr = Array.isArray;
-const _isStr = v => typeof v === 'string';
-const _isObj = v => v && typeof v === 'object';
+const NO_ITEMS_TITLE = "No items were found for this query"
+, _isArr = Array.isArray
+, _isStr = v => typeof v === 'string'
+, _isObj = v => v && typeof v === 'object';
 
 const _isTitleStartWithTag = (
   strTitle,
@@ -113,6 +114,13 @@ const _crTitleAndUrl = (
   };
 };
 
+const _crArticleId = (
+  sourceId
+) => ({
+  source: sourceId,
+  articleId: crId()
+});
+
 const _crSubredditItem = (
   arr,
   sourceId
@@ -124,8 +132,7 @@ const _crSubredditItem = (
   return _isObj(data)
     ? {
       ..._crTitleAndUrl(data),
-      source: sourceId,
-      articleId: crId()
+      ..._crArticleId(sourceId)
      }
     : void 0;
 };
@@ -151,6 +158,12 @@ const _toArticles = (
 
   if (subbredditItem) {
     _articles.unshift(subbredditItem)
+  }
+  if (_articles.length === 0){
+    _articles.unshift({
+      title: NO_ITEMS_TITLE,
+      ..._crArticleId(sourceId)
+    })
   }
 
   return _articles;

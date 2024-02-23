@@ -11,9 +11,10 @@ const _rSourceId = {
   REDDIT: 'rd_topby',
   REDDIT_SEARCH: 'rd_searchby'
 };
-const _isArr = Array.isArray;
-const _isStr = v => typeof v === 'string';
-const _isObj = v => v && typeof v === 'object';
+const NO_ITEMS_TITLE = "No items were found for this query",
+  _isArr = Array.isArray,
+  _isStr = v => typeof v === 'string',
+  _isObj = v => v && typeof v === 'object';
 const _isTitleStartWithTag = (strTitle, strTag) => {
   if (strTitle[0] === '[') {
     const _indexOfClosedBracket = strTitle.indexOf(']');
@@ -74,6 +75,10 @@ const _crTitleAndUrl = data => {
     url: `${_RedditApi.API_URL}/${_subreddit}`
   };
 };
+const _crArticleId = sourceId => ({
+  source: sourceId,
+  articleId: (0, _utils.crId)()
+});
 const _crSubredditItem = (arr, sourceId) => {
   const item = _isArr(arr) ? arr[0] : void 0,
     {
@@ -81,8 +86,7 @@ const _crSubredditItem = (arr, sourceId) => {
     } = item || {};
   return _isObj(data) ? {
     ..._crTitleAndUrl(data),
-    source: sourceId,
-    articleId: (0, _utils.crId)()
+    ..._crArticleId(sourceId)
   } : void 0;
 };
 const _toArticles = (json, sourceId, subreddit) => {
@@ -97,6 +101,12 @@ const _toArticles = (json, sourceId, subreddit) => {
     subbredditItem = _crSubredditItem(_items, sourceId);
   if (subbredditItem) {
     _articles.unshift(subbredditItem);
+  }
+  if (_articles.length === 0) {
+    _articles.unshift({
+      title: NO_ITEMS_TITLE,
+      ..._crArticleId(sourceId)
+    });
   }
   return _articles;
 };
