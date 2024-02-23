@@ -34,7 +34,7 @@ const crMenuQuery = (APP_TITLE, onNewsSources, onAbout, onClose) => {
       items: [[`${_ProviderNames.NEWS_API_LONG}: Browser`, _fOnMenuItem(onNewsSources)], [`${_ProviderNames.NEWS_API_LONG}: Search`, _crOnClick(_NewsQuery.default.NEWS_SEARCH)], [`${_ProviderNames.NEWS_API_LONG}: Top By`, _crOnClick(_NewsQuery.default.NEWS_TOP)], '1', [`${_ProviderNames.THE_NEWS_API}: Search`, _crOnClick(_NewsQuery.default.THE_NEWS_SEARCH)], [`${_ProviderNames.THE_NEWS_API}: Top By`, _crOnClick(_NewsQuery.default.THE_NEWS_TOP)], '2', [`${_ProviderNames.WEBZ_IO}: News, Blogs`, _crOnClick(_NewsQuery.default.WEBZ)], [`${_ProviderNames.WEBZ_IO}: By Country, Topic`, _crOnClick(_NewsQuery.default.WEBZ_COUNTRY)]]
     }, {
       t: "Miscellaneous",
-      items: [[_ProviderNames.DEV_TO, _crOnClick(_NewsQuery.default.DEV_TO)], '1', [`${_ProviderNames.STACK_OVERFLOW}: Tagged`, _crOnClick(_NewsQuery.default.STACK_TAGGED)], [`${_ProviderNames.STACK_OVERFLOW}: Search`, _crOnClick(_NewsQuery.default.STACK_SEARCH)], '2', [`${_ProviderNames.REDDIT}: Top By`, _crOnClick(_NewsQuery.default.REDDIT)]]
+      items: [[_ProviderNames.DEV_TO, _crOnClick(_NewsQuery.default.DEV_TO)], '1', [`${_ProviderNames.STACK_OVERFLOW}: Tagged`, _crOnClick(_NewsQuery.default.STACK_TAGGED)], [`${_ProviderNames.STACK_OVERFLOW}: Search`, _crOnClick(_NewsQuery.default.STACK_SEARCH)], '2', [`${_ProviderNames.REDDIT}: Top By`, _crOnClick(_NewsQuery.default.REDDIT)], [`${_ProviderNames.REDDIT}: Search`, _crOnClick(_NewsQuery.default.REDDIT_SEARCH)]]
     }, !_has.HAS_WIDE_SCREEN ? {
       t: `About ${APP_TITLE}`,
       onItem: _fOnMenuItem(onAbout)
