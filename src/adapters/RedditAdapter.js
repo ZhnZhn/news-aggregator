@@ -24,6 +24,10 @@ const _isArr = Array.isArray
 , _isStr = v => typeof v === 'string'
 , _isObj = v => v && typeof v === 'object';
 
+const _crSubredditUrl = (
+  subreddit
+) => domSanitize(`${API_URL}/${subreddit}`);
+
 const _crNoItemsTitle = ({
   subreddit,
   t,
@@ -32,7 +36,7 @@ const _crNoItemsTitle = ({
   const tokenQuery = q
     ? ` for ${q} query `
     : ' ';
-  return `No items were found in r/${subreddit}${tokenQuery}with ${t} period`;
+  return domSanitize(`No items were found in r/${subreddit}${tokenQuery}with ${t} period`);
 }
 
 const _isTitleStartWithTag = (
@@ -105,6 +109,14 @@ const _fFilterItemBy = (
     && !data.author_is_blocked;
 }
 
+const _crSubredditTitleUrl = (
+  title,
+  subreddit
+) => ({
+  title: domSanitize(title),
+  url: _crSubredditUrl(subreddit)
+})
+
 const _crTitleAndUrl = (
   data
 ) => {
@@ -118,10 +130,10 @@ const _crTitleAndUrl = (
   , _subscribers = formatNumber(
      subreddit_subscribers
   );
-  return {
-    title: `r/${_subreddit} ${_subscribers}`,
-    url: `${API_URL}/${_subreddit}`
-  };
+  return _crSubredditTitleUrl(
+    `r/${_subreddit} ${_subscribers}`,
+    _subreddit
+  );
 };
 
 const _crArticleId = (
@@ -172,8 +184,11 @@ const _toArticles = (
   }
   if (_articles.length === 0){
     _articles.unshift({
-      title: _crNoItemsTitle(option),
-      ..._crArticleId(sourceId)
+      ..._crSubredditTitleUrl(
+        _crNoItemsTitle(option),
+        subreddit
+      ),
+      ..._crArticleId(sourceId),
     })
   }
 

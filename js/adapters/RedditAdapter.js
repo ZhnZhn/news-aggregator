@@ -14,6 +14,7 @@ const _rSourceId = {
 const _isArr = Array.isArray,
   _isStr = v => typeof v === 'string',
   _isObj = v => v && typeof v === 'object';
+const _crSubredditUrl = subreddit => (0, _utils.domSanitize)(`${_RedditApi.API_URL}/${subreddit}`);
 const _crNoItemsTitle = _ref => {
   let {
     subreddit,
@@ -21,7 +22,7 @@ const _crNoItemsTitle = _ref => {
     q
   } = _ref;
   const tokenQuery = q ? ` for ${q} query ` : ' ';
-  return `No items were found in r/${subreddit}${tokenQuery}with ${t} period`;
+  return (0, _utils.domSanitize)(`No items were found in r/${subreddit}${tokenQuery}with ${t} period`);
 };
 const _isTitleStartWithTag = (strTitle, strTag) => {
   if (strTitle[0] === '[') {
@@ -71,6 +72,10 @@ const _fFilterItemBy = subreddit => item => {
   } = item || {};
   return data && data.subreddit === subreddit && !data.over_18 && !data.quarantine && !data.author_is_blocked;
 };
+const _crSubredditTitleUrl = (title, subreddit) => ({
+  title: (0, _utils.domSanitize)(title),
+  url: _crSubredditUrl(subreddit)
+});
 const _crTitleAndUrl = data => {
   const {
       subreddit,
@@ -78,10 +83,7 @@ const _crTitleAndUrl = data => {
     } = data,
     _subreddit = (0, _utils.decodeHTMLEntities)((0, _utils.domSanitize)(subreddit)),
     _subscribers = (0, _utils.formatNumber)(subreddit_subscribers);
-  return {
-    title: `r/${_subreddit} ${_subscribers}`,
-    url: `${_RedditApi.API_URL}/${_subreddit}`
-  };
+  return _crSubredditTitleUrl(`r/${_subreddit} ${_subscribers}`, _subreddit);
 };
 const _crArticleId = sourceId => ({
   source: sourceId,
@@ -115,7 +117,7 @@ const _toArticles = (json, option, sourceId) => {
   }
   if (_articles.length === 0) {
     _articles.unshift({
-      title: _crNoItemsTitle(option),
+      ..._crSubredditTitleUrl(_crNoItemsTitle(option), subreddit),
       ..._crArticleId(sourceId)
     });
   }
