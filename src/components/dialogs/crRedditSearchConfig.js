@@ -28,7 +28,7 @@ const DF_PERIOD = PERIOD_OPTIONS[3]
   crTextFieldConfig('q', {caption: crTextFieldCaption('Query', DF_QUERY), dfValue: DF_QUERY, is: true}),
   crInputSelectConfig('t', PERIOD_OPTIONS, { caption: "Period", dfOption: DF_PERIOD }),
   crInputSelectConfig('limit', LIMIT_OPTIONS, { dfOption: DF_LIMIT }),
-  crInputSelectConfig('sort', SORTBY_OPTIONS, { caption: "SortBy", dfOption: DF_SORTBY }),
+  crInputSelectConfig('sort', SORTBY_OPTIONS, { caption: "Sort By", dfOption: DF_SORTBY }),
 ];
 
 export const getRedditSearchConfig = fGetDialogConfig(_crInputConfigs)

@@ -11,10 +11,18 @@ const _rSourceId = {
   REDDIT: 'rd_topby',
   REDDIT_SEARCH: 'rd_searchby'
 };
-const NO_ITEMS_TITLE = "No items were found for this query",
-  _isArr = Array.isArray,
+const _isArr = Array.isArray,
   _isStr = v => typeof v === 'string',
   _isObj = v => v && typeof v === 'object';
+const _crNoItemsTitle = _ref => {
+  let {
+    subreddit,
+    t,
+    q
+  } = _ref;
+  const tokenQuery = q ? ` for ${q} query ` : ' ';
+  return `No items were found in r/${subreddit}${tokenQuery}with ${t} period`;
+};
 const _isTitleStartWithTag = (strTitle, strTag) => {
   if (strTitle[0] === '[') {
     const _indexOfClosedBracket = strTitle.indexOf(']');
@@ -27,10 +35,10 @@ const _crTitle = (title, tag) => {
     _strTag = _trimStr(tag);
   return _strTitle && _strTag && !_isTitleStartWithTag(_strTitle, _strTag) ? `${_strTitle} (${_strTag})` : _strTitle;
 };
-const _crArticle = (sourceId, _ref, timeAgoOptions) => {
+const _crArticle = (sourceId, _ref2, timeAgoOptions) => {
   let {
     data
-  } = _ref;
+  } = _ref2;
   const {
       title,
       url,
@@ -89,13 +97,16 @@ const _crSubredditItem = (arr, sourceId) => {
     ..._crArticleId(sourceId)
   } : void 0;
 };
-const _toArticles = (json, sourceId, subreddit) => {
+const _toArticles = (json, option, sourceId) => {
   const {
       data
     } = json || {},
     {
       children
     } = data || {},
+    {
+      subreddit
+    } = option,
     _items = children.filter(_fFilterItemBy(subreddit)),
     _articles = (0, _crArticles.default)(_items, (0, _utils.bindTo)(_crArticle, sourceId)),
     subbredditItem = _crSubredditItem(_items, sourceId);
@@ -104,7 +115,7 @@ const _toArticles = (json, sourceId, subreddit) => {
   }
   if (_articles.length === 0) {
     _articles.unshift({
-      title: NO_ITEMS_TITLE,
+      title: _crNoItemsTitle(option),
       ..._crArticleId(sourceId)
     });
   }
@@ -112,14 +123,10 @@ const _toArticles = (json, sourceId, subreddit) => {
 };
 const RedditAdapter = {
   toNews(json, option) {
-    const {
-        type,
-        subreddit
-      } = option,
-      _sourceId = _rSourceId[type];
+    const _sourceId = _rSourceId[option.type];
     return {
       source: _sourceId,
-      articles: _toArticles(json, _sourceId, subreddit)
+      articles: _toArticles(json, option, _sourceId)
     };
   }
 };

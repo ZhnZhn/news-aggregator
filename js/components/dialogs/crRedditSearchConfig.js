@@ -21,7 +21,7 @@ const DF_PERIOD = _configReddit.PERIOD_OPTIONS[3],
   }), (0, _DialogFn.crInputSelectConfig)('limit', _configReddit.LIMIT_OPTIONS, {
     dfOption: DF_LIMIT
   }), (0, _DialogFn.crInputSelectConfig)('sort', SORTBY_OPTIONS, {
-    caption: "SortBy",
+    caption: "Sort By",
     dfOption: DF_SORTBY
   })];
 const getRedditSearchConfig = exports.getRedditSearchConfig = (0, _DialogFn.fGetDialogConfig)(_crInputConfigs);

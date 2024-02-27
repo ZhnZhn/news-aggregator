@@ -20,10 +20,20 @@ const _rSourceId = {
   REDDIT: 'rd_topby',
   REDDIT_SEARCH: 'rd_searchby'
 }
-const NO_ITEMS_TITLE = "No items were found for this query"
-, _isArr = Array.isArray
+const _isArr = Array.isArray
 , _isStr = v => typeof v === 'string'
 , _isObj = v => v && typeof v === 'object';
+
+const _crNoItemsTitle = ({
+  subreddit,
+  t,
+  q
+}) => {
+  const tokenQuery = q
+    ? ` for ${q} query `
+    : ' ';
+  return `No items were found in r/${subreddit}${tokenQuery}with ${t} period`;
+}
 
 const _isTitleStartWithTag = (
   strTitle,
@@ -139,11 +149,12 @@ const _crSubredditItem = (
 
 const _toArticles = (
   json,
-  sourceId,
-  subreddit
+  option,
+  sourceId
 ) => {
   const { data } = json || {}
   , { children } = data || {}
+  , { subreddit } = option
   , _items = children.filter(
       _fFilterItemBy(subreddit)
     )
@@ -161,7 +172,7 @@ const _toArticles = (
   }
   if (_articles.length === 0){
     _articles.unshift({
-      title: NO_ITEMS_TITLE,
+      title: _crNoItemsTitle(option),
       ..._crArticleId(sourceId)
     })
   }
@@ -171,17 +182,13 @@ const _toArticles = (
 
 const RedditAdapter = {
   toNews(json, option){
-    const {
-      type,
-      subreddit
-    } = option
-    , _sourceId = _rSourceId[type];
+    const _sourceId = _rSourceId[option.type];
     return {
       source: _sourceId,
       articles: _toArticles(
         json,
-        _sourceId,
-        subreddit
+        option,
+        _sourceId
       )
     };
   }
