@@ -9,6 +9,7 @@ var _PaneStack = _interopRequireDefault(require("./PaneStack"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const TabPane = (0, _uiApi.forwardRef)((_ref, ref) => {
   let {
+    ariaLabel,
     id,
     isShow,
     width,
@@ -26,6 +27,7 @@ const TabPane = (0, _uiApi.forwardRef)((_ref, ref) => {
       height
     },
     children: [(0, _jsxRuntime.jsx)(_TabStack.default, {
+      ariaLabel: ariaLabel,
       id: id,
       style: tabsStyle,
       selectedTabIndex: selectedTabIndex,
@@ -49,6 +51,5 @@ TabPane.propTypes = {
   selectedStyle: PropTypes.object
 }
 */
-var _default = TabPane;
-exports.default = _default;
+var _default = exports.default = TabPane;
 //# sourceMappingURL=TabPane.js.map

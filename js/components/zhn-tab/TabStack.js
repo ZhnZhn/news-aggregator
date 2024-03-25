@@ -26,6 +26,7 @@ const _crItemTab = (tabEl, index, _ref) => {
 const _crNextId = (id, childrenLength) => id === -1 ? childrenLength - 1 : id === childrenLength ? 0 : id;
 const TabStack = _ref2 => {
   let {
+    ariaLabel,
     id,
     style,
     selectedTabIndex,
@@ -45,26 +46,26 @@ const TabStack = _ref2 => {
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hKeyDown = (0, _uiApi.useCallback)((index, tabEl, evt) => {
       const _focusTabByIndex = tabIndex => {
-        const _nextIndex = _crNextId(tabIndex, _childrenLength);
-        (0, _uiApi.focusElementById)((0, _tabPaneFn.crTabId)(id, _nextIndex));
-        _hClick(_nextIndex, tabEl);
-      };
-      const {
-        keyCode
-      } = evt;
-      if (keyCode === 39) {
+          const _nextIndex = _crNextId(tabIndex, _childrenLength);
+          (0, _uiApi.focusElementById)((0, _tabPaneFn.crTabId)(id, _nextIndex));
+          _hClick(_nextIndex, tabEl);
+        },
+        {
+          keyCode
+        } = evt,
+        increaseIndexBy = keyCode === 39 ? 1 : keyCode === 37 ? -1 : 0;
+      if (increaseIndexBy) {
         (0, _uiApi.stopDefaultFor)(evt);
-        _focusTabByIndex(index + 1);
-      }
-      if (keyCode === 37) {
-        (0, _uiApi.stopDefaultFor)(evt);
-        _focusTabByIndex(index - 1);
+        _focusTabByIndex(index + increaseIndexBy);
       }
     }, [_childrenLength]);
   //_hClick
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (0, _jsxRuntime.jsx)("div", {
+    role: "tablist",
+    "aria-label": ariaLabel,
+    "aria-orientation": "horizontal",
     className: _tabPaneFn.CL_TABS,
     style: style,
     children: (0, _jsxRuntime.jsx)(_ItemStack.default, {
@@ -77,6 +78,5 @@ const TabStack = _ref2 => {
     })
   });
 };
-var _default = TabStack;
-exports.default = _default;
+var _default = exports.default = TabStack;
 //# sourceMappingURL=TabStack.js.map

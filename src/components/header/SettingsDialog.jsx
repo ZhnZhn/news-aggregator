@@ -16,10 +16,13 @@ import {
 } from '../dialogs/Dialog.Style';
 
 import A from '../Comp';
+import TabPane from '../zhn-tab/TabPane';
+import Tab from '../zhn-tab/Tab';
 import CardApiKeys from './CardApiKeys';
 import CardUiTheme from './CardUiTheme';
 
-const S_MODAL = {
+const TOKEN_USER_SETTINGS = "User Settings"
+, S_MODAL = {
   position: 'static',
   width: 340,
   maxHeight: 460,
@@ -72,7 +75,7 @@ const SettingsDialog = memoIsShow(({
 
   return (
     <A.ModalDialog
-       caption="User Settings"
+       caption={TOKEN_USER_SETTINGS}
        style={S_MODAL}
        divBtStyle={S_DIV_BT}
        captionStyle={S_BROWSER_CAPTION}
@@ -80,13 +83,14 @@ const SettingsDialog = memoIsShow(({
        isShow={isShow}
        onClose={onClose}
     >
-      <A.TabPane
+      <TabPane
+         ariaLabel={TOKEN_USER_SETTINGS}
          id="sd"
          width="100%"
          tabsStyle={S_TABS}
          isShow={isShow}
       >
-         <A.Tab title="API Keys">
+         <Tab title="API Keys">
             <CardApiKeys
               style={S_CARD_API}
               fieldStyle={S_TEXT_FIELD}
@@ -95,8 +99,8 @@ const SettingsDialog = memoIsShow(({
               data={data}
               setRefLast={_setFocusLastRef}
             />
-         </A.Tab>
-         <A.Tab title="UI Theme">
+         </Tab>
+         <Tab title="UI Theme">
             <CardUiTheme
               style={S_CARD_ROOT}
               selectStyle={INPUT_SELECT_STYLE}
@@ -105,8 +109,8 @@ const SettingsDialog = memoIsShow(({
               setRefLast={_setFocusLastRef}
               onClose={onClose}
             />
-         </A.Tab>
-       </A.TabPane>
+         </Tab>
+       </TabPane>
    </A.ModalDialog>
   );
 });

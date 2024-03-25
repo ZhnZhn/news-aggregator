@@ -39,6 +39,7 @@ const _crNextId = (
       : id;
 
 const TabStack = ({
+  ariaLabel,
   id,
   style,
   selectedTabIndex,
@@ -63,14 +64,15 @@ const TabStack = ({
       _hClick(_nextIndex, tabEl)
     }
 
-    const { keyCode } = evt;
-    if (keyCode === 39) {
+    , { keyCode } = evt
+    , increaseIndexBy = keyCode === 39
+       ? 1
+       : keyCode === 37
+          ? -1
+          : 0;
+    if (increaseIndexBy) {
       stopDefaultFor(evt)
-      _focusTabByIndex(index + 1)
-    }
-    if (keyCode === 37) {
-      stopDefaultFor(evt)
-      _focusTabByIndex(index - 1)
+      _focusTabByIndex(index + increaseIndexBy)
     }
   }, [_childrenLength]);
   //_hClick
@@ -78,6 +80,9 @@ const TabStack = ({
 
   return (
     <div
+      role="tablist"
+      aria-label={ariaLabel}
+      aria-orientation="horizontal"
       className={CL_TABS}
       style={style}
     >

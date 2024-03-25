@@ -7,12 +7,15 @@ var _uiApi = require("../uiApi");
 var _memoFn = require("../hoc/memoFn");
 var _Dialog = require("../dialogs/Dialog.Style");
 var _Comp = _interopRequireDefault(require("../Comp"));
+var _TabPane = _interopRequireDefault(require("../zhn-tab/TabPane"));
+var _Tab = _interopRequireDefault(require("../zhn-tab/Tab"));
 var _CardApiKeys = _interopRequireDefault(require("./CardApiKeys"));
 var _CardUiTheme = _interopRequireDefault(require("./CardUiTheme"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types'
 
-const S_MODAL = {
+const TOKEN_USER_SETTINGS = "User Settings",
+  S_MODAL = {
     position: 'static',
     width: 340,
     maxHeight: 460,
@@ -60,19 +63,20 @@ const SettingsDialog = (0, _memoFn.memoIsShow)(_ref => {
       _refFocusLast.current = el;
     }, []);
   return (0, _jsxRuntime.jsx)(_Comp.default.ModalDialog, {
-    caption: "User Settings",
+    caption: TOKEN_USER_SETTINGS,
     style: S_MODAL,
     divBtStyle: S_DIV_BT,
     captionStyle: _Dialog.S_BROWSER_CAPTION,
     refFocusLast: _refFocusLast,
     isShow: isShow,
     onClose: onClose,
-    children: (0, _jsxRuntime.jsxs)(_Comp.default.TabPane, {
+    children: (0, _jsxRuntime.jsxs)(_TabPane.default, {
+      ariaLabel: TOKEN_USER_SETTINGS,
       id: "sd",
       width: "100%",
       tabsStyle: S_TABS,
       isShow: isShow,
-      children: [(0, _jsxRuntime.jsx)(_Comp.default.Tab, {
+      children: [(0, _jsxRuntime.jsx)(_Tab.default, {
         title: "API Keys",
         children: (0, _jsxRuntime.jsx)(_CardApiKeys.default, {
           style: S_CARD_API,
@@ -82,7 +86,7 @@ const SettingsDialog = (0, _memoFn.memoIsShow)(_ref => {
           data: data,
           setRefLast: _setFocusLastRef
         })
-      }), (0, _jsxRuntime.jsx)(_Comp.default.Tab, {
+      }), (0, _jsxRuntime.jsx)(_Tab.default, {
         title: "UI Theme",
         children: (0, _jsxRuntime.jsx)(_CardUiTheme.default, {
           style: S_CARD_ROOT,

@@ -8,6 +8,7 @@ import TabStack from './TabStack';
 import PaneStack from './PaneStack';
 
 const TabPane = forwardRef(({
+  ariaLabel,
   id,
   isShow,
   width,
@@ -27,6 +28,7 @@ const TabPane = forwardRef(({
   return (
     <div style={{ width, height }}>
       <TabStack
+        ariaLabel={ariaLabel}
         id={id}
         style={tabsStyle}
         selectedTabIndex={selectedTabIndex}
