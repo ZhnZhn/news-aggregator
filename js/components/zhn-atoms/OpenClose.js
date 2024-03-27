@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _uiApi = require("../uiApi");
 var _crStyle = require("../crStyle");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
@@ -37,7 +38,8 @@ const OpenClose = _ref => {
     fillClose = FILL_CLOSE,
     children
   } = _ref;
-  const [isOpen, toggleIsOpen] = (0, _useToggle.default)(!isClose),
+  const _childrenWrapperId = (0, _uiApi.useId)(),
+    [isOpen, toggleIsOpen] = (0, _useToggle.default)(!isClose),
     _hKeyDown = (0, _useKeyEnter.default)(toggleIsOpen),
     [_pathV, _fillV, _styleCollapse, _classShow] = isOpen ? [PATH_OPEN, fillOpen, _crStyle.S_BLOCK, _crStyle.CL_SHOW_POPUP] : [PATH_CLOSE, fillClose, _crStyle.S_NONE, null];
   return (0, _jsxRuntime.jsxs)("div", {
@@ -49,6 +51,8 @@ const OpenClose = _ref => {
       ref: refBt,
       role: "button",
       className: CL_OPEN_CLOSE,
+      "aria-expanded": isOpen,
+      "aria-controls": _childrenWrapperId,
       tabIndex: "0",
       style: S_ROOT_CAPTION,
       onClick: toggleIsOpen,
@@ -73,6 +77,7 @@ const OpenClose = _ref => {
         children: caption
       })]
     }), (0, _jsxRuntime.jsx)("div", {
+      id: _childrenWrapperId,
       className: _classShow,
       style: _styleCollapse,
       children: children

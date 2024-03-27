@@ -1,3 +1,5 @@
+import { useId } from '../uiApi';
+
 import {
   S_BLOCK,
   S_NONE,
@@ -38,7 +40,8 @@ const OpenClose = ({
   fillClose=FILL_CLOSE,
   children
 }) => {
-  const [
+  const _childrenWrapperId = useId()
+  , [
     isOpen,
     toggleIsOpen
   ] = useToggle(!isClose)
@@ -67,6 +70,8 @@ const OpenClose = ({
          ref={refBt}
          role="button"
          className={CL_OPEN_CLOSE}
+         aria-expanded={isOpen}
+         aria-controls={_childrenWrapperId}
          tabIndex="0"
          style={S_ROOT_CAPTION}
          onClick={toggleIsOpen}
@@ -88,6 +93,7 @@ const OpenClose = ({
         </span>
      </div>
     <div
+       id={_childrenWrapperId}
        className={_classShow}
        style={_styleCollapse}
      >
