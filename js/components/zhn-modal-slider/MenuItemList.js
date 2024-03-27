@@ -42,7 +42,7 @@ const MenuItemList = _ref2 => {
     onClose
   } = _ref2;
   return (0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
-    children: items.map((item, index) => {
+    children: (0, _uiApi.safeMap)(items, (item, index) => {
       const {
           cn,
           name,
@@ -76,6 +76,5 @@ MenuItemList.propTypes = {
   onClose: PropTypes.func
 }
 */
-var _default = MenuItemList;
-exports.default = _default;
+var _default = exports.default = MenuItemList;
 //# sourceMappingURL=MenuItemList.js.map

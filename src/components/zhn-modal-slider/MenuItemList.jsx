@@ -1,4 +1,7 @@
-import { bindTo } from '../uiApi';
+import {
+  bindTo,
+  safeMap
+} from '../uiApi';
 
 import MenuItem from '../zhn-atoms/MenuItem';
 
@@ -42,7 +45,7 @@ const MenuItemList = ({
   onClose
 }) => (
   <>
-   {items.map((item, index) => {
+   {safeMap(items, (item, index) => {
      const {
        cn,
        name,
