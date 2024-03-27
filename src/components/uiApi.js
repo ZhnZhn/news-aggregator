@@ -55,6 +55,14 @@ export const setRefValue = (
   }
 }
 
+const isArr = Array.isArray;
+export const safeMap = (
+  items,
+  crElement
+) => isArr(items)
+  ? items.map(crElement)
+  : null
+
 const _focusHtmlElement = (
   element
 ) => {
