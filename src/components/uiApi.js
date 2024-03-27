@@ -13,6 +13,7 @@ export {
   cloneElement,
   createContext,
 
+  useId,
   useRef,
   useState,
   useReducer,
