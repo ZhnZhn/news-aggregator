@@ -7,6 +7,7 @@ var _uiApi = require("../uiApi");
 var _crStyle = require("../crStyle");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
+var _Svg = _interopRequireDefault(require("./svg/Svg"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_OPEN_CLOSE = 'open-close select-none',
   S_ROOT = {
@@ -57,12 +58,8 @@ const OpenClose = _ref => {
       style: S_ROOT_CAPTION,
       onClick: toggleIsOpen,
       onKeyDown: _hKeyDown,
-      children: [(0, _jsxRuntime.jsx)("svg", {
-        viewBox: "0 0 16 16",
-        width: "16",
-        height: "16",
-        preserveAspectRatio: "none",
-        xmlns: "http://www.w3.org/2000/svg",
+      children: [(0, _jsxRuntime.jsx)(_Svg.default, {
+        w: "16",
         children: (0, _jsxRuntime.jsx)("path", {
           d: _pathV,
           fill: _fillV,

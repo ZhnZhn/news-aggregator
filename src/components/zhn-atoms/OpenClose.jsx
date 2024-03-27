@@ -9,6 +9,8 @@ import {
 import useToggle from '../hooks/useToggle';
 import useKeyEnter from '../hooks/useKeyEnter';
 
+import Svg from './svg/Svg';
+
 const CL_OPEN_CLOSE = 'open-close select-none'
 , S_ROOT = {
   lineHeight: 2.5
@@ -77,17 +79,14 @@ const OpenClose = ({
          onClick={toggleIsOpen}
          onKeyDown={_hKeyDown}
       >
-        <svg
-          viewBox="0 0 16 16" width="16" height="16"
-          preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"
-        >
+        <Svg w="16">
           <path
             d={_pathV}
             fill={_fillV}
             strokeWidth="1"
             stroke={fillOpen}
           />
-        </svg>
+        </Svg>
         <span style={{...S_CAPTION, ...captionStyle}} >
            {caption}
         </span>
