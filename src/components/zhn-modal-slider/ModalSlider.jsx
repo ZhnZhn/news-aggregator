@@ -7,7 +7,7 @@ import useThrottleCallback from '../hooks/useThrottleCallback';
 import useHasMounted from '../hooks/useHasMounted';
 
 import ModalPane from '../zhn-moleculs/ModalPane';
-import ShowHide from '../zhn-atoms/ShowHide';
+import ShowHide from '../zhn/ShowHide';
 import MenuPage from './MenuPage';
 import MenuPages from './MenuPages';
 

@@ -11,7 +11,7 @@ var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useXYMovable = _interopRequireDefault(require("../hooks/useXYMovable"));
 var _useRefHotKey = _interopRequireDefault(require("../hotkeys/useRefHotKey"));
 var _ModalToggle = _interopRequireDefault(require("./ModalToggle"));
-var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
+var _BrowserCaption = _interopRequireDefault(require("../zhn/BrowserCaption"));
 var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types'
@@ -120,7 +120,7 @@ const DraggableDialog = (0, _uiApi.forwardRef)((_ref2, ref) => {
   (0, _useRefHotKey.default)(_refDialog, HK_CLOSE, _hClose);
   const [_className, _showHideStyle] = (0, _crStyle.crShowHide)(isShow, CL_DIALOG),
     _onMore = menuToggle ? toggleIsMore : void 0;
-  return (/*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
+  return /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/(
     /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
     (0, _jsxRuntime.jsxs)("div", {
       ref: _refDialog,

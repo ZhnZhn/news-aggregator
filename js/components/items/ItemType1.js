@@ -5,7 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _ItemHeader = _interopRequireDefault(require("./ItemHeader"));
-var _ShowHide = _interopRequireDefault(require("../zhn-atoms/ShowHide"));
+var _ShowHide = _interopRequireDefault(require("../zhn/ShowHide"));
 var _Item = require("./Item.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
 const ItemType1 = (0, _uiApi.forwardRef)((_ref, ref) => {
@@ -37,6 +37,5 @@ const ItemType1 = (0, _uiApi.forwardRef)((_ref, ref) => {
     })]
   });
 });
-var _default = ItemType1;
-exports.default = _default;
+var _default = exports.default = ItemType1;
 //# sourceMappingURL=ItemType1.js.map

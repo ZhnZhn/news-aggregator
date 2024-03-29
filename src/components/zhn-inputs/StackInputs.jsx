@@ -4,7 +4,7 @@ import {
   crInputSelectStyle
 } from '../dialogs/Dialog.Style';
 
-import ShowHide from '../zhn-atoms/ShowHide';
+import ShowHide from '../zhn/ShowHide';
 import InputSelect from '../zhn-m-input/InputSelect';
 import InputSuggest from '../zhn-m-input/InputSuggest';
 import TextField from '../zhn-m-input/TextField';

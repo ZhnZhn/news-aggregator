@@ -3,7 +3,7 @@ import {
   useEffect
 } from '../uiApi';
 
-import SpinnerLoading from '../zhn-atoms/SpinnerLoading';
+import SpinnerLoading from '../zhn/SpinnerLoading';
 
 const LOADING = 1
 , LOAD_COMPLETED = 2

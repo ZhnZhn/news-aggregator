@@ -1,5 +1,5 @@
-import ShowHide from '../zhn-atoms/ShowHide'
-import ModalPane from './ModalPane'
+import ShowHide from '../zhn/ShowHide';
+import ModalPane from './ModalPane';
 
 const ModalPopup = ({
   isShow,

@@ -5,8 +5,8 @@ import {
 
 import { CL_ROW_NEWS_SOURCE } from '../crStyle';
 
-import OpenClose from '../zhn-atoms/OpenClose';
-import MenuItem from '../zhn-atoms/MenuItem';
+import OpenClose from '../zhn/OpenClose';
+import MenuItem from '../zhn/MenuItem';
 
 const MenuPart = ({
   caption,

@@ -5,8 +5,8 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _crStyle = require("../crStyle");
-var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose"));
-var _MenuItem = _interopRequireDefault(require("../zhn-atoms/MenuItem"));
+var _OpenClose = _interopRequireDefault(require("../zhn/OpenClose"));
+var _MenuItem = _interopRequireDefault(require("../zhn/MenuItem"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const MenuPart = _ref => {
   let {

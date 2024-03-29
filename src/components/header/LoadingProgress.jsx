@@ -7,7 +7,7 @@ import {
   LPAT_LOADING_FAILED
 } from '../../flux/actions/LoadingProgressActions';
 
-import ProgressLine from '../zhn-atoms/ProgressLine';
+import ProgressLine from '../zhn/ProgressLine';
 
 const COLOR_LOADING = '#2f7ed8'
 , COLOR_FAILED = '#ed5813';
@@ -32,7 +32,7 @@ const ProgressLoading = () => {
         : loading === LPAT_LOADING_FAILED
             ? _crState(100, COLOR_FAILED)
             : _crState(0, COLOR_LOADING);
-  
+
   return (
     <ProgressLine
        color={color}

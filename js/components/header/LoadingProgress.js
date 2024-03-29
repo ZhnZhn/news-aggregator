@@ -6,7 +6,7 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _storeAtoms = require("../../flux/storeAtoms");
 var _LoadingProgressActions = require("../../flux/actions/LoadingProgressActions");
-var _ProgressLine = _interopRequireDefault(require("../zhn-atoms/ProgressLine"));
+var _ProgressLine = _interopRequireDefault(require("../zhn/ProgressLine"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const COLOR_LOADING = '#2f7ed8',
   COLOR_FAILED = '#ed5813';
@@ -20,6 +20,5 @@ const ProgressLoading = () => {
   });
 };
 const _isNotShouldRerender = () => true;
-var _default = (0, _uiApi.memo)(ProgressLoading, _isNotShouldRerender);
-exports.default = _default;
+var _default = exports.default = (0, _uiApi.memo)(ProgressLoading, _isNotShouldRerender);
 //# sourceMappingURL=LoadingProgress.js.map

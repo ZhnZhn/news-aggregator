@@ -14,7 +14,7 @@ import { HK_CLEAR_HOT_BAR } from '../hotkeys/hotkeys';
 
 import { getCaption } from '../dialogs/DialogFn';
 
-import ItemStack from '../zhn-atoms/ItemStack';
+import ItemStack from '../zhn/ItemStack';
 import FlatButton from '../zhn-bt/FlatButton';
 
 const _isArr = Array.isArray;
@@ -65,7 +65,7 @@ const HotBar = () => {
            key="BT_CLEAN"
            ariaLabel="Clean Hot Bar"
            dataPos={DP_BOTTOM_LEFT}
-           hotKey={HAS_TOUCH_EVENTS ? void 0: HK_CLEAR_HOT_BAR}         
+           hotKey={HAS_TOUCH_EVENTS ? void 0: HK_CLEAR_HOT_BAR}
            timeout={0}
            style={S_BT_CL}
            caption="CL"

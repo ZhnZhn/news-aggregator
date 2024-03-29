@@ -5,7 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _crStyle = require("../crStyle");
-var _ItemStack = _interopRequireDefault(require("../zhn-atoms/ItemStack"));
+var _ItemStack = _interopRequireDefault(require("../zhn/ItemStack"));
 var _tabPaneFn = require("./tabPaneFn");
 var _jsxRuntime = require("preact/jsx-runtime");
 const _crItemPane = (tab, index, _ref) => {
@@ -46,6 +46,5 @@ const PaneStack = _ref2 => {
     })
   });
 };
-var _default = PaneStack;
-exports.default = _default;
+var _default = exports.default = PaneStack;
 //# sourceMappingURL=PaneStack.js.map

@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _SpinnerLoading = _interopRequireDefault(require("../zhn-atoms/SpinnerLoading"));
+var _SpinnerLoading = _interopRequireDefault(require("../zhn/SpinnerLoading"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const LOADING = 1,
   LOAD_COMPLETED = 2,
@@ -56,6 +56,5 @@ const useLoadIf = (isShow, url, onLoad, onError) => {
     isFailed: true
   }) : null;
 };
-var _default = useLoadIf;
-exports.default = _default;
+var _default = exports.default = useLoadIf;
 //# sourceMappingURL=useLoadIf.js.map

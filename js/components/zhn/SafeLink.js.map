@@ -1,0 +1,27 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/zhn/SafeLink.js"
+ ],
+ "file": "../../../src/components/zhn/SafeLink.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "_jsxRuntime",
+  "SafeLink",
+  "_ref",
+  "className",
+  "style",
+  "href",
+  "children",
+  "restProps",
+  "_href",
+  "toLink",
+  "jsx",
+  "target",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAAkC,IAAAC,WAAA,GAAAD,OAAA;AAElC,MAAME,QAAQ,GAAGC,IAAA,IAMX;EAAA,IANY;IAChBC,SAAS;IACTC,KAAK;IACLC,IAAI;IACJC,QAAQ;IACR,GAAGC;EACL,CAAC,GAAAL,IAAA;EACC,MAAMM,KAAK,GAAG,IAAAC,aAAM,EAACJ,IAAI,CAAC;EAC1B,OAAOG,KAAK,GACV,IAAAR,WAAA,CAAAU,GAAA;IACEP,SAAS,EAAEA,SAAU;IACrBC,KAAK,EAAEA,KAAM;IAAA,GACTG,SAAS;IACbF,IAAI,EAAEG,KAAM;IACZG,MAAM,EAAC,QAAQ;IAAAL,QAAA,EAEdA;EAAQ,CACR,CAAC,GACF,IAAI;AACV,CAAC;AAAC,IAAAM,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEab,QAAQ"
+}

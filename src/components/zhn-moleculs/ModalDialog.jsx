@@ -13,14 +13,14 @@ import useModalFocus from '../hooks/useModalFocus';
 import useKeyEscape from '../hooks/useKeyEscape';
 
 import FocusTrap from './FocusTrap';
-import BrowserCaption from '../zhn-atoms/BrowserCaption';
+import BrowserCaption from '../zhn/BrowserCaption';
 import RaisedButton from '../zhn-bt/RaisedButton';
 
 const CL_DIALOG = crContainerBgCn("dialog")
 , CL_SHOWING = `${CL_DIALOG} ${CL_SHOW_POPUP}`
 , S_ROOT_DIV = {
   position: 'absolute',
-  top: '20%',  
+  top: '20%',
   borderRadius: 5,
   boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
   zIndex: 10

@@ -10,6 +10,8 @@ var _useHotKey = _interopRequireDefault(require("../hotkeys/useHotKey"));
 var _hotkeys = require("../hotkeys/hotkeys");
 var _DP = require("../DP");
 var _tokens = require("../styles/tokens");
+var _SvgInfo = _interopRequireDefault(require("../zhn/svg/SvgInfo"));
+var _SvgSettings = _interopRequireDefault(require("../zhn/svg/SvgSettings"));
 var _LoadingProgress = _interopRequireDefault(require("./LoadingProgress"));
 var _IconAppLogo = _interopRequireDefault(require("./IconAppLogo"));
 var _AppLabel = _interopRequireDefault(require("./AppLabel"));
@@ -20,13 +22,13 @@ var _HotBar = _interopRequireDefault(require("./HotBar"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const HEADER = "header",
   CL_HEADER = (0, _crStyle.crContainerBgCn)(HEADER),
-  CL_PANEL_BROWSER = (0, _crStyle.crPanelShadowCn)((0, _crStyle.crContainerBgCn)(`${HEADER}__panel-browser`)),
-  CL_ICON_APP = `${HEADER}__icon-app`,
-  CL_LABEL_APP = `${HEADER}__label-app`,
-  CL_BROWSER_BTS = `${HEADER}__browser-bts`,
+  CL_PANEL_BROWSER = (0, _crStyle.crPanelShadowCn)((0, _crStyle.crContainerBgCn)(HEADER + "__panel-browser")),
+  CL_ICON_APP = HEADER + "__icon-app",
+  CL_LABEL_APP = HEADER + "__label-app",
+  CL_BROWSER_BTS = HEADER + "__browser-bts",
   CL_ARROW_DOWN = "arrow-down",
-  CL_BTS = `${HEADER}__bts`,
-  CL_BT_ABOUT = `${HEADER}__bt-about`,
+  CL_BTS = HEADER + "__bts",
+  CL_BT_ABOUT = HEADER + "__bt-about",
   S_SVG_ICON = {
     position: 'relative',
     top: -1,
@@ -86,7 +88,7 @@ const HeaderBar = _ref => {
         className: CL_BT_ABOUT,
         hotKey: _hotkeys.HK_ABOUT,
         onClick: onAbout,
-        children: (0, _jsxRuntime.jsx)(_Comp.default.SvgInfo, {
+        children: (0, _jsxRuntime.jsx)(_SvgInfo.default, {
           style: S_SVG_ICON
         })
       }), (0, _jsxRuntime.jsx)(_Comp.default.FlatButton, {
@@ -94,7 +96,7 @@ const HeaderBar = _ref => {
         dataPos: _DP.DP_BOTTOM_RIGHT,
         hotKey: _hotkeys.HK_SETTINGS,
         onClick: onSettings,
-        children: (0, _jsxRuntime.jsx)(_Comp.default.SvgSettings, {
+        children: (0, _jsxRuntime.jsx)(_SvgSettings.default, {
           style: S_SVG_ICON
         })
       })]

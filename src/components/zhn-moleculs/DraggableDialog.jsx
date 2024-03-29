@@ -30,7 +30,7 @@ import useXYMovable from '../hooks/useXYMovable';
 import useRefHotKey from '../hotkeys/useRefHotKey';
 
 import ModalToggle from './ModalToggle';
-import BrowserCaption from '../zhn-atoms/BrowserCaption';
+import BrowserCaption from '../zhn/BrowserCaption';
 import RaisedButton from '../zhn-bt/RaisedButton';
 
 const CL_DIALOG = crContainerBgCn("dialog")

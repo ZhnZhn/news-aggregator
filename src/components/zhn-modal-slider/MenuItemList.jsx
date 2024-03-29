@@ -3,7 +3,7 @@ import {
   safeMap
 } from '../uiApi';
 
-import MenuItem from '../zhn-atoms/MenuItem';
+import MenuItem from '../zhn/MenuItem';
 
 const SUB_MENU = 'sub';
 

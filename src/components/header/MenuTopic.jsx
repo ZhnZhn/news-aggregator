@@ -1,5 +1,5 @@
-import OpenClose from '../zhn-atoms/OpenClose';
-import MenuItem from '../zhn-atoms/MenuItem';
+import OpenClose from '../zhn/OpenClose';
+import MenuItem from '../zhn/MenuItem';
 
 const _isArr = Array.isArray;
 const CL_ITEM = 'row__topic';

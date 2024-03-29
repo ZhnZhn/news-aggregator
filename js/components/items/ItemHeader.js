@@ -5,7 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _crStyle = require("../crStyle");
-var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
+var _SvgX = _interopRequireDefault(require("../zhn/SvgX"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const FN_NOOP = () => {};
 const ItemHeader = (0, _uiApi.forwardRef)((_ref, ref) => {
@@ -53,6 +53,5 @@ const ItemHeader = (0, _uiApi.forwardRef)((_ref, ref) => {
     })]
   });
 });
-var _default = ItemHeader;
-exports.default = _default;
+var _default = exports.default = ItemHeader;
 //# sourceMappingURL=ItemHeader.js.map

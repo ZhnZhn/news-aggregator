@@ -3,8 +3,8 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _OpenClose = _interopRequireDefault(require("../zhn-atoms/OpenClose"));
-var _MenuItem = _interopRequireDefault(require("../zhn-atoms/MenuItem"));
+var _OpenClose = _interopRequireDefault(require("../zhn/OpenClose"));
+var _MenuItem = _interopRequireDefault(require("../zhn/MenuItem"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const _isArr = Array.isArray;
 const CL_ITEM = 'row__topic';

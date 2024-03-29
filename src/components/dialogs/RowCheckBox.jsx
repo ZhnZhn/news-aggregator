@@ -1,5 +1,5 @@
 import useCheckBox from '../hooks/useCheckBox';
-import SvgCheckBox from '../zhn-atoms/svg/SvgCheckBox';
+import SvgCheckBox from '../zhn/svg/SvgCheckBox';
 
 const S_ROW_CHECKBOX = {
   margin: '24px 0 0 16px'
@@ -32,7 +32,7 @@ const RowCheckBox = ({
     <div style={style}>
       <SvgCheckBox
         refChb={refChb}
-        isChecked={isChecked}        
+        isChecked={isChecked}
         onClick={hClick}
         onKeyDown={hKeyDown}
       />

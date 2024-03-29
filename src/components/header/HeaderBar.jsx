@@ -25,6 +25,9 @@ import {
 
 import { APP_TITLE } from '../styles/tokens';
 
+import SvgInfo from '../zhn/svg/SvgInfo';
+import SvgSettings from '../zhn/svg/SvgSettings';
+
 import LoadingProgress from './LoadingProgress';
 import IconAppLogo from './IconAppLogo';
 import AppLabel from './AppLabel';
@@ -124,7 +127,7 @@ const HeaderBar = ({
             hotKey={HK_ABOUT}
             onClick={onAbout}
           >
-            <A.SvgInfo style={S_SVG_ICON} />
+            <SvgInfo style={S_SVG_ICON} />
           </A.FlatButton>
           <A.FlatButton
             ariaLabel="Settings Dialog"
@@ -132,7 +135,7 @@ const HeaderBar = ({
             hotKey={HK_SETTINGS}
             onClick={onSettings}
           >
-            <A.SvgSettings style={S_SVG_ICON} />
+            <SvgSettings style={S_SVG_ICON} />
           </A.FlatButton>
       </div>
     </div>

@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _useCheckBox = _interopRequireDefault(require("../hooks/useCheckBox"));
-var _SvgCheckBox = _interopRequireDefault(require("../zhn-atoms/svg/SvgCheckBox"));
+var _SvgCheckBox = _interopRequireDefault(require("../zhn/svg/SvgCheckBox"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_ROW_CHECKBOX = {
     margin: '24px 0 0 16px'
@@ -41,6 +41,5 @@ const RowCheckBox = _ref => {
     })]
   });
 };
-var _default = RowCheckBox;
-exports.default = _default;
+var _default = exports.default = RowCheckBox;
 //# sourceMappingURL=RowCheckBox.js.map

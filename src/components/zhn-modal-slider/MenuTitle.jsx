@@ -1,4 +1,4 @@
-import MenuItem from '../zhn-atoms/MenuItem';
+import MenuItem from '../zhn/MenuItem';
 
 const S_ITEM = {
   position: 'relative'

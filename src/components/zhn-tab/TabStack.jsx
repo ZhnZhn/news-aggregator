@@ -7,7 +7,7 @@ import {
   stopDefaultFor
 } from '../uiApi';
 
-import ItemStack from '../zhn-atoms/ItemStack';
+import ItemStack from '../zhn/ItemStack';
 import {
   CL_TABS,
   crTabId

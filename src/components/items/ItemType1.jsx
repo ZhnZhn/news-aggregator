@@ -1,7 +1,7 @@
 import { forwardRef } from '../uiApi';
 
 import ItemHeader from './ItemHeader';
-import ShowHide from '../zhn-atoms/ShowHide';
+import ShowHide from '../zhn/ShowHide';
 
 import {
   CL_ITEM_HEADER,

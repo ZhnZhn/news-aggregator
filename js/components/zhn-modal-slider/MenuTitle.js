@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _MenuItem = _interopRequireDefault(require("../zhn-atoms/MenuItem"));
+var _MenuItem = _interopRequireDefault(require("../zhn/MenuItem"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_ITEM = {
     position: 'relative'
@@ -45,6 +45,5 @@ MenuTitle.propTypes = {
   onClick: PropTypes.func
 }
 */
-var _default = MenuTitle;
-exports.default = _default;
+var _default = exports.default = MenuTitle;
 //# sourceMappingURL=MenuTitle.js.map

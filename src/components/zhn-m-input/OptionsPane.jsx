@@ -9,8 +9,8 @@ import {
   setRefValue
 } from '../uiApi';
 
-import ShowHide from '../zhn-atoms/ShowHide';
-import ItemStack from '../zhn-atoms/ItemStack';
+import ShowHide from '../zhn/ShowHide';
+import ItemStack from '../zhn/ItemStack';
 import ModalPane from '../zhn-moleculs/ModalPane';
 import {
   getItemCaption,

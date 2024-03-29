@@ -10,7 +10,7 @@ import useDialog from './hooks/useDialog';
 import useKeyDown from './hooks/useKeyDown';
 
 import DraggableDialog from '../zhn-moleculs/DraggableDialog';
-import { FlexColumn } from '../zhn-atoms/FlexToken';
+import { FlexColumn } from '../zhn/FlexToken';
 import StackInputs from '../zhn-inputs/StackInputs';
 import PoweredBy from '../links/PoweredBy';
 

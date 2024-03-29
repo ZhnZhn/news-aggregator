@@ -8,7 +8,7 @@ var _Dialog = require("../dialogs/Dialog.Style");
 var _useModalFocus = _interopRequireDefault(require("../hooks/useModalFocus"));
 var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
 var _FocusTrap = _interopRequireDefault(require("./FocusTrap"));
-var _BrowserCaption = _interopRequireDefault(require("../zhn-atoms/BrowserCaption"));
+var _BrowserCaption = _interopRequireDefault(require("../zhn/BrowserCaption"));
 var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_DIALOG = (0, _crStyle.crContainerBgCn)("dialog"),
@@ -88,6 +88,5 @@ const ModalDialog = _ref => {
     })
   });
 };
-var _default = ModalDialog;
-exports.default = _default;
+var _default = exports.default = ModalDialog;
 //# sourceMappingURL=ModalDialog.js.map

@@ -6,7 +6,7 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useTooltip = _interopRequireDefault(require("../hooks/useTooltip"));
 var _usePassiveTouchEvent = _interopRequireDefault(require("../hooks/usePassiveTouchEvent"));
-var _Svg = _interopRequireDefault(require("../zhn-atoms/svg/Svg100"));
+var _Svg = _interopRequireDefault(require("../zhn/svg/Svg100"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_BT_RESIZE = "bt-resize select-none";
 const BtResize = _ref => {
@@ -48,6 +48,5 @@ const BtResize = _ref => {
     })
   });
 };
-var _default = BtResize;
-exports.default = _default;
+var _default = exports.default = BtResize;
 //# sourceMappingURL=BtResize.js.map

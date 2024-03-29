@@ -10,9 +10,9 @@ import { HAS_TOUCH_EVENTS } from '../has';
 
 import useItemGestureSwipeX from './useItemGestureSwipeX';
 import GestureSwipeX from '../zhn-gesture/GestureSwipeX';
-import SvgX from '../zhn-atoms/SvgX';
-import SafeLink from '../zhn-atoms/SafeLink';
-import ItemStack from '../zhn-atoms/ItemStack';
+import SvgX from '../zhn/SvgX';
+import SafeLink from '../zhn/SafeLink';
+import ItemStack from '../zhn/ItemStack';
 import {
   CL_ITEM_HEADER,
   CL_ITEM_DESCR,

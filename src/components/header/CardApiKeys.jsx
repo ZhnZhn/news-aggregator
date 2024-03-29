@@ -14,8 +14,8 @@ import {
 
 import getFnByPropName from '../../utils/getFnByPropName';
 
-import ScrollPane from '../zhn-atoms/ScrollPane';
-import OpenClose from '../zhn-atoms/OpenClose';
+import ScrollPane from '../zhn/ScrollPane';
+import OpenClose from '../zhn/OpenClose';
 import PasswordField from '../zhn-m-input/PasswordField';
 import RaisedButton from '../zhn-bt/RaisedButton';
 
@@ -192,7 +192,7 @@ const CardApiKeys = (props) => {
         <RaisedButton
           isPrimary={true}
           refBt={isVisible ? setRefLast : void 0}
-          style={btStyle}          
+          style={btStyle}
           caption="Set All"
           onClick={_hSetAll}
         />

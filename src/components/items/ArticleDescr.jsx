@@ -1,12 +1,12 @@
 import { DP_CLOSE_RIGHT } from '../DP';
 import { CL_SELECT_NONE } from '../crStyle';
 
-import SafeLink from '../zhn-atoms/SafeLink';
+import SafeLink from '../zhn/SafeLink';
 import {
   TextDiv,
   TextSpan
-} from '../zhn-atoms/TextToken';
-import SvgX from '../zhn-atoms/SvgX';
+} from '../zhn/TextToken';
+import SvgX from '../zhn/SvgX';
 
 const CL_DIV = "link-wrapper"
 , S_FONT = {

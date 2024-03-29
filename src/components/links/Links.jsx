@@ -12,7 +12,7 @@ import {
   DEV_TO,
   STACK_OVERFLOW
 } from '../../conf/ProviderNames';
-import SafeLink from '../zhn-atoms/SafeLink';
+import SafeLink from '../zhn/SafeLink';
 
 const CL_LINK = "link";
 

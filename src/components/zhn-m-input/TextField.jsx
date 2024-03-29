@@ -19,7 +19,7 @@ import useBool from '../hooks/useBool';
 
 import { HAS_TOUCH_EVENTS } from '../has';
 import AsyncShowComponent from '../zhn-moleculs/AsyncShowComponent';
-import SvgX from '../zhn-atoms/SvgX';
+import SvgX from '../zhn/SvgX';
 
 import {
   CL_SELECT,

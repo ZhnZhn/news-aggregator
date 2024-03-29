@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.WebzLink = exports.TheNewsApiLink = exports.StackOverflowLink = exports.RedditLink = exports.NewsApiLink = exports.MessariLink = exports.IexApiLink = exports.FmpApiLink = exports.DevToLink = exports.CryptoCompareLink = exports.CoinStatsLink = exports.AlphaVantageLink = void 0;
 var _ProviderNames = require("../../conf/ProviderNames");
-var _SafeLink = _interopRequireDefault(require("../zhn-atoms/SafeLink"));
+var _SafeLink = _interopRequireDefault(require("../zhn/SafeLink"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_LINK = "link";
 const _fSafeLink = (href, caption) => _ref => {

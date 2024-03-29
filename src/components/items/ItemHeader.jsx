@@ -4,7 +4,7 @@ import {
 } from '../uiApi';
 
 import { CL_SELECT_NONE } from '../crStyle';
-import SvgX from '../zhn-atoms/SvgX';
+import SvgX from '../zhn/SvgX';
 
 const FN_NOOP = () => {};
 
