@@ -4,7 +4,7 @@ import {
 
 import useMqlOnChange from '../hooks/useMqlOnChange';
 
-import InlineFlexStart from '../zhn-atoms/InlineFlexStart';
+import { InlineFlexStart } from '../zhn-atoms/FlexToken';
 import CircleButton from '../zhn-bt/CircleButton';
 import SvgHrzResize from '../zhn-resize/SvgHrzResize';
 

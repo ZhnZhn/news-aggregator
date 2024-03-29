@@ -9,7 +9,7 @@ var _useRefInputs = _interopRequireDefault(require("./hooks/useRefInputs"));
 var _useDialog = _interopRequireDefault(require("./hooks/useDialog"));
 var _useKeyDown = _interopRequireDefault(require("./hooks/useKeyDown"));
 var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/DraggableDialog"));
-var _FlexColumn = _interopRequireDefault(require("../zhn-atoms/FlexColumn"));
+var _FlexToken = require("../zhn-atoms/FlexToken");
 var _StackInputs = _interopRequireDefault(require("../zhn-inputs/StackInputs"));
 var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -43,7 +43,7 @@ const DialogStackInputs = props => {
     onLoad: _hLoad,
     onShow: onShow,
     onClose: _hClose,
-    children: (0, _jsxRuntime.jsxs)(_FlexColumn.default, {
+    children: (0, _jsxRuntime.jsxs)(_FlexToken.FlexColumn, {
       children: [(0, _jsxRuntime.jsx)(_StackInputs.default, {
         isInputs: isInputs,
         configs: INPUT_CONFIGS,
@@ -56,6 +56,5 @@ const DialogStackInputs = props => {
     })
   });
 };
-var _default = DialogStackInputs;
-exports.default = _default;
+var _default = exports.default = DialogStackInputs;
 //# sourceMappingURL=DialogStackInputs.js.map
