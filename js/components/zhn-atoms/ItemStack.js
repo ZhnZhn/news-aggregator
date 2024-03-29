@@ -1,25 +1,15 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
-
+exports.default = void 0;
 var _uiApi = require("../uiApi");
-
-var _excluded = ["items", "crItem"];
-var _isArr = Array.isArray;
-var ItemStack = (0, _uiApi.memo)(function (_ref) {
-  var items = _ref.items,
-      crItem = _ref.crItem,
-      restProps = (0, _objectWithoutPropertiesLoose2["default"])(_ref, _excluded);
-  if (!_isArr(items)) return null;
-  return items.map(function (item, index) {
-    return crItem(item, index, restProps);
-  });
+const ItemStack = (0, _uiApi.memo)(_ref => {
+  let {
+    items,
+    crItem,
+    ...restProps
+  } = _ref;
+  return (0, _uiApi.safeMap)(items, (item, index) => crItem(item, index, restProps));
 });
-var _default = ItemStack;
-exports["default"] = _default;
+var _default = exports.default = ItemStack;
 //# sourceMappingURL=ItemStack.js.map
