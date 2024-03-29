@@ -6,9 +6,14 @@
  "file": "../../../src/components/zhn-atoms/SpinnerLoading.js",
  "names": [
   "SpinnerLoading",
+  "_ref",
   "style",
   "isFailed",
-  "_dataLoader"
+  "_jsxRuntime",
+  "jsx",
+  "_default",
+  "exports",
+  "default"
  ],
- "mappings": ";;;;;;;AAAA,IAAMA,cAAc,GAAG,SAAjBA,cAAiB,OAGjB;AAAA,MAFJC,KAEI,QAFJA,KAEI;AAAA,MADJC,QACI,QADJA,QACI;;AACJ,MAAMC,WAAW,GAAGD,QAAQ,GACxB,eADwB,GAExB,QAFJ;;AAGA,sBACE;AAAM,IAAA,KAAK,EAAED,KAAb;AAAoB,mBAAaE;AAAjC,IADF;AAGD,CAVD;;eAYeH,c"
+ "mappings": ";;;;;AAAA,MAAMA,cAAc,GAAGC,IAAA;EAAA,IAAC;IACtBC,KAAK;IACLC;EACF,CAAC,GAAAF,IAAA;EAAA,OACC,IAAAG,WAAA,CAAAC,GAAA;IACEH,KAAK,EAAEA,KAAM;IACb,eAAaC,QAAQ,GACjB,eAAe,GACf;EAAS,CACd,CAAC;AAAA,CACH;AAAC,IAAAG,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaR,cAAc"
 }

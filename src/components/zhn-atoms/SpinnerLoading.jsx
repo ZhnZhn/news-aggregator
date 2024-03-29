@@ -1,13 +1,13 @@
 const SpinnerLoading = ({
   style,
   isFailed
-}) => {
-  const _dataLoader = isFailed
-    ? "circle-failed"
-    : "circle";
-  return (
-    <span style={style} data-loader={_dataLoader} />
-  );
-};
+}) => (
+  <span
+    style={style}
+    data-loader={isFailed
+      ? "circle-failed"
+      : "circle"}
+  />
+);
 
 export default SpinnerLoading
