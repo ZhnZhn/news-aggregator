@@ -1,4 +1,5 @@
 import useTooltip from '../hooks/useTooltip';
+import Svg from './svg/Svg';
 import { DP_MIDDLE_LEFT } from '../DP';
 
 const CL_BT_MORE = 'bt-more'
@@ -6,6 +7,12 @@ const CL_BT_MORE = 'bt-more'
   fill: 'black',
   stroke: 'black'
 };
+
+const Circle = ({
+  cy
+}) => (
+  <circle cx="3" cy={cy} r="2.5" />
+);
 
 const SvgMore = ({
   style,
@@ -27,18 +34,15 @@ const SvgMore = ({
       style={style}
       onClick={onClick}
     >
-      <svg
+      <Svg
+        width="6"
+        height="24"
         style={{...S_SVG, ...svgStyle}}
-        width="6px"
-        height="24px"
-        viewBox="0 0 6 24"
-        preserveAspectRatio="none"
-        xmlns="http://www.w3.org/2000/svg"
       >
-        <circle cx="3" cy="4" r="2.5" />
-        <circle cx="3" cy="12" r="2.5" />
-        <circle cx="3" cy="19" r="2.5" />
-      </svg>
+        <Circle cy="4" />
+        <Circle cy="12" />
+        <Circle cy="19" />
+      </Svg>
     </button>
   );
 };

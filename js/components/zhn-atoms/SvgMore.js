@@ -2,24 +2,34 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var _useTooltip2 = _interopRequireDefault(require("../hooks/useTooltip"));
+exports.default = void 0;
+var _useTooltip = _interopRequireDefault(require("../hooks/useTooltip"));
+var _Svg = _interopRequireDefault(require("./svg/Svg"));
 var _DP = require("../DP");
 var _jsxRuntime = require("preact/jsx-runtime");
-var CL_BT_MORE = 'bt-more',
+const CL_BT_MORE = 'bt-more',
   S_SVG = {
     fill: 'black',
     stroke: 'black'
   };
-var SvgMore = function SvgMore(_ref) {
-  var style = _ref.style,
-    svgStyle = _ref.svgStyle,
-    btRef = _ref.btRef,
-    onClick = _ref.onClick;
-  var _useTooltip = (0, _useTooltip2["default"])("More", _DP.DP_MIDDLE_LEFT),
-    _ariaLabel = _useTooltip[0],
-    _dataPos = _useTooltip[1];
+const Circle = _ref => {
+  let {
+    cy
+  } = _ref;
+  return (0, _jsxRuntime.jsx)("circle", {
+    cx: "3",
+    cy: cy,
+    r: "2.5"
+  });
+};
+const SvgMore = _ref2 => {
+  let {
+    style,
+    svgStyle,
+    btRef,
+    onClick
+  } = _ref2;
+  const [_ariaLabel, _dataPos] = (0, _useTooltip.default)("More", _DP.DP_MIDDLE_LEFT);
   return (0, _jsxRuntime.jsx)("button", {
     type: "button",
     "aria-label": _ariaLabel,
@@ -28,29 +38,22 @@ var SvgMore = function SvgMore(_ref) {
     className: CL_BT_MORE,
     style: style,
     onClick: onClick,
-    children: (0, _jsxRuntime.jsxs)("svg", {
-      style: (0, _extends2["default"])({}, S_SVG, svgStyle),
-      width: "6px",
-      height: "24px",
-      viewBox: "0 0 6 24",
-      preserveAspectRatio: "none",
-      xmlns: "http://www.w3.org/2000/svg",
-      children: [(0, _jsxRuntime.jsx)("circle", {
-        cx: "3",
-        cy: "4",
-        r: "2.5"
-      }), (0, _jsxRuntime.jsx)("circle", {
-        cx: "3",
-        cy: "12",
-        r: "2.5"
-      }), (0, _jsxRuntime.jsx)("circle", {
-        cx: "3",
-        cy: "19",
-        r: "2.5"
+    children: (0, _jsxRuntime.jsxs)(_Svg.default, {
+      width: "6",
+      height: "24",
+      style: {
+        ...S_SVG,
+        ...svgStyle
+      },
+      children: [(0, _jsxRuntime.jsx)(Circle, {
+        cy: "4"
+      }), (0, _jsxRuntime.jsx)(Circle, {
+        cy: "12"
+      }), (0, _jsxRuntime.jsx)(Circle, {
+        cy: "19"
       })]
     })
   });
 };
-var _default = SvgMore;
-exports["default"] = _default;
+var _default = exports.default = SvgMore;
 //# sourceMappingURL=SvgMore.js.map
