@@ -6,8 +6,7 @@ exports.default = void 0;
 var _DP = require("../DP");
 var _crStyle = require("../crStyle");
 var _SafeLink = _interopRequireDefault(require("../zhn-atoms/SafeLink"));
-var _TextDiv = _interopRequireDefault(require("../zhn-atoms/TextDiv"));
-var _TextSpan = _interopRequireDefault(require("../zhn-atoms/TextSpan"));
+var _TextToken = require("../zhn-atoms/TextToken");
 var _SvgX = _interopRequireDefault(require("../zhn-atoms/SvgX"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_DIV = "link-wrapper",
@@ -66,10 +65,10 @@ const ArticleDescr = _ref => {
   return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsxs)("div", {
       style: S_AUTHOR_ROW,
-      children: [(0, _jsxRuntime.jsx)(_TextSpan.default, {
+      children: [(0, _jsxRuntime.jsx)(_TextToken.TextSpan, {
         style: S_AUTHOR,
         text: author
-      }), (0, _jsxRuntime.jsx)(_TextSpan.default, {
+      }), (0, _jsxRuntime.jsx)(_TextToken.TextSpan, {
         style: S_DATE,
         text: timeAgo
       })]
@@ -84,7 +83,7 @@ const ArticleDescr = _ref => {
       children: description
     }), (0, _jsxRuntime.jsxs)("div", {
       style: S_PT_8,
-      children: [(0, _jsxRuntime.jsx)(_TextDiv.default, {
+      children: [(0, _jsxRuntime.jsx)(_TextToken.TextDiv, {
         className: _crStyle.CL_SELECT_NONE,
         style: S_RELATED,
         text: related
@@ -93,7 +92,7 @@ const ArticleDescr = _ref => {
         children: [(0, _jsxRuntime.jsx)(_SvgX.default, {
           dataPos: _DP.DP_CLOSE_RIGHT,
           onClick: onClose
-        }), (0, _jsxRuntime.jsx)(_TextSpan.default, {
+        }), (0, _jsxRuntime.jsx)(_TextToken.TextSpan, {
           className: _crStyle.CL_SELECT_NONE,
           style: S_DATE,
           text: publishedAt

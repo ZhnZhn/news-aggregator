@@ -2,8 +2,10 @@ import { DP_CLOSE_RIGHT } from '../DP';
 import { CL_SELECT_NONE } from '../crStyle';
 
 import SafeLink from '../zhn-atoms/SafeLink';
-import TextDiv from '../zhn-atoms/TextDiv';
-import TextSpan from '../zhn-atoms/TextSpan';
+import {
+  TextDiv,
+  TextSpan
+} from '../zhn-atoms/TextToken';
 import SvgX from '../zhn-atoms/SvgX';
 
 const CL_DIV = "link-wrapper"
