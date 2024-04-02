@@ -1,6 +1,7 @@
 import {
   useRef,
-  useEffect
+  useEffect,
+  isFn
 } from '../uiApi';
 
 const useRegRef = (onReg) => {
@@ -8,7 +9,7 @@ const useRegRef = (onReg) => {
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(()=>{
     const _node = ref.current;
-    if (typeof onReg == 'function' && _node){
+    if (isFn(onReg) && _node){
       onReg(_node)
     }
     return () => { ref.current = null };

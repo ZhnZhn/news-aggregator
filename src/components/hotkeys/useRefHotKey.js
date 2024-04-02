@@ -1,4 +1,7 @@
-import { useEffect } from '../uiApi';
+import { 
+  useEffect,
+  isFn
+} from '../uiApi';
 import {
   HAS_HOT_KEYS,
   HOT_KEY_EVENT
@@ -21,7 +24,7 @@ const useRefHotKey = (
          onKeyDown()
       }
     }
-    return _element && typeof onKeyDown === 'function'
+    return _element && isFn(onKeyDown)
       ? (
           _element.addEventListener(HOT_KEY_EVENT, _onKeyDown, false),
           () => _element.removeEventLister(HOT_KEY_EVENT, _onKeyDown, false)
