@@ -19,20 +19,11 @@ const S_ITEM = {
     padding: '1px 16px 1px 0px',
     fontWeight: 'bold'
   };
-const _fClick = (isClose, onClick, onClose) => typeof onClick === 'function' ? isClose ? () => {
+const _fClick = (isClose, onClick, onClose) => (0, _uiApi.isFn)(onClick) ? isClose ? () => {
   onClick();
   onClose();
 } : onClick : void 0;
-const NextPageArrow = _ref => {
-  let {
-    type
-  } = _ref;
-  return type === SUB_MENU ? (0, _jsxRuntime.jsx)("span", {
-    style: S_NEXT_PAGE,
-    children: ">"
-  }) : null;
-};
-const MenuItemList = _ref2 => {
+const MenuItemList = _ref => {
   let {
     getFocusRef,
     items,
@@ -40,18 +31,21 @@ const MenuItemList = _ref2 => {
     pageNumber,
     onNextPage,
     onClose
-  } = _ref2;
+  } = _ref;
   return (0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
-    children: (0, _uiApi.safeMap)(items, (item, index) => {
-      const {
-          cn,
-          name,
-          type,
-          id,
-          isClose,
-          onClick
-        } = item,
-        _onClick = type === SUB_MENU ? (0, _uiApi.bindTo)(onNextPage, id, name, pageNumber) : _fClick(isClose, onClick, onClose);
+    children: (0, _uiApi.safeMap)(items, (_ref2, index) => {
+      let {
+        cn,
+        name,
+        type,
+        id,
+        isClose,
+        onClick
+      } = _ref2;
+      const [_onClick, _nextPageArrowEl] = type === SUB_MENU ? [(0, _uiApi.bindTo)(onNextPage, id, name, pageNumber), (0, _jsxRuntime.jsx)("span", {
+        style: S_NEXT_PAGE,
+        children: ">"
+      })] : [_fClick(isClose, onClick, onClose), null];
       return (0, _jsxRuntime.jsxs)(_MenuItem.default, {
         ref: getFocusRef(index),
         className: cn || itemCl,
@@ -59,22 +53,10 @@ const MenuItemList = _ref2 => {
         onClick: _onClick,
         children: [(0, _jsxRuntime.jsx)("span", {
           children: name
-        }), (0, _jsxRuntime.jsx)(NextPageArrow, {
-          type: type
-        })]
+        }), _nextPageArrowEl]
       }, name);
     })
   });
 };
-
-/*
-MenuItemList.propTypes = {
-  items: PropTypes.array,
-  itemCl: PropTypes.string,
-  pageNumber: PropTypes.number,
-  onNextPage: PropTypes.func,
-  onClose: PropTypes.func
-}
-*/
 var _default = exports.default = MenuItemList;
 //# sourceMappingURL=MenuItemList.js.map

@@ -1,4 +1,5 @@
 import {
+  isFn,
   bindTo,
   safeMap
 } from '../uiApi';
@@ -24,17 +25,11 @@ const _fClick = (
   isClose,
   onClick,
   onClose
-) => typeof onClick === 'function'
+) => isFn(onClick)
   ? isClose
       ? () => { onClick(); onClose() }
       : onClick
   : void 0;
-
-const NextPageArrow = ({
-  type
-}) => type === SUB_MENU ? (
-  <span style={S_NEXT_PAGE}>></span>
-) : null;
 
 const MenuItemList = ({
   getFocusRef,
@@ -45,18 +40,26 @@ const MenuItemList = ({
   onClose
 }) => (
   <>
-   {safeMap(items, (item, index) => {
-     const {
-       cn,
-       name,
-       type,
-       id,
-       isClose,
-       onClick
-     } = item
-     , _onClick = type === SUB_MENU
-         ? bindTo(onNextPage, id, name, pageNumber)
-         : _fClick(isClose, onClick, onClose);
+   {safeMap(items, ({
+     cn,
+     name,
+     type,
+     id,
+     isClose,
+     onClick
+   }, index) => {
+     const [
+       _onClick,
+       _nextPageArrowEl
+     ] = type === SUB_MENU
+       ? [
+           bindTo(onNextPage, id, name, pageNumber),
+           <span style={S_NEXT_PAGE}>></span>
+         ]
+       : [
+           _fClick(isClose, onClick, onClose),
+           null
+         ];
      return (
        <MenuItem
          key={name}
@@ -66,21 +69,11 @@ const MenuItemList = ({
          onClick={_onClick}
        >
          <span>{name}</span>
-         <NextPageArrow type={type} />
+         {_nextPageArrowEl}
        </MenuItem>
      );
     })}
   </>
 );
-
-/*
-MenuItemList.propTypes = {
-  items: PropTypes.array,
-  itemCl: PropTypes.string,
-  pageNumber: PropTypes.number,
-  onNextPage: PropTypes.func,
-  onClose: PropTypes.func
-}
-*/
 
 export default MenuItemList
