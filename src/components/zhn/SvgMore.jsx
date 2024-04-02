@@ -15,9 +15,9 @@ const Circle = ({
 );
 
 const SvgMore = ({
+  btRef,
   style,
   svgStyle,
-  btRef,
   onClick
 }) => {
   const [
@@ -26,17 +26,17 @@ const SvgMore = ({
   ] = useTooltip("More", DP_MIDDLE_LEFT);
   return (
     <button
+      ref={btRef}
       type="button"
       aria-label={_ariaLabel}
       data-pos={_dataPos}
-      ref={btRef}
       className={CL_BT_MORE}
       style={style}
       onClick={onClick}
     >
       <Svg
-        width="6"
-        height="24"
+        w="6"
+        h="24"
         style={{...S_SVG, ...svgStyle}}
       >
         <Circle cy="4" />

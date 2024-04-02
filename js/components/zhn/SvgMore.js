@@ -24,23 +24,23 @@ const Circle = _ref => {
 };
 const SvgMore = _ref2 => {
   let {
+    btRef,
     style,
     svgStyle,
-    btRef,
     onClick
   } = _ref2;
   const [_ariaLabel, _dataPos] = (0, _useTooltip.default)("More", _DP.DP_MIDDLE_LEFT);
   return (0, _jsxRuntime.jsx)("button", {
+    ref: btRef,
     type: "button",
     "aria-label": _ariaLabel,
     "data-pos": _dataPos,
-    ref: btRef,
     className: CL_BT_MORE,
     style: style,
     onClick: onClick,
     children: (0, _jsxRuntime.jsxs)(_Svg.default, {
-      width: "6",
-      height: "24",
+      w: "6",
+      h: "24",
       style: {
         ...S_SVG,
         ...svgStyle
