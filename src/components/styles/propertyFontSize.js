@@ -15,9 +15,9 @@ import {
 } from './LS';
 
 const FONT_SIZE_CONFIG = [
-  [5, 15],
-  [6, 16]
-]
+  [4, 16],
+  [4, 18]
+];
 
 const _crFontItem = (
   size
@@ -37,9 +37,9 @@ export const FONT_SIZE_OPTIONS = _crFontSizeOptions(
 )
 
 const DF_APP_FONT_SIZE = HAS_WIDE_SCREEN
-  ? FONT_SIZE_OPTIONS[3][1]
-  : FONT_SIZE_OPTIONS[5][1]
-, MIN_FS = 15
+  ? FONT_SIZE_OPTIONS[2][1]
+  : FONT_SIZE_OPTIONS[3][1]
+, MIN_FS = 16
 , MAX_FS = 21;
 let _appFontSize = DF_APP_FONT_SIZE;
 export const getFontSize = () => _appFontSize;
