@@ -5,7 +5,7 @@ exports.getRedditTopConfig = void 0;
 var _DialogFn = require("./DialogFn");
 var _configReddit = require("./configReddit");
 const DF_PERIOD = _configReddit.PERIOD_OPTIONS[1],
-  DF_LIMIT = _configReddit.LIMIT_OPTIONS[1],
+  DF_LIMIT = _configReddit.LIMIT_OPTIONS[0],
   _crInputConfigs = () => [(0, _DialogFn.crInputSuggestConfig)('subreddit', _configReddit.SUBRREDIT_OPTIONS, {
     is: true
   }), (0, _DialogFn.crInputSelectConfig)('t', _configReddit.PERIOD_OPTIONS, {

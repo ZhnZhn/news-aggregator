@@ -11,7 +11,7 @@ import {
 } from './configReddit';
 
 const DF_PERIOD = PERIOD_OPTIONS[1]
-, DF_LIMIT = LIMIT_OPTIONS[1]
+, DF_LIMIT = LIMIT_OPTIONS[0]
 , _crInputConfigs = () => [
   crInputSuggestConfig('subreddit', SUBRREDIT_OPTIONS, { is: true }),
   crInputSelectConfig('t', PERIOD_OPTIONS, { caption: "Period", dfOption: DF_PERIOD }),
