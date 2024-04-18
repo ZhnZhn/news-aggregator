@@ -52,7 +52,7 @@ const getLoadId = itemConf => _getLoadId(itemConf) || _getType(itemConf);
 exports.getLoadId = getLoadId;
 const getDialogCaption = itemConf => ((itemConf || {}).dialogProps || {}).caption;
 exports.getDialogCaption = getDialogCaption;
-const crTextFieldCaption = (caption, dfValue) => dfValue ? `${caption} (Default: ${dfValue})` : caption;
+const crTextFieldCaption = (caption, dfValue) => dfValue ? caption + " (Default: " + dfValue + ")" : caption;
 exports.crTextFieldCaption = crTextFieldCaption;
 const _crInputCaption = (caption, id) => caption || (0, _uiApi.toFirstUpperCase)(id);
 const crTextFieldConfig = (id, _ref) => {
@@ -69,9 +69,10 @@ const _fCrInputConfig = inputType => function (id, options, _temp) {
   let {
     caption,
     dfOption,
-    is
+    is,
+    isInput
   } = _temp === void 0 ? {} : _temp;
-  return [inputType, id, _crInputCaption(caption, id), options, dfOption || options[0], is];
+  return [inputType, id, _crInputCaption(caption, id), options, dfOption || options[0], is, isInput];
 };
 const crInputSelectConfig = exports.crInputSelectConfig = _fCrInputConfig(_InputTypes.INPUT_TYPE_SELECT);
 const crInputSuggestConfig = exports.crInputSuggestConfig = _fCrInputConfig(_InputTypes.INPUT_TYPE_SUGGEST);

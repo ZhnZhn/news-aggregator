@@ -124,14 +124,16 @@ const _fCrInputConfig = (
   options, {
   caption,
   dfOption,
-  is
+  is,
+  isInput
 }={}) => [
   inputType,
   id,
   _crInputCaption(caption, id),
   options,
   dfOption || options[0],
-  is
+  is,
+  isInput
 ];
 
 export const crInputSelectConfig = _fCrInputConfig(INPUT_TYPE_SELECT)
