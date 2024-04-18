@@ -10,8 +10,8 @@ var _InputSuggest = _interopRequireDefault(require("../zhn-m-input/InputSuggest"
 var _TextField = _interopRequireDefault(require("../zhn-m-input/TextField"));
 var _InputFromToDate = _interopRequireDefault(require("../zhn-m-input/InputFromToDate"));
 var _InputTypes = require("./InputTypes");
-var _jsxRuntime = require("preact/jsx-runtime");
 var _preact = require("preact");
+var _jsxRuntime = require("preact/jsx-runtime");
 const _isObj = v => v && typeof v === 'object';
 const INPUT_SELECT_STYLE = (0, _Dialog.crInputSelectStyle)();
 const S_TF_SUGGEST = {
@@ -30,7 +30,12 @@ const StackInputs = _ref => {
     const _type = arrConfig[0],
       _inputId = arrConfig[1],
       CompInput = _type === _InputTypes.INPUT_TYPE_SELECT ? _InputSelect.default : _type === _InputTypes.INPUT_TYPE_SUGGEST ? _InputSuggest.default : void 0,
-      _elItem = CompInput ? (0, _jsxRuntime.jsx)(CompInput, {
+      _compInputProps = _type === _InputTypes.INPUT_TYPE_SUGGEST ? {
+        isInput: arrConfig[6]
+      } : void 0,
+      _elItem = CompInput ? (0, _preact.createElement)(CompInput, {
+        ..._compInputProps,
+        key: _inputId,
         id: _inputId,
         caption: arrConfig[2],
         options: arrConfig[3],
@@ -38,7 +43,7 @@ const StackInputs = _ref => {
         style: INPUT_SELECT_STYLE,
         tfStyle: S_TF_SUGGEST,
         onSelect: onSelect
-      }, _inputId) : _type === _InputTypes.INPUT_TYPE_TEXT_FIELD ? (0, _preact.createElement)(_TextField.default, {
+      }) : _type === _InputTypes.INPUT_TYPE_TEXT_FIELD ? (0, _preact.createElement)(_TextField.default, {
         ...arrConfig[4],
         key: _inputId,
         id: _inputId,

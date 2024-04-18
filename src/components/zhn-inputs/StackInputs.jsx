@@ -44,8 +44,12 @@ const StackInputs = ({
      : _type === INPUT_TYPE_SUGGEST
          ? InputSuggest
          : void 0
+  , _compInputProps = _type === INPUT_TYPE_SUGGEST
+      ? { isInput: arrConfig[6] }
+      : void 0
   , _elItem = CompInput
       ? (<CompInput
+           {..._compInputProps}
            key={_inputId}
            id={_inputId}
            caption={arrConfig[2]}
