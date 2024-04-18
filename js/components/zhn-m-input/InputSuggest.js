@@ -29,6 +29,8 @@ const FILTER_TIME_OUT_MLS = 350,
   _isBtArrow = (item, items, options) => NOT_HAS_TOUCH_EVENTS || _has.HAS_TOUCH_EVENTS && !item && items.length === options.length;
 const InputSuggest = _ref => {
   let {
+    isInput,
+    maxInput = "20",
     id,
     style,
     tfStyle,
@@ -119,14 +121,14 @@ const InputSuggest = _ref => {
         clearTimeout((0, _uiApi.getRefValue)(_refFilterId));
         (0, _uiApi.setRefValue)(_refFilterId, setTimeout(() => {
           const _nextItems = _getSearchOptions().filter(item => item._t.indexOf(_token) !== -1),
-            _items = _nextItems.length ? _nextItems : _useOptionsPane.EMPTY_OPTIONS;
+            _items = _nextItems.length ? _nextItems : isInput ? [[token]] : _useOptionsPane.EMPTY_OPTIONS;
           (0, _uiApi.setRefValue)(_refItem, _items[0]);
           dispatch([_useOptionsPane.ACTION_SHOW_OPTIONS, _items]);
         }, FILTER_TIME_OUT_MLS));
       } else {
         _clearItem();
       }
-    }, [_getSearchOptions, _clearItem])
+    }, [_getSearchOptions, _clearItem, isInput])
     //dispatch
     /*eslint-enable react-hooks/exhaustive-deps */
 
@@ -172,6 +174,7 @@ const InputSuggest = _ref => {
       ref: _refTf,
       style: tfStyle,
       initValue: (0, _OptionFn.getItemCaption)(item),
+      maxLength: maxInput,
       onInputChange: _hInputChange,
       onEnter: _hEnterTextField,
       onKeyDown: _hKeyDownTextField,

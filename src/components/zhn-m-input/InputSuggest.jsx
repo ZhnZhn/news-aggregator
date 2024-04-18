@@ -66,6 +66,8 @@ const FILTER_TIME_OUT_MLS = 350
   || HAS_TOUCH_EVENTS && (!item && items.length === options.length);
 
 const InputSuggest = ({
+  isInput,
+  maxInput="20",
   id,
   style,
   tfStyle,
@@ -195,8 +197,10 @@ const InputSuggest = ({
               item => item._t.indexOf(_token) !== -1
             )
             , _items = _nextItems.length
-               ? _nextItems
-               : EMPTY_OPTIONS
+                ? _nextItems
+                : isInput
+                    ? [[token]]
+                    : EMPTY_OPTIONS;
             setRefValue(_refItem, _items[0])
             dispatch([
               ACTION_SHOW_OPTIONS,
@@ -207,7 +211,7 @@ const InputSuggest = ({
        } else {
          _clearItem()
        }
-  }, [_getSearchOptions, _clearItem])
+  }, [_getSearchOptions, _clearItem, isInput])
   //dispatch
   /*eslint-enable react-hooks/exhaustive-deps */
 
@@ -266,6 +270,7 @@ const InputSuggest = ({
          ref={_refTf}
          style={tfStyle}
          initValue={getItemCaption(item)}
+         maxLength={maxInput}
          onInputChange={_hInputChange}
          onEnter={_hEnterTextField}
          onKeyDown={_hKeyDownTextField}
