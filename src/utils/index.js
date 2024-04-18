@@ -12,3 +12,8 @@ export { joinStrsBy } from './joinStrsBy';
 
 export { domSanitize } from './domSanitize';
 export { decodeHTMLEntities } from './decodeHTMLEntities';
+
+export {
+  toLowerCase,
+  trimStr
+} from './strFn';

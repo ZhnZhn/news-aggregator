@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _utils = require("../utils");
+var _isTypeFn = require("../utils/isTypeFn");
 var _RedditApi = require("../api/RedditApi");
 var _adapterFn = require("./adapterFn");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
@@ -11,18 +12,15 @@ const _rSourceId = {
   REDDIT: 'rd_topby',
   REDDIT_SEARCH: 'rd_searchby'
 };
-const _isArr = Array.isArray,
-  _isStr = v => typeof v === 'string',
-  _isObj = v => v && typeof v === 'object';
-const _crSubredditUrl = subreddit => (0, _utils.domSanitize)(`${_RedditApi.API_URL}/${subreddit}`);
+const _crSubredditUrl = subreddit => (0, _utils.domSanitize)(_RedditApi.API_URL + "/" + subreddit);
 const _crNoItemsTitle = _ref => {
   let {
     subreddit,
     t,
     q
   } = _ref;
-  const tokenQuery = q ? ` for ${q} query ` : ' ';
-  return (0, _utils.domSanitize)(`No items were found in r/${subreddit}${tokenQuery}with ${t} period`);
+  const tokenQuery = q ? " for " + q + " query " : ' ';
+  return (0, _utils.domSanitize)("No items were found in r/" + subreddit + tokenQuery + "with " + t + " period");
 };
 const _isTitleStartWithTag = (strTitle, strTag) => {
   if (strTitle[0] === '[') {
@@ -30,11 +28,10 @@ const _isTitleStartWithTag = (strTitle, strTag) => {
     return _indexOfClosedBracket !== -1 && strTitle.slice(1, _indexOfClosedBracket).trim() === strTag;
   }
 };
-const _trimStr = v => _isStr(v) ? v.trim() : '';
 const _crTitle = (title, tag) => {
-  const _strTitle = _trimStr(title),
-    _strTag = _trimStr(tag);
-  return _strTitle && _strTag && !_isTitleStartWithTag(_strTitle, _strTag) ? `${_strTitle} (${_strTag})` : _strTitle;
+  const _strTitle = (0, _utils.trimStr)(title),
+    _strTag = (0, _utils.trimStr)(tag);
+  return _strTitle && _strTag && !_isTitleStartWithTag(_strTitle, _strTag) ? _strTitle + " (" + _strTag + ")" : _strTitle;
 };
 const _crArticle = (sourceId, _ref2, timeAgoOptions) => {
   let {
@@ -70,7 +67,7 @@ const _fFilterItemBy = subreddit => item => {
   const {
     data
   } = item || {};
-  return data && data.subreddit === subreddit && !data.over_18 && !data.quarantine && !data.author_is_blocked;
+  return data && (0, _utils.toLowerCase)(data.subreddit) === subreddit && !data.over_18 && !data.quarantine && !data.author_is_blocked;
 };
 const _crSubredditTitleUrl = (title, subreddit) => ({
   title: (0, _utils.domSanitize)(title),
@@ -83,18 +80,18 @@ const _crTitleAndUrl = data => {
     } = data,
     _subreddit = (0, _utils.decodeHTMLEntities)((0, _utils.domSanitize)(subreddit)),
     _subscribers = (0, _utils.formatNumber)(subreddit_subscribers);
-  return _crSubredditTitleUrl(`r/${_subreddit} ${_subscribers}`, _subreddit);
+  return _crSubredditTitleUrl("r/" + _subreddit + " " + _subscribers, _subreddit);
 };
 const _crArticleId = sourceId => ({
   source: sourceId,
   articleId: (0, _utils.crId)()
 });
 const _crSubredditItem = (arr, sourceId) => {
-  const item = _isArr(arr) ? arr[0] : void 0,
+  const item = (0, _isTypeFn.isArr)(arr) ? arr[0] : void 0,
     {
       data
     } = item || {};
-  return _isObj(data) ? {
+  return (0, _isTypeFn.isObj)(data) ? {
     ..._crTitleAndUrl(data),
     ..._crArticleId(sourceId)
   } : void 0;
@@ -109,7 +106,7 @@ const _toArticles = (json, option, sourceId) => {
     {
       subreddit
     } = option,
-    _items = children.filter(_fFilterItemBy(subreddit)),
+    _items = children.filter(_fFilterItemBy((0, _utils.toLowerCase)(subreddit))),
     _articles = (0, _crArticles.default)(_items, (0, _utils.bindTo)(_crArticle, sourceId)),
     subbredditItem = _crSubredditItem(_items, sourceId);
   if (subbredditItem) {

@@ -4,9 +4,15 @@ import {
   bindTo,
   domSanitize,
   decodeHTMLEntities,
+  toLowerCase,
+  trimStr,
   formatTimeAgo,
   formatNumber,
 } from '../utils';
+import {
+  isArr,
+  isObj
+} from '../utils/isTypeFn';
 
 import { API_URL } from '../api/RedditApi';
 
@@ -20,9 +26,6 @@ const _rSourceId = {
   REDDIT: 'rd_topby',
   REDDIT_SEARCH: 'rd_searchby'
 }
-const _isArr = Array.isArray
-, _isStr = v => typeof v === 'string'
-, _isObj = v => v && typeof v === 'object';
 
 const _crSubredditUrl = (
   subreddit
@@ -50,14 +53,12 @@ const _isTitleStartWithTag = (
   }
 };
 
-const _trimStr = v => _isStr(v) ? v.trim() : '';
-
 const _crTitle = (
   title,
   tag
 ) => {
-  const _strTitle = _trimStr(title)
-  , _strTag = _trimStr(tag);
+  const _strTitle = trimStr(title)
+  , _strTag = trimStr(tag);
   return _strTitle && _strTag && !_isTitleStartWithTag(_strTitle, _strTag)
     ? `${_strTitle} (${_strTag})`
     : _strTitle;
@@ -103,11 +104,11 @@ const _fFilterItemBy = (
 ) => {
   const { data } = item || {};
   return data
-    && data.subreddit === subreddit
+    && toLowerCase(data.subreddit) === subreddit
     && !data.over_18
     && !data.quarantine
     && !data.author_is_blocked;
-}
+};
 
 const _crSubredditTitleUrl = (
   title,
@@ -147,11 +148,11 @@ const _crSubredditItem = (
   arr,
   sourceId
 ) => {
-  const item = _isArr(arr)
+  const item = isArr(arr)
     ? arr[0]
     : void 0
   , { data } = item || {};
-  return _isObj(data)
+  return isObj(data)
     ? {
       ..._crTitleAndUrl(data),
       ..._crArticleId(sourceId)
@@ -168,7 +169,7 @@ const _toArticles = (
   , { children } = data || {}
   , { subreddit } = option
   , _items = children.filter(
-      _fFilterItemBy(subreddit)
+      _fFilterItemBy(toLowerCase(subreddit))
     )
   , _articles = crArticles(
      _items,
