@@ -1,0 +1,17 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/utils/isTypeFn.js"
+ ],
+ "file": "../../src/utils/isTypeFn.js",
+ "names": [
+  "isStr",
+  "v",
+  "exports",
+  "isObj",
+  "isArr",
+  "Array",
+  "isArray"
+ ],
+ "mappings": ";;;;AACO,MAAMA,KAAK,GAAGC,CAAC,IAAI,OAAOA,CAAC,KAAK,QAAQ;AAAAC,OAAA,CAAAF,KAAA,GAAAA,KAAA;AACxC,MAAMG,KAAK,GAAGF,CAAC,IAAIA,CAAC,IAAI,OAAOA,CAAC,KAAK,QAAQ;AAAAC,OAAA,CAAAC,KAAA,GAAAA,KAAA;AAE7C,MAAMC,KAAK,GAAAF,OAAA,CAAAE,KAAA,GAAGC,KAAK,CAACC,OAAO"
+}
