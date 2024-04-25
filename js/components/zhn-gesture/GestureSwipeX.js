@@ -45,9 +45,11 @@ const _setEndStyle = (node, isInitialStyle) => {
     });
   }
 };
-const FN_NOOP = () => {};
+const FN_NOOP = () => {},
+  TOP_SCROLL_THRESHOLD = 15;
 const GestureSwipeX = (0, _uiApi.forwardRef)((_ref2, ref) => {
   let {
+    refScrollPane,
     className,
     style,
     children,
@@ -59,17 +61,30 @@ const GestureSwipeX = (0, _uiApi.forwardRef)((_ref2, ref) => {
     _refClientX = (0, _uiApi.useRef)(0),
     _refIsGestureStart = (0, _uiApi.useRef)(false),
     _refIsMoveStart = (0, _uiApi.useRef)(false),
-    _refGestureId = (0, _uiApi.useRef)(),
-    _gestureStartImpl = (0, _uiApi.useCallback)(node => {
-      (0, _uiApi.setRefValue)(_refIsGestureStart, true);
-      _setStartStyle(node);
+    _refGestureId = (0, _uiApi.useRef)()
+
+    /*eslint-disable react-hooks/exhaustive-deps */,
+    _gestureStartImpl = (0, _uiApi.useCallback)((node, scrollTopPrev) => {
+      const {
+        scrollTop
+      } = (0, _uiApi.getRefValue)(refScrollPane) || {};
+      if (Math.abs(scrollTop - scrollTopPrev) < TOP_SCROLL_THRESHOLD) {
+        (0, _uiApi.setRefValue)(_refIsGestureStart, true);
+        _setStartStyle(node);
+      }
     }, [])
+    //refScrollPane
+    /*eslint-enable react-hooks/exhaustive-deps */
+
     /*eslint-disable react-hooks/exhaustive-deps */,
     _gestureStart = (0, _uiApi.useCallback)(evt => {
       if (evt.target.tagName !== 'A') {
-        const node = evt.currentTarget;
+        const node = evt.currentTarget,
+          {
+            scrollTop
+          } = (0, _uiApi.getRefValue)(refScrollPane) || {};
         if (!(0, _uiApi.getRefValue)(_refIsGestureStart)) {
-          (0, _uiApi.setRefValue)(_refGestureId, setTimeout(() => _gestureStartImpl(node), LONG_TOUCH));
+          (0, _uiApi.setRefValue)(_refGestureId, setTimeout(() => _gestureStartImpl(node, scrollTop), LONG_TOUCH));
         } else {
           clearTimeout((0, _uiApi.getRefValue)(_refGestureId));
           (0, _uiApi.setRefValue)(_refIsGestureStart, false);
@@ -136,6 +151,5 @@ const GestureSwipeX = (0, _uiApi.forwardRef)((_ref2, ref) => {
     children: children
   });
 });
-var _default = GestureSwipeX;
-exports.default = _default;
+var _default = exports.default = GestureSwipeX;
 //# sourceMappingURL=GestureSwipeX.js.map
