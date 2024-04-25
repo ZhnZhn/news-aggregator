@@ -3,7 +3,8 @@ export {
 } from '../../utils/localStorageFn';
 export {
   FONT_SIZE_OPTIONS,
-  selectFontSize
+  selectFontSize,
+  getFontSize
 } from './propertyFontSize';
 export {
   THEME_NAME,
@@ -11,28 +12,22 @@ export {
 } from './propertyThemeName';
 
 import {
+  LS_IS,
+  LS_UI_THEME_KEY
+} from '../../flux/LS';
+import {
   readFromLs,
   writeToLs,
-  initAllowUseLs,
-  allowUseLs,
-  notAllowUseLs,
-  removeItem
+  initAllowUseLs
 } from '../../utils/localStorageFn';
 
 import {
   initFontSize,
-  getFontSize
 } from './propertyFontSize';
 import {
   THEME_NAME,
   crInitialThemeName
 } from './propertyThemeName';
-
-import {
-  LS_IS,
-  LS_UI_THEME_KEY,
-  LS_FONT_SIZE_KEY
-} from './LS';
 
 const _crRgba = (
   v,
@@ -158,15 +153,4 @@ export const setUiTheme = (
   }
 }
 
-export const allowSaveToLs = () => {
-  allowUseLs()
-  writeToLs(LS_IS, "1")
-  writeToLs(LS_UI_THEME_KEY, _uiTheme.getThemeName())
-  writeToLs(LS_FONT_SIZE_KEY, getFontSize())
-}
-export const notAllowSaveToLs = () => {
-  notAllowUseLs()
-  removeItem(LS_IS)
-  removeItem(LS_UI_THEME_KEY)
-  removeItem(LS_FONT_SIZE_KEY)
-}
+export const getThemeName = () => _uiTheme.getThemeName()

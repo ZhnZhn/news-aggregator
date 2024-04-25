@@ -5,9 +5,9 @@ exports.__esModule = true;
 exports.selectFontSize = exports.initFontSize = exports.getFontSize = exports.FONT_SIZE_OPTIONS = void 0;
 var _has = require("../has");
 var _localStorageFn = require("../../utils/localStorageFn");
+var _LS = require("../../flux/LS");
 var _isNumberInRange = _interopRequireDefault(require("../../utils/isNumberInRange"));
 var _setDfItemTo = _interopRequireDefault(require("./setDfItemTo"));
-var _LS = require("./LS");
 const FONT_SIZE_CONFIG = [[4, 16], [4, 18]];
 const _crFontItem = size => [size + "px", size],
   _crFontSizeOptions = (itemSize, smallSize) => new Array(itemSize).fill('').map((_, index) => _crFontItem(smallSize + index));

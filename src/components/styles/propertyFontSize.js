@@ -6,13 +6,12 @@ import {
   readFromLs,
   writeToLs
 } from '../../utils/localStorageFn';
+import {
+  LS_FONT_SIZE_KEY
+} from '../../flux/LS';
 
 import isNumberInRange from '../../utils/isNumberInRange';
 import setDfItemTo from './setDfItemTo';
-
-import {
-  LS_FONT_SIZE_KEY
-} from './LS';
 
 const FONT_SIZE_CONFIG = [
   [4, 16],

@@ -1,16 +1,17 @@
 "use strict";
 
 exports.__esModule = true;
-exports.setUiTheme = exports.selectFontSize = exports.notAllowSaveToLs = exports.isAllowUseLs = exports.allowSaveToLs = exports.THEME_OPTIONS = exports.FONT_SIZE_OPTIONS = void 0;
+exports.setUiTheme = exports.selectFontSize = exports.isAllowUseLs = exports.getThemeName = exports.getFontSize = exports.THEME_OPTIONS = exports.FONT_SIZE_OPTIONS = void 0;
 var _localStorageFn = require("../../utils/localStorageFn");
 exports.isAllowUseLs = _localStorageFn.isAllowUseLs;
 var _propertyFontSize = require("./propertyFontSize");
 exports.FONT_SIZE_OPTIONS = _propertyFontSize.FONT_SIZE_OPTIONS;
 exports.selectFontSize = _propertyFontSize.selectFontSize;
+exports.getFontSize = _propertyFontSize.getFontSize;
 var _propertyThemeName = require("./propertyThemeName");
 exports.THEME_NAME = _propertyThemeName.THEME_NAME;
 exports.THEME_OPTIONS = _propertyThemeName.THEME_OPTIONS;
-var _LS = require("./LS");
+var _LS = require("../../flux/LS");
 const _crRgba = (v, a) => "rgba(" + v + ", " + v + ", " + v + ", " + a + ")";
 const GREY_BG_HEADER = '#3a6799';
 const GREY_C_HEADER = '#a9a9a9';
@@ -108,18 +109,6 @@ const setUiTheme = item => {
   }
 };
 exports.setUiTheme = setUiTheme;
-const allowSaveToLs = () => {
-  (0, _localStorageFn.allowUseLs)();
-  (0, _localStorageFn.writeToLs)(_LS.LS_IS, "1");
-  (0, _localStorageFn.writeToLs)(_LS.LS_UI_THEME_KEY, _uiTheme.getThemeName());
-  (0, _localStorageFn.writeToLs)(_LS.LS_FONT_SIZE_KEY, (0, _propertyFontSize.getFontSize)());
-};
-exports.allowSaveToLs = allowSaveToLs;
-const notAllowSaveToLs = () => {
-  (0, _localStorageFn.notAllowUseLs)();
-  (0, _localStorageFn.removeItem)(_LS.LS_IS);
-  (0, _localStorageFn.removeItem)(_LS.LS_UI_THEME_KEY);
-  (0, _localStorageFn.removeItem)(_LS.LS_FONT_SIZE_KEY);
-};
-exports.notAllowSaveToLs = notAllowSaveToLs;
+const getThemeName = () => _uiTheme.getThemeName();
+exports.getThemeName = getThemeName;
 //# sourceMappingURL=uiTheme.js.map

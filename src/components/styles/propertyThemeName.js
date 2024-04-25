@@ -1,9 +1,11 @@
 import {
   readFromLs
 } from '../../utils/localStorageFn';
+import {
+  LS_UI_THEME_KEY
+} from '../../flux/LS';
 
 import setDfItemTo from './setDfItemTo';
-import { LS_UI_THEME_KEY } from './LS';
 
 export const THEME_NAME = {
   DF: 'GREY',
