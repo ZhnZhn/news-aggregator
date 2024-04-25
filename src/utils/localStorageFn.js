@@ -1,5 +1,6 @@
 const FN_IDENTITY = str => str
 , KEY_PREFIX = 'NA'
+, STR_BOOLEAN_TRUE = 'TRUE'
 , LS = window.localStorage
 , _toBase64 = window.btoa || FN_IDENTITY
 , _fromBase64 = window.atob || FN_IDENTITY
@@ -19,6 +20,11 @@ export const allowUseLs = () => {
 }
 export const notAllowUseLs = () => {
   _isAllowUseLs = false
+  try {
+    LS.clear()
+  } catch(err) {
+    console.log(err)
+  }
 }
 
 const _crStorageKey = (
@@ -30,12 +36,27 @@ export const readFromLs = (
 ) => {
   if (hasLocalStorage) {
     try {
-      return [_fromBase64(LS[_crStorageKey(storageKey)])];
+      const _value = _fromBase64(LS[_crStorageKey(storageKey)]);
+      return [_value === STR_BOOLEAN_TRUE ? true : _value];
     } catch(err) {
       return [void 0, err];
     }
   } else {
     return [void 0, {...ERR_LS_IS_ABSENT}];
+  }
+}
+
+export const removeItem = (
+  storageKey
+) => {
+  if (hasLocalStorage) {
+    try {
+      LS.removeItem(_crStorageKey(storageKey))
+    } catch(err) {
+      return err;
+    }
+  } else {
+    return {...ERR_LS_IS_ABSENT};
   }
 }
 
@@ -46,23 +67,14 @@ export const writeToLs = (
   if (!_isAllowUseLs) {
     return {...ERR_USE_LS_NOT_ALLOWED};
   }
+  if (typeof value === "boolean") {
+    return value
+      ? writeToLs(storageKey, STR_BOOLEAN_TRUE)
+      : removeItem(storageKey);
+  }
   if (hasLocalStorage) {
     try {
       LS[_crStorageKey(storageKey)] = _toBase64(value)
-    } catch(err) {
-      return err;
-    }
-  } else {
-    return {...ERR_LS_IS_ABSENT};
-  }
-}
-
-export const removeItem = (
-  storageKey
-) => {
-  if (hasLocalStorage) {
-    try {
-      LS.removeItem(_crStorageKey(storageKey))
     } catch(err) {
       return err;
     }
