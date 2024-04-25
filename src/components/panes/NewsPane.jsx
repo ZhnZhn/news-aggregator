@@ -67,6 +67,7 @@ const _crPaneCaption = (
 const _crArticleItem = (
   article,
   index, {
+  refScrollPane,
   Item,
   refFirstItem,
   onCloseItem,
@@ -74,6 +75,7 @@ const _crArticleItem = (
 }) => (
   <Item
     ref={index === 0 ? refFirstItem : void 0}
+    refScrollPane={refScrollPane}
     key={article.articleId}
     item={article}
     onCloseItem={onCloseItem}
@@ -125,6 +127,7 @@ const NewsPane = ({
   onCloseItem
 }) => {
   const _refRootDiv = useRef()
+  , _refScrollPane = useRef()
   , _refFirstItem = useRef()
   /*eslint-disable react-hooks/exhaustive-deps */
   , _MORE_HANDLERS = useMemo(
@@ -257,6 +260,7 @@ const NewsPane = ({
         />
       </A.BrowserCaption>
       <A.ScrollPane
+         refScrollPane={_refScrollPane}
          style={S_SCROLL_DIV}
       >
          {isRelatedBars && _maxValue && <ItemBarChart
@@ -268,6 +272,7 @@ const NewsPane = ({
          <A.ItemStack
            items={articles}
            crItem={_crArticleItem}
+           refScrollPane={_refScrollPane}
            Item={Item}
            refFirstItem={_refFirstItem}
            onCloseItem={onCloseItem}

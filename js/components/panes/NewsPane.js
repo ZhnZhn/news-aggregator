@@ -35,6 +35,7 @@ const _toStyleWidth = width => width + 'px';
 const _crPaneCaption = (caption, sortBy) => [caption, sortBy].filter(Boolean).map(_uiApi.toFirstUpperCase).join(': ');
 const _crArticleItem = (article, index, _ref) => {
   let {
+    refScrollPane,
     Item,
     refFirstItem,
     onCloseItem,
@@ -42,6 +43,7 @@ const _crArticleItem = (article, index, _ref) => {
   } = _ref;
   return (0, _jsxRuntime.jsx)(Item, {
     ref: index === 0 ? refFirstItem : void 0,
+    refScrollPane: refScrollPane,
     item: article,
     onCloseItem: onCloseItem,
     onRemoveUnder: onRemoveUnder
@@ -85,6 +87,7 @@ const NewsPane = _ref2 => {
     onCloseItem
   } = _ref2;
   const _refRootDiv = (0, _uiApi.useRef)(),
+    _refScrollPane = (0, _uiApi.useRef)(),
     _refFirstItem = (0, _uiApi.useRef)()
     /*eslint-disable react-hooks/exhaustive-deps */,
     _MORE_HANDLERS = (0, _uiApi.useMemo)(() => _crModelMoreHandlers(_refRootDiv, onRemoveItems), []),
@@ -177,6 +180,7 @@ const NewsPane = _ref2 => {
         onMinusWidth: onMinusWidth
       })
     }), (0, _jsxRuntime.jsxs)(_Comp.default.ScrollPane, {
+      refScrollPane: _refScrollPane,
       style: S_SCROLL_DIV,
       children: [isRelatedBars && _maxValue && (0, _jsxRuntime.jsx)(_ItemBarChart.default, {
         categoryBars: _categoryBars,
@@ -185,6 +189,7 @@ const NewsPane = _ref2 => {
       }), (0, _jsxRuntime.jsx)(_Comp.default.ItemStack, {
         items: articles,
         crItem: _crArticleItem,
+        refScrollPane: _refScrollPane,
         Item: Item,
         refFirstItem: _refFirstItem,
         onCloseItem: onCloseItem,
@@ -195,6 +200,5 @@ const NewsPane = _ref2 => {
     })]
   });
 };
-var _default = NewsPane;
-exports.default = _default;
+var _default = exports.default = NewsPane;
 //# sourceMappingURL=NewsPane.js.map
