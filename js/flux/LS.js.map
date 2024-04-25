@@ -1,0 +1,15 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/flux/LS.js"
+ ],
+ "file": "../../src/flux/LS.js",
+ "names": [
+  "LS_IS",
+  "exports",
+  "LS_UI_THEME_KEY",
+  "LS_FONT_SIZE_KEY",
+  "LS_IS_ADVANCED_INPUT_OPTIONS"
+ ],
+ "mappings": ";;;;AAAO,MAAMA,KAAK,GAAAC,OAAA,CAAAD,KAAA,GAAG,IAAI;AAClB,MAAME,eAAe,GAAAD,OAAA,CAAAC,eAAA,GAAG,SAAS;AACjC,MAAMC,gBAAgB,GAAAF,OAAA,CAAAE,gBAAA,GAAG,UAAU;AAEnC,MAAMC,4BAA4B,GAAAH,OAAA,CAAAG,4BAAA,GAAG,QAAQ"
+}

@@ -1,0 +1,29 @@
+{
+ "version": 3,
+ "sources": [
+  "../../src/flux/localStore.js"
+ ],
+ "file": "../../src/flux/localStore.js",
+ "names": [
+  "_localStorageFn",
+  "require",
+  "exports",
+  "isAllowUseLs",
+  "_uiTheme",
+  "_uiStore",
+  "_LS",
+  "allowSaveToLs",
+  "allowUseLs",
+  "writeToLs",
+  "LS_IS",
+  "LS_UI_THEME_KEY",
+  "getThemeName",
+  "LS_FONT_SIZE_KEY",
+  "getFontSize",
+  "LS_IS_ADVANCED_INPUT_OPTIONS",
+  "isAdvancedInputOptions",
+  "notAllowSaveToLs",
+  "notAllowUseLs"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,eAAA,GAAAC,OAAA;AAEiCC,OAAA,CAAAC,YAAA,GAAAH,eAAA,CAAAG,YAAA;AAQjC,IAAAC,QAAA,GAAAH,OAAA;AAKA,IAAAI,QAAA,GAAAJ,OAAA;AAIA,IAAAK,GAAA,GAAAL,OAAA;AAOO,MAAMM,aAAa,GAAGA,CAAA,KAAM;EACjC,IAAAC,0BAAU,EAAC,CAAC;EACZ,IAAAC,yBAAS,EAACC,SAAK,EAAE,IAAI,CAAC;EACtB,IAAAD,yBAAS,EAACE,mBAAe,EAAE,IAAAC,qBAAY,EAAC,CAAC,CAAC;EAC1C,IAAAH,yBAAS,EAACI,oBAAgB,EAAE,IAAAC,oBAAW,EAAC,CAAC,CAAC;EAC1C,IAAAL,yBAAS,EAACM,gCAA4B,EAAE,IAAAC,+BAAsB,EAAC,CAAC,CAAC;AACnE,CAAC;AAAAd,OAAA,CAAAK,aAAA,GAAAA,aAAA;AACM,MAAMU,gBAAgB,GAAAf,OAAA,CAAAe,gBAAA,GAAGC,6BAAa"
+}
