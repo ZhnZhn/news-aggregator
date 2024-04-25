@@ -4,13 +4,19 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiTheme = require("../styles/uiTheme");
+var _localStore = require("../../flux/localStore");
+var _uiStore = require("../../flux/uiStore");
 var _Comp = _interopRequireDefault(require("../Comp"));
 var _RowCheckBox = _interopRequireDefault(require("../dialogs/RowCheckBox"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_ROW_CHECKBOX_LS = {
-    margin: '12px 0 34px 16px'
+    margin: '12px 0 12px 16px'
   },
-  IS_ALLOW_USE_LS = (0, _uiTheme.isAllowUseLs)();
+  S_VERTICAL_GAP_22 = {
+    height: 22
+  },
+  IS_ALLOW_USE_LS = (0, _localStore.isAllowUseLs)(),
+  IS_ADVANCED_INPUT_OPTIONS = (0, _uiStore.isAdvancedInputOptions)();
 const CardUiTheme = _ref => {
   let {
     style,
@@ -39,8 +45,16 @@ const CardUiTheme = _ref => {
       style: S_ROW_CHECKBOX_LS,
       initialValue: IS_ALLOW_USE_LS,
       caption: "Allow use localStorage",
-      onCheck: _uiTheme.allowSaveToLs,
-      onUnCheck: _uiTheme.notAllowSaveToLs
+      onCheck: _localStore.allowSaveToLs,
+      onUnCheck: _localStore.notAllowSaveToLs
+    }), (0, _jsxRuntime.jsx)(_RowCheckBox.default, {
+      style: S_ROW_CHECKBOX_LS,
+      initialValue: IS_ADVANCED_INPUT_OPTIONS,
+      caption: "Advanced input options",
+      onCheck: _uiStore.enableAdvancedInputOptions,
+      onUnCheck: _uiStore.disableAndvancedInputOptions
+    }), (0, _jsxRuntime.jsx)("div", {
+      style: S_VERTICAL_GAP_22
     }), (0, _jsxRuntime.jsx)("div", {
       style: buttonsStyle,
       children: (0, _jsxRuntime.jsx)(_Comp.default.RaisedButton, {

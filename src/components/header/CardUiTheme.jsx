@@ -2,19 +2,32 @@ import {
   THEME_OPTIONS,
   FONT_SIZE_OPTIONS,
   setUiTheme,
-  selectFontSize,
+  selectFontSize
+} from '../styles/uiTheme';
+
+import {
   isAllowUseLs,
   allowSaveToLs,
   notAllowSaveToLs
-} from '../styles/uiTheme';
+} from '../../flux/localStore';
+
+import {
+  isAdvancedInputOptions,
+  enableAdvancedInputOptions,
+  disableAndvancedInputOptions
+} from '../../flux/uiStore';
 
 import A from '../Comp';
 import RowCheckBox from '../dialogs/RowCheckBox';
 
 const S_ROW_CHECKBOX_LS = {
-  margin: '12px 0 34px 16px'
+  margin: '12px 0 12px 16px'
 }
-, IS_ALLOW_USE_LS = isAllowUseLs();
+, S_VERTICAL_GAP_22 = {
+  height: 22
+}
+, IS_ALLOW_USE_LS = isAllowUseLs()
+, IS_ADVANCED_INPUT_OPTIONS = isAdvancedInputOptions();
 
 const CardUiTheme = ({
   style,
@@ -47,6 +60,14 @@ const CardUiTheme = ({
         onCheck={allowSaveToLs}
         onUnCheck={notAllowSaveToLs}
       />
+      <RowCheckBox
+        style={S_ROW_CHECKBOX_LS}
+        initialValue={IS_ADVANCED_INPUT_OPTIONS}
+        caption="Advanced input options"
+        onCheck={enableAdvancedInputOptions}
+        onUnCheck={disableAndvancedInputOptions}
+      />
+      <div style={S_VERTICAL_GAP_22} />
       <div style={buttonsStyle}>
         <A.RaisedButton
           refBt={isVisible ? setRefLast : void 0}
