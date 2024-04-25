@@ -104,8 +104,8 @@ const TextField = forwardRef(({
       setValue('')
       onInputChange('', id)
     }
-  ], [])
-  // onTest, onInputChange, id
+  ], [onInputChange])
+  // onTest, id
   , _compSvgX = useMemo(() => <SvgX
      color="black"
      className={CL_BT_SVG_CLEAR}
@@ -141,9 +141,9 @@ const TextField = forwardRef(({
         onKeyDown(evt)
       }
     }
-  ], [])
+  ], [onInputChange])
   //onTest, onBlur, _blurInput, id
-  //onTest, onInputChange
+  //onTest,
   //onTest, onEnter, onKeyDown, id
   /*eslint-enable react-hooks/exhaustive-deps */
 

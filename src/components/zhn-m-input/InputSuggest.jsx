@@ -16,6 +16,10 @@ import {
 } from '../uiApi';
 
 import {
+  useIsAdvancedInputOptions
+} from '../../flux/uiStore';
+
+import {
   CL_SELECT_NONE,
   crStyle2
 } from '../crStyle';
@@ -76,7 +80,9 @@ const InputSuggest = ({
   options,
   onSelect
 }) => {
-  const _refTf = useRef()
+  const _isAdvancedInputOptions = useIsAdvancedInputOptions()
+  , _isInput = !!(isInput && _isAdvancedInputOptions)
+  , _refTf = useRef()
   , _refBtArrow = useRef()
   , _refOp = useRef()
   , _refFilterId = useRef()
@@ -185,7 +191,7 @@ const InputSuggest = ({
       [options]
   )
 
-  /*eslint-disable react-hooks/exhaustive-deps */
+  /*eslint-disabl react-hooks/exhaustive-deps */
   , _hInputChange = useMemo(() => (token, id) => {
        const _token = (token || '')
          .trim()
@@ -198,7 +204,7 @@ const InputSuggest = ({
             )
             , _items = _nextItems.length
                 ? _nextItems
-                : isInput
+                : _isInput
                     ? [[token]]
                     : EMPTY_OPTIONS;
             setRefValue(_refItem, _items[0])
@@ -211,7 +217,7 @@ const InputSuggest = ({
        } else {
          _clearItem()
        }
-  }, [_getSearchOptions, _clearItem, isInput])
+  }, [_isInput, _getSearchOptions, _clearItem, dispatch])
   //dispatch
   /*eslint-enable react-hooks/exhaustive-deps */
 
@@ -241,7 +247,6 @@ const InputSuggest = ({
           }
         }
       : void 0;
-
 
   return (
     <div

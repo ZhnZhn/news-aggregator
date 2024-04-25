@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _uiStore = require("../../flux/uiStore");
 var _crStyle = require("../crStyle");
 var _has = require("../has");
 var _useAriaCombobox = _interopRequireDefault(require("./useAriaCombobox"));
@@ -39,7 +40,9 @@ const InputSuggest = _ref => {
     options,
     onSelect
   } = _ref;
-  const _refTf = (0, _uiApi.useRef)(),
+  const _isAdvancedInputOptions = (0, _uiStore.useIsAdvancedInputOptions)(),
+    _isInput = !!(isInput && _isAdvancedInputOptions),
+    _refTf = (0, _uiApi.useRef)(),
     _refBtArrow = (0, _uiApi.useRef)(),
     _refOp = (0, _uiApi.useRef)(),
     _refFilterId = (0, _uiApi.useRef)(),
@@ -114,21 +117,21 @@ const InputSuggest = _ref => {
       return item;
     })), [options])
 
-    /*eslint-disable react-hooks/exhaustive-deps */,
+    /*eslint-disabl react-hooks/exhaustive-deps */,
     _hInputChange = (0, _uiApi.useMemo)(() => (token, id) => {
       const _token = (token || '').trim().toLowerCase();
       if (_token) {
         clearTimeout((0, _uiApi.getRefValue)(_refFilterId));
         (0, _uiApi.setRefValue)(_refFilterId, setTimeout(() => {
           const _nextItems = _getSearchOptions().filter(item => item._t.indexOf(_token) !== -1),
-            _items = _nextItems.length ? _nextItems : isInput ? [[token]] : _useOptionsPane.EMPTY_OPTIONS;
+            _items = _nextItems.length ? _nextItems : _isInput ? [[token]] : _useOptionsPane.EMPTY_OPTIONS;
           (0, _uiApi.setRefValue)(_refItem, _items[0]);
           dispatch([_useOptionsPane.ACTION_SHOW_OPTIONS, _items]);
         }, FILTER_TIME_OUT_MLS));
       } else {
         _clearItem();
       }
-    }, [_getSearchOptions, _clearItem, isInput])
+    }, [_isInput, _getSearchOptions, _clearItem, dispatch])
     //dispatch
     /*eslint-enable react-hooks/exhaustive-deps */
 

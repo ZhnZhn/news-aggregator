@@ -63,8 +63,8 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
     }, evt => {
       setValue('');
       onInputChange('', id);
-    }], [])
-    // onTest, onInputChange, id
+    }], [onInputChange])
+    // onTest, id
     ,
     _compSvgX = (0, _uiApi.useMemo)(() => (0, _jsxRuntime.jsx)(_SvgX.default, {
       color: "black",
@@ -94,9 +94,9 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
       } else {
         onKeyDown(evt);
       }
-    }], []);
+    }], [onInputChange]);
   //onTest, onBlur, _blurInput, id
-  //onTest, onInputChange
+  //onTest,
   //onTest, onEnter, onKeyDown, id
   /*eslint-enable react-hooks/exhaustive-deps */
 
