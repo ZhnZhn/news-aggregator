@@ -16,6 +16,7 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const FN_NOOP = () => {};
 const Article = (0, _uiApi.forwardRef)((_ref, ref) => {
   let {
+    refScrollPane,
     item,
     onCloseItem,
     onRemoveUnder = FN_NOOP,
@@ -79,6 +80,7 @@ const Article = (0, _uiApi.forwardRef)((_ref, ref) => {
     _href = (0, _uiApi.toLink)(url);
   return url && !_href ? null : (0, _jsxRuntime.jsx)(_GestureSwipeX.default, {
     ref: _refArticle,
+    refScrollPane: refScrollPane,
     style: {
       ..._Item.S_ITEM,
       ..._style
@@ -106,6 +108,5 @@ const Article = (0, _uiApi.forwardRef)((_ref, ref) => {
     })
   });
 });
-var _default = Article;
-exports.default = _default;
+var _default = exports.default = Article;
 //# sourceMappingURL=Article.js.map
