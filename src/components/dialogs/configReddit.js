@@ -55,6 +55,7 @@ export const SUBRREDIT_OPTIONS = [
 ["europe"],
 ["Finance"],
 ["sustainableFinance"],
+["FinancialIndependence"],
 ["html5"],
 ["javascript"],
 ["typescript"],
