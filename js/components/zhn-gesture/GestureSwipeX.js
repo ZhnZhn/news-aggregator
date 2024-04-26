@@ -134,7 +134,8 @@ const GestureSwipeX = (0, _uiApi.forwardRef)((_ref2, ref) => {
     _handlers = (0, _uiApi.useMemo)(() => _has.HAS_TOUCH_EVENTS ? void 0 : {
       onMouseDown: _gestureStart,
       onMouseMove: _gestureMove,
-      onMouseUp: _gestureEnd
+      onMouseUp: _gestureEnd,
+      onMouseLeave: _gestureEnd
     }, []);
   // _gestureStart, _gestureMove, _gestureEnd
   /*eslint-enable react-hooks/exhaustive-deps */

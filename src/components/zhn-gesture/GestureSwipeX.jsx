@@ -152,7 +152,8 @@ const GestureSwipeX = forwardRef(({
        : {
            onMouseDown: _gestureStart,
            onMouseMove: _gestureMove,
-           onMouseUp: _gestureEnd
+           onMouseUp: _gestureEnd,
+           onMouseLeave: _gestureEnd
        }, []);
    // _gestureStart, _gestureMove, _gestureEnd
    /*eslint-enable react-hooks/exhaustive-deps */
