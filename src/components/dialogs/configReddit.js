@@ -10,6 +10,7 @@ export const SUBRREDIT_OPTIONS = [
 ["askscience"],
 ["artificial"],
 ["AItoolsCatalog"],
+["aidevtools"],
 ["ChatGPT"],
 ["ChatGPTPro"],
 ["ChatGPTCoding"],
