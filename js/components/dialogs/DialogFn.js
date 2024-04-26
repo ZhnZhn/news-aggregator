@@ -26,7 +26,7 @@ const _crObject = Object.create,
     const _type = arrConfig[0];
     return _type === _InputTypes.INPUT_TYPE_SELECT || _type === _InputTypes.INPUT_TYPE_SUGGEST ? (0, _OptionFn.getItemValue)(arrConfig[4]) : _type === _InputTypes.INPUT_TYPE_TEXT_FIELD ? arrConfig[3] : void 0;
   },
-  _hasShow = (inputConfigs, arrConfig) => inputConfigs.length === 1 ? true : arrConfig[arrConfig.length - 1] === true ? true : false;
+  _hasShow = (inputConfigs, arrConfig) => inputConfigs.length === 1 ? true : arrConfig[5] === true;
 const crDfInputs = inputConfigs => inputConfigs.reduce((r, arrConfig) => {
   const _isShow = _hasShow(inputConfigs, arrConfig);
   r[0][_getId(arrConfig)] = _getDfValue(arrConfig);

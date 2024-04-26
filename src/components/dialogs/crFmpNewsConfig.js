@@ -4,7 +4,7 @@ import {
   fGetDialogConfig
 } from './DialogFn';
 
-const DF_SYMBOL = "AAPL"
+const DF_SYMBOL = "AMD"
 , _crInputConfigs = () => [
   crTextFieldConfig("symbol", {caption: "Stock Symbol", dfValue: DF_SYMBOL, inputProps: crInputProps()})
 ];

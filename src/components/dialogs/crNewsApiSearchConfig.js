@@ -13,7 +13,7 @@ const SORT_BY_OPTIONS = [
 , DF_TERM = "Weather"
 , _crInputConfigs = () => [
   crTextFieldConfig('symbol', {caption: crTextFieldCaption('Term', DF_TERM), dfValue: DF_TERM, is:true }),
-  crInputSelectConfig('sortBy', SORT_BY_OPTIONS, { is: true })
+  crInputSelectConfig('sortBy', SORT_BY_OPTIONS)
 ];
 
 export const getNewsApiSearchConfig = fGetDialogConfig(_crInputConfigs)

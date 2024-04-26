@@ -73,8 +73,8 @@ const LOCALE_OPTIONS = [
   ["The Verge", "theverge.com"],
 ]
 , _crInputConfigs = () => [
-  crInputSelectConfig('category', CATEGORY_OPTIONS, {is: true}),
   crInputSelectConfig('locale', LOCALE_OPTIONS, {is: true}),
+  crInputSelectConfig('category', CATEGORY_OPTIONS),
   crInputSelectConfig('domain', DOMAIN_OPTIONS)
 ];
 

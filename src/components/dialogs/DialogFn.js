@@ -20,7 +20,6 @@ import {
   getItemValue
 } from '../zhn-m-input/OptionFn';
 
-
 export const crInputProps = (
   maxLength='10'
 ) => ({
@@ -48,9 +47,7 @@ const _crObject = Object.create
   arrConfig
 ) => inputConfigs.length === 1
   ? true
-  : arrConfig[arrConfig.length-1] === true
-      ? true
-      : false;
+  : arrConfig[5] === true;
 
 export const crDfInputs = (
   inputConfigs

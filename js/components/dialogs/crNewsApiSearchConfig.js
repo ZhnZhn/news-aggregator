@@ -9,9 +9,6 @@ const SORT_BY_OPTIONS = [["Relevancy", "relevancy"], ["Popularity", "popularity"
     caption: (0, _DialogFn.crTextFieldCaption)('Term', DF_TERM),
     dfValue: DF_TERM,
     is: true
-  }), (0, _DialogFn.crInputSelectConfig)('sortBy', SORT_BY_OPTIONS, {
-    is: true
-  })];
-const getNewsApiSearchConfig = (0, _DialogFn.fGetDialogConfig)(_crInputConfigs);
-exports.getNewsApiSearchConfig = getNewsApiSearchConfig;
+  }), (0, _DialogFn.crInputSelectConfig)('sortBy', SORT_BY_OPTIONS)];
+const getNewsApiSearchConfig = exports.getNewsApiSearchConfig = (0, _DialogFn.fGetDialogConfig)(_crInputConfigs);
 //# sourceMappingURL=crNewsApiSearchConfig.js.map

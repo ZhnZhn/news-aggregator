@@ -76,8 +76,8 @@ const _CATEGORY = [
   ]
 , DF_COUNTRY = COUNTRY_OPTIONS[52]
 , _crInputConfigs = () => [
-  crInputSelectConfig('category', CATEGORY_OPTIONS, { is: true }),
-  crInputSelectConfig('country', COUNTRY_OPTIONS, { dfOption: DF_COUNTRY, is:true })
+  crInputSelectConfig('country', COUNTRY_OPTIONS, { dfOption: DF_COUNTRY, is:true }),
+  crInputSelectConfig('category', CATEGORY_OPTIONS),
 ];
 
 export const getNewsApiTopConfig = fGetDialogConfig(_crInputConfigs)

@@ -9,9 +9,7 @@ const FEED_OPTIONS = [['All', 'ALL_NEWS_FEEDS'], ['Decrypt', 'decrypt'], ['CoinD
   _crInputConfigs = () => [(0, _DialogFn.crInputSelectConfig)("category", CATEGORY_OPTIONS, {
     is: true
   }), (0, _DialogFn.crInputSelectConfig)("feed", FEED_OPTIONS), (0, _DialogFn.crInputSelectConfig)("sortOrder", SORTBY_OPTIONS, {
-    caption: "SortBy",
-    is: true
+    caption: "SortBy"
   })];
-const getCryptoCompareConfig = (0, _DialogFn.fGetDialogConfig)(_crInputConfigs);
-exports.getCryptoCompareConfig = getCryptoCompareConfig;
+const getCryptoCompareConfig = exports.getCryptoCompareConfig = (0, _DialogFn.fGetDialogConfig)(_crInputConfigs);
 //# sourceMappingURL=crCryptoCompareConfig.js.map

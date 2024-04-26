@@ -13,10 +13,10 @@ const RECENT_OPTIONS = [
   ["50 News", "50"],
 ]
 , DF_RECENT = RECENT_OPTIONS[1]
-, DF_SYMBOL = "AAPL"
+, DF_SYMBOL = "AMD"
 , _crInputConfigs = () => [
   crTextFieldConfig("symbol", {caption: "Stock Symbol", dfValue: DF_SYMBOL, inputProps: crInputProps(), is: true}),
-  crInputSelectConfig("recent", RECENT_OPTIONS, {dfOption: DF_RECENT, is: true})
+  crInputSelectConfig("recent", RECENT_OPTIONS, {dfOption: DF_RECENT})
 ];
 
 export const getIexCloudNewsConfig = fGetDialogConfig(_crInputConfigs);

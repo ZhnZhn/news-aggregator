@@ -33,10 +33,10 @@ const TOPIC_OPTIONS = [
   ['Limit 100', '100'],
   ['Limit 200', '200']
 ]
-, DF_TICKERS = ""
+, DF_TICKERS = "AMD"
 , _crInputConfigs = () => [
-  crTextFieldConfig("tickers", { dfValue: DF_TICKERS, inputProps: crInputProps(16), is: true}),
-  crInputSelectConfig("topics", TOPIC_OPTIONS, {is: true}),
+  crTextFieldConfig("tickers", { caption: "Stock Symbol", dfValue: DF_TICKERS, inputProps: crInputProps(16), is: true}),
+  crInputSelectConfig("topics", TOPIC_OPTIONS),
   crInputSelectConfig("sortBy", SORTBY_OPTIONS),
   crInputSelectConfig("limit", LIMIT_OPTIONS)
 ];
