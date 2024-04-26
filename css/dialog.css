@@ -1,4 +1,5 @@
 .dialog {
+  min-width: 280px;
   border: solid 2px #3a6799;
   border: solid 2px var(--h-bg, #3a6799);
 }
