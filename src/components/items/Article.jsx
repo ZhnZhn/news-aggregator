@@ -25,7 +25,6 @@ import {
 const FN_NOOP = () => {};
 
 const Article = forwardRef(({
-  refScrollPane,
   item,
   onCloseItem,
   onRemoveUnder=FN_NOOP,
@@ -101,8 +100,7 @@ const Article = forwardRef(({
 
   return url && !_href ? null : (
     <GestureSwipeX
-      ref={_refArticle}
-      refScrollPane={refScrollPane}
+      ref={_refArticle}      
       style={{...S_ITEM, ..._style}}
       setTimeStamp={setTimeStamp}
       onGesture={_onGestureSwipeX}

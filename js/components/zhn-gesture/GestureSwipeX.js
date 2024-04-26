@@ -49,7 +49,6 @@ const FN_NOOP = () => {},
   TOP_SCROLL_THRESHOLD = 15;
 const GestureSwipeX = (0, _uiApi.forwardRef)((_ref2, ref) => {
   let {
-    refScrollPane,
     className,
     style,
     children,
@@ -59,41 +58,43 @@ const GestureSwipeX = (0, _uiApi.forwardRef)((_ref2, ref) => {
   const _ref = (0, _uiApi.useRef)(),
     _refItem = ref || _ref,
     _refClientX = (0, _uiApi.useRef)(0),
+    _refClientY = (0, _uiApi.useRef)(0),
+    _refNodeEl = (0, _uiApi.useRef)(null),
     _refIsGestureStart = (0, _uiApi.useRef)(false),
     _refIsMoveStart = (0, _uiApi.useRef)(false),
-    _refGestureId = (0, _uiApi.useRef)()
-
-    /*eslint-disable react-hooks/exhaustive-deps */,
-    _gestureStartImpl = (0, _uiApi.useCallback)((node, scrollTopPrev) => {
-      const {
-        scrollTop
-      } = (0, _uiApi.getRefValue)(refScrollPane) || {};
-      if (Math.abs(scrollTop - scrollTopPrev) < TOP_SCROLL_THRESHOLD) {
-        (0, _uiApi.setRefValue)(_refIsGestureStart, true);
-        _setStartStyle(node);
+    _refGestureId = (0, _uiApi.useRef)(),
+    _clearGestureId = (0, _uiApi.useCallback)(() => {
+      clearTimeout((0, _uiApi.getRefValue)(_refGestureId));
+      (0, _uiApi.setRefValue)(_refIsGestureStart, false);
+      (0, _uiApi.setRefValue)(_refClientY, 0);
+      const _nodeEl = (0, _uiApi.getRefValue)(_refNodeEl);
+      if (_nodeEl) {
+        _setEndStyle(_nodeEl, true);
+        (0, _uiApi.setRefValue)(_refNodeEl, null);
       }
+    }, []),
+    _gestureStartImpl = (0, _uiApi.useCallback)(nodeEl => {
+      (0, _uiApi.setRefValue)(_refIsGestureStart, true);
+      _setStartStyle(nodeEl);
     }, [])
-    //refScrollPane
-    /*eslint-enable react-hooks/exhaustive-deps */
 
     /*eslint-disable react-hooks/exhaustive-deps */,
     _gestureStart = (0, _uiApi.useCallback)(evt => {
       if (evt.target.tagName !== 'A') {
-        const node = evt.currentTarget,
-          {
-            scrollTop
-          } = (0, _uiApi.getRefValue)(refScrollPane) || {};
+        const node = evt.currentTarget;
         if (!(0, _uiApi.getRefValue)(_refIsGestureStart)) {
-          (0, _uiApi.setRefValue)(_refGestureId, setTimeout(() => _gestureStartImpl(node, scrollTop), LONG_TOUCH));
+          (0, _uiApi.setRefValue)(_refClientY, (0, _uiApi.getClientY)(evt));
+          (0, _uiApi.setRefValue)(_refNodeEl, node);
+          (0, _uiApi.setRefValue)(_refGestureId, setTimeout(() => _gestureStartImpl(node), LONG_TOUCH));
         } else {
-          clearTimeout((0, _uiApi.getRefValue)(_refGestureId));
-          (0, _uiApi.setRefValue)(_refIsGestureStart, false);
-          _setEndStyle(node, true);
+          _clearGestureId();
         }
       }
     }, [])
     //_gestureStartImpl
-    /*eslint-enable react-hooks/exhaustive-deps */,
+    /*eslint-enable react-hooks/exhaustive-deps */
+
+    /*eslint-disable react-hooks/exhaustive-deps */,
     _gestureMove = (0, _uiApi.useCallback)(evt => {
       _preventDefault(evt);
       if ((0, _uiApi.getRefValue)(_refIsGestureStart)) {
@@ -109,8 +110,16 @@ const GestureSwipeX = (0, _uiApi.forwardRef)((_ref2, ref) => {
             }
           }
         }
+      } else {
+        const _clientYStart = (0, _uiApi.getRefValue)(_refClientY);
+        if (_clientYStart && Math.abs(_clientYStart - (0, _uiApi.getClientY)(evt)) > TOP_SCROLL_THRESHOLD) {
+          _clearGestureId();
+        }
       }
     }, [])
+    // _clearGestureId
+    /*eslint-enable react-hooks/exhaustive-deps */
+
     /*eslint-disable react-hooks/exhaustive-deps */,
     _gestureEnd = (0, _uiApi.useCallback)(evt => {
       if ((0, _uiApi.getRefValue)(_refIsGestureStart)) {
@@ -126,10 +135,10 @@ const GestureSwipeX = (0, _uiApi.forwardRef)((_ref2, ref) => {
         (0, _uiApi.setRefValue)(_refIsGestureStart, false);
         _setEndStyle(evt.currentTarget, _isInitialStyle);
       } else {
-        clearTimeout((0, _uiApi.getRefValue)(_refGestureId));
+        _clearGestureId();
       }
     }, [])
-    // setTimeStamp, onGesture
+    // setTimeStamp, onGesture, _clearGestureId
     ,
     _handlers = (0, _uiApi.useMemo)(() => _has.HAS_TOUCH_EVENTS ? void 0 : {
       onMouseDown: _gestureStart,

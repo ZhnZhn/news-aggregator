@@ -12,7 +12,8 @@ import {
   getRefValue,
   setRefValue,
 
-  getClientX
+  getClientX,
+  getClientY
 } from '../uiApi';
 
 import { HAS_TOUCH_EVENTS } from '../has';
@@ -67,7 +68,6 @@ const FN_NOOP = () => {}
 , TOP_SCROLL_THRESHOLD = 15;
 
 const GestureSwipeX = forwardRef(({
-  refScrollPane,
   className,
   style,
   children,
@@ -77,40 +77,48 @@ const GestureSwipeX = forwardRef(({
   const _ref = useRef()
   , _refItem = ref || _ref
   , _refClientX = useRef(0)
+  , _refClientY = useRef(0)
+  , _refNodeEl = useRef(null)
   , _refIsGestureStart = useRef(false)
   , _refIsMoveStart = useRef(false)
   , _refGestureId = useRef()
 
-  /*eslint-disable react-hooks/exhaustive-deps */
-  , _gestureStartImpl = useCallback((node, scrollTopPrev) => {
-    const { scrollTop } = getRefValue(refScrollPane) || {};
-    if (Math.abs(scrollTop - scrollTopPrev) < TOP_SCROLL_THRESHOLD) {
-      setRefValue(_refIsGestureStart, true)
-      _setStartStyle(node)
-    }
+  , _clearGestureId = useCallback(() => {
+      clearTimeout(getRefValue(_refGestureId))
+      setRefValue(_refIsGestureStart, false)
+      setRefValue(_refClientY, 0)
+      const _nodeEl = getRefValue(_refNodeEl);
+      if (_nodeEl) {
+        _setEndStyle(_nodeEl, true)
+        setRefValue(_refNodeEl, null)
+      }
   }, [])
-  //refScrollPane
-  /*eslint-enable react-hooks/exhaustive-deps */
+
+  , _gestureStartImpl = useCallback(nodeEl => {
+     setRefValue(_refIsGestureStart, true)
+     _setStartStyle(nodeEl)
+  }, [])
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , _gestureStart = useCallback(evt => {
      if (evt.target.tagName !== 'A') {
-       const node = evt.currentTarget
-       , { scrollTop } = getRefValue(refScrollPane) || {}
+       const node = evt.currentTarget;
        if (!getRefValue(_refIsGestureStart)){
+         setRefValue(_refClientY, getClientY(evt))
+         setRefValue(_refNodeEl, node)
          setRefValue(_refGestureId, setTimeout(
-           () => _gestureStartImpl(node, scrollTop),
+           () => _gestureStartImpl(node),
            LONG_TOUCH
          ))
        } else {
-         clearTimeout(getRefValue(_refGestureId))
-         setRefValue(_refIsGestureStart, false)
-         _setEndStyle(node, true)
+         _clearGestureId()
        }
      }
   }, [])
   //_gestureStartImpl
   /*eslint-enable react-hooks/exhaustive-deps */
+
+  /*eslint-disable react-hooks/exhaustive-deps */
   , _gestureMove = useCallback(evt => {
     _preventDefault(evt)
     if (getRefValue(_refIsGestureStart)) {
@@ -126,8 +134,18 @@ const GestureSwipeX = forwardRef(({
           }
         }
       }
+    } else {
+      const _clientYStart = getRefValue(_refClientY);
+      if (_clientYStart
+         && Math.abs(_clientYStart - getClientY(evt)) > TOP_SCROLL_THRESHOLD
+      ) {
+        _clearGestureId()
+      }
     }
   }, [])
+  // _clearGestureId
+  /*eslint-enable react-hooks/exhaustive-deps */
+
   /*eslint-disable react-hooks/exhaustive-deps */
   , _gestureEnd = useCallback(evt => {
     if (getRefValue(_refIsGestureStart)) {
@@ -143,10 +161,10 @@ const GestureSwipeX = forwardRef(({
       setRefValue(_refIsGestureStart, false)
       _setEndStyle(evt.currentTarget, _isInitialStyle)
     } else {
-      clearTimeout(getRefValue(_refGestureId))
+      _clearGestureId()
     }
   }, [])
-  // setTimeStamp, onGesture
+  // setTimeStamp, onGesture, _clearGestureId
   , _handlers = useMemo(() => HAS_TOUCH_EVENTS
        ? void 0
        : {
