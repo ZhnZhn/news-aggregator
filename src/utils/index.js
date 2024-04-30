@@ -6,7 +6,7 @@ export { crLazyValue } from './crLazyValue';
 export { crDescription } from './crDescription';
 export { splitByParagraph } from './splitByParagraph';
 export { formatNumber } from './formatNumber';
-export { formatTimeAgo } from './formatTimeAgo';
+export { safeFormatMls } from './formatDate';
 export { toFirstUpperCase } from './toFirstUpperCase';
 export { joinStrsBy } from './joinStrsBy';
 
