@@ -80,7 +80,7 @@ export const toUTCMillis = (strDate) => {
     const arr = strDate.split('-');
     return Date.UTC(
       arr[0],
-      parseInt(arr[1], 10) - 1, 
+      parseInt(arr[1], 10) - 1,
       arr[2]
     );
   } else {
@@ -131,7 +131,7 @@ export const dateTimeToMls = (
     .split('T')
   , [YYYY, MM, DD] = (strDate || '').split('-')
   , [hh, mm, ss] = (strTime || '').split(':');
-  return toMls(`${YYYY}${MM}${DD}${hh}${mm}${ss}`);
+  return toMls(`${YYYY}${MM}${DD}T${hh}${mm}${Math.round(ss)}`);
 }
 
 const _DF_TO_TIME_DATE_VALUE = 'No Date';

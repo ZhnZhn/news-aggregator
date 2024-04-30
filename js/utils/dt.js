@@ -108,7 +108,7 @@ const dateTimeToMls = strDateTime => {
   const [strDate, strTime] = strDateTime.trim().replace('Z', '').split('T'),
     [YYYY, MM, DD] = (strDate || '').split('-'),
     [hh, mm, ss] = (strTime || '').split(':');
-  return toMls("" + YYYY + MM + DD + hh + mm + ss);
+  return toMls("" + YYYY + MM + DD + "T" + hh + mm + Math.round(ss));
 };
 exports.dateTimeToMls = dateTimeToMls;
 const _DF_TO_TIME_DATE_VALUE = 'No Date';
