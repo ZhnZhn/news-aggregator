@@ -17,7 +17,7 @@ const _crRelated = tokenArr => (tokenArr || []).filter(str => (str || '').indexO
 const _toArticles = (posts, sourceId, lang) => {
   const articles = [],
     _hm = _crHm(),
-    _timeAgoOptions = _utils.formatTimeAgo.crOptions();
+    _nowMls = Date.now();
   if (!_isArr(posts)) {
     return articles;
   }
@@ -44,7 +44,7 @@ const _toArticles = (posts, sourceId, lang) => {
         description: _crDescription(text, lang),
         related: _crRelated(site_categories),
         publishedAt: published,
-        timeAgo: (0, _utils.formatTimeAgo)(published, _timeAgoOptions)
+        timeAgo: (0, _utils.safeFormatMls)(published, _nowMls)
       }));
       _hm[_title] = true;
     }
@@ -69,6 +69,5 @@ const WebzAdapter = {
     };
   }
 };
-var _default = WebzAdapter;
-exports.default = _default;
+var _default = exports.default = WebzAdapter;
 //# sourceMappingURL=WebzAdapter.js.map

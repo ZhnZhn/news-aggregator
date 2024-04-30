@@ -2,7 +2,7 @@ import { IEX_CLOUD } from '../conf/ProviderNames';
 
 import {
   crId,
-  formatTimeAgo,
+  safeFormatMls,
   crDescription
 } from '../utils';
 
@@ -37,7 +37,7 @@ const _crSource = (
 const _toArticles = (
   json
 ) => {
-  const _timeAgoOptions = formatTimeAgo.crOptions()
+  const _nowMls = Date.now()
   , _hmByHeadline = {};
   return _isArr(json) ? json
    .reduce((arr, item, index) => {
@@ -60,7 +60,7 @@ const _toArticles = (
           related: _crRelated(related),
           author: _crAuthor(hasPaywall, _source),
           publishedAt: datetime,
-          timeAgo: formatTimeAgo(datetime, _timeAgoOptions),
+          timeAgo: safeFormatMls(datetime, _nowMls),
           url
       }
       , _hmArticle = _hmByHeadline[headline];

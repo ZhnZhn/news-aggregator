@@ -7,7 +7,7 @@ var _utils = require("../utils");
 var _dt = require("../utils/dt");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
 const SOURCE_ID = 'dt_topby';
-const _crArticle = (item, timeAgoOptions) => {
+const _crArticle = (item, nowMls) => {
   const {
     title,
     user,
@@ -24,7 +24,7 @@ const _crArticle = (item, timeAgoOptions) => {
     description: (0, _utils.crDescription)(positive_reactions_count + " " + reading_time_minutes + "min"),
     author: (user || {}).name,
     related: tags,
-    timeAgo: (0, _utils.formatTimeAgo)((0, _dt.dateTimeToMls)(published_at), timeAgoOptions),
+    timeAgo: (0, _utils.safeFormatMls)((0, _dt.dateTimeToMls)(published_at), nowMls),
     publishedAt: published_at,
     url: canonical_url
   };
@@ -38,6 +38,5 @@ const DevToAdapter = {
     };
   }
 };
-var _default = DevToAdapter;
-exports.default = _default;
+var _default = exports.default = DevToAdapter;
 //# sourceMappingURL=DevToAdapter.js.map

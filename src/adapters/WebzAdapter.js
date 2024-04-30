@@ -1,5 +1,5 @@
 import {
-  formatTimeAgo,
+  safeFormatMls,
   toFirstUpperCase,
   splitByParagraph
 } from '../utils';
@@ -34,7 +34,7 @@ const _toArticles = (
 ) => {
   const articles = [],
   _hm = _crHm()
-  , _timeAgoOptions = formatTimeAgo.crOptions();
+  , _nowMls = Date.now();
 
   if (!_isArr(posts)) {
     return articles;
@@ -63,7 +63,7 @@ const _toArticles = (
         description: _crDescription(text, lang),
         related: _crRelated(site_categories),
         publishedAt: published,
-        timeAgo: formatTimeAgo(published, _timeAgoOptions)
+        timeAgo: safeFormatMls(published, _nowMls)
       }))
       _hm[_title] = true;
     }

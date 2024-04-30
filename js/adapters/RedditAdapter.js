@@ -3,8 +3,8 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _utils = require("../utils");
 var _isTypeFn = require("../utils/isTypeFn");
+var _utils = require("../utils");
 var _RedditApi = require("../api/RedditApi");
 var _adapterFn = require("./adapterFn");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
@@ -33,7 +33,7 @@ const _crTitle = (title, tag) => {
     _strTag = (0, _utils.trimStr)(tag);
   return _strTitle && _strTag && !_isTitleStartWithTag(_strTitle, _strTag) ? _strTitle + " (" + _strTag + ")" : _strTitle;
 };
-const _crArticle = (sourceId, _ref2, timeAgoOptions) => {
+const _crArticle = (sourceId, _ref2, nowMls) => {
   let {
     data
   } = _ref2;
@@ -58,7 +58,7 @@ const _crArticle = (sourceId, _ref2, timeAgoOptions) => {
     description: (0, _utils.crDescription)(selftext),
     author: _author,
     related: domain,
-    timeAgo: (0, _utils.formatTimeAgo)(publishedAt, timeAgoOptions),
+    timeAgo: (0, _utils.safeFormatMls)(publishedAt, nowMls),
     publishedAt,
     url
   };

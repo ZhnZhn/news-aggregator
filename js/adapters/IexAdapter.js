@@ -14,7 +14,7 @@ const _crAuthor = (hasPaywall, source) => hasPaywall ? "$ " + source : source;
 const _crRelated = related => _isStr(related) ? related.split(',').join(', ') : void 0;
 const _crSource = source => _isStr(source) ? source.trim() : '';
 const _toArticles = json => {
-  const _timeAgoOptions = _utils.formatTimeAgo.crOptions(),
+  const _nowMls = Date.now(),
     _hmByHeadline = {};
   return _isArr(json) ? json.reduce((arr, item, index) => {
     const {
@@ -36,7 +36,7 @@ const _toArticles = json => {
         related: _crRelated(related),
         author: _crAuthor(hasPaywall, _source),
         publishedAt: datetime,
-        timeAgo: (0, _utils.formatTimeAgo)(datetime, _timeAgoOptions),
+        timeAgo: (0, _utils.safeFormatMls)(datetime, _nowMls),
         url
       },
       _hmArticle = _hmByHeadline[headline];
@@ -67,6 +67,5 @@ const IexAdapter = {
     articles: _toArticles(json)
   })
 };
-var _default = IexAdapter;
-exports.default = _default;
+var _default = exports.default = IexAdapter;
 //# sourceMappingURL=IexAdapter.js.map

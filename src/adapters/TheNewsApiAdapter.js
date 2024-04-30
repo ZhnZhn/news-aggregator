@@ -1,9 +1,11 @@
 import { loadItem } from '../flux/itemStore';
 import { THE_NEWS_API } from '../conf/ProviderNames';
 
+import { dateTimeToMls } from '../utils/dt';
+
 import {
   crId,
-  formatTimeAgo,
+  safeFormatMls,
   formatNumber,
   toFirstUpperCase
 } from '../utils';
@@ -22,8 +24,7 @@ const _toArticles = (
   { data },
   sourceId
 ) => {
-  const _timeAgoOptions = formatTimeAgo.crOptions();
-
+  const _nowMls = Date.now();
   return _isArr(data)
     ? data.map(item => {
       const {
@@ -43,7 +44,7 @@ const _toArticles = (
            author: source,
            related: categories,
            publishedAt: published_at,
-           timeAgo: formatTimeAgo(published_at, _timeAgoOptions),
+           timeAgo: safeFormatMls(dateTimeToMls(published_at), _nowMls),
            url
         })
       })

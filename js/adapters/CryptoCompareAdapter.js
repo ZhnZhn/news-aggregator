@@ -7,7 +7,7 @@ var _utils = require("../utils");
 var _adapterFn = require("./adapterFn");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
 const SOURCE_ID = 'cryptocompare_news';
-const _crArticle = (_ref, timeAgoOptions) => {
+const _crArticle = (_ref, nowMls) => {
   let {
     title,
     body,
@@ -28,7 +28,7 @@ const _crArticle = (_ref, timeAgoOptions) => {
     description: (0, _utils.crDescription)(body),
     related: categories,
     author: name || source,
-    timeAgo: _publishedOn && (0, _utils.formatTimeAgo)(_publishedOn, timeAgoOptions),
+    timeAgo: (0, _utils.safeFormatMls)(_publishedOn, nowMls),
     publishedAt: _publishedOn,
     url
   };
@@ -51,6 +51,5 @@ const CryptoCompareAdapter = {
     };
   }
 };
-var _default = CryptoCompareAdapter;
-exports.default = _default;
+var _default = exports.default = CryptoCompareAdapter;
 //# sourceMappingURL=CryptoCompareAdapter.js.map

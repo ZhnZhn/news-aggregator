@@ -1,6 +1,6 @@
 import {
   crId,
-  formatTimeAgo
+  safeFormatMls
 } from '../utils';
 
 import crArticles from './crArticles';
@@ -18,7 +18,7 @@ const _crRelated = tags => (tags || [])
    published_at,
    url,
    author
- }, timeAgoOptions) => {
+ }, nowMls) => {
    const { name } = author || {};
    return {
      source: SOURCE_ID,
@@ -27,7 +27,7 @@ const _crRelated = tags => (tags || [])
      author: name,
      related: _crRelated(tags),
      publishedAt: published_at,
-     timeAgo: formatTimeAgo(published_at, timeAgoOptions),
+     timeAgo: safeFormatMls(published_at, nowMls),
      url
    };
 }

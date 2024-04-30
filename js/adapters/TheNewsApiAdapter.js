@@ -5,8 +5,8 @@ exports.__esModule = true;
 exports.default = void 0;
 var _itemStore = require("../flux/itemStore");
 var _ProviderNames = require("../conf/ProviderNames");
+var _dt = require("../utils/dt");
 var _utils = require("../utils");
-var _formatNumber = _interopRequireDefault(require("../utils/formatNumber"));
 var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
 const _isArr = Array.isArray;
 const _isNumber = n => typeof n === 'number' && n - n === 0;
@@ -15,7 +15,7 @@ const _toArticles = (_ref, sourceId) => {
   let {
     data
   } = _ref;
-  const _timeAgoOptions = _utils.formatTimeAgo.crOptions();
+  const _nowMls = Date.now();
   return _isArr(data) ? data.map(item => {
     const {
       title,
@@ -34,7 +34,7 @@ const _toArticles = (_ref, sourceId) => {
       author: source,
       related: categories,
       publishedAt: published_at,
-      timeAgo: (0, _utils.formatTimeAgo)(published_at, _timeAgoOptions),
+      timeAgo: (0, _utils.safeFormatMls)((0, _dt.dateTimeToMls)(published_at), _nowMls),
       url
     });
   }) : [];
@@ -44,7 +44,7 @@ const _crCaption = option => {
   return _ProviderNames.THE_NEWS_API + ": " + _captionToken;
 };
 const _crNextPage = (page, maxPage) => _isNumber(page) ? _isNumber(maxPage) ? Math.min(page + 1, maxPage) : page + 1 : void 0;
-const _crMaxPage = (found, limit) => _isNumber(found) && _isNumber(limit) ? (0, _formatNumber.default)(Math.ceil(found / limit)) : '';
+const _crMaxPage = (found, limit) => _isNumber(found) && _isNumber(limit) ? (0, _utils.formatNumber)(Math.ceil(found / limit)) : '';
 const _crConfigPages = meta => {
   const {
       page,
@@ -105,6 +105,5 @@ const TheNewsApiAdapter = {
     };
   }
 };
-var _default = TheNewsApiAdapter;
-exports.default = _default;
+var _default = exports.default = TheNewsApiAdapter;
 //# sourceMappingURL=TheNewsApiAdapter.js.map

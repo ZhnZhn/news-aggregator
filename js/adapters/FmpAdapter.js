@@ -12,7 +12,7 @@ const _toDate = strDate => {
     _strDate = _arrDate.reverse().join('-');
   return (_arrDateTime[1] || '') + ' ' + _strDate;
 };
-const _crArticle = (_ref, timeAgoOptions) => {
+const _crArticle = (_ref, nowMls) => {
   let {
     title,
     text,
@@ -29,7 +29,7 @@ const _crArticle = (_ref, timeAgoOptions) => {
     related: symbol,
     author: site,
     publishedDate: _toDate(publishedDate),
-    timeAgo: (0, _utils.formatTimeAgo)(publishedDate, timeAgoOptions),
+    timeAgo: (0, _utils.safeFormatMls)(publishedDate, nowMls),
     url
   };
 };
@@ -42,6 +42,5 @@ const FmpAdapter = {
     };
   }
 };
-var _default = FmpAdapter;
-exports.default = _default;
+var _default = exports.default = FmpAdapter;
 //# sourceMappingURL=FmpAdapter.js.map

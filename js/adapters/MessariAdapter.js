@@ -7,7 +7,7 @@ var _utils = require("../utils");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
 const SOURCE_ID = 'messari_news';
 const _crRelated = tags => (tags || []).filter(Boolean).map(item => "#" + item).join(' ');
-const _crArticle = (_ref, timeAgoOptions) => {
+const _crArticle = (_ref, nowMls) => {
   let {
     title,
     tags,
@@ -25,7 +25,7 @@ const _crArticle = (_ref, timeAgoOptions) => {
     author: name,
     related: _crRelated(tags),
     publishedAt: published_at,
-    timeAgo: (0, _utils.formatTimeAgo)(published_at, timeAgoOptions),
+    timeAgo: (0, _utils.safeFormatMls)(published_at, nowMls),
     url
   };
 };
@@ -43,6 +43,5 @@ const MessariAdapter = {
     };
   }
 };
-var _default = MessariAdapter;
-exports.default = _default;
+var _default = exports.default = MessariAdapter;
 //# sourceMappingURL=MessariAdapter.js.map

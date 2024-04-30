@@ -1,7 +1,7 @@
 import {
   crId,
   crDescription,
-  formatTimeAgo,
+  safeFormatMls,
   domSanitize
 } from '../utils';
 
@@ -57,7 +57,7 @@ const _crArticle = ({
   overall_sentiment_label,
   overall_sentiment_score,
   ticker_sentiment
-}, timeAgoOptions) => {
+}, nowMls) => {
   const publishedAt = toMls(time_published);
   return {
     source: SOURCE_ID,
@@ -67,7 +67,7 @@ const _crArticle = ({
       ${_crOverallSentiment(overall_sentiment_label, overall_sentiment_score)}\n
       ${_crTickerSentiment(ticker_sentiment)}`,
     author: source,
-    timeAgo: formatTimeAgo(publishedAt, timeAgoOptions),
+    timeAgo: safeFormatMls(publishedAt, nowMls),
     publishedAt,
     url
   };

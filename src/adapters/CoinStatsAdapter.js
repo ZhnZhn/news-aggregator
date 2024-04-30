@@ -1,6 +1,6 @@
 import {
   crId,
-  formatTimeAgo,
+  safeFormatMls,
   decodeHTMLEntities,
   toFirstUpperCase,
 } from '../utils';
@@ -21,7 +21,7 @@ const _crArticle = ({
   feedDate,
   source,
   link
-}, timeAgoOptions) => ({
+}, nowMls) => ({
   source: SOURCE_ID,
   articleId: crId(),
   title,
@@ -29,7 +29,7 @@ const _crArticle = ({
   related: _crRelated(coins),
   author: source,
   publishedAt: feedDate,
-  timeAgo: formatTimeAgo(feedDate, timeAgoOptions),
+  timeAgo: safeFormatMls(feedDate, nowMls),
   url: link
 })
 

@@ -1,4 +1,8 @@
 import {
+  isArr,
+  isObj
+} from '../utils/isTypeFn';
+import {
   crId,
   crDescription,
   bindTo,
@@ -6,13 +10,9 @@ import {
   decodeHTMLEntities,
   toLowerCase,
   trimStr,
-  formatTimeAgo,
+  safeFormatMls,
   formatNumber,
 } from '../utils';
-import {
-  isArr,
-  isObj
-} from '../utils/isTypeFn';
 
 import { API_URL } from '../api/RedditApi';
 
@@ -67,7 +67,7 @@ const _crTitle = (
 const _crArticle = (
   sourceId,
   { data },
-  timeAgoOptions
+  nowMls
 ) => {
   const {
     title,
@@ -91,7 +91,7 @@ const _crArticle = (
     description: crDescription(selftext),
     author: _author,
     related: domain,
-    timeAgo: formatTimeAgo(publishedAt, timeAgoOptions),
+    timeAgo: safeFormatMls(publishedAt, nowMls),
     publishedAt,
     url
   };

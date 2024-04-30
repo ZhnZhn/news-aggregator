@@ -1,6 +1,6 @@
 import {
   crId,
-  formatTimeAgo,
+  safeFormatMls,
   crDescription,
   decodeHTMLEntities
 } from '../utils';
@@ -12,7 +12,7 @@ const SOURCE_ID = 'dt_topby';
 
 const _crArticle = (
   item,
-  timeAgoOptions
+  nowMls
 ) => {
   const {
     title,
@@ -32,7 +32,7 @@ const _crArticle = (
     ),
     author: (user || {}).name,
     related: tags,
-    timeAgo: formatTimeAgo(dateTimeToMls(published_at), timeAgoOptions),
+    timeAgo: safeFormatMls(dateTimeToMls(published_at), nowMls),
     publishedAt: published_at,
     url: canonical_url
   };

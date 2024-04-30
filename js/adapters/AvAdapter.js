@@ -19,7 +19,7 @@ const _crTickerSentiment = tickerSentiment => {
   }
   return (0, _utils.domSanitize)(tickerSentiment.sort(_compareByRelevanceScore).reduce(_addTickerSentimentTo, ''));
 };
-const _crArticle = (_ref, timeAgoOptions) => {
+const _crArticle = (_ref, nowMls) => {
   let {
     title,
     summary,
@@ -37,7 +37,7 @@ const _crArticle = (_ref, timeAgoOptions) => {
     title,
     description: (0, _utils.crDescription)(summary) + "\n\n      " + _crOverallSentiment(overall_sentiment_label, overall_sentiment_score) + "\n\n      " + _crTickerSentiment(ticker_sentiment),
     author: source,
-    timeAgo: (0, _utils.formatTimeAgo)(publishedAt, timeAgoOptions),
+    timeAgo: (0, _utils.safeFormatMls)(publishedAt, nowMls),
     publishedAt,
     url
   };
@@ -85,6 +85,5 @@ const AvAdapter = {
     };
   }
 };
-var _default = AvAdapter;
-exports.default = _default;
+var _default = exports.default = AvAdapter;
 //# sourceMappingURL=AvAdapter.js.map

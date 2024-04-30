@@ -12,7 +12,7 @@ const _crRelated = coins => (coins || []).map(_ref => {
   } = _ref;
   return coinKeyWords;
 }).filter(Boolean).join('|');
-const _crArticle = (_ref2, timeAgoOptions) => {
+const _crArticle = (_ref2, nowMls) => {
   let {
     title,
     description,
@@ -29,7 +29,7 @@ const _crArticle = (_ref2, timeAgoOptions) => {
     related: _crRelated(coins),
     author: source,
     publishedAt: feedDate,
-    timeAgo: (0, _utils.formatTimeAgo)(feedDate, timeAgoOptions),
+    timeAgo: (0, _utils.safeFormatMls)(feedDate, nowMls),
     url: link
   };
 };
@@ -51,6 +51,5 @@ const CoinStatsAdapter = {
     };
   }
 };
-var _default = CoinStatsAdapter;
-exports.default = _default;
+var _default = exports.default = CoinStatsAdapter;
 //# sourceMappingURL=CoinStatsAdapter.js.map

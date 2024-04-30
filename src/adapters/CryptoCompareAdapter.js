@@ -1,6 +1,6 @@
 import {
   crId,
-  formatTimeAgo,
+  safeFormatMls,
   crDescription
 } from '../utils';
 
@@ -17,7 +17,7 @@ const _crArticle = ({
   source,
   source_info,
   published_on
-}, timeAgoOptions) => {
+}, nowMls) => {
   const { name } = source_info || {}
   , _publishedOn = toMls(published_on);
   return {
@@ -27,7 +27,7 @@ const _crArticle = ({
     description: crDescription(body),
     related: categories,
     author: name || source,
-    timeAgo: _publishedOn && formatTimeAgo(_publishedOn, timeAgoOptions),
+    timeAgo: safeFormatMls(_publishedOn, nowMls),
     publishedAt: _publishedOn,
     url
   };
