@@ -183,9 +183,12 @@ const NewsPane = ({
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hHide = useCallback(() => {
      toggleIsShow(false)
-  }, []);
+  }, [])
   // onClose
   /*eslint-enable react-hooks/exhaustive-deps */
+  , _onScroll = useCallback((evt) => {
+    evt.stopPropagation()
+  }, [])
 
   useMsPane(msPane => {
     if (msPane && msPane.id === id) {
@@ -258,6 +261,7 @@ const NewsPane = ({
       </A.BrowserCaption>
       <A.ScrollPane
          style={S_SCROLL_DIV}
+         onScroll={_onScroll}
       >
          {isRelatedBars && _maxValue && <ItemBarChart
             categoryBars={_categoryBars}
@@ -267,7 +271,7 @@ const NewsPane = ({
          }
          <A.ItemStack
            items={articles}
-           crItem={_crArticleItem}           
+           crItem={_crArticleItem}
            Item={Item}
            refFirstItem={_refFirstItem}
            onCloseItem={onCloseItem}

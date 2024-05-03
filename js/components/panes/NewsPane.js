@@ -119,10 +119,12 @@ const NewsPane = _ref2 => {
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hHide = (0, _uiApi.useCallback)(() => {
       toggleIsShow(false);
+    }, [])
+    // onClose
+    /*eslint-enable react-hooks/exhaustive-deps */,
+    _onScroll = (0, _uiApi.useCallback)(evt => {
+      evt.stopPropagation();
     }, []);
-  // onClose
-  /*eslint-enable react-hooks/exhaustive-deps */
-
   useMsPane(msPane => {
     if (msPane && msPane.id === id) {
       toggleIsShow(true);
@@ -178,6 +180,7 @@ const NewsPane = _ref2 => {
       })
     }), (0, _jsxRuntime.jsxs)(_Comp.default.ScrollPane, {
       style: S_SCROLL_DIV,
+      onScroll: _onScroll,
       children: [isRelatedBars && _maxValue && (0, _jsxRuntime.jsx)(_ItemBarChart.default, {
         categoryBars: _categoryBars,
         maxValue: _maxValue,
