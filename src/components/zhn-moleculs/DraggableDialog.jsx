@@ -1,6 +1,5 @@
 //import PropTypes from 'prop-types'
 import {
-  forwardRef,
   useRef,
   useMemo,
   useEffect,
@@ -85,7 +84,8 @@ const DialogButtons = ({
   </div>
 );
 
-const DraggableDialog = forwardRef(({
+const DraggableDialog = ({
+  refEl,
   isShow,
   style,
   captionStyle,
@@ -97,7 +97,7 @@ const DraggableDialog = forwardRef(({
   onLoad,
   onShow,
   onClose
-}, ref) => {
+}) => {
   const _refDialog = useRef(null)
   , _refPrevFocused = useRef(null)
   , _refIsShow = useRef(isShow)
@@ -148,7 +148,7 @@ const DraggableDialog = forwardRef(({
   // focusDialogEl
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  useImperativeHandle(ref, () => ({ focusPrevEl }))
+  useImperativeHandle(refEl, () => ({ focusPrevEl }))
 
   useRefHotKey(_refDialog, HK_LOAD, onLoad)
   useRefHotKey(_refDialog, HK_SHOW, onShow)
@@ -209,7 +209,7 @@ const DraggableDialog = forwardRef(({
       />
     </div>
   );
-});
+};
 
 /*
 DraggableDialog.propTypes = {

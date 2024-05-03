@@ -1,4 +1,3 @@
-import { forwardRef } from '../uiApi';
 import { DP_MIDDLE_RIGHT } from '../DP';
 import useResizeElement from './useResizeElement';
 
@@ -11,10 +10,8 @@ const S_ROOT_DIV = {
   marginLeft: 10
 };
 
-
-const SvgHrzResize = forwardRef((
-  props,
-  ref
+const SvgHrzResize = (
+  props
 ) => {
   const [
     hStartResizeLeft,
@@ -22,7 +19,7 @@ const SvgHrzResize = forwardRef((
     hStopResize,
     hKdLeft,
     hKdRight
-  ] = useResizeElement(props, ref);
+  ] = useResizeElement(props);
   return (
     <div style={{...S_ROOT_DIV, ...props.style}}>
       <BtResize
@@ -44,7 +41,7 @@ const SvgHrzResize = forwardRef((
       />
    </div>
   );
-});
+};
 
 /*
 SvgHrzResize.propTypes = {

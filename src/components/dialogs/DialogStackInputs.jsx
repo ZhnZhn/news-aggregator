@@ -55,7 +55,7 @@ const DialogStackInputs = (props) => {
 
   return (
     <DraggableDialog
-       ref={_refDialog}
+       refEl={_refDialog}
        isShow={isShow}
        captionStyle={_captionStyle}
        caption={caption}

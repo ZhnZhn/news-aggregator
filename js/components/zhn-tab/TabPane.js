@@ -7,7 +7,7 @@ var _uiApi = require("../uiApi");
 var _TabStack = _interopRequireDefault(require("./TabStack"));
 var _PaneStack = _interopRequireDefault(require("./PaneStack"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const TabPane = (0, _uiApi.forwardRef)((_ref, ref) => {
+const TabPane = _ref => {
   let {
     ariaLabel,
     id,
@@ -18,9 +18,6 @@ const TabPane = (0, _uiApi.forwardRef)((_ref, ref) => {
     children
   } = _ref;
   const [selectedTabIndex, setTabIndex] = (0, _uiApi.useState)(0);
-  (0, _uiApi.useImperativeHandle)(ref, () => ({
-    getSelectedTabIndex: () => selectedTabIndex
-  }), [selectedTabIndex]);
   return (0, _jsxRuntime.jsxs)("div", {
     style: {
       width,
@@ -40,7 +37,7 @@ const TabPane = (0, _uiApi.forwardRef)((_ref, ref) => {
       children: children
     })]
   });
-});
+};
 
 /*
 TabPane.propTypes = {

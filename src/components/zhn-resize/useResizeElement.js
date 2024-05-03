@@ -1,15 +1,11 @@
-import {
-  useEffect,
-  useImperativeHandle
-} from '../uiApi';
+import { useEffect } from '../uiApi';
 import useRefInit from '../hooks/useRefInit';
 import useKeyEnter from '../hooks/useKeyEnter';
 
 import ResizeElementImpl from './ResizeElementImpl'
 
 const useResizeElement = (
-  props,
-  ref
+  props
 ) => {
   const resizeImpl = useRefInit(() => {
     return new ResizeElementImpl(props);
@@ -18,12 +14,6 @@ const useResizeElement = (
   , _onPlusWidth = useKeyEnter(props.onPlusWidth);
 
   /*eslint-disable react-hooks/exhaustive-deps */
-  useImperativeHandle(ref, () => ({
-    toWidth: resizeImpl.toWidth,
-    resizeBy: resizeImpl.resizeBy
-  }), [])
-  // resizeImpl.toWidth, resizeImpl.resizeBy
-
   useEffect(() => {
     return () => resizeImpl.clearInterval();
   }, [])

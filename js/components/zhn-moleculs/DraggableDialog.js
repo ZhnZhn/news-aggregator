@@ -61,8 +61,9 @@ const DialogButtons = _ref => {
     })]
   });
 };
-const DraggableDialog = (0, _uiApi.forwardRef)((_ref2, ref) => {
+const DraggableDialog = _ref2 => {
   let {
+    refEl,
     isShow,
     style,
     captionStyle,
@@ -112,7 +113,7 @@ const DraggableDialog = (0, _uiApi.forwardRef)((_ref2, ref) => {
   // focusDialogEl
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  (0, _uiApi.useImperativeHandle)(ref, () => ({
+  (0, _uiApi.useImperativeHandle)(refEl, () => ({
     focusPrevEl
   }));
   (0, _useRefHotKey.default)(_refDialog, HK_LOAD, onLoad);
@@ -155,7 +156,7 @@ const DraggableDialog = (0, _uiApi.forwardRef)((_ref2, ref) => {
       })]
     })
   );
-});
+};
 
 /*
 DraggableDialog.propTypes = {

@@ -1,13 +1,9 @@
-import {
-  forwardRef,
-  useState,
-  useImperativeHandle
-} from '../uiApi';
+import { useState } from '../uiApi';
 
 import TabStack from './TabStack';
 import PaneStack from './PaneStack';
 
-const TabPane = forwardRef(({
+const TabPane = ({
   ariaLabel,
   id,
   isShow,
@@ -15,15 +11,11 @@ const TabPane = forwardRef(({
   height,
   tabsStyle,
   children
-}, ref) => {
+}) => {
   const [
     selectedTabIndex,
     setTabIndex
   ] = useState(0);
-
-  useImperativeHandle(ref, () => ({
-    getSelectedTabIndex: () => selectedTabIndex
-  }), [selectedTabIndex])
 
   return (
     <div style={{ width, height }}>
@@ -43,7 +35,7 @@ const TabPane = forwardRef(({
       />
     </div>
   );
-})
+};
 
 /*
 TabPane.propTypes = {

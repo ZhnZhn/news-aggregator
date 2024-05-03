@@ -60,7 +60,7 @@ const DialogType1 = ({
 
   return (
     <A.DraggableDialog
-       ref={_refDialog}
+       refEl={_refDialog}
        isShow={isShow}
        captionStyle={S_BROWSER_CAPTION}
        caption={caption}

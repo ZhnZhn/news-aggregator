@@ -42,7 +42,7 @@ const DialogType1 = _ref => {
     /*eslint-enable react-hooks/exhaustive-deps */,
     _hKeyDown = (0, _useKeyDown.default)(_hLoad, _hClose);
   return (0, _jsxRuntime.jsx)(_Comp.default.DraggableDialog, {
-    ref: _refDialog,
+    refEl: _refDialog,
     isShow: isShow,
     captionStyle: _Dialog.S_BROWSER_CAPTION,
     caption: caption,
@@ -59,6 +59,5 @@ const DialogType1 = _ref => {
     })
   });
 };
-var _default = DialogType1;
-exports.default = _default;
+var _default = exports.default = DialogType1;
 //# sourceMappingURL=DialogType1.js.map

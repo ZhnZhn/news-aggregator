@@ -33,7 +33,7 @@ const DialogStackInputs = props => {
     _hKeyDown = (0, _useKeyDown.default)(_hLoad, _hClose),
     [_captionStyle, _menuToggle] = _hasMenuToggle(TOGGLES) ? [_Dialog.S_DIALOG_CAPTION, TOGGLES] : [_Dialog.S_BROWSER_CAPTION];
   return (0, _jsxRuntime.jsx)(_DraggableDialog.default, {
-    ref: _refDialog,
+    refEl: _refDialog,
     isShow: isShow,
     captionStyle: _captionStyle,
     caption: caption,
