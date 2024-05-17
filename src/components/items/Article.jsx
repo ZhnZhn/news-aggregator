@@ -1,5 +1,4 @@
 import {
-  forwardRef,
   useRef,
   useState,
   useMemo,
@@ -24,12 +23,13 @@ import {
 
 const FN_NOOP = () => {};
 
-const Article = forwardRef(({
+const Article = ({
+  refEl,
   item,
   onCloseItem,
   onRemoveUnder=FN_NOOP,
   onRemoveItem=FN_NOOP
-}, ref) => {
+}) => {
   const _refArticle = useRef(null)
  , [
    refTimeStamp,
@@ -58,7 +58,7 @@ const Article = forwardRef(({
    isShowDescr,
    hToggle,
    hHide
- ] = useItemType1(ref)
+ ] = useItemType1(refEl)
 
  /*eslint-disable react-hooks/exhaustive-deps */
  , _hToggle = useMemo(() => evt => {
@@ -100,13 +100,13 @@ const Article = forwardRef(({
 
   return url && !_href ? null : (
     <GestureSwipeX
-      ref={_refArticle}      
+      ref={_refArticle}
       style={{...S_ITEM, ..._style}}
       setTimeStamp={setTimeStamp}
       onGesture={_onGestureSwipeX}
     >
       <ItemType1
-        ref={ref}
+        refEl={refEl}
         isShowDescr={isShowDescr}
         title={title}
         onKeyDown={_hItemKeyDown}
@@ -127,6 +127,6 @@ const Article = forwardRef(({
       </ItemType1>
     </GestureSwipeX>
   );
-});
+};
 
 export default Article

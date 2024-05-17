@@ -73,7 +73,7 @@ const _crArticleItem = (
   onRemoveUnder
 }) => (
   <Item
-    ref={index === 0 ? refFirstItem : void 0}
+    refEl={index === 0 ? refFirstItem : void 0}
     key={article.articleId}
     item={article}
     onCloseItem={onCloseItem}

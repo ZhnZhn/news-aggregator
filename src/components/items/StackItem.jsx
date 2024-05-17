@@ -1,7 +1,4 @@
-import {
-  forwardRef,
-  useCallback
-} from '../uiApi';
+import { useCallback } from '../uiApi';
 
 import useToggle from '../hooks/useToggle';
 import useKeyDelete from '../hooks/useKeyDelete';
@@ -90,12 +87,12 @@ const _crTagItem = (
 
 const FN_NOOP = () => {};
 
-const StackItem = forwardRef(({
+const StackItem = ({
   item,
   onCloseItem,
   onRemoveUnder=FN_NOOP,
   onRemoveItem=FN_NOOP
-}, ref) => {
+}) => {
   const [
     isClosed,
     toggleIsClosed
@@ -171,6 +168,6 @@ const StackItem = forwardRef(({
       </SafeLink>
     </GestureSwipeX>
   );
-});
+};
 
 export default StackItem

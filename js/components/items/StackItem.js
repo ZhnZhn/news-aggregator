@@ -80,7 +80,7 @@ const _crTagItem = (tag, index) => (0, _jsxRuntime.jsx)("span", {
   children: tag
 }, index);
 const FN_NOOP = () => {};
-const StackItem = (0, _uiApi.forwardRef)((_ref, ref) => {
+const StackItem = _ref => {
   let {
     item,
     onCloseItem,
@@ -153,6 +153,6 @@ const StackItem = (0, _uiApi.forwardRef)((_ref, ref) => {
       })
     })]
   });
-});
+};
 var _default = exports.default = StackItem;
 //# sourceMappingURL=StackItem.js.map

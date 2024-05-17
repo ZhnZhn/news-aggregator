@@ -8,8 +8,9 @@ var _crStyle = require("../crStyle");
 var _SvgX = _interopRequireDefault(require("../zhn/SvgX"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const FN_NOOP = () => {};
-const ItemHeader = (0, _uiApi.forwardRef)((_ref, ref) => {
+const ItemHeader = _ref => {
   let {
+    refEl,
     className,
     style,
     captionStyle,
@@ -37,7 +38,7 @@ const ItemHeader = (0, _uiApi.forwardRef)((_ref, ref) => {
 
   return (0, _jsxRuntime.jsxs)("div", {
     role: "button",
-    ref: ref,
+    ref: refEl,
     tabIndex: "0",
     className: className,
     style: style,
@@ -52,6 +53,6 @@ const ItemHeader = (0, _uiApi.forwardRef)((_ref, ref) => {
       onClick: _hClose
     })]
   });
-});
+};
 var _default = exports.default = ItemHeader;
 //# sourceMappingURL=ItemHeader.js.map

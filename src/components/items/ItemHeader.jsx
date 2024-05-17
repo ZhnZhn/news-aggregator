@@ -1,14 +1,12 @@
-import {
-  forwardRef,
-  useMemo
-} from '../uiApi';
+import { useMemo } from '../uiApi';
 
 import { CL_SELECT_NONE } from '../crStyle';
 import SvgX from '../zhn/SvgX';
 
 const FN_NOOP = () => {};
 
-const ItemHeader = forwardRef(({
+const ItemHeader = ({
+  refEl,
   className,
   style,
   captionStyle,
@@ -18,7 +16,7 @@ const ItemHeader = forwardRef(({
   onClick,
   onToggle,
   onClose
-}, ref) => {
+}) => {
   /*eslint-disable react-hooks/exhaustive-deps */
   const [
     _hKeyDown,
@@ -43,7 +41,7 @@ const ItemHeader = forwardRef(({
   return (
     <div
       role="button"
-      ref={ref}
+      ref={refEl}
       tabIndex="0"
       className={className}
       style={style}
@@ -62,6 +60,6 @@ const ItemHeader = forwardRef(({
       />
     </div>
   );
-});
+};
 
 export default ItemHeader

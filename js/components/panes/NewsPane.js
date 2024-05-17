@@ -41,7 +41,7 @@ const _crArticleItem = (article, index, _ref) => {
     onRemoveUnder
   } = _ref;
   return (0, _jsxRuntime.jsx)(Item, {
-    ref: index === 0 ? refFirstItem : void 0,
+    refEl: index === 0 ? refFirstItem : void 0,
     item: article,
     onCloseItem: onCloseItem,
     onRemoveUnder: onRemoveUnder

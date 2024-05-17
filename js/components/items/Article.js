@@ -14,8 +14,9 @@ var _ArticleDescr = _interopRequireDefault(require("./ArticleDescr"));
 var _Item = require("./Item.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
 const FN_NOOP = () => {};
-const Article = (0, _uiApi.forwardRef)((_ref, ref) => {
+const Article = _ref => {
   let {
+    refEl,
     item,
     onCloseItem,
     onRemoveUnder = FN_NOOP,
@@ -34,7 +35,7 @@ const Article = (0, _uiApi.forwardRef)((_ref, ref) => {
     //item, onCloseItem
     /*eslint-enable react-hooks/exhaustive-deps */,
     _onGestureSwipeX = (0, _useItemGestureSwipeX.default)(item, onRemoveUnder, _hClose),
-    [isShowDescr, hToggle, hHide] = (0, _useItemType.default)(ref)
+    [isShowDescr, hToggle, hHide] = (0, _useItemType.default)(refEl)
 
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hToggle = (0, _uiApi.useMemo)(() => evt => {
@@ -86,7 +87,7 @@ const Article = (0, _uiApi.forwardRef)((_ref, ref) => {
     setTimeStamp: setTimeStamp,
     onGesture: _onGestureSwipeX,
     children: (0, _jsxRuntime.jsx)(_ItemType.default, {
-      ref: ref,
+      refEl: refEl,
       isShowDescr: isShowDescr,
       title: title,
       onKeyDown: _hItemKeyDown,
@@ -105,6 +106,6 @@ const Article = (0, _uiApi.forwardRef)((_ref, ref) => {
       })
     })
   });
-});
+};
 var _default = exports.default = Article;
 //# sourceMappingURL=Article.js.map

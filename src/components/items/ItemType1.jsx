@@ -1,5 +1,3 @@
-import { forwardRef } from '../uiApi';
-
 import ItemHeader from './ItemHeader';
 import ShowHide from '../zhn/ShowHide';
 
@@ -10,7 +8,8 @@ import {
   S_SVG_CLOSE
 } from './Item.Style';
 
-const ItemType1 = forwardRef(({
+const ItemType1 = ({
+  refEl,
   isShowDescr,
   title,
   children,
@@ -18,10 +17,10 @@ const ItemType1 = forwardRef(({
   onClick,
   onToggle,
   onClose
-}, ref) => (
+}) => (
     <>
       <ItemHeader
-        ref={ref}
+        refEl={refEl}
         className={CL_ITEM_HEADER}
         captionStyle={S_CAPTION}
         btCloseStyle={S_SVG_CLOSE}
@@ -39,6 +38,6 @@ const ItemType1 = forwardRef(({
          {children}
       </ShowHide>
     </>
-));
+);
 
 export default ItemType1
