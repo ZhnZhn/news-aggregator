@@ -26,8 +26,9 @@ const _crId = name => name + '_' + Math.random().toString(36).substr(2, 6);
 const _isValue = input => input ? !!input.value : false;
 const FN_NOOP = () => {};
 const FN_TRUE = () => true;
-const PasswordField = (0, _uiApi.forwardRef)((_ref, ref) => {
+const PasswordField = _ref => {
   let {
+    refEl,
     style,
     caption,
     name = 'pwd',
@@ -92,7 +93,7 @@ const PasswordField = (0, _uiApi.forwardRef)((_ref, ref) => {
       setWasEnter(false);
     }
   });
-  (0, _uiApi.useImperativeHandle)(ref, () => ({
+  (0, _uiApi.useImperativeHandle)(refEl, () => ({
     setWasEnter: () => {
       setWasEnter(true);
       rerender();
@@ -156,7 +157,6 @@ const PasswordField = (0, _uiApi.forwardRef)((_ref, ref) => {
       })]
     })]
   });
-});
-var _default = PasswordField;
-exports.default = _default;
+};
+var _default = exports.default = PasswordField;
 //# sourceMappingURL=PasswordField.js.map

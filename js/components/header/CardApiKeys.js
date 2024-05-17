@@ -97,7 +97,7 @@ const CardApiKeys = props => {
       caption: "Market News & Sentiment",
       children: (0, _jsxRuntime.jsx)(_PasswordField.default, {
         ..._crPasswordFieldProps(_ProviderNames.ALPHA_VANTAGE, 16),
-        ref: _refInputAv,
+        refEl: _refInputAv,
         style: fieldStyle,
         name: "alpha-vantage",
         onEnter: setAv
@@ -107,13 +107,13 @@ const CardApiKeys = props => {
       caption: "Stock Market",
       children: [(0, _jsxRuntime.jsx)(_PasswordField.default, {
         ..._crPasswordFieldProps(_ProviderNames.IEX_CLOUD, 35),
-        ref: _refInputIex,
+        refEl: _refInputIex,
         style: fieldStyle,
         name: "iex-cloud",
         onEnter: setIex
       }), (0, _jsxRuntime.jsx)(_PasswordField.default, {
         ..._crPasswordFieldProps(_ProviderNames.FMP, 32),
-        ref: _refInputFmp,
+        refEl: _refInputFmp,
         style: fieldStyle,
         name: "fmp-api",
         onEnter: setFmp
@@ -123,19 +123,19 @@ const CardApiKeys = props => {
       caption: "General News",
       children: [(0, _jsxRuntime.jsx)(_PasswordField.default, {
         ..._crPasswordFieldProps(_ProviderNames.NEWS_API_LONG, 32),
-        ref: _refInputNews,
+        refEl: _refInputNews,
         style: fieldStyle,
         name: "newsapi.org",
         onEnter: setNews
       }), (0, _jsxRuntime.jsx)(_PasswordField.default, {
         ..._crPasswordFieldProps(_ProviderNames.THE_NEWS_API, 40),
-        ref: _refInputTheNews,
+        refEl: _refInputTheNews,
         style: fieldStyle,
         name: "thenewsapi",
         onEnter: setTheNews
       }), (0, _jsxRuntime.jsx)(_PasswordField.default, {
         ..._crPasswordFieldProps(_ProviderNames.WEBZ_IO, 36),
-        ref: _refInputWebz,
+        refEl: _refInputWebz,
         style: fieldStyle,
         name: "webz.io",
         onEnter: setWebz

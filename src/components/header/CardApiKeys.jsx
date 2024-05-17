@@ -133,7 +133,7 @@ const CardApiKeys = (props) => {
         >
           <PasswordField
              {..._crPasswordFieldProps(ALPHA_VANTAGE, 16)}
-             ref={_refInputAv}
+             refEl={_refInputAv}
              style={fieldStyle}
              name="alpha-vantage"
              onEnter={setAv}
@@ -145,14 +145,14 @@ const CardApiKeys = (props) => {
         >
           <PasswordField
              {..._crPasswordFieldProps(IEX_CLOUD, 35)}
-             ref={_refInputIex}
+             refEl={_refInputIex}
              style={fieldStyle}
              name="iex-cloud"
              onEnter={setIex}
           />
           <PasswordField
              {..._crPasswordFieldProps(FMP, 32)}
-             ref={_refInputFmp}
+             refEl={_refInputFmp}
              style={fieldStyle}
              name="fmp-api"
              onEnter={setFmp}
@@ -164,21 +164,21 @@ const CardApiKeys = (props) => {
       >
         <PasswordField
            {..._crPasswordFieldProps(NEWS_API_LONG, 32)}
-           ref={_refInputNews}
+           refEl={_refInputNews}
            style={fieldStyle}
            name="newsapi.org"
            onEnter={setNews}
         />
         <PasswordField
            {..._crPasswordFieldProps(THE_NEWS_API, 40)}
-           ref={_refInputTheNews}
+           refEl={_refInputTheNews}
            style={fieldStyle}
            name="thenewsapi"
            onEnter={setTheNews}
         />
         <PasswordField
            {..._crPasswordFieldProps(WEBZ_IO, 36)}
-           ref={_refInputWebz}
+           refEl={_refInputWebz}
            style={fieldStyle}
            name="webz.io"
            onEnter={setWebz}

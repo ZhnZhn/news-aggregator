@@ -1,5 +1,4 @@
 import {
-  forwardRef,
   useRef,
   useState,
   useEffect,
@@ -50,7 +49,8 @@ const _isValue = (
 const FN_NOOP = () => {};
 const FN_TRUE = () => true;
 
-const PasswordField = forwardRef(({
+const PasswordField = ({
+  refEl,
   style,
   caption,
   name='pwd',
@@ -58,7 +58,7 @@ const PasswordField = forwardRef(({
   errorMsg='',
   onTest=FN_TRUE,
   onEnter=FN_NOOP
-}, ref) => {
+}) => {
   const _id = useRefInit(() => _crId(name))
   , _refInput = useRef()
   , [
@@ -117,7 +117,7 @@ const PasswordField = forwardRef(({
     }
   })
 
-  useImperativeHandle(ref, () => ({
+  useImperativeHandle(refEl, () => ({
     setWasEnter: () => {
       setWasEnter(true)
       rerender()
@@ -194,6 +194,6 @@ const PasswordField = forwardRef(({
       </div>
     </form>
   );
-});
+};
 
 export default PasswordField
