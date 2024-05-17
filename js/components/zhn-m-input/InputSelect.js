@@ -78,7 +78,7 @@ const InputSelect = _ref => {
         className: _Input.CL_SELECT_DIV_VALUE,
         children: (0, _OptionFn.getItemCaption)(item)
       }), (0, _jsxRuntime.jsx)(_ButtonArrow.default, {
-        ref: _refBtArrow,
+        refEl: _refBtArrow,
         style: S_BT_ARROW
       }), (0, _jsxRuntime.jsx)("div", {
         className: _Input.CL_SELECT_INPUT_LINE

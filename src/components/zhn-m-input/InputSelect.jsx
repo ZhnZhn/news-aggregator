@@ -115,7 +115,7 @@ const InputSelect = ({
            {getItemCaption(item)}
         </div>
         <ButtonArrow
-           ref={_refBtArrow}
+           refEl={_refBtArrow}
            style={S_BT_ARROW}
         />
         <div className={CL_SELECT_INPUT_LINE} />

@@ -1,15 +1,14 @@
-import { forwardRef } from '../uiApi';
-
 import ArrowCell from './ArrowCell';
 import { CL_SELECT_DIV_BT } from './Input.Style';
 
-const ButtonArrow = forwardRef(({
+const ButtonArrow = ({
+  refEl,
   style,
   onKeyDown,
   onClick
-}, ref) => (
+}) => (
   <button
-    ref={ref}
+    ref={refEl}
     type="button"
     className={CL_SELECT_DIV_BT}
     style={style}
@@ -18,6 +17,6 @@ const ButtonArrow = forwardRef(({
   >
      <ArrowCell />
   </button>
-))
+)
 
 export default ButtonArrow

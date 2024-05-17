@@ -182,7 +182,7 @@ const InputSuggest = _ref => {
       onEnter: _hEnterTextField,
       onKeyDown: _hKeyDownTextField,
       children: _isBtArrow(item, items, options) && (0, _jsxRuntime.jsx)(_ButtonArrow.default, {
-        ref: _refBtArrow,
+        refEl: _refBtArrow,
         style: (0, _crStyle.crStyle2)(S_BT_ARROW, isShowOptions && S_BT_ARROW_FILL),
         onKeyDown: _hKeyDownBtArrow,
         onClick: _hClickBtArrow

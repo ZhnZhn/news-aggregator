@@ -282,7 +282,7 @@ const InputSuggest = ({
        >
          {_isBtArrow(item, items, options) &&
            <ButtonArrow
-              ref={_refBtArrow}
+              refEl={_refBtArrow}
               style={crStyle2(
                 S_BT_ARROW,
                 isShowOptions && S_BT_ARROW_FILL
