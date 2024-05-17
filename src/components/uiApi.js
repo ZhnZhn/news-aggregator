@@ -7,7 +7,6 @@ export {
 
 export {
   memo,
-  forwardRef,
 
   render,
   cloneElement,
