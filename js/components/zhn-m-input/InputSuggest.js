@@ -174,7 +174,7 @@ const InputSuggest = _ref => {
     }), (0, _jsxRuntime.jsx)(_TextField.default, {
       ..._ariaComboboxProps,
       ..._textFieldProps,
-      ref: _refTf,
+      refEl: _refTf,
       style: tfStyle,
       initValue: (0, _OptionFn.getItemCaption)(item),
       maxLength: maxInput,

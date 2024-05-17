@@ -1,5 +1,4 @@
-import {
-  forwardRef,
+import {  
   useRef,
   useState,
   useMemo,
@@ -53,7 +52,8 @@ const _getEventTargetValue = (
   evt
 ) => evt.target.value;
 
-const TextField = forwardRef(({
+const TextField = ({
+  refEl,
   style,
   inputStyle,
   inputCn,
@@ -71,7 +71,7 @@ const TextField = forwardRef(({
   onInputChange=FN_NOOP,
   onKeyDown=FN_NOOP,
   ...restInputProps
-}, ref) => {
+}) => {
   const _inputId = useId(id)
   , _refTf = useRef()
   , [
@@ -147,7 +147,7 @@ const TextField = forwardRef(({
   //onTest, onEnter, onKeyDown, id
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  useImperativeHandle(ref, ()=>({
+  useImperativeHandle(refEl, ()=>({
     getValue: () => String(value).trim(),
     setValue,
     focus: () => focusRefElement(_refTf)
@@ -210,6 +210,6 @@ const TextField = forwardRef(({
       </div>
     </div>
   );
-})
+}
 
 export default TextField

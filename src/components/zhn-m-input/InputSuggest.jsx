@@ -272,7 +272,7 @@ const InputSuggest = ({
        <TextField
          {..._ariaComboboxProps}
          {..._textFieldProps}
-         ref={_refTf}
+         refEl={_refTf}
          style={tfStyle}
          initValue={getItemCaption(item)}
          maxLength={maxInput}

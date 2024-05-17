@@ -29,8 +29,9 @@ const S_LABEL_TO_INPUT = {
 const FN_TRUE = () => true;
 const FN_NOOP = () => {};
 const _getEventTargetValue = evt => evt.target.value;
-const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
+const TextField = _ref => {
   let {
+    refEl,
     style,
     inputStyle,
     inputCn,
@@ -100,7 +101,7 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
   //onTest, onEnter, onKeyDown, id
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  (0, _uiApi.useImperativeHandle)(ref, () => ({
+  (0, _uiApi.useImperativeHandle)(refEl, () => ({
     getValue: () => String(value).trim(),
     setValue,
     focus: () => (0, _uiApi.focusRefElement)(_refTf)
@@ -152,6 +153,6 @@ const TextField = (0, _uiApi.forwardRef)((_ref, ref) => {
       })]
     })]
   });
-});
+};
 var _default = exports.default = TextField;
 //# sourceMappingURL=TextField.js.map
