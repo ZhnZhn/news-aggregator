@@ -19,7 +19,7 @@ const MenuTitle = ({
   onClick
 }) => title ? (
   <MenuItem
-    ref={refTitle}
+    refEl={refTitle}
     className={titleCl}
     style={S_ITEM}
     onClick={onClick}
@@ -32,13 +32,5 @@ const MenuTitle = ({
     </span>
   </MenuItem>
 ) : null;
-
-/*
-MenuTitle.propTypes = {
-  titleCl: PropTypes.string,
-  title: PropTypes.string,
-  onClick: PropTypes.func
-}
-*/
 
 export default MenuTitle

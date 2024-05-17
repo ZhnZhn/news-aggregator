@@ -47,7 +47,7 @@ const MenuItemList = _ref => {
         children: ">"
       })] : [_fClick(isClose, onClick, onClose), null];
       return (0, _jsxRuntime.jsxs)(_MenuItem.default, {
-        ref: getFocusRef(index),
+        refEl: getFocusRef(index),
         className: cn || itemCl,
         style: S_ITEM,
         onClick: _onClick,

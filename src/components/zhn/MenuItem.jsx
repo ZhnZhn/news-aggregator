@@ -1,18 +1,17 @@
-import { forwardRef } from '../uiApi';
 import useKeyEnter from '../hooks/useKeyEnter';
 
-const MenuItem = forwardRef(({
+const MenuItem = ({
+  refEl,
   className,
   style,
   caption,
   children,
   onClick
-}, ref) => {
+}) => {
   const _hKeyDown = useKeyEnter(onClick);
-
   return (
     <div
-      ref={ref}
+      ref={refEl}
       role="menuitem"
       tabIndex="0"
       className={className}
@@ -23,6 +22,6 @@ const MenuItem = forwardRef(({
       {caption || children}
     </div>
   );
-});
+};
 
 export default MenuItem

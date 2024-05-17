@@ -63,7 +63,7 @@ const MenuItemList = ({
      return (
        <MenuItem
          key={name}
-         ref={getFocusRef(index)}
+         refEl={getFocusRef(index)}
          className={cn || itemCl}
          style={S_ITEM}
          onClick={_onClick}

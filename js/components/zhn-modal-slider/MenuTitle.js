@@ -24,7 +24,7 @@ const MenuTitle = _ref => {
     onClick
   } = _ref;
   return title ? (0, _jsxRuntime.jsxs)(_MenuItem.default, {
-    ref: refTitle,
+    refEl: refTitle,
     className: titleCl,
     style: S_ITEM,
     onClick: onClick,
@@ -37,13 +37,5 @@ const MenuTitle = _ref => {
     })]
   }) : null;
 };
-
-/*
-MenuTitle.propTypes = {
-  titleCl: PropTypes.string,
-  title: PropTypes.string,
-  onClick: PropTypes.func
-}
-*/
 var _default = exports.default = MenuTitle;
 //# sourceMappingURL=MenuTitle.js.map
