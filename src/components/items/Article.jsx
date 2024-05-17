@@ -100,7 +100,7 @@ const Article = ({
 
   return url && !_href ? null : (
     <GestureSwipeX
-      ref={_refArticle}
+      refEl={_refArticle}
       style={{...S_ITEM, ..._style}}
       setTimeStamp={setTimeStamp}
       onGesture={_onGestureSwipeX}

@@ -79,7 +79,7 @@ const Article = _ref => {
     _publishedAt = publishedDate || (0, _dt.toTimeDate)(publishedAt),
     _href = (0, _uiApi.toLink)(url);
   return url && !_href ? null : (0, _jsxRuntime.jsx)(_GestureSwipeX.default, {
-    ref: _refArticle,
+    refEl: _refArticle,
     style: {
       ..._Item.S_ITEM,
       ..._style

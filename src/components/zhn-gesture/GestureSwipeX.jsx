@@ -1,6 +1,4 @@
 import {
-  forwardRef,
-
   useRef,
   useCallback,
   useMemo,
@@ -67,15 +65,16 @@ const _setEndStyle = (node, isInitialStyle) => {
 const FN_NOOP = () => {}
 , TOP_SCROLL_THRESHOLD = 15;
 
-const GestureSwipeX = forwardRef(({
+const GestureSwipeX = ({
+  refEl,
   className,
   style,
   children,
   setTimeStamp=FN_NOOP,
   onGesture
-}, ref) => {
+}) => {
   const _ref = useRef()
-  , _refItem = ref || _ref
+  , _refItem = refEl || _ref
   , _refClientX = useRef(0)
   , _refClientY = useRef(0)
   , _refNodeEl = useRef(null)
@@ -191,6 +190,6 @@ const GestureSwipeX = forwardRef(({
       {children}
     </div>
   );
-})
+}
 
 export default GestureSwipeX

@@ -47,8 +47,9 @@ const _setEndStyle = (node, isInitialStyle) => {
 };
 const FN_NOOP = () => {},
   TOP_SCROLL_THRESHOLD = 15;
-const GestureSwipeX = (0, _uiApi.forwardRef)((_ref2, ref) => {
+const GestureSwipeX = _ref2 => {
   let {
+    refEl,
     className,
     style,
     children,
@@ -56,7 +57,7 @@ const GestureSwipeX = (0, _uiApi.forwardRef)((_ref2, ref) => {
     onGesture
   } = _ref2;
   const _ref = (0, _uiApi.useRef)(),
-    _refItem = ref || _ref,
+    _refItem = refEl || _ref,
     _refClientX = (0, _uiApi.useRef)(0),
     _refClientY = (0, _uiApi.useRef)(0),
     _refNodeEl = (0, _uiApi.useRef)(null),
@@ -160,6 +161,6 @@ const GestureSwipeX = (0, _uiApi.forwardRef)((_ref2, ref) => {
     ..._handlers,
     children: children
   });
-});
+};
 var _default = exports.default = GestureSwipeX;
 //# sourceMappingURL=GestureSwipeX.js.map
