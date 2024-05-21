@@ -71,13 +71,17 @@ const Article = _ref => {
       publishedDate,
       publishedAt,
       url,
-      related
+      related,
+      commentsUrl,
+      numOfComments
       //, urlToImage
     } = item,
     description = item.description || 'More...',
     _style = isClosed ? _Item.S_NONE : void 0,
     _publishedAt = publishedDate || (0, _dt.toTimeDate)(publishedAt),
-    _href = (0, _uiApi.toLink)(url);
+    _href = (0, _uiApi.toLink)(url),
+    _commentsUrl = (0, _uiApi.toLink)(commentsUrl),
+    _commentsTitle = _commentsUrl && numOfComments ? "Comments " + numOfComments : numOfComments || '';
   return url && !_href ? null : (0, _jsxRuntime.jsx)(_GestureSwipeX.default, {
     refEl: _refArticle,
     style: {
@@ -98,6 +102,8 @@ const Article = _ref => {
         href: _href,
         description: description,
         related: related,
+        commentsUrl: _commentsUrl,
+        commentsTitle: _commentsTitle,
         publishedAt: _publishedAt,
         author: author,
         timeAgo: timeAgo,

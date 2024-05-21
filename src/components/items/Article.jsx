@@ -90,13 +90,19 @@ const Article = ({
     publishedDate,
     publishedAt,
     url,
-    related
+    related,
+    commentsUrl,
+    numOfComments
     //, urlToImage
   } = item
   , description = item.description || 'More...'
   , _style = isClosed ? S_NONE : void 0
   , _publishedAt = publishedDate || toTimeDate(publishedAt)
-  , _href = toLink(url);
+  , _href = toLink(url)
+  , _commentsUrl = toLink(commentsUrl)
+  , _commentsTitle = _commentsUrl && numOfComments
+       ? `Comments ${numOfComments}`
+       : numOfComments || '';
 
   return url && !_href ? null : (
     <GestureSwipeX
@@ -118,6 +124,8 @@ const Article = ({
            href={_href}
            description={description}
            related={related}
+           commentsUrl={_commentsUrl}
+           commentsTitle={_commentsTitle}
            publishedAt={_publishedAt}
            author={author}
            timeAgo={timeAgo}

@@ -1,0 +1,35 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/items/RelatedDiv.js"
+ ],
+ "file": "../../../src/components/items/RelatedDiv.js",
+ "names": [
+  "_SafeLink",
+  "_interopRequireDefault",
+  "require",
+  "_ArticleDescr",
+  "_jsxRuntime",
+  "RelatedDiv",
+  "_ref",
+  "related",
+  "commentsUrl",
+  "commentsTitle",
+  "jsxs",
+  "className",
+  "CL_SELECT_NONE",
+  "style",
+  "S_RELATED_DIV",
+  "children",
+  "jsx",
+  "S_RELATED",
+  "default",
+  "CL_LINK_WRAPPER",
+  "S_COMMENTS_LINK",
+  "href",
+  "fallback",
+  "_default",
+  "exports"
+ ],
+ "mappings": ";;;;;AAAA,IAAAA,SAAA,GAAAC,sBAAA,CAAAC,OAAA;AAEA,IAAAC,aAAA,GAAAD,OAAA;AAM8B,IAAAE,WAAA,GAAAF,OAAA;AAE9B,MAAMG,UAAU,GAAGC,IAAA;EAAA,IAAC;IAClBC,OAAO;IACPC,WAAW;IACXC;EACF,CAAC,GAAAH,IAAA;EAAA,OAAK,CAACE,WAAW,IAAIC,aAAa,KACjC,IAAAL,WAAA,CAAAM,IAAA;IAAKC,SAAS,EAAEC,4BAAe;IAACC,KAAK,EAAEC,2BAAc;IAAAC,QAAA,GACnD,IAAAX,WAAA,CAAAY,GAAA;MAAMH,KAAK,EAAEI,uBAAU;MAAAF,QAAA,EAAER;IAAO,CAAO,CAAC,EACxC,IAAAH,WAAA,CAAAY,GAAA,EAAChB,SAAA,CAAAkB,OAAQ;MACPP,SAAS,EAAEQ,6BAAgB;MAC3BN,KAAK,EAAEO,6BAAgB;MACvBC,IAAI,EAAEb,WAAY;MAClBc,QAAQ,EAAE,IAAAlB,WAAA,CAAAY,GAAA;QAAAD,QAAA,EAAON;MAAa,CAAO,CAAE;MAAAM,QAAA,EAEtCN;IAAa,CACN,CAAC;EAAA,CACR,CACN;AAAA;AAAC,IAAAc,QAAA,GAAAC,OAAA,CAAAN,OAAA,GAEab,UAAU"
+}
