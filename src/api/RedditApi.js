@@ -1,4 +1,5 @@
-export const API_URL = 'https://www.reddit.com/r';
+export const REDDIT_URL = 'https://www.reddit.com'
+export const API_URL = `${REDDIT_URL}/r`;
 const _isArr = Array.isArray;
 const DF_SUBREDDIT = 'Amd';
 

@@ -100,9 +100,9 @@ const Article = ({
   , _publishedAt = publishedDate || toTimeDate(publishedAt)
   , _href = toLink(url)
   , _commentsUrl = toLink(commentsUrl)
-  , _commentsTitle = _commentsUrl && numOfComments
+  , _commentsTitle = _commentsUrl
        ? `Comments ${numOfComments}`
-       : numOfComments || '';
+       : numOfComments;
 
   return url && !_href ? null : (
     <GestureSwipeX

@@ -46,11 +46,14 @@ const _crArticle = (sourceId, _ref2, nowMls) => {
       created_utc,
       author,
       score,
-      upvote_ratio
+      upvote_ratio,
+      permalink,
+      num_comments
     } = data,
     publishedAt = (0, _adapterFn.toMls)(created_utc),
     _author = (0, _adapterFn.joinByBlank)(score, upvote_ratio, author),
-    _title = _crTitle(title, link_flair_text);
+    _title = _crTitle(title, link_flair_text),
+    _commentsUrl = "" + _RedditApi.REDDIT_URL + permalink;
   return {
     source: sourceId,
     articleId: (0, _utils.crId)(),
@@ -60,7 +63,9 @@ const _crArticle = (sourceId, _ref2, nowMls) => {
     related: domain,
     timeAgo: (0, _utils.safeFormatMls)(publishedAt, nowMls),
     publishedAt,
-    url
+    url,
+    commentsUrl: url === _commentsUrl ? void 0 : _commentsUrl,
+    numOfComments: (0, _isTypeFn.isNumber)(num_comments) ? num_comments === 0 ? '' : '' + num_comments : ''
   };
 };
 const _fFilterItemBy = subreddit => item => {

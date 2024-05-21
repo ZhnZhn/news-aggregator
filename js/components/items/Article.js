@@ -81,7 +81,7 @@ const Article = _ref => {
     _publishedAt = publishedDate || (0, _dt.toTimeDate)(publishedAt),
     _href = (0, _uiApi.toLink)(url),
     _commentsUrl = (0, _uiApi.toLink)(commentsUrl),
-    _commentsTitle = _commentsUrl && numOfComments ? "Comments " + numOfComments : numOfComments || '';
+    _commentsTitle = _commentsUrl ? "Comments " + numOfComments : numOfComments;
   return url && !_href ? null : (0, _jsxRuntime.jsx)(_GestureSwipeX.default, {
     refEl: _refArticle,
     style: {

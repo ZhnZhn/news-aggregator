@@ -1,4 +1,5 @@
 import {
+  isNumber,
   isArr,
   isObj
 } from '../utils/isTypeFn';
@@ -14,7 +15,10 @@ import {
   formatNumber,
 } from '../utils';
 
-import { API_URL } from '../api/RedditApi';
+import {
+  REDDIT_URL,
+  API_URL
+} from '../api/RedditApi';
 
 import {
   toMls,
@@ -78,11 +82,14 @@ const _crArticle = (
     created_utc,
     author,
     score,
-    upvote_ratio
+    upvote_ratio,
+    permalink,
+    num_comments
   } = data
   , publishedAt = toMls(created_utc)
   , _author = joinByBlank(score, upvote_ratio, author)
-  , _title = _crTitle(title, link_flair_text);
+  , _title = _crTitle(title, link_flair_text)
+  , _commentsUrl = `${REDDIT_URL}${permalink}`;
 
   return {
     source: sourceId,
@@ -93,7 +100,13 @@ const _crArticle = (
     related: domain,
     timeAgo: safeFormatMls(publishedAt, nowMls),
     publishedAt,
-    url
+    url,
+    commentsUrl: url === _commentsUrl
+       ? void 0
+       : _commentsUrl,
+    numOfComments: isNumber(num_comments)
+      ? num_comments === 0 ? '' : '' + num_comments
+      : ''
   };
 }
 
