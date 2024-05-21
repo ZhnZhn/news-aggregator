@@ -5,6 +5,7 @@ const SafeLink = ({
   style,
   href,
   children,
+  fallback=null,
   ...restProps
 }) => {
   const _href = toLink(href);
@@ -18,7 +19,7 @@ const SafeLink = ({
     >
       {children}
     </a>
-  ) : null;
+  ) : fallback;
 };
 
 export default SafeLink

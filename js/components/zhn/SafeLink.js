@@ -10,6 +10,7 @@ const SafeLink = _ref => {
     style,
     href,
     children,
+    fallback = null,
     ...restProps
   } = _ref;
   const _href = (0, _uiApi.toLink)(href);
@@ -20,7 +21,7 @@ const SafeLink = _ref => {
     href: _href,
     target: "_blank",
     children: children
-  }) : null;
+  }) : fallback;
 };
 var _default = exports.default = SafeLink;
 //# sourceMappingURL=SafeLink.js.map
