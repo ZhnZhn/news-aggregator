@@ -29,6 +29,7 @@ const S_LABEL_TO_INPUT = {
 const FN_TRUE = () => true;
 const FN_NOOP = () => {};
 const _getEventTargetValue = evt => evt.target.value;
+const _crValue = str => str.trim();
 const TextField = _ref => {
   let {
     refEl,
@@ -59,7 +60,7 @@ const TextField = _ref => {
     [_onEvent, _clearInput] = (0, _uiApi.useMemo)(() => [(evt, onEvent) => {
       const _value = _getEventTargetValue(evt);
       if (onTest(_value)) {
-        onEvent(_value.trim(), id, evt);
+        onEvent(_crValue(_value), id, evt);
       }
     }, evt => {
       setValue('');
@@ -84,7 +85,7 @@ const TextField = _ref => {
       setValue(_value);
       setIsPassTest(_isPassTest);
       if (_isPassTest) {
-        onInputChange(_value.trim(), id);
+        onInputChange(_crValue(_value), id);
       }
     }, evt => {
       const key = evt.key;
@@ -102,7 +103,7 @@ const TextField = _ref => {
   /*eslint-enable react-hooks/exhaustive-deps */
 
   (0, _uiApi.useImperativeHandle)(refEl, () => ({
-    getValue: () => String(value).trim(),
+    getValue: () => _crValue(String(value)),
     setValue,
     focus: () => (0, _uiApi.focusRefElement)(_refTf)
   }), [value]);

@@ -1,4 +1,4 @@
-import {  
+import {
   useRef,
   useState,
   useMemo,
@@ -52,6 +52,8 @@ const _getEventTargetValue = (
   evt
 ) => evt.target.value;
 
+const _crValue = str => str.trim();
+
 const TextField = ({
   refEl,
   style,
@@ -97,7 +99,7 @@ const TextField = ({
     (evt, onEvent) => {
       const _value = _getEventTargetValue(evt);
       if (onTest(_value)) {
-        onEvent(_value.trim(), id, evt)
+        onEvent(_crValue(_value), id, evt)
       }
     },
     (evt) => {
@@ -128,7 +130,7 @@ const TextField = ({
       setValue(_value)
       setIsPassTest(_isPassTest)
       if (_isPassTest) {
-        onInputChange(_value.trim(), id)
+        onInputChange(_crValue(_value), id)
       }
     },
     (evt) => {
@@ -148,7 +150,7 @@ const TextField = ({
   /*eslint-enable react-hooks/exhaustive-deps */
 
   useImperativeHandle(refEl, ()=>({
-    getValue: () => String(value).trim(),
+    getValue: () => _crValue(String(value)),
     setValue,
     focus: () => focusRefElement(_refTf)
   }), [value])
