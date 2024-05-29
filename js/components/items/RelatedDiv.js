@@ -17,14 +17,11 @@ const RelatedDiv = _ref => {
     style: _ArticleDescr.S_RELATED_DIV,
     children: [(0, _jsxRuntime.jsx)("span", {
       style: _ArticleDescr.S_RELATED,
-      children: related
+      children: commentsUrl ? related : related + " " + commentsTitle
     }), (0, _jsxRuntime.jsx)(_SafeLink.default, {
       className: _ArticleDescr.CL_LINK_WRAPPER,
       style: _ArticleDescr.S_COMMENTS_LINK,
       href: commentsUrl,
-      fallback: (0, _jsxRuntime.jsx)("span", {
-        children: commentsTitle
-      }),
       children: commentsTitle
     })]
   });

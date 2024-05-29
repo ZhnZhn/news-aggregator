@@ -14,12 +14,16 @@ const RelatedDiv = ({
   commentsTitle
 }) => (commentsUrl || commentsTitle) && (
   <div className={CL_SELECT_NONE} style={S_RELATED_DIV}>
-    <span style={S_RELATED}>{related}</span>
+    <span style={S_RELATED}>
+      {commentsUrl
+        ? related
+        : `${related} ${commentsTitle}`
+      }
+    </span>
     <SafeLink
       className={CL_LINK_WRAPPER}
       style={S_COMMENTS_LINK}
       href={commentsUrl}
-      fallback={<span>{commentsTitle}</span>}
     >
       {commentsTitle}
     </SafeLink>
