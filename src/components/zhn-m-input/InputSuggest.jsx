@@ -193,9 +193,11 @@ const InputSuggest = ({
 
   /*eslint-disabl react-hooks/exhaustive-deps */
   , _hInputChange = useMemo(() => (token, id) => {
-       const _token = (token || '')
-         .trim()
-         .toLowerCase();
+       const _tokenInLowerCase = (token || '')
+         .toLowerCase()
+       , _token = _isInput
+           ? _tokenInLowerCase
+           : _tokenInLowerCase.trim();
        if (_token) {
          clearTimeout(getRefValue(_refFilterId))
          setRefValue(_refFilterId, setTimeout(() => {
@@ -274,6 +276,7 @@ const InputSuggest = ({
          {..._textFieldProps}
          refEl={_refTf}
          style={tfStyle}
+         isTrimValue={!_isInput}
          initValue={getItemCaption(item)}
          maxLength={maxInput}
          onInputChange={_hInputChange}

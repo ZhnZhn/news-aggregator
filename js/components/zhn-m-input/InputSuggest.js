@@ -119,7 +119,8 @@ const InputSuggest = _ref => {
 
     /*eslint-disabl react-hooks/exhaustive-deps */,
     _hInputChange = (0, _uiApi.useMemo)(() => (token, id) => {
-      const _token = (token || '').trim().toLowerCase();
+      const _tokenInLowerCase = (token || '').toLowerCase(),
+        _token = _isInput ? _tokenInLowerCase : _tokenInLowerCase.trim();
       if (_token) {
         clearTimeout((0, _uiApi.getRefValue)(_refFilterId));
         (0, _uiApi.setRefValue)(_refFilterId, setTimeout(() => {
@@ -176,6 +177,7 @@ const InputSuggest = _ref => {
       ..._textFieldProps,
       refEl: _refTf,
       style: tfStyle,
+      isTrimValue: !_isInput,
       initValue: (0, _OptionFn.getItemCaption)(item),
       maxLength: maxInput,
       onInputChange: _hInputChange,

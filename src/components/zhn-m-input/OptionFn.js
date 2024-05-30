@@ -1,25 +1,33 @@
-import { toFirstUpperCase } from '../uiApi';
-
-const _isArr = Array.isArray
-, _isStr = value => typeof value === 'string';
+import {
+  isArr,
+  isStr,
+  safeMap,
+  toFirstUpperCase
+} from '../uiApi';
 
 export const getItemCaption = (
   item
-) => _isArr(item)
+) => isArr(item)
  ? item[0]
  : '';
 
 export const getItemValue = (
   item
-) => _isArr(item)
- ? _isStr(item[1])
-     ? item[1]
-     : item[0]
- : void 0;
+) => {
+  const value = isArr(item)
+    ? isStr(item[1])
+      ? item[1]
+      : item[0]
+    : void 0;
+ return isStr(value)
+   ? value.trim()
+   : value;
+}
 
+const _crOptionItem = str => [
+  toFirstUpperCase(str),
+  str
+];
 export const crSelectOptions = (
   values
-) => (values || []).map(str => [
-   toFirstUpperCase(str),
-   str
-]);
+) => safeMap(values, _crOptionItem) || []
