@@ -23,10 +23,10 @@
 }
 
 .m-input__line {
+   border-bottom: 2px solid var(--black);
    position: absolute;
    bottom: 12px;
-   width: 100%;
-   border-bottom: 2px solid black;
+   width: 100%;   
 }
 .m-input__msg-err {
    position: absolute;

@@ -15,10 +15,10 @@
 }
 
 .m-select__label {
+  color: var(--black);
   position: absolute;
   top: 32px;
   z-index: 1;
-  color: black;
   line-height: 22px;
   padding-left: 4px;
   font-weight: bold;
@@ -69,7 +69,7 @@
 }
 
 .m-select__div__bt {
-  fill: black;
+  fill: var(--black);
   display: inline-block;
   position: absolute;
   right: 0;
@@ -92,10 +92,10 @@
 }
 
 .m-select__line {
+  border-bottom: 2px solid var(--black);
   position: absolute;
   bottom: 23px;
   width: 100%;
-  border-bottom: 2px solid black;
 }
 
 .m-select__options {

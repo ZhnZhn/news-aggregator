@@ -74,7 +74,7 @@
   }
 }
 .row__topic {
-  color: black;
+  color: var(--black);
   padding-left: 10px;
   line-height: 2.1;
   border-left: 4px solid transparent;
