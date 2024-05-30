@@ -38,6 +38,7 @@ export const EVENT_TOUCH_END = `${TOUCH}end`
 export const EVENT_TOUCH_CANCEL = `${TOUCH}cancel`
 
 export const FN_NOOP = () => {}
+export const FN_TRUE = () => true
 
 export const isFn = fn => typeof fn === 'function';
 
