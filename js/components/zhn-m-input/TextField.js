@@ -26,10 +26,8 @@ const S_LABEL_TO_INPUT = {
   S_LINE_ERROR = {
     borderBottom: '2px solid #f44336'
   };
-const FN_TRUE = () => true;
-const FN_NOOP = () => {};
 const _getEventTargetValue = evt => evt.target.value;
-const _crValue = str => str.trim();
+const _crValue = (isTrimValue, value) => isTrimValue ? value.trim() : value;
 const TextField = _ref => {
   let {
     refEl,
@@ -38,17 +36,18 @@ const TextField = _ref => {
     inputCn,
     caption,
     id,
+    isTrimValue = true,
     initValue,
     maxLength = "20",
     autoCapitalize = "off",
     errorMsg = '',
     hasClear = true,
     children,
-    onTest = FN_TRUE,
-    onEnter = FN_NOOP,
-    onBlur = FN_NOOP,
-    onInputChange = FN_NOOP,
-    onKeyDown = FN_NOOP,
+    onTest = _uiApi.FN_TRUE,
+    onEnter = _uiApi.FN_NOOP,
+    onBlur = _uiApi.FN_NOOP,
+    onInputChange = _uiApi.FN_NOOP,
+    onKeyDown = _uiApi.FN_NOOP,
     ...restInputProps
   } = _ref;
   const _inputId = (0, _useId.default)(id),
@@ -60,12 +59,12 @@ const TextField = _ref => {
     [_onEvent, _clearInput] = (0, _uiApi.useMemo)(() => [(evt, onEvent) => {
       const _value = _getEventTargetValue(evt);
       if (onTest(_value)) {
-        onEvent(_crValue(_value), id, evt);
+        onEvent(_crValue(isTrimValue, _value), id, evt);
       }
     }, evt => {
       setValue('');
       onInputChange('', id);
-    }], [onInputChange])
+    }], [isTrimValue, onInputChange])
     // onTest, id
     ,
     _compSvgX = (0, _uiApi.useMemo)(() => (0, _jsxRuntime.jsx)(_SvgX.default, {
@@ -85,7 +84,7 @@ const TextField = _ref => {
       setValue(_value);
       setIsPassTest(_isPassTest);
       if (_isPassTest) {
-        onInputChange(_crValue(_value), id);
+        onInputChange(_crValue(isTrimValue, _value), id);
       }
     }, evt => {
       const key = evt.key;
@@ -96,17 +95,17 @@ const TextField = _ref => {
       } else {
         onKeyDown(evt);
       }
-    }], [onInputChange]);
+    }], [isTrimValue, onInputChange]);
   //onTest, onBlur, _blurInput, id
   //onTest,
   //onTest, onEnter, onKeyDown, id
   /*eslint-enable react-hooks/exhaustive-deps */
 
   (0, _uiApi.useImperativeHandle)(refEl, () => ({
-    getValue: () => _crValue(String(value)),
+    getValue: () => _crValue(isTrimValue, String(value)),
     setValue,
     focus: () => (0, _uiApi.focusRefElement)(_refTf)
-  }), [value]);
+  }), [isTrimValue, value]);
   const _labelStyle = value || isFocus ? void 0 : S_LABEL_TO_INPUT,
     [_labelErrStyle, _lineStyle] = isPassTest ? [] : [S_LABEL_ON_ERROR, S_LINE_ERROR],
     _isShowSvgX = _has.HAS_TOUCH_EVENTS && hasClear && value;

@@ -8,6 +8,8 @@ import {
   KEY_DELETE,
   KEY_ENTER,
 
+  FN_NOOP,
+  FN_TRUE,
   focusRefElement
 } from '../uiApi';
 
@@ -45,14 +47,16 @@ const S_LABEL_TO_INPUT = {
   borderBottom: '2px solid #f44336'
 };
 
-const FN_TRUE = () => true;
-const FN_NOOP = () => {};
-
 const _getEventTargetValue = (
   evt
 ) => evt.target.value;
 
-const _crValue = str => str.trim();
+const _crValue = (
+  isTrimValue,
+  value
+) => isTrimValue
+  ? value.trim()
+  : value;
 
 const TextField = ({
   refEl,
@@ -61,6 +65,7 @@ const TextField = ({
   inputCn,
   caption,
   id,
+  isTrimValue=true,
   initValue,
   maxLength="20",
   autoCapitalize="off",
@@ -99,14 +104,14 @@ const TextField = ({
     (evt, onEvent) => {
       const _value = _getEventTargetValue(evt);
       if (onTest(_value)) {
-        onEvent(_crValue(_value), id, evt)
+        onEvent(_crValue(isTrimValue, _value), id, evt)
       }
     },
     (evt) => {
       setValue('')
       onInputChange('', id)
     }
-  ], [onInputChange])
+  ], [isTrimValue, onInputChange])
   // onTest, id
   , _compSvgX = useMemo(() => <SvgX
      color="black"
@@ -130,7 +135,7 @@ const TextField = ({
       setValue(_value)
       setIsPassTest(_isPassTest)
       if (_isPassTest) {
-        onInputChange(_crValue(_value), id)
+        onInputChange(_crValue(isTrimValue, _value), id)
       }
     },
     (evt) => {
@@ -143,17 +148,17 @@ const TextField = ({
         onKeyDown(evt)
       }
     }
-  ], [onInputChange])
+  ], [isTrimValue, onInputChange])
   //onTest, onBlur, _blurInput, id
   //onTest,
   //onTest, onEnter, onKeyDown, id
   /*eslint-enable react-hooks/exhaustive-deps */
 
   useImperativeHandle(refEl, ()=>({
-    getValue: () => _crValue(String(value)),
+    getValue: () => _crValue(isTrimValue, String(value)),
     setValue,
     focus: () => focusRefElement(_refTf)
-  }), [value])
+  }), [isTrimValue, value])
 
   const _labelStyle = value || isFocus
     ? void 0
