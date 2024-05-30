@@ -8,17 +8,11 @@ var _crStyle = require("../crStyle");
 var _useId = _interopRequireDefault(require("../hooks/useId"));
 var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _has = require("../has");
-var _AsyncShowComponent = _interopRequireDefault(require("../zhn-moleculs/AsyncShowComponent"));
-var _SvgX = _interopRequireDefault(require("../zhn/SvgX"));
+var _AsyncSvgX = _interopRequireDefault(require("./AsyncSvgX"));
 var _Input = require("./Input.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_LABEL_TO_INPUT = {
     transform: 'scale(1) translate(0px, -6px)'
-  },
-  S_BT_CLEAR = {
-    position: 'absolute',
-    top: 25,
-    right: 12
   },
   S_LABEL_ON_ERROR = {
     color: '#f44336'
@@ -66,14 +60,6 @@ const TextField = _ref => {
       onInputChange('', id);
     }], [isTrimValue, onInputChange])
     // onTest, id
-    ,
-    _compSvgX = (0, _uiApi.useMemo)(() => (0, _jsxRuntime.jsx)(_SvgX.default, {
-      color: "black",
-      className: _Input.CL_BT_SVG_CLEAR,
-      style: S_BT_CLEAR,
-      onClick: _clearInput
-    }), [])
-    // _clearInput
     ,
     [_hBlurInput, _hInputChange, _hKeyDown] = (0, _uiApi.useMemo)(() => [evt => {
       _onEvent(evt, onBlur);
@@ -140,10 +126,9 @@ const TextField = _ref => {
         onChange: _hInputChange,
         onKeyDown: _hKeyDown,
         ...restInputProps
-      }), (0, _jsxRuntime.jsx)(_AsyncShowComponent.default, {
+      }), (0, _jsxRuntime.jsx)(_AsyncSvgX.default, {
         is: _isShowSvgX,
-        mls: 700,
-        children: _compSvgX
+        onClick: _clearInput
       }), children, (0, _jsxRuntime.jsx)("div", {
         className: _Input.CL_INPUT_LINE,
         style: _lineStyle

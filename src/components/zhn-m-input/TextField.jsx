@@ -19,8 +19,7 @@ import useId from '../hooks/useId';
 import useBool from '../hooks/useBool';
 
 import { HAS_TOUCH_EVENTS } from '../has';
-import AsyncShowComponent from '../zhn-moleculs/AsyncShowComponent';
-import SvgX from '../zhn/SvgX';
+import AsyncSvgX from './AsyncSvgX'
 
 import {
   CL_SELECT,
@@ -28,17 +27,11 @@ import {
   CL_TEXTFIELD_INPUT_DIV,
   CL_TEXTFIELD_INPUT,
   CL_INPUT_LINE,
-  CL_INPUT_MSG_ERR,
-  CL_BT_SVG_CLEAR
+  CL_INPUT_MSG_ERR
 } from './Input.Style';
 
 const S_LABEL_TO_INPUT = {
   transform: 'scale(1) translate(0px, -6px)'
-}
-, S_BT_CLEAR = {
-  position: 'absolute',
-  top: 25,
-  right: 12
 }
 , S_LABEL_ON_ERROR = {
   color: '#f44336'
@@ -113,13 +106,6 @@ const TextField = ({
     }
   ], [isTrimValue, onInputChange])
   // onTest, id
-  , _compSvgX = useMemo(() => <SvgX
-     color="black"
-     className={CL_BT_SVG_CLEAR}
-     style={S_BT_CLEAR}
-     onClick={_clearInput}
-  />, [])
-  // _clearInput
   , [
     _hBlurInput,
     _hInputChange,
@@ -205,12 +191,10 @@ const TextField = ({
           onKeyDown={_hKeyDown}
           {...restInputProps}
         />
-        <AsyncShowComponent
+        <AsyncSvgX
           is={_isShowSvgX}
-          mls={700}
-        >
-          {_compSvgX}
-        </AsyncShowComponent>
+          onClick={_clearInput}
+        />
         {children}
         <div className={CL_INPUT_LINE} style={_lineStyle} />
         { _lineStyle && <div className={CL_INPUT_MSG_ERR}>{errorMsg}</div>}
