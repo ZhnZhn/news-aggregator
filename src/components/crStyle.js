@@ -8,6 +8,9 @@ export const COLOR_BLACK = '#121212'
 export const S_COLOR_BLACK = {
   color: COLOR_BLACK
 }
+export const S_COLOR_BLACK_DARK = {
+  color: '#0a0a0a'
+}
 
 export const S_BLOCK = { display: 'block'}
 export const S_INLINE_BLOCK = { display: 'inline-block'}

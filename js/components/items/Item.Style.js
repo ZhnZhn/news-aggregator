@@ -15,7 +15,7 @@ const S_ITEM = exports.S_ITEM = {
   boxShadow: '1px 4px 6px 1px rgba(0,0,0,0.6)'
 };
 const S_CAPTION = exports.S_CAPTION = {
-  ..._crStyle.S_COLOR_BLACK,
+  ..._crStyle.S_COLOR_BLACK_DARK,
   display: 'inline-block',
   paddingRight: 32,
   fontSize: '1.125rem',

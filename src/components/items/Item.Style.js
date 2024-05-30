@@ -1,4 +1,4 @@
-import { S_COLOR_BLACK } from '../crStyle';
+import { S_COLOR_BLACK_DARK } from '../crStyle';
 
 export { S_NONE } from '../crStyle'
 
@@ -15,7 +15,7 @@ export const S_ITEM = {
 }
 
 export const S_CAPTION = {
-  ...S_COLOR_BLACK,
+  ...S_COLOR_BLACK_DARK,
   display: 'inline-block',
   paddingRight: 32,
   fontSize: '1.125rem',
