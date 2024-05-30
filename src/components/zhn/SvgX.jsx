@@ -3,7 +3,7 @@ import { DP_CLOSE_LEFT } from '../DP';
 import Svg100 from './svg/Svg100';
 
 const CL_SVG_CLOSE = "svg-close"
-, DF_COLOR = '#d64336'
+, DF_COLOR = 'grey'
 , S_SVG = { padding: 3 };
 
 const SvgX = ({

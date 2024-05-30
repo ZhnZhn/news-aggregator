@@ -8,7 +8,7 @@ var _DP = require("../DP");
 var _Svg = _interopRequireDefault(require("./svg/Svg100"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_SVG_CLOSE = "svg-close",
-  DF_COLOR = '#d64336',
+  DF_COLOR = 'grey',
   S_SVG = {
     padding: 3
   };

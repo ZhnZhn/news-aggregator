@@ -11,6 +11,7 @@ export const S_COLOR_BLACK = {
 export const S_COLOR_BLACK_DARK = {
   color: '#0a0a0a'
 }
+export const COLOR_VAR_H_C = 'var(--h-c, #a9a9a9)'
 
 export const S_BLOCK = { display: 'block'}
 export const S_INLINE_BLOCK = { display: 'inline-block'}

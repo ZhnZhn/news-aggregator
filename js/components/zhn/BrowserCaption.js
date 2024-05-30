@@ -19,12 +19,12 @@ const CL_BROWSER_CAPTION = "br-caption gap-right",
     left: 0
   },
   S_SVG_MORE = {
-    fill: 'inherit',
-    stroke: 'inherit'
+    fill: _crStyle.COLOR_VAR_H_C,
+    stroke: _crStyle.COLOR_VAR_H_C
   },
   S_SVG_CLOSE = {
     position: 'absolute',
-    top: 6,
+    top: 8,
     right: 0,
     width: '1.5rem',
     height: '1.5rem'
@@ -50,6 +50,7 @@ const BrowserCaption = _ref => {
       children: caption
     }), children, (0, _jsxRuntime.jsx)(_SvgX.default, {
       style: S_SVG_CLOSE,
+      color: _crStyle.COLOR_VAR_H_C,
       onClick: onClose
     })]
   });

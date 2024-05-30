@@ -1,6 +1,9 @@
 import { isFn } from '../uiApi';
 
-import { CL_SELECT_NONE } from '../crStyle';
+import {
+  COLOR_VAR_H_C,
+  CL_SELECT_NONE
+} from '../crStyle';
 
 import SvgMore from './SvgMore';
 import SvgX from './SvgX';
@@ -16,12 +19,12 @@ const CL_BROWSER_CAPTION = "br-caption gap-right"
   left: 0
 }
 , S_SVG_MORE = {
-  fill: 'inherit',
-  stroke: 'inherit'
+  fill: COLOR_VAR_H_C,
+  stroke: COLOR_VAR_H_C
 }
 , S_SVG_CLOSE = {
   position: 'absolute',
-  top: 6,
+  top: 8,
   right: 0,
   width: '1.5rem',
   height: '1.5rem'
@@ -54,6 +57,7 @@ const BrowserCaption = ({
     {children}
     <SvgX
       style={S_SVG_CLOSE}
+      color={COLOR_VAR_H_C}
       onClick={onClose}
     />
   </div>
