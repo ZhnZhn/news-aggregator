@@ -3,6 +3,7 @@ import { memoIsShow } from '../hoc/memoFn';
 import { S_BROWSER_CAPTION } from './Dialog.Style';
 
 import ModalDialog from '../zhn-moleculs/ModalDialog';
+import { S_COLOR_BLACK } from '../crStyle';
 
 const S_DIALOG = {
   position: 'static',
@@ -11,7 +12,7 @@ const S_DIALOG = {
   margin: '70px auto 0px'
 }
 , S_MSG = {
-  color: 'black',
+  ...S_COLOR_BLACK,  
   width: '100%',
   padding: '8px 12px',
   fontWeight: 'bold',

@@ -1,15 +1,25 @@
 "use strict";
 
 exports.__esModule = true;
-exports.crWithScrollCn = exports.crStyle2 = exports.crShowHideStyle = exports.crShowHide = exports.crPopupMenuCn = exports.crPanelShadowCn = exports.crPaneCn = exports.crInlineBlockShowHide = exports.crContainerBgCn = exports.crCn = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_BLOCK = exports.CL_SHOW_POPUP = exports.CL_SELECT_NONE = exports.CL_ROW_NEWS_SOURCE = exports.CL_MENU_MORE_ITEM = void 0;
-const _isArr = Array.isArray;
-const CL_SELECT_NONE = 'select-none';
-exports.CL_SELECT_NONE = CL_SELECT_NONE;
-const CL_MENU_MORE_ITEM = "menu-more__item " + CL_SELECT_NONE;
-exports.CL_MENU_MORE_ITEM = CL_MENU_MORE_ITEM;
-const CL_ROW_NEWS_SOURCE = "row__news-source " + CL_SELECT_NONE;
-exports.CL_ROW_NEWS_SOURCE = CL_ROW_NEWS_SOURCE;
-const _getCn = arrOrStr => _isArr(arrOrStr) ? arrOrStr[0] ? arrOrStr[1] : '' : arrOrStr || '';
+exports.crWithScrollCn = exports.crStyle2 = exports.crShowHideStyle = exports.crShowHide = exports.crPopupMenuCn = exports.crPanelShadowCn = exports.crPaneCn = exports.crInlineBlockShowHide = exports.crContainerBgCn = exports.crCn = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_COLOR_BLACK = exports.S_BLOCK = exports.COLOR_BLACK = exports.CL_SHOW_POPUP = exports.CL_SELECT_NONE = exports.CL_ROW_NEWS_SOURCE = exports.CL_MENU_MORE_ITEM = void 0;
+var _uiApi = require("./uiApi");
+const CL_SELECT_NONE = exports.CL_SELECT_NONE = 'select-none';
+const CL_MENU_MORE_ITEM = exports.CL_MENU_MORE_ITEM = "menu-more__item " + CL_SELECT_NONE;
+const CL_ROW_NEWS_SOURCE = exports.CL_ROW_NEWS_SOURCE = "row__news-source " + CL_SELECT_NONE;
+const COLOR_BLACK = exports.COLOR_BLACK = '#121212';
+const S_COLOR_BLACK = exports.S_COLOR_BLACK = {
+  color: COLOR_BLACK
+};
+const S_BLOCK = exports.S_BLOCK = {
+  display: 'block'
+};
+const S_INLINE_BLOCK = exports.S_INLINE_BLOCK = {
+  display: 'inline-block'
+};
+const S_NONE = exports.S_NONE = {
+  display: 'none'
+};
+const _getCn = arrOrStr => (0, _uiApi.isArr)(arrOrStr) ? arrOrStr[0] ? arrOrStr[1] : '' : arrOrStr || '';
 const crCn = (conf1, conf2) => {
   const _cl1 = _getCn(conf1),
     _cl2 = _getCn(conf2);
@@ -21,27 +31,12 @@ const crStyle2 = (style1, style2) => style2 ? {
   ...style2
 } : style1;
 exports.crStyle2 = crStyle2;
-const S_BLOCK = {
-  display: 'block'
-};
-exports.S_BLOCK = S_BLOCK;
-const S_INLINE_BLOCK = {
-  display: 'inline-block'
-};
-exports.S_INLINE_BLOCK = S_INLINE_BLOCK;
-const S_NONE = {
-  display: 'none'
-};
-exports.S_NONE = S_NONE;
 const crShowHideStyle = is => is ? S_BLOCK : S_NONE;
 exports.crShowHideStyle = crShowHideStyle;
-const CL_SHOW_POPUP = "show-popup";
-exports.CL_SHOW_POPUP = CL_SHOW_POPUP;
+const CL_SHOW_POPUP = exports.CL_SHOW_POPUP = "show-popup";
 const _fShowHide = showStyle => (is, cl) => is ? [crCn(cl, CL_SHOW_POPUP), showStyle] : [cl, S_NONE];
-const crShowHide = _fShowHide(S_BLOCK);
-exports.crShowHide = crShowHide;
-const crInlineBlockShowHide = _fShowHide(S_INLINE_BLOCK);
-exports.crInlineBlockShowHide = crInlineBlockShowHide;
+const crShowHide = exports.crShowHide = _fShowHide(S_BLOCK);
+const crInlineBlockShowHide = exports.crInlineBlockShowHide = _fShowHide(S_INLINE_BLOCK);
 const crContainerBgCn = className => crCn(className, "c-bg");
 exports.crContainerBgCn = crContainerBgCn;
 const crPaneCn = className => crContainerBgCn(crCn("pane", className));

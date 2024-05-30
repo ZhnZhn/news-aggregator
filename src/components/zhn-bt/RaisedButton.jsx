@@ -1,9 +1,9 @@
+import { S_COLOR_BLACK } from '../crStyle';
 import BtCaption from './BtCaption';
 
 const CL_BT_RAISED = "bt-raised"
 , CL_BT_RAISED_DIV = `${CL_BT_RAISED}__div`
-, CL_BT_RAISED_SPAN = `${CL_BT_RAISED}__span`
-, S_PRIMARY_COLOR = { color: 'black' };
+, CL_BT_RAISED_SPAN = `${CL_BT_RAISED}__span`;
 
 const RaisedButton = ({
   refBt,
@@ -23,7 +23,7 @@ const RaisedButton = ({
     <div className={CL_BT_RAISED_DIV}>
       <BtCaption
         className={CL_BT_RAISED_SPAN}
-        style={isPrimary ? S_PRIMARY_COLOR : void 0}
+        style={isPrimary ? S_COLOR_BLACK : void 0}
         caption={caption}
         hotKey={hotKey}
       />

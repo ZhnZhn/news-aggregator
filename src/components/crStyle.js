@@ -1,10 +1,19 @@
-const _isArr = Array.isArray;
+import { isArr } from './uiApi';
 
 export const CL_SELECT_NONE = 'select-none'
 export const CL_MENU_MORE_ITEM = `menu-more__item ${CL_SELECT_NONE}`
 export const CL_ROW_NEWS_SOURCE = `row__news-source ${CL_SELECT_NONE}`;
 
-const _getCn = (arrOrStr) => _isArr(arrOrStr)
+export const COLOR_BLACK = '#121212'
+export const S_COLOR_BLACK = {
+  color: COLOR_BLACK
+}
+
+export const S_BLOCK = { display: 'block'}
+export const S_INLINE_BLOCK = { display: 'inline-block'}
+export const S_NONE = { display: 'none' }
+
+const _getCn = (arrOrStr) => isArr(arrOrStr)
   ? arrOrStr[0] ? arrOrStr[1] : ''
   : arrOrStr || '';
 
@@ -22,10 +31,6 @@ export const crStyle2 = (
 ) => style2
  ? {...style1, ...style2}
  : style1;
-
-export const S_BLOCK = { display: 'block'}
-export const S_INLINE_BLOCK = { display: 'inline-block'}
-export const S_NONE = { display: 'none' };
 
 export const crShowHideStyle = (
   is

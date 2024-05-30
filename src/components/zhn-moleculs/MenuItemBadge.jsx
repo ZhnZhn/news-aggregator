@@ -1,4 +1,7 @@
-import { crStyle2 } from '../crStyle';
+import {
+  S_COLOR_BLACK,
+  crStyle2
+} from '../crStyle';
 
 const S_BADGE = {
   display: 'inline-block',
@@ -12,9 +15,6 @@ const S_BADGE = {
   textAlign: 'center',
   float: 'right',
   cursor: 'pointer'
-}
-, S_CLOSE = {
-  color: 'black'
 };
 
 const MenuItemBadge = ({
@@ -30,7 +30,7 @@ const MenuItemBadge = ({
   , { isOpen } = itemBadge || {}
   , _badgeStyle = crStyle2(
       S_BADGE,
-      !isOpen && S_CLOSE
+      !isOpen && S_COLOR_BLACK
   );
 
   return (

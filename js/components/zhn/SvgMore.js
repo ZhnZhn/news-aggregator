@@ -6,11 +6,12 @@ exports.default = void 0;
 var _useTooltip = _interopRequireDefault(require("../hooks/useTooltip"));
 var _Svg = _interopRequireDefault(require("./svg/Svg"));
 var _DP = require("../DP");
+var _crStyle = require("../crStyle");
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_BT_MORE = 'bt-more',
   S_SVG = {
-    fill: 'black',
-    stroke: 'black'
+    fill: _crStyle.COLOR_BLACK,
+    stroke: _crStyle.COLOR_BLACK
   };
 const Circle = _ref => {
   let {

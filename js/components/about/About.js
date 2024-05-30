@@ -24,7 +24,7 @@ const CL_ABOUT_PANE = (0, _crStyle.crPaneCn)("about-pane"),
     overflowY: 'auto'
   },
   S_DIV_WRAPPER = {
-    color: 'black',
+    ..._crStyle.S_COLOR_BLACK,
     paddingLeft: 12,
     paddingRight: 5,
     lineHeight: 1.4,
@@ -39,13 +39,10 @@ const CL_ABOUT_PANE = (0, _crStyle.crPaneCn)("about-pane"),
   S_APP_TITLE = {
     color: '#80c040'
   },
-  S_BLACK = {
-    color: 'black'
-  },
   S_MT_8 = {
     marginTop: 8
   },
-  _crToken = (token, hotKey) => _has.HAS_WIDE_SCREEN ? `${token} [${hotKey}]` : token;
+  _crToken = (token, hotKey) => _has.HAS_WIDE_SCREEN ? token + " [" + hotKey + "]" : token;
 const {
   ItemStack
 } = _Comp.default;
@@ -61,8 +58,8 @@ const _crLinkItem = (_ref, index) => {
     })
   }, index);
 };
-const NEWS_SOURCE_STEP_DESCRIPTIONS = [`Please, click button ${_crToken('QUERY', 'q')} in header.`, "Choose headlines source.", `Click button ${_crToken('LOAD', 'l')} in dialog.`],
-  API_KEYS_SETTINGS_MSG = `API Keys can be set in the ${_crToken('Settings Dialog', 's')}`;
+const NEWS_SOURCE_STEP_DESCRIPTIONS = ["Please, click button " + _crToken('QUERY', 'q') + " in header.", "Choose headlines source.", "Click button " + _crToken('LOAD', 'l') + " in dialog."],
+  API_KEYS_SETTINGS_MSG = "API Keys can be set in the " + _crToken('Settings Dialog', 's');
 const _crStepItem = (descr, index) => (0, _jsxRuntime.jsx)(_Step.default, {
   step: index + 1,
   description: descr
@@ -121,7 +118,7 @@ const About = _ref2 => {
         }), (0, _jsxRuntime.jsx)("p", {
           style: S_MT_8,
           children: (0, _jsxRuntime.jsx)("span", {
-            style: S_BLACK,
+            style: _crStyle.S_COLOR_BLACK,
             children: "Browsing by source:"
           })
         }), (0, _jsxRuntime.jsx)(ItemStack, {
@@ -129,7 +126,7 @@ const About = _ref2 => {
           crItem: _crStepItem
         }), (0, _jsxRuntime.jsx)(_LogoBar.default, {}), (0, _jsxRuntime.jsx)("p", {
           children: (0, _jsxRuntime.jsx)("span", {
-            style: S_BLACK,
+            style: _crStyle.S_COLOR_BLACK,
             children: "*Logos Fair Use."
           })
         })]

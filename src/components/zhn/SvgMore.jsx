@@ -1,11 +1,12 @@
 import useTooltip from '../hooks/useTooltip';
 import Svg from './svg/Svg';
 import { DP_MIDDLE_LEFT } from '../DP';
+import { COLOR_BLACK } from '../crStyle';
 
 const CL_BT_MORE = 'bt-more'
 , S_SVG = {
-  fill: 'black',
-  stroke: 'black'
+  fill: COLOR_BLACK,
+  stroke: COLOR_BLACK
 };
 
 const Circle = ({

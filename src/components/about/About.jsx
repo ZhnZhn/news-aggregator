@@ -4,6 +4,7 @@ import { HAS_WIDE_SCREEN } from '../has';
 import useShowHideComponent from '../hooks/useShowHideComponent';
 
 import {
+  S_COLOR_BLACK,
   crPaneCn,
   crShowHide
 } from '../crStyle';
@@ -38,7 +39,7 @@ const CL_ABOUT_PANE = crPaneCn("about-pane")
   overflowY: 'auto'
 }
 , S_DIV_WRAPPER = {
-  color: 'black',
+  ...S_COLOR_BLACK,
   paddingLeft: 12,
   paddingRight: 5,
   lineHeight : 1.4,
@@ -52,9 +53,6 @@ const CL_ABOUT_PANE = crPaneCn("about-pane")
 }
 , S_APP_TITLE = {
   color: '#80c040'
-}
-, S_BLACK = {
-  color: 'black'
 }
 , S_MT_8 = {
   marginTop: 8
@@ -177,7 +175,7 @@ const About = ({
              </p>
            </div>
            <p style={S_MT_8}>
-             <span style={S_BLACK}>Browsing by source:</span>
+             <span style={S_COLOR_BLACK}>Browsing by source:</span>
            </p>
            <ItemStack
              items={NEWS_SOURCE_STEP_DESCRIPTIONS}
@@ -185,7 +183,7 @@ const About = ({
            />
            <LogoBar />
            <p>
-             <span style={S_BLACK}>
+             <span style={S_COLOR_BLACK}>
                *Logos Fair Use.
              </span>
           </p>

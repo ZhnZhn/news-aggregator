@@ -6,6 +6,7 @@ exports.default = void 0;
 var _memoFn = require("../hoc/memoFn");
 var _Dialog = require("./Dialog.Style");
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
+var _crStyle = require("../crStyle");
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types'
 
@@ -16,7 +17,7 @@ const S_DIALOG = {
     margin: '70px auto 0px'
   },
   S_MSG = {
-    color: 'black',
+    ..._crStyle.S_COLOR_BLACK,
     width: '100%',
     padding: '8px 12px',
     fontWeight: 'bold',
@@ -33,7 +34,7 @@ const _toMsg = data => {
     url,
     msg
   } = data || {};
-  return status ? `${url}\ncode:${status}\nNetwork exception` : msg || 'Exception Message';
+  return status ? url + "\ncode:" + status + "\nNetwork exception" : msg || 'Exception Message';
 };
 const AlertDialog = (0, _memoFn.memoIsShow)(_ref => {
   let {

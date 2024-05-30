@@ -1,4 +1,8 @@
 import { useCallback } from '../uiApi';
+import {
+  S_COLOR_BLACK,
+  COLOR_BLACK
+} from '../crStyle';
 
 import useToggle from '../hooks/useToggle';
 import useKeyDelete from '../hooks/useKeyDelete';
@@ -41,8 +45,8 @@ const S_ROOT = {
   paddingBottom: 8
 }
 , S_SPAN_TAG = {
+  ...S_COLOR_BLACK,
   display: 'inline-block',
-  color: 'black',
   backgroundColor: 'gray',
   padding: '4px 8px',
   margin: '6px 8px 2px 8px',
@@ -56,7 +60,7 @@ const S_ROOT = {
 })
 , S_FISH_BADGE = _crItemBadge('#d7bb52')
 , S_GREEN_BADGE = _crItemBadge('#80c040')
-, S_BLACK_BADGE = _crItemBadge('black');
+, S_BLACK_BADGE = _crItemBadge(COLOR_BLACK);
 
 
 const TOKEN_ANSWER = HAS_TOUCH_EVENTS ? 'A' : (

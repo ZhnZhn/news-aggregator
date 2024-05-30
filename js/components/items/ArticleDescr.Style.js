@@ -5,11 +5,8 @@ exports.S_RELATED_DIV = exports.S_RELATED = exports.S_PT_8 = exports.S_DESCR = e
 var _crStyle = require("../crStyle");
 exports.CL_SELECT_NONE = _crStyle.CL_SELECT_NONE;
 const CL_LINK_WRAPPER = exports.CL_LINK_WRAPPER = "link-wrapper";
-const S_COLOR_BLACK = {
-    color: '#121212'
-  },
-  S_FONT = {
-    ...S_COLOR_BLACK,
+const S_FONT = {
+    ..._crStyle.S_COLOR_BLACK,
     fontSize: '1rem',
     fontWeight: 'bold'
   },
@@ -42,7 +39,7 @@ const S_DESCR = exports.S_DESCR = {
     ...S_BREAK_WORD
   },
   S_COMMENTS_LINK = exports.S_COMMENTS_LINK = {
-    ...S_COLOR_BLACK,
+    ..._crStyle.S_COLOR_BLACK,
     ...S_WHITESPACE_NOWRAP
   };
 const S_AUTHOR_ROW = exports.S_AUTHOR_ROW = {

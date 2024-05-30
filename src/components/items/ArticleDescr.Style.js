@@ -1,10 +1,9 @@
+import { S_COLOR_BLACK } from '../crStyle';
+
 export { CL_SELECT_NONE } from '../crStyle'
 export const CL_LINK_WRAPPER = "link-wrapper"
 
-const S_COLOR_BLACK = {
-  color: '#121212'
-}
-, S_FONT = {
+const S_FONT = {
    ...S_COLOR_BLACK,
    fontSize: '1rem',
    fontWeight: 'bold'

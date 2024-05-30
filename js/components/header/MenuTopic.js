@@ -3,14 +3,15 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _uiApi = require("../uiApi");
+var _crStyle = require("../crStyle");
 var _OpenClose = _interopRequireDefault(require("../zhn/OpenClose"));
 var _MenuItem = _interopRequireDefault(require("../zhn/MenuItem"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const _isArr = Array.isArray;
 const CL_ITEM = 'row__topic';
 const S_HORIZONTAL_LINE = {
   margin: '0 16px',
-  borderBottom: '1px solid black'
+  borderBottom: "1px solid " + _crStyle.COLOR_BLACK
 };
 const MenuTopic = _ref => {
   let {
@@ -21,12 +22,12 @@ const MenuTopic = _ref => {
     itemStyle,
     onItem
   } = _ref;
-  return _isArr(items) ? (0, _jsxRuntime.jsx)(_OpenClose.default, {
+  return (0, _uiApi.isArr)(items) ? (0, _jsxRuntime.jsx)(_OpenClose.default, {
     refBt: refBt,
     style: style,
     itemStyle: itemStyle,
     caption: caption,
-    children: items.map(config => _isArr(config) ? (0, _jsxRuntime.jsx)(_MenuItem.default, {
+    children: items.map(config => (0, _uiApi.isArr)(config) ? (0, _jsxRuntime.jsx)(_MenuItem.default, {
       className: CL_ITEM,
       caption: config[0],
       onClick: config[1],

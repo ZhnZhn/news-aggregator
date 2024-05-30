@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _crStyle = require("../crStyle");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
 var _useKeyDelete = _interopRequireDefault(require("../hooks/useKeyDelete"));
 var _has = require("../has");
@@ -38,8 +39,8 @@ const S_ROOT = {
     paddingBottom: 8
   },
   S_SPAN_TAG = {
+    ..._crStyle.S_COLOR_BLACK,
     display: 'inline-block',
-    color: 'black',
     backgroundColor: 'gray',
     padding: '4px 8px',
     margin: '6px 8px 2px 8px',
@@ -53,7 +54,7 @@ const S_ROOT = {
   }),
   S_FISH_BADGE = _crItemBadge('#d7bb52'),
   S_GREEN_BADGE = _crItemBadge('#80c040'),
-  S_BLACK_BADGE = _crItemBadge('black');
+  S_BLACK_BADGE = _crItemBadge(_crStyle.COLOR_BLACK);
 const TOKEN_ANSWER = _has.HAS_TOUCH_EVENTS ? 'A' : (0, _jsxRuntime.jsx)("span", {
   role: "img",
   "arial-label": "hammer and pick",

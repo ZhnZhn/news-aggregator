@@ -1,12 +1,14 @@
+import { isArr } from '../uiApi';
+import { COLOR_BLACK } from '../crStyle';
+
 import OpenClose from '../zhn/OpenClose';
 import MenuItem from '../zhn/MenuItem';
 
-const _isArr = Array.isArray;
 const CL_ITEM = 'row__topic';
 
 const S_HORIZONTAL_LINE = {
   margin: '0 16px',
-  borderBottom: '1px solid black'
+  borderBottom: `1px solid ${COLOR_BLACK}`
 };
 
 const MenuTopic = ({
@@ -16,14 +18,14 @@ const MenuTopic = ({
   style,
   itemStyle,
   onItem
-}) => _isArr(items) ? (
+}) => isArr(items) ? (
   <OpenClose
      refBt={refBt}
      style={style}
      itemStyle={itemStyle}
      caption={caption}
   >
-    {items.map(config => _isArr(config)
+    {items.map(config => isArr(config)
       ? <MenuItem
           key={config[0]}
           className={CL_ITEM}
