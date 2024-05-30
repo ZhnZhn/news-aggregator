@@ -40,7 +40,9 @@ export const EVENT_TOUCH_CANCEL = `${TOUCH}cancel`
 export const FN_NOOP = () => {}
 export const FN_TRUE = () => true
 
-export const isFn = fn => typeof fn === 'function';
+export const isStr = str => typeof str === 'string'
+export const isFn = fn => typeof fn === 'function'
+export const isArr = Array.isArray
 
 export const getRefValue = (
   ref
@@ -55,7 +57,6 @@ export const setRefValue = (
   }
 }
 
-const isArr = Array.isArray;
 export const safeMap = (
   items,
   crElement

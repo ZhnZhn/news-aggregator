@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useId = exports.useEffect = exports.useContext = exports.useCallback = exports.toLink = exports.toFirstUpperCase = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.safeMap = exports.render = exports.memo = exports.isFn = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.crLazyValue = exports.crId = exports.cloneElement = exports.bindTo = exports.PASSIVE_EVENT_OPTIONS = exports.KEY_TAB = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_DELETE = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = exports.FN_TRUE = exports.FN_NOOP = exports.EVENT_TOUCH_START = exports.EVENT_TOUCH_MOVE = exports.EVENT_TOUCH_END = exports.EVENT_TOUCH_CANCEL = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useId = exports.useEffect = exports.useContext = exports.useCallback = exports.toLink = exports.toFirstUpperCase = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.safeMap = exports.render = exports.memo = exports.isStr = exports.isFn = exports.isArr = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.crLazyValue = exports.crId = exports.cloneElement = exports.bindTo = exports.PASSIVE_EVENT_OPTIONS = exports.KEY_TAB = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_DELETE = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = exports.FN_TRUE = exports.FN_NOOP = exports.EVENT_TOUCH_START = exports.EVENT_TOUCH_MOVE = exports.EVENT_TOUCH_END = exports.EVENT_TOUCH_CANCEL = void 0;
 var _utils = require("../utils");
 exports.bindTo = _utils.bindTo;
 exports.crId = _utils.crId;
@@ -36,8 +36,11 @@ const FN_NOOP = () => {};
 exports.FN_NOOP = FN_NOOP;
 const FN_TRUE = () => true;
 exports.FN_TRUE = FN_TRUE;
+const isStr = str => typeof str === 'string';
+exports.isStr = isStr;
 const isFn = fn => typeof fn === 'function';
 exports.isFn = isFn;
+const isArr = exports.isArr = Array.isArray;
 const getRefValue = ref => (ref || {}).current;
 exports.getRefValue = getRefValue;
 const setRefValue = (ref, value) => {
@@ -46,7 +49,6 @@ const setRefValue = (ref, value) => {
   }
 };
 exports.setRefValue = setRefValue;
-const isArr = Array.isArray;
 const safeMap = (items, crElement) => isArr(items) ? items.map(crElement) : null;
 exports.safeMap = safeMap;
 const _focusHtmlElement = element => {
