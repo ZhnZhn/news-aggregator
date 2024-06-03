@@ -10,7 +10,6 @@ var _SvgX = _interopRequireDefault(require("../zhn/SvgX"));
 var _RelatedDiv = _interopRequireDefault(require("./RelatedDiv"));
 var _ArticleDescr = require("./ArticleDescr.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
-const COLOR_SVG_X = "grey";
 const ArticleDescr = _ref => {
   let {
     href,
@@ -53,7 +52,6 @@ const ArticleDescr = _ref => {
         style: _ArticleDescr.S_BOTTOM_ROW,
         children: [(0, _jsxRuntime.jsx)(_SvgX.default, {
           dataPos: _DP.DP_CLOSE_RIGHT,
-          color: COLOR_SVG_X,
           onClick: onClose
         }), (0, _jsxRuntime.jsx)(_TextToken.TextSpan, {
           className: _ArticleDescr.CL_SELECT_NONE,

@@ -37,7 +37,6 @@ const S_ROOT = {
   top: 8,
   right: 0
 }
-, COLOR_SVG_X = 'grey'
 , S_ITEM_CAPTION = {
   paddingBottom: 8
 }
@@ -153,8 +152,7 @@ const StackItem = ({
             {display_name}
           </span>
          <SvgX
-            style={S_SVG_CLOSE}
-            color={COLOR_SVG_X}
+            style={S_SVG_CLOSE}            
             onClick={_hClose}
          />
       </div>

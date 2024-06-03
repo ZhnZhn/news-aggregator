@@ -5,6 +5,7 @@
   height: 1.375rem; 
   margin-right: 10px;
   padding: 2px;
+  stroke: grey;
   cursor: pointer;
   transform-origin: center center;
   transition: transform 0.3s ease-out 0.2s;

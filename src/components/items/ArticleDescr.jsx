@@ -16,8 +16,6 @@ import {
   S_PT_8
 } from './ArticleDescr.Style';
 
-const COLOR_SVG_X = "grey";
-
 const ArticleDescr = ({
   href,
   description,
@@ -65,7 +63,6 @@ const ArticleDescr = ({
       <div style={S_BOTTOM_ROW}>
         <SvgX
           dataPos={DP_CLOSE_RIGHT}
-          color={COLOR_SVG_X}
           onClick={onClose}
         />
         <TextSpan
