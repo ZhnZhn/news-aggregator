@@ -1,12 +1,10 @@
 import useTooltip from '../hooks/useTooltip';
 import Svg from './svg/Svg';
 import { DP_MIDDLE_LEFT } from '../DP';
-import { COLOR_BLACK } from '../crStyle';
 
-const CL_BT_MORE = 'bt-more'
-, S_SVG = {
-  fill: COLOR_BLACK,
-  stroke: COLOR_BLACK
+const S_SVG = {
+  fill: 'inherit',
+  stroke: 'inherit'
 };
 
 const Circle = ({
@@ -17,8 +15,7 @@ const Circle = ({
 
 const SvgMore = ({
   btRef,
-  style,
-  svgStyle,
+  className,
   onClick
 }) => {
   const [
@@ -31,14 +28,13 @@ const SvgMore = ({
       type="button"
       aria-label={_ariaLabel}
       data-pos={_dataPos}
-      className={CL_BT_MORE}
-      style={style}
+      className={className}
       onClick={onClick}
     >
       <Svg
         w="6"
         h="24"
-        style={{...S_SVG, ...svgStyle}}
+        style={S_SVG}
       >
         <Circle cy="4" />
         <Circle cy="12" />

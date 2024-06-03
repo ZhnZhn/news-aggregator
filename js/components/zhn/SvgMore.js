@@ -6,13 +6,11 @@ exports.default = void 0;
 var _useTooltip = _interopRequireDefault(require("../hooks/useTooltip"));
 var _Svg = _interopRequireDefault(require("./svg/Svg"));
 var _DP = require("../DP");
-var _crStyle = require("../crStyle");
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_BT_MORE = 'bt-more',
-  S_SVG = {
-    fill: _crStyle.COLOR_BLACK,
-    stroke: _crStyle.COLOR_BLACK
-  };
+const S_SVG = {
+  fill: 'inherit',
+  stroke: 'inherit'
+};
 const Circle = _ref => {
   let {
     cy
@@ -26,8 +24,7 @@ const Circle = _ref => {
 const SvgMore = _ref2 => {
   let {
     btRef,
-    style,
-    svgStyle,
+    className,
     onClick
   } = _ref2;
   const [_ariaLabel, _dataPos] = (0, _useTooltip.default)("More", _DP.DP_MIDDLE_LEFT);
@@ -36,16 +33,12 @@ const SvgMore = _ref2 => {
     type: "button",
     "aria-label": _ariaLabel,
     "data-pos": _dataPos,
-    className: CL_BT_MORE,
-    style: style,
+    className: className,
     onClick: onClick,
     children: (0, _jsxRuntime.jsxs)(_Svg.default, {
       w: "6",
       h: "24",
-      style: {
-        ...S_SVG,
-        ...svgStyle
-      },
+      style: S_SVG,
       children: [(0, _jsxRuntime.jsx)(Circle, {
         cy: "4"
       }), (0, _jsxRuntime.jsx)(Circle, {
