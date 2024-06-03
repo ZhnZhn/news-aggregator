@@ -7,7 +7,6 @@ var _uiApi = require("../uiApi");
 var _crStyle = require("../crStyle");
 var _SvgX = _interopRequireDefault(require("../zhn/SvgX"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const FN_NOOP = () => {};
 const ItemHeader = _ref => {
   let {
     refEl,
@@ -16,7 +15,7 @@ const ItemHeader = _ref => {
     captionStyle,
     btCloseStyle,
     title,
-    onKeyDown = FN_NOOP,
+    onKeyDown,
     onClick,
     onToggle,
     onClose
@@ -26,7 +25,9 @@ const ItemHeader = _ref => {
     if (evt.keyCode === 13) {
       onToggle();
     } else {
-      onKeyDown(evt);
+      if ((0, _uiApi.isFn)(onKeyDown)) {
+        onKeyDown(evt);
+      }
     }
   }, evt => {
     evt.stopPropagation();

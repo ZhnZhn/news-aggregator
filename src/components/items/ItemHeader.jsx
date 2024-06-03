@@ -1,9 +1,10 @@
-import { useMemo } from '../uiApi';
+import {
+  isFn,
+  useMemo
+} from '../uiApi';
 
 import { CL_SELECT_NONE } from '../crStyle';
 import SvgX from '../zhn/SvgX';
-
-const FN_NOOP = () => {};
 
 const ItemHeader = ({
   refEl,
@@ -12,7 +13,7 @@ const ItemHeader = ({
   captionStyle,
   btCloseStyle,
   title,
-  onKeyDown=FN_NOOP,
+  onKeyDown,
   onClick,
   onToggle,
   onClose
@@ -26,7 +27,9 @@ const ItemHeader = ({
       if (evt.keyCode === 13) {
         onToggle()
       } else {
-        onKeyDown(evt)
+        if (isFn(onKeyDown)) {
+          onKeyDown(evt)
+        }
       }
     },
     evt => {
@@ -55,7 +58,7 @@ const ItemHeader = ({
          {title}
       </span>
       <SvgX
-        style={btCloseStyle}        
+        style={btCloseStyle}
         onClick={_hClose}
       />
     </div>
