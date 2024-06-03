@@ -3,14 +3,13 @@ import { DP_CLOSE_LEFT } from '../DP';
 import Svg100 from './svg/Svg100';
 
 const CL_SVG_CLOSE = "svg-close"
-, DF_COLOR = 'grey'
 , S_SVG = { padding: 3 };
 
 const SvgX = ({
   dataPos,
   className=CL_SVG_CLOSE,
   style,
-  color=DF_COLOR,
+  color,
   onClick
 }) => {
   const [

@@ -31,6 +31,7 @@ const S_ROOT = {
     top: 8,
     right: 0
   },
+  COLOR_SVG_X = 'grey',
   S_ITEM_CAPTION = {
     paddingBottom: 8
   },
@@ -139,6 +140,7 @@ const StackItem = _ref => {
         children: display_name
       }), (0, _jsxRuntime.jsx)(_SvgX.default, {
         style: S_SVG_CLOSE,
+        color: COLOR_SVG_X,
         onClick: _hClose
       })]
     }), (0, _jsxRuntime.jsx)("div", {

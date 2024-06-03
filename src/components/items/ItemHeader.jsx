@@ -4,6 +4,7 @@ import { CL_SELECT_NONE } from '../crStyle';
 import SvgX from '../zhn/SvgX';
 
 const FN_NOOP = () => {};
+const COLOR_SVG_X = "grey";
 
 const ItemHeader = ({
   refEl,
@@ -56,6 +57,7 @@ const ItemHeader = ({
       </span>
       <SvgX
         style={btCloseStyle}
+        color={COLOR_SVG_X}
         onClick={_hClose}
       />
     </div>

@@ -8,7 +8,6 @@ var _DP = require("../DP");
 var _Svg = _interopRequireDefault(require("./svg/Svg100"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_SVG_CLOSE = "svg-close",
-  DF_COLOR = 'grey',
   S_SVG = {
     padding: 3
   };
@@ -17,7 +16,7 @@ const SvgX = _ref => {
     dataPos,
     className = CL_SVG_CLOSE,
     style,
-    color = DF_COLOR,
+    color,
     onClick
   } = _ref;
   const [_ariaLabel, _dataPos] = (0, _useTooltip.default)("Close", dataPos || _DP.DP_CLOSE_LEFT);

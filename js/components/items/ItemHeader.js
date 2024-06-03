@@ -8,6 +8,7 @@ var _crStyle = require("../crStyle");
 var _SvgX = _interopRequireDefault(require("../zhn/SvgX"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const FN_NOOP = () => {};
+const COLOR_SVG_X = "grey";
 const ItemHeader = _ref => {
   let {
     refEl,
@@ -50,6 +51,7 @@ const ItemHeader = _ref => {
       children: title
     }), (0, _jsxRuntime.jsx)(_SvgX.default, {
       style: btCloseStyle,
+      color: COLOR_SVG_X,
       onClick: _hClose
     })]
   });
