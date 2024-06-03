@@ -7,14 +7,15 @@ var _useTooltip = _interopRequireDefault(require("../hooks/useTooltip"));
 var _DP = require("../DP");
 var _Svg = _interopRequireDefault(require("./svg/Svg100"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_SVG_CLOSE = "svg-close",
+const CL_BT_SVG_X = "bt-svg-x",
   S_SVG = {
-    padding: 3
+    padding: 3,
+    stroke: 'inherit'
   };
 const SvgX = _ref => {
   let {
     dataPos,
-    className = CL_SVG_CLOSE,
+    className = CL_BT_SVG_X,
     style,
     color,
     onClick

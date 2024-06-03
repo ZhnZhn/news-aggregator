@@ -2,12 +2,15 @@ import useTooltip from '../hooks/useTooltip';
 import { DP_CLOSE_LEFT } from '../DP';
 import Svg100 from './svg/Svg100';
 
-const CL_SVG_CLOSE = "svg-close"
-, S_SVG = { padding: 3 };
+const CL_BT_SVG_X = "bt-svg-x"
+, S_SVG = {
+  padding: 3,
+  stroke: 'inherit'
+};
 
 const SvgX = ({
   dataPos,
-  className=CL_SVG_CLOSE,
+  className=CL_BT_SVG_X,
   style,
   color,
   onClick

@@ -9,6 +9,7 @@ import SvgMore from './SvgMore';
 import SvgX from './SvgX';
 
 const CL_BROWSER_CAPTION = "br-caption gap-right"
+, CL_BT_SVG_CLOSE = "bt-svg-x bt-svg-close"
 , S_CAPTION = {
   fontSize: '1.125rem',
   fontWeight: 'bold'
@@ -21,13 +22,6 @@ const CL_BROWSER_CAPTION = "br-caption gap-right"
 , S_SVG_MORE = {
   fill: COLOR_VAR_H_C,
   stroke: COLOR_VAR_H_C
-}
-, S_SVG_CLOSE = {
-  position: 'absolute',
-  top: 8,
-  right: 0,
-  width: '1.5rem',
-  height: '1.5rem'
 };
 
 const BrowserCaption = ({
@@ -56,8 +50,7 @@ const BrowserCaption = ({
     </span>
     {children}
     <SvgX
-      style={S_SVG_CLOSE}
-      color={COLOR_VAR_H_C}
+      className={CL_BT_SVG_CLOSE}
       onClick={onClose}
     />
   </div>
