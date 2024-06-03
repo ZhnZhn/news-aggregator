@@ -80,13 +80,12 @@ const _crTagItem = (tag, index) => (0, _jsxRuntime.jsx)("span", {
   style: S_SPAN_TAG,
   children: tag
 }, index);
-const FN_NOOP = () => {};
 const StackItem = _ref => {
   let {
     item,
     onCloseItem,
-    onRemoveUnder = FN_NOOP,
-    onRemoveItem = FN_NOOP
+    onRemoveUnder = _uiApi.FN_NOOP,
+    onRemoveItem = _uiApi.FN_NOOP
   } = _ref;
   const [isClosed, toggleIsClosed] = (0, _useToggle.default)(false)
     /*eslint-disable react-hooks/exhaustive-deps */,

@@ -1,4 +1,7 @@
-import { useCallback } from '../uiApi';
+import {
+  FN_NOOP,
+  useCallback
+} from '../uiApi';
 import {
   S_COLOR_BLACK,
   COLOR_BLACK
@@ -89,8 +92,6 @@ const _crTagItem = (
   </span>
 );
 
-const FN_NOOP = () => {};
-
 const StackItem = ({
   item,
   onCloseItem,
@@ -152,7 +153,7 @@ const StackItem = ({
             {display_name}
           </span>
          <SvgX
-            style={S_SVG_CLOSE}            
+            style={S_SVG_CLOSE}
             onClick={_hClose}
          />
       </div>
