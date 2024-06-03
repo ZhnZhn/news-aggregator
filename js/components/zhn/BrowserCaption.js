@@ -10,18 +10,10 @@ var _SvgX = _interopRequireDefault(require("./SvgX"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_BROWSER_CAPTION = "br-caption gap-right",
   CL_BT_SVG_CLOSE = "bt-svg-x bt-svg-close",
+  CL_BT_SVG_MENU = "bt-svg-more bt-svg-menu",
   S_CAPTION = {
     fontSize: '1.125rem',
     fontWeight: 'bold'
-  },
-  S_BT_MORE = {
-    position: 'absolute',
-    top: '0.3rem',
-    left: 0
-  },
-  S_SVG_MORE = {
-    fill: _crStyle.COLOR_VAR_H_C,
-    stroke: _crStyle.COLOR_VAR_H_C
   };
 const BrowserCaption = _ref => {
   let {
@@ -35,8 +27,7 @@ const BrowserCaption = _ref => {
     className: CL_BROWSER_CAPTION,
     style: style,
     children: [(0, _uiApi.isFn)(onMore) && (0, _jsxRuntime.jsx)(_SvgMore.default, {
-      style: S_BT_MORE,
-      svgStyle: S_SVG_MORE,
+      className: CL_BT_SVG_MENU,
       onClick: onMore
     }), (0, _jsxRuntime.jsx)("span", {
       className: _crStyle.CL_SELECT_NONE,
