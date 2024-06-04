@@ -39,7 +39,8 @@ export const S_DESCR = {
 }
 , S_COMMENTS_LINK = {
   ...S_COLOR_BLACK,
-  ...S_WHITESPACE_NOWRAP
+  ...S_WHITESPACE_NOWRAP,
+  marginLeft: 'auto'
 }
 
 export const S_AUTHOR_ROW = {

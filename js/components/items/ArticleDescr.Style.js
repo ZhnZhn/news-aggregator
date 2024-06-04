@@ -40,7 +40,8 @@ const S_DESCR = exports.S_DESCR = {
   },
   S_COMMENTS_LINK = exports.S_COMMENTS_LINK = {
     ..._crStyle.S_COLOR_BLACK,
-    ...S_WHITESPACE_NOWRAP
+    ...S_WHITESPACE_NOWRAP,
+    marginLeft: 'auto'
   };
 const S_AUTHOR_ROW = exports.S_AUTHOR_ROW = {
     ...S_FLEX_SPACE_BETWEEN,
