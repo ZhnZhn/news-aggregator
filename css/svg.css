@@ -29,9 +29,28 @@
 }
 
 .bt-svg-clear {
-  display: inline-block;
   width: 22px;
   height: 22px;
   padding: 2px;
+}
+
+.bt-svg-more {
+  width: 1.9rem;
+  height: 1.9rem;
+  padding-top: 0.2rem;
+  border-radius: 50%;
+}
+
+.bt-svg-more:hover,
+.bt-svg-more:focus {
+  background: var(--bt-h, rgba(255, 255, 255, 0.1));
+}
+
+.bt-svg-menu {
+  fill: var(--h-c);
+  stroke: var(--h-c);
+  position: absolute;
+  top: 0.3rem;
+  left: 0;  
 }
 
