@@ -9,7 +9,8 @@ import { CL_BT_SVG_CLEAR } from './Input.Style';
 const S_BT_CLEAR = {
   position: 'absolute',
   top: 25,
-  right: 12
+  right: 15,
+  stroke: COLOR_BLACK
 };
 
 const AsyncSvgX = memo(({
@@ -21,7 +22,6 @@ const AsyncSvgX = memo(({
     mls={700}
   >
     <SvgX
-       color={COLOR_BLACK}
        className={CL_BT_SVG_CLEAR}
        style={S_BT_CLEAR}
        onClick={onClick}

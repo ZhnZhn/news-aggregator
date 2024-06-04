@@ -12,7 +12,6 @@ const SvgX = ({
   dataPos,
   className=CL_BT_SVG_X,
   style,
-  color,
   onClick
 }) => {
   const [
@@ -34,7 +33,6 @@ const SvgX = ({
          style={S_SVG}
          strokeLinecap="round"
          strokeWidth="2"
-         stroke={color}
       >
          <path d="M 0,0 L 12,12" />
          <path d="M 12,0 L 0,12" />

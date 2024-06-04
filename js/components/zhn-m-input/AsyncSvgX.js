@@ -12,7 +12,8 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const S_BT_CLEAR = {
   position: 'absolute',
   top: 25,
-  right: 12
+  right: 15,
+  stroke: _crStyle.COLOR_BLACK
 };
 const AsyncSvgX = (0, _uiApi.memo)(_ref => {
   let {
@@ -23,7 +24,6 @@ const AsyncSvgX = (0, _uiApi.memo)(_ref => {
     is: is,
     mls: 700,
     children: (0, _jsxRuntime.jsx)(_SvgX.default, {
-      color: _crStyle.COLOR_BLACK,
       className: _Input.CL_BT_SVG_CLEAR,
       style: S_BT_CLEAR,
       onClick: onClick

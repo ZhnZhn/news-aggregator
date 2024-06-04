@@ -17,7 +17,6 @@ const SvgX = _ref => {
     dataPos,
     className = CL_BT_SVG_X,
     style,
-    color,
     onClick
   } = _ref;
   const [_ariaLabel, _dataPos] = (0, _useTooltip.default)("Close", dataPos || _DP.DP_CLOSE_LEFT);
@@ -34,7 +33,6 @@ const SvgX = _ref => {
       style: S_SVG,
       strokeLinecap: "round",
       strokeWidth: "2",
-      stroke: color,
       children: [(0, _jsxRuntime.jsx)("path", {
         d: "M 0,0 L 12,12"
       }), (0, _jsxRuntime.jsx)("path", {
