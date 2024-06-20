@@ -10,6 +10,18 @@
   transform-origin: 50% 0;
   animation: hiding-popup 300ms ease-out;
 }
+
+@media only screen and (max-width: 375px) {
+  .show-popup{
+    transform-origin: 50% 0;
+    animation: showing-popup 150ms ease-in;
+  }
+  .hide-popup {
+    transform-origin: 50% 0;
+    animation: hiding-popup 150ms ease-out;
+  } 
+}
+
 @keyframes showing-popup{
   0% {
     opacity: 0;
@@ -41,6 +53,16 @@
 .hide-modal {
   animation: hiding-modal 400ms linear;
 }
+
+@media only screen and (max-width: 375px) {
+  .show-modal {
+    animation: showing-modal 200ms linear;  
+  }
+  .hide-modal {
+    animation: hiding-modal 200ms linear;
+  }
+}
+
 @keyframes showing-modal {
   0%   { background-color: rgba(0,0,0, 0);}
   100% { background-color: rgba(0,0,0, 0.35);}
