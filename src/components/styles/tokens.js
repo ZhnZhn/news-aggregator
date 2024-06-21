@@ -1,1 +1,1 @@
-export const APP_TITLE = "New Aggregator v0.4.0"
+export const APP_TITLE = "News Aggregator v0.4.0"
