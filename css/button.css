@@ -15,8 +15,7 @@
   /* clean-css ignore:end */
 }
 
-.bt-circle {
-  display: inline-block;
+.bt-circle {  
   color: #80c040;
   width: 1.6rem;
   height: 1.6rem;
@@ -32,8 +31,7 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.bt-resize {
-  display: inline-block;
+.bt-resize { 
   width: 1.6rem;
   height: 1.6rem;
   padding: 2px;
@@ -61,8 +59,7 @@
   font-weight: bold;
   margin-left: 6px;
   padding-bottom: 2px;
-  border-bottom: 1px solid;
-  text-decoration: none;
+  border-bottom: 1px solid;  
   white-space: nowrap;
 }
 
@@ -91,15 +88,12 @@
   color: #a9a9a9;
   color: var(--h-c, #a9a9a9);
   background-color: #3a6799;
-  background-color: var(--h-bg, #3a6799);
-  display: inline-block;
+  background-color: var(--h-bg, #3a6799);  
   position: relative;
   height: 36px;
   line-height: 36px;
   border-radius: 2px;
-  border: 10px;
-  text-align: center;
-  text-decoration: none;
+  border: 10px;  
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 }
 
@@ -128,16 +122,13 @@
 }
 
 .bt-flat {
-  color: var(--bt-fc, #6ca1dc);
-  display: inline-block;
+  color: var(--bt-fc, #6ca1dc);  
   position: relative;
   height: 36px;
   line-height: 36px;
   border-radius: 2px;
   border: 10px;
-  background-color: transparent;
-  text-align: center;
-  text-decoration: none;
+  background-color: transparent;    
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
 }
 

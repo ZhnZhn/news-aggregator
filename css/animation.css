@@ -12,12 +12,10 @@
 }
 
 @media only screen and (max-width: 375px) {
-  .show-popup{
-    transform-origin: 50% 0;
+  .show-popup {    
     animation: showing-popup 150ms ease-in;
   }
-  .hide-popup {
-    transform-origin: 50% 0;
+  .hide-popup {    
     animation: hiding-popup 150ms ease-out;
   } 
 }

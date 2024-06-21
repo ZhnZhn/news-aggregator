@@ -12,18 +12,16 @@
 }
 
 .modal-root {
-  z-index: 1050;
-  display: block;
+  z-index: 1050;  
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  left: 0; 
   opacity: 1;
+  overflow: hidden;  
   background: rgba(0,0,0, 0.35) none repeat scroll 0% 0%;
-  outline: 0 none;
+  outline: 0;  
 }
 
 .popup-menu {

@@ -22,8 +22,9 @@ button {
   -webkit-appearance: none;
   -moz-appearance: none;
   border: none;
-  outline: none;
+  outline: 0;
   background-color: transparent;
+  text-decoration: none;
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit; 
