@@ -10,12 +10,10 @@ import {
   LIMIT_OPTIONS
 } from './configReddit';
 
-const DF_PERIOD = PERIOD_OPTIONS[1]
-, DF_LIMIT = LIMIT_OPTIONS[0]
-, _crInputConfigs = () => [
-  crInputSuggestConfig('subreddit', SUBRREDIT_OPTIONS, { is: true, isInput: true }),
-  crInputSelectConfig('t', PERIOD_OPTIONS, { caption: "Period", dfOption: DF_PERIOD }),
-  crInputSelectConfig('limit', LIMIT_OPTIONS, { dfOption: DF_LIMIT })
+const _crInputConfigs = () => [
+  crInputSuggestConfig('subreddit', SUBRREDIT_OPTIONS, { is: true, isInput: true, isNotFirstUpperCase: true }),
+  crInputSelectConfig('t', PERIOD_OPTIONS, { caption: "Period", dfIndex: 1, isNotFirstUpperCase: true }),
+  crInputSelectConfig('limit', LIMIT_OPTIONS)
 ];
 
 export const getRedditTopConfig = fGetDialogConfig(_crInputConfigs)
