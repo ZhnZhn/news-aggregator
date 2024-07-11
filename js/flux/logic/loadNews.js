@@ -2,35 +2,37 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports["default"] = void 0;
+exports.default = void 0;
 var _fn = _interopRequireDefault(require("../../utils/fn"));
-var _isFn = function _isFn(fn) {
-  return typeof fn === "function";
-};
-var _fnCatch = function _fnCatch(_ref) {
-  var error = _ref.error,
-    onFailed = _ref.onFailed;
+var _isTypeFn = require("../../utils/isTypeFn");
+const _fnCatch = _ref => {
+  let {
+    error,
+    onFailed
+  } = _ref;
   onFailed(error);
 };
-var _fFetch = function _fFetch(adapter) {
-  return function (_ref2) {
-    var json = _ref2.json,
-      option = _ref2.option,
-      onCompleted = _ref2.onCompleted;
-    var news = adapter.toNews(json, option);
-    var itemConf = option.itemConf;
-    onCompleted({
-      news: news,
-      itemConf: itemConf
-    });
-  };
+const _fFetch = adapter => _ref2 => {
+  let {
+    json,
+    option,
+    onCompleted
+  } = _ref2;
+  const news = adapter.toNews(json, option),
+    itemConf = option.itemConf;
+  onCompleted({
+    news,
+    itemConf
+  });
 };
-var loadNews = function loadNews(option, onCompleted, onFailed) {
-  var api = option.api,
-    adapter = option.adapter;
-  (0, _fn["default"])({
+const loadNews = (option, onCompleted, onFailed) => {
+  const {
+    api,
+    adapter
+  } = option;
+  (0, _fn.default)({
     uri: api.getRequestUrl(option),
-    optionFetch: _isFn(api.crOptionFetch) ? api.crOptionFetch(option) : void 0,
+    optionFetch: (0, _isTypeFn.isFn)(api.crOptionFetch) ? api.crOptionFetch(option) : void 0,
     option: option,
     onCheckResponse: api.checkResponse,
     onFetch: _fFetch(adapter),
@@ -39,6 +41,5 @@ var loadNews = function loadNews(option, onCompleted, onFailed) {
     onFailed: onFailed
   });
 };
-var _default = loadNews;
-exports["default"] = _default;
+var _default = exports.default = loadNews;
 //# sourceMappingURL=loadNews.js.map

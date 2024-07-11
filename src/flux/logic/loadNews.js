@@ -1,23 +1,36 @@
-import fnFetch from '../../utils/fn'
+import fnFetch from '../../utils/fn';
+import { isFn } from '../../utils/isTypeFn';
 
-const _isFn = fn => typeof fn === "function";
-
-const _fnCatch = ({ error, onFailed }) => {
+const _fnCatch = ({
+  error,
+  onFailed
+}) => {
   onFailed(error)
-}
+};
 
-const _fFetch = (adapter) => function({ json, option, onCompleted }){
-  const news = adapter.toNews(json, option);
-  const itemConf = option.itemConf;
+const _fFetch = (adapter) => ({
+  json,
+  option,
+  onCompleted
+}) => {
+  const news = adapter.toNews(json, option)
+  , itemConf = option.itemConf;
   onCompleted({ news, itemConf })
-}
+};
 
-const loadNews = function(option, onCompleted, onFailed){
-  const { api, adapter } = option;
+const loadNews = (
+  option,
+  onCompleted,
+  onFailed
+) => {
+  const {
+    api,
+    adapter
+  } = option;
 
   fnFetch({
     uri: api.getRequestUrl(option),
-    optionFetch: _isFn(api.crOptionFetch)
+    optionFetch: isFn(api.crOptionFetch)
        ? api.crOptionFetch(option) : void 0,
     option: option,
     onCheckResponse: api.checkResponse,
@@ -26,6 +39,6 @@ const loadNews = function(option, onCompleted, onFailed){
     onCatch: _fnCatch,
     onFailed: onFailed
   })
-}
+};
 
 export default loadNews
