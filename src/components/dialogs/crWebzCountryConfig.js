@@ -1,5 +1,6 @@
 import {
   crInputSelectConfig,
+  crInputSuggestConfig,
   fGetDialogConfig,
 } from './DialogFn';
 
@@ -79,8 +80,8 @@ const OPTION_COUNTRIES = [
   ["English", "english"]
 ]
 , _crInputConfigs = () => [
-  crInputSelectConfig('country', OPTION_COUNTRIES, {is: true}),
-  crInputSelectConfig('topic', OPTION_TOPICS),
+  crInputSuggestConfig('country', OPTION_COUNTRIES, {is: true}),
+  crInputSuggestConfig('topic', OPTION_TOPICS),
   crInputSelectConfig('lang', OPTION_LANGUAGES, {caption: 'Language'})
 ];
 

@@ -1,15 +1,13 @@
 import {
-  crSelectOptions,
   crTextFieldConfig,
   crInputSelectConfig,
   fGetDialogConfig
 } from './DialogFn';
 
-const _SITE_TYPES = [
+const SITE_TYPE_OPTIONS = [
   'news',
   'blogs'
 ]
-, SITE_TYPE_OPTIONS = crSelectOptions(_SITE_TYPES)
 , DF_IN_TITLE = 'Weather'
 , DF_BEFORE_DAYS = 2
 , _onTestDaysBefore = (value) => {

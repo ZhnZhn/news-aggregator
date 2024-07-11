@@ -3,8 +3,7 @@
 exports.__esModule = true;
 exports.getWebzQueryConfig = void 0;
 var _DialogFn = require("./DialogFn");
-const _SITE_TYPES = ['news', 'blogs'],
-  SITE_TYPE_OPTIONS = (0, _DialogFn.crSelectOptions)(_SITE_TYPES),
+const SITE_TYPE_OPTIONS = ['news', 'blogs'],
   DF_IN_TITLE = 'Weather',
   DF_BEFORE_DAYS = 2,
   _onTestDaysBefore = value => {
