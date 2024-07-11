@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.getPaneCaption = exports.getLoadId = exports.getDialogCaption = exports.getCaption = exports.fGetDialogConfig = exports.crTextFieldConfig = exports.crTextFieldCaption = exports.crSelectOptions = exports.crInputSuggestConfig = exports.crInputSelectConfig = exports.crInputProps = exports.crFromToDateConfig = exports.crDfInputs = void 0;
+exports.getPaneCaption = exports.getLoadId = exports.getDialogCaption = exports.getCaption = exports.fGetDialogConfig = exports.crTextFieldConfig = exports.crTextFieldCaption = exports.crInputSuggestConfig = exports.crInputSelectConfig = exports.crInputProps = exports.crFromToDateConfig = exports.crDfInputs = void 0;
 var _OptionFn = require("../zhn-m-input/OptionFn");
 exports.crSelectOptions = _OptionFn.crSelectOptions;
 var _dt = require("../../utils/dt");
@@ -69,10 +69,13 @@ const _fCrInputConfig = inputType => function (id, options, _temp) {
   let {
     caption,
     dfOption,
+    dfIndex,
     is,
-    isInput
+    isInput,
+    isNotFirstUpperCase
   } = _temp === void 0 ? {} : _temp;
-  return [inputType, id, _crInputCaption(caption, id), options, dfOption || options[0], is, isInput];
+  const _options = (0, _uiApi.isStr)(options[0]) ? (0, _OptionFn.crSelectOptions)(options, isNotFirstUpperCase) : options;
+  return [inputType, id, _crInputCaption(caption, id), _options, dfOption || _options[dfIndex || 0], is, isInput];
 };
 const crInputSelectConfig = exports.crInputSelectConfig = _fCrInputConfig(_InputTypes.INPUT_TYPE_SELECT);
 const crInputSuggestConfig = exports.crInputSuggestConfig = _fCrInputConfig(_InputTypes.INPUT_TYPE_SUGGEST);

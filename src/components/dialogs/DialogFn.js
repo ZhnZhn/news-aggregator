@@ -1,4 +1,5 @@
 export { crSelectOptions } from '../zhn-m-input/OptionFn';
+import { crSelectOptions } from '../zhn-m-input/OptionFn';
 
 import {
   getFromDate,
@@ -6,6 +7,7 @@ import {
 } from '../../utils/dt';
 
 import {
+  isStr,
   crLazyValue,
   toFirstUpperCase
 } from '../uiApi';
@@ -121,17 +123,24 @@ const _fCrInputConfig = (
   options, {
   caption,
   dfOption,
+  dfIndex,
   is,
-  isInput
-}={}) => [
-  inputType,
-  id,
-  _crInputCaption(caption, id),
-  options,
-  dfOption || options[0],
-  is,
-  isInput
-];
+  isInput,
+  isNotFirstUpperCase
+}={}) => {
+  const _options = isStr(options[0])
+   ? crSelectOptions(options, isNotFirstUpperCase)
+   : options
+  return [
+    inputType,
+    id,
+    _crInputCaption(caption, id),
+    _options,
+    dfOption || _options[dfIndex || 0],
+    is,
+    isInput
+  ];
+}
 
 export const crInputSelectConfig = _fCrInputConfig(INPUT_TYPE_SELECT)
 export const crInputSuggestConfig = _fCrInputConfig(INPUT_TYPE_SUGGEST)
