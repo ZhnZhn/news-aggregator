@@ -1,5 +1,7 @@
+const _fIsTypeof = strType => v => typeof v === strType;
 
-export const isStr = v => typeof v === 'string'
+export const isStr = _fIsTypeof('string')
+export const isFn = _fIsTypeof('function')
 export const isObj = v => v && typeof v === 'object'
 
 export const isArr = Array.isArray
