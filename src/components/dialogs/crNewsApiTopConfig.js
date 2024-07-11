@@ -1,13 +1,9 @@
 import {
-  crSelectOptions
-} from '../zhn-m-input/OptionFn';
-
-import {
-  crInputSelectConfig,
+  crInputSuggestConfig,
   fGetDialogConfig
 } from './DialogFn';
 
-const _CATEGORY = [
+const CATEGORY_OPTIONS = [
   'business',
   'entertainment',
   'general',
@@ -16,8 +12,6 @@ const _CATEGORY = [
   'sports',
   'technology'
 ]
-, CATEGORY_OPTIONS = crSelectOptions(_CATEGORY)
-//, DF_CATEGORY = CATEGORY_OPTIONS[0]
 , COUNTRY_OPTIONS = [
    ["Argentina", "ar"],
    ["Australia", "au"],
@@ -72,12 +66,12 @@ const _CATEGORY = [
    ["United Arab Emirates", "ae"],
    ["United Kingdom", "gb"],
    ["United States", "us"],
-   ["Venezuala", "ve"]
+   ["Venezuela", "ve"]
   ]
 , DF_COUNTRY = COUNTRY_OPTIONS[52]
 , _crInputConfigs = () => [
-  crInputSelectConfig('country', COUNTRY_OPTIONS, { dfOption: DF_COUNTRY, is:true }),
-  crInputSelectConfig('category', CATEGORY_OPTIONS),
+  crInputSuggestConfig('country', COUNTRY_OPTIONS, { dfOption: DF_COUNTRY , is:true }),
+  crInputSuggestConfig('category', CATEGORY_OPTIONS)
 ];
 
 export const getNewsApiTopConfig = fGetDialogConfig(_crInputConfigs)
