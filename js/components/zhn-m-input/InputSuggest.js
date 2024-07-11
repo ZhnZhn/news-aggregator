@@ -67,7 +67,7 @@ const InputSuggest = _ref => {
         _item = _isEmptyOptions ? initItem : item;
       onSelect(_item, id);
       dispatch([_useOptionsPane.ACTION_CLOSE_OPTIONS, _isEmptyOptions ? options : void 0, _item]);
-      (0, _uiApi.setRefInputValue)(_refTf, _item);
+      (0, _uiApi.setRefInputValue)(_refTf, (0, _OptionFn.getItemCaption)(_item));
       if (_item) {
         (0, _uiApi.focusRefElement)(_refBtArrow);
       }
@@ -183,12 +183,12 @@ const InputSuggest = _ref => {
       onInputChange: _hInputChange,
       onEnter: _hEnterTextField,
       onKeyDown: _hKeyDownTextField,
-      children: _isBtArrow(item, items, options) && (0, _jsxRuntime.jsx)(_ButtonArrow.default, {
+      children: _isBtArrow(item, items, options) ? (0, _jsxRuntime.jsx)(_ButtonArrow.default, {
         refEl: _refBtArrow,
         style: (0, _crStyle.crStyle2)(S_BT_ARROW, isShowOptions && S_BT_ARROW_FILL),
         onKeyDown: _hKeyDownBtArrow,
         onClick: _hClickBtArrow
-      })
+      }) : null
     })]
   });
 };

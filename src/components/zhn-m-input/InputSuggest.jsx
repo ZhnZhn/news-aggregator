@@ -136,7 +136,7 @@ const InputSuggest = ({
         _isEmptyOptions ? options : void 0,
         _item
       ])
-      setRefInputValue(_refTf, _item)
+      setRefInputValue(_refTf, getItemCaption(_item))
       if (_item) {
         focusRefElement(_refBtArrow)
       }
@@ -283,7 +283,7 @@ const InputSuggest = ({
          onEnter={_hEnterTextField}
          onKeyDown={_hKeyDownTextField}
        >
-         {_isBtArrow(item, items, options) &&
+         {_isBtArrow(item, items, options) ?
            <ButtonArrow
               refEl={_refBtArrow}
               style={crStyle2(
@@ -292,7 +292,7 @@ const InputSuggest = ({
               )}
               onKeyDown={_hKeyDownBtArrow}
               onClick={_hClickBtArrow}
-           />
+           /> : null
        }
        </TextField>
     </div>
