@@ -15,15 +15,13 @@ const MenuTopic = ({
   refBt,
   caption,
   items,
-  style,
-  itemStyle,
-  onItem
+  onItem,
+  onToggle
 }) => isArr(items) ? (
   <OpenClose
-     refBt={refBt}
-     style={style}
-     itemStyle={itemStyle}
+     refBt={refBt}     
      caption={caption}
+     onToggle={onToggle}
   >
     {items.map(config => isArr(config)
       ? <MenuItem

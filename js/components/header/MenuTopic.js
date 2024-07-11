@@ -18,15 +18,13 @@ const MenuTopic = _ref => {
     refBt,
     caption,
     items,
-    style,
-    itemStyle,
-    onItem
+    onItem,
+    onToggle
   } = _ref;
   return (0, _uiApi.isArr)(items) ? (0, _jsxRuntime.jsx)(_OpenClose.default, {
     refBt: refBt,
-    style: style,
-    itemStyle: itemStyle,
     caption: caption,
+    onToggle: onToggle,
     children: items.map(config => (0, _uiApi.isArr)(config) ? (0, _jsxRuntime.jsx)(_MenuItem.default, {
       className: CL_ITEM,
       caption: config[0],

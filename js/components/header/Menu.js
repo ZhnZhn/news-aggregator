@@ -8,18 +8,16 @@ var _MenuTopic = _interopRequireDefault(require("./MenuTopic"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const Menu = _ref => {
   let {
-    style,
-    itemStyle,
     menuModel,
-    getFocusRef
+    getFocusRef,
+    onToggle
   } = _ref;
   return getFocusRef ? menuModel.map((topic, index) => (0, _jsxRuntime.jsx)(_MenuTopic.default, {
     refBt: getFocusRef(index),
     caption: topic.t,
     items: topic.items,
-    style: style,
-    itemStyle: itemStyle,
-    onItem: topic.onItem
+    onItem: topic.onItem,
+    onToggle: onToggle
   }, topic.t)) : null;
 };
 var _default = exports.default = (0, _uiApi.memo)(Menu);
