@@ -2,6 +2,7 @@ import {
   crTextFieldCaption,
   crTextFieldConfig,
   crInputSelectConfig,
+  crInputSuggestConfig,
   fGetDialogConfig
 } from './DialogFn';
 
@@ -16,7 +17,7 @@ const SORT_BY_OPTIONS = [
 , DF_TERM = "Weather"
 , _crInputConfig = () => [
   crTextFieldConfig('search', {caption: crTextFieldCaption('Term',DF_TERM), dfValue: DF_TERM, is: true}),
-  crInputSelectConfig('category', CATEGORY_OPTIONS),
+  crInputSuggestConfig('category', CATEGORY_OPTIONS),
   crInputSelectConfig('sortBy', SORT_BY_OPTIONS)
 ];
 

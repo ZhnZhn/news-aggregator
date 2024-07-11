@@ -1,4 +1,5 @@
 import {
+  crInputSuggestConfig,
   crInputSelectConfig,
   fGetDialogConfig,
 } from './DialogFn';
@@ -73,8 +74,8 @@ const LOCALE_OPTIONS = [
   ["The Verge", "theverge.com"],
 ]
 , _crInputConfigs = () => [
-  crInputSelectConfig('locale', LOCALE_OPTIONS, {is: true}),
-  crInputSelectConfig('category', CATEGORY_OPTIONS),
+  crInputSuggestConfig('locale', LOCALE_OPTIONS, {is: true}),
+  crInputSuggestConfig('category', CATEGORY_OPTIONS),  
   crInputSelectConfig('domain', DOMAIN_OPTIONS)
 ];
 

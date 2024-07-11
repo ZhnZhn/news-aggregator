@@ -10,6 +10,6 @@ const SORT_BY_OPTIONS = [["PublishedAt", " published_at"], ["Relevancy", "releva
     caption: (0, _DialogFn.crTextFieldCaption)('Term', DF_TERM),
     dfValue: DF_TERM,
     is: true
-  }), (0, _DialogFn.crInputSelectConfig)('category', _TheNewsApiDialogFn.CATEGORY_OPTIONS), (0, _DialogFn.crInputSelectConfig)('sortBy', SORT_BY_OPTIONS)];
+  }), (0, _DialogFn.crInputSuggestConfig)('category', _TheNewsApiDialogFn.CATEGORY_OPTIONS), (0, _DialogFn.crInputSelectConfig)('sortBy', SORT_BY_OPTIONS)];
 const getTheNewsApiSearchConfig = exports.getTheNewsApiSearchConfig = (0, _DialogFn.fGetDialogConfig)(_crInputConfig);
 //# sourceMappingURL=crTheNewsApiSearchConfig.js.map
