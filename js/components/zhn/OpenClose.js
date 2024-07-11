@@ -37,11 +37,16 @@ const OpenClose = _ref => {
     caption,
     fillOpen = FILL_OPEN,
     fillClose = FILL_CLOSE,
-    children
+    children,
+    onToggle
   } = _ref;
   const _childrenWrapperId = (0, _uiApi.useId)(),
     [isOpen, toggleIsOpen] = (0, _useToggle.default)(!isClose),
-    _hKeyDown = (0, _useKeyEnter.default)(toggleIsOpen),
+    _onToggle = (0, _uiApi.isFn)(onToggle) ? () => {
+      onToggle(!isOpen, caption, toggleIsOpen);
+      toggleIsOpen();
+    } : toggleIsOpen,
+    _hKeyDown = (0, _useKeyEnter.default)(_onToggle, [_onToggle]),
     [_pathV, _fillV, _styleCollapse, _classShow] = isOpen ? [PATH_OPEN, fillOpen, _crStyle.S_BLOCK, _crStyle.CL_SHOW_POPUP] : [PATH_CLOSE, fillClose, _crStyle.S_NONE, null];
   return (0, _jsxRuntime.jsxs)("div", {
     style: {
@@ -56,7 +61,7 @@ const OpenClose = _ref => {
       "aria-controls": _childrenWrapperId,
       tabIndex: "0",
       style: S_ROOT_CAPTION,
-      onClick: toggleIsOpen,
+      onClick: _onToggle,
       onKeyDown: _hKeyDown,
       children: [(0, _jsxRuntime.jsx)(_Svg.default, {
         w: "16",

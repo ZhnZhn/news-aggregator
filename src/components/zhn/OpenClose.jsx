@@ -1,4 +1,7 @@
-import { useId } from '../uiApi';
+import {
+  isFn,
+  useId
+} from '../uiApi';
 
 import {
   S_BLOCK,
@@ -40,14 +43,19 @@ const OpenClose = ({
   caption,
   fillOpen=FILL_OPEN,
   fillClose=FILL_CLOSE,
-  children
+  children,
+  onToggle
 }) => {
   const _childrenWrapperId = useId()
   , [
     isOpen,
     toggleIsOpen
   ] = useToggle(!isClose)
-  , _hKeyDown = useKeyEnter(toggleIsOpen)
+  , _onToggle = isFn(onToggle) ? () => {
+    onToggle(!isOpen, caption, toggleIsOpen)
+    toggleIsOpen()
+  } : toggleIsOpen
+  , _hKeyDown = useKeyEnter(_onToggle, [_onToggle])
   , [
     _pathV,
     _fillV,
@@ -75,8 +83,8 @@ const OpenClose = ({
          aria-expanded={isOpen}
          aria-controls={_childrenWrapperId}
          tabIndex="0"
-         style={S_ROOT_CAPTION}
-         onClick={toggleIsOpen}
+         style={S_ROOT_CAPTION}         
+         onClick={_onToggle}
          onKeyDown={_hKeyDown}
       >
         <Svg w="16">
