@@ -4,14 +4,14 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _ProviderNames = require("../../conf/ProviderNames");
+var _isTypeFn = require("../../utils/isTypeFn");
 var _settingStore = _interopRequireDefault(require("../settingStore"));
 var _Adapters = _interopRequireDefault(require("../../adapters/Adapters"));
 var _Api = _interopRequireDefault(require("../../api/Api"));
 const MSG_ERR_TAIL = 'Key is not set. \nPlease, set and try again.';
 const MSG_ERR_DF = 'Unknow news API provider';
-const _isFn = fn => typeof fn === 'function';
 const _crConf = (type, msgErr, apiKey) => ({
-  apiKey: _isFn(apiKey) ? apiKey() : true,
+  apiKey: (0, _isTypeFn.isFn)(apiKey) ? apiKey() : true,
   api: _Api.default[type],
   adapter: _Adapters.default[type],
   msgErr
@@ -81,6 +81,5 @@ const RouterApiConf = {
     }
   }
 };
-var _default = RouterApiConf;
-exports.default = _default;
+var _default = exports.default = RouterApiConf;
 //# sourceMappingURL=RouterApiConf.js.map

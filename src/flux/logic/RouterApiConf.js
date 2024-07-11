@@ -12,6 +12,7 @@ import {
   DEV_TO,
   STACK_OVERFLOW
 } from '../../conf/ProviderNames';
+import { isFn  } from '../../utils/isTypeFn';
 
 import settingStore from '../settingStore';
 
@@ -21,15 +22,12 @@ import Api from '../../api/Api';
 const MSG_ERR_TAIL = 'Key is not set. \nPlease, set and try again.';
 const MSG_ERR_DF = 'Unknow news API provider';
 
-
-const _isFn = fn => typeof fn === 'function';
-
 const _crConf = (
   type,
   msgErr,
   apiKey
 ) => ({
-   apiKey: _isFn(apiKey) ? apiKey() : true,
+   apiKey: isFn(apiKey) ? apiKey() : true,
    api: Api[type],
    adapter: Adapter[type],
    msgErr
