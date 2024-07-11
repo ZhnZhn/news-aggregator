@@ -3,6 +3,7 @@ import { HAS_KEYBOARD_FOCUS } from '../has';
 
 import useFocusRefElementIf from '../hooks/useFocusRefElementIf';
 import useItemsFocusTrap from '../hooks/useItemsFocusTrap';
+import useToggleAccordion from '../hooks/useToggleAccordion';
 
 import ModalPopup from '../zhn-moleculs/ModalPopup';
 import FocusTrap from '../zhn-moleculs/FocusTrap';
@@ -24,7 +25,8 @@ const PanelQuery = ({
     menuModel,
     _refFirstItem,
     _refLastItem
-  )[0];
+  )[0]
+  , _onToggleTopic = useToggleAccordion();
 
   return (
     <ModalPopup
@@ -39,6 +41,7 @@ const PanelQuery = ({
          <Menu
            menuModel={menuModel}
            getFocusRef={_getFocusRef}
+           onToggle={_onToggleTopic}
          />
        </FocusTrap>
      </ModalPopup>
