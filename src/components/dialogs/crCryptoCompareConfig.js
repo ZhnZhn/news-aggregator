@@ -1,5 +1,6 @@
 import {
   crInputSelectConfig,
+  crInputSuggestConfig,
   fGetDialogConfig
 } from './DialogFn';
 
@@ -33,8 +34,8 @@ const FEED_OPTIONS = [
   ['Popular', 'popular']
 ]
 , _crInputConfigs = () => [
-  crInputSelectConfig("category", CATEGORY_OPTIONS, {is: true}),
+  crInputSuggestConfig("category", CATEGORY_OPTIONS, {is: true}),
   crInputSelectConfig("feed", FEED_OPTIONS),
   crInputSelectConfig("sortOrder", SORTBY_OPTIONS, {caption: "SortBy"})
-]
+];
 export const getCryptoCompareConfig = fGetDialogConfig(_crInputConfigs);
