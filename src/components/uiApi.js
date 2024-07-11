@@ -6,6 +6,16 @@ export {
 } from '../utils';
 
 export {
+  isFn,
+  isStr,
+  isArr
+} from '../utils/isTypeFn';
+import {
+  isFn,
+  isArr
+} from '../utils/isTypeFn';
+
+export {
   memo,
 
   render,
@@ -39,10 +49,6 @@ export const EVENT_TOUCH_CANCEL = `${TOUCH}cancel`
 
 export const FN_NOOP = () => {}
 export const FN_TRUE = () => true
-
-export const isStr = str => typeof str === 'string'
-export const isFn = fn => typeof fn === 'function'
-export const isArr = Array.isArray
 
 export const getRefValue = (
   ref

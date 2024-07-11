@@ -1,12 +1,16 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useId = exports.useEffect = exports.useContext = exports.useCallback = exports.toLink = exports.toFirstUpperCase = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.safeMap = exports.render = exports.memo = exports.isStr = exports.isFn = exports.isArr = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.crLazyValue = exports.crId = exports.cloneElement = exports.bindTo = exports.PASSIVE_EVENT_OPTIONS = exports.KEY_TAB = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_DELETE = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = exports.FN_TRUE = exports.FN_NOOP = exports.EVENT_TOUCH_START = exports.EVENT_TOUCH_MOVE = exports.EVENT_TOUCH_END = exports.EVENT_TOUCH_CANCEL = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useId = exports.useEffect = exports.useContext = exports.useCallback = exports.toLink = exports.toFirstUpperCase = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.safeMap = exports.render = exports.memo = exports.isStr = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.crLazyValue = exports.crId = exports.cloneElement = exports.bindTo = exports.PASSIVE_EVENT_OPTIONS = exports.KEY_TAB = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_DELETE = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = exports.FN_TRUE = exports.FN_NOOP = exports.EVENT_TOUCH_START = exports.EVENT_TOUCH_MOVE = exports.EVENT_TOUCH_END = exports.EVENT_TOUCH_CANCEL = void 0;
 var _utils = require("../utils");
 exports.bindTo = _utils.bindTo;
 exports.crId = _utils.crId;
 exports.crLazyValue = _utils.crLazyValue;
 exports.toFirstUpperCase = _utils.toFirstUpperCase;
+var _isTypeFn = require("../utils/isTypeFn");
+exports.isFn = _isTypeFn.isFn;
+exports.isStr = _isTypeFn.isStr;
+exports.isArr = _isTypeFn.isArr;
 var _compat = require("preact/compat");
 exports.memo = _compat.memo;
 exports.render = _compat.render;
@@ -36,11 +40,6 @@ const FN_NOOP = () => {};
 exports.FN_NOOP = FN_NOOP;
 const FN_TRUE = () => true;
 exports.FN_TRUE = FN_TRUE;
-const isStr = str => typeof str === 'string';
-exports.isStr = isStr;
-const isFn = fn => typeof fn === 'function';
-exports.isFn = isFn;
-const isArr = exports.isArr = Array.isArray;
 const getRefValue = ref => (ref || {}).current;
 exports.getRefValue = getRefValue;
 const setRefValue = (ref, value) => {
@@ -49,10 +48,10 @@ const setRefValue = (ref, value) => {
   }
 };
 exports.setRefValue = setRefValue;
-const safeMap = (items, crElement) => isArr(items) ? items.map(crElement) : null;
+const safeMap = (items, crElement) => (0, _isTypeFn.isArr)(items) ? items.map(crElement) : null;
 exports.safeMap = safeMap;
 const _focusHtmlElement = element => {
-  if (element && isFn(element.focus)) {
+  if (element && (0, _isTypeFn.isFn)(element.focus)) {
     element.focus();
   }
   return element;
@@ -61,7 +60,7 @@ const focusElementById = id => {
   _focusHtmlElement(document.getElementById(id));
 };
 exports.focusElementById = focusElementById;
-const _getValueFromFnOrRef = fnOrRef => isFn(fnOrRef) ? fnOrRef() : getRefValue(fnOrRef);
+const _getValueFromFnOrRef = fnOrRef => (0, _isTypeFn.isFn)(fnOrRef) ? fnOrRef() : getRefValue(fnOrRef);
 const focusRefElement = (fnOrRef1, fnOrRef2) => _focusHtmlElement(_getValueFromFnOrRef(fnOrRef1) || _getValueFromFnOrRef(fnOrRef2));
 exports.focusRefElement = focusRefElement;
 const focusAsyncRefElement = function (refOrFn, mls) {
@@ -79,7 +78,7 @@ const getRefElementStyle = ref => (getRefValue(ref) || {}).style;
 exports.getRefElementStyle = getRefElementStyle;
 const setRefInputValue = (refInput, value) => {
   const _input = getRefValue(refInput);
-  if (_input && isFn(_input.setValue)) {
+  if (_input && (0, _isTypeFn.isFn)(_input.setValue)) {
     _input.setValue(value);
   }
 };
