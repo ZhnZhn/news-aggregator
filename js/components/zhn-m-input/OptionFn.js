@@ -10,7 +10,8 @@ const getItemValue = item => {
   return (0, _uiApi.isStr)(value) ? value.trim() : value;
 };
 exports.getItemValue = getItemValue;
-const _crOptionItem = str => [(0, _uiApi.toFirstUpperCase)(str), str];
-const crSelectOptions = values => (0, _uiApi.safeMap)(values, _crOptionItem) || [];
+const _crOptionItemWithFirstUpperCase = str => [(0, _uiApi.toFirstUpperCase)(str), str];
+const _crOptionItem = str => [str, str];
+const crSelectOptions = (values, isNotFirstUpperCase) => (0, _uiApi.safeMap)(values, isNotFirstUpperCase ? _crOptionItem : _crOptionItemWithFirstUpperCase) || [];
 exports.crSelectOptions = crSelectOptions;
 //# sourceMappingURL=OptionFn.js.map

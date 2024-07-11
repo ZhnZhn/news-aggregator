@@ -24,10 +24,18 @@ export const getItemValue = (
    : value;
 }
 
-const _crOptionItem = str => [
+const _crOptionItemWithFirstUpperCase = str => [
   toFirstUpperCase(str),
   str
 ];
+const _crOptionItem = str => [
+  str,
+  str
+];
 export const crSelectOptions = (
-  values
-) => safeMap(values, _crOptionItem) || []
+  values,
+  isNotFirstUpperCase
+) => safeMap(
+  values,
+  isNotFirstUpperCase ? _crOptionItem : _crOptionItemWithFirstUpperCase
+) || []
