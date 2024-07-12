@@ -17,7 +17,7 @@ var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types'
 
 const CL_DIALOG = (0, _crStyle.crContainerBgCn)("dialog"),
-  CL_MODAL_TOGGLE = (0, _crStyle.crPopupMenuCn)("menu-more__item select-none"),
+  CL_MODAL_TOGGLE = (0, _crStyle.crPopupMenuCn)("select-none"),
   POSITION_LEFT = _has.HAS_WIDE_SCREEN ? 50 : 15,
   S_DIV = {
     position: 'absolute',
@@ -147,9 +147,7 @@ const DraggableDialog = _ref2 => {
         onClose: toggleIsMore
       }), (0, _jsxRuntime.jsx)("div", {
         children: children
-      }), (0, _jsxRuntime.jsx)(DialogButtons
-      //TS={buttonStyle}
-      , {
+      }), (0, _jsxRuntime.jsx)(DialogButtons, {
         onLoad: onLoad,
         onShow: onShow,
         onClose: _hClose

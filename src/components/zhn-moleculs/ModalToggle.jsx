@@ -6,9 +6,13 @@ import FocusTrap from './FocusTrap';
 import RowCheckBox from '../dialogs/RowCheckBox';
 
 const S_MODAL_POPUP = {
+  color: 'var(--black)',
   left: 8,
   zIndex: 100,
-  padding: '4px 12px 12px'
+  padding: '4px 12px 12px',
+  lineHeight: 2.2,
+  fontSize: '1rem',
+  fontWeight: '700'
 }
 , S_CAPTION = {
   maxWidth: 150,
