@@ -5,12 +5,16 @@
  ],
  "file": "../../src/utils/isNumberInRange.js",
  "names": [
-  "_isNumber",
-  "n",
+  "_isTypeFn",
+  "require",
   "isNumberInRange",
   "min",
   "max",
-  "v"
+  "v",
+  "isNumber",
+  "_default",
+  "exports",
+  "default"
  ],
- "mappings": ";;;;;AAAA,IAAMA,SAAS,GAAG,SAAZA,SAAY,CAAAC,CAAC;EAAA,OAAI,OAAOA,CAAP,KAAa,QAAb,IAClBA,CAAC,GAACA,CAAF,KAAM,CADQ;AAAA,CAAnB;;AAGA,IAAMC,eAAe,GAAG,SAAlBA,eAAkB,CACtBC,GADsB,EAEtBC,GAFsB,EAGtBC,CAHsB;EAAA,OAInBL,SAAS,CAACK,CAAD,CAAT,IACDA,CAAC,IAAEF,GADF,IACSE,CAAC,IAAED,GALO;AAAA,CAAxB;;eAOeF,e"
+ "mappings": ";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AAEA,MAAMC,eAAe,GAAGA,CACtBC,GAAG,EACHC,GAAG,EACHC,CAAC,KACE,IAAAC,kBAAQ,EAACD,CAAC,CAAC,IACZA,CAAC,IAAEF,GAAG,IAAIE,CAAC,IAAED,GAAG;AAAC,IAAAG,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAENP,eAAe"
 }

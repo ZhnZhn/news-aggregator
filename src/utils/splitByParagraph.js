@@ -1,3 +1,4 @@
+import { isStr } from './isTypeFn';
 
 const MAX_ALLOW_SENTENCE = 30;
 const MAX_LENGTH = 180;
@@ -6,7 +7,7 @@ export const splitByParagraph = (
   strInput,
   maxLength=MAX_LENGTH
 ) => {
-  if (!(strInput && typeof strInput === "string")) {
+  if (!(strInput && isStr(strInput))) {
     return "";
   }
 

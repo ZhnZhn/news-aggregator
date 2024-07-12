@@ -1,9 +1,7 @@
+import { isNumber, isStr } from './isTypeFn';
 import pipe from './pipe'
 
 const MIN_YEAR =  1999;
-
-const _isStr = str => typeof str === 'string';
-const _isNum = n => typeof n === 'number';
 
 const _toTwoChars = n => n < 10 ? '0'+n : ''+n
 , _toUTCMonth = d => d.getUTCMonth() + 1
@@ -26,7 +24,7 @@ const REG_DATE = /(\d{4})-(\d{2})-(\d{2})/;
 
 export const isValidDate = (str) => {
 	 // STRING FORMAT yyyy-mm-dd
-	 if (!_isStr(str) || str.trim().length !== 10 ) {
+	 if (!isStr(str) || str.trim().length !== 10 ) {
      return false;
    }
 
@@ -122,7 +120,7 @@ export const timeDateToMls = (
 export const dateTimeToMls = (
   strDateTime
 ) => {
-  if (!_isStr(strDateTime)) {
+  if (!isStr(strDateTime)) {
     return;
   }
   const [strDate, strTime] = strDateTime
@@ -141,11 +139,11 @@ export const toTimeDate = (
 ) => {
   if (!publishedAt) {
     return '';
-  } else if (_isNum(publishedAt)) {
+  } else if (isNumber(publishedAt)) {
     return _toDateTime(publishedAt);
   }
   //yyyy-MM-ddTHH:mm:ssZ case
-  const _arr = _isStr(publishedAt)
+  const _arr = isStr(publishedAt)
     ? publishedAt.trim().split('T')
     : ['']
   , _arrDate = _arr[0].length === 10

@@ -1,3 +1,5 @@
+import { isBool } from './isTypeFn';
+
 const FN_IDENTITY = str => str
 , KEY_PREFIX = 'NA'
 , STR_BOOLEAN_TRUE = 'TRUE'
@@ -67,7 +69,7 @@ export const writeToLs = (
   if (!_isAllowUseLs) {
     return {...ERR_USE_LS_NOT_ALLOWED};
   }
-  if (typeof value === "boolean") {
+  if (isBool(value)) {
     return value
       ? writeToLs(storageKey, STR_BOOLEAN_TRUE)
       : removeItem(storageKey);

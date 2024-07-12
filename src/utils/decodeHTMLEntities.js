@@ -1,3 +1,5 @@
+import { isStr } from './isTypeFn';
+
 const _hmHtmlEntities = Object.assign(
   Object.create(null), {
   '&nbsp;': ' ',
@@ -15,7 +17,7 @@ const _hmHtmlEntities = Object.assign(
 , _reHtmlFilter = new RegExp('&#x200B;', 'g')
 , _onMatch = (match) => _hmHtmlEntities[match];
 
-export const decodeHTMLEntities = str => ((typeof str === 'string' && str) || '')
+export const decodeHTMLEntities = str => ((isStr(str) && str) || '')
   .replace(_reHtmlCode, (_, code) => String.fromCharCode(code))
   .replace(_reHtmlEntities, _onMatch)
   .replace(_reHtmlFilter, '')

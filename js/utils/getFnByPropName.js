@@ -2,7 +2,7 @@
 
 exports.__esModule = true;
 exports.default = void 0;
-const getFnByPropName = (obj, propName, dfValue) => obj && typeof obj[propName] == 'function' ? obj[propName] : () => dfValue;
-var _default = getFnByPropName;
-exports.default = _default;
+var _isTypeFn = require("./isTypeFn");
+const getFnByPropName = (obj, propName, dfValue) => obj && propName && (0, _isTypeFn.isFn)(obj[propName]) ? obj[propName] : () => dfValue;
+var _default = exports.default = getFnByPropName;
 //# sourceMappingURL=getFnByPropName.js.map

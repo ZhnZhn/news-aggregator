@@ -3,10 +3,9 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.toUTCSecond = exports.toUTCMillis = exports.toTimeDate = exports.toMls = exports.isValidDate = exports.getToDate = exports.getFromDate = exports.dateTimeToMls = void 0;
+var _isTypeFn = require("./isTypeFn");
 var _pipe = _interopRequireDefault(require("./pipe"));
 const MIN_YEAR = 1999;
-const _isStr = str => typeof str === 'string';
-const _isNum = n => typeof n === 'number';
 const _toTwoChars = n => n < 10 ? '0' + n : '' + n,
   _toUTCMonth = d => d.getUTCMonth() + 1,
   _toUTCDay = d => d.getUTCDate(),
@@ -19,12 +18,12 @@ const _toDateTime = datetime => {
     _y = _d.getUTCFullYear(),
     _m = _toTwoCharsMonth(_d),
     _day = _toTwoCharsDay(_d);
-  return _tArr[0] + " " + _day + "-" + _m + "-" + _y;
+  return `${_tArr[0]} ${_day}-${_m}-${_y}`;
 };
 const REG_DATE = /(\d{4})-(\d{2})-(\d{2})/;
 const isValidDate = str => {
   // STRING FORMAT yyyy-mm-dd
-  if (!_isStr(str) || str.trim().length !== 10) {
+  if (!(0, _isTypeFn.isStr)(str) || str.trim().length !== 10) {
     return false;
   }
 
@@ -102,13 +101,13 @@ export const timeDateToMls = (
 //YYYY-MM-DDThh:mm:ssZ
 exports.toMls = toMls;
 const dateTimeToMls = strDateTime => {
-  if (!_isStr(strDateTime)) {
+  if (!(0, _isTypeFn.isStr)(strDateTime)) {
     return;
   }
   const [strDate, strTime] = strDateTime.trim().replace('Z', '').split('T'),
     [YYYY, MM, DD] = (strDate || '').split('-'),
     [hh, mm, ss] = (strTime || '').split(':');
-  return toMls("" + YYYY + MM + DD + "T" + hh + mm + Math.round(ss));
+  return toMls(`${YYYY}${MM}${DD}T${hh}${mm}${Math.round(ss)}`);
 };
 exports.dateTimeToMls = dateTimeToMls;
 const _DF_TO_TIME_DATE_VALUE = 'No Date';
@@ -118,13 +117,13 @@ const toTimeDate = function (publishedAt, dfValue) {
   }
   if (!publishedAt) {
     return '';
-  } else if (_isNum(publishedAt)) {
+  } else if ((0, _isTypeFn.isNumber)(publishedAt)) {
     return _toDateTime(publishedAt);
   }
   //yyyy-MM-ddTHH:mm:ssZ case
-  const _arr = _isStr(publishedAt) ? publishedAt.trim().split('T') : [''],
+  const _arr = (0, _isTypeFn.isStr)(publishedAt) ? publishedAt.trim().split('T') : [''],
     _arrDate = _arr[0].length === 10 ? _arr[0].split('-') : [],
-    _strDate = _arrDate.length === 3 ? _arrDate[2] + "-" + _arrDate[1] + "-" + _arrDate[0] : '',
+    _strDate = _arrDate.length === 3 ? `${_arrDate[2]}-${_arrDate[1]}-${_arrDate[0]}` : '',
     _strTime = _arr[1] && _arr[1].length === 9 ? _arr[1].substring(0, 8) : '';
   return [_strTime, _strDate].filter(Boolean).join(' ') || dfValue;
 };

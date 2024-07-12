@@ -1,11 +1,10 @@
-const _isNumber = n => typeof n === 'number'
- && (n-n===0);
+import { isNumber } from './isTypeFn';
 
 const isNumberInRange = (
   min,
   max,
   v
-) => _isNumber(v)
+) => isNumber(v)
  && v>=min && v<=max;
 
 export default isNumberInRange

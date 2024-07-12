@@ -1,8 +1,10 @@
+import { isFn } from './isTypeFn';
+
 const getFnByPropName = (
   obj,
   propName,
   dfValue
-) => obj && typeof obj[propName] == 'function'
+) => obj && propName && isFn(obj[propName])
   ? obj[propName]
   : () => dfValue;
 

@@ -2,13 +2,14 @@
 
 exports.__esModule = true;
 exports.splitByParagraph = void 0;
+var _isTypeFn = require("./isTypeFn");
 const MAX_ALLOW_SENTENCE = 30;
 const MAX_LENGTH = 180;
 const splitByParagraph = function (strInput, maxLength) {
   if (maxLength === void 0) {
     maxLength = MAX_LENGTH;
   }
-  if (!(strInput && typeof strInput === "string")) {
+  if (!(strInput && (0, _isTypeFn.isStr)(strInput))) {
     return "";
   }
   const _reg = /\.\s["A-Z]/g,

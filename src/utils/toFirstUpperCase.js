@@ -1,6 +1,7 @@
+import { isStr } from './isTypeFn';
+
 export const toFirstUpperCase = (
   str
-) => typeof str === 'string'
+) => isStr(str)
   ? str.charAt(0).toUpperCase() + str.slice(1)
   : '';
-  
