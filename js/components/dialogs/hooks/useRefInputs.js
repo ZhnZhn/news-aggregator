@@ -1,21 +1,17 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
+exports.default = void 0;
 var _uiApi = require("../../uiApi");
 var _OptionFn = require("../../zhn-m-input/OptionFn");
-var _isStr = function _isStr(str) {
-  return typeof str === 'string';
-};
-var useRefInputs = function useRefInputs(dfValues) {
-  var _refValues = (0, _uiApi.useRef)(dfValues || Object.create(null)),
-    _setValue = (0, _uiApi.useCallback)(function (input, id) {
-      if (_isStr(id)) {
-        _refValues.current[id] = _isStr(input) ? input === '' ? dfValues[id] : input : (0, _OptionFn.getItemValue)(input);
+const useRefInputs = dfValues => {
+  const _refValues = (0, _uiApi.useRef)(dfValues || Object.create(null)),
+    _setValue = (0, _uiApi.useCallback)((input, id) => {
+      if ((0, _uiApi.isStr)(id)) {
+        _refValues.current[id] = (0, _uiApi.isStr)(input) ? input === '' ? dfValues[id] : input : (0, _OptionFn.getItemValue)(input);
       }
     }, [dfValues]);
   return [_refValues, _setValue];
 };
-var _default = useRefInputs;
-exports["default"] = _default;
+var _default = exports.default = useRefInputs;
 //# sourceMappingURL=useRefInputs.js.map

@@ -10,7 +10,6 @@ const S_ROOT = {
   top: 70,
   left: 10
 };
-const _isUndef = value => typeof value === 'undefined';
 const _findCompIndex = (arr, key) => {
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].key === key) {
@@ -75,7 +74,7 @@ const DialogContainer = _ref => {
           key,
           Comp
         } = option;
-        if (Comp && !_isUndef(_findCompIndex(prevState.compDialogs, key))) {
+        if (Comp && !(0, _uiApi.isUndef)(_findCompIndex(prevState.compDialogs, key))) {
           return prevState;
         }
         _updateVisible(prevState, key, maxDialog);

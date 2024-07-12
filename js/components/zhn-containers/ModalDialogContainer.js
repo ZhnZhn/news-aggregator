@@ -23,7 +23,6 @@ const _crDialogItem = (_ref, index, _ref2) => {
     onClose: onClose
   }, type);
 };
-const _isStr = str => typeof str === 'string';
 const _getModalDialogType = option => (option || {}).modalDialogType;
 const ModalDialogContainer = _ref3 => {
   let {
@@ -54,7 +53,7 @@ const ModalDialogContainer = _ref3 => {
     } = msModalDialog || {};
     if (option) {
       const type = _getModalDialogType(option);
-      if (_isStr(type)) {
+      if ((0, _uiApi.isStr)(type)) {
         setState(prevState => {
           if (!prevState.data[type]) {
             prevState.dialogs.push({

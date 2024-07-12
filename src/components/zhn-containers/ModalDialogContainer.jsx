@@ -1,4 +1,5 @@
 import {
+  isStr,
   useState,
   useCallback
 } from '../uiApi';
@@ -21,7 +22,6 @@ const _crDialogItem = (
   />
 );
 
-const _isStr = str => typeof str === 'string';
 const _getModalDialogType = option =>
  (option || {}).modalDialogType;
 
@@ -56,7 +56,7 @@ const ModalDialogContainer = ({
     const { option } = msModalDialog || {};
     if (option) {
       const type = _getModalDialogType(option);
-      if (_isStr(type)) {
+      if (isStr(type)) {
         setState(prevState => {
           if (!prevState.data[type]) {
             prevState.dialogs.push({

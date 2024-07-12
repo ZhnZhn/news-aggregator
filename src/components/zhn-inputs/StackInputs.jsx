@@ -1,3 +1,5 @@
+import { isObj } from '../uiApi';
+
 import {
   S_INPUT_ROOT,
   S_INPUT_DATE,
@@ -17,7 +19,6 @@ import {
   INPUT_TYPE_FROM_DATE
 } from './InputTypes';
 
-const _isObj = v => v && typeof v === 'object';
 const INPUT_SELECT_STYLE = crInputSelectStyle();
 const S_TF_SUGGEST = {
   ...S_INPUT_ROOT,
@@ -27,7 +28,7 @@ const S_TF_SUGGEST = {
 const _isInput = (
   isInputs,
   id
-) => _isObj(isInputs)
+) => isObj(isInputs)
   ? !!isInputs[id]
   : true;
 

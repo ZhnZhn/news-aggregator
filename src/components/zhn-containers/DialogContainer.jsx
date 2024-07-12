@@ -1,4 +1,5 @@
 import {
+  isUndef,
   useState,
   cloneElement
 } from '../uiApi';
@@ -9,8 +10,6 @@ const S_ROOT = {
   top: 70,
   left: 10
 };
-
-const _isUndef = value => typeof value === 'undefined';
 
 const _findCompIndex = (
   arr,
@@ -89,7 +88,7 @@ const DialogContainer = ({
     if (option){
        setState(prevState => {
          const { key, Comp } = option;
-          if (Comp && !_isUndef(_findCompIndex(prevState.compDialogs, key))) {
+          if (Comp && !isUndef(_findCompIndex(prevState.compDialogs, key))) {
             return prevState;
           }
          _updateVisible(prevState, key, maxDialog)
