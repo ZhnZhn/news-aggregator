@@ -1,5 +1,6 @@
+import { isNumber } from '../utils/isTypeFn';
 
-export const toMls = sec => typeof sec === 'number'
+export const toMls = sec => isNumber(sec)
   ? sec*1000
   : void 0
 

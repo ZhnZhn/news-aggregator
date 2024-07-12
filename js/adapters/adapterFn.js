@@ -2,11 +2,10 @@
 
 exports.__esModule = true;
 exports.toMls = exports.joinByBlank = void 0;
-var toMls = function toMls(sec) {
-  return typeof sec === 'number' ? sec * 1000 : void 0;
-};
+var _isTypeFn = require("../utils/isTypeFn");
+const toMls = sec => (0, _isTypeFn.isNumber)(sec) ? sec * 1000 : void 0;
 exports.toMls = toMls;
-var joinByBlank = function joinByBlank() {
+const joinByBlank = function () {
   for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
     args[_key] = arguments[_key];
   }

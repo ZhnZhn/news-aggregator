@@ -1,3 +1,4 @@
+import { isArr, isStr } from '../utils/isTypeFn';
 import { IEX_CLOUD } from '../conf/ProviderNames';
 
 import {
@@ -8,12 +9,8 @@ import {
 
 import sanitizeArticle from './sanitizeArticle';
 
-const _isArr = Array.isArray;
-
 const SOURCE_ID = 'iex_news'
 , DF_SYMBOL = 'AAPL';
-
-const _isStr = v => typeof v === 'string'
 
 const _crAuthor = (
   hasPaywall,
@@ -24,13 +21,13 @@ const _crAuthor = (
 
 const _crRelated = (
   related
-) => _isStr(related)
+) => isStr(related)
   ? related.split(',').join(', ')
   : void 0;
 
 const _crSource = (
   source
-) => _isStr(source)
+) => isStr(source)
   ? source.trim()
   : '';
 
@@ -39,7 +36,7 @@ const _toArticles = (
 ) => {
   const _nowMls = Date.now()
   , _hmByHeadline = {};
-  return _isArr(json) ? json
+  return isArr(json) ? json
    .reduce((arr, item, index) => {
       const {
         headline,

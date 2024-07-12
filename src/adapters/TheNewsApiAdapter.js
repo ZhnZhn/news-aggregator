@@ -1,6 +1,7 @@
 import { loadItem } from '../flux/itemStore';
 import { THE_NEWS_API } from '../conf/ProviderNames';
 
+import { isArr, isNumber } from '../utils/isTypeFn';
 import { dateTimeToMls } from '../utils/dt';
 
 import {
@@ -12,10 +13,6 @@ import {
 
 import sanitizeArticle from './sanitizeArticle';
 
-const _isArr = Array.isArray;
-const _isNumber = n => typeof n === 'number'
-  && n-n === 0;
-
 const _isTopQuery = (
   option
 ) => option.loadId === 'TNT';
@@ -25,7 +22,7 @@ const _toArticles = (
   sourceId
 ) => {
   const _nowMls = Date.now();
-  return _isArr(data)
+  return isArr(data)
     ? data.map(item => {
       const {
         title,
@@ -63,8 +60,8 @@ const _crCaption = (
 const _crNextPage = (
   page,
   maxPage
-) => _isNumber(page)
-  ? _isNumber(maxPage)
+) => isNumber(page)
+  ? isNumber(maxPage)
      ? Math.min(page + 1, maxPage)
      : page + 1
   : void 0;
@@ -72,7 +69,7 @@ const _crNextPage = (
 const _crMaxPage = (
   found,
   limit
-) => _isNumber(found) && _isNumber(limit)
+) => isNumber(found) && isNumber(limit)
   ? formatNumber(Math.ceil(found/limit))
   : '';
 

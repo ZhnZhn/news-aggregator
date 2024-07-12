@@ -1,8 +1,7 @@
+import { isNumber } from '../utils/isTypeFn';
 import { domSanitize } from '../utils';
 
-const _assign = Object.assign
-, _isNumber = n => typeof n === 'number'
-  && n-n === 0;
+const _assign = Object.assign;
 
 const sanitizeArticle = (
   article
@@ -10,7 +9,7 @@ const sanitizeArticle = (
 const {
   publishedAt
 } = article
-, _isPublishedAtNumber = _isNumber(publishedAt);
+, _isPublishedAtNumber = isNumber(publishedAt);
 return _assign(article, {
   title: domSanitize(article.title),
   description: domSanitize(article.description),

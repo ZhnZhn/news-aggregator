@@ -3,20 +3,19 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../utils/isTypeFn");
 var _ProviderNames = require("../conf/ProviderNames");
 var _utils = require("../utils");
 var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
-const _isArr = Array.isArray;
 const SOURCE_ID = 'iex_news',
   DF_SYMBOL = 'AAPL';
-const _isStr = v => typeof v === 'string';
-const _crAuthor = (hasPaywall, source) => hasPaywall ? "$ " + source : source;
-const _crRelated = related => _isStr(related) ? related.split(',').join(', ') : void 0;
-const _crSource = source => _isStr(source) ? source.trim() : '';
+const _crAuthor = (hasPaywall, source) => hasPaywall ? `$ ${source}` : source;
+const _crRelated = related => (0, _isTypeFn.isStr)(related) ? related.split(',').join(', ') : void 0;
+const _crSource = source => (0, _isTypeFn.isStr)(source) ? source.trim() : '';
 const _toArticles = json => {
   const _nowMls = Date.now(),
     _hmByHeadline = {};
-  return _isArr(json) ? json.reduce((arr, item, index) => {
+  return (0, _isTypeFn.isArr)(json) ? json.reduce((arr, item, index) => {
     const {
         headline,
         source,
@@ -58,7 +57,7 @@ const _crCaption = _ref => {
   let {
     symbol = DF_SYMBOL
   } = _ref;
-  return _ProviderNames.IEX_CLOUD + ": " + symbol;
+  return `${_ProviderNames.IEX_CLOUD}: ${symbol}`;
 };
 const IexAdapter = {
   toNews: (json, option) => ({
