@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.getStoreApi = exports.fUseStoreState = exports.fCrUse = exports.fCrStoreSlice = exports.createStoreWithSelector = exports.atom = void 0;
+var _isTypeFn = require("../utils/isTypeFn");
 var _utils = require("../utils");
 exports.bindTo = _utils.bindTo;
 var _zustandLite = require("./zustand-lite");
@@ -23,8 +24,7 @@ const fCrStoreSlice = (slicePn, optionPn) => [value => ({
   } : value
 }), state => state[slicePn]];
 exports.fCrStoreSlice = fCrStoreSlice;
-const _isFn = v => typeof v === 'function',
-  _reducerUseAtomValue = (value, crOrValue) => _isFn(crOrValue) ? crOrValue(value) : crOrValue;
+const _reducerUseAtomValue = (value, crOrValue) => (0, _isTypeFn.isFn)(crOrValue) ? crOrValue(value) : crOrValue;
 const atom = initialValue => {
   const _atom = Object.create(null);
   _atom.value = initialValue;
@@ -37,7 +37,7 @@ const atom = initialValue => {
       const _prev = _atom.value,
         _rerender = _atom.rerender;
       _atom.value = _reducerUseAtomValue(_prev, crOrValue);
-      if (_prev !== _atom.value && _isFn(_rerender)) {
+      if (_prev !== _atom.value && (0, _isTypeFn.isFn)(_rerender)) {
         _rerender();
       }
     }

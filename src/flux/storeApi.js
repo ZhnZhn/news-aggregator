@@ -1,5 +1,6 @@
-export { bindTo } from '../utils';
+import { isFn } from '../utils/isTypeFn';
 
+export { bindTo } from '../utils';
 import { bindTo } from '../utils';
 
 import {
@@ -50,11 +51,10 @@ export const fCrStoreSlice = (
   state => state[slicePn]
 ];
 
-const _isFn = v => typeof v === 'function'
-, _reducerUseAtomValue = (
+const _reducerUseAtomValue = (
   value,
   crOrValue
-) => _isFn(crOrValue)
+) => isFn(crOrValue)
   ? crOrValue(value)
   : crOrValue;
 export const atom = (initialValue) => {
@@ -69,7 +69,7 @@ export const atom = (initialValue) => {
        const _prev = _atom.value
        , _rerender = _atom.rerender;
        _atom.value = _reducerUseAtomValue(_prev, crOrValue)
-       if (_prev !== _atom.value && _isFn(_rerender)) {
+       if (_prev !== _atom.value && isFn(_rerender)) {
          _rerender()
        }
      }
