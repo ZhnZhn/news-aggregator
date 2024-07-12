@@ -2,16 +2,17 @@
 
 exports.__esModule = true;
 exports.subscribeWithSelector = exports.createStore = void 0;
+var _isTypeFn = require("../utils/isTypeFn");
 const _objectIs = Object.is;
 const _assign = Object.assign;
 const _createStoreImpl = createState => {
   let state;
   const listeners = /* @__PURE__ */new Set();
   const setState = (partial, replace) => {
-    const nextState = typeof partial === "function" ? partial(state) : partial;
+    const nextState = (0, _isTypeFn.isFn)(partial) ? partial(state) : partial;
     if (!_objectIs(nextState, state)) {
       const previousState = state;
-      state = (replace != null ? replace : typeof nextState !== "object" || nextState === null) ? nextState : _assign({}, state, nextState);
+      state = (replace != null ? replace : !(0, _isTypeFn.isTypeObj)(nextState) || nextState === null) ? nextState : _assign({}, state, nextState);
       listeners.forEach(listener => listener(state, previousState));
     }
   };

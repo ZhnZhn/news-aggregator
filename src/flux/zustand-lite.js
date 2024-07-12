@@ -1,4 +1,6 @@
 
+import { isFn, isTypeObj } from '../utils/isTypeFn'
+
 const _objectIs = Object.is;
 const _assign = Object.assign;
 
@@ -8,12 +10,12 @@ const _createStoreImpl = (createState) => {
   const listeners = /* @__PURE__ */ new Set();
 
   const setState = (partial, replace) => {
-    const nextState = typeof partial === "function"
+    const nextState = isFn(partial)
       ? partial(state)
       : partial;
     if (!_objectIs(nextState, state)) {
       const previousState = state;
-      state = (replace != null ? replace : (typeof nextState !== "object" || nextState === null))
+      state = (replace != null ? replace : (!isTypeObj(nextState) || nextState === null))
          ? nextState
          : _assign({}, state, nextState);
       listeners.forEach(listener => listener(state, previousState));
@@ -29,7 +31,7 @@ const _createStoreImpl = (createState) => {
 
   const api = {
     getState,
-    setState,  
+    setState,
     subscribe
   };
   state = createState(setState, getState, api);
