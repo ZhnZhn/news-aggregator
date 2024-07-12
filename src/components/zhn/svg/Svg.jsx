@@ -8,6 +8,8 @@ const Svg = ({
   <svg
     width={`${w}px`}
     height={`${h}px`}
+    aria-hidden="true"
+    role="img"
     {...restProps}
     xmlns="http://www.w3.org/2000/svg"
     preserveAspectRatio="none"

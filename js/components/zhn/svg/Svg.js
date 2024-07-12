@@ -11,12 +11,14 @@ const Svg = _ref => {
     ...restProps
   } = _ref;
   return (0, _jsxRuntime.jsx)("svg", {
-    width: w + "px",
-    height: h + "px",
+    width: `${w}px`,
+    height: `${h}px`,
+    "aria-hidden": "true",
+    role: "img",
     ...restProps,
     xmlns: "http://www.w3.org/2000/svg",
     preserveAspectRatio: "none",
-    viewBox: "0 0 " + w + " " + h,
+    viewBox: `0 0 ${w} ${h}`,
     children: children
   });
 };
