@@ -1,7 +1,9 @@
+import Svg from '../zhn/svg/Svg';
+
 const ArrowCell = () => (
-  <svg viewBox="0 0 24 24">
+  <Svg w="24">
     <path d="M7 10l5 5 5-5z" />
-  </svg>
+  </Svg>
 );
 
 export default ArrowCell
