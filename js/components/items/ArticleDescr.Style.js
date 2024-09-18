@@ -23,7 +23,7 @@ const S_FONT = {
 const S_DESCR = exports.S_DESCR = {
     ...S_FONT,
     ...S_BREAK_WORD,
-    whiteSpace: "pre-line",
+    whiteSpace: 'pre-line',
     display: 'block',
     lineHeight: 1.4,
     padding: '8px 16px 4px 12px'
@@ -41,7 +41,8 @@ const S_DESCR = exports.S_DESCR = {
   S_COMMENTS_LINK = exports.S_COMMENTS_LINK = {
     ..._crStyle.S_COLOR_BLACK,
     ...S_WHITESPACE_NOWRAP,
-    marginLeft: 'auto'
+    marginLeft: 'auto',
+    paddingLeft: 8
   };
 const S_AUTHOR_ROW = exports.S_AUTHOR_ROW = {
     ...S_FLEX_SPACE_BETWEEN,
@@ -52,7 +53,7 @@ const S_AUTHOR_ROW = exports.S_AUTHOR_ROW = {
     padding: '0 12px 6px 12px'
   },
   S_DATE = exports.S_DATE = {
-    color: 'gray',
+    color: 'grey',
     fontWeight: 'bold'
   },
   S_AUTHOR = exports.S_AUTHOR = {

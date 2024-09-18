@@ -22,7 +22,7 @@ const S_FONT = {
 export const S_DESCR = {
    ...S_FONT,
    ...S_BREAK_WORD,
-   whiteSpace: "pre-line",
+   whiteSpace: 'pre-line',
    display: 'block',
    lineHeight: 1.4,
    padding: '8px 16px 4px 12px'
@@ -40,7 +40,8 @@ export const S_DESCR = {
 , S_COMMENTS_LINK = {
   ...S_COLOR_BLACK,
   ...S_WHITESPACE_NOWRAP,
-  marginLeft: 'auto'
+  marginLeft: 'auto',
+  paddingLeft: 8
 }
 
 export const S_AUTHOR_ROW = {
@@ -52,7 +53,7 @@ export const S_AUTHOR_ROW = {
    padding: '0 12px 6px 12px'
 }
 , S_DATE = {
-   color: 'gray',
+   color: 'grey',
    fontWeight: 'bold'
 }
 , S_AUTHOR = {
