@@ -13,10 +13,10 @@
 
 @media only screen and (max-width: 375px) {
   .show-popup {    
-    animation: showing-popup 150ms ease-in;
+    animation: showing-popup 100ms ease-in;
   }
   .hide-popup {    
-    animation: hiding-popup 150ms ease-out;
+    animation: hiding-popup 100ms ease-out;
   } 
 }
 
