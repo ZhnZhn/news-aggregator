@@ -25,8 +25,9 @@
     "url": "https://github.com/ZhnZhn/news-aggregator.git"
   },
   "dependencies": {
+    "@babel/runtime": "^7.25.7",
     "dompurify": "^3.1.7",
-    "preact": "^10.24.2"
+    "preact": "^10.24.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.25.7",
