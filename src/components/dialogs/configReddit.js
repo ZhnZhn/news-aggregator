@@ -75,6 +75,7 @@ export const SUBRREDIT_OPTIONS = [
 "rust",
 "elixir",
 "Python",
+"computerscience",
 "programming",
 "opensource",
 "SaaS",
