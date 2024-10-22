@@ -1,8 +1,7 @@
 import {
   CRYPTO_COMPARE,
   COIN_STATS,
-  MESSARI,
-  IEX_CLOUD,
+  MESSARI,  
   FMP,
   ALPHA_VANTAGE,
   NEWS_API_LONG,
@@ -77,11 +76,6 @@ export const DevToLink = _fSafeLink(
 export const StackOverflowLink = _fSafeLink(
   "https://stackoverflow.com",
   STACK_OVERFLOW
-)
-
-export const IexApiLink = _fSafeLink(
-  "https://iexcloud.io",
-  IEX_CLOUD
 )
 
 export const FmpApiLink = _fSafeLink(

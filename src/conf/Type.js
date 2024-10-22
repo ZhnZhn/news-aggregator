@@ -1,6 +1,5 @@
 
-export const LoadType = {
-  IEX: 'IEX',
+export const LoadType = {  
   FMP: 'FMP',
   AV: 'AV',
   NEWS: 'NEWS',

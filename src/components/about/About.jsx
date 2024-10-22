@@ -14,7 +14,6 @@ import {
   CryptoCompareLink,
   CoinStatsLink,
   MessariLink,
-  IexApiLink,
   FmpApiLink,
   AlphaVantageLink,
   NewsApiLink,
@@ -69,8 +68,7 @@ const { ItemStack } = A;
 const PROVIDER_LINKS = [
   [CryptoCompareLink],
   [CoinStatsLink],
-  [MessariLink],
-  [IexApiLink],
+  [MessariLink],  
   [FmpApiLink, { title: FMP_LONG }],
   [AlphaVantageLink],
   [NewsApiLink],

@@ -1,6 +1,5 @@
 import {
   ALPHA_VANTAGE,
-  IEX_CLOUD,
   FMP,
   NEWS_API_LONG,
   THE_NEWS_API,
@@ -27,14 +26,12 @@ const _hasLengthOrEmpty = (
   length
 ) => (str) => str.length === length || str === ''
 , SET_AV_KEY = 'setAvKey'
-, SET_IEX_KEY = 'setIexKey'
 , SET_FMP_KEY = 'setFmpKey'
 , SET_NEWS_KEY = 'setNewsKey'
 , SET_THE_NEWS_KEY = 'setTheNewsKey'
 , SET_WEBZ_KEY = 'setWebzKey'
 , _getKeySetters = (data) => ({
    setAv: getFnByPropName(data, SET_AV_KEY),
-   setIex: getFnByPropName(data, SET_IEX_KEY),
    setFmp: getFnByPropName(data, SET_FMP_KEY),
    setNews: getFnByPropName(data, SET_NEWS_KEY),
    setTheNews: getFnByPropName(data, SET_THE_NEWS_KEY),
@@ -70,7 +67,6 @@ const _crPasswordFieldProps = (
 
 const CardApiKeys = (props) => {
   const _refInputAv = useRef()
-  , _refInputIex = useRef()
   , _refInputFmp = useRef()
   , _refInputNews = useRef()
   , _refInputTheNews = useRef()
@@ -86,7 +82,6 @@ const CardApiKeys = (props) => {
   } = props
   , {
     setAv,
-    setIex,
     setFmp,
     setNews,
     setTheNews,
@@ -95,33 +90,30 @@ const CardApiKeys = (props) => {
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hClearAll = useCallback(() => {
       setAv('')
-      setIex('')
       setFmp('')
       setNews('')
       setTheNews('')
       setWebz('')
       _clearInputRefs([
          _refInputAv,
-         _refInputIex,
          _refInputFmp,
          _refInputNews,
          _refInputTheNews,
          _refInputWebz
       ])
   }, [])
-  //setAv, setIex, setFmp, setNews, setTheNews, setWebz
+  //setAv, setFmp, setNews, setTheNews, setWebz
   /*eslint-enable react-hooks/exhaustive-deps */
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hSetAll = useCallback(() => {
-      setIex(_getRefCompValue(_refInputIex))
       setFmp(_getRefCompValue(_refInputFmp))
       setAv(_getRefCompValue(_refInputAv))
       setNews(_getRefCompValue(_refInputNews))
       setTheNews(_getRefCompValue(_refInputTheNews))
       setWebz(_getRefCompValue(_refInputWebz))
-      _setWasEnterRefs([_refInputIex, _refInputFmp, _refInputNews, _refInputWebz])
+      _setWasEnterRefs([_refInputFmp, _refInputNews, _refInputWebz])
   }, []);
-  //setIex, setFmp, setNews, setTheNews, setWebz
+  //setFmp, setNews, setTheNews, setWebz
   /*eslint-enable react-hooks/exhaustive-deps */
 
 
@@ -143,13 +135,6 @@ const CardApiKeys = (props) => {
           style={S_OPEN_CLOSE}
           caption="Stock Market"
         >
-          <PasswordField
-             {..._crPasswordFieldProps(IEX_CLOUD, 35)}
-             refEl={_refInputIex}
-             style={fieldStyle}
-             name="iex-cloud"
-             onEnter={setIex}
-          />
           <PasswordField
              {..._crPasswordFieldProps(FMP, 32)}
              refEl={_refInputFmp}

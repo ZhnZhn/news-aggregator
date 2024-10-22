@@ -16,14 +16,12 @@ const S_OPEN_CLOSE = {
 };
 const _hasLengthOrEmpty = length => str => str.length === length || str === '',
   SET_AV_KEY = 'setAvKey',
-  SET_IEX_KEY = 'setIexKey',
   SET_FMP_KEY = 'setFmpKey',
   SET_NEWS_KEY = 'setNewsKey',
   SET_THE_NEWS_KEY = 'setTheNewsKey',
   SET_WEBZ_KEY = 'setWebzKey',
   _getKeySetters = data => ({
     setAv: (0, _getFnByPropName.default)(data, SET_AV_KEY),
-    setIex: (0, _getFnByPropName.default)(data, SET_IEX_KEY),
     setFmp: (0, _getFnByPropName.default)(data, SET_FMP_KEY),
     setNews: (0, _getFnByPropName.default)(data, SET_NEWS_KEY),
     setTheNews: (0, _getFnByPropName.default)(data, SET_THE_NEWS_KEY),
@@ -34,7 +32,7 @@ const _clearInputRefs = refs => refs.forEach(ref => ref.current.clear());
 const _setWasEnterRefs = refs => refs.forEach(ref => ref.current.setWasEnter());
 const _crCaption = (name, maxLength) => {
   const _tokenKey = name.toUpperCase().indexOf('API') === -1 ? 'API Key' : 'Key';
-  return name + " " + _tokenKey + " (" + maxLength + ")";
+  return `${name} ${_tokenKey} (${maxLength})`;
 };
 const _crPasswordFieldProps = (name, maxLength) => ({
   caption: _crCaption(name, maxLength),
@@ -43,7 +41,6 @@ const _crPasswordFieldProps = (name, maxLength) => ({
 });
 const CardApiKeys = props => {
   const _refInputAv = (0, _uiApi.useRef)(),
-    _refInputIex = (0, _uiApi.useRef)(),
     _refInputFmp = (0, _uiApi.useRef)(),
     _refInputNews = (0, _uiApi.useRef)(),
     _refInputTheNews = (0, _uiApi.useRef)(),
@@ -59,7 +56,6 @@ const CardApiKeys = props => {
     } = props,
     {
       setAv,
-      setIex,
       setFmp,
       setNews,
       setTheNews,
@@ -68,26 +64,24 @@ const CardApiKeys = props => {
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hClearAll = (0, _uiApi.useCallback)(() => {
       setAv('');
-      setIex('');
       setFmp('');
       setNews('');
       setTheNews('');
       setWebz('');
-      _clearInputRefs([_refInputAv, _refInputIex, _refInputFmp, _refInputNews, _refInputTheNews, _refInputWebz]);
+      _clearInputRefs([_refInputAv, _refInputFmp, _refInputNews, _refInputTheNews, _refInputWebz]);
     }, [])
-    //setAv, setIex, setFmp, setNews, setTheNews, setWebz
+    //setAv, setFmp, setNews, setTheNews, setWebz
     /*eslint-enable react-hooks/exhaustive-deps */
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hSetAll = (0, _uiApi.useCallback)(() => {
-      setIex(_getRefCompValue(_refInputIex));
       setFmp(_getRefCompValue(_refInputFmp));
       setAv(_getRefCompValue(_refInputAv));
       setNews(_getRefCompValue(_refInputNews));
       setTheNews(_getRefCompValue(_refInputTheNews));
       setWebz(_getRefCompValue(_refInputWebz));
-      _setWasEnterRefs([_refInputIex, _refInputFmp, _refInputNews, _refInputWebz]);
+      _setWasEnterRefs([_refInputFmp, _refInputNews, _refInputWebz]);
     }, []);
-  //setIex, setFmp, setNews, setTheNews, setWebz
+  //setFmp, setNews, setTheNews, setWebz
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return isVisible ? (0, _jsxRuntime.jsxs)(_ScrollPane.default, {
@@ -102,22 +96,16 @@ const CardApiKeys = props => {
         name: "alpha-vantage",
         onEnter: setAv
       })
-    }), (0, _jsxRuntime.jsxs)(_OpenClose.default, {
+    }), (0, _jsxRuntime.jsx)(_OpenClose.default, {
       style: S_OPEN_CLOSE,
       caption: "Stock Market",
-      children: [(0, _jsxRuntime.jsx)(_PasswordField.default, {
-        ..._crPasswordFieldProps(_ProviderNames.IEX_CLOUD, 35),
-        refEl: _refInputIex,
-        style: fieldStyle,
-        name: "iex-cloud",
-        onEnter: setIex
-      }), (0, _jsxRuntime.jsx)(_PasswordField.default, {
+      children: (0, _jsxRuntime.jsx)(_PasswordField.default, {
         ..._crPasswordFieldProps(_ProviderNames.FMP, 32),
         refEl: _refInputFmp,
         style: fieldStyle,
         name: "fmp-api",
         onEnter: setFmp
-      })]
+      })
     }), (0, _jsxRuntime.jsxs)(_OpenClose.default, {
       style: S_OPEN_CLOSE,
       caption: "General News",

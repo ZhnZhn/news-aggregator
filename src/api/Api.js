@@ -2,7 +2,6 @@ import News from './NewsApi'
 import Webz from './WebzApi'
 import DevTo from './DevToApi'
 import StackOverflow from './StackOverflowApi'
-import Iex from './IexApi'
 import Fmp from './FmpApi'
 import Av from './AvApi';
 import NewsSearch from './NewsSearchApi'
@@ -18,8 +17,7 @@ const Api = {
   News,
   Webz,
   DevTo,
-  StackOverflow,
-  Iex,
+  StackOverflow,  
   Fmp,
   Av,
   NewsSearch,

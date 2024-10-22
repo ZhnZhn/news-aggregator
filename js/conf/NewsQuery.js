@@ -82,12 +82,6 @@ const NEWS_QUERY = {
       loadId: "MS"
     })
   },
-  IEX: {
-    type: "IEX_NEWS",
-    ..._crItemDialogType2(_dialogs.getIexCloudNewsConfig, _Links.IexApiLink, _ProviderNames.IEX_CLOUD, "iex_news", {
-      loadId: "IEX"
-    })
-  },
   FMP: {
     type: "FMP",
     ..._crItemDialogType2(_dialogs.getFmpNewsConfig, _Links.FmpApiLink, _ProviderNames.FMP_LONG, "fmp_news")

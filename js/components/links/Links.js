@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.WebzLink = exports.TheNewsApiLink = exports.StackOverflowLink = exports.RedditLink = exports.NewsApiLink = exports.MessariLink = exports.IexApiLink = exports.FmpApiLink = exports.DevToLink = exports.CryptoCompareLink = exports.CoinStatsLink = exports.AlphaVantageLink = void 0;
+exports.WebzLink = exports.TheNewsApiLink = exports.StackOverflowLink = exports.RedditLink = exports.NewsApiLink = exports.MessariLink = exports.FmpApiLink = exports.DevToLink = exports.CryptoCompareLink = exports.CoinStatsLink = exports.AlphaVantageLink = void 0;
 var _ProviderNames = require("../../conf/ProviderNames");
 var _SafeLink = _interopRequireDefault(require("../zhn/SafeLink"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -30,7 +30,6 @@ const WebzLink = exports.WebzLink = _fSafeLink("https://webz.io", _ProviderNames
 const RedditLink = exports.RedditLink = _fSafeLink("https://www.reddit.com", _ProviderNames.REDDIT);
 const DevToLink = exports.DevToLink = _fSafeLink("https://dev.to", _ProviderNames.DEV_TO);
 const StackOverflowLink = exports.StackOverflowLink = _fSafeLink("https://stackoverflow.com", _ProviderNames.STACK_OVERFLOW);
-const IexApiLink = exports.IexApiLink = _fSafeLink("https://iexcloud.io", _ProviderNames.IEX_CLOUD);
 const FmpApiLink = exports.FmpApiLink = _fSafeLink("https://financialmodelingprep.com", _ProviderNames.FMP);
 const AlphaVantageLink = exports.AlphaVantageLink = _fSafeLink("https://www.alphavantage.co", _ProviderNames.ALPHA_VANTAGE);
 //# sourceMappingURL=Links.js.map

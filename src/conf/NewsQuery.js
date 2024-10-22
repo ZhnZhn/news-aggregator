@@ -4,7 +4,6 @@ import {
   CryptoCompareLink,
   DevToLink,
   FmpApiLink,
-  IexApiLink,
   MessariLink,
   NewsApiLink,
   RedditLink,
@@ -19,7 +18,6 @@ import {
   getCryptoCompareConfig,
   getDevToConfig,
   getFmpNewsConfig,
-  getIexCloudNewsConfig,
   getMessariConfig,
   getNewsApiSearchConfig,
   getNewsApiTopConfig,
@@ -37,7 +35,6 @@ import {
   CRYPTO_COMPARE,
   COIN_STATS,
   MESSARI,
-  IEX_CLOUD,
   FMP_LONG,
   ALPHA_VANTAGE,
   NEWS_API,
@@ -179,16 +176,6 @@ const NEWS_QUERY = {
       MESSARI,
       "messari_news",
       { loadId: "MS" }
-    )
-  },
-  IEX: {
-    type: "IEX_NEWS",
-    ..._crItemDialogType2(
-      getIexCloudNewsConfig,
-      IexApiLink,
-      IEX_CLOUD,
-      "iex_news",
-      { loadId: "IEX" }
     )
   },
   FMP: {

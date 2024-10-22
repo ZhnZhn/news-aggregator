@@ -2,7 +2,6 @@ import {
   CRYPTO_COMPARE,
   COIN_STATS,
   MESSARI,
-  IEX_CLOUD,
   FMP,
   ALPHA_VANTAGE,
   NEWS_API_LONG,
@@ -95,12 +94,6 @@ const RouterApiConf = {
           'StackOverflow',
           `${STACK_OVERFLOW} API ${MSG_ERR_TAIL}`
         );
-      case 'IEX':
-         return _crConf(
-           'Iex',
-           `${IEX_CLOUD} API ${MSG_ERR_TAIL}`,
-           settingStore.getIexKey
-         );
      case 'FMP':
         return _crConf(
           'Fmp',

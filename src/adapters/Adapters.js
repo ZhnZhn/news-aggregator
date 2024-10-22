@@ -3,7 +3,6 @@ import TheNews from './TheNewsApiAdapter'
 import Webz from './WebzAdapter'
 import DevTo from './DevToAdapter'
 import StackOverflow from './StackOverflowAdapter'
-import Iex from './IexAdapter'
 import Fmp from './FmpAdapter'
 import Av from './AvAdapter'
 import CryptoCompare from './CryptoCompareAdapter'
@@ -17,7 +16,6 @@ const Adapters = {
   Webz,
   DevTo,
   StackOverflow,
-  Iex,
   Fmp,
   Av,
   CryptoCompare,

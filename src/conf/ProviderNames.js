@@ -2,7 +2,6 @@ export const CRYPTO_COMPARE = 'CryptoCompare'
 export const COIN_STATS = 'CoinStats'
 export const MESSARI = 'Messari'
 
-export const IEX_CLOUD = 'IEX Cloud'
 export const FMP = 'FMP'
 export const FMP_LONG = 'Financial Modeling Prep'
 export const ALPHA_VANTAGE = 'Alpha Vantage'

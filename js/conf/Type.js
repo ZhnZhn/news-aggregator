@@ -2,13 +2,11 @@
 
 exports.__esModule = true;
 exports.LoadType = void 0;
-var LoadType = {
-  IEX: 'IEX',
+const LoadType = exports.LoadType = {
   FMP: 'FMP',
   AV: 'AV',
   NEWS: 'NEWS',
   TNEWS: 'TNEWS',
   WEBZ: 'WEBZ'
 };
-exports.LoadType = LoadType;
 //# sourceMappingURL=Type.js.map

@@ -2,7 +2,6 @@ import {
   CRYPTO_COMPARE,
   COIN_STATS,
   MESSARI,
-  IEX_CLOUD,
   FMP_LONG,
   ALPHA_VANTAGE,
   NEWS_API_LONG,
@@ -61,7 +60,6 @@ const crMenuQuery = (
         t: "Stock Market",
         items: [
           [`${ALPHA_VANTAGE}: Sentiment`, _crOnClick(QUERY.AV)],
-          [IEX_CLOUD, _crOnClick(QUERY.IEX)],
           [FMP_LONG, _crOnClick(QUERY.FMP)]
         ]
       },{

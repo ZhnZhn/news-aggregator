@@ -3,7 +3,6 @@ export { getCoinStatDialogConfig } from './crCoinStatConfig'
 export { getCryptoCompareConfig } from './crCryptoCompareConfig'
 export { getDevToConfig } from './crDevToConfig'
 export { getFmpNewsConfig } from './crFmpNewsConfig'
-export { getIexCloudNewsConfig } from './crIexCloudNewsConfig'
 export { getMessariConfig } from './crMessariConfig'
 
 export { getNewsApiSearchConfig } from './crNewsApiSearchConfig'
