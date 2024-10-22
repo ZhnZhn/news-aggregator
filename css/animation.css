@@ -54,10 +54,10 @@
 
 @media only screen and (max-width: 375px) {
   .show-modal {
-    animation: showing-modal 200ms linear;  
+    animation: showing-modal 100ms linear;  
   }
   .hide-modal {
-    animation: hiding-modal 200ms linear;
+    animation: hiding-modal 100ms linear;
   }
 }
 
