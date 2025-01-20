@@ -83,7 +83,7 @@ const crMenuQuery = (
           [`${STACK_OVERFLOW}: Tagged`, _crOnClick(QUERY.STACK_TAGGED)],
           [`${STACK_OVERFLOW}: Search`, _crOnClick(QUERY.STACK_SEARCH)],
           '2',
-          [`${REDDIT}: Top By`, _crOnClick(QUERY.REDDIT)],
+          [`${REDDIT}: Listing`, _crOnClick(QUERY.REDDIT)],
           [`${REDDIT}: Search`, _crOnClick(QUERY.REDDIT_SEARCH)]
         ]
       },

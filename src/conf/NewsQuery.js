@@ -94,7 +94,7 @@ const NEWS_QUERY = {
     ..._crItemDialogType2(
       getRedditTopConfig,
       RedditLink,
-      `${REDDIT}: Top By`,
+      `${REDDIT}: Listing`,
       "rd_topby",
       { loadId: "RD" }
     )

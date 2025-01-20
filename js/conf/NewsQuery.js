@@ -31,7 +31,7 @@ const NEWS_QUERY = {
   },
   REDDIT: {
     type: "REDDIT",
-    ..._crItemDialogType2(_dialogs.getRedditTopConfig, _Links.RedditLink, `${_ProviderNames.REDDIT}: Top By`, "rd_topby", {
+    ..._crItemDialogType2(_dialogs.getRedditTopConfig, _Links.RedditLink, `${_ProviderNames.REDDIT}: Listing`, "rd_topby", {
       loadId: "RD"
     })
   },

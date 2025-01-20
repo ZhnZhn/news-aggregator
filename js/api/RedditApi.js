@@ -10,14 +10,14 @@ const _crTopicJson = token => `${token}.json`;
 const RedditApi = {
   getRequestUrl(_ref) {
     let {
-      listings,
+      listing,
       subreddit,
       limit,
       t,
       q,
       sort
     } = _ref;
-    const [_tokenPath, _queryParameters] = q ? [_crTopicJson("search"), `&q=${q}&sort=${sort}&restrict_sr=true`] : listings === "rising" ? [_crTopicJson(listings), ""] : [_crTopicJson("top"), `&t=${t}`];
+    const [_tokenPath, _queryParameters] = q ? [_crTopicJson("search"), `&q=${q}&sort=${sort}&restrict_sr=true`] : listing === "rising" ? [_crTopicJson(listing), ""] : [_crTopicJson("top"), `&t=${t}`];
     return `${API_URL}/${subreddit || DF_SUBREDDIT}/${_tokenPath}?limit=${limit}${_queryParameters}`;
   },
   checkResponse(json, option) {

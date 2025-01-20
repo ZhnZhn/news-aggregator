@@ -7,7 +7,7 @@ const _crTopicJson = token => `${token}.json`;
 
 const RedditApi = {
   getRequestUrl({
-    listings,
+    listing,
     subreddit,
     limit,
     t,
@@ -19,8 +19,8 @@ const RedditApi = {
       _queryParameters
     ] = q
       ? [_crTopicJson("search"), `&q=${q}&sort=${sort}&restrict_sr=true`]
-      : listings === "rising"
-         ? [_crTopicJson(listings), ""]
+      : listing === "rising"
+         ? [_crTopicJson(listing), ""]
          : [_crTopicJson("top"), `&t=${t}`];
     return `${API_URL}/${subreddit || DF_SUBREDDIT}/${_tokenPath}?limit=${limit}${_queryParameters}`;
   },
