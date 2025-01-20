@@ -4,7 +4,10 @@ exports.__esModule = true;
 exports.getRedditTopConfig = void 0;
 var _DialogFn = require("./DialogFn");
 var _configReddit = require("./configReddit");
-const _crInputConfigs = () => [(0, _DialogFn.crInputSuggestConfig)('subreddit', _configReddit.SUBRREDIT_OPTIONS, {
+const LISTINGS_OPTIONS = ["top", "rising"];
+const _crInputConfigs = () => [(0, _DialogFn.crInputSuggestConfig)('listings', LISTINGS_OPTIONS, {
+  isInput: true
+}), (0, _DialogFn.crInputSuggestConfig)('subreddit', _configReddit.SUBRREDIT_OPTIONS, {
   is: true,
   isInput: true,
   isNotFirstUpperCase: true

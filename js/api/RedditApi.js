@@ -2,21 +2,23 @@
 
 exports.__esModule = true;
 exports.default = exports.REDDIT_URL = exports.API_URL = void 0;
-const REDDIT_URL = exports.REDDIT_URL = 'https://www.reddit.com';
-const API_URL = exports.API_URL = REDDIT_URL + "/r";
+const REDDIT_URL = exports.REDDIT_URL = "https://www.reddit.com";
+const API_URL = exports.API_URL = `${REDDIT_URL}/r`;
 const _isArr = Array.isArray;
-const DF_SUBREDDIT = 'Amd';
+const DF_SUBREDDIT = "Amd";
+const _crTopicJson = token => `${token}.json`;
 const RedditApi = {
   getRequestUrl(_ref) {
     let {
+      listings,
       subreddit,
       limit,
       t,
       q,
       sort
     } = _ref;
-    const [_tokenPath, _queryParameters] = q ? ["search.json", "&q=" + q + "&sort=" + sort + "&restrict_sr=true"] : ["top.json", ""];
-    return API_URL + "/" + (subreddit || DF_SUBREDDIT) + "/" + _tokenPath + "?limit=" + limit + "&t=" + t + _queryParameters;
+    const [_tokenPath, _queryParameters] = q ? [_crTopicJson("search"), `&q=${q}&sort=${sort}&restrict_sr=true`] : listings === "rising" ? [_crTopicJson(listings), ""] : [_crTopicJson("top"), `&t=${t}`];
+    return `${API_URL}/${subreddit || DF_SUBREDDIT}/${_tokenPath}?limit=${limit}${_queryParameters}`;
   },
   checkResponse(json, option) {
     const {
