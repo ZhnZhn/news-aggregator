@@ -1,3 +1,4 @@
+import { isNumber } from '../../utils/isTypeFn';
 import FlatButton from '../zhn-bt/FlatButton';
 
 const S_DIV = {
@@ -8,9 +9,11 @@ const S_DIV = {
 const _crPageCounter = ({
   nextPage,
   maxPage
-}) => maxPage
+}) => isNumber(maxPage)
+&& maxPage !== 0
+&& isNumber(nextPage)
   ? `${nextPage}/${maxPage}`
-  : nextPage;
+  : nextPage || "";
 
 const LoadNextPage = ({
   page
