@@ -1,52 +1,57 @@
-//const LIMIT_REMAINING = 'X-RateLimit-Remaining';
+import { isNumber } from './isTypeFn';
 
-/*
-const _fnMsg400 = (option) => {
-  if (option.loadId === "EU_STAT"){
-    return '400 : Bad request.\nDataset contains no data. One or more filtering elements (query parameters) are probably invalid.\nMaybe try request with older date.';
-  } else {
-    return '400 : Bad request';
-  }
-}
-*/
+const _toSeconds = (mls) => mls/1000;
 
-const FREQUENCY_RESTRICTION = 5000;
-const MSG_FREQUENCY_RESTRICTION = 'Time request frequency restriction.\n1 Request per 5 second.'
-const MSG_LOAD_RESTRICTION = 'Request has already loaded.\n1 Request per 5 second.';
+const MLS_FREQUENCY_RESTRICTION = 5000;
+const _crMsgFrequencyRestriction = (
+  numberOfSeconds
+) => `Time request frequency restriction.\n1 Request per ${numberOfSeconds} seconds.`;
+const _crMsgLoadRestriction = (
+  numberOfSeconds
+) => `Request has already loaded.\n1 Request per ${numberOfSeconds} seconds.`;
+const _crErrMsg = msg => ({ msg });
+
 let _recentUri;
-let _msLastFetch;
+let _mlsLastFetch;
+
+const _mathMax = Math.max;
+const _getFrequencyRestriction = ({
+  _mlsFr
+}={}) => isNumber(_mlsFr)
+  ? _mathMax(_mlsFr, MLS_FREQUENCY_RESTRICTION)
+  : MLS_FREQUENCY_RESTRICTION;
 
 const fnFetch = function({
-   uri, optionFetch,
-   option,
-   onCheckResponse,
-   onFetch,
-   onCompleted,
-   onFailed,
-   onCatch
- }){
-  const _msNow = Date.now();
-  if ( _msNow - _msLastFetch < FREQUENCY_RESTRICTION ) {
-    if ( _recentUri !== uri ) {
-      onFailed({ msg: MSG_FREQUENCY_RESTRICTION })
+  uri,
+  optionFetch,
+  option,
+  onCheckResponse,
+  onFetch,
+  onCompleted,
+  onFailed,
+  onCatch
+}){
+  const _mlsNow = Date.now()
+  , _mlsFr = _getFrequencyRestriction(option);
+  if (_mlsNow - _mlsLastFetch < _mlsFr) {
+    const _numberOfSeconds = _toSeconds(_mlsFr);
+    if (_recentUri !== uri) {
+      onFailed(_crErrMsg(_crMsgFrequencyRestriction(_numberOfSeconds)))
     } else {
-      onFailed({ msg: MSG_LOAD_RESTRICTION })
+      onFailed(_crErrMsg(_crMsgLoadRestriction(_numberOfSeconds)))
       //onCompleted({ json: {}, option })
     }
   } else {
     _recentUri = uri;
-    _msLastFetch = _msNow;
+    _mlsLastFetch = _mlsNow;
     fetch(uri, optionFetch)
       .then(response => {
         const { status, statusText } = response;
         if (status === 404) {
-          throw {
-            msg: `Not Found ${status}`
-          };
+          throw _crErrMsg(`Not Found ${status}`);
+
         } else if (status>=500 && status<600){
-          throw {
-            msg : `Response Error ${status} : ${statusText}`
-          };
+          throw _crErrMsg(`Response Error ${status} : ${statusText}`);
         } else {
           return Promise.all([
             Promise.resolve(status),
@@ -56,7 +61,6 @@ const fnFetch = function({
       })
       .then(([status, json ]) => {
          if (onCheckResponse(json, option)){
-           //option.limitRemaining = limitRemaining;
            onFetch({ json, option, onCompleted });
          }
       })

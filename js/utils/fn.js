@@ -1,88 +1,77 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-//const LIMIT_REMAINING = 'X-RateLimit-Remaining';
-
-/*
-const _fnMsg400 = (option) => {
-  if (option.loadId === "EU_STAT"){
-    return '400 : Bad request.\nDataset contains no data. One or more filtering elements (query parameters) are probably invalid.\nMaybe try request with older date.';
-  } else {
-    return '400 : Bad request';
-  }
-}
-*/
-var FREQUENCY_RESTRICTION = 5000;
-var MSG_FREQUENCY_RESTRICTION = 'Time request frequency restriction.\n1 Request per 5 second.';
-var MSG_LOAD_RESTRICTION = 'Request has already loaded.\n1 Request per 5 second.';
-
-var _recentUri;
-
-var _msLastFetch;
-
-var fnFetch = function fnFetch(_ref) {
-  var uri = _ref.uri,
-      optionFetch = _ref.optionFetch,
-      option = _ref.option,
-      onCheckResponse = _ref.onCheckResponse,
-      onFetch = _ref.onFetch,
-      onCompleted = _ref.onCompleted,
-      onFailed = _ref.onFailed,
-      onCatch = _ref.onCatch;
-
-  var _msNow = Date.now();
-
-  if (_msNow - _msLastFetch < FREQUENCY_RESTRICTION) {
+exports.default = void 0;
+var _isTypeFn = require("./isTypeFn");
+const _toSeconds = mls => mls / 1000;
+const MLS_FREQUENCY_RESTRICTION = 5000;
+const _crMsgFrequencyRestriction = numberOfSeconds => `Time request frequency restriction.\n1 Request per ${numberOfSeconds} seconds.`;
+const _crMsgLoadRestriction = numberOfSeconds => `Request has already loaded.\n1 Request per ${numberOfSeconds} seconds.`;
+const _crErrMsg = msg => ({
+  msg
+});
+let _recentUri;
+let _mlsLastFetch;
+const _mathMax = Math.max;
+const _getFrequencyRestriction = function (_temp) {
+  let {
+    _mlsFr
+  } = _temp === void 0 ? {} : _temp;
+  return (0, _isTypeFn.isNumber)(_mlsFr) ? _mathMax(_mlsFr, MLS_FREQUENCY_RESTRICTION) : MLS_FREQUENCY_RESTRICTION;
+};
+const fnFetch = function (_ref) {
+  let {
+    uri,
+    optionFetch,
+    option,
+    onCheckResponse,
+    onFetch,
+    onCompleted,
+    onFailed,
+    onCatch
+  } = _ref;
+  const _mlsNow = Date.now(),
+    _mlsFr = _getFrequencyRestriction(option);
+  if (_mlsNow - _mlsLastFetch < _mlsFr) {
+    const _numberOfSeconds = _toSeconds(_mlsFr);
     if (_recentUri !== uri) {
-      onFailed({
-        msg: MSG_FREQUENCY_RESTRICTION
-      });
+      onFailed(_crErrMsg(_crMsgFrequencyRestriction(_numberOfSeconds)));
     } else {
-      onFailed({
-        msg: MSG_LOAD_RESTRICTION
-      }); //onCompleted({ json: {}, option })
+      onFailed(_crErrMsg(_crMsgLoadRestriction(_numberOfSeconds)));
+      //onCompleted({ json: {}, option })
     }
   } else {
     _recentUri = uri;
-    _msLastFetch = _msNow;
-    fetch(uri, optionFetch).then(function (response) {
-      var status = response.status,
-          statusText = response.statusText;
-
+    _mlsLastFetch = _mlsNow;
+    fetch(uri, optionFetch).then(response => {
+      const {
+        status,
+        statusText
+      } = response;
       if (status === 404) {
-        throw {
-          msg: "Not Found " + status
-        };
+        throw _crErrMsg(`Not Found ${status}`);
       } else if (status >= 500 && status < 600) {
-        throw {
-          msg: "Response Error " + status + " : " + statusText
-        };
+        throw _crErrMsg(`Response Error ${status} : ${statusText}`);
       } else {
         return Promise.all([Promise.resolve(status), response.json()]);
       }
-    }).then(function (_ref2) {
-      var status = _ref2[0],
-          json = _ref2[1];
-
+    }).then(_ref2 => {
+      let [status, json] = _ref2;
       if (onCheckResponse(json, option)) {
-        //option.limitRemaining = limitRemaining;
         onFetch({
-          json: json,
-          option: option,
-          onCompleted: onCompleted
+          json,
+          option,
+          onCompleted
         });
       }
-    })["catch"](function (error) {
+    }).catch(error => {
       onCatch({
-        error: error,
-        option: option,
-        onFailed: onFailed
+        error,
+        option,
+        onFailed
       });
     });
   }
 };
-
-var _default = fnFetch;
-exports["default"] = _default;
+var _default = exports.default = fnFetch;
 //# sourceMappingURL=fn.js.map
