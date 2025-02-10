@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _itemStore = require("../flux/itemStore");
 var _isTypeFn = require("../utils/isTypeFn");
 var _utils = require("../utils");
 var _RedditApi = require("../api/RedditApi");
@@ -12,15 +13,15 @@ const _rSourceId = {
   REDDIT: 'rd_topby',
   REDDIT_SEARCH: 'rd_searchby'
 };
-const _crSubredditUrl = subreddit => (0, _utils.domSanitize)(_RedditApi.API_URL + "/" + subreddit);
+const _crSubredditUrl = subreddit => (0, _utils.domSanitize)(`${_RedditApi.API_URL}/${subreddit}`);
 const _crNoItemsTitle = _ref => {
   let {
     subreddit,
     t,
     q
   } = _ref;
-  const tokenQuery = q ? " for " + q + " query " : ' ';
-  return (0, _utils.domSanitize)("No items were found in r/" + subreddit + tokenQuery + "with " + t + " period");
+  const tokenQuery = q ? ` for ${q} query ` : ' ';
+  return (0, _utils.domSanitize)(`No items were found in r/${subreddit}${tokenQuery}with ${t} period`);
 };
 const _isTitleStartWithTag = (strTitle, strTag) => {
   if (strTitle[0] === '[') {
@@ -31,7 +32,7 @@ const _isTitleStartWithTag = (strTitle, strTag) => {
 const _crTitle = (title, tag) => {
   const _strTitle = (0, _utils.trimStr)(title),
     _strTag = (0, _utils.trimStr)(tag);
-  return _strTitle && _strTag && !_isTitleStartWithTag(_strTitle, _strTag) ? _strTitle + " (" + _strTag + ")" : _strTitle;
+  return _strTitle && _strTag && !_isTitleStartWithTag(_strTitle, _strTag) ? `${_strTitle} (${_strTag})` : _strTitle;
 };
 const _crArticle = (sourceId, _ref2, nowMls) => {
   let {
@@ -53,7 +54,7 @@ const _crArticle = (sourceId, _ref2, nowMls) => {
     publishedAt = (0, _adapterFn.toMls)(created_utc),
     _author = (0, _adapterFn.joinByBlank)(score, upvote_ratio, author),
     _title = _crTitle(title, link_flair_text),
-    _commentsUrl = "" + _RedditApi.REDDIT_URL + permalink;
+    _commentsUrl = `${_RedditApi.REDDIT_URL}${permalink}`;
   return {
     source: sourceId,
     articleId: (0, _utils.crId)(),
@@ -85,7 +86,7 @@ const _crTitleAndUrl = data => {
     } = data,
     _subreddit = (0, _utils.decodeHTMLEntities)((0, _utils.domSanitize)(subreddit)),
     _subscribers = (0, _utils.formatNumber)(subreddit_subscribers);
-  return _crSubredditTitleUrl("r/" + _subreddit + " " + _subscribers, _subreddit);
+  return _crSubredditTitleUrl(`r/${_subreddit} ${_subscribers}`, _subreddit);
 };
 const _crArticleId = sourceId => ({
   source: sourceId,
@@ -102,16 +103,11 @@ const _crSubredditItem = (arr, sourceId) => {
   } : void 0;
 };
 const _toArticles = (json, option, sourceId) => {
-  const {
-      data
-    } = json || {},
-    {
-      children
-    } = data || {},
+  const items = (0, _RedditApi.getItems)(json),
     {
       subreddit
     } = option,
-    _items = children.filter(_fFilterItemBy((0, _utils.toLowerCase)(subreddit))),
+    _items = items.filter(_fFilterItemBy((0, _utils.toLowerCase)(subreddit))),
     _articles = (0, _crArticles.default)(_items, (0, _utils.bindTo)(_crArticle, sourceId)),
     subbredditItem = _crSubredditItem(_items, sourceId);
   if (subbredditItem) {
@@ -125,12 +121,39 @@ const _toArticles = (json, option, sourceId) => {
   }
   return _articles;
 };
+const _getOptionAfter = (json, limit) => {
+  const items = (0, _RedditApi.getItems)(json),
+    itemsLength = items.length,
+    itemData = (items[itemsLength - 1] || {}).data || {};
+  return itemsLength === limit && parseInt(itemData.score) >= 1 ? itemData.name : void 0;
+};
+const MLS_FREQUENCY_RESTRICTION = 10000;
+const _updateNextPage = option => {
+  if (!option._nextPage) {
+    option._nextPage = 1;
+  }
+  option._nextPage += 1;
+  option._mlsFr = MLS_FREQUENCY_RESTRICTION;
+};
+const _crPage = (json, option) => {
+  const after = _getOptionAfter(json, parseInt(option.limit));
+  if (!after) {
+    return;
+  }
+  option.after = after;
+  _updateNextPage(option);
+  return {
+    nextPage: option._nextPage,
+    onPageLoad: () => (0, _itemStore.loadItem)(option)
+  };
+};
 const RedditAdapter = {
   toNews(json, option) {
     const _sourceId = _rSourceId[option.type];
     return {
       source: _sourceId,
-      articles: _toArticles(json, option, _sourceId)
+      articles: _toArticles(json, option, _sourceId),
+      page: _crPage(json, option)
     };
   }
 };

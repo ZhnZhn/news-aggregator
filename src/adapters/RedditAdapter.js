@@ -1,3 +1,5 @@
+import { loadItem } from '../flux/itemStore';
+
 import {
   isNumber,
   isArr,
@@ -17,7 +19,8 @@ import {
 
 import {
   REDDIT_URL,
-  API_URL
+  API_URL,
+  getItems
 } from '../api/RedditApi';
 
 import {
@@ -178,10 +181,9 @@ const _toArticles = (
   option,
   sourceId
 ) => {
-  const { data } = json || {}
-  , { children } = data || {}
+  const items = getItems(json)
   , { subreddit } = option
-  , _items = children.filter(
+  , _items = items.filter(
       _fFilterItemBy(toLowerCase(subreddit))
     )
   , _articles = crArticles(
@@ -209,8 +211,51 @@ const _toArticles = (
   return _articles;
 };
 
+const _getOptionAfter = (
+  json,
+  limit
+) => {
+  const items = getItems(json)
+  , itemsLength = items.length
+  , itemData = (items[itemsLength-1] || {}).data || {};
+  return itemsLength === limit
+    && parseInt(itemData.score) >= 1
+     ? itemData.name
+     : void 0;
+};
+
+const MLS_FREQUENCY_RESTRICTION = 10000;
+const _updateNextPage = (
+  option
+) => {
+  if (!option._nextPage) {
+    option._nextPage = 1
+  }
+  option._nextPage += 1
+  option._mlsFr = MLS_FREQUENCY_RESTRICTION
+}
+
+const _crPage = (
+  json,
+  option
+) => {
+  const after = _getOptionAfter(
+    json,
+    parseInt(option.limit)
+  );
+  if (!after) {
+    return;
+  }
+  option.after = after
+  _updateNextPage(option)
+  return {
+    nextPage: option._nextPage,
+    onPageLoad: () => loadItem(option)
+  };
+};
+
 const RedditAdapter = {
-  toNews(json, option){
+  toNews(json, option){    
     const _sourceId = _rSourceId[option.type];
     return {
       source: _sourceId,
@@ -218,7 +263,8 @@ const RedditAdapter = {
         json,
         option,
         _sourceId
-      )
+      ),
+      page: _crPage(json, option)
     };
   }
 };
