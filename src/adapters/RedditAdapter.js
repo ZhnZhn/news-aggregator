@@ -6,6 +6,9 @@ import {
   isObj
 } from '../utils/isTypeFn';
 import {
+  joinByBlank
+} from '../utils/joinBy';
+import {
   crId,
   crDescription,
   bindTo,
@@ -23,10 +26,7 @@ import {
   getItems
 } from '../api/RedditApi';
 
-import {
-  toMls,
-  joinByBlank
-} from './adapterFn';
+import { toMls } from './adapterFn';
 import crArticles from './crArticles';
 
 const _rSourceId = {
@@ -255,7 +255,7 @@ const _crPage = (
 };
 
 const RedditAdapter = {
-  toNews(json, option){    
+  toNews(json, option){
     const _sourceId = _rSourceId[option.type];
     return {
       source: _sourceId,

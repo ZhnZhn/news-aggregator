@@ -8,7 +8,6 @@ export { splitByParagraph } from './splitByParagraph';
 export { formatNumber } from './formatNumber';
 export { safeFormatMls } from './formatDate';
 export { toFirstUpperCase } from './toFirstUpperCase';
-export { joinStrsBy } from './joinStrsBy';
 
 export { domSanitize } from './domSanitize';
 export { decodeHTMLEntities } from './decodeHTMLEntities';

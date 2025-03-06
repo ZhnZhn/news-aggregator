@@ -1,8 +1,10 @@
 import {
   crId,
-  toFirstUpperCase,
-  joinStrsBy
+  toFirstUpperCase
 } from '../utils';
+import {
+  joinByComma
+} from '../utils/joinBy';
 
 import sanitizeArticle from './sanitizeArticle';
 
@@ -19,7 +21,7 @@ const _fToSearchArticle = paneId => article => {
   const { source, author } = article || {}
   , { name } = source || {};
   article.source = paneId
-  article.author = joinStrsBy([name, author])
+  article.author = joinByComma(name, author)
   return article;
 };
 

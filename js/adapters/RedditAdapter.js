@@ -5,6 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _itemStore = require("../flux/itemStore");
 var _isTypeFn = require("../utils/isTypeFn");
+var _joinBy = require("../utils/joinBy");
 var _utils = require("../utils");
 var _RedditApi = require("../api/RedditApi");
 var _adapterFn = require("./adapterFn");
@@ -52,7 +53,7 @@ const _crArticle = (sourceId, _ref2, nowMls) => {
       num_comments
     } = data,
     publishedAt = (0, _adapterFn.toMls)(created_utc),
-    _author = (0, _adapterFn.joinByBlank)(score, upvote_ratio, author),
+    _author = (0, _joinBy.joinByBlank)(score, upvote_ratio, author),
     _title = _crTitle(title, link_flair_text),
     _commentsUrl = `${_RedditApi.REDDIT_URL}${permalink}`;
   return {

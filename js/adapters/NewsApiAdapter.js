@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _utils = require("../utils");
+var _joinBy = require("../utils/joinBy");
 var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
 const NEWS_SEARCH = 'newsapi_search';
 const NEWS_TOP = 'newsapi_top';
@@ -22,7 +23,7 @@ const _fToSearchArticle = paneId => article => {
       name
     } = source || {};
   article.source = paneId;
-  article.author = (0, _utils.joinStrsBy)([name, author]);
+  article.author = (0, _joinBy.joinByComma)(name, author);
   return article;
 };
 const NewsApiAdapter = {
@@ -48,6 +49,5 @@ const NewsApiAdapter = {
     };
   }
 };
-var _default = NewsApiAdapter;
-exports.default = _default;
+var _default = exports.default = NewsApiAdapter;
 //# sourceMappingURL=NewsApiAdapter.js.map
