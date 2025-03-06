@@ -48,7 +48,7 @@ const {
 } = _Comp.default;
 const PROVIDER_LINKS = [[_Links.CryptoCompareLink], [_Links.CoinStatsLink], [_Links.MessariLink], [_Links.FmpApiLink, {
   title: _ProviderNames.FMP_LONG
-}], [_Links.AlphaVantageLink], [_Links.NewsApiLink], [_Links.TheNewsApiLink], [_Links.DevToLink], [_Links.StackOverflowLink], [_Links.WebzLink], [_Links.RedditLink]];
+}], [_Links.AlphaVantageLink], [_Links.PlgLink], [_Links.NewsApiLink], [_Links.TheNewsApiLink], [_Links.DevToLink], [_Links.StackOverflowLink], [_Links.WebzLink], [_Links.RedditLink]];
 const _crLinkItem = (_ref, index) => {
   let [Comp, props] = _ref;
   return (0, _jsxRuntime.jsx)("div", {

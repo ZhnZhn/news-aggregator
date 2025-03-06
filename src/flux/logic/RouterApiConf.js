@@ -4,6 +4,7 @@ import {
   MESSARI,
   FMP,
   ALPHA_VANTAGE,
+  PLG_IO,
   NEWS_API_LONG,
   THE_NEWS_API,
   WEBZ_IO,
@@ -100,6 +101,12 @@ const RouterApiConf = {
           `${FMP} API ${MSG_ERR_TAIL}`,
           settingStore.getFmpKey
         );
+    case 'PLG':
+       return _crConf(
+         'Plg',
+         `${PLG_IO} API ${MSG_ERR_TAIL}`,
+         settingStore.getPlgKey
+       );
      case 'AV':
        return _crConf(
          'Av',

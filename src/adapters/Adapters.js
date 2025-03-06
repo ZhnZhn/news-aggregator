@@ -5,6 +5,7 @@ import DevTo from './DevToAdapter'
 import StackOverflow from './StackOverflowAdapter'
 import Fmp from './FmpAdapter'
 import Av from './AvAdapter'
+import Plg from './PlgAdapter'
 import CryptoCompare from './CryptoCompareAdapter'
 import CoinStats from './CoinStatsAdapter'
 import Messari from './MessariAdapter'
@@ -18,6 +19,7 @@ const Adapters = {
   StackOverflow,
   Fmp,
   Av,
+  Plg,
   CryptoCompare,
   CoinStats,
   Messari,

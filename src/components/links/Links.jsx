@@ -1,9 +1,10 @@
 import {
   CRYPTO_COMPARE,
   COIN_STATS,
-  MESSARI,  
+  MESSARI,
   FMP,
   ALPHA_VANTAGE,
+  PLG_IO,
   NEWS_API_LONG,
   THE_NEWS_API,
   WEBZ_IO,
@@ -16,7 +17,7 @@ import SafeLink from '../zhn/SafeLink';
 const CL_LINK = "link";
 
 const _fSafeLink = (
-  href,
+  domain,
   caption
 ) => ({
   title,
@@ -27,63 +28,68 @@ const _fSafeLink = (
     className={CL_LINK}
     tabIndex={tabIndex}
     {...restProps}
-    href={href}
+    href={`https://${domain}`}
   >
     {title || caption}
   </SafeLink>
 );
 
 export const CryptoCompareLink = _fSafeLink(
-  "https://cryptocompare.com",
+  "cryptocompare.com",
   CRYPTO_COMPARE
 )
 
 export const CoinStatsLink = _fSafeLink(
-  "https://coinstats.app",
+  "coinstats.app",
   COIN_STATS
 )
 
 export const MessariLink = _fSafeLink(
-  "https://messari.io",
+  "messari.io",
   MESSARI
 )
 
 export const NewsApiLink = _fSafeLink(
-  "https://newsapi.org",
+  "newsapi.org",
   NEWS_API_LONG
 )
 
 export const TheNewsApiLink = _fSafeLink(
-  "https://thenewsapi.com",
+  "thenewsapi.com",
   THE_NEWS_API
 )
 
 export const WebzLink = _fSafeLink(
-  "https://webz.io",
+  "webz.io",
   WEBZ_IO
 )
 
 export const RedditLink = _fSafeLink(
-  "https://www.reddit.com",
+  "www.reddit.com",
   REDDIT
 )
 
 export const DevToLink = _fSafeLink(
-  "https://dev.to",
+  "dev.to",
   DEV_TO
 )
 
 export const StackOverflowLink = _fSafeLink(
-  "https://stackoverflow.com",
+  "stackoverflow.com",
   STACK_OVERFLOW
 )
 
 export const FmpApiLink = _fSafeLink(
-  "https://financialmodelingprep.com",
+  "financialmodelingprep.com",
   FMP
 );
 
 export const AlphaVantageLink = _fSafeLink(
-  "https://www.alphavantage.co",
+  "www.alphavantage.co",
   ALPHA_VANTAGE
+)
+
+export const PlgLink = _fSafeLink(
+  "polygon.io",
+  PLG_IO
 )

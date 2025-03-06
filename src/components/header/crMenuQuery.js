@@ -4,6 +4,7 @@ import {
   MESSARI,
   FMP_LONG,
   ALPHA_VANTAGE,
+  PLG_IO,
   NEWS_API_LONG,
   THE_NEWS_API,
   WEBZ_IO,
@@ -59,8 +60,9 @@ const crMenuQuery = (
       },{
         t: "Stock Market",
         items: [
-          [`${ALPHA_VANTAGE}: Sentiment`, _crOnClick(QUERY.AV)],
-          [FMP_LONG, _crOnClick(QUERY.FMP)]
+          [`${ALPHA_VANTAGE}: Sentiment`, _crOnClick(QUERY.AV)],          
+          [FMP_LONG, _crOnClick(QUERY.FMP)],
+          [PLG_IO, _crOnClick(QUERY.PLG)]
         ]
       },{
         t: "General News",

@@ -5,6 +5,7 @@ export const MESSARI = 'Messari'
 export const FMP = 'FMP'
 export const FMP_LONG = 'Financial Modeling Prep'
 export const ALPHA_VANTAGE = 'Alpha Vantage'
+export const PLG_IO = 'Polygon.io'
 
 export const NEWS_API = 'NewsApi'
 export const NEWS_API_LONG = 'NewsApi.org'

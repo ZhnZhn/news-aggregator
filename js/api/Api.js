@@ -9,6 +9,7 @@ var _DevToApi = _interopRequireDefault(require("./DevToApi"));
 var _StackOverflowApi = _interopRequireDefault(require("./StackOverflowApi"));
 var _FmpApi = _interopRequireDefault(require("./FmpApi"));
 var _AvApi = _interopRequireDefault(require("./AvApi"));
+var _PlgApi = require("./PlgApi");
 var _NewsSearchApi = _interopRequireDefault(require("./NewsSearchApi"));
 var _NewsApiTop = _interopRequireDefault(require("./NewsApiTop"));
 var _TheNewsApiSearch = _interopRequireDefault(require("./TheNewsApiSearch"));
@@ -24,6 +25,7 @@ const Api = {
   StackOverflow: _StackOverflowApi.default,
   Fmp: _FmpApi.default,
   Av: _AvApi.default,
+  Plg: _PlgApi.Plg,
   NewsSearch: _NewsSearchApi.default,
   NewsTop: _NewsApiTop.default,
   CryptoCompare: _CryptoCompareApi.default,

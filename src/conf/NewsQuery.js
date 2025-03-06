@@ -1,5 +1,6 @@
 import {
   AlphaVantageLink,
+  PlgLink,
   CoinStatsLink,
   CryptoCompareLink,
   DevToLink,
@@ -14,6 +15,7 @@ import {
 
 import {
   getAvDialogConfig,
+  getPlgDialogConfig,
   getCoinStatDialogConfig,
   getCryptoCompareConfig,
   getDevToConfig,
@@ -37,6 +39,7 @@ import {
   MESSARI,
   FMP_LONG,
   ALPHA_VANTAGE,
+  PLG_IO,
   NEWS_API,
   THE_NEWS_API,
   WEBZ_IO,
@@ -194,6 +197,15 @@ const NEWS_QUERY = {
       AlphaVantageLink,
       ALPHA_VANTAGE,
       "av_sentiments",
+    )
+  },
+  PLG: {
+    type: "PLG",
+    ..._crItemDialogType2(
+      getPlgDialogConfig,
+      PlgLink,
+      PLG_IO,
+      "plg",
     )
   },
   NEWS_SEARCH: {
