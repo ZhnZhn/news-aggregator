@@ -26,7 +26,10 @@ import {
   getItems
 } from '../api/RedditApi';
 
-import { toMls } from './adapterFn';
+import {
+  toMls,
+  updateNextPage
+} from './adapterFn';
 import crArticles from './crArticles';
 
 const _rSourceId = {
@@ -224,17 +227,6 @@ const _getOptionAfter = (
      : void 0;
 };
 
-const MLS_FREQUENCY_RESTRICTION = 10000;
-const _updateNextPage = (
-  option
-) => {
-  if (!option._nextPage) {
-    option._nextPage = 1
-  }
-  option._nextPage += 1
-  option._mlsFr = MLS_FREQUENCY_RESTRICTION
-}
-
 const _crPage = (
   json,
   option
@@ -247,7 +239,7 @@ const _crPage = (
     return;
   }
   option.after = after
-  _updateNextPage(option)
+  updateNextPage(option)
   return {
     nextPage: option._nextPage,
     onPageLoad: () => loadItem(option)

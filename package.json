@@ -56,9 +56,11 @@
   },
   "jest": {
     "roots": [
+      "<rootDir>/js/adapters",
       "<rootDir>/js/utils"
     ],
     "transformIgnorePatterns": [
+      "<rootDir>/js/adapters",
       "<rootDir>/js/utils"
     ]
   }

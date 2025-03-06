@@ -128,21 +128,13 @@ const _getOptionAfter = (json, limit) => {
     itemData = (items[itemsLength - 1] || {}).data || {};
   return itemsLength === limit && parseInt(itemData.score) >= 1 ? itemData.name : void 0;
 };
-const MLS_FREQUENCY_RESTRICTION = 10000;
-const _updateNextPage = option => {
-  if (!option._nextPage) {
-    option._nextPage = 1;
-  }
-  option._nextPage += 1;
-  option._mlsFr = MLS_FREQUENCY_RESTRICTION;
-};
 const _crPage = (json, option) => {
   const after = _getOptionAfter(json, parseInt(option.limit));
   if (!after) {
     return;
   }
   option.after = after;
-  _updateNextPage(option);
+  (0, _adapterFn.updateNextPage)(option);
   return {
     nextPage: option._nextPage,
     onPageLoad: () => (0, _itemStore.loadItem)(option)
