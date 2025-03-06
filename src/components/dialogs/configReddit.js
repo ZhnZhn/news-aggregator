@@ -14,6 +14,7 @@ export const SUBRREDIT_OPTIONS = [
 "ChatGPT",
 "ChatGPTPro",
 "ChatGPTCoding",
+"ClaudeAI",
 "OpenAI",
 "LocalLLaMA",
 "MachineLearning",
