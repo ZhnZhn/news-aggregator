@@ -1,25 +1,31 @@
-import { loadItem } from '../flux/itemStore';
-import { isNextUrl } from '../api/PlgApi';
+import { loadItem } from "../flux/itemStore";
+import { isNextUrl } from "../api/PlgApi";
 
 import {
   crId,
   safeFormatMls
-} from '../utils';
+} from "../utils";
 
-import { dateTimeToMls } from '../utils/dt';
+import { joinByBlank } from "../utils/joinBy";
+import { dateTimeToMls } from "../utils/dt";
+import { replaceAllBlankByNbsp } from "../utils/strFn";
 
-import { updateNextPage } from './adapterFn';
-import crArticles from './crArticles';
+import { updateNextPage } from "./adapterFn";
+import crArticles from "./crArticles";
 
 const SOURCE_ID = "plg";
 const _isArr = Array.isArray
+, _getProperty = (
+  item,
+  propName
+) => (item || {})[propName] || "";
 
 const _crInsightList = (
   insights
 ) => _isArr(insights) ? insights.reduce((list, item) => `${list}
-  ${item.ticker} ${item.sentiment}
-  ${item.sentiment_reasoning}
-`, '') : '';
+  ${_getProperty(item, "ticker")} ${_getProperty(item, "sentiment")}
+  ${_getProperty(item, "sentiment_reasoning")}
+`, "") : "";
 
 const _crArticle = ({
   title,
@@ -27,15 +33,17 @@ const _crArticle = ({
   insights,
   author,
   published_utc,
+  publisher,
   article_url
 }, nowMls) => {
+  const { name } = publisher || {};
   return {
     source: SOURCE_ID,
     articleId: crId(),
     title,
     description: `${description}
       ${_crInsightList(insights)}`,
-    author,
+    author: joinByBlank(name, replaceAllBlankByNbsp(author)),
     timeAgo: safeFormatMls(dateTimeToMls(published_utc), nowMls),
     publishedAt: published_utc,
     url: article_url

@@ -6,15 +6,18 @@ exports.default = void 0;
 var _itemStore = require("../flux/itemStore");
 var _PlgApi = require("../api/PlgApi");
 var _utils = require("../utils");
+var _joinBy = require("../utils/joinBy");
 var _dt = require("../utils/dt");
+var _strFn = require("../utils/strFn");
 var _adapterFn = require("./adapterFn");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
 const SOURCE_ID = "plg";
-const _isArr = Array.isArray;
+const _isArr = Array.isArray,
+  _getProperty = (item, propName) => (item || {})[propName] || "";
 const _crInsightList = insights => _isArr(insights) ? insights.reduce((list, item) => `${list}
-  ${item.ticker} ${item.sentiment}
-  ${item.sentiment_reasoning}
-`, '') : '';
+  ${_getProperty(item, "ticker")} ${_getProperty(item, "sentiment")}
+  ${_getProperty(item, "sentiment_reasoning")}
+`, "") : "";
 const _crArticle = (_ref, nowMls) => {
   let {
     title,
@@ -22,15 +25,19 @@ const _crArticle = (_ref, nowMls) => {
     insights,
     author,
     published_utc,
+    publisher,
     article_url
   } = _ref;
+  const {
+    name
+  } = publisher || {};
   return {
     source: SOURCE_ID,
     articleId: (0, _utils.crId)(),
     title,
     description: `${description}
       ${_crInsightList(insights)}`,
-    author,
+    author: (0, _joinBy.joinByBlank)(name, (0, _strFn.replaceAllBlankByNbsp)(author)),
     timeAgo: (0, _utils.safeFormatMls)((0, _dt.dateTimeToMls)(published_utc), nowMls),
     publishedAt: published_utc,
     url: article_url
