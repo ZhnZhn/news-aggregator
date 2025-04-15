@@ -31,7 +31,7 @@ const FILTER_TIME_OUT_MLS = 350,
 const InputSuggest = _ref => {
   let {
     isInput,
-    maxInput = "20",
+    maxInput = "21",
     id,
     style,
     tfStyle,
