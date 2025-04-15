@@ -49,7 +49,7 @@
     "react-refresh": "^0.14.2",
     "sass": "^1.86.3",
     "terser-webpack-plugin": "^5.3.14",
-    "webpack": "^5.98.0",
+    "webpack": "^5.99.5",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.1"
