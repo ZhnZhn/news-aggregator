@@ -16,11 +16,11 @@ const _findCompIndex = (arr, key) => {
       return i;
     }
   }
-  return;
+  return -1;
 };
 const _doVisible = (arr, keyValue) => {
-  const _index = _findCompIndex(arr, keyValue) || 0;
-  return [...arr.slice(0, _index), ...arr.slice(_index + 1), arr[_index]];
+  const _index = _findCompIndex(arr, keyValue);
+  return _index > -1 ? [...arr.slice(0, _index), ...arr.slice(_index + 1), arr[_index]] : arr;
 };
 const _updateVisible = (state, key, maxDialog) => {
   const {
@@ -74,7 +74,7 @@ const DialogContainer = _ref => {
           key,
           Comp
         } = option;
-        if (Comp && !(0, _uiApi.isUndef)(_findCompIndex(prevState.compDialogs, key))) {
+        if (Comp && _findCompIndex(prevState.compDialogs, key) !== -1) {
           return prevState;
         }
         _updateVisible(prevState, key, maxDialog);

@@ -9,7 +9,6 @@ export {
   isFn,
   isStr,
   isBool,
-  isUndef,
   isArr,
   isObj
 } from '../utils/isTypeFn';
