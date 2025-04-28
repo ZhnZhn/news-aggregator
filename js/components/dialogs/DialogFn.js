@@ -2,9 +2,10 @@
 
 exports.__esModule = true;
 exports.getPaneCaption = exports.getLoadId = exports.getDialogCaption = exports.getCaption = exports.fGetDialogConfig = exports.crTextFieldConfig = exports.crTextFieldCaption = exports.crInputSuggestConfig = exports.crInputSelectConfig = exports.crInputProps = exports.crFromToDateConfig = exports.crDfInputs = void 0;
-var _OptionFn = require("../zhn-m-input/OptionFn");
+var _isTypeFn = require("../../utils/isTypeFn");
 var _dt = require("../../utils/dt");
 var _uiApi = require("../uiApi");
+var _OptionFn = require("../zhn-m-input/OptionFn");
 var _InputTypes = require("../zhn-inputs/InputTypes");
 const crInputProps = function (maxLength) {
   if (maxLength === void 0) {
@@ -51,7 +52,7 @@ const getLoadId = itemConf => _getLoadId(itemConf) || _getType(itemConf);
 exports.getLoadId = getLoadId;
 const getDialogCaption = itemConf => ((itemConf || {}).dialogProps || {}).caption;
 exports.getDialogCaption = getDialogCaption;
-const crTextFieldCaption = (caption, dfValue) => dfValue ? caption + " (Default: " + dfValue + ")" : caption;
+const crTextFieldCaption = (caption, dfValue) => dfValue ? `${caption} (Default: ${dfValue})` : caption;
 exports.crTextFieldCaption = crTextFieldCaption;
 const _crInputCaption = (caption, id) => caption || (0, _uiApi.toFirstUpperCase)(id);
 const crTextFieldConfig = (id, _ref) => {
@@ -73,7 +74,7 @@ const _fCrInputConfig = inputType => function (id, options, _temp) {
     isInput,
     isNotFirstUpperCase
   } = _temp === void 0 ? {} : _temp;
-  const _options = (0, _uiApi.isStr)(options[0]) ? (0, _OptionFn.crSelectOptions)(options, isNotFirstUpperCase) : options;
+  const _options = (0, _isTypeFn.isStr)(options[0]) ? (0, _OptionFn.crSelectOptions)(options, isNotFirstUpperCase) : options;
   return [inputType, id, _crInputCaption(caption, id), _options, dfOption || _options[dfIndex || 0], is, isInput];
 };
 const crInputSelectConfig = exports.crInputSelectConfig = _fCrInputConfig(_InputTypes.INPUT_TYPE_SELECT);

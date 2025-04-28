@@ -7,9 +7,8 @@ export {
 
 export {
   isFn,
-  isStr,
   isBool,
-  isArr  
+  isArr
 } from '../utils/isTypeFn';
 import {
   isFn,

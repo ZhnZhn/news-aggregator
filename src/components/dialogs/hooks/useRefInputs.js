@@ -1,5 +1,8 @@
 import {
-  isStr,
+  isStr
+} from '../../../utils/isTypeFn';
+
+import {
   useRef,
   useCallback
 } from '../../uiApi';

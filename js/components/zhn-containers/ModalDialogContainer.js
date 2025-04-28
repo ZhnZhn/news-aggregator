@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _ItemStack = _interopRequireDefault(require("../zhn/ItemStack"));
 var _ModalContainer = _interopRequireDefault(require("./ModalContainer"));
@@ -53,7 +54,7 @@ const ModalDialogContainer = _ref3 => {
     } = msModalDialog || {};
     if (option) {
       const type = _getModalDialogType(option);
-      if ((0, _uiApi.isStr)(type)) {
+      if ((0, _isTypeFn.isStr)(type)) {
         setState(prevState => {
           if (!prevState.data[type]) {
             prevState.dialogs.push({

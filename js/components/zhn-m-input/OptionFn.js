@@ -2,12 +2,13 @@
 
 exports.__esModule = true;
 exports.getItemValue = exports.getItemCaption = exports.crSelectOptions = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
-const getItemCaption = item => (0, _uiApi.isArr)(item) ? item[0] : '';
+const getItemCaption = item => (0, _isTypeFn.isArr)(item) ? item[0] : '';
 exports.getItemCaption = getItemCaption;
 const getItemValue = item => {
-  const value = (0, _uiApi.isArr)(item) ? (0, _uiApi.isStr)(item[1]) ? item[1] : item[0] : void 0;
-  return (0, _uiApi.isStr)(value) ? value.trim() : value;
+  const value = (0, _isTypeFn.isArr)(item) ? (0, _isTypeFn.isStr)(item[1]) ? item[1] : item[0] : void 0;
+  return (0, _isTypeFn.isStr)(value) ? value.trim() : value;
 };
 exports.getItemValue = getItemValue;
 const _crOptionItemWithFirstUpperCase = str => [(0, _uiApi.toFirstUpperCase)(str), str];

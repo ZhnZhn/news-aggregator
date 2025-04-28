@@ -1,6 +1,9 @@
 import {
   isArr,
-  isStr,
+  isStr
+} from '../../utils/isTypeFn';
+
+import {  
   safeMap,
   toFirstUpperCase
 } from '../uiApi';
