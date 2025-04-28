@@ -1,6 +1,5 @@
 export {
-  bindTo,
-  crId  
+  bindTo
 } from '../utils';
 
 export {
