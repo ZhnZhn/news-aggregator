@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useId = exports.useEffect = exports.useContext = exports.useCallback = exports.toLink = exports.toFirstUpperCase = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.safeMap = exports.render = exports.memo = exports.isBool = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.crLazyValue = exports.crId = exports.cloneElement = exports.bindTo = exports.PASSIVE_EVENT_OPTIONS = exports.KEY_TAB = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_DELETE = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = exports.FN_TRUE = exports.FN_NOOP = exports.EVENT_TOUCH_START = exports.EVENT_TOUCH_MOVE = exports.EVENT_TOUCH_END = exports.EVENT_TOUCH_CANCEL = void 0;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useId = exports.useEffect = exports.useContext = exports.useCallback = exports.toLink = exports.toFirstUpperCase = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.safeMap = exports.render = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.crLazyValue = exports.crId = exports.cloneElement = exports.bindTo = exports.PASSIVE_EVENT_OPTIONS = exports.KEY_TAB = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_DELETE = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = exports.FN_TRUE = exports.FN_NOOP = exports.EVENT_TOUCH_START = exports.EVENT_TOUCH_MOVE = exports.EVENT_TOUCH_END = exports.EVENT_TOUCH_CANCEL = void 0;
 var _utils = require("../utils");
 exports.bindTo = _utils.bindTo;
 exports.crId = _utils.crId;
@@ -9,7 +9,6 @@ exports.crLazyValue = _utils.crLazyValue;
 exports.toFirstUpperCase = _utils.toFirstUpperCase;
 var _isTypeFn = require("../utils/isTypeFn");
 exports.isFn = _isTypeFn.isFn;
-exports.isBool = _isTypeFn.isBool;
 exports.isArr = _isTypeFn.isArr;
 var _compat = require("preact/compat");
 exports.memo = _compat.memo;
