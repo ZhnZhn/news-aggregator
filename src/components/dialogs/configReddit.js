@@ -1,4 +1,3 @@
-
 export const SUBRREDIT_OPTIONS = [
 "Amd",
 "intel",
@@ -79,6 +78,11 @@ export const SUBRREDIT_OPTIONS = [
 "Python",
 "computerscience",
 "programming",
+"softwarearchitecture",
+"softwaretesting",
+"userexperience",
+"EnterpriseArchitect",
+"businessanalyst",
 "opensource",
 "SaaS",
 "nocode",
