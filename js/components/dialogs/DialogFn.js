@@ -2,9 +2,9 @@
 
 exports.__esModule = true;
 exports.getPaneCaption = exports.getLoadId = exports.getDialogCaption = exports.getCaption = exports.fGetDialogConfig = exports.crTextFieldConfig = exports.crTextFieldCaption = exports.crInputSuggestConfig = exports.crInputSelectConfig = exports.crInputProps = exports.crFromToDateConfig = exports.crDfInputs = void 0;
+var _utils = require("../../utils");
 var _isTypeFn = require("../../utils/isTypeFn");
 var _dt = require("../../utils/dt");
-var _uiApi = require("../uiApi");
 var _OptionFn = require("../zhn-m-input/OptionFn");
 var _InputTypes = require("../zhn-inputs/InputTypes");
 const crInputProps = function (maxLength) {
@@ -54,7 +54,7 @@ const getDialogCaption = itemConf => ((itemConf || {}).dialogProps || {}).captio
 exports.getDialogCaption = getDialogCaption;
 const crTextFieldCaption = (caption, dfValue) => dfValue ? `${caption} (Default: ${dfValue})` : caption;
 exports.crTextFieldCaption = crTextFieldCaption;
-const _crInputCaption = (caption, id) => caption || (0, _uiApi.toFirstUpperCase)(id);
+const _crInputCaption = (caption, id) => caption || (0, _utils.toFirstUpperCase)(id);
 const crTextFieldConfig = (id, _ref) => {
   let {
     caption,
@@ -83,7 +83,7 @@ const INITIAL_FROM_DATE = (0, _dt.getFromDate)(1),
   INITIAL_TO_DATE = (0, _dt.getToDate)();
 const crFromToDateConfig = (id, fromDate, toDate) => [_InputTypes.INPUT_TYPE_FROM_DATE, id, 'From To Date', fromDate || INITIAL_FROM_DATE, toDate || INITIAL_TO_DATE];
 exports.crFromToDateConfig = crFromToDateConfig;
-const fGetDialogConfig = crInputConfigs => (0, _uiApi.crLazyValue)(() => {
+const fGetDialogConfig = crInputConfigs => (0, _utils.crLazyValue)(() => {
   const INPUT_CONFIGS = crInputConfigs();
   return [INPUT_CONFIGS, ...crDfInputs(INPUT_CONFIGS)];
 });

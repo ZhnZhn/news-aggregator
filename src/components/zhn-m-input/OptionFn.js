@@ -1,11 +1,13 @@
 import {
+  toFirstUpperCase
+} from '../../utils';
+import {
   isArr,
   isStr
 } from '../../utils/isTypeFn';
 
-import {  
-  safeMap,
-  toFirstUpperCase
+import {
+  safeMap
 } from '../uiApi';
 
 export const getItemCaption = (

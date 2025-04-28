@@ -1,15 +1,15 @@
 import {
+  crLazyValue,
+  toFirstUpperCase
+} from '../../utils';
+
+import {
   isStr
 } from '../../utils/isTypeFn';
 import {
   getFromDate,
   getToDate
 } from '../../utils/dt';
-
-import {
-  crLazyValue,
-  toFirstUpperCase
-} from '../uiApi';
 
 import {
   crSelectOptions

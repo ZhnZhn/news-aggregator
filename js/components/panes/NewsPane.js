@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _utils = require("../../utils");
 var _uiApi = require("../uiApi");
 var _has = require("../has");
 var _crStyle = require("../crStyle");
@@ -32,7 +33,7 @@ const WIDTH_STYLE = (0, _has.initWidthStyle)(),
   };
 const _getWidth = style => parseInt(style.width, 10) || _ResizeWidth.RESIZE_INIT_WIDTH;
 const _toStyleWidth = width => width + 'px';
-const _crPaneCaption = (caption, sortBy) => [caption, sortBy].filter(Boolean).map(_uiApi.toFirstUpperCase).join(': ');
+const _crPaneCaption = (caption, sortBy) => [caption, sortBy].filter(Boolean).map(_utils.toFirstUpperCase).join(': ');
 const _crArticleItem = (article, index, _ref) => {
   let {
     Item,
@@ -66,8 +67,8 @@ const _crModelMoreHandlers = (ref, onRemoveItems) => {
       }
     };
   return {
-    onMinWidth: (0, _uiApi.bindTo)(_resizeTo, _ResizeWidth.RESIZE_MIN_WIDTH),
-    onInitWidth: (0, _uiApi.bindTo)(_resizeTo, _ResizeWidth.RESIZE_INIT_WIDTH),
+    onMinWidth: (0, _utils.bindTo)(_resizeTo, _ResizeWidth.RESIZE_MIN_WIDTH),
+    onInitWidth: (0, _utils.bindTo)(_resizeTo, _ResizeWidth.RESIZE_INIT_WIDTH),
     onPlusWidth: _plusToWidth,
     onMinusWidth: _minusToWidth,
     onRemoveItems: onRemoveItems
