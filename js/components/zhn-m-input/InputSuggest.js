@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _utils = require("../../utils");
 var _uiApi = require("../uiApi");
 var _uiStore = require("../../flux/uiStore");
 var _crStyle = require("../crStyle");
@@ -112,7 +113,7 @@ const InputSuggest = _ref => {
         }
       }
     },
-    _getSearchOptions = (0, _uiApi.useMemo)(() => (0, _uiApi.crLazyValue)(() => options.map(item => {
+    _getSearchOptions = (0, _uiApi.useMemo)(() => (0, _utils.crLazyValue)(() => options.map(item => {
       item._t = item[0].toLowerCase();
       return item;
     })), [options])

@@ -1,7 +1,6 @@
 export {
   bindTo,
-  crId,
-  crLazyValue
+  crId  
 } from '../utils';
 
 export {
