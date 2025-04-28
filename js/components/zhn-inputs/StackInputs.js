@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
+var _isTypeFn = require("../../utils/isTypeFn");
 var _Dialog = require("../dialogs/Dialog.Style");
 var _ShowHide = _interopRequireDefault(require("../zhn/ShowHide"));
 var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
@@ -18,7 +18,7 @@ const S_TF_SUGGEST = {
   ..._Dialog.S_INPUT_ROOT,
   marginLeft: 0
 };
-const _isInput = (isInputs, id) => (0, _uiApi.isObj)(isInputs) ? !!isInputs[id] : true;
+const _isInput = (isInputs, id) => (0, _isTypeFn.isObj)(isInputs) ? !!isInputs[id] : true;
 const StackInputs = _ref => {
   let {
     isInputs,

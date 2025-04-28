@@ -9,8 +9,7 @@ export {
   isFn,
   isStr,
   isBool,
-  isArr,
-  isObj
+  isArr  
 } from '../utils/isTypeFn';
 import {
   isFn,

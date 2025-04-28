@@ -1,4 +1,4 @@
-import { isObj } from '../uiApi';
+import { isObj } from '../../utils/isTypeFn';
 
 import {
   S_INPUT_ROOT,
