@@ -1,14 +1,24 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
 var _jsxRuntime = require("preact/jsx-runtime");
-
-var IconAppLogo = function IconAppLogo(_ref) {
-  var ariaLabel = _ref.ariaLabel,
-      dataPos = _ref.dataPos,
-      className = _ref.className;
+const _crRect = (rx, y, x, height, width, color) => (0, _jsxRuntime.jsx)("rect", {
+  ry: "2",
+  rx: rx,
+  y: y,
+  x: x,
+  height: height,
+  width: width,
+  fill: color,
+  stroke: color
+});
+const IconAppLogo = _ref => {
+  let {
+    ariaLabel,
+    dataPos,
+    className
+  } = _ref;
   return (0, _jsxRuntime.jsx)("span", {
     "aria-label": ariaLabel,
     "data-pos": dataPos,
@@ -21,38 +31,9 @@ var IconAppLogo = function IconAppLogo(_ref) {
       strokeLinejoin: "round",
       strokeMiterlimit: "2",
       strokeWidth: "2",
-      children: [(0, _jsxRuntime.jsx)("rect", {
-        ry: "1.8825414",
-        rx: "194.14471",
-        y: "1.434558",
-        x: "19.176462",
-        height: "12.460618",
-        width: "10.85316",
-        fill: "#8ecc2d",
-        stroke: "#8ecc2d"
-      }), (0, _jsxRuntime.jsx)("rect", {
-        ry: "1.87537",
-        rx: "204.478",
-        y: "16.639841",
-        x: "8.8410215",
-        height: "13.752699",
-        width: "18.307165",
-        fill: "#232f3b",
-        stroke: "#232f3b"
-      }), (0, _jsxRuntime.jsx)("rect", {
-        ry: "1.87537",
-        rx: "204.478",
-        y: "3.4229634",
-        x: "2.5897937",
-        height: "10.894996",
-        width: "10.001963",
-        fill: "#a487d4",
-        stroke: "#a487d4"
-      })]
+      children: [_crRect(194, 1.5, 19, 12.5, 11, "#8ecc2d"), _crRect(204.5, 17.5, 9, 13.5, 18, "#232f3b"), _crRect(204.5, 3.5, 2.5, 11, 10, "#a487d4")]
     })
   });
 };
-
-var _default = IconAppLogo;
-exports["default"] = _default;
+var _default = exports.default = IconAppLogo;
 //# sourceMappingURL=IconAppLogo.js.map
