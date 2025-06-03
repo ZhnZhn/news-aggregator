@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.toUTCSecond = exports.toUTCMillis = exports.toTimeDate = exports.toMls = exports.isValidDate = exports.getToDate = exports.getFromDate = exports.dateTimeToMls = void 0;
+exports.toUTCSecond = exports.toUTCMillis = exports.toTimeDate = exports.toMls = exports.toDateTime = exports.isValidDate = exports.getToDate = exports.getFromDate = exports.dateTimeToMls = void 0;
 var _isTypeFn = require("./isTypeFn");
 var _pipe = _interopRequireDefault(require("./pipe"));
 const MIN_YEAR = 1999;
@@ -104,7 +104,9 @@ const dateTimeToMls = strDateTime => {
   if (!(0, _isTypeFn.isStr)(strDateTime)) {
     return;
   }
-  const [strDate, strTime] = strDateTime.trim().replace('Z', '').split('T'),
+  const _strDateTime = strDateTime.trim(),
+    strDate = _strDateTime.slice(0, 10),
+    strTime = _strDateTime.slice(11, 19),
     [YYYY, MM, DD] = (strDate || '').split('-'),
     [hh, mm, ss] = (strTime || '').split(':');
   return toMls(`${YYYY}${MM}${DD}T${hh}${mm}${Math.round(ss)}`);
@@ -124,8 +126,17 @@ const toTimeDate = function (publishedAt, dfValue) {
   const _arr = (0, _isTypeFn.isStr)(publishedAt) ? publishedAt.trim().split('T') : [''],
     _arrDate = _arr[0].length === 10 ? _arr[0].split('-') : [],
     _strDate = _arrDate.length === 3 ? `${_arrDate[2]}-${_arrDate[1]}-${_arrDate[0]}` : '',
-    _strTime = _arr[1] && _arr[1].length === 9 ? _arr[1].substring(0, 8) : '';
+    _strTime = _arr[1] && _arr[1].length === 9 ? _arr[1].slice(0, 8) : '';
   return [_strTime, _strDate].filter(Boolean).join(' ') || dfValue;
 };
 exports.toTimeDate = toTimeDate;
+const toDateTime = strTimeDate => {
+  if (!(0, _isTypeFn.isStr)(strTimeDate)) {
+    return '';
+  }
+  const [strTime, strDmy] = strTimeDate.split(' '),
+    [dd, mm, yyyy] = (strDmy || '').split('-');
+  return yyyy ? `${yyyy}-${mm}-${dd} ${strTime}` : '';
+};
+exports.toDateTime = toDateTime;
 //# sourceMappingURL=dt.js.map

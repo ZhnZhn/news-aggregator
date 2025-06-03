@@ -1,6 +1,7 @@
 import {
   toMls,
-  toTimeDate
+  toTimeDate,
+  toDateTime
 } from '../dt'
 
 const UTC_MLS_2010_12_31 = 1293753600000;
@@ -11,7 +12,7 @@ describe('dt toMls', () => {
     expect(fn('20101231000000')).toBe(UTC_MLS_2010_12_31)
     expect(fn('2010123100000')).toBe(UTC_MLS_2010_12_31)
   })
-  
+
   test('should return void 0 in edge cases', () => {
     expect(fn()).toBe(void 0)
     expect(fn(null)).toBe(void 0)
@@ -44,4 +45,20 @@ describe('dt toTimeDate', () => {
     expect(fn([])).toBe(dfValue)
   })
 
+})
+
+describe('toDateTime', ()=>{
+  const fn = toDateTime;
+  test('should return datetime from time-date string', ()=>{
+    expect(fn('HH:MM:SS DD-MM-YYYY')).toBe('YYYY-MM-DD HH:MM:SS')
+  })
+  test('should return empty string in edge cases', ()=>{
+    expect(fn()).toBe('')
+    expect(fn(null)).toBe('')
+    expect(fn('')).toBe('')
+    expect(fn(true)).toBe('')
+    expect(fn(0)).toBe('')
+
+    expect(fn('HH:MM:SS DD-MM-')).toBe('')
+  })
 })

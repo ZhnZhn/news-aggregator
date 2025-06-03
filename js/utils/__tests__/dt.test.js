@@ -36,4 +36,18 @@ describe('dt toTimeDate', () => {
     expect(fn([])).toBe(dfValue);
   });
 });
+describe('toDateTime', () => {
+  const fn = _dt.toDateTime;
+  test('should return datetime from time-date string', () => {
+    expect(fn('HH:MM:SS DD-MM-YYYY')).toBe('YYYY-MM-DD HH:MM:SS');
+  });
+  test('should return empty string in edge cases', () => {
+    expect(fn()).toBe('');
+    expect(fn(null)).toBe('');
+    expect(fn('')).toBe('');
+    expect(fn(true)).toBe('');
+    expect(fn(0)).toBe('');
+    expect(fn('HH:MM:SS DD-MM-')).toBe('');
+  });
+});
 //# sourceMappingURL=dt.test.js.map

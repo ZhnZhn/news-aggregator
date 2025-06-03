@@ -123,10 +123,9 @@ export const dateTimeToMls = (
   if (!isStr(strDateTime)) {
     return;
   }
-  const [strDate, strTime] = strDateTime
-    .trim()
-    .replace('Z', '')
-    .split('T')
+  const _strDateTime =  strDateTime.trim()
+  , strDate = _strDateTime.slice(0, 10)
+  , strTime = _strDateTime.slice(11, 19)
   , [YYYY, MM, DD] = (strDate || '').split('-')
   , [hh, mm, ss] = (strTime || '').split(':');
   return toMls(`${YYYY}${MM}${DD}T${hh}${mm}${Math.round(ss)}`);
@@ -153,9 +152,28 @@ export const toTimeDate = (
      ? `${_arrDate[2]}-${_arrDate[1]}-${_arrDate[0]}`
      : ''
   , _strTime = _arr[1] && _arr[1].length === 9
-     ? _arr[1].substring(0, 8)
+     ? _arr[1].slice(0, 8)
      : '';
   return [_strTime, _strDate]
     .filter(Boolean)
     .join(' ') || dfValue;
+}
+
+export const toDateTime = (strTimeDate) => {
+  if (!isStr(strTimeDate)) {
+    return '';
+  }
+  const [
+    strTime,
+    strDmy
+  ] = strTimeDate.split(' ')
+  , [
+    dd,
+    mm, 
+    yyyy
+  ] = (strDmy || '').split('-');
+
+  return yyyy
+    ? `${yyyy}-${mm}-${dd} ${strTime}`
+    : '';
 }
