@@ -1,4 +1,5 @@
 //import PropTypes from 'prop-types'
+import { domSanitize } from '../../utils/domSanitize';
 import { memoIsShow } from '../hoc/memoFn';
 import { S_BROWSER_CAPTION } from './Dialog.Style';
 
@@ -8,11 +9,11 @@ import { S_COLOR_BLACK } from '../crStyle';
 const S_DIALOG = {
   position: 'static',
   width: 350,
-  height: 220,
+  height: 240,
   margin: '70px auto 0px'
 }
 , S_MSG = {
-  ...S_COLOR_BLACK,  
+  ...S_COLOR_BLACK,
   width: '100%',
   padding: '8px 12px',
   fontWeight: 'bold',
@@ -51,7 +52,7 @@ const AlertDialog = memoIsShow(({
      onClose={onClose}
   >
     <p style={S_MSG}>
-       {_toMsg(data)}
+      {domSanitize(_toMsg(data))}
     </p>
   </ModalDialog>
 ));

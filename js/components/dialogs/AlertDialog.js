@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _domSanitize = require("../../utils/domSanitize");
 var _memoFn = require("../hoc/memoFn");
 var _Dialog = require("./Dialog.Style");
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
@@ -13,7 +14,7 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const S_DIALOG = {
     position: 'static',
     width: 350,
-    height: 220,
+    height: 240,
     margin: '70px auto 0px'
   },
   S_MSG = {
@@ -34,7 +35,7 @@ const _toMsg = data => {
     url,
     msg
   } = data || {};
-  return status ? url + "\ncode:" + status + "\nNetwork exception" : msg || 'Exception Message';
+  return status ? `${url}\ncode:${status}\nNetwork exception` : msg || 'Exception Message';
 };
 const AlertDialog = (0, _memoFn.memoIsShow)(_ref => {
   let {
@@ -51,7 +52,7 @@ const AlertDialog = (0, _memoFn.memoIsShow)(_ref => {
     onClose: onClose,
     children: (0, _jsxRuntime.jsx)("p", {
       style: S_MSG,
-      children: _toMsg(data)
+      children: (0, _domSanitize.domSanitize)(_toMsg(data))
     })
   });
 });
