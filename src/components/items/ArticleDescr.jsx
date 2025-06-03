@@ -23,6 +23,7 @@ const ArticleDescr = ({
   commentsUrl,
   commentsTitle,
   publishedAt,
+  datetime,
   timeAgo,
   author,
   onKeyDown,
@@ -34,10 +35,12 @@ const ArticleDescr = ({
          style={S_AUTHOR}
          text={author}
       />
-      <TextSpan
-         style={S_DATE}
-         text={timeAgo}
-      />
+      <time
+        style={S_DATE}
+        datetime={datetime}
+      >
+        {timeAgo}
+      </time>
     </div>
     {href ? (
        <SafeLink
@@ -65,11 +68,13 @@ const ArticleDescr = ({
           dataPos={DP_CLOSE_RIGHT}
           onClick={onClose}
         />
-        <TextSpan
+        <time
           className={CL_SELECT_NONE}
           style={S_DATE}
-          text={publishedAt}
-        />
+          datetime={datetime}
+        >
+          {publishedAt}
+        </time>
       </div>
     </div>
   </>

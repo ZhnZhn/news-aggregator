@@ -18,6 +18,7 @@ const ArticleDescr = _ref => {
     commentsUrl,
     commentsTitle,
     publishedAt,
+    datetime,
     timeAgo,
     author,
     onKeyDown,
@@ -29,9 +30,10 @@ const ArticleDescr = _ref => {
       children: [(0, _jsxRuntime.jsx)(_TextToken.TextSpan, {
         style: _ArticleDescr.S_AUTHOR,
         text: author
-      }), (0, _jsxRuntime.jsx)(_TextToken.TextSpan, {
+      }), (0, _jsxRuntime.jsx)("time", {
         style: _ArticleDescr.S_DATE,
-        text: timeAgo
+        datetime: datetime,
+        children: timeAgo
       })]
     }), href ? (0, _jsxRuntime.jsx)(_SafeLink.default, {
       className: _ArticleDescr.CL_LINK_WRAPPER,
@@ -53,10 +55,11 @@ const ArticleDescr = _ref => {
         children: [(0, _jsxRuntime.jsx)(_SvgX.default, {
           dataPos: _DP.DP_CLOSE_RIGHT,
           onClick: onClose
-        }), (0, _jsxRuntime.jsx)(_TextToken.TextSpan, {
+        }), (0, _jsxRuntime.jsx)("time", {
           className: _ArticleDescr.CL_SELECT_NONE,
           style: _ArticleDescr.S_DATE,
-          text: publishedAt
+          datetime: datetime,
+          children: publishedAt
         })]
       })]
     })]
