@@ -2,17 +2,13 @@ import {
   crId,
   safeFormatMls
 } from '../utils';
+import {
+  dateTimeToMls
+} from '../utils/dt';
 
 import crArticles from './crArticles';
 
 const SOURCE_ID = 'fmp_news';
-
-const _toDate = strDate => {
-  const _arrDateTime = (strDate || '').split(' ')
-  , _arrDate = (_arrDateTime[0] || '').split('-')
-  , _strDate = _arrDate.reverse().join('-');
-  return (_arrDateTime[1] || '') + ' ' + _strDate;
-};
 
 const _crArticle = ({
   title,
@@ -21,17 +17,20 @@ const _crArticle = ({
   site,
   publishedDate,
   url
-}, nowMls) => ({
-  source: SOURCE_ID,
-  articleId: crId(),
-  title,
-  description: text,
-  related: symbol,
-  author: site,
-  publishedDate: _toDate(publishedDate),
-  timeAgo: safeFormatMls(publishedDate, nowMls),
-  url
-})
+}, nowMls) => {
+  const publishedAt = dateTimeToMls(publishedDate);
+  return {
+    source: SOURCE_ID,
+    articleId: crId(),
+    title,
+    description: text,
+    related: symbol,
+    author: site,
+    publishedAt,
+    timeAgo: safeFormatMls(publishedAt, nowMls),
+    url
+  };
+}
 
 const FmpAdapter = {
   toNews(json, option) {
