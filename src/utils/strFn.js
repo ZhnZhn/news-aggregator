@@ -4,7 +4,7 @@ export const toLowerCase = (
   v
 ) => isStr(v)
   ? v.toLowerCase()
-  : v
+  : ""
 
 export const trimStr = (
   v
@@ -15,3 +15,9 @@ export const trimStr = (
 export const replaceAllBlankByNbsp = v => isStr(v)
   ? v.replaceAll(" ", "\u00A0")
   : ""
+
+export const getNotEmpty = (
+  str
+) => isStr(str) && str !== ""
+  ? str
+  : void 0
