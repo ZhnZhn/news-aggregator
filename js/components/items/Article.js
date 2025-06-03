@@ -3,8 +3,9 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
 var _dt = require("../../utils/dt");
+var _strFn = require("../../utils/strFn");
+var _uiApi = require("../uiApi");
 var _useRefSet = _interopRequireDefault(require("../hooks/useRefSet"));
 var _useItemGestureSwipeX = _interopRequireDefault(require("./useItemGestureSwipeX"));
 var _useItemType = _interopRequireDefault(require("./useItemType1"));
@@ -68,7 +69,6 @@ const Article = _ref => {
       title,
       author,
       timeAgo,
-      publishedDate,
       publishedAt,
       url,
       related,
@@ -78,11 +78,12 @@ const Article = _ref => {
     } = item,
     description = item.description || 'More...',
     _style = isClosed ? _Item.S_NONE : void 0,
-    _publishedAt = publishedDate || (0, _dt.toTimeDate)(publishedAt),
+    _publishedAt = (0, _dt.toTimeDate)(publishedAt),
+    _datetime = (0, _strFn.getNotEmpty)((0, _dt.toDateTime)(_publishedAt)),
     _href = (0, _uiApi.toLink)(url),
     _commentsUrl = (0, _uiApi.toLink)(commentsUrl),
-    _commentsTitle = _commentsUrl ? "Comments " + numOfComments : numOfComments;
-  return url && !_href ? null : (0, _jsxRuntime.jsx)(_GestureSwipeX.default, {
+    _commentsTitle = _commentsUrl ? `Comments ${numOfComments}` : numOfComments;
+  return url && _href ? (0, _jsxRuntime.jsx)(_GestureSwipeX.default, {
     refEl: _refArticle,
     style: {
       ..._Item.S_ITEM,
@@ -105,13 +106,14 @@ const Article = _ref => {
         commentsUrl: _commentsUrl,
         commentsTitle: _commentsTitle,
         publishedAt: _publishedAt,
+        datetime: _datetime,
         author: author,
         timeAgo: timeAgo,
         onKeyDown: _hItemKeyDown,
         onClose: _hClose
       })
     })
-  });
+  }) : null;
 };
 var _default = exports.default = Article;
 //# sourceMappingURL=Article.js.map

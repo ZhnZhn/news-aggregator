@@ -1,4 +1,12 @@
 import {
+  toTimeDate,
+  toDateTime
+} from '../../utils/dt';
+import {
+  getNotEmpty
+} from '../../utils/strFn'
+
+import {
   useRef,
   useState,
   useMemo,
@@ -7,7 +15,6 @@ import {
   toLink
 } from '../uiApi';
 
-import { toTimeDate } from '../../utils/dt';
 import useRefSet from '../hooks/useRefSet';
 
 import useItemGestureSwipeX from './useItemGestureSwipeX';
@@ -87,7 +94,6 @@ const Article = ({
     title,
     author,
     timeAgo,
-    publishedDate,
     publishedAt,
     url,
     related,
@@ -97,14 +103,15 @@ const Article = ({
   } = item
   , description = item.description || 'More...'
   , _style = isClosed ? S_NONE : void 0
-  , _publishedAt = publishedDate || toTimeDate(publishedAt)
+  , _publishedAt = toTimeDate(publishedAt)
+  , _datetime = getNotEmpty(toDateTime(_publishedAt))
   , _href = toLink(url)
   , _commentsUrl = toLink(commentsUrl)
   , _commentsTitle = _commentsUrl
        ? `Comments ${numOfComments}`
        : numOfComments;
 
-  return url && !_href ? null : (
+  return url && _href ? (
     <GestureSwipeX
       refEl={_refArticle}
       style={{...S_ITEM, ..._style}}
@@ -127,6 +134,7 @@ const Article = ({
            commentsUrl={_commentsUrl}
            commentsTitle={_commentsTitle}
            publishedAt={_publishedAt}
+           datetime={_datetime}
            author={author}
            timeAgo={timeAgo}
            onKeyDown={_hItemKeyDown}
@@ -134,7 +142,7 @@ const Article = ({
         />
       </ItemType1>
     </GestureSwipeX>
-  );
+  ) : null;
 };
 
 export default Article
