@@ -9,11 +9,13 @@ import {
   joinByBlank
 } from '../utils/joinBy';
 import {
+  toLowerCase,
+  trimStr
+} from '../utils/strFn';
+import {
   crId,
   bindTo,
-  domSanitize,
-  toLowerCase,
-  trimStr,
+  domSanitize,  
   safeFormatMls,
   formatNumber,
 } from '../utils';

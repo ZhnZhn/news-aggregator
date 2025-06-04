@@ -6,6 +6,7 @@ exports.default = void 0;
 var _itemStore = require("../flux/itemStore");
 var _isTypeFn = require("../utils/isTypeFn");
 var _joinBy = require("../utils/joinBy");
+var _strFn = require("../utils/strFn");
 var _utils = require("../utils");
 var _RedditApi = require("../api/RedditApi");
 var _adapterFn = require("./adapterFn");
@@ -31,8 +32,8 @@ const _isTitleStartWithTag = (strTitle, strTag) => {
   }
 };
 const _crTitle = (title, tag) => {
-  const _strTitle = (0, _utils.trimStr)(title),
-    _strTag = (0, _utils.trimStr)(tag);
+  const _strTitle = (0, _strFn.trimStr)(title),
+    _strTag = (0, _strFn.trimStr)(tag);
   return _strTitle && _strTag && !_isTitleStartWithTag(_strTitle, _strTag) ? `${_strTitle} (${_strTag})` : _strTitle;
 };
 const _crArticle = (sourceId, _ref2, nowMls) => {
@@ -74,7 +75,7 @@ const _fFilterItemBy = subreddit => item => {
   const {
     data
   } = item || {};
-  return data && (0, _utils.toLowerCase)(data.subreddit) === subreddit && !data.over_18 && !data.quarantine && !data.author_is_blocked;
+  return data && (0, _strFn.toLowerCase)(data.subreddit) === subreddit && !data.over_18 && !data.quarantine && !data.author_is_blocked;
 };
 const _crSubredditTitleUrl = (title, subreddit) => ({
   title: (0, _utils.domSanitize)(title),
@@ -108,7 +109,7 @@ const _toArticles = (json, option, sourceId) => {
     {
       subreddit
     } = option,
-    _items = items.filter(_fFilterItemBy((0, _utils.toLowerCase)(subreddit))),
+    _items = items.filter(_fFilterItemBy((0, _strFn.toLowerCase)(subreddit))),
     _articles = (0, _crArticles.default)(_items, (0, _utils.bindTo)(_crArticle, sourceId)),
     subbredditItem = _crSubredditItem(_items, sourceId);
   if (subbredditItem) {

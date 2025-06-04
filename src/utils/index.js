@@ -8,8 +8,3 @@ export { safeFormatMls } from './formatDate';
 export { toFirstUpperCase } from './toFirstUpperCase';
 
 export { domSanitize } from './domSanitize';
-
-export {
-  toLowerCase,
-  trimStr
-} from './strFn';
