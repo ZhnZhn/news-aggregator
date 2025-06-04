@@ -60,7 +60,7 @@ const _crArticle = (sourceId, _ref2, nowMls) => {
     source: sourceId,
     articleId: (0, _utils.crId)(),
     title: (0, _utils.decodeHTMLEntities)(_title),
-    description: (0, _utils.crDescription)(selftext),
+    description: (0, _adapterFn.crDescription)(selftext),
     author: _author,
     related: domain,
     timeAgo: (0, _utils.safeFormatMls)(publishedAt, nowMls),

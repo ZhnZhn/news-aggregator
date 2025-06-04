@@ -3,7 +3,6 @@ export { bindTo } from './bindTo';
 
 export { crLazyValue } from './crLazyValue';
 
-export { crDescription } from './crDescription';
 export { splitByParagraph } from './splitByParagraph';
 export { formatNumber } from './formatNumber';
 export { safeFormatMls } from './formatDate';

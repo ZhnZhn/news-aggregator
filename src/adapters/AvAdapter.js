@@ -1,11 +1,12 @@
 import {
   crId,
-  crDescription,
   safeFormatMls,
   domSanitize
 } from '../utils';
 
 import { toMls } from '../utils/dt';
+
+import { crDescription } from './adapterFn';
 import crArticles from './crArticles';
 import {
   rounBy,

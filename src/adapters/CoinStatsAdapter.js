@@ -1,10 +1,10 @@
 import {
   crId,
   safeFormatMls,
-  decodeHTMLEntities,
   toFirstUpperCase,
 } from '../utils';
 
+import { crDescription } from './adapterFn';
 import crArticles from './crArticles';
 
 const SOURCE_ID = 'coinstats_news';
@@ -25,7 +25,7 @@ const _crArticle = ({
   source: SOURCE_ID,
   articleId: crId(),
   title,
-  description: decodeHTMLEntities(description),
+  description: crDescription(description),
   related: _crRelated(coins),
   author: source,
   publishedAt: feedDate,

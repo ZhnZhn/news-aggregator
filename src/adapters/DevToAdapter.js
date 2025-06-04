@@ -1,13 +1,14 @@
 import {
   crId,
   safeFormatMls,
-  crDescription,
   decodeHTMLEntities
 } from '../utils';
 
 import { dateTimeToMls } from '../utils/dt';
 
+import { crDescription } from './adapterFn';
 import crArticles from './crArticles';
+
 const SOURCE_ID = 'dt_topby';
 
 const _crArticle = (

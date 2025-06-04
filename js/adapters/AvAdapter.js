@@ -5,14 +5,15 @@ exports.__esModule = true;
 exports.default = void 0;
 var _utils = require("../utils");
 var _dt = require("../utils/dt");
+var _adapterFn = require("./adapterFn");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
 var _AvFn = require("./AvFn");
 const _isArr = Array.isArray,
   _getObjectKeys = Object.keys,
   SOURCE_ID = 'av_sentiments';
-const _crOverallSentiment = (overallSentimentLabel, overallSentimentScore) => (0, _utils.domSanitize)(overallSentimentLabel + " (" + (0, _AvFn.rounBy)(overallSentimentScore) + ")");
+const _crOverallSentiment = (overallSentimentLabel, overallSentimentScore) => (0, _utils.domSanitize)(`${overallSentimentLabel} (${(0, _AvFn.rounBy)(overallSentimentScore)})`);
 const _compareByRelevanceScore = (a, b) => b.relevance_score === a.relevance_score ? b.ticker_sentiment_score - a.ticker_sentiment_score : b.relevance_score - a.relevance_score;
-const _addTickerSentimentTo = (str, item) => str + ((0, _AvFn.rounBy)(item.relevance_score) + " " + item.ticker + " " + item.ticker_sentiment_label + " (" + (0, _AvFn.rounBy)(item.ticker_sentiment_score) + ")\n");
+const _addTickerSentimentTo = (str, item) => str + `${(0, _AvFn.rounBy)(item.relevance_score)} ${item.ticker} ${item.ticker_sentiment_label} (${(0, _AvFn.rounBy)(item.ticker_sentiment_score)})\n`;
 const _crTickerSentiment = tickerSentiment => {
   if (!_isArr(tickerSentiment)) {
     return '';
@@ -35,7 +36,9 @@ const _crArticle = (_ref, nowMls) => {
     source: SOURCE_ID,
     articleId: (0, _utils.crId)(),
     title,
-    description: (0, _utils.crDescription)(summary) + "\n\n      " + _crOverallSentiment(overall_sentiment_label, overall_sentiment_score) + "\n\n      " + _crTickerSentiment(ticker_sentiment),
+    description: `${(0, _adapterFn.crDescription)(summary)}\n
+      ${_crOverallSentiment(overall_sentiment_label, overall_sentiment_score)}\n
+      ${_crTickerSentiment(ticker_sentiment)}`,
     author: source,
     timeAgo: (0, _utils.safeFormatMls)(publishedAt, nowMls),
     publishedAt,

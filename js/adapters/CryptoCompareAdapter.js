@@ -25,7 +25,7 @@ const _crArticle = (_ref, nowMls) => {
     source: SOURCE_ID,
     articleId: (0, _utils.crId)(),
     title,
-    description: (0, _utils.crDescription)(body),
+    description: (0, _adapterFn.crDescription)(body),
     related: categories,
     author: name || source,
     timeAgo: (0, _utils.safeFormatMls)(_publishedOn, nowMls),

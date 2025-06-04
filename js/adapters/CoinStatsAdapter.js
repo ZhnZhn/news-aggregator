@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _utils = require("../utils");
+var _adapterFn = require("./adapterFn");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
 const SOURCE_ID = 'coinstats_news';
 const _crRelated = coins => (coins || []).map(_ref => {
@@ -25,7 +26,7 @@ const _crArticle = (_ref2, nowMls) => {
     source: SOURCE_ID,
     articleId: (0, _utils.crId)(),
     title,
-    description: (0, _utils.decodeHTMLEntities)(description),
+    description: (0, _adapterFn.crDescription)(description),
     related: _crRelated(coins),
     author: source,
     publishedAt: feedDate,

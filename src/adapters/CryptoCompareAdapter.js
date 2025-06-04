@@ -1,10 +1,12 @@
 import {
   crId,
-  safeFormatMls,
-  crDescription
+  safeFormatMls
 } from '../utils';
 
-import { toMls } from './adapterFn';
+import {
+  toMls,
+  crDescription 
+} from './adapterFn';
 import crArticles from './crArticles';
 
 const SOURCE_ID = 'cryptocompare_news';

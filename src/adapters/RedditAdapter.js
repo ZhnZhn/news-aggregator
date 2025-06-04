@@ -9,8 +9,7 @@ import {
   joinByBlank
 } from '../utils/joinBy';
 import {
-  crId,
-  crDescription,
+  crId,  
   bindTo,
   domSanitize,
   decodeHTMLEntities,
@@ -28,7 +27,8 @@ import {
 
 import {
   toMls,
-  updateNextPage
+  updateNextPage,
+  crDescription
 } from './adapterFn';
 import crArticles from './crArticles';
 
