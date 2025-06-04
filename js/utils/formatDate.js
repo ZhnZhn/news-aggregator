@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.safeFormatSec = exports.safeFormatMls = void 0;
+exports.safeFormatMls = void 0;
 var _isTypeFn = require("./isTypeFn");
 const PERIODS = [['just now', 999], ['sec', 1000], ['min', 60 * 1000], ['hour', 3600 * 1000], ['day', 24 * 3600 * 1000], ['week', 7 * 24 * 3600 * 1000], ['month', 30 * 24 * 3600 * 1000], ['year', 365 * 24 * 3600 * 1000]],
   PERIOD_LENGTH = PERIODS.length,
@@ -9,7 +9,7 @@ const PERIODS = [['just now', 999], ['sec', 1000], ['min', 60 * 1000], ['hour', 
 const _crTimeAgo = (diff, i) => {
   const [periodStr, periodMsl] = PERIODS[i],
     v = Math.round(diff / periodMsl);
-  return v + " " + periodStr + (v === 1 ? '' : 's') + " ago";
+  return `${v} ${periodStr}${v === 1 ? '' : 's'} ago`;
 };
 const _formatMls = (mls, nowMls) => {
   const _nowMls = nowMls || Date.now(),
@@ -23,6 +23,4 @@ const _formatMls = (mls, nowMls) => {
 };
 const safeFormatMls = (mls, nowMls) => (0, _isTypeFn.isNumber)(mls) ? _formatMls(mls, nowMls) : '';
 exports.safeFormatMls = safeFormatMls;
-const safeFormatSec = (sec, nowMls) => (0, _isTypeFn.isNumber)(sec) ? _formatMls(sec * 1000, nowMls) : '';
-exports.safeFormatSec = safeFormatSec;
 //# sourceMappingURL=formatDate.js.map

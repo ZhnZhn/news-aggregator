@@ -1,6 +1,5 @@
 import {
-  safeFormatMls,
-  safeFormatSec
+  safeFormatMls
 } from '../formatDate';
 
 describe("safeFormatMls", ()=>{
@@ -36,6 +35,7 @@ describe("safeFormatMls", ()=>{
   })
 })
 
+/*
 describe("safeFormatSec", ()=>{
   const fn = safeFormatSec;
   test("should return correct string date age from sec, nowMls parameters", ()=>{
@@ -61,3 +61,4 @@ describe("safeFormatSec", ()=>{
     expect(fn(2*365*24*60*60,1)).toBe("2 years ago")
   })
 })
+*/

@@ -44,10 +44,3 @@ export const safeFormatMls = (
 ) => isNumber(mls)
   ? _formatMls(mls, nowMls)
   : ''
-
-export const safeFormatSec = (
-  sec,
-  nowMls
-) => isNumber(sec)
-  ? _formatMls(sec*1000, nowMls)
-  : ''
