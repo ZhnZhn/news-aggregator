@@ -1,4 +1,4 @@
-import { crId } from "../utils/crId";
+import { crId } from '../utils/crId';
 import { safeFormatMls } from '../utils/formatDate';
 
 import crArticles from './crArticles';

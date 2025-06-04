@@ -1,12 +1,6 @@
-import {
-  crId
-} from '../utils';
-import {
-  toFirstUpperCase
-} from '../utils/toFirstUpperCase';
-import {
-  joinByComma
-} from '../utils/joinBy';
+import { crId } from '../utils/crId';
+import { toFirstUpperCase } from '../utils/toFirstUpperCase';
+import { joinByComma } from '../utils/joinBy';
 
 import sanitizeArticle from './sanitizeArticle';
 

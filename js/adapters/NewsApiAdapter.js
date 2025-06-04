@@ -3,19 +3,19 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _utils = require("../utils");
+var _crId = require("../utils/crId");
 var _toFirstUpperCase = require("../utils/toFirstUpperCase");
 var _joinBy = require("../utils/joinBy");
 var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
 const NEWS_SEARCH = 'newsapi_search';
 const NEWS_TOP = 'newsapi_top';
 const _fToArticle = source => article => {
-  article.articleId = (0, _utils.crId)();
+  article.articleId = (0, _crId.crId)();
   article.source = source;
   return article;
 };
 const _fToSearchArticle = paneId => article => {
-  article.articleId = (0, _utils.crId)();
+  article.articleId = (0, _crId.crId)();
   const {
       source,
       author
