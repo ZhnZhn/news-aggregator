@@ -1,6 +1,6 @@
 export {
   bindTo
-} from '../utils';
+} from '../utils/bindTo';
 
 export {
   isFn,

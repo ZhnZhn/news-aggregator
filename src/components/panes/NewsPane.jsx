@@ -1,7 +1,4 @@
 import {
-  bindTo
-} from '../../utils';
-import {
   toFirstUpperCase,
 } from '../../utils/toFirstUpperCase';
 
@@ -10,6 +7,7 @@ import {
   useState,
   useCallback,
   useMemo,
+  bindTo,
   getRefElementStyle,
   focusAsyncRefElement
 } from '../uiApi';

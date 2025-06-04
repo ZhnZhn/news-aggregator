@@ -1,7 +1,7 @@
 import { isFn } from '../utils/isTypeFn';
 
-export { bindTo } from '../utils';
-import { bindTo } from '../utils';
+export { bindTo } from '../utils/bindTo';
+import { bindTo } from '../utils/bindTo';
 
 import {
   createStore,
