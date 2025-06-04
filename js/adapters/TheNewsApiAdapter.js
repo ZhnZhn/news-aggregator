@@ -9,7 +9,8 @@ var _isTypeFn = require("../utils/isTypeFn");
 var _dt = require("../utils/dt");
 var _toFirstUpperCase = require("../utils/toFirstUpperCase");
 var _formatNumber = require("../utils/formatNumber");
-var _utils = require("../utils");
+var _formatDate = require("../utils/formatDate");
+var _crId = require("../utils/crId");
 var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
 const _isTopQuery = option => option.loadId === 'TNT';
 const _toArticles = (_ref, sourceId) => {
@@ -29,13 +30,13 @@ const _toArticles = (_ref, sourceId) => {
     } = item;
     return (0, _sanitizeArticle.default)({
       source: sourceId,
-      articleId: (0, _utils.crId)(),
+      articleId: (0, _crId.crId)(),
       title,
       description: description || snippet,
       author: source,
       related: categories,
       publishedAt: published_at,
-      timeAgo: (0, _utils.safeFormatMls)((0, _dt.dateTimeToMls)(published_at), _nowMls),
+      timeAgo: (0, _formatDate.safeFormatMls)((0, _dt.dateTimeToMls)(published_at), _nowMls),
       url
     });
   }) : [];

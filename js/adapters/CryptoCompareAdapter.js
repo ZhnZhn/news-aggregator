@@ -3,7 +3,8 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _utils = require("../utils");
+var _crId = require("../utils/crId");
+var _formatDate = require("../utils/formatDate");
 var _adapterFn = require("./adapterFn");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
 const SOURCE_ID = 'cryptocompare_news';
@@ -23,12 +24,12 @@ const _crArticle = (_ref, nowMls) => {
     _publishedOn = (0, _adapterFn.toMls)(published_on);
   return {
     source: SOURCE_ID,
-    articleId: (0, _utils.crId)(),
+    articleId: (0, _crId.crId)(),
     title,
     description: (0, _adapterFn.crDescription)(body),
     related: categories,
     author: name || source,
-    timeAgo: (0, _utils.safeFormatMls)(_publishedOn, nowMls),
+    timeAgo: (0, _formatDate.safeFormatMls)(_publishedOn, nowMls),
     publishedAt: _publishedOn,
     url
   };

@@ -1,10 +1,6 @@
-import {
-  crId,
-  safeFormatMls,
-} from '../utils';
-import {
-  toFirstUpperCase
-} from '../utils/toFirstUpperCase';
+import { crId } from '../utils/crId';
+import { safeFormatMls } from '../utils/formatDate';
+import { toFirstUpperCase } from '../utils/toFirstUpperCase';
 
 import { crDescription } from './adapterFn';
 import crArticles from './crArticles';

@@ -3,7 +3,8 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _utils = require("../utils");
+var _crId = require("../utils/crId");
+var _formatDate = require("../utils/formatDate");
 var _dt = require("../utils/dt");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
 const SOURCE_ID = 'fmp_news';
@@ -19,13 +20,13 @@ const _crArticle = (_ref, nowMls) => {
   const publishedAt = (0, _dt.dateTimeToMls)(publishedDate);
   return {
     source: SOURCE_ID,
-    articleId: (0, _utils.crId)(),
+    articleId: (0, _crId.crId)(),
     title,
     description: text,
     related: symbol,
     author: site,
     publishedAt,
-    timeAgo: (0, _utils.safeFormatMls)(publishedAt, nowMls),
+    timeAgo: (0, _formatDate.safeFormatMls)(publishedAt, nowMls),
     url
   };
 };

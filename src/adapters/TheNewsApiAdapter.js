@@ -5,11 +5,8 @@ import { isArr, isNumber } from '../utils/isTypeFn';
 import { dateTimeToMls } from '../utils/dt';
 import { toFirstUpperCase } from '../utils/toFirstUpperCase';
 import { formatNumber } from '../utils/formatNumber';
-
-import {
-  crId,
-  safeFormatMls
-} from '../utils';
+import { safeFormatMls } from '../utils/formatDate';
+import { crId } from '../utils/crId';
 
 import sanitizeArticle from './sanitizeArticle';
 

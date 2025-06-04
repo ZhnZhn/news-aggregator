@@ -3,10 +3,11 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _utils = require("../utils");
+var _crId = require("../utils/crId");
+var _formatDate = require("../utils/formatDate");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
 const SOURCE_ID = 'messari_news';
-const _crRelated = tags => (tags || []).filter(Boolean).map(item => "#" + item).join(' ');
+const _crRelated = tags => (tags || []).filter(Boolean).map(item => `#${item}`).join(' ');
 const _crArticle = (_ref, nowMls) => {
   let {
     title,
@@ -20,12 +21,12 @@ const _crArticle = (_ref, nowMls) => {
   } = author || {};
   return {
     source: SOURCE_ID,
-    articleId: (0, _utils.crId)(),
+    articleId: (0, _crId.crId)(),
     title,
     author: name,
     related: _crRelated(tags),
     publishedAt: published_at,
-    timeAgo: (0, _utils.safeFormatMls)(published_at, nowMls),
+    timeAgo: (0, _formatDate.safeFormatMls)(published_at, nowMls),
     url
   };
 };

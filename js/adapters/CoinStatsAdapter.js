@@ -3,7 +3,8 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _utils = require("../utils");
+var _crId = require("../utils/crId");
+var _formatDate = require("../utils/formatDate");
 var _toFirstUpperCase = require("../utils/toFirstUpperCase");
 var _adapterFn = require("./adapterFn");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
@@ -25,13 +26,13 @@ const _crArticle = (_ref2, nowMls) => {
   } = _ref2;
   return {
     source: SOURCE_ID,
-    articleId: (0, _utils.crId)(),
+    articleId: (0, _crId.crId)(),
     title,
     description: (0, _adapterFn.crDescription)(description),
     related: _crRelated(coins),
     author: source,
     publishedAt: feedDate,
-    timeAgo: (0, _utils.safeFormatMls)(feedDate, nowMls),
+    timeAgo: (0, _formatDate.safeFormatMls)(feedDate, nowMls),
     url: link
   };
 };

@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _utils = require("../utils");
+var _formatDate = require("../utils/formatDate");
 var _toFirstUpperCase = require("../utils/toFirstUpperCase");
 var _splitByParagraph = require("../utils/splitByParagraph");
 var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
@@ -46,7 +46,7 @@ const _toArticles = (posts, sourceId, lang) => {
         description: _crDescription(text, lang),
         related: _crRelated(site_categories),
         publishedAt: published,
-        timeAgo: (0, _utils.safeFormatMls)(published, _nowMls)
+        timeAgo: (0, _formatDate.safeFormatMls)(published, _nowMls)
       }));
       _hm[_title] = true;
     }

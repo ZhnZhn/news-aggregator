@@ -3,7 +3,8 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _utils = require("../utils");
+var _crId = require("../utils/crId");
+var _formatDate = require("../utils/formatDate");
 var _dt = require("../utils/dt");
 var _adapterFn = require("./adapterFn");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
@@ -20,12 +21,12 @@ const _crArticle = (item, nowMls) => {
   } = item;
   return {
     source: SOURCE_ID,
-    articleId: (0, _utils.crId)(),
+    articleId: (0, _crId.crId)(),
     title: (0, _adapterFn.crTitle)(title),
     description: (0, _adapterFn.crDescription)(`${positive_reactions_count} ${reading_time_minutes}min`),
     author: (user || {}).name,
     related: tags,
-    timeAgo: (0, _utils.safeFormatMls)((0, _dt.dateTimeToMls)(published_at), nowMls),
+    timeAgo: (0, _formatDate.safeFormatMls)((0, _dt.dateTimeToMls)(published_at), nowMls),
     publishedAt: published_at,
     url: canonical_url
   };

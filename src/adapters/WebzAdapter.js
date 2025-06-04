@@ -1,12 +1,6 @@
-import {
-  safeFormatMls
-} from '../utils';
-import {
-  toFirstUpperCase
-} from '../utils/toFirstUpperCase';
-import {
-  splitByParagraph
-} from '../utils/splitByParagraph';
+import { safeFormatMls } from '../utils/formatDate';
+import { toFirstUpperCase } from '../utils/toFirstUpperCase';
+import { splitByParagraph } from '../utils/splitByParagraph';
 
 import sanitizeArticle from './sanitizeArticle';
 

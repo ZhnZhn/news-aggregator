@@ -5,7 +5,8 @@ exports.__esModule = true;
 exports.default = void 0;
 var _itemStore = require("../flux/itemStore");
 var _PlgApi = require("../api/PlgApi");
-var _utils = require("../utils");
+var _crId = require("../utils/crId");
+var _formatDate = require("../utils/formatDate");
 var _joinBy = require("../utils/joinBy");
 var _dt = require("../utils/dt");
 var _strFn = require("../utils/strFn");
@@ -33,12 +34,12 @@ const _crArticle = (_ref, nowMls) => {
   } = publisher || {};
   return {
     source: SOURCE_ID,
-    articleId: (0, _utils.crId)(),
+    articleId: (0, _crId.crId)(),
     title,
     description: `${description}
       ${_crInsightList(insights)}`,
     author: (0, _joinBy.joinByBlank)(name, (0, _strFn.replaceAllBlankByNbsp)(author)),
-    timeAgo: (0, _utils.safeFormatMls)((0, _dt.dateTimeToMls)(published_utc), nowMls),
+    timeAgo: (0, _formatDate.safeFormatMls)((0, _dt.dateTimeToMls)(published_utc), nowMls),
     publishedAt: published_utc,
     url: article_url
   };
