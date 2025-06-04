@@ -1,12 +1,14 @@
 import {
   crId,
-  safeFormatMls,
-  decodeHTMLEntities
+  safeFormatMls
 } from '../utils';
 
 import { dateTimeToMls } from '../utils/dt';
 
-import { crDescription } from './adapterFn';
+import {
+  crTitle,
+  crDescription
+} from './adapterFn';
 import crArticles from './crArticles';
 
 const SOURCE_ID = 'dt_topby';
@@ -27,7 +29,7 @@ const _crArticle = (
   return {
     source: SOURCE_ID,
     articleId: crId(),
-    title: decodeHTMLEntities(title),
+    title: crTitle(title),
     description: crDescription(
       `${positive_reactions_count} ${reading_time_minutes}min`
     ),

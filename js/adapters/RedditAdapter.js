@@ -59,7 +59,7 @@ const _crArticle = (sourceId, _ref2, nowMls) => {
   return {
     source: sourceId,
     articleId: (0, _utils.crId)(),
-    title: (0, _utils.decodeHTMLEntities)(_title),
+    title: (0, _adapterFn.crTitle)(_title),
     description: (0, _adapterFn.crDescription)(selftext),
     author: _author,
     related: domain,
@@ -85,7 +85,7 @@ const _crTitleAndUrl = data => {
       subreddit,
       subreddit_subscribers
     } = data,
-    _subreddit = (0, _utils.decodeHTMLEntities)((0, _utils.domSanitize)(subreddit)),
+    _subreddit = (0, _adapterFn.crTitle)((0, _utils.domSanitize)(subreddit)),
     _subscribers = (0, _utils.formatNumber)(subreddit_subscribers);
   return _crSubredditTitleUrl(`r/${_subreddit} ${_subscribers}`, _subreddit);
 };

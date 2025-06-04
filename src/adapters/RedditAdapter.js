@@ -9,10 +9,9 @@ import {
   joinByBlank
 } from '../utils/joinBy';
 import {
-  crId,  
+  crId,
   bindTo,
   domSanitize,
-  decodeHTMLEntities,
   toLowerCase,
   trimStr,
   safeFormatMls,
@@ -28,6 +27,7 @@ import {
 import {
   toMls,
   updateNextPage,
+  crTitle,
   crDescription
 } from './adapterFn';
 import crArticles from './crArticles';
@@ -100,7 +100,7 @@ const _crArticle = (
   return {
     source: sourceId,
     articleId: crId(),
-    title: decodeHTMLEntities(_title),
+    title: crTitle(_title),
     description: crDescription(selftext),
     author: _author,
     related: domain,
@@ -144,7 +144,7 @@ const _crTitleAndUrl = (
     subreddit,
     subreddit_subscribers
   } = data
-  , _subreddit = decodeHTMLEntities(
+  , _subreddit = crTitle(
     domSanitize(subreddit)
   )
   , _subscribers = formatNumber(

@@ -18,6 +18,10 @@ export const updateNextPage = (
   option._mlsFr = mlsFr || MLS_FREQUENCY_RESTRICTION
 }
 
+export const crTitle = (
+  title
+) => decodeHTMLEntities(title)
+
 export const crDescription = (
   str,
   maxLength

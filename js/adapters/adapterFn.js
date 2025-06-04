@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.updateNextPage = exports.toMls = exports.crDescription = void 0;
+exports.updateNextPage = exports.toMls = exports.crTitle = exports.crDescription = void 0;
 var _isTypeFn = require("../utils/isTypeFn");
 var _splitByParagraph = require("../utils/splitByParagraph");
 var _decodeHTMLEntities = require("../utils/decodeHTMLEntities");
@@ -16,6 +16,8 @@ const updateNextPage = (option, mlsFr) => {
   option._mlsFr = mlsFr || MLS_FREQUENCY_RESTRICTION;
 };
 exports.updateNextPage = updateNextPage;
+const crTitle = title => (0, _decodeHTMLEntities.decodeHTMLEntities)(title);
+exports.crTitle = crTitle;
 const crDescription = (str, maxLength) => (0, _splitByParagraph.splitByParagraph)((0, _decodeHTMLEntities.decodeHTMLEntities)(str), maxLength);
 exports.crDescription = crDescription;
 //# sourceMappingURL=adapterFn.js.map

@@ -9,7 +9,6 @@ export { safeFormatMls } from './formatDate';
 export { toFirstUpperCase } from './toFirstUpperCase';
 
 export { domSanitize } from './domSanitize';
-export { decodeHTMLEntities } from './decodeHTMLEntities';
 
 export {
   toLowerCase,

@@ -21,7 +21,7 @@ const _crArticle = (item, nowMls) => {
   return {
     source: SOURCE_ID,
     articleId: (0, _utils.crId)(),
-    title: (0, _utils.decodeHTMLEntities)(title),
+    title: (0, _adapterFn.crTitle)(title),
     description: (0, _adapterFn.crDescription)(`${positive_reactions_count} ${reading_time_minutes}min`),
     author: (user || {}).name,
     related: tags,
