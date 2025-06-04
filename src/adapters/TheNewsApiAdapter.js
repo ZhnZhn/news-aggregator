@@ -4,11 +4,11 @@ import { THE_NEWS_API } from '../conf/ProviderNames';
 import { isArr, isNumber } from '../utils/isTypeFn';
 import { dateTimeToMls } from '../utils/dt';
 import { toFirstUpperCase } from '../utils/toFirstUpperCase';
+import { formatNumber } from '../utils/formatNumber';
 
 import {
   crId,
-  safeFormatMls,
-  formatNumber
+  safeFormatMls
 } from '../utils';
 
 import sanitizeArticle from './sanitizeArticle';

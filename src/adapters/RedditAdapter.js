@@ -13,11 +13,13 @@ import {
   trimStr
 } from '../utils/strFn';
 import {
+  formatNumber
+} from '../utils/formatNumber'
+import {
   crId,
   bindTo,
-  domSanitize,  
-  safeFormatMls,
-  formatNumber,
+  domSanitize,
+  safeFormatMls
 } from '../utils';
 
 import {

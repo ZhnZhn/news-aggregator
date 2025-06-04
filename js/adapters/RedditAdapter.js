@@ -7,6 +7,7 @@ var _itemStore = require("../flux/itemStore");
 var _isTypeFn = require("../utils/isTypeFn");
 var _joinBy = require("../utils/joinBy");
 var _strFn = require("../utils/strFn");
+var _formatNumber = require("../utils/formatNumber");
 var _utils = require("../utils");
 var _RedditApi = require("../api/RedditApi");
 var _adapterFn = require("./adapterFn");
@@ -87,7 +88,7 @@ const _crTitleAndUrl = data => {
       subreddit_subscribers
     } = data,
     _subreddit = (0, _adapterFn.crTitle)((0, _utils.domSanitize)(subreddit)),
-    _subscribers = (0, _utils.formatNumber)(subreddit_subscribers);
+    _subscribers = (0, _formatNumber.formatNumber)(subreddit_subscribers);
   return _crSubredditTitleUrl(`r/${_subreddit} ${_subscribers}`, _subreddit);
 };
 const _crArticleId = sourceId => ({

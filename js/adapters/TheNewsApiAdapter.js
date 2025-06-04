@@ -8,6 +8,7 @@ var _ProviderNames = require("../conf/ProviderNames");
 var _isTypeFn = require("../utils/isTypeFn");
 var _dt = require("../utils/dt");
 var _toFirstUpperCase = require("../utils/toFirstUpperCase");
+var _formatNumber = require("../utils/formatNumber");
 var _utils = require("../utils");
 var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
 const _isTopQuery = option => option.loadId === 'TNT';
@@ -44,7 +45,7 @@ const _crCaption = option => {
   return `${_ProviderNames.THE_NEWS_API}: ${_captionToken}`;
 };
 const _crNextPage = (page, maxPage) => (0, _isTypeFn.isNumber)(page) ? (0, _isTypeFn.isNumber)(maxPage) ? Math.min(page + 1, maxPage) : page + 1 : void 0;
-const _crMaxPage = (found, limit) => (0, _isTypeFn.isNumber)(found) && (0, _isTypeFn.isNumber)(limit) ? (0, _utils.formatNumber)(Math.ceil(found / limit)) : '';
+const _crMaxPage = (found, limit) => (0, _isTypeFn.isNumber)(found) && (0, _isTypeFn.isNumber)(limit) ? (0, _formatNumber.formatNumber)(Math.ceil(found / limit)) : '';
 const _crConfigPages = meta => {
   const {
       page,
