@@ -3,7 +3,8 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _utils = require("../utils");
+var _crId = require("../utils/crId");
+var _domSanitize = require("../utils/domSanitize");
 var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
 const _rSourceId = {
   SO_TAGGED: 'stack_tagged',
@@ -17,11 +18,11 @@ const _crArticle = (item, sourceId) => {
     owner = {}
   } = item;
   return _assign(item, {
-    articleId: question_id || (0, _utils.crId)(),
+    articleId: question_id || (0, _crId.crId)(),
     source: sourceId,
-    title: (0, _utils.domSanitize)(title),
+    title: (0, _domSanitize.domSanitize)(title),
     owner: {
-      display_name: (0, _utils.domSanitize)(owner.display_name)
+      display_name: (0, _domSanitize.domSanitize)(owner.display_name)
     }
   });
 };
@@ -42,6 +43,5 @@ const StackOverflowAdapter = {
     };
   }
 };
-var _default = StackOverflowAdapter;
-exports.default = _default;
+var _default = exports.default = StackOverflowAdapter;
 //# sourceMappingURL=StackOverflowAdapter.js.map

@@ -1,4 +1,4 @@
-import { domSanitize } from '../utils';
+import { domSanitize } from '../utils/domSanitize';
 
 const _isArr = Array.isArray
 , SENTIMENT_SCORE = 'sentiment_score'

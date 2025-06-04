@@ -1,7 +1,5 @@
-import {
-  crId,
-  domSanitize
-} from '../utils';
+import { crId } from '../utils/crId';
+import { domSanitize } from '../utils/domSanitize';
 
 import sanitizeArticle from './sanitizeArticle';
 

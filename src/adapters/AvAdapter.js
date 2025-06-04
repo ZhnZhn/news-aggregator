@@ -1,8 +1,6 @@
-import {
-  crId,
-  safeFormatMls,
-  domSanitize
-} from '../utils';
+import { safeFormatMls} from '../utils/formatDate';
+import { crId } from '../utils/crId';
+import { domSanitize } from '../utils/domSanitize';
 
 import { toMls } from '../utils/dt';
 

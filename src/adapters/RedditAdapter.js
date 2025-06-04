@@ -6,21 +6,15 @@ import {
   isObj
 } from '../utils/isTypeFn';
 import {
-  joinByBlank
-} from '../utils/joinBy';
-import {
   toLowerCase,
   trimStr
 } from '../utils/strFn';
-import {
-  formatNumber
-} from '../utils/formatNumber'
-import {
-  crId,
-  bindTo,
-  domSanitize,
-  safeFormatMls
-} from '../utils';
+import { joinByBlank } from '../utils/joinBy';
+import { formatNumber } from '../utils/formatNumber';
+import { domSanitize } from '../utils/domSanitize';
+import { crId } from '../utils/crId';
+import { bindTo } from '../utils/bindTo';
+import { safeFormatMls } from '../utils/formatDate';
 
 import {
   REDDIT_URL,

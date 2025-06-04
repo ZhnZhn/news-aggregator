@@ -1,5 +1,5 @@
 import { isNumber } from '../utils/isTypeFn';
-import { domSanitize } from '../utils';
+import { domSanitize } from '../utils/domSanitize';
 
 const _assign = Object.assign;
 
