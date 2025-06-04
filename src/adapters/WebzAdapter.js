@@ -1,8 +1,10 @@
 import {
   safeFormatMls,
-  toFirstUpperCase,
-  splitByParagraph
+  toFirstUpperCase
 } from '../utils';
+import {
+  splitByParagraph
+} from '../utils/splitByParagraph';
 
 import sanitizeArticle from './sanitizeArticle';
 
@@ -15,17 +17,20 @@ const _hmSourceId = {
   W_WEBZ_COUNTRY: "webz_country"
 };
 
-const _crDescription = (text, lang) =>
-  text.indexOf('\n') === -1
-    ? (!lang || lang === 'english')
-        ? splitByParagraph(text) : text
-    : text.replace(/\n/g, '\n\n');
+const _crDescription = (
+  text,
+  lang
+) => text.indexOf('\n') === -1
+  ? (!lang || lang === 'english')
+      ? splitByParagraph(text) : text
+  : text.replace(/\n/g, '\n\n');
 
-const _crRelated = tokenArr =>
-  (tokenArr || [])
-    .filter(str => (str || '').indexOf('_') === -1)
-    .map(toFirstUpperCase)
-    .join("|")
+const _crRelated = (
+  tokenArr
+) => (tokenArr || [])
+  .filter(str => (str || '').indexOf('_') === -1)
+  .map(toFirstUpperCase)
+  .join("|")
 
 const _toArticles = (
   posts,
