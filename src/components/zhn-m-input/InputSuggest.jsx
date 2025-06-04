@@ -1,6 +1,6 @@
 import {
   crLazyValue
-} from '../../utils';
+} from '../../utils/crLazyValue';
 
 import {
   useRef,

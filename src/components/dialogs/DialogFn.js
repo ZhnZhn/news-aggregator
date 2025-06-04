@@ -1,7 +1,9 @@
 import {
-  crLazyValue,
   toFirstUpperCase
 } from '../../utils';
+import {
+  crLazyValue
+} from '../../utils/crLazyValue';
 
 import {
   isStr

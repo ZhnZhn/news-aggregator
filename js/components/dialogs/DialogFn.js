@@ -3,6 +3,7 @@
 exports.__esModule = true;
 exports.getPaneCaption = exports.getLoadId = exports.getDialogCaption = exports.getCaption = exports.fGetDialogConfig = exports.crTextFieldConfig = exports.crTextFieldCaption = exports.crInputSuggestConfig = exports.crInputSelectConfig = exports.crInputProps = exports.crFromToDateConfig = exports.crDfInputs = void 0;
 var _utils = require("../../utils");
+var _crLazyValue = require("../../utils/crLazyValue");
 var _isTypeFn = require("../../utils/isTypeFn");
 var _dt = require("../../utils/dt");
 var _OptionFn = require("../zhn-m-input/OptionFn");
@@ -83,7 +84,7 @@ const INITIAL_FROM_DATE = (0, _dt.getFromDate)(1),
   INITIAL_TO_DATE = (0, _dt.getToDate)();
 const crFromToDateConfig = (id, fromDate, toDate) => [_InputTypes.INPUT_TYPE_FROM_DATE, id, 'From To Date', fromDate || INITIAL_FROM_DATE, toDate || INITIAL_TO_DATE];
 exports.crFromToDateConfig = crFromToDateConfig;
-const fGetDialogConfig = crInputConfigs => (0, _utils.crLazyValue)(() => {
+const fGetDialogConfig = crInputConfigs => (0, _crLazyValue.crLazyValue)(() => {
   const INPUT_CONFIGS = crInputConfigs();
   return [INPUT_CONFIGS, ...crDfInputs(INPUT_CONFIGS)];
 });
