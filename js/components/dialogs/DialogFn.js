@@ -2,7 +2,7 @@
 
 exports.__esModule = true;
 exports.getPaneCaption = exports.getLoadId = exports.getDialogCaption = exports.getCaption = exports.fGetDialogConfig = exports.crTextFieldConfig = exports.crTextFieldCaption = exports.crInputSuggestConfig = exports.crInputSelectConfig = exports.crInputProps = exports.crFromToDateConfig = exports.crDfInputs = void 0;
-var _utils = require("../../utils");
+var _toFirstUpperCase = require("../../utils/toFirstUpperCase");
 var _crLazyValue = require("../../utils/crLazyValue");
 var _isTypeFn = require("../../utils/isTypeFn");
 var _dt = require("../../utils/dt");
@@ -55,7 +55,7 @@ const getDialogCaption = itemConf => ((itemConf || {}).dialogProps || {}).captio
 exports.getDialogCaption = getDialogCaption;
 const crTextFieldCaption = (caption, dfValue) => dfValue ? `${caption} (Default: ${dfValue})` : caption;
 exports.crTextFieldCaption = crTextFieldCaption;
-const _crInputCaption = (caption, id) => caption || (0, _utils.toFirstUpperCase)(id);
+const _crInputCaption = (caption, id) => caption || (0, _toFirstUpperCase.toFirstUpperCase)(id);
 const crTextFieldConfig = (id, _ref) => {
   let {
     caption,

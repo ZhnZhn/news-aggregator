@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _utils = require("../../utils");
+var _toFirstUpperCase = require("../../utils/toFirstUpperCase");
 var _uiApi = require("../uiApi");
 var _has = require("../has");
 var _crStyle = require("../crStyle");
@@ -33,7 +34,7 @@ const WIDTH_STYLE = (0, _has.initWidthStyle)(),
   };
 const _getWidth = style => parseInt(style.width, 10) || _ResizeWidth.RESIZE_INIT_WIDTH;
 const _toStyleWidth = width => width + 'px';
-const _crPaneCaption = (caption, sortBy) => [caption, sortBy].filter(Boolean).map(_utils.toFirstUpperCase).join(': ');
+const _crPaneCaption = (caption, sortBy) => [caption, sortBy].filter(Boolean).map(_toFirstUpperCase.toFirstUpperCase).join(': ');
 const _crArticleItem = (article, index, _ref) => {
   let {
     Item,

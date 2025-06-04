@@ -3,12 +3,12 @@ import { THE_NEWS_API } from '../conf/ProviderNames';
 
 import { isArr, isNumber } from '../utils/isTypeFn';
 import { dateTimeToMls } from '../utils/dt';
+import { toFirstUpperCase } from '../utils/toFirstUpperCase';
 
 import {
   crId,
   safeFormatMls,
-  formatNumber,
-  toFirstUpperCase
+  formatNumber
 } from '../utils';
 
 import sanitizeArticle from './sanitizeArticle';

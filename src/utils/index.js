@@ -3,6 +3,5 @@ export { bindTo } from './bindTo';
 
 export { formatNumber } from './formatNumber';
 export { safeFormatMls } from './formatDate';
-export { toFirstUpperCase } from './toFirstUpperCase';
 
 export { domSanitize } from './domSanitize';

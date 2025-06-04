@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _utils = require("../utils");
+var _toFirstUpperCase = require("../utils/toFirstUpperCase");
 var _splitByParagraph = require("../utils/splitByParagraph");
 var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
 const _assign = Object.assign,
@@ -14,7 +15,7 @@ const _hmSourceId = {
   W_WEBZ_COUNTRY: "webz_country"
 };
 const _crDescription = (text, lang) => text.indexOf('\n') === -1 ? !lang || lang === 'english' ? (0, _splitByParagraph.splitByParagraph)(text) : text : text.replace(/\n/g, '\n\n');
-const _crRelated = tokenArr => (tokenArr || []).filter(str => (str || '').indexOf('_') === -1).map(_utils.toFirstUpperCase).join("|");
+const _crRelated = tokenArr => (tokenArr || []).filter(str => (str || '').indexOf('_') === -1).map(_toFirstUpperCase.toFirstUpperCase).join("|");
 const _toArticles = (posts, sourceId, lang) => {
   const articles = [],
     _hm = _crHm(),

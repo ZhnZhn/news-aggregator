@@ -1,6 +1,6 @@
 import {
   toFirstUpperCase
-} from '../../utils';
+} from '../../utils/toFirstUpperCase';
 import {
   crLazyValue
 } from '../../utils/crLazyValue';

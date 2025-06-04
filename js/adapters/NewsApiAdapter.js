@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _utils = require("../utils");
+var _toFirstUpperCase = require("../utils/toFirstUpperCase");
 var _joinBy = require("../utils/joinBy");
 var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
 const NEWS_SEARCH = 'newsapi_search';
@@ -45,7 +46,7 @@ const NewsApiAdapter = {
     return {
       source,
       articles: NewsApiAdapter.toArticles(articles, source),
-      sortBy: (0, _utils.toFirstUpperCase)(sortBy)
+      sortBy: (0, _toFirstUpperCase.toFirstUpperCase)(sortBy)
     };
   }
 };

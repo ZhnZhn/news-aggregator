@@ -1,7 +1,9 @@
 import {
-  crId,
-  toFirstUpperCase
+  crId
 } from '../utils';
+import {
+  toFirstUpperCase
+} from '../utils/toFirstUpperCase';
 import {
   joinByComma
 } from '../utils/joinBy';

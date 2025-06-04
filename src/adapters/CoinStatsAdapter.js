@@ -1,8 +1,10 @@
 import {
   crId,
   safeFormatMls,
-  toFirstUpperCase,
 } from '../utils';
+import {
+  toFirstUpperCase
+} from '../utils/toFirstUpperCase';
 
 import { crDescription } from './adapterFn';
 import crArticles from './crArticles';

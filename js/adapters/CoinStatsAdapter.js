@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _utils = require("../utils");
+var _toFirstUpperCase = require("../utils/toFirstUpperCase");
 var _adapterFn = require("./adapterFn");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
 const SOURCE_ID = 'coinstats_news';
@@ -48,7 +49,7 @@ const CoinStatsAdapter = {
     return {
       source: SOURCE_ID,
       articles: _toArticles(json),
-      sortBy: (0, _utils.toFirstUpperCase)(filter)
+      sortBy: (0, _toFirstUpperCase.toFirstUpperCase)(filter)
     };
   }
 };

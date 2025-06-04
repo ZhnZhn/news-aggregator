@@ -1,7 +1,9 @@
 import {
-  safeFormatMls,
-  toFirstUpperCase
+  safeFormatMls
 } from '../utils';
+import {
+  toFirstUpperCase
+} from '../utils/toFirstUpperCase';
 import {
   splitByParagraph
 } from '../utils/splitByParagraph';
