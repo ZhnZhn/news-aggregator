@@ -6,16 +6,12 @@ import useBool from '../hooks/useBool';
 import useShowHideComponent from '../hooks/useShowHideComponent';
 import useLoadIf from '../hooks/useLoadIf';
 
-import Comp from '../Comp';
+import Browser from '../zhn/Browser';
+import BrowserCaption from '../zhn/BrowserCaption';
+import ScrollPane from '../zhn/ScrollPane';
+import ItemStack from '../zhn/ItemStack';
+import ModalSlider from '../zhn-modal-slider/ModalSlider';
 import MenuPart from './MenuPart';
-
-const {
-  Browser,
-  BrowserCaption,
-  ModalSlider,
-  ScrollPane,
-  ItemStack
-} = Comp;
 
 const CL_MENU_MORE = crPopupMenuCn("items__menu-more")
 const S_BROWSER = {

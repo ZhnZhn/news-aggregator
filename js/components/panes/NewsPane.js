@@ -12,7 +12,10 @@ var _useBool = _interopRequireDefault(require("../hooks/useBool"));
 var _useRefHotKey = _interopRequireDefault(require("../hotkeys/useRefHotKey"));
 var _crModelMore = _interopRequireDefault(require("./crModelMore"));
 var _crRelatedBars = _interopRequireDefault(require("./crRelatedBars"));
-var _Comp = _interopRequireDefault(require("../Comp"));
+var _BrowserCaption = _interopRequireDefault(require("../zhn/BrowserCaption"));
+var _ModalSlider = _interopRequireDefault(require("../zhn-modal-slider/ModalSlider"));
+var _ScrollPane = _interopRequireDefault(require("../zhn/ScrollPane"));
+var _ItemStack = _interopRequireDefault(require("../zhn/ItemStack"));
 var _ItemBarChart = _interopRequireDefault(require("../items/ItemBarChart"));
 var _CaptionButtons = _interopRequireDefault(require("./CaptionButtons"));
 var _LoadNextPage = _interopRequireDefault(require("./LoadNextPage"));
@@ -163,12 +166,12 @@ const NewsPane = _ref2 => {
       ...WIDTH_STYLE,
       ..._showHideStyle
     },
-    children: [(0, _jsxRuntime.jsx)(_Comp.default.ModalSlider, {
+    children: [(0, _jsxRuntime.jsx)(_ModalSlider.default, {
       isShow: isMore,
       className: CL_MENU_MORE,
       model: _MODEL_MORE,
       onClose: _hideMore
-    }), (0, _jsxRuntime.jsx)(_Comp.default.BrowserCaption, {
+    }), (0, _jsxRuntime.jsx)(_BrowserCaption.default, {
       style: S_BROWSER_CAPTION,
       caption: _paneCaption,
       onMore: _showMore,
@@ -179,14 +182,14 @@ const NewsPane = _ref2 => {
         onPlusWidth: onPlusWidth,
         onMinusWidth: onMinusWidth
       })
-    }), (0, _jsxRuntime.jsxs)(_Comp.default.ScrollPane, {
+    }), (0, _jsxRuntime.jsxs)(_ScrollPane.default, {
       style: S_SCROLL_DIV,
       onScroll: _onScroll,
       children: [isRelatedBars && _maxValue && (0, _jsxRuntime.jsx)(_ItemBarChart.default, {
         categoryBars: _categoryBars,
         maxValue: _maxValue,
         numberOfItems: _numberOfArticles
-      }), (0, _jsxRuntime.jsx)(_Comp.default.ItemStack, {
+      }), (0, _jsxRuntime.jsx)(_ItemStack.default, {
         items: articles,
         crItem: _crArticleItem,
         Item: Item,

@@ -25,17 +25,17 @@ import {
 
 import { APP_TITLE } from '../styles/tokens';
 
+import ModalButton from '../zhn-bt/ModalButton';
+import FlatButton from '../zhn-bt/FlatButton';
 import SvgInfo from '../zhn/svg/SvgInfo';
 import SvgSettings from '../zhn/svg/SvgSettings';
 
 import LoadingProgress from './LoadingProgress';
 import IconAppLogo from './IconAppLogo';
 import AppLabel from './AppLabel';
-import A from '../Comp';
 import PanelQuery from './PanelQuery';
 import crMenuQuery from './crMenuQuery';
 import HotBar from './HotBar';
-
 
 const HEADER = "header"
 , CL_HEADER = crContainerBgCn(HEADER)
@@ -108,7 +108,7 @@ const HeaderBar = ({
          caption={APP_TITLE}
       />
       <span className={CL_BROWSER_BTS}>
-        <A.ModalButton
+        <ModalButton
            ariaLabel="Query Sources Menu"
            dataPos={DP_BOTTOM_RIGHT}
            caption="Query"
@@ -116,11 +116,11 @@ const HeaderBar = ({
            onClick={toggleIsQuery}
         >
           <span className={CL_ARROW_DOWN} />
-        </A.ModalButton>
+        </ModalButton>
       </span>
       <HotBar />
       <div className={CL_BTS}>
-          <A.FlatButton
+          <FlatButton
             ariaLabel="About News Aggregator"
             dataPos={DP_BOTTOM_RIGHT}
             className={CL_BT_ABOUT}
@@ -128,15 +128,15 @@ const HeaderBar = ({
             onClick={onAbout}
           >
             <SvgInfo style={S_SVG_ICON} />
-          </A.FlatButton>
-          <A.FlatButton
+          </FlatButton>
+          <FlatButton
             ariaLabel="Settings Dialog"
             dataPos={DP_BOTTOM_RIGHT}
             hotKey={HK_SETTINGS}
             onClick={onSettings}
           >
             <SvgSettings style={S_SVG_ICON} />
-          </A.FlatButton>
+          </FlatButton>
       </div>
     </div>
   );

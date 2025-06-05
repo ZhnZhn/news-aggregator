@@ -17,7 +17,8 @@ import {
   disableAndvancedInputOptions
 } from '../../flux/uiStore';
 
-import A from '../Comp';
+import InputSelect from '../zhn-m-input/InputSelect';
+import RaisedButton from '../zhn-bt/RaisedButton';
 import RowCheckBox from '../dialogs/RowCheckBox';
 
 const S_ROW_CHECKBOX_LS = {
@@ -39,14 +40,14 @@ const CardUiTheme = ({
   setRefLast
 }) => (
     <div style={style}>
-      <A.InputSelect
+      <InputSelect
         style={selectStyle}
         caption="UI Theme"
         initItem={THEME_OPTIONS.DF}
         options={THEME_OPTIONS}
         onSelect={setUiTheme}
       />
-      <A.InputSelect
+      <InputSelect
         style={selectStyle}
         caption="Font Size"
         initItem={FONT_SIZE_OPTIONS.DF}
@@ -69,7 +70,7 @@ const CardUiTheme = ({
       />
       <div style={S_VERTICAL_GAP_22} />
       <div style={buttonsStyle}>
-        <A.RaisedButton
+        <RaisedButton
           refBt={isVisible ? setRefLast : void 0}
           style={btStyle}
           isPrimary={true}

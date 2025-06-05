@@ -6,7 +6,8 @@ exports.default = void 0;
 var _uiTheme = require("../styles/uiTheme");
 var _localStore = require("../../flux/localStore");
 var _uiStore = require("../../flux/uiStore");
-var _Comp = _interopRequireDefault(require("../Comp"));
+var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
+var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
 var _RowCheckBox = _interopRequireDefault(require("../dialogs/RowCheckBox"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_ROW_CHECKBOX_LS = {
@@ -29,13 +30,13 @@ const CardUiTheme = _ref => {
   } = _ref;
   return (0, _jsxRuntime.jsxs)("div", {
     style: style,
-    children: [(0, _jsxRuntime.jsx)(_Comp.default.InputSelect, {
+    children: [(0, _jsxRuntime.jsx)(_InputSelect.default, {
       style: selectStyle,
       caption: "UI Theme",
       initItem: _uiTheme.THEME_OPTIONS.DF,
       options: _uiTheme.THEME_OPTIONS,
       onSelect: _uiTheme.setUiTheme
-    }), (0, _jsxRuntime.jsx)(_Comp.default.InputSelect, {
+    }), (0, _jsxRuntime.jsx)(_InputSelect.default, {
       style: selectStyle,
       caption: "Font Size",
       initItem: _uiTheme.FONT_SIZE_OPTIONS.DF,
@@ -57,7 +58,7 @@ const CardUiTheme = _ref => {
       style: S_VERTICAL_GAP_22
     }), (0, _jsxRuntime.jsx)("div", {
       style: buttonsStyle,
-      children: (0, _jsxRuntime.jsx)(_Comp.default.RaisedButton, {
+      children: (0, _jsxRuntime.jsx)(_RaisedButton.default, {
         refBt: isVisible ? setRefLast : void 0,
         style: btStyle,
         isPrimary: true,

@@ -26,7 +26,11 @@ import useRefHotKey from '../hotkeys/useRefHotKey';
 import crModelMore from './crModelMore';
 import crRelatedBars from './crRelatedBars';
 
-import A from '../Comp';
+import BrowserCaption from '../zhn/BrowserCaption';
+import ModalSlider from '../zhn-modal-slider/ModalSlider';
+import ScrollPane from '../zhn/ScrollPane';
+import ItemStack from '../zhn/ItemStack';
+
 import ItemBarChart from '../items/ItemBarChart';
 import CaptionButtons from './CaptionButtons';
 import LoadNextPage from './LoadNextPage';
@@ -243,13 +247,13 @@ const NewsPane = ({
          ..._showHideStyle
        }}
     >
-      <A.ModalSlider
+      <ModalSlider
         isShow={isMore}
         className={CL_MENU_MORE}
         model={_MODEL_MORE}
         onClose={_hideMore}
       />
-      <A.BrowserCaption
+      <BrowserCaption
          style={S_BROWSER_CAPTION}
          caption={_paneCaption}
          onMore={_showMore}
@@ -261,8 +265,8 @@ const NewsPane = ({
            onPlusWidth={onPlusWidth}
            onMinusWidth={onMinusWidth}
         />
-      </A.BrowserCaption>
-      <A.ScrollPane
+      </BrowserCaption>
+      <ScrollPane
          style={S_SCROLL_DIV}
          onScroll={_onScroll}
       >
@@ -272,7 +276,7 @@ const NewsPane = ({
             numberOfItems={_numberOfArticles}
           />
          }
-         <A.ItemStack
+         <ItemStack
            items={articles}
            crItem={_crArticleItem}
            Item={Item}
@@ -283,7 +287,7 @@ const NewsPane = ({
          <LoadNextPage
            page={page}
          />
-      </A.ScrollPane>
+      </ScrollPane>
     </div>
   );
 };

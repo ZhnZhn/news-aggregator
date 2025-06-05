@@ -9,7 +9,6 @@ import {
   crShowHide
 } from '../crStyle';
 
-import A from '../Comp';
 import {
   CryptoCompareLink,
   CoinStatsLink,
@@ -24,6 +23,11 @@ import {
   WebzLink,
   RedditLink
 } from '../links/Links';
+
+import BrowserCaption from '../zhn/BrowserCaption';
+import ScrollPane from '../zhn/ScrollPane';
+import ItemStack from '../zhn/ItemStack';
+
 import Step from './Step';
 import LogoBar from './LogoBar';
 
@@ -63,8 +67,6 @@ const CL_ABOUT_PANE = crPaneCn("about-pane")
 ) => HAS_WIDE_SCREEN
    ? `${token} [${hotKey}]`
    : token;
-
-const { ItemStack } = A;
 
 const PROVIDER_LINKS = [
   [CryptoCompareLink],
@@ -143,12 +145,12 @@ const About = ({
       role="presentation"
       onKeyDown={hKeyDown}
      >
-       <A.BrowserCaption
+       <BrowserCaption
           style={S_BROWSER_CAPTION}
           caption="About News Aggregator"
           onClose={hideAbout}
        />
-       <A.ScrollPane
+       <ScrollPane
           style={S_SCROLL_DIV}
        >
          <div style={S_DIV_WRAPPER}>
@@ -188,7 +190,7 @@ const About = ({
              </span>
           </p>
          </div>
-      </A.ScrollPane>
+      </ScrollPane>
     </div>
   );
 };

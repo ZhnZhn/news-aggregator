@@ -6,7 +6,7 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _memoFn = require("../hoc/memoFn");
 var _Dialog = require("../dialogs/Dialog.Style");
-var _Comp = _interopRequireDefault(require("../Comp"));
+var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 var _TabPane = _interopRequireDefault(require("../zhn-tab/TabPane"));
 var _Tab = _interopRequireDefault(require("../zhn-tab/Tab"));
 var _CardApiKeys = _interopRequireDefault(require("./CardApiKeys"));
@@ -62,7 +62,7 @@ const SettingsDialog = (0, _memoFn.memoIsShow)(_ref => {
     _setFocusLastRef = (0, _uiApi.useCallback)(el => {
       _refFocusLast.current = el;
     }, []);
-  return (0, _jsxRuntime.jsx)(_Comp.default.ModalDialog, {
+  return (0, _jsxRuntime.jsx)(_ModalDialog.default, {
     caption: TOKEN_USER_SETTINGS,
     style: S_MODAL,
     divBtStyle: S_DIV_BT,

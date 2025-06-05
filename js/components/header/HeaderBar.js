@@ -10,25 +10,26 @@ var _useHotKey = _interopRequireDefault(require("../hotkeys/useHotKey"));
 var _hotkeys = require("../hotkeys/hotkeys");
 var _DP = require("../DP");
 var _tokens = require("../styles/tokens");
+var _ModalButton = _interopRequireDefault(require("../zhn-bt/ModalButton"));
+var _FlatButton = _interopRequireDefault(require("../zhn-bt/FlatButton"));
 var _SvgInfo = _interopRequireDefault(require("../zhn/svg/SvgInfo"));
 var _SvgSettings = _interopRequireDefault(require("../zhn/svg/SvgSettings"));
 var _LoadingProgress = _interopRequireDefault(require("./LoadingProgress"));
 var _IconAppLogo = _interopRequireDefault(require("./IconAppLogo"));
 var _AppLabel = _interopRequireDefault(require("./AppLabel"));
-var _Comp = _interopRequireDefault(require("../Comp"));
 var _PanelQuery = _interopRequireDefault(require("./PanelQuery"));
 var _crMenuQuery = _interopRequireDefault(require("./crMenuQuery"));
 var _HotBar = _interopRequireDefault(require("./HotBar"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const HEADER = "header",
   CL_HEADER = (0, _crStyle.crContainerBgCn)(HEADER),
-  CL_PANEL_BROWSER = (0, _crStyle.crPanelShadowCn)((0, _crStyle.crContainerBgCn)(HEADER + "__panel-browser")),
-  CL_ICON_APP = HEADER + "__icon-app",
-  CL_LABEL_APP = HEADER + "__label-app",
-  CL_BROWSER_BTS = HEADER + "__browser-bts",
+  CL_PANEL_BROWSER = (0, _crStyle.crPanelShadowCn)((0, _crStyle.crContainerBgCn)(`${HEADER}__panel-browser`)),
+  CL_ICON_APP = `${HEADER}__icon-app`,
+  CL_LABEL_APP = `${HEADER}__label-app`,
+  CL_BROWSER_BTS = `${HEADER}__browser-bts`,
   CL_ARROW_DOWN = "arrow-down",
-  CL_BTS = HEADER + "__bts",
-  CL_BT_ABOUT = HEADER + "__bt-about",
+  CL_BTS = `${HEADER}__bts`,
+  CL_BT_ABOUT = `${HEADER}__bt-about`,
   S_SVG_ICON = {
     position: 'relative',
     top: -1,
@@ -70,7 +71,7 @@ const HeaderBar = _ref => {
       caption: _tokens.APP_TITLE
     }), (0, _jsxRuntime.jsx)("span", {
       className: CL_BROWSER_BTS,
-      children: (0, _jsxRuntime.jsx)(_Comp.default.ModalButton, {
+      children: (0, _jsxRuntime.jsx)(_ModalButton.default, {
         ariaLabel: "Query Sources Menu",
         dataPos: _DP.DP_BOTTOM_RIGHT,
         caption: "Query",
@@ -82,7 +83,7 @@ const HeaderBar = _ref => {
       })
     }), (0, _jsxRuntime.jsx)(_HotBar.default, {}), (0, _jsxRuntime.jsxs)("div", {
       className: CL_BTS,
-      children: [(0, _jsxRuntime.jsx)(_Comp.default.FlatButton, {
+      children: [(0, _jsxRuntime.jsx)(_FlatButton.default, {
         ariaLabel: "About News Aggregator",
         dataPos: _DP.DP_BOTTOM_RIGHT,
         className: CL_BT_ABOUT,
@@ -91,7 +92,7 @@ const HeaderBar = _ref => {
         children: (0, _jsxRuntime.jsx)(_SvgInfo.default, {
           style: S_SVG_ICON
         })
-      }), (0, _jsxRuntime.jsx)(_Comp.default.FlatButton, {
+      }), (0, _jsxRuntime.jsx)(_FlatButton.default, {
         ariaLabel: "Settings Dialog",
         dataPos: _DP.DP_BOTTOM_RIGHT,
         hotKey: _hotkeys.HK_SETTINGS,

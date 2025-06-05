@@ -8,7 +8,8 @@ var _Dialog = require("./Dialog.Style");
 var _useRefClose = _interopRequireDefault(require("./hooks/useRefClose"));
 var _useRefSelectOption = _interopRequireDefault(require("./hooks/useRefSelectOption"));
 var _useKeyDown = _interopRequireDefault(require("./hooks/useKeyDown"));
-var _Comp = _interopRequireDefault(require("../Comp"));
+var _DraggableDialog = _interopRequireDefault(require("../zhn-moleculs/DraggableDialog"));
+var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
 var _OptionFn = require("../zhn-m-input/OptionFn");
 var _jsxRuntime = require("preact/jsx-runtime");
 const SORT_BY_OPTIONS = [['Top', 'top'], ['Popular', 'popularity'], ['Newest', 'publishedAt']],
@@ -41,7 +42,7 @@ const DialogType1 = _ref => {
     // type, source, itemConf, onLoad
     /*eslint-enable react-hooks/exhaustive-deps */,
     _hKeyDown = (0, _useKeyDown.default)(_hLoad, _hClose);
-  return (0, _jsxRuntime.jsx)(_Comp.default.DraggableDialog, {
+  return (0, _jsxRuntime.jsx)(_DraggableDialog.default, {
     refEl: _refDialog,
     isShow: isShow,
     captionStyle: _Dialog.S_BROWSER_CAPTION,
@@ -50,7 +51,7 @@ const DialogType1 = _ref => {
     onLoad: _hLoad,
     onShowChart: onShow,
     onClose: _hClose,
-    children: (0, _jsxRuntime.jsx)(_Comp.default.InputSelect, {
+    children: (0, _jsxRuntime.jsx)(_InputSelect.default, {
       style: INPUT_SELECT_STYLE,
       caption: "SortBy",
       initItem: DF_SORT_BY,

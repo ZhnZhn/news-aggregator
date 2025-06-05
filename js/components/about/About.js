@@ -7,8 +7,10 @@ var _ProviderNames = require("../../conf/ProviderNames");
 var _has = require("../has");
 var _useShowHideComponent = _interopRequireDefault(require("../hooks/useShowHideComponent"));
 var _crStyle = require("../crStyle");
-var _Comp = _interopRequireDefault(require("../Comp"));
 var _Links = require("../links/Links");
+var _BrowserCaption = _interopRequireDefault(require("../zhn/BrowserCaption"));
+var _ScrollPane = _interopRequireDefault(require("../zhn/ScrollPane"));
+var _ItemStack = _interopRequireDefault(require("../zhn/ItemStack"));
 var _Step = _interopRequireDefault(require("./Step"));
 var _LogoBar = _interopRequireDefault(require("./LogoBar"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -43,9 +45,6 @@ const CL_ABOUT_PANE = (0, _crStyle.crPaneCn)("about-pane"),
     marginTop: 8
   },
   _crToken = (token, hotKey) => _has.HAS_WIDE_SCREEN ? `${token} [${hotKey}]` : token;
-const {
-  ItemStack
-} = _Comp.default;
 const PROVIDER_LINKS = [[_Links.CryptoCompareLink], [_Links.CoinStatsLink], [_Links.MessariLink], [_Links.FmpApiLink, {
   title: _ProviderNames.FMP_LONG
 }], [_Links.AlphaVantageLink], [_Links.PlgLink], [_Links.NewsApiLink], [_Links.TheNewsApiLink], [_Links.DevToLink], [_Links.StackOverflowLink], [_Links.WebzLink], [_Links.RedditLink]];
@@ -82,11 +81,11 @@ const About = _ref2 => {
     style: _showHideStyle,
     role: "presentation",
     onKeyDown: hKeyDown,
-    children: [(0, _jsxRuntime.jsx)(_Comp.default.BrowserCaption, {
+    children: [(0, _jsxRuntime.jsx)(_BrowserCaption.default, {
       style: S_BROWSER_CAPTION,
       caption: "About News Aggregator",
       onClose: hideAbout
-    }), (0, _jsxRuntime.jsx)(_Comp.default.ScrollPane, {
+    }), (0, _jsxRuntime.jsx)(_ScrollPane.default, {
       style: S_SCROLL_DIV,
       children: (0, _jsxRuntime.jsxs)("div", {
         style: S_DIV_WRAPPER,
@@ -103,7 +102,7 @@ const About = _ref2 => {
           })]
         }), (0, _jsxRuntime.jsx)("div", {
           style: S_LH_18,
-          children: (0, _jsxRuntime.jsx)(ItemStack, {
+          children: (0, _jsxRuntime.jsx)(_ItemStack.default, {
             items: PROVIDER_LINKS,
             crItem: _crLinkItem
           })
@@ -121,7 +120,7 @@ const About = _ref2 => {
             style: _crStyle.S_COLOR_BLACK,
             children: "Browsing by source:"
           })
-        }), (0, _jsxRuntime.jsx)(ItemStack, {
+        }), (0, _jsxRuntime.jsx)(_ItemStack.default, {
           items: NEWS_SOURCE_STEP_DESCRIPTIONS,
           crItem: _crStepItem
         }), (0, _jsxRuntime.jsx)(_LogoBar.default, {}), (0, _jsxRuntime.jsx)("p", {

@@ -3,7 +3,6 @@ import {
   getRefValue
 } from '../uiApi';
 
-
 import {
   S_BROWSER_CAPTION,
   crInputSelectStyle
@@ -13,7 +12,8 @@ import useRefClose from './hooks/useRefClose';
 import useRefSelectOption from './hooks/useRefSelectOption';
 import useKeyDown from './hooks/useKeyDown';
 
-import A from '../Comp';
+import DraggableDialog from '../zhn-moleculs/DraggableDialog';
+import InputSelect from '../zhn-m-input/InputSelect';
 import { getItemValue } from '../zhn-m-input/OptionFn';
 
 const SORT_BY_OPTIONS = [
@@ -59,7 +59,7 @@ const DialogType1 = ({
 
 
   return (
-    <A.DraggableDialog
+    <DraggableDialog
        refEl={_refDialog}
        isShow={isShow}
        captionStyle={S_BROWSER_CAPTION}
@@ -69,14 +69,14 @@ const DialogType1 = ({
        onShowChart={onShow}
        onClose={_hClose}
     >
-      <A.InputSelect
+      <InputSelect
         style={INPUT_SELECT_STYLE}
         caption="SortBy"
         initItem={DF_SORT_BY}
         options={SORT_BY_OPTIONS}
         onSelect={_selectSortBy}
       />
-    </A.DraggableDialog>
+    </DraggableDialog>
   );
 };
 

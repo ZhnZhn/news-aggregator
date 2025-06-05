@@ -15,9 +15,10 @@ import {
   crInputSelectStyle
 } from '../dialogs/Dialog.Style';
 
-import A from '../Comp';
+import ModalDialog from '../zhn-moleculs/ModalDialog';
 import TabPane from '../zhn-tab/TabPane';
 import Tab from '../zhn-tab/Tab';
+
 import CardApiKeys from './CardApiKeys';
 import CardUiTheme from './CardUiTheme';
 
@@ -74,7 +75,7 @@ const SettingsDialog = memoIsShow(({
   }, []);
 
   return (
-    <A.ModalDialog
+    <ModalDialog
        caption={TOKEN_USER_SETTINGS}
        style={S_MODAL}
        divBtStyle={S_DIV_BT}
@@ -111,7 +112,7 @@ const SettingsDialog = memoIsShow(({
             />
          </Tab>
        </TabPane>
-   </A.ModalDialog>
+   </ModalDialog>
   );
 });
 
