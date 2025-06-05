@@ -109,6 +109,8 @@
 .m-select__item[aria-selected=true] {
   color: #80c040;
 }
-.m-select__item:hover, .m-select__item:focus {
+ 
+.m-select__item:focus,
+.m-select__item:hover {
   background-color: var(--msi-fh, rgba(48, 48, 48, 0.4));
 }

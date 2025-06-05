@@ -8,10 +8,11 @@
   border-left: 4px solid transparent;
   outline: none;
   user-select: none;
-  cursor: pointer; }
+  cursor: pointer; 
+}
 
 .menu-more__item:focus {
-  background-color: rgba(0, 0, 0, 0.15); }
+  background-color: rgba(0, 0, 0, 0.15); 
+}
 
-.menu-more__item:hover {
-  border-left: 4px solid #1b75bb; }
+

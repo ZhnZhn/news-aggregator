@@ -83,6 +83,3 @@
 .row__topic:focus {
   background-color: rgba(0, 0, 0, 0.15);
 }
-.row__topic:hover {
-  border-left: 4px solid #1b75bb;
-}

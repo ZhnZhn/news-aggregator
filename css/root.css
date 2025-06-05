@@ -21,3 +21,29 @@
 
  --chb-size: min(25px, max(23px, 1rem + 4px));
 }
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+     animation-duration: 0.01ms !important;
+     animation-iteration-count: 1 !important;
+     transition-duration: 0.01ms !important;
+     scroll-behavior: auto !important;
+  }
+}      
+
+@media (hover: hover) {
+  /*header.css*/
+  .row__topic:hover {
+    border-left: 4px solid #1b75bb;
+  }
+
+  /*menu-more.css*/
+  .menu-more__item:hover {
+    border-left: 4px solid #1b75bb; 
+  }
+
+  /*pane.css*/
+  .row__news-source:hover {
+    border-left: 4px solid #1b75bb;
+  }
+}
