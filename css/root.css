@@ -17,9 +17,7 @@
  --sbt-bg: #3a6799;
 
  --art-h: #404040;
- --art-d: #4d4d4d;
-
- --chb-size: min(25px, max(23px, 1rem + 4px));
+ --art-d: #4d4d4d; 
 }
 
 @media (prefers-reduced-motion: reduce) {

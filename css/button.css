@@ -68,22 +68,6 @@
   border-bottom-width: 3px;
 }
 
-.chb {
-  stroke: #4d4d4d;
-  stroke: var(--bg-c, #4d4d4d);
-  display: inline-block;
-  width: var(--chb-size);
-  height: var(--chb-size);
-  padding: 1px;
-  border-radius: 2px;
-  border: 2px solid transparent;
-}
-
-.chb:focus {
-  outline: 0;
-  border: 2px solid #fdb316;
-}
-
 .bt-raised {
   color: #a9a9a9;
   color: var(--h-c, #a9a9a9);
