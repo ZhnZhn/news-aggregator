@@ -67,6 +67,7 @@ export const SUBRREDIT_OPTIONS = [
 "node",
 "Deno",
 "ExperiencedDevs",
+"UI_Design",
 "webdev",
 "web_design",
 "WebsiteBuilder",
