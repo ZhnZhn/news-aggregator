@@ -18,11 +18,12 @@ import {
 } from '../../flux/uiStore';
 
 import InputSelect from '../zhn-m-input/InputSelect';
+import InputSwitch from '../zhn/InputSwitch';
 import RaisedButton from '../zhn-bt/RaisedButton';
-import RowCheckBox from '../dialogs/RowCheckBox';
 
 const S_ROW_CHECKBOX_LS = {
-  margin: '12px 0 12px 16px'
+  margin: '12px 0 12px 16px',
+  width: '92%'
 }
 , S_VERTICAL_GAP_22 = {
   height: 22
@@ -54,14 +55,14 @@ const CardUiTheme = ({
         options={FONT_SIZE_OPTIONS}
         onSelect={selectFontSize}
       />
-      <RowCheckBox
+      <InputSwitch
         style={S_ROW_CHECKBOX_LS}
         initialValue={IS_ALLOW_USE_LS}
         caption="Allow use localStorage"
         onCheck={allowSaveToLs}
         onUnCheck={notAllowSaveToLs}
       />
-      <RowCheckBox
+      <InputSwitch
         style={S_ROW_CHECKBOX_LS}
         initialValue={IS_ADVANCED_INPUT_OPTIONS}
         caption="Advanced input options"

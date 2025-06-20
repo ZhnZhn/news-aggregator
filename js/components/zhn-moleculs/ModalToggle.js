@@ -7,7 +7,7 @@ var _useModalFocus = _interopRequireDefault(require("../hooks/useModalFocus"));
 var _useItemsFocusTrap = _interopRequireDefault(require("../hooks/useItemsFocusTrap"));
 var _ModalPopup = _interopRequireDefault(require("./ModalPopup"));
 var _FocusTrap = _interopRequireDefault(require("./FocusTrap"));
-var _RowCheckBox = _interopRequireDefault(require("../dialogs/RowCheckBox"));
+var _InputSwitch = _interopRequireDefault(require("../zhn/InputSwitch"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_MODAL_POPUP = {
     color: 'var(--black)',
@@ -17,12 +17,6 @@ const S_MODAL_POPUP = {
     lineHeight: 2.2,
     fontSize: '1rem',
     fontWeight: '700'
-  },
-  S_CAPTION = {
-    maxWidth: 150,
-    paddingBottom: 2,
-    textAlign: 'left',
-    verticalAlign: 'middle'
   },
   S_CHB_TOGGLE = {
     padding: '6px 0 6px',
@@ -55,13 +49,11 @@ const ModalToggle = _ref => {
     children: (0, _jsxRuntime.jsx)(_FocusTrap.default, {
       refFirst: _refFirst,
       refLast: _refLast,
-      children: configs.map((item, index) => (0, _jsxRuntime.jsx)(_RowCheckBox.default, {
+      children: configs.map((item, index) => (0, _jsxRuntime.jsx)(_InputSwitch.default, {
         refChb: _getFocusRef(index),
         initialValue: item.df,
         style: S_CHB_TOGGLE,
-        stroke: chbStroke,
         caption: _crCaption(item.caption),
-        captionStyle: S_CAPTION,
         onToggle: () => onToggle(item.id)
       }, item.id))
     })

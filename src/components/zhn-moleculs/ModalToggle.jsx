@@ -3,7 +3,7 @@ import useItemsFocusTrap from '../hooks/useItemsFocusTrap';
 
 import ModalPopup from './ModalPopup';
 import FocusTrap from './FocusTrap';
-import RowCheckBox from '../dialogs/RowCheckBox';
+import InputSwitch from '../zhn/InputSwitch';
 
 const S_MODAL_POPUP = {
   color: 'var(--black)',
@@ -14,13 +14,8 @@ const S_MODAL_POPUP = {
   fontSize: '1rem',
   fontWeight: '700'
 }
-, S_CAPTION = {
-  maxWidth: 150,
-  paddingBottom: 2,
-  textAlign: 'left',
-  verticalAlign: 'middle'
-}
 , S_CHB_TOGGLE = {
+  width: '110%',
   padding: '6px 0 6px',
   lineHeight: 'normal'
 };
@@ -64,14 +59,12 @@ const ModalToggle = ({
       refLast={_refLast}
     >
       {configs.map((item, index) => (
-         <RowCheckBox
-           refChb={_getFocusRef(index)}
+         <InputSwitch
            key={item.id}
+           refChb={_getFocusRef(index)}
            initialValue={item.df}
            style={S_CHB_TOGGLE}
-           stroke={chbStroke}
            caption={_crCaption(item.caption)}
-           captionStyle={S_CAPTION}
            onToggle={() => onToggle(item.id)}
          />
       ))}

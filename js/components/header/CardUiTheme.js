@@ -7,11 +7,12 @@ var _uiTheme = require("../styles/uiTheme");
 var _localStore = require("../../flux/localStore");
 var _uiStore = require("../../flux/uiStore");
 var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
+var _InputSwitch = _interopRequireDefault(require("../zhn/InputSwitch"));
 var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
-var _RowCheckBox = _interopRequireDefault(require("../dialogs/RowCheckBox"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_ROW_CHECKBOX_LS = {
-    margin: '12px 0 12px 16px'
+    margin: '12px 0 12px 16px',
+    width: '92%'
   },
   S_VERTICAL_GAP_22 = {
     height: 22
@@ -42,13 +43,13 @@ const CardUiTheme = _ref => {
       initItem: _uiTheme.FONT_SIZE_OPTIONS.DF,
       options: _uiTheme.FONT_SIZE_OPTIONS,
       onSelect: _uiTheme.selectFontSize
-    }), (0, _jsxRuntime.jsx)(_RowCheckBox.default, {
+    }), (0, _jsxRuntime.jsx)(_InputSwitch.default, {
       style: S_ROW_CHECKBOX_LS,
       initialValue: IS_ALLOW_USE_LS,
       caption: "Allow use localStorage",
       onCheck: _localStore.allowSaveToLs,
       onUnCheck: _localStore.notAllowSaveToLs
-    }), (0, _jsxRuntime.jsx)(_RowCheckBox.default, {
+    }), (0, _jsxRuntime.jsx)(_InputSwitch.default, {
       style: S_ROW_CHECKBOX_LS,
       initialValue: IS_ADVANCED_INPUT_OPTIONS,
       caption: "Advanced input options",
