@@ -22,8 +22,7 @@ import InputSwitch from '../zhn/InputSwitch';
 import RaisedButton from '../zhn-bt/RaisedButton';
 
 const S_ROW_CHECKBOX_LS = {
-  margin: '12px 0 12px 16px',
-  width: '92%'
+  margin: '12px 15px 12px 16px'
 }
 , S_VERTICAL_GAP_22 = {
   height: 22

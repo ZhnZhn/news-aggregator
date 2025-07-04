@@ -15,7 +15,6 @@ const S_MODAL_POPUP = {
   fontWeight: '700'
 }
 , S_CHB_TOGGLE = {
-  width: '110%',
   padding: '6px 0 6px',
   lineHeight: 'normal'
 };

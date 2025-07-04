@@ -11,8 +11,7 @@ var _InputSwitch = _interopRequireDefault(require("../zhn/InputSwitch"));
 var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_ROW_CHECKBOX_LS = {
-    margin: '12px 0 12px 16px',
-    width: '92%'
+    margin: '12px 15px 12px 16px'
   },
   S_VERTICAL_GAP_22 = {
     height: 22
