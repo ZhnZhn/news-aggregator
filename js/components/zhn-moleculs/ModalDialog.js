@@ -11,13 +11,9 @@ var _FocusTrap = _interopRequireDefault(require("./FocusTrap"));
 var _BrowserCaption = _interopRequireDefault(require("../zhn/BrowserCaption"));
 var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_DIALOG = (0, _crStyle.crContainerBgCn)("dialog"),
-  CL_SHOWING = CL_DIALOG + " " + _crStyle.CL_SHOW_POPUP,
+const CL_SHOWING = `${_crStyle.CL_DIALOG} ${_crStyle.CL_SHOW_POPUP}`,
   S_ROOT_DIV = {
-    position: 'absolute',
     top: '20%',
-    borderRadius: 5,
-    boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
     zIndex: 10
   },
   S_COMMAND_DIV = {

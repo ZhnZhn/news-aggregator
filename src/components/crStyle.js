@@ -54,23 +54,26 @@ export const crContainerBgCn = (
   className
 ) => crCn(className, "c-bg")
 
+const CL_BOX_SHADOW_5 = "box-shadow-5";
+export const CL_DIALOG = crContainerBgCn(`dialog ${CL_BOX_SHADOW_5}`)
+
+export const crBoxShadowCn = (
+  className
+) => crCn(
+  className,
+  CL_BOX_SHADOW_5
+)
+
 export const crPaneCn = (
   className
 ) => crContainerBgCn(
   crCn("pane", className)
 )
 
-export const crPanelShadowCn = (
-  className
-) => crCn(
-  className,
-  "panel-shadow"
-)
-
 export const crPopupMenuCn = (
   className
 ) => crCn(
-  crPanelShadowCn("popup-menu"),
+  crBoxShadowCn("popup-menu"),
   className
 )
 

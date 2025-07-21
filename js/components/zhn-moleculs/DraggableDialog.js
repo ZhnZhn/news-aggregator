@@ -16,15 +16,11 @@ var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types'
 
-const CL_DIALOG = (0, _crStyle.crContainerBgCn)("dialog"),
-  CL_MODAL_TOGGLE = (0, _crStyle.crPopupMenuCn)("select-none"),
+const CL_MODAL_TOGGLE = (0, _crStyle.crPopupMenuCn)("select-none"),
   POSITION_LEFT = _has.HAS_WIDE_SCREEN ? 50 : 15,
   S_DIV = {
-    position: 'absolute',
     top: 30,
     left: POSITION_LEFT,
-    borderRadius: '5px',
-    boxShadow: 'rgba(0, 0, 0, 0.2) 0px 0px 0px 6px',
     zIndex: 10
   },
   S_BTS = {
@@ -119,41 +115,38 @@ const DraggableDialog = _ref2 => {
   (0, _useRefHotKey.default)(_refDialog, HK_LOAD, onLoad);
   (0, _useRefHotKey.default)(_refDialog, HK_SHOW, onShow);
   (0, _useRefHotKey.default)(_refDialog, HK_CLOSE, _hClose);
-  const [_className, _showHideStyle] = (0, _crStyle.crShowHide)(isShow, CL_DIALOG),
+  const [_className, _showHideStyle] = (0, _crStyle.crShowHide)(isShow, _crStyle.CL_DIALOG),
     _onMore = menuToggle ? toggleIsMore : void 0;
-  return /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/(
-    /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
-    (0, _jsxRuntime.jsxs)("div", {
-      ref: _refDialog,
-      role: "dialog",
-      className: _className,
-      style: {
-        ...S_DIV,
-        ...style,
-        ..._showHideStyle
-      },
-      tabIndex: "0",
-      onKeyDown: _hKeyDown,
-      children: [(0, _jsxRuntime.jsx)(_BrowserCaption.default, {
-        style: captionStyle,
-        caption: caption,
-        onMore: _onMore,
-        onClose: onClose
-      }), menuToggle && (0, _jsxRuntime.jsx)(_ModalToggle.default, {
-        isShow: isMore,
-        className: CL_MODAL_TOGGLE,
-        configs: menuToggle,
-        onToggle: toggleItem,
-        onClose: toggleIsMore
-      }), (0, _jsxRuntime.jsx)("div", {
-        children: children
-      }), (0, _jsxRuntime.jsx)(DialogButtons, {
-        onLoad: onLoad,
-        onShow: onShow,
-        onClose: _hClose
-      })]
-    })
-  );
+  return /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/ /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/(0, _jsxRuntime.jsxs)("div", {
+    ref: _refDialog,
+    role: "dialog",
+    className: _className,
+    style: {
+      ...S_DIV,
+      ...style,
+      ..._showHideStyle
+    },
+    tabIndex: "0",
+    onKeyDown: _hKeyDown,
+    children: [(0, _jsxRuntime.jsx)(_BrowserCaption.default, {
+      style: captionStyle,
+      caption: caption,
+      onMore: _onMore,
+      onClose: onClose
+    }), menuToggle && (0, _jsxRuntime.jsx)(_ModalToggle.default, {
+      isShow: isMore,
+      className: CL_MODAL_TOGGLE,
+      configs: menuToggle,
+      onToggle: toggleItem,
+      onClose: toggleIsMore
+    }), (0, _jsxRuntime.jsx)("div", {
+      children: children
+    }), (0, _jsxRuntime.jsx)(DialogButtons, {
+      onLoad: onLoad,
+      onShow: onShow,
+      onClose: _hClose
+    })]
+  });
 };
 
 /*

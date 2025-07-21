@@ -11,7 +11,7 @@ var _InputSwitch = _interopRequireDefault(require("../zhn/InputSwitch"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_MODAL_POPUP = {
     color: 'var(--black)',
-    left: 8,
+    left: 0,
     zIndex: 100,
     padding: '4px 12px 12px',
     lineHeight: 2.2,
