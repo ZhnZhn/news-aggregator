@@ -8,7 +8,6 @@ var _useThrottleCallback = _interopRequireDefault(require("../hooks/useThrottleC
 var _useHasMounted = _interopRequireDefault(require("../hooks/useHasMounted"));
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 var _ShowHide = _interopRequireDefault(require("../zhn/ShowHide"));
-var _MenuPage = _interopRequireDefault(require("./MenuPage"));
 var _MenuPages = _interopRequireDefault(require("./MenuPages"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const S_SHOW_HIDE = {
@@ -51,31 +50,33 @@ const _initState = model => {
   return {
     pageWidth: _pW,
     pagesStyle: {
-      width: _maxP * _pW + "px"
+      width: `${_maxP * _pW}px`
     },
     pageStyle: {
-      width: _pW + "px"
+      width: `${_pW}px`
     },
     pageCurrent: 1,
-    pages: [(0, _jsxRuntime.jsx)(_MenuPage.default, {
+    pages: [{
+      key: _initId,
       items: model[_initId],
       titleCl: model.titleCl,
       itemCl: model.itemCl
-    }, _initId)]
+    }]
   };
 };
 const _addPage = (pages, id, title, model) => {
-  pages.push((0, _jsxRuntime.jsx)(_MenuPage.default, {
+  pages.push({
+    key: id,
     title: title,
     items: model[id],
     titleCl: model.titleCl,
     itemCl: model.itemCl
-  }, id));
+  });
 };
 const _crTransform = (pageWidth, pageCurrent) => {
   const _dX = -1 * pageWidth * (pageCurrent - 1) + 0;
   return {
-    transform: "translateX(" + _dX + "px)"
+    transform: `translateX(${_dX}px)`
   };
 };
 const ModalSlider = _ref => {

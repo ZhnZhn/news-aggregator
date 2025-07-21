@@ -8,7 +8,6 @@ import useHasMounted from '../hooks/useHasMounted';
 
 import ModalPane from '../zhn-moleculs/ModalPane';
 import ShowHide from '../zhn/ShowHide';
-import MenuPage from './MenuPage';
 import MenuPages from './MenuPages';
 
 const S_SHOW_HIDE = {
@@ -62,16 +61,15 @@ const _initState = model => {
     },
     pageCurrent: 1,
     pages: [
-      <MenuPage
-        key={_initId}
-        items={model[_initId]}
-        titleCl={model.titleCl}
-        itemCl={model.itemCl}
-      />
+      {
+        key: _initId,
+        items: model[_initId],
+        titleCl: model.titleCl,
+        itemCl: model.itemCl
+      }
     ]
   };
-}
-
+};
 
 const _addPage = (
   pages,
@@ -79,15 +77,13 @@ const _addPage = (
   title,
   model
 ) => {
-  pages.push((
-    <MenuPage
-      key={id}
-      title={title}
-      items={model[id]}
-      titleCl={model.titleCl}
-      itemCl={model.itemCl}
-    />
-  ))
+  pages.push({
+    key: id,
+    title: title,
+    items: model[id],
+    titleCl: model.titleCl,
+    itemCl: model.itemCl
+  })
 };
 
 const _crTransform = (
