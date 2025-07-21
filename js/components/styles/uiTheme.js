@@ -12,7 +12,7 @@ var _propertyThemeName = require("./propertyThemeName");
 exports.THEME_NAME = _propertyThemeName.THEME_NAME;
 exports.THEME_OPTIONS = _propertyThemeName.THEME_OPTIONS;
 var _LS = require("../../flux/LS");
-const _crRgba = (v, a) => "rgba(" + v + ", " + v + ", " + v + ", " + a + ")";
+const _crRgba = (v, a) => `rgba(${v}, ${v}, ${v}, ${a})`;
 const GREY_BG_HEADER = '#3a6799';
 const GREY_C_HEADER = '#a9a9a9';
 const P_GREY = {
@@ -29,7 +29,8 @@ const P_GREY = {
   BG_HEADER: GREY_BG_HEADER,
   C_HEADER: GREY_C_HEADER,
   ART_H: '#404040',
-  ART_D: '#4d4d4d'
+  ART_D: '#4d4d4d',
+  SH_C: '#7a7a7a'
 };
 const BG_HEADER_LIGHT = '#0096c8';
 const _P_LIGHT = {
@@ -39,7 +40,8 @@ const _P_LIGHT = {
   SBT_BG: '#0096c8',
   BG_HEADER: BG_HEADER_LIGHT,
   BT_FC: BG_HEADER_LIGHT,
-  C_HEADER: '#4d4d4d'
+  C_HEADER: '#4d4d4d',
+  SH_C: '#aaa'
 };
 const WHITE_BG = '#eaeaea';
 const P_WHITE = {
@@ -67,20 +69,22 @@ const THEME_CONFIG = {
   [_propertyThemeName.THEME_NAME.SAND]: P_SAND
 };
 const _setCustomPropertiesFrom = P => {
-  const _style = document.body.style;
+  const _style = document.body.style,
+    _setProperty = _style.setProperty.bind(_style);
   _style.backgroundColor = P.BG_BODY;
-  _style.setProperty("--bg-c", P.BG);
-  _style.setProperty("--bt-h", P.BT_H);
-  _style.setProperty("--bt-fc", P.BT_FC);
-  _style.setProperty("--bt-rc", P.BT_RC);
-  _style.setProperty("--h-c", P.C_HEADER);
-  _style.setProperty("--h-bg", P.BG_HEADER);
-  _style.setProperty("--mso-bg", P.BG_OPTIONS);
-  _style.setProperty("--msi-c", P.MSI_C);
-  _style.setProperty("--msi-fh", P.MSI_FH);
-  _style.setProperty("--sbt-bg", P.SBT_BG);
-  _style.setProperty("--art-h", P.ART_H);
-  _style.setProperty("--art-d", P.ART_D);
+  _setProperty("--bg-c", P.BG);
+  _setProperty("--bt-h", P.BT_H);
+  _setProperty("--bt-fc", P.BT_FC);
+  _setProperty("--bt-rc", P.BT_RC);
+  _setProperty("--h-c", P.C_HEADER);
+  _setProperty("--h-bg", P.BG_HEADER);
+  _setProperty("--mso-bg", P.BG_OPTIONS);
+  _setProperty("--msi-c", P.MSI_C);
+  _setProperty("--msi-fh", P.MSI_FH);
+  _setProperty("--sbt-bg", P.SBT_BG);
+  _setProperty("--art-h", P.ART_H);
+  _setProperty("--art-d", P.ART_D);
+  _setProperty("--sh-c", P.SH_C);
 };
 const _setUiTheme = themeName => {
   _setCustomPropertiesFrom(THEME_CONFIG[themeName]);

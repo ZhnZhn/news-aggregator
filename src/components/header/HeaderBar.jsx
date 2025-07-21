@@ -6,7 +6,7 @@ import {
 
 import {
   crContainerBgCn,
-  crPanelShadowCn
+  crBoxShadowCn
 } from '../crStyle';
 
 import useToggle from '../hooks/useToggle';
@@ -39,7 +39,7 @@ import HotBar from './HotBar';
 
 const HEADER = "header"
 , CL_HEADER = crContainerBgCn(HEADER)
-, CL_PANEL_BROWSER = crPanelShadowCn(
+, CL_PANEL_BROWSER = crBoxShadowCn(
    crContainerBgCn(`${HEADER}__panel-browser`)
  )
 , CL_ICON_APP = `${HEADER}__icon-app`

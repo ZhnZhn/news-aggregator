@@ -3,7 +3,6 @@
 exports.__esModule = true;
 exports.crInputSelectStyle = exports.S_POWERED_BY = exports.S_INPUT_ROOT = exports.S_INPUT_DATE = exports.S_DIALOG_CAPTION = exports.S_BT_RAISED = exports.S_BROWSER_CAPTION = void 0;
 const S_DIALOG_CAPTION = exports.S_DIALOG_CAPTION = {
-  margin: -1,
   fontSize: '1.125rem'
 };
 const S_BROWSER_CAPTION = exports.S_BROWSER_CAPTION = {

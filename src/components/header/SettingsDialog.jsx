@@ -48,7 +48,7 @@ const TOKEN_USER_SETTINGS = "User Settings"
   display: 'flex',
   justifyContent: 'flex-end',
   flexWrap: 'wrap',
-  margin: '10px 12px 10px 0'
+  padding: '10px 12px 10px 0'
 }
 , S_INPUT_WIDTH = {
   width: 315,

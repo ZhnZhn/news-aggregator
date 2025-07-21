@@ -51,7 +51,9 @@ const P_GREY = {
   C_HEADER: GREY_C_HEADER,
 
   ART_H: '#404040',
-  ART_D: '#4d4d4d'
+  ART_D: '#4d4d4d',
+
+  SH_C: '#7a7a7a'
 };
 
 const BG_HEADER_LIGHT = '#0096c8';
@@ -63,7 +65,8 @@ const _P_LIGHT = {
 
   BG_HEADER: BG_HEADER_LIGHT,
   BT_FC: BG_HEADER_LIGHT,
-  C_HEADER: '#4d4d4d'
+  C_HEADER: '#4d4d4d',
+  SH_C: '#aaa'
 };
 
 const WHITE_BG = '#eaeaea';
@@ -97,26 +100,30 @@ const THEME_CONFIG = {
 };
 
 const _setCustomPropertiesFrom = (P) => {
-  const _style = document.body.style;
+  const _style = document.body.style
+  , _setProperty = _style.setProperty.bind(_style);
+
   _style.backgroundColor = P.BG_BODY
 
-  _style.setProperty("--bg-c", P.BG)
+  _setProperty("--bg-c", P.BG)
 
-  _style.setProperty("--bt-h", P.BT_H)
-  _style.setProperty("--bt-fc", P.BT_FC)
-  _style.setProperty("--bt-rc", P.BT_RC)
+  _setProperty("--bt-h", P.BT_H)
+  _setProperty("--bt-fc", P.BT_FC)
+  _setProperty("--bt-rc", P.BT_RC)
 
-  _style.setProperty("--h-c", P.C_HEADER)
-  _style.setProperty("--h-bg", P.BG_HEADER)
+  _setProperty("--h-c", P.C_HEADER)
+  _setProperty("--h-bg", P.BG_HEADER)
 
-  _style.setProperty("--mso-bg", P.BG_OPTIONS)
-  _style.setProperty("--msi-c", P.MSI_C)
-  _style.setProperty("--msi-fh", P.MSI_FH)
+  _setProperty("--mso-bg", P.BG_OPTIONS)
+  _setProperty("--msi-c", P.MSI_C)
+  _setProperty("--msi-fh", P.MSI_FH)
 
-  _style.setProperty("--sbt-bg", P.SBT_BG)
+  _setProperty("--sbt-bg", P.SBT_BG)
 
-  _style.setProperty("--art-h", P.ART_H)
-  _style.setProperty("--art-d", P.ART_D)
+  _setProperty("--art-h", P.ART_H)
+  _setProperty("--art-d", P.ART_D)
+
+  _setProperty("--sh-c", P.SH_C)
 };
 
 const _setUiTheme = (

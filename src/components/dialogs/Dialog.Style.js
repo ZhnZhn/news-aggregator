@@ -1,5 +1,4 @@
 export const S_DIALOG_CAPTION = {
-  margin: -1,
   fontSize: '1.125rem'
 }
 export const S_BROWSER_CAPTION = {
