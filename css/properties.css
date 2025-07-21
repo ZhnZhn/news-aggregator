@@ -18,8 +18,8 @@
   user-select: none;
 }
 
-.panel-shadow {
-  border-bottom: 4px solid #80c040;
+.box-shadow-5 {
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 5px;
+  box-shadow: var(--sh-c, rgba(0, 0, 0, 0.2)) 0 0 0 5px;
 }

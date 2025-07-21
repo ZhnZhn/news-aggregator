@@ -1,13 +1,8 @@
 .dialog {
-  min-width: 280px;
-  border: solid 2px #3a6799;
-  border: solid 2px var(--h-bg, #3a6799);
+  position: absolute;
+  min-width: 280px;  
 }
 
-/*
-.dialog:focus {
-  /* outline: -webkit-focus-ring-color auto 5px; */
-
-  outline: #80c040 auto 2px;
+dialog:focus {
+ outline: 0;
 }
-*/

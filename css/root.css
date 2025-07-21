@@ -18,6 +18,8 @@
 
  --art-h: #404040;
  --art-d: #4d4d4d; 
+
+ --sh-c: #7a7a7a;
 }
 
 @media (prefers-reduced-motion: reduce) {

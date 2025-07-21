@@ -40,8 +40,7 @@
   line-height: 1.8;
   padding: 4px 42px 2px 4px;
   text-align: center;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-radius: 5px 5px 0px 0px;  
   overflow: hidden;
   white-space: nowrap;
   text-overflow: clip;
