@@ -7,10 +7,9 @@ var _uiApi = require("../uiApi");
 var _useThrottleCallback = _interopRequireDefault(require("../hooks/useThrottleCallback"));
 var _useHasMounted = _interopRequireDefault(require("../hooks/useHasMounted"));
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
-var _ShowHide = _interopRequireDefault(require("../zhn/ShowHide"));
 var _MenuPages = _interopRequireDefault(require("./MenuPages"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const S_SHOW_HIDE = {
+const S_MODAL_PANE = {
     position: 'absolute',
     overflow: 'hidden'
   },
@@ -84,8 +83,6 @@ const ModalSlider = _ref => {
     model = DF_MODEL,
     isShow,
     className,
-    rootStyle,
-    style,
     onClose
   } = _ref;
   const [state, setState] = (0, _uiApi.useState)(() => _initState(model)),
@@ -139,35 +136,29 @@ const ModalSlider = _ref => {
   // _hasMounted
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  const _showHideStyle = {
-      ...style,
-      ...S_SHOW_HIDE,
-      ...pageStyle
-    },
-    _divStyle = {
-      ...S_PAGES,
-      ...pagesStyle,
-      ..._crTransform(pageWidth, pageCurrent)
-    };
+  const _divStyle = {
+    ...S_PAGES,
+    ...pagesStyle,
+    ..._crTransform(pageWidth, pageCurrent)
+  };
   return (0, _jsxRuntime.jsx)(_ModalPane.default, {
     isShow: isShow,
-    style: rootStyle,
+    className: className,
+    style: {
+      ...S_MODAL_PANE,
+      ...pageStyle
+    },
     onClose: onClose,
-    children: (0, _jsxRuntime.jsx)(_ShowHide.default, {
-      className: className,
-      style: _showHideStyle,
-      isShow: isShow,
-      children: (0, _jsxRuntime.jsx)("div", {
-        style: _divStyle,
-        children: (0, _jsxRuntime.jsx)(_MenuPages.default, {
-          isShow: isShow,
-          style: pageStyle,
-          pages: pages,
-          pageCurrent: pageCurrent,
-          onNextPage: hNextPage,
-          onPrevPage: hPrevPage,
-          onClose: onClose
-        })
+    children: (0, _jsxRuntime.jsx)("div", {
+      style: _divStyle,
+      children: (0, _jsxRuntime.jsx)(_MenuPages.default, {
+        isShow: isShow,
+        style: pageStyle,
+        pages: pages,
+        pageCurrent: pageCurrent,
+        onNextPage: hNextPage,
+        onPrevPage: hPrevPage,
+        onClose: onClose
       })
     })
   });

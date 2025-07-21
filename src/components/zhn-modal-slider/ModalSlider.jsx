@@ -7,10 +7,9 @@ import useThrottleCallback from '../hooks/useThrottleCallback';
 import useHasMounted from '../hooks/useHasMounted';
 
 import ModalPane from '../zhn-moleculs/ModalPane';
-import ShowHide from '../zhn/ShowHide';
 import MenuPages from './MenuPages';
 
-const S_SHOW_HIDE = {
+const S_MODAL_PANE = {
   position: 'absolute',
   overflow: 'hidden'
 }
@@ -100,8 +99,6 @@ const ModalSlider = ({
   model=DF_MODEL,
   isShow,
   className,
-  rootStyle,
-  style,
   onClose
 }) => {
   const [
@@ -158,40 +155,31 @@ const ModalSlider = ({
   // _hasMounted
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  const _showHideStyle = {
-    ...style,
-    ...S_SHOW_HIDE,
-    ...pageStyle
-  }, _divStyle = {
+  const _divStyle = {
     ...S_PAGES,
     ...pagesStyle,
     ..._crTransform(pageWidth, pageCurrent)
   };
 
   return (
-      <ModalPane
-        isShow={isShow}
-        style={rootStyle}
-        onClose={onClose}
-      >
-        <ShowHide
-          className={className}
-          style={_showHideStyle}
+    <ModalPane
+      isShow={isShow}
+      className={className}
+      style={{...S_MODAL_PANE, ...pageStyle}}
+      onClose={onClose}
+    >
+      <div style={_divStyle}>
+        <MenuPages
           isShow={isShow}
-        >
-          <div style={_divStyle}>
-            <MenuPages
-              isShow={isShow}
-              style={pageStyle}
-              pages={pages}
-              pageCurrent={pageCurrent}
-              onNextPage={hNextPage}
-              onPrevPage={hPrevPage}
-              onClose={onClose}
-            />
-          </div>
-        </ShowHide>
-      </ModalPane>
+          style={pageStyle}
+          pages={pages}
+          pageCurrent={pageCurrent}
+          onNextPage={hNextPage}
+          onPrevPage={hPrevPage}
+          onClose={onClose}
+        />
+      </div>
+    </ModalPane>
   );
 };
 
