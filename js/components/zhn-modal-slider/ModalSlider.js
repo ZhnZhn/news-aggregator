@@ -9,16 +9,10 @@ var _useHasMounted = _interopRequireDefault(require("../hooks/useHasMounted"));
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 var _MenuPages = _interopRequireDefault(require("./MenuPages"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const S_MODAL_PANE = {
+const CL_SLIDER_PAGES = 'slider-pages',
+  S_MODAL_PANE = {
     position: 'absolute',
     overflow: 'hidden'
-  },
-  S_PAGES = {
-    display: 'flex',
-    flexFlow: 'row nowrap',
-    alignItems: 'flex-start',
-    overflowX: 'hidden',
-    transition: 'all 750ms ease-out'
   };
 
 /*
@@ -136,11 +130,6 @@ const ModalSlider = _ref => {
   // _hasMounted
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  const _divStyle = {
-    ...S_PAGES,
-    ...pagesStyle,
-    ..._crTransform(pageWidth, pageCurrent)
-  };
   return (0, _jsxRuntime.jsx)(_ModalPane.default, {
     isShow: isShow,
     className: className,
@@ -150,7 +139,11 @@ const ModalSlider = _ref => {
     },
     onClose: onClose,
     children: (0, _jsxRuntime.jsx)("div", {
-      style: _divStyle,
+      className: CL_SLIDER_PAGES,
+      style: {
+        ...pagesStyle,
+        ..._crTransform(pageWidth, pageCurrent)
+      },
       children: (0, _jsxRuntime.jsx)(_MenuPages.default, {
         isShow: isShow,
         style: pageStyle,

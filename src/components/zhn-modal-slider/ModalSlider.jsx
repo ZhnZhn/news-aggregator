@@ -9,18 +9,11 @@ import useHasMounted from '../hooks/useHasMounted';
 import ModalPane from '../zhn-moleculs/ModalPane';
 import MenuPages from './MenuPages';
 
-const S_MODAL_PANE = {
+const CL_SLIDER_PAGES = 'slider-pages'
+, S_MODAL_PANE = {
   position: 'absolute',
   overflow: 'hidden'
-}
-, S_PAGES = {
-  display: 'flex',
-  flexFlow: 'row nowrap',
-  alignItems: 'flex-start',
-  overflowX: 'hidden',
-  transition: 'all 750ms ease-out'
 };
-
 
 /*
 static propTypes = {
@@ -155,12 +148,6 @@ const ModalSlider = ({
   // _hasMounted
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  const _divStyle = {
-    ...S_PAGES,
-    ...pagesStyle,
-    ..._crTransform(pageWidth, pageCurrent)
-  };
-
   return (
     <ModalPane
       isShow={isShow}
@@ -168,7 +155,13 @@ const ModalSlider = ({
       style={{...S_MODAL_PANE, ...pageStyle}}
       onClose={onClose}
     >
-      <div style={_divStyle}>
+      <div
+        className={CL_SLIDER_PAGES}
+        style={{
+          ...pagesStyle,
+          ..._crTransform(pageWidth, pageCurrent)
+        }}
+      >
         <MenuPages
           isShow={isShow}
           style={pageStyle}
