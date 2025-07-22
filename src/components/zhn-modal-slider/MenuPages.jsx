@@ -21,6 +21,7 @@ const MenuPages = ({
     pageCurrent={pageCurrent}
     style={style}
     pageNumber={_pageNumber}
+    canBeHidden={_pageNumber > pageCurrent}
     isVisible={isShow && (pageCurrent === index + 1)}
     onNextPage={_isFirstPage ? onNextPage : void 0}
     onPrevPage={_isFirstPage ? void 0 : bindTo(onPrevPage, _pageNumber)}

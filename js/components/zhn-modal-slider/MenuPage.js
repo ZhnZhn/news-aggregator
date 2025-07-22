@@ -4,15 +4,16 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _useFocus = require("../hooks/useFocus");
+var _useCanBeHidden = _interopRequireDefault(require("./useCanBeHidden"));
 var _FocusTrap = _interopRequireDefault(require("../zhn-moleculs/FocusTrap"));
 var _MenuTitle = _interopRequireDefault(require("./MenuTitle"));
 var _MenuItemList = _interopRequireDefault(require("./MenuItemList"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const DF_ITEMS = [];
 const MenuPage = _ref => {
   let {
+    canBeHidden,
     isVisible,
-    items = DF_ITEMS,
+    items,
     style,
     title,
     titleCl,
@@ -23,10 +24,14 @@ const MenuPage = _ref => {
     onNextPage,
     onPrevPage
   } = _ref;
-  const [_refFirstItem, _refLastItem, _getRefItem] = (0, _useFocus.useItemsFocusTrap)(items, isVisible, !title);
+  const [_refFirstItem, _refLastItem, _getRefItem] = (0, _useFocus.useItemsFocusTrap)(items, isVisible, !title),
+    _style = (0, _useCanBeHidden.default)(canBeHidden);
   return (0, _jsxRuntime.jsx)("div", {
     "aria-hidden": isVisible ? void 0 : "true",
-    style: style,
+    style: {
+      ...style,
+      ..._style
+    },
     children: (0, _jsxRuntime.jsxs)(_FocusTrap.default, {
       refFirst: _refFirstItem,
       refLast: _refLastItem,
@@ -49,6 +54,7 @@ const MenuPage = _ref => {
 
 /*
 MenuPage.propTypes = {
+  canBeHidden: PropTypes.bool,
   isVisible: PropTypes.bool,
   title: PropTypes.string,
   pageNumber: PropTypes.number,

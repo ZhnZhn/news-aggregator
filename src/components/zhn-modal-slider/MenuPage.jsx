@@ -1,14 +1,14 @@
 import { useItemsFocusTrap } from '../hooks/useFocus';
+import useCanBeHidden from './useCanBeHidden';
 
 import FocusTrap from '../zhn-moleculs/FocusTrap';
 import MenuTitle from './MenuTitle';
 import MenuItemList from './MenuItemList';
 
-const DF_ITEMS = [];
-
 const MenuPage = ({
+  canBeHidden,
   isVisible,
-  items=DF_ITEMS,
+  items,
   style,
   title,
   titleCl,
@@ -27,12 +27,15 @@ const MenuPage = ({
     items,
     isVisible,
     !title
+  )
+  , _style = useCanBeHidden(
+    canBeHidden
   );
 
   return (
     <div
       aria-hidden={isVisible ? void 0: "true"}
-      style={style}
+      style={{...style, ..._style}}
     >
       <FocusTrap
         refFirst={_refFirstItem}
@@ -42,7 +45,7 @@ const MenuPage = ({
           refEl={_refFirstItem}
           titleCl={titleCl}
           title={title}
-          onClick={onPrevPage}          
+          onClick={onPrevPage}
         />
         <MenuItemList
           getRefItem={_getRefItem}
@@ -60,6 +63,7 @@ const MenuPage = ({
 
 /*
 MenuPage.propTypes = {
+  canBeHidden: PropTypes.bool,
   isVisible: PropTypes.bool,
   title: PropTypes.string,
   pageNumber: PropTypes.number,

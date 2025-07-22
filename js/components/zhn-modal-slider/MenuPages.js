@@ -30,6 +30,7 @@ const MenuPages = _ref => {
       pageCurrent: pageCurrent,
       style: style,
       pageNumber: _pageNumber,
+      canBeHidden: _pageNumber > pageCurrent,
       isVisible: isShow && pageCurrent === index + 1,
       onNextPage: _isFirstPage ? onNextPage : void 0,
       onPrevPage: _isFirstPage ? void 0 : (0, _bindTo.bindTo)(onPrevPage, _pageNumber),
