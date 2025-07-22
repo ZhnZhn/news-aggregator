@@ -3,10 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
-var _useItemsFocusTrap = _interopRequireDefault(require("../hooks/useItemsFocusTrap"));
-var _useGetRefValue = _interopRequireDefault(require("../hooks/useGetRefValue2"));
-var _useAsyncFocusIf = _interopRequireDefault(require("../hooks/useAsyncFocusIf"));
+var _useFocus = require("../hooks/useFocus");
 var _FocusTrap = _interopRequireDefault(require("../zhn-moleculs/FocusTrap"));
 var _MenuTitle = _interopRequireDefault(require("./MenuTitle"));
 var _MenuItemList = _interopRequireDefault(require("./MenuItemList"));
@@ -26,25 +23,20 @@ const MenuPage = _ref => {
     onNextPage,
     onPrevPage
   } = _ref;
-  const _refTitle = (0, _uiApi.useRef)(),
-    [_getFocusRef, _refLastItem, _refFirstItem] = (0, _useItemsFocusTrap.default)(items),
-    _getFocusFirstItem = (0, _useGetRefValue.default)(_refTitle, _refFirstItem),
-    _hClickTitle = (0, _uiApi.useCallback)(() => {
-      onPrevPage(pageNumber);
-    }, [onPrevPage, pageNumber]);
-  (0, _useAsyncFocusIf.default)(isVisible, _getFocusFirstItem);
+  const [_refFirstItem, _refLastItem, _getRefItem] = (0, _useFocus.useItemsFocusTrap)(items, isVisible, !title);
   return (0, _jsxRuntime.jsx)("div", {
+    "aria-hidden": isVisible ? void 0 : "true",
     style: style,
     children: (0, _jsxRuntime.jsxs)(_FocusTrap.default, {
-      refFirst: _getFocusFirstItem,
+      refFirst: _refFirstItem,
       refLast: _refLastItem,
       children: [(0, _jsxRuntime.jsx)(_MenuTitle.default, {
-        refTitle: _refTitle,
+        refEl: _refFirstItem,
         titleCl: titleCl,
         title: title,
-        onClick: _hClickTitle
+        onClick: onPrevPage
       }), (0, _jsxRuntime.jsx)(_MenuItemList.default, {
-        getFocusRef: _getFocusRef,
+        getRefItem: _getRefItem,
         items: items,
         itemCl: itemCl || titleCl,
         pageNumber: pageNumber,
@@ -73,6 +65,5 @@ MenuPage.propTypes = {
   onClose: PropTypes.func
 }
 */
-var _default = MenuPage;
-exports.default = _default;
+var _default = exports.default = MenuPage;
 //# sourceMappingURL=MenuPage.js.map

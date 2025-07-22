@@ -1,14 +1,6 @@
-import {
-  useRef,
-  useCallback
-} from '../uiApi';
-
-import useItemsFocusTrap from '../hooks/useItemsFocusTrap';
-import useGetRefValue2 from '../hooks/useGetRefValue2';
-import useAsyncFocusIf from '../hooks/useAsyncFocusIf';
+import { useItemsFocusTrap } from '../hooks/useFocus';
 
 import FocusTrap from '../zhn-moleculs/FocusTrap';
-
 import MenuTitle from './MenuTitle';
 import MenuItemList from './MenuItemList';
 
@@ -27,41 +19,33 @@ const MenuPage = ({
   onNextPage,
   onPrevPage
 }) => {
-  const _refTitle = useRef()
-  , [
-    _getFocusRef,
+  const [
+    _refFirstItem,
     _refLastItem,
-    _refFirstItem
+    _getRefItem
   ] = useItemsFocusTrap(
-    items
-  )
-  , _getFocusFirstItem = useGetRefValue2(
-    _refTitle,
-    _refFirstItem
-  )
-  , _hClickTitle = useCallback(() => {
-      onPrevPage(pageNumber)
-  }, [onPrevPage, pageNumber]);
-
-  useAsyncFocusIf(
+    items,
     isVisible,
-    _getFocusFirstItem
-  )
+    !title
+  );
 
   return (
-    <div style={style}>
+    <div
+      aria-hidden={isVisible ? void 0: "true"}
+      style={style}
+    >
       <FocusTrap
-        refFirst={_getFocusFirstItem}
+        refFirst={_refFirstItem}
         refLast={_refLastItem}
       >
         <MenuTitle
-          refTitle={_refTitle}
+          refEl={_refFirstItem}
           titleCl={titleCl}
           title={title}
-          onClick={_hClickTitle}
+          onClick={onPrevPage}          
         />
         <MenuItemList
-          getFocusRef={_getFocusRef}
+          getRefItem={_getRefItem}
           items={items}
           itemCl={itemCl || titleCl}
           pageNumber={pageNumber}

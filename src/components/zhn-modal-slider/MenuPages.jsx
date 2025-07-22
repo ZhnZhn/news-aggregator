@@ -1,4 +1,6 @@
+import { bindTo } from '../../utils/bindTo';
 import { safeMap } from '../uiApi';
+
 import MenuPage from './MenuPage';
 
 const MenuPages = ({
@@ -9,17 +11,21 @@ const MenuPages = ({
   onNextPage,
   onPrevPage,
   onClose
-}) => safeMap(pages, ({key, ...restProps}, index) => (<MenuPage
-  key={key}
-  {...restProps}
-  isShow={isShow}
-  pageCurrent={pageCurrent}
-  style={style}
-  pageNumber={index + 1}
-  isVisible={isShow && (pageCurrent === index + 1)}
-  onNextPage={index === 0 ? onNextPage : void 0}
-  onPrevPage={index !== 0 ? onPrevPage : void 0}
-  onClose={onClose}
-/>))
+}) => safeMap(pages, ({key, ...restProps}, index) => {
+  const _pageNumber = index + 1
+  , _isFirstPage = index === 0;
+  return (<MenuPage
+    key={key}
+    {...restProps}
+    isShow={isShow}
+    pageCurrent={pageCurrent}
+    style={style}
+    pageNumber={_pageNumber}
+    isVisible={isShow && (pageCurrent === index + 1)}
+    onNextPage={_isFirstPage ? onNextPage : void 0}
+    onPrevPage={_isFirstPage ? void 0 : bindTo(onPrevPage, _pageNumber)}
+    onClose={onClose}
+  />)
+})
 
 export default MenuPages

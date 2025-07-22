@@ -32,7 +32,7 @@ const _fClick = (
   : void 0;
 
 const MenuItemList = ({
-  getFocusRef,
+  getRefItem,
   items,
   itemCl,
   pageNumber,
@@ -63,7 +63,7 @@ const MenuItemList = ({
      return (
        <MenuItem
          key={name}
-         refEl={getFocusRef(index)}
+         refEl={getRefItem(index)}
          className={cn || itemCl}
          style={S_ITEM}
          onClick={_onClick}

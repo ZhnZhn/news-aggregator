@@ -13,13 +13,13 @@ const S_ITEM = {
 };
 
 const MenuTitle = ({
-  refTitle,
+  refEl,
   titleCl,
   title,
   onClick
 }) => title ? (
   <MenuItem
-    refEl={refTitle}
+    refEl={refEl}
     className={titleCl}
     style={S_ITEM}
     onClick={onClick}

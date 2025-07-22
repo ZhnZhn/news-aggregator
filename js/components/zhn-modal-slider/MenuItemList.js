@@ -25,7 +25,7 @@ const _fClick = (isClose, onClick, onClose) => (0, _uiApi.isFn)(onClick) ? isClo
 } : onClick : void 0;
 const MenuItemList = _ref => {
   let {
-    getFocusRef,
+    getRefItem,
     items,
     itemCl,
     pageNumber,
@@ -47,7 +47,7 @@ const MenuItemList = _ref => {
         children: ">"
       })] : [_fClick(isClose, onClick, onClose), null];
       return (0, _jsxRuntime.jsxs)(_MenuItem.default, {
-        refEl: getFocusRef(index),
+        refEl: getRefItem(index),
         className: cn || itemCl,
         style: S_ITEM,
         onClick: _onClick,
