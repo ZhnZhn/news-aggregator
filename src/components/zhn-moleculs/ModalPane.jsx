@@ -1,8 +1,8 @@
-import { crPresentationRole } from '../a11yFn';
-
 import {
+  S_NONE,
   crCn,
-  crContainerBgCn
+  crContainerBgCn,
+  crStyle2
 } from '../crStyle'
 
 import useClickOutside from '../hooks/useClickOutside';
@@ -15,7 +15,8 @@ const ModalPane = ({
   className,
   style,
   children,
-  onClose
+  onClose,
+  ...restProps
 }) => {
   const _refElement = useClickOutside(isShow, onClose)
   , _hKeyEscape = useKeyEscape(onClose);
@@ -23,10 +24,10 @@ const ModalPane = ({
   /*eslint-disable jsx-a11y/no-static-element-interactions*/
   return (
     <div
-       {...crPresentationRole(isShow)}
+       {...restProps}
        ref={_refElement}
        className={crCn(CL_MODAL_PANE, className)}
-       style={style}
+       style={crStyle2(style, isShow ? void 0 : S_NONE)}
        onKeyDown={isShow ? _hKeyEscape : void 0}
     >
       {children}

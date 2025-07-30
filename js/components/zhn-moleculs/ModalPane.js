@@ -3,7 +3,6 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _a11yFn = require("../a11yFn");
 var _crStyle = require("../crStyle");
 var _useClickOutside = _interopRequireDefault(require("../hooks/useClickOutside"));
 var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
@@ -15,17 +14,18 @@ const ModalPane = _ref => {
     className,
     style,
     children,
-    onClose
+    onClose,
+    ...restProps
   } = _ref;
   const _refElement = (0, _useClickOutside.default)(isShow, onClose),
     _hKeyEscape = (0, _useKeyEscape.default)(onClose);
 
   /*eslint-disable jsx-a11y/no-static-element-interactions*/
   return (0, _jsxRuntime.jsx)("div", {
-    ...(0, _a11yFn.crPresentationRole)(isShow),
+    ...restProps,
     ref: _refElement,
     className: (0, _crStyle.crCn)(CL_MODAL_PANE, className),
-    style: style,
+    style: (0, _crStyle.crStyle2)(style, isShow ? void 0 : _crStyle.S_NONE),
     onKeyDown: isShow ? _hKeyEscape : void 0,
     children: children
   })
