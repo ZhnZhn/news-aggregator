@@ -99,8 +99,8 @@ const NewsPane = _ref2 => {
       onPlusWidth,
       onMinusWidth
     } = _MORE_HANDLERS,
-    [isShow, toggleIsShow] = (0, _useToggle.default)(true),
-    [isMore, _showMore, _hideMore] = (0, _useBool.default)(false),
+    [isShow, toggleIsShow] = (0, _useToggle.default)(!0),
+    [isMore, _showMore, _hideMore] = (0, _useBool.default)(!1),
     [state, setState] = (0, _uiApi.useState)({
       articles: [],
       sortBy: '',
@@ -122,7 +122,7 @@ const NewsPane = _ref2 => {
     }, [isRelatedBars, articles])
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hHide = (0, _uiApi.useCallback)(() => {
-      toggleIsShow(false);
+      toggleIsShow(!1);
     }, [])
     // onClose
     /*eslint-enable react-hooks/exhaustive-deps */,
@@ -131,13 +131,13 @@ const NewsPane = _ref2 => {
     }, []);
   useMsPane(msPane => {
     if (msPane && msPane.id === id) {
-      toggleIsShow(true);
+      toggleIsShow(!0);
     }
   });
   useMsItem(msItem => {
     if (msItem && msItem.id === id) {
-      if (msItem.isAdd === true) {
-        toggleIsShow(true);
+      if (msItem.isAdd === !0) {
+        toggleIsShow(!0);
         setState({
           articles: msItem.data,
           sortBy: msItem.sortBy,
@@ -146,7 +146,7 @@ const NewsPane = _ref2 => {
           isRelatedBars: msItem.isRelatedBars
         });
         (0, _uiApi.focusAsyncRefElement)(_refFirstItem);
-      } else if (msItem.isUpdate === true) {
+      } else if (msItem.isUpdate === !0) {
         setState(prevState => ({
           ...prevState,
           articles: msItem.data
@@ -167,6 +167,7 @@ const NewsPane = _ref2 => {
       ..._showHideStyle
     },
     children: [(0, _jsxRuntime.jsx)(_ModalSlider.default, {
+      ariaLabel: "Pane Menu",
       isShow: isMore,
       className: CL_MENU_MORE,
       model: _MODEL_MORE,

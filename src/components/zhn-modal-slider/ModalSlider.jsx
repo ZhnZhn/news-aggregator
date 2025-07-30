@@ -89,6 +89,7 @@ const _crTransform = (
 };
 
 const ModalSlider = ({
+  ariaLabel,
   model=DF_MODEL,
   isShow,
   className,
@@ -154,6 +155,9 @@ const ModalSlider = ({
       className={className}
       style={{...S_MODAL_PANE, ...pageStyle}}
       onClose={onClose}
+      role="menu"
+      aria-label={ariaLabel}
+      tabIndex="-1"
     >
       <div
         className={CL_SLIDER_PAGES}

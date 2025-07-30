@@ -74,6 +74,7 @@ const _crTransform = (pageWidth, pageCurrent) => {
 };
 const ModalSlider = _ref => {
   let {
+    ariaLabel,
     model = DF_MODEL,
     isShow,
     className,
@@ -138,6 +139,9 @@ const ModalSlider = _ref => {
       ...pageStyle
     },
     onClose: onClose,
+    role: "menu",
+    "aria-label": ariaLabel,
+    tabIndex: "-1",
     children: (0, _jsxRuntime.jsx)("div", {
       className: CL_SLIDER_PAGES,
       style: {

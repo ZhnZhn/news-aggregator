@@ -151,12 +151,12 @@ const NewsPane = ({
   , [
     isShow,
     toggleIsShow
-  ] = useToggle(true)
+  ] = useToggle(!0)
   , [
     isMore,
     _showMore,
     _hideMore
-  ] = useBool(false)
+  ] = useBool(!1)
   , [
     state,
     setState
@@ -189,7 +189,7 @@ const NewsPane = ({
   }, [isRelatedBars, articles])
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hHide = useCallback(() => {
-     toggleIsShow(false)
+     toggleIsShow(!1)
   }, [])
   // onClose
   /*eslint-enable react-hooks/exhaustive-deps */
@@ -199,14 +199,14 @@ const NewsPane = ({
 
   useMsPane(msPane => {
     if (msPane && msPane.id === id) {
-      toggleIsShow(true)
+      toggleIsShow(!0)
     }
   })
 
   useMsItem(msItem => {
     if (msItem && msItem.id === id) {
-      if (msItem.isAdd === true) {
-        toggleIsShow(true)
+      if (msItem.isAdd === !0) {
+        toggleIsShow(!0)
         setState({
           articles: msItem.data,
           sortBy: msItem.sortBy,
@@ -215,7 +215,7 @@ const NewsPane = ({
           isRelatedBars: msItem.isRelatedBars
         })
         focusAsyncRefElement(_refFirstItem)
-      } else if (msItem.isUpdate === true) {
+      } else if (msItem.isUpdate === !0) {
         setState(prevState => ({
           ...prevState,
           articles: msItem.data
@@ -248,6 +248,7 @@ const NewsPane = ({
        }}
     >
       <ModalSlider
+        ariaLabel="Pane Menu"
         isShow={isMore}
         className={CL_MENU_MORE}
         model={_MODEL_MORE}
