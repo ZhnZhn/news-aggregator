@@ -13,11 +13,6 @@ import {
 import isNumberInRange from '../../utils/isNumberInRange';
 import setDfItemTo from './setDfItemTo';
 
-const FONT_SIZE_CONFIG = [
-  [4, 16],
-  [4, 18]
-];
-
 const _crFontItem = (
   size
 ) => [`${size}px`, size]
@@ -29,15 +24,11 @@ const _crFontItem = (
    (_, index) => _crFontItem(smallSize+index)
 );
 
-export const FONT_SIZE_OPTIONS = _crFontSizeOptions(
-  ...(HAS_WIDE_SCREEN
-    ? FONT_SIZE_CONFIG[0]
-    : FONT_SIZE_CONFIG[1])
-)
+export const FONT_SIZE_OPTIONS = _crFontSizeOptions(6, 16)
 
 const DF_APP_FONT_SIZE = HAS_WIDE_SCREEN
   ? FONT_SIZE_OPTIONS[2][1]
-  : FONT_SIZE_OPTIONS[3][1]
+  : FONT_SIZE_OPTIONS[4][1]
 , MIN_FS = 16
 , MAX_FS = 21;
 let _appFontSize = DF_APP_FONT_SIZE;

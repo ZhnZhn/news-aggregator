@@ -8,11 +8,10 @@ var _localStorageFn = require("../../utils/localStorageFn");
 var _LS = require("../../flux/LS");
 var _isNumberInRange = _interopRequireDefault(require("../../utils/isNumberInRange"));
 var _setDfItemTo = _interopRequireDefault(require("./setDfItemTo"));
-const FONT_SIZE_CONFIG = [[4, 16], [4, 18]];
-const _crFontItem = size => [size + "px", size],
+const _crFontItem = size => [`${size}px`, size],
   _crFontSizeOptions = (itemSize, smallSize) => new Array(itemSize).fill('').map((_, index) => _crFontItem(smallSize + index));
-const FONT_SIZE_OPTIONS = exports.FONT_SIZE_OPTIONS = _crFontSizeOptions(...(_has.HAS_WIDE_SCREEN ? FONT_SIZE_CONFIG[0] : FONT_SIZE_CONFIG[1]));
-const DF_APP_FONT_SIZE = _has.HAS_WIDE_SCREEN ? FONT_SIZE_OPTIONS[2][1] : FONT_SIZE_OPTIONS[3][1],
+const FONT_SIZE_OPTIONS = exports.FONT_SIZE_OPTIONS = _crFontSizeOptions(6, 16);
+const DF_APP_FONT_SIZE = _has.HAS_WIDE_SCREEN ? FONT_SIZE_OPTIONS[2][1] : FONT_SIZE_OPTIONS[5][1],
   MIN_FS = 16,
   MAX_FS = 21;
 let _appFontSize = DF_APP_FONT_SIZE;
@@ -27,7 +26,7 @@ const initFontSize = () => {
       _appFontSize = _fontSize;
     }
   }
-  _documentElement.style.fontSize = _appFontSize + "px";
+  _documentElement.style.fontSize = `${_appFontSize}px`;
   (0, _setDfItemTo.default)(FONT_SIZE_OPTIONS, _appFontSize, 1);
 };
 exports.initFontSize = initFontSize;
@@ -35,7 +34,7 @@ const selectFontSize = item => {
   const value = (item || [])[1];
   if ((0, _isNumberInRange.default)(MIN_FS, MAX_FS, value)) {
     _appFontSize = value;
-    _documentElement.style.fontSize = value + "px";
+    _documentElement.style.fontSize = `${value}px`;
     (0, _localStorageFn.writeToLs)(_LS.LS_FONT_SIZE_KEY, value);
   }
 };
