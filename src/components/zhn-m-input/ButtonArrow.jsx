@@ -4,6 +4,7 @@ import { CL_SELECT_DIV_BT } from './Input.Style';
 const ButtonArrow = ({
   refEl,
   style,
+  tabIndex,
   onKeyDown,
   onClick
 }) => (
@@ -12,6 +13,7 @@ const ButtonArrow = ({
     type="button"
     className={CL_SELECT_DIV_BT}
     style={style}
+    tabIndex={tabIndex}
     onKeyDown={onKeyDown}
     onClick={onClick}
   >

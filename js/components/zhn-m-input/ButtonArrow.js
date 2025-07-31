@@ -10,6 +10,7 @@ const ButtonArrow = _ref => {
   let {
     refEl,
     style,
+    tabIndex,
     onKeyDown,
     onClick
   } = _ref;
@@ -18,6 +19,7 @@ const ButtonArrow = _ref => {
     type: "button",
     className: _Input.CL_SELECT_DIV_BT,
     style: style,
+    tabIndex: tabIndex,
     onKeyDown: onKeyDown,
     onClick: onClick,
     children: (0, _jsxRuntime.jsx)(_ArrowCell.default, {})
