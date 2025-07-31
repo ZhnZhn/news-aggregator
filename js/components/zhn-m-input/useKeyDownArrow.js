@@ -7,13 +7,10 @@ const SCROLL_OPTIONS = {
   block: 'center',
   behavior: 'smooth'
 };
+const _setItemFocus = (elItem, ref) => elItem ? (elItem.scrollIntoView(SCROLL_OPTIONS), elItem.focus(), (0, _uiApi.setRefValue)(ref, elItem), !0) : !1;
 const _fFocusItem = propName => ref => {
   const _elItem = ((0, _uiApi.getRefValue)(ref) || {})[propName];
-  if (_elItem) {
-    _elItem.scrollIntoView(SCROLL_OPTIONS);
-    _elItem.focus();
-    (0, _uiApi.setRefValue)(ref, _elItem);
-  }
+  return _setItemFocus(_elItem, ref);
 };
 const _focusNextItem = _fFocusItem('nextSibling');
 const _focusPrevItem = _fFocusItem('previousSibling');
@@ -34,6 +31,5 @@ const useKeyDownArrow = onClose => {
   //onClose
   /*eslint-enable react-hooks/exhaustive-deps */];
 };
-var _default = useKeyDownArrow;
-exports.default = _default;
+var _default = exports.default = useKeyDownArrow;
 //# sourceMappingURL=useKeyDownArrow.js.map

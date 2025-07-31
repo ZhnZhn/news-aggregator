@@ -17,13 +17,20 @@ const SCROLL_OPTIONS = {
   behavior: 'smooth'
 };
 
+const _setItemFocus = (
+  elItem,
+  ref
+) => elItem
+  ? (
+  elItem.scrollIntoView(SCROLL_OPTIONS),
+  elItem.focus(),
+  setRefValue(ref, elItem),
+  !0
+) : !1;
+
 const _fFocusItem = propName => ref => {
   const _elItem = (getRefValue(ref) || {})[propName];
-  if (_elItem) {
-    _elItem.scrollIntoView(SCROLL_OPTIONS)
-    _elItem.focus()
-    setRefValue(ref, _elItem)
-  }
+  return _setItemFocus(_elItem, ref);
 };
 
 const _focusNextItem = _fFocusItem('nextSibling');
