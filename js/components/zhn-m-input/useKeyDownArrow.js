@@ -14,17 +14,30 @@ const _fFocusItem = propName => ref => {
 };
 const _focusNextItem = _fFocusItem('nextSibling');
 const _focusPrevItem = _fFocusItem('previousSibling');
+const _fFocusParentItem = propName => ref => {
+  const _elItem = (((0, _uiApi.getRefValue)(ref) || {}).parentNode || {})[propName];
+  _setItemFocus(_elItem, ref);
+};
+const _focusFirstItem = _fFocusParentItem('firstChild');
+const _focusLastItem = _fFocusParentItem('lastChild');
 const useKeyDownArrow = onClose => {
-  const _refFocus = (0, _uiApi.useRef)();
+  const _refItemFocused = (0, _uiApi.useRef)();
   /*eslint-disable react-hooks/exhaustive-deps */
-  return [_refFocus, (0, _uiApi.useCallback)(evt => {
-    if (evt.key === _uiApi.KEY_ARROW_DOWN) {
+  return [_refItemFocused, (0, _uiApi.useCallback)(evt => {
+    if (evt.key === _uiApi.KEY_ARROW_DOWN || evt.key === _uiApi.KEY_TAB) {
       (0, _uiApi.stopDefaultFor)(evt);
-      _focusNextItem(_refFocus);
+      _focusNextItem(_refItemFocused);
     } else if (evt.key === _uiApi.KEY_ARROW_UP) {
       (0, _uiApi.stopDefaultFor)(evt);
-      _focusPrevItem(_refFocus);
-    } else if (evt.key === _uiApi.KEY_ESCAPE || evt.key === _uiApi.KEY_TAB) {
+      _focusPrevItem(_refItemFocused);
+    } else if (evt.key === _uiApi.KEY_HOME) {
+      (0, _uiApi.stopDefaultFor)(evt);
+      _focusFirstItem(_refItemFocused);
+    } else if (evt.key === _uiApi.KEY_END) {
+      (0, _uiApi.stopDefaultFor)(evt);
+      _focusLastItem(_refItemFocused);
+    } else if (evt.key === _uiApi.KEY_ESCAPE) {
+      (0, _uiApi.stopDefaultFor)(evt);
       onClose();
     }
   }, [])

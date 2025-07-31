@@ -86,7 +86,7 @@ const OptionsPane = ({
   const _refFirstItem = useRef(null)
   , _refItem = useRef(null)
   , [
-    _refFocus,
+    _refItemFocused,
     _hKeyDownArrow
   ] = useKeyDownArrow(onClose)
 
@@ -94,14 +94,14 @@ const OptionsPane = ({
   useImperativeHandle(refOp, () => ({
     hKeyDown: _hKeyDownArrow
   }), [])
-  // _hKeyDown
+  // _hKeyDownArrow
   /*eslint-enable react-hooks/exhaustive-deps */
 
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(()=>{
     if (isShow && isFocusItem) {
       setRefValue(
-        _refFocus,
+        _refItemFocused,
         focusRefElement(_refItem, _refFirstItem)
       )
     }

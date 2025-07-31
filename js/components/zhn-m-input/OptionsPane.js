@@ -61,19 +61,19 @@ const OptionsPane = _ref3 => {
   } = _ref3;
   const _refFirstItem = (0, _uiApi.useRef)(null),
     _refItem = (0, _uiApi.useRef)(null),
-    [_refFocus, _hKeyDownArrow] = (0, _useKeyDownArrow.default)(onClose);
+    [_refItemFocused, _hKeyDownArrow] = (0, _useKeyDownArrow.default)(onClose);
 
   /*eslint-disable react-hooks/exhaustive-deps */
   (0, _uiApi.useImperativeHandle)(refOp, () => ({
     hKeyDown: _hKeyDownArrow
   }), []);
-  // _hKeyDown
+  // _hKeyDownArrow
   /*eslint-enable react-hooks/exhaustive-deps */
 
   /*eslint-disable react-hooks/exhaustive-deps */
   (0, _uiApi.useEffect)(() => {
     if (isShow && isFocusItem) {
-      (0, _uiApi.setRefValue)(_refFocus, (0, _uiApi.focusRefElement)(_refItem, _refFirstItem));
+      (0, _uiApi.setRefValue)(_refItemFocused, (0, _uiApi.focusRefElement)(_refItem, _refFirstItem));
     }
   }, [isShow, isFocusItem]);
   // _refFocus
