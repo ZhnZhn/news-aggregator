@@ -4,7 +4,7 @@ import { HAS_KEYBOARD_FOCUS } from '../has';
 import useFocusRefElementIf from '../hooks/useFocusRefElementIf';
 import useItemsFocusTrap from '../hooks/useItemsFocusTrap';
 
-import ModalPopup from '../zhn-moleculs/ModalPopup';
+import ModalPane from '../zhn-moleculs/ModalPane';
 import FocusTrap from '../zhn-moleculs/FocusTrap';
 import MenuAccordion from './MenuAccordion';
 
@@ -27,21 +27,21 @@ const PanelQuery = ({
   )[0];
 
   return (
-    <ModalPopup
+    <ModalPane
       isShow={isShow}
       className={className}
       onClose={onClose}
     >
-       <FocusTrap
-         refFirst={_refFirstItem}
-         refLast={_refLastItem}
-       >
-         <MenuAccordion
-           menuModel={menuModel}
-           getFocusRef={_getFocusRef}
-         />
-       </FocusTrap>
-     </ModalPopup>
+      <FocusTrap
+        refFirst={_refFirstItem}
+        refLast={_refLastItem}
+      >
+        <MenuAccordion
+          menuModel={menuModel}
+          getFocusRef={_getFocusRef}
+        />
+      </FocusTrap>
+    </ModalPane>
   );
 };
 
