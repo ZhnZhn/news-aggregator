@@ -3,6 +3,7 @@ import {
   useState,
   useMemo,
   KEY_ARROW_DOWN,
+  KEY_ARROW_UP,
   focusRefElement,
   stopDefaultFor
 } from '../uiApi';
@@ -11,7 +12,11 @@ import useAriaCombobox from './useAriaCombobox';
 
 import ButtonArrow from './ButtonArrow';
 import OptionsPane from './OptionsPane';
-import { getItemCaption } from './OptionFn';
+import {
+  FOCUS_NEXT_OPTION,
+  FOCUS_PREV_OPTION,
+  getItemCaption
+} from './OptionFn';
 
 import {
   CL_SELECT,
@@ -44,31 +49,35 @@ const InputSelect = ({
     setItem
   ] = useState(initItem || DF_INIT_ITEM)
   , [
+    isShowTuple,
+    setIsShowTuple
+  ] = useState([!1])
+  , [
+    showOptions,
+    hideOptions
+  ] = useMemo(() => [
+    (focusOption) => setIsShowTuple([!0, focusOption]),
+    () => setIsShowTuple([!1])
+  ], [])
+  , [
     isShowOptions,
-    setIsShowOptions
-  ] = useState(false)
+    focusOption
+  ] = isShowTuple
   , [
     _optionPaneId,
     _ariaComboboxProps
   ] = useAriaCombobox(isShowOptions)
-  , [
-    _hShowOptions,
-    _hCloseOptions
-  ] = useMemo(() => [
-      (evt) => {
-        stopDefaultFor(evt)
-        setIsShowOptions(true)
-      },
-      () => {
-        setIsShowOptions(false)
-        focusRefElement(_refBtArrow)
-      }
-    ], [])
   /*eslint-disable react-hooks/exhaustive-deps */
   , [
+    _hCloseOptions,
     _hSelect,
     _hKeyDown
   ] = useMemo(() => [
+    () => {
+      hideOptions()
+      focusRefElement(_refBtArrow)
+    },
+    // hideOptions
     (item, evt) => {
         stopDefaultFor(evt)
         onSelect(item, id)
@@ -78,10 +87,14 @@ const InputSelect = ({
     // id, onSelect, _hCloseOptions
     (evt) => {
       if (evt.key === KEY_ARROW_DOWN) {
-        _hShowOptions(evt)
+        stopDefaultFor(evt)
+        showOptions(FOCUS_NEXT_OPTION)
+      } else if (evt.key === KEY_ARROW_UP) {
+        stopDefaultFor(evt)
+        showOptions(FOCUS_PREV_OPTION)
       }
     }
-    // _hShowOptions
+    // showOptions
   ]
   , [])
   /*eslint-enable react-hooks/exhaustive-deps */
@@ -92,8 +105,8 @@ const InputSelect = ({
       {..._ariaComboboxProps}
       tabIndex="-1"
       className={CL_SELECT}
-      style={style}
-      onClick={_hShowOptions}
+      style={style}      
+      onClick={showOptions}
       onKeyDown={_hKeyDown}
     >
     {/*eslint-enable jsx-a11y/no-static-element-interactions*/}
@@ -103,6 +116,7 @@ const InputSelect = ({
       <OptionsPane
          id={_optionPaneId}
          isShow={isShowOptions}
+         focusOption={focusOption}
          className={CL_SELECT_OPTIONS}
          item={item}
          options={options}

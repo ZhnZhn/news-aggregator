@@ -5,15 +5,20 @@ import {
 
   KEY_ENTER,
 
-  focusRefElement,
+  getRefValue,
   setRefValue
 } from '../uiApi';
 
 import ItemStack from '../zhn/ItemStack';
 import ModalPane from '../zhn-moleculs/ModalPane';
 import {
+  FOCUS_NEXT_OPTION,
+  FOCUS_PREV_OPTION,
   getItemCaption,
-  getItemValue
+  getItemValue,
+  focusNextItem,
+  focusPrevItem,
+  setItemFocus
 } from './OptionFn';
 
 import useKeyDownArrow from './useKeyDownArrow';
@@ -75,6 +80,7 @@ const OptionsPane = ({
   id,
   isShow,
   isFocusItem=!0,
+  focusOption,
   className,
   style,
   options,
@@ -99,13 +105,31 @@ const OptionsPane = ({
 
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(()=>{
+    /*
     if (isShow && isFocusItem) {
       setRefValue(
         _refItemFocused,
         focusRefElement(_refItem, _refFirstItem)
       )
     }
-  }, [isShow, isFocusItem])
+    */
+    if (isShow && isFocusItem) {
+      const _elItem = getRefValue(_refItem) || getRefValue(_refFirstItem);
+      if (!getRefValue(_refItemFocused) && focusOption) {
+        setRefValue(_refItemFocused, _elItem)
+      }
+
+      const _hasBeenItemFocused = focusOption === FOCUS_NEXT_OPTION
+        ? focusNextItem(_refItemFocused)
+        : focusOption === FOCUS_PREV_OPTION
+        ? focusPrevItem(_refItemFocused)
+        : !1;
+
+      if (!_hasBeenItemFocused) {
+        setItemFocus(_elItem, _refItemFocused)
+      }
+    }
+  }, [isShow, isFocusItem, focusOption])
   // _refFocus
   /*eslint-enable react-hooks/exhaustive-deps */
 

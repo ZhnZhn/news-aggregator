@@ -26,17 +26,17 @@ const InputSelect = _ref => {
   } = _ref;
   const _refBtArrow = (0, _uiApi.useRef)(),
     [item, setItem] = (0, _uiApi.useState)(initItem || DF_INIT_ITEM),
-    [isShowOptions, setIsShowOptions] = (0, _uiApi.useState)(false),
-    [_optionPaneId, _ariaComboboxProps] = (0, _useAriaCombobox.default)(isShowOptions),
-    [_hShowOptions, _hCloseOptions] = (0, _uiApi.useMemo)(() => [evt => {
-      (0, _uiApi.stopDefaultFor)(evt);
-      setIsShowOptions(true);
-    }, () => {
-      setIsShowOptions(false);
-      (0, _uiApi.focusRefElement)(_refBtArrow);
-    }], [])
+    [isShowTuple, setIsShowTuple] = (0, _uiApi.useState)([!1]),
+    [showOptions, hideOptions] = (0, _uiApi.useMemo)(() => [focusOption => setIsShowTuple([!0, focusOption]), () => setIsShowTuple([!1])], []),
+    [isShowOptions, focusOption] = isShowTuple,
+    [_optionPaneId, _ariaComboboxProps] = (0, _useAriaCombobox.default)(isShowOptions)
     /*eslint-disable react-hooks/exhaustive-deps */,
-    [_hSelect, _hKeyDown] = (0, _uiApi.useMemo)(() => [(item, evt) => {
+    [_hCloseOptions, _hSelect, _hKeyDown] = (0, _uiApi.useMemo)(() => [() => {
+      hideOptions();
+      (0, _uiApi.focusRefElement)(_refBtArrow);
+    },
+    // hideOptions
+    (item, evt) => {
       (0, _uiApi.stopDefaultFor)(evt);
       onSelect(item, id);
       _hCloseOptions();
@@ -45,10 +45,14 @@ const InputSelect = _ref => {
     // id, onSelect, _hCloseOptions
     evt => {
       if (evt.key === _uiApi.KEY_ARROW_DOWN) {
-        _hShowOptions(evt);
+        (0, _uiApi.stopDefaultFor)(evt);
+        showOptions(_OptionFn.FOCUS_NEXT_OPTION);
+      } else if (evt.key === _uiApi.KEY_ARROW_UP) {
+        (0, _uiApi.stopDefaultFor)(evt);
+        showOptions(_OptionFn.FOCUS_PREV_OPTION);
       }
     }
-    // _hShowOptions
+    // showOptions
     ], []);
   /*eslint-enable react-hooks/exhaustive-deps */
 
@@ -58,7 +62,7 @@ const InputSelect = _ref => {
     tabIndex: "-1",
     className: _Input.CL_SELECT,
     style: style,
-    onClick: _hShowOptions,
+    onClick: showOptions,
     onKeyDown: _hKeyDown,
     children: [(0, _jsxRuntime.jsx)("label", {
       className: _Input.CL_SELECT_LABEL,
@@ -66,6 +70,7 @@ const InputSelect = _ref => {
     }), (0, _jsxRuntime.jsx)(_OptionsPane.default, {
       id: _optionPaneId,
       isShow: isShowOptions,
+      focusOption: focusOption,
       className: _Input.CL_SELECT_OPTIONS,
       item: item,
       options: options,

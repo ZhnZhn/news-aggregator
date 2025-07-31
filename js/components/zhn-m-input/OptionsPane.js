@@ -51,6 +51,7 @@ const OptionsPane = _ref3 => {
     id,
     isShow,
     isFocusItem = !0,
+    focusOption,
     className,
     style,
     options,
@@ -72,10 +73,25 @@ const OptionsPane = _ref3 => {
 
   /*eslint-disable react-hooks/exhaustive-deps */
   (0, _uiApi.useEffect)(() => {
+    /*
     if (isShow && isFocusItem) {
-      (0, _uiApi.setRefValue)(_refItemFocused, (0, _uiApi.focusRefElement)(_refItem, _refFirstItem));
+      setRefValue(
+        _refItemFocused,
+        focusRefElement(_refItem, _refFirstItem)
+      )
     }
-  }, [isShow, isFocusItem]);
+    */
+    if (isShow && isFocusItem) {
+      const _elItem = (0, _uiApi.getRefValue)(_refItem) || (0, _uiApi.getRefValue)(_refFirstItem);
+      if (!(0, _uiApi.getRefValue)(_refItemFocused) && focusOption) {
+        (0, _uiApi.setRefValue)(_refItemFocused, _elItem);
+      }
+      const _hasBeenItemFocused = focusOption === _OptionFn.FOCUS_NEXT_OPTION ? (0, _OptionFn.focusNextItem)(_refItemFocused) : focusOption === _OptionFn.FOCUS_PREV_OPTION ? (0, _OptionFn.focusPrevItem)(_refItemFocused) : !1;
+      if (!_hasBeenItemFocused) {
+        (0, _OptionFn.setItemFocus)(_elItem, _refItemFocused);
+      }
+    }
+  }, [isShow, isFocusItem, focusOption]);
   // _refFocus
   /*eslint-enable react-hooks/exhaustive-deps */
 
