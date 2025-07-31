@@ -9,7 +9,6 @@ import {
   setRefValue
 } from '../uiApi';
 
-import ShowHide from '../zhn/ShowHide';
 import ItemStack from '../zhn/ItemStack';
 import ModalPane from '../zhn-moleculs/ModalPane';
 import {
@@ -75,7 +74,7 @@ const OptionsPane = ({
   refOp,
   id,
   isShow,
-  isFocusItem=true,
+  isFocusItem=!0,
   className,
   style,
   options,
@@ -112,27 +111,23 @@ const OptionsPane = ({
 
   return (
    <ModalPane
+     {...crAriaListboxProps(id)}
+     data-scrollable="true"
      isShow={isShow}
+     className={className}
+     style={style}
      onClose={onClose}
+     onKeyDown={_hKeyDownArrow}
    >
-     <ShowHide
-       {...crAriaListboxProps(id)}
-       isScrollable={true}
-       isShow={isShow}
-       className={className}
-       style={style}
-       onKeyDown={_hKeyDownArrow}
-     >
-       <ItemStack
-         items={options}
-         crItem={_crItem}
-         refFirstItem={_refFirstItem}
-         refItem={_refItem}
-         currentItem={item}
-         clItem={clItem}
-         onSelect={onSelect}
-       />
-     </ShowHide>
+     <ItemStack
+       items={options}
+       crItem={_crItem}
+       refFirstItem={_refFirstItem}
+       refItem={_refItem}
+       currentItem={item}
+       clItem={clItem}
+       onSelect={onSelect}
+     />
    </ModalPane>
  );
 };

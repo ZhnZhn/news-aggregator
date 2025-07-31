@@ -4,7 +4,6 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _ShowHide = _interopRequireDefault(require("../zhn/ShowHide"));
 var _ItemStack = _interopRequireDefault(require("../zhn/ItemStack"));
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 var _OptionFn = require("./OptionFn");
@@ -51,7 +50,7 @@ const OptionsPane = _ref3 => {
     refOp,
     id,
     isShow,
-    isFocusItem = true,
+    isFocusItem = !0,
     className,
     style,
     options,
@@ -81,24 +80,21 @@ const OptionsPane = _ref3 => {
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (0, _jsxRuntime.jsx)(_ModalPane.default, {
+    ...(0, _crAriaProps.crAriaListboxProps)(id),
+    "data-scrollable": "true",
     isShow: isShow,
+    className: className,
+    style: style,
     onClose: onClose,
-    children: (0, _jsxRuntime.jsx)(_ShowHide.default, {
-      ...(0, _crAriaProps.crAriaListboxProps)(id),
-      isScrollable: true,
-      isShow: isShow,
-      className: className,
-      style: style,
-      onKeyDown: _hKeyDownArrow,
-      children: (0, _jsxRuntime.jsx)(_ItemStack.default, {
-        items: options,
-        crItem: _crItem,
-        refFirstItem: _refFirstItem,
-        refItem: _refItem,
-        currentItem: item,
-        clItem: clItem,
-        onSelect: onSelect
-      })
+    onKeyDown: _hKeyDownArrow,
+    children: (0, _jsxRuntime.jsx)(_ItemStack.default, {
+      items: options,
+      crItem: _crItem,
+      refFirstItem: _refFirstItem,
+      refItem: _refItem,
+      currentItem: item,
+      clItem: clItem,
+      onSelect: onSelect
     })
   });
 };
