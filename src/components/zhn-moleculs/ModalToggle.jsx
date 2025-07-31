@@ -1,7 +1,7 @@
 import useModalFocus from '../hooks/useModalFocus';
 import useItemsFocusTrap from '../hooks/useItemsFocusTrap';
 
-import ModalPopup from './ModalPopup';
+import ModalPane from './ModalPane';
 import FocusTrap from './FocusTrap';
 import InputSwitch from '../zhn/InputSwitch';
 
@@ -47,7 +47,7 @@ const ModalToggle = ({
   );
 
   return _getFocusRef ? (
-  <ModalPopup
+  <ModalPane
     isShow={isShow}
     style={{...S_MODAL_POPUP, ...style}}
     className={className}
@@ -68,7 +68,7 @@ const ModalToggle = ({
          />
       ))}
     </FocusTrap>
-  </ModalPopup>
+  </ModalPane>
 ) : null;
 }
 

@@ -5,7 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _useModalFocus = _interopRequireDefault(require("../hooks/useModalFocus"));
 var _useItemsFocusTrap = _interopRequireDefault(require("../hooks/useItemsFocusTrap"));
-var _ModalPopup = _interopRequireDefault(require("./ModalPopup"));
+var _ModalPane = _interopRequireDefault(require("./ModalPane"));
 var _FocusTrap = _interopRequireDefault(require("./FocusTrap"));
 var _InputSwitch = _interopRequireDefault(require("../zhn/InputSwitch"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -38,7 +38,7 @@ const ModalToggle = _ref => {
   } = _ref;
   const _refFirst = (0, _useModalFocus.default)(isShow),
     [_getFocusRef, _refLast] = (0, _useItemsFocusTrap.default)(configs, _refFirst);
-  return _getFocusRef ? (0, _jsxRuntime.jsx)(_ModalPopup.default, {
+  return _getFocusRef ? (0, _jsxRuntime.jsx)(_ModalPane.default, {
     isShow: isShow,
     style: {
       ...S_MODAL_POPUP,
