@@ -15,6 +15,7 @@ const ModalPane = _ref => {
     style,
     children,
     onClose,
+    onKeyDown,
     ...restProps
   } = _ref;
   const _refElement = (0, _useClickOutside.default)(isShow, onClose),
@@ -26,7 +27,7 @@ const ModalPane = _ref => {
     ref: _refElement,
     className: (0, _crStyle.crCn)(CL_MODAL_PANE, className),
     style: (0, _crStyle.crStyle2)(style, isShow ? void 0 : _crStyle.S_NONE),
-    onKeyDown: isShow ? _hKeyEscape : void 0,
+    onKeyDown: isShow ? onKeyDown || _hKeyEscape : void 0,
     children: children
   })
   /*eslint-enable jsx-a11y/no-static-element-interactions*/;

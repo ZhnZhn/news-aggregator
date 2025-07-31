@@ -16,6 +16,7 @@ const ModalPane = ({
   style,
   children,
   onClose,
+  onKeyDown,
   ...restProps
 }) => {
   const _refElement = useClickOutside(isShow, onClose)
@@ -28,7 +29,7 @@ const ModalPane = ({
        ref={_refElement}
        className={crCn(CL_MODAL_PANE, className)}
        style={crStyle2(style, isShow ? void 0 : S_NONE)}
-       onKeyDown={isShow ? _hKeyEscape : void 0}
+       onKeyDown={isShow ? onKeyDown || _hKeyEscape : void 0}
     >
       {children}
     </div>
