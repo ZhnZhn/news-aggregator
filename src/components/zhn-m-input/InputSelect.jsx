@@ -8,6 +8,8 @@ import {
   stopDefaultFor
 } from '../uiApi';
 
+import { crTextLeftCn } from '../crStyle';
+
 import useAriaCombobox from './useAriaCombobox';
 
 import ButtonArrow from './ButtonArrow';
@@ -21,16 +23,18 @@ import {
 import {
   CL_SELECT,
   CL_SELECT_LABEL,
+  CL_SELECT_VALUE,
   CL_SELECT_DIV,
-  CL_SELECT_DIV_VALUE,
   CL_SELECT_INPUT_LINE,
   CL_SELECT_OPTIONS,
   CL_SELECT_ITEM,
   S_BT_ARROW_RIGHT
 } from './Input.Style';
 
-const S_BT_ARROW = {
+const CL_SELECT_OPTIONS_TEXT_LEFT = crTextLeftCn(CL_SELECT_OPTIONS)
+, S_BT_ARROW = {
   ...S_BT_ARROW_RIGHT,
+  fill: 'inherit',
   top: 'calc(17px - 1rem)'
 }
 , DF_INIT_ITEM = ['', ''];
@@ -43,7 +47,7 @@ const InputSelect = ({
   options,
   onSelect
 }) => {
-  const _refBtArrow = useRef()
+  const _refBtCombobox = useRef()
   , [
     item,
     setItem
@@ -75,7 +79,7 @@ const InputSelect = ({
   ] = useMemo(() => [
     () => {
       hideOptions()
-      focusRefElement(_refBtArrow)
+      focusRefElement(_refBtCombobox)
     },
     // hideOptions
     (item, evt) => {
@@ -101,11 +105,12 @@ const InputSelect = ({
 
   /*eslint-disable jsx-a11y/no-static-element-interactions*/
   return (
-    <div
+    <button
       {..._ariaComboboxProps}
-      tabIndex="-1"
+      ref={_refBtCombobox}
+      type="button"
       className={CL_SELECT}
-      style={style}      
+      style={style}
       onClick={showOptions}
       onKeyDown={_hKeyDown}
     >
@@ -113,28 +118,28 @@ const InputSelect = ({
       <label className={CL_SELECT_LABEL}>
         {caption}
       </label>
+      <div className={CL_SELECT_VALUE}>
+         {getItemCaption(item)}
+      </div>
       <OptionsPane
          id={_optionPaneId}
          isShow={isShowOptions}
          focusOption={focusOption}
-         className={CL_SELECT_OPTIONS}
+         className={CL_SELECT_OPTIONS_TEXT_LEFT}
          item={item}
          options={options}
          clItem={CL_SELECT_ITEM}
          onSelect={_hSelect}
          onClose={_hCloseOptions}
        />
-      <div className={CL_SELECT_DIV}>
-        <div className={CL_SELECT_DIV_VALUE}>
-           {getItemCaption(item)}
-        </div>
-        <ButtonArrow
-           refEl={_refBtArrow}
-           style={S_BT_ARROW}
-        />
+      <div className={CL_SELECT_DIV} aria-hidden="true">
+         <ButtonArrow
+            style={S_BT_ARROW}
+            tabIndex="-1"
+         />
         <div className={CL_SELECT_INPUT_LINE} />
       </div>
-    </div>
+    </button>
   );
 }
 

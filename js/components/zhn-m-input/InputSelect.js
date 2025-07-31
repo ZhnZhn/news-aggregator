@@ -4,14 +4,17 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _crStyle = require("../crStyle");
 var _useAriaCombobox = _interopRequireDefault(require("./useAriaCombobox"));
 var _ButtonArrow = _interopRequireDefault(require("./ButtonArrow"));
 var _OptionsPane = _interopRequireDefault(require("./OptionsPane"));
 var _OptionFn = require("./OptionFn");
 var _Input = require("./Input.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
-const S_BT_ARROW = {
+const CL_SELECT_OPTIONS_TEXT_LEFT = (0, _crStyle.crTextLeftCn)(_Input.CL_SELECT_OPTIONS),
+  S_BT_ARROW = {
     ..._Input.S_BT_ARROW_RIGHT,
+    fill: 'inherit',
     top: 'calc(17px - 1rem)'
   },
   DF_INIT_ITEM = ['', ''];
@@ -24,7 +27,7 @@ const InputSelect = _ref => {
     options,
     onSelect
   } = _ref;
-  const _refBtArrow = (0, _uiApi.useRef)(),
+  const _refBtCombobox = (0, _uiApi.useRef)(),
     [item, setItem] = (0, _uiApi.useState)(initItem || DF_INIT_ITEM),
     [isShowTuple, setIsShowTuple] = (0, _uiApi.useState)([!1]),
     [showOptions, hideOptions] = (0, _uiApi.useMemo)(() => [focusOption => setIsShowTuple([!0, focusOption]), () => setIsShowTuple([!1])], []),
@@ -33,7 +36,7 @@ const InputSelect = _ref => {
     /*eslint-disable react-hooks/exhaustive-deps */,
     [_hCloseOptions, _hSelect, _hKeyDown] = (0, _uiApi.useMemo)(() => [() => {
       hideOptions();
-      (0, _uiApi.focusRefElement)(_refBtArrow);
+      (0, _uiApi.focusRefElement)(_refBtCombobox);
     },
     // hideOptions
     (item, evt) => {
@@ -57,9 +60,10 @@ const InputSelect = _ref => {
   /*eslint-enable react-hooks/exhaustive-deps */
 
   /*eslint-disable jsx-a11y/no-static-element-interactions*/
-  return (0, _jsxRuntime.jsxs)("div", {
+  return (0, _jsxRuntime.jsxs)("button", {
     ..._ariaComboboxProps,
-    tabIndex: "-1",
+    ref: _refBtCombobox,
+    type: "button",
     className: _Input.CL_SELECT,
     style: style,
     onClick: showOptions,
@@ -67,11 +71,14 @@ const InputSelect = _ref => {
     children: [(0, _jsxRuntime.jsx)("label", {
       className: _Input.CL_SELECT_LABEL,
       children: caption
+    }), (0, _jsxRuntime.jsx)("div", {
+      className: _Input.CL_SELECT_VALUE,
+      children: (0, _OptionFn.getItemCaption)(item)
     }), (0, _jsxRuntime.jsx)(_OptionsPane.default, {
       id: _optionPaneId,
       isShow: isShowOptions,
       focusOption: focusOption,
-      className: _Input.CL_SELECT_OPTIONS,
+      className: CL_SELECT_OPTIONS_TEXT_LEFT,
       item: item,
       options: options,
       clItem: _Input.CL_SELECT_ITEM,
@@ -79,12 +86,10 @@ const InputSelect = _ref => {
       onClose: _hCloseOptions
     }), (0, _jsxRuntime.jsxs)("div", {
       className: _Input.CL_SELECT_DIV,
-      children: [(0, _jsxRuntime.jsx)("div", {
-        className: _Input.CL_SELECT_DIV_VALUE,
-        children: (0, _OptionFn.getItemCaption)(item)
-      }), (0, _jsxRuntime.jsx)(_ButtonArrow.default, {
-        refEl: _refBtArrow,
-        style: S_BT_ARROW
+      "aria-hidden": "true",
+      children: [(0, _jsxRuntime.jsx)(_ButtonArrow.default, {
+        style: S_BT_ARROW,
+        tabIndex: "-1"
       }), (0, _jsxRuntime.jsx)("div", {
         className: _Input.CL_SELECT_INPUT_LINE
       })]
