@@ -1,13 +1,13 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-
-var isKeyEnter = function isKeyEnter(_ref) {
-  var keyCode = _ref.keyCode;
-  return keyCode === 13 || keyCode === 32;
+exports.default = void 0;
+var _uiApi = require("../uiApi");
+const isKeyEnter = _ref => {
+  let {
+    key
+  } = _ref;
+  return key === _uiApi.KEY_ENTER || key === _uiApi.KEY_SPACE;
 };
-
-var _default = isKeyEnter;
-exports["default"] = _default;
+var _default = exports.default = isKeyEnter;
 //# sourceMappingURL=isKeyEnter.js.map
