@@ -40,9 +40,11 @@ const InputSelect = _ref => {
     },
     // hideOptions
     (item, evt) => {
-      (0, _uiApi.stopDefaultFor)(evt);
+      if (evt) {
+        (0, _uiApi.stopDefaultFor)(evt);
+        _hCloseOptions();
+      }
       onSelect(item, id);
-      _hCloseOptions();
       setItem(item);
     },
     // id, onSelect, _hCloseOptions

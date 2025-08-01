@@ -83,9 +83,11 @@ const InputSelect = ({
     },
     // hideOptions
     (item, evt) => {
-        stopDefaultFor(evt)
+        if (evt) {
+          stopDefaultFor(evt)
+          _hCloseOptions()
+        }
         onSelect(item, id)
-        _hCloseOptions()
         setItem(item)
     },
     // id, onSelect, _hCloseOptions

@@ -32,6 +32,8 @@ const _crItem = (item, index, _ref2) => {
     _hKeyDown = evt => {
       if ((0, _isKeyEnter.default)(evt)) {
         onSelect(item, evt);
+      } else if (evt.key === _uiApi.KEY_TAB) {
+        onSelect(item);
       }
     };
 

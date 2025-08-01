@@ -3,6 +3,8 @@ import {
   useEffect,
   useImperativeHandle,
 
+  KEY_TAB,
+
   getRefValue,
   setRefValue
 } from '../uiApi';
@@ -56,6 +58,8 @@ const _crItem = (
   , _hKeyDown = evt => {
     if (isKeyEnter(evt)) {
       onSelect(item, evt)
+    } else if (evt.key === KEY_TAB) {
+      onSelect(item)
     }
   };
 
