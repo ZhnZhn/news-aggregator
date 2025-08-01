@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _isKeyEnter = _interopRequireDefault(require("../hooks/isKeyEnter"));
 var _ItemStack = _interopRequireDefault(require("../zhn/ItemStack"));
 var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 var _OptionFn = require("./OptionFn");
@@ -29,7 +30,7 @@ const _crItem = (item, index, _ref2) => {
       }
     },
     _hKeyDown = evt => {
-      if (evt.key === _uiApi.KEY_ENTER) {
+      if ((0, _isKeyEnter.default)(evt)) {
         onSelect(item, evt);
       }
     };
@@ -73,14 +74,6 @@ const OptionsPane = _ref3 => {
 
   /*eslint-disable react-hooks/exhaustive-deps */
   (0, _uiApi.useEffect)(() => {
-    /*
-    if (isShow && isFocusItem) {
-      setRefValue(
-        _refItemFocused,
-        focusRefElement(_refItem, _refFirstItem)
-      )
-    }
-    */
     if (isShow && isFocusItem) {
       const _elItem = (0, _uiApi.getRefValue)(_refItem) || (0, _uiApi.getRefValue)(_refFirstItem);
       if (!(0, _uiApi.getRefValue)(_refItemFocused) && focusOption) {
@@ -92,7 +85,6 @@ const OptionsPane = _ref3 => {
       }
     }
   }, [isShow, isFocusItem, focusOption]);
-  // _refFocus
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (0, _jsxRuntime.jsx)(_ModalPane.default, {

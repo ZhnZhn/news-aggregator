@@ -3,11 +3,11 @@ import {
   useEffect,
   useImperativeHandle,
 
-  KEY_ENTER,
-
   getRefValue,
   setRefValue
 } from '../uiApi';
+
+import isKeyEnter from '../hooks/isKeyEnter';
 
 import ItemStack from '../zhn/ItemStack';
 import ModalPane from '../zhn-moleculs/ModalPane';
@@ -54,7 +54,7 @@ const _crItem = (
        }
     }
   , _hKeyDown = evt => {
-    if (evt.key === KEY_ENTER) {
+    if (isKeyEnter(evt)) {
       onSelect(item, evt)
     }
   };
@@ -105,14 +105,6 @@ const OptionsPane = ({
 
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(()=>{
-    /*
-    if (isShow && isFocusItem) {
-      setRefValue(
-        _refItemFocused,
-        focusRefElement(_refItem, _refFirstItem)
-      )
-    }
-    */
     if (isShow && isFocusItem) {
       const _elItem = getRefValue(_refItem) || getRefValue(_refFirstItem);
       if (!getRefValue(_refItemFocused) && focusOption) {
@@ -130,7 +122,6 @@ const OptionsPane = ({
       }
     }
   }, [isShow, isFocusItem, focusOption])
-  // _refFocus
   /*eslint-enable react-hooks/exhaustive-deps */
 
   return (
