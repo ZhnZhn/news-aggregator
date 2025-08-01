@@ -23,3 +23,7 @@
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 0 5px;
   box-shadow: var(--sh-c, rgba(0, 0, 0, 0.2)) 0 0 0 5px;
 }
+
+.text-left {
+  text-align: left;
+}
