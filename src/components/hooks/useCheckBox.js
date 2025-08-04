@@ -1,4 +1,4 @@
-import isKeyEnter from './isKeyEnter';
+import { isKeyEnterOrSpace } from './fUseKey';
 import useToggle from './useToggle';
 
 const FN_NOOP = () => {};
@@ -17,7 +17,7 @@ const useCheckBox = (
      toggleIsChecked()
     }
   , hKeyDown = (evt) => {
-      if (isKeyEnter(evt)){
+      if (isKeyEnterOrSpace(evt)){
         evt.preventDefault()
         hClick()
       }

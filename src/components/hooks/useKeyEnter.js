@@ -2,14 +2,16 @@ import {
   isFn,
   useMemo
 } from '../uiApi';
-import isKeyEnter from './isKeyEnter';
+import {
+  isKeyEnterOrSpace
+} from './fUseKey';
 
 /*eslint-disable react-hooks/exhaustive-deps */
 const useKeyEnter = (
   fn,
   deps
 ) => useMemo(() => isFn(fn) ? evt => {
-  if (isKeyEnter(evt)) {
+  if (isKeyEnterOrSpace(evt)) {
     fn(evt)
   }
 } : void 0, deps || []);

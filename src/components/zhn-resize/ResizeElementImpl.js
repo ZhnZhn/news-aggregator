@@ -104,7 +104,7 @@ class ResizeElementImpl {
   }
   /*
   hKdLeft = (event) => {
-    if (isKeyEnter(event)) {
+    if (isKeyEnterOrSpace(event)) {
       event.stopPropagation()
       this.resizeBy(-this.step)
     }
@@ -116,7 +116,7 @@ class ResizeElementImpl {
   }
   /*
   hKdRight = (event) => {
-    if (isKeyEnter(event)) {
+    if (isKeyEnterOrSpace(event)) {
       event.stopPropagation()
       this.resizeBy(this.step)
     }

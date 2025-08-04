@@ -1,0 +1,18 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/hooks/fUseKey.js"
+ ],
+ "file": "../../../src/components/hooks/fUseKey.js",
+ "names": [
+  "_uiApi",
+  "require",
+  "isKeyEnterOrSpace",
+  "evt",
+  "key",
+  "KEY_ENTER",
+  "KEY_SPACE",
+  "exports"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,MAAA,GAAAC,OAAA;AAKO,MAAMC,iBAAiB,GAC5BC,GAAG,IACAA,GAAG,CAACC,GAAG,KAAKC,gBAAS,IAAIF,GAAG,CAACC,GAAG,KAAKE,gBAAS;AAAAC,OAAA,CAAAL,iBAAA,GAAAA,iBAAA"
+}

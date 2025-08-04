@@ -9,7 +9,7 @@ import {
   setRefValue
 } from '../uiApi';
 
-import isKeyEnter from '../hooks/isKeyEnter';
+import { isKeyEnterOrSpace } from '../hooks/fUseKey';
 
 import ItemStack from '../zhn/ItemStack';
 import ModalPane from '../zhn-moleculs/ModalPane';
@@ -56,7 +56,7 @@ const _crItem = (
        }
     }
   , _hKeyDown = evt => {
-    if (isKeyEnter(evt)) {
+    if (isKeyEnterOrSpace(evt)) {
       onSelect(item, evt)
     } else if (evt.key === KEY_TAB) {
       onSelect(item)
