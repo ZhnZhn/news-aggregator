@@ -5,14 +5,14 @@ exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _useRefInit = _interopRequireDefault(require("../hooks/useRefInit"));
-var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
+var _fUseKey = require("../hooks/fUseKey");
 var _ResizeElementImpl = _interopRequireDefault(require("./ResizeElementImpl"));
 const useResizeElement = props => {
   const resizeImpl = (0, _useRefInit.default)(() => {
       return new _ResizeElementImpl.default(props);
     }),
-    _onMinusWidth = (0, _useKeyEnter.default)(props.onMinusWidth),
-    _onPlusWidth = (0, _useKeyEnter.default)(props.onPlusWidth);
+    _onMinusWidth = (0, _fUseKey.useKeyEnterOrSpace)(props.onMinusWidth),
+    _onPlusWidth = (0, _fUseKey.useKeyEnterOrSpace)(props.onPlusWidth);
 
   /*eslint-disable react-hooks/exhaustive-deps */
   (0, _uiApi.useEffect)(() => {

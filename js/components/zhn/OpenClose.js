@@ -6,7 +6,7 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _crStyle = require("../crStyle");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
-var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
+var _fUseKey = require("../hooks/fUseKey");
 var _Svg = _interopRequireDefault(require("./svg/Svg"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_OPEN_CLOSE = 'open-close select-none',
@@ -46,7 +46,7 @@ const OpenClose = _ref => {
       onToggle(!isOpen, caption, toggleIsOpen);
       toggleIsOpen();
     } : toggleIsOpen,
-    _hKeyDown = (0, _useKeyEnter.default)(_onToggle, [_onToggle]),
+    _hKeyDown = (0, _fUseKey.useKeyEnterOrSpace)(_onToggle, [_onToggle]),
     [_pathV, _fillV, _styleCollapse, _classShow] = isOpen ? [PATH_OPEN, fillOpen, _crStyle.S_BLOCK, _crStyle.CL_SHOW_POPUP] : [PATH_CLOSE, fillClose, _crStyle.S_NONE, null];
   return (0, _jsxRuntime.jsxs)("div", {
     style: {

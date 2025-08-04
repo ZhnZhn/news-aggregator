@@ -1,4 +1,4 @@
-import useKeyEnter from '../hooks/useKeyEnter';
+import { useKeyEnterOrSpace } from '../hooks/fUseKey';
 
 const MenuItem = ({
   refEl,
@@ -8,7 +8,7 @@ const MenuItem = ({
   children,
   onClick
 }) => {
-  const _hKeyDown = useKeyEnter(onClick);
+  const _hKeyDown = useKeyEnterOrSpace(onClick);
   return (
     <div
       ref={refEl}

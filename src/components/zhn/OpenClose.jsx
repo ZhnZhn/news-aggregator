@@ -10,7 +10,7 @@ import {
 } from '../crStyle';
 
 import useToggle from '../hooks/useToggle';
-import useKeyEnter from '../hooks/useKeyEnter';
+import { useKeyEnterOrSpace } from '../hooks/fUseKey';
 
 import Svg from './svg/Svg';
 
@@ -55,7 +55,10 @@ const OpenClose = ({
     onToggle(!isOpen, caption, toggleIsOpen)
     toggleIsOpen()
   } : toggleIsOpen
-  , _hKeyDown = useKeyEnter(_onToggle, [_onToggle])
+  , _hKeyDown = useKeyEnterOrSpace(
+    _onToggle,
+    [_onToggle]
+  )
   , [
     _pathV,
     _fillV,
@@ -83,7 +86,7 @@ const OpenClose = ({
          aria-expanded={isOpen}
          aria-controls={_childrenWrapperId}
          tabIndex="0"
-         style={S_ROOT_CAPTION}         
+         style={S_ROOT_CAPTION}
          onClick={_onToggle}
          onKeyDown={_hKeyDown}
       >

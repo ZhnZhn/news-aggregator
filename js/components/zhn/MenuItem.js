@@ -1,9 +1,8 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _useKeyEnter = _interopRequireDefault(require("../hooks/useKeyEnter"));
+var _fUseKey = require("../hooks/fUseKey");
 var _jsxRuntime = require("preact/jsx-runtime");
 const MenuItem = _ref => {
   let {
@@ -14,7 +13,7 @@ const MenuItem = _ref => {
     children,
     onClick
   } = _ref;
-  const _hKeyDown = (0, _useKeyEnter.default)(onClick);
+  const _hKeyDown = (0, _fUseKey.useKeyEnterOrSpace)(onClick);
   return (0, _jsxRuntime.jsx)("div", {
     ref: refEl,
     role: "menuitem",

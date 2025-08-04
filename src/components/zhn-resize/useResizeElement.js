@@ -1,6 +1,6 @@
 import { useEffect } from '../uiApi';
 import useRefInit from '../hooks/useRefInit';
-import useKeyEnter from '../hooks/useKeyEnter';
+import { useKeyEnterOrSpace } from '../hooks/fUseKey';
 
 import ResizeElementImpl from './ResizeElementImpl'
 
@@ -10,8 +10,8 @@ const useResizeElement = (
   const resizeImpl = useRefInit(() => {
     return new ResizeElementImpl(props);
   })
-  , _onMinusWidth = useKeyEnter(props.onMinusWidth)
-  , _onPlusWidth = useKeyEnter(props.onPlusWidth);
+  , _onMinusWidth = useKeyEnterOrSpace(props.onMinusWidth)
+  , _onPlusWidth = useKeyEnterOrSpace(props.onPlusWidth);
 
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
