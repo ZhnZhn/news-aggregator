@@ -10,14 +10,14 @@ import {
 } from '../dialogs/Dialog.Style';
 
 import useModalFocus from '../hooks/useModalFocus';
-import useKeyEscape from '../hooks/useKeyEscape';
+import { useKeyEscape } from '../hooks/fUseKey';
 
 import FocusTrap from './FocusTrap';
 import BrowserCaption from '../zhn/BrowserCaption';
 import RaisedButton from '../zhn-bt/RaisedButton';
 
 const CL_SHOWING = `${CL_DIALOG} ${CL_SHOW_POPUP}`
-, S_ROOT_DIV = {  
+, S_ROOT_DIV = {
   top: '20%',
   zIndex: 10
 }

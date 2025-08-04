@@ -6,7 +6,7 @@ import {
 } from '../crStyle'
 
 import useClickOutside from '../hooks/useClickOutside';
-import useKeyEscape from '../hooks/useKeyEscape';
+import { useKeyEscape } from '../hooks/fUseKey';
 
 const CL_MODAL_PANE = crContainerBgCn();
 

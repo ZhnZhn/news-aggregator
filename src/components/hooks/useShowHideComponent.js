@@ -1,5 +1,5 @@
 import useBool from './useBool';
-import useKeyEscape from './useKeyEscape';
+import { useKeyEscape } from './fUseKey';
 
 const useShowHideComponent = (
   isShowInitial

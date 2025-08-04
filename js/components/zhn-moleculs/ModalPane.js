@@ -5,7 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _crStyle = require("../crStyle");
 var _useClickOutside = _interopRequireDefault(require("../hooks/useClickOutside"));
-var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
+var _fUseKey = require("../hooks/fUseKey");
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_MODAL_PANE = (0, _crStyle.crContainerBgCn)();
 const ModalPane = _ref => {
@@ -19,7 +19,7 @@ const ModalPane = _ref => {
     ...restProps
   } = _ref;
   const _refElement = (0, _useClickOutside.default)(isShow, onClose),
-    _hKeyEscape = (0, _useKeyEscape.default)(onClose);
+    _hKeyEscape = (0, _fUseKey.useKeyEscape)(onClose);
 
   /*eslint-disable jsx-a11y/no-static-element-interactions*/
   return (0, _jsxRuntime.jsx)("div", {

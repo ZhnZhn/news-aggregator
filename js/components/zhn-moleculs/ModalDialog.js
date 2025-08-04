@@ -6,7 +6,7 @@ exports.default = void 0;
 var _crStyle = require("../crStyle");
 var _Dialog = require("../dialogs/Dialog.Style");
 var _useModalFocus = _interopRequireDefault(require("../hooks/useModalFocus"));
-var _useKeyEscape = _interopRequireDefault(require("../hooks/useKeyEscape"));
+var _fUseKey = require("../hooks/fUseKey");
 var _FocusTrap = _interopRequireDefault(require("./FocusTrap"));
 var _BrowserCaption = _interopRequireDefault(require("../zhn/BrowserCaption"));
 var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
@@ -41,7 +41,7 @@ const ModalDialog = _ref => {
     isClosePrimary = false
   } = _ref;
   const _refRootDiv = (0, _useModalFocus.default)(isShow),
-    _hKeyDown = (0, _useKeyEscape.default)(onClose),
+    _hKeyDown = (0, _fUseKey.useKeyEscape)(onClose),
     _className = (0, _crStyle.crCn)([isShow, CL_SHOWING]),
     _showHideStyle = (0, _crStyle.crShowHideStyle)(isShow);
   return (0, _jsxRuntime.jsx)(_FocusTrap.default, {
