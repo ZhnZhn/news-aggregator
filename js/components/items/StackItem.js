@@ -6,7 +6,7 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _crStyle = require("../crStyle");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
-var _useKeyDelete = _interopRequireDefault(require("../hooks/useKeyDelete"));
+var _fUseKey = require("../hooks/fUseKey");
 var _has = require("../has");
 var _useItemGestureSwipeX = _interopRequireDefault(require("./useItemGestureSwipeX"));
 var _GestureSwipeX = _interopRequireDefault(require("../zhn-gesture/GestureSwipeX"));
@@ -87,15 +87,15 @@ const StackItem = _ref => {
     onRemoveUnder = _uiApi.FN_NOOP,
     onRemoveItem = _uiApi.FN_NOOP
   } = _ref;
-  const [isClosed, toggleIsClosed] = (0, _useToggle.default)(false)
+  const [isClosed, toggleIsClosed] = (0, _useToggle.default)(!1)
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hClose = (0, _uiApi.useCallback)(() => {
       onCloseItem(item);
-      toggleIsClosed(true);
+      toggleIsClosed(!0);
     }, [])
     //item, onCloseIte, setClosed
     /*eslint-enable react-hooks/exhaustive-deps */,
-    _hKeyDown = (0, _useKeyDelete.default)(_hClose),
+    _hKeyDown = (0, _fUseKey.useKeyDelete)(_hClose),
     _onGestureSwipeX = (0, _useItemGestureSwipeX.default)(item, onRemoveUnder, _hClose);
   const {
       is_answered,

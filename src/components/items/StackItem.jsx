@@ -8,7 +8,7 @@ import {
 } from '../crStyle';
 
 import useToggle from '../hooks/useToggle';
-import useKeyDelete from '../hooks/useKeyDelete';
+import { useKeyDelete } from '../hooks/fUseKey';
 
 import { HAS_TOUCH_EVENTS } from '../has';
 
@@ -101,16 +101,20 @@ const StackItem = ({
   const [
     isClosed,
     toggleIsClosed
-  ] = useToggle(false)
+  ] = useToggle(!1)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hClose = useCallback(() => {
     onCloseItem(item)
-    toggleIsClosed(true)
+    toggleIsClosed(!0)
   }, [])
   //item, onCloseIte, setClosed
   /*eslint-enable react-hooks/exhaustive-deps */
   , _hKeyDown = useKeyDelete(_hClose)
-  , _onGestureSwipeX = useItemGestureSwipeX(item, onRemoveUnder, _hClose)
+  , _onGestureSwipeX = useItemGestureSwipeX(
+    item,
+    onRemoveUnder,
+    _hClose
+  );
 
   const {
     is_answered,
