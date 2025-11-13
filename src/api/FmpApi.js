@@ -1,5 +1,7 @@
 
-const BASE_URL = 'https://financialmodelingprep.com/api/v3/stock_news'
+const  URL_NEWS = https://financialmodelingprep.com/stable/news
+, URL_STOCK = `${URL_NEWS}/stock`
+, URL_STOCK_LATEST = `${URL_NEWS}/stock-latest`;
 
 const FmpApi = {
   getRequestUrl(option){
@@ -7,11 +9,11 @@ const FmpApi = {
       symbol='',
       apiKey
     } = option
-    , _q = symbol
-       ? `tickers=${symbol.toUpperCase()}&apikey=${apiKey}`
-       : `apikey=${apiKey}`
+    , [_url, _query] = symbol
+       ? [URL_STOCK, `symbols=${symbol.toUpperCase()}&apikey=${apiKey}`]
+       : [URL_STOCK_LATEST,`apikey=${apiKey}`]
     option.apiKey = void 0
-    return `${BASE_URL}?${_q}`;
+    return `${_url}?${_query}`;
   },
 
   checkResponse(json, option){
