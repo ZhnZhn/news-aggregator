@@ -1,5 +1,5 @@
 
-const  URL_NEWS = https://financialmodelingprep.com/stable/news
+const URL_NEWS = "https://financialmodelingprep.com/stable/news"
 , URL_STOCK = `${URL_NEWS}/stock`
 , URL_STOCK_LATEST = `${URL_NEWS}/stock-latest`;
 
