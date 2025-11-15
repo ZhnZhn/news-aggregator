@@ -54,6 +54,9 @@
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"
   },
+  "overrides": {
+    "js-yaml": "~4.1.1"
+  },
   "jest": {
     "roots": [
       "<rootDir>/js/adapters",
