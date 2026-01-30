@@ -1,5 +1,8 @@
 import { isNumber } from '../utils/isTypeFn';
-import { domSanitize } from '../utils/domSanitize';
+import { 
+  domSanitize,
+  domSanitizeAndDecode 
+} from '../utils/domSanitize';
 
 const _assign = Object.assign;
 
@@ -11,8 +14,8 @@ const {
 } = article
 , _isPublishedAtNumber = isNumber(publishedAt);
 return _assign(article, {
-  title: domSanitize(article.title),
-  description: domSanitize(article.description),
+  title: domSanitizeAndDecode(article.title),
+  description: domSanitizeAndDecode(article.description),
   related: domSanitize(article.related),
   author: domSanitize(article.author),
   publishedAt: _isPublishedAtNumber

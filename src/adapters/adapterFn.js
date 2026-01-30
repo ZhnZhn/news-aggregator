@@ -1,6 +1,6 @@
 import { isNumber } from '../utils/isTypeFn';
 import { splitByParagraph } from '../utils/splitByParagraph';
-import { decodeHTMLEntities } from '../utils/decodeHTMLEntities';
+import { decodeHtmlEntities } from '../utils/decodeHtmlEntities';
 
 export const toMls = sec => isNumber(sec)
   ? sec*1000
@@ -20,9 +20,9 @@ export const updateNextPage = (
 
 export const crTitle = (
   title
-) => decodeHTMLEntities(title)
+) => decodeHtmlEntities(title)
 
 export const crDescription = (
   str,
   maxLength
-) => splitByParagraph(decodeHTMLEntities(str), maxLength)
+) => splitByParagraph(decodeHtmlEntities(str), maxLength)

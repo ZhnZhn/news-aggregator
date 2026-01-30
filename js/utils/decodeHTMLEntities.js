@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.decodeHTMLEntities = void 0;
+exports.decodeHtmlEntitiesByHashMap = exports.decodeHtmlEntities = void 0;
 var _isTypeFn = require("./isTypeFn");
 const _hmHtmlEntities = Object.assign(Object.create(null), {
     '&nbsp;': ' ',
@@ -15,6 +15,8 @@ const _hmHtmlEntities = Object.assign(Object.create(null), {
   _reHtmlCode = new RegExp('&#(\\d+);?', 'g'),
   _reHtmlFilter = new RegExp('&#x200B;', 'g'),
   _onMatch = match => _hmHtmlEntities[match];
-const decodeHTMLEntities = str => ((0, _isTypeFn.isStr)(str) && str || '').replace(_reHtmlCode, (_, code) => String.fromCharCode(code)).replace(_reHtmlEntities, _onMatch).replace(_reHtmlFilter, '');
-exports.decodeHTMLEntities = decodeHTMLEntities;
+const decodeHtmlEntitiesByHashMap = str => ((0, _isTypeFn.isStr)(str) && str || '').replace(_reHtmlEntities, _onMatch);
+exports.decodeHtmlEntitiesByHashMap = decodeHtmlEntitiesByHashMap;
+const decodeHtmlEntities = str => ((0, _isTypeFn.isStr)(str) && str || '').replace(_reHtmlCode, (_, code) => String.fromCharCode(code)).replace(_reHtmlFilter, '');
+exports.decodeHtmlEntities = decodeHtmlEntities;
 //# sourceMappingURL=decodeHTMLEntities.js.map
