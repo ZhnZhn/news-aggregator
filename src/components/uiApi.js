@@ -152,7 +152,7 @@ const EVENT_TEST_PASSIVE = "testPassive"
       window.addEventListener(EVENT_TEST_PASSIVE, null, options)
       window.removeEventListener(EVENT_TEST_PASSIVE, null, options)
       return options._r;
-    } catch (e) {
+    } catch {
       return false;
     }
 })();

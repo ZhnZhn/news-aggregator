@@ -11,6 +11,6 @@ const useSubscribeState = (store, selector, initialState) => {
 
   return state;
 };
-/*eslint-disable react-hooks/exhaustive-deps */
+/*eslint-enable react-hooks/exhaustive-deps */
 var _default = exports.default = useSubscribeState;
 //# sourceMappingURL=useSubscribeState.js.map

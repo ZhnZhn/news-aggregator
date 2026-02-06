@@ -104,8 +104,7 @@ const InputSelect = ({
   ]
   , [])
   /*eslint-enable react-hooks/exhaustive-deps */
-
-  /*eslint-disable jsx-a11y/no-static-element-interactions*/
+  
   return (
     <button
       {..._ariaComboboxProps}
@@ -116,7 +115,6 @@ const InputSelect = ({
       onClick={showOptions}
       onKeyDown={_hKeyDown}
     >
-    {/*eslint-enable jsx-a11y/no-static-element-interactions*/}
       <label className={CL_SELECT_LABEL}>
         {caption}
       </label>

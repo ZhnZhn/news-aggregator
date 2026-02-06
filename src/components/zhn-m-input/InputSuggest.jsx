@@ -192,8 +192,7 @@ const InputSuggest = ({
       })),
       [options]
   )
-
-  /*eslint-disabl react-hooks/exhaustive-deps */
+  
   , _hInputChange = useMemo(() => (token, id) => {
        const _tokenInLowerCase = (token || '')
          .toLowerCase()
@@ -223,7 +222,7 @@ const InputSuggest = ({
        }
   }, [_isInput, _getSearchOptions, _clearItem, dispatch])
   //dispatch
-  /*eslint-enable react-hooks/exhaustive-deps */
+
 
   /*eslint-disable react-hooks/exhaustive-deps */
   , [

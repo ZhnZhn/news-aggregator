@@ -10,8 +10,8 @@ const useSubscribe = (
     () => store.subscribe(selector, onChange),
     []
   )
-  //onChange
+  //store, selector, onChange
 }
-/*eslint-disable react-hooks/exhaustive-deps */
+/*eslint-enable react-hooks/exhaustive-deps */
 
 export default useSubscribe

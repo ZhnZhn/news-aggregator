@@ -19,7 +19,7 @@ const useHotKey = (
     : void 0
   , [])
   //hotKey, onKeyDown
-  /*eslint-disable react-hooks/exhaustive-deps */
+  /*eslint-enable react-hooks/exhaustive-deps */
 }
 
 export default useHotKey

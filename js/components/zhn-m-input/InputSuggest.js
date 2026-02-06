@@ -116,9 +116,7 @@ const InputSuggest = _ref => {
     _getSearchOptions = (0, _uiApi.useMemo)(() => (0, _crLazyValue.crLazyValue)(() => options.map(item => {
       item._t = item[0].toLowerCase();
       return item;
-    })), [options])
-
-    /*eslint-disabl react-hooks/exhaustive-deps */,
+    })), [options]),
     _hInputChange = (0, _uiApi.useMemo)(() => (token, id) => {
       const _tokenInLowerCase = (token || '').toLowerCase(),
         _token = _isInput ? _tokenInLowerCase : _tokenInLowerCase.trim();
@@ -135,7 +133,6 @@ const InputSuggest = _ref => {
       }
     }, [_isInput, _getSearchOptions, _clearItem, dispatch])
     //dispatch
-    /*eslint-enable react-hooks/exhaustive-deps */
 
     /*eslint-disable react-hooks/exhaustive-deps */,
     [_hSelectOption, _hEnterTextField] = (0, _uiApi.useMemo)(() => [(item, evt) => {

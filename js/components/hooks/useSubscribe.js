@@ -6,9 +6,8 @@ var _uiApi = require("../uiApi");
 /*eslint-disable react-hooks/exhaustive-deps */
 const useSubscribe = (store, selector, onChange) => {
   (0, _uiApi.useEffect)(() => store.subscribe(selector, onChange), []);
-  //onChange
+  //store, selector, onChange
 };
-/*eslint-disable react-hooks/exhaustive-deps */
-var _default = useSubscribe;
-exports.default = _default;
+/*eslint-enable react-hooks/exhaustive-deps */
+var _default = exports.default = useSubscribe;
 //# sourceMappingURL=useSubscribe.js.map

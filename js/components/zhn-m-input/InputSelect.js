@@ -61,7 +61,6 @@ const InputSelect = _ref => {
     ], []);
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  /*eslint-disable jsx-a11y/no-static-element-interactions*/
   return (0, _jsxRuntime.jsxs)("button", {
     ..._ariaComboboxProps,
     ref: _refBtCombobox,

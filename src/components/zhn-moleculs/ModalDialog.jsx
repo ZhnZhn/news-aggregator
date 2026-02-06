@@ -77,10 +77,7 @@ const ModalDialog = ({
         onClick={_hClickDialog}
         onKeyDown={_hKeyDown}
     >
-    {
-     /*eslint-enable jsx-a11y/no-noninteractive-element-interactions*/
-     /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
-    }
+    {/*eslint-enable jsx-a11y/no-noninteractive-element-interactions*/}
         <BrowserCaption
           style={captionStyle}
           caption={caption}

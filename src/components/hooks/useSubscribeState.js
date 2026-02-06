@@ -22,6 +22,6 @@ const useSubscribeState = (
 
   return state;
 }
-/*eslint-disable react-hooks/exhaustive-deps */
+/*eslint-enable react-hooks/exhaustive-deps */
 
 export default useSubscribeState
