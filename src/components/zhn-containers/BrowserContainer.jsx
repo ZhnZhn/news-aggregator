@@ -1,3 +1,4 @@
+import { CL_HRZ_CONTAINER } from '../crStyle';
 import {
   showAlertDialog,
   showDialog
@@ -7,22 +8,18 @@ import MENU from '../../conf/NewsMenu'
 import NewsBrowser from '../source-browsers/NewsBrowser'
 import DialogContainer from './DialogContainer'
 
-const BrowserContainer = ({
-  useMsBrowser,
-  useMsDialog,
-  closeDialog
-}) => (
-  <div className="hrz-container">
+const BrowserContainer = (props) => (
+  <div className={CL_HRZ_CONTAINER}>
     <NewsBrowser
        browserId={MENU.NEWS}
-       useMsBrowser={useMsBrowser}
+       useMsBrowser={props.useMsBrowser}
        onClick={showDialog}
        onError={showAlertDialog}
     />
     <DialogContainer
        maxDialog={3}
-       useMsDialog={useMsDialog}
-       closeDialog={closeDialog}
+       useMsDialog={props.useMsDialog}
+       closeDialog={props.closeDialog}
     />
   </div>
 );

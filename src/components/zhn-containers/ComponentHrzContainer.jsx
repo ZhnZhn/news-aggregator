@@ -1,18 +1,15 @@
 import { useState } from '../uiApi';
+import { CL_HRZ_CONTAINER } from '../crStyle';
 
 import isInCont from './isInCont';
 
-const CL = "hrz-container";
-
-const ComponentHrzContainer = ({
-  useMsPane
-}) => {
+const ComponentHrzContainer = (props) => {
   const [
     containers,
     setContainers
   ] = useState([]);
 
-  useMsPane(msPane => {
+  props.useMsPane(msPane => {
     const { Comp } = msPane || {};
     if (Comp) {
       setContainers(prevContainers => isInCont(prevContainers, Comp)
@@ -23,7 +20,7 @@ const ComponentHrzContainer = ({
   })
 
   return (
-    <div className={CL}>
+    <div className={CL_HRZ_CONTAINER}>
       {containers}
     </div>
   );

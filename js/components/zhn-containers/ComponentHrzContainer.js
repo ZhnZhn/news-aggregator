@@ -4,15 +4,12 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
+var _crStyle = require("../crStyle");
 var _isInCont = _interopRequireDefault(require("./isInCont"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL = "hrz-container";
-const ComponentHrzContainer = _ref => {
-  let {
-    useMsPane
-  } = _ref;
+const ComponentHrzContainer = props => {
   const [containers, setContainers] = (0, _uiApi.useState)([]);
-  useMsPane(msPane => {
+  props.useMsPane(msPane => {
     const {
       Comp
     } = msPane || {};
@@ -21,10 +18,9 @@ const ComponentHrzContainer = _ref => {
     }
   });
   return (0, _jsxRuntime.jsx)("div", {
-    className: CL,
+    className: _crStyle.CL_HRZ_CONTAINER,
     children: containers
   });
 };
-var _default = ComponentHrzContainer;
-exports.default = _default;
+var _default = exports.default = ComponentHrzContainer;
 //# sourceMappingURL=ComponentHrzContainer.js.map

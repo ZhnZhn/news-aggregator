@@ -1,11 +1,12 @@
 "use strict";
 
 exports.__esModule = true;
-exports.crWithScrollCn = exports.crTextLeftCn = exports.crStyle2 = exports.crShowHideStyle = exports.crShowHide = exports.crPopupMenuCn = exports.crPaneCn = exports.crInlineBlockShowHide = exports.crContainerBgCn = exports.crCn = exports.crBoxShadowCn = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_COLOR_BLACK_DARK = exports.S_COLOR_BLACK = exports.S_BLOCK = exports.COLOR_BLACK = exports.CL_SHOW_POPUP = exports.CL_SELECT_NONE = exports.CL_ROW_NEWS_SOURCE = exports.CL_MENU_MORE_ITEM = exports.CL_DIALOG = void 0;
+exports.crWithScrollCn = exports.crTextLeftCn = exports.crStyle2 = exports.crShowHideStyle = exports.crShowHide = exports.crPopupMenuCn = exports.crPaneCn = exports.crInlineBlockShowHide = exports.crContainerBgCn = exports.crCn = exports.crBoxShadowCn = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_COLOR_BLACK_DARK = exports.S_COLOR_BLACK = exports.S_BLOCK = exports.COLOR_BLACK = exports.CL_SHOW_POPUP = exports.CL_SELECT_NONE = exports.CL_ROW_NEWS_SOURCE = exports.CL_MENU_MORE_ITEM = exports.CL_HRZ_CONTAINER = exports.CL_DIALOG = void 0;
 var _uiApi = require("./uiApi");
 const CL_SELECT_NONE = exports.CL_SELECT_NONE = 'select-none';
 const CL_MENU_MORE_ITEM = exports.CL_MENU_MORE_ITEM = `menu-more__item ${CL_SELECT_NONE}`;
 const CL_ROW_NEWS_SOURCE = exports.CL_ROW_NEWS_SOURCE = `row__news-source ${CL_SELECT_NONE}`;
+const CL_HRZ_CONTAINER = exports.CL_HRZ_CONTAINER = "hrz-container";
 const COLOR_BLACK = exports.COLOR_BLACK = '#121212';
 const S_COLOR_BLACK = exports.S_COLOR_BLACK = {
   color: COLOR_BLACK

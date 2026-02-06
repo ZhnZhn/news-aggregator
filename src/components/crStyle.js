@@ -3,6 +3,7 @@ import { isArr } from './uiApi';
 export const CL_SELECT_NONE = 'select-none'
 export const CL_MENU_MORE_ITEM = `menu-more__item ${CL_SELECT_NONE}`
 export const CL_ROW_NEWS_SOURCE = `row__news-source ${CL_SELECT_NONE}`;
+export const CL_HRZ_CONTAINER = "hrz-container"
 
 export const COLOR_BLACK = '#121212'
 export const S_COLOR_BLACK = {
