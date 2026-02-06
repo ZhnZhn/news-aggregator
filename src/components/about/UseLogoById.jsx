@@ -1,12 +1,9 @@
 const PATH_TO_SVG_SPRITE = './sprite.svg';
 
-const UseLogoById = ({
-  id,
-  style
-}) => (
+const UseLogoById = (props) => (
   <use
-     style={style}
-     href={`${PATH_TO_SVG_SPRITE}#${id}Logo`}
+     style={props.style}
+     href={`${PATH_TO_SVG_SPRITE}#${props.id}Logo`}
   />
 );
 

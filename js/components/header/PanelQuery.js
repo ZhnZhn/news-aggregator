@@ -11,26 +11,19 @@ var _ModalPane = _interopRequireDefault(require("../zhn-moleculs/ModalPane"));
 var _FocusTrap = _interopRequireDefault(require("../zhn-moleculs/FocusTrap"));
 var _MenuAccordion = _interopRequireDefault(require("./MenuAccordion"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const PanelQuery = _ref => {
-  let {
-    menuModel,
-    refFocusItem,
-    className,
-    isShow,
-    onClose
-  } = _ref;
-  const _refFirstItem = (0, _useFocusRefElementIf.default)(isShow && _has.HAS_KEYBOARD_FOCUS, refFocusItem),
+const PanelQuery = props => {
+  const _refFirstItem = (0, _useFocusRefElementIf.default)(props.isShow && _has.HAS_KEYBOARD_FOCUS, props.refFocusItem),
     _refLastItem = (0, _uiApi.useRef)(),
-    _getFocusRef = (0, _useItemsFocusTrap.default)(menuModel, _refFirstItem, _refLastItem)[0];
+    _getFocusRef = (0, _useItemsFocusTrap.default)(props.menuModel, _refFirstItem, _refLastItem)[0];
   return (0, _jsxRuntime.jsx)(_ModalPane.default, {
-    isShow: isShow,
-    className: className,
-    onClose: onClose,
+    isShow: props.isShow,
+    className: props.className,
+    onClose: props.onClose,
     children: (0, _jsxRuntime.jsx)(_FocusTrap.default, {
       refFirst: _refFirstItem,
       refLast: _refLastItem,
       children: (0, _jsxRuntime.jsx)(_MenuAccordion.default, {
-        menuModel: menuModel,
+        menuModel: props.menuModel,
         getFocusRef: _getFocusRef
       })
     })

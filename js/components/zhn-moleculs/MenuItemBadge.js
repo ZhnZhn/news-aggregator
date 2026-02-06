@@ -17,27 +17,21 @@ const S_BADGE = {
   float: 'right',
   cursor: 'pointer'
 };
-const MenuItemBadge = _ref => {
-  let {
-    style,
-    itemBadge,
-    itemConf,
-    onClick
-  } = _ref;
+const MenuItemBadge = props => {
   const _hClick = evt => {
       evt.stopPropagation();
-      onClick(itemConf);
+      props.onClick(props.itemConf);
     },
     {
       isOpen
-    } = itemBadge || {},
+    } = props.itemBadge || {},
     _badgeStyle = (0, _crStyle.crStyle2)(S_BADGE, !isOpen && _crStyle.S_COLOR_BLACK);
   return (0, _jsxRuntime.jsx)("button", {
     type: "button",
     tabIndex: "-1",
     style: {
       ..._badgeStyle,
-      ...style
+      ...props.style
     },
     onClick: _hClick,
     children: "V"

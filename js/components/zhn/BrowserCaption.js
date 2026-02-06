@@ -15,29 +15,20 @@ const CL_BROWSER_CAPTION = "br-caption gap-right",
     fontSize: '1.125rem',
     fontWeight: 'bold'
   };
-const BrowserCaption = _ref => {
-  let {
-    style,
-    caption,
-    children,
-    onMore,
-    onClose
-  } = _ref;
-  return (0, _jsxRuntime.jsxs)("div", {
-    className: CL_BROWSER_CAPTION,
-    style: style,
-    children: [(0, _uiApi.isFn)(onMore) && (0, _jsxRuntime.jsx)(_SvgMore.default, {
-      className: CL_BT_SVG_MENU,
-      onClick: onMore
-    }), (0, _jsxRuntime.jsx)("span", {
-      className: _crStyle.CL_SELECT_NONE,
-      style: S_CAPTION,
-      children: caption
-    }), children, (0, _jsxRuntime.jsx)(_SvgX.default, {
-      className: CL_BT_SVG_CLOSE,
-      onClick: onClose
-    })]
-  });
-};
+const BrowserCaption = props => (0, _jsxRuntime.jsxs)("div", {
+  className: CL_BROWSER_CAPTION,
+  style: props.style,
+  children: [(0, _uiApi.isFn)(props.onMore) && (0, _jsxRuntime.jsx)(_SvgMore.default, {
+    className: CL_BT_SVG_MENU,
+    onClick: props.onMore
+  }), (0, _jsxRuntime.jsx)("span", {
+    className: _crStyle.CL_SELECT_NONE,
+    style: S_CAPTION,
+    children: props.caption
+  }), props.children, (0, _jsxRuntime.jsx)(_SvgX.default, {
+    className: CL_BT_SVG_CLOSE,
+    onClick: props.onClose
+  })]
+});
 var _default = exports.default = BrowserCaption;
 //# sourceMappingURL=BrowserCaption.js.map

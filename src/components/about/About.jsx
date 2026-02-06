@@ -110,18 +110,15 @@ const _crStepItem = (
   />
 );
 
-const About = ({
-  isInitShow,
-  useMsAbout
-}) => {
+const About = (props) => {
   const [
     isShow,
     showAbout,
     hideAbout,
     hKeyDown
-  ] = useShowHideComponent(isInitShow);
+  ] = useShowHideComponent(props.isInitShow);
 
-  useMsAbout(msAbout => {
+  props.useMsAbout(msAbout => {
     if (msAbout) {
       const _setIs = msAbout.is
         ? showAbout

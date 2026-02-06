@@ -21,20 +21,15 @@ const Circle = _ref => {
     r: "2.5"
   });
 };
-const SvgMore = _ref2 => {
-  let {
-    btRef,
-    className,
-    onClick
-  } = _ref2;
+const SvgMore = props => {
   const [_ariaLabel, _dataPos] = (0, _useTooltip.default)("More", _DP.DP_MIDDLE_LEFT);
   return (0, _jsxRuntime.jsx)("button", {
-    ref: btRef,
+    ref: props.btRef,
     type: "button",
     "aria-label": _ariaLabel,
     "data-pos": _dataPos,
-    className: className,
-    onClick: onClick,
+    className: props.className,
+    onClick: props.onClick,
     children: (0, _jsxRuntime.jsxs)(_Svg.default, {
       w: "6",
       h: "24",

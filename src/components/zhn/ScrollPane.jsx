@@ -2,21 +2,16 @@ import { useRef } from '../uiApi';
 import usePassiveTouchEvent from '../hooks/usePassiveTouchEvent';
 import { crWithScrollCn } from '../crStyle';
 
-const ScrollPane = ({
-  style,
-  className,
-  onScroll,
-  children
-}) => {
+const ScrollPane = (props) => {
   const _refDiv = useRef();
-  usePassiveTouchEvent(_refDiv, "scroll", onScroll)
+  usePassiveTouchEvent(_refDiv, "scroll", props.onScroll)
   return (
     <div
       ref={_refDiv}
-      className={crWithScrollCn(className)}
-      style={style}
+      className={crWithScrollCn(props.className)}
+      style={props.style}
     >
-      {children}
+      {props.children}
     </div>
   );
 }

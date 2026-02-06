@@ -1,11 +1,9 @@
 
 const _fFlexToken = (
   style
-) => ({
-  children
-}) => (
+) => (props) => (
   <div style={style}>
-    {children}
+    {props.children}
   </div>
 );
 

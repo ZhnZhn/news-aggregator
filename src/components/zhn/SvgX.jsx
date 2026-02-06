@@ -8,25 +8,20 @@ const CL_BT_SVG_X = "bt-svg-x"
   stroke: 'inherit'
 };
 
-const SvgX = ({
-  dataPos,
-  className=CL_BT_SVG_X,
-  style,
-  onClick
-}) => {
+const SvgX = (props) => {
   const [
     _ariaLabel,
     _dataPos
-  ] = useTooltip("Close", dataPos || DP_CLOSE_LEFT);
+  ] = useTooltip("Close", props.dataPos || DP_CLOSE_LEFT);
   return (
     <button
        type="button"
        aria-label={_ariaLabel}
        data-pos={_dataPos}
        tabIndex="-1"
-       className={className}
-       style={style}
-       onClick={onClick}
+       className={props.className || CL_BT_SVG_X}
+       style={props.style}
+       onClick={props.onClick}
     >
       <Svg100
          w="12"

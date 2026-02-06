@@ -13,33 +13,27 @@ const CL_BROWSER_CAPTION = "br-caption gap-right"
   fontWeight: 'bold'
 };
 
-const BrowserCaption = ({
-  style,
-  caption,
-  children,
-  onMore,
-  onClose
-}) => (
+const BrowserCaption = (props) => (
   <div
      className={CL_BROWSER_CAPTION}
-     style={style}
+     style={props.style}
   >
     {
-       isFn(onMore) && <SvgMore
+       isFn(props.onMore) && <SvgMore
           className={CL_BT_SVG_MENU}
-          onClick={onMore}
+          onClick={props.onMore}
        />
     }
     <span
        className={CL_SELECT_NONE}
        style={S_CAPTION}
     >
-       {caption}
+       {props.caption}
     </span>
-    {children}
+    {props.children}
     <SvgX
       className={CL_BT_SVG_CLOSE}
-      onClick={onClose}
+      onClick={props.onClose}
     />
   </div>
 );

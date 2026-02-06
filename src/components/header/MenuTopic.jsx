@@ -11,19 +11,13 @@ const S_HORIZONTAL_LINE = {
   borderBottom: `1px solid ${COLOR_BLACK}`
 };
 
-const MenuTopic = ({
-  refBt,
-  caption,
-  items,
-  onItem,
-  onToggle
-}) => isArr(items) ? (
+const MenuTopic = (props) => isArr(props.items) ? (
   <OpenClose
-     refBt={refBt}     
-     caption={caption}
-     onToggle={onToggle}
+     refBt={props.refBt}
+     caption={props.caption}
+     onToggle={props.onToggle}
   >
-    {items.map(config => isArr(config)
+    {props.items.map(config => isArr(config)
       ? <MenuItem
           key={config[0]}
           className={CL_ITEM}
@@ -38,10 +32,10 @@ const MenuTopic = ({
     )}
   </OpenClose>
 ) : <MenuItem
-   key={caption}
+   key={props.caption}
    className={CL_ITEM}
-   caption={caption}
-   onClick={onItem}
+   caption={props.caption}
+   onClick={props.onItem}
 />;
 
 export default MenuTopic

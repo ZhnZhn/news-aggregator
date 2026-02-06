@@ -13,23 +13,19 @@ const Circle = ({
   <circle cx="3" cy={cy} r="2.5" />
 );
 
-const SvgMore = ({
-  btRef,
-  className,
-  onClick
-}) => {
+const SvgMore = (props) => {
   const [
     _ariaLabel,
     _dataPos
   ] = useTooltip("More", DP_MIDDLE_LEFT);
   return (
     <button
-      ref={btRef}
+      ref={props.btRef}
       type="button"
       aria-label={_ariaLabel}
       data-pos={_dataPos}
-      className={className}
-      onClick={onClick}
+      className={props.className}
+      onClick={props.onClick}
     >
       <Svg
         w="6"

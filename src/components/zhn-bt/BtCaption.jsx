@@ -11,15 +11,15 @@ const _crCaptionToken = (
   caption.substring(keyIndex+1)
 ];
 
-const CaptionToken = ({
-  caption,
-  keyIndex
-}) => {
+const CaptionToken = (props) => {
   const [
     _before,
     _key,
     _after
-  ] = _crCaptionToken(caption, keyIndex);
+  ] = _crCaptionToken(
+    props.caption,
+    props.keyIndex
+  );
   return (
     <>
      <span>{_before}</span>
@@ -39,21 +39,18 @@ const _findKeyIndex = (
   : -1;
 
 
-const BtCaption = ({
-  className,
-  style,
-  caption,
-  hotKey,
-  children
-}) => {
-  const _keyIndex = _findKeyIndex(caption, hotKey)
+const BtCaption = (props) => {
+  const _keyIndex = _findKeyIndex(props.caption, props.hotKey)
   , _caption = HAS_TOUCH_EVENTS || _keyIndex === -1
-       ? caption || ''
-       : <CaptionToken caption={caption} keyIndex={_keyIndex} />;
+       ? props.caption || ''
+       : <CaptionToken caption={props.caption} keyIndex={_keyIndex} />;
   return (
-    <span className={className} style={style}>
+    <span
+       className={props.className}
+       style={props.style}
+    >
       {_caption}
-      {children}
+      {props.children}
     </span>
   );
 };

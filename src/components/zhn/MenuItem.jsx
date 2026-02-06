@@ -1,25 +1,18 @@
 import { useKeyEnterOrSpace } from '../hooks/fUseKey';
 
-const MenuItem = ({
-  refEl,
-  className,
-  style,
-  caption,
-  children,
-  onClick
-}) => {
-  const _hKeyDown = useKeyEnterOrSpace(onClick);
+const MenuItem = (props) => {
+  const _hKeyDown = useKeyEnterOrSpace(props.onClick);
   return (
     <div
-      ref={refEl}
+      ref={props.refEl}
       role="menuitem"
       tabIndex="0"
-      className={className}
-      style={style}
-      onClick={onClick}
+      className={props.className}
+      style={props.style}
+      onClick={props.onClick}
       onKeyDown={_hKeyDown}
     >
-      {caption || children}
+      {props.caption || props.children}
     </div>
   );
 };

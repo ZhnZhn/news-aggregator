@@ -26,35 +26,26 @@ const _crCaption = caption => {
   const _index = caption.indexOf('(');
   return _index === -1 ? caption : caption.slice(0, _index - 1);
 };
-const ModalToggle = _ref => {
-  let {
-    isShow,
-    className,
-    style,
-    chbStroke,
-    configs,
-    onToggle,
-    onClose
-  } = _ref;
-  const _refFirst = (0, _useModalFocus.default)(isShow),
-    [_getFocusRef, _refLast] = (0, _useItemsFocusTrap.default)(configs, _refFirst);
+const ModalToggle = props => {
+  const _refFirst = (0, _useModalFocus.default)(props.isShow),
+    [_getFocusRef, _refLast] = (0, _useItemsFocusTrap.default)(props.configs, _refFirst);
   return _getFocusRef ? (0, _jsxRuntime.jsx)(_ModalPane.default, {
-    isShow: isShow,
+    isShow: props.isShow,
+    className: props.className,
     style: {
       ...S_MODAL_POPUP,
-      ...style
+      ...props.style
     },
-    className: className,
-    onClose: onClose,
+    onClose: props.onClose,
     children: (0, _jsxRuntime.jsx)(_FocusTrap.default, {
       refFirst: _refFirst,
       refLast: _refLast,
-      children: configs.map((item, index) => (0, _jsxRuntime.jsx)(_InputSwitch.default, {
+      children: props.configs.map((item, index) => (0, _jsxRuntime.jsx)(_InputSwitch.default, {
         refChb: _getFocusRef(index),
         initialValue: item.df,
         style: S_CHB_TOGGLE,
         caption: _crCaption(item.caption),
-        onToggle: () => onToggle(item.id)
+        onToggle: () => props.onToggle(item.id)
       }, item.id))
     })
   }) : null;

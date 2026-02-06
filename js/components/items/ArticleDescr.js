@@ -10,60 +10,45 @@ var _SvgX = _interopRequireDefault(require("../zhn/SvgX"));
 var _RelatedDiv = _interopRequireDefault(require("./RelatedDiv"));
 var _ArticleDescr = require("./ArticleDescr.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
-const ArticleDescr = _ref => {
-  let {
-    href,
-    description,
-    related,
-    commentsUrl,
-    commentsTitle,
-    publishedAt,
-    datetime,
-    timeAgo,
-    author,
-    onKeyDown,
-    onClose
-  } = _ref;
-  return (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
-    children: [(0, _jsxRuntime.jsxs)("div", {
-      style: _ArticleDescr.S_AUTHOR_ROW,
-      children: [(0, _jsxRuntime.jsx)(_TextToken.TextSpan, {
-        style: _ArticleDescr.S_AUTHOR,
-        text: author
-      }), (0, _jsxRuntime.jsx)("time", {
-        style: _ArticleDescr.S_DATE,
-        datetime: datetime,
-        children: timeAgo
-      })]
-    }), href ? (0, _jsxRuntime.jsx)(_SafeLink.default, {
-      className: _ArticleDescr.CL_LINK_WRAPPER,
-      style: _ArticleDescr.S_DESCR,
-      href: href,
-      onKeyDown: onKeyDown,
-      children: description
-    }) : (0, _jsxRuntime.jsx)("div", {
-      style: _ArticleDescr.S_DESCR,
-      children: description
+const ArticleDescr = props => (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+  children: [(0, _jsxRuntime.jsxs)("div", {
+    style: _ArticleDescr.S_AUTHOR_ROW,
+    children: [(0, _jsxRuntime.jsx)(_TextToken.TextSpan, {
+      style: _ArticleDescr.S_AUTHOR,
+      text: props.author
+    }), (0, _jsxRuntime.jsx)("time", {
+      style: _ArticleDescr.S_DATE,
+      datetime: props.datetime,
+      children: props.timeAgo
+    })]
+  }), props.href ? (0, _jsxRuntime.jsx)(_SafeLink.default, {
+    className: _ArticleDescr.CL_LINK_WRAPPER,
+    style: _ArticleDescr.S_DESCR,
+    href: props.href,
+    onKeyDown: props.onKeyDown,
+    children: props.description
+  }) : (0, _jsxRuntime.jsx)("div", {
+    style: _ArticleDescr.S_DESCR,
+    children: props.description
+  }), (0, _jsxRuntime.jsxs)("div", {
+    style: _ArticleDescr.S_PT_8,
+    children: [(0, _jsxRuntime.jsx)(_RelatedDiv.default, {
+      related: props.related,
+      commentsUrl: props.commentsUrl,
+      commentsTitle: props.commentsTitle
     }), (0, _jsxRuntime.jsxs)("div", {
-      style: _ArticleDescr.S_PT_8,
-      children: [(0, _jsxRuntime.jsx)(_RelatedDiv.default, {
-        related: related,
-        commentsUrl: commentsUrl,
-        commentsTitle: commentsTitle
-      }), (0, _jsxRuntime.jsxs)("div", {
-        style: _ArticleDescr.S_BOTTOM_ROW,
-        children: [(0, _jsxRuntime.jsx)(_SvgX.default, {
-          dataPos: _DP.DP_CLOSE_RIGHT,
-          onClick: onClose
-        }), (0, _jsxRuntime.jsx)("time", {
-          className: _ArticleDescr.CL_SELECT_NONE,
-          style: _ArticleDescr.S_DATE,
-          datetime: datetime,
-          children: publishedAt
-        })]
+      style: _ArticleDescr.S_BOTTOM_ROW,
+      children: [(0, _jsxRuntime.jsx)(_SvgX.default, {
+        dataPos: _DP.DP_CLOSE_RIGHT,
+        onClick: props.onClose
+      }), (0, _jsxRuntime.jsx)("time", {
+        className: _ArticleDescr.CL_SELECT_NONE,
+        style: _ArticleDescr.S_DATE,
+        datetime: props.datetime,
+        children: props.publishedAt
       })]
     })]
-  });
-};
+  })]
+});
 var _default = exports.default = ArticleDescr;
 //# sourceMappingURL=ArticleDescr.js.map

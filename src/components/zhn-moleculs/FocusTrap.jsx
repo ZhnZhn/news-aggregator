@@ -2,15 +2,12 @@ import { focusRefElement } from '../uiApi';
 import { HAS_KEYBOARD_FOCUS } from '../has';
 
 /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
-const TrapDiv = ({
-  style,
-  onFocus
-}) => (
+const TrapDiv = (props) => (
   <div
-    style={style}
     tabIndex="0"
     aria-hidden="true"
-    onFocus={onFocus}
+    style={props.style}
+    onFocus={props.onFocus}
   />
 );
 /*eslint-enable jsx-a11y/no-noninteractive-tabindex*/

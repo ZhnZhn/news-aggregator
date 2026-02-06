@@ -18,55 +18,44 @@ const S_ROW_CHECKBOX_LS = {
   },
   IS_ALLOW_USE_LS = (0, _localStore.isAllowUseLs)(),
   IS_ADVANCED_INPUT_OPTIONS = (0, _uiStore.isAdvancedInputOptions)();
-const CardUiTheme = _ref => {
-  let {
-    style,
-    selectStyle,
-    buttonsStyle,
-    btStyle,
-    onClose,
-    isVisible,
-    setRefLast
-  } = _ref;
-  return (0, _jsxRuntime.jsxs)("div", {
-    style: style,
-    children: [(0, _jsxRuntime.jsx)(_InputSelect.default, {
-      style: selectStyle,
-      caption: "UI Theme",
-      initItem: _uiTheme.THEME_OPTIONS.DF,
-      options: _uiTheme.THEME_OPTIONS,
-      onSelect: _uiTheme.setUiTheme
-    }), (0, _jsxRuntime.jsx)(_InputSelect.default, {
-      style: selectStyle,
-      caption: "Font Size",
-      initItem: _uiTheme.FONT_SIZE_OPTIONS.DF,
-      options: _uiTheme.FONT_SIZE_OPTIONS,
-      onSelect: _uiTheme.selectFontSize
-    }), (0, _jsxRuntime.jsx)(_InputSwitch.default, {
-      style: S_ROW_CHECKBOX_LS,
-      initialValue: IS_ALLOW_USE_LS,
-      caption: "Allow use localStorage",
-      onCheck: _localStore.allowSaveToLs,
-      onUnCheck: _localStore.notAllowSaveToLs
-    }), (0, _jsxRuntime.jsx)(_InputSwitch.default, {
-      style: S_ROW_CHECKBOX_LS,
-      initialValue: IS_ADVANCED_INPUT_OPTIONS,
-      caption: "Advanced input options",
-      onCheck: _uiStore.enableAdvancedInputOptions,
-      onUnCheck: _uiStore.disableAndvancedInputOptions
-    }), (0, _jsxRuntime.jsx)("div", {
-      style: S_VERTICAL_GAP_22
-    }), (0, _jsxRuntime.jsx)("div", {
-      style: buttonsStyle,
-      children: (0, _jsxRuntime.jsx)(_RaisedButton.default, {
-        refBt: isVisible ? setRefLast : void 0,
-        style: btStyle,
-        isPrimary: true,
-        caption: "Close",
-        onClick: onClose
-      })
-    })]
-  });
-};
+const CardUiTheme = props => (0, _jsxRuntime.jsxs)("div", {
+  style: props.style,
+  children: [(0, _jsxRuntime.jsx)(_InputSelect.default, {
+    style: props.selectStyle,
+    caption: "UI Theme",
+    initItem: _uiTheme.THEME_OPTIONS.DF,
+    options: _uiTheme.THEME_OPTIONS,
+    onSelect: _uiTheme.setUiTheme
+  }), (0, _jsxRuntime.jsx)(_InputSelect.default, {
+    style: props.selectStyle,
+    caption: "Font Size",
+    initItem: _uiTheme.FONT_SIZE_OPTIONS.DF,
+    options: _uiTheme.FONT_SIZE_OPTIONS,
+    onSelect: _uiTheme.selectFontSize
+  }), (0, _jsxRuntime.jsx)(_InputSwitch.default, {
+    style: S_ROW_CHECKBOX_LS,
+    initialValue: IS_ALLOW_USE_LS,
+    caption: "Allow use localStorage",
+    onCheck: _localStore.allowSaveToLs,
+    onUnCheck: _localStore.notAllowSaveToLs
+  }), (0, _jsxRuntime.jsx)(_InputSwitch.default, {
+    style: S_ROW_CHECKBOX_LS,
+    initialValue: IS_ADVANCED_INPUT_OPTIONS,
+    caption: "Advanced input options",
+    onCheck: _uiStore.enableAdvancedInputOptions,
+    onUnCheck: _uiStore.disableAndvancedInputOptions
+  }), (0, _jsxRuntime.jsx)("div", {
+    style: S_VERTICAL_GAP_22
+  }), (0, _jsxRuntime.jsx)("div", {
+    style: props.buttonsStyle,
+    children: (0, _jsxRuntime.jsx)(_RaisedButton.default, {
+      refBt: props.isVisible ? props.setRefLast : void 0,
+      style: props.btStyle,
+      isPrimary: true,
+      caption: "Close",
+      onClick: props.onClose
+    })
+  })]
+});
 var _default = exports.default = CardUiTheme;
 //# sourceMappingURL=CardUiTheme.js.map

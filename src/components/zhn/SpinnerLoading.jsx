@@ -1,10 +1,7 @@
-const SpinnerLoading = ({
-  style,
-  isFailed
-}) => (
+const SpinnerLoading = (props) => (
   <span
-    style={style}
-    data-loader={isFailed
+    style={props.style}
+    data-loader={props.isFailed
       ? "circle-failed"
       : "circle"}
   />

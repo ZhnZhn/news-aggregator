@@ -56,17 +56,12 @@ const HEADER = "header"
   margin: '0 8px'
 };
 
-const HeaderBar = ({
-  onNewsSources,
-  onSettings,
-  onAbout
-}) => {
+const HeaderBar = (props) => {
   const _refFocusItem = useRef()
   , [
     isQuery,
     toggleIsQuery
   ] = useToggle()
-  /*eslint-disable react-hooks/exhaustive-deps */
   , _hCloseQuery = useCallback(evt => {
      const _menuItemElement = evt && evt.target;
      setRefValue(
@@ -76,13 +71,11 @@ const HeaderBar = ({
          : null
      )
      toggleIsQuery(false)
-  }, [])
-  // toggleIsQuery
-  /*eslint-enable react-hooks/exhaustive-deps */
+  }, [toggleIsQuery])  
   , _menuQuery = crMenuQuery(
     APP_TITLE,
-    onNewsSources,
-    onAbout,
+    props.onNewsSources,
+    props.onAbout,
     _hCloseQuery
   );
 
@@ -125,7 +118,7 @@ const HeaderBar = ({
             dataPos={DP_BOTTOM_RIGHT}
             className={CL_BT_ABOUT}
             hotKey={HK_ABOUT}
-            onClick={onAbout}
+            onClick={props.onAbout}
           >
             <SvgInfo style={S_SVG_ICON} />
           </FlatButton>
@@ -133,7 +126,7 @@ const HeaderBar = ({
             ariaLabel="Settings Dialog"
             dataPos={DP_BOTTOM_RIGHT}
             hotKey={HK_SETTINGS}
-            onClick={onSettings}
+            onClick={props.onSettings}
           >
             <SvgSettings style={S_SVG_ICON} />
           </FlatButton>

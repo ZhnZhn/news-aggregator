@@ -16,64 +16,52 @@ import {
   S_PT_8
 } from './ArticleDescr.Style';
 
-const ArticleDescr = ({
-  href,
-  description,
-  related,
-  commentsUrl,
-  commentsTitle,
-  publishedAt,
-  datetime,
-  timeAgo,
-  author,
-  onKeyDown,
-  onClose
-}) => (
+const ArticleDescr = (props) => (
   <>
     <div style={S_AUTHOR_ROW}>
       <TextSpan
          style={S_AUTHOR}
-         text={author}
+         text={props.author}
       />
       <time
         style={S_DATE}
-        datetime={datetime}
+        datetime={props.datetime}
       >
-        {timeAgo}
+        {props.timeAgo}
       </time>
     </div>
-    {href ? (
+    {props.href ? (
        <SafeLink
          className={CL_LINK_WRAPPER}
          style={S_DESCR}
-         href={href}
-         onKeyDown={onKeyDown}
+         href={props.href}
+         onKeyDown={props.onKeyDown}
         >
-          {description}
+          {props.description}
         </SafeLink>
        ) : (
         <div style={S_DESCR}>
-         {description}
+         {props.description}
         </div>
       )
     }
     <div style={S_PT_8}>
       <RelatedDiv
-        related={related}
-        commentsUrl={commentsUrl}
-        commentsTitle={commentsTitle}
+        related={props.related}
+        commentsUrl={props.commentsUrl}
+        commentsTitle={props.commentsTitle}
       />
       <div style={S_BOTTOM_ROW}>
         <SvgX
           dataPos={DP_CLOSE_RIGHT}
-          onClick={onClose}
+          onClick={props.onClose}
         />
         <time
           className={CL_SELECT_NONE}
           style={S_DATE}
-          datetime={datetime}
+          datetime={props.datetime}
         >
-          {publishedAt}
+          {props.publishedAt}
         </time>
       </div>
     </div>

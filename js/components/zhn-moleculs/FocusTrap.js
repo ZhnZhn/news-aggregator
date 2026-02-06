@@ -5,28 +5,22 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _has = require("../has");
 var _jsxRuntime = require("preact/jsx-runtime");
-/*eslint-disable jsx-a11y/no-noninteractive-tabindex*/const TrapDiv = _ref => {
-  let {
-    style,
-    onFocus
-  } = _ref;
-  return (0, _jsxRuntime.jsx)("div", {
-    style: style,
-    tabIndex: "0",
-    "aria-hidden": "true",
-    onFocus: onFocus
-  });
-};
+/*eslint-disable jsx-a11y/no-noninteractive-tabindex*/const TrapDiv = props => (0, _jsxRuntime.jsx)("div", {
+  tabIndex: "0",
+  "aria-hidden": "true",
+  style: props.style,
+  onFocus: props.onFocus
+});
 /*eslint-enable jsx-a11y/no-noninteractive-tabindex*/
 
-const FocusTrap = _ref2 => {
+const FocusTrap = _ref => {
   let {
     refEl,
     refFirst,
     refLast,
     style,
     children
-  } = _ref2;
+  } = _ref;
   return _has.HAS_KEYBOARD_FOCUS ? (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
     children: [(0, _jsxRuntime.jsx)(TrapDiv, {
       style: style,
@@ -41,6 +35,5 @@ const FocusTrap = _ref2 => {
     })]
   }) : children;
 };
-var _default = FocusTrap;
-exports.default = _default;
+var _default = exports.default = FocusTrap;
 //# sourceMappingURL=FocusTrap.js.map

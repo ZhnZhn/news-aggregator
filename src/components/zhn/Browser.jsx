@@ -5,30 +5,26 @@ import {
 
 const CL_BROWSER_PANE = crPaneCn("browser-pane");
 
-const Browser = ({
-  isShow,
-  style,
-  onKeyDown,
-  children
-}) => {
+const Browser = (props) => {
   const [
     _cn,
     _style
   ] = crShowHide(
-    isShow,
+    props.isShow,
     CL_BROWSER_PANE
   );
 
+  /*eslint-disable jsx-a11y/no-static-element-interactions*/
   return (
-     <div
+     <div        
         className={_cn}
-        style={{...style, ..._style}}
-        role="presentation"
-        onKeyDown={onKeyDown}
+        style={{...props.style, ..._style}}
+        onKeyDown={props.onKeyDown}
       >
-        {children}
+        {props.children}
      </div>
   );
+  /*eslint-enable jsx-a11y/no-static-element-interactions*/
 };
 
 export default Browser

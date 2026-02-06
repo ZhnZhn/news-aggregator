@@ -11,33 +11,24 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const CL_ITEM = 'row__topic';
 const S_HORIZONTAL_LINE = {
   margin: '0 16px',
-  borderBottom: "1px solid " + _crStyle.COLOR_BLACK
+  borderBottom: `1px solid ${_crStyle.COLOR_BLACK}`
 };
-const MenuTopic = _ref => {
-  let {
-    refBt,
-    caption,
-    items,
-    onItem,
-    onToggle
-  } = _ref;
-  return (0, _uiApi.isArr)(items) ? (0, _jsxRuntime.jsx)(_OpenClose.default, {
-    refBt: refBt,
-    caption: caption,
-    onToggle: onToggle,
-    children: items.map(config => (0, _uiApi.isArr)(config) ? (0, _jsxRuntime.jsx)(_MenuItem.default, {
-      className: CL_ITEM,
-      caption: config[0],
-      onClick: config[1],
-      style: config[2]
-    }, config[0]) : (0, _jsxRuntime.jsx)("div", {
-      style: S_HORIZONTAL_LINE
-    }, config))
-  }) : (0, _jsxRuntime.jsx)(_MenuItem.default, {
+const MenuTopic = props => (0, _uiApi.isArr)(props.items) ? (0, _jsxRuntime.jsx)(_OpenClose.default, {
+  refBt: props.refBt,
+  caption: props.caption,
+  onToggle: props.onToggle,
+  children: props.items.map(config => (0, _uiApi.isArr)(config) ? (0, _jsxRuntime.jsx)(_MenuItem.default, {
     className: CL_ITEM,
-    caption: caption,
-    onClick: onItem
-  }, caption);
-};
+    caption: config[0],
+    onClick: config[1],
+    style: config[2]
+  }, config[0]) : (0, _jsxRuntime.jsx)("div", {
+    style: S_HORIZONTAL_LINE
+  }, config))
+}) : (0, _jsxRuntime.jsx)(_MenuItem.default, {
+  className: CL_ITEM,
+  caption: props.caption,
+  onClick: props.onItem
+}, props.caption);
 var _default = exports.default = MenuTopic;
 //# sourceMappingURL=MenuTopic.js.map

@@ -16,42 +16,31 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const _isArr = Array.isArray;
 const _hasMenuToggle = menuToggle => _isArr(menuToggle) && menuToggle.length > 1;
 const DialogStackInputs = props => {
-  const {
-      isShow,
-      caption,
-      loadId,
-      INPUT_CONFIGS,
-      INITIAL_INPUTS,
-      TOGGLES,
-      IS_INPUTS,
-      children,
-      onShow
-    } = props,
-    [isInputs, toggleInput] = (0, _useToggleState.default)(IS_INPUTS),
-    [_refInputs, _selectInput] = (0, _useRefInputs.default)(INITIAL_INPUTS),
-    [_refDialog, _hLoad, _hClose] = (0, _useDialog.default)(props, loadId, _refInputs),
-    _hKeyDown = (0, _useKeyDown.default)(_hLoad, _hClose),
-    [_captionStyle, _menuToggle] = _hasMenuToggle(TOGGLES) ? [_Dialog.S_DIALOG_CAPTION, TOGGLES] : [_Dialog.S_BROWSER_CAPTION];
+  const [isInputs, toggleInput] = (0, _useToggleState.default)(props.IS_INPUTS),
+    [refInputs, selectInput] = (0, _useRefInputs.default)(props.INITIAL_INPUTS),
+    [refDialog, hLoad, hClose] = (0, _useDialog.default)(props, props.loadId, refInputs),
+    hKeyDown = (0, _useKeyDown.default)(hLoad, hClose),
+    [captionStyle, menuToggle] = _hasMenuToggle(props.TOGGLES) ? [_Dialog.S_DIALOG_CAPTION, props.TOGGLES] : [_Dialog.S_BROWSER_CAPTION];
   return (0, _jsxRuntime.jsx)(_DraggableDialog.default, {
-    refEl: _refDialog,
-    isShow: isShow,
-    captionStyle: _captionStyle,
-    caption: caption,
-    menuToggle: _menuToggle,
+    refEl: refDialog,
+    isShow: props.isShow,
+    captionStyle: captionStyle,
+    caption: props.caption,
+    menuToggle: menuToggle,
     toggleItem: toggleInput,
-    onKeyDown: _hKeyDown,
-    onLoad: _hLoad,
-    onShow: onShow,
-    onClose: _hClose,
+    onKeyDown: hKeyDown,
+    onLoad: hLoad,
+    onShow: props.onShow,
+    onClose: hClose,
     children: (0, _jsxRuntime.jsxs)(_FlexToken.FlexColumn, {
       children: [(0, _jsxRuntime.jsx)(_StackInputs.default, {
         isInputs: isInputs,
-        configs: INPUT_CONFIGS,
-        onSelect: _selectInput,
-        onEnter: _hLoad
+        configs: props.INPUT_CONFIGS,
+        onSelect: selectInput,
+        onEnter: hLoad
       }), (0, _jsxRuntime.jsx)(_PoweredBy.default, {
         style: _Dialog.S_POWERED_BY,
-        children: children
+        children: props.children
       })]
     })
   });

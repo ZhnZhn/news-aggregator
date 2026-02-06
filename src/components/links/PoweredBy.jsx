@@ -5,16 +5,12 @@ const S_ROOT = {
   marginLeft: 8
 };
 
-const PoweredBy = ({
-  style,
-  spanStyle,
-  children
-}) => (
-  <div style={{...S_ROOT, ...style}}>
-    <span style={{...S_COLOR_BLACK, ...spanStyle}}>
+const PoweredBy = (props) => (
+  <div style={{...S_ROOT, ...props.style}}>
+    <span style={{...S_COLOR_BLACK, ...props.spanStyle}}>
         Powered by
     </span>
-      {children}
+    {props.children}
   </div>
 );
 

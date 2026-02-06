@@ -64,14 +64,10 @@ const INPUT_SELECT_STYLE = crInputSelectStyle(
   INPUT_SELECT_WIDTH
 );
 
-const SettingsDialog = memoIsShow(({
-  isShow,
-  data,
-  onClose
-}) => {
-  const _refFocusLast = useRef()
-  , _setFocusLastRef = useCallback(el => {
-    _refFocusLast.current = el
+const SettingsDialog = memoIsShow((props) => {
+  const refFocusLast = useRef()
+  , setFocusLastRef = useCallback(el => {
+    refFocusLast.current = el
   }, []);
 
   return (
@@ -80,16 +76,16 @@ const SettingsDialog = memoIsShow(({
        style={S_MODAL}
        divBtStyle={S_DIV_BT}
        captionStyle={S_BROWSER_CAPTION}
-       refFocusLast={_refFocusLast}
-       isShow={isShow}
-       onClose={onClose}
+       refFocusLast={refFocusLast}
+       isShow={props.isShow}
+       onClose={props.onClose}
     >
       <TabPane
          ariaLabel={TOKEN_USER_SETTINGS}
          id="sd"
          width="100%"
          tabsStyle={S_TABS}
-         isShow={isShow}
+         isShow={props.isShow}
       >
          <Tab title="API Keys">
             <CardApiKeys
@@ -97,8 +93,8 @@ const SettingsDialog = memoIsShow(({
               fieldStyle={S_TEXT_FIELD}
               buttonsStyle={S_CARD_BUTTONS}
               btStyle={S_BT_RAISED}
-              data={data}
-              setRefLast={_setFocusLastRef}
+              data={props.data}
+              setRefLast={setFocusLastRef}
             />
          </Tab>
          <Tab title="UI Theme">
@@ -107,8 +103,8 @@ const SettingsDialog = memoIsShow(({
               selectStyle={INPUT_SELECT_STYLE}
               buttonsStyle={S_CARD_BUTTONS}
               btStyle={S_BT_RAISED}
-              setRefLast={_setFocusLastRef}
-              onClose={onClose}
+              setRefLast={setFocusLastRef}
+              onClose={props.onClose}
             />
          </Tab>
        </TabPane>

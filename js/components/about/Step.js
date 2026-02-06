@@ -19,21 +19,15 @@ const S_MT_3 = {
     borderRadius: '50%',
     fontSize: '1.125rem'
   };
-const Step = _ref => {
-  let {
-    step,
-    description
-  } = _ref;
-  return (0, _jsxRuntime.jsxs)("p", {
-    style: S_MT_3,
-    children: [(0, _jsxRuntime.jsx)("span", {
-      style: S_STEP,
-      children: step
-    }), (0, _jsxRuntime.jsxs)("span", {
-      style: _crStyle.S_COLOR_BLACK,
-      children: ["\xA0", description]
-    })]
-  });
-};
+const Step = props => (0, _jsxRuntime.jsxs)("p", {
+  style: S_MT_3,
+  children: [(0, _jsxRuntime.jsx)("span", {
+    style: S_STEP,
+    children: props.step
+  }), (0, _jsxRuntime.jsxs)("span", {
+    style: _crStyle.S_COLOR_BLACK,
+    children: ["\xA0", props.description]
+  })]
+});
 var _default = exports.default = Step;
 //# sourceMappingURL=Step.js.map

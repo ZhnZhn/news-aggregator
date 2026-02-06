@@ -1,25 +1,22 @@
+import { toLink } from '../uiApi';
+
 import useTooltip from '../hooks/useTooltip';
 import UseLogoById from './UseLogoById'
 
-const LogoGitHub = ({
-  ariaLabel,
-  dataPos,
-  className,
-  href
-}) => {
+const LogoGitHub = (props) => {
   const [
     _ariaLabel,
     _dataPos
   ] = useTooltip(
-    ariaLabel,
-    dataPos
+    props.ariaLabel,
+    props.dataPos
   );
   return (
     <a
       aria-label={_ariaLabel}
       data-pos={_dataPos}
-      className={className}
-      href={href}      
+      className={props.className}
+      href={toLink(props.href)}      
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

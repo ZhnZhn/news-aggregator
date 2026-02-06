@@ -3,15 +3,10 @@
 exports.__esModule = true;
 exports.InlineFlexStart = exports.FlexColumn = void 0;
 var _jsxRuntime = require("preact/jsx-runtime");
-const _fFlexToken = style => _ref => {
-  let {
-    children
-  } = _ref;
-  return (0, _jsxRuntime.jsx)("div", {
-    style: style,
-    children: children
-  });
-};
+const _fFlexToken = style => props => (0, _jsxRuntime.jsx)("div", {
+  style: style,
+  children: props.children
+});
 const S_FLEX_COLUMN = {
   display: 'flex',
   flexDirection: 'column'

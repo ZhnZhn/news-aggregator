@@ -52,30 +52,25 @@ const TOKEN_USER_SETTINGS = "User Settings",
   },
   INPUT_SELECT_WIDTH = 306;
 const INPUT_SELECT_STYLE = (0, _Dialog.crInputSelectStyle)(INPUT_SELECT_WIDTH);
-const SettingsDialog = (0, _memoFn.memoIsShow)(_ref => {
-  let {
-    isShow,
-    data,
-    onClose
-  } = _ref;
-  const _refFocusLast = (0, _uiApi.useRef)(),
-    _setFocusLastRef = (0, _uiApi.useCallback)(el => {
-      _refFocusLast.current = el;
+const SettingsDialog = (0, _memoFn.memoIsShow)(props => {
+  const refFocusLast = (0, _uiApi.useRef)(),
+    setFocusLastRef = (0, _uiApi.useCallback)(el => {
+      refFocusLast.current = el;
     }, []);
   return (0, _jsxRuntime.jsx)(_ModalDialog.default, {
     caption: TOKEN_USER_SETTINGS,
     style: S_MODAL,
     divBtStyle: S_DIV_BT,
     captionStyle: _Dialog.S_BROWSER_CAPTION,
-    refFocusLast: _refFocusLast,
-    isShow: isShow,
-    onClose: onClose,
+    refFocusLast: refFocusLast,
+    isShow: props.isShow,
+    onClose: props.onClose,
     children: (0, _jsxRuntime.jsxs)(_TabPane.default, {
       ariaLabel: TOKEN_USER_SETTINGS,
       id: "sd",
       width: "100%",
       tabsStyle: S_TABS,
-      isShow: isShow,
+      isShow: props.isShow,
       children: [(0, _jsxRuntime.jsx)(_Tab.default, {
         title: "API Keys",
         children: (0, _jsxRuntime.jsx)(_CardApiKeys.default, {
@@ -83,8 +78,8 @@ const SettingsDialog = (0, _memoFn.memoIsShow)(_ref => {
           fieldStyle: S_TEXT_FIELD,
           buttonsStyle: S_CARD_BUTTONS,
           btStyle: _Dialog.S_BT_RAISED,
-          data: data,
-          setRefLast: _setFocusLastRef
+          data: props.data,
+          setRefLast: setFocusLastRef
         })
       }), (0, _jsxRuntime.jsx)(_Tab.default, {
         title: "UI Theme",
@@ -93,8 +88,8 @@ const SettingsDialog = (0, _memoFn.memoIsShow)(_ref => {
           selectStyle: INPUT_SELECT_STYLE,
           buttonsStyle: S_CARD_BUTTONS,
           btStyle: _Dialog.S_BT_RAISED,
-          setRefLast: _setFocusLastRef,
-          onClose: onClose
+          setRefLast: setFocusLastRef,
+          onClose: props.onClose
         })
       })]
     })

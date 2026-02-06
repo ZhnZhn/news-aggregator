@@ -36,23 +36,15 @@ const HEADER = "header",
     verticalAlign: 'middle',
     margin: '0 8px'
   };
-const HeaderBar = _ref => {
-  let {
-    onNewsSources,
-    onSettings,
-    onAbout
-  } = _ref;
+const HeaderBar = props => {
   const _refFocusItem = (0, _uiApi.useRef)(),
-    [isQuery, toggleIsQuery] = (0, _useToggle.default)()
-    /*eslint-disable react-hooks/exhaustive-deps */,
+    [isQuery, toggleIsQuery] = (0, _useToggle.default)(),
     _hCloseQuery = (0, _uiApi.useCallback)(evt => {
       const _menuItemElement = evt && evt.target;
       (0, _uiApi.setRefValue)(_refFocusItem, _menuItemElement && _menuItemElement.role === 'menuitem' ? _menuItemElement : null);
       toggleIsQuery(false);
-    }, [])
-    // toggleIsQuery
-    /*eslint-enable react-hooks/exhaustive-deps */,
-    _menuQuery = (0, _crMenuQuery.default)(_tokens.APP_TITLE, onNewsSources, onAbout, _hCloseQuery);
+    }, [toggleIsQuery]),
+    _menuQuery = (0, _crMenuQuery.default)(_tokens.APP_TITLE, props.onNewsSources, props.onAbout, _hCloseQuery);
   (0, _useHotKey.default)(_hotkeys.HK_QUERY_SOURCES, toggleIsQuery);
   return (0, _jsxRuntime.jsxs)("div", {
     className: CL_HEADER,
@@ -88,7 +80,7 @@ const HeaderBar = _ref => {
         dataPos: _DP.DP_BOTTOM_RIGHT,
         className: CL_BT_ABOUT,
         hotKey: _hotkeys.HK_ABOUT,
-        onClick: onAbout,
+        onClick: props.onAbout,
         children: (0, _jsxRuntime.jsx)(_SvgInfo.default, {
           style: S_SVG_ICON
         })
@@ -96,7 +88,7 @@ const HeaderBar = _ref => {
         ariaLabel: "Settings Dialog",
         dataPos: _DP.DP_BOTTOM_RIGHT,
         hotKey: _hotkeys.HK_SETTINGS,
-        onClick: onSettings,
+        onClick: props.onSettings,
         children: (0, _jsxRuntime.jsx)(_SvgSettings.default, {
           style: S_SVG_ICON
         })

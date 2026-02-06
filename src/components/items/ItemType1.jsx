@@ -8,34 +8,25 @@ import {
   S_SVG_CLOSE
 } from './Item.Style';
 
-const ItemType1 = ({
-  refEl,
-  isShowDescr,
-  title,
-  children,
-  onKeyDown,
-  onClick,
-  onToggle,
-  onClose
-}) => (
+const ItemType1 = (props) => (
     <>
       <ItemHeader
-        refEl={refEl}
+        refEl={props.refEl}
         className={CL_ITEM_HEADER}
         captionStyle={S_CAPTION}
         btCloseStyle={S_SVG_CLOSE}
-        title={title}
-        onKeyDown={onKeyDown}
-        onClick={onClick}
-        onToggle={onToggle}
-        onClose={onClose}
+        title={props.title}
+        onKeyDown={props.onKeyDown}
+        onClick={props.onClick}
+        onToggle={props.onToggle}
+        onClose={props.onClose}
       />
       <ShowHide
-         isShow={isShowDescr}
+         isShow={props.isShowDescr}
          withoutAnimation={true}
          className={CL_ITEM_DESCR}
       >
-         {children}
+         {props.children}
       </ShowHide>
     </>
 );

@@ -8,25 +8,18 @@ const S_ROOT = {
   marginTop: 16,
   marginLeft: 8
 };
-const PoweredBy = _ref => {
-  let {
-    style,
-    spanStyle,
-    children
-  } = _ref;
-  return (0, _jsxRuntime.jsxs)("div", {
+const PoweredBy = props => (0, _jsxRuntime.jsxs)("div", {
+  style: {
+    ...S_ROOT,
+    ...props.style
+  },
+  children: [(0, _jsxRuntime.jsx)("span", {
     style: {
-      ...S_ROOT,
-      ...style
+      ..._crStyle.S_COLOR_BLACK,
+      ...props.spanStyle
     },
-    children: [(0, _jsxRuntime.jsx)("span", {
-      style: {
-        ..._crStyle.S_COLOR_BLACK,
-        ...spanStyle
-      },
-      children: "Powered by"
-    }), children]
-  });
-};
+    children: "Powered by"
+  }), props.children]
+});
 var _default = exports.default = PoweredBy;
 //# sourceMappingURL=PoweredBy.js.map

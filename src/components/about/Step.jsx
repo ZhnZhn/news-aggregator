@@ -16,16 +16,13 @@ const S_MT_3 = {
    fontSize: '1.125rem'
 };
 
-const Step = ({
-  step,
-  description
-}) => (
+const Step = (props) => (
   <p style={S_MT_3}>
     <span style={S_STEP}>
-      {step}
+      {props.step}
     </span>
     <span style={S_COLOR_BLACK}>
-      &nbsp;{description}
+      &nbsp;{props.description}
     </span>
  </p>
 );

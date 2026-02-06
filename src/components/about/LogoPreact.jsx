@@ -5,24 +5,20 @@ const S_PREACT = {
   transform: 'translate(-210px, -210px) scale(0.9)'
 };
 
-const LogoPreact = ({
-  ariaLabel,
-  dataPos,
-  className
-}) => {
+const LogoPreact = (props) => {
   const [
     _ariaLabel,
     _dataPos
   ] = useTooltip(
-    ariaLabel,
-    dataPos
+    props.ariaLabel,
+    props.dataPos
   );
   return (
     <a
        aria-label={_ariaLabel}
        data-pos={_dataPos}
-       className={className}
-       href="https://preactjs.com"      
+       className={props.className}
+       href="https://preactjs.com"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -63,13 +63,9 @@ const _crStepItem = (descr, index) => (0, _jsxRuntime.jsx)(_Step.default, {
   step: index + 1,
   description: descr
 }, index);
-const About = _ref2 => {
-  let {
-    isInitShow,
-    useMsAbout
-  } = _ref2;
-  const [isShow, showAbout, hideAbout, hKeyDown] = (0, _useShowHideComponent.default)(isInitShow);
-  useMsAbout(msAbout => {
+const About = props => {
+  const [isShow, showAbout, hideAbout, hKeyDown] = (0, _useShowHideComponent.default)(props.isInitShow);
+  props.useMsAbout(msAbout => {
     if (msAbout) {
       const _setIs = msAbout.is ? showAbout : hideAbout;
       _setIs();

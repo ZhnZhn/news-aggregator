@@ -6,9 +6,16 @@
  "file": "../../../src/components/header/AppLabel.js",
  "names": [
   "AppLabel",
+  "props",
+  "_jsxRuntime",
+  "jsx",
   "className",
   "style",
-  "caption"
+  "children",
+  "caption",
+  "_default",
+  "exports",
+  "default"
  ],
- "mappings": ";;;;;;;AACA,IAAMA,QAAQ,GAAG,SAAXA,QAAW;EAAA,IACfC,SADe,QACfA,SADe;EAAA,IAEfC,KAFe,QAEfA,KAFe;EAAA,IAGfC,OAHe,QAGfA,OAHe;EAAA,OAKf;IACG,SAAS,EAAEF,SADd;IAEG,KAAK,EAAEC,KAFV;IAAA,UAIGC;EAJH,EALe;AAAA,CAAjB;;eAaeH,Q"
+ "mappings": ";;;;;AACA,MAAMA,QAAQ,GAAIC,KAAK,IACrB,IAAAC,WAAA,CAAAC,GAAA;EACGC,SAAS,EAAEH,KAAK,CAACG,SAAU;EAC3BC,KAAK,EAAEJ,KAAK,CAACI,KAAM;EAAAC,QAAA,EAEnBL,KAAK,CAACM;AAAO,CACV,CACP;AAAC,IAAAC,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaV,QAAQ"
 }

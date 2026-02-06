@@ -8,38 +8,26 @@ var _useButton = _interopRequireDefault(require("./useButton"));
 var _BtCaption = _interopRequireDefault(require("./BtCaption"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_BT_FLAT = "bt-flat",
-  CL_BT_FLAT_DIV = CL_BT_FLAT + "__div",
-  CL_BT_FLAT_SPAN = CL_BT_FLAT + "__span";
-const FlatButton = _ref => {
-  let {
-    ariaLabel,
-    dataPos,
-    className,
-    style,
-    clDiv,
-    caption,
-    hotKey,
-    children,
-    onClick
-  } = _ref;
-  const [_ariaLabel, _dataPos] = (0, _useButton.default)(ariaLabel, dataPos, hotKey, onClick);
+  CL_BT_FLAT_DIV = `${CL_BT_FLAT}__div`,
+  CL_BT_FLAT_SPAN = `${CL_BT_FLAT}__span`;
+const FlatButton = props => {
+  const [_ariaLabel, _dataPos] = (0, _useButton.default)(props.ariaLabel, props.dataPos, props.hotKey, props.onClick);
   return (0, _jsxRuntime.jsx)("button", {
     type: "button",
     "aria-label": _ariaLabel,
     "data-pos": _dataPos,
-    className: (0, _crStyle.crCn)(CL_BT_FLAT, className),
-    style: style,
-    onClick: onClick,
+    className: (0, _crStyle.crCn)(CL_BT_FLAT, props.className),
+    style: props.style,
+    onClick: props.onClick,
     children: (0, _jsxRuntime.jsxs)("div", {
       className: CL_BT_FLAT_DIV,
-      children: [caption ? (0, _jsxRuntime.jsx)(_BtCaption.default, {
+      children: [props.caption ? (0, _jsxRuntime.jsx)(_BtCaption.default, {
         className: CL_BT_FLAT_SPAN,
-        caption: caption,
-        hotKey: hotKey
-      }) : null, children]
+        caption: props.caption,
+        hotKey: props.hotKey
+      }) : null, props.children]
     })
   });
 };
-var _default = FlatButton;
-exports.default = _default;
+var _default = exports.default = FlatButton;
 //# sourceMappingURL=FlatButton.js.map

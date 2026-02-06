@@ -17,17 +17,12 @@ const S_BADGE = {
   cursor: 'pointer'
 };
 
-const MenuItemBadge = ({
-  style,
-  itemBadge,
-  itemConf,
-  onClick
-}) => {
+const MenuItemBadge = (props) => {
   const _hClick = (evt) => {
     evt.stopPropagation()
-    onClick(itemConf)
+    props.onClick(props.itemConf)
   }
-  , { isOpen } = itemBadge || {}
+  , { isOpen } = props.itemBadge || {}
   , _badgeStyle = crStyle2(
       S_BADGE,
       !isOpen && S_COLOR_BLACK
@@ -37,7 +32,7 @@ const MenuItemBadge = ({
     <button
       type="button"
       tabIndex="-1"
-      style={{..._badgeStyle, ...style}}
+      style={{..._badgeStyle, ...props.style}}
       onClick={_hClick}
     >
       V

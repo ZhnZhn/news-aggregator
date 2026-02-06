@@ -30,25 +30,17 @@ const S_ROW_CHECKBOX_LS = {
 , IS_ALLOW_USE_LS = isAllowUseLs()
 , IS_ADVANCED_INPUT_OPTIONS = isAdvancedInputOptions();
 
-const CardUiTheme = ({
-  style,
-  selectStyle,
-  buttonsStyle,
-  btStyle,
-  onClose,
-  isVisible,
-  setRefLast
-}) => (
-    <div style={style}>
+const CardUiTheme = (props) => (
+    <div style={props.style}>
       <InputSelect
-        style={selectStyle}
+        style={props.selectStyle}
         caption="UI Theme"
         initItem={THEME_OPTIONS.DF}
         options={THEME_OPTIONS}
         onSelect={setUiTheme}
       />
       <InputSelect
-        style={selectStyle}
+        style={props.selectStyle}
         caption="Font Size"
         initItem={FONT_SIZE_OPTIONS.DF}
         options={FONT_SIZE_OPTIONS}
@@ -69,13 +61,13 @@ const CardUiTheme = ({
         onUnCheck={disableAndvancedInputOptions}
       />
       <div style={S_VERTICAL_GAP_22} />
-      <div style={buttonsStyle}>
+      <div style={props.buttonsStyle}>
         <RaisedButton
-          refBt={isVisible ? setRefLast : void 0}
-          style={btStyle}
+          refBt={props.isVisible ? props.setRefLast : void 0}
+          style={props.btStyle}
           isPrimary={true}
           caption="Close"
-          onClick={onClose}
+          onClick={props.onClose}
         />
       </div>
     </div>

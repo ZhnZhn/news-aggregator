@@ -38,21 +38,17 @@ const _toMsg = (
     : msg || 'Exception Message';
 };
 
-const AlertDialog = memoIsShow(({
-  isShow,
-  data,
-  onClose
-}) => (
+const AlertDialog = memoIsShow(props => (
   <ModalDialog
-     isShow={isShow}
+     isShow={props.isShow}
      isClosePrimary={true}
      style={S_DIALOG}
      captionStyle={S_BROWSER_CAPTION}
      caption="Exception"
-     onClose={onClose}
+     onClose={props.onClose}
   >
     <p style={S_MSG}>
-      {domSanitize(_toMsg(data))}
+      {domSanitize(_toMsg(props.data))}
     </p>
   </ModalDialog>
 ));

@@ -12,22 +12,16 @@ const CL_BT_SVG_X = "bt-svg-x",
     padding: 3,
     stroke: 'inherit'
   };
-const SvgX = _ref => {
-  let {
-    dataPos,
-    className = CL_BT_SVG_X,
-    style,
-    onClick
-  } = _ref;
-  const [_ariaLabel, _dataPos] = (0, _useTooltip.default)("Close", dataPos || _DP.DP_CLOSE_LEFT);
+const SvgX = props => {
+  const [_ariaLabel, _dataPos] = (0, _useTooltip.default)("Close", props.dataPos || _DP.DP_CLOSE_LEFT);
   return (0, _jsxRuntime.jsx)("button", {
     type: "button",
     "aria-label": _ariaLabel,
     "data-pos": _dataPos,
     tabIndex: "-1",
-    className: className,
-    style: style,
-    onClick: onClick,
+    className: props.className || CL_BT_SVG_X,
+    style: props.style,
+    onClick: props.onClick,
     children: (0, _jsxRuntime.jsxs)(_Svg.default, {
       w: "12",
       style: S_SVG,

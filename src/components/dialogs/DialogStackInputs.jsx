@@ -21,60 +21,49 @@ const _hasMenuToggle = (
 ) => _isArr(menuToggle) && menuToggle.length > 1;
 
 const DialogStackInputs = (props) => {
-  const {
-    isShow,
-    caption,
-    loadId,
-    INPUT_CONFIGS,
-    INITIAL_INPUTS,
-    TOGGLES,
-    IS_INPUTS,
-    children,
-    onShow
-  } = props
-  , [
+  const [
     isInputs,
     toggleInput
-  ] = useToggleState(IS_INPUTS)
+  ] = useToggleState(props.IS_INPUTS)
   , [
-    _refInputs,
-    _selectInput
-  ] = useRefInputs(INITIAL_INPUTS)
+    refInputs,
+    selectInput
+  ] = useRefInputs(props.INITIAL_INPUTS)
   , [
-    _refDialog,
-    _hLoad,
-    _hClose
-  ] = useDialog(props, loadId, _refInputs)
-  , _hKeyDown = useKeyDown(_hLoad, _hClose)
+    refDialog,
+    hLoad,
+    hClose
+  ] = useDialog(props, props.loadId, refInputs)
+  , hKeyDown = useKeyDown(hLoad, hClose)
   , [
-    _captionStyle,
-    _menuToggle
-  ] = _hasMenuToggle(TOGGLES)
-      ? [S_DIALOG_CAPTION, TOGGLES]
+    captionStyle,
+    menuToggle
+  ] = _hasMenuToggle(props.TOGGLES)
+      ? [S_DIALOG_CAPTION, props.TOGGLES]
       : [S_BROWSER_CAPTION];
 
   return (
     <DraggableDialog
-       refEl={_refDialog}
-       isShow={isShow}
-       captionStyle={_captionStyle}
-       caption={caption}
-       menuToggle={_menuToggle}
+       refEl={refDialog}
+       isShow={props.isShow}
+       captionStyle={captionStyle}
+       caption={props.caption}
+       menuToggle={menuToggle}
        toggleItem={toggleInput}
-       onKeyDown={_hKeyDown}
-       onLoad={_hLoad}
-       onShow={onShow}
-       onClose={_hClose}
+       onKeyDown={hKeyDown}
+       onLoad={hLoad}
+       onShow={props.onShow}
+       onClose={hClose}
     >
       <FlexColumn>
         <StackInputs
           isInputs={isInputs}
-          configs={INPUT_CONFIGS}
-          onSelect={_selectInput}
-          onEnter={_hLoad}
+          configs={props.INPUT_CONFIGS}
+          onSelect={selectInput}
+          onEnter={hLoad}
         />
         <PoweredBy style={S_POWERED_BY}>
-          {children}
+          {props.children}
         </PoweredBy>
       </FlexColumn>
     </DraggableDialog>

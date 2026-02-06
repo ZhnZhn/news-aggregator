@@ -1,16 +1,12 @@
 
 const _fTextToken = (
   Comp
-) => ({
-  className,
-  style,
-  text
-}) => text
+) => (props) => props.text
   ? (<Comp
-       className={className}
-       style={style}
+       className={props.className}
+       style={props.style}
      >
-       {text}
+       {props.text}
      </Comp>)
   : null;
 

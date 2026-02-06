@@ -28,43 +28,35 @@ const _crCaption = (
     : caption.slice(0, _index-1);
 };
 
-const ModalToggle = ({
-  isShow,
-  className,
-  style,
-  chbStroke,
-  configs,
-  onToggle,
-  onClose
-}) => {
-  const _refFirst = useModalFocus(isShow)
+const ModalToggle = (props) => {
+  const _refFirst = useModalFocus(props.isShow)
   , [
     _getFocusRef,
     _refLast
   ] = useItemsFocusTrap(
-    configs,
+    props.configs,
     _refFirst
   );
 
   return _getFocusRef ? (
   <ModalPane
-    isShow={isShow}
-    style={{...S_MODAL_POPUP, ...style}}
-    className={className}
-    onClose={onClose}
+    isShow={props.isShow}
+    className={props.className}
+    style={{...S_MODAL_POPUP, ...props.style}}
+    onClose={props.onClose}
   >
     <FocusTrap
       refFirst={_refFirst}
       refLast={_refLast}
     >
-      {configs.map((item, index) => (
+      {props.configs.map((item, index) => (
          <InputSwitch
            key={item.id}
            refChb={_getFocusRef(index)}
            initialValue={item.df}
            style={S_CHB_TOGGLE}
            caption={_crCaption(item.caption)}
-           onToggle={() => onToggle(item.id)}
+           onToggle={() => props.onToggle(item.id)}
          />
       ))}
     </FocusTrap>
