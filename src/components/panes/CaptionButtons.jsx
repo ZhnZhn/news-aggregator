@@ -41,12 +41,7 @@ const MEDIA_QUERY = '(min-width: 450px)'
   return _mql && _mql.matches;
 };
 
-const CaptionButtons = ({
-  refRootDiv,
-  onRemoveItems,
-  onPlusWidth,
-  onMinusWidth
-}) => {
+const CaptionButtons = (props) => {
   const [
     is,
     setIs
@@ -61,16 +56,16 @@ const CaptionButtons = ({
           dataPos={DP_BT_REMOVE_ITEMS}
           caption={HK_REMOVE_ITEMS}
           style={S_BT_REMOVE}
-          onClick={onRemoveItems}
+          onClick={props.onRemoveItems}
         />
         <SvgHrzResize
-           elementRef={refRootDiv}
+           elementRef={props.refRootDiv}
            style={S_SVG_RESIZE}
            initWidth={RESIZE_INIT_WIDTH}
            minWidth={RESIZE_MIN_WIDTH}
            maxWidth={RESIZE_MAX_WIDTH}
-           onPlusWidth={onPlusWidth}
-           onMinusWidth={onMinusWidth}
+           onPlusWidth={props.onPlusWidth}
+           onMinusWidth={props.onMinusWidth}
         />
       </InlineFlexStart>)
     : null;

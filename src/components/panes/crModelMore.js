@@ -1,5 +1,16 @@
 import { CL_MENU_MORE_ITEM } from '../crStyle';
 
+const _crMenuItem = (
+  name,
+  onClick,
+  isClose
+) => ({
+  cn: CL_MENU_MORE_ITEM,
+  name,
+  onClick,
+  isClose: !!isClose
+});
+
 const crModelMore = ({
   onMinWidth,
   onInitWidth,
@@ -17,31 +28,14 @@ const crModelMore = ({
         type: 'sub',
         cn: CL_MENU_MORE_ITEM,
         name: 'Resize'
-      },{
-        cn: CL_MENU_MORE_ITEM,
-        name: 'Remove Items',
-        onClick: onRemoveItems,
-        isClose: true
       }
+      , _crMenuItem('Remove Items', onRemoveItems, true)
     ],
     p1: [
-      {
-        cn: CL_MENU_MORE_ITEM,
-        name: 'to MinWidth',
-        onClick: onMinWidth
-      },{
-        cn: CL_MENU_MORE_ITEM,
-        name: 'to InitWidth',
-        onClick: onInitWidth
-      },{
-        cn: CL_MENU_MORE_ITEM,
-        name: '+10px to Width',
-        onClick: onPlusWidth
-      },{
-        cn: CL_MENU_MORE_ITEM,
-        name: '-10px to Width',
-        onClick: onMinusWidth
-      }
+      _crMenuItem('to MinWidth', onMinWidth),
+      _crMenuItem('to InitWidth', onInitWidth),
+      _crMenuItem('+10px to Width', onPlusWidth),
+      _crMenuItem('-10px to Width', onMinusWidth)
     ]
   };
 }
