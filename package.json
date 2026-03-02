@@ -50,14 +50,15 @@
     "react-refresh": "^0.18.0",
     "sass": "^1.97.3",
     "terser-webpack-plugin": "^5.3.16",
-    "webpack": "^5.105.2",
+    "webpack": "^5.105.3",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.3"
   },
   "overrides": {
     "js-yaml": "~4.1.1",
-    "glob": "~11.1.0"
+    "glob": "~11.1.0",
+    "serialize-javascript": "~7.0.3"
   },
   "jest": {
     "roots": [
