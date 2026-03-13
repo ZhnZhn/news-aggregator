@@ -27,8 +27,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.28.6",
-    "dompurify": "^3.3.2",
-    "preact": "^10.28.4"
+    "dompurify": "^3.3.3",
+    "preact": "^10.29.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.28.6",
