@@ -19,6 +19,8 @@ const ModalContainer = ({
   children,
   onClose
 }) => {
+  /*eslint-disable jsx-a11y/no-static-element-interactions*/
+  /*eslint-disable jsx-a11y/click-events-have-key-events*/
   return (
     <div
       {...useClassAnimation({
@@ -32,6 +34,8 @@ const ModalContainer = ({
       {children}
     </div>
   );
+  /*eslint-enable jsx-a11y/no-static-element-interactions*/
+  /*eslint-enable jsx-a11y/click-events-have-key-events*/
 };
 
 export default ModalContainer

@@ -25,7 +25,9 @@ export const notAllowUseLs = () => {
   try {
     LS.clear()
   } catch(err) {
+    /*eslint-disable no-undef*/
     console.log(err)
+    /*eslint-enable no-undef*/
   }
 }
 
