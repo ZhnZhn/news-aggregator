@@ -24,15 +24,17 @@ const TabPane = ({
         id={id}
         style={tabsStyle}
         selectedTabIndex={selectedTabIndex}
-        setTabIndex={setTabIndex}
-        children={children}
-      />
+        setTabIndex={setTabIndex}        
+      >
+        {children} 
+      </TabStack>
       <PaneStack
         id={id}
         isShow={isShow}
-        selectedTabIndex={selectedTabIndex}
-        children={children}
-      />
+        selectedTabIndex={selectedTabIndex}        
+      >
+        {children}
+      </PaneStack>
     </div>
   );
 };

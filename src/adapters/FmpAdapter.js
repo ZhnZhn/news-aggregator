@@ -29,7 +29,7 @@ const _crArticle = ({
 }
 
 const FmpAdapter = {
-  toNews(json, option) {
+  toNews(json, _option) {
     return {
       source: SOURCE_ID,
       articles: crArticles(json, _crArticle)

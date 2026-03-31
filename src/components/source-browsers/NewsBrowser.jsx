@@ -5,8 +5,7 @@ const NewsBrowser = ({
   browserId,
   useMsBrowser,
   onClick,
-  onError,
-  onRemoveBadges
+  onError
 }) => (
   <DynamicMenuBrowser
      caption="NewsApi.org Browser"

@@ -22,7 +22,7 @@ const MenuPart = ({
   >
      {safeMap(items, (item, index) => {
          const _itemConf = {
-           ...(hmItems || {})[item.id],
+           ...hmItems?.[item.id],
            ...restItemProps
          };
          return (

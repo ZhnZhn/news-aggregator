@@ -36,10 +36,7 @@ const MEDIA_QUERY = '(min-width: 450px)'
     ? window.matchMedia(mediaQuery)
     : void 0
 , MQL = _crMatchMedia(MEDIA_QUERY)
-, _crInitialState = () => {
-  const _mql = _crMatchMedia(MEDIA_QUERY);
-  return _mql && _mql.matches;
-};
+, _crInitialState = () => _crMatchMedia(MEDIA_QUERY)?.matches;
 
 const CaptionButtons = (props) => {
   const [

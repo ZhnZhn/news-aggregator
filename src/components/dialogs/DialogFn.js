@@ -74,7 +74,7 @@ export const crDfInputs = (
 
 const _fGetByPropName = (
   propName
-) => (obj) => (obj || {})[propName];
+) => (obj) => obj?.[propName];
 
 const _getPaneCaption = _fGetByPropName("paneCaption")
 const _getCaption = _fGetByPropName("caption")
@@ -91,7 +91,7 @@ export const getLoadId = (
 
 export const getDialogCaption = (
   itemConf
-) => ((itemConf || {}).dialogProps || {}).caption
+) => itemConf?.dialogProps?.caption
 
 export const crTextFieldCaption = (
   caption,

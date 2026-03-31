@@ -51,7 +51,7 @@ const fnFetch = ({
   const _mlsNow = Date.now()
   , _frequencyRestrictionMsg = _crFrequencyRestrictionMsg(
     _mlsNow,
-    (option || {})._mlsFr,
+    option?._mlsFr,
     uri
   );
   if (_frequencyRestrictionMsg) {
@@ -78,7 +78,7 @@ const fnFetch = ({
         ]);
       }
     })
-    .then(([status, json ]) => {
+    .then(([_status, json ]) => {
        if (onCheckResponse(json, option)){
          onFetch({ json, option, onCompleted });
        }

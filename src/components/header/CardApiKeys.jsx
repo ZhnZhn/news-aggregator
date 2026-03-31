@@ -43,9 +43,9 @@ const _hasLengthOrEmpty = (
 
 const _getRefCompValue = ref => ref.current.getValue();
 const _clearInputRefs = refs => refs
-  .forEach(ref => ref.current.clear());
+  .forEach(ref => { ref.current.clear(); });
 const _setWasEnterRefs = refs => refs
-  .forEach(ref => ref.current.setWasEnter());
+  .forEach(ref => { ref.current.setWasEnter(); });
 
 const _crCaption = (
   name,

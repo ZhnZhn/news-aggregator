@@ -37,8 +37,7 @@ const FILL_OPEN = "currentColor"
 const OpenClose = ({
   refBt,
   isClose=true,
-  style,
-  itemStyle,
+  style, 
   captionStyle,
   caption,
   fillOpen=FILL_OPEN,

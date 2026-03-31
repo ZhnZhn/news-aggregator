@@ -14,7 +14,7 @@ const useRefHotKey = (
 ) => {
   /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
-    const _element = HAS_HOT_KEYS && ref && ref.current
+    const _element = HAS_HOT_KEYS && ref?.current
     , _onKeyDown = (evt) => {
       if ((evt.altKey || evt.metaKey)
            && evt.key

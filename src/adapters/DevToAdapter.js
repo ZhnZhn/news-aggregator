@@ -30,7 +30,7 @@ const _crArticle = (
     description: crDescription(
       `${positive_reactions_count} ${reading_time_minutes}min`
     ),
-    author: (user || {}).name,
+    author: user?.name,
     related: tags,
     timeAgo: safeFormatMls(dateTimeToMls(published_at), nowMls),
     publishedAt: published_at,
@@ -46,7 +46,7 @@ const _toArticles = (
 );
 
 const DevToAdapter = {
-  toNews(json, option) {
+  toNews(json, _option) {
     return {
       source: SOURCE_ID,
       articles: _toArticles(json)

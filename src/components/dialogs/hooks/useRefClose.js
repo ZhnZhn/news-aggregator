@@ -14,7 +14,7 @@ const useRefClose = (
     /*eslint-disable react-hooks/exhaustive-deps */
     useCallback(() => {
       const { current } = _refDialog;
-      if (current && current.focusPrevEl) {
+      if (current?.focusPrevEl) {
         current.focusPrevEl()
       }
       onClose()

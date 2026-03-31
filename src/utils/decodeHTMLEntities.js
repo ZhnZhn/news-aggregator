@@ -13,8 +13,8 @@ const _hmHtmlEntities = Object.assign(
     Object.keys(_hmHtmlEntities).join('|'),
     'g'
 )
-, _reHtmlCode = new RegExp('&#(\\d+);?', 'g')
-, _reHtmlFilter = new RegExp('&#x200B;', 'g')
+, _reHtmlCode = /'&#(\d+);?'/g
+, _reHtmlFilter = /'&#x200B;'/g
 , _onMatch = (match) => _hmHtmlEntities[match];
 
 export const decodeHtmlEntitiesByHashMap = str => ((isStr(str) && str) || '')

@@ -218,9 +218,9 @@ const _getOptionAfter = (
 ) => {
   const items = getItems(json)
   , itemsLength = items.length
-  , itemData = (items[itemsLength-1] || {}).data || {};
+  , itemData = items[itemsLength-1]?.data || {};
   return itemsLength === limit
-    && parseInt(itemData.score) >= 1
+    && parseInt(itemData.score, 10) >= 1
      ? itemData.name
      : void 0;
 };
@@ -231,7 +231,7 @@ const _crPage = (
 ) => {
   const after = _getOptionAfter(
     json,
-    parseInt(option.limit)
+    parseInt(option.limit, 10)
   );
   if (!after) {
     return;

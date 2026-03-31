@@ -51,7 +51,7 @@ export const FN_TRUE = () => true
 
 export const getRefValue = (
   ref
-) => (ref || {}).current
+) => ref?.current
 
 export const setRefValue = (
   ref,
@@ -112,15 +112,14 @@ export const focusAsyncRefElement = (
 export const focusRefNextSiblingFirstChildElement = (
   ref
 ) => {
-  _focusHtmlElement(((getRefValue(ref) || {})
-     .nextElementSibling || {})
-     .firstElementChild
-  )
+  _focusHtmlElement(
+    getRefValue(ref)?.nextElementSibling?.firstElementChild
+  );
 }
 
 export const getRefElementStyle = (
   ref
-) => (getRefValue(ref) || {}).style
+) => getRefValue(ref)?.style
 
 
 export const setRefInputValue = (
@@ -145,8 +144,9 @@ const EVENT_TEST_PASSIVE = "testPassive"
 , IS_SUPPORT_PASSIVE_EVENT = (() => {
     try {
       const options = Object.defineProperty({}, "passive", {
-        get: function() {
-          return options._r = true;
+        get: () => {
+          options._r = true 
+          return options._r;
         }
       })
       window.addEventListener(EVENT_TEST_PASSIVE, null, options)
@@ -163,7 +163,7 @@ export const PASSIVE_EVENT_OPTIONS = IS_SUPPORT_PASSIVE_EVENT
 
 const _getFirstTouches = (
   touches
-) => (touches && touches[0]) || {}
+) => (touches?.[0]) || {}
 , CLIENT_X = 'clientX'
 , CLIENT_Y = 'clientY'
 , _fGetTouch = (propName) => (

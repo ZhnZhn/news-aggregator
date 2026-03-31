@@ -45,7 +45,7 @@ export const useMsItem = fCrUse(_itemStore, _selectMsItem)
 
 const _loadItemCompleted = ({
   news,
-  itemConf
+  _itemConf
 }) => {
   if (news) {
     const r = loadItemCompletedImpl(_items, news);

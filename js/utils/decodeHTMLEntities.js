@@ -12,11 +12,11 @@ const _hmHtmlEntities = Object.assign(Object.create(null), {
     '&amp;': '&'
   }),
   _reHtmlEntities = new RegExp(Object.keys(_hmHtmlEntities).join('|'), 'g'),
-  _reHtmlCode = new RegExp('&#(\\d+);?', 'g'),
-  _reHtmlFilter = new RegExp('&#x200B;', 'g'),
+  _reHtmlCode = /'&#(\d+);?'/g,
+  _reHtmlFilter = /'&#x200B;'/g,
   _onMatch = match => _hmHtmlEntities[match];
 const decodeHtmlEntitiesByHashMap = str => ((0, _isTypeFn.isStr)(str) && str || '').replace(_reHtmlEntities, _onMatch);
 exports.decodeHtmlEntitiesByHashMap = decodeHtmlEntitiesByHashMap;
 const decodeHtmlEntities = str => ((0, _isTypeFn.isStr)(str) && str || '').replace(_reHtmlCode, (_, code) => String.fromCharCode(code)).replace(_reHtmlFilter, '');
 exports.decodeHtmlEntities = decodeHtmlEntities;
-//# sourceMappingURL=decodeHTMLEntities.js.map
+//# sourceMappingURL=decodeHtmlEntities.js.map

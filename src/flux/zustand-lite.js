@@ -18,7 +18,9 @@ const _createStoreImpl = (createState) => {
       state = (replace != null ? replace : (!isTypeObj(nextState) || nextState === null))
          ? nextState
          : _assign({}, state, nextState);
-      listeners.forEach(listener => listener(state, previousState));
+      listeners.forEach(listener => { 
+        listener(state, previousState); 
+      });
     }
   };
 
@@ -61,10 +63,11 @@ export const subscribeWithSelector = (fn) => {
           const nextSlice = selector(state);
           if (!equalityFn(currentSlice, nextSlice)) {
             const previousSlice = currentSlice;
-            optListener(currentSlice = nextSlice, previousSlice);
+            currentSlice = nextSlice; 
+            optListener(currentSlice, previousSlice);
           }
         };
-        if (options != null && options.fireImmediately) {
+        if (options?.fireImmediately) {
           optListener(currentSlice, currentSlice);
         }
       }

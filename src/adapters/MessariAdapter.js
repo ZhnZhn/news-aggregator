@@ -36,7 +36,7 @@ const _toArticles = (json) => {
 };
 
 const MessariAdapter = {
-  toNews(json, option){
+  toNews(json, _option){
     return {
       source: SOURCE_ID,
       articles: _toArticles(json)

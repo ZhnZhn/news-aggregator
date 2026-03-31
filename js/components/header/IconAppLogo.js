@@ -14,10 +14,11 @@ const _crRect = (rx, y, x, height, width, color) => (0, _jsxRuntime.jsx)("rect",
   stroke: color
 });
 const IconAppLogo = props => (0, _jsxRuntime.jsx)("span", {
-  "aria-label": props.ariaLabel,
   "data-pos": props.dataPos,
   className: props.className,
   children: (0, _jsxRuntime.jsxs)("svg", {
+    role: "img",
+    "aria-label": props.ariaLabel,
     viewBox: "0 0 32 32",
     xmlns: "http://www.w3.org/2000/svg",
     fillRule: "evenodd",

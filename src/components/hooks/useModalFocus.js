@@ -15,7 +15,7 @@ const useModalFocus = (
     if (isShow) {
       setRefValue(
         _refPrevFocused,
-        (document || {}).activeElement
+        document?.activeElement
       )
       focusRefElement(_refEl)
     } else {

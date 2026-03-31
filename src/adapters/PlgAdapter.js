@@ -15,7 +15,7 @@ const _isArr = Array.isArray
 , _getProperty = (
   item,
   propName
-) => (item || {})[propName] || "";
+) => item?.[propName] || "";
 
 const _crInsightList = (
   insights

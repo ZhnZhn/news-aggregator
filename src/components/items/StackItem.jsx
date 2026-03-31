@@ -96,7 +96,7 @@ const StackItem = ({
   item,
   onCloseItem,
   onRemoveUnder=FN_NOOP,
-  onRemoveItem=FN_NOOP
+  //onRemoveItem=FN_NOOP
 }) => {
   const [
     isClosed,

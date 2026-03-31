@@ -16,6 +16,7 @@ const SafeLink = ({
       {...restProps}
       href={_href}
       target="_blank"
+      rel="noopener"
     >
       {children}
     </a>

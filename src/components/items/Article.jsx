@@ -35,7 +35,7 @@ const Article = ({
   item,
   onCloseItem,
   onRemoveUnder=FN_NOOP,
-  onRemoveItem=FN_NOOP
+  //onRemoveItem=FN_NOOP
 }) => {
   const _refArticle = useRef(null)
  , [

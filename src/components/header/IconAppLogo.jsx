@@ -18,12 +18,13 @@ const _crRect = (
 );
 
 const IconAppLogo = (props) => (
-  <span
-     aria-label={props.ariaLabel}
+  <span    
      data-pos={props.dataPos}
      className={props.className}
   >
     <svg
+       role="img"
+       aria-label={props.ariaLabel}
        viewBox="0 0 32 32"
        xmlns="http://www.w3.org/2000/svg"
        fillRule="evenodd"

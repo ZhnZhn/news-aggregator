@@ -63,7 +63,7 @@ const HeaderBar = (props) => {
     toggleIsQuery
   ] = useToggle()
   , _hCloseQuery = useCallback(evt => {
-     const _menuItemElement = evt && evt.target;
+     const _menuItemElement = evt?.target;
      setRefValue(
        _refFocusItem,
        _menuItemElement && _menuItemElement.role === 'menuitem'

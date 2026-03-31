@@ -1,7 +1,7 @@
 const INITIAL_WIDTH = 635
-, _hasWindowInnerWidth = () => window && window.innerWidth
+, _hasWindowInnerWidth = () => window?.innerWidth
 , _hasDeviceTouchScreen = () => ('ontouchstart' in window)
-  || !!(navigator && navigator.maxTouchPoints);
+  || !!(navigator?.maxTouchPoints);
 
 export const HAS_TOUCH_EVENTS = _hasDeviceTouchScreen()
 export const HAS_WIDE_SCREEN = window

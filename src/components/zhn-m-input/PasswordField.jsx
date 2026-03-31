@@ -105,7 +105,7 @@ const PasswordField = ({
   useEffect(() => {
     const _clearId = setTimeout(()=>{
       const _input = _refInput.current;
-      if (_input && _input.hasAttribute('value')) {
+      if (_input?.hasAttribute('value')) {
         _input.removeAttribute('value')
       }
     })
@@ -122,10 +122,7 @@ const PasswordField = ({
       setWasEnter(true)
       rerender()
     },
-    getValue: () => {
-      const _input = _refInput.current;
-      return _input && _input.value;
-    },
+    getValue: () => _refInput.current?.value,
     clear: () => {
       setWasEnter(true)
       setState({ value: '' })

@@ -25,8 +25,7 @@ const _crDialogItem = (
   />
 );
 
-const _getModalDialogType = option =>
- (option || {}).modalDialogType;
+const _getModalDialogType = option => option?.modalDialogType;
 
 const ModalDialogContainer = ({
   router,
