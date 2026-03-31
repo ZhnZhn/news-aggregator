@@ -14,10 +14,14 @@
 	},
 	"linter": {
 		"enabled": true,
+                "domains": {
+                	"project": "recommended",
+                	"react": "recommended"
+                },
 		"rules": {
 			"recommended": true,
                         "style": {
-                           "useTemplate": "off"
+                        	"useTemplate": "off"
                         }
 		}
 	},
@@ -30,7 +34,7 @@
 		"enabled": true,
 		"actions": {
 			"source": {
-				"organizeImports": "on"
+				"organizeImports": "off"
 			}
 		}
 	}
