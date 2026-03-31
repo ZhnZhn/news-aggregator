@@ -1,23 +1,17 @@
+import { crProviderApi } from './ApiFn';
+
 const API_URL = 'https://min-api.cryptocompare.com/data/v2'
 , NEWS = 'news'
 , FEEDS = 'ALL_NEWS_FEEDS'
 //, FEEDS: 'cryptocompare,cointelegraph,coindesk,decrypt',
 , DF_CATEGORY = 'ALL_NEWS_CATEGORIES'
-, DF_SORT = 'latest';
+, DF_SORT = 'latest'
+, getRequestUrl = ({
+    feed=FEEDS,
+    category=DF_CATEGORY,
+    sortOrder=DF_SORT
+}) => `${API_URL}/${NEWS}/?feeds=${feed}&categories=${category}&sortOrder=${sortOrder}`;
 
-const CryptoCompareApi = {
-  getRequestUrl(option){
-    const {
-      feed=FEEDS,
-      category=DF_CATEGORY,
-      sortOrder=DF_SORT
-    } = option;
-    return `${API_URL}/${NEWS}/?feeds=${feed}&categories=${category}&sortOrder=${sortOrder}`;
-  },
-
-  checkResponse(json, option){
-    return true;
-  }
-}
+const CryptoCompareApi = crProviderApi(getRequestUrl);
 
 export default CryptoCompareApi

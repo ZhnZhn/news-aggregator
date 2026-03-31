@@ -41,7 +41,7 @@ const StackOverflowApi = {
     const _crRequestUrl = _rRequestUrl[option.type];
     return _crRequestUrl(option);
   },
-  checkResponse(json, option){
+  checkResponse(json, _option){
     const {
       error_message,
       error_name=''

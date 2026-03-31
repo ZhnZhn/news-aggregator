@@ -1,19 +1,22 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-var BASE_URL = 'https://financialmodelingprep.com/api/v3/stock_news';
-var FmpApi = {
-  getRequestUrl: function getRequestUrl(option) {
-    var _option$symbol = option.symbol,
-      symbol = _option$symbol === void 0 ? '' : _option$symbol,
-      apiKey = option.apiKey,
-      _q = symbol ? "tickers=" + symbol.toUpperCase() + "&apikey=" + apiKey : "apikey=" + apiKey;
+exports.default = void 0;
+const URL_NEWS = "https://financialmodelingprep.com/stable/news",
+  URL_STOCK = `${URL_NEWS}/stock`,
+  URL_STOCK_LATEST = `${URL_NEWS}/stock-latest`;
+const FmpApi = {
+  getRequestUrl(option) {
+    const {
+        symbol = '',
+        apiKey
+      } = option,
+      [_url, _query] = symbol ? [URL_STOCK, `symbols=${symbol.toUpperCase()}&apikey=${apiKey}`] : [URL_STOCK_LATEST, `apikey=${apiKey}`];
     option.apiKey = void 0;
-    return BASE_URL + "?" + _q;
+    return `${_url}?${_query}`;
   },
-  checkResponse: function checkResponse(json, option) {
-    var _errMsg = (json || {})["Error Message"];
+  checkResponse(json, _option) {
+    const _errMsg = json?.["Error Message"];
     if (_errMsg) {
       throw {
         msg: _errMsg
@@ -22,6 +25,5 @@ var FmpApi = {
     return true;
   }
 };
-var _default = FmpApi;
-exports["default"] = _default;
+var _default = exports.default = FmpApi;
 //# sourceMappingURL=FmpApi.js.map

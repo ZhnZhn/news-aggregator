@@ -23,7 +23,7 @@ const AvApi = {
     return `${API_URL}${_tickers}${_topics}${_limit}&sort=${sortBy}&apikey=${apiKey}`;
   },
 
-  checkResponse(json, option){
+  checkResponse(json, _option){
     const { feed } = json || {};
     return _isArr(feed);
   }

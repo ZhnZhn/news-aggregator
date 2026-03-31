@@ -5,7 +5,7 @@ export const API_URL = `${REDDIT_URL}/r`;
 
 export const getItems = (
   json
-) => ((json || {}).data || {}).children
+) => json?.data?.children
 
 const _isArr = Array.isArray;
 const DF_SUBREDDIT = "Amd";
@@ -34,7 +34,7 @@ const RedditApi = {
     return `${API_URL}/${subreddit || DF_SUBREDDIT}/${_tokenPath}?limit=${limit}${_queryParameters}${_afterQuery}`;
   },
 
-  checkResponse(json, option){
+  checkResponse(json, _option){
     return _isArr(getItems(json));
   }
 };

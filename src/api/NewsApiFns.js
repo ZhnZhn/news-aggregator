@@ -10,7 +10,7 @@ const NewsApiFns = {
     };
   },
 
-  checkResponse: (json, option) => {
+  checkResponse: (json, _option) => {
     const { status, message } = json;
     if (status === 'error'){
       throw { msg: message };

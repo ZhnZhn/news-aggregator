@@ -16,8 +16,8 @@ const FmpApi = {
     return `${_url}?${_query}`;
   },
 
-  checkResponse(json, option){
-    const _errMsg = (json || {})["Error Message"];
+  checkResponse(json, _option){
+    const _errMsg = json?.["Error Message"];
     if (_errMsg) {
       throw {
         msg: _errMsg
