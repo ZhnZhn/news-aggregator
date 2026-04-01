@@ -11,3 +11,4 @@ css-sass.js
 css-min.js
 babel.dev.config.js
 webpack.dev.js
+rspack.dev.js
