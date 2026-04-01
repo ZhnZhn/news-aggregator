@@ -40,7 +40,7 @@ const HeaderBar = props => {
   const _refFocusItem = (0, _uiApi.useRef)(),
     [isQuery, toggleIsQuery] = (0, _useToggle.default)(),
     _hCloseQuery = (0, _uiApi.useCallback)(evt => {
-      const _menuItemElement = evt && evt.target;
+      const _menuItemElement = evt?.target;
       (0, _uiApi.setRefValue)(_refFocusItem, _menuItemElement && _menuItemElement.role === 'menuitem' ? _menuItemElement : null);
       toggleIsQuery(false);
     }, [toggleIsQuery]),

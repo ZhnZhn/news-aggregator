@@ -16,6 +16,15 @@
   border-bottom: medium solid #80c040;
 }
 
+.article-caption {
+  color: #0a0a0a; 
+  display: inline-block;
+  padding-right: 32px;
+  font-size: 1.125rem;
+  font-weight: bold;
+  word-break: break-word;
+}
+
 .article-descr {
   background-color: #4d4d4d;
   background-color: var(--art-d, #4d4d4d);  

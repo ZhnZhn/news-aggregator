@@ -11,7 +11,6 @@ const ItemType1 = props => (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
   children: [(0, _jsxRuntime.jsx)(_ItemHeader.default, {
     refEl: props.refEl,
     className: _Item.CL_ITEM_HEADER,
-    captionStyle: _Item.S_CAPTION,
     btCloseStyle: _Item.S_SVG_CLOSE,
     title: props.title,
     onKeyDown: props.onKeyDown,

@@ -3,14 +3,13 @@ import {
   useMemo
 } from '../uiApi';
 
-import { CL_SELECT_NONE } from '../crStyle';
 import SvgX from '../zhn/SvgX';
+import { CL_ITEM_CAPTION } from './Item.Style';
 
 const ItemHeader = ({
   refEl,
   className,
   style,
-  captionStyle,
   btCloseStyle,
   title,
   onKeyDown,
@@ -51,10 +50,7 @@ const ItemHeader = ({
       onClick={onClick}
       onKeyDown={_hKeyDown}
     >
-      <span
-        className={CL_SELECT_NONE}
-        style={captionStyle}
-      >
+      <span className={CL_ITEM_CAPTION}>
          {title}
       </span>
       <SvgX

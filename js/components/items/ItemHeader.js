@@ -4,15 +4,14 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _crStyle = require("../crStyle");
 var _SvgX = _interopRequireDefault(require("../zhn/SvgX"));
+var _Item = require("./Item.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
 const ItemHeader = _ref => {
   let {
     refEl,
     className,
     style,
-    captionStyle,
     btCloseStyle,
     title,
     onKeyDown,
@@ -46,8 +45,7 @@ const ItemHeader = _ref => {
     onClick: onClick,
     onKeyDown: _hKeyDown,
     children: [(0, _jsxRuntime.jsx)("span", {
-      className: _crStyle.CL_SELECT_NONE,
-      style: captionStyle,
+      className: _Item.CL_ITEM_CAPTION,
       children: title
     }), (0, _jsxRuntime.jsx)(_SvgX.default, {
       style: btCloseStyle,

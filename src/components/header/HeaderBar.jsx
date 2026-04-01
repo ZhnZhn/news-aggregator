@@ -71,7 +71,7 @@ const HeaderBar = (props) => {
          : null
      )
      toggleIsQuery(false)
-  }, [toggleIsQuery])  
+  }, [toggleIsQuery])
   , _menuQuery = crMenuQuery(
     APP_TITLE,
     props.onNewsSources,
