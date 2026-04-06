@@ -78,7 +78,7 @@ const DraggableDialog = _ref2 => {
     [isMore, toggleIsMore] = (0, _useToggle.default)(false)
     /*eslint-disable react-hooks/exhaustive-deps */,
     [focusDialogEl, focusPrevEl, _hKeyDown, _hClose] = (0, _uiApi.useMemo)(() => [() => (0, _uiApi.focusRefElement)(_refDialog), () => (0, _uiApi.focusRefElement)(_refPrevFocused), evt => {
-      if (document.activeElement == (0, _uiApi.getRefValue)(_refDialog)) {
+      if (document.activeElement === (0, _uiApi.getRefValue)(_refDialog)) {
         onKeyDown(evt);
       }
     }, evt => {

@@ -35,7 +35,7 @@ import RaisedButton from '../zhn-bt/RaisedButton';
 const CL_MODAL_TOGGLE = crPopupMenuCn("select-none")
 
 , POSITION_LEFT = HAS_WIDE_SCREEN ? 50 : 15
-, S_DIV = {  
+, S_DIV = {
   top: 30,
   left: POSITION_LEFT,
   zIndex: 10
@@ -111,7 +111,7 @@ const DraggableDialog = ({
     () => focusRefElement(_refDialog),
     () => focusRefElement(_refPrevFocused),
     (evt) => {
-      if (document.activeElement == getRefValue(_refDialog)) {
+      if (document.activeElement === getRefValue(_refDialog)) {
         onKeyDown(evt)
       }
     },
