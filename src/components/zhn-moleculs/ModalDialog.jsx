@@ -39,7 +39,6 @@ const ModalDialog = ({
   caption,
   captionStyle,
   children,
-  onKeyDown,
   onClose,
   divBtStyle,
   commandButtons,

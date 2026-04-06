@@ -33,7 +33,6 @@ const _crItemPane = (
 
 const PaneStack = ({
   id,
-  style,
   isShow,
   selectedTabIndex,
   children

@@ -33,7 +33,6 @@ const ModalDialog = _ref => {
     caption,
     captionStyle,
     children,
-    onKeyDown,
     onClose,
     divBtStyle,
     commandButtons,

@@ -18,8 +18,7 @@ const BtResize = ({
   style,
   startResize,
   stopResize,
-  onKeyDown,
-  children
+  onKeyDown
 }) => {
   const _refBt = useRef()
   , _x = to === 'r'

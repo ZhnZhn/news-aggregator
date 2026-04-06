@@ -17,8 +17,7 @@ const BtResize = _ref => {
     style,
     startResize,
     stopResize,
-    onKeyDown,
-    children
+    onKeyDown
   } = _ref;
   const _refBt = (0, _uiApi.useRef)(),
     _x = to === 'r' ? '11' : '1',
@@ -43,7 +42,7 @@ const BtResize = _ref => {
       children: [(0, _jsxRuntime.jsx)("path", {
         d: "M 1,6 L 11,6"
       }), (0, _jsxRuntime.jsx)("path", {
-        d: "M 6,2 L " + _x + ",6 6,10"
+        d: `M 6,2 L ${_x},6 6,10`
       })]
     })
   });

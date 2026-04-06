@@ -30,7 +30,6 @@ const _crItemPane = (tab, index, _ref) => {
 const PaneStack = _ref2 => {
   let {
     id,
-    style,
     isShow,
     selectedTabIndex,
     children
