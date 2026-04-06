@@ -1,5 +1,7 @@
 import { isObj } from '../../utils/isTypeFn';
 
+import { safeMap } from '../uiApi';
+
 import {
   S_INPUT_ROOT,
   S_INPUT_DATE,
@@ -37,7 +39,7 @@ const StackInputs = ({
   configs,
   onSelect,
   onEnter
-}) => (configs || []).map(arrConfig => {
+}) => safeMap(configs, arrConfig => {
   const _type = arrConfig[0]
   , _inputId = arrConfig[1]
   , CompInput = _type === INPUT_TYPE_SELECT
@@ -51,7 +53,6 @@ const StackInputs = ({
   , _elItem = CompInput
       ? (<CompInput
            {..._compInputProps}
-           key={_inputId}
            id={_inputId}
            caption={arrConfig[2]}
            options={arrConfig[3]}
@@ -64,7 +65,6 @@ const StackInputs = ({
       : _type === INPUT_TYPE_TEXT_FIELD
           ? (<TextField
                {...arrConfig[4]}
-               key={_inputId}
                id={_inputId}
                style={S_INPUT_ROOT}
                caption={arrConfig[2]}
@@ -76,7 +76,6 @@ const StackInputs = ({
           )
           : _type === INPUT_TYPE_FROM_DATE
             ? (<InputFromToDate
-                key="_ft"
                 style={S_INPUT_DATE}
                 initialFrom={arrConfig[3]}
                 initialTo={arrConfig[4]}
@@ -85,7 +84,10 @@ const StackInputs = ({
             )
             : void 0;
   return _elItem ? (
-    <ShowHide isShow={_isInput(isInputs, _inputId)}>
+    <ShowHide
+      key={_inputId}
+      isShow={_isInput(isInputs, _inputId)}
+    >
       {_elItem}
     </ShowHide>
   ) : null;
