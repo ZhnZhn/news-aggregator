@@ -146,7 +146,8 @@ const TextField = ({
     focus: () => focusRefElement(_refTf)
   }), [isTrimValue, value])
 
-  const _labelStyle = value || isFocus
+  const _isLabel = !!caption
+  , _labelStyle = value || isFocus
     ? void 0
     : S_LABEL_TO_INPUT
   , [
@@ -164,17 +165,17 @@ const TextField = ({
       className={CL_SELECT}
       style={style}
     >
-      <label
+      {_isLabel && <label
         className={CL_SELECT_LABEL}
         style={{..._labelStyle, ..._labelErrStyle}}
         htmlFor={_inputId}
        >
         {caption}
-      </label>
+      </label>}
       <div className={CL_TEXTFIELD_INPUT_DIV}>
         <input
           ref={_refTf}
-          id={_inputId}
+          id={_isLabel ? _inputId : void 0}
           type="text"
           className={crCn(CL_TEXTFIELD_INPUT, inputCn)}
           style={inputStyle}

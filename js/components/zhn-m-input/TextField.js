@@ -92,13 +92,14 @@ const TextField = _ref => {
     setValue,
     focus: () => (0, _uiApi.focusRefElement)(_refTf)
   }), [isTrimValue, value]);
-  const _labelStyle = value || isFocus ? void 0 : S_LABEL_TO_INPUT,
+  const _isLabel = !!caption,
+    _labelStyle = value || isFocus ? void 0 : S_LABEL_TO_INPUT,
     [_labelErrStyle, _lineStyle] = isPassTest ? [] : [S_LABEL_ON_ERROR, S_LINE_ERROR],
     _isShowSvgX = _has.HAS_TOUCH_EVENTS && hasClear && value;
   return (0, _jsxRuntime.jsxs)("div", {
     className: _Input.CL_SELECT,
     style: style,
-    children: [(0, _jsxRuntime.jsx)("label", {
+    children: [_isLabel && (0, _jsxRuntime.jsx)("label", {
       className: _Input.CL_SELECT_LABEL,
       style: {
         ..._labelStyle,
@@ -110,7 +111,7 @@ const TextField = _ref => {
       className: _Input.CL_TEXTFIELD_INPUT_DIV,
       children: [(0, _jsxRuntime.jsx)("input", {
         ref: _refTf,
-        id: _inputId,
+        id: _isLabel ? _inputId : void 0,
         type: "text",
         className: (0, _crStyle.crCn)(_Input.CL_TEXTFIELD_INPUT, inputCn),
         style: inputStyle,
