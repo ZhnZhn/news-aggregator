@@ -30,6 +30,7 @@ const TextField = _ref => {
     inputCn,
     caption,
     id,
+    inputId,
     isTrimValue = true,
     initValue,
     maxLength = "20",
@@ -55,7 +56,7 @@ const TextField = _ref => {
       if (onTest(_value)) {
         onEvent(_crValue(isTrimValue, _value), id, evt);
       }
-    }, evt => {
+    }, () => {
       setValue('');
       onInputChange('', id);
     }], [isTrimValue, onInputChange])
@@ -111,7 +112,7 @@ const TextField = _ref => {
       className: _Input.CL_TEXTFIELD_INPUT_DIV,
       children: [(0, _jsxRuntime.jsx)("input", {
         ref: _refTf,
-        id: _isLabel ? _inputId : void 0,
+        id: _isLabel ? _inputId : inputId,
         type: "text",
         className: (0, _crStyle.crCn)(_Input.CL_TEXTFIELD_INPUT, inputCn),
         style: inputStyle,

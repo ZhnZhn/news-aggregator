@@ -3,6 +3,7 @@ import {
 } from '../../utils/crLazyValue';
 
 import {
+  useId,
   useRef,
   useMemo,
 
@@ -84,6 +85,7 @@ const InputSuggest = ({
 }) => {
   const _isAdvancedInputOptions = useIsAdvancedInputOptions()
   , _isInput = !!(isInput && _isAdvancedInputOptions)
+  , _inputId = useId()
   , _refTf = useRef()
   , _refBtArrow = useRef()
   , _refOp = useRef()
@@ -192,8 +194,8 @@ const InputSuggest = ({
       })),
       [options]
   )
-  
-  , _hInputChange = useMemo(() => (token, id) => {
+
+  , _hInputChange = useMemo(() => (token, _id) => {
        const _tokenInLowerCase = (token || '')
          .toLowerCase()
        , _token = _isInput
@@ -233,7 +235,7 @@ const InputSuggest = ({
       stopDefaultFor(evt)
       _setItem(item)
     },
-    (item, id, evt) => {
+    (_item, _id, evt) => {
       stopDefaultFor(evt)
       _setItem(getRefValue(_refItem))
     }
@@ -256,7 +258,10 @@ const InputSuggest = ({
       className={CL_SELECT}
       style={style}
     >
-      <label className={CL_SELECT_LABEL}>
+      <label
+        htmlFor={_inputId}
+        className={CL_SELECT_LABEL}      
+      >
         {caption}
       </label>
       <OptionsPane
@@ -275,6 +280,7 @@ const InputSuggest = ({
        <TextField
          {..._ariaComboboxProps}
          {..._textFieldProps}
+         inputId={_inputId}
          refEl={_refTf}
          style={tfStyle}
          isTrimValue={!_isInput}

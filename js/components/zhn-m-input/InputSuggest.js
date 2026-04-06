@@ -43,6 +43,7 @@ const InputSuggest = _ref => {
   } = _ref;
   const _isAdvancedInputOptions = (0, _uiStore.useIsAdvancedInputOptions)(),
     _isInput = !!(isInput && _isAdvancedInputOptions),
+    _inputId = (0, _uiApi.useId)(),
     _refTf = (0, _uiApi.useRef)(),
     _refBtArrow = (0, _uiApi.useRef)(),
     _refOp = (0, _uiApi.useRef)(),
@@ -117,7 +118,7 @@ const InputSuggest = _ref => {
       item._t = item[0].toLowerCase();
       return item;
     })), [options]),
-    _hInputChange = (0, _uiApi.useMemo)(() => (token, id) => {
+    _hInputChange = (0, _uiApi.useMemo)(() => (token, _id) => {
       const _tokenInLowerCase = (token || '').toLowerCase(),
         _token = _isInput ? _tokenInLowerCase : _tokenInLowerCase.trim();
       if (_token) {
@@ -138,7 +139,7 @@ const InputSuggest = _ref => {
     [_hSelectOption, _hEnterTextField] = (0, _uiApi.useMemo)(() => [(item, evt) => {
       (0, _uiApi.stopDefaultFor)(evt);
       _setItem(item);
-    }, (item, id, evt) => {
+    }, (_item, _id, evt) => {
       (0, _uiApi.stopDefaultFor)(evt);
       _setItem((0, _uiApi.getRefValue)(_refItem));
     }], [])
@@ -156,6 +157,7 @@ const InputSuggest = _ref => {
     className: _Input.CL_SELECT,
     style: style,
     children: [(0, _jsxRuntime.jsx)("label", {
+      htmlFor: _inputId,
       className: _Input.CL_SELECT_LABEL,
       children: caption
     }), (0, _jsxRuntime.jsx)(_OptionsPane.default, {
@@ -173,6 +175,7 @@ const InputSuggest = _ref => {
     }), (0, _jsxRuntime.jsx)(_TextField.default, {
       ..._ariaComboboxProps,
       ..._textFieldProps,
+      inputId: _inputId,
       refEl: _refTf,
       style: tfStyle,
       isTrimValue: !_isInput,

@@ -58,6 +58,7 @@ const TextField = ({
   inputCn,
   caption,
   id,
+  inputId,
   isTrimValue=true,
   initValue,
   maxLength="20",
@@ -100,7 +101,7 @@ const TextField = ({
         onEvent(_crValue(isTrimValue, _value), id, evt)
       }
     },
-    (evt) => {
+    () => {
       setValue('')
       onInputChange('', id)
     }
@@ -175,7 +176,7 @@ const TextField = ({
       <div className={CL_TEXTFIELD_INPUT_DIV}>
         <input
           ref={_refTf}
-          id={_isLabel ? _inputId : void 0}
+          id={_isLabel ? _inputId : inputId}
           type="text"
           className={crCn(CL_TEXTFIELD_INPUT, inputCn)}
           style={inputStyle}

@@ -27,7 +27,8 @@ const InputSelect = _ref => {
     options,
     onSelect
   } = _ref;
-  const _refBtCombobox = (0, _uiApi.useRef)(),
+  const _comboBoxId = (0, _uiApi.useId)(),
+    _refBtCombobox = (0, _uiApi.useRef)(),
     [item, setItem] = (0, _uiApi.useState)(initItem || DF_INIT_ITEM),
     [isShowTuple, setIsShowTuple] = (0, _uiApi.useState)([!1]),
     [showOptions, hideOptions] = (0, _uiApi.useMemo)(() => [focusOption => setIsShowTuple([!0, focusOption]), () => setIsShowTuple([!1])], []),
@@ -63,6 +64,7 @@ const InputSelect = _ref => {
 
   return (0, _jsxRuntime.jsxs)("button", {
     ..._ariaComboboxProps,
+    id: _comboBoxId,
     ref: _refBtCombobox,
     type: "button",
     className: _Input.CL_SELECT,
@@ -70,6 +72,7 @@ const InputSelect = _ref => {
     onClick: showOptions,
     onKeyDown: _hKeyDown,
     children: [(0, _jsxRuntime.jsx)("label", {
+      htmlFor: _comboBoxId,
       className: _Input.CL_SELECT_LABEL,
       children: caption
     }), (0, _jsxRuntime.jsx)("div", {

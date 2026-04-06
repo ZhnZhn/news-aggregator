@@ -1,4 +1,5 @@
 import {
+  useId,
   useRef,
   useState,
   useMemo,
@@ -47,7 +48,8 @@ const InputSelect = ({
   options,
   onSelect
 }) => {
-  const _refBtCombobox = useRef()
+  const _comboBoxId = useId()
+  , _refBtCombobox = useRef()
   , [
     item,
     setItem
@@ -104,10 +106,11 @@ const InputSelect = ({
   ]
   , [])
   /*eslint-enable react-hooks/exhaustive-deps */
-  
+
   return (
     <button
       {..._ariaComboboxProps}
+      id={_comboBoxId}
       ref={_refBtCombobox}
       type="button"
       className={CL_SELECT}
@@ -115,7 +118,10 @@ const InputSelect = ({
       onClick={showOptions}
       onKeyDown={_hKeyDown}
     >
-      <label className={CL_SELECT_LABEL}>
+      <label
+        htmlFor={_comboBoxId}
+        className={CL_SELECT_LABEL}
+      >
         {caption}
       </label>
       <div className={CL_SELECT_VALUE}>
