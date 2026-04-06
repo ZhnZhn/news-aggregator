@@ -115,7 +115,7 @@ const DraggableDialog = ({
         onKeyDown(evt)
       }
     },
-    (evt) => {
+    () => {
       focusPrevEl()
       onClose()
     }

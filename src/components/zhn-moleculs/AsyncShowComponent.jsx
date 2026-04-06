@@ -14,15 +14,17 @@ const AsyncShowComponent = ({
   ] = useState(is)
 
   useEffect(() => {
+    let _idTimeout;
     if (is) {
-      setTimeout(() => setIsShow(true), mls)
+      _idTimeout = setTimeout(() => setIsShow(true), mls)
     } else {
       setIsShow(false)
     }
+    return () => clearTimeout(_idTimeout);
   }, [is, mls])
 
   return is && isShow
-    ? <>{children}</>
+    ? children
     : null;
 }
 

@@ -12,7 +12,7 @@ import ModalContainer from './ModalContainer';
 
 const _crDialogItem = (
   { Comp, type },
-  index, {
+  _index, {
   currentDialog,
   data,
   onClose
@@ -29,7 +29,6 @@ const _getModalDialogType = option => option?.modalDialogType;
 
 const ModalDialogContainer = ({
   router,
-  showAction,
   useMsModalDialog
 }) => {
   const [

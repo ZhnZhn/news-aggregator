@@ -38,6 +38,7 @@ export const useKeyEnterOrSpace = _fUseKey(isKeyEnterOrSpace)
 const _isKeyDelete = evt => evt.key === KEY_DELETE
 export const useKeyDelete = _fUseKey(_isKeyDelete)
 
+// biome-ignore-start lint/correctness/useHookAtTopLevel: HAS_KEYBOARD_FOCUS initiated only once
 export const useKeyEscape = (
   onKeyEscape,
   isPropagation
@@ -56,3 +57,4 @@ export const useKeyEscape = (
 // onKeyEscape
 /*eslint-enable react-hooks/exhaustive-deps */
 /*eslint-enable react-hooks/rules-of-hooks*/
+// biome-ignore-end lint/correctness/useHookAtTopLevel: HAS_KEYBOARD_FOCUS initiated only once

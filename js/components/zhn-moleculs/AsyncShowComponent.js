@@ -3,7 +3,6 @@
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _jsxRuntime = require("preact/jsx-runtime");
 const AsyncShowComponent = _ref => {
   let {
     is,
@@ -12,15 +11,15 @@ const AsyncShowComponent = _ref => {
   } = _ref;
   const [isShow, setIsShow] = (0, _uiApi.useState)(is);
   (0, _uiApi.useEffect)(() => {
+    let _idTimeout;
     if (is) {
-      setTimeout(() => setIsShow(true), mls);
+      _idTimeout = setTimeout(() => setIsShow(true), mls);
     } else {
       setIsShow(false);
     }
+    return () => clearTimeout(_idTimeout);
   }, [is, mls]);
-  return is && isShow ? (0, _jsxRuntime.jsx)(_jsxRuntime.Fragment, {
-    children: children
-  }) : null;
+  return is && isShow ? children : null;
 };
 var _default = exports.default = AsyncShowComponent;
 //# sourceMappingURL=AsyncShowComponent.js.map

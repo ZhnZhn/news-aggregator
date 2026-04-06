@@ -81,7 +81,7 @@ const DraggableDialog = _ref2 => {
       if (document.activeElement === (0, _uiApi.getRefValue)(_refDialog)) {
         onKeyDown(evt);
       }
-    }, evt => {
+    }, () => {
       focusPrevEl();
       onClose();
     }], []);

@@ -20,6 +20,8 @@ const _fUseKey = isKey => (fn, deps) => (0, _uiApi.useMemo)(() => _fOnKeyFnEvt(i
 const useKeyEnterOrSpace = exports.useKeyEnterOrSpace = _fUseKey(isKeyEnterOrSpace);
 const _isKeyDelete = evt => evt.key === _uiApi.KEY_DELETE;
 const useKeyDelete = exports.useKeyDelete = _fUseKey(_isKeyDelete);
+
+// biome-ignore-start lint/correctness/useHookAtTopLevel: HAS_KEYBOARD_FOCUS initiated only once
 const useKeyEscape = (onKeyEscape, isPropagation) => _has.HAS_KEYBOARD_FOCUS
 /*eslint-disable react-hooks/exhaustive-deps*/
 /*eslint-disable react-hooks/rules-of-hooks*/ ? (0, _uiApi.useMemo)(() => evt => {
@@ -33,5 +35,6 @@ const useKeyEscape = (onKeyEscape, isPropagation) => _has.HAS_KEYBOARD_FOCUS
 // onKeyEscape
 /*eslint-enable react-hooks/exhaustive-deps */
 /*eslint-enable react-hooks/rules-of-hooks*/
+// biome-ignore-end lint/correctness/useHookAtTopLevel: HAS_KEYBOARD_FOCUS initiated only once
 exports.useKeyEscape = useKeyEscape;
 //# sourceMappingURL=fUseKey.js.map
