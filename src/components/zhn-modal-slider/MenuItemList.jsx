@@ -54,7 +54,7 @@ const MenuItemList = ({
      ] = type === SUB_MENU
        ? [
            bindTo(onNextPage, id, name, pageNumber),
-           <span style={S_NEXT_PAGE}>{'>'}</span>
+           <span key='>' style={S_NEXT_PAGE}>{'>'}</span>
          ]
        : [
            _fClick(isClose, onClick, onClose),
