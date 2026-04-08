@@ -45,7 +45,7 @@ const MenuItemList = _ref => {
       const [_onClick, _nextPageArrowEl] = type === SUB_MENU ? [(0, _uiApi.bindTo)(onNextPage, id, name, pageNumber), (0, _jsxRuntime.jsx)("span", {
         style: S_NEXT_PAGE,
         children: '>'
-      }, '>')] : [_fClick(isClose, onClick, onClose), null];
+      }, ">")] : [_fClick(isClose, onClick, onClose), null];
       return (0, _jsxRuntime.jsxs)(_MenuItem.default, {
         refEl: getRefItem(index),
         className: cn || itemCl,
