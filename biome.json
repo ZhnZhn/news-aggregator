@@ -19,12 +19,21 @@
                 	"react": "recommended"
                 },
 		"rules": {
-			"recommended": true,
+			"recommended": true,                        
+                        "correctness": {
+                            	"noUndeclaredVariables": "on"
+                        },   
                         "style": {
                         	"useTemplate": "off"
                         }
 		}
 	},
+        "overrides": [
+           {
+             "includes": ["**/__tests__/*.{js,jsx}"],
+             "javascript": { "globals": [ "jest" ] }
+           }
+        ], 
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "double"
