@@ -15,6 +15,7 @@ const LogoGitHub = props => {
     className: props.className,
     href: (0, _uiApi.toLink)(props.href),
     children: (0, _jsxRuntime.jsx)("svg", {
+      "aria-hidden": "true",
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 16 16",
       children: (0, _jsxRuntime.jsx)(_UseLogoById.default, {

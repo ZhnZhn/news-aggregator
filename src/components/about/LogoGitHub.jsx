@@ -16,9 +16,10 @@ const LogoGitHub = (props) => {
       aria-label={_ariaLabel}
       data-pos={_dataPos}
       className={props.className}
-      href={toLink(props.href)}      
+      href={toLink(props.href)}
     >
       <svg
+        aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 16 16"
       >

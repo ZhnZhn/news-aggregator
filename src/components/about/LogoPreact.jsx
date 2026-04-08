@@ -21,6 +21,7 @@ const LogoPreact = (props) => {
        href="https://preactjs.com"
     >
       <svg
+        aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="-256 -256 512 512"
       >

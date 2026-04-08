@@ -17,6 +17,7 @@ const LogoPreact = props => {
     className: props.className,
     href: "https://preactjs.com",
     children: (0, _jsxRuntime.jsx)("svg", {
+      "aria-hidden": "true",
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "-256 -256 512 512",
       children: (0, _jsxRuntime.jsx)(_UseLogoById.default, {
