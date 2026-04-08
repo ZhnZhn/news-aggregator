@@ -3,6 +3,7 @@ import {
   useCallback
 } from '../uiApi';
 import {
+  S_NONE,
   S_COLOR_BLACK,
   COLOR_BLACK
 } from '../crStyle';
@@ -17,11 +18,11 @@ import GestureSwipeX from '../zhn-gesture/GestureSwipeX';
 import SvgX from '../zhn/SvgX';
 import SafeLink from '../zhn/SafeLink';
 import ItemStack from '../zhn/ItemStack';
+
 import {
   CL_ITEM_HEADER,
   CL_ITEM_DESCR,
-  CL_LINK_WRAPPER,
-  S_NONE
+  CL_LINK_WRAPPER
 } from './Item.Style';
 
 const S_ROOT = {

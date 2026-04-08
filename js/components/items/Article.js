@@ -7,11 +7,12 @@ var _dt = require("../../utils/dt");
 var _strFn = require("../../utils/strFn");
 var _uiApi = require("../uiApi");
 var _useRefSet = _interopRequireDefault(require("../hooks/useRefSet"));
+var _GestureSwipeX = _interopRequireDefault(require("../zhn-gesture/GestureSwipeX"));
 var _useItemGestureSwipeX = _interopRequireDefault(require("./useItemGestureSwipeX"));
 var _useItemType = _interopRequireDefault(require("./useItemType1"));
-var _GestureSwipeX = _interopRequireDefault(require("../zhn-gesture/GestureSwipeX"));
 var _ItemType = _interopRequireDefault(require("./ItemType1"));
 var _ArticleDescr = _interopRequireDefault(require("./ArticleDescr"));
+var _crStyle = require("../crStyle");
 var _Item = require("./Item.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
 const FN_NOOP = () => {};
@@ -20,8 +21,8 @@ const Article = _ref => {
     refEl,
     item,
     onCloseItem,
-    onRemoveUnder = FN_NOOP,
-    onRemoveItem = FN_NOOP
+    onRemoveUnder = FN_NOOP
+    //onRemoveItem=FN_NOOP
   } = _ref;
   const _refArticle = (0, _uiApi.useRef)(null),
     [refTimeStamp, setTimeStamp] = (0, _useRefSet.default)(null),
@@ -77,7 +78,7 @@ const Article = _ref => {
       //, urlToImage
     } = item,
     description = item.description || 'More...',
-    _style = isClosed ? _Item.S_NONE : void 0,
+    _style = isClosed ? _crStyle.S_NONE : void 0,
     _publishedAt = (0, _dt.toTimeDate)(publishedAt),
     _datetime = (0, _strFn.getNotEmpty)((0, _dt.toDateTime)(_publishedAt)),
     _href = (0, _uiApi.toLink)(url),

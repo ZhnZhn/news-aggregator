@@ -8,6 +8,7 @@ var _SafeLink = _interopRequireDefault(require("../zhn/SafeLink"));
 var _TextToken = require("../zhn/TextToken");
 var _SvgX = _interopRequireDefault(require("../zhn/SvgX"));
 var _RelatedDiv = _interopRequireDefault(require("./RelatedDiv"));
+var _crStyle = require("../crStyle");
 var _ArticleDescr = require("./ArticleDescr.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
 const ArticleDescr = props => (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
@@ -42,7 +43,7 @@ const ArticleDescr = props => (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
         dataPos: _DP.DP_CLOSE_RIGHT,
         onClick: props.onClose
       }), (0, _jsxRuntime.jsx)("time", {
-        className: _ArticleDescr.CL_SELECT_NONE,
+        className: _crStyle.CL_SELECT_NONE,
         style: _ArticleDescr.S_DATE,
         datetime: props.datetime,
         children: props.publishedAt

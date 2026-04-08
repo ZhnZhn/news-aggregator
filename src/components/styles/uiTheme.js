@@ -1,7 +1,4 @@
 export {
-  isAllowUseLs
-} from '../../utils/localStorageFn';
-export {
   FONT_SIZE_OPTIONS,
   selectFontSize,
   getFontSize

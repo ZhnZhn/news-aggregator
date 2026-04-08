@@ -1,9 +1,8 @@
 "use strict";
 
 exports.__esModule = true;
-exports.S_RELATED_DIV = exports.S_RELATED = exports.S_PT_8 = exports.S_DESCR = exports.S_DATE = exports.S_COMMENTS_LINK = exports.S_BOTTOM_ROW = exports.S_AUTHOR_ROW = exports.S_AUTHOR = exports.CL_SELECT_NONE = exports.CL_LINK_WRAPPER = void 0;
+exports.S_RELATED_DIV = exports.S_RELATED = exports.S_PT_8 = exports.S_DESCR = exports.S_DATE = exports.S_COMMENTS_LINK = exports.S_BOTTOM_ROW = exports.S_AUTHOR_ROW = exports.S_AUTHOR = exports.CL_LINK_WRAPPER = void 0;
 var _crStyle = require("../crStyle");
-exports.CL_SELECT_NONE = _crStyle.CL_SELECT_NONE;
 const CL_LINK_WRAPPER = exports.CL_LINK_WRAPPER = "link-wrapper";
 const S_FONT = {
     ..._crStyle.S_COLOR_BLACK,

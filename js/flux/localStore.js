@@ -1,9 +1,8 @@
 "use strict";
 
 exports.__esModule = true;
-exports.notAllowSaveToLs = exports.isAllowUseLs = exports.allowSaveToLs = void 0;
+exports.notAllowSaveToLs = exports.allowSaveToLs = void 0;
 var _localStorageFn = require("../utils/localStorageFn");
-exports.isAllowUseLs = _localStorageFn.isAllowUseLs;
 var _uiTheme = require("../components/styles/uiTheme");
 var _uiStore = require("./uiStore");
 var _LS = require("./LS");

@@ -3,8 +3,6 @@ import {
   crCn
 } from '../crStyle';
 
-export { S_NONE } from '../crStyle'
-
 export const CL_ITEM_HEADER = "article-header"
 export const CL_ITEM_CAPTION = crCn("article-caption", CL_SELECT_NONE)
 export const CL_ITEM_DESCR = "article-descr"

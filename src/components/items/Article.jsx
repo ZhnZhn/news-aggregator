@@ -16,17 +16,15 @@ import {
 } from '../uiApi';
 
 import useRefSet from '../hooks/useRefSet';
-
+import GestureSwipeX from '../zhn-gesture/GestureSwipeX';
 import useItemGestureSwipeX from './useItemGestureSwipeX';
 import useItemType1 from './useItemType1';
-import GestureSwipeX from '../zhn-gesture/GestureSwipeX';
+
 import ItemType1 from './ItemType1';
 import ArticleDescr from './ArticleDescr';
 
-import {
-  S_ITEM,
-  S_NONE
-} from './Item.Style';
+import { S_NONE } from '../crStyle';
+import { S_ITEM } from './Item.Style';
 
 const FN_NOOP = () => {};
 

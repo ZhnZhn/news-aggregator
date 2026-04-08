@@ -1,7 +1,9 @@
 import SafeLink from '../zhn/SafeLink';
 
 import {
-  CL_SELECT_NONE,
+  CL_SELECT_NONE
+} from '../crStyle';
+import {
   CL_LINK_WRAPPER,
   S_RELATED_DIV,
   S_RELATED,

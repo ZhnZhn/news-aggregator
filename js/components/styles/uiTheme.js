@@ -1,9 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.setUiTheme = exports.selectFontSize = exports.isAllowUseLs = exports.getThemeName = exports.getFontSize = exports.THEME_OPTIONS = exports.FONT_SIZE_OPTIONS = void 0;
-var _localStorageFn = require("../../utils/localStorageFn");
-exports.isAllowUseLs = _localStorageFn.isAllowUseLs;
+exports.setUiTheme = exports.selectFontSize = exports.getThemeName = exports.getFontSize = exports.THEME_OPTIONS = exports.FONT_SIZE_OPTIONS = void 0;
 var _propertyFontSize = require("./propertyFontSize");
 exports.FONT_SIZE_OPTIONS = _propertyFontSize.FONT_SIZE_OPTIONS;
 exports.selectFontSize = _propertyFontSize.selectFontSize;
@@ -12,6 +10,7 @@ var _propertyThemeName = require("./propertyThemeName");
 exports.THEME_NAME = _propertyThemeName.THEME_NAME;
 exports.THEME_OPTIONS = _propertyThemeName.THEME_OPTIONS;
 var _LS = require("../../flux/LS");
+var _localStorageFn = require("../../utils/localStorageFn");
 const _crRgba = (v, a) => `rgba(${v}, ${v}, ${v}, ${a})`;
 const GREY_BG_HEADER = '#3a6799';
 const GREY_C_HEADER = '#a9a9a9';

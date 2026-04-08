@@ -84,8 +84,8 @@ const StackItem = _ref => {
   let {
     item,
     onCloseItem,
-    onRemoveUnder = _uiApi.FN_NOOP,
-    onRemoveItem = _uiApi.FN_NOOP
+    onRemoveUnder = _uiApi.FN_NOOP
+    //onRemoveItem=FN_NOOP
   } = _ref;
   const [isClosed, toggleIsClosed] = (0, _useToggle.default)(!1)
     /*eslint-disable react-hooks/exhaustive-deps */,
@@ -111,7 +111,7 @@ const StackItem = _ref => {
       reputation,
       display_name
     } = owner || {},
-    _style = isClosed ? _Item.S_NONE : void 0;
+    _style = isClosed ? _crStyle.S_NONE : void 0;
   return (0, _jsxRuntime.jsxs)(_GestureSwipeX.default, {
     className: _Item.CL_ITEM_HEADER,
     style: {

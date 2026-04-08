@@ -3,9 +3,10 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiTheme = require("../styles/uiTheme");
+var _localStorageFn = require("../../utils/localStorageFn");
 var _localStore = require("../../flux/localStore");
 var _uiStore = require("../../flux/uiStore");
+var _uiTheme = require("../styles/uiTheme");
 var _InputSelect = _interopRequireDefault(require("../zhn-m-input/InputSelect"));
 var _InputSwitch = _interopRequireDefault(require("../zhn/InputSwitch"));
 var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
@@ -16,7 +17,7 @@ const S_ROW_CHECKBOX_LS = {
   S_VERTICAL_GAP_22 = {
     height: 22
   },
-  IS_ALLOW_USE_LS = (0, _localStore.isAllowUseLs)(),
+  IS_ALLOW_USE_LS = (0, _localStorageFn.isAllowUseLs)(),
   IS_ADVANCED_INPUT_OPTIONS = (0, _uiStore.isAdvancedInputOptions)();
 const CardUiTheme = props => (0, _jsxRuntime.jsxs)("div", {
   style: props.style,

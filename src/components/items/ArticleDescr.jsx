@@ -6,7 +6,9 @@ import SvgX from '../zhn/SvgX';
 import RelatedDiv from './RelatedDiv';
 
 import {
-  CL_SELECT_NONE,
+  CL_SELECT_NONE
+} from '../crStyle';
+import {
   CL_LINK_WRAPPER,
   S_DESCR,
   S_AUTHOR_ROW,

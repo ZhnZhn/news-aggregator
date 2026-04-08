@@ -4,16 +4,16 @@ import {
   useEffect
 } from '../uiApi';
 
-import { crStyle2 } from '../crStyle';
+import {
+  S_NONE,
+  crStyle2
+} from '../crStyle';
 import useItemType1 from './useItemType1';
 
 import ItemType1 from './ItemType1';
 import BarChart from '../zhn-charts/BarChart';
 
-import {
-  S_ITEM,
-  S_NONE
-} from './Item.Style';
+import { S_ITEM } from './Item.Style';
 
 const S_BAR_CHART = {
   padding: '6px 0'

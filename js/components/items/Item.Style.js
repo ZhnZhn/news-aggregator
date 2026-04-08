@@ -1,9 +1,8 @@
 "use strict";
 
 exports.__esModule = true;
-exports.S_SVG_CLOSE = exports.S_NONE = exports.S_ITEM = exports.CL_LINK_WRAPPER = exports.CL_ITEM_HEADER = exports.CL_ITEM_DESCR = exports.CL_ITEM_CAPTION = void 0;
+exports.S_SVG_CLOSE = exports.S_ITEM = exports.CL_LINK_WRAPPER = exports.CL_ITEM_HEADER = exports.CL_ITEM_DESCR = exports.CL_ITEM_CAPTION = void 0;
 var _crStyle = require("../crStyle");
-exports.S_NONE = _crStyle.S_NONE;
 const CL_ITEM_HEADER = exports.CL_ITEM_HEADER = "article-header";
 const CL_ITEM_CAPTION = exports.CL_ITEM_CAPTION = (0, _crStyle.crCn)("article-caption", _crStyle.CL_SELECT_NONE);
 const CL_ITEM_DESCR = exports.CL_ITEM_DESCR = "article-descr";

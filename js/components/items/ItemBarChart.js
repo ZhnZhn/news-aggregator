@@ -28,11 +28,11 @@ const ItemBarChart = _ref => {
       setIsClosed(false);
     }
   }, [categoryBars]);
-  const _style = (0, _crStyle.crStyle2)(_Item.S_ITEM, isClosed && _Item.S_NONE);
+  const _style = (0, _crStyle.crStyle2)(_Item.S_ITEM, isClosed && _crStyle.S_NONE);
   return _isArr(categoryBars) ? (0, _jsxRuntime.jsx)("div", {
     style: _style,
     children: (0, _jsxRuntime.jsx)(_ItemType.default, {
-      title: "Categories Bar Chart (" + numberOfItems + ")",
+      title: `Categories Bar Chart (${numberOfItems})`,
       isShowDescr: isShowDescr,
       onClick: _hToggle,
       onToggle: _hToggle,
@@ -45,6 +45,5 @@ const ItemBarChart = _ref => {
     })
   }) : null;
 };
-var _default = ItemBarChart;
-exports.default = _default;
+var _default = exports.default = ItemBarChart;
 //# sourceMappingURL=ItemBarChart.js.map

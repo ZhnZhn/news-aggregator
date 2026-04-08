@@ -1,12 +1,8 @@
 import {
-  THEME_OPTIONS,
-  FONT_SIZE_OPTIONS,
-  setUiTheme,
-  selectFontSize
-} from '../styles/uiTheme';
+  isAllowUseLs
+} from '../../utils/localStorageFn';
 
 import {
-  isAllowUseLs,
   allowSaveToLs,
   notAllowSaveToLs
 } from '../../flux/localStore';
@@ -16,6 +12,13 @@ import {
   enableAdvancedInputOptions,
   disableAndvancedInputOptions
 } from '../../flux/uiStore';
+
+import {
+  THEME_OPTIONS,
+  FONT_SIZE_OPTIONS,
+  setUiTheme,
+  selectFontSize
+} from '../styles/uiTheme';
 
 import InputSelect from '../zhn-m-input/InputSelect';
 import InputSwitch from '../zhn/InputSwitch';

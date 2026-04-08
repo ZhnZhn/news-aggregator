@@ -1,7 +1,3 @@
-export {
-  isAllowUseLs
-} from '../utils/localStorageFn';
-
 import {
   allowUseLs,
   notAllowUseLs,
