@@ -5,6 +5,7 @@ const S_PREACT = {
   transform: 'translate(-210px, -210px) scale(0.9)'
 };
 
+// biome-ignore-start lint/a11y/useAnchorContent: tag a has arria-label
 const LogoPreact = (props) => {
   const [
     _ariaLabel,
@@ -33,5 +34,6 @@ const LogoPreact = (props) => {
     </a>
   );
 }
+// biome-ignore-end lint/a11y/useAnchorContent: tag a has arria-label
 
 export default LogoPreact

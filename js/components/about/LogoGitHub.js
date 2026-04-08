@@ -7,6 +7,7 @@ var _uiApi = require("../uiApi");
 var _useTooltip = _interopRequireDefault(require("../hooks/useTooltip"));
 var _UseLogoById = _interopRequireDefault(require("./UseLogoById"));
 var _jsxRuntime = require("preact/jsx-runtime");
+// biome-ignore-start lint/a11y/useAnchorContent: tag a has arria-label
 const LogoGitHub = props => {
   const [_ariaLabel, _dataPos] = (0, _useTooltip.default)(props.ariaLabel, props.dataPos);
   return (0, _jsxRuntime.jsx)("a", {
@@ -24,5 +25,6 @@ const LogoGitHub = props => {
     })
   });
 };
+// biome-ignore-end lint/a11y/useAnchorContent: tag a has arria-label
 var _default = exports.default = LogoGitHub;
 //# sourceMappingURL=LogoGitHub.js.map

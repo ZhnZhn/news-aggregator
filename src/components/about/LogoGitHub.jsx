@@ -3,6 +3,7 @@ import { toLink } from '../uiApi';
 import useTooltip from '../hooks/useTooltip';
 import UseLogoById from './UseLogoById'
 
+// biome-ignore-start lint/a11y/useAnchorContent: tag a has arria-label
 const LogoGitHub = (props) => {
   const [
     _ariaLabel,
@@ -28,5 +29,6 @@ const LogoGitHub = (props) => {
     </a>
   );
 }
+// biome-ignore-end lint/a11y/useAnchorContent: tag a has arria-label
 
 export default LogoGitHub

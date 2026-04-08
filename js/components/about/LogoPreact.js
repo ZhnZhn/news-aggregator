@@ -9,6 +9,8 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const S_PREACT = {
   transform: 'translate(-210px, -210px) scale(0.9)'
 };
+
+// biome-ignore-start lint/a11y/useAnchorContent: tag a has arria-label
 const LogoPreact = props => {
   const [_ariaLabel, _dataPos] = (0, _useTooltip.default)(props.ariaLabel, props.dataPos);
   return (0, _jsxRuntime.jsx)("a", {
@@ -27,5 +29,6 @@ const LogoPreact = props => {
     })
   });
 };
+// biome-ignore-end lint/a11y/useAnchorContent: tag a has arria-label
 var _default = exports.default = LogoPreact;
 //# sourceMappingURL=LogoPreact.js.map
