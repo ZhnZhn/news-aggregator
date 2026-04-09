@@ -13,6 +13,7 @@ var _useRefHotKey = _interopRequireDefault(require("../hotkeys/useRefHotKey"));
 var _ModalToggle = _interopRequireDefault(require("./ModalToggle"));
 var _BrowserCaption = _interopRequireDefault(require("../zhn/BrowserCaption"));
 var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
+var _Dialog2 = require("./Dialog.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
 //import PropTypes from 'prop-types'
 
@@ -24,8 +25,8 @@ const CL_MODAL_TOGGLE = (0, _crStyle.crPopupMenuCn)("select-none"),
     zIndex: 10
   },
   S_BTS = {
-    textAlign: 'right',
-    margin: '16px 4px 10px 0'
+    ..._Dialog2.S_DIALOG_BTS,
+    paddingRight: 4
   },
   HK_LOAD = 'L',
   HK_SHOW = 'H',
@@ -120,13 +121,13 @@ const DraggableDialog = _ref2 => {
   return /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/ /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/(0, _jsxRuntime.jsxs)("div", {
     ref: _refDialog,
     role: "dialog",
+    tabIndex: "0",
     className: _className,
     style: {
       ...S_DIV,
       ...style,
       ..._showHideStyle
     },
-    tabIndex: "0",
     onKeyDown: _hKeyDown,
     children: [(0, _jsxRuntime.jsx)(_BrowserCaption.default, {
       style: captionStyle,

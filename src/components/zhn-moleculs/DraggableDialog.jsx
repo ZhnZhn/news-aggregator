@@ -32,6 +32,8 @@ import ModalToggle from './ModalToggle';
 import BrowserCaption from '../zhn/BrowserCaption';
 import RaisedButton from '../zhn-bt/RaisedButton';
 
+import { S_DIALOG_BTS } from './Dialog.Style';
+
 const CL_MODAL_TOGGLE = crPopupMenuCn("select-none")
 
 , POSITION_LEFT = HAS_WIDE_SCREEN ? 50 : 15
@@ -41,8 +43,8 @@ const CL_MODAL_TOGGLE = crPopupMenuCn("select-none")
   zIndex: 10
 }
 , S_BTS = {
-   textAlign: 'right',
-   margin: '16px 4px 10px 0'
+   ...S_DIALOG_BTS,
+   paddingRight: 4   
 }
 , HK_LOAD = 'L'
 , HK_SHOW = 'H'
@@ -163,18 +165,20 @@ const DraggableDialog = ({
       : void 0;
 
   return (
+
     /*eslint-disable jsx-a11y/no-noninteractive-element-interactions*/
     /*eslint-disable jsx-a11y/no-noninteractive-tabindex*/
+
     <div
        ref={_refDialog}
        role="dialog"
+       tabIndex="0"
        className={_className}
        style={{
         ...S_DIV,
         ...style,
         ..._showHideStyle
        }}
-       tabIndex="0"
        onKeyDown={_hKeyDown}
     >
     {

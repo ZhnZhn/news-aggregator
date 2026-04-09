@@ -6,6 +6,7 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _memoFn = require("../hoc/memoFn");
 var _Dialog = require("../dialogs/Dialog.Style");
+var _Dialog2 = require("../zhn-moleculs/Dialog.Style");
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
 var _TabPane = _interopRequireDefault(require("../zhn-tab/TabPane"));
 var _Tab = _interopRequireDefault(require("../zhn-tab/Tab"));
@@ -37,10 +38,8 @@ const TOKEN_USER_SETTINGS = "User Settings",
     overflowY: 'auto'
   },
   S_CARD_BUTTONS = {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    flexWrap: 'wrap',
-    padding: '10px 12px 10px 0'
+    ..._Dialog2.S_DIALOG_BTS,
+    gap: 4
   },
   S_INPUT_WIDTH = {
     width: 315,
