@@ -1,4 +1,11 @@
 import {
+  KEY_ARROW_DOWN,
+  KEY_ARROW_UP,
+  KEY_ESCAPE,
+  useCallback
+} from '../uiApi';
+
+import {
   CL_DIALOG,
   CL_SHOW_POPUP,
   crCn,
@@ -10,7 +17,6 @@ import {
 } from '../dialogs/Dialog.Style';
 
 import useModalFocus from '../hooks/useModalFocus';
-import { useKeyEscape } from '../hooks/fUseKey';
 
 import FocusTrap from './FocusTrap';
 import BrowserCaption from '../zhn/BrowserCaption';
@@ -46,9 +52,16 @@ const ModalDialog = ({
   isClosePrimary=false
 }) => {
   const _refRootDiv = useModalFocus(isShow)
-  , _hKeyDown = useKeyEscape(onClose)
   , _className = crCn([isShow, CL_SHOWING])
-  , _showHideStyle = crShowHideStyle(isShow);
+  , _showHideStyle = crShowHideStyle(isShow)
+  , _hKeyDown = useCallback(evt => {
+      const evtKey = evt.key;
+      if (evtKey ===  KEY_ARROW_DOWN || evtKey === KEY_ARROW_UP) {
+        evt.preventDefault()
+      } else if (evtKey === KEY_ESCAPE) {
+        onClose()
+      }
+  }, [onClose]);
 
   return (
   <FocusTrap
@@ -63,8 +76,9 @@ const ModalDialog = ({
     }
     <div
         ref={_refRootDiv}
-        tabIndex="0"
         role="dialog"
+        tabIndex="0"
+
         aria-label={caption}
         aria-hidden={!isShow}
         className={_className}
@@ -76,7 +90,10 @@ const ModalDialog = ({
         onClick={_hClickDialog}
         onKeyDown={_hKeyDown}
     >
-    {/*eslint-enable jsx-a11y/no-noninteractive-element-interactions*/}
+    {
+       /*eslint-enable jsx-a11y/no-noninteractive-element-interactions*/
+       /*eslint-enable jsx-a11y/no-noninteractive-tabindex*/
+    }
         <BrowserCaption
           style={captionStyle}
           caption={caption}

@@ -3,10 +3,10 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _uiApi = require("../uiApi");
 var _crStyle = require("../crStyle");
 var _Dialog = require("../dialogs/Dialog.Style");
 var _useModalFocus = _interopRequireDefault(require("../hooks/useModalFocus"));
-var _fUseKey = require("../hooks/fUseKey");
 var _FocusTrap = _interopRequireDefault(require("./FocusTrap"));
 var _BrowserCaption = _interopRequireDefault(require("../zhn/BrowserCaption"));
 var _RaisedButton = _interopRequireDefault(require("../zhn-bt/RaisedButton"));
@@ -40,9 +40,16 @@ const ModalDialog = _ref => {
     isClosePrimary = false
   } = _ref;
   const _refRootDiv = (0, _useModalFocus.default)(isShow),
-    _hKeyDown = (0, _fUseKey.useKeyEscape)(onClose),
     _className = (0, _crStyle.crCn)([isShow, CL_SHOWING]),
-    _showHideStyle = (0, _crStyle.crShowHideStyle)(isShow);
+    _showHideStyle = (0, _crStyle.crShowHideStyle)(isShow),
+    _hKeyDown = (0, _uiApi.useCallback)(evt => {
+      const evtKey = evt.key;
+      if (evtKey === _uiApi.KEY_ARROW_DOWN || evtKey === _uiApi.KEY_ARROW_UP) {
+        evt.preventDefault();
+      } else if (evtKey === _uiApi.KEY_ESCAPE) {
+        onClose();
+      }
+    }, [onClose]);
   return (0, _jsxRuntime.jsx)(_FocusTrap.default, {
     refEl: _refRootDiv,
     refFirst: refFocusFirst,
@@ -50,8 +57,8 @@ const ModalDialog = _ref => {
     style: _showHideStyle,
     children: (0, _jsxRuntime.jsxs)("div", {
       ref: _refRootDiv,
-      tabIndex: "0",
       role: "dialog",
+      tabIndex: "0",
       "aria-label": caption,
       "aria-hidden": !isShow,
       className: _className,
