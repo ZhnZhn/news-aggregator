@@ -1,21 +1,21 @@
-import { useCallback } from '../../uiApi';
-
-const FN_NOOP = () => {};
+import {
+  KEY_ENTER,
+  KEY_ESCAPE,
+  useCallback
+} from '../../uiApi';
 
 /*eslint-disable react-hooks/exhaustive-deps */
 const useKeyDown = (
-  hLoad=FN_NOOP,
-  hClose=FN_NOOP
+  hLoad,
+  hClose
 ) => useCallback(evt => {
-  const { keyCode } = evt;
-  if (keyCode === 13){
-    hLoad()
-  } else if (keyCode === 27){
-    hClose()
+  if (evt.key === KEY_ENTER) {
+    hLoad?.()
+  } else if (evt.key === KEY_ESCAPE) {
+    hClose?.()
   }
 }, [])
 //hLoad, hClose
 /*eslint-enable react-hooks/exhaustive-deps */
-
 
 export default useKeyDown
