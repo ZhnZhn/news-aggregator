@@ -64,9 +64,9 @@ const HeaderBar = props => {
     }), (0, _jsxRuntime.jsx)("span", {
       className: CL_BROWSER_BTS,
       children: (0, _jsxRuntime.jsx)(_ModalButton.default, {
-        ariaLabel: "Open inquire menu",
+        ariaLabel: "Open enquire menu",
         dataPos: _DP.DP_BOTTOM_RIGHT,
-        caption: "Inquire",
+        caption: "Enquire",
         hotKey: _hotkeys.HK_QUERY_SOURCES,
         onClick: toggleIsQuery,
         children: (0, _jsxRuntime.jsx)("span", {

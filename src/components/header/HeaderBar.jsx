@@ -102,9 +102,9 @@ const HeaderBar = (props) => {
       />
       <span className={CL_BROWSER_BTS}>
         <ModalButton
-           ariaLabel="Open inquire menu"
+           ariaLabel="Open enquire menu"
            dataPos={DP_BOTTOM_RIGHT}
-           caption="Inquire"
+           caption="Enquire"
            hotKey={HK_QUERY_SOURCES}
            onClick={toggleIsQuery}
         >
