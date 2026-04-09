@@ -2,7 +2,3 @@
   position: absolute;
   min-width: 280px;  
 }
-
-dialog:focus {
- outline: 0;
-}
