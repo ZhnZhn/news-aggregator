@@ -123,7 +123,7 @@ const HeaderBar = (props) => {
             <SvgInfo style={S_SVG_ICON} />
           </FlatButton>
           <FlatButton
-            ariaLabel="Settings Dialog"
+            ariaLabel="User Settings"
             dataPos={DP_BOTTOM_RIGHT}
             hotKey={HK_SETTINGS}
             onClick={props.onSettings}

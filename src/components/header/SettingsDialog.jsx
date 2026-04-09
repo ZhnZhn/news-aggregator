@@ -15,6 +15,10 @@ import {
   crInputSelectStyle
 } from '../dialogs/Dialog.Style';
 
+import { 
+  S_DIALOG_BTS 
+} from '../zhn-moleculs/Dialog.Style';
+
 import ModalDialog from '../zhn-moleculs/ModalDialog';
 import TabPane from '../zhn-tab/TabPane';
 import Tab from '../zhn-tab/Tab';
@@ -45,10 +49,12 @@ const TOKEN_USER_SETTINGS = "User Settings"
   overflowY: 'auto'
 }
 , S_CARD_BUTTONS = {
-  display: 'flex',
-  justifyContent: 'flex-end',
-  flexWrap: 'wrap',
-  padding: '10px 12px 10px 0'
+  ...S_DIALOG_BTS, 
+  //display: 'flex',
+  //justifyContent: 'flex-end',
+  //flexWrap: 'wrap',
+  //padding: '10px 12px 10px 0',
+  gap: 4
 }
 , S_INPUT_WIDTH = {
   width: 315,
@@ -91,7 +97,7 @@ const SettingsDialog = memoIsShow((props) => {
             <CardApiKeys
               style={S_CARD_API}
               fieldStyle={S_TEXT_FIELD}
-              buttonsStyle={S_CARD_BUTTONS}
+              buttonsStyle={S_CARD_BUTTONS}            
               btStyle={S_BT_RAISED}
               data={props.data}
               setRefLast={setFocusLastRef}

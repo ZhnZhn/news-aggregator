@@ -85,7 +85,7 @@ const HeaderBar = props => {
           style: S_SVG_ICON
         })
       }), (0, _jsxRuntime.jsx)(_FlatButton.default, {
-        ariaLabel: "Settings Dialog",
+        ariaLabel: "User Settings",
         dataPos: _DP.DP_BOTTOM_RIGHT,
         hotKey: _hotkeys.HK_SETTINGS,
         onClick: props.onSettings,
