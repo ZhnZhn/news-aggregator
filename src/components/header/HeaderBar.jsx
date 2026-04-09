@@ -102,9 +102,9 @@ const HeaderBar = (props) => {
       />
       <span className={CL_BROWSER_BTS}>
         <ModalButton
-           ariaLabel="Query Sources Menu"
+           ariaLabel="Open inquire menu"
            dataPos={DP_BOTTOM_RIGHT}
-           caption="Query"
+           caption="Inquire"
            hotKey={HK_QUERY_SOURCES}
            onClick={toggleIsQuery}
         >
@@ -114,7 +114,7 @@ const HeaderBar = (props) => {
       <HotBar />
       <div className={CL_BTS}>
           <FlatButton
-            ariaLabel="About News Aggregator"
+            ariaLabel="Open about pane"
             dataPos={DP_BOTTOM_RIGHT}
             className={CL_BT_ABOUT}
             hotKey={HK_ABOUT}
@@ -123,7 +123,7 @@ const HeaderBar = (props) => {
             <SvgInfo style={S_SVG_ICON} />
           </FlatButton>
           <FlatButton
-            ariaLabel="User Settings"
+            ariaLabel="Open settings dialog"
             dataPos={DP_BOTTOM_RIGHT}
             hotKey={HK_SETTINGS}
             onClick={props.onSettings}

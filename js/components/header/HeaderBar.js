@@ -64,9 +64,9 @@ const HeaderBar = props => {
     }), (0, _jsxRuntime.jsx)("span", {
       className: CL_BROWSER_BTS,
       children: (0, _jsxRuntime.jsx)(_ModalButton.default, {
-        ariaLabel: "Query Sources Menu",
+        ariaLabel: "Open inquire menu",
         dataPos: _DP.DP_BOTTOM_RIGHT,
-        caption: "Query",
+        caption: "Inquire",
         hotKey: _hotkeys.HK_QUERY_SOURCES,
         onClick: toggleIsQuery,
         children: (0, _jsxRuntime.jsx)("span", {
@@ -76,7 +76,7 @@ const HeaderBar = props => {
     }), (0, _jsxRuntime.jsx)(_HotBar.default, {}), (0, _jsxRuntime.jsxs)("div", {
       className: CL_BTS,
       children: [(0, _jsxRuntime.jsx)(_FlatButton.default, {
-        ariaLabel: "About News Aggregator",
+        ariaLabel: "Open about pane",
         dataPos: _DP.DP_BOTTOM_RIGHT,
         className: CL_BT_ABOUT,
         hotKey: _hotkeys.HK_ABOUT,
@@ -85,7 +85,7 @@ const HeaderBar = props => {
           style: S_SVG_ICON
         })
       }), (0, _jsxRuntime.jsx)(_FlatButton.default, {
-        ariaLabel: "User Settings",
+        ariaLabel: "Open settings dialog",
         dataPos: _DP.DP_BOTTOM_RIGHT,
         hotKey: _hotkeys.HK_SETTINGS,
         onClick: props.onSettings,
