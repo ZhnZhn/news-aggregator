@@ -44,7 +44,7 @@ const CL_MODAL_TOGGLE = crPopupMenuCn("select-none")
 }
 , S_BTS = {
    ...S_DIALOG_BTS,
-   paddingRight: 4   
+   paddingRight: 4
 }
 , HK_LOAD = 'L'
 , HK_SHOW = 'H'
@@ -146,7 +146,10 @@ const DraggableDialog = ({
   // focusDialogEl
   /*eslint-enable react-hooks/exhaustive-deps */
 
-  useImperativeHandle(refEl, () => ({ focusPrevEl }))
+  useImperativeHandle(refEl, () => ({
+    focusPrevEl,
+    focus: focusDialogEl
+  }), [focusPrevEl, focusDialogEl])
 
   useRefHotKey(_refDialog, HK_LOAD, onLoad)
   useRefHotKey(_refDialog, HK_SHOW, onShow)

@@ -111,8 +111,9 @@ const DraggableDialog = _ref2 => {
   /*eslint-enable react-hooks/exhaustive-deps */
 
   (0, _uiApi.useImperativeHandle)(refEl, () => ({
-    focusPrevEl
-  }));
+    focusPrevEl,
+    focus: focusDialogEl
+  }), [focusPrevEl, focusDialogEl]);
   (0, _useRefHotKey.default)(_refDialog, HK_LOAD, onLoad);
   (0, _useRefHotKey.default)(_refDialog, HK_SHOW, onShow);
   (0, _useRefHotKey.default)(_refDialog, HK_CLOSE, _hClose);
