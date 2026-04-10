@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.getPaneCaption = exports.getLoadId = exports.getDialogCaption = exports.getCaption = exports.fGetDialogConfig = exports.crTextFieldConfig = exports.crTextFieldCaption = exports.crInputSuggestConfig = exports.crInputSelectConfig = exports.crInputProps = exports.crFromToDateConfig = exports.crDfInputs = void 0;
+exports.getShortCaption = exports.getPaneCaption = exports.getLoadId = exports.getDialogCaption = exports.getCaption = exports.fGetDialogConfig = exports.crTextFieldConfig = exports.crTextFieldCaption = exports.crInputSuggestConfig = exports.crInputSelectConfig = exports.crInputProps = exports.crFromToDateConfig = exports.crDfInputs = void 0;
 var _toFirstUpperCase = require("../../utils/toFirstUpperCase");
 var _crLazyValue = require("../../utils/crLazyValue");
 var _isTypeFn = require("../../utils/isTypeFn");
@@ -41,17 +41,17 @@ const crDfInputs = inputConfigs => inputConfigs.reduce((r, arrConfig) => {
   //dfInputs, toggles, isInputs
 }, [_crObject(null), [], _crObject(null)]);
 exports.crDfInputs = crDfInputs;
-const _fGetByPropName = propName => obj => (obj || {})[propName];
-const _getPaneCaption = _fGetByPropName("paneCaption");
-const _getCaption = _fGetByPropName("caption");
-const getCaption = itemConf => _getCaption(itemConf) || _getPaneCaption(itemConf);
-exports.getCaption = getCaption;
+const _fGetByPropName = propName => obj => obj?.[propName];
 const getPaneCaption = exports.getPaneCaption = _fGetByPropName("paneCaption");
+const _getCaption = _fGetByPropName("caption");
+const getCaption = itemConf => _getCaption(itemConf) || getPaneCaption(itemConf);
+exports.getCaption = getCaption;
+const getShortCaption = exports.getShortCaption = _fGetByPropName("shortCaption");
 const _getType = _fGetByPropName("type");
 const _getLoadId = _fGetByPropName("loadId");
 const getLoadId = itemConf => _getLoadId(itemConf) || _getType(itemConf);
 exports.getLoadId = getLoadId;
-const getDialogCaption = itemConf => ((itemConf || {}).dialogProps || {}).caption;
+const getDialogCaption = itemConf => itemConf?.dialogProps?.caption;
 exports.getDialogCaption = getDialogCaption;
 const crTextFieldCaption = (caption, dfValue) => dfValue ? `${caption} (Default: ${dfValue})` : caption;
 exports.crTextFieldCaption = crTextFieldCaption;

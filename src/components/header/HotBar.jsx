@@ -1,11 +1,6 @@
-import {
-  isArr,
-  bindTo
-} from '../uiApi';
-
-import {
-  S_INLINE_BLOCK
-} from '../crStyle';
+import { isArr } from '../../utils/isTypeFn';
+import { bindTo } from '../../utils/bindTo';
+import { joinBy } from '../../utils/joinBy';
 
 import {
   useDialogItems,
@@ -15,30 +10,36 @@ import {
 
 import { memoTrue } from '../hoc/memoFn';
 
+import { S_INLINE_BLOCK } from '../crStyle';
 import { HAS_TOUCH_EVENTS } from '../has';
 import { DP_BOTTOM_LEFT } from '../DP';
 import { HK_CLEAR_HOT_BAR } from '../hotkeys/hotkeys';
 
-import { getCaption } from '../dialogs/DialogFn';
+import {
+  getCaption,
+  getShortCaption
+} from '../dialogs/DialogFn';
 
 import ItemStack from '../zhn/ItemStack';
 import FlatButton from '../zhn-bt/FlatButton';
 
 const CL_BT_HOT = "bt-hot"
-, DF_BT_CAPTION = "DIA";
+, DF_BT_CAPTION = "DLG";
 
 const _crBtProps = (
   index,
-  caption
+  conf
 ) => {
-   const _hotKey = HAS_TOUCH_EVENTS
+   const caption = getCaption(conf)
+   , shortCaption = getShortCaption(conf)
+   , _hotKey = HAS_TOUCH_EVENTS
      ? ''
      : String(index+1);
    return {
      ariaLabel: caption,
      dataPos: DP_BOTTOM_LEFT,
      hotKey: _hotKey || void 0,
-     caption: _hotKey + (caption || DF_BT_CAPTION).slice(0, 3)
+     caption: joinBy(_hotKey, shortCaption || DF_BT_CAPTION)
    };
 };
 
@@ -47,8 +48,8 @@ const _crHotBtItem = (
    index
  ) => (
    <FlatButton
-     {..._crBtProps(index, getCaption(conf))}
      key={conf.type}
+     {..._crBtProps(index, conf)}
      timeout={0}
      className={CL_BT_HOT}
      onClick={bindTo(showDialog, conf)}
