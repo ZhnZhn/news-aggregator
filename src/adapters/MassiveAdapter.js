@@ -1,5 +1,5 @@
 import { loadItem } from "../flux/itemStore";
-import { isNextUrl } from "../api/PlgApi";
+import { isNextUrl } from "../api/MassiveApi";
 
 import { crId } from "../utils/crId";
 import { safeFormatMls } from "../utils/formatDate";
@@ -59,7 +59,7 @@ const _crPage = ({ next_url}, option) => {
   }
 };
 
-const PlgAdapter = {
+const MassiveAdapter = {
   toNews(json, option) {
     const { results } = json;
     return {
@@ -70,4 +70,4 @@ const PlgAdapter = {
   }
 }
 
-export default PlgAdapter
+export default MassiveAdapter

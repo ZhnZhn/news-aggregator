@@ -19,12 +19,12 @@ const _crConf = (type, msgErr, apiKey) => ({
 const _crNewsConf = () => ({
   apiKey: _settingStore.default.getNewsKey(),
   adapter: _Adapters.default.News,
-  msgErr: _ProviderNames.NEWS_API_LONG + " " + MSG_ERR_TAIL
+  msgErr: `${_ProviderNames.NEWS_API_LONG} ${MSG_ERR_TAIL}`
 });
 const _crTheNewsConf = () => ({
   apiKey: _settingStore.default.getTheNewsKey(),
   adapter: _Adapters.default.TheNews,
-  msgErr: _ProviderNames.THE_NEWS_API + " " + MSG_ERR_TAIL
+  msgErr: `${_ProviderNames.THE_NEWS_API} ${MSG_ERR_TAIL}`
 });
 const RouterApiConf = {
   getApiConf: id => {
@@ -55,25 +55,25 @@ const RouterApiConf = {
           api: _Api.default.TheNewsTop
         };
       case 'W':
-        return _crConf('Webz', _ProviderNames.WEBZ_IO + " API " + MSG_ERR_TAIL, _settingStore.default.getWebzKey);
+        return _crConf('Webz', `${_ProviderNames.WEBZ_IO} API ${MSG_ERR_TAIL}`, _settingStore.default.getWebzKey);
       case 'RD':
-        return _crConf('Reddit', _ProviderNames.REDDIT + " API " + MSG_ERR_TAIL);
+        return _crConf('Reddit', `${_ProviderNames.REDDIT} API ${MSG_ERR_TAIL}`);
       case 'DT':
-        return _crConf('DevTo', _ProviderNames.DEV_TO + " API " + MSG_ERR_TAIL);
+        return _crConf('DevTo', `${_ProviderNames.DEV_TO} API ${MSG_ERR_TAIL}`);
       case 'SO':
-        return _crConf('StackOverflow', _ProviderNames.STACK_OVERFLOW + " API " + MSG_ERR_TAIL);
-      case 'IEX':
-        return _crConf('Iex', _ProviderNames.IEX_CLOUD + " API " + MSG_ERR_TAIL, _settingStore.default.getIexKey);
+        return _crConf('StackOverflow', `${_ProviderNames.STACK_OVERFLOW} API ${MSG_ERR_TAIL}`);
       case 'FMP':
-        return _crConf('Fmp', _ProviderNames.FMP + " API " + MSG_ERR_TAIL, _settingStore.default.getFmpKey);
+        return _crConf('Fmp', `${_ProviderNames.FMP} API ${MSG_ERR_TAIL}`, _settingStore.default.getFmpKey);
+      case 'MSV':
+        return _crConf('Msv', `${_ProviderNames.MASSIVE} API ${MSG_ERR_TAIL}`, _settingStore.default.getMsvKey);
       case 'AV':
-        return _crConf('Av', _ProviderNames.ALPHA_VANTAGE + " API " + MSG_ERR_TAIL, _settingStore.default.getAvKey);
+        return _crConf('Av', `${_ProviderNames.ALPHA_VANTAGE} API ${MSG_ERR_TAIL}`, _settingStore.default.getAvKey);
       case 'CCN':
-        return _crConf('CryptoCompare', _ProviderNames.CRYPTO_COMPARE + " News API " + MSG_ERR_TAIL);
+        return _crConf('CryptoCompare', `${_ProviderNames.CRYPTO_COMPARE} News API ${MSG_ERR_TAIL}`);
       case 'CS':
-        return _crConf('CoinStats', _ProviderNames.COIN_STATS + " API " + MSG_ERR_TAIL);
+        return _crConf('CoinStats', `${_ProviderNames.COIN_STATS} API ${MSG_ERR_TAIL}`);
       case 'MS':
-        return _crConf('Messari', _ProviderNames.MESSARI + " Blockchain News API " + MSG_ERR_TAIL);
+        return _crConf('Messari', `${_ProviderNames.MESSARI} Blockchain News API ${MSG_ERR_TAIL}`);
       default:
         return {
           msgErr: MSG_ERR_DF

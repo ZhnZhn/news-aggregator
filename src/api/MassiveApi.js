@@ -1,7 +1,7 @@
 import { isStr } from "../utils/isTypeFn";
 
 const _isArr = Array.isArray
-, ROOT_URL = "https://api.polygon.io"
+, ROOT_URL = "https://api.massive.com"
 , API_URL = `${ROOT_URL}/v2/reference/news`;
 
 export const isNextUrl = (
@@ -9,7 +9,7 @@ export const isNextUrl = (
 ) => isStr(nextUrl)
  && nextUrl.slice(0, 22) === ROOT_URL;
 
-export const Plg = {
+export const Massive = {
   getRequestUrl(option){
     const {
       next_url,

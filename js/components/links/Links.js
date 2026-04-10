@@ -2,7 +2,7 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
-exports.WebzLink = exports.TheNewsApiLink = exports.StackOverflowLink = exports.RedditLink = exports.PlgLink = exports.NewsApiLink = exports.MessariLink = exports.FmpApiLink = exports.DevToLink = exports.CryptoCompareLink = exports.CoinStatsLink = exports.AlphaVantageLink = void 0;
+exports.WebzLink = exports.TheNewsApiLink = exports.StackOverflowLink = exports.RedditLink = exports.NewsApiLink = exports.MessariLink = exports.MassiveLink = exports.FmpApiLink = exports.DevToLink = exports.CryptoCompareLink = exports.CoinStatsLink = exports.AlphaVantageLink = void 0;
 var _ProviderNames = require("../../conf/ProviderNames");
 var _SafeLink = _interopRequireDefault(require("../zhn/SafeLink"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -32,5 +32,5 @@ const DevToLink = exports.DevToLink = _fSafeLink("dev.to", _ProviderNames.DEV_TO
 const StackOverflowLink = exports.StackOverflowLink = _fSafeLink("stackoverflow.com", _ProviderNames.STACK_OVERFLOW);
 const FmpApiLink = exports.FmpApiLink = _fSafeLink("financialmodelingprep.com", _ProviderNames.FMP);
 const AlphaVantageLink = exports.AlphaVantageLink = _fSafeLink("www.alphavantage.co", _ProviderNames.ALPHA_VANTAGE);
-const PlgLink = exports.PlgLink = _fSafeLink("polygon.io", _ProviderNames.PLG_IO);
+const MassiveLink = exports.MassiveLink = _fSafeLink("massive.com", _ProviderNames.MASSIVE);
 //# sourceMappingURL=Links.js.map

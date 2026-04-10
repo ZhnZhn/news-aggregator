@@ -4,7 +4,7 @@ import {
   MESSARI,
   FMP,
   ALPHA_VANTAGE,
-  PLG_IO,
+  MASSIVE,
   NEWS_API_LONG,
   THE_NEWS_API,
   WEBZ_IO,
@@ -101,11 +101,11 @@ const RouterApiConf = {
           `${FMP} API ${MSG_ERR_TAIL}`,
           settingStore.getFmpKey
         );
-    case 'PLG':
+    case 'MSV':
        return _crConf(
-         'Plg',
-         `${PLG_IO} API ${MSG_ERR_TAIL}`,
-         settingStore.getPlgKey
+         'Msv',
+         `${MASSIVE} API ${MSG_ERR_TAIL}`,
+         settingStore.getMsvKey
        );
      case 'AV':
        return _crConf(
@@ -128,7 +128,7 @@ const RouterApiConf = {
           'Messari',
           `${MESSARI} Blockchain News API ${MSG_ERR_TAIL}`
         );
-      default:
+      default:        
         return {
           msgErr: MSG_ERR_DF
         };

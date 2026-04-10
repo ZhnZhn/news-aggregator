@@ -4,7 +4,7 @@ import DevTo from './DevToApi'
 import StackOverflow from './StackOverflowApi'
 import Fmp from './FmpApi'
 import Av from './AvApi'
-import { Plg } from './PlgApi'
+import { Massive } from './MassiveApi'
 import NewsSearch from './NewsSearchApi'
 import NewsTop from './NewsApiTop'
 import TheNewsSearch from './TheNewsApiSearch';
@@ -21,7 +21,7 @@ const Api = {
   StackOverflow,
   Fmp,
   Av,
-  Plg,
+  Msv: Massive,
   NewsSearch,
   NewsTop,
   CryptoCompare,

@@ -1,6 +1,6 @@
 import {
   AlphaVantageLink,
-  PlgLink,
+  MassiveLink,
   CoinStatsLink,
   CryptoCompareLink,
   DevToLink,
@@ -15,7 +15,7 @@ import {
 
 import {
   getAvDialogConfig,
-  getPlgDialogConfig,
+  getMassiveDialogConfig,
   getCoinStatDialogConfig,
   getCryptoCompareConfig,
   getDevToConfig,
@@ -39,7 +39,7 @@ import {
   MESSARI,
   FMP_LONG,
   ALPHA_VANTAGE,
-  PLG_IO,
+  MASSIVE,
   NEWS_API,
   THE_NEWS_API,
   WEBZ_IO,
@@ -53,215 +53,261 @@ const DIALOG_TYPE_2 = "DialogType2";
 const _crItemDialogType2 = (
   getConfig,
   CompLink,
-  paneCaption,
   paneId,
-  options,
+  loadId
 ) => ({
-  ...options,
   dialogType: DIALOG_TYPE_2,
   getConfig,
   CompLink,
-  paneCaption,
-  paneId
+  paneId,
+  loadId
 })
+, _crCaption = (
+  paneCaption,
+  shortCaption,
+  caption = paneCaption
+) => ({
+  paneCaption,
+  caption,
+  shortCaption
+})
+
+
 
 const NEWS_QUERY = {
   WEBZ: {
     type: "W_WEBZ_QUERY",
+    ..._crCaption(
+      `${WEBZ_IO}: News, Blogs`,
+      "WBZ",
+      "News, Blogs"
+    ),
     ..._crItemDialogType2(
       getWebzQueryConfig,
       WebzLink,
-      `${WEBZ_IO}: News, Blogs`,
       "webz",
-      {
-        caption: "News, Blogs",
-        loadId: "W",
-      }
+      "W"
     )
   },
   WEBZ_COUNTRY: {
     type: "W_WEBZ_COUNTRY",
+    ..._crCaption(
+      `${WEBZ_IO}: By Country`,
+      "WBZ",
+      "By Country, Topic"
+    ),
     ..._crItemDialogType2(
       getWebzCountryConfig,
       WebzLink,
-      `${WEBZ_IO}: By Country`,
       "webz_country",
-      {
-        caption: "By Country, Topic",
-        loadId: "W"
-      }
+      "W"
     )
   },
   REDDIT: {
     type: "REDDIT",
+    ..._crCaption(
+      `${REDDIT}: Listing`,
+      "RDL"
+    ),
     ..._crItemDialogType2(
       getRedditTopConfig,
       RedditLink,
-      `${REDDIT}: Listing`,
       "rd_topby",
-      { loadId: "RD" }
+      "RD"
     )
   },
   REDDIT_SEARCH: {
     type: "REDDIT_SEARCH",
+    ..._crCaption(
+      `${REDDIT}: Search`,
+      "RDS"
+    ),
     ..._crItemDialogType2(
       getRedditSearchConfig,
       RedditLink,
-      `${REDDIT}: Search`,
       "rd_searchby",
-      { loadId: "RD" }
+      "RD"
     )
   },
   DEV_TO: {
     type: "DEV_TO",
+    ..._crCaption(
+      `${DEV_TO}: Top By`,
+      "DVT",
+      "Top By"
+    ),
     ..._crItemDialogType2(
       getDevToConfig,
       DevToLink,
-      `${DEV_TO}: Top By`,
       "dt_topby",
-      { caption: "Top By", loadId: "DT" }
+      "DT"
     )
   },
   STACK_TAGGED: {
     type: "SO_TAGGED",
+    ..._crCaption(
+      `${STACK_OVERFLOW}: Tagged`,
+      "STT",
+      "Tagged Questions"
+    ),
     ..._crItemDialogType2(
       getStackTaggedConfig,
       StackOverflowLink,
-      `${STACK_OVERFLOW}: Tagged`,
       "stack_tagged",
-      {
-        caption: "Tagged Questions",
-        loadId: "SO",
-        paneType: "STACK_ITEM"
-      }
-    )
+      "SO"
+    ),
+    paneType: "STACK_ITEM"
   },
   STACK_SEARCH: {
     type: "SO_SEARCH",
+    ..._crCaption(
+      `${STACK_OVERFLOW}: Search`,
+      "STS",
+      "Search Questions"
+    ),
     ..._crItemDialogType2(
       getStackSearchConfig,
       StackOverflowLink,
-      `${STACK_OVERFLOW}: Search`,
       "stack_search",
-      {
-        caption: "Search Questions",
-        loadId: "SO",
-        paneType: "STACK_ITEM"
-      }
-    )
+      "SO"
+    ),
+    paneType: "STACK_ITEM"
   },
 
   CRYPTO_COMPARE: {
     type: "CRYPTO_COMPARE",
+    ..._crCaption(
+      CRYPTO_COMPARE,
+      "CRC"
+    ),
     ..._crItemDialogType2(
       getCryptoCompareConfig,
       CryptoCompareLink,
-      CRYPTO_COMPARE,
       "cryptocompare_news",
-      { loadId: "CCN" }
+      "CCN"
     )
   },
   COIN_STATS: {
     type: "COIN_STATS",
+    ..._crCaption(
+      `${COIN_STATS} News`,
+      "CSN"
+    ),
     ..._crItemDialogType2(
       getCoinStatDialogConfig,
       CoinStatsLink,
-      `${COIN_STATS} News`,
       "coinstats_news",
-      { loadId: "CS" }
+      "CS"
     )
   },
   MESSARI: {
     type: "MESSARI",
+    ..._crCaption(
+      MESSARI,
+      "MSSR"
+    ),
     ..._crItemDialogType2(
       getMessariConfig,
       MessariLink,
-      MESSARI,
       "messari_news",
-      { loadId: "MS" }
+      "MS"
     )
   },
   FMP: {
     type: "FMP",
+    ..._crCaption(
+      FMP_LONG,
+      "FMP"
+    ),
     ..._crItemDialogType2(
       getFmpNewsConfig,
       FmpApiLink,
-      FMP_LONG,
       "fmp_news"
     )
   },
   AV: {
     type: "AV",
+    ..._crCaption(
+      ALPHA_VANTAGE,
+      "AV"
+    ),
     ..._crItemDialogType2(
       getAvDialogConfig,
       AlphaVantageLink,
-      ALPHA_VANTAGE,
       "av_sentiments",
     )
   },
-  PLG: {
-    type: "PLG",
+  MASSIVE: {
+    type: "MASSIVE",
+    ..._crCaption(
+      MASSIVE,
+      "MSSV"
+    ),
     ..._crItemDialogType2(
-      getPlgDialogConfig,
-      PlgLink,
-      PLG_IO,
+      getMassiveDialogConfig,
+      MassiveLink,
       "plg",
+      "MSV"
     )
   },
   NEWS_SEARCH: {
     type: "NEWS_SEARCH",
+    ..._crCaption(
+      `${NEWS_API}: Search`,
+      "NWS"
+    ),
     ..._crItemDialogType2(
       getNewsApiSearchConfig,
       NewsApiLink,
-      `${NEWS_API}: Search`,
       "newsapi_search",
-      {
-        loadId: "NS",
-        dialogProps: {
-           "source": "newsapi_search"
-         }
-      }
-    )
+      "NS"
+    ),
+    dialogProps: {
+       "source": "newsapi_search"
+     }
   },
   NEWS_TOP: {
     type: "NEWS_TOP",
+    ..._crCaption(
+      `${NEWS_API}: Top By`,
+      "NWT"
+    ),
     ..._crItemDialogType2(
       getNewsApiTopConfig,
       NewsApiLink,
-      `${NEWS_API}: Top By`,
       "newsapi_top",
-      {
-        loadId: "NT",
-        dialogProps: {
-           "source": "newsapi_top"
-         }
-      }
-    )
+      "NT"
+    ),
+    dialogProps: {
+       "source": "newsapi_top"
+     }
   },
   THE_NEWS_SEARCH: {
     type: "THE_NEWS_SEARCH",
+    ..._crCaption(
+      `${THE_NEWS_API}: Search`,
+      "TNWS",
+      "Search"
+    ),
     ..._crItemDialogType2(
       getTheNewsApiSearchConfig,
       TheNewsApiLink,
-      `${THE_NEWS_API}: Search`,
       "thenewsapi_search",
-      {
-        caption: "Search",
-        loadId: "TNS"
-      }
+      "TNS"
     )
   },
   THE_NEWS_TOP: {
     type: "THE_NEWS_TOP",
+    ..._crCaption(
+      `${THE_NEWS_API}: Top By`,
+      "TNWT",
+      "Top By"
+    ),
     ..._crItemDialogType2(
       getTheNewsApiTopConfig,
       TheNewsApiLink,
-      `${THE_NEWS_API}: Top By`,
       "thenewsapi_top",
-      {
-        caption: "Top By",
-        loadId: "TNT"
-      }
+      "TNT"
     )
   }
 }

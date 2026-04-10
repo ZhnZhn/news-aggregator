@@ -4,7 +4,7 @@ import {
   MESSARI,
   FMP,
   ALPHA_VANTAGE,
-  PLG_IO,
+  MASSIVE,
   NEWS_API_LONG,
   THE_NEWS_API,
   WEBZ_IO,
@@ -89,7 +89,7 @@ export const AlphaVantageLink = _fSafeLink(
   ALPHA_VANTAGE
 )
 
-export const PlgLink = _fSafeLink(
-  "polygon.io",
-  PLG_IO
+export const MassiveLink = _fSafeLink(
+  "massive.com",
+  MASSIVE
 )

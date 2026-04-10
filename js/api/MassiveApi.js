@@ -1,14 +1,14 @@
 "use strict";
 
 exports.__esModule = true;
-exports.isNextUrl = exports.Plg = void 0;
+exports.isNextUrl = exports.Massive = void 0;
 var _isTypeFn = require("../utils/isTypeFn");
 const _isArr = Array.isArray,
-  ROOT_URL = "https://api.polygon.io",
+  ROOT_URL = "https://api.massive.com",
   API_URL = `${ROOT_URL}/v2/reference/news`;
 const isNextUrl = nextUrl => (0, _isTypeFn.isStr)(nextUrl) && nextUrl.slice(0, 22) === ROOT_URL;
 exports.isNextUrl = isNextUrl;
-const Plg = exports.Plg = {
+const Massive = exports.Massive = {
   getRequestUrl(option) {
     const {
       next_url,
@@ -25,4 +25,4 @@ const Plg = exports.Plg = {
     return _isArr(results);
   }
 };
-//# sourceMappingURL=PlgApi.js.map
+//# sourceMappingURL=MassiveApi.js.map

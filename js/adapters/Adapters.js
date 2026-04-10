@@ -10,6 +10,7 @@ var _DevToAdapter = _interopRequireDefault(require("./DevToAdapter"));
 var _StackOverflowAdapter = _interopRequireDefault(require("./StackOverflowAdapter"));
 var _FmpAdapter = _interopRequireDefault(require("./FmpAdapter"));
 var _AvAdapter = _interopRequireDefault(require("./AvAdapter"));
+var _MassiveAdapter = _interopRequireDefault(require("./MassiveAdapter"));
 var _CryptoCompareAdapter = _interopRequireDefault(require("./CryptoCompareAdapter"));
 var _CoinStatsAdapter = _interopRequireDefault(require("./CoinStatsAdapter"));
 var _MessariAdapter = _interopRequireDefault(require("./MessariAdapter"));
@@ -22,6 +23,7 @@ const Adapters = {
   StackOverflow: _StackOverflowAdapter.default,
   Fmp: _FmpAdapter.default,
   Av: _AvAdapter.default,
+  Msv: _MassiveAdapter.default,
   CryptoCompare: _CryptoCompareAdapter.default,
   CoinStats: _CoinStatsAdapter.default,
   Messari: _MessariAdapter.default,

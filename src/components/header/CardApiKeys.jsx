@@ -1,7 +1,7 @@
 import {
   ALPHA_VANTAGE,
   FMP,
-  PLG_IO,
+  MASSIVE,
   NEWS_API_LONG,
   THE_NEWS_API,
   WEBZ_IO
@@ -28,14 +28,14 @@ const _hasLengthOrEmpty = (
 ) => (str) => str.length === length || str === ''
 , SET_AV_KEY = 'setAvKey'
 , SET_FMP_KEY = 'setFmpKey'
-, SET_PLG_KEY = 'setPlgKey'
+, SET_MSV_KEY = 'setMsvKey'
 , SET_NEWS_KEY = 'setNewsKey'
 , SET_THE_NEWS_KEY = 'setTheNewsKey'
 , SET_WEBZ_KEY = 'setWebzKey'
 , _getKeySetters = (data) => ({
    setAv: getFnByPropName(data, SET_AV_KEY),
    setFmp: getFnByPropName(data, SET_FMP_KEY),
-   setPlg: getFnByPropName(data, SET_PLG_KEY),
+   setMsv: getFnByPropName(data, SET_MSV_KEY),
    setNews: getFnByPropName(data, SET_NEWS_KEY),
    setTheNews: getFnByPropName(data, SET_THE_NEWS_KEY),
    setWebz: getFnByPropName(data, SET_WEBZ_KEY)
@@ -71,7 +71,7 @@ const _crPasswordFieldProps = (
 const CardApiKeys = (props) => {
   const _refInputAv = useRef()
   , _refInputFmp = useRef()
-  , _refInputPlg = useRef()
+  , _refInputMsv = useRef()
   , _refInputNews = useRef()
   , _refInputTheNews = useRef()
   , _refInputWebz = useRef()
@@ -87,7 +87,7 @@ const CardApiKeys = (props) => {
   , {
     setAv,
     setFmp,
-    setPlg,
+    setMsv,
     setNews,
     setTheNews,
     setWebz
@@ -96,25 +96,25 @@ const CardApiKeys = (props) => {
   , _hClearAll = useCallback(() => {
       setAv('')
       setFmp('')
-      setPlg('')
+      setMsv('')
       setNews('')
       setTheNews('')
       setWebz('')
       _clearInputRefs([
          _refInputAv,
          _refInputFmp,
-         _refInputPlg,
+         _refInputMsv,
          _refInputNews,
          _refInputTheNews,
          _refInputWebz
       ])
   }, [])
-  //setAv, setFmp, setPlg, setNews, setTheNews, setWebz
+  //setAv, setFmp, setMsv, setNews, setTheNews, setWebz
   /*eslint-enable react-hooks/exhaustive-deps */
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hSetAll = useCallback(() => {
       setFmp(_getRefCompValue(_refInputFmp))
-      setPlg(_getRefCompValue(_refInputPlg))
+      setMsv(_getRefCompValue(_refInputMsv))
       setAv(_getRefCompValue(_refInputAv))
       setNews(_getRefCompValue(_refInputNews))
       setTheNews(_getRefCompValue(_refInputTheNews))
@@ -151,11 +151,11 @@ const CardApiKeys = (props) => {
              onEnter={setFmp}
           />
           <PasswordField
-             {..._crPasswordFieldProps(PLG_IO, 32)}
-             refEl={_refInputPlg}
+             {..._crPasswordFieldProps(MASSIVE, 32)}
+             refEl={_refInputMsv}
              style={fieldStyle}
-             name="plg-io-api"
-             onEnter={setPlg}
+             name="massive"
+             onEnter={setMsv}
           />
       </OpenClose>
       <OpenClose

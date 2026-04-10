@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _itemStore = require("../flux/itemStore");
-var _PlgApi = require("../api/PlgApi");
+var _MassiveApi = require("../api/MassiveApi");
 var _crId = require("../utils/crId");
 var _formatDate = require("../utils/formatDate");
 var _joinBy = require("../utils/joinBy");
@@ -14,7 +14,7 @@ var _adapterFn = require("./adapterFn");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
 const SOURCE_ID = "plg";
 const _isArr = Array.isArray,
-  _getProperty = (item, propName) => (item || {})[propName] || "";
+  _getProperty = (item, propName) => item?.[propName] || "";
 const _crInsightList = insights => _isArr(insights) ? insights.reduce((list, item) => `${list}
   ${_getProperty(item, "ticker")} ${_getProperty(item, "sentiment")}
   ${_getProperty(item, "sentiment_reasoning")}
@@ -48,7 +48,7 @@ const _crPage = (_ref2, option) => {
   let {
     next_url
   } = _ref2;
-  if (!(0, _PlgApi.isNextUrl)(next_url)) {
+  if (!(0, _MassiveApi.isNextUrl)(next_url)) {
     return;
   }
   (0, _adapterFn.updateNextPage)(option);
@@ -58,7 +58,7 @@ const _crPage = (_ref2, option) => {
     onPageLoad: () => (0, _itemStore.loadItem)(option)
   };
 };
-const PlgAdapter = {
+const MassiveAdapter = {
   toNews(json, option) {
     const {
       results
@@ -70,5 +70,5 @@ const PlgAdapter = {
     };
   }
 };
-var _default = exports.default = PlgAdapter;
-//# sourceMappingURL=PlgAdapter.js.map
+var _default = exports.default = MassiveAdapter;
+//# sourceMappingURL=MassiveAdapter.js.map
