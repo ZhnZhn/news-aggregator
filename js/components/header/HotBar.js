@@ -37,12 +37,15 @@ const _crHotBtItem = (conf, index) => (0, _jsxRuntime.jsx)(_FlatButton.default, 
 }, conf.type);
 const HotBar = () => {
   const hotButtons = (0, _compStore.useDialogItems)();
-  return (0, _isTypeFn.isArr)(hotButtons) ? (0, _jsxRuntime.jsxs)("div", {
+  return (0, _isTypeFn.isArr)(hotButtons) && hotButtons.length !== 0 ? (0, _jsxRuntime.jsxs)("div", {
     style: _crStyle.S_INLINE_BLOCK,
-    children: [(0, _jsxRuntime.jsx)(_ItemStack.default, {
+    children: [(0, _jsxRuntime.jsx)("span", {
+      style: _crStyle.S_COLOR_BLACK,
+      children: "|"
+    }), (0, _jsxRuntime.jsx)(_ItemStack.default, {
       items: hotButtons,
       crItem: _crHotBtItem
-    }), hotButtons.length !== 0 && (0, _jsxRuntime.jsx)(_FlatButton.default, {
+    }), (0, _jsxRuntime.jsx)(_FlatButton.default, {
       ariaLabel: "Clean Hot Bar",
       dataPos: _DP.DP_BOTTOM_LEFT,
       hotKey: _has.HAS_TOUCH_EVENTS ? void 0 : _hotkeys.HK_CLEAR_HOT_BAR,

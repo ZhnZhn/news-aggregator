@@ -10,7 +10,10 @@ import {
 
 import { memoTrue } from '../hoc/memoFn';
 
-import { S_INLINE_BLOCK } from '../crStyle';
+import {
+  S_INLINE_BLOCK,
+  S_COLOR_BLACK
+} from '../crStyle';
 import { HAS_TOUCH_EVENTS } from '../has';
 import { DP_BOTTOM_LEFT } from '../DP';
 import { HK_CLEAR_HOT_BAR } from '../hotkeys/hotkeys';
@@ -58,14 +61,15 @@ const _crHotBtItem = (
 
 const HotBar = () => {
   const hotButtons = useDialogItems();
-  return isArr(hotButtons)
+  return isArr(hotButtons) && hotButtons.length !== 0
     ? (
       <div style={S_INLINE_BLOCK}>
+        <span style={S_COLOR_BLACK}>|</span>
         <ItemStack
            items={hotButtons}
            crItem={_crHotBtItem}
         />
-        {hotButtons.length !== 0 && <FlatButton
+        <FlatButton
            key="BT_CLEAN"
            ariaLabel="Clean Hot Bar"
            dataPos={DP_BOTTOM_LEFT}
@@ -73,7 +77,7 @@ const HotBar = () => {
            timeout={0}
            caption="CL"
            onClick={cleanDialogItems}
-        />}
+        />
       </div>
     ) : null;
 };
