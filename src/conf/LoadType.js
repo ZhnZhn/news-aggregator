@@ -1,0 +1,6 @@
+export const LT_FMP = 'FMP'
+export const LT_AV = 'AV'
+export const LT_MSV = 'MSV'
+export const LT_NEWS = 'NEWS'
+export const LT_TNEWS = 'TNEWS'
+export const LT_WEBZ= 'WEBZ'

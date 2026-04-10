@@ -1,4 +1,11 @@
-import { LoadType as LT } from '../conf/Type';
+import {
+  LT_FMP,
+  LT_AV,
+  LT_MSV,
+  LT_NEWS,
+  LT_TNEWS,
+  LT_WEBZ
+} from '../conf/LoadType';
 
 const _settings = Object.create(null)
 , _fSetKey = (
@@ -8,20 +15,20 @@ const _settings = Object.create(null)
 }
 , settingStore = {
   exportSettingsFn: () => ({
-    setAvKey: _fSetKey(LT.AV),
-    setFmpKey: _fSetKey(LT.FMP),
-    setPlgKey: _fSetKey(LT.PLG),
-    setNewsKey: _fSetKey(LT.NEWS),
-    setTheNewsKey: _fSetKey(LT.TNEWS),
-    setWebzKey: _fSetKey(LT.WEBZ)
+    setAvKey: _fSetKey(LT_AV),
+    setFmpKey: _fSetKey(LT_FMP),
+    setMsvKey: _fSetKey(LT_MSV),
+    setNewsKey: _fSetKey(LT_NEWS),
+    setTheNewsKey: _fSetKey(LT_TNEWS),
+    setWebzKey: _fSetKey(LT_WEBZ)
   }),
 
-  getAvKey: () => _settings[LT.AV],
-  getFmpKey: () => _settings[LT.FMP],
-  getPlgKey: () => _settings[LT.PLG],
-  getNewsKey: () => _settings[LT.NEWS],
-  getTheNewsKey: () => _settings[LT.TNEWS],
-  getWebzKey: () => _settings[LT.WEBZ]
+  getAvKey: () => _settings[LT_AV],
+  getFmpKey: () => _settings[LT_FMP],
+  getMsvKey: () => _settings[LT_MSV],
+  getNewsKey: () => _settings[LT_NEWS],
+  getTheNewsKey: () => _settings[LT_TNEWS],
+  getWebzKey: () => _settings[LT_WEBZ]
 }
 
 export default settingStore
