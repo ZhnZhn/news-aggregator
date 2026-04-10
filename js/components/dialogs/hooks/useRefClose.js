@@ -1,35 +1,27 @@
 "use strict";
 
 exports.__esModule = true;
-exports["default"] = void 0;
-
+exports.default = void 0;
 var _uiApi = require("../../uiApi");
-
-var FN_NOOP = function FN_NOOP() {};
-
-var useRefClose = function useRefClose(onClose) {
+const FN_NOOP = () => {};
+const useRefClose = function (onClose, refEl) {
   if (onClose === void 0) {
     onClose = FN_NOOP;
   }
-
-  var _refDialog = (0, _uiApi.useRef)(null);
-
-  return [_refDialog,
-  /*eslint-disable react-hooks/exhaustive-deps */
-  (0, _uiApi.useCallback)(function () {
-    var current = _refDialog.current;
-
-    if (current && current.focusPrevEl) {
+  const _refElDialog = (0, _uiApi.useRef)(null),
+    _refDialog = refEl || _refElDialog;
+  return [_refDialog, /*eslint-disable react-hooks/exhaustive-deps */
+  (0, _uiApi.useCallback)(() => {
+    const {
+      current
+    } = _refDialog;
+    if (current?.focusPrevEl) {
       current.focusPrevEl();
     }
-
     onClose();
-  }, []) //onClose
-
-  /*eslint-enable react-hooks/exhaustive-deps */
-  ];
+  }, [])
+  //onClose
+  /*eslint-enable react-hooks/exhaustive-deps */];
 };
-
-var _default = useRefClose;
-exports["default"] = _default;
+var _default = exports.default = useRefClose;
 //# sourceMappingURL=useRefClose.js.map

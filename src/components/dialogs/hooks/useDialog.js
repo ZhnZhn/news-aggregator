@@ -10,6 +10,7 @@ const useDialog = (
   refInputs
 ) => {
   const {
+    refEl,
     type,
     source,
     itemConf,
@@ -19,7 +20,7 @@ const useDialog = (
   , [
     _refDialog,
     _hClose
-  ] = useRefClose(onClose)
+  ] = useRefClose(onClose, refEl)
   /*eslint-disable react-hooks/exhaustive-deps */
   , _hLoad = useCallback(() => {
     onLoad({

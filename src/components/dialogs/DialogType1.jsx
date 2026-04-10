@@ -26,6 +26,7 @@ const SORT_BY_OPTIONS = [
 , INPUT_SELECT_STYLE = crInputSelectStyle();
 
 const DialogType1 = ({
+  refEl,
   isShow,
   caption,
   type,
@@ -38,7 +39,7 @@ const DialogType1 = ({
   const [
     _refDialog,
     _hClose
-  ] = useRefClose(onClose)
+  ] = useRefClose(onClose, refEl)
   , [
     _refSortBy,
     _selectSortBy

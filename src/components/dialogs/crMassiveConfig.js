@@ -9,4 +9,4 @@ const DF_TICKER = "AMD"
   crTextFieldConfig("ticker", { caption: "Stock Symbol", dfValue: DF_TICKER, inputProps: crInputProps(16), is: true}),
 ];
 
-export const getPlgDialogConfig = fGetDialogConfig(_crInputConfigs);
+export const getMassiveDialogConfig = fGetDialogConfig(_crInputConfigs);

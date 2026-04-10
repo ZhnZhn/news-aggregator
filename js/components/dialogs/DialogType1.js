@@ -18,6 +18,7 @@ const SORT_BY_OPTIONS = [['Top', 'top'], ['Popular', 'popularity'], ['Newest', '
   INPUT_SELECT_STYLE = (0, _Dialog.crInputSelectStyle)();
 const DialogType1 = _ref => {
   let {
+    refEl,
     isShow,
     caption,
     type,
@@ -27,7 +28,7 @@ const DialogType1 = _ref => {
     onShow,
     onClose
   } = _ref;
-  const [_refDialog, _hClose] = (0, _useRefClose.default)(onClose),
+  const [_refDialog, _hClose] = (0, _useRefClose.default)(onClose, refEl),
     [_refSortBy, _selectSortBy] = (0, _useRefSelectOption.default)(INITIAL_SORTBY_VALUE)
     /*eslint-disable react-hooks/exhaustive-deps */,
     _hLoad = (0, _uiApi.useCallback)(() => {

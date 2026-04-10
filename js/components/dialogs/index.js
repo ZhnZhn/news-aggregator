@@ -1,9 +1,11 @@
 "use strict";
 
 exports.__esModule = true;
-exports.getWebzQueryConfig = exports.getWebzCountryConfig = exports.getTheNewsApiTopConfig = exports.getTheNewsApiSearchConfig = exports.getStackTaggedConfig = exports.getStackSearchConfig = exports.getRedditTopConfig = exports.getRedditSearchConfig = exports.getNewsApiTopConfig = exports.getNewsApiSearchConfig = exports.getMessariConfig = exports.getFmpNewsConfig = exports.getDevToConfig = exports.getCryptoCompareConfig = exports.getCoinStatDialogConfig = exports.getAvDialogConfig = void 0;
+exports.getWebzQueryConfig = exports.getWebzCountryConfig = exports.getTheNewsApiTopConfig = exports.getTheNewsApiSearchConfig = exports.getStackTaggedConfig = exports.getStackSearchConfig = exports.getRedditTopConfig = exports.getRedditSearchConfig = exports.getNewsApiTopConfig = exports.getNewsApiSearchConfig = exports.getMessariConfig = exports.getMassiveDialogConfig = exports.getFmpNewsConfig = exports.getDevToConfig = exports.getCryptoCompareConfig = exports.getCoinStatDialogConfig = exports.getAvDialogConfig = void 0;
 var _crAvSentimentConfig = require("./crAvSentimentConfig");
 exports.getAvDialogConfig = _crAvSentimentConfig.getAvDialogConfig;
+var _crMassiveConfig = require("./crMassiveConfig");
+exports.getMassiveDialogConfig = _crMassiveConfig.getMassiveDialogConfig;
 var _crCoinStatConfig = require("./crCoinStatConfig");
 exports.getCoinStatDialogConfig = _crCoinStatConfig.getCoinStatDialogConfig;
 var _crCryptoCompareConfig = require("./crCryptoCompareConfig");

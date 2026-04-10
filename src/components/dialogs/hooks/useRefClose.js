@@ -6,9 +6,11 @@ import {
 const FN_NOOP = () => {};
 
 const useRefClose = (
-  onClose=FN_NOOP
+  onClose=FN_NOOP,
+  refEl
 ) => {
-  const _refDialog = useRef(null);
+  const _refElDialog = useRef(null)
+  , _refDialog = refEl || _refElDialog;
   return [
     _refDialog,
     /*eslint-disable react-hooks/exhaustive-deps */

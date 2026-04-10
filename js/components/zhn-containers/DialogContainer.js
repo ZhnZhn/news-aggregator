@@ -44,7 +44,9 @@ const DialogContainer = _ref => {
     useMsDialog,
     closeDialog
   } = _ref;
-  const [state, setState] = (0, _uiApi.useState)({
+  const _refRecentDialog = (0, _uiApi.useRef)(null),
+    _refRecentDialogKey = (0, _uiApi.useRef)(null),
+    [state, setState] = (0, _uiApi.useState)({
       hmIs: {},
       compDialogs: [],
       visibleDialogs: []
@@ -83,18 +85,25 @@ const DialogContainer = _ref => {
         } else {
           prevState.compDialogs.push(Comp);
         }
+        (0, _uiApi.setRefValue)(_refRecentDialogKey, key);
         return {
           ...prevState
         };
       });
     }
   });
+  (0, _uiApi.useEffect)(() => {
+    const _recentDialog = (0, _uiApi.getRefValue)(_refRecentDialog);
+    _recentDialog?.focus();
+  });
+  const _recentDialogKey = (0, _uiApi.getRefValue)(_refRecentDialogKey);
   return (0, _jsxRuntime.jsx)("div", {
     style: S_ROOT,
     children: compDialogs.map(Comp => {
       const key = Comp.key;
       return (0, _uiApi.cloneElement)(Comp, {
         key,
+        refEl: key === _recentDialogKey ? _refRecentDialog : void 0,
         isShow: hmIs[key],
         onClose: () => {
           _hToggleDialog(key);

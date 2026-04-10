@@ -1,0 +1,23 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/dialogs/crMassiveConfig.js"
+ ],
+ "file": "../../../src/components/dialogs/crMassiveConfig.js",
+ "names": [
+  "_DialogFn",
+  "require",
+  "DF_TICKER",
+  "_crInputConfigs",
+  "crTextFieldConfig",
+  "caption",
+  "dfValue",
+  "inputProps",
+  "crInputProps",
+  "is",
+  "getMassiveDialogConfig",
+  "exports",
+  "fGetDialogConfig"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,SAAA,GAAAC,OAAA;AAMA,MAAMC,SAAS,GAAG,KAAK;EACrBC,eAAe,GAAGA,CAAA,KAAM,CACxB,IAAAC,2BAAiB,EAAC,QAAQ,EAAE;IAAEC,OAAO,EAAE,cAAc;IAAEC,OAAO,EAAEJ,SAAS;IAAEK,UAAU,EAAE,IAAAC,sBAAY,EAAC,EAAE,CAAC;IAAEC,EAAE,EAAE;EAAI,CAAC,CAAC,CACpH;AAEM,MAAMC,sBAAsB,GAAAC,OAAA,CAAAD,sBAAA,GAAG,IAAAE,0BAAgB,EAACT,eAAe,CAAC"
+}

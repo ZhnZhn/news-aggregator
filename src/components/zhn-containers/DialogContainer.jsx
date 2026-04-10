@@ -1,5 +1,9 @@
 import {
+  useRef,
   useState,
+  useEffect,
+  getRefValue,
+  setRefValue,
   cloneElement
 } from '../uiApi';
 
@@ -57,7 +61,9 @@ const DialogContainer = ({
   useMsDialog,
   closeDialog
 }) => {
-  const [
+  const _refRecentDialog = useRef(null)
+  , _refRecentDialogKey = useRef(null)
+  , [
     state,
     setState
   ] = useState({
@@ -96,10 +102,18 @@ const DialogContainer = ({
          } else {
             prevState.compDialogs.push(Comp)
          }
+         setRefValue(_refRecentDialogKey, key)
          return {...prevState};
        })
     }
   })
+
+  useEffect(() => {
+    const _recentDialog = getRefValue(_refRecentDialog)
+    _recentDialog?.focus()
+  })
+
+  const _recentDialogKey = getRefValue(_refRecentDialogKey)
 
   return (
     <div style={S_ROOT}>
@@ -107,6 +121,9 @@ const DialogContainer = ({
          const key = Comp.key;
          return cloneElement(Comp, {
            key,
+           refEl: key === _recentDialogKey
+             ? _refRecentDialog
+             : void 0,
            isShow: hmIs[key],
            onClose: () => {
              _hToggleDialog(key)
