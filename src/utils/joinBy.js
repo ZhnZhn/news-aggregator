@@ -6,5 +6,6 @@ const _fJoinBy = (
   .filter(Boolean)
   .join(delimeter);
 
+export const joinBy = _fJoinBy('')
 export const joinByComma = _fJoinBy(', ')
 export const joinByBlank = _fJoinBy(' ')

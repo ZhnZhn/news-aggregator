@@ -7,6 +7,15 @@ const _checkEmptyArgsCase = fn => {
   expect(fn("", null)).toBe("");
   expect(fn("", null, void 0)).toBe("");
 };
+describe("joinBy", () => {
+  const fn = _joinBy.joinBy;
+  test("shoulr return joined string without falsy values", () => {
+    expect(fn()).toBe("");
+    expect(fn(void 0, "a")).toBe("a");
+    expect(fn("a", "b")).toBe("ab");
+    expect(fn("a", null)).toBe("a");
+  });
+});
 describe("joinByComma", () => {
   const fn = _joinBy.joinByComma;
   test("should filter falsy values and join arguments by comma to string", () => {
