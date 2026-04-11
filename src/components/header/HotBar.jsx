@@ -25,6 +25,9 @@ import {
 
 import ItemStack from '../zhn/ItemStack';
 import FlatButton from '../zhn-bt/FlatButton';
+import SvgDelete from '../zhn/svg/SvgDelete';
+
+import { S_SVG_ICON } from './HeaderBar.Style';
 
 const CL_BT_HOT = "bt-hot"
 , DF_BT_CAPTION = "DLG";
@@ -66,18 +69,19 @@ const HotBar = () => {
       <div style={S_INLINE_BLOCK}>
         <span style={S_COLOR_BLACK}>|</span>
         <ItemStack
-           items={hotButtons}
-           crItem={_crHotBtItem}
+          items={hotButtons}
+          crItem={_crHotBtItem}
         />
         <FlatButton
-           key="BT_CLEAN"
-           ariaLabel="Clean Hot Bar"
-           dataPos={DP_BOTTOM_LEFT}
-           hotKey={HAS_TOUCH_EVENTS ? void 0: HK_CLEAR_HOT_BAR}
-           timeout={0}
-           caption="CL"
-           onClick={cleanDialogItems}
-        />
+          key="BT_CLEAN"
+          ariaLabel="Clean hot bar"
+          dataPos={DP_BOTTOM_LEFT}
+          hotKey={HAS_TOUCH_EVENTS ? void 0: HK_CLEAR_HOT_BAR}
+          timeout={0}
+          onClick={cleanDialogItems}
+        >
+          <SvgDelete style={S_SVG_ICON} />
+        </FlatButton>
       </div>
     ) : null;
 };

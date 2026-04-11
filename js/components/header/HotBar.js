@@ -15,6 +15,8 @@ var _hotkeys = require("../hotkeys/hotkeys");
 var _DialogFn = require("../dialogs/DialogFn");
 var _ItemStack = _interopRequireDefault(require("../zhn/ItemStack"));
 var _FlatButton = _interopRequireDefault(require("../zhn-bt/FlatButton"));
+var _SvgDelete = _interopRequireDefault(require("../zhn/svg/SvgDelete"));
+var _HeaderBar = require("./HeaderBar.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_BT_HOT = "bt-hot",
   DF_BT_CAPTION = "DLG";
@@ -46,12 +48,14 @@ const HotBar = () => {
       items: hotButtons,
       crItem: _crHotBtItem
     }), (0, _jsxRuntime.jsx)(_FlatButton.default, {
-      ariaLabel: "Clean Hot Bar",
+      ariaLabel: "Clean hot bar",
       dataPos: _DP.DP_BOTTOM_LEFT,
       hotKey: _has.HAS_TOUCH_EVENTS ? void 0 : _hotkeys.HK_CLEAR_HOT_BAR,
       timeout: 0,
-      caption: "CL",
-      onClick: _compStore.cleanDialogItems
+      onClick: _compStore.cleanDialogItems,
+      children: (0, _jsxRuntime.jsx)(_SvgDelete.default, {
+        style: _HeaderBar.S_SVG_ICON
+      })
     }, "BT_CLEAN")]
   }) : null;
 };
