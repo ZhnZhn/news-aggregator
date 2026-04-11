@@ -8,4 +8,4 @@ const S_SVG_ICON = exports.S_SVG_ICON = {
   verticalAlign: 'middle',
   margin: '0 8px'
 };
-//# sourceMappingURL=HeaderBar.Style.js.map
+//# sourceMappingURL=AppBar.Style.js.map

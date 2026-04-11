@@ -12,7 +12,7 @@ import {
   useMsPane
 } from '../flux/compStore';
 
-import HeaderBar from './header/HeaderBar'
+import AppBar from './header/AppBar'
 import BrowserContainer from './zhn-containers/BrowserContainer'
 import About from './about/About'
 import ComponentHrzContainer from './zhn-containers/ComponentHrzContainer'
@@ -25,7 +25,7 @@ const AppNewsAggregator = () => {
   useHotKeys()
   return (
     <div>
-      <HeaderBar
+      <AppBar
         onNewsSources={showNewsBrowser}
         onSettings={showSettingsDialog}
         onAbout={showAbout}

@@ -19,8 +19,7 @@ var _IconAppLogo = _interopRequireDefault(require("./IconAppLogo"));
 var _AppLabel = _interopRequireDefault(require("./AppLabel"));
 var _PanelQuery = _interopRequireDefault(require("./PanelQuery"));
 var _crMenuQuery = _interopRequireDefault(require("./crMenuQuery"));
-var _HotBar = _interopRequireDefault(require("./HotBar"));
-var _HeaderBar = require("./HeaderBar.Style");
+var _QuickMenu = _interopRequireDefault(require("./QuickMenu"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const HEADER = "header",
   CL_HEADER = (0, _crStyle.crContainerBgCn)(HEADER),
@@ -30,8 +29,14 @@ const HEADER = "header",
   CL_BROWSER_BTS = `${HEADER}__browser-bts`,
   CL_ARROW_DOWN = "arrow-down",
   CL_BTS = `${HEADER}__bts`,
-  CL_BT_ABOUT = `${HEADER}__bt-about`;
-const HeaderBar = props => {
+  CL_BT_ABOUT = `${HEADER}__bt-about`,
+  S_SVG_ICON = {
+    position: 'relative',
+    top: -1,
+    verticalAlign: 'middle',
+    margin: '0 8px'
+  };
+const AppBar = props => {
   const _refFocusItem = (0, _uiApi.useRef)(),
     [isQuery, toggleIsQuery] = (0, _useToggle.default)(),
     _hCloseQuery = (0, _uiApi.useCallback)(evt => {
@@ -68,7 +73,9 @@ const HeaderBar = props => {
           className: CL_ARROW_DOWN
         })
       })
-    }), (0, _jsxRuntime.jsx)(_HotBar.default, {}), (0, _jsxRuntime.jsxs)("div", {
+    }), (0, _jsxRuntime.jsx)(_QuickMenu.default, {
+      iconStyle: S_SVG_ICON
+    }), (0, _jsxRuntime.jsxs)("div", {
       className: CL_BTS,
       children: [(0, _jsxRuntime.jsx)(_FlatButton.default, {
         ariaLabel: "Open about pane",
@@ -77,7 +84,7 @@ const HeaderBar = props => {
         hotKey: _hotkeys.HK_ABOUT,
         onClick: props.onAbout,
         children: (0, _jsxRuntime.jsx)(_SvgInfo.default, {
-          style: _HeaderBar.S_SVG_ICON
+          style: S_SVG_ICON
         })
       }), (0, _jsxRuntime.jsx)(_FlatButton.default, {
         ariaLabel: "Open settings dialog",
@@ -85,11 +92,11 @@ const HeaderBar = props => {
         hotKey: _hotkeys.HK_SETTINGS,
         onClick: props.onSettings,
         children: (0, _jsxRuntime.jsx)(_SvgSettings.default, {
-          style: _HeaderBar.S_SVG_ICON
+          style: S_SVG_ICON
         })
       })]
     })]
   });
 };
-var _default = exports.default = HeaderBar;
-//# sourceMappingURL=HeaderBar.js.map
+var _default = exports.default = AppBar;
+//# sourceMappingURL=AppBar.js.map

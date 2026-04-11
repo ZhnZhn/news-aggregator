@@ -5,7 +5,7 @@ exports.__esModule = true;
 exports.default = void 0;
 var _useHotKeys = _interopRequireDefault(require("./hotkeys/useHotKeys"));
 var _compStore = require("../flux/compStore");
-var _HeaderBar = _interopRequireDefault(require("./header/HeaderBar"));
+var _AppBar = _interopRequireDefault(require("./header/AppBar"));
 var _BrowserContainer = _interopRequireDefault(require("./zhn-containers/BrowserContainer"));
 var _About = _interopRequireDefault(require("./about/About"));
 var _ComponentHrzContainer = _interopRequireDefault(require("./zhn-containers/ComponentHrzContainer"));
@@ -16,7 +16,7 @@ const CL_COMP = "component-container";
 const AppNewsAggregator = () => {
   (0, _useHotKeys.default)();
   return (0, _jsxRuntime.jsxs)("div", {
-    children: [(0, _jsxRuntime.jsx)(_HeaderBar.default, {
+    children: [(0, _jsxRuntime.jsx)(_AppBar.default, {
       onNewsSources: _compStore.showNewsBrowser,
       onSettings: _compStore.showSettingsDialog,
       onAbout: _compStore.showAbout

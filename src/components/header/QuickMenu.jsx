@@ -5,7 +5,7 @@ import { joinBy } from '../../utils/joinBy';
 import {
   useDialogItems,
   showDialog,
-  cleanDialogItems
+  removeDialogItems
 } from '../../flux/compStore';
 
 import { memoTrue } from '../hoc/memoFn';
@@ -27,8 +27,6 @@ import ItemStack from '../zhn/ItemStack';
 import FlatButton from '../zhn-bt/FlatButton';
 import SvgDelete from '../zhn/svg/SvgDelete';
 
-import { S_SVG_ICON } from './HeaderBar.Style';
-
 const CL_BT_HOT = "bt-hot"
 , DF_BT_CAPTION = "DLG";
 
@@ -49,7 +47,7 @@ const _crBtProps = (
    };
 };
 
-const _crHotBtItem = (
+const _crMenuButton = (
    conf,
    index
  ) => (
@@ -62,28 +60,28 @@ const _crHotBtItem = (
    />
 );
 
-const HotBar = () => {
-  const hotButtons = useDialogItems();
-  return isArr(hotButtons) && hotButtons.length !== 0
+const QuickMenu = (props) => {
+  const dialogItems = useDialogItems();
+  return isArr(dialogItems) && dialogItems.length !== 0
     ? (
       <div style={S_INLINE_BLOCK}>
         <span style={S_COLOR_BLACK}>|</span>
         <ItemStack
-          items={hotButtons}
-          crItem={_crHotBtItem}
+          items={dialogItems}
+          crItem={_crMenuButton}
         />
         <FlatButton
-          key="BT_CLEAN"
-          ariaLabel="Clean hot bar"
+          key="BT_CLEAR"
+          ariaLabel="Clear quick menu"
           dataPos={DP_BOTTOM_LEFT}
           hotKey={HAS_TOUCH_EVENTS ? void 0: HK_CLEAR_HOT_BAR}
           timeout={0}
-          onClick={cleanDialogItems}
+          onClick={removeDialogItems}
         >
-          <SvgDelete style={S_SVG_ICON} />
+          <SvgDelete style={props.iconStyle} />
         </FlatButton>
       </div>
     ) : null;
 };
 
-export default memoTrue(HotBar)
+export default memoTrue(QuickMenu)

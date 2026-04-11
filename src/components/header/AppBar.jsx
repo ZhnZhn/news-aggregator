@@ -35,9 +35,7 @@ import IconAppLogo from './IconAppLogo';
 import AppLabel from './AppLabel';
 import PanelQuery from './PanelQuery';
 import crMenuQuery from './crMenuQuery';
-import HotBar from './HotBar';
-
-import { S_SVG_ICON } from './HeaderBar.Style';
+import QuickMenu from './QuickMenu';
 
 const HEADER = "header"
 , CL_HEADER = crContainerBgCn(HEADER)
@@ -49,9 +47,16 @@ const HEADER = "header"
 , CL_BROWSER_BTS = `${HEADER}__browser-bts`
 , CL_ARROW_DOWN = "arrow-down"
 , CL_BTS = `${HEADER}__bts`
-, CL_BT_ABOUT = `${HEADER}__bt-about`;
+, CL_BT_ABOUT = `${HEADER}__bt-about`
 
-const HeaderBar = (props) => {
+, S_SVG_ICON = {
+  position: 'relative',
+  top: -1,
+  verticalAlign: 'middle',
+  margin: '0 8px'
+};
+
+const AppBar = (props) => {
   const _refFocusItem = useRef()
   , [
     isQuery,
@@ -106,7 +111,7 @@ const HeaderBar = (props) => {
           <span className={CL_ARROW_DOWN} />
         </ModalButton>
       </span>
-      <HotBar />
+      <QuickMenu iconStyle={S_SVG_ICON} />
       <div className={CL_BTS}>
           <FlatButton
             ariaLabel="Open about pane"
@@ -130,4 +135,4 @@ const HeaderBar = (props) => {
   );
 };
 
-export default HeaderBar
+export default AppBar

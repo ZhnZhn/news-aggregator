@@ -88,7 +88,7 @@ export const showDialog = (itemConf) => _set(
 export const closeDialog = (itemConf) => _set(
   _crDialogItems([itemConf])
 )
-export const cleanDialogItems = () => _set(_crDialogItems([]))
+export const removeDialogItems = () => _set(_crDialogItems([]))
 
 
 export const useMsBrowser = fCrUse(_compStore, _selectMsBrowser)
