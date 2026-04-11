@@ -37,6 +37,8 @@ import PanelQuery from './PanelQuery';
 import crMenuQuery from './crMenuQuery';
 import HotBar from './HotBar';
 
+import { S_SVG_ICON } from './HeaderBar.Style';
+
 const HEADER = "header"
 , CL_HEADER = crContainerBgCn(HEADER)
 , CL_PANEL_BROWSER = crBoxShadowCn(
@@ -47,14 +49,7 @@ const HEADER = "header"
 , CL_BROWSER_BTS = `${HEADER}__browser-bts`
 , CL_ARROW_DOWN = "arrow-down"
 , CL_BTS = `${HEADER}__bts`
-, CL_BT_ABOUT = `${HEADER}__bt-about`
-
-, S_SVG_ICON = {
-  position: 'relative',
-  top: -1,
-  verticalAlign: 'middle',
-  margin: '0 8px'
-};
+, CL_BT_ABOUT = `${HEADER}__bt-about`;
 
 const HeaderBar = (props) => {
   const _refFocusItem = useRef()
