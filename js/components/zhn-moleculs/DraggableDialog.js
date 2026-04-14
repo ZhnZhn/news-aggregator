@@ -133,6 +133,7 @@ const DraggableDialog = _ref2 => {
     children: [(0, _jsxRuntime.jsx)(_BrowserCaption.default, {
       style: captionStyle,
       caption: caption,
+      ariaLabelToken: "dialog",
       onMore: _onMore,
       onClose: onClose
     }), menuToggle && (0, _jsxRuntime.jsx)(_ModalToggle.default, {

@@ -191,6 +191,7 @@ const DraggableDialog = ({
       <BrowserCaption
          style={captionStyle}
          caption={caption}
+         ariaLabelToken="dialog"
          onMore={_onMore}
          onClose={onClose}
       />

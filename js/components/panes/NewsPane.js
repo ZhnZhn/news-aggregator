@@ -167,7 +167,7 @@ const NewsPane = _ref2 => {
       ..._showHideStyle
     },
     children: [(0, _jsxRuntime.jsx)(_ModalSlider.default, {
-      ariaLabel: "Pane Menu",
+      ariaLabel: "Pane menu",
       isShow: isMore,
       className: CL_MENU_MORE,
       model: _MODEL_MORE,
@@ -175,6 +175,7 @@ const NewsPane = _ref2 => {
     }), (0, _jsxRuntime.jsx)(_BrowserCaption.default, {
       style: S_BROWSER_CAPTION,
       caption: _paneCaption,
+      ariaLabelToken: "pane",
       onMore: _showMore,
       onClose: _hHide,
       children: (0, _jsxRuntime.jsx)(_CaptionButtons.default, {

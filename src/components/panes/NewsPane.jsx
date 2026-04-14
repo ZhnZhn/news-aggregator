@@ -1,5 +1,5 @@
 import {
-  toFirstUpperCase,
+  toFirstUpperCase
 } from '../../utils/toFirstUpperCase';
 
 import {
@@ -248,7 +248,7 @@ const NewsPane = ({
        }}
     >
       <ModalSlider
-        ariaLabel="Pane Menu"
+        ariaLabel="Pane menu"
         isShow={isMore}
         className={CL_MENU_MORE}
         model={_MODEL_MORE}
@@ -257,6 +257,7 @@ const NewsPane = ({
       <BrowserCaption
          style={S_BROWSER_CAPTION}
          caption={_paneCaption}
+         ariaLabelToken="pane"
          onMore={_showMore}
          onClose={_hHide}
       >
