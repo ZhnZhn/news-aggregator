@@ -3,7 +3,10 @@ import useResizeElement from './useResizeElement';
 
 import BtResize from './BtResize';
 
-const S_ROOT_DIV = {
+const RESIZE_PANE_TO = "Resize pane to"
+, RESIZE_PANE_TO_LEFT = `${RESIZE_PANE_TO} left`
+, RESIZE_PANE_TO_RIGHT = `${RESIZE_PANE_TO} right`
+, S_ROOT_DIV = {
   display: 'inline-block'
 }
 , S_ML_10 = {
@@ -23,7 +26,7 @@ const SvgHrzResize = (
   return (
     <div style={{...S_ROOT_DIV, ...props.style}}>
       <BtResize
-        ariaLabel="Resize to Left"
+        ariaLabel={RESIZE_PANE_TO_LEFT}
         dataPos={DP_MIDDLE_RIGHT}
         style={S_ML_10}
         startResize={hStartResizeLeft}
@@ -32,7 +35,7 @@ const SvgHrzResize = (
       />
       <BtResize
         to="r"
-        ariaLabel="Resize to Right"
+        ariaLabel={RESIZE_PANE_TO_RIGHT}
         dataPos={DP_MIDDLE_RIGHT}
         style={S_ML_10}
         startResize={hStartResizeRight}

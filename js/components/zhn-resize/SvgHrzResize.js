@@ -7,7 +7,10 @@ var _DP = require("../DP");
 var _useResizeElement = _interopRequireDefault(require("./useResizeElement"));
 var _BtResize = _interopRequireDefault(require("./BtResize"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const S_ROOT_DIV = {
+const RESIZE_PANE_TO = "Resize pane to",
+  RESIZE_PANE_TO_LEFT = `${RESIZE_PANE_TO} left`,
+  RESIZE_PANE_TO_RIGHT = `${RESIZE_PANE_TO} right`,
+  S_ROOT_DIV = {
     display: 'inline-block'
   },
   S_ML_10 = {
@@ -21,7 +24,7 @@ const SvgHrzResize = props => {
       ...props.style
     },
     children: [(0, _jsxRuntime.jsx)(_BtResize.default, {
-      ariaLabel: "Resize to Left",
+      ariaLabel: RESIZE_PANE_TO_LEFT,
       dataPos: _DP.DP_MIDDLE_RIGHT,
       style: S_ML_10,
       startResize: hStartResizeLeft,
@@ -29,7 +32,7 @@ const SvgHrzResize = props => {
       onKeyDown: hKdLeft
     }), (0, _jsxRuntime.jsx)(_BtResize.default, {
       to: "r",
-      ariaLabel: "Resize to Right",
+      ariaLabel: RESIZE_PANE_TO_RIGHT,
       dataPos: _DP.DP_MIDDLE_RIGHT,
       style: S_ML_10,
       startResize: hStartResizeRight,
