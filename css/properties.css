@@ -27,3 +27,8 @@
 .text-left {
   text-align: left;
 }
+
+.bt-hf:hover,
+.bt-hf:focus {
+  background: var(--bt-h, rgba(255, 255, 255, 0.1));
+}

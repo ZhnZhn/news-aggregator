@@ -23,11 +23,13 @@
   font-size: 1.125rem;
   font-weight: bold;
   word-break: break-word;
+  letter-spacing: 0.5px;
 }
 
 .article-descr {
   background-color: #4d4d4d;
   background-color: var(--art-d, #4d4d4d);  
+  letter-spacing: 0.5px;
 }
 
 .link-wrapper {
