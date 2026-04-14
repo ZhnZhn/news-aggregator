@@ -18,13 +18,17 @@ var _FlatButton = _interopRequireDefault(require("../zhn-bt/FlatButton"));
 var _SvgDelete = _interopRequireDefault(require("../zhn/svg/SvgDelete"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_BT_HOT = "bt-hot",
-  DF_BT_CAPTION = "DLG";
+  DF_BT_CAPTION = "DLG",
+  S_MENU = {
+    ..._crStyle.S_INLINE_BLOCK,
+    borderLeft: `2px solid ${_crStyle.COLOR_BLACK}`
+  };
 const _crBtProps = (index, conf) => {
   const caption = (0, _DialogFn.getCaption)(conf),
     shortCaption = (0, _DialogFn.getShortCaption)(conf),
     _hotKey = _has.HAS_TOUCH_EVENTS ? '' : String(index + 1);
   return {
-    ariaLabel: caption,
+    ariaLabel: `Open ${caption} dialog`,
     dataPos: _DP.DP_BOTTOM_LEFT,
     hotKey: _hotKey || void 0,
     caption: (0, _joinBy.joinBy)(_hotKey, shortCaption || DF_BT_CAPTION)
@@ -38,12 +42,9 @@ const _crMenuButton = (conf, index) => (0, _jsxRuntime.jsx)(_FlatButton.default,
 }, conf.type);
 const QuickMenu = props => {
   const dialogItems = (0, _compStore.useDialogItems)();
-  return (0, _isTypeFn.isArr)(dialogItems) && dialogItems.length !== 0 ? (0, _jsxRuntime.jsxs)("div", {
-    style: _crStyle.S_INLINE_BLOCK,
-    children: [(0, _jsxRuntime.jsx)("span", {
-      style: _crStyle.S_COLOR_BLACK,
-      children: "|"
-    }), (0, _jsxRuntime.jsx)(_ItemStack.default, {
+  return (0, _isTypeFn.isNotEmptyArr)(dialogItems) ? (0, _jsxRuntime.jsxs)("div", {
+    style: S_MENU,
+    children: [(0, _jsxRuntime.jsx)(_ItemStack.default, {
       items: dialogItems,
       crItem: _crMenuButton
     }), (0, _jsxRuntime.jsx)(_FlatButton.default, {

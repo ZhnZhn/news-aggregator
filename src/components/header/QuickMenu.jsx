@@ -1,4 +1,4 @@
-import { isArr } from '../../utils/isTypeFn';
+import { isNotEmptyArr } from '../../utils/isTypeFn';
 import { bindTo } from '../../utils/bindTo';
 import { joinBy } from '../../utils/joinBy';
 
@@ -12,7 +12,7 @@ import { memoTrue } from '../hoc/memoFn';
 
 import {
   S_INLINE_BLOCK,
-  S_COLOR_BLACK
+  COLOR_BLACK
 } from '../crStyle';
 import { HAS_TOUCH_EVENTS } from '../has';
 import { DP_BOTTOM_LEFT } from '../DP';
@@ -28,7 +28,11 @@ import FlatButton from '../zhn-bt/FlatButton';
 import SvgDelete from '../zhn/svg/SvgDelete';
 
 const CL_BT_HOT = "bt-hot"
-, DF_BT_CAPTION = "DLG";
+, DF_BT_CAPTION = "DLG"
+, S_MENU = {
+  ...S_INLINE_BLOCK,
+  borderLeft: `2px solid ${COLOR_BLACK}`
+};
 
 const _crBtProps = (
   index,
@@ -40,7 +44,7 @@ const _crBtProps = (
      ? ''
      : String(index+1);
    return {
-     ariaLabel: caption,
+     ariaLabel: `Open ${caption} dialog`,
      dataPos: DP_BOTTOM_LEFT,
      hotKey: _hotKey || void 0,
      caption: joinBy(_hotKey, shortCaption || DF_BT_CAPTION)
@@ -62,10 +66,9 @@ const _crMenuButton = (
 
 const QuickMenu = (props) => {
   const dialogItems = useDialogItems();
-  return isArr(dialogItems) && dialogItems.length !== 0
+  return isNotEmptyArr(dialogItems)
     ? (
-      <div style={S_INLINE_BLOCK}>
-        <span style={S_COLOR_BLACK}>|</span>
+      <div style={S_MENU}>
         <ItemStack
           items={dialogItems}
           crItem={_crMenuButton}
