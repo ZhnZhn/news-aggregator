@@ -1,11 +1,9 @@
-import {
-  useState
-} from '../uiApi';
-
+import { useState } from '../uiApi';
 import useMqlOnChange from '../hooks/useMqlOnChange';
 
 import { InlineFlexStart } from '../zhn/FlexToken';
-import CircleButton from '../zhn-bt/CircleButton';
+import FlatButton from '../zhn-bt/FlatButton';
+import SvgCloseAll from '../zhn/svg/SvgCloseAll';
 import SvgHrzResize from '../zhn-resize/SvgHrzResize';
 
 import {
@@ -16,18 +14,13 @@ import {
   RESIZE_MIN_WIDTH,
   RESIZE_MAX_WIDTH
 } from './ResizeWidth';
-import {
-  HK_REMOVE_ITEMS
-} from './hotKeys';
 
 const S_BT_REMOVE = {
-  position: 'relative',
-  margin: '0 3px 0 12px'
-  //top: -1
+  width: 36,
+  marginLeft: 10
 }
 , S_SVG_RESIZE = {
   position: 'relative'
-  //top: -3
 };
 
 //is width >= 450px
@@ -48,23 +41,25 @@ const CaptionButtons = (props) => {
 
   return is
     ? (<InlineFlexStart>
-        <CircleButton
-          ariaLabel="Remove Items [r]"
-          dataPos={DP_BT_REMOVE_ITEMS}
-          caption={HK_REMOVE_ITEMS}
-          style={S_BT_REMOVE}
-          onClick={props.onRemoveItems}
-        />
-        <SvgHrzResize
-           elementRef={props.refRootDiv}
-           style={S_SVG_RESIZE}
-           initWidth={RESIZE_INIT_WIDTH}
-           minWidth={RESIZE_MIN_WIDTH}
-           maxWidth={RESIZE_MAX_WIDTH}
-           onPlusWidth={props.onPlusWidth}
-           onMinusWidth={props.onMinusWidth}
-        />
-      </InlineFlexStart>)
+         <FlatButton
+           ariaLabel="Remove items [r]"
+           dataPos={DP_BT_REMOVE_ITEMS}
+           className="bt-hf"
+           style={S_BT_REMOVE}
+           onClick={props.onRemoveItems}
+         >
+           <SvgCloseAll className="svg-close-all" />
+         </FlatButton>
+         <SvgHrzResize
+            elementRef={props.refRootDiv}
+            style={S_SVG_RESIZE}
+            initWidth={RESIZE_INIT_WIDTH}
+            minWidth={RESIZE_MIN_WIDTH}
+            maxWidth={RESIZE_MAX_WIDTH}
+            onPlusWidth={props.onPlusWidth}
+            onMinusWidth={props.onMinusWidth}
+         />
+       </InlineFlexStart>)
     : null;
 }
 
