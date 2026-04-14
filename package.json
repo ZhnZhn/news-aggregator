@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.29.2",
-    "dompurify": "^3.3.3",
+    "dompurify": "^3.4.0",
     "preact": "^10.29.1"
   },
   "devDependencies": {
