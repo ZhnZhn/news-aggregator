@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _joinBy = require("../../utils/joinBy");
 var _useTooltip = _interopRequireDefault(require("../hooks/useTooltip"));
 var _Svg = _interopRequireDefault(require("./svg/Svg"));
 var _DP = require("../DP");
@@ -22,7 +23,7 @@ const Circle = _ref => {
   });
 };
 const SvgMore = props => {
-  const [_ariaLabel, _dataPos] = (0, _useTooltip.default)("More", _DP.DP_MIDDLE_LEFT);
+  const [_ariaLabel, _dataPos] = (0, _useTooltip.default)((0, _joinBy.joinByBlank)('Open', props.ariaLabelToken, 'menu'), _DP.DP_MIDDLE_LEFT);
   return (0, _jsxRuntime.jsx)("button", {
     ref: props.btRef,
     type: "button",

@@ -1,3 +1,5 @@
+import { joinByBlank } from '../../utils/joinBy';
+
 import useTooltip from '../hooks/useTooltip';
 import Svg from './svg/Svg';
 import { DP_MIDDLE_LEFT } from '../DP';
@@ -17,7 +19,10 @@ const SvgMore = (props) => {
   const [
     _ariaLabel,
     _dataPos
-  ] = useTooltip("More", DP_MIDDLE_LEFT);
+  ] = useTooltip(
+    joinByBlank('Open', props.ariaLabelToken, 'menu'),
+    DP_MIDDLE_LEFT
+  );
   return (
     <button
       ref={props.btRef}
