@@ -14,7 +14,7 @@ const CL_SWITCH = "switch"
 , LABEL_COLOR_CHECKED = "black"
 , TRACK_COLOR = "#9e9e9e"
 , THUMB_COLOR = "#d3d3d3"
-, THUMB_POS_X = "4px"
+, THUMB_POS_X = "0.2rem"
 , LABEL_COLOR = "#9e9e9e";
 
 const _crSwicthStyle = (
@@ -32,7 +32,7 @@ const _crSwicthStyle = (
     { backgroundColor: _trackColor },
     {
       backgroundColor: _thumbColor,
-      transform: `translate(${_thumbPosX}, 0.1rem)`
+      transform: `translate(${_thumbPosX}, -0.1rem)`
     },
     { color: _labelColor }
   ];
