@@ -4,12 +4,13 @@ import {
   EVENT_TOUCH_END
 } from '../uiApi';
 
-import useTooltip from '../hooks/useTooltip';
-import usePassiveTouchEvent from '../hooks/usePassiveTouchEvent';
+import { crTooltip } from '../a11yFn';
+import { CL_SELECT_NONE } from '../crStyle';
 
+import usePassiveTouchEvent from '../hooks/usePassiveTouchEvent';
 import Svg100 from '../zhn/svg/Svg100';
 
-const CL_BT_RESIZE = "bt-resize select-none";
+const CL_BT_RESIZE = `bt-resize ${CL_SELECT_NONE}`;
 
 const BtResize = ({
   to,
@@ -27,7 +28,7 @@ const BtResize = ({
   , [
     _ariaLabel,
     _dataPos
-  ] = useTooltip(ariaLabel, dataPos);
+  ] = crTooltip(ariaLabel, dataPos);
 
   usePassiveTouchEvent(_refBt, EVENT_TOUCH_START, startResize)
   usePassiveTouchEvent(_refBt, EVENT_TOUCH_END, stopResize)

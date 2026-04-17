@@ -1,6 +1,6 @@
 import { toLink } from '../uiApi';
+import { crTooltip } from '../a11yFn';
 
-import useTooltip from '../hooks/useTooltip';
 import UseLogoById from './UseLogoById'
 
 // biome-ignore-start lint/a11y/useAnchorContent: tag a has arria-label
@@ -8,7 +8,7 @@ const LogoGitHub = (props) => {
   const [
     _ariaLabel,
     _dataPos
-  ] = useTooltip(
+  ] = crTooltip(
     props.ariaLabel,
     props.dataPos
   );

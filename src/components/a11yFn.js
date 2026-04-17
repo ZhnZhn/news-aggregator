@@ -1,13 +1,14 @@
-import { HAS_TOUCH_EVENTS } from '../has';
+import { joinByBlank } from '../utils/joinBy';
+import { HAS_TOUCH_EVENTS } from './has';
 
 const _crAriaLabel = (
   ariaLabel,
   hotKey
 ) => hotKey
-  ? `${ariaLabel || ''} [${hotKey.toLowerCase()}]`
+  ? joinByBlank(ariaLabel, `[${hotKey.toLowerCase()}]`)
   : ariaLabel;
 
-const useTooltip = (
+export const crTooltip = (
   ariaLabel,
   dataPos,
   hotKey
@@ -16,6 +17,4 @@ const useTooltip = (
   : [
       _crAriaLabel(ariaLabel, hotKey),
       dataPos
-    ];
-
-export default useTooltip;
+    ]

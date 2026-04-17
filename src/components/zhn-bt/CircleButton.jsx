@@ -1,13 +1,16 @@
-import useTooltip from '../hooks/useTooltip';
-import { crCn } from '../crStyle';
+import { crTooltip } from '../a11yFn';
+import {
+  CL_SELECT_NONE,
+  crCn
+} from '../crStyle';
 
-const CL_BT = 'bt-circle select-none';
+const CL_BT = `bt-circle ${CL_SELECT_NONE}`;
 
 const CircleButton = (props) => {
   const [
     _ariaLabel,
     _dataPos
-  ] = useTooltip(
+  ] = crTooltip(
     props.ariaLabel,
     props.dataPos
   );

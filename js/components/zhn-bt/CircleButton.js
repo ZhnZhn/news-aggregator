@@ -1,14 +1,13 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _useTooltip = _interopRequireDefault(require("../hooks/useTooltip"));
+var _a11yFn = require("../a11yFn");
 var _crStyle = require("../crStyle");
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_BT = 'bt-circle select-none';
+const CL_BT = `bt-circle ${_crStyle.CL_SELECT_NONE}`;
 const CircleButton = props => {
-  const [_ariaLabel, _dataPos] = (0, _useTooltip.default)(props.ariaLabel, props.dataPos);
+  const [_ariaLabel, _dataPos] = (0, _a11yFn.crTooltip)(props.ariaLabel, props.dataPos);
   return (0, _jsxRuntime.jsx)("button", {
     type: "button",
     "aria-label": _ariaLabel,

@@ -1,4 +1,4 @@
-import useTooltip from '../hooks/useTooltip';
+import { crTooltip } from '../a11yFn';
 import useHotKey from '../hotkeys/useHotKey';
 
 const useButton = (
@@ -8,7 +8,7 @@ const useButton = (
   onClick
 ) => {
   useHotKey(hotKey, onClick)
-  return useTooltip(
+  return crTooltip(
     ariaLabel,
     dataPos,
     hotKey

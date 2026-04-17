@@ -4,11 +4,12 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _useTooltip = _interopRequireDefault(require("../hooks/useTooltip"));
+var _a11yFn = require("../a11yFn");
+var _crStyle = require("../crStyle");
 var _usePassiveTouchEvent = _interopRequireDefault(require("../hooks/usePassiveTouchEvent"));
 var _Svg = _interopRequireDefault(require("../zhn/svg/Svg100"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const CL_BT_RESIZE = "bt-resize select-none";
+const CL_BT_RESIZE = `bt-resize ${_crStyle.CL_SELECT_NONE}`;
 const BtResize = _ref => {
   let {
     to,
@@ -21,7 +22,7 @@ const BtResize = _ref => {
   } = _ref;
   const _refBt = (0, _uiApi.useRef)(),
     _x = to === 'r' ? '11' : '1',
-    [_ariaLabel, _dataPos] = (0, _useTooltip.default)(ariaLabel, dataPos);
+    [_ariaLabel, _dataPos] = (0, _a11yFn.crTooltip)(ariaLabel, dataPos);
   (0, _usePassiveTouchEvent.default)(_refBt, _uiApi.EVENT_TOUCH_START, startResize);
   (0, _usePassiveTouchEvent.default)(_refBt, _uiApi.EVENT_TOUCH_END, stopResize);
   return (0, _jsxRuntime.jsx)("button", {

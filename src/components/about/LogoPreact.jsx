@@ -1,4 +1,4 @@
-import useTooltip from '../hooks/useTooltip';
+import { crTooltip } from '../a11yFn';
 import UseLogoById from './UseLogoById';
 
 const S_PREACT = {
@@ -10,7 +10,7 @@ const LogoPreact = (props) => {
   const [
     _ariaLabel,
     _dataPos
-  ] = useTooltip(
+  ] = crTooltip(
     props.ariaLabel,
     props.dataPos
   );
