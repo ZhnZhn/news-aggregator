@@ -10,9 +10,9 @@ const CL_BT_SVG_X = "bt-svg-x",
     padding: 3,
     stroke: 'inherit'
   };
-const SvgX = props => (0, _jsxRuntime.jsx)("button", {
+const BtSvgX = props => (0, _jsxRuntime.jsx)("button", {
   type: "button",
-  "aria-label": "Close",
+  "aria-label": props.ariaLabel || "Close",
   tabIndex: "-1",
   className: props.className || CL_BT_SVG_X,
   style: props.style,
@@ -29,5 +29,5 @@ const SvgX = props => (0, _jsxRuntime.jsx)("button", {
     })]
   })
 });
-var _default = exports.default = SvgX;
-//# sourceMappingURL=SvgX.js.map
+var _default = exports.default = BtSvgX;
+//# sourceMappingURL=BtSvgX.js.map

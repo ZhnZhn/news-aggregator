@@ -15,7 +15,7 @@ import { HAS_TOUCH_EVENTS } from '../has';
 
 import useItemGestureSwipeX from './useItemGestureSwipeX';
 import GestureSwipeX from '../zhn-gesture/GestureSwipeX';
-import SvgX from '../zhn/SvgX';
+import BtSvgX from '../zhn/BtSvgX';
 import SafeLink from '../zhn/SafeLink';
 import ItemStack from '../zhn/ItemStack';
 
@@ -157,7 +157,7 @@ const StackItem = ({
           <span style={S_BLACK_BADGE}>
             {display_name}
           </span>
-         <SvgX
+         <BtSvgX
             style={S_SVG_CLOSE}
             onClick={_hClose}
          />

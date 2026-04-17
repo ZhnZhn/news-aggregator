@@ -3,7 +3,7 @@ import { isFn } from '../uiApi';
 import { CL_SELECT_NONE } from '../crStyle';
 
 import SvgMore from './SvgMore';
-import SvgX from './SvgX';
+import BtSvgX from './BtSvgX';
 
 const CL_BROWSER_CAPTION = "br-caption gap-right"
 , CL_BT_SVG_CLOSE = "bt-svg-x bt-svg-close"
@@ -32,7 +32,7 @@ const BrowserCaption = (props) => (
        {props.caption}
     </span>
     {props.children}
-    <SvgX
+    <BtSvgX
       className={CL_BT_SVG_CLOSE}
       onClick={props.onClose}
     />

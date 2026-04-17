@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 exports.__esModule = true;
 exports.default = void 0;
 var _uiApi = require("../uiApi");
-var _SvgX = _interopRequireDefault(require("../zhn/SvgX"));
+var _BtSvgX = _interopRequireDefault(require("../zhn/BtSvgX"));
 var _Item = require("./Item.Style");
 var _jsxRuntime = require("preact/jsx-runtime");
 const ItemHeader = _ref => {
@@ -47,7 +47,7 @@ const ItemHeader = _ref => {
     children: [(0, _jsxRuntime.jsx)("span", {
       className: _Item.CL_ITEM_CAPTION,
       children: title
-    }), (0, _jsxRuntime.jsx)(_SvgX.default, {
+    }), (0, _jsxRuntime.jsx)(_BtSvgX.default, {
       style: btCloseStyle,
       onClick: _hClose
     })]

@@ -3,10 +3,9 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _DP = require("../DP");
 var _SafeLink = _interopRequireDefault(require("../zhn/SafeLink"));
 var _TextToken = require("../zhn/TextToken");
-var _SvgX = _interopRequireDefault(require("../zhn/SvgX"));
+var _BtSvgX = _interopRequireDefault(require("../zhn/BtSvgX"));
 var _RelatedDiv = _interopRequireDefault(require("./RelatedDiv"));
 var _crStyle = require("../crStyle");
 var _ArticleDescr = require("./ArticleDescr.Style");
@@ -39,8 +38,7 @@ const ArticleDescr = props => (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
       commentsTitle: props.commentsTitle
     }), (0, _jsxRuntime.jsxs)("div", {
       style: _ArticleDescr.S_BOTTOM_ROW,
-      children: [(0, _jsxRuntime.jsx)(_SvgX.default, {
-        dataPos: _DP.DP_CLOSE_RIGHT,
+      children: [(0, _jsxRuntime.jsx)(_BtSvgX.default, {
         onClick: props.onClose
       }), (0, _jsxRuntime.jsx)("time", {
         className: _crStyle.CL_SELECT_NONE,

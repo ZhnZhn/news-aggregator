@@ -2,7 +2,7 @@ import { memo } from '../uiApi';
 import { COLOR_BLACK } from '../crStyle';
 
 import AsyncShowComponent from '../zhn-moleculs/AsyncShowComponent';
-import SvgX from '../zhn/SvgX';
+import BtSvgX from '../zhn/BtSvgX';
 
 import { CL_BT_SVG_CLEAR } from './Input.Style';
 
@@ -21,7 +21,8 @@ const AsyncSvgX = memo(({
     is={is}
     mls={700}
   >
-    <SvgX
+    <BtSvgX
+       ariaLabel="Clear input"
        className={CL_BT_SVG_CLEAR}
        style={S_BT_CLEAR}
        onClick={onClick}

@@ -3,7 +3,7 @@ import {
   useMemo
 } from '../uiApi';
 
-import SvgX from '../zhn/SvgX';
+import BtSvgX from '../zhn/BtSvgX';
 import { CL_ITEM_CAPTION } from './Item.Style';
 
 const ItemHeader = ({
@@ -53,7 +53,7 @@ const ItemHeader = ({
       <span className={CL_ITEM_CAPTION}>
          {title}
       </span>
-      <SvgX
+      <BtSvgX
         style={btCloseStyle}
         onClick={_hClose}
       />

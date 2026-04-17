@@ -1,8 +1,6 @@
-import { DP_CLOSE_RIGHT } from '../DP';
-
 import SafeLink from '../zhn/SafeLink';
 import { TextSpan } from '../zhn/TextToken';
-import SvgX from '../zhn/SvgX';
+import BtSvgX from '../zhn/BtSvgX';
 import RelatedDiv from './RelatedDiv';
 
 import {
@@ -54,8 +52,7 @@ const ArticleDescr = (props) => (
         commentsTitle={props.commentsTitle}
       />
       <div style={S_BOTTOM_ROW}>
-        <SvgX
-          dataPos={DP_CLOSE_RIGHT}
+        <BtSvgX
           onClick={props.onClose}
         />
         <time

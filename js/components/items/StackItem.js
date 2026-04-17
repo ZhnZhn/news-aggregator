@@ -10,7 +10,7 @@ var _fUseKey = require("../hooks/fUseKey");
 var _has = require("../has");
 var _useItemGestureSwipeX = _interopRequireDefault(require("./useItemGestureSwipeX"));
 var _GestureSwipeX = _interopRequireDefault(require("../zhn-gesture/GestureSwipeX"));
-var _SvgX = _interopRequireDefault(require("../zhn/SvgX"));
+var _BtSvgX = _interopRequireDefault(require("../zhn/BtSvgX"));
 var _SafeLink = _interopRequireDefault(require("../zhn/SafeLink"));
 var _ItemStack = _interopRequireDefault(require("../zhn/ItemStack"));
 var _Item = require("./Item.Style");
@@ -136,7 +136,7 @@ const StackItem = _ref => {
       }), (0, _jsxRuntime.jsx)("span", {
         style: S_BLACK_BADGE,
         children: display_name
-      }), (0, _jsxRuntime.jsx)(_SvgX.default, {
+      }), (0, _jsxRuntime.jsx)(_BtSvgX.default, {
         style: S_SVG_CLOSE,
         onClick: _hClose
       })]

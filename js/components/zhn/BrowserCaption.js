@@ -6,7 +6,7 @@ exports.default = void 0;
 var _uiApi = require("../uiApi");
 var _crStyle = require("../crStyle");
 var _SvgMore = _interopRequireDefault(require("./SvgMore"));
-var _SvgX = _interopRequireDefault(require("./SvgX"));
+var _BtSvgX = _interopRequireDefault(require("./BtSvgX"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_BROWSER_CAPTION = "br-caption gap-right",
   CL_BT_SVG_CLOSE = "bt-svg-x bt-svg-close",
@@ -26,7 +26,7 @@ const BrowserCaption = props => (0, _jsxRuntime.jsxs)("div", {
     className: _crStyle.CL_SELECT_NONE,
     style: S_CAPTION,
     children: props.caption
-  }), props.children, (0, _jsxRuntime.jsx)(_SvgX.default, {
+  }), props.children, (0, _jsxRuntime.jsx)(_BtSvgX.default, {
     className: CL_BT_SVG_CLOSE,
     onClick: props.onClose
   })]

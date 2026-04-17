@@ -6,10 +6,10 @@ const CL_BT_SVG_X = "bt-svg-x"
   stroke: 'inherit'
 };
 
-const SvgX = (props) => (
+const BtSvgX = (props) => (
   <button
      type="button"
-     aria-label="Close"
+     aria-label={props.ariaLabel || "Close"}
      tabIndex="-1"
      className={props.className || CL_BT_SVG_X}
      style={props.style}
@@ -27,4 +27,4 @@ const SvgX = (props) => (
   </button>
 );
 
-export default SvgX
+export default BtSvgX
