@@ -1,23 +1,19 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _Svg = _interopRequireDefault(require("./Svg"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const _crViewBox = size => `0 0 ${size} ${size}`;
 const SvgIcon = _ref => {
   let {
     color = 'currentColor',
     size = '24',
-    ariaLabel,
     children,
     ...restProps
   } = _ref;
-  return (0, _jsxRuntime.jsx)("svg", {
-    "aria-hidden": "true",
-    xmlns: "http://www.w3.org/2000/svg",
-    width: size,
-    height: size,
-    viewBox: _crViewBox(size),
+  return (0, _jsxRuntime.jsx)(_Svg.default, {
+    w: size,
     fill: "none",
     stroke: color,
     strokeWidth: "2",

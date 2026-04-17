@@ -1,5 +1,3 @@
-import useTooltip from '../hooks/useTooltip';
-import { DP_CLOSE_LEFT } from '../DP';
 import Svg100 from './svg/Svg100';
 
 const CL_BT_SVG_X = "bt-svg-x"
@@ -8,32 +6,25 @@ const CL_BT_SVG_X = "bt-svg-x"
   stroke: 'inherit'
 };
 
-const SvgX = (props) => {
-  const [
-    _ariaLabel,
-    _dataPos
-  ] = useTooltip("Close", props.dataPos || DP_CLOSE_LEFT);
-  return (
-    <button
-       type="button"
-       aria-label={_ariaLabel}
-       data-pos={_dataPos}
-       tabIndex="-1"
-       className={props.className || CL_BT_SVG_X}
-       style={props.style}
-       onClick={props.onClick}
+const SvgX = (props) => (
+  <button
+     type="button"
+     aria-label="Close"
+     tabIndex="-1"
+     className={props.className || CL_BT_SVG_X}
+     style={props.style}
+     onClick={props.onClick}
+  >
+    <Svg100
+       w="12"
+       style={S_SVG}
+       strokeLinecap="round"
+       strokeWidth="2"
     >
-      <Svg100
-         w="12"
-         style={S_SVG}
-         strokeLinecap="round"
-         strokeWidth="2"
-      >
-         <path d="M 0,0 L 12,12" />
-         <path d="M 12,0 L 0,12" />
-      </Svg100>
-    </button>
-  );
-}
+       <path d="M 0,0 L 12,12" />
+       <path d="M 12,0 L 0,12" />
+    </Svg100>
+  </button>
+);
 
 export default SvgX
