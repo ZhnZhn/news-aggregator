@@ -1,8 +1,6 @@
-import { isFn } from '../uiApi';
-
 import { CL_SELECT_NONE } from '../crStyle';
 
-import SvgMore from './SvgMore';
+import BtSvgOption from './BtSvgOption';
 import BtSvgX from './BtSvgX';
 
 const CL_BROWSER_CAPTION = "br-caption gap-right"
@@ -18,13 +16,11 @@ const BrowserCaption = (props) => (
      className={CL_BROWSER_CAPTION}
      style={props.style}
   >
-    {
-       isFn(props.onMore) && <SvgMore
-          className={CL_BT_SVG_MENU}
-          ariaLabelToken={props.ariaLabelToken}
-          onClick={props.onMore}
-       />
-    }
+    <BtSvgOption
+      className={CL_BT_SVG_MENU}
+      ariaLabelToken={props.ariaLabelToken}
+      onClick={props.onMore}
+    />
     <span
        className={CL_SELECT_NONE}
        style={S_CAPTION}

@@ -1,0 +1,53 @@
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+exports.__esModule = true;
+exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
+var _joinBy = require("../../utils/joinBy");
+var _a11yFn = require("../a11yFn");
+var _Svg = _interopRequireDefault(require("./svg/Svg"));
+var _DP = require("../DP");
+var _jsxRuntime = require("preact/jsx-runtime");
+const S_SVG = {
+  fill: 'inherit',
+  stroke: 'inherit'
+};
+const Circle = _ref => {
+  let {
+    cy
+  } = _ref;
+  return (0, _jsxRuntime.jsx)("circle", {
+    cx: "3",
+    cy: cy,
+    r: "2.5"
+  });
+};
+const BtSvgOption = props => {
+  if (!(0, _isTypeFn.isFn)(props.onClick)) {
+    return null;
+  }
+  const [_ariaLabel, _dataPos] = (0, _a11yFn.crTooltip)((0, _joinBy.joinByBlank)('Open', props.ariaLabelToken, 'menu'), _DP.DP_MIDDLE_LEFT);
+  return (0, _jsxRuntime.jsx)("button", {
+    ref: props.btRef,
+    type: "button",
+    "aria-label": _ariaLabel,
+    "data-pos": _dataPos,
+    className: props.className,
+    onClick: props.onClick,
+    children: (0, _jsxRuntime.jsxs)(_Svg.default, {
+      w: "6",
+      h: "24",
+      style: S_SVG,
+      children: [(0, _jsxRuntime.jsx)(Circle, {
+        cy: "4"
+      }), (0, _jsxRuntime.jsx)(Circle, {
+        cy: "12"
+      }), (0, _jsxRuntime.jsx)(Circle, {
+        cy: "19"
+      })]
+    })
+  });
+};
+var _default = exports.default = BtSvgOption;
+//# sourceMappingURL=BtSvgOption.js.map

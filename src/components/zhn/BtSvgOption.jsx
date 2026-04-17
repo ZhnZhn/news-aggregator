@@ -1,6 +1,7 @@
+import { isFn } from '../../utils/isTypeFn';
 import { joinByBlank } from '../../utils/joinBy';
 
-import useTooltip from '../hooks/useTooltip';
+import { crTooltip } from '../a11yFn';
 import Svg from './svg/Svg';
 import { DP_MIDDLE_LEFT } from '../DP';
 
@@ -15,11 +16,15 @@ const Circle = ({
   <circle cx="3" cy={cy} r="2.5" />
 );
 
-const SvgMore = (props) => {
+const BtSvgOption = (props) => {
+  if (!isFn(props.onClick)) {
+    return null;
+  }
+
   const [
     _ariaLabel,
     _dataPos
-  ] = useTooltip(
+  ] = crTooltip(
     joinByBlank('Open', props.ariaLabelToken, 'menu'),
     DP_MIDDLE_LEFT
   );
@@ -45,4 +50,4 @@ const SvgMore = (props) => {
   );
 };
 
-export default SvgMore
+export default BtSvgOption
