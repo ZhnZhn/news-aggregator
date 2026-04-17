@@ -12,12 +12,11 @@ const S_MT_3 = {
     color: '#80c040',
     width: 26,
     height: 26,
-    lineHeight: '24px',
+    lineHeight: '22px',
     textAlign: 'center',
     textTransform: 'uppercase',
     border: '2px solid #80c040',
-    borderRadius: '50%',
-    fontSize: '1.125rem'
+    borderRadius: '50%'
   };
 const Step = props => (0, _jsxRuntime.jsxs)("p", {
   style: S_MT_3,
