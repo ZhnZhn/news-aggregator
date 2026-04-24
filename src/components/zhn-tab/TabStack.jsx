@@ -1,8 +1,10 @@
 import {
+  bindTo
+} from '../../utils/bindTo';
+import {
   cloneElement,
   useCallback,
   isFn,
-  bindTo,
   focusElementById,
   stopDefaultFor
 } from '../uiApi';

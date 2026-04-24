@@ -1,7 +1,5 @@
-import {
-  bindTo,
-  safeMap
-} from '../uiApi';
+import { bindTo } from '../../utils/bindTo';
+import { safeMap } from '../uiApi';
 
 import { CL_ROW_NEWS_SOURCE } from '../crStyle';
 

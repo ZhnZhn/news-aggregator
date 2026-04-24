@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _bindTo = require("../../utils/bindTo");
 var _toFirstUpperCase = require("../../utils/toFirstUpperCase");
 var _uiApi = require("../uiApi");
 var _has = require("../has");
@@ -70,8 +71,8 @@ const _crModelMoreHandlers = (ref, onRemoveItems) => {
       }
     };
   return {
-    onMinWidth: (0, _uiApi.bindTo)(_resizeTo, _ResizeWidth.RESIZE_MIN_WIDTH),
-    onInitWidth: (0, _uiApi.bindTo)(_resizeTo, _ResizeWidth.RESIZE_INIT_WIDTH),
+    onMinWidth: (0, _bindTo.bindTo)(_resizeTo, _ResizeWidth.RESIZE_MIN_WIDTH),
+    onInitWidth: (0, _bindTo.bindTo)(_resizeTo, _ResizeWidth.RESIZE_INIT_WIDTH),
     onPlusWidth: _plusToWidth,
     onMinusWidth: _minusToWidth,
     onRemoveItems: onRemoveItems

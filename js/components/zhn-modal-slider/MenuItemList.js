@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _bindTo = require("../../utils/bindTo");
 var _uiApi = require("../uiApi");
 var _MenuItem = _interopRequireDefault(require("../zhn/MenuItem"));
 var _jsxRuntime = require("preact/jsx-runtime");
@@ -42,7 +43,7 @@ const MenuItemList = _ref => {
         isClose,
         onClick
       } = _ref2;
-      const [_onClick, _nextPageArrowEl] = type === SUB_MENU ? [(0, _uiApi.bindTo)(onNextPage, id, name, pageNumber), (0, _jsxRuntime.jsx)("span", {
+      const [_onClick, _nextPageArrowEl] = type === SUB_MENU ? [(0, _bindTo.bindTo)(onNextPage, id, name, pageNumber), (0, _jsxRuntime.jsx)("span", {
         style: S_NEXT_PAGE,
         children: '>'
       }, ">")] : [_fClick(isClose, onClick, onClose), null];

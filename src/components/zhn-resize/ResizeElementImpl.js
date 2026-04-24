@@ -1,7 +1,5 @@
-import {
-  isFn,
-  bindTo
-} from '../uiApi';
+import { bindTo } from '../../utils/bindTo';
+import { isFn } from '../uiApi';
 
 const _isNaN = Number.isNaN
 , _assign = Object.assign

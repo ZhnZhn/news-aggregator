@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _bindTo = require("../../utils/bindTo");
 var _uiApi = require("../uiApi");
 var _crStyle = require("../crStyle");
 var _OpenClose = _interopRequireDefault(require("../zhn/OpenClose"));
@@ -22,13 +23,13 @@ const MenuPart = _ref => {
     isClose: isInitClose,
     children: (0, _uiApi.safeMap)(items, (item, index) => {
       const _itemConf = {
-        ...(hmItems || {})[item.id],
+        ...hmItems?.[item.id],
         ...restItemProps
       };
       return (0, _jsxRuntime.jsx)(_MenuItem.default, {
         className: _crStyle.CL_ROW_NEWS_SOURCE,
         caption: _itemConf.menuTitle,
-        onClick: (0, _uiApi.bindTo)(onClick, _itemConf)
+        onClick: (0, _bindTo.bindTo)(onClick, _itemConf)
       }, index);
     })
   });

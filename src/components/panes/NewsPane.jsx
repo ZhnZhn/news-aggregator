@@ -1,13 +1,11 @@
-import {
-  toFirstUpperCase
-} from '../../utils/toFirstUpperCase';
+import { bindTo } from '../../utils/bindTo';
+import { toFirstUpperCase } from '../../utils/toFirstUpperCase';
 
 import {
   useRef,
   useState,
   useCallback,
   useMemo,
-  bindTo,
   getRefElementStyle,
   focusAsyncRefElement
 } from '../uiApi';

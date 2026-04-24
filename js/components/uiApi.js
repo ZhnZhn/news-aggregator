@@ -1,9 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useId = exports.useEffect = exports.useContext = exports.useCallback = exports.toLink = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.safeMap = exports.render = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.cloneElement = exports.bindTo = exports.PASSIVE_EVENT_OPTIONS = exports.KEY_TAB = exports.KEY_SPACE = exports.KEY_HOME = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_END = exports.KEY_DELETE = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = exports.FN_TRUE = exports.FN_NOOP = exports.EVENT_TOUCH_START = exports.EVENT_TOUCH_MOVE = exports.EVENT_TOUCH_END = exports.EVENT_TOUCH_CANCEL = void 0;
-var _bindTo = require("../utils/bindTo");
-exports.bindTo = _bindTo.bindTo;
+exports.useState = exports.useRef = exports.useReducer = exports.useMemo = exports.useImperativeHandle = exports.useId = exports.useEffect = exports.useContext = exports.useCallback = exports.toLink = exports.stopDefaultFor = exports.setRefValue = exports.setRefInputValue = exports.safeMap = exports.render = exports.memo = exports.getRefValue = exports.getRefElementStyle = exports.getClientY = exports.getClientX = exports.focusRefNextSiblingFirstChildElement = exports.focusRefElement = exports.focusElementById = exports.focusAsyncRefElement = exports.createContext = exports.cloneElement = exports.PASSIVE_EVENT_OPTIONS = exports.KEY_TAB = exports.KEY_SPACE = exports.KEY_HOME = exports.KEY_ESCAPE = exports.KEY_ENTER = exports.KEY_END = exports.KEY_DELETE = exports.KEY_ARROW_UP = exports.KEY_ARROW_DOWN = exports.FN_TRUE = exports.FN_NOOP = exports.EVENT_TOUCH_START = exports.EVENT_TOUCH_MOVE = exports.EVENT_TOUCH_END = exports.EVENT_TOUCH_CANCEL = void 0;
 var _isTypeFn = require("../utils/isTypeFn");
 exports.isFn = _isTypeFn.isFn;
 exports.isArr = _isTypeFn.isArr;
@@ -39,7 +37,7 @@ const FN_NOOP = () => {};
 exports.FN_NOOP = FN_NOOP;
 const FN_TRUE = () => true;
 exports.FN_TRUE = FN_TRUE;
-const getRefValue = ref => (ref || {}).current;
+const getRefValue = ref => ref?.current;
 exports.getRefValue = getRefValue;
 const setRefValue = (ref, value) => {
   if (ref) {
@@ -70,10 +68,10 @@ const focusAsyncRefElement = function (refOrFn, mls) {
 };
 exports.focusAsyncRefElement = focusAsyncRefElement;
 const focusRefNextSiblingFirstChildElement = ref => {
-  _focusHtmlElement(((getRefValue(ref) || {}).nextElementSibling || {}).firstElementChild);
+  _focusHtmlElement(getRefValue(ref)?.nextElementSibling?.firstElementChild);
 };
 exports.focusRefNextSiblingFirstChildElement = focusRefNextSiblingFirstChildElement;
-const getRefElementStyle = ref => (getRefValue(ref) || {}).style;
+const getRefElementStyle = ref => getRefValue(ref)?.style;
 exports.getRefElementStyle = getRefElementStyle;
 const setRefInputValue = (refInput, value) => {
   const _input = getRefValue(refInput);
@@ -91,8 +89,9 @@ const EVENT_TEST_PASSIVE = "testPassive",
   IS_SUPPORT_PASSIVE_EVENT = (() => {
     try {
       const options = Object.defineProperty({}, "passive", {
-        get: function () {
-          return options._r = true;
+        get: () => {
+          options._r = true;
+          return options._r;
         }
       });
       window.addEventListener(EVENT_TEST_PASSIVE, null, options);
@@ -105,7 +104,7 @@ const EVENT_TEST_PASSIVE = "testPassive",
 const PASSIVE_EVENT_OPTIONS = exports.PASSIVE_EVENT_OPTIONS = IS_SUPPORT_PASSIVE_EVENT ? {
   passive: true
 } : false;
-const _getFirstTouches = touches => touches && touches[0] || {},
+const _getFirstTouches = touches => touches?.[0] || {},
   CLIENT_X = 'clientX',
   CLIENT_Y = 'clientY',
   _fGetTouch = propName => touches => _getFirstTouches(touches)[propName],

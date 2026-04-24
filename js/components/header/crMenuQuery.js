@@ -5,8 +5,8 @@ exports.__esModule = true;
 exports.default = void 0;
 var _ProviderNames = require("../../conf/ProviderNames");
 var _NewsQuery = _interopRequireDefault(require("../../conf/NewsQuery"));
+var _bindTo = require("../../utils/bindTo");
 var _compStore = require("../../flux/compStore");
-var _uiApi = require("../uiApi");
 var _has = require("../has");
 const S_FIRST_ITEM = {
   paddingTop: 2
@@ -18,7 +18,7 @@ const _fOnClick = (onClose, id) => evt => {
 let _menuQuery;
 const crMenuQuery = (APP_TITLE, onNewsSources, onAbout, onClose) => {
   if (!_menuQuery) {
-    const _crOnClick = (0, _uiApi.bindTo)(_fOnClick, onClose);
+    const _crOnClick = (0, _bindTo.bindTo)(_fOnClick, onClose);
     const _fOnMenuItem = onClick => () => {
       onClick();
       onClose();

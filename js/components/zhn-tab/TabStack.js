@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _bindTo = require("../../utils/bindTo");
 var _uiApi = require("../uiApi");
 var _ItemStack = _interopRequireDefault(require("../zhn/ItemStack"));
 var _tabPaneFn = require("./tabPaneFn");
@@ -19,8 +20,8 @@ const _crItemTab = (tabEl, index, _ref) => {
     id,
     index: index,
     isSelected: index === selectedTabIndex,
-    onClick: (0, _uiApi.bindTo)(hClick, index, tabEl),
-    onKeyDown: (0, _uiApi.bindTo)(hKeyDown, index, tabEl)
+    onClick: (0, _bindTo.bindTo)(hClick, index, tabEl),
+    onKeyDown: (0, _bindTo.bindTo)(hKeyDown, index, tabEl)
   });
 };
 const _crNextId = (id, childrenLength) => id === -1 ? childrenLength - 1 : id === childrenLength ? 0 : id;

@@ -1,8 +1,4 @@
 export {
-  bindTo
-} from '../utils/bindTo';
-
-export {
   isFn,
   isArr
 } from '../utils/isTypeFn';
@@ -145,7 +141,7 @@ const EVENT_TEST_PASSIVE = "testPassive"
     try {
       const options = Object.defineProperty({}, "passive", {
         get: () => {
-          options._r = true 
+          options._r = true
           return options._r;
         }
       })

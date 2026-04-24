@@ -14,9 +14,9 @@ import {
 } from '../../conf/ProviderNames';
 
 import QUERY from '../../conf/NewsQuery';
+import { bindTo } from '../../utils/bindTo';
 
 import { showDialog } from '../../flux/compStore';
-import { bindTo } from '../uiApi';
 import { HAS_WIDE_SCREEN } from '../has';
 
 const S_FIRST_ITEM = {

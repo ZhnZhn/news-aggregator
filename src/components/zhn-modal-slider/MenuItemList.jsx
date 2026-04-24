@@ -1,6 +1,8 @@
 import {
+  bindTo
+} from '../../utils/bindTo';
+import {
   isFn,
-  bindTo,
   safeMap
 } from '../uiApi';
 
