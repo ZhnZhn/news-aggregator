@@ -1,10 +1,12 @@
 //import PropTypes from 'prop-types'
 import {
+  isFn
+} from '../../utils/isTypeFn';
+import {
   useRef,
   useMemo,
   useEffect,
   useImperativeHandle,
-  isFn,
   getRefValue,
   setRefValue,
   focusRefElement

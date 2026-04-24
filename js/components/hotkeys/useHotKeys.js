@@ -2,12 +2,13 @@
 
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _hmHotkeys = require("./hm-hotkeys");
 const _onKeyDown = evt => {
   if ((evt.altKey || evt.metaKey) && evt.key) {
     const _onKeyDownHotKey = _hmHotkeys.hmHotKeys[evt.key.toUpperCase()];
-    if ((0, _uiApi.isFn)(_onKeyDownHotKey)) {
+    if ((0, _isTypeFn.isFn)(_onKeyDownHotKey)) {
       evt.stopImmediatePropagation();
       _onKeyDownHotKey();
     }

@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _crStyle = require("../crStyle");
 var _useToggle = _interopRequireDefault(require("../hooks/useToggle"));
@@ -32,7 +33,6 @@ const OpenClose = _ref => {
     refBt,
     isClose = true,
     style,
-    itemStyle,
     captionStyle,
     caption,
     fillOpen = FILL_OPEN,
@@ -42,7 +42,7 @@ const OpenClose = _ref => {
   } = _ref;
   const _childrenWrapperId = (0, _uiApi.useId)(),
     [isOpen, toggleIsOpen] = (0, _useToggle.default)(!isClose),
-    _onToggle = (0, _uiApi.isFn)(onToggle) ? () => {
+    _onToggle = (0, _isTypeFn.isFn)(onToggle) ? () => {
       onToggle(!isOpen, caption, toggleIsOpen);
       toggleIsOpen();
     } : toggleIsOpen,

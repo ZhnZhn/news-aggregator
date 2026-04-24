@@ -1,9 +1,10 @@
+import { 
+  isArr
+} from '../../utils/isTypeFn';
 import {
   useRef,
   useMemo
 } from '../uiApi';
-
-const _isArr = Array.isArray;
 
 const _getFocusRefImpl = (
   refFirst,
@@ -26,7 +27,7 @@ const useItemsFocusTrap = (
   , _refFirstItem = ref1 || _ref1
   , _refLastItem = ref2 || _ref2
   , _getFocusRef = useMemo(() =>
-    _isArr(items) ? (index) => {
+    isArr(items) ? (index) => {
     const _lastIndex = items.length - 1;
     return _getFocusRefImpl(
       _refFirstItem,

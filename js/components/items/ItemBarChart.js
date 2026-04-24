@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _crStyle = require("../crStyle");
 var _useItemType = _interopRequireDefault(require("./useItemType1"));
@@ -13,7 +14,6 @@ var _jsxRuntime = require("preact/jsx-runtime");
 const S_BAR_CHART = {
   padding: '6px 0'
 };
-const _isArr = Array.isArray;
 const ItemBarChart = _ref => {
   let {
     categoryBars,
@@ -24,12 +24,12 @@ const ItemBarChart = _ref => {
     _closeItem = (0, _uiApi.useMemo)(() => () => setIsClosed(true), []),
     [isShowDescr, _hToggle] = (0, _useItemType.default)();
   (0, _uiApi.useEffect)(() => {
-    if (_isArr(categoryBars)) {
+    if ((0, _isTypeFn.isArr)(categoryBars)) {
       setIsClosed(false);
     }
   }, [categoryBars]);
   const _style = (0, _crStyle.crStyle2)(_Item.S_ITEM, isClosed && _crStyle.S_NONE);
-  return _isArr(categoryBars) ? (0, _jsxRuntime.jsx)("div", {
+  return (0, _isTypeFn.isArr)(categoryBars) ? (0, _jsxRuntime.jsx)("div", {
     style: _style,
     children: (0, _jsxRuntime.jsx)(_ItemType.default, {
       title: `Categories Bar Chart (${numberOfItems})`,

@@ -1,7 +1,5 @@
-import {
-  isFn,
-  useReducer
-} from '../uiApi';
+import { isFn } from '../../utils/isTypeFn';
+import { useReducer } from '../uiApi';
 
 const _initState = (
   fnOrInitialValue

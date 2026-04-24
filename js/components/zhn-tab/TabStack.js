@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _bindTo = require("../../utils/bindTo");
 var _uiApi = require("../uiApi");
 var _ItemStack = _interopRequireDefault(require("../zhn/ItemStack"));
@@ -37,7 +38,7 @@ const TabStack = _ref2 => {
   /*eslint-disable react-hooks/exhaustive-deps */
   const _hClick = (0, _uiApi.useCallback)((index, tabEl) => {
       setTabIndex(index);
-      if ((0, _uiApi.isFn)(tabEl.props.onClick)) {
+      if ((0, _isTypeFn.isFn)(tabEl.props.onClick)) {
         tabEl.props.onClick();
       }
     }, [])

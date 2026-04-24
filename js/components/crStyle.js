@@ -2,7 +2,7 @@
 
 exports.__esModule = true;
 exports.crWithScrollCn = exports.crTextLeftCn = exports.crStyle2 = exports.crShowHideStyle = exports.crShowHide = exports.crPopupMenuCn = exports.crPaneCn = exports.crInlineBlockShowHide = exports.crContainerBgCn = exports.crCn = exports.crBoxShadowCn = exports.S_NONE = exports.S_INLINE_BLOCK = exports.S_COLOR_BLACK = exports.S_BLOCK = exports.COLOR_BLACK = exports.CL_SHOW_POPUP = exports.CL_SELECT_NONE = exports.CL_ROW_NEWS_SOURCE = exports.CL_MENU_MORE_ITEM = exports.CL_HRZ_CONTAINER = exports.CL_DIALOG = void 0;
-var _uiApi = require("./uiApi");
+var _isTypeFn = require("../utils/isTypeFn");
 const CL_SELECT_NONE = exports.CL_SELECT_NONE = 'select-none';
 const CL_MENU_MORE_ITEM = exports.CL_MENU_MORE_ITEM = `menu-more__item ${CL_SELECT_NONE}`;
 const CL_ROW_NEWS_SOURCE = exports.CL_ROW_NEWS_SOURCE = `row__news-source ${CL_SELECT_NONE}`;
@@ -20,7 +20,7 @@ const S_INLINE_BLOCK = exports.S_INLINE_BLOCK = {
 const S_NONE = exports.S_NONE = {
   display: 'none'
 };
-const _getCn = arrOrStr => (0, _uiApi.isArr)(arrOrStr) ? arrOrStr[0] ? arrOrStr[1] : '' : arrOrStr || '';
+const _getCn = arrOrStr => (0, _isTypeFn.isArr)(arrOrStr) ? arrOrStr[0] ? arrOrStr[1] : '' : arrOrStr || '';
 const crCn = (conf1, conf2) => {
   const _cl1 = _getCn(conf1),
     _cl2 = _getCn(conf2);

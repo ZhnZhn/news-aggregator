@@ -1,7 +1,5 @@
-import {
-  isFn,
-  useMemo
-} from '../uiApi';
+import { isFn } from '../../utils/isTypeFn';
+import { useMemo } from '../uiApi';
 
 import BtSvgX from '../zhn/BtSvgX';
 import { CL_ITEM_CAPTION } from './Item.Style';

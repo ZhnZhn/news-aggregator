@@ -1,3 +1,5 @@
+import { isArr } from '../../utils/isTypeFn';
+
 import {
   S_DIALOG_CAPTION,
   S_BROWSER_CAPTION,
@@ -14,11 +16,9 @@ import { FlexColumn } from '../zhn/FlexToken';
 import StackInputs from '../zhn-inputs/StackInputs';
 import PoweredBy from '../links/PoweredBy';
 
-const _isArr = Array.isArray;
-
 const _hasMenuToggle = (
   menuToggle
-) => _isArr(menuToggle) && menuToggle.length > 1;
+) => isArr(menuToggle) && menuToggle.length > 1;
 
 const DialogStackInputs = (props) => {
   const [

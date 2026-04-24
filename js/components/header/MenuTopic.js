@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _uiApi = require("../uiApi");
+var _isTypeFn = require("../../utils/isTypeFn");
 var _crStyle = require("../crStyle");
 var _OpenClose = _interopRequireDefault(require("../zhn/OpenClose"));
 var _MenuItem = _interopRequireDefault(require("../zhn/MenuItem"));
@@ -13,11 +13,11 @@ const S_HORIZONTAL_LINE = {
   margin: '0 16px',
   borderBottom: `1px solid ${_crStyle.COLOR_BLACK}`
 };
-const MenuTopic = props => (0, _uiApi.isArr)(props.items) ? (0, _jsxRuntime.jsx)(_OpenClose.default, {
+const MenuTopic = props => (0, _isTypeFn.isArr)(props.items) ? (0, _jsxRuntime.jsx)(_OpenClose.default, {
   refBt: props.refBt,
   caption: props.caption,
   onToggle: props.onToggle,
-  children: props.items.map(config => (0, _uiApi.isArr)(config) ? (0, _jsxRuntime.jsx)(_MenuItem.default, {
+  children: props.items.map(config => (0, _isTypeFn.isArr)(config) ? (0, _jsxRuntime.jsx)(_MenuItem.default, {
     className: CL_ITEM,
     caption: config[0],
     onClick: config[1],

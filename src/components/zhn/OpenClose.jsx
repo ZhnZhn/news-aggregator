@@ -1,7 +1,5 @@
-import {
-  isFn,
-  useId
-} from '../uiApi';
+import { isFn } from '../../utils/isTypeFn';
+import { useId } from '../uiApi';
 
 import {
   S_BLOCK,
@@ -37,7 +35,7 @@ const FILL_OPEN = "currentColor"
 const OpenClose = ({
   refBt,
   isClose=true,
-  style, 
+  style,
   captionStyle,
   caption,
   fillOpen=FILL_OPEN,

@@ -1,10 +1,6 @@
-export {
-  isFn,
-  isArr
-} from '../utils/isTypeFn';
 import {
-  isFn,
-  isArr
+  isArr,
+  isFn
 } from '../utils/isTypeFn';
 
 export {

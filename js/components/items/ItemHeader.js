@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _BtSvgX = _interopRequireDefault(require("../zhn/BtSvgX"));
 var _Item = require("./Item.Style");
@@ -24,7 +25,7 @@ const ItemHeader = _ref => {
     if (evt.keyCode === 13) {
       onToggle();
     } else {
-      if ((0, _uiApi.isFn)(onKeyDown)) {
+      if ((0, _isTypeFn.isFn)(onKeyDown)) {
         onKeyDown(evt);
       }
     }

@@ -1,3 +1,6 @@
+import { 
+  isArr
+} from '../../utils/isTypeFn';
 import {
   useState,
   useMemo,
@@ -19,8 +22,6 @@ const S_BAR_CHART = {
   padding: '6px 0'
 };
 
-const _isArr = Array.isArray;
-
 const ItemBarChart = ({
   categoryBars,
   maxValue,
@@ -39,7 +40,7 @@ const ItemBarChart = ({
   ] = useItemType1();
 
   useEffect(() => {
-    if (_isArr(categoryBars)) {
+    if (isArr(categoryBars)) {
       setIsClosed(false)
     }
   }, [categoryBars])
@@ -49,7 +50,7 @@ const ItemBarChart = ({
     isClosed && S_NONE
   );
 
-  return _isArr(categoryBars) ? (
+  return isArr(categoryBars) ? (
     <div style={_style}>
        <ItemType1
          title={`Categories Bar Chart (${numberOfItems})`}

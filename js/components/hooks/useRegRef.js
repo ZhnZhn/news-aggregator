@@ -2,13 +2,14 @@
 
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 const useRegRef = onReg => {
   const ref = (0, _uiApi.useRef)(null);
   /*eslint-disable react-hooks/exhaustive-deps */
   (0, _uiApi.useEffect)(() => {
     const _node = ref.current;
-    if ((0, _uiApi.isFn)(onReg) && _node) {
+    if ((0, _isTypeFn.isFn)(onReg) && _node) {
       onReg(_node);
     }
     return () => {

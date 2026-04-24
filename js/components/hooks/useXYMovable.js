@@ -2,10 +2,10 @@
 
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _has = require("../has");
 const _assign = Object.assign,
-  _isArr = Array.isArray,
   NOT_HAS_TOUCH_EVENTS = !_has.HAS_TOUCH_EVENTS,
   EVENT_OPTIONS = _has.HAS_TOUCH_EVENTS ? _uiApi.PASSIVE_EVENT_OPTIONS : false,
   [INIT_EVENT, MOVE_EVENT, CANCEL_EVENT, RESET_EVENT] = _has.HAS_TOUCH_EVENTS ? [_uiApi.EVENT_TOUCH_START, _uiApi.EVENT_TOUCH_MOVE, _uiApi.EVENT_TOUCH_CANCEL, _uiApi.EVENT_TOUCH_END] : ['mousedown', 'mousemove', 'mouseleave', 'mouseup'];
@@ -16,11 +16,11 @@ const VALUE_GAP = 8;
 const _crNextValue = (value, maxValue) => value > 0 ? value > maxValue ? maxValue - 2 * VALUE_GAP : value : VALUE_GAP;
 const START_EVENT_GAP = 22;
 const _isValueInGapRange = (from, to, value) => value - from > START_EVENT_GAP && to - value > START_EVENT_GAP;
-const _getComposedPath = evt => (0, _uiApi.isFn)(evt.composedPath) ? evt.composedPath() : void 0;
+const _getComposedPath = evt => (0, _isTypeFn.isFn)(evt.composedPath) ? evt.composedPath() : void 0;
 const _isExcludeElement = element => element.tagName === 'BUTTON' || element.dataset.scrollable;
 const _isInitEvent = (evt, initialEvtClientX, initialEvtClientY, element) => {
   const _composedPath = _getComposedPath(evt);
-  if (_isArr(_composedPath)) {
+  if ((0, _isTypeFn.isArr)(_composedPath)) {
     for (let i = 0; i < _composedPath.length; i++) {
       const _el = _composedPath[i];
       if (_isExcludeElement(_el)) {
@@ -62,8 +62,8 @@ const useXYMovable = refElement => {
         _nextLeft = _crNextValue(_prevLeft + _diffX, window.innerWidth - _element.clientWidth),
         _nextTop = _crNextValue(_prevTop + _diffY, window.innerHeight - _element.clientHeight);
       _assign(_elementStyle, {
-        top: _nextTop + "px",
-        left: _nextLeft + "px",
+        top: `${_nextTop}px`,
+        left: `${_nextLeft}px`,
         webkitTransform: '',
         transform: ''
       });
@@ -82,7 +82,7 @@ const useXYMovable = refElement => {
       }
       _diffX = (0, _uiApi.getClientX)(evt) - _initialEvtClientX;
       _diffY = (0, _uiApi.getClientY)(evt) - _initialEvtClientY;
-      const _translate = "translate(" + _diffX + "px," + _diffY + "px)";
+      const _translate = `translate(${_diffX}px,${_diffY}px)`;
       _assign(_elementStyle, {
         webkitTransform: _translate,
         transform: _translate
@@ -122,6 +122,5 @@ const useXYMovable = refElement => {
   //refElement
   /*eslint-enable react-hooks/exhaustive-deps */
 };
-var _default = useXYMovable;
-exports.default = _default;
+var _default = exports.default = useXYMovable;
 //# sourceMappingURL=useXYMovable.js.map

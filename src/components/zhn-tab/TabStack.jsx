@@ -1,10 +1,9 @@
-import {
-  bindTo
-} from '../../utils/bindTo';
+import { isFn } from '../../utils/isTypeFn';
+import { bindTo } from '../../utils/bindTo';
+
 import {
   cloneElement,
   useCallback,
-  isFn,
   focusElementById,
   stopDefaultFor
 } from '../uiApi';

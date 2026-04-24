@@ -1,5 +1,8 @@
 import {
   isFn,
+  isArr
+} from '../../utils/isTypeFn';
+import {
   useEffect,
 
   EVENT_TOUCH_START,
@@ -17,7 +20,6 @@ import {
 import { HAS_TOUCH_EVENTS } from '../has';
 
 const _assign = Object.assign
-, _isArr = Array.isArray
 , NOT_HAS_TOUCH_EVENTS = !HAS_TOUCH_EVENTS
 , EVENT_OPTIONS = HAS_TOUCH_EVENTS
    ? PASSIVE_EVENT_OPTIONS
@@ -82,7 +84,7 @@ const _isInitEvent = (
   element
 ) => {
   const _composedPath = _getComposedPath(evt);
-  if (_isArr(_composedPath)) {
+  if (isArr(_composedPath)) {
     for(let i=0; i<_composedPath.length; i++){
       const _el = _composedPath[i];
       if (_isExcludeElement(_el)) {

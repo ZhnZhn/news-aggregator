@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _Dialog = require("./Dialog.Style");
 var _useToggleState = _interopRequireDefault(require("../hooks/useToggleState"));
 var _useRefInputs = _interopRequireDefault(require("./hooks/useRefInputs"));
@@ -13,8 +14,7 @@ var _FlexToken = require("../zhn/FlexToken");
 var _StackInputs = _interopRequireDefault(require("../zhn-inputs/StackInputs"));
 var _PoweredBy = _interopRequireDefault(require("../links/PoweredBy"));
 var _jsxRuntime = require("preact/jsx-runtime");
-const _isArr = Array.isArray;
-const _hasMenuToggle = menuToggle => _isArr(menuToggle) && menuToggle.length > 1;
+const _hasMenuToggle = menuToggle => (0, _isTypeFn.isArr)(menuToggle) && menuToggle.length > 1;
 const DialogStackInputs = props => {
   const [isInputs, toggleInput] = (0, _useToggleState.default)(props.IS_INPUTS),
     [refInputs, selectInput] = (0, _useRefInputs.default)(props.INITIAL_INPUTS),

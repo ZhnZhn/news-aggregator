@@ -1,6 +1,6 @@
+import { isArr } from '../../utils/isTypeFn';
 
-const _isArr = Array.isArray
-, _getObjectKeys = Object.keys
+const _getObjectKeys = Object.keys
 , _sortTupleBy2 = (
   arr1,
   arr2
@@ -9,7 +9,7 @@ const _isArr = Array.isArray
 const crRelatedBars = (
   articles
 ) => {
-  if (!_isArr(articles)) {
+  if (!isArr(articles)) {
     return;
   }
   const hm = articles.reduce((hm, item) => {

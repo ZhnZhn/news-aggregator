@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _uiApi = require("../uiApi");
 var _has = require("../has");
 var _crStyle = require("../crStyle");
@@ -39,13 +40,13 @@ const DialogButtons = _ref => {
   } = _ref;
   return (0, _jsxRuntime.jsxs)("div", {
     style: S_BTS,
-    children: [(0, _uiApi.isFn)(onLoad) && (0, _jsxRuntime.jsx)(_RaisedButton.default, {
+    children: [(0, _isTypeFn.isFn)(onLoad) && (0, _jsxRuntime.jsx)(_RaisedButton.default, {
       isPrimary: true,
       style: _Dialog.S_BT_RAISED,
       caption: "Load",
       hotKey: HK_LOAD,
       onClick: onLoad
-    }), (0, _uiApi.isFn)(onShow) && (0, _jsxRuntime.jsx)(_RaisedButton.default, {
+    }), (0, _isTypeFn.isFn)(onShow) && (0, _jsxRuntime.jsx)(_RaisedButton.default, {
       style: _Dialog.S_BT_RAISED,
       caption: "Show",
       hotKey: HK_SHOW,

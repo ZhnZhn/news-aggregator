@@ -1,4 +1,4 @@
-import { isArr } from './uiApi';
+import { isArr } from '../utils/isTypeFn';
 
 export const CL_SELECT_NONE = 'select-none'
 export const CL_MENU_MORE_ITEM = `menu-more__item ${CL_SELECT_NONE}`

@@ -1,7 +1,9 @@
 import {
-  useRef,
-  useEffect,
   isFn
+} from '../../utils/isTypeFn';
+import {
+  useRef,
+  useEffect
 } from '../uiApi';
 
 const useRegRef = (onReg) => {

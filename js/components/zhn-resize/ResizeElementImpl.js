@@ -2,8 +2,8 @@
 
 exports.__esModule = true;
 exports.default = void 0;
+var _isTypeFn = require("../../utils/isTypeFn");
 var _bindTo = require("../../utils/bindTo");
-var _uiApi = require("../uiApi");
 const _isNaN = Number.isNaN,
   _assign = Object.assign,
   _initResizeProperties = inst => {
@@ -66,7 +66,7 @@ class ResizeElementImpl {
     const {
       onResizeAfter
     } = this;
-    if ((0, _uiApi.isFn)(onResizeAfter)) {
+    if ((0, _isTypeFn.isFn)(onResizeAfter)) {
       onResizeAfter(this._getElementWidth());
     }
   };

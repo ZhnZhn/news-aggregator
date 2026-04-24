@@ -1,4 +1,4 @@
-import { isArr } from '../uiApi';
+import { isArr } from '../../utils/isTypeFn';
 import { COLOR_BLACK } from '../crStyle';
 
 import OpenClose from '../zhn/OpenClose';

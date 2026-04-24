@@ -1,10 +1,6 @@
-import {
-  bindTo
-} from '../../utils/bindTo';
-import {
-  isFn,
-  safeMap
-} from '../uiApi';
+import { isFn } from '../../utils/isTypeFn';
+import { bindTo } from '../../utils/bindTo';
+import { safeMap } from '../uiApi';
 
 import MenuItem from '../zhn/MenuItem';
 

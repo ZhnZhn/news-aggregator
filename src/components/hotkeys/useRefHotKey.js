@@ -1,7 +1,6 @@
-import { 
-  useEffect,
-  isFn
-} from '../uiApi';
+import { isFn } from '../../utils/isTypeFn';
+import { useEffect } from '../uiApi';
+
 import {
   HAS_HOT_KEYS,
   HOT_KEY_EVENT
