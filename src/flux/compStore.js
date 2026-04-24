@@ -1,8 +1,10 @@
 import {
+  bindTo
+} from '../utils/bindTo';
+import {
   createStoreWithSelector,
   fCrUse,
   fUseStoreState,
-  bindTo,
   getStoreApi,
   fCrStoreSlice
 } from './storeApi';

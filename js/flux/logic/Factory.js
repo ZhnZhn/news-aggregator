@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.createNewsPane = exports.createDialog = void 0;
-var _storeApi = require("../storeApi");
+var _bindTo = require("../../utils/bindTo");
 var _compStore = require("../compStore");
 var _itemStore = require("../itemStore");
 var _RouterDialog = _interopRequireDefault(require("../../components/dialogs/RouterDialog"));
@@ -20,7 +20,7 @@ const createDialog = itemConf => {
     type: type,
     itemConf: itemConf,
     ...dialogProps,
-    onShow: (0, _storeApi.bindTo)(_compStore.showNewsPane, itemConf),
+    onShow: (0, _bindTo.bindTo)(_compStore.showNewsPane, itemConf),
     onLoad: _itemStore.loadItem
   }, type);
 };
@@ -39,7 +39,7 @@ const createNewsPane = (itemConf, useMsPane) => {
     Item: CompItem,
     useMsPane: useMsPane,
     useMsItem: _itemStore.useMsItem,
-    onRemoveItems: (0, _storeApi.bindTo)(_itemStore.removeItems, paneId),
+    onRemoveItems: (0, _bindTo.bindTo)(_itemStore.removeItems, paneId),
     onRemoveUnder: _itemStore.removeUnderItems,
     onCloseItem: _itemStore.removeItem
   }, type);

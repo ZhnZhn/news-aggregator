@@ -3,6 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.useMsPane = exports.useMsModalDialog = exports.useMsDialog = exports.useMsBrowser = exports.useMsAbout = exports.useDialogItems = exports.showSettingsDialog = exports.showNewsPane = exports.showNewsBrowser = exports.showDialog = exports.showAlertDialog = exports.showAbout = exports.removeDialogItems = exports.closeDialog = void 0;
+var _bindTo = require("../utils/bindTo");
 var _storeApi = require("./storeApi");
 var _settingStore = _interopRequireDefault(require("./settingStore"));
 var _MdType = require("../conf/MdType");
@@ -37,8 +38,8 @@ const _showModalDialog = function (type, option) {
   option.modalDialogType = type;
   _set(_crMsModalDialog(option));
 };
-const showSettingsDialog = exports.showSettingsDialog = (0, _storeApi.bindTo)(_showModalDialog, _MdType.SETTINGS_DIALOG, _settingStore.default.exportSettingsFn());
-const showAlertDialog = exports.showAlertDialog = (0, _storeApi.bindTo)(_showModalDialog, _MdType.ALERT_DIALOG);
+const showSettingsDialog = exports.showSettingsDialog = (0, _bindTo.bindTo)(_showModalDialog, _MdType.SETTINGS_DIALOG, _settingStore.default.exportSettingsFn());
+const showAlertDialog = exports.showAlertDialog = (0, _bindTo.bindTo)(_showModalDialog, _MdType.ALERT_DIALOG);
 const useMsDialog = exports.useMsDialog = (0, _storeApi.fCrUse)(_compStore, _selectMsDialog);
 const useDialogItems = exports.useDialogItems = (0, _storeApi.fUseStoreState)(_compStore, _selectDialogItems);
 const showDialog = itemConf => _set(_crMsDialog((0, _ComponentSliceFn.showDialogImpl)(_dialogInited, itemConf)));
@@ -51,7 +52,7 @@ const useMsBrowser = exports.useMsBrowser = (0, _storeApi.fCrUse)(_compStore, _s
 const _showBrowser = browserId => {
   _set(_crMsBrowser(browserId));
 };
-const showNewsBrowser = exports.showNewsBrowser = (0, _storeApi.bindTo)(_showBrowser, _NewsMenu.default.NEWS);
+const showNewsBrowser = exports.showNewsBrowser = (0, _bindTo.bindTo)(_showBrowser, _NewsMenu.default.NEWS);
 const useMsPane = exports.useMsPane = (0, _storeApi.fCrUse)(_compStore, _selectMsPane);
 const showNewsPane = itemConf => {
   _set({

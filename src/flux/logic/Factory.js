@@ -1,6 +1,6 @@
 import {
   bindTo
-} from '../storeApi';
+} from '../../utils/bindTo';
 import {
   showNewsPane
 } from '../compStore';

@@ -5,7 +5,6 @@ exports.__esModule = true;
 exports.getStoreApi = exports.fUseStoreState = exports.fCrUse = exports.fCrStoreSlice = exports.createStoreWithSelector = exports.atom = void 0;
 var _isTypeFn = require("../utils/isTypeFn");
 var _bindTo = require("../utils/bindTo");
-exports.bindTo = _bindTo.bindTo;
 var _zustandLite = require("./zustand-lite");
 var _useSubscribe = _interopRequireDefault(require("../components/hooks/useSubscribe"));
 var _useSubscribeState = _interopRequireDefault(require("../components/hooks/useSubscribeState"));

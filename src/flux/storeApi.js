@@ -1,6 +1,4 @@
 import { isFn } from '../utils/isTypeFn';
-
-export { bindTo } from '../utils/bindTo';
 import { bindTo } from '../utils/bindTo';
 
 import {
