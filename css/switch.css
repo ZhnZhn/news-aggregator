@@ -26,6 +26,7 @@
   display: inline-block;  
   width: 2rem;
   height: 1.2rem;
+  flex: 0 0 2rem;
   border-radius: 10px;
   cursor: pointer;
 }
@@ -33,7 +34,7 @@
 .switch-thumb {
   display: inline-block;
   width: 0.8rem;
-  height: 0.8rem;
+  height: 0.8rem;  
   border-radius: 50%;    
   outline: 0;
   border: 0;
