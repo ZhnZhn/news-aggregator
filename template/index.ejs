@@ -45,12 +45,13 @@
   <%
     for (let index in htmlWebpackPlugin.files.js) {
      const fileName = htmlWebpackPlugin.files.js[index];
-     if (fileName.indexOf('lib_') !== -1) { %>
+     if (fileName.indexOf('app_') !== -1
+         || fileName.indexOf('runtime_') !== -1
+         || fileName.indexOf('lib_') !== -1
+         || fileName.indexOf('dompurify_') !== -1 ) { %>
        <script src="<%=fileName %>" defer></script>
-     <% } else if (fileName.indexOf('app_') !== -1) { %>
-       <script src="<%=fileName %>" defer></script>
-     <% }
-    } %>     
+     <% } 
+   } %>     
 
 </body>
 </html>

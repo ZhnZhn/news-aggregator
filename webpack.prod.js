@@ -12,12 +12,14 @@ module.exports = {
   entry: {
     app: {
       import: path.resolve('src', 'index.jsx'),
-      dependOn: 'lib'
+      dependOn: ['lib','dompurify']
     },
     lib: [       
-       "preact/compat",                   
-       "dompurify"       
+       "preact/compat"              
     ],
+    dompurify: [
+       "dompurify"       
+    ]
   },
   output: {
       path: path.resolve('app'),
@@ -61,6 +63,7 @@ module.exports = {
     })
   ],
   optimization: {
+    runtimeChunk: 'single',
     minimize: true,
     minimizer: [new TerserPlugin()]
   }
