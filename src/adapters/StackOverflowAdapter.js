@@ -1,7 +1,4 @@
 import { crId } from '../utils/crId';
-import { domSanitize } from '../utils/domSanitize';
-
-import sanitizeArticle from './sanitizeArticle';
 
 const _rSourceId = {
   SO_TAGGED: 'stack_tagged',
@@ -22,9 +19,9 @@ const _crArticle = (
   return _assign(item, {
     articleId: question_id || crId(),
     source: sourceId,
-    title: domSanitize(title),
+    title,
     owner: {
-      display_name: domSanitize(owner.display_name)
+      display_name: owner.display_name
     }
   })
 }
@@ -33,9 +30,7 @@ const _crArticles = (
   items,
   sourceId
 ) => items
-  .map(item => sanitizeArticle(
-      _crArticle(item, sourceId)
-  ))
+  .map(item => _crArticle(item, sourceId))
 
 const StackOverflowAdapter = {
   toNews: (json, option) => {

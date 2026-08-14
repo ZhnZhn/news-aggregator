@@ -2,8 +2,6 @@ import { safeFormatMls } from '../utils/formatDate';
 import { toFirstUpperCase } from '../utils/toFirstUpperCase';
 import { splitByParagraph } from '../utils/splitByParagraph';
 
-import sanitizeArticle from './sanitizeArticle';
-
 const _assign = Object.assign
 , _isArr = Array.isArray
 , _crHm = () => Object.create(null);
@@ -70,8 +68,7 @@ const _toArticles = (
     }
   })
 
-  return articles
-    .map(sanitizeArticle);
+  return articles;
 };
 
 const WebzAdapter = {

@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
-var _domSanitize = require("../../utils/domSanitize");
+var _isTypeFn = require("../../utils/isTypeFn");
 var _memoFn = require("../hoc/memoFn");
 var _Dialog = require("./Dialog.Style");
 var _ModalDialog = _interopRequireDefault(require("../zhn-moleculs/ModalDialog"));
@@ -26,36 +26,33 @@ const S_DIALOG = {
     whiteSpace: 'pre-line',
     wordBreak: 'break-word'
   };
+const DF_ERR_MESSAGE = 'Exception Message';
 const _toMsg = data => {
   if (data instanceof TypeError) {
     return data.message;
+  }
+  if (!(0, _isTypeFn.isObj)(data)) {
+    return DF_ERR_MESSAGE;
   }
   const {
     status,
     url,
     msg
-  } = data || {};
-  return status ? `${url}\ncode:${status}\nNetwork exception` : msg || 'Exception Message';
+  } = data;
+  return status ? `${url}\ncode:${status}\nNetwork exception` : msg || DF_ERR_MESSAGE;
 };
-const AlertDialog = (0, _memoFn.memoIsShow)(_ref => {
-  let {
-    isShow,
-    data,
-    onClose
-  } = _ref;
-  return (0, _jsxRuntime.jsx)(_ModalDialog.default, {
-    isShow: isShow,
-    isClosePrimary: true,
-    style: S_DIALOG,
-    captionStyle: _Dialog.S_BROWSER_CAPTION,
-    caption: "Exception",
-    onClose: onClose,
-    children: (0, _jsxRuntime.jsx)("p", {
-      style: S_MSG,
-      children: (0, _domSanitize.domSanitize)(_toMsg(data))
-    })
-  });
-});
+const AlertDialog = (0, _memoFn.memoIsShow)(props => (0, _jsxRuntime.jsx)(_ModalDialog.default, {
+  isShow: props.isShow,
+  isClosePrimary: true,
+  style: S_DIALOG,
+  captionStyle: _Dialog.S_BROWSER_CAPTION,
+  caption: "Exception",
+  onClose: props.onClose,
+  children: (0, _jsxRuntime.jsx)("p", {
+    style: S_MSG,
+    children: _toMsg(props.data)
+  })
+}));
 
 /*
 AlertDialog.propTypes = {

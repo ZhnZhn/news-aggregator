@@ -1,11 +1,8 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
 var _crId = require("../utils/crId");
-var _domSanitize = require("../utils/domSanitize");
-var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
 const _rSourceId = {
   SO_TAGGED: 'stack_tagged',
   SO_SEARCH: 'stack_search'
@@ -20,13 +17,13 @@ const _crArticle = (item, sourceId) => {
   return _assign(item, {
     articleId: question_id || (0, _crId.crId)(),
     source: sourceId,
-    title: (0, _domSanitize.domSanitize)(title),
+    title,
     owner: {
-      display_name: (0, _domSanitize.domSanitize)(owner.display_name)
+      display_name: owner.display_name
     }
   });
 };
-const _crArticles = (items, sourceId) => items.map(item => (0, _sanitizeArticle.default)(_crArticle(item, sourceId)));
+const _crArticles = (items, sourceId) => items.map(item => _crArticle(item, sourceId));
 const StackOverflowAdapter = {
   toNews: (json, option) => {
     const {

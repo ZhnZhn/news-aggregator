@@ -1,5 +1,5 @@
 //import PropTypes from 'prop-types'
-import { domSanitize } from '../../utils/domSanitize';
+import { isObj } from '../../utils/isTypeFn';
 import { memoIsShow } from '../hoc/memoFn';
 import { S_BROWSER_CAPTION } from './Dialog.Style';
 
@@ -22,20 +22,24 @@ const S_DIALOG = {
   wordBreak: 'break-word'
 };
 
+const DF_ERR_MESSAGE = 'Exception Message';
 const _toMsg = (
   data
 ) => {
   if (data instanceof TypeError){
     return data.message;
   }
+  if (!isObj(data)) {
+    return DF_ERR_MESSAGE;
+  }
   const {
     status,
     url,
     msg
-  } = data || {};
+  } = data;
   return status
     ? `${url}\ncode:${status}\nNetwork exception`
-    : msg || 'Exception Message';
+    : msg || DF_ERR_MESSAGE;
 };
 
 const AlertDialog = memoIsShow(props => (
@@ -48,7 +52,7 @@ const AlertDialog = memoIsShow(props => (
      onClose={props.onClose}
   >
     <p style={S_MSG}>
-      {domSanitize(_toMsg(props.data))}
+      {_toMsg(props.data)}
     </p>
   </ModalDialog>
 ));

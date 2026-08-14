@@ -2,7 +2,6 @@
 
 exports.__esModule = true;
 exports.rounBy = exports.filterTickerSentiment = exports.crTickerSentimentDescription = exports.crSentimentSummaryTitle = exports.crOverallSentimentDescription = void 0;
-var _domSanitize = require("../utils/domSanitize");
 const _isArr = Array.isArray,
   SENTIMENT_SCORE = 'sentiment_score',
   PN_OVERALL_SENTIMENT_SCORE = `overall_${SENTIMENT_SCORE}`,
@@ -53,11 +52,11 @@ const _fCrSentimentDescription = scorePropName => feed => {
       _arrBearish.push(score);
     }
   });
-  return [(0, _domSanitize.domSanitize)([_crValueName(_bullish, `Bullish${_crScoreList(_arrBullish)}`), _crValueName(_somewhatBullish, 'Somewhat-Bullish'), _crValueName(_neutral, 'Neutral'), _crValueName(_somewhatBearish, 'Somewhat-Bearish'), _crValueName(_bearish, `Bearish${_crScoreList(_arrBearish)}`)].filter(Boolean).join('\n')), _hmTickets];
+  return [[_crValueName(_bullish, `Bullish${_crScoreList(_arrBullish)}`), _crValueName(_somewhatBullish, 'Somewhat-Bullish'), _crValueName(_neutral, 'Neutral'), _crValueName(_somewhatBearish, 'Somewhat-Bearish'), _crValueName(_bearish, `Bearish${_crScoreList(_arrBearish)}`)].filter(Boolean).join('\n'), _hmTickets];
 };
 const crOverallSentimentDescription = exports.crOverallSentimentDescription = _fCrSentimentDescription(PN_OVERALL_SENTIMENT_SCORE);
 const crTickerSentimentDescription = exports.crTickerSentimentDescription = _fCrSentimentDescription(PN_TICKER_SENTIMENT_SCORE);
-const crSentimentSummaryTitle = prefix => (0, _domSanitize.domSanitize)(`${prefix} Sentiment Summary`);
+const crSentimentSummaryTitle = prefix => `${prefix} Sentiment Summary`;
 exports.crSentimentSummaryTitle = crSentimentSummaryTitle;
 const _fHasItemDescription = token => description => description.indexOf(token) !== -1,
   _hasDescriptionBearish = _fHasItemDescription('Bearish ('),

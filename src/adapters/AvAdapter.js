@@ -1,6 +1,5 @@
 import { safeFormatMls} from '../utils/formatDate';
 import { crId } from '../utils/crId';
-import { domSanitize } from '../utils/domSanitize';
 
 import { toMls } from '../utils/dt';
 
@@ -21,7 +20,7 @@ const _isArr = Array.isArray
 const _crOverallSentiment = (
   overallSentimentLabel,
   overallSentimentScore
-) => domSanitize(`${overallSentimentLabel} (${rounBy(overallSentimentScore)})`);
+) => `${overallSentimentLabel} (${rounBy(overallSentimentScore)})`;
 
 const _compareByRelevanceScore = (
   a,
@@ -41,10 +40,9 @@ const _crTickerSentiment = (
   if (!_isArr(tickerSentiment)) {
     return '';
   }
-  return domSanitize(tickerSentiment
+  return tickerSentiment
     .sort(_compareByRelevanceScore)
-    .reduce(_addTickerSentimentTo, '')
-  );
+    .reduce(_addTickerSentimentTo, '');
 }
 
 const _crArticle = ({

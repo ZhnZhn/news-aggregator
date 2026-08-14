@@ -11,7 +11,6 @@ import {
 } from '../utils/strFn';
 import { joinByBlank } from '../utils/joinBy';
 import { formatNumber } from '../utils/formatNumber';
-import { domSanitize } from '../utils/domSanitize';
 import { crId } from '../utils/crId';
 import { bindTo } from '../utils/bindTo';
 import { safeFormatMls } from '../utils/formatDate';
@@ -37,7 +36,7 @@ const _rSourceId = {
 
 const _crSubredditUrl = (
   subreddit
-) => domSanitize(`${API_URL}/${subreddit}`);
+) => `${API_URL}/${subreddit}`;
 
 const _crNoItemsTitle = ({
   subreddit,
@@ -47,7 +46,7 @@ const _crNoItemsTitle = ({
   const tokenQuery = q
     ? ` for ${q} query `
     : ' ';
-  return domSanitize(`No items were found in r/${subreddit}${tokenQuery}with ${t} period`);
+  return `No items were found in r/${subreddit}${tokenQuery}with ${t} period`;
 }
 
 const _isTitleStartWithTag = (
@@ -131,7 +130,7 @@ const _crSubredditTitleUrl = (
   title,
   subreddit
 ) => ({
-  title: domSanitize(title),
+  title,
   url: _crSubredditUrl(subreddit)
 })
 
@@ -143,7 +142,7 @@ const _crTitleAndUrl = (
     subreddit_subscribers
   } = data
   , _subreddit = crTitle(
-    domSanitize(subreddit)
+    subreddit
   )
   , _subscribers = formatNumber(
      subreddit_subscribers

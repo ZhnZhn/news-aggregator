@@ -1,5 +1,3 @@
-import { domSanitize } from '../utils/domSanitize';
-
 const _isArr = Array.isArray
 , SENTIMENT_SCORE = 'sentiment_score'
 , PN_OVERALL_SENTIMENT_SCORE = `overall_${SENTIMENT_SCORE}`
@@ -67,14 +65,14 @@ const _fCrSentimentDescription = (
     }
   })
   return [
-    domSanitize([
+    [
      _crValueName(_bullish, `Bullish${_crScoreList(_arrBullish)}`),
      _crValueName(_somewhatBullish, 'Somewhat-Bullish'),
      _crValueName(_neutral, 'Neutral'),
      _crValueName(_somewhatBearish, 'Somewhat-Bearish'),
      _crValueName(_bearish, `Bearish${_crScoreList(_arrBearish)}`)
     ].filter(Boolean)
-     .join('\n')),
+     .join('\n'),
    _hmTickets
  ];
 }
@@ -84,7 +82,7 @@ export const crTickerSentimentDescription = _fCrSentimentDescription(PN_TICKER_S
 
 export const crSentimentSummaryTitle = (
   prefix
-) => domSanitize(`${prefix} Sentiment Summary`);
+) => `${prefix} Sentiment Summary`;
 
 const _fHasItemDescription = (
   token

@@ -8,8 +8,6 @@ import { formatNumber } from '../utils/formatNumber';
 import { safeFormatMls } from '../utils/formatDate';
 import { crId } from '../utils/crId';
 
-import sanitizeArticle from './sanitizeArticle';
-
 const _isTopQuery = (
   option
 ) => option.loadId === 'TNT';
@@ -30,7 +28,7 @@ const _toArticles = (
         published_at,
         url
       } = item;
-      return sanitizeArticle({
+      return {
            source: sourceId,
            articleId: crId(),
            title,
@@ -40,7 +38,7 @@ const _toArticles = (
            publishedAt: published_at,
            timeAgo: safeFormatMls(dateTimeToMls(published_at), _nowMls),
            url
-        })
+        }
       })
     : [];
 }

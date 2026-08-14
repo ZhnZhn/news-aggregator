@@ -1,12 +1,10 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
 var _crId = require("../utils/crId");
 var _toFirstUpperCase = require("../utils/toFirstUpperCase");
 var _joinBy = require("../utils/joinBy");
-var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
 const NEWS_SEARCH = 'newsapi_search';
 const NEWS_TOP = 'newsapi_top';
 const _fToArticle = source => article => {
@@ -33,7 +31,7 @@ const NewsApiAdapter = {
       articles = [];
     }
     const _toArticle = source === NEWS_SEARCH || source === NEWS_TOP ? _fToSearchArticle(source) : _fToArticle(source);
-    return articles.map(item => (0, _sanitizeArticle.default)(_toArticle(item)));
+    return articles.map(item => _toArticle(item));
   },
   toNews: (json, option) => {
     const {

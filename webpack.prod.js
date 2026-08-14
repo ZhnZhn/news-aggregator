@@ -12,14 +12,11 @@ module.exports = {
   entry: {
     app: {
       import: path.resolve('src', 'index.jsx'),
-      dependOn: ['lib','dompurify']
+      dependOn: ['lib']
     },
     lib: [       
        "preact/compat"              
-    ],
-    dompurify: [
-       "dompurify"       
-    ]
+    ]    
   },
   output: {
       path: path.resolve('app'),

@@ -5,7 +5,6 @@ exports.__esModule = true;
 exports.default = void 0;
 var _formatDate = require("../utils/formatDate");
 var _crId = require("../utils/crId");
-var _domSanitize = require("../utils/domSanitize");
 var _dt = require("../utils/dt");
 var _adapterFn = require("./adapterFn");
 var _crArticles = _interopRequireDefault(require("./crArticles"));
@@ -13,14 +12,14 @@ var _AvFn = require("./AvFn");
 const _isArr = Array.isArray,
   _getObjectKeys = Object.keys,
   SOURCE_ID = 'av_sentiments';
-const _crOverallSentiment = (overallSentimentLabel, overallSentimentScore) => (0, _domSanitize.domSanitize)(`${overallSentimentLabel} (${(0, _AvFn.rounBy)(overallSentimentScore)})`);
+const _crOverallSentiment = (overallSentimentLabel, overallSentimentScore) => `${overallSentimentLabel} (${(0, _AvFn.rounBy)(overallSentimentScore)})`;
 const _compareByRelevanceScore = (a, b) => b.relevance_score === a.relevance_score ? b.ticker_sentiment_score - a.ticker_sentiment_score : b.relevance_score - a.relevance_score;
 const _addTickerSentimentTo = (str, item) => str + `${(0, _AvFn.rounBy)(item.relevance_score)} ${item.ticker} ${item.ticker_sentiment_label} (${(0, _AvFn.rounBy)(item.ticker_sentiment_score)})\n`;
 const _crTickerSentiment = tickerSentiment => {
   if (!_isArr(tickerSentiment)) {
     return '';
   }
-  return (0, _domSanitize.domSanitize)(tickerSentiment.sort(_compareByRelevanceScore).reduce(_addTickerSentimentTo, ''));
+  return tickerSentiment.sort(_compareByRelevanceScore).reduce(_addTickerSentimentTo, '');
 };
 const _crArticle = (_ref, nowMls) => {
   let {

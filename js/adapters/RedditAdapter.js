@@ -8,7 +8,6 @@ var _isTypeFn = require("../utils/isTypeFn");
 var _strFn = require("../utils/strFn");
 var _joinBy = require("../utils/joinBy");
 var _formatNumber = require("../utils/formatNumber");
-var _domSanitize = require("../utils/domSanitize");
 var _crId = require("../utils/crId");
 var _bindTo = require("../utils/bindTo");
 var _formatDate = require("../utils/formatDate");
@@ -19,7 +18,7 @@ const _rSourceId = {
   REDDIT: 'rd_topby',
   REDDIT_SEARCH: 'rd_searchby'
 };
-const _crSubredditUrl = subreddit => (0, _domSanitize.domSanitize)(`${_RedditApi.API_URL}/${subreddit}`);
+const _crSubredditUrl = subreddit => `${_RedditApi.API_URL}/${subreddit}`;
 const _crNoItemsTitle = _ref => {
   let {
     subreddit,
@@ -27,7 +26,7 @@ const _crNoItemsTitle = _ref => {
     q
   } = _ref;
   const tokenQuery = q ? ` for ${q} query ` : ' ';
-  return (0, _domSanitize.domSanitize)(`No items were found in r/${subreddit}${tokenQuery}with ${t} period`);
+  return `No items were found in r/${subreddit}${tokenQuery}with ${t} period`;
 };
 const _isTitleStartWithTag = (strTitle, strTag) => {
   if (strTitle[0] === '[') {
@@ -82,7 +81,7 @@ const _fFilterItemBy = subreddit => item => {
   return data && (0, _strFn.toLowerCase)(data.subreddit) === subreddit && !data.over_18 && !data.quarantine && !data.author_is_blocked;
 };
 const _crSubredditTitleUrl = (title, subreddit) => ({
-  title: (0, _domSanitize.domSanitize)(title),
+  title,
   url: _crSubredditUrl(subreddit)
 });
 const _crTitleAndUrl = data => {
@@ -90,7 +89,7 @@ const _crTitleAndUrl = data => {
       subreddit,
       subreddit_subscribers
     } = data,
-    _subreddit = (0, _adapterFn.crTitle)((0, _domSanitize.domSanitize)(subreddit)),
+    _subreddit = (0, _adapterFn.crTitle)(subreddit),
     _subscribers = (0, _formatNumber.formatNumber)(subreddit_subscribers);
   return _crSubredditTitleUrl(`r/${_subreddit} ${_subscribers}`, _subreddit);
 };
@@ -130,11 +129,11 @@ const _toArticles = (json, option, sourceId) => {
 const _getOptionAfter = (json, limit) => {
   const items = (0, _RedditApi.getItems)(json),
     itemsLength = items.length,
-    itemData = (items[itemsLength - 1] || {}).data || {};
-  return itemsLength === limit && parseInt(itemData.score) >= 1 ? itemData.name : void 0;
+    itemData = items[itemsLength - 1]?.data || {};
+  return itemsLength === limit && parseInt(itemData.score, 10) >= 1 ? itemData.name : void 0;
 };
 const _crPage = (json, option) => {
-  const after = _getOptionAfter(json, parseInt(option.limit));
+  const after = _getOptionAfter(json, parseInt(option.limit, 10));
   if (!after) {
     return;
   }

@@ -1,6 +1,5 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
 var _itemStore = require("../flux/itemStore");
@@ -11,7 +10,6 @@ var _toFirstUpperCase = require("../utils/toFirstUpperCase");
 var _formatNumber = require("../utils/formatNumber");
 var _formatDate = require("../utils/formatDate");
 var _crId = require("../utils/crId");
-var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
 const _isTopQuery = option => option.loadId === 'TNT';
 const _toArticles = (_ref, sourceId) => {
   let {
@@ -28,7 +26,7 @@ const _toArticles = (_ref, sourceId) => {
       published_at,
       url
     } = item;
-    return (0, _sanitizeArticle.default)({
+    return {
       source: sourceId,
       articleId: (0, _crId.crId)(),
       title,
@@ -38,7 +36,7 @@ const _toArticles = (_ref, sourceId) => {
       publishedAt: published_at,
       timeAgo: (0, _formatDate.safeFormatMls)((0, _dt.dateTimeToMls)(published_at), _nowMls),
       url
-    });
+    };
   }) : [];
 };
 const _crCaption = option => {

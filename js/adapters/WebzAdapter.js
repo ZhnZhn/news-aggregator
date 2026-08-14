@@ -1,12 +1,10 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
 exports.default = void 0;
 var _formatDate = require("../utils/formatDate");
 var _toFirstUpperCase = require("../utils/toFirstUpperCase");
 var _splitByParagraph = require("../utils/splitByParagraph");
-var _sanitizeArticle = _interopRequireDefault(require("./sanitizeArticle"));
 const _assign = Object.assign,
   _isArr = Array.isArray,
   _crHm = () => Object.create(null);
@@ -51,7 +49,7 @@ const _toArticles = (posts, sourceId, lang) => {
       _hm[_title] = true;
     }
   });
-  return articles.map(_sanitizeArticle.default);
+  return articles;
 };
 const WebzAdapter = {
   toNews: (json, option) => {

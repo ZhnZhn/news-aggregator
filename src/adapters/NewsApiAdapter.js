@@ -2,8 +2,6 @@ import { crId } from '../utils/crId';
 import { toFirstUpperCase } from '../utils/toFirstUpperCase';
 import { joinByComma } from '../utils/joinBy';
 
-import sanitizeArticle from './sanitizeArticle';
-
 const NEWS_SEARCH = 'newsapi_search';
 const NEWS_TOP = 'newsapi_top';
 
@@ -27,9 +25,7 @@ const NewsApiAdapter = {
       ? _fToSearchArticle(source)
       : _fToArticle(source);
     return articles
-     .map(item => sanitizeArticle(
-        _toArticle(item)
-     ));
+     .map(item => _toArticle(item));
   },
 
   toNews: (json, option) => {
