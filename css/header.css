@@ -26,6 +26,15 @@
   display: inline-block;
 }
 
+.header__delimeter {
+  display: inline-block;
+  color: var(--bt-fc, #6ca1dc);
+  padding: 0 4px;
+  height: 100%;
+  transform: scaleY(1.5);
+  font-weight: 500;
+}
+
 @media only screen and (max-width: 680px) {
   .header__label-app {
     display: none;
@@ -34,7 +43,7 @@
     margin-left: 45px;
   }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 460px) {
   .header__icon-app,
   .header__bt-about {
     display: none;
