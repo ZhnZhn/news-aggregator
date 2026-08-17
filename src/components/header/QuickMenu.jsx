@@ -10,10 +10,7 @@ import {
 
 import { memoTrue } from '../hoc/memoFn';
 
-import {
-  S_INLINE_BLOCK,
-  COLOR_BLACK
-} from '../crStyle';
+import { S_INLINE_BLOCK } from '../crStyle';
 import { HAS_TOUCH_EVENTS } from '../has';
 import { DP_BOTTOM_LEFT } from '../DP';
 import { HK_CLEAR_HOT_BAR } from '../hotkeys/hotkeys';
@@ -28,11 +25,7 @@ import FlatButton from '../zhn-bt/FlatButton';
 import SvgDelete from '../zhn/svg/SvgDelete';
 
 const CL_BT_HOT = "bt-hot"
-, DF_BT_CAPTION = "DLG"
-, S_MENU = {
-  ...S_INLINE_BLOCK,
-  borderLeft: `2px solid ${COLOR_BLACK}`
-};
+, DF_BT_CAPTION = "DLG";
 
 const _crBtProps = (
   index,
@@ -67,23 +60,25 @@ const _crMenuButton = (
 const QuickMenu = (props) => {
   const dialogItems = useDialogItems();
   return isNotEmptyArr(dialogItems)
-    ? (
-      <div style={S_MENU}>
-        <ItemStack
-          items={dialogItems}
-          crItem={_crMenuButton}
-        />
-        <FlatButton
-          key="BT_CLEAR"
-          ariaLabel="Clear quick menu"
-          dataPos={DP_BOTTOM_LEFT}
-          hotKey={HAS_TOUCH_EVENTS ? void 0: HK_CLEAR_HOT_BAR}
-          timeout={0}
-          onClick={removeDialogItems}
-        >
-          <SvgDelete style={props.iconStyle} />
-        </FlatButton>
-      </div>
+    ? (<>
+        <span className={props.delimeterCn}>|</span>
+        <div style={S_INLINE_BLOCK}>
+          <ItemStack
+            items={dialogItems}
+            crItem={_crMenuButton}
+          />
+          <FlatButton
+            key="BT_CLEAR"
+            ariaLabel="Clear quick menu"
+            dataPos={DP_BOTTOM_LEFT}
+            hotKey={HAS_TOUCH_EVENTS ? void 0: HK_CLEAR_HOT_BAR}
+            timeout={0}
+            onClick={removeDialogItems}
+          >
+            <SvgDelete style={props.iconStyle} />
+          </FlatButton>
+        </div>
+      </>
     ) : null;
 };
 

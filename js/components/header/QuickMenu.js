@@ -18,11 +18,7 @@ var _FlatButton = _interopRequireDefault(require("../zhn-bt/FlatButton"));
 var _SvgDelete = _interopRequireDefault(require("../zhn/svg/SvgDelete"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const CL_BT_HOT = "bt-hot",
-  DF_BT_CAPTION = "DLG",
-  S_MENU = {
-    ..._crStyle.S_INLINE_BLOCK,
-    borderLeft: `2px solid ${_crStyle.COLOR_BLACK}`
-  };
+  DF_BT_CAPTION = "DLG";
 const _crBtProps = (index, conf) => {
   const caption = (0, _DialogFn.getCaption)(conf),
     shortCaption = (0, _DialogFn.getShortCaption)(conf),
@@ -42,21 +38,26 @@ const _crMenuButton = (conf, index) => (0, _jsxRuntime.jsx)(_FlatButton.default,
 }, conf.type);
 const QuickMenu = props => {
   const dialogItems = (0, _compStore.useDialogItems)();
-  return (0, _isTypeFn.isNotEmptyArr)(dialogItems) ? (0, _jsxRuntime.jsxs)("div", {
-    style: S_MENU,
-    children: [(0, _jsxRuntime.jsx)(_ItemStack.default, {
-      items: dialogItems,
-      crItem: _crMenuButton
-    }), (0, _jsxRuntime.jsx)(_FlatButton.default, {
-      ariaLabel: "Clear quick menu",
-      dataPos: _DP.DP_BOTTOM_LEFT,
-      hotKey: _has.HAS_TOUCH_EVENTS ? void 0 : _hotkeys.HK_CLEAR_HOT_BAR,
-      timeout: 0,
-      onClick: _compStore.removeDialogItems,
-      children: (0, _jsxRuntime.jsx)(_SvgDelete.default, {
-        style: props.iconStyle
-      })
-    }, "BT_CLEAR")]
+  return (0, _isTypeFn.isNotEmptyArr)(dialogItems) ? (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
+    children: [(0, _jsxRuntime.jsx)("span", {
+      className: props.delimeterCn,
+      children: "|"
+    }), (0, _jsxRuntime.jsxs)("div", {
+      style: _crStyle.S_INLINE_BLOCK,
+      children: [(0, _jsxRuntime.jsx)(_ItemStack.default, {
+        items: dialogItems,
+        crItem: _crMenuButton
+      }), (0, _jsxRuntime.jsx)(_FlatButton.default, {
+        ariaLabel: "Clear quick menu",
+        dataPos: _DP.DP_BOTTOM_LEFT,
+        hotKey: _has.HAS_TOUCH_EVENTS ? void 0 : _hotkeys.HK_CLEAR_HOT_BAR,
+        timeout: 0,
+        onClick: _compStore.removeDialogItems,
+        children: (0, _jsxRuntime.jsx)(_SvgDelete.default, {
+          style: props.iconStyle
+        })
+      }, "BT_CLEAR")]
+    })]
   }) : null;
 };
 var _default = exports.default = (0, _memoFn.memoTrue)(QuickMenu);

@@ -28,6 +28,7 @@ const HEADER = "header",
   CL_LABEL_APP = `${HEADER}__label-app`,
   CL_BROWSER_BTS = `${HEADER}__browser-bts`,
   CL_ARROW_DOWN = "arrow-down",
+  CL_HEADER_DELIMETER = `${HEADER}__delimeter`,
   CL_BTS = `${HEADER}__bts`,
   CL_BT_ABOUT = `${HEADER}__bt-about`,
   S_SVG_ICON = {
@@ -74,24 +75,25 @@ const AppBar = props => {
         })
       })
     }), (0, _jsxRuntime.jsx)(_QuickMenu.default, {
+      delimeterCn: CL_HEADER_DELIMETER,
       iconStyle: S_SVG_ICON
     }), (0, _jsxRuntime.jsxs)("div", {
       className: CL_BTS,
       children: [(0, _jsxRuntime.jsx)(_FlatButton.default, {
+        ariaLabel: "Open settings dialog",
+        dataPos: _DP.DP_BOTTOM_RIGHT,
+        hotKey: _hotkeys.HK_SETTINGS,
+        onClick: props.onSettings,
+        children: (0, _jsxRuntime.jsx)(_SvgSettings.default, {
+          style: S_SVG_ICON
+        })
+      }), (0, _jsxRuntime.jsx)(_FlatButton.default, {
         ariaLabel: "Open about pane",
         dataPos: _DP.DP_BOTTOM_RIGHT,
         className: CL_BT_ABOUT,
         hotKey: _hotkeys.HK_ABOUT,
         onClick: props.onAbout,
         children: (0, _jsxRuntime.jsx)(_SvgInfo.default, {
-          style: S_SVG_ICON
-        })
-      }), (0, _jsxRuntime.jsx)(_FlatButton.default, {
-        ariaLabel: "Open settings dialog",
-        dataPos: _DP.DP_BOTTOM_RIGHT,
-        hotKey: _hotkeys.HK_SETTINGS,
-        onClick: props.onSettings,
-        children: (0, _jsxRuntime.jsx)(_SvgSettings.default, {
           style: S_SVG_ICON
         })
       })]

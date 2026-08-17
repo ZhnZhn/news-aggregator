@@ -46,6 +46,7 @@ const HEADER = "header"
 , CL_LABEL_APP = `${HEADER}__label-app`
 , CL_BROWSER_BTS = `${HEADER}__browser-bts`
 , CL_ARROW_DOWN = "arrow-down"
+, CL_HEADER_DELIMETER = `${HEADER}__delimeter`
 , CL_BTS = `${HEADER}__bts`
 , CL_BT_ABOUT = `${HEADER}__bt-about`
 
@@ -111,25 +112,28 @@ const AppBar = (props) => {
           <span className={CL_ARROW_DOWN} />
         </ModalButton>
       </span>
-      <QuickMenu iconStyle={S_SVG_ICON} />
+      <QuickMenu
+        delimeterCn={CL_HEADER_DELIMETER}
+        iconStyle={S_SVG_ICON}
+      />
       <div className={CL_BTS}>
-          <FlatButton
-            ariaLabel="Open about pane"
-            dataPos={DP_BOTTOM_RIGHT}
-            className={CL_BT_ABOUT}
-            hotKey={HK_ABOUT}
-            onClick={props.onAbout}
-          >
-            <SvgInfo style={S_SVG_ICON} />
-          </FlatButton>
-          <FlatButton
-            ariaLabel="Open settings dialog"
-            dataPos={DP_BOTTOM_RIGHT}
-            hotKey={HK_SETTINGS}
-            onClick={props.onSettings}
-          >
-            <SvgSettings style={S_SVG_ICON} />
-          </FlatButton>
+        <FlatButton
+          ariaLabel="Open settings dialog"
+          dataPos={DP_BOTTOM_RIGHT}
+          hotKey={HK_SETTINGS}
+          onClick={props.onSettings}
+        >
+          <SvgSettings style={S_SVG_ICON} />
+        </FlatButton>
+        <FlatButton
+          ariaLabel="Open about pane"
+          dataPos={DP_BOTTOM_RIGHT}
+          className={CL_BT_ABOUT}
+          hotKey={HK_ABOUT}
+          onClick={props.onAbout}
+        >
+          <SvgInfo style={S_SVG_ICON} />
+        </FlatButton>
       </div>
     </div>
   );
