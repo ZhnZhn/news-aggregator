@@ -60,7 +60,6 @@ module.exports = {
     })
   ],
   optimization: {
-    runtimeChunk: 'single',
     minimize: true,
     minimizer: [new TerserPlugin()]
   }
