@@ -17,6 +17,7 @@
     "css:sass": "node css-sass.js",
     "css:min": "node css-min.js",
     "build:prod": "webpack --color --progress --config webpack.prod.js",
+    "build:rspack:prod": "rspack build --config rspack.prod.js",   
     "stats": "npm run stats:json && npm run stats:report",
     "stats:json": "webpack --config webpack.dev.js --profile --json > stats.json",
     "stats:report": "webpack-bundle-analyzer stats.json ./app --no-open --mode static",
