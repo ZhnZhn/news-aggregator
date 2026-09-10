@@ -1,28 +1,28 @@
-'use strict'
+"use strict"
 
-const path = require('path')
-, webpack = require('webpack')
-, HtmlWebpackPlugin = require('html-webpack-plugin')
-, babelConfig = require('./babel.config')
-, TerserPlugin = require('terser-webpack-plugin');
+const path = require("path")
+, webpack = require("webpack")
+, HtmlWebpackPlugin = require("html-webpack-plugin")
+, babelConfig = require("./babel.config")
+, TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   mode: "production",
   cache: true,
   entry: {
-    app: {
-      import: path.resolve('src', 'index.jsx'),
-      dependOn: ['lib']
-    },
     lib: [       
-       "preact/compat"              
-    ]    
+      "preact/compat"              
+    ],    
+    app: {
+      import: path.resolve("src", "index.jsx"),
+      dependOn: ["lib"]
+    }    
   },
   output: {
-      path: path.resolve('app'),
+      path: path.resolve("app"),
       filename: "[name]_[chunkhash].js",
       chunkFilename: "[name]_[chunkhash].js",
-      publicPath: 'app/'
+      publicPath: "app/"
   },
   module: {
     rules: [
@@ -30,7 +30,7 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /(node_modules)/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
              cacheDirectory: true,
              ...babelConfig
@@ -44,8 +44,8 @@ module.exports = {
     ]
   },
   resolve: {
-    modules: ['node_modules'],
-    extensions: ['.js', '.jsx'],
+    modules: ["node_modules"],
+    extensions: [".js", ".jsx"],
     alias: { 
       "react": "preact/compat",      
       "react-dom": "preact/compat",     
@@ -54,8 +54,8 @@ module.exports = {
   plugins : [
     new HtmlWebpackPlugin({
       minify: false,
-      filename: path.resolve('index.html'),
-      template: path.resolve('template', 'index.ejs'),
+      filename: path.resolve("index.html"),
+      template: path.resolve("template", "index.ejs"),
       inject: false
     })
   ],
