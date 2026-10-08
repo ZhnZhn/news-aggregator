@@ -5,6 +5,7 @@ import {
 } from '../uiApi';
 
 import {
+  CL_BOTTOM_5_AFTER,
   crContainerBgCn,
   crBoxShadowCn
 } from '../crStyle';
@@ -107,6 +108,7 @@ const AppBar = (props) => {
            dataPos={DP_BOTTOM_RIGHT}
            caption="Enquire"
            hotKey={HK_QUERY_SOURCES}
+           classHotKey={CL_BOTTOM_5_AFTER}
            onClick={toggleIsQuery}
         >
           <span className={CL_ARROW_DOWN} />

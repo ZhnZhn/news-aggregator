@@ -23,6 +23,7 @@ const FlatButton = props => {
       className: CL_BT_FLAT_DIV,
       children: [props.caption ? (0, _jsxRuntime.jsx)(_BtCaption.default, {
         className: CL_BT_FLAT_SPAN,
+        classHotKey: props.classHotKey,
         caption: props.caption,
         hotKey: props.hotKey
       }) : null, props.children]

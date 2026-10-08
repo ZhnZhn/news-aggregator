@@ -1,6 +1,7 @@
 import { HAS_TOUCH_EVENTS } from '../has';
+import { crCn } from '../crStyle';
 
-const S_KEY = { textDecoration: 'underline' };
+const CL_BT_HOT_KEY = 'bt-hot-key';
 
 const _crCaptionToken = (
   caption,
@@ -23,7 +24,7 @@ const CaptionToken = (props) => {
   return (
     <>
      <span>{_before}</span>
-     <span style={S_KEY}>{_key}</span>
+     <span className={crCn(CL_BT_HOT_KEY, props.classHotKey)}>{_key}</span>
      <span>{_after}</span>
     </>
   );
@@ -43,7 +44,7 @@ const BtCaption = (props) => {
   const _keyIndex = _findKeyIndex(props.caption, props.hotKey)
   , _caption = HAS_TOUCH_EVENTS || _keyIndex === -1
        ? props.caption || ''
-       : <CaptionToken caption={props.caption} keyIndex={_keyIndex} />;
+       : <CaptionToken caption={props.caption} classHotKey={props.classHotKey} keyIndex={_keyIndex} />;
   return (
     <span
        className={props.className}

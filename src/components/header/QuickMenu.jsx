@@ -10,7 +10,10 @@ import {
 
 import { memoTrue } from '../hoc/memoFn';
 
-import { S_INLINE_BLOCK } from '../crStyle';
+import {
+  CL_BOTTOM_5_AFTER,
+  S_INLINE_BLOCK
+} from '../crStyle';
 import { HAS_TOUCH_EVENTS } from '../has';
 import { DP_BOTTOM_LEFT } from '../DP';
 import { HK_CLEAR_HOT_BAR } from '../hotkeys/hotkeys';
@@ -40,6 +43,7 @@ const _crBtProps = (
      ariaLabel: `Open ${caption} dialog`,
      dataPos: DP_BOTTOM_LEFT,
      hotKey: _hotKey || void 0,
+     classHotKey: _hotKey ? CL_BOTTOM_5_AFTER : void 0,
      caption: joinBy(_hotKey, shortCaption || DF_BT_CAPTION)
    };
 };

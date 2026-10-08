@@ -28,8 +28,10 @@ const ModalButton = (props) => {
       <div className={CL_BT_FLAT_DIV}>
         <BtCaption
           className={CL_BT_FLAT_SPAN}
+          classHotKey={props.classHotKey}
           caption={props.caption}
           hotKey={props.hotKey}
+
         >
            {props.children}
         </BtCaption>

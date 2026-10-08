@@ -31,6 +31,7 @@ const FlatButton = (props) => {
         { props.caption
            ? <BtCaption
                className={CL_BT_FLAT_SPAN}
+               classHotKey={props.classHotKey}
                caption={props.caption}
                hotKey={props.hotKey}
              />

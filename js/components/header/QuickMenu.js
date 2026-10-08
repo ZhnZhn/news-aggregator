@@ -27,6 +27,7 @@ const _crBtProps = (index, conf) => {
     ariaLabel: `Open ${caption} dialog`,
     dataPos: _DP.DP_BOTTOM_LEFT,
     hotKey: _hotKey || void 0,
+    classHotKey: _hotKey ? _crStyle.CL_BOTTOM_5_AFTER : void 0,
     caption: (0, _joinBy.joinBy)(_hotKey, shortCaption || DF_BT_CAPTION)
   };
 };

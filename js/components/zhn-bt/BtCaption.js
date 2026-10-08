@@ -3,10 +3,9 @@
 exports.__esModule = true;
 exports.default = void 0;
 var _has = require("../has");
+var _crStyle = require("../crStyle");
 var _jsxRuntime = require("preact/jsx-runtime");
-const S_KEY = {
-  textDecoration: 'underline'
-};
+const CL_BT_HOT_KEY = 'bt-hot-key';
 const _crCaptionToken = (caption, keyIndex) => [caption.substring(0, keyIndex), caption.substring(keyIndex, keyIndex + 1), caption.substring(keyIndex + 1)];
 const CaptionToken = props => {
   const [_before, _key, _after] = _crCaptionToken(props.caption, props.keyIndex);
@@ -14,7 +13,7 @@ const CaptionToken = props => {
     children: [(0, _jsxRuntime.jsx)("span", {
       children: _before
     }), (0, _jsxRuntime.jsx)("span", {
-      style: S_KEY,
+      className: (0, _crStyle.crCn)(CL_BT_HOT_KEY, props.classHotKey),
       children: _key
     }), (0, _jsxRuntime.jsx)("span", {
       children: _after
@@ -26,6 +25,7 @@ const BtCaption = props => {
   const _keyIndex = _findKeyIndex(props.caption, props.hotKey),
     _caption = _has.HAS_TOUCH_EVENTS || _keyIndex === -1 ? props.caption || '' : (0, _jsxRuntime.jsx)(CaptionToken, {
       caption: props.caption,
+      classHotKey: props.classHotKey,
       keyIndex: _keyIndex
     });
   return (0, _jsxRuntime.jsxs)("span", {

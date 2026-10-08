@@ -69,6 +69,7 @@ const AppBar = props => {
         dataPos: _DP.DP_BOTTOM_RIGHT,
         caption: "Enquire",
         hotKey: _hotkeys.HK_QUERY_SOURCES,
+        classHotKey: _crStyle.CL_BOTTOM_5_AFTER,
         onClick: toggleIsQuery,
         children: (0, _jsxRuntime.jsx)("span", {
           className: CL_ARROW_DOWN
