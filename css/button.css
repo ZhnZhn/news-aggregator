@@ -140,3 +140,20 @@
 .bt-flat__div:focus {
   background-color: rgba(153, 153, 153, 0.2);
 }
+
+.bt-hot-key {
+  position: relative;
+  display: inline-block;
+}
+.bt-hot-key::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  height: 2px;
+  background-color: currentColor;
+}
+.bottom-5-after::after {
+  bottom: 5px;
+}
