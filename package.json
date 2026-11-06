@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.29.10",
-    "preact": "^11.0.2"
+    "preact": "^11.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
@@ -45,7 +45,7 @@
     "@rspack/core": "^2.3.0",
     "@rspack/dev-server": "^2.2.2",
     "@rstest/core": "^0.12.6",
-    "@swc/helpers": "^0.5.23",
+    "@swc/helpers": "^0.5.24",
     "babel-loader": "^10.1.1",
     "clean-css": "^5.3.3",
     "eslint": "^9.39.5",
