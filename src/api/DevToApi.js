@@ -1,4 +1,7 @@
-import { crProviderApi } from './ApiFn';
+import {
+  crProviderApi,
+  addCrOptionFetchTo
+} from './ApiFn';
 
 const _isArr = Array.isArray
 , API_URL = 'https://dev.to/api'
@@ -11,5 +14,10 @@ const _isArr = Array.isArray
 
 
 const DevToApi = crProviderApi(getRequestUrl, checkResponse);
+addCrOptionFetchTo(DevToApi, () => ({
+  headers: {
+    Accept: "application/vnd.forem.api-v1+json"
+  }
+}))
 
 export default DevToApi

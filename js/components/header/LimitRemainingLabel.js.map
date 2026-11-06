@@ -1,0 +1,30 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/header/LimitRemainingLabel.js"
+ ],
+ "file": "../../../src/components/header/LimitRemainingLabel.js",
+ "names": [
+  "_storeAtoms",
+  "require",
+  "_jsxRuntime",
+  "S_LIMIT_VALUE",
+  "display",
+  "color",
+  "padding",
+  "fontSize",
+  "fontWeight",
+  "LimitRemainingLabel",
+  "value",
+  "useLimitRemaining",
+  "console",
+  "log",
+  "jsx",
+  "style",
+  "children",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,WAAA,GAAAC,OAAA;AAA0D,IAAAC,WAAA,GAAAD,OAAA;AAE1D,MAAME,aAAa,GAAG;EACpBC,OAAO,EAAE,cAAc;EACvBC,KAAK,EAAC,SAAS;EACfC,OAAO,EAAE,YAAY;EACrB;EACAC,QAAQ,EAAE,MAAM;EAChBC,UAAU,EAAE;AACd,CAAC;AAED,MAAMC,mBAAmB,GAAGA,CAAA,KAAM;EAChC,MAAMC,KAAK,GAAG,IAAAC,6BAAiB,EAAC,CAAC;EACjCC,OAAO,CAACC,GAAG,CAACH,KAAK,CAAC;EAClB,OACE,IAAAR,WAAA,CAAAY,GAAA;IAAMC,KAAK,EAAEZ,aAAc;IAAAa,QAAA,EACxBN;EAAK,CACF,CAAC;AAEX,CAAC;AAAC,IAAAO,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaV,mBAAmB"
+}

@@ -3,25 +3,21 @@
 exports.__esModule = true;
 exports.crQueryTokenAll = exports.crApiUrl = exports.checkResponse = void 0;
 var _ApiFn = require("./ApiFn");
-var API_URL = 'https://api.thenewsapi.com/v1/news',
+const API_URL = 'https://api.thenewsapi.com/v1/news',
   QUERY_LIMIT = 'limit=3&language=en';
-var _crPage = function _crPage(nextPage) {
-  return (0, _ApiFn.crQueryToken)('page', nextPage);
-};
-var crApiUrl = function crApiUrl(type, option) {
-  var apiKey = option.apiKey,
-    nextPage = option.nextPage,
+const _crPage = nextPage => (0, _ApiFn.crQueryToken)('page', nextPage);
+const crApiUrl = (type, option) => {
+  const {
+      apiKey,
+      nextPage
+    } = option,
     _page = _crPage(nextPage);
   option.apiKey = void 0;
-  return API_URL + "/" + type + "?api_token=" + apiKey + _page + "&" + QUERY_LIMIT;
+  return `${API_URL}/${type}?api_token=${apiKey}${_page}&${QUERY_LIMIT}`;
 };
 exports.crApiUrl = crApiUrl;
-var crQueryTokenAll = function crQueryTokenAll(parameterName, value) {
-  return value === 'all' ? '' : (0, _ApiFn.crQueryToken)(parameterName, value);
-};
+const crQueryTokenAll = (parameterName, value) => value === 'all' ? '' : (0, _ApiFn.crQueryToken)(parameterName, value);
 exports.crQueryTokenAll = crQueryTokenAll;
-var checkResponse = function checkResponse() {
-  return true;
-};
+const checkResponse = () => true;
 exports.checkResponse = checkResponse;
 //# sourceMappingURL=TheNewsApiFn.js.map

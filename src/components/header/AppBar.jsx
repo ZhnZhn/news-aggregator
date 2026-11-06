@@ -37,6 +37,7 @@ import AppLabel from './AppLabel';
 import PanelQuery from './PanelQuery';
 import crMenuQuery from './crMenuQuery';
 import QuickMenu from './QuickMenu';
+import UsageLimitRemaining from  './UsageLimitRemaining';
 
 const HEADER = "header"
 , CL_HEADER = crContainerBgCn(HEADER)
@@ -119,6 +120,7 @@ const AppBar = (props) => {
         iconStyle={S_SVG_ICON}
       />
       <div className={CL_BTS}>
+        <UsageLimitRemaining />
         <FlatButton
           ariaLabel="Open settings dialog"
           dataPos={DP_BOTTOM_RIGHT}

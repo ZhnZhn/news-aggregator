@@ -18,27 +18,24 @@ const _crStore = () => ({
   _itemStore = (0, _storeApi.createStoreWithSelector)(_crStore),
   [_set] = (0, _storeApi.getStoreApi)(_itemStore);
 const useMsItem = exports.useMsItem = (0, _storeApi.fCrUse)(_itemStore, _selectMsItem);
-const _loadItemCompleted = _ref => {
-    let {
-      news,
-      itemConf
-    } = _ref;
+const _loadItemCompleted = ({
+    news,
+    _itemConf,
+    limitRemaining
+  }) => {
     if (news) {
       const r = (0, _NewsSliceFn.loadItemCompletedImpl)(_items, news);
       _set({
         msItem: r
       });
     }
-    (0, _storeAtoms.setLoadingComplete)();
+    (0, _storeAtoms.setLoadingComplete)(limitRemaining);
   },
   _loadItemFailed = option => {
     (0, _compStore.showAlertDialog)(option);
-    (0, _storeAtoms.setLoadingFailed)();
+    (0, _storeAtoms.setLoadingFailed)(option.limitRemaining);
   };
-const loadItem = function (option) {
-  if (option === void 0) {
-    option = {};
-  }
+const loadItem = (option = {}) => {
   const {
       itemConf,
       loadId
@@ -59,9 +56,10 @@ const loadItem = function (option) {
     });
     (0, _loadNews.default)(option, _loadItemCompleted, _loadItemFailed);
   } else {
-    _loadItemFailed({
+    _assign(option, {
       msg: msgErr
     });
+    _loadItemFailed(option);
   }
 };
 exports.loadItem = loadItem;

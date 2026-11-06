@@ -64,6 +64,7 @@ const fnFetch = ({
   fetch(uri, optionFetch)
     .then(response => {
       const {
+        headers,
         status,
         statusText
       } = response;
@@ -74,11 +75,13 @@ const fnFetch = ({
       } else {
         return Promise.all([
           Promise.resolve(status),
-          response.json()
+          response.json(),
+          Promise.resolve(headers.get(option.api.limitRemaining)),
         ]);
       }
     })
-    .then(([_status, json ]) => {
+    .then(([_status, json, limitRemaining ]) => {
+       option.limitRemaining = limitRemaining
        if (onCheckResponse(json, option)){
          onFetch({ json, option, onCompleted });
        }

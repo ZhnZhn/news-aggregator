@@ -45,17 +45,18 @@ export const useMsItem = fCrUse(_itemStore, _selectMsItem)
 
 const _loadItemCompleted = ({
   news,
-  _itemConf
+  _itemConf,
+  limitRemaining
 }) => {
   if (news) {
     const r = loadItemCompletedImpl(_items, news);
     _set({ msItem: r })
   }
-  setLoadingComplete()
+  setLoadingComplete(limitRemaining)
 }
 , _loadItemFailed = (option) => {
   showAlertDialog(option)
-  setLoadingFailed()
+  setLoadingFailed(option.limitRemaining)
 }
 export const loadItem = (
   option={}
@@ -76,7 +77,8 @@ export const loadItem = (
     _assign(option, { apiKey, adapter, api })
     loadNews(option, _loadItemCompleted, _loadItemFailed)
   } else {
-    _loadItemFailed({ msg: msgErr })
+    _assign(option, { msg: msgErr })
+    _loadItemFailed(option)
   }
 }
 

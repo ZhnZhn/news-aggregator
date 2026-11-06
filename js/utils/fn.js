@@ -22,19 +22,18 @@ const _crFrequencyRestrictionMsg = (mlsNow, mlsFr, uri) => {
     return _crMsg(_toSeconds(_mlsFr));
   }
 };
-const fnFetch = _ref => {
-  let {
-    uri,
-    optionFetch,
-    option,
-    onCheckResponse,
-    onFetch,
-    onCompleted,
-    onFailed,
-    onCatch
-  } = _ref;
+const fnFetch = ({
+  uri,
+  optionFetch,
+  option,
+  onCheckResponse,
+  onFetch,
+  onCompleted,
+  onFailed,
+  onCatch
+}) => {
   const _mlsNow = Date.now(),
-    _frequencyRestrictionMsg = _crFrequencyRestrictionMsg(_mlsNow, (option || {})._mlsFr, uri);
+    _frequencyRestrictionMsg = _crFrequencyRestrictionMsg(_mlsNow, option?._mlsFr, uri);
   if (_frequencyRestrictionMsg) {
     onFailed(_crErrMsg(_frequencyRestrictionMsg));
     return;
@@ -43,6 +42,7 @@ const fnFetch = _ref => {
   _mlsLastFetch = _mlsNow;
   fetch(uri, optionFetch).then(response => {
     const {
+      headers,
       status,
       statusText
     } = response;
@@ -51,10 +51,10 @@ const fnFetch = _ref => {
     } else if (status >= 500 && status < 600) {
       throw _crErrMsg(`Response Error ${status} : ${statusText}`);
     } else {
-      return Promise.all([Promise.resolve(status), response.json()]);
+      return Promise.all([Promise.resolve(status), response.json(), Promise.resolve(headers.get(option.api.limitRemaining))]);
     }
-  }).then(_ref2 => {
-    let [status, json] = _ref2;
+  }).then(([_status, json, limitRemaining]) => {
+    option.limitRemaining = limitRemaining;
     if (onCheckResponse(json, option)) {
       onFetch({
         json,

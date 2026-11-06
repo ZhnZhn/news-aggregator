@@ -5,19 +5,17 @@ exports.__esModule = true;
 exports.default = void 0;
 var _fn = _interopRequireDefault(require("../../utils/fn"));
 var _isTypeFn = require("../../utils/isTypeFn");
-const _fnCatch = _ref => {
-  let {
-    error,
-    onFailed
-  } = _ref;
+const _fnCatch = ({
+  error,
+  onFailed
+}) => {
   onFailed(error);
 };
-const _fFetch = adapter => _ref2 => {
-  let {
-    json,
-    option,
-    onCompleted
-  } = _ref2;
+const _fFetch = adapter => ({
+  json,
+  option,
+  onCompleted
+}) => {
   const news = adapter.toNews(json, option),
     itemConf = option.itemConf;
   onCompleted({

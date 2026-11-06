@@ -20,6 +20,7 @@ var _AppLabel = _interopRequireDefault(require("./AppLabel"));
 var _PanelQuery = _interopRequireDefault(require("./PanelQuery"));
 var _crMenuQuery = _interopRequireDefault(require("./crMenuQuery"));
 var _QuickMenu = _interopRequireDefault(require("./QuickMenu"));
+var _UsageLimitRemaining = _interopRequireDefault(require("./UsageLimitRemaining"));
 var _jsxRuntime = require("preact/jsx-runtime");
 const HEADER = "header",
   CL_HEADER = (0, _crStyle.crContainerBgCn)(HEADER),
@@ -80,7 +81,7 @@ const AppBar = props => {
       iconStyle: S_SVG_ICON
     }), (0, _jsxRuntime.jsxs)("div", {
       className: CL_BTS,
-      children: [(0, _jsxRuntime.jsx)(_FlatButton.default, {
+      children: [(0, _jsxRuntime.jsx)(_UsageLimitRemaining.default, {}), (0, _jsxRuntime.jsx)(_FlatButton.default, {
         ariaLabel: "Open settings dialog",
         dataPos: _DP.DP_BOTTOM_RIGHT,
         hotKey: _hotkeys.HK_SETTINGS,

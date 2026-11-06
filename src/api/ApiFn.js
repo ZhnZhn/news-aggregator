@@ -17,3 +17,10 @@ export const crProviderApi = (
   getRequestUrl,
   checkResponse
 })
+
+export const addCrOptionFetchTo = (
+  api,
+  crOptionFetch
+) => {
+  api.crOptionFetch = crOptionFetch
+}

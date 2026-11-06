@@ -1,0 +1,28 @@
+{
+ "version": 3,
+ "sources": [
+  "../../../src/components/header/UsageLimitRemaining.js"
+ ],
+ "file": "../../../src/components/header/UsageLimitRemaining.js",
+ "names": [
+  "_storeAtoms",
+  "require",
+  "_jsxRuntime",
+  "S_LIMIT_VALUE",
+  "display",
+  "color",
+  "padding",
+  "fontSize",
+  "fontWeight",
+  "UsageLimitRemaining",
+  "value",
+  "useLimitRemaining",
+  "jsx",
+  "style",
+  "children",
+  "_default",
+  "exports",
+  "default"
+ ],
+ "mappings": ";;;;AAAA,IAAAA,WAAA,GAAAC,OAAA;AAA0D,IAAAC,WAAA,GAAAD,OAAA;AAE1D,MAAME,aAAa,GAAG;EACpBC,OAAO,EAAE,cAAc;EACvBC,KAAK,EAAE,sBAAsB;EAC7BC,OAAO,EAAE,YAAY;EACrBC,QAAQ,EAAE,MAAM;EAChBC,UAAU,EAAE;AACd,CAAC;AAED,MAAMC,mBAAmB,GAAGA,CAAA,KAAM;EAChC,MAAMC,KAAK,GAAG,IAAAC,6BAAiB,EAAC,CAAC;EACjC,OACE,IAAAT,WAAA,CAAAU,GAAA;IAAMC,KAAK,EAAEV,aAAc;IAAAW,QAAA,EACxBJ;EAAK,CACF,CAAC;AAEX,CAAC;AAAC,IAAAK,QAAA,GAAAC,OAAA,CAAAC,OAAA,GAEaR,mBAAmB"
+}
